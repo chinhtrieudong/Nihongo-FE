@@ -30,6 +30,13 @@ module.exports = {
           700: '#334155',
           800: '#1e293b',
           900: '#0f172a',
+          // Modern dark mode colors
+          950: '#18181B', // Background
+          925: '#27272A', // Surface/Card
+          900: '#3F3F46', // Surface Hover & Border
+          800: '#71717A', // Tertiary text
+          700: '#A1A1AA', // Secondary text
+          600: '#FAFAFA', // Primary text
         }
       },
       fontFamily: {

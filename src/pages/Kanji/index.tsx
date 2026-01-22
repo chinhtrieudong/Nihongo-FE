@@ -96,7 +96,7 @@ const KanjiPage: React.FC = () => {
     };
 
     return (
-        <div className="container mx-auto px-4 py-6">
+        <div className="p-6 bg-secondary-50 dark:bg-secondary-950 min-h-screen">
             <div className="mb-8">
                 <h1 className="text-3xl font-bold text-gray-800 mb-2">Học Hán Tự</h1>
                 <p className="text-gray-600">

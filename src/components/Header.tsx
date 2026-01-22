@@ -36,8 +36,8 @@ const Header: React.FC = () => {
 
   return (
     <AntHeader
-      className="bg-white dark:bg-gray-800 shadow-sm border-b border-gray-200 dark:border-gray-700 px-6 flex items-center justify-between"
-      style={{ padding: '0 24px' }}
+      className="bg-white dark:bg-secondary-925 shadow-sm border-b border-gray-200 dark:border-gray-700 px-6 flex items-center justify-between"
+      style={{ padding: '0 24px', position: 'sticky', top: 0, zIndex: 50 }}
     >
       <div className="flex items-center space-x-4">
         <Button
@@ -47,9 +47,6 @@ const Header: React.FC = () => {
           className="flex items-center justify-center"
           size="large"
         />
-        <Title level={3} className="!mb-0 text-blue-600 font-bold">
-          Nihongo
-        </Title>
       </div>
 
       <div className="flex items-center space-x-4">

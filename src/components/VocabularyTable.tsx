@@ -274,7 +274,13 @@ const VocabularyTable: React.FC<VocabularyTableProps> = ({ data, loading = false
       .filter(([id, status]) => currentCardIds.has(id) && status === 'unanswered')
       .length;
 
-    if (unansweredCount === 0 && cardsToStudy.length > 0) {
+    // Đếm số thẻ đã đánh giá (known + unknown)
+    const evaluatedCount = Object.entries(cardStatus)
+      .filter(([id, status]) => currentCardIds.has(id) && (status === 'known' || status === 'unknown'))
+      .length;
+
+    // Chỉ hoàn thành khi: không còn unanswered VÀ đã có ít nhất 1 thẻ được đánh giá
+    if (unansweredCount === 0 && evaluatedCount > 0 && cardsToStudy.length > 0) {
       setIsStudyComplete(true);
     }
   }, [cardStatus, cardsToStudy]);
@@ -300,7 +306,7 @@ const VocabularyTable: React.FC<VocabularyTableProps> = ({ data, loading = false
 
           <Card className="max-w-4xl mx-auto">
             <div className="text-center mb-8">
-              <Title level={1} className="text-gray-800 mb-6">
+              <Title level={1} className="text-secondary-900 dark:text-secondary-100 mb-6">
                 🎉 Hoàn thành!
               </Title>
 
@@ -395,65 +401,56 @@ const VocabularyTable: React.FC<VocabularyTableProps> = ({ data, loading = false
           <>
             <div className="flex justify-center items-center min-h-[50vh] p-4">
               <Card
-                className="cursor-pointer transition-all duration-500 hover:scale-105"
+                className="cursor-pointer transition-all duration-300 hover:scale-105"
                 style={{
                   width: '100%',
                   maxWidth: '600px',
                   height: '350px',
-                  transform: isFlipped ? 'rotateY(180deg)' : 'rotateY(0deg)',
-                  transformStyle: 'preserve-3d',
                 }}
                 onClick={flipCard}
               >
                 {/* Front of card */}
-                <div
-                  className="absolute inset-0 p-8 flex flex-col items-center justify-center"
-                  style={{
-                    backfaceVisibility: 'hidden',
-                  }}
-                >
-                  <Button
-                    type="primary"
-                    shape="circle"
-                    icon={<SoundOutlined />}
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      const hiraKanaText = currentCard?.hiragana || currentCard?.katakana || '';
-                      if (hiraKanaText) {
-                        handlePlayHiraKanaAudio(hiraKanaText, e);
-                      }
-                    }}
-                    className="absolute top-4 right-4"
-                    disabled={!currentCard?.hiragana && !currentCard?.katakana}
-                  />
+                {!isFlipped && (
+                  <div className="absolute inset-0 p-8 flex flex-col items-center justify-center">
+                    <Button
+                      type="primary"
+                      shape="circle"
+                      icon={<SoundOutlined />}
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        const hiraKanaText = currentCard?.hiragana || currentCard?.katakana || '';
+                        if (hiraKanaText) {
+                          handlePlayHiraKanaAudio(hiraKanaText, e);
+                        }
+                      }}
+                      className="absolute top-4 right-4"
+                      disabled={!currentCard?.hiragana && !currentCard?.katakana}
+                    />
 
-                  <Title level={1} className="text-gray-800 mb-4">
-                    {currentCard?.kanji}
-                  </Title>
+                    <Title level={1} className="text-secondary-900 dark:text-secondary-100 mb-4">
+                      {currentCard?.kanji}
+                    </Title>
 
-                  <Title level={3} type="secondary" className="mb-4">
-                    {currentCard?.hiragana || currentCard?.katakana}
-                  </Title>
-                </div>
+                    <Title level={3} type="secondary" className="mb-4 text-secondary-700 dark:text-secondary-300">
+                      {currentCard?.hiragana || currentCard?.katakana}
+                    </Title>
+                  </div>
+                )}
 
                 {/* Back of card */}
-                <div
-                  className="absolute inset-0 p-8 flex flex-col items-center justify-center bg-blue-50"
-                  style={{
-                    backfaceVisibility: 'hidden',
-                    transform: 'rotateY(180deg)',
-                  }}
-                >
-                  {currentCard?.hanviet && (
-                    <Title level={3} className="text-gray-800 mb-6">
-                      {currentCard.hanviet.toUpperCase().replace(/,/g, '')}
-                    </Title>
-                  )}
+                {isFlipped && (
+                  <div className="absolute inset-0 bg-blue-50 dark:bg-blue-900/20 p-8 flex flex-col items-center justify-center">
+                    {currentCard?.hanviet && (
+                      <Title level={2} className="text-purple-600 dark:text-purple-400 mb-6">
+                        {currentCard.hanviet.toUpperCase().replace(/,/g, '')}
+                      </Title>
+                    )}
 
-                  <Title level={4} className="text-gray-700 mb-6">
-                    {currentCard?.meaning_vi || 'Đang cập nhật nghĩa...'}
-                  </Title>
-                </div>
+                    <Title level={3} className="text-secondary-800 dark:text-secondary-200">
+                      {currentCard?.meaning_vi || 'Đang cập nhật nghĩa...'}
+                    </Title>
+                  </div>
+                )}
               </Card>
             </div>
 
@@ -681,14 +678,14 @@ const VocabularyTable: React.FC<VocabularyTableProps> = ({ data, loading = false
         <Space orientation="vertical" className="w-full" size="large">
           <Row gutter={[16, 16]}>
             <Col span={12}>
-              <Text strong>Kanji</Text>
-              <div className="p-3 bg-gray-50 rounded">
+              <Text strong className="text-secondary-900 dark:text-secondary-600">Kanji</Text>
+              <div className="p-3 bg-secondary-50 dark:bg-secondary-925 rounded">
                 <Text className="text-2xl font-bold">{selectedWord?.kanji || '-'}</Text>
               </div>
             </Col>
             <Col span={12}>
-              <Text strong>Hira/Kana</Text>
-              <div className="p-3 bg-gray-50 rounded">
+              <Text strong className="text-secondary-900 dark:text-secondary-600">Hira/Kana</Text>
+              <div className="p-3 bg-secondary-50 dark:bg-secondary-925 rounded">
                 <Text className="text-2xl">{selectedWord?.hiragana || selectedWord?.katakana || '-'}</Text>
               </div>
             </Col>
@@ -696,17 +693,17 @@ const VocabularyTable: React.FC<VocabularyTableProps> = ({ data, loading = false
 
           <Row gutter={[16, 16]}>
             <Col span={12}>
-              <Text strong>Hán Việt</Text>
-              <div className="p-3 bg-purple-50 rounded">
-                <Text className="text-lg text-purple-600 font-medium">
+              <Text strong className="text-secondary-900 dark:text-secondary-600">Hán Việt</Text>
+              <div className="p-3 bg-purple-50 dark:bg-purple-900/20 rounded">
+                <Text className="text-lg text-purple-600 dark:text-purple-400 font-medium">
                   {selectedWord?.hanviet ? selectedWord.hanviet.toUpperCase().replace(/,/g, '') : '-'}
                 </Text>
               </div>
             </Col>
             <Col span={12}>
-              <Text strong>Romaji (tách âm)</Text>
-              <div className="p-3 bg-blue-50 rounded">
-                <Text className="text-lg text-blue-600 font-medium">
+              <Text strong className="text-secondary-900 dark:text-secondary-600">Romaji (tách âm)</Text>
+              <div className="p-3 bg-blue-50 dark:bg-blue-900/20 rounded">
+                <Text className="text-lg text-blue-600 dark:text-blue-400 font-medium">
                   {selectedWord?.romaji || '-'}
                 </Text>
               </div>
@@ -714,9 +711,9 @@ const VocabularyTable: React.FC<VocabularyTableProps> = ({ data, loading = false
           </Row>
 
           <div>
-            <Text strong>Nghĩa tiếng Việt</Text>
-            <div className="p-3 bg-gray-50 rounded">
-              <Text className="text-xl font-semibold">
+            <Text strong className="text-secondary-900 dark:text-secondary-600">Nghĩa tiếng Việt</Text>
+            <div className="p-3 bg-secondary-50 dark:bg-secondary-925 rounded">
+              <Text className="text-xl font-semibold text-secondary-900 dark:text-secondary-600">
                 {selectedWord?.meaning_vi || '-'}
               </Text>
             </div>
@@ -725,18 +722,18 @@ const VocabularyTable: React.FC<VocabularyTableProps> = ({ data, loading = false
           {selectedWord?.kanji && selectedWord.kanji_analysis &&
             Array.isArray(selectedWord.kanji_analysis) && selectedWord.kanji_analysis.length > 0 && (
               <div>
-                <Text strong>Phân tích Kanji</Text>
-                <div className="p-3 bg-orange-50 rounded border border-orange-200">
+                <Text strong className="text-secondary-900 dark:text-secondary-600">Phân tích Kanji</Text>
+                <div className="p-3 bg-orange-50 dark:bg-orange-900/20 rounded border border-orange-200 dark:border-orange-800">
                   <Space orientation="vertical" className="w-full">
                     {selectedWord.kanji_analysis.map((kanji, index) => (
                       <div key={index} className="border-b border-orange-200 pb-2 last:border-b-0">
-                        <Text className="font-semibold text-lg text-orange-800">
+                        <Text className="font-semibold text-lg text-orange-800 dark:text-orange-600">
                           {kanji.character}
                         </Text>
-                        <div className="text-sm text-gray-700">
+                        <div className="text-sm text-secondary-700 dark:text-secondary-800">
                           <Text strong>Hán Việt:</Text> {kanji.hanviet || 'N/A'}
                         </div>
-                        <div className="text-sm text-gray-700">
+                        <div className="text-sm text-secondary-700 dark:text-secondary-800">
                           <Text strong>Bộ thủ:</Text> {kanji.radicals && kanji.radicals.length > 0 ? (
                             <Space wrap>
                               {kanji.radicals.map((radical, radIndex) => (
@@ -747,11 +744,11 @@ const VocabularyTable: React.FC<VocabularyTableProps> = ({ data, loading = false
                             </Space>
                           ) : "Không có"}
                         </div>
-                        <div className="text-sm text-gray-700">
+                        <div className="text-sm text-secondary-700 dark:text-secondary-800">
                           <Text strong>Nghĩa:</Text> {kanji.meaning || 'N/A'}
                         </div>
                         {kanji.image_explanation && (
-                          <div className="text-sm text-gray-700">
+                          <div className="text-sm text-secondary-700 dark:text-secondary-800">
                             <Text strong>Giải thích:</Text> {kanji.image_explanation}
                           </div>
                         )}
@@ -764,31 +761,20 @@ const VocabularyTable: React.FC<VocabularyTableProps> = ({ data, loading = false
 
           {selectedWord?.example_jp && (
             <div>
-              <Text strong>Ví dụ</Text>
-              <div className="p-3 bg-gray-50 rounded">
+              <Text strong className="text-gray-900 dark:text-gray-100">Ví dụ</Text>
+              <div className="p-3 bg-gray-50 dark:bg-gray-800 rounded">
                 <Tooltip
-                  title={
-                    <div className="p-2">
-                      <Text className="text-gray-800 font-medium">
-                        {selectedWord.example_vi || 'Không có bản dịch...'}
-                      </Text>
-                    </div>
-                  }
+                  title={selectedWord.example_vi || 'Không có bản dịch...'}
                   placement="bottom"
-                  color="white"
-                  overlayInnerStyle={{
-                    backgroundColor: 'white',
-                    borderRadius: '8px',
-                    boxShadow: '0 4px 12px rgba(0, 0, 0, 0.15)',
-                    border: '1px solid #e8e8e8'
-                  }}
-                  overlayStyle={{
-                    borderRadius: '8px'
-                  }}
                   arrow={false}
+                  overlayInnerStyle={{
+                    backgroundColor: document.documentElement.classList.contains('dark') ? '#374151' : '#ffffff',
+                    color: document.documentElement.classList.contains('dark') ? '#ffffff' : 'rgba(0, 0, 0, 0.88)',
+                    border: document.documentElement.classList.contains('dark') ? '1px solid #4b5563' : '1px solid #d9d9d9',
+                    borderRadius: '6px'
+                  }}
                 >
-                  <Text
-                    className="text-xl text-gray-600 italic cursor-pointer hover:text-blue-600 transition-colors duration-200"
+                  <Text className="text-xl text-gray-700 dark:text-gray-300 italic cursor-pointer hover:text-blue-600 transition-colors duration-200"
                     style={{ textDecoration: 'underline dotted' }}
                   >
                     {selectedWord.example_jp || '-'}

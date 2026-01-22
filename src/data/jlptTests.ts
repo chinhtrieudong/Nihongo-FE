@@ -1,0 +1,563 @@
+import React from "react";
+import { BookOutlined, FileTextOutlined, AudioOutlined, TranslationOutlined } from "@ant-design/icons";
+
+export interface TestSection {
+  id: string;
+  name: string;
+  questions: number;
+  duration: number;
+  description: string;
+  questionTypes: string[];
+  icon: React.ReactNode;
+}
+
+export interface Test {
+  id: string;
+  level: string;
+  title: string;
+  description: string;
+  duration: number;
+  questions: number;
+  difficulty: string;
+  completed: boolean;
+  score?: number;
+  date?: string;
+  sections: TestSection[];
+}
+
+export const jlptTests: Test[] = [
+  {
+    id: "1",
+    level: "N5",
+    title: "JLPT N5 - Full Mock Test",
+    description: "Bài thi thử hoàn chỉnh JLPT N5 với đầy đủ các phần",
+    duration: 120,
+    questions: 100,
+    difficulty: "Beginner",
+    completed: true,
+    score: 85,
+    date: "2024-01-15",
+    sections: [
+      {
+        id: "vocabulary",
+        name: "Từ vựng",
+        questions: 25,
+        duration: 30,
+        description: "Kanji, từ vựng cơ bản",
+        questionTypes: ["multiple-choice", "kanji-reading"],
+        icon: React.createElement(BookOutlined)
+      },
+      {
+        id: "grammar",
+        name: "Ngữ pháp",
+        questions: 25,
+        duration: 30,
+        description: "Cấu trúc câu N5",
+        questionTypes: ["multiple-choice", "sentence-order"],
+        icon: React.createElement(FileTextOutlined)
+      },
+      {
+        id: "reading",
+        name: "Đọc hiểu",
+        questions: 25,
+        duration: 40,
+        description: "Đọc văn bản ngắn",
+        questionTypes: ["reading-comprehension", "text-fill"],
+        icon: React.createElement(FileTextOutlined)
+      },
+      {
+        id: "listening",
+        name: "Nghe hiểu",
+        questions: 25,
+        duration: 20,
+        description: "Nghe hội thoại",
+        questionTypes: ["listening-comprehension", "picture-response"],
+        icon: React.createElement(AudioOutlined)
+      }
+    ]
+  },
+  {
+    id: "2",
+    level: "N5",
+    title: "JLPT N5 - Vocabulary Focus",
+    description: "Bài tập chuyên sâu về từ vựng N5",
+    duration: 45,
+    questions: 50,
+    difficulty: "Beginner",
+    completed: false,
+    sections: [
+      {
+        id: "vocabulary",
+        name: "Từ vựng",
+        questions: 50,
+        duration: 45,
+        description: "Từ vựng chuyên sâu",
+        questionTypes: ["multiple-choice", "kanji-reading", "word-usage"],
+        icon: React.createElement(BookOutlined)
+      }
+    ]
+  },
+  {
+    id: "3",
+    level: "N5",
+    title: "JLPT N5 - Kanji Practice",
+    description: "Luyện tập Kanji cơ bản N5",
+    duration: 30,
+    questions: 30,
+    difficulty: "Beginner",
+    completed: false,
+    sections: [
+      {
+        id: "kanji",
+        name: "Kanji",
+        questions: 30,
+        duration: 30,
+        description: "Kanji N5 cơ bản",
+        questionTypes: ["kanji-reading", "kanji-writing", "kanji-meaning"],
+        icon: React.createElement(TranslationOutlined)
+      }
+    ]
+  },
+  {
+    id: "4",
+    level: "N4",
+    title: "JLPT N4 - Full Mock Test",
+    description: "Bài thi thử hoàn chỉnh JLPT N4",
+    duration: 125,
+    questions: 105,
+    difficulty: "Elementary",
+    completed: false,
+    sections: [
+      {
+        id: "vocabulary",
+        name: "Từ vựng",
+        questions: 30,
+        duration: 30,
+        description: "Từ vựng N4",
+        questionTypes: ["multiple-choice", "kanji-reading", "word-usage"],
+        icon: React.createElement(BookOutlined)
+      },
+      {
+        id: "grammar",
+        name: "Ngữ pháp",
+        questions: 30,
+        duration: 35,
+        description: "Ngữ pháp N4",
+        questionTypes: ["multiple-choice", "sentence-order", "grammar-fill"],
+        icon: React.createElement(FileTextOutlined)
+      },
+      {
+        id: "reading",
+        name: "Đọc hiểu",
+        questions: 30,
+        duration: 45,
+        description: "Đọc hiểu N4",
+        questionTypes: ["reading-comprehension", "text-fill", "information-retrieval"],
+        icon: React.createElement(FileTextOutlined)
+      },
+      {
+        id: "listening",
+        name: "Nghe hiểu",
+        questions: 15,
+        duration: 15,
+        description: "Nghe hiểu N4",
+        questionTypes: ["listening-comprehension", "picture-response"],
+        icon: React.createElement(AudioOutlined)
+      }
+    ]
+  },
+  {
+    id: "5",
+    level: "N4",
+    title: "JLPT N4 - Grammar Intensive",
+    description: "Luyện tập ngữ pháp N4 chuyên sâu",
+    duration: 60,
+    questions: 40,
+    difficulty: "Elementary",
+    completed: true,
+    score: 78,
+    date: "2024-01-10",
+    sections: [
+      {
+        id: "grammar",
+        name: "Ngữ pháp",
+        questions: 40,
+        duration: 60,
+        description: "Ngữ pháp N4 chuyên sâu",
+        questionTypes: ["multiple-choice", "sentence-order", "grammar-fill", "error-correction"],
+        icon: React.createElement(FileTextOutlined)
+      }
+    ]
+  },
+  {
+    id: "6",
+    level: "N3",
+    title: "JLPT N3 - Full Mock Test",
+    description: "Bài thi thử hoàn chỉnh JLPT N3",
+    duration: 140,
+    questions: 120,
+    difficulty: "Intermediate",
+    completed: false,
+    sections: [
+      {
+        id: "vocabulary",
+        name: "Từ vựng",
+        questions: 35,
+        duration: 35,
+        description: "Từ vựng N3",
+        questionTypes: ["multiple-choice", "kanji-reading", "word-usage", "synonym-antonym"],
+        icon: React.createElement(BookOutlined)
+      },
+      {
+        id: "grammar",
+        name: "Ngữ pháp",
+        questions: 35,
+        duration: 40,
+        description: "Ngữ pháp N3",
+        questionTypes: ["multiple-choice", "sentence-order", "grammar-fill", "error-correction"],
+        icon: React.createElement(FileTextOutlined)
+      },
+      {
+        id: "reading",
+        name: "Đọc hiểu",
+        questions: 30,
+        duration: 50,
+        description: "Đọc hiểu N3",
+        questionTypes: ["reading-comprehension", "text-fill", "information-retrieval", "main-idea"],
+        icon: React.createElement(FileTextOutlined)
+      },
+      {
+        id: "listening",
+        name: "Nghe hiểu",
+        questions: 20,
+        duration: 15,
+        description: "Nghe hiểu N3",
+        questionTypes: ["listening-comprehension", "picture-response", "conversation"],
+        icon: React.createElement(AudioOutlined)
+      }
+    ]
+  },
+  {
+    id: "7",
+    level: "N3",
+    title: "JLPT N3 - Grammar Practice",
+    description: "Luyện tập ngữ pháp N3 chuyên sâu",
+    duration: 60,
+    questions: 40,
+    difficulty: "Intermediate",
+    completed: false,
+    sections: [
+      {
+        id: "grammar",
+        name: "Ngữ pháp",
+        questions: 40,
+        duration: 60,
+        description: "Ngữ pháp N3",
+        questionTypes: ["multiple-choice", "sentence-order", "grammar-fill", "error-correction"],
+        icon: React.createElement(FileTextOutlined)
+      }
+    ]
+  },
+  {
+    id: "8",
+    level: "N3",
+    title: "JLPT N3 - Reading Comprehension",
+    description: "Luyện tập đọc hiểu N3",
+    duration: 75,
+    questions: 25,
+    difficulty: "Intermediate",
+    completed: true,
+    score: 82,
+    date: "2024-01-08",
+    sections: [
+      {
+        id: "reading",
+        name: "Đọc hiểu",
+        questions: 25,
+        duration: 75,
+        description: "Đọc hiểu văn bản dài N3",
+        questionTypes: ["reading-comprehension", "text-fill", "information-retrieval", "main-idea", "inference"],
+        icon: React.createElement(FileTextOutlined)
+      }
+    ]
+  },
+  {
+    id: "9",
+    level: "N2",
+    title: "JLPT N2 - Full Mock Test",
+    description: "Bài thi thử hoàn chỉnh JLPT N2",
+    duration: 155,
+    questions: 135,
+    difficulty: "Advanced",
+    completed: false,
+    sections: [
+      {
+        id: "vocabulary",
+        name: "Từ vựng",
+        questions: 40,
+        duration: 40,
+        description: "Từ vựng N2",
+        questionTypes: ["multiple-choice", "kanji-reading", "word-usage", "synonym-antonym", "context-usage"],
+        icon: React.createElement(BookOutlined)
+      },
+      {
+        id: "grammar",
+        name: "Ngữ pháp",
+        questions: 40,
+        duration: 45,
+        description: "Ngữ pháp N2",
+        questionTypes: ["multiple-choice", "sentence-order", "grammar-fill", "error-correction", "text-grammar"],
+        icon: React.createElement(FileTextOutlined)
+      },
+      {
+        id: "reading",
+        name: "Đọc hiểu",
+        questions: 35,
+        duration: 60,
+        description: "Đọc hiểu N2",
+        questionTypes: ["reading-comprehension", "text-fill", "information-retrieval", "main-idea", "inference", "author-purpose"],
+        icon: React.createElement(FileTextOutlined)
+      },
+      {
+        id: "listening",
+        name: "Nghe hiểu",
+        questions: 20,
+        duration: 10,
+        description: "Nghe hiểu N2",
+        questionTypes: ["listening-comprehension", "picture-response", "conversation", "news-report"],
+        icon: React.createElement(AudioOutlined)
+      }
+    ]
+  },
+  {
+    id: "10",
+    level: "N2",
+    title: "JLPT N2 - Quick Test",
+    description: "Bài kiểm tra nhanh N2",
+    duration: 90,
+    questions: 60,
+    difficulty: "Advanced",
+    completed: false,
+    sections: [
+      {
+        id: "vocabulary",
+        name: "Từ vựng",
+        questions: 20,
+        duration: 25,
+        description: "Từ vựng N2",
+        questionTypes: ["multiple-choice", "kanji-reading", "word-usage"],
+        icon: React.createElement(BookOutlined)
+      },
+      {
+        id: "grammar",
+        name: "Ngữ pháp",
+        questions: 20,
+        duration: 30,
+        description: "Ngữ pháp N2",
+        questionTypes: ["multiple-choice", "sentence-order", "grammar-fill"],
+        icon: React.createElement(FileTextOutlined)
+      },
+      {
+        id: "reading",
+        name: "Đọc hiểu",
+        questions: 20,
+        duration: 35,
+        description: "Đọc hiểu N2",
+        questionTypes: ["reading-comprehension", "text-fill", "information-retrieval"],
+        icon: React.createElement(FileTextOutlined)
+      }
+    ]
+  },
+  {
+    id: "11",
+    level: "N1",
+    title: "JLPT N1 - Full Mock Test",
+    description: "Bài thi thử hoàn chỉnh JLPT N1",
+    duration: 170,
+    questions: 145,
+    difficulty: "Expert",
+    completed: false,
+    sections: [
+      {
+        id: "vocabulary",
+        name: "Từ vựng",
+        questions: 45,
+        duration: 45,
+        description: "Từ vựng N1",
+        questionTypes: ["multiple-choice", "kanji-reading", "word-usage", "synonym-antonym", "context-usage", "idioms"],
+        icon: React.createElement(BookOutlined)
+      },
+      {
+        id: "grammar",
+        name: "Ngữ pháp",
+        questions: 45,
+        duration: 50,
+        description: "Ngữ pháp N1",
+        questionTypes: ["multiple-choice", "sentence-order", "grammar-fill", "error-correction", "text-grammar", "formal-writing"],
+        icon: React.createElement(FileTextOutlined)
+      },
+      {
+        id: "reading",
+        name: "Đọc hiểu",
+        questions: 40,
+        duration: 65,
+        description: "Đọc hiểu N1",
+        questionTypes: ["reading-comprehension", "text-fill", "information-retrieval", "main-idea", "inference", "author-purpose", "critical-analysis"],
+        icon: React.createElement(FileTextOutlined)
+      },
+      {
+        id: "listening",
+        name: "Nghe hiểu",
+        questions: 15,
+        duration: 10,
+        description: "Nghe hiểu N1",
+        questionTypes: ["listening-comprehension", "picture-response", "conversation", "news-report", "academic-lecture"],
+        icon: React.createElement(AudioOutlined)
+      }
+    ]
+  },
+  {
+    id: "12",
+    level: "N1",
+    title: "JLPT N1 - Vocabulary Master",
+    description: "Luyện tập từ vựng N1 nâng cao",
+    duration: 80,
+    questions: 50,
+    difficulty: "Expert",
+    completed: true,
+    score: 75,
+    date: "2024-01-05",
+    sections: [
+      {
+        id: "vocabulary",
+        name: "Từ vựng",
+        questions: 50,
+        duration: 80,
+        description: "Từ vựng N1 chuyên sâu",
+        questionTypes: ["multiple-choice", "kanji-reading", "word-usage", "synonym-antonym", "context-usage", "idioms", "formal-expressions"],
+        icon: React.createElement(BookOutlined)
+      }
+    ]
+  },
+  {
+    id: "13",
+    level: "N5",
+    title: "JLPT N5 - Listening Practice",
+    description: "Luyện tập nghe hiểu N5",
+    duration: 40,
+    questions: 20,
+    difficulty: "Beginner",
+    completed: false,
+    sections: [
+      {
+        id: "listening",
+        name: "Nghe hiểu",
+        questions: 20,
+        duration: 40,
+        description: "Nghe hội thoại N5",
+        questionTypes: ["listening-comprehension", "picture-response", "daily-conversation"],
+        icon: React.createElement(AudioOutlined)
+      }
+    ]
+  },
+  {
+    id: "14",
+    level: "N4",
+    title: "JLPT N4 - Mixed Practice",
+    description: "Bài tập tổng hợp N4",
+    duration: 90,
+    questions: 70,
+    difficulty: "Elementary",
+    completed: false,
+    sections: [
+      {
+        id: "vocabulary",
+        name: "Từ vựng",
+        questions: 25,
+        duration: 25,
+        description: "Từ vựng N4",
+        questionTypes: ["multiple-choice", "kanji-reading", "word-usage"],
+        icon: React.createElement(BookOutlined)
+      },
+      {
+        id: "grammar",
+        name: "Ngữ pháp",
+        questions: 25,
+        duration: 30,
+        description: "Ngữ pháp N4",
+        questionTypes: ["multiple-choice", "sentence-order", "grammar-fill"],
+        icon: React.createElement(FileTextOutlined)
+      },
+      {
+        id: "reading",
+        name: "Đọc hiểu",
+        questions: 20,
+        duration: 35,
+        description: "Đọc hiểu N4",
+        questionTypes: ["reading-comprehension", "text-fill"],
+        icon: React.createElement(FileTextOutlined)
+      }
+    ]
+  },
+  {
+    id: "15",
+    level: "N3",
+    title: "JLPT N3 - Listening Focus",
+    description: "Luyện tập nghe hiểu N3",
+    duration: 50,
+    questions: 25,
+    difficulty: "Intermediate",
+    completed: true,
+    score: 88,
+    date: "2024-01-12",
+    sections: [
+      {
+        id: "listening",
+        name: "Nghe hiểu",
+        questions: 25,
+        duration: 50,
+        description: "Nghe hiểu N3",
+        questionTypes: ["listening-comprehension", "picture-response", "conversation", "short-dialogue"],
+        icon: React.createElement(AudioOutlined)
+      }
+    ]
+  }
+];
+
+export const jlptMetadata = {
+  totalTests: jlptTests.length,
+  levels: ["N5", "N4", "N3", "N2", "N1"],
+  difficulties: ["Beginner", "Elementary", "Intermediate", "Advanced", "Expert"],
+  sectionTypes: ["vocabulary", "grammar", "reading", "listening", "kanji"],
+  questionTypes: [
+    "multiple-choice",
+    "kanji-reading",
+    "kanji-writing",
+    "kanji-meaning",
+    "word-usage",
+    "synonym-antonym",
+    "context-usage",
+    "sentence-order",
+    "grammar-fill",
+    "error-correction",
+    "text-grammar",
+    "formal-writing",
+    "reading-comprehension",
+    "text-fill",
+    "information-retrieval",
+    "main-idea",
+    "inference",
+    "author-purpose",
+    "critical-analysis",
+    "listening-comprehension",
+    "picture-response",
+    "daily-conversation",
+    "short-dialogue",
+    "conversation",
+    "news-report",
+    "academic-lecture",
+    "idioms",
+    "formal-expressions"
+  ],
+  lastUpdated: "2024-01-22"
+};

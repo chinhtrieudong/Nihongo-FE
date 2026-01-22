@@ -22,7 +22,7 @@ const KanjiFilter: React.FC<KanjiFilterProps> = ({
             <div className="flex-1">
                 <Input
                     placeholder="Tìm kiếm Hán tự, âm Hán Việt hoặc nghĩa..."
-                    prefix={<SearchOutlined className="text-gray-400" />}
+                    prefix={<SearchOutlined className="text-secondary-400 dark:text-secondary-500" />}
                     value={searchTerm}
                     onChange={(e) => onSearch(e.target.value)}
                     className="w-full"

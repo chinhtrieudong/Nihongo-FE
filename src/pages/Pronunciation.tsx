@@ -137,27 +137,34 @@ const Pronunciation: React.FC = () => {
     try {
       setIsPlaying(true);
 
-      // Try to get audio from API
-      const audioResponse = await pronunciationAPI.getExerciseAudio(currentExercise._id);
+      // Use text-to-speech directly since backend API is not available yet
+      if ('speechSynthesis' in window) {
+        // Cancel any ongoing speech
+        window.speechSynthesis.cancel();
 
-      if (audioResponse.audioUrl) {
-        const audio = new Audio(audioResponse.audioUrl);
-        audio.play();
-        audio.onended = () => setIsPlaying(false);
-      } else {
-        // Fallback to text-to-speech
-        if ('speechSynthesis' in window) {
-          const utterance = new SpeechSynthesisUtterance(currentExercise.japanese);
-          utterance.lang = 'ja-JP';
-          utterance.rate = 0.8;
-          utterance.onend = () => setIsPlaying(false);
-          window.speechSynthesis.speak(utterance);
-        } else {
-          message.warning('Trình duyệt không hỗ trợ phát âm');
+        const utterance = new SpeechSynthesisUtterance(currentExercise.japanese);
+        utterance.lang = 'ja-JP';
+        utterance.rate = 0.8;
+        utterance.pitch = 1.0;
+        utterance.volume = 1.0;
+
+        utterance.onend = () => {
           setIsPlaying(false);
-        }
+        };
+
+        utterance.onerror = (event) => {
+          console.error('Speech synthesis error:', event);
+          message.error('Lỗi phát âm thanh. Vui lòng thử lại.');
+          setIsPlaying(false);
+        };
+
+        window.speechSynthesis.speak(utterance);
+      } else {
+        message.warning('Trình duyệt không hỗ trợ phát âm');
+        setIsPlaying(false);
       }
     } catch (error) {
+      console.error('Audio playback error:', error);
       message.error('Không thể phát âm thanh. Vui lòng thử lại.');
       setIsPlaying(false);
     }
@@ -222,6 +229,62 @@ const Pronunciation: React.FC = () => {
       reader.onerror = reject;
       reader.readAsDataURL(blob);
     });
+  };
+
+  const downloadAudio = async (audioBlob: Blob, filename: string) => {
+    try {
+      const url = window.URL.createObjectURL(audioBlob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = filename;
+      document.body.appendChild(a);
+      a.click();
+      window.URL.revokeObjectURL(url);
+      document.body.removeChild(a);
+      message.success('Đã tải về file âm thanh');
+    } catch (error) {
+      message.error('Không thể tải về file âm thanh');
+    }
+  };
+
+  const downloadExerciseAudio = async () => {
+    if (!currentExercise) return;
+
+    try {
+      message.loading('Đang tạo file âm thanh...', 0);
+
+      // Create a text file with pronunciation guide
+      const content = `Phát âm tiếng Nhật\n\nTiếng Nhật: ${currentExercise.japanese}\nRomaji: ${currentExercise.romaji}\nTiếng Việt: ${currentExercise.vietnamese}\n\nHướng dẫn phát âm:\n- ${currentExercise.romaji}\n- Nghe kỹ âm thanh mẫu và lặp lại`;
+
+      const blob = new Blob([content], { type: 'text/plain;charset=utf-8' });
+      const filename = `pronunciation_guide_${currentExercise.japanese}_${Date.now()}.txt`;
+
+      const url = window.URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = filename;
+      document.body.appendChild(a);
+      a.click();
+      window.URL.revokeObjectURL(url);
+      document.body.removeChild(a);
+
+      message.destroy();
+      message.success('Đã tải về hướng dẫn phát âm');
+    } catch (error) {
+      console.error('Download error:', error);
+      message.error('Không thể tạo file. Vui lòng thử lại.');
+    }
+  };
+
+  const downloadRecordedAudio = () => {
+    if (audioChunksRef.current.length === 0) {
+      message.warning('Chưa có bản ghi âm nào để tải về');
+      return;
+    }
+
+    const audioBlob = new Blob(audioChunksRef.current, { type: 'audio/wav' });
+    const filename = `recorded_pronunciation_${Date.now()}.wav`;
+    downloadAudio(audioBlob, filename);
   };
 
   const submitRecording = async (audioData: string, duration: number) => {
@@ -290,15 +353,15 @@ const Pronunciation: React.FC = () => {
   };
 
   return (
-    <div className="space-y-6">
+    <div className="p-6 space-y-6 bg-secondary-50 dark:bg-secondary-950 min-h-screen">
       {/* Header */}
       <div className="flex items-center justify-between">
-        <div>
-          <Title level={2} className="!mb-2">
-            <SoundOutlined className="mr-2" />
+        <div className="bg-white dark:bg-transparent p-4 rounded-lg">
+          <Title level={2} className="!mb-2 text-gray-900 dark:text-secondary-100">
+            <SoundOutlined className="mr-2 text-gray-700 dark:text-secondary-400" />
             Luyện phát âm
           </Title>
-          <Text type="secondary">
+          <Text className="text-gray-700 dark:text-secondary-400 text-base">
             Cải thiện phát âm tiếng Nhật với công nghệ AI
           </Text>
         </div>
@@ -374,13 +437,13 @@ const Pronunciation: React.FC = () => {
                     <div className="text-center space-y-6">
                       {/* Japanese Text */}
                       <div className="py-8">
-                        <Title level={1} className="!text-4xl !mb-4">
+                        <Title level={1} className="!text-4xl !mb-4 text-gray-900 dark:text-secondary-100">
                           {currentExercise.japanese}
                         </Title>
-                        <Title level={4} type="secondary" className="!mb-2">
+                        <Title level={4} className="!mb-2 text-gray-600 dark:text-secondary-400">
                           {currentExercise.romaji}
                         </Title>
-                        <Text type="secondary" className="text-lg">
+                        <Text className="text-gray-600 dark:text-secondary-400 text-lg">
                           {currentExercise.vietnamese}
                         </Text>
                       </div>
@@ -389,7 +452,7 @@ const Pronunciation: React.FC = () => {
 
                       {/* Audio Controls */}
                       <div className="space-y-4">
-                        <Title level={4}>Nghe âm thanh mẫu</Title>
+                        <Title level={4} className="text-gray-900 dark:text-secondary-100">Nghe âm thanh mẫu</Title>
                         <Space size="large">
                           <Button
                             type="primary"
@@ -404,8 +467,9 @@ const Pronunciation: React.FC = () => {
                           <Button
                             icon={<DownloadOutlined />}
                             disabled={!currentExercise}
+                            onClick={downloadExerciseAudio}
                           >
-                            Tải về
+                            Tải hướng dẫn
                           </Button>
                         </Space>
                       </div>
@@ -414,7 +478,7 @@ const Pronunciation: React.FC = () => {
 
                       {/* Recording Section */}
                       <div className="space-y-4">
-                        <Title level={4}>Thu âm của bạn</Title>
+                        <Title level={4} className="text-gray-900 dark:text-secondary-100">Thu âm của bạn</Title>
 
                         <Alert
                           title="Hướng dẫn"
@@ -446,15 +510,24 @@ const Pronunciation: React.FC = () => {
                                   '100%': '#87d068',
                                 }}
                               />
-                              <Text type="secondary">Đang thu âm...</Text>
+                              <Text className="text-gray-600 dark:text-secondary-400">Đang thu âm...</Text>
                             </div>
                           )}
 
                           {userInput && (
-                            <div className="p-4 bg-gray-50 rounded-lg">
+                            <div className="p-4 bg-secondary-50 dark:bg-secondary-925 rounded-lg">
                               <Text strong>Kết quả thu âm:</Text>
-                              <div className="mt-2 p-3 bg-white rounded border">
+                              <div className="mt-2 p-3 bg-white dark:bg-secondary-925 rounded border border-secondary-200 dark:border-secondary-900">
                                 {userInput}
+                              </div>
+                              <div className="mt-3">
+                                <Button
+                                  icon={<DownloadOutlined />}
+                                  onClick={downloadRecordedAudio}
+                                  size="small"
+                                >
+                                  Tải về bản ghi âm
+                                </Button>
                               </div>
                             </div>
                           )}
@@ -468,14 +541,14 @@ const Pronunciation: React.FC = () => {
                 <Col xs={24} lg={8}>
                   <Space orientation="vertical" className="w-full" size="large">
                     {/* Progress Card */}
-                    <Card title="Tiến độ hôm nay">
+                    <Card title={<span className="text-gray-900 dark:text-secondary-100">Tiến độ hôm nay</span>}>
                       <div className="space-y-4">
                         <div className="flex justify-between items-center">
-                          <Text>Số bài đã luyện tập</Text>
+                          <Text className="text-gray-700 dark:text-secondary-300">Số bài đã luyện tập</Text>
                           <Badge count={practiceHistory.length} showZero />
                         </div>
                         <div className="flex justify-between items-center">
-                          <Text>Điểm trung bình</Text>
+                          <Text className="text-gray-700 dark:text-secondary-300">Điểm trung bình</Text>
                           <Text strong>
                             {practiceHistory.length > 0
                               ? Math.round(practiceHistory.reduce((acc, r) => acc + r.score, 0) / practiceHistory.length)
@@ -490,14 +563,14 @@ const Pronunciation: React.FC = () => {
                     </Card>
 
                     {/* Achievements */}
-                    <Card title="Thành tựu">
+                    <Card title={<span className="text-gray-900 dark:text-secondary-100">Thành tựu</span>}>
                       <Space orientation="vertical" className="w-full">
                         <div className="flex items-center space-x-3">
                           <TrophyOutlined className="text-yellow-500 text-xl" />
                           <div>
-                            <Text strong>Chuyên gia phát âm</Text>
+                            <Text strong className="text-gray-900 dark:text-secondary-100">Chuyên gia phát âm</Text>
                             <br />
-                            <Text type="secondary" className="text-sm">
+                            <Text className="text-gray-600 dark:text-secondary-400 text-sm">
                               Hoàn thành 100 bài tập
                             </Text>
                           </div>
@@ -505,9 +578,9 @@ const Pronunciation: React.FC = () => {
                         <div className="flex items-center space-x-3">
                           <StarOutlined className="text-blue-500 text-xl" />
                           <div>
-                            <Text strong>Chính xác tuyệt đối</Text>
+                            <Text strong className="text-gray-900 dark:text-secondary-100">Chính xác tuyệt đối</Text>
                             <br />
-                            <Text type="secondary" className="text-sm">
+                            <Text className="text-gray-600 dark:text-secondary-400 text-sm">
                               Đạt 95/100 điểm
                             </Text>
                           </div>
@@ -516,22 +589,19 @@ const Pronunciation: React.FC = () => {
                     </Card>
 
                     {/* Tips */}
-                    <Card title="Mẹo luyện tập">
-                      {/* Tips */}
-                      <Card title="Mẹo luyện tập">
-                        <div className="space-y-2">
-                          {[
-                            "Nghe kỹ âm thanh mẫu trước khi nói",
-                            "Nói chậm và rõ ràng",
-                            "Chú ý đến ngữ điệu",
-                            "Luyện tập đều đặn mỗi ngày"
-                          ].map((item, index) => (
-                            <div key={index} className="py-2">
-                              <Text type="secondary">• {item}</Text>
-                            </div>
-                          ))}
-                        </div>
-                      </Card>
+                    <Card title={<span className="text-gray-900 dark:text-secondary-100">Mẹo luyện tập</span>}>
+                      <div className="space-y-2">
+                        {[
+                          "Nghe kỹ âm thanh mẫu trước khi nói",
+                          "Nói chậm và rõ ràng",
+                          "Chú ý đến ngữ điệu",
+                          "Luyện tập đều đặn mỗi ngày"
+                        ].map((item, index) => (
+                          <div key={index} className="py-2">
+                            <Text className="text-gray-600 dark:text-secondary-400">• {item}</Text>
+                          </div>
+                        ))}
+                      </div>
                     </Card>
                   </Space>
                 </Col>
@@ -545,30 +615,30 @@ const Pronunciation: React.FC = () => {
               <div className="space-y-6">
                 {/* User Stats Card */}
                 {userStats && (
-                  <Card title="Thống kê luyện tập">
+                  <Card title={<span className="text-gray-900 dark:text-secondary-100">Thống kê luyện tập</span>}>
                     <Row gutter={[16, 16]}>
                       <Col xs={12} sm={6}>
                         <div className="text-center">
-                          <div className="text-2xl font-bold text-blue-600">{userStats.totalPractices}</div>
-                          <div className="text-gray-500">Tổng bài tập</div>
+                          <div className="text-2xl font-bold text-blue-600 dark:text-blue-400">{userStats.totalPractices}</div>
+                          <div className="text-gray-600 dark:text-secondary-400">Tổng bài tập</div>
                         </div>
                       </Col>
                       <Col xs={12} sm={6}>
                         <div className="text-center">
-                          <div className="text-2xl font-bold text-green-600">{userStats.averageScore.toFixed(1)}</div>
-                          <div className="text-gray-500">Điểm trung bình</div>
+                          <div className="text-2xl font-bold text-green-600 dark:text-green-400">{userStats.averageScore.toFixed(1)}</div>
+                          <div className="text-gray-600 dark:text-secondary-400">Điểm trung bình</div>
                         </div>
                       </Col>
                       <Col xs={12} sm={6}>
                         <div className="text-center">
-                          <div className="text-2xl font-bold text-orange-600">{userStats.bestScore}</div>
-                          <div className="text-gray-500">Điểm cao nhất</div>
+                          <div className="text-2xl font-bold text-orange-600 dark:text-orange-400">{userStats.bestScore}</div>
+                          <div className="text-gray-600 dark:text-secondary-400">Điểm cao nhất</div>
                         </div>
                       </Col>
                       <Col xs={12} sm={6}>
                         <div className="text-center">
-                          <div className="text-2xl font-bold text-purple-600">{userStats.currentStreak}</div>
-                          <div className="text-gray-500">Chuỗi hiện tại</div>
+                          <div className="text-2xl font-bold text-purple-600 dark:text-purple-400">{userStats.currentStreak}</div>
+                          <div className="text-gray-600 dark:text-secondary-400">Chuỗi hiện tại</div>
                         </div>
                       </Col>
                     </Row>
@@ -576,7 +646,7 @@ const Pronunciation: React.FC = () => {
                 )}
 
                 {/* Practice History */}
-                <Card title="Lịch sử luyện tập">
+                <Card title={<span className="text-gray-900 dark:text-secondary-100">Lịch sử luyện tập</span>}>
                   {practiceHistory.length > 0 ? (
                     <List
                       dataSource={practiceHistory}
@@ -612,14 +682,14 @@ const Pronunciation: React.FC = () => {
                             }
                             description={
                               <div>
-                                <Text type="secondary">{result.exercise.romaji}</Text>
+                                <Text className="text-gray-600 dark:text-secondary-400">{result.exercise.romaji}</Text>
                                 <br />
-                                <Text type="secondary">{result.exercise.vietnamese}</Text>
+                                <Text className="text-gray-600 dark:text-secondary-400">{result.exercise.vietnamese}</Text>
                                 <br />
                                 <div className="mt-2">
                                   <Text strong>Điểm: {result.score}/100</Text>
                                   <br />
-                                  <Text type="secondary">{result.feedback}</Text>
+                                  <Text className="text-gray-600 dark:text-secondary-400">{result.feedback}</Text>
                                 </div>
                               </div>
                             }
@@ -629,9 +699,9 @@ const Pronunciation: React.FC = () => {
                     />
                   ) : (
                     <div className="text-center py-12">
-                      <BookOutlined className="text-4xl text-gray-300 mb-4" />
-                      <Title level={4} type="secondary">Chưa có lịch sử luyện tập</Title>
-                      <Text type="secondary">Bắt đầu luyện tập để xem lịch sử của bạn</Text>
+                      <BookOutlined className="text-4xl text-gray-300 dark:text-secondary-600 mb-4" />
+                      <Title level={4} className="text-gray-900 dark:text-secondary-100">Chưa có lịch sử luyện tập</Title>
+                      <Text className="text-gray-600 dark:text-secondary-400">Bắt đầu luyện tập để xem lịch sử của bạn</Text>
                     </div>
                   )}
                 </Card>

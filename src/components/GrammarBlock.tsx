@@ -11,30 +11,30 @@ const GrammarBlock: React.FC<GrammarBlockProps> = ({ type, title, content, icon 
   const getBlockStyles = () => {
     switch (type) {
       case 'structure':
-        return 'bg-blue-50 border-blue-200';
+        return 'bg-blue-50 dark:bg-blue-900/20 border-blue-200 dark:border-blue-700';
       case 'meaning':
-        return 'bg-green-50 border-green-200';
+        return 'bg-green-50 dark:bg-green-900/20 border-green-200 dark:border-green-700';
       case 'examples':
-        return 'bg-yellow-50 border-yellow-200';
+        return 'bg-yellow-50 dark:bg-yellow-900/20 border-yellow-200 dark:border-yellow-700';
       case 'comparison':
-        return 'bg-purple-50 border-purple-200';
+        return 'bg-purple-50 dark:bg-purple-900/20 border-purple-200 dark:border-purple-700';
       default:
-        return 'bg-gray-50 border-gray-200';
+        return 'bg-secondary-50 dark:bg-secondary-925 border-secondary-200 dark:border-secondary-900';
     }
   };
 
   const getHeaderStyles = () => {
     switch (type) {
       case 'structure':
-        return 'bg-blue-100 text-blue-800';
+        return 'bg-blue-100 dark:bg-blue-900/40 text-blue-800 dark:text-blue-200';
       case 'meaning':
-        return 'bg-green-100 text-green-800';
+        return 'bg-green-100 dark:bg-green-900/40 text-green-800 dark:text-green-200';
       case 'examples':
-        return 'bg-yellow-100 text-yellow-800';
+        return 'bg-yellow-100 dark:bg-yellow-900/40 text-yellow-800 dark:text-yellow-200';
       case 'comparison':
-        return 'bg-purple-100 text-purple-800';
+        return 'bg-purple-100 dark:bg-purple-900/40 text-purple-800 dark:text-purple-200';
       default:
-        return 'bg-gray-100 text-gray-800';
+        return 'bg-secondary-100 dark:bg-secondary-900 text-secondary-800 dark:text-secondary-600';
     }
   };
 

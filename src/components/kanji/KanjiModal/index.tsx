@@ -172,9 +172,9 @@ const KanjiModal: React.FC<KanjiModalProps> = ({ kanji, visible, onClose }) => {
                         <div className="space-y-4">
                             <Card title="Thông tin cơ bản" className="h-fit">
                                 <div className="text-center mb-4">
-                                    <div className="text-6xl font-bold text-gray-800 mb-2">{kanji.character}</div>
-                                    <div className="text-xl text-purple-600 font-medium">{kanji.hanviet}</div>
-                                    <div className="text-lg text-gray-600">{kanji.meaning_vi}</div>
+                                    <div className="text-6xl font-bold text-secondary-700 dark:text-secondary-400 mb-2">{kanji.character}</div>
+                                    <div className="text-xl text-purple-600 dark:text-purple-400 font-medium">{kanji.hanviet}</div>
+                                    <div className="text-lg text-secondary-600 dark:text-secondary-800">{kanji.meaning_vi}</div>
                                 </div>
 
                                 <div className="space-y-2">
@@ -183,7 +183,7 @@ const KanjiModal: React.FC<KanjiModalProps> = ({ kanji, visible, onClose }) => {
                                         <span>{readings.onyomi}</span>
                                     </div>
                                     {showRomaji && (
-                                        <div className="flex justify-between text-sm text-gray-500">
+                                        <div className="flex justify-between text-sm text-secondary-700 dark:text-secondary-800">
                                             <span>Romaji:</span>
                                             <span>{readings.onyomiWithRomaji}</span>
                                         </div>
@@ -193,7 +193,7 @@ const KanjiModal: React.FC<KanjiModalProps> = ({ kanji, visible, onClose }) => {
                                         <span>{readings.kunyomi}</span>
                                     </div>
                                     {showRomaji && (
-                                        <div className="flex justify-between text-sm text-gray-500">
+                                        <div className="flex justify-between text-sm text-secondary-700 dark:text-secondary-800">
                                             <span>Romaji:</span>
                                             <span>{readings.kunyomiWithRomaji}</span>
                                         </div>
@@ -229,7 +229,7 @@ const KanjiModal: React.FC<KanjiModalProps> = ({ kanji, visible, onClose }) => {
                                     </Panel>
                                     <Panel header="Cấu tạo chữ" key="structure">
                                         <p>{kanji.structure}</p>
-                                        <p className="text-sm text-gray-600 mt-2">{kanji.image_explanation}</p>
+                                        <p className="text-sm text-secondary-600 dark:text-secondary-800 mt-2">{kanji.image_explanation}</p>
                                     </Panel>
                                     {kanji.kanji_analysis && kanji.kanji_analysis.length > 0 && (
                                         <Panel header="Phân tích chi tiết" key="analysis">
@@ -240,8 +240,8 @@ const KanjiModal: React.FC<KanjiModalProps> = ({ kanji, visible, onClose }) => {
                                                             <span className="font-medium">{analysis.component}</span>
                                                             <Tag>{analysis.role}</Tag>
                                                         </div>
-                                                        <div className="text-sm text-gray-600">{analysis.hanviet} - {analysis.meaning}</div>
-                                                        <div className="text-xs text-gray-500">Vị trí: {analysis.position}</div>
+                                                        <div className="text-sm text-secondary-600 dark:text-secondary-800">{analysis.hanviet} - {analysis.meaning}</div>
+                                                        <div className="text-xs text-secondary-700 dark:text-secondary-800">Vị trí: {analysis.position}</div>
                                                     </div>
                                                 ))}
                                             </div>
@@ -256,32 +256,32 @@ const KanjiModal: React.FC<KanjiModalProps> = ({ kanji, visible, onClose }) => {
                                 <div className="space-y-2">
                                     {kanji.vocabulary_examples && kanji.vocabulary_examples.length > 0 ? (
                                         kanji.vocabulary_examples.map((word: any, index: number) => (
-                                            <div key={index} className="p-3 border border-gray-200 rounded-lg hover:bg-gray-50">
+                                            <div key={index} className="p-3 border border-secondary-200 dark:border-secondary-900 rounded-lg hover:bg-secondary-100 dark:hover:bg-secondary-900">
                                                 <div className="flex justify-between items-start">
                                                     <div className="flex-1">
                                                         <div className="flex items-center gap-2">
                                                             <span className="text-lg font-medium">{word.word}</span>
-                                                            <span className="text-gray-500">{word.hiragana}</span>
+                                                            <span className="text-secondary-700 dark:text-secondary-800">{word.hiragana}</span>
                                                             {word.audio_url && (
                                                                 <Button
                                                                     type="text"
                                                                     size="small"
                                                                     icon={<SoundOutlined />}
                                                                     onClick={() => speakJapanese(word.hiragana || word.word)}
-                                                                    className="text-gray-400 hover:text-blue-500"
+                                                                    className="text-secondary-400 dark:text-secondary-500 hover:text-blue-500"
                                                                 />
                                                             )}
                                                         </div>
                                                         {showRomaji && (
-                                                            <div className="text-sm text-gray-500">{word.romaji}</div>
+                                                            <div className="text-sm text-secondary-700 dark:text-secondary-800">{word.romaji}</div>
                                                         )}
                                                         <div className="text-purple-600 font-medium">{word.hanviet}</div>
-                                                        <div className="text-gray-700">{word.meaning_vi}</div>
+                                                        <div className="text-secondary-700 dark:text-secondary-800">{word.meaning_vi}</div>
 
                                                         {word.example_jp && (
-                                                            <div className="mt-2 p-2 bg-gray-50 rounded">
-                                                                <div className="text-sm text-gray-800">{word.example_jp}</div>
-                                                                <div className="text-sm text-gray-600">{word.example_vi}</div>
+                                                            <div className="mt-2 p-2 bg-secondary-50 dark:bg-secondary-925 rounded">
+                                                                <div className="text-sm text-secondary-700 dark:text-secondary-400">{word.example_jp}</div>
+                                                                <div className="text-sm text-secondary-600 dark:text-secondary-800">{word.example_vi}</div>
                                                             </div>
                                                         )}
                                                     </div>
@@ -289,7 +289,7 @@ const KanjiModal: React.FC<KanjiModalProps> = ({ kanji, visible, onClose }) => {
                                             </div>
                                         ))
                                     ) : (
-                                        <div className="text-gray-500 text-center py-4">
+                                        <div className="text-secondary-700 dark:text-secondary-800 text-center py-4">
                                             Không có từ vựng mẫu
                                         </div>
                                     )}
@@ -339,7 +339,7 @@ const KanjiModal: React.FC<KanjiModalProps> = ({ kanji, visible, onClose }) => {
                                         </div>
 
                                         {showHint && (
-                                            <div className="mt-4 p-4 bg-gray-50 rounded-lg">
+                                            <div className="mt-4 p-4 bg-secondary-50 dark:bg-secondary-925 rounded-lg">
                                                 <p className="font-medium mb-2">Thứ tự các nét:</p>
                                                 {kanji.stroke_order && kanji.stroke_order.length > 0 ? (
                                                     <div className="grid grid-cols-3 gap-2">
@@ -350,7 +350,7 @@ const KanjiModal: React.FC<KanjiModalProps> = ({ kanji, visible, onClose }) => {
                                                         ))}
                                                     </div>
                                                 ) : (
-                                                    <p className="text-gray-500">Không có thông tin thứ tự nét</p>
+                                                    <p className="text-secondary-700 dark:text-secondary-800">Không có thông tin thứ tự nét</p>
                                                 )}
                                             </div>
                                         )}
@@ -367,7 +367,7 @@ const KanjiModal: React.FC<KanjiModalProps> = ({ kanji, visible, onClose }) => {
                                         >
                                             {isAnimating ? 'Đang phát...' : 'Phát动画 thứ tự nét'}
                                         </Button>
-                                        <div className="text-sm text-gray-600">
+                                        <div className="text-sm text-secondary-600 dark:text-secondary-800">
                                             <p>• Nhấn và kéo để viết từng nét</p>
                                             <p>• Số nét: {kanji.stroke_count}</p>
                                             <p>• Click "Hiện gợi ý" để xem thứ tự</p>

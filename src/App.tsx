@@ -1,13 +1,14 @@
 import React, { useEffect } from "react";
 import { Provider } from "react-redux";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { ConfigProvider, theme } from "antd";
 import { store } from "./store";
 import { useAppDispatch, useAppSelector } from "./store/hooks";
 import { loginSuccess, logout } from "./store/slices/userSlice";
 import { authAPI, userAPI } from "./services/api";
 import Layout from "./components/Layout";
 import ProtectedRoute from "./components/ProtectedRoute";
-import Dashboard from "./pages/Dashboard";
+import ThemeProvider from "./components/ThemeProvider";
 import LessonsList from "./pages/LessonsList";
 import Login from "./pages/Login";
 import LessonDetail from "./pages/LessonDetail";
@@ -16,12 +17,16 @@ import KanjiDetail from "./pages/KanjiDetail";
 import Vocabulary from "./pages/Vocabulary";
 import Grammar from "./pages/Grammar";
 import Pronunciation from "./pages/Pronunciation";
+import Profile from "./pages/Profile";
+import Conversation from "./pages/Conversation";
+import Tests from "./pages/Tests";
+import TestDetail from "./pages/TestDetail";
+import TestResults from "./pages/TestResults";
 import "./App.css";
 
 // Component to handle authentication persistence
 const AppContent: React.FC = () => {
   const dispatch = useAppDispatch();
-  const { isAuthenticated } = useAppSelector((state) => state.user);
 
   useEffect(() => {
     const initializeAuth = async () => {
@@ -60,7 +65,7 @@ const AppContent: React.FC = () => {
 
   return (
     <Router future={{ v7_startTransition: true, v7_relativeSplatPath: true }}>
-      <div className="min-h-screen bg-white dark:bg-secondary-900 text-secondary-900 dark:text-secondary-100">
+      <div className="min-h-screen text-secondary-900 dark:text-secondary-600">
         <Routes>
           <Route path="/login" element={<Login />} />
           <Route
@@ -71,7 +76,7 @@ const AppContent: React.FC = () => {
               </ProtectedRoute>
             }
           >
-            <Route index element={<Dashboard />} />
+            <Route index element={<LessonsList />} />
             <Route path="lessons" element={<LessonsList />} />
             <Route path="lessons/:lessonId" element={<LessonDetail />} />
             <Route path="lessons/:lessonId/kanji" element={<KanjiDetail />} />
@@ -80,6 +85,11 @@ const AppContent: React.FC = () => {
             <Route path="vocabulary" element={<Vocabulary />} />
             <Route path="grammar" element={<Grammar />} />
             <Route path="pronunciation" element={<Pronunciation />} />
+            <Route path="profile" element={<Profile />} />
+            <Route path="conversation" element={<Conversation />} />
+            <Route path="tests" element={<Tests />} />
+            <Route path="test/:testId" element={<TestDetail />} />
+            <Route path="test-results/:testId" element={<TestResults />} />
           </Route>
         </Routes>
       </div>
@@ -87,10 +97,26 @@ const AppContent: React.FC = () => {
   );
 };
 
+const AppWithTheme: React.FC = () => {
+  const { darkMode } = useAppSelector((state) => state.ui);
+
+  return (
+    <ConfigProvider
+      theme={{
+        algorithm: darkMode ? theme.darkAlgorithm : theme.defaultAlgorithm,
+      }}
+    >
+      <AppContent />
+    </ConfigProvider>
+  );
+};
+
 function App() {
   return (
     <Provider store={store}>
-      <AppContent />
+      <ThemeProvider>
+        <AppWithTheme />
+      </ThemeProvider>
     </Provider>
   );
 }

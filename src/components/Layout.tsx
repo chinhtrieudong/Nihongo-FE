@@ -11,7 +11,7 @@ const Layout: React.FC = () => {
   const { sidebarOpen } = useAppSelector((state) => state.ui);
 
   return (
-    <AntLayout className="min-h-screen bg-gray-50 dark:bg-gray-900">
+    <AntLayout className="min-h-screen bg-secondary-50 dark:bg-secondary-950">
       <Sidebar />
       <AntLayout
         style={{
@@ -20,7 +20,7 @@ const Layout: React.FC = () => {
         }}
       >
         <Header />
-        <Content className="overflow-auto" style={{ padding: '24px' }}>
+        <Content className="overflow-auto">
           <Outlet />
         </Content>
       </AntLayout>

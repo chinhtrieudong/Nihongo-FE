@@ -10,7 +10,7 @@
   }
 
   body {
-    @apply bg-white dark:bg-secondary-900 text-secondary-900 dark:text-secondary-100;
+    @apply bg-secondary-50 dark:bg-secondary-950 text-secondary-900 dark:text-secondary-100;
     font-family: Inter, system-ui, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -27,11 +27,11 @@
   }
 
   .card {
-    @apply bg-white dark:bg-secondary-800 rounded-lg shadow-sm border border-secondary-200 dark:border-secondary-700 p-6;
+    @apply bg-white dark:bg-secondary-950 rounded-lg shadow-sm border border-secondary-200 dark:border-secondary-900 p-6;
   }
 
   .input-field {
-    @apply w-full px-3 py-2 border border-secondary-300 dark:border-secondary-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent bg-white dark:bg-secondary-800 text-secondary-900 dark:text-secondary-100;
+    @apply w-full px-3 py-2 border border-secondary-300 dark:border-secondary-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent bg-white dark:bg-secondary-950 text-secondary-900 dark:text-secondary-100;
   }
 
   .font-japanese {
@@ -64,4 +64,27 @@
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
+}
+
+/* Tooltip overrides for both light and dark modes */
+div.ant-tooltip-inner {
+  background-color: #ffffff !important;
+  color: rgba(0, 0, 0, 0.88) !important;
+  border: 1px solid #d9d9d9 !important;
+}
+
+.dark div.ant-tooltip-inner {
+  background-color: #374151 !important;
+  color: #ffffff !important;
+  border: 1px solid #4b5563 !important;
+}
+
+div.ant-tooltip-arrow-content {
+  background-color: #ffffff !important;
+  border: 1px solid #d9d9d9 !important;
+}
+
+.dark div.ant-tooltip-arrow-content {
+  background-color: #374151 !important;
+  border: 1px solid #4b5563 !important;
 }

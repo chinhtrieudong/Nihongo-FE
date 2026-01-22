@@ -156,7 +156,7 @@ const Grammar: React.FC = () => {
   };
 
   return (
-    <div className="grammar-page p-6 bg-gray-50 min-h-screen">
+    <div className="grammar-page p-6 bg-secondary-50 dark:bg-secondary-950 min-h-screen">
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <Card className="mb-6" variant="borderless">

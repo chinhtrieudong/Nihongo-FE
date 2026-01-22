@@ -1,12 +1,15 @@
 import React, { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
-import { useAppDispatch } from "../store/hooks";
+import { useAppDispatch, useAppSelector } from "../store/hooks";
 import {
   loginStart,
   loginSuccess,
   loginFailure,
 } from "../store/slices/userSlice";
+import { toggleDarkMode } from "../store/slices/uiSlice";
 import { authAPI } from "../services/api";
+import { Switch, Space } from "antd";
+import { SunOutlined, MoonOutlined } from "@ant-design/icons";
 
 interface LoginFormData {
   email: string;
@@ -16,6 +19,7 @@ interface LoginFormData {
 const Login: React.FC = () => {
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
+  const { darkMode } = useAppSelector((state) => state.ui);
   const [formData, setFormData] = useState<LoginFormData>({
     email: "",
     password: "",
@@ -76,13 +80,25 @@ const Login: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-secondary-50 dark:bg-secondary-900">
+    <div className="min-h-screen flex items-center justify-center bg-secondary-50 dark:bg-secondary-950 relative">
+      {/* Dark mode toggle */}
+      <div className="absolute top-4 right-4">
+        <Space>
+          <Switch
+            checked={darkMode}
+            onChange={() => dispatch(toggleDarkMode())}
+            checkedChildren={<MoonOutlined />}
+            unCheckedChildren={<SunOutlined />}
+          />
+        </Space>
+      </div>
+
       <div className="card max-w-md w-full">
         <div className="text-center mb-8">
           <h1 className="text-3xl font-bold text-primary-600 mb-2">
-            Nihongo Master
+            Nihongo
           </h1>
-          <p className="text-secondary-600 dark:text-secondary-400">
+          <p className="text-secondary-600 dark:text-secondary-800">
             Đăng nhập để tiếp tục học
           </p>
         </div>
@@ -95,7 +111,7 @@ const Login: React.FC = () => {
           )}
 
           <div>
-            <label className="block text-sm font-medium mb-2 text-secondary-700 dark:text-secondary-300">
+            <label className="block text-sm font-medium mb-2 text-secondary-700 dark:text-secondary-800">
               Email
             </label>
             <input
@@ -111,7 +127,7 @@ const Login: React.FC = () => {
           </div>
 
           <div>
-            <label className="block text-sm font-medium mb-2 text-secondary-700 dark:text-secondary-300">
+            <label className="block text-sm font-medium mb-2 text-secondary-700 dark:text-secondary-800">
               Mật khẩu
             </label>
             <input
@@ -143,7 +159,7 @@ const Login: React.FC = () => {
         </form>
 
         <div className="mt-6 text-center">
-          <p className="text-secondary-600 dark:text-secondary-400">
+          <p className="text-secondary-600 dark:text-secondary-800">
             Chưa có tài khoản?{" "}
             <Link
               to="/register"
@@ -155,7 +171,7 @@ const Login: React.FC = () => {
         </div>
 
         <div className="mt-8 pt-6 border-t border-secondary-200 dark:border-secondary-700">
-          <div className="text-xs text-secondary-500 dark:text-secondary-400 text-center">
+          <div className="text-xs text-secondary-700 dark:text-secondary-400 text-center">
             <p className="mb-2">Tài khoản demo:</p>
             <p>Email: demo@nihongo.com</p>
             <p>Mật khẩu: demo123</p>

@@ -23,7 +23,7 @@ const KanjiList: React.FC<KanjiListProps> = ({ kanjiList, loading, onKanjiClick 
             <div className="text-center py-12">
                 <Empty
                     description={
-                        <span className="text-gray-500">Không tìm thấy Hán tự nào</span>
+                        <span className="text-secondary-700 dark:text-secondary-800">Không tìm thấy Hán tự nào</span>
                     }
                 />
             </div>

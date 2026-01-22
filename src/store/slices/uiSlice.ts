@@ -25,13 +25,18 @@ interface Notification {
   read: boolean;
 }
 
-const initialState: UiState = {
-  darkMode: false,
-  sidebarOpen: false,
-  currentView: "dashboard",
-  notifications: [],
-  loadingStates: {},
+const getInitialState = (): UiState => {
+  const savedDarkMode = localStorage.getItem('darkMode');
+  return {
+    darkMode: savedDarkMode === 'true',
+    sidebarOpen: false,
+    currentView: "dashboard",
+    notifications: [],
+    loadingStates: {},
+  };
 };
+
+const initialState: UiState = getInitialState();
 
 const uiSlice = createSlice({
   name: "ui",
@@ -39,9 +44,11 @@ const uiSlice = createSlice({
   reducers: {
     toggleDarkMode: (state) => {
       state.darkMode = !state.darkMode;
+      localStorage.setItem('darkMode', state.darkMode.toString());
     },
     setDarkMode: (state, action: PayloadAction<boolean>) => {
       state.darkMode = action.payload;
+      localStorage.setItem('darkMode', state.darkMode.toString());
     },
     toggleSidebar: (state) => {
       state.sidebarOpen = !state.sidebarOpen;

@@ -4,7 +4,7 @@
 
 ### Base URL
 
-`http://localhost:3000/api`
+`http://localhost:3000/api/v1`
 
 ### Authentication
 
@@ -35,7 +35,7 @@ GET /api/lessons
 **Example Request:**
 
 ```bash
-curl -X GET "http://localhost:3000/api/lessons?userId=123&level=N5"
+curl -X GET "http://localhost:3000/api/v1/lessons?userId=123&level=N5"
 ```
 
 **Success Response:**
@@ -90,7 +90,7 @@ GET /api/lessons/{id}
 **Example Request:**
 
 ```bash
-curl -X GET "http://localhost:3000/api/lessons/696847962327c5a3aabc4e83?userId=123"
+curl -X GET "http://localhost:3000/api/v1/lessons/696847962327c5a3aabc4e83?userId=123"
 ```
 
 **Success Response:**
@@ -243,7 +243,7 @@ POST /api/lessons/{lessonId}/exercises/{exerciseId}/submit
 **Example Request:**
 
 ```bash
-curl -X POST "http://localhost:3000/api/lessons/1/exercises/1/submit" \
+curl -X POST "http://localhost:3000/api/v1/lessons/1/exercises/1/submit" \
   -H "Authorization: Bearer your_token" \
   -H "Content-Type: application/json" \
   -d '{"userId": "123", "answer": "Hello"}'
@@ -298,7 +298,7 @@ POST /api/lessons/{lessonId}/ai/roleplay
 **Example Request:**
 
 ```bash
-curl -X POST "http://localhost:3000/api/lessons/1/ai/roleplay" \
+curl -X POST "http://localhost:3000/api/v1/lessons/1/ai/roleplay" \
   -H "Authorization: Bearer your_token" \
   -H "Content-Type: application/json" \
   -d '{
@@ -348,7 +348,7 @@ curl -X POST "http://localhost:3000/api/lessons/1/ai/roleplay" \
 ### 5. Get User Weak Points
 
 ```
-GET /api/lessons/{lessonId}/weak-points?userId={userId}
+GET /api/v1/lessons/{lessonId}/weak-points?userId={userId}
 ```
 
 **Requires Authentication**
@@ -356,7 +356,7 @@ GET /api/lessons/{lessonId}/weak-points?userId={userId}
 **Example Request:**
 
 ```bash
-curl -X GET "http://localhost:3000/api/lessons/1/weak-points?userId=123" \
+curl -X GET "http://localhost:3000/api/v1/lessons/1/weak-points?userId=123" \
   -H "Authorization: Bearer your_token"
 ```
 
@@ -477,7 +477,7 @@ GET /api/lessons/search?q={query}
 ```javascript
 // Get lessons list
 const fetchLessons = async (userId) => {
-  const response = await fetch(`/api/lessons?userId=${userId}`);
+  const response = await fetch(`/api/v1/lessons?userId=${userId}`);
   const data = await response.json();
   return data;
 };
@@ -485,7 +485,7 @@ const fetchLessons = async (userId) => {
 // Submit exercise
 const submitExercise = async (lessonId, exerciseId, userId, answer) => {
   const response = await fetch(
-    `/api/lessons/${lessonId}/exercises/${exerciseId}/submit`,
+    `/api/v1/lessons/${lessonId}/exercises/${exerciseId}/submit`,
     {
       method: "POST",
       headers: {
@@ -500,7 +500,7 @@ const submitExercise = async (lessonId, exerciseId, userId, answer) => {
 
 // AI conversation
 const sendAIMessage = async (lessonId, userId, message) => {
-  const response = await fetch(`/api/lessons/${lessonId}/ai/roleplay`, {
+  const response = await fetch(`/api/v1/lessons/${lessonId}/ai/roleplay`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",

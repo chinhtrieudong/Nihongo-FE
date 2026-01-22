@@ -385,15 +385,22 @@ const LessonDetail: React.FC = () => {
     );
 
     if (vocab) {
-      // Tạo nghĩa từ mnemonic vì backend không có meaningVi
-      let meaning = "";
-      if (vocab.mnemonic) {
+      // Ưu tiên dùng meaning_vi, nếu không có thì dùng mnemonic
+      let meaning = vocab.meaning_vi || "";
+
+      // Nếu không có meaning_vi, thử lấy từ mnemonic
+      if (!meaning && vocab.mnemonic) {
         // Lấy phần đầu tiên của mnemonic trước dấu :
         if (vocab.mnemonic.includes(':')) {
           meaning = vocab.mnemonic.split(':')[1].trim();
         } else {
           meaning = vocab.mnemonic;
         }
+      }
+
+      // Nếu vẫn không có, tạo meaning mặc định
+      if (!meaning) {
+        meaning = "Đang cập nhật nghĩa...";
       }
 
       setClickedWord({
@@ -451,7 +458,7 @@ const LessonDetail: React.FC = () => {
         return (
           <span
             key={index}
-            className="cursor-pointer hover:bg-blue-50 px-1 rounded"
+            className="cursor-pointer hover:bg-blue-50 dark:hover:bg-blue-900/20 px-1 rounded"
             onMouseEnter={(e) => handleWordHover(word, e)}
             onMouseLeave={handleWordLeave}
           >
@@ -470,11 +477,11 @@ const LessonDetail: React.FC = () => {
         {lines.map((line, index) => (
           <div key={index} className="flex items-start gap-3">
             <div className={`flex-1 px-4 py-3 rounded-xl shadow-sm ${line.speaker === "A"
-              ? "bg-gradient-to-r from-blue-50 to-blue-100 text-gray-800"
-              : "bg-gradient-to-r from-green-50 to-green-100 text-gray-800"
+              ? "bg-gradient-to-r from-blue-50 to-blue-100 dark:from-blue-900/20 dark:to-blue-800/20 text-secondary-800 dark:text-secondary-200"
+              : "bg-gradient-to-r from-green-50 to-green-100 dark:from-green-900/20 dark:to-green-800/20 text-secondary-800 dark:text-secondary-200"
               }`}>
               <div className="flex items-center justify-between mb-1">
-                <div className="font-semibold text-xs text-blue-600 opacity-75">
+                <div className="font-semibold text-xs text-blue-600 dark:text-blue-400 opacity-75">
                   {line.speaker}
                 </div>
                 <button
@@ -484,7 +491,7 @@ const LessonDetail: React.FC = () => {
                       speakText(textToSpeak);
                     }
                   }}
-                  className="px-2 py-1 bg-green-600 text-white rounded-full text-xs hover:bg-green-700 transition-colors flex items-center"
+                  className="px-2 py-1 bg-green-600 hover:bg-green-700 text-white rounded-full text-xs transition-colors flex items-center"
                   title="Nghe phát âm"
                 >
                   🔊
@@ -525,7 +532,7 @@ const LessonDetail: React.FC = () => {
 
     // Fallback: Show no data message
     return (
-      <div className="text-center py-8 text-gray-500">
+      <div className="text-center py-8 text-secondary-700 dark:text-secondary-400">
         <p>Chưa có dữ liệu hội thoại</p>
       </div>
     );
@@ -814,10 +821,10 @@ const LessonDetail: React.FC = () => {
   const { lesson, vocabularies = [], grammars = [], dialogs = [], exercises = [] } = lessonDetail || {};
 
   return (
-    <Layout className="h-screen" style={{ background: '#f5f5f5' }}>
+    <Layout className="" style={{ background: 'var(--ant-color-bg-container)', paddingRight: '256px' }}>
       {/* Main Content */}
       <Layout>
-        <Header className="bg-white border-b border-gray-200 px-6" style={{ height: 'auto', padding: '24px' }}>
+        <Header className="bg-white dark:bg-secondary-925 border-b border-secondary-200 dark:border-secondary-900 px-6" style={{ height: 'auto', padding: '24px' }}>
           <div className="flex items-center justify-between">
             <div>
               <Title level={2} className="mb-2">
@@ -832,7 +839,7 @@ const LessonDetail: React.FC = () => {
           <Tabs
             activeKey={activeTab}
             onChange={(key) => setActiveTab(key as TabType)}
-            className="bg-white"
+            className="bg-white dark:bg-secondary-925"
             style={{ margin: '0', padding: "0 10px " }}
             items={[
               {
@@ -897,7 +904,7 @@ const LessonDetail: React.FC = () => {
                       <Text type="secondary">Học ngữ pháp theo giáo trình Minna no Nihongo</Text>
                     </div>
 
-                    <Card>
+                    <Card className="bg-white dark:bg-secondary-925 border-secondary-200 dark:border-secondary-900">
                       <div className="mb-4">
                         <Title level={4}>Ngữ pháp bài {lesson?.lessonNumber}</Title>
                       </div>
@@ -916,7 +923,7 @@ const LessonDetail: React.FC = () => {
                         }))} />
                       ) : (
                         <div className="text-center py-8">
-                          <Text type="secondary">Chưa có dữ liệu ngữ pháp cho bài học này.</Text>
+                          <Text type="secondary" className="text-secondary-600 dark:text-secondary-800">Chưa có dữ liệu ngữ pháp cho bài học này.</Text>
                         </div>
                       )}
                     </Card>
@@ -936,7 +943,7 @@ const LessonDetail: React.FC = () => {
                     <Title level={3} className="mb-6">HỘI THOẠI</Title>
                     <Space direction="vertical" size="large" className="w-full">
                       {dialogs.map((dialog, index) => (
-                        <Card key={dialog.id || index}>
+                        <Card key={dialog.id || index} className="bg-white dark:bg-secondary-925 border-secondary-200 dark:border-secondary-900">
                           <Title level={4}>{dialog.title || `Hội thoại ${index + 1}`}</Title>
                           <Paragraph type="secondary">{dialog.scenario || "Thực hành hội thoại theo bài học"}</Paragraph>
 
@@ -956,7 +963,7 @@ const LessonDetail: React.FC = () => {
                               </Button>
 
                               {showDialogTranslation[dialog.id || index] && (
-                                <Card className="mt-3" style={{ backgroundColor: '#f0f7ff' }}>
+                                <Card className="mt-3 bg-blue-50 dark:bg-blue-900/20 border-blue-200 dark:border-blue-800">
                                   <Title level={5}>Bản dịch tiếng Việt:</Title>
                                   <Paragraph className="whitespace-pre-line">
                                     {dialog.viTranslation}
@@ -1013,7 +1020,7 @@ const LessonDetail: React.FC = () => {
 
                     {/* Exercise Summary */}
                     {(Object.keys(exerciseResults).length > 0 || Object.keys(exerciseAnswers).length === exercises.length) && (
-                      <Card className="mb-6">
+                      <Card className="mb-6 bg-white dark:bg-secondary-925 border-secondary-200 dark:border-secondary-900">
                         <Title level={4}>Kết quả tổng hợp</Title>
                         <div className="grid grid-cols-3 gap-4">
                           <div className="text-center">
@@ -1038,7 +1045,7 @@ const LessonDetail: React.FC = () => {
 
                         {/* Completion Message */}
                         {Object.keys(exerciseAnswers).length === exercises.length && (
-                          <Card className="mt-6" style={{ backgroundColor: '#f6ffed', borderColor: '#b7eb8f' }}>
+                          <Card className="mt-6 bg-green-50 dark:bg-green-900/20 border-green-200 dark:border-green-800">
                             <div className="text-center">
                               <div className="text-4xl mb-2">🎉</div>
                               <Title level={4} type="success" className="mb-2">
@@ -1092,7 +1099,7 @@ const LessonDetail: React.FC = () => {
                     )}
 
                     {exercises.length > 0 && (
-                      <Card>
+                      <Card className="bg-white dark:bg-secondary-925 border-secondary-200 dark:border-secondary-900">
                         <div className="flex justify-between items-center mb-4">
                           <Title level={4}>
                             Bài tập {currentExerciseIndex + 1}
@@ -1116,11 +1123,11 @@ const LessonDetail: React.FC = () => {
                                   <Card
                                     key={index}
                                     className={`cursor-pointer transition-colors ${isSelected && status === 'correct'
-                                      ? 'border-green-300 bg-green-50'
+                                      ? 'border-green-300 bg-green-50 dark:border-green-600 dark:bg-green-900/20'
                                       : isSelected && status === 'incorrect'
-                                        ? 'border-red-300 bg-red-50'
-                                        : 'hover:bg-gray-50'
-                                      }`}
+                                        ? 'border-red-300 bg-red-50 dark:border-red-600 dark:bg-red-900/20'
+                                        : 'hover:bg-secondary-100 dark:hover:bg-secondary-900'
+                                      } bg-white dark:bg-secondary-925 border-secondary-200 dark:border-secondary-900`}
                                     onClick={() => handleAnswerSelect(exerciseId, option)}
                                   >
                                     <Space>
@@ -1132,7 +1139,7 @@ const LessonDetail: React.FC = () => {
                                         onChange={(e) => handleAnswerSelect(exerciseId, e.target.value)}
                                         className="mr-3"
                                       />
-                                      <Text className={isSelected && status === 'correct' ? 'text-green-700 font-medium' : isSelected && status === 'incorrect' ? 'text-red-700' : ''}>
+                                      <Text className={isSelected && status === 'correct' ? 'text-green-700 dark:text-green-400 font-medium' : isSelected && status === 'incorrect' ? 'text-red-700 dark:text-red-400' : ''}>
                                         {option}
                                       </Text>
                                     </Space>
@@ -1174,7 +1181,7 @@ const LessonDetail: React.FC = () => {
 
                         {/* Show explanation immediately when answer is selected */}
                         {showExplanation[exercises[currentExerciseIndex].id || `exercise_${currentExerciseIndex}`] && (
-                          <Card className="mb-4" style={{ backgroundColor: '#e6f7ff', borderColor: '#91d5ff' }}>
+                          <Card className="mb-4 bg-blue-50 dark:bg-blue-900/20 border-blue-200 dark:border-blue-800">
                             <Title level={5} style={{ color: '#1890ff' }}>💡 Giải thích:</Title>
                             <Text type="secondary">
                               {exercises[currentExerciseIndex].explanation}
@@ -1184,9 +1191,9 @@ const LessonDetail: React.FC = () => {
 
                         {exerciseResults[exercises[currentExerciseIndex].id || `exercise_${currentExerciseIndex}`] && (
                           <Card className={`mb-4 ${exerciseResults[exercises[currentExerciseIndex].id || `exercise_${currentExerciseIndex}`].isCorrect
-                            ? 'border-green-200 bg-green-50'
-                            : 'border-red-200 bg-red-50'
-                            }`}>
+                            ? 'border-green-200 bg-green-50 dark:border-green-600 dark:bg-green-900/20'
+                            : 'border-red-200 bg-red-50 dark:border-red-600 dark:bg-red-900/20'
+                            } bg-white dark:bg-secondary-925`}>
                             <Title level={5} type={exerciseResults[exercises[currentExerciseIndex].id || `exercise_${currentExerciseIndex}`].isCorrect ? 'success' : 'danger'}>
                               {exerciseResults[exercises[currentExerciseIndex].id || `exercise_${currentExerciseIndex}`].isCorrect ? '✅ Correct!' : '❌ Incorrect'}
                             </Title>
@@ -1250,13 +1257,13 @@ const LessonDetail: React.FC = () => {
                 children: (
                   <div style={{ padding: '24px' }}>
                     <Title level={3} className="mb-6">LUYỆN VỚI AI</Title>
-                    <Card className="max-w-4xl mx-auto">
+                    <Card className="max-w-4xl mx-auto bg-white dark:bg-secondary-925 border-secondary-200 dark:border-secondary-900">
                       <div className="mb-4">
                         <Title level={4} className="mb-2">Luyện tập với AI theo bài Minna</Title>
                         <Text type="secondary">Hãy thực hành hội thoại theo ngữ pháp của bài {lesson.lessonNumber}</Text>
                       </div>
 
-                      <div className="h-96 border rounded-lg p-4 overflow-y-auto mb-4" style={{ backgroundColor: '#fafafa' }}>
+                      <div className="h-96 border border-secondary-200 dark:border-secondary-900 rounded-lg p-4 overflow-y-auto mb-4" style={{ backgroundColor: 'var(--ant-color-bg-container)' }}>
                         {aiMessages.length === 0 ? (
                           <div className="flex items-center justify-center h-full">
                             <Text type="secondary">Bắt đầu cuộc hội thoại với AI...</Text>
@@ -1266,8 +1273,7 @@ const LessonDetail: React.FC = () => {
                             {aiMessages.map((message, index) => (
                               <div key={index} className={`flex ${message.role === "user" ? "justify-end" : "justify-start"}`}>
                                 <Card
-                                  className={`max-w-md ${message.role === "user" ? "bg-blue-100" : "bg-gray-100"
-                                    }`}
+                                  className={`max-w-md ${message.role === "user" ? "bg-blue-100 dark:bg-blue-900/30 border-blue-200 dark:border-blue-700" : "bg-secondary-100 dark:bg-secondary-900 border-secondary-200 dark:border-secondary-700"}`}
                                   size="small"
                                 >
                                   <Text strong className="text-sm">{message.role === "user" ? "You" : "AI"}</Text>
@@ -1289,7 +1295,7 @@ const LessonDetail: React.FC = () => {
                               handleAIMessage();
                             }
                           }}
-                          className="flex-1"
+                          className="flex-1 bg-white dark:bg-secondary-925 border-secondary-300 dark:border-secondary-700"
                           size="large"
                         />
                         <Button
@@ -1323,7 +1329,7 @@ const LessonDetail: React.FC = () => {
                           <Title level={4} className="mb-4">📚 Từ vựng trọng tâm</Title>
                           <Space direction="vertical" className="w-full">
                             {vocabularies.slice(0, 5).map((vocab) => (
-                              <Card key={vocab.id} size="small" className="bg-gray-50">
+                              <Card key={vocab.id} size="small" className="bg-secondary-50 dark:bg-secondary-925">
                                 <div className="flex justify-between items-center">
                                   <div>
                                     <Text strong>{vocab.kanji}</Text>
@@ -1339,7 +1345,7 @@ const LessonDetail: React.FC = () => {
                           <Title level={4} className="mb-4">📘 Ngữ pháp chính</Title>
                           <Space direction="vertical" className="w-full">
                             {grammars.map((grammar) => (
-                              <Card key={grammar.id} size="small" className="bg-gray-50">
+                              <Card key={grammar.id} size="small" className="bg-secondary-50 dark:bg-secondary-925">
                                 <Text strong>{grammar.pattern}</Text>
                               </Card>
                             ))}
@@ -1375,27 +1381,59 @@ const LessonDetail: React.FC = () => {
         </Button>
       )}
 
+      {/* Word Meaning Tooltip */}
+      {clickedWord && (
+        <div
+          className="fixed z-50 meaning-tooltip bg-white dark:bg-gray-900 border border-gray-300 dark:border-gray-600 rounded-lg shadow-xl p-4 max-w-xs"
+          style={{
+            left: `${clickedWord.x}px`,
+            top: `${clickedWord.y + 20}px`,
+            transform: 'translateX(-50%)',
+            minWidth: '200px'
+          }}
+        >
+          <div className="space-y-2">
+            <div className="font-bold text-lg text-gray-900 dark:text-white">
+              {clickedWord.word}
+            </div>
+            <div className="text-sm text-gray-700 dark:text-gray-300">
+              {clickedWord.meaning || "Không có nghĩa"}
+            </div>
+            {/* Debug info */}
+            <div className="text-xs text-gray-500 dark:text-gray-400 mt-2">
+              Debug: {JSON.stringify(clickedWord)}
+            </div>
+          </div>
+        </div>
+      )}
+
       {/* Sidebar - Lesson List */}
-      <Sider width={256} className="bg-white border-l border-gray-200">
-        <div className="p-4 border-b border-gray-200">
+      <Sider
+        width={256}
+        collapsedWidth={0}
+        breakpoint="lg"
+        className="bg-white dark:bg-secondary-925 border-l border-secondary-200 dark:border-secondary-900 fixed right-0 overflow-y-hidden"
+        style={{ zIndex: 1000, top: '64px', height: 'calc(100vh - 64px)' }}
+      >
+        <div className="p-4 border-b border-secondary-200 dark:border-secondary-900 flex-shrink-0">
           <Title level={4}>Danh sách bài học</Title>
           <Text type="secondary">Giáo trình Minna no Nihongo</Text>
         </div>
 
-        <div className="flex-1 overflow-y-auto" style={{ height: 'calc(100vh - 120px)' }}>
+        <div className="" style={{ height: 'calc(100vh - 152px)', overflowY: 'auto', scrollbarWidth: 'none' }}>
           {lessonsLoading ? (
             <div className="p-8 text-center">
               <Spin size="large" className="mb-4" />
               <Text type="secondary">Đang tải danh sách bài học...</Text>
             </div>
           ) : (
-            <Space direction="vertical" className="w-full p-2">
+            <Space orientation="vertical" className="w-full p-2">
               {lessons.map((lesson) => (
                 <Card
                   key={lesson.id}
                   hoverable
                   onClick={() => navigate(`/lessons/${lesson.id}`)}
-                  className={`${lessonId === lesson.id ? 'border-l-4 border-l-blue-500 bg-blue-50' : ''}`}
+                  className={`${lessonId === lesson.id ? 'border-l-4 border-l-blue-500 bg-blue-50 dark:bg-blue-900/20' : ''}`}
                   size="small"
                 >
                   <div className="flex items-center justify-between mb-2">
@@ -1424,7 +1462,7 @@ const LessonDetail: React.FC = () => {
           )}
         </div>
       </Sider>
-    </Layout>
+    </Layout >
   );
 };
 

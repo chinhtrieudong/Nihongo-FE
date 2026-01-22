@@ -2,7 +2,6 @@ import React from "react";
 import { Layout, Menu, Typography, Space } from "antd";
 import { Link, useLocation } from "react-router-dom";
 import {
-  DashboardOutlined,
   BookOutlined,
   ReadOutlined,
   ExperimentOutlined,
@@ -21,11 +20,6 @@ const Sidebar: React.FC = () => {
   const { sidebarOpen } = useAppSelector((state) => state.ui);
 
   const menuItems = [
-    {
-      key: "/",
-      icon: <DashboardOutlined />,
-      label: <Link to="/">Dashboard</Link>,
-    },
     {
       key: "/lessons",
       icon: <BookOutlined />,
@@ -68,9 +62,9 @@ const Sidebar: React.FC = () => {
       collapsed={!sidebarOpen}
       collapsedWidth={64}
       width={256}
-      className="bg-white dark:bg-gray-800 border-r border-gray-200 dark:border-gray-700"
+      className="bg-white dark:bg-secondary-925 border-r border-secondary-200 dark:border-secondary-900"
       style={{
-        overflow: 'auto',
+        overflow: 'hidden',
         height: '100vh',
         position: 'fixed',
         left: 0,
@@ -78,16 +72,22 @@ const Sidebar: React.FC = () => {
         bottom: 0,
       }}
     >
-      <div className="p-4 border-b border-gray-200 dark:border-gray-700">
-        <div className={`flex items-center ${sidebarOpen ? 'justify-start' : 'justify-center'}`}>
-          <div className="w-8 h-8 bg-blue-500 rounded-lg flex items-center justify-center text-white font-bold text-sm">
+      <div className="p-4 border-b border-secondary-200 dark:border-secondary-900">
+        <div className="flex items-center h-8">
+          {/* Logo */}
+          <div className="flex-shrink-0 w-8 h-8 bg-blue-500 rounded-lg flex items-center justify-center text-white font-bold text-sm">
             日
           </div>
-          {sidebarOpen && (
-            <Title level={4} className="!mb-0 !ml-3 text-blue-600 font-bold">
+
+          {/* Title */}
+          <div
+            className={`ml-3 transition-all duration-200 overflow-hidden ${sidebarOpen ? "opacity-100 w-[160px]" : "opacity-0 w-0"
+              }`}
+          >
+            <Title level={4} className="!mb-0 text-blue-600 font-bold whitespace-nowrap">
               Nihongo
             </Title>
-          )}
+          </div>
         </div>
       </div>
 
@@ -99,9 +99,9 @@ const Sidebar: React.FC = () => {
         style={{ padding: '16px' }}
       />
 
-      <div className="absolute bottom-0 left-0 right-0 p-4 border-t border-gray-200 dark:border-gray-700">
-        <div className={`text-xs text-gray-500 dark:text-gray-400 ${sidebarOpen ? 'text-left' : 'text-center'}`}>
-          {sidebarOpen ? 'Nihongo Master v1.0' : 'v1.0'}
+      <div className="absolute bottom-0 left-0 right-0 p-4 border-t border-secondary-200 dark:border-secondary-900">
+        <div className={`text-xs text-secondary-700 dark:text-secondary-400 ${sidebarOpen ? 'text-left' : 'text-center'}`}>
+          {sidebarOpen ? 'Nihongo v1.0' : 'v1.0'}
         </div>
       </div>
     </Sider>

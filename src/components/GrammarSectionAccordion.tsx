@@ -68,20 +68,20 @@ const GrammarSectionAccordion: React.FC<GrammarSectionAccordionProps> = ({ secti
       expandIcon={({ isActive }) => (
         <CaretRightOutlined
           rotate={isActive ? 90 : 0}
-          className="text-blue-600"
+          className="text-blue-600 dark:text-blue-400"
         />
       )}
       expandIconPlacement="end"
       activeKey={activeKeys}
       onChange={onChange}
-      className="bg-white"
+      className="bg-white dark:bg-secondary-925"
       items={sections.map((section) => ({
         key: section.id,
         label: (
           <div className="flex items-center justify-between w-full">
             <div className="flex items-center space-x-3">
-              <BookOutlined className="text-blue-600" />
-              <Title level={5} className="mb-0 text-gray-800">
+              <BookOutlined className="text-blue-600 dark:text-blue-400" />
+              <Title level={5} className="mb-0 text-secondary-900 dark:text-secondary-100">
                 {section.title}
               </Title>
             </div>
@@ -106,19 +106,19 @@ const GrammarSectionAccordion: React.FC<GrammarSectionAccordionProps> = ({ secti
           </div>
         ),
         children: (
-          <div className="p-6 bg-gray-50">
+          <div className="p-6 bg-secondary-50 dark:bg-secondary-925">
             {/* Pattern/Structure */}
             {section.structure && section.structure.length > 0 && (
               <div className="mb-6">
                 <div className="flex items-center mb-3">
-                  <BookOutlined className="text-blue-600 mr-2" />
-                  <Title level={5} className="mb-0">Cấu trúc</Title>
+                  <BookOutlined className="text-blue-600 dark:text-blue-400 mr-2" />
+                  <Title level={5} className="mb-0 text-secondary-900 dark:text-secondary-100">Cấu trúc</Title>
                 </div>
-                <div className="bg-white p-4 rounded-lg border border-blue-200">
+                <div className="bg-white dark:bg-secondary-925 p-4 rounded-lg border border-blue-200 dark:border-blue-700">
                   {section.structure.map((item, index) => (
                     <Paragraph
                       key={index}
-                      className="mb-2 text-lg font-semibold text-blue-700"
+                      className="mb-2 text-lg font-semibold text-blue-700 dark:text-blue-400"
                     >
                       {item}
                     </Paragraph>
@@ -131,11 +131,11 @@ const GrammarSectionAccordion: React.FC<GrammarSectionAccordionProps> = ({ secti
             {section.formation && (
               <div className="mb-6">
                 <div className="flex items-center mb-3">
-                  <BulbOutlined className="text-green-600 mr-2" />
-                  <Title level={5} className="mb-0">Cách dùng</Title>
+                  <BulbOutlined className="text-green-600 dark:text-green-400 mr-2" />
+                  <Title level={5} className="mb-0 text-secondary-900 dark:text-secondary-100">Cách dùng</Title>
                 </div>
-                <div className="bg-white p-4 rounded-lg border border-green-200">
-                  <Paragraph className="mb-0 text-gray-700">
+                <div className="bg-white dark:bg-secondary-925 p-4 rounded-lg border border-green-200 dark:border-green-700">
+                  <Paragraph className="mb-0 text-secondary-700 dark:text-secondary-300">
                     {section.formation}
                   </Paragraph>
                 </div>
@@ -146,14 +146,14 @@ const GrammarSectionAccordion: React.FC<GrammarSectionAccordionProps> = ({ secti
             {section.meaning && section.meaning.length > 0 && (
               <div className="mb-6">
                 <div className="flex items-center mb-3">
-                  <BulbOutlined className="text-orange-600 mr-2" />
-                  <Title level={5} className="mb-0">Ý nghĩa</Title>
+                  <BulbOutlined className="text-orange-600 dark:text-orange-400 mr-2" />
+                  <Title level={5} className="mb-0 text-secondary-900 dark:text-secondary-100">Nghĩa</Title>
                 </div>
-                <div className="bg-white p-4 rounded-lg border border-orange-200">
+                <div className="bg-white dark:bg-secondary-925 p-4 rounded-lg border border-orange-200 dark:border-orange-700">
                   {section.meaning.map((item, index) => (
                     <Paragraph
                       key={index}
-                      className="mb-2 text-gray-700"
+                      className="mb-2 text-secondary-700 dark:text-secondary-300"
                     >
                       {item}
                     </Paragraph>
@@ -166,11 +166,11 @@ const GrammarSectionAccordion: React.FC<GrammarSectionAccordionProps> = ({ secti
             {section.usage && (
               <div className="mb-6">
                 <div className="flex items-center mb-3">
-                  <MessageOutlined className="text-purple-600 mr-2" />
-                  <Title level={5} className="mb-0">Cách sử dụng</Title>
+                  <MessageOutlined className="text-purple-600 dark:text-purple-400 mr-2" />
+                  <Title level={5} className="mb-0 text-secondary-900 dark:text-secondary-100">Cách sử dụng</Title>
                 </div>
-                <div className="bg-white p-4 rounded-lg border border-purple-200">
-                  <Paragraph className="mb-0 text-gray-700">
+                <div className="bg-white dark:bg-secondary-925 p-4 rounded-lg border border-purple-200 dark:border-purple-700">
+                  <Paragraph className="mb-0 text-secondary-700 dark:text-secondary-300">
                     {section.usage}
                   </Paragraph>
                 </div>
@@ -181,13 +181,13 @@ const GrammarSectionAccordion: React.FC<GrammarSectionAccordionProps> = ({ secti
             {section.examples && section.examples.length > 0 && (
               <div className="mb-6">
                 <div className="flex items-center mb-3">
-                  <MessageOutlined className="text-blue-600 mr-2" />
-                  <Title level={5} className="mb-0">Ví dụ</Title>
+                  <MessageOutlined className="text-blue-600 dark:text-blue-400 mr-2" />
+                  <Title level={5} className="mb-0 text-secondary-900 dark:text-secondary-100">Ví dụ</Title>
                 </div>
-                <div className="bg-white p-4 rounded-lg border border-blue-200">
+                <div className="bg-white dark:bg-secondary-925 p-4 rounded-lg border border-blue-200 dark:border-blue-700">
                   {section.examples.map((example, index) => (
                     <div key={index} className="mb-3 last:mb-0">
-                      <Paragraph className="mb-1 text-gray-800 font-medium">
+                      <Paragraph className="mb-1 text-secondary-900 dark:text-secondary-100 font-medium">
                         <Tooltip
                           title={example.vietnamese}
                           placement="bottomLeft"
@@ -232,14 +232,14 @@ const GrammarSectionAccordion: React.FC<GrammarSectionAccordionProps> = ({ secti
             {section.comparison && section.comparison.length > 0 && (
               <div className="mb-6">
                 <div className="flex items-center mb-3">
-                  <SwapOutlined className="text-red-600 mr-2" />
-                  <Title level={5} className="mb-0">So sánh</Title>
+                  <SwapOutlined className="text-red-600 dark:text-red-400 mr-2" />
+                  <Title level={5} className="mb-0 text-secondary-900 dark:text-secondary-100">So sánh</Title>
                 </div>
-                <div className="bg-white p-4 rounded-lg border border-red-200">
+                <div className="bg-white dark:bg-secondary-925 p-4 rounded-lg border border-red-200 dark:border-red-700">
                   {section.comparison.map((item, index) => (
                     <Paragraph
                       key={index}
-                      className="mb-2 text-gray-700"
+                      className="mb-2 text-secondary-700 dark:text-secondary-300"
                     >
                       {item}
                     </Paragraph>
@@ -252,10 +252,10 @@ const GrammarSectionAccordion: React.FC<GrammarSectionAccordionProps> = ({ secti
             {section.commonMistakes && section.commonMistakes.length > 0 && (
               <div className="mb-6">
                 <div className="flex items-center mb-3">
-                  <BulbOutlined className="text-red-600 mr-2" />
-                  <Title level={5} className="mb-0">Lỗi thường gặp</Title>
+                  <BulbOutlined className="text-red-600 dark:text-red-400 mr-2" />
+                  <Title level={5} className="mb-0 text-secondary-900 dark:text-secondary-100">Lỗi thường gặp</Title>
                 </div>
-                <div className="bg-red-50 p-4 rounded-lg border border-red-200">
+                <div className="bg-red-50 dark:bg-red-900/20 p-4 rounded-lg border border-red-200 dark:border-red-700">
                   {section.commonMistakes.map((mistake, index) => (
                     <div key={index} className="mb-3 last:mb-0">
                       <div className="mb-2">
@@ -281,10 +281,10 @@ const GrammarSectionAccordion: React.FC<GrammarSectionAccordionProps> = ({ secti
             {section.relatedPatterns && section.relatedPatterns.length > 0 && (
               <div className="mb-6">
                 <div className="flex items-center mb-3">
-                  <BookOutlined className="text-gray-600 mr-2" />
-                  <Title level={5} className="mb-0">Mẫu liên quan</Title>
+                  <BookOutlined className="text-secondary-600 dark:text-secondary-400 mr-2" />
+                  <Title level={5} className="mb-0 text-secondary-900 dark:text-secondary-100">Mẫu liên quan</Title>
                 </div>
-                <div className="bg-gray-100 p-4 rounded-lg">
+                <div className="bg-secondary-100 dark:bg-secondary-800 p-4 rounded-lg">
                   <Space wrap>
                     {section.relatedPatterns.map((pattern, index) => (
                       <Tag key={index} color="blue" className="mb-2">
