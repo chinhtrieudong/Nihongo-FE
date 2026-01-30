@@ -117,15 +117,15 @@ export const pronunciationAPI = {
   // Submit practice
   submitPractice: async (
     exerciseId: string,
-    audioData: string,
+    audioData: string | Blob,
     duration: number
   ): Promise<{
-    practiceId: string;
     score: number;
     feedback: string;
-    detailedAnalysis: {
-      pronunciationAccuracy: number;
+    detailedFeedback: {
+      pronunciation: number;
       fluency: number;
+      rhythm: number;
       intonation: number;
       overallScore: number;
       improvements: string[];
@@ -133,10 +133,32 @@ export const pronunciationAPI = {
     audioUrl: string;
     createdAt: string;
   }> => {
-    const response = await api.post('/pronunciation/practice', {
-      exerciseId,
-      audioData,
-      duration
+    // Convert base64 to Blob if needed
+    let audioBlob: Blob;
+    if (typeof audioData === 'string') {
+      // Convert base64 to Blob
+      const base64Data = audioData.split(',')[1]; // Remove data:audio/wav;base64, prefix if present
+      const byteCharacters = atob(base64Data);
+      const byteNumbers = new Array(byteCharacters.length);
+      for (let i = 0; i < byteCharacters.length; i++) {
+        byteNumbers[i] = byteCharacters.charCodeAt(i);
+      }
+      const byteArray = new Uint8Array(byteNumbers);
+      audioBlob = new Blob([byteArray], { type: 'audio/wav' });
+    } else {
+      audioBlob = audioData;
+    }
+
+    // Create FormData for file upload
+    const formData = new FormData();
+    formData.append('exerciseId', exerciseId);
+    formData.append('audioData', audioBlob, 'recording.wav');
+    formData.append('duration', duration.toString());
+
+    const response = await api.post('/pronunciation/practice', formData, {
+      headers: {
+        'Content-Type': 'multipart/form-data',
+      },
     });
     return response.data.data;
   },
@@ -174,6 +196,32 @@ export const pronunciationAPI = {
   // Get user stats
   getStats: async (period: string = 'all'): Promise<Stats> => {
     const response = await api.get(`/pronunciation/stats?period=${period}`);
+    return response.data.data;
+  },
+
+  // Analyze pronunciation (new endpoint from documentation)
+  analyzePronunciation: async (
+    exerciseId: string,
+    expectedText: string
+  ): Promise<{
+    score: number;
+    feedback: string;
+    detailedAnalysis: {
+      pronunciationAccuracy: number;
+      fluency: number;
+      intonation: number;
+      rhythm: number;
+    };
+    transcription: {
+      recognizedText: string;
+      confidence: number;
+    };
+    audioUrl: string | null;
+  }> => {
+    const response = await api.post('/pronunciation/analyze', {
+      exerciseId,
+      expectedText
+    });
     return response.data.data;
   },
 

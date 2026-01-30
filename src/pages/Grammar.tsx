@@ -14,7 +14,7 @@ import {
   Statistic,
   Divider
 } from 'antd';
-import { SearchOutlined, BookOutlined, FilterOutlined } from '@ant-design/icons';
+import { SearchOutlined, ExperimentOutlined, FilterOutlined } from '@ant-design/icons';
 import { grammarAPI, GrammarItem } from '../services/grammarApi';
 import GrammarSectionAccordion from '../components/GrammarSectionAccordion';
 
@@ -162,7 +162,7 @@ const Grammar: React.FC = () => {
         <Card className="mb-6" variant="borderless">
           <div className="text-center">
             <Title level={2} className="mb-2">
-              <BookOutlined className="mr-2" />
+              <ExperimentOutlined className="mr-2" />
               Ngữ pháp Nhật Bản
             </Title>
             <Paragraph type="secondary" className="text-lg mb-0">
@@ -280,7 +280,6 @@ const Grammar: React.FC = () => {
               title={
                 <div className="flex items-center justify-between">
                   <span>
-                    <BookOutlined className="mr-2" />
                     Danh sách ngữ pháp
                   </span>
                   <Space>

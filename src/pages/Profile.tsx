@@ -16,10 +16,11 @@ const Profile: React.FC = () => {
           <Avatar size={64} icon={<UserOutlined />} className="bg-blue-500" />
           <div>
             <Title level={2} className="!mb-1">
+              <UserOutlined className="mr-2 text-secondary-700 dark:text-secondary-400" />
               Hồ sơ cá nhân
             </Title>
             <Text type="secondary">
-              {currentUser?.fullName || 'Người dùng'} • Chào mừng trở lại!
+              {currentUser?.username || 'Người dùng'} • Chào mừng trở lại!
             </Text>
           </div>
         </div>
@@ -34,7 +35,7 @@ const Profile: React.FC = () => {
               value={0}
               suffix="%"
               prefix={<BookOutlined className="text-blue-500" />}
-              valueStyle={{ color: '#1890ff' }}
+              styles={{ content: { color: '#1890ff' } }}
             />
             <div className="mt-3">
               <Progress percent={0} size="small" />
@@ -49,7 +50,7 @@ const Profile: React.FC = () => {
               title="Từ vựng đã học"
               value={0}
               prefix={<StarOutlined className="text-yellow-500" />}
-              valueStyle={{ color: '#faad14' }}
+              styles={{ content: { color: '#faad14' } }}
             />
             <div className="mt-3">
               <Text type="secondary" className="text-xs">Tổng số: 0 từ</Text>
@@ -60,11 +61,11 @@ const Profile: React.FC = () => {
         <Col xs={24} sm={12} lg={6}>
           <Card>
             <Statistic
-              title="Chuỗi ngày học"
+              title="Chuỗi học tập"
               value={currentUser?.streakDays || 0}
               suffix="ngày"
               prefix={<FireOutlined className="text-orange-500" />}
-              valueStyle={{ color: '#fa8c16' }}
+              styles={{ content: { color: '#fa8c16' } }}
             />
             <div className="mt-3">
               <Text type="secondary" className="text-xs">Học liên tục</Text>
@@ -79,7 +80,7 @@ const Profile: React.FC = () => {
               value={currentUser?.totalXp || 0}
               suffix="XP"
               prefix={<TrophyOutlined className="text-green-500" />}
-              valueStyle={{ color: '#52c41a' }}
+              styles={{ content: { color: '#52c41a' } }}
             />
             <div className="mt-3">
               <Text type="secondary" className="text-xs">Cấp độ: {currentUser?.currentLevel || 'Beginner'}</Text>
@@ -95,7 +96,7 @@ const Profile: React.FC = () => {
             <Space orientation="vertical" className="w-full" size="middle">
               <div className="flex justify-between">
                 <Text strong>Tên đăng nhập:</Text>
-                <Text>{currentUser?.fullName || 'Chưa cập nhật'}</Text>
+                <Text>{currentUser?.username || 'Chưa cập nhật'}</Text>
               </div>
               <div className="flex justify-between">
                 <Text strong>Email:</Text>
@@ -115,7 +116,7 @@ const Profile: React.FC = () => {
 
         <Col xs={24} lg={8}>
           <Card title="Thành tựu">
-            <Space direction="vertical" className="w-full" size="middle">
+            <Space orientation="vertical" className="w-full" size="middle">
               <div className="text-center py-4">
                 <TrophyOutlined className="text-4xl text-gray-300 mb-2" />
                 <Text type="secondary">Chưa có thành tựu</Text>
@@ -128,7 +129,7 @@ const Profile: React.FC = () => {
 
       {/* Settings Card */}
       <Card title="Cài đặt">
-        <Space direction="vertical" className="w-full" size="middle">
+        <Space orientation="vertical" className="w-full" size="middle">
           <Text type="secondary">Các tùy chọn cài đặt sẽ hiển thị ở đây.</Text>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div className="p-4 border border-gray-200 rounded-lg">

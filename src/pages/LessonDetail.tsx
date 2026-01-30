@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { useAppSelector } from "../store/hooks";
-import { lessonAPI } from "../services/api";
+import { lessonAPI, userStatsAPI } from "../services/api";
 import { useChatMutation } from "../services/aiService";
 import VocabularyTable from "../components/VocabularyTable";
 import GrammarSectionAccordion from "../components/GrammarSectionAccordion";
@@ -29,7 +29,9 @@ import {
   Progress,
   List,
   Avatar,
-  message
+  message,
+  Tooltip,
+  Drawer
 } from "antd";
 import {
   BookOutlined,
@@ -42,8 +44,12 @@ import {
   RobotOutlined,
   TrophyOutlined,
   LeftOutlined,
-  RightOutlined
+  RightOutlined,
+  ArrowLeftOutlined,
+  MenuOutlined,
+  CloseOutlined
 } from "@ant-design/icons";
+import { Grid } from "antd";
 
 const { Header, Content, Sider } = Layout;
 const { Title, Text, Paragraph } = Typography;
@@ -56,11 +62,15 @@ const LessonDetail: React.FC = () => {
   const { lessonId } = useParams<{ lessonId: string }>();
   const navigate = useNavigate();
   const [chatMutation] = useChatMutation();
-
+  const screens = Grid.useBreakpoint();
   const [lessonDetail, setLessonDetail] = useState<LessonDetailType | null>(null);
   const [activeTab, setActiveTab] = useState<TabType>("vocabulary");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [sidebarVisible, setSidebarVisible] = useState(false);
+
+  // Extract lesson data early to avoid undefined issues
+  const { lesson, vocabularies = [], grammars = [], dialogs = [], exercises = [] } = lessonDetail || {};
 
   // AI Practice state
   const [aiMessages, setAiMessages] = useState<Array<{
@@ -77,6 +87,7 @@ const LessonDetail: React.FC = () => {
   const [exerciseResults, setExerciseResults] = useState<Record<string, any>>({});
   const [showExplanation, setShowExplanation] = useState<Record<string, boolean>>({});
   const [answerStatus, setAnswerStatus] = useState<Record<string, 'correct' | 'incorrect' | null>>({});
+  const [exercisesCompleted, setExercisesCompleted] = useState(false);
 
   // Load exercise progress from localStorage on component mount
   useEffect(() => {
@@ -162,6 +173,14 @@ const LessonDetail: React.FC = () => {
     loadLessons();
   }, [lessonId]);
 
+  // Auto refresh lessons list when progress updates
+  useEffect(() => {
+    // Refresh lessons khi exercises hoặc vocabulary hoàn thành
+    if (exercisesCompleted) {
+      loadLessons();
+    }
+  }, [exercisesCompleted]);
+
   // Load voices when component mounts
   useEffect(() => {
     const loadVoices = () => {
@@ -192,19 +211,47 @@ const LessonDetail: React.FC = () => {
     return () => document.removeEventListener('click', handleClickOutside);
   }, []);
 
-  const loadLessons = async () => {
+  const loadLessons = async (level?: string, limit: number = 50, offset: number = 0) => {
     setLessonsLoading(true);
     try {
-      const response = await lessonAPI.getLessons(currentUser?.id, undefined, 50);
+      // Sử dụng currentUser.id hoặc fallback là temp-user123
+      const userId = currentUser?.id || 'temp-user123';
+
+      console.log('🚀 Calling loadLessons with params:', {
+        userId,
+        level,
+        limit,
+        offset
+      });
+
+      // Gọi API với các tham số: level, limit, offset (không còn userId)
+      const response = await lessonAPI.getLessons(level, limit, offset);
+
+      console.log('📥 API Response:', response);
+
       if (response.success && response.data) {
         setLessons(response.data.lessons);
+        console.log(`✅ Loaded ${response.data.lessons.length} lessons with progress for user: ${userId}`);
+
+        // Log status và progress của từng lesson
+        response.data.lessons.forEach((lesson: any, index: number) => {
+          console.log(`Lesson ${index + 1}: ${lesson.title} - Status: ${lesson.status}, Progress: ${lesson.progress}%`);
+        });
+      } else {
+        console.error('❌ API response failed:', response);
       }
     } catch (err) {
-      console.error("Failed to load lessons:", err);
+      console.error("❌ Failed to load lessons:", err);
     } finally {
       setLessonsLoading(false);
     }
   };
+
+  // Helper functions cho các use case cụ thể
+  const loadAllLessons = () => loadLessons(); // Lấy tất cả bài học
+  const loadN5Lessons = () => loadLessons('N5'); // Lọc theo cấp độ N5
+  const loadN4Lessons = () => loadLessons('N4'); // Lọc theo cấp độ N4
+  const loadLessonsWithPagination = (limit: number, offset: number) => loadLessons(undefined, limit, offset); // Phân trang
 
   // Text-to-Speech functionality
   const speakText = (text: string, lang: string = 'ja-JP', voiceIndex?: number) => {
@@ -330,7 +377,7 @@ const LessonDetail: React.FC = () => {
     setLoading(true);
     setError(null);
     try {
-      const response = await lessonAPI.getLessonDetail(lessonId, currentUser?.id);
+      const response = await lessonAPI.getLessonDetail(lessonId);
       // API mới trả về trực tiếp data, không có success wrapper
       if (response) {
         setLessonDetail(response as LessonDetailType);
@@ -670,25 +717,41 @@ const LessonDetail: React.FC = () => {
 
     try {
       setLoading(true);
-      const completedItems = {
-        vocabulary: lessonDetail?.vocabularies?.map(v => v.id) || [],
-        grammar: lessonDetail?.grammars?.map(g => g.id) || [],
-        exercises: Object.keys(exerciseAnswers)
-      };
 
-      await lessonAPI.updateProgress(lessonId, {
-        userId: currentUser.id,
-        status: "completed",
-        score: 100, // You might want to calculate this based on actual performance
-        timeSpent: 0, // You might want to track actual time spent
-        completedItems
-      });
+      console.log('🏁 Marking lesson as complete:', { lessonId, userId: currentUser.id });
+
+      // Dùng API mới để đánh dấu hoàn thành nhanh
+      const response = await lessonAPI.completeLesson(lessonId);
+
+      console.log('📥 Complete lesson response:', response);
 
       // Refresh lessons list to show updated status
       await loadLessons();
 
-      // Show success message or update UI
+      // Show success message
       alert("Bài học đã được đánh dấu là hoàn thành!");
+
+      // Update dashboard stats after completing lesson
+      try {
+        console.log('📊 Updating dashboard stats after completing lesson');
+
+        // Get current dashboard stats first
+        const currentStats = await userStatsAPI.getDashboardStats();
+
+        // Calculate new stats
+        const newLearningStreak = (currentStats.data?.learningStreak || 0) + 1;
+        const newTotalHours = (currentStats.data?.totalStudyTime || 0) + (lessonDetail?.lesson?.estimatedTime || 1);
+
+        // Update dashboard stats using new endpoint
+        await userStatsAPI.updateDashboardStats({
+          learningStreak: newLearningStreak,
+          totalStudyTime: newTotalHours
+        });
+
+        console.log('✅ Dashboard stats updated successfully');
+      } catch (error) {
+        console.error('❌ Failed to update dashboard stats:', error);
+      }
 
       // Clear exercise progress from localStorage after marking lesson complete
       localStorage.removeItem(`lesson_${lessonId}_exercise_progress`);
@@ -709,7 +772,7 @@ const LessonDetail: React.FC = () => {
       setBookmarkedVocab(new Set());
       setShowDialogTranslation({});
     } catch (error) {
-      console.error("Error marking lesson as complete:", error);
+      console.error("❌ Error marking lesson as complete:", error);
       alert("Có lỗi xảy ra khi đánh dấu bài học hoàn thành. Vui lòng thử lại.");
     } finally {
       setLoading(false);
@@ -799,6 +862,162 @@ const LessonDetail: React.FC = () => {
     }
   };
 
+  // Function to update lesson progress
+  const updateLessonProgress = async (progress: number, status: 'not_started' | 'in_progress' | 'completed' | 'review', sectionData?: {
+    vocabularyCompleted?: boolean;
+    grammarCompleted?: boolean;
+    dialogCompleted?: boolean;
+    exercisesScore?: number;
+    aiPracticeCount?: number;
+  }) => {
+    if (!lessonId || !currentUser) {
+      console.error("Missing lessonId or currentUser for progress update");
+      return;
+    }
+
+    try {
+      console.log('🔓 UPDATE PROGRESS:', {
+        lessonId,
+        userId: currentUser.id,
+        status,
+        progress,
+        sectionData
+      });
+
+      // API structure mới theo backend documentation
+      const apiData = {
+        userId: currentUser.id,
+        status,
+        progress,
+        vocabularyCompleted: sectionData?.vocabularyCompleted || false,
+        grammarCompleted: sectionData?.grammarCompleted || false,
+        dialogCompleted: sectionData?.dialogCompleted || false,
+        exercisesScore: sectionData?.exercisesScore || 0,
+        aiPracticeCount: sectionData?.aiPracticeCount || 0
+      };
+
+      console.log('📤 API Data being sent:', apiData);
+
+      const response = await lessonAPI.updateProgress(lessonId, apiData);
+
+      console.log('📥 UPDATE PROGRESS Response:', response);
+
+      // Refresh lessons list to show updated status
+      await loadLessons();
+
+      console.log(`✅ Lesson progress updated: ${progress}% - ${status}`);
+    } catch (error) {
+      console.error("❌ Error updating lesson progress:", error);
+    }
+  };
+
+  // Handler when exercises are completed
+  const handleExercisesComplete = async () => {
+    console.log('🎯 handleExercisesComplete called:', {
+      exercisesCompleted,
+      exercisesLength: exercises.length,
+      answerStatusKeys: Object.keys(answerStatus),
+      exerciseAnswersKeys: Object.keys(exerciseAnswers)
+    });
+
+    if (!exercisesCompleted && exercises.length > 0) {
+      setExercisesCompleted(true);
+
+      // Calculate score based on correct answers
+      const correctCount = Object.values(answerStatus).filter(status => status === 'correct').length;
+      const totalAnswered = Object.keys(answerStatus).length;
+      const score = totalAnswered > 0 ? Math.round((correctCount / totalAnswered) * 100) : 0;
+
+      console.log('📊 Exercise completion stats:', {
+        correctCount,
+        totalAnswered,
+        score,
+        exercisesLength: exercises.length
+      });
+
+      // Update progress to 100% for exercises completion (hoàn thành bài học)
+      await updateLessonProgress(100, 'completed', {
+        exercisesScore: score
+      });
+
+      // Save completion status to localStorage
+      localStorage.setItem(`lesson_${lessonId}_exercises_completed`, 'true');
+
+      console.log('✅ Exercises completed and progress updated');
+    } else {
+      console.log('⏭️ Exercises already completed or no exercises');
+    }
+  };
+
+  // Check if exercises were already completed
+  useEffect(() => {
+    if (lessonId) {
+      const exercisesCompleted = localStorage.getItem(`lesson_${lessonId}_exercises_completed`);
+      if (exercisesCompleted === 'true') {
+        setExercisesCompleted(true);
+      }
+    }
+  }, [lessonId]);
+
+  // Check if exercises are completed
+  useEffect(() => {
+    console.log('🔍 Checking exercises completion:', {
+      exercisesLength: exercises.length,
+      answerStatusKeys: Object.keys(answerStatus),
+      answerStatusValues: Object.values(answerStatus)
+    });
+
+    if (exercises.length > 0 && Object.keys(answerStatus).length === exercises.length) {
+      const allAnswered = exercises.every(exercise => {
+        const exerciseId = exercise.id || `exercise_${exercises.indexOf(exercise)}`;
+        const hasStatus = answerStatus[exerciseId] !== undefined;
+        console.log(`Exercise ${exerciseId} answered: ${hasStatus}`);
+        return hasStatus;
+      });
+
+      console.log('📝 All exercises answered:', allAnswered);
+
+      if (allAnswered) {
+        console.log('🚀 Triggering handleExercisesComplete');
+        handleExercisesComplete();
+      }
+    }
+  }, [answerStatus, exercises]);
+
+  // Calculate overall progress based on completed sections
+  const calculateOverallProgress = () => {
+    let progress = 0;
+
+    if (exercisesCompleted) {
+      progress = 100; // Hoàn thành bài học khi làm xong bài tập
+    }
+
+    // Add logic for grammar and dialog completion when implemented
+    // if (grammarCompleted) {
+    //   progress += 15;
+    // }
+
+    // if (dialogCompleted) {
+    //   progress += 10;
+    // }
+
+    return progress;
+  };
+
+  // Update overall progress when sections are completed
+  useEffect(() => {
+    const overallProgress = calculateOverallProgress();
+
+    if (overallProgress > 0 && exercisesCompleted) {
+      const status = overallProgress === 100 ? 'completed' : 'in_progress';
+
+      updateLessonProgress(overallProgress, status, {
+        exercisesScore: exercisesCompleted ?
+          Math.round((Object.values(answerStatus).filter(status => status === 'correct').length / Object.keys(answerStatus).length) * 100) : 0
+      });
+    }
+  }, [exercisesCompleted]);
+
   if (loading) {
     return (
       <div className="flex items-center justify-center min-h-screen">
@@ -818,19 +1037,71 @@ const LessonDetail: React.FC = () => {
     );
   }
 
-  const { lesson, vocabularies = [], grammars = [], dialogs = [], exercises = [] } = lessonDetail || {};
-
   return (
-    <Layout className="" style={{ background: 'var(--ant-color-bg-container)', paddingRight: '256px' }}>
+    <Layout className="" style={{ background: 'var(--ant-color-bg-container)', paddingRight: screens.lg ? '256px' : '0' }}>
       {/* Main Content */}
       <Layout>
-        <Header className="bg-white dark:bg-secondary-925 border-b border-secondary-200 dark:border-secondary-900 px-6" style={{ height: 'auto', padding: '24px' }}>
-          <div className="flex items-center justify-between">
-            <div>
-              <Title level={2} className="mb-2">
-                {lesson?.lessonNumber}. {lesson?.title}
-              </Title>
-              <Text type="secondary">{lesson?.description}</Text>
+        <Header className="bg-white dark:bg-secondary-925 border-b border-secondary-200 dark:border-secondary-900 px-4 lg:px-6" style={{ height: 'auto', padding: '16px 24px' }}>
+          <div className="flex items-center gap-2 lg:gap-4">
+            <div className="flex-1">
+              <div className="flex items-center gap-2 mb-2">
+                <Tooltip title="Quay lại danh sách bài học">
+                  <Button
+                    shape="square"
+                    icon={<ArrowLeftOutlined />}
+                    onClick={() => navigate('/lessons')}
+                    className="border-0 shadow-sm hover:shadow-md"
+                  />
+                </Tooltip>
+                <Title level={2} className="!mb-0 text-lg lg:text-xl">
+                  {lesson?.lessonNumber}. {lesson?.title}
+                </Title>
+                {!screens.lg && (
+                  <Button
+                    type="text"
+                    icon={<MenuOutlined />}
+                    onClick={() => setSidebarVisible(true)}
+                    className="ml-auto"
+                  />
+                )}
+              </div>
+              <Text type="secondary" className="text-sm">{lesson?.description}</Text>
+
+              {/* Debug Section - Test API Calls */}
+              <div className="mt-3 p-3 bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 rounded-lg text-xs">
+                <div className="flex gap-2 flex-wrap mb-2">
+                  <Button size="small" onClick={() => loadAllLessons()}>
+                    📋 Tải tất cả bài học
+                  </Button>
+                  <Button size="small" onClick={() => loadN5Lessons()}>
+                    🎯 Bài học N5
+                  </Button>
+                  <Button size="small" onClick={() => loadN4Lessons()}>
+                    📚 Bài học N4
+                  </Button>
+                  <Button size="small" onClick={() => {
+                    console.log('🧪 Test cập nhật tiến độ');
+                    updateLessonProgress(75, 'in_progress', { exercisesScore: 80 });
+                  }}>
+                    ⚡ Test cập nhật tiến độ
+                  </Button>
+                  <Button size="small" onClick={() => {
+                    console.log('🧪 Test hoàn thành bài học');
+                    if (lessonId && currentUser) {
+                      lessonAPI.completeLesson(lessonId);
+                    }
+                  }}>
+                    🏁 Test hoàn thành
+                  </Button>
+                </div>
+                <div className="text-blue-700 dark:text-blue-300">
+                  <Text type="secondary">
+                    📊 Số bài học: {lessons.length} | 🔓 Đang tải: {lessonsLoading ? 'Có' : 'Không'} |
+                    🆔 Mã bài học: {lessonId} | 📝 Số bài tập: {exercises.length} |
+                    ✅ Hoàn thành: {exercisesCompleted ? 'Rồi' : 'Chưa'}
+                  </Text>
+                </div>
+              </div>
             </div>
           </div>
         </Header>
@@ -840,14 +1111,16 @@ const LessonDetail: React.FC = () => {
             activeKey={activeTab}
             onChange={(key) => setActiveTab(key as TabType)}
             className="bg-white dark:bg-secondary-925"
-            style={{ margin: '0', padding: "0 10px " }}
+            style={{ margin: '0', padding: "0 8px" }}
+            size={screens.md ? 'large' : 'middle'}
+            tabPlacement={screens.xs ? 'top' : 'top'}
             items={[
               {
                 key: "vocabulary",
                 label: (
-                  <span>
+                  <span className="flex items-center gap-1">
                     <BookOutlined />
-                    TỪ VỰNG
+                    {screens.md && <span>TỪ VỰNG</span>}
                   </span>
                 ),
                 children: (
@@ -892,9 +1165,9 @@ const LessonDetail: React.FC = () => {
               {
                 key: "grammar",
                 label: (
-                  <span>
+                  <span className="flex items-center gap-1">
                     <BookOutlined />
-                    NGỮ PHÁP
+                    {screens.md && <span>NGỮ PHÁP</span>}
                   </span>
                 ),
                 children: (
@@ -933,15 +1206,15 @@ const LessonDetail: React.FC = () => {
               {
                 key: "conversation",
                 label: (
-                  <span>
+                  <span className="flex items-center gap-1">
                     <MessageOutlined />
-                    HỘI THOẠI
+                    {screens.md && <span>HỘI THOẠI</span>}
                   </span>
                 ),
                 children: (
                   <div style={{ padding: '24px' }}>
                     <Title level={3} className="mb-6">HỘI THOẠI</Title>
-                    <Space direction="vertical" size="large" className="w-full">
+                    <Space orientation="vertical" size="large" className="w-full">
                       {dialogs.map((dialog, index) => (
                         <Card key={dialog.id || index} className="bg-white dark:bg-secondary-925 border-secondary-200 dark:border-secondary-900">
                           <Title level={4}>{dialog.title || `Hội thoại ${index + 1}`}</Title>
@@ -1009,9 +1282,9 @@ const LessonDetail: React.FC = () => {
               {
                 key: "exercises",
                 label: (
-                  <span>
-                    <BookOutlined />
-                    BÀI TẬP
+                  <span className="flex items-center gap-1">
+                    <PlayCircleOutlined />
+                    {screens.md && <span>BÀI TẬP</span>}
                   </span>
                 ),
                 children: (
@@ -1113,7 +1386,7 @@ const LessonDetail: React.FC = () => {
                           <Paragraph className="text-lg mb-4">{exercises[currentExerciseIndex].question}</Paragraph>
 
                           {exercises[currentExerciseIndex].type === "multiple-choice" && (
-                            <Space direction="vertical" className="w-full">
+                            <Space orientation="vertical" className="w-full">
                               {(exercises[currentExerciseIndex].content?.options || exercises[currentExerciseIndex].options)?.map((option, index) => {
                                 const exerciseId = exercises[currentExerciseIndex].id || `exercise_${currentExerciseIndex}`;
                                 const isSelected = exerciseAnswers[exerciseId] === option;
@@ -1249,9 +1522,9 @@ const LessonDetail: React.FC = () => {
               {
                 key: "ai",
                 label: (
-                  <span>
+                  <span className="flex items-center gap-1">
                     <RobotOutlined />
-                    LUYỆN VỚI AI
+                    {screens.md && <span>LUYỆN VỚI AI</span>}
                   </span>
                 ),
                 children: (
@@ -1260,7 +1533,7 @@ const LessonDetail: React.FC = () => {
                     <Card className="max-w-4xl mx-auto bg-white dark:bg-secondary-925 border-secondary-200 dark:border-secondary-900">
                       <div className="mb-4">
                         <Title level={4} className="mb-2">Luyện tập với AI theo bài Minna</Title>
-                        <Text type="secondary">Hãy thực hành hội thoại theo ngữ pháp của bài {lesson.lessonNumber}</Text>
+                        <Text type="secondary">Hãy thực hành hội thoại theo ngữ pháp của bài {lesson?.lessonNumber}</Text>
                       </div>
 
                       <div className="h-96 border border-secondary-200 dark:border-secondary-900 rounded-lg p-4 overflow-y-auto mb-4" style={{ backgroundColor: 'var(--ant-color-bg-container)' }}>
@@ -1269,7 +1542,7 @@ const LessonDetail: React.FC = () => {
                             <Text type="secondary">Bắt đầu cuộc hội thoại với AI...</Text>
                           </div>
                         ) : (
-                          <Space direction="vertical" className="w-full">
+                          <Space orientation="vertical" className="w-full">
                             {aiMessages.map((message, index) => (
                               <div key={index} className={`flex ${message.role === "user" ? "justify-end" : "justify-start"}`}>
                                 <Card
@@ -1315,9 +1588,9 @@ const LessonDetail: React.FC = () => {
               {
                 key: "summary",
                 label: (
-                  <span>
+                  <span className="flex items-center gap-1">
                     <TrophyOutlined />
-                    TỔNG KẾT
+                    {screens.md && <span>TỔNG KẾT</span>}
                   </span>
                 ),
                 children: (
@@ -1327,7 +1600,7 @@ const LessonDetail: React.FC = () => {
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                         <Card>
                           <Title level={4} className="mb-4">📚 Từ vựng trọng tâm</Title>
-                          <Space direction="vertical" className="w-full">
+                          <Space orientation="vertical" className="w-full">
                             {vocabularies.slice(0, 5).map((vocab) => (
                               <Card key={vocab.id} size="small" className="bg-secondary-50 dark:bg-secondary-925">
                                 <div className="flex justify-between items-center">
@@ -1343,7 +1616,7 @@ const LessonDetail: React.FC = () => {
 
                         <Card>
                           <Title level={4} className="mb-4">📘 Ngữ pháp chính</Title>
-                          <Space direction="vertical" className="w-full">
+                          <Space orientation="vertical" className="w-full">
                             {grammars.map((grammar) => (
                               <Card key={grammar.id} size="small" className="bg-secondary-50 dark:bg-secondary-925">
                                 <Text strong>{grammar.pattern}</Text>
@@ -1407,7 +1680,73 @@ const LessonDetail: React.FC = () => {
         </div>
       )}
 
-      {/* Sidebar - Lesson List */}
+      {/* Mobile Sidebar - Drawer */}
+      <Drawer
+        title={
+          <div className="flex items-center justify-between">
+            <span>Danh sách bài học</span>
+            <Button
+              type="text"
+              icon={<CloseOutlined />}
+              onClick={() => setSidebarVisible(false)}
+            />
+          </div>
+        }
+        placement="right"
+        onClose={() => setSidebarVisible(false)}
+        open={sidebarVisible}
+        size={280}
+        className="lg:hidden"
+      >
+        <div className="space-y-4">
+          <Text type="secondary">Giáo trình Minna no Nihongo</Text>
+
+          {lessonsLoading ? (
+            <div className="p-8 text-center">
+              <Spin size="large" className="mb-4" />
+              <Text type="secondary">Đang tải danh sách bài học...</Text>
+            </div>
+          ) : (
+            <Space orientation="vertical" className="w-full">
+              {lessons.map((lesson) => (
+                <Card
+                  key={lesson.id}
+                  hoverable
+                  onClick={() => {
+                    navigate(`/lessons/${lesson.id}`);
+                    setSidebarVisible(false);
+                  }}
+                  className={`${lessonId === lesson.id ? 'border-l-4 border-l-blue-500 bg-blue-50 dark:bg-blue-900/20' : ''}`}
+                  size="small"
+                >
+                  <div className="flex items-center justify-between mb-2">
+                    <Text type="secondary" className="text-sm">
+                      Bài {lesson.lessonNumber}
+                    </Text>
+                    <Badge
+                      status={lesson.status === 'completed' ? 'success' : lesson.status === 'in_progress' ? 'processing' : 'default'}
+                      text={lesson.status === 'completed' ? '✔' : lesson.status === 'in_progress' ? '🔓' : '🔒'}
+                    />
+                  </div>
+                  <Text strong className="block mb-1">
+                    {lesson.title}
+                  </Text>
+                  {lesson.progress > 0 && (
+                    <Progress
+                      percent={lesson.progress}
+                      showInfo={false}
+                      strokeColor="#1890ff"
+                      size="small"
+                    />
+                  )}
+                </Card>
+              ))}
+            </Space>
+          )}
+        </div>
+      </Drawer>
+
+      {/* Desktop Sidebar - Lesson List */}
       <Sider
         width={256}
         collapsedWidth={0}
@@ -1438,11 +1777,11 @@ const LessonDetail: React.FC = () => {
                 >
                   <div className="flex items-center justify-between mb-2">
                     <Text type="secondary" className="text-sm">
-                      Lesson {lesson.lessonNumber}
+                      Bài {lesson.lessonNumber}
                     </Text>
                     <Badge
                       status={lesson.status === 'completed' ? 'success' : lesson.status === 'in_progress' ? 'processing' : 'default'}
-                      text={lesson.status === 'completed' ? '✔' : lesson.status === 'in_progress' ? '🔄' : '⏳'}
+                      text={lesson.status === 'completed' ? '✔' : lesson.status === 'in_progress' ? '🔓' : '🔒'}
                     />
                   </div>
                   <Text strong className="block mb-1">

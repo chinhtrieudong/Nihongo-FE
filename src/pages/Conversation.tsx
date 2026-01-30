@@ -1,652 +1,434 @@
-import React, { useState, useEffect, useRef } from "react";
-import { Button, Input, Card, Select, Tabs, Badge, Avatar, Typography, Space, Divider, Row, Col, message, Spin, Modal, Progress, Rate } from "antd";
-import { SendOutlined, RobotOutlined, UserOutlined, SoundOutlined, BookOutlined, MessageOutlined, StarOutlined, CheckCircleOutlined, PlayCircleOutlined, PauseCircleOutlined } from "@ant-design/icons";
-import { useAppSelector } from "../store/hooks";
-import { lessonAPI, aiAPI } from "../services/api";
-import { Dialog, DialogLine, AIRoleplayResponse } from "../types/lesson";
+import React, { useState, useEffect } from "react";
+import { Button, Card, Select, Badge, Avatar, Typography, Row, Col, message, Spin, Tag, Space, Divider, Input, Slider } from "antd";
+import { RobotOutlined, UserOutlined, BookOutlined, PlayCircleOutlined, ClockCircleOutlined, StarOutlined, SearchOutlined, FilterOutlined, ClearOutlined, MessageOutlined } from "@ant-design/icons";
+import { useNavigate } from "react-router-dom";
+import { conversationLessonAPI, type ConversationLesson } from "../services/conversationLessonAPI";
 
-const { TextArea } = Input;
 const { Option } = Select;
-const { TabPane } = Tabs;
 const { Title, Text } = Typography;
+const { Search } = Input;
 
-interface Message {
-  id: string;
-  role: "user" | "assistant";
-  content: string;
-  romaji?: string;
-  meaning?: string;
-  timestamp: string;
-  grammarErrors?: string[];
-  pronunciationScore?: number;
-  feedback?: {
-    grammar: string;
-    pronunciation: string;
-    vocabulary: string;
-  };
-}
+export { }; // Export to make it a module for isolatedModules
 
-interface ConversationScenario {
-  id: string;
-  title: string;
-  description: string;
-  level: "N5" | "N4" | "N3" | "N2" | "N1";
-  category: string;
-  difficulty: "easy" | "medium" | "hard";
-  scenario: string;
-  aiRole: string;
-  userRole: string;
-  vocabulary: string[];
-  grammar: string[];
-}
+const ConversationComponent: React.FC = () => {
+    const navigate = useNavigate();
+    const [lessons, setLessons] = useState<ConversationLesson[]>([]);
+    const [loading, setLoading] = useState(true);
+    const [searchTerm, setSearchTerm] = useState('');
+    const [filters, setFilters] = useState({
+        level: '' as 'N5' | 'N4' | 'N3' | 'N2' | 'N1' | '',
+        category: '' as string,
+        difficulty: 0 as number,
+        minDuration: 0 as number,
+        maxDuration: 120 as number
+    });
+    const [pagination, setPagination] = useState({
+        total: 0,
+        page: 1,
+        limit: 20
+    });
+    const [sidebarCollapsed, setSidebarCollapsed] = useState(false);
 
-const Conversation: React.FC = () => {
-  const { currentUser: user } = useAppSelector((state) => state.user);
-  const [activeTab, setActiveTab] = useState("ai-practice");
-  const [messages, setMessages] = useState<Message[]>([]);
-  const [inputMessage, setInputMessage] = useState("");
-  const [isLoading, setIsLoading] = useState(false);
-  const [selectedScenario, setSelectedScenario] = useState<string>("");
-  const [difficulty, setDifficulty] = useState<"easy" | "medium" | "hard">("medium");
-  const [conversationId, setConversationId] = useState<string>("");
-  const [isRecording, setIsRecording] = useState(false);
-  const [showFeedback, setShowFeedback] = useState(false);
-  const [currentDialog, setCurrentDialog] = useState<Dialog | null>(null);
-  const [dialogLineIndex, setDialogLineIndex] = useState(0);
-  const [isPlaying, setIsPlaying] = useState(false);
-  const messagesEndRef = useRef<HTMLDivElement>(null);
-  const [scenarios] = useState<ConversationScenario[]>([
-    {
-      id: "1",
-      title: "Đặt món nhà hàng",
-      description: "Luyện tập đặt đồ ăn và thức uống tại nhà hàng Nhật",
-      level: "N5",
-      category: "Đời sống hàng ngày",
-      difficulty: "easy",
-      scenario: "Bạn đang ở nhà hàng Nhật. Nhân viên phục vụ sẽ nhận đơn hàng của bạn.",
-      aiRole: "Nhân viên phục vụ",
-      userRole: "Khách hàng",
-      vocabulary: ["menu", "chuumon", "osusume", "nomimono", "dezaato"],
-      grammar: ["~ o kudasai", "~ wa arimasu ka", "~ ni shimasu"]
-    },
-    {
-      id: "2",
-      title: "Hỏi đường",
-      description: "Hỏi và chỉ đường bằng tiếng Nhật",
-      level: "N5",
-      category: "Du lịch",
-      difficulty: "easy",
-      scenario: "Bạn bị lạc ở Tokyo và cần hỏi người khác đường đi.",
-      aiRole: "Người địa phương",
-      userRole: "Khách du lịch",
-      vocabulary: ["eki", "byouin", "suupaa", "massugu", "migi", "hidari"],
-      grammar: ["~ wa doko desu ka", "~ e ikimasu", "~ de magarimasu"]
-    },
-    {
-      id: "3",
-      title: "Phỏng vấn việc làm",
-      description: "Luyện tập phỏng vấn xin việc bằng tiếng Nhật",
-      level: "N3",
-      category: "Kinh doanh",
-      difficulty: "hard",
-      scenario: "Bạn đang phỏng vấn công việc tại công ty Nhật.",
-      aiRole: "Người phỏng vấn",
-      userRole: "Ứng viên",
-      vocabulary: ["keiken", "sukiru", "tsuyomi", "yowami", "shiboudouki"],
-      grammar: ["~ ta koto ga arimasu", "~ koto ga dekimasu", "~ to omoimasu"]
-    },
-    {
-      id: "4",
-      title: "Mua sắm",
-      description: "Mua quần áo và hỏi về giá cả",
-      level: "N5",
-      category: "Đời sống hàng ngày",
-      difficulty: "medium",
-      scenario: "Bạn đang mua sắm tại cửa hàng bách hóa ở Nhật.",
-      aiRole: "Nhân viên bán hàng",
-      userRole: "Khách hàng",
-      vocabulary: ["nedan", "saizu", "iro", "shichaku", "yasui"],
-      grammar: ["~ wa ikura desu ka", "~ o shichaku shitemo ii desu ka", "~ wa arimasu ka"]
-    },
-    {
-      id: "5",
-      title: "Kết bạn",
-      description: "Tự giới thiệu và kết bạn mới",
-      level: "N4",
-      category: "Xã hội",
-      difficulty: "medium",
-      scenario: "Bạn đang tại hội chợ câu lạc bộ đại học và muốn tham gia câu lạc bộ.",
-      aiRole: "Thành viên CLB",
-      userRole: "Sinh viên mới",
-      vocabulary: ["shumi", "senkou", "shusshin", "suki", "issho ni"],
-      grammar: ["~ wa nan desu ka", "~ ga suki desu", "~ masen ka"]
-    }
-  ]);
+    // Load lessons on mount and when filters change
+    useEffect(() => {
+        loadLessons();
+    }, [filters, searchTerm]);
 
-  const [sampleDialogs] = useState<Dialog[]>([
-    {
-      id: "1",
-      title: "Tại nhà hàng",
-      scenario: "Đặt món ăn tại nhà hàng Nhật",
-      lines: [
-        {
-          speaker: "Nhân viên",
-          japanese: "いらっしゃいませ。何名様ですか？",
-          romaji: "Irasshaimase. Nanmei-sama desu ka?",
-          vietnamese: "Chào mừng. Mấy người ạ?"
-        },
-        {
-          speaker: "Khách hàng",
-          japanese: "二人です。窓際の席をお願いします。",
-          romaji: "Futari desu. Madogiwano seki o onegai shimasu.",
-          vietnamese: "Hai người. Cho tôi bàn cạnh cửa sổ."
-        },
-        {
-          speaker: "Nhân viên",
-          japanese: "かしこまりました。メニューでございます。",
-          romaji: "Kashikomarimashita. Menyū de gozaimasu.",
-          vietnamese: "Vâng ạ. Đây là thực đơn."
-        },
-        {
-          speaker: "Khách hàng",
-          japanese: "ありがとうございます。おすすめは何ですか？",
-          romaji: "Arigatō gozaimasu. Osusume wa nan desu ka?",
-          vietnamese: "Cảm ơn. Món gì đặc biệt ạ?"
+    const loadLessons = async () => {
+        try {
+            setLoading(true);
+            const params: any = {
+                level: filters.level || undefined,
+                category: filters.category || undefined,
+                difficulty: filters.difficulty || undefined,
+                min_duration: filters.minDuration || undefined,
+                max_duration: filters.maxDuration || undefined,
+                search: searchTerm || undefined,
+                page: pagination.page,
+                limit: pagination.limit
+            };
+
+            const response = await conversationLessonAPI.getLessons(params);
+            if (response.success) {
+                setLessons(response.data.lessons);
+                setPagination(response.data.pagination);
+            } else {
+                message.error('Không thể tải danh sách bài học');
+            }
+        } catch (error) {
+            console.error('Error loading lessons:', error);
+            message.error('Không thể tải danh sách bài học. Vui lòng thử lại.');
+        } finally {
+            setLoading(false);
         }
-      ]
-    },
-    {
-      id: "2",
-      title: "Hỏi đường",
-      scenario: "Hỏi đường đến nhà ga",
-      lines: [
-        {
-          speaker: "Khách du lịch",
-          japanese: "すみません、駅はどこですか？",
-          romaji: "Sumimasen, eki wa doko desu ka?",
-          vietnamese: "Xin lỗi, nhà ga ở đâu ạ?"
-        },
-        {
-          speaker: "Người địa phương",
-          japanese: "駅ですか。この道をまっすぐ行って、二つ目の角を右に曲がってください。",
-          romaji: "Eki desu ka. Kono michi o massugu itte, futatsume no kado o migi ni magatte kudasai.",
-          vietnamese: "Nhà ga ạ? Đi thẳng trên con đường này, đến ngã rẽ thứ hai rồi rẽ phải."
-        },
-        {
-          speaker: "Khách du lịch",
-          japanese: "どのくらいかかりますか？",
-          romaji: "Dono kurai kakarimasu ka?",
-          vietnamese: "Mất bao lâu ạ?"
-        },
-        {
-          speaker: "Người địa phương",
-          japanese: "歩いて5分ぐらいです。",
-          romaji: "Aruite go-fun gurai desu.",
-          vietnamese: "Đi bộ khoảng 5 phút."
-        }
-      ]
-    }
-  ]);
-
-  useEffect(() => {
-    scrollToBottom();
-  }, [messages]);
-
-  const scrollToBottom = () => {
-    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
-  };
-
-  const handleSendMessage = async () => {
-    if (!inputMessage.trim()) return;
-
-    const userMessage: Message = {
-      id: Date.now().toString(),
-      role: "user",
-      content: inputMessage,
-      timestamp: new Date().toISOString()
     };
 
-    setMessages(prev => [...prev, userMessage]);
-    setInputMessage("");
-    setIsLoading(true);
-
-    try {
-      const scenario = scenarios.find(s => s.id === selectedScenario);
-      const response = await lessonAPI.aiRoleplay(
-        selectedScenario || "1",
-        {
-          userId: user?.id || "anonymous",
-          message: inputMessage,
-          context: {
-            currentLesson: scenario?.title || "General Conversation",
-            difficulty: difficulty
-          }
-        }
-      );
-
-      const aiMessage: Message = {
-        id: (Date.now() + 1).toString(),
-        role: "assistant",
-        content: response.data.response,
-        romaji: response.data.romaji,
-        meaning: response.data.meaning,
-        timestamp: new Date().toISOString(),
-        feedback: response.data.feedback
-      };
-
-      setMessages(prev => [...prev, aiMessage]);
-      setConversationId(response.data.conversationId);
-    } catch (error) {
-      console.error("Error sending message:", error);
-      message.error("Gửi tin nhắn thất bại. Vui lòng thử lại.");
-    } finally {
-      setIsLoading(false);
-    }
-  };
-
-  const handleStartConversation = () => {
-    if (!selectedScenario) {
-      message.warning("Vui lòng chọn tình huống hội thoại trước.");
-      return;
-    }
-
-    const scenario = scenarios.find(s => s.id === selectedScenario);
-    const welcomeMessage: Message = {
-      id: Date.now().toString(),
-      role: "assistant",
-      content: `こんにちは！${scenario?.aiRole}です。${scenario?.scenario} Let's start our conversation!`,
-      romaji: "Konnichiwa! [AI Role] desu. [Scenario] Let's start our conversation!",
-      meaning: "Hello! I'm the [AI Role]. [Scenario] Let's start our conversation!",
-      timestamp: new Date().toISOString()
+    const handleLevelChange = (level: string) => {
+        setFilters(prev => ({ ...prev, level: level as any }));
     };
 
-    setMessages([welcomeMessage]);
-  };
+    const handleCategoryChange = (category: string) => {
+        setFilters(prev => ({ ...prev, category }));
+    };
 
-  const handleKeyPress = (e: React.KeyboardEvent) => {
-    if (e.key === "Enter" && !e.shiftKey) {
-      e.preventDefault();
-      handleSendMessage();
+    const handleDifficultyChange = (difficulty: number) => {
+        setFilters(prev => ({ ...prev, difficulty }));
+    };
+
+    const handleDurationRangeChange = (range: number | number[]) => {
+        if (Array.isArray(range)) {
+            setFilters(prev => ({
+                ...prev,
+                minDuration: range[0],
+                maxDuration: range[1]
+            }));
+        }
+    };
+
+    const handleSearch = (value: string) => {
+        setSearchTerm(value);
+    };
+
+    const clearFilters = () => {
+        setFilters({
+            level: '',
+            category: '',
+            difficulty: 0,
+            minDuration: 0,
+            maxDuration: 120
+        });
+        setSearchTerm('');
+    };
+
+    const getDifficultyColor = (difficulty: number) => {
+        switch (difficulty) {
+            case 1: return '#52c41a';
+            case 2: return '#faad14';
+            case 3: return '#fa8c16';
+            case 4: return '#f5222d';
+            case 5: return '#722ed1';
+            default: return '#d9d9d9';
+        }
+    };
+
+    const getDifficultyText = (difficulty: number) => {
+        switch (difficulty) {
+            case 1: return 'Rất dễ';
+            case 2: return 'Dễ';
+            case 3: return 'Trung bình';
+            case 4: return 'Khó';
+            case 5: return 'Rất khó';
+            default: return 'Không xác định';
+        }
+    };
+
+    const getCategoryIcon = (category: string) => {
+        switch (category) {
+            case 'greetings': return '👋';
+            case 'self_introduction': return '🙋';
+            case 'daily_life': return '🏠';
+            case 'shopping': return '🛒';
+            case 'restaurant': return '🍽️';
+            case 'travel': return '✈️';
+            case 'business': return '💼';
+            case 'school': return '🎓';
+            case 'hospital': return '🏥';
+            default: return '📚';
+        }
+    };
+
+    const getCategoryText = (category: string) => {
+        switch (category) {
+            case 'greetings': return 'Chào hỏi';
+            case 'self_introduction': return 'Giới thiệu bản thân';
+            case 'daily_life': return 'Đời sống hàng ngày';
+            case 'shopping': return 'Mua sắm';
+            case 'restaurant': return 'Nhà hàng';
+            case 'travel': return 'Du lịch';
+            case 'business': return 'Công việc';
+            case 'school': return 'Trường học';
+            case 'hospital': return 'Bệnh viện';
+            default: return 'Khác';
+        }
+    };
+
+    const handleLessonClick = (lesson: ConversationLesson) => {
+        navigate(`/conversation/${lesson.lesson_id}`);
+    };
+
+    const getActiveFiltersCount = () => {
+        let count = 0;
+        if (filters.level) count++;
+        if (filters.category) count++;
+        if (filters.difficulty > 0) count++;
+        if (filters.minDuration > 0 || filters.maxDuration < 120) count++;
+        if (searchTerm) count++;
+        return count;
+    };
+
+    if (loading) {
+        return (
+            <div className="flex justify-center items-center min-h-screen">
+                <Spin size="large" />
+            </div>
+        );
     }
-  };
 
-  const playAudio = (text: string) => {
-    // Placeholder for audio playback
-    message.info("Phát âm sẽ được triển khai ở đây");
-  };
-
-  const renderMessage = (msg: Message) => (
-    <div
-      key={msg.id}
-      className={`flex ${msg.role === "user" ? "justify-end" : "justify-start"} mb-4`}
-    >
-      <div className={`flex max-w-[70%] ${msg.role === "user" ? "flex-row-reverse" : "flex-row"}`}>
-        <Avatar
-          icon={msg.role === "user" ? <UserOutlined /> : <RobotOutlined />}
-          className={`${msg.role === "user" ? "ml-2" : "mr-2"}`}
-        />
-        <div>
-          <Card
-            size="small"
-            className={`${msg.role === "user" ? "bg-blue-100 dark:bg-blue-900" : "bg-gray-100 dark:bg-gray-800"}`}
-          >
-            <Text className="text-gray-900 dark:text-secondary-100">
-              {msg.content}
-            </Text>
-            {msg.romaji && (
-              <div className="mt-1">
-                <Text type="secondary" className="text-xs italic">
-                  {msg.romaji}
-                </Text>
-              </div>
-            )}
-            {msg.meaning && (
-              <div className="mt-1">
-                <Text type="secondary" className="text-xs">
-                  {msg.meaning}
-                </Text>
-              </div>
-            )}
-          </Card>
-          <div className="flex items-center mt-1 space-x-2">
-            <Button
-              type="text"
-              size="small"
-              icon={<SoundOutlined />}
-              onClick={() => playAudio(msg.content)}
-            />
-            {msg.feedback && (
-              <Button
-                type="text"
-                size="small"
-                icon={<CheckCircleOutlined />}
-                onClick={() => setShowFeedback(true)}
-              />
-            )}
-            <Text type="secondary" className="text-xs">
-              {new Date(msg.timestamp).toLocaleTimeString()}
-            </Text>
-          </div>
-        </div>
-      </div>
-    </div>
-  );
-
-  const renderScenarioCard = (scenario: ConversationScenario) => (
-    <Card
-      key={scenario.id}
-      hoverable
-      className={`mb-3 ${selectedScenario === scenario.id ? "border-blue-500" : ""}`}
-      onClick={() => setSelectedScenario(scenario.id)}
-    >
-      <div className="flex justify-between items-start">
-        <div className="flex-1">
-          <Title level={4} className="text-gray-900 dark:text-secondary-100 mb-2">
-            {scenario.title}
-          </Title>
-          <Text className="text-gray-600 dark:text-secondary-400">
-            {scenario.description}
-          </Text>
-          <div className="mt-2 flex items-center space-x-2">
-            <Badge color={scenario.difficulty === "easy" ? "green" : scenario.difficulty === "medium" ? "orange" : "red"} text={scenario.difficulty} />
-            <Badge color="blue" text={scenario.level} />
-            <Badge color="purple" text={scenario.category} />
-          </div>
-        </div>
-      </div>
-    </Card>
-  );
-
-  const renderDialogLine = (line: DialogLine, index: number) => (
-    <div
-      key={index}
-      className={`p-4 rounded-lg mb-3 ${index === dialogLineIndex
-        ? "bg-blue-100 dark:bg-blue-900 border-2 border-blue-500"
-        : "bg-gray-50 dark:bg-gray-800"
-        }`}
-    >
-      <div className="flex items-center mb-2">
-        <Avatar
-          icon={line.speaker === "Waiter" || line.speaker === "Local" || line.speaker === "Club Member" ? <RobotOutlined /> : <UserOutlined />}
-          className="mr-2"
-        />
-        <Text strong className="text-gray-900 dark:text-secondary-100">
-          {line.speaker}
-        </Text>
-      </div>
-      <div className="space-y-2">
-        <div>
-          <Text className="text-gray-900 dark:text-secondary-100">{line.japanese}</Text>
-          <Button
-            type="text"
-            size="small"
-            icon={<SoundOutlined />}
-            className="ml-2"
-            onClick={() => playAudio(line.japanese)}
-          />
-        </div>
-        <Text type="secondary" className="text-sm italic">
-          {line.romaji}
-        </Text>
-        <Text className="text-gray-600 dark:text-secondary-400">
-          {line.vietnamese}
-        </Text>
-      </div>
-    </div>
-  );
-
-  return (
-    <div className="space-y-6 bg-secondary-50 dark:bg-secondary-950 min-h-screen p-6">
-      <Title level={2} className="text-gray-900 dark:text-secondary-100">
-        <MessageOutlined className="mr-2" />
-        Hội thoại - Luyện tập giao tiếp
-      </Title>
-
-      <Tabs activeKey={activeTab} onChange={setActiveTab}>
-        <TabPane tab="AI Vai diễn" key="ai-practice">
-          <Row gutter={[16, 16]}>
-            <Col xs={24} md={8}>
-              <Card title="Chọn tình huống" className="h-full">
-                <div className="mb-4">
-                  <Select
-                    placeholder="Chọn độ khó"
-                    value={difficulty}
-                    onChange={setDifficulty}
-                    className="w-full mb-3"
-                  >
-                    <Option value="easy">Dễ</Option>
-                    <Option value="medium">Trung bình</Option>
-                    <Option value="hard">Khó</Option>
-                  </Select>
-                </div>
-                <div className="scenario-list" style={{ maxHeight: "400px", overflowY: "auto" }}>
-                  {scenarios.map(renderScenarioCard)}
-                </div>
-                <Button
-                  type="primary"
-                  block
-                  className="mt-4"
-                  onClick={handleStartConversation}
-                  disabled={!selectedScenario}
-                >
-                  Bắt đầu hội thoại
-                </Button>
-              </Card>
-            </Col>
-            <Col xs={24} md={16}>
-              <Card title="Hội thoại" className="h-full">
-                <div className="chat-container" style={{ height: "500px", display: "flex", flexDirection: "column" }}>
-                  <div className="messages flex-1 overflow-y-auto p-4 bg-white dark:bg-gray-800 rounded-lg mb-4">
-                    {messages.length === 0 ? (
-                      <div className="text-center text-gray-500 dark:text-secondary-400 mt-20">
-                        <MessageOutlined className="text-4xl mb-4" />
-                        <p>Chọn tình huống và bắt đầu luyện tập giao tiếp tiếng Nhật!</p>
-                      </div>
-                    ) : (
-                      messages.map(renderMessage)
-                    )}
-                    {isLoading && (
-                      <div className="flex justify-start mb-4">
-                        <div className="flex">
-                          <Avatar icon={<RobotOutlined />} className="mr-2" />
-                          <Card size="small" className="bg-gray-100 dark:bg-gray-800">
-                            <Spin size="small" />
-                            <Text className="ml-2">AI đang suy nghĩ...</Text>
-                          </Card>
+    return (
+        <div className="min-h-screen bg-secondary-50 dark:bg-secondary-950">
+            <div className="flex">
+                {/* Sidebar Filters */}
+                <div className={`${sidebarCollapsed ? 'w-20' : 'w-80'} bg-white dark:bg-secondary-900 shadow-lg transition-all duration-300 min-h-screen sticky top-0`}>
+                    <div className="p-6">
+                        <div className="flex justify-between items-center mb-6">
+                            {!sidebarCollapsed && (
+                                <div>
+                                    <Title level={4} className="!mb-2 text-secondary-900 dark:text-secondary-100">
+                                        <FilterOutlined className="mr-2" />
+                                        Bộ lọc
+                                    </Title>
+                                    <Text type="secondary" className="text-sm">
+                                        {getActiveFiltersCount()} bộ lọc đang hoạt động
+                                    </Text>
+                                </div>
+                            )}
+                            <Button
+                                type="text"
+                                icon={sidebarCollapsed ? <FilterOutlined /> : <ClearOutlined />}
+                                onClick={() => setSidebarCollapsed(!sidebarCollapsed)}
+                                className="ml-2"
+                            />
                         </div>
-                      </div>
+
+                        {!sidebarCollapsed && (
+                            <>
+                                {/* Search */}
+                                <div className="mb-6">
+                                    <Text strong className="text-sm mb-2 block">Tìm kiếm:</Text>
+                                    <Search
+                                        placeholder="Nhập tên bài học..."
+                                        value={searchTerm}
+                                        onChange={(e) => setSearchTerm(e.target.value)}
+                                        onSearch={handleSearch}
+                                        allowClear
+                                    />
+                                </div>
+
+                                {/* Level Filter */}
+                                <div className="mb-6">
+                                    <Text strong className="text-sm mb-2 block">Trình độ:</Text>
+                                    <Select
+                                        value={filters.level}
+                                        onChange={handleLevelChange}
+                                        className="w-full"
+                                        allowClear
+                                        placeholder="Chọn trình độ"
+                                    >
+                                        <Option value="N5">N5</Option>
+                                        <Option value="N4">N4</Option>
+                                        <Option value="N3">N3</Option>
+                                        <Option value="N2">N2</Option>
+                                        <Option value="N1">N1</Option>
+                                    </Select>
+                                </div>
+
+                                {/* Category Filter */}
+                                <div className="mb-6">
+                                    <Text strong className="text-sm mb-2 block">Danh mục:</Text>
+                                    <Select
+                                        value={filters.category}
+                                        onChange={handleCategoryChange}
+                                        className="w-full"
+                                        allowClear
+                                        placeholder="Chọn danh mục"
+                                    >
+                                        <Option value="greetings">👋 Chào hỏi</Option>
+                                        <Option value="self_introduction">🙋 Giới thiệu bản thân</Option>
+                                        <Option value="daily_life">🏠 Đời sống hàng ngày</Option>
+                                        <Option value="shopping">🛒 Mua sắm</Option>
+                                        <Option value="restaurant">🍽️ Nhà hàng</Option>
+                                        <Option value="travel">✈️ Du lịch</Option>
+                                        <Option value="business">💼 Công việc</Option>
+                                        <Option value="school">🎓 Trường học</Option>
+                                        <Option value="hospital">🏥 Bệnh viện</Option>
+                                        <Option value="other">📚 Khác</Option>
+                                    </Select>
+                                </div>
+
+                                {/* Difficulty Filter */}
+                                <div className="mb-6">
+                                    <Text strong className="text-sm mb-2 block">Độ khó:</Text>
+                                    <Select
+                                        value={filters.difficulty || undefined}
+                                        onChange={handleDifficultyChange}
+                                        className="w-full"
+                                        allowClear
+                                        placeholder="Chọn độ khó"
+                                    >
+                                        <Option value={1}>⭐ Rất dễ</Option>
+                                        <Option value={2}>⭐⭐ Dễ</Option>
+                                        <Option value={3}>⭐⭐⭐ Trung bình</Option>
+                                        <Option value={4}>⭐⭐⭐⭐ Khó</Option>
+                                        <Option value={5}>⭐⭐⭐⭐⭐ Rất khó</Option>
+                                    </Select>
+                                </div>
+
+                                {/* Duration Range */}
+                                <div className="mb-6">
+                                    <Text strong className="text-sm mb-2 block">
+                                        Thời lượng: {filters.minDuration}-{filters.maxDuration} phút
+                                    </Text>
+                                    <Slider
+                                        range
+                                        min={0}
+                                        max={120}
+                                        value={[filters.minDuration, filters.maxDuration]}
+                                        onChange={handleDurationRangeChange}
+                                        marks={{
+                                            0: '0',
+                                            30: '30',
+                                            60: '60',
+                                            90: '90',
+                                            120: '120'
+                                        }}
+                                    />
+                                </div>
+
+                                {/* Clear Filters */}
+                                <Button
+                                    type="default"
+                                    icon={<ClearOutlined />}
+                                    onClick={clearFilters}
+                                    className="w-full"
+                                    disabled={getActiveFiltersCount() === 0}
+                                >
+                                    Xóa tất cả bộ lọc
+                                </Button>
+                            </>
+                        )}
+                    </div>
+                </div>
+
+                {/* Main Content */}
+                <div className="flex-1 p-6">
+                    {/* Header */}
+                    <div className="mb-8">
+                        <div className="flex items-center gap-4 mb-2">
+                            <div>
+                                <Title level={1} className="!mb-1 text-gray-900 dark:text-secondary-100">
+                                    <MessageOutlined className="mr-2 text-gray-700 dark:text-secondary-400" />
+                                    Bài học hội thoại
+                                </Title>
+                                <Text className="text-gray-600 dark:text-secondary-400 text-lg">
+                                    🎭 Học tiếng Nhật qua hội thoại đời sống thực
+                                </Text>
+                            </div>
+                        </div>
+                    </div>
+
+                    {/* Results Info */}
+                    <div className="flex items-center justify-between mb-6 px-4 py-2 rounded-lg 
+                bg-blue-50 dark:bg-secondary-800 border border-blue-100 dark:border-secondary-700">
+                        <div className="flex items-center gap-2">
+                            <BookOutlined className="text-blue-500" />
+                            <Text className="text-gray-700 dark:text-secondary-200 font-medium">
+                                Tìm thấy <span className="text-blue-600 font-semibold">{lessons.length}</span> bài học
+                            </Text>
+
+                            {getActiveFiltersCount() > 0 && (
+                                <Tag color="blue" className="ml-2">
+                                    {getActiveFiltersCount()} bộ lọc đang áp dụng
+                                </Tag>
+                            )}
+                        </div>
+                    </div>
+
+
+                    {/* Lessons Grid */}
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                        {lessons.map((lesson) => (
+                            <Card
+                                key={lesson.lesson_id}
+                                hoverable
+                                className="shadow-sm hover:shadow-lg transition-all duration-300 cursor-pointer transform hover:scale-105"
+                                onClick={() => handleLessonClick(lesson)}
+                                cover={
+                                    <div className="h-32 bg-gradient-to-br from-blue-400 to-purple-500 flex items-center justify-center">
+                                        <div className="text-white text-center">
+                                            <div className="text-4xl mb-2">{getCategoryIcon(lesson.category)}</div>
+                                            <div className="text-sm font-medium">{getCategoryText(lesson.category)}</div>
+                                        </div>
+                                    </div>
+                                }
+                                actions={[
+                                    <Button type="primary" icon={<PlayCircleOutlined />} key="start">
+                                        Bắt đầu
+                                    </Button>
+                                ]}
+                            >
+                                <Card.Meta
+                                    title={
+                                        <div className="flex justify-between items-start">
+                                            <Text strong className="text-lg flex-1">
+                                                {lesson.lesson_title}
+                                            </Text>
+                                            <div className="flex items-center space-x-1">
+                                                <StarOutlined className="text-yellow-500 text-sm" />
+                                                <span
+                                                    className="text-sm font-medium"
+                                                    style={{ color: getDifficultyColor(lesson.difficulty) }}
+                                                >
+                                                    {lesson.difficulty}
+                                                </span>
+                                            </div>
+                                        </div>
+                                    }
+                                    description={
+                                        <div className="space-y-2">
+                                            <Text className="text-sm text-gray-600 dark:text-gray-400 line-clamp-2">
+                                                {lesson.situation_vi}
+                                            </Text>
+
+                                            <div className="flex items-center justify-between">
+                                                <Space>
+                                                    <Tag color="blue">{lesson.level}</Tag>
+                                                    <Tag color="green">{getDifficultyText(lesson.difficulty)}</Tag>
+                                                </Space>
+
+                                                <div className="flex items-center text-xs text-gray-500">
+                                                    <ClockCircleOutlined className="mr-1" />
+                                                    {lesson.estimated_duration} phút
+                                                </div>
+                                            </div>
+
+                                            {lesson.usage_count > 0 && (
+                                                <div className="text-xs text-gray-500">
+                                                    Đã học {lesson.usage_count} lần
+                                                </div>
+                                            )}
+                                        </div>
+                                    }
+                                />
+                            </Card>
+                        ))}
+                    </div>
+
+                    {/* Empty State */}
+                    {lessons.length === 0 && !loading && (
+                        <Card className="text-center py-12">
+                            <BookOutlined className="text-6xl text-gray-300 mb-4" />
+                            <Title level={4} className="text-gray-500">
+                                Không tìm thấy bài học nào
+                            </Title>
+                            <Text className="text-gray-400">
+                                Thử thay đổi bộ lọc hoặc tìm kiếm để tìm bài học phù hợp
+                            </Text>
+                        </Card>
                     )}
-                    <div ref={messagesEndRef} />
-                  </div>
-                  <div className="input-area">
-                    <Space.Compact style={{ width: "100%" }}>
-                      <TextArea
-                        value={inputMessage}
-                        onChange={(e) => setInputMessage(e.target.value)}
-                        onKeyPress={handleKeyPress}
-                        placeholder="Nhập tin nhắn bằng tiếng Nhật..."
-                        autoSize={{ minRows: 2, maxRows: 4 }}
-                        disabled={!selectedScenario || isLoading}
-                      />
-                      <Button
-                        type="primary"
-                        icon={<SendOutlined />}
-                        onClick={handleSendMessage}
-                        disabled={!selectedScenario || isLoading || !inputMessage.trim()}
-                        className="self-end"
-                      >
-                        Gửi
-                      </Button>
-                    </Space.Compact>
-                  </div>
                 </div>
-              </Card>
-            </Col>
-          </Row>
-        </TabPane>
-
-        <TabPane tab="Ví dụ hội thoại" key="dialog-examples">
-          <Row gutter={[16, 16]}>
-            <Col xs={24} md={8}>
-              <Card title="Hội thoại mẫu">
-                {sampleDialogs.map((dialog) => (
-                  <Card
-                    key={dialog.id}
-                    size="small"
-                    hoverable
-                    className={`mb-3 ${currentDialog?.id === dialog.id ? "border-blue-500" : ""}`}
-                    onClick={() => {
-                      setCurrentDialog(dialog);
-                      setDialogLineIndex(0);
-                    }}
-                  >
-                    <Title level={5} className="text-gray-900 dark:text-secondary-100">
-                      {dialog.title}
-                    </Title>
-                    <Text className="text-gray-600 dark:text-secondary-400">
-                      {dialog.scenario}
-                    </Text>
-                  </Card>
-                ))}
-              </Card>
-            </Col>
-            <Col xs={24} md={16}>
-              {currentDialog ? (
-                <Card title={currentDialog.title}>
-                  <div className="mb-4">
-                    <Progress
-                      percent={(dialogLineIndex / (currentDialog.lines?.length || 1)) * 100}
-                      showInfo={false}
-                    />
-                  </div>
-                  <div className="dialog-content">
-                    {currentDialog.lines?.map((line, index) => renderDialogLine(line, index))}
-                  </div>
-                  <div className="controls flex justify-between mt-4">
-                    <Button
-                      onClick={() => setDialogLineIndex(Math.max(0, dialogLineIndex - 1))}
-                      disabled={dialogLineIndex === 0}
-                    >
-                      Trước
-                    </Button>
-                    <Space>
-                      <Button
-                        type="primary"
-                        icon={isPlaying ? <PauseCircleOutlined /> : <PlayCircleOutlined />}
-                        onClick={() => setIsPlaying(!isPlaying)}
-                      >
-                        {isPlaying ? "Tạm dừng" : "Phát tất cả"}
-                      </Button>
-                    </Space>
-                    <Button
-                      onClick={() => setDialogLineIndex(Math.min((currentDialog.lines?.length || 1) - 1, dialogLineIndex + 1))}
-                      disabled={dialogLineIndex >= (currentDialog.lines?.length || 1) - 1}
-                    >
-                      Tiếp theo
-                    </Button>
-                  </div>
-                </Card>
-              ) : (
-                <Card>
-                  <div className="text-center text-gray-500 dark:text-secondary-400 mt-20">
-                    <BookOutlined className="text-4xl mb-4" />
-                    <p>Chọn một hội thoại từ bên trái để xem các ví dụ</p>
-                  </div>
-                </Card>
-              )}
-            </Col>
-          </Row>
-        </TabPane>
-
-        <TabPane tab="Luyện tập giọng nói" key="voice-practice">
-          <Card title="Luyện tập ghi âm giọng nói">
-            <div className="text-center py-8">
-              <div className="mb-6">
-                <Title level={4} className="text-gray-900 dark:text-secondary-100">
-                  Luyện phát âm của bạn
-                </Title>
-                <Text className="text-gray-600 dark:text-secondary-400">
-                  Ghi âm giọng nói của bạn và nhận phản hồi ngay lập tức về phát âm tiếng Nhật
-                </Text>
-              </div>
-
-              <div className="flex justify-center mb-6">
-                <Button
-                  type="primary"
-                  size="large"
-                  icon={isRecording ? <PauseCircleOutlined /> : <PlayCircleOutlined />}
-                  danger={isRecording}
-                  onClick={() => setIsRecording(!isRecording)}
-                >
-                  {isRecording ? "Dừng ghi âm" : "Bắt đầu ghi âm"}
-                </Button>
-              </div>
-
-              {isRecording && (
-                <div className="mb-6">
-                  <Spin size="large" />
-                  <div className="mt-2">
-                    <Text>Đang ghi âm... Hãy nói rõ ràng bằng tiếng Nhật</Text>
-                  </div>
-                </div>
-              )}
-
-              <Card className="max-w-md mx-auto">
-                <div className="space-y-4">
-                  <div>
-                    <Text strong>Điểm phát âm:</Text>
-                    <div className="mt-2">
-                      <Rate disabled defaultValue={4} />
-                    </div>
-                  </div>
-                  <div>
-                    <Text strong>Phản hồi:</Text>
-                    <div className="mt-2">
-                      <Text className="text-gray-600 dark:text-secondary-400">
-                        Phát âm của bạn tốt! Hãy chú ý đến ngữ điệu của nguyên âm dài.
-                      </Text>
-                    </div>
-                  </div>
-                </div>
-              </Card>
             </div>
-          </Card>
-        </TabPane>
-      </Tabs>
-
-      <Modal
-        title="Phản hồi hội thoại"
-        open={showFeedback}
-        onCancel={() => setShowFeedback(false)}
-        footer={[
-          <Button key="close" onClick={() => setShowFeedback(false)}>
-            Đóng
-          </Button>
-        ]}
-      >
-        <div className="space-y-4">
-          <div>
-            <Text strong>Ngữ pháp:</Text>
-            <div className="mt-1">
-              <Text>Sử dụng trợ từ và chia động từ tốt!</Text>
-            </div>
-          </div>
-          <div>
-            <Text strong>Từ vựng:</Text>
-            <div className="mt-1">
-              <Text>Lựa chọn từ vựng phù hợp với ngữ cảnh.</Text>
-            </div>
-          </div>
-          <div>
-            <Text strong>Phát âm:</Text>
-            <div className="mt-1">
-              <Text>Phát âm rõ ràng với nhịp điệu tự nhiên.</Text>
-            </div>
-          </div>
         </div>
-      </Modal>
-    </div>
-  );
+    );
 };
 
-export default Conversation;
+export default ConversationComponent;

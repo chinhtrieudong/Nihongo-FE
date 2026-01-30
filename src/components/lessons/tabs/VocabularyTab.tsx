@@ -59,38 +59,39 @@ const VocabularyTab: React.FC<VocabularyTabProps> = ({ vocabulary }) => {
     return (
         <div className="space-y-8">
             {/* Header */}
-            <div className="flex items-center justify-between">
+            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
                 <div>
-                    <h2 className="text-2xl font-bold text-secondary-900 dark:text-secondary-100 flex items-center gap-2">
-                        <span className="text-3xl">📚</span>
+                    <h2 className="text-xl sm:text-2xl font-bold text-secondary-900 dark:text-secondary-100 flex items-center gap-2">
+                        <span className="text-2xl sm:text-3xl">📚</span>
                         Từ vựng
                     </h2>
-                    <p className="text-secondary-600 dark:text-secondary-400 mt-1">
+                    <p className="text-secondary-600 dark:text-secondary-400 mt-1 text-sm sm:text-base">
                         Học {vocabulary.length} từ vựng quan trọng
                     </p>
                 </div>
-                <div className="flex items-center gap-4">
+                <div className="flex items-center gap-2 sm:gap-4">
                     <Badge
                         count={`${currentCard + 1}/${vocabulary.length}`}
                         style={{ backgroundColor: '#1890ff' }}
-                        className="text-sm"
+                        className="text-xs sm:text-sm"
                     />
                     <Button
                         icon={<SoundOutlined />}
                         type="default"
-                        size="large"
+                        size={"middle"}
                         className="flex items-center"
                     >
-                        Phát âm
+                        <span className="hidden sm:inline">Phát âm</span>
+                        <span className="sm:hidden">🔊</span>
                     </Button>
                 </div>
             </div>
 
             {/* Flashcard Container */}
             <div className="flex justify-center">
-                <div className="relative w-full max-w-md">
+                <div className="relative w-full max-w-md sm:max-w-lg">
                     {/* Progress Dots */}
-                    <div className="flex justify-center gap-2 mb-6">
+                    <div className="flex justify-center gap-1.5 sm:gap-2 mb-4 sm:mb-6">
                         {vocabulary.map((_, index) => (
                             <button
                                 key={index}
@@ -99,9 +100,9 @@ const VocabularyTab: React.FC<VocabularyTabProps> = ({ vocabulary }) => {
                                     setIsFlipped(false);
                                     setShowMeaning(false);
                                 }}
-                                className={`w-2 h-2 rounded-full transition-all duration-300 ${index === currentCard
-                                        ? 'w-8 bg-primary-600'
-                                        : 'bg-gray-300 dark:bg-secondary-600 hover:bg-gray-400'
+                                className={`w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full transition-all duration-300 ${index === currentCard
+                                    ? 'w-6 sm:w-8 bg-primary-600'
+                                    : 'bg-gray-300 dark:bg-secondary-600 hover:bg-gray-400'
                                     }`}
                             />
                         ))}
@@ -109,7 +110,7 @@ const VocabularyTab: React.FC<VocabularyTabProps> = ({ vocabulary }) => {
 
                     {/* Flashcard */}
                     <div
-                        className="relative h-80 cursor-pointer"
+                        className="relative h-64 sm:h-80 cursor-pointer"
                         onClick={handleCardFlip}
                     >
                         <div
@@ -119,17 +120,17 @@ const VocabularyTab: React.FC<VocabularyTabProps> = ({ vocabulary }) => {
                         >
                             {/* Front of card */}
                             <div className="absolute inset-0 w-full h-full backface-hidden">
-                                <div className="bg-gradient-to-br from-primary-500 to-primary-600 dark:from-primary-700 dark:to-primary-800 rounded-2xl shadow-2xl p-8 h-full flex flex-col justify-center items-center text-white">
-                                    <div className="text-5xl font-bold mb-4 text-center">
+                                <div className="bg-gradient-to-br from-primary-500 to-primary-600 dark:from-primary-700 dark:to-primary-800 rounded-2xl shadow-2xl p-4 sm:p-8 h-full flex flex-col justify-center items-center text-white">
+                                    <div className="text-3xl sm:text-5xl font-bold mb-2 sm:mb-4 text-center">
                                         {card.kanji}
                                     </div>
-                                    <div className="text-2xl mb-3 text-center opacity-90">
+                                    <div className="text-lg sm:text-2xl mb-2 sm:mb-3 text-center opacity-90">
                                         {card.hiragana}
                                     </div>
-                                    <div className="text-lg opacity-80 text-center">
+                                    <div className="text-sm sm:text-lg opacity-80 text-center">
                                         {card.romaji}
                                     </div>
-                                    <div className="mt-6 text-sm opacity-70">
+                                    <div className="mt-3 sm:mt-6 text-xs sm:text-sm opacity-70">
                                         Nhấn để xem nghĩa
                                     </div>
                                 </div>
@@ -140,20 +141,20 @@ const VocabularyTab: React.FC<VocabularyTabProps> = ({ vocabulary }) => {
                                 className="absolute inset-0 w-full h-full rotate-y-180 backface-hidden"
                                 style={{ transform: 'rotateY(180deg)', backfaceVisibility: 'hidden' }}
                             >
-                                <div className="bg-gradient-to-br from-green-500 to-green-600 dark:from-green-700 dark:to-green-800 rounded-2xl shadow-2xl p-8 h-full flex flex-col justify-center text-white">
-                                    <div className="text-3xl font-bold mb-4 text-center">
+                                <div className="bg-gradient-to-br from-green-500 to-green-600 dark:from-green-700 dark:to-green-800 rounded-2xl shadow-2xl p-4 sm:p-8 h-full flex flex-col justify-center text-white">
+                                    <div className="text-2xl sm:text-3xl font-bold mb-2 sm:mb-4 text-center">
                                         {card.meaningVi}
                                     </div>
-                                    <div className="text-lg mb-6 text-center opacity-90">
+                                    <div className="text-sm sm:text-lg mb-3 sm:mb-6 text-center opacity-90">
                                         {card.meaningEn}
                                     </div>
                                     {card.mnemonic && (
-                                        <div className="bg-white/20 backdrop-blur-sm rounded-lg p-4">
-                                            <div className="flex items-center gap-2 mb-2">
-                                                <BulbOutlined className="text-yellow-300" />
-                                                <span className="text-sm font-medium">Mẹo ghi nhớ:</span>
+                                        <div className="bg-white/20 backdrop-blur-sm rounded-lg p-2 sm:p-4">
+                                            <div className="flex items-center gap-2 mb-1 sm:mb-2">
+                                                <BulbOutlined className="text-yellow-300 text-sm sm:text-base" />
+                                                <span className="text-xs sm:text-sm font-medium">Mẹo ghi nhớ:</span>
                                             </div>
-                                            <p className="text-sm opacity-90">{card.mnemonic}</p>
+                                            <p className="text-xs sm:text-sm opacity-90">{card.mnemonic}</p>
                                         </div>
                                     )}
                                 </div>
@@ -162,50 +163,56 @@ const VocabularyTab: React.FC<VocabularyTabProps> = ({ vocabulary }) => {
                     </div>
 
                     {/* Navigation Buttons */}
-                    <div className="flex justify-between items-center mt-8">
+                    <div className="flex justify-between items-center mt-6 sm:mt-8 gap-2">
                         <Button
                             onClick={handlePrev}
                             icon={<LeftOutlined />}
-                            size="large"
-                            className="flex items-center"
+                            size={"middle"}
+                            className="flex items-center flex-1 sm:flex-none"
                         >
-                            Trước
+                            <span className="hidden sm:inline">Trước</span>
+                            <span className="sm:hidden">←</span>
                         </Button>
-                        <div className="flex gap-2">
+                        <div className="flex gap-1 sm:gap-2">
                             <Button
                                 onClick={handleCardFlip}
                                 icon={isFlipped ? <EyeOutlined /> : <EyeInvisibleOutlined />}
                                 type="default"
+                                size={"middle"}
                             >
-                                {isFlipped ? 'Ẩn nghĩa' : 'Hiện nghĩa'}
+                                <span className="hidden sm:inline">{isFlipped ? 'Ẩn nghĩa' : 'Hiện nghĩa'}</span>
+                                <span className="sm:hidden">{isFlipped ? '👁️' : '👁️‍🗨️'}</span>
                             </Button>
                             <Button
                                 icon={<StarOutlined />}
                                 type="default"
+                                size={"middle"}
                             >
-                                Đánh dấu
+                                <span className="hidden sm:inline">Đánh dấu</span>
+                                <span className="sm:hidden">⭐</span>
                             </Button>
                         </div>
                         <Button
                             onClick={handleNext}
                             icon={<RightOutlined />}
-                            size="large"
+                            size={"middle"}
                             type="primary"
-                            className="flex items-center"
+                            className="flex items-center flex-1 sm:flex-none"
                         >
-                            Tiếp
+                            <span className="hidden sm:inline">Tiếp</span>
+                            <span className="sm:hidden">→</span>
                         </Button>
                     </div>
                 </div>
             </div>
 
             {/* Vocabulary List */}
-            <div className="bg-white dark:bg-secondary-800 rounded-xl shadow-lg p-6">
-                <h3 className="text-lg font-semibold mb-4 text-secondary-900 dark:text-secondary-100 flex items-center gap-2">
+            <div className="bg-white dark:bg-secondary-800 rounded-xl shadow-lg p-4 sm:p-6">
+                <h3 className="text-base sm:text-lg font-semibold mb-3 sm:mb-4 text-secondary-900 dark:text-secondary-100 flex items-center gap-2">
                     <BookOutlined />
                     Danh sách từ vựng
                 </h3>
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4">
                     {vocabulary.map((item, index) => (
                         <div
                             key={item.id}
@@ -214,24 +221,24 @@ const VocabularyTab: React.FC<VocabularyTabProps> = ({ vocabulary }) => {
                                 setIsFlipped(false);
                                 setShowMeaning(false);
                             }}
-                            className={`p-4 rounded-lg border-2 cursor-pointer transition-all duration-200 hover:shadow-md ${index === currentCard
-                                    ? "border-primary-500 bg-primary-50 dark:bg-primary-900/20 shadow-lg"
-                                    : "border-secondary-200 dark:border-secondary-700 hover:border-primary-300 hover:bg-secondary-50 dark:hover:bg-secondary-800"
+                            className={`p-3 sm:p-4 rounded-lg border-2 cursor-pointer transition-all duration-200 hover:shadow-md ${index === currentCard
+                                ? "border-primary-500 bg-primary-50 dark:bg-primary-900/20 shadow-lg"
+                                : "border-secondary-200 dark:border-secondary-700 hover:border-primary-300 hover:bg-secondary-50 dark:hover:bg-secondary-800"
                                 }`}
                         >
                             <div className="flex items-start justify-between mb-2">
-                                <div className="font-bold text-lg text-primary-600 dark:text-primary-400">
+                                <div className="font-bold text-base sm:text-lg text-primary-600 dark:text-primary-400 truncate">
                                     {item.kanji}
                                 </div>
                                 <Badge count={index + 1} size="small" />
                             </div>
-                            <div className="text-sm text-secondary-700 dark:text-secondary-400 mb-1">
+                            <div className="text-xs sm:text-sm text-secondary-700 dark:text-secondary-400 mb-1">
                                 {item.hiragana}
                             </div>
                             <div className="text-xs text-secondary-500 dark:text-secondary-500 mb-2">
                                 {item.romaji}
                             </div>
-                            <div className="text-sm font-medium text-secondary-900 dark:text-secondary-100">
+                            <div className="text-xs sm:text-sm font-medium text-secondary-900 dark:text-secondary-100">
                                 {item.meaningVi}
                             </div>
                         </div>

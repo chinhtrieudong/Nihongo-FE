@@ -4,7 +4,10 @@ import { KanjiItem } from '../../types/kanji';
 import KanjiList from '../../components/kanji/KanjiList';
 import KanjiFilter from '../../components/kanji/KanjiFilter';
 import KanjiModal from '../../components/kanji/KanjiModal';
-import { message } from 'antd';
+import { message, Typography } from 'antd';
+import { ReadOutlined } from '@ant-design/icons';
+
+const { Title } = Typography;
 
 const KanjiPage: React.FC = () => {
     const [kanjiList, setKanjiList] = useState<KanjiItem[]>([]);
@@ -98,8 +101,11 @@ const KanjiPage: React.FC = () => {
     return (
         <div className="p-6 bg-secondary-50 dark:bg-secondary-950 min-h-screen">
             <div className="mb-8">
-                <h1 className="text-3xl font-bold text-gray-800 mb-2">Học Hán Tự</h1>
-                <p className="text-gray-600">
+                <Title level={2} className="!mb-2 text-secondary-900 dark:text-secondary-100">
+                    <ReadOutlined className="mr-2 text-secondary-700 dark:text-secondary-400" />
+                    Học Hán Tự
+                </Title>
+                <p className="text-gray-600 dark:text-secondary-400">
                     Tìm hiểu và ghi nhớ các chữ Hán thông dụng trong tiếng Nhật
                 </p>
             </div>

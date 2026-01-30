@@ -89,8 +89,7 @@ const Lessons: React.FC = () => {
         setLoading(true);
         try {
             const response = await lessonAPI.getLessonDetail(
-                lessonId,
-                currentUser?.id
+                lessonId
             );
             if (response.success && response.data) {
                 setLessonDetail(response.data);
@@ -139,7 +138,7 @@ const Lessons: React.FC = () => {
                         lessonDetail={lessonDetail}
                     />
 
-                    <div className="max-w-7xl mx-auto px-6 py-6">
+                    <div className="max-w-7xl mx-auto px-4 sm:px-6 py-4 sm:py-6">
                         <div className="bg-white dark:bg-secondary-900 rounded-xl shadow-lg overflow-hidden">
                             <LessonNavigation
                                 tabs={tabs}
@@ -155,11 +154,13 @@ const Lessons: React.FC = () => {
                     </div>
                 </>
             ) : (
-                <Spin size="large" className="flex items-center justify-center min-h-screen">
-                    <div className="text-center">
-                        <h3>Đang tải bài học...</h3>
-                    </div>
-                </Spin>
+                <div className="flex items-center justify-center min-h-screen px-4">
+                    <Spin size="large" className="text-center">
+                        <div className="mt-4">
+                            <h3 className="text-lg sm:text-xl">Đang tải bài học...</h3>
+                        </div>
+                    </Spin>
+                </div>
             )}
         </div>
     );

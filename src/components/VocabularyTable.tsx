@@ -315,14 +315,14 @@ const VocabularyTable: React.FC<VocabularyTableProps> = ({ data, loading = false
                   <Statistic
                     title="Tổng"
                     value={totalCount}
-                    valueStyle={{ color: '#1890ff' }}
+                    styles={{ content: { color: '#1890ff' } }}
                   />
                 </Col>
                 <Col span={8}>
                   <Statistic
                     title="Đã nhớ"
                     value={knownCount}
-                    valueStyle={{ color: '#52c41a' }}
+                    styles={{ content: { color: '#52c41a' } }}
                     prefix={<CheckCircleOutlined />}
                   />
                 </Col>
@@ -330,7 +330,7 @@ const VocabularyTable: React.FC<VocabularyTableProps> = ({ data, loading = false
                   <Statistic
                     title="Chưa nhớ"
                     value={unknownCount}
-                    valueStyle={{ color: '#ff4d4f' }}
+                    styles={{ content: { color: '#ff4d4f' } }}
                     prefix={<CloseCircleOutlined />}
                   />
                 </Col>
@@ -583,7 +583,7 @@ const VocabularyTable: React.FC<VocabularyTableProps> = ({ data, loading = false
         <Table
           dataSource={filteredData}
           loading={loading}
-          rowKey={(record) => record.id || `${record.kanji}_${record.hiragana || record.katakana}`}
+          rowKey={(record) => record.id || `${record.kanji}_${record.hiragana || record.katakana}_${Math.random().toString(36).substr(2, 9)}`}
           pagination={{
             pageSize: 20,
             showSizeChanger: true,

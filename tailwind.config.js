@@ -37,6 +37,18 @@ module.exports = {
           800: '#71717A', // Tertiary text
           700: '#A1A1AA', // Secondary text
           600: '#FAFAFA', // Primary text
+        },
+        sakura: {
+          50: '#fef7f0',
+          100: '#ffc0cb', // Light pink for sakura
+          200: '#fad4bd',
+          300: '#f6b896',
+          400: '#f1996d',
+          500: '#ed7e4a',
+          600: '#d46635',
+          700: '#b8542a',
+          800: '#954424',
+          900: '#773920'
         }
       },
       fontFamily: {

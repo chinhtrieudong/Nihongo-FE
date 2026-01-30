@@ -8,7 +8,8 @@ import {
   FileTextOutlined,
   AudioOutlined,
   CheckCircleOutlined,
-  FireOutlined
+  FireOutlined,
+  AimOutlined
 } from "@ant-design/icons";
 import { jlptTests, type Test } from "../data/jlptTests";
 import TestCard from "../components/tests/TestCard";
@@ -127,7 +128,10 @@ const Tests: React.FC = () => {
       {/* Header */}
       <div className="flex items-center justify-between">
         <div>
-          <Title level={2} className="!mb-2">Thi JLPT</Title>
+          <Title level={2} className="!mb-2">
+            <AimOutlined className="mr-2 text-secondary-700 dark:text-secondary-400" />
+            Thi JLPT
+          </Title>
           <Text type="secondary">Luyện tập và kiểm tra trình độ Nhật ngữ JLPT</Text>
         </div>
         <Space>

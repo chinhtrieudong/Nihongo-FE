@@ -3,7 +3,7 @@ import { Layout, Button, Avatar, Dropdown, Space, Switch, Typography, type MenuP
 import { MenuOutlined, UserOutlined, LogoutOutlined, SunOutlined, MoonOutlined } from "@ant-design/icons";
 import { useAppSelector, useAppDispatch } from "../store/hooks";
 import { toggleSidebar, toggleDarkMode } from "../store/slices/uiSlice";
-import { logout } from "../store/slices/userSlice";
+import { logoutUser } from "../store/slices/userSlice";
 
 const { Header: AntHeader } = Layout;
 const { Title } = Typography;
@@ -14,7 +14,7 @@ const Header: React.FC = () => {
   const { darkMode } = useAppSelector((state) => state.ui);
 
   const handleLogout = () => {
-    dispatch(logout());
+    dispatch(logoutUser());
   };
 
   const userMenuItems: MenuProps['items'] = [
@@ -37,7 +37,12 @@ const Header: React.FC = () => {
   return (
     <AntHeader
       className="bg-white dark:bg-secondary-925 shadow-sm border-b border-gray-200 dark:border-gray-700 px-6 flex items-center justify-between"
-      style={{ padding: '0 24px', position: 'sticky', top: 0, zIndex: 50 }}
+      style={{
+        padding: '0 24px',
+        position: 'sticky',
+        top: 0,
+        zIndex: 50
+      }}
     >
       <div className="flex items-center space-x-4">
         <Button
@@ -71,10 +76,10 @@ const Header: React.FC = () => {
                 style={{ backgroundColor: '#1890ff' }}
                 icon={<UserOutlined />}
               >
-                {currentUser.fullName.charAt(0).toUpperCase()}
+                {currentUser.username?.charAt(0)?.toUpperCase() || 'U'}
               </Avatar>
               <span className="text-sm font-medium">
-                {currentUser.fullName}
+                {currentUser.username || 'User'}
               </span>
             </Space>
           </Dropdown>

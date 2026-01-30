@@ -16,9 +16,10 @@ import {
     BookOutlined,
     FormOutlined,
     AudioOutlined,
-    BulbOutlined
+    BulbOutlined,
+    ArrowLeftOutlined
 } from '@ant-design/icons';
-import { Collapse, Card, Button, Input, Select, Tabs, Space, Divider, Tag } from 'antd';
+import { Collapse, Card, Button, Input, Select, Tabs, Space, Divider, Tag, Tooltip } from 'antd';
 
 const { Panel } = Collapse;
 const { TabPane } = Tabs;
@@ -333,6 +334,14 @@ const KanjiDetail: React.FC<KanjiDetailProps> = ({ lessonId: propLessonId }) => 
                     <div className="mb-6">
                         <div className="flex items-center justify-between">
                             <div className="flex items-center space-x-4">
+                                <Tooltip title="Quay lại danh sách kanji">
+                                    <Button
+                                        shape="circle"
+                                        icon={<ArrowLeftOutlined />}
+                                        onClick={() => navigate('/kanji')}
+                                        className="border-0 shadow-sm hover:shadow-md"
+                                    />
+                                </Tooltip>
                                 <Button
                                     icon={<LeftOutlined />}
                                     onClick={() => navigateKanji('prev')}

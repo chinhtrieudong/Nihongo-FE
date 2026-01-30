@@ -2,6 +2,10 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { lessonAPI } from "../services/api";
 import type { VocabularyItem } from "../types/lesson";
+import { Typography } from "antd";
+import { BookOutlined } from "@ant-design/icons";
+
+const { Title } = Typography;
 
 // Updated interface to match backend kanji structure
 interface KanjiItem {
@@ -83,8 +87,11 @@ const Kanji: React.FC = () => {
       <div className="max-w-7xl mx-auto space-y-6">
         <div className="flex items-center justify-between">
           <div>
-            <h1 className="text-2xl font-bold text-secondary-900 dark:text-secondary-100">Hán tự</h1>
-            <p className="text-secondary-600 dark:text-secondary-400">Học Hán tự theo giáo trình Minna no Nihongo</p>
+            <Title level={2} className="!mb-2 text-secondary-900 dark:text-secondary-100">
+              <BookOutlined className="mr-2 text-secondary-700 dark:text-secondary-400" />
+              Từ vựng
+            </Title>
+            <p className="text-secondary-600 dark:text-secondary-400">Học từ vựng theo giáo trình Minna no Nihongo</p>
           </div>
           <div className="flex gap-4">
             <select

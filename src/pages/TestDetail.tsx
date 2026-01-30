@@ -27,6 +27,7 @@ import {
     RightOutlined,
     CheckCircleOutlined,
     PlayCircleOutlined,
+    ArrowLeftOutlined,
     PauseCircleOutlined,
     StopOutlined,
     BookOutlined,
@@ -372,7 +373,7 @@ const TestDetail: React.FC = () => {
                             onChange={(e) => handleAnswerChange(question.id, e.target.value)}
                             className="w-full"
                         >
-                            <Space direction="vertical" className="w-full">
+                            <Space orientation="vertical" className="w-full">
                                 {question.options?.map((option, index) => (
                                     <Radio key={index} value={index}>
                                         {option}
@@ -430,7 +431,7 @@ const TestDetail: React.FC = () => {
                             onChange={(e) => handleAnswerChange(question.id, e.target.value)}
                             className="w-full"
                         >
-                            <Space direction="vertical" className="w-full">
+                            <Space orientation="vertical" className="w-full">
                                 {question.options?.map((option, index) => (
                                     <Radio key={index} value={index}>
                                         {option}
@@ -470,7 +471,7 @@ const TestDetail: React.FC = () => {
                             onChange={(e) => handleAnswerChange(question.id, e.target.value)}
                             className="w-full"
                         >
-                            <Space direction="vertical" className="w-full">
+                            <Space orientation="vertical" className="w-full">
                                 {question.options?.map((option, index) => (
                                     <Radio key={index} value={index}>
                                         {option}
@@ -650,11 +651,21 @@ const TestDetail: React.FC = () => {
             <div className="mb-6">
                 <Row justify="space-between" align="middle">
                     <Col>
-                        <Title level={2} className="!mb-2">{test.title}</Title>
+                        <div className="flex items-center gap-4 mb-2">
+                            <Tooltip title="Quay lại danh sách bài thi">
+                                <Button
+                                    shape="circle"
+                                    icon={<ArrowLeftOutlined />}
+                                    onClick={() => navigate('/tests')}
+                                    className="border-0 shadow-sm hover:shadow-md"
+                                />
+                            </Tooltip>
+                            <Title level={2} className="!mb-0">{test.title}</Title>
+                        </div>
                         <Text type="secondary">{test.description}</Text>
                     </Col>
                     <Col>
-                        <Space direction="vertical" align="end">
+                        <Space orientation="vertical" align="end">
                             <Space>
                                 <Tag color="blue">{test.level}</Tag>
                                 <Tag color="green">{test.difficulty}</Tag>

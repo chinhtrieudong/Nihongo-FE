@@ -12,7 +12,7 @@ const LessonContent: React.FC<LessonContentProps> = ({
     children,
 }) => {
     return (
-        <div className="p-6">
+        <div className="p-4 sm:p-6">
             {children}
         </div>
     );

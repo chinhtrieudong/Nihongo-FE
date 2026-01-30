@@ -160,20 +160,13 @@ export interface LessonDetail {
 export interface AIConversation {
   id: string;
   lessonId: string;
-  userId: string;
   messages: {
     role: "user" | "assistant";
     content: string;
     timestamp: string;
-    grammarErrors?: string[];
-    pronunciationScore?: number;
   }[];
-  context: {
-    currentLesson: string;
-    learnedVocabulary: string[];
-    learnedGrammar: string[];
-    difficulty: "easy" | "medium" | "hard";
-  };
+  createdAt: string;
+  updatedAt: string;
   feedback: {
     grammarAccuracy: number;
     vocabularyUsage: number;

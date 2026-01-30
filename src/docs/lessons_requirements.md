@@ -12,7 +12,7 @@ Design and implement a comprehensive Japanese learning platform following the Ni
 - **Status Indicators**:
   - ✔ Completed (green)
   - 🔄 In Progress (blue)
-  - ⏳ Not Started (gray)
+  - 🔒 Not Started (gray)
 - **Progress Bars**: Visual progress tracking for each lesson
 
 ### 2. Main Content Area with 6 Tabs

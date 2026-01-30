@@ -1,5 +1,5 @@
 import React from "react";
-import { Layout, Menu, Typography, Space } from "antd";
+import { Layout, Menu, Typography } from "antd";
 import { Link, useLocation } from "react-router-dom";
 import {
   BookOutlined,
@@ -57,6 +57,7 @@ const Sidebar: React.FC = () => {
     },
   ];
 
+  // Desktop Sidebar Only
   return (
     <Sider
       collapsed={!sidebarOpen}
@@ -72,7 +73,7 @@ const Sidebar: React.FC = () => {
         bottom: 0,
       }}
     >
-      <div className="p-4 border-b border-secondary-200 dark:border-secondary-900">
+      <div className="p-4">
         <div className="flex items-center h-8">
           {/* Logo */}
           <div className="flex-shrink-0 w-8 h-8 bg-blue-500 rounded-lg flex items-center justify-center text-white font-bold text-sm">

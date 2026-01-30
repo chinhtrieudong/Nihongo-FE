@@ -59,6 +59,15 @@
     transform: rotateY(180deg);
     -webkit-transform: rotateY(180deg);
   }
+
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
 }
 
 code {
@@ -87,4 +96,85 @@ div.ant-tooltip-arrow-content {
 .dark div.ant-tooltip-arrow-content {
   background-color: #374151 !important;
   border: 1px solid #4b5563 !important;
+}
+
+/* Shake animation for error messages */
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-5px); }
+  75% { transform: translateX(5px); }
+}
+
+/* Height-based responsive design for 14-inch laptops */
+@media (max-height: 800px) {
+  .login-container {
+    padding: 16px;
+    padding-top: 32px;
+  }
+  
+  .login-card {
+    padding: 16px;
+  }
+  
+  .illustration {
+    transform: scale(0.85);
+    max-height: 60vh;
+  }
+  
+  .illustration .bg-gradient-to-br {
+    padding: 12px;
+  }
+  
+  .input-field {
+    height: 44px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+  }
+  
+  .btn-primary {
+    height: 44px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+  }
+  
+  /* Reduce font sizes for small height */
+  .login-card h2 {
+    font-size: clamp(16px, 2vw, 20px);
+  }
+  
+  .login-card p {
+    font-size: clamp(11px, 1.4vw, 14px);
+  }
+  
+  /* Reduce spacing */
+  .space-y-3 > * + * {
+    margin-top: 0.5rem;
+  }
+  
+  .space-y-4 > * + * {
+    margin-top: 0.75rem;
+  }
+}
+
+@media (min-height: 801px) {
+  .login-container {
+    padding: 24px;
+    padding-top: 64px;
+  }
+  
+  .login-card {
+    padding: 32px;
+  }
+  
+  .illustration {
+    transform: scale(1);
+  }
+  
+  .input-field {
+    height: 56px;
+  }
+  
+  .btn-primary {
+    height: 56px;
+  }
 }

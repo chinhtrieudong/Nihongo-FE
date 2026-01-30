@@ -1,13 +1,14 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { authAPI } from "../../services/api";
 
 export interface User {
   id: string;
+  username: string;
   email: string;
-  fullName: string;
-  avatar?: string;
-  currentLevel: "N5" | "N4" | "N3" | "N2";
-  totalXp: number;
-  streakDays: number;
+  role: string;
+  currentLevel?: "N5" | "N4" | "N3" | "N2";
+  totalXp?: number;
+  streakDays?: number;
   lastLogin?: string;
   createdAt?: string;
 }
@@ -48,6 +49,9 @@ const userSlice = createSlice({
       state.currentUser = null;
       state.isAuthenticated = false;
       state.error = null;
+      // Clear tokens from localStorage
+      localStorage.removeItem("accessToken");
+      localStorage.removeItem("refreshToken");
     },
     updateUser: (state, action: PayloadAction<Partial<User>>) => {
       if (state.currentUser) {
@@ -56,7 +60,7 @@ const userSlice = createSlice({
     },
     updateXp: (state, action: PayloadAction<number>) => {
       if (state.currentUser) {
-        state.currentUser.totalXp += action.payload;
+        state.currentUser.totalXp = (state.currentUser.totalXp || 0) + action.payload;
       }
     },
     updateStreak: (state, action: PayloadAction<number>) => {
@@ -66,6 +70,20 @@ const userSlice = createSlice({
     },
   },
 });
+
+// Async logout action that calls the API
+export const logoutUser = () => async (dispatch: any) => {
+  try {
+    // Call logout API
+    await authAPI.logout();
+  } catch (error) {
+    // Even if API call fails, we still want to clear local state
+    console.error("Logout API call failed:", error);
+  } finally {
+    // Always clear local state and tokens
+    dispatch(logout());
+  }
+};
 
 export const {
   loginStart,

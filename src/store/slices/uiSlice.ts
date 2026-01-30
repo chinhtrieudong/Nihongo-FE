@@ -3,6 +3,8 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 interface UiState {
   darkMode: boolean;
   sidebarOpen: boolean;
+  drawerOpen: boolean;
+  isMobile: boolean;
   currentView:
     | "dashboard"
     | "lessons"
@@ -30,6 +32,8 @@ const getInitialState = (): UiState => {
   return {
     darkMode: savedDarkMode === 'true',
     sidebarOpen: false,
+    drawerOpen: false,
+    isMobile: false,
     currentView: "dashboard",
     notifications: [],
     loadingStates: {},
@@ -55,6 +59,18 @@ const uiSlice = createSlice({
     },
     setSidebarOpen: (state, action: PayloadAction<boolean>) => {
       state.sidebarOpen = action.payload;
+    },
+    toggleDrawer: (state) => {
+      state.drawerOpen = !state.drawerOpen;
+    },
+    openDrawer: (state) => {
+      state.drawerOpen = true;
+    },
+    closeDrawer: (state) => {
+      state.drawerOpen = false;
+    },
+    setMobile: (state, action: PayloadAction<boolean>) => {
+      state.isMobile = action.payload;
     },
     setCurrentView: (state, action: PayloadAction<UiState["currentView"]>) => {
       state.currentView = action.payload;
@@ -107,6 +123,10 @@ export const {
   setDarkMode,
   toggleSidebar,
   setSidebarOpen,
+  toggleDrawer,
+  openDrawer,
+  closeDrawer,
+  setMobile,
   setCurrentView,
   addNotification,
   removeNotification,

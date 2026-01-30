@@ -73,7 +73,6 @@ const AITab: React.FC<AITabProps> = ({ lesson }) => {
 
         try {
             const response = await chatMutation({
-                userId: "user123", // Replace with actual user ID
                 lessonId: lesson.id,
                 messages: [...chatMessages, userMessage],
                 context: {
@@ -117,7 +116,6 @@ const AITab: React.FC<AITabProps> = ({ lesson }) => {
     const submitExercise = async (userResponse: string) => {
         try {
             const response = await exerciseMutation({
-                userId: "user123",
                 lessonId: lesson.id,
                 exerciseType: "conversation",
                 prompt: currentExercise.prompt,
@@ -350,8 +348,8 @@ const AITab: React.FC<AITabProps> = ({ lesson }) => {
                                         >
                                             <div
                                                 className={`inline-block max-w-xs p-3 rounded-2xl ${msg.role === "user"
-                                                        ? "bg-blue-500 text-white rounded-tr-none"
-                                                        : "bg-white dark:bg-secondary-700 text-secondary-900 dark:text-secondary-100 rounded-tl-none border border-secondary-200 dark:border-secondary-600"
+                                                    ? "bg-blue-500 text-white rounded-tr-none"
+                                                    : "bg-white dark:bg-secondary-700 text-secondary-900 dark:text-secondary-100 rounded-tl-none border border-secondary-200 dark:border-secondary-600"
                                                     }`}
                                             >
                                                 {msg.content}

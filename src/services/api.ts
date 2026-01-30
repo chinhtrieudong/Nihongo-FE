@@ -76,9 +76,9 @@ export interface LoginData {
 }
 
 export interface RegisterData {
+  username: string;
   email: string;
   password: string;
-  fullName: string;
 }
 
 export interface AuthResponse {
@@ -87,12 +87,9 @@ export interface AuthResponse {
   data: {
     user: {
       id: string;
+      username: string;
       email: string;
-      fullName: string;
-      avatar?: string;
-      currentLevel: string;
-      totalXp: number;
-      streakDays: number;
+      role: string;
     };
     tokens: {
       accessToken: string;
@@ -121,6 +118,31 @@ export const authAPI = {
     const response = await api.post("/auth/refresh", { refreshToken });
     return response.data;
   },
+
+  getCurrentUser: async () => {
+    // Try to get user info from a simple endpoint that doesn't require authentication
+    // This is a temporary solution for development
+    try {
+      const response = await api.get("/auth/me");
+      return response.data;
+    } catch (error) {
+      // If /auth/me doesn't exist, create a mock user from token
+      const token = localStorage.getItem('accessToken');
+      if (token) {
+        const decoded = JSON.parse(atob(token.split('.')[1]));
+        return {
+          success: true,
+          data: {
+            id: decoded.id || decoded.sub || 'temp-user',
+            username: decoded.username || decoded.name || 'User',
+            email: decoded.email || 'user@example.com',
+            role: decoded.role || 'student'
+          }
+        };
+      }
+      throw error;
+    }
+  },
 };
 
 // User API functions
@@ -147,9 +169,8 @@ export const vocabularyAPI = {
 
 // Lesson API functions
 export const lessonAPI = {
-  getLessons: async (userId?: string, level?: string, limit?: number, offset?: number): Promise<LessonsResponse> => {
+  getLessons: async (level?: string, limit?: number, offset?: number): Promise<LessonsResponse> => {
     const params: any = {};
-    if (userId) params.userId = userId;
     if (level) params.level = level;
     if (limit) params.limit = limit;
     if (offset) params.offset = offset;
@@ -158,32 +179,33 @@ export const lessonAPI = {
     return response.data;
   },
 
-  getLessonDetail: async (id: string, userId?: string): Promise<any> => {
-    const params = userId ? { userId } : {};
-    const response = await api.get(`/lessons/${id}`, { params });
+  getLessonDetail: async (id: string): Promise<any> => {
+    const response = await api.get(`/lessons/${id}`);
     return response.data;
   },
 
   updateProgress: async (lessonId: string, data: {
-    userId: string;
-    status: "in_progress" | "completed";
-    score: number;
-    timeSpent: number;
-    completedItems: {
-      vocabulary: string[];
-      grammar: string[];
-      exercises: string[];
-    };
+    status: "not_started" | "in_progress" | "completed" | "review";
+    progress: number;
+    vocabularyCompleted?: boolean;
+    grammarCompleted?: boolean;
+    dialogCompleted?: boolean;
+    exercisesScore?: number;
+    aiPracticeCount?: number;
   }) => {
-    const response = await api.post(`/lessons/${lessonId}/progress`, data);
+    const response = await api.put(`/lessons/${lessonId}/progress`, data);
     return response.data;
   },
 
-  submitExercise: async (lessonId: string, exerciseId: string, userId: string, answer: string): Promise<ExerciseSubmitResponse> => {
+  completeLesson: async (lessonId: string) => {
+    const response = await api.post(`/lessons/${lessonId}/complete`);
+    return response.data;
+  },
+
+  submitExercise: async (lessonId: string, exerciseId: string, answer: string): Promise<ExerciseSubmitResponse> => {
     const response = await api.post(
       `/lessons/${lessonId}/exercises/${exerciseId}/submit`,
       {
-        userId,
         answer,
       }
     );
@@ -212,7 +234,6 @@ export const lessonAPI = {
 
   // AI Practice endpoints
   aiRoleplay: async (lessonId: string, data: {
-    userId: string;
     message: string;
     context: {
       currentLesson: string;
@@ -223,8 +244,8 @@ export const lessonAPI = {
     return response.data;
   },
 
-  getWeakPoints: async (lessonId: string, userId: string): Promise<WeakPointsResponse> => {
-    const response = await api.get(`/lessons/${lessonId}/weak-points?userId=${userId}`);
+  getWeakPoints: async (lessonId: string): Promise<WeakPointsResponse> => {
+    const response = await api.get(`/lessons/${lessonId}/weak-points`);
     return response.data;
   },
 
@@ -268,6 +289,48 @@ export const progressAPI = {
 
   updateProgress: async (data: any) => {
     const response = await api.post("/progress", data);
+    return response.data;
+  },
+};
+
+// User Statistics API functions
+export const userStatsAPI = {
+  // Get user dashboard statistics
+  getDashboardStats: async () => {
+    const response = await api.get(`/users/stats/dashboard`);
+    return response.data;
+  },
+
+  // Get learning streak
+  getLearningStreak: async () => {
+    const response = await api.get(`/users/stats/streak`);
+    return response.data;
+  },
+
+  // Get weekly statistics
+  getWeeklyStats: async () => {
+    const response = await api.get(`/users/stats/weekly`);
+    return response.data;
+  },
+
+  // Get total study time
+  getTotalStudyTime: async () => {
+    const response = await api.get(`/users/stats/study-time`);
+    return response.data;
+  },
+
+  // Get average score
+  getAverageScore: async () => {
+    const response = await api.get(`/users/stats/average-score`);
+    return response.data;
+  },
+
+  // Update dashboard statistics
+  updateDashboardStats: async (data: {
+    learningStreak?: number;
+    totalStudyTime?: number;
+  }) => {
+    const response = await api.put(`/users/stats/dashboard`, data);
     return response.data;
   },
 };

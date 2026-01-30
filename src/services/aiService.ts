@@ -14,7 +14,6 @@ export interface ChatMessage {
 }
 
 export interface ChatRequest {
-  userId: string;
   lessonId: string;
   messages: ChatMessage[];
   context: {
@@ -40,10 +39,13 @@ export interface ChatResponse {
 }
 
 export interface PronunciationRequest {
-  userId: string;
   lessonId: string;
   audioData: Blob;
   expectedText: string;
+  context?: {
+    currentLesson: string;
+    difficulty: "easy" | "medium" | "hard";
+  };
 }
 
 export interface PronunciationResponse {
@@ -57,7 +59,6 @@ export interface PronunciationResponse {
 }
 
 export interface ExerciseRequest {
-  userId: string;
   lessonId: string;
   exerciseType: "conversation" | "grammar_check" | "pronunciation" | "custom";
   prompt: string;
@@ -125,20 +126,20 @@ export const aiApi = createApi({
     // Get personalized exercise
     getPersonalizedExercise: builder.query<
       AIExercise,
-      { userId: string; lessonId: string; type: string }
+      { lessonId: string; type: string }
     >({
-      query: ({ userId, lessonId, type }) =>
-        `/ai/exercise?userId=${userId}&lessonId=${lessonId}&type=${type}`,
+      query: ({ lessonId, type }) =>
+        `/ai/exercise?lessonId=${lessonId}&type=${type}`,
       providesTags: ["AI"],
     }),
 
     // Get conversation history
     getConversationHistory: builder.query<
       AIConversation[],
-      { userId: string; lessonId?: string }
+      { lessonId?: string }
     >({
-      query: ({ userId, lessonId }) => {
-        const params = new URLSearchParams({ userId });
+      query: ({ lessonId }) => {
+        const params = new URLSearchParams();
         if (lessonId) params.append("lessonId", lessonId);
         return `/ai/conversations?${params.toString()}`;
       },
@@ -148,12 +149,12 @@ export const aiApi = createApi({
     // Clear conversation history
     clearConversationHistory: builder.mutation<
       void,
-      { userId: string; lessonId?: string }
+      { lessonId?: string }
     >({
-      query: ({ userId, lessonId }) => ({
+      query: ({ lessonId }) => ({
         url: "/ai/conversations/clear",
         method: "DELETE",
-        body: { userId, lessonId },
+        body: { lessonId },
       }),
       invalidatesTags: ["AI"],
     }),

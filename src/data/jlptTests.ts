@@ -419,7 +419,7 @@ export const jlptTests: Test[] = [
   {
     id: "12",
     level: "N1",
-    title: "JLPT N1 - Vocabulary Master",
+    title: "JLPT N1 - Vocabulary ",
     description: "Luyện tập từ vựng N1 nâng cao",
     duration: 80,
     questions: 50,

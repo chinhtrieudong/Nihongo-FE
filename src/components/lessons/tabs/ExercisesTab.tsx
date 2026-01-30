@@ -32,7 +32,6 @@ const ExercisesTab: React.FC<ExercisesTabProps> = ({
             const response = await lessonAPI.submitExercise(
                 lessonId!,
                 exerciseId,
-                currentUser.id,
                 answer
             );
             if (response.success) {
@@ -103,12 +102,12 @@ const ExercisesTab: React.FC<ExercisesTabProps> = ({
                         key={index}
                         onClick={() => setCurrentExercise(index)}
                         className={`w-3 h-3 rounded-full transition-all duration-300 ${index === currentExercise
-                                ? 'w-8 bg-orange-500'
-                                : results[exercises[index].id]?.isCorrect
-                                    ? 'bg-green-500'
-                                    : results[exercises[index].id]
-                                        ? 'bg-red-500'
-                                        : 'bg-secondary-300 dark:bg-secondary-600'
+                            ? 'w-8 bg-orange-500'
+                            : results[exercises[index].id]?.isCorrect
+                                ? 'bg-green-500'
+                                : results[exercises[index].id]
+                                    ? 'bg-red-500'
+                                    : 'bg-secondary-300 dark:bg-secondary-600'
                             }`}
                     />
                 ))}
@@ -160,12 +159,12 @@ const ExercisesTab: React.FC<ExercisesTabProps> = ({
                                     <label
                                         key={index}
                                         className={`block p-4 rounded-lg border-2 cursor-pointer transition-all duration-200 hover:shadow-md ${answers[exercise.id] === option
-                                                ? results[exercise.id]?.isCorrect
-                                                    ? 'border-green-500 bg-green-50 dark:bg-green-900/20'
-                                                    : results[exercise.id]
-                                                        ? 'border-red-500 bg-red-50 dark:bg-red-900/20'
-                                                        : 'border-orange-500 bg-orange-50 dark:bg-orange-900/20'
-                                                : 'border-secondary-200 dark:border-secondary-700 hover:border-orange-300'
+                                            ? results[exercise.id]?.isCorrect
+                                                ? 'border-green-500 bg-green-50 dark:bg-green-900/20'
+                                                : results[exercise.id]
+                                                    ? 'border-red-500 bg-red-50 dark:bg-red-900/20'
+                                                    : 'border-orange-500 bg-orange-50 dark:bg-orange-900/20'
+                                            : 'border-secondary-200 dark:border-secondary-700 hover:border-orange-300'
                                             }`}
                                     >
                                         <div className="flex items-center">
@@ -226,10 +225,10 @@ const ExercisesTab: React.FC<ExercisesTabProps> = ({
                                                             }));
                                                         }}
                                                         className={`inline-block w-24 mx-2 text-center ${results[exercise.id]?.correctAnswers?.[index] === (answers[exercise.id] || [])[index]
-                                                                ? 'border-green-500'
-                                                                : results[exercise.id]
-                                                                    ? 'border-red-500'
-                                                                    : ''
+                                                            ? 'border-green-500'
+                                                            : results[exercise.id]
+                                                                ? 'border-red-500'
+                                                                : ''
                                                             }`}
                                                         size="large"
                                                     />

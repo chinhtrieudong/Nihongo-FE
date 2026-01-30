@@ -28,7 +28,7 @@ const TestStatistics: React.FC<TestStatisticsProps> = ({
                         title="Bài thi đã hoàn thành"
                         value={totalTestsCompleted}
                         prefix={<CheckCircleOutlined className="text-green-500" />}
-                        valueStyle={{ color: '#52c41a' }}
+                        styles={{ content: { color: '#52c41a' } }}
                     />
                 </Card>
             </Col>
@@ -39,29 +39,29 @@ const TestStatistics: React.FC<TestStatisticsProps> = ({
                         value={averageScore}
                         suffix="%"
                         prefix={<StarOutlined className="text-yellow-500" />}
-                        valueStyle={{ color: '#faad14' }}
+                        styles={{ content: { color: '#faad14' } }}
                     />
                 </Card>
             </Col>
             <Col xs={24} sm={12} lg={6}>
                 <Card>
                     <Statistic
-                        title="Chuỗi luyện tập"
+                        title="Chuỗi học tập"
                         value={currentStreak}
                         suffix="ngày"
                         prefix={<FireOutlined className="text-orange-500" />}
-                        valueStyle={{ color: '#fa8c16' }}
+                        styles={{ content: { color: '#fa8c16' } }}
                     />
                 </Card>
             </Col>
             <Col xs={24} sm={12} lg={6}>
                 <Card>
                     <Statistic
-                        title="Tổng thời gian"
+                        title="Tổng thời gian học"
                         value={totalStudyTime}
                         suffix="phút"
                         prefix={<ClockCircleOutlined className="text-blue-500" />}
-                        valueStyle={{ color: '#1890ff' }}
+                        styles={{ content: { color: '#1890ff' } }}
                     />
                 </Card>
             </Col>
