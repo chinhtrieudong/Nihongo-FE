@@ -62,7 +62,7 @@ const Sidebar: React.FC = () => {
     <Sider
       collapsed={!sidebarOpen}
       collapsedWidth={64}
-      width={256}
+      width={200}
       className="bg-white dark:bg-secondary-925 border-r border-secondary-200 dark:border-secondary-900"
       style={{
         overflow: 'hidden',
@@ -82,7 +82,7 @@ const Sidebar: React.FC = () => {
 
           {/* Title */}
           <div
-            className={`ml-3 transition-all duration-200 overflow-hidden ${sidebarOpen ? "opacity-100 w-[160px]" : "opacity-0 w-0"
+            className={`ml-3 transition-all duration-200 overflow-hidden ${sidebarOpen ? "opacity-100 w-[120px]" : "opacity-0 w-0"
               }`}
           >
             <Title level={4} className="!mb-0 text-blue-600 font-bold whitespace-nowrap">

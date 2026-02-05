@@ -52,8 +52,10 @@ module.exports = {
         }
       },
       fontFamily: {
-        sans: ['Inter', 'system-ui', 'sans-serif'],
+        sans: ['Nunito', '"Kosugi Maru"', 'system-ui', 'sans-serif'],
         japanese: ['Noto Sans JP', 'Hiragino Sans', 'Yu Gothic', 'Meiryo', 'sans-serif'],
+        osaka: ['Osaka', 'Hiragino Sans', 'Yu Gothic', 'Meiryo', 'sans-serif'],
+        kosugi: ['"Kosugi Maru"', 'Hiragino Sans', 'Yu Gothic', 'Meiryo', 'sans-serif'],
       },
       animation: {
         'fade-in': 'fadeIn 0.5s ease-in-out',

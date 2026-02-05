@@ -1,23 +1,99 @@
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Kosugi+Maru&family=Nunito:wght@400;500;600;700&display=swap');
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer base {
+  :root {
+    --ant-font-family: "Nunito", "Kosugi Maru", system-ui, sans-serif;
+  }
+
   html {
-    font-family: Inter, system-ui, sans-serif;
+    font-family: "Nunito", "Kosugi Maru", system-ui, sans-serif;
   }
 
   body {
     @apply bg-secondary-50 dark:bg-secondary-950 text-secondary-900 dark:text-secondary-100;
-    font-family: Inter, system-ui, sans-serif;
+    font-family: "Nunito", "Kosugi Maru", system-ui, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
 }
 
 @layer components {
+  :where(
+    .ant-typography,
+    .ant-table,
+    .ant-btn,
+    .ant-input,
+    .ant-select,
+    .ant-card,
+    .ant-modal,
+    .ant-menu,
+    .ant-tooltip
+  ) {
+    font-family: "Nunito", "Kosugi Maru", system-ui, sans-serif;
+  }
+
+  .theme-surface .ant-card:not([class*="bg-"]) {
+    @apply bg-white dark:bg-secondary-925 border border-secondary-200 dark:border-secondary-900;
+  }
+
+  .theme-surface .ant-card-head {
+    @apply border-secondary-200 dark:border-secondary-900;
+  }
+
+  .theme-surface .ant-card-actions {
+    @apply bg-white dark:bg-secondary-925;
+  }
+
+  .theme-surface .ant-card-actions > li {
+    @apply border-secondary-200 dark:border-secondary-900;
+  }
+
+  .flashcard-settings-modal .ant-modal-content {
+    @apply bg-white dark:bg-secondary-925;
+  }
+
+  .flashcard-settings-modal .ant-modal-header {
+    @apply bg-transparent border-secondary-200 dark:border-secondary-800;
+  }
+
+  .flashcard-settings-modal .ant-modal-title {
+    @apply text-secondary-900 dark:text-secondary-100;
+  }
+
+  .flashcard-settings-modal .ant-modal-close {
+    @apply text-secondary-500 hover:text-secondary-700 dark:text-secondary-300 dark:hover:text-secondary-100;
+  }
+
+  .flashcard-settings-modal .ant-collapse-header {
+    @apply text-secondary-900 dark:text-secondary-100 font-medium;
+  }
+
+  .flashcard-settings-modal .ant-modal-body {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+
+  .flashcard-settings-modal .ant-modal-body::-webkit-scrollbar {
+    display: none;
+  }
+
+  .theme-surface .tests-select .ant-select-selector,
+  .theme-surface .tests-select .ant-select-selection-item {
+    @apply text-secondary-900 dark:text-secondary-100;
+  }
+
+  .theme-surface .ant-typography:not(.ant-typography-danger):not(.ant-typography-success):not(.ant-typography-warning):not(.ant-typography-secondary) {
+    @apply text-secondary-900 dark:text-secondary-100;
+  }
+
+  .theme-surface .ant-typography-secondary {
+    @apply text-secondary-600 dark:text-secondary-400;
+  }
+
   .btn-primary {
     @apply bg-primary-600 hover:bg-primary-700 text-white font-medium py-2 px-4 rounded-lg transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2;
   }
@@ -35,7 +111,7 @@
   }
 
   .font-japanese {
-    font-family: 'Noto Sans JP', 'Hiragino Sans', 'Yu Gothic', 'Meiryo', sans-serif;
+    font-family: "Kosugi Maru", 'Hiragino Sans', 'Yu Gothic', 'Meiryo', sans-serif;
     line-height: 1.8;
     letter-spacing: 0.02em;
   }

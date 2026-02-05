@@ -1,4 +1,5 @@
 import React from "react";
+import { Grid } from "antd";
 
 type TabType = "vocabulary" | "grammar" | "dialog" | "exercises" | "ai" | "summary";
 
@@ -11,9 +12,15 @@ const LessonContent: React.FC<LessonContentProps> = ({
     activeTab,
     children,
 }) => {
+    const screens = Grid.useBreakpoint();
+
     return (
-        <div className="p-4 sm:p-6">
-            {children}
+        <div className={`bg-white dark:bg-secondary-900 ${screens.xs ? 'px-4 py-3' : 'px-6 py-4'
+            }`}>
+            <div className={`max-w-full ${screens.xs ? 'space-y-4' : 'space-y-6'
+                }`}>
+                {children}
+            </div>
         </div>
     );
 };

@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import { Badge, Button, Typography, Avatar } from "antd";
+import { Badge, Button, Typography, Avatar, Input, Switch, Card, Row, Col } from "antd";
+import { Grid } from "antd";
 import {
     BookOutlined,
     SoundOutlined,
@@ -9,6 +10,8 @@ import {
     EyeInvisibleOutlined,
     StarOutlined,
     BulbOutlined,
+    SearchOutlined,
+    MenuOutlined,
 } from "@ant-design/icons";
 
 const { Title } = Typography;
@@ -18,9 +21,13 @@ interface VocabularyTabProps {
 }
 
 const VocabularyTab: React.FC<VocabularyTabProps> = ({ vocabulary }) => {
+    const screens = Grid.useBreakpoint();
     const [currentCard, setCurrentCard] = useState(0);
     const [showMeaning, setShowMeaning] = useState(false);
     const [isFlipped, setIsFlipped] = useState(false);
+    const [showHanViet, setShowHanViet] = useState(false);
+    const [searchTerm, setSearchTerm] = useState('');
+    const [viewMode, setViewMode] = useState<'flashcard' | 'list'>('flashcard');
 
     if (vocabulary.length === 0) {
         return (
@@ -37,7 +44,14 @@ const VocabularyTab: React.FC<VocabularyTabProps> = ({ vocabulary }) => {
         );
     }
 
-    const card = vocabulary[currentCard];
+    // Filter vocabulary based on search
+    const filteredVocabulary = vocabulary.filter(item =>
+        item.kanji.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        item.hiragana.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        item.meaningVi.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+
+    const card = filteredVocabulary[currentCard] || vocabulary[0];
 
     const handleCardFlip = () => {
         setIsFlipped(!isFlipped);
@@ -57,194 +71,334 @@ const VocabularyTab: React.FC<VocabularyTabProps> = ({ vocabulary }) => {
     };
 
     return (
-        <div className="space-y-8">
-            {/* Header */}
-            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
-                <div>
-                    <h2 className="text-xl sm:text-2xl font-bold text-secondary-900 dark:text-secondary-100 flex items-center gap-2">
-                        <span className="text-2xl sm:text-3xl">📚</span>
-                        Từ vựng
-                    </h2>
-                    <p className="text-secondary-600 dark:text-secondary-400 mt-1 text-sm sm:text-base">
-                        Học {vocabulary.length} từ vựng quan trọng
-                    </p>
+        <div className="space-y-4 sm:space-y-6">
+            {/* Mobile-First Header */}
+            <div className="px-4 sm:px-0">
+                <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+                    <div>
+                        <Typography.Title
+                            level={screens.xs ? 4 : 3}
+                            className="!mb-1 !text-secondary-900 dark:!text-secondary-100 flex items-center gap-2"
+                        >
+                            <span className={screens.xs ? 'text-xl' : 'text-2xl'}>📚</span>
+                            Từ vựng
+                        </Typography.Title>
+                        <Typography.Text className="text-sm text-secondary-600 dark:text-secondary-400">
+                            {filteredVocabulary.length} từ vựng
+                        </Typography.Text>
+                    </div>
+
+                    {/* Mobile Actions */}
+                    <div className="flex items-center gap-2">
+                        {screens.xs && (
+                            <Button
+                                icon={<MenuOutlined />}
+                                onClick={() => setViewMode(viewMode === 'flashcard' ? 'list' : 'flashcard')}
+                                size="small"
+                            >
+                                {viewMode === 'flashcard' ? 'List' : 'Card'}
+                            </Button>
+                        )}
+                        <Badge
+                            count={`${currentCard + 1}/${filteredVocabulary.length}`}
+                            style={{ backgroundColor: '#1890ff' }}
+                            className="text-xs sm:text-sm"
+                        />
+                    </div>
                 </div>
-                <div className="flex items-center gap-2 sm:gap-4">
-                    <Badge
-                        count={`${currentCard + 1}/${vocabulary.length}`}
-                        style={{ backgroundColor: '#1890ff' }}
-                        className="text-xs sm:text-sm"
+
+                {/* Search and Controls */}
+                <div className="mt-4 space-y-3">
+                    <Input
+                        placeholder="Tìm từ vựng..."
+                        prefix={<SearchOutlined />}
+                        value={searchTerm}
+                        onChange={(e) => {
+                            setSearchTerm(e.target.value);
+                            setCurrentCard(0);
+                        }}
+                        className="w-full"
+                        size={screens.xs ? 'middle' : 'large'}
                     />
-                    <Button
-                        icon={<SoundOutlined />}
-                        type="default"
-                        size={"middle"}
-                        className="flex items-center"
-                    >
-                        <span className="hidden sm:inline">Phát âm</span>
-                        <span className="sm:hidden">🔊</span>
-                    </Button>
+
+                    <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                        <div className="flex items-center gap-3">
+                            <Button
+                                icon={<SoundOutlined />}
+                                size={screens.xs ? 'middle' : 'large'}
+                                className="flex-1 sm:flex-none"
+                            >
+                                {screens.xs ? '🔊' : 'Phát âm'}
+                            </Button>
+
+                            {!screens.xs && (
+                                <Button
+                                    icon={<BookOutlined />}
+                                    onClick={() => setViewMode(viewMode === 'flashcard' ? 'list' : 'flashcard')}
+                                    className="flex-1 sm:flex-none"
+                                >
+                                    {viewMode === 'flashcard' ? 'Danh sách' : 'Flashcard'}
+                                </Button>
+                            )}
+                        </div>
+
+                        <div className="flex items-center gap-2">
+                            <Typography.Text className="text-sm text-secondary-600 dark:text-secondary-400">
+                                Hiện Hán Việt:
+                            </Typography.Text>
+                            <Switch
+                                checked={showHanViet}
+                                onChange={setShowHanViet}
+                                size={screens.xs ? 'small' : 'default'}
+                            />
+                        </div>
+                    </div>
                 </div>
             </div>
 
-            {/* Flashcard Container */}
-            <div className="flex justify-center">
-                <div className="relative w-full max-w-md sm:max-w-lg">
-                    {/* Progress Dots */}
-                    <div className="flex justify-center gap-1.5 sm:gap-2 mb-4 sm:mb-6">
-                        {vocabulary.map((_, index) => (
-                            <button
-                                key={index}
+            {/* Flashcard View */}
+            {viewMode === 'flashcard' && filteredVocabulary.length > 0 && (
+                <div className="px-4 sm:px-0">
+                    <div className="flex justify-center">
+                        <div className="relative w-full max-w-md">
+                            {/* Progress Dots - Mobile Optimized */}
+                            <div className="flex justify-center gap-1.5 mb-4">
+                                {filteredVocabulary.slice(0, screens.xs ? 5 : 7).map((_, index) => (
+                                    <button
+                                        key={index}
+                                        onClick={() => {
+                                            setCurrentCard(index);
+                                            setIsFlipped(false);
+                                            setShowMeaning(false);
+                                        }}
+                                        className={`w-1.5 h-1.5 rounded-full transition-all duration-300 ${index === currentCard
+                                                ? 'w-4 bg-primary-600'
+                                                : 'bg-gray-300 dark:bg-secondary-600'
+                                            }`}
+                                    />
+                                ))}
+                                {filteredVocabulary.length > (screens.xs ? 5 : 7) && (
+                                    <span className="text-xs text-secondary-500 self-center">
+                                        +{filteredVocabulary.length - (screens.xs ? 5 : 7)}
+                                    </span>
+                                )}
+                            </div>
+
+                            {/* Mobile Flashcard */}
+                            <div
+                                className="relative h-56 sm:h-72 cursor-pointer"
+                                onClick={handleCardFlip}
+                            >
+                                <div
+                                    className={`absolute inset-0 w-full h-full transition-all duration-500 transform-gpu preserve-3d ${isFlipped ? 'rotate-y-180' : ''
+                                        }`}
+                                    style={{ transformStyle: 'preserve-3d' }}
+                                >
+                                    {/* Front */}
+                                    <div className="absolute inset-0 w-full h-full backface-hidden">
+                                        <Card className="h-full bg-gradient-to-br from-primary-500 to-primary-600 dark:from-primary-700 dark:to-primary-800 border-0 shadow-xl">
+                                            <div className="h-full flex flex-col justify-center items-center text-white p-4">
+                                                <div className="text-2xl sm:text-4xl font-bold mb-2 text-center">
+                                                    {card.kanji}
+                                                </div>
+                                                <div className="text-base sm:text-xl mb-2 text-center opacity-90">
+                                                    {card.hiragana}
+                                                </div>
+                                                <div className="text-xs sm:text-sm opacity-80 text-center">
+                                                    {card.romaji}
+                                                </div>
+                                                {showHanViet && card.hanviet && (
+                                                    <div className="mt-2 text-xs sm:text-sm opacity-70">
+                                                        Hán Việt: {card.hanviet}
+                                                    </div>
+                                                )}
+                                                <div className="mt-4 text-xs opacity-70">
+                                                    Nhấn để xem nghĩa
+                                                </div>
+                                            </div>
+                                        </Card>
+                                    </div>
+
+                                    {/* Back */}
+                                    <div
+                                        className="absolute inset-0 w-full h-full rotate-y-180 backface-hidden"
+                                        style={{ transform: 'rotateY(180deg)', backfaceVisibility: 'hidden' }}
+                                    >
+                                        <Card className="h-full bg-gradient-to-br from-green-500 to-green-600 dark:from-green-700 dark:to-green-800 border-0 shadow-xl">
+                                            <div className="h-full flex flex-col justify-center text-white p-4">
+                                                <div className="text-xl sm:text-2xl font-bold mb-3 text-center">
+                                                    {card.meaningVi}
+                                                </div>
+                                                <div className="text-sm mb-4 text-center opacity-90">
+                                                    {card.meaningEn}
+                                                </div>
+                                                {card.mnemonic && (
+                                                    <div className="bg-white/20 backdrop-blur-sm rounded-lg p-3">
+                                                        <div className="flex items-center gap-2 mb-2">
+                                                            <BulbOutlined className="text-yellow-300" />
+                                                            <span className="text-sm font-medium">Mẹo ghi nhớ:</span>
+                                                        </div>
+                                                        <p className="text-xs opacity-90">{card.mnemonic}</p>
+                                                    </div>
+                                                )}
+                                            </div>
+                                        </Card>
+                                    </div>
+                                </div>
+                            </div>
+
+                            {/* Mobile Navigation */}
+                            <div className="flex justify-between items-center mt-4 gap-2">
+                                <Button
+                                    onClick={handlePrev}
+                                    icon={<LeftOutlined />}
+                                    className="flex-1"
+                                >
+                                    {screens.xs ? '←' : 'Trước'}
+                                </Button>
+                                <div className="flex gap-1">
+                                    <Button
+                                        onClick={handleCardFlip}
+                                        icon={isFlipped ? <EyeOutlined /> : <EyeInvisibleOutlined />}
+                                        size={screens.xs ? 'small' : 'middle'}
+                                    />
+                                    <Button
+                                        icon={<StarOutlined />}
+                                        size={screens.xs ? 'small' : 'middle'}
+                                    />
+                                </div>
+                                <Button
+                                    onClick={handleNext}
+                                    icon={<RightOutlined />}
+                                    type="primary"
+                                    className="flex-1"
+                                >
+                                    {screens.xs ? '→' : 'Tiếp'}
+                                </Button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            )}
+
+            {/* Mobile-First List View */}
+            {viewMode === 'list' && (
+                <div className="px-4 sm:px-0">
+                    <div className="space-y-3">
+                        {filteredVocabulary.map((item, index) => (
+                            <Card
+                                key={item.id}
                                 onClick={() => {
                                     setCurrentCard(index);
                                     setIsFlipped(false);
                                     setShowMeaning(false);
+                                    if (screens.xs) setViewMode('flashcard');
                                 }}
-                                className={`w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full transition-all duration-300 ${index === currentCard
-                                    ? 'w-6 sm:w-8 bg-primary-600'
-                                    : 'bg-gray-300 dark:bg-secondary-600 hover:bg-gray-400'
+                                className={`cursor-pointer transition-all duration-200 ${index === currentCard
+                                        ? 'border-primary-500 bg-primary-50 dark:bg-primary-900/20 shadow-lg'
+                                        : 'border-secondary-200 dark:border-secondary-700 hover:border-primary-300 hover:shadow-md'
                                     }`}
-                            />
+                                size="small"
+                            >
+                                <div className="flex items-start justify-between">
+                                    <div className="flex-1 min-w-0">
+                                        <div className="flex items-center gap-2 mb-2">
+                                            <span className="text-lg font-bold text-primary-600 dark:text-primary-400">
+                                                {item.kanji}
+                                            </span>
+                                            <Badge count={index + 1} size="small" />
+                                        </div>
+                                        <div className="text-sm text-secondary-700 dark:text-secondary-400 mb-1">
+                                            {item.hiragana}
+                                        </div>
+                                        <div className="text-xs text-secondary-500 dark:text-secondary-500 mb-2">
+                                            {item.romaji}
+                                        </div>
+                                        {showHanViet && item.hanviet && (
+                                            <div className="text-xs text-secondary-600 dark:text-secondary-400 mb-2">
+                                                Hán Việt: {item.hanviet}
+                                            </div>
+                                        )}
+                                        <div className="text-sm font-medium text-secondary-900 dark:text-secondary-100">
+                                            {item.meaningVi}
+                                        </div>
+                                    </div>
+                                    <div className="flex flex-col gap-1 ml-3">
+                                        <Button
+                                            icon={<SoundOutlined />}
+                                            size="small"
+                                            type="text"
+                                            onClick={(e) => {
+                                                e.stopPropagation();
+                                                // Play sound
+                                            }}
+                                        />
+                                        <Button
+                                            icon={<StarOutlined />}
+                                            size="small"
+                                            type="text"
+                                            onClick={(e) => {
+                                                e.stopPropagation();
+                                                // Toggle favorite
+                                            }}
+                                        />
+                                    </div>
+                                </div>
+                            </Card>
                         ))}
                     </div>
+                </div>
+            )}
 
-                    {/* Flashcard */}
-                    <div
-                        className="relative h-64 sm:h-80 cursor-pointer"
-                        onClick={handleCardFlip}
-                    >
-                        <div
-                            className={`absolute inset-0 w-full h-full transition-all duration-500 transform-gpu preserve-3d ${isFlipped ? 'rotate-y-180' : ''
-                                }`}
-                            style={{ transformStyle: 'preserve-3d' }}
-                        >
-                            {/* Front of card */}
-                            <div className="absolute inset-0 w-full h-full backface-hidden">
-                                <div className="bg-gradient-to-br from-primary-500 to-primary-600 dark:from-primary-700 dark:to-primary-800 rounded-2xl shadow-2xl p-4 sm:p-8 h-full flex flex-col justify-center items-center text-white">
-                                    <div className="text-3xl sm:text-5xl font-bold mb-2 sm:mb-4 text-center">
-                                        {card.kanji}
-                                    </div>
-                                    <div className="text-lg sm:text-2xl mb-2 sm:mb-3 text-center opacity-90">
-                                        {card.hiragana}
-                                    </div>
-                                    <div className="text-sm sm:text-lg opacity-80 text-center">
-                                        {card.romaji}
-                                    </div>
-                                    <div className="mt-3 sm:mt-6 text-xs sm:text-sm opacity-70">
-                                        Nhấn để xem nghĩa
-                                    </div>
-                                </div>
-                            </div>
-
-                            {/* Back of card */}
-                            <div
-                                className="absolute inset-0 w-full h-full rotate-y-180 backface-hidden"
-                                style={{ transform: 'rotateY(180deg)', backfaceVisibility: 'hidden' }}
-                            >
-                                <div className="bg-gradient-to-br from-green-500 to-green-600 dark:from-green-700 dark:to-green-800 rounded-2xl shadow-2xl p-4 sm:p-8 h-full flex flex-col justify-center text-white">
-                                    <div className="text-2xl sm:text-3xl font-bold mb-2 sm:mb-4 text-center">
-                                        {card.meaningVi}
-                                    </div>
-                                    <div className="text-sm sm:text-lg mb-3 sm:mb-6 text-center opacity-90">
-                                        {card.meaningEn}
-                                    </div>
-                                    {card.mnemonic && (
-                                        <div className="bg-white/20 backdrop-blur-sm rounded-lg p-2 sm:p-4">
-                                            <div className="flex items-center gap-2 mb-1 sm:mb-2">
-                                                <BulbOutlined className="text-yellow-300 text-sm sm:text-base" />
-                                                <span className="text-xs sm:text-sm font-medium">Mẹo ghi nhớ:</span>
+            {/* Desktop Grid View */}
+            {!screens.xs && viewMode === 'flashcard' && (
+                <div className="px-4 sm:px-0">
+                    <div className="bg-white dark:bg-secondary-800 rounded-xl shadow-lg p-6">
+                        <h3 className="text-lg font-semibold mb-4 text-secondary-900 dark:text-secondary-100 flex items-center gap-2">
+                            <BookOutlined />
+                            Danh sách từ vựng
+                        </h3>
+                        <Row gutter={[16, 16]}>
+                            {filteredVocabulary.map((item, index) => (
+                                <Col xs={24} sm={12} lg={8} key={item.id}>
+                                    <Card
+                                        onClick={() => {
+                                            setCurrentCard(index);
+                                            setIsFlipped(false);
+                                            setShowMeaning(false);
+                                        }}
+                                        className={`cursor-pointer transition-all duration-200 h-full ${index === currentCard
+                                                ? 'border-primary-500 bg-primary-50 dark:bg-primary-900/20 shadow-lg'
+                                                : 'border-secondary-200 dark:border-secondary-700 hover:border-primary-300 hover:shadow-md'
+                                            }`}
+                                    >
+                                        <div className="flex items-start justify-between mb-2">
+                                            <div className="font-bold text-lg text-primary-600 dark:text-primary-400 truncate">
+                                                {item.kanji}
                                             </div>
-                                            <p className="text-xs sm:text-sm opacity-90">{card.mnemonic}</p>
+                                            <Badge count={index + 1} size="small" />
                                         </div>
-                                    )}
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    {/* Navigation Buttons */}
-                    <div className="flex justify-between items-center mt-6 sm:mt-8 gap-2">
-                        <Button
-                            onClick={handlePrev}
-                            icon={<LeftOutlined />}
-                            size={"middle"}
-                            className="flex items-center flex-1 sm:flex-none"
-                        >
-                            <span className="hidden sm:inline">Trước</span>
-                            <span className="sm:hidden">←</span>
-                        </Button>
-                        <div className="flex gap-1 sm:gap-2">
-                            <Button
-                                onClick={handleCardFlip}
-                                icon={isFlipped ? <EyeOutlined /> : <EyeInvisibleOutlined />}
-                                type="default"
-                                size={"middle"}
-                            >
-                                <span className="hidden sm:inline">{isFlipped ? 'Ẩn nghĩa' : 'Hiện nghĩa'}</span>
-                                <span className="sm:hidden">{isFlipped ? '👁️' : '👁️‍🗨️'}</span>
-                            </Button>
-                            <Button
-                                icon={<StarOutlined />}
-                                type="default"
-                                size={"middle"}
-                            >
-                                <span className="hidden sm:inline">Đánh dấu</span>
-                                <span className="sm:hidden">⭐</span>
-                            </Button>
-                        </div>
-                        <Button
-                            onClick={handleNext}
-                            icon={<RightOutlined />}
-                            size={"middle"}
-                            type="primary"
-                            className="flex items-center flex-1 sm:flex-none"
-                        >
-                            <span className="hidden sm:inline">Tiếp</span>
-                            <span className="sm:hidden">→</span>
-                        </Button>
+                                        <div className="text-sm text-secondary-700 dark:text-secondary-400 mb-1">
+                                            {item.hiragana}
+                                        </div>
+                                        <div className="text-xs text-secondary-500 dark:text-secondary-500 mb-2">
+                                            {item.romaji}
+                                        </div>
+                                        {showHanViet && item.hanviet && (
+                                            <div className="text-xs text-secondary-600 dark:text-secondary-400 mb-2">
+                                                Hán Việt: {item.hanviet}
+                                            </div>
+                                        )}
+                                        <div className="text-sm font-medium text-secondary-900 dark:text-secondary-100">
+                                            {item.meaningVi}
+                                        </div>
+                                    </Card>
+                                </Col>
+                            ))}
+                        </Row>
                     </div>
                 </div>
-            </div>
-
-            {/* Vocabulary List */}
-            <div className="bg-white dark:bg-secondary-800 rounded-xl shadow-lg p-4 sm:p-6">
-                <h3 className="text-base sm:text-lg font-semibold mb-3 sm:mb-4 text-secondary-900 dark:text-secondary-100 flex items-center gap-2">
-                    <BookOutlined />
-                    Danh sách từ vựng
-                </h3>
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4">
-                    {vocabulary.map((item, index) => (
-                        <div
-                            key={item.id}
-                            onClick={() => {
-                                setCurrentCard(index);
-                                setIsFlipped(false);
-                                setShowMeaning(false);
-                            }}
-                            className={`p-3 sm:p-4 rounded-lg border-2 cursor-pointer transition-all duration-200 hover:shadow-md ${index === currentCard
-                                ? "border-primary-500 bg-primary-50 dark:bg-primary-900/20 shadow-lg"
-                                : "border-secondary-200 dark:border-secondary-700 hover:border-primary-300 hover:bg-secondary-50 dark:hover:bg-secondary-800"
-                                }`}
-                        >
-                            <div className="flex items-start justify-between mb-2">
-                                <div className="font-bold text-base sm:text-lg text-primary-600 dark:text-primary-400 truncate">
-                                    {item.kanji}
-                                </div>
-                                <Badge count={index + 1} size="small" />
-                            </div>
-                            <div className="text-xs sm:text-sm text-secondary-700 dark:text-secondary-400 mb-1">
-                                {item.hiragana}
-                            </div>
-                            <div className="text-xs text-secondary-500 dark:text-secondary-500 mb-2">
-                                {item.romaji}
-                            </div>
-                            <div className="text-xs sm:text-sm font-medium text-secondary-900 dark:text-secondary-100">
-                                {item.meaningVi}
-                            </div>
-                        </div>
-                    ))}
-                </div>
-            </div>
+            )}
         </div>
     );
 };

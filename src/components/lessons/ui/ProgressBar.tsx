@@ -5,7 +5,7 @@ interface ProgressBarProps {
     percent: number;
     strokeColor?: string | { [key: string]: string };
     trailColor?: string;
-    strokeWidth?: number;
+    size?: number;
     showInfo?: boolean;
     className?: string;
     labels?: string[];
@@ -18,7 +18,7 @@ const ProgressBar: React.FC<ProgressBarProps> = ({
         '100%': '#52c41a',
     },
     trailColor = "#f0f0f0",
-    strokeWidth = 8,
+    size = 8,
     showInfo = false,
     className = "",
     labels = ["Bắt đầu", "Hoàn thành"],
@@ -29,7 +29,7 @@ const ProgressBar: React.FC<ProgressBarProps> = ({
                 percent={percent}
                 strokeColor={strokeColor}
                 trailColor={trailColor}
-                strokeWidth={strokeWidth}
+                size={size}
                 showInfo={showInfo}
             />
             {labels.length > 0 && (

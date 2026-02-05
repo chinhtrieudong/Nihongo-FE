@@ -1,20 +1,19 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { useAppSelector } from "../store/hooks";
 import { lessonAPI, userStatsAPI } from "../services/api";
 import { useChatMutation } from "../services/aiService";
-import VocabularyTable from "../components/VocabularyTable";
-import GrammarSectionAccordion from "../components/GrammarSectionAccordion";
-import ReorderExercise from "../components/ReorderExercise";
+import GrammarTab from "./lesson-detail/GrammarTab";
+import ConversationTab from "./lesson-detail/ConversationTab";
+import ExercisesTab from "./lesson-detail/ExercisesTab";
+import AiPracticeTab from "./lesson-detail/AiPracticeTab";
+import SummaryTab from "./lesson-detail/SummaryTab";
+import LessonSidebar from "./lesson-detail/LessonSidebar";
 import type {
   LessonDetail as LessonDetailType,
-  Lesson,
   Exercise,
   Dialog,
-  VocabularyItem,
-  GrammarPattern,
-  AIRoleplayResponse,
-  WeakPointsResponse
+  Lesson,
 } from "../types/lesson";
 import {
   Layout,
@@ -22,40 +21,40 @@ import {
   Tabs,
   Button,
   Card,
-  Input,
   Spin,
-  Space,
-  Badge,
-  Progress,
-  List,
-  Avatar,
-  message,
   Tooltip,
-  Drawer
+  Space,
+  Progress,
+  Badge,
 } from "antd";
 import {
   BookOutlined,
+  ReadOutlined,
   PlayCircleOutlined,
   MessageOutlined,
-  CheckCircleOutlined,
-  ClockCircleOutlined,
   SoundOutlined,
-  TranslationOutlined,
   RobotOutlined,
   TrophyOutlined,
-  LeftOutlined,
-  RightOutlined,
   ArrowLeftOutlined,
   MenuOutlined,
-  CloseOutlined
+  MenuFoldOutlined,
 } from "@ant-design/icons";
 import { Grid } from "antd";
+import { getJapaneseVoices } from "../utils/vocabularyUtils";
+import WriteJapaneseIcon from "../components/icons/WriteJapaneseIcon";
+import InfinitejapaneseIcon from "../components/icons/InfinitejapaneseIcon";
+import VocabularyTable from "../components/VocabularyTable";
 
-const { Header, Content, Sider } = Layout;
-const { Title, Text, Paragraph } = Typography;
-const { TextArea } = Input;
+const { Header, Content } = Layout;
+const { Title, Text } = Typography;
 
-type TabType = "vocabulary" | "grammar" | "conversation" | "exercises" | "ai" | "summary";
+type TabType =
+  | "vocabulary"
+  | "grammar"
+  | "conversation"
+  | "exercises"
+  | "ai"
+  | "summary";
 
 const LessonDetail: React.FC = () => {
   const { currentUser } = useAppSelector((state) => state.user);
@@ -63,36 +62,76 @@ const LessonDetail: React.FC = () => {
   const navigate = useNavigate();
   const [chatMutation] = useChatMutation();
   const screens = Grid.useBreakpoint();
-  const [lessonDetail, setLessonDetail] = useState<LessonDetailType | null>(null);
+  const [lessonDetail, setLessonDetail] = useState<LessonDetailType | null>(
+    null,
+  );
   const [activeTab, setActiveTab] = useState<TabType>("vocabulary");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [sidebarVisible, setSidebarVisible] = useState(false);
+  const [desktopSidebarCollapsed, setDesktopSidebarCollapsed] = useState(false);
+  const sidebarSnapshotRef = useRef<{
+    sidebarVisible: boolean;
+    desktopSidebarCollapsed: boolean;
+  } | null>(null);
+  const [japaneseVoices, setJapaneseVoices] = useState<SpeechSynthesisVoice[]>([]);
+  const [maleVoiceName, setMaleVoiceName] = useState(() => {
+    try {
+      return localStorage.getItem("tts_voice_male") || "";
+    } catch {
+      return "";
+    }
+  });
+  const [femaleVoiceName, setFemaleVoiceName] = useState(() => {
+    try {
+      return localStorage.getItem("tts_voice_female") || "";
+    } catch {
+      return "";
+    }
+  });
 
   // Extract lesson data early to avoid undefined issues
-  const { lesson, vocabularies = [], grammars = [], dialogs = [], exercises = [] } = lessonDetail || {};
+  const {
+    lesson,
+    vocabularies = [],
+    grammars = [],
+    dialogs = [],
+    exercises = [],
+  } = lessonDetail || {};
 
   // AI Practice state
-  const [aiMessages, setAiMessages] = useState<Array<{
-    role: "user" | "assistant";
-    content: string;
-    timestamp: string;
-  }>>([]);
+  const [aiMessages, setAiMessages] = useState<
+    Array<{
+      role: "user" | "assistant";
+      content: string;
+      timestamp: string;
+    }>
+  >([]);
   const [currentMessage, setCurrentMessage] = useState("");
   const [aiLoading, setAiLoading] = useState(false);
 
   // Exercise state
   const [currentExerciseIndex, setCurrentExerciseIndex] = useState(0);
-  const [exerciseAnswers, setExerciseAnswers] = useState<Record<string, string | string[]>>({});
-  const [exerciseResults, setExerciseResults] = useState<Record<string, any>>({});
-  const [showExplanation, setShowExplanation] = useState<Record<string, boolean>>({});
-  const [answerStatus, setAnswerStatus] = useState<Record<string, 'correct' | 'incorrect' | null>>({});
+  const [exerciseAnswers, setExerciseAnswers] = useState<
+    Record<string, string | string[]>
+  >({});
+  const [exerciseResults, setExerciseResults] = useState<Record<string, any>>(
+    {},
+  );
+  const [showExplanation, setShowExplanation] = useState<
+    Record<string, boolean>
+  >({});
+  const [answerStatus, setAnswerStatus] = useState<
+    Record<string, "correct" | "incorrect" | null>
+  >({});
   const [exercisesCompleted, setExercisesCompleted] = useState(false);
 
   // Load exercise progress from localStorage on component mount
   useEffect(() => {
     if (lessonId) {
-      const savedProgress = localStorage.getItem(`lesson_${lessonId}_exercise_progress`);
+      const savedProgress = localStorage.getItem(
+        `lesson_${lessonId}_exercise_progress`,
+      );
       if (savedProgress) {
         try {
           const progress = JSON.parse(savedProgress);
@@ -102,7 +141,7 @@ const LessonDetail: React.FC = () => {
           setAnswerStatus(progress.answerStatus || {});
           setCurrentExerciseIndex(progress.currentExerciseIndex || 0);
         } catch (error) {
-          console.error('Error loading exercise progress from localStorage:', error);
+          // Error loading exercise progress from localStorage
         }
       }
     }
@@ -116,34 +155,60 @@ const LessonDetail: React.FC = () => {
         exerciseResults,
         showExplanation,
         answerStatus,
-        currentExerciseIndex
+        currentExerciseIndex,
       };
-      localStorage.setItem(`lesson_${lessonId}_exercise_progress`, JSON.stringify(progress));
+      localStorage.setItem(
+        `lesson_${lessonId}_exercise_progress`,
+        JSON.stringify(progress),
+      );
     }
-  }, [exerciseAnswers, exerciseResults, showExplanation, answerStatus, currentExerciseIndex, lessonId]);
+  }, [
+    exerciseAnswers,
+    exerciseResults,
+    showExplanation,
+    answerStatus,
+    currentExerciseIndex,
+    lessonId,
+  ]);
 
   // Flashcard state
   const [currentVocabIndex, setCurrentVocabIndex] = useState(0);
   const [showVocabAnswer, setShowVocabAnswer] = useState(false);
-  const [hoveredWord, setHoveredWord] = useState<{ word: string, meaning: string, x: number, y: number } | null>(null);
-  const [clickedWord, setClickedWord] = useState<{ word: string, meaning: string, x: number, y: number } | null>(null);
-  const [showMeaningButton, setShowMeaningButton] = useState<{ word: string, x: number, y: number } | null>(null);
-  const [bookmarkedVocab, setBookmarkedVocab] = useState<Set<string>>(new Set());
-  const [showDialogTranslation, setShowDialogTranslation] = useState<Record<string, boolean>>({});
+  const [clickedWord, setClickedWord] = useState<{
+    word: string;
+    meaning: string;
+    x: number;
+    y: number;
+  } | null>(null);
+  const [showMeaningButton, setShowMeaningButton] = useState<{
+    word: string;
+    x: number;
+    y: number;
+  } | null>(null);
+  const [bookmarkedVocab, setBookmarkedVocab] = useState<Set<string>>(
+    new Set(),
+  );
+  const [showDialogTranslation, setShowDialogTranslation] = useState<
+    Record<string, boolean>
+  >({});
 
   // Load flashcard progress from localStorage on component mount
   useEffect(() => {
     if (lessonId) {
-      const savedFlashcardProgress = localStorage.getItem(`lesson_${lessonId}_flashcard_progress`);
+      const savedFlashcardProgress = localStorage.getItem(
+        `lesson_${lessonId}_flashcard_progress`,
+      );
       if (savedFlashcardProgress) {
         try {
           const flashcardProgress = JSON.parse(savedFlashcardProgress);
           setCurrentVocabIndex(flashcardProgress.currentVocabIndex || 0);
           setShowVocabAnswer(flashcardProgress.showVocabAnswer || false);
           setBookmarkedVocab(new Set(flashcardProgress.bookmarkedVocab || []));
-          setShowDialogTranslation(flashcardProgress.showDialogTranslation || {});
+          setShowDialogTranslation(
+            flashcardProgress.showDialogTranslation || {},
+          );
         } catch (error) {
-          console.error('Error loading flashcard progress from localStorage:', error);
+          // Error loading flashcard progress from localStorage
         }
       }
     }
@@ -156,14 +221,23 @@ const LessonDetail: React.FC = () => {
         currentVocabIndex,
         showVocabAnswer,
         bookmarkedVocab: Array.from(bookmarkedVocab),
-        showDialogTranslation
+        showDialogTranslation,
       };
-      localStorage.setItem(`lesson_${lessonId}_flashcard_progress`, JSON.stringify(flashcardProgress));
+      localStorage.setItem(
+        `lesson_${lessonId}_flashcard_progress`,
+        JSON.stringify(flashcardProgress),
+      );
     }
-  }, [currentVocabIndex, showVocabAnswer, bookmarkedVocab, showDialogTranslation, lessonId]);
+  }, [
+    currentVocabIndex,
+    showVocabAnswer,
+    bookmarkedVocab,
+    showDialogTranslation,
+    lessonId,
+  ]);
 
   // Lessons list state
-  const [lessons, setLessons] = useState<any[]>([]);
+  const [lessons, setLessons] = useState<Lesson[]>([]);
   const [lessonsLoading, setLessonsLoading] = useState(false);
 
   useEffect(() => {
@@ -184,7 +258,8 @@ const LessonDetail: React.FC = () => {
   // Load voices when component mounts
   useEffect(() => {
     const loadVoices = () => {
-      window.speechSynthesis.getVoices();
+      const voices = getJapaneseVoices();
+      setJapaneseVoices(voices);
     };
 
     // Load voices immediately
@@ -197,65 +272,69 @@ const LessonDetail: React.FC = () => {
   }, []);
 
   useEffect(() => {
+    try {
+      localStorage.setItem("tts_voice_male", maleVoiceName);
+    } catch {
+      // ignore storage errors
+    }
+  }, [maleVoiceName]);
+
+  useEffect(() => {
+    try {
+      localStorage.setItem("tts_voice_female", femaleVoiceName);
+    } catch {
+      // ignore storage errors
+    }
+  }, [femaleVoiceName]);
+
+  useEffect(() => {
     // Ẩn tooltip khi click ra ngoài
     const handleClickOutside = (event: MouseEvent) => {
       // Kiểm tra xem click có phải là vào nút không
       const target = event.target as HTMLElement;
-      if (!target.closest('.meaning-button') && !target.closest('.meaning-tooltip')) {
+      if (
+        !target.closest(".meaning-button") &&
+        !target.closest(".meaning-tooltip")
+      ) {
         setClickedWord(null);
         setShowMeaningButton(null);
       }
     };
 
-    document.addEventListener('click', handleClickOutside);
-    return () => document.removeEventListener('click', handleClickOutside);
+    document.addEventListener("click", handleClickOutside);
+    return () => document.removeEventListener("click", handleClickOutside);
   }, []);
 
-  const loadLessons = async (level?: string, limit: number = 50, offset: number = 0) => {
+  const loadLessons = async (
+    level?: string,
+    limit: number = 50,
+    offset: number = 0,
+  ) => {
     setLessonsLoading(true);
     try {
-      // Sử dụng currentUser.id hoặc fallback là temp-user123
-      const userId = currentUser?.id || 'temp-user123';
-
-      console.log('🚀 Calling loadLessons with params:', {
-        userId,
-        level,
-        limit,
-        offset
-      });
-
       // Gọi API với các tham số: level, limit, offset (không còn userId)
       const response = await lessonAPI.getLessons(level, limit, offset);
 
-      console.log('📥 API Response:', response);
-
       if (response.success && response.data) {
         setLessons(response.data.lessons);
-        console.log(`✅ Loaded ${response.data.lessons.length} lessons with progress for user: ${userId}`);
-
-        // Log status và progress của từng lesson
-        response.data.lessons.forEach((lesson: any, index: number) => {
-          console.log(`Lesson ${index + 1}: ${lesson.title} - Status: ${lesson.status}, Progress: ${lesson.progress}%`);
-        });
       } else {
-        console.error('❌ API response failed:', response);
+        setError("Failed to load lessons");
       }
     } catch (err) {
-      console.error("❌ Failed to load lessons:", err);
+      setError("Lỗi khi tải data");
     } finally {
       setLessonsLoading(false);
     }
   };
 
-  // Helper functions cho các use case cụ thể
-  const loadAllLessons = () => loadLessons(); // Lấy tất cả bài học
-  const loadN5Lessons = () => loadLessons('N5'); // Lọc theo cấp độ N5
-  const loadN4Lessons = () => loadLessons('N4'); // Lọc theo cấp độ N4
-  const loadLessonsWithPagination = (limit: number, offset: number) => loadLessons(undefined, limit, offset); // Phân trang
-
   // Text-to-Speech functionality
-  const speakText = (text: string, lang: string = 'ja-JP', voiceIndex?: number) => {
-    if ('speechSynthesis' in window) {
+  const speakText = (
+    text: string,
+    lang: string = "ja-JP",
+    voiceIndex?: number,
+    voiceName?: string,
+  ) => {
+    if ("speechSynthesis" in window) {
       // Cancel any ongoing speech
       window.speechSynthesis.cancel();
 
@@ -267,78 +346,125 @@ const LessonDetail: React.FC = () => {
 
       // Get available voices and set specific voice if index is provided
       const voices = window.speechSynthesis.getVoices();
-      if (voiceIndex !== undefined && voices[voiceIndex]) {
+      if (voiceName) {
+        const byName = voices.find((voice) => voice.name === voiceName);
+        if (byName) {
+          utterance.voice = byName;
+        }
+      }
+      if (!utterance.voice && voiceIndex !== undefined && voices[voiceIndex]) {
         utterance.voice = voices[voiceIndex];
+      } else if (!utterance.voice) {
+        const preferredVoice = getJapaneseVoices()[0];
+        if (preferredVoice) {
+          utterance.voice = preferredVoice;
+        }
       }
 
       window.speechSynthesis.speak(utterance);
     } else {
-      console.warn('Text-to-speech not supported in this browser');
+      // Text-to-speech not supported
     }
   };
 
   // Function to speak entire conversation with alternating voices
   const speakEntireConversation = (dialog: Dialog) => {
-    if (!('speechSynthesis' in window)) {
-      console.warn('Text-to-speech not supported in this browser');
+    if (!("speechSynthesis" in window)) {
       return;
     }
 
     // Load voices
     const voices = window.speechSynthesis.getVoices();
 
-    // Find Japanese voices (preferably male and female)
-    const japaneseVoices = voices.filter(voice =>
-      voice.lang.startsWith('ja') || voice.lang.startsWith('ja-JP')
-    );
+    // Find Japanese voices (preferably higher quality)
+    const preferredVoices = getJapaneseVoices();
+    const japaneseVoices =
+      preferredVoices.length > 0
+        ? preferredVoices
+        : voices.filter(
+            (voice) => voice.lang.startsWith("ja") || voice.lang.startsWith("ja-JP"),
+          );
 
     // Separate male and female voices if available
-    const maleVoices = japaneseVoices.filter(voice =>
-      voice.name.toLowerCase().includes('male') ||
-      voice.name.toLowerCase().includes('dan') ||
-      voice.name.toLowerCase().includes('otoko')
-    );
+    const femaleHints = [
+      "nanami online (natural)",
+      "nanami",
+      "ayumi",
+      "haruka",
+      "sayaka",
+      "female",
+      "josei",
+      "onna",
+    ];
+    const maleHints = [
+      "keita online (natural)",
+      "keita",
+      "ichiro",
+      "otoya",
+      "male",
+      "dan",
+      "otoko",
+    ];
 
-    const femaleVoices = japaneseVoices.filter(voice =>
-      voice.name.toLowerCase().includes('female') ||
-      voice.name.toLowerCase().includes('josei') ||
-      voice.name.toLowerCase().includes('onna')
-    );
+    const pickByPreference = (voicesList: SpeechSynthesisVoice[], hints: string[]) => {
+      for (const hint of hints) {
+        const found = voicesList.find((voice) =>
+          voice.name.toLowerCase().includes(hint),
+        );
+        if (found) return found;
+      }
+      return undefined;
+    };
+
+    const maleVoicePreferred = pickByPreference(japaneseVoices, maleHints);
+    const femaleVoicePreferred = pickByPreference(japaneseVoices, femaleHints);
 
     // Fallback to any Japanese voices
-    const maleVoice = maleVoices.length > 0 ? maleVoices[0] :
-      japaneseVoices.length > 0 ? japaneseVoices[0] : voices[0];
-    const femaleVoice = femaleVoices.length > 0 ? femaleVoices[0] :
-      japaneseVoices.length > 1 ? japaneseVoices[1] :
-        voices.length > 1 ? voices[1] : voices[0];
+      const selectedMale = voices.find((voice) => voice.name === maleVoiceName);
+      const selectedFemale = voices.find((voice) => voice.name === femaleVoiceName);
 
-    let conversationLines: Array<{ speaker: string, text: string }> = [];
+      const maleVoice =
+        selectedMale ||
+        maleVoicePreferred ||
+        (japaneseVoices.length > 0 ? japaneseVoices[0] : voices[0]);
+      const femaleVoice =
+        selectedFemale ||
+        femaleVoicePreferred ||
+        (japaneseVoices.length > 0 ? japaneseVoices[0] : voices[0]);
+
+    const otherVoices = japaneseVoices.filter(
+      (voice) => voice !== maleVoice && voice !== femaleVoice,
+    );
+
+    let conversationLines: Array<{ speaker: string; text: string }> = [];
 
     // Extract text from lines if available
     if (dialog.lines && dialog.lines.length > 0) {
       conversationLines = dialog.lines
-        .map(line => ({
+        .map((line) => ({
           speaker: line.speaker,
-          text: line.japanese || ''
+          text: line.japanese || "",
         }))
-        .filter(line => line.text.trim() !== '');
+        .filter((line) => line.text.trim() !== "");
     }
     // Extract text from jpText if available
     else if (dialog.jpText) {
       const parsedLines = parseJpTextToLines(dialog.jpText);
       if (parsedLines.length > 0) {
         conversationLines = parsedLines
-          .map(line => ({
+          .map((line) => ({
             speaker: line.speaker,
-            text: line.text || ''
+            text: line.text || "",
           }))
-          .filter(line => line.text.trim() !== '');
+          .filter((line) => line.text.trim() !== "");
       } else {
         // If jpText doesn't have speaker prefixes, treat as single line
-        conversationLines = [{
-          speaker: "A",
-          text: dialog.jpText
-        }];
+        conversationLines = [
+          {
+            speaker: "A",
+            text: dialog.jpText,
+          },
+        ];
       }
     }
 
@@ -348,11 +474,23 @@ const LessonDetail: React.FC = () => {
       if (currentIndex >= conversationLines.length) return;
 
       const line = conversationLines[currentIndex];
-      const isSpeakerA = line.speaker === "A";
-      const voice = isSpeakerA ? maleVoice : femaleVoice;
+      let voice = femaleVoice; // default
+      if (line.speaker === "A") {
+        voice = maleVoice;
+      } else if (line.speaker === "B") {
+        voice = femaleVoice;
+      } else {
+        const speakerIndex = line.speaker
+          ? line.speaker.charCodeAt(0) - "A".charCodeAt(0)
+          : 0;
+        const pool = otherVoices.length > 0 ? otherVoices : japaneseVoices;
+        if (pool.length > 0) {
+          voice = pool[Math.abs(speakerIndex) % pool.length];
+        }
+      }
 
       const utterance = new SpeechSynthesisUtterance(line.text);
-      utterance.lang = 'ja-JP';
+      utterance.lang = "ja-JP";
       utterance.rate = 0.8;
       utterance.pitch = 1;
       utterance.volume = 1;
@@ -386,33 +524,27 @@ const LessonDetail: React.FC = () => {
       }
     } catch (err) {
       setError("Error loading lesson");
-      console.error("Failed to load lesson detail:", err);
     } finally {
       setLoading(false);
     }
   };
 
   const handleWordHover = (word: string, event: React.MouseEvent) => {
-    // Debug: Kiểm tra dữ liệu
-    console.log('Hover word:', word);
-    console.log('Lesson detail vocabularies:', lessonDetail?.vocabularies);
-
     // Tìm từ trong vocabulary thật
     if (!lessonDetail || !lessonDetail.vocabularies) return;
 
-    const vocab = lessonDetail.vocabularies.find(v =>
-      v.kanji === word ||
-      v.hiragana === word ||
-      v.romaji.toLowerCase() === word.toLowerCase()
+    const vocab = lessonDetail.vocabularies.find(
+      (v) =>
+        v.kanji === word ||
+        v.hiragana === word ||
+        v.romaji.toLowerCase() === word.toLowerCase(),
     );
-
-    console.log('Found vocab:', vocab);
 
     if (vocab) {
       setShowMeaningButton({
         word,
         x: event.clientX,
-        y: event.clientY
+        y: event.clientY,
       });
     }
   };
@@ -425,10 +557,11 @@ const LessonDetail: React.FC = () => {
     // Tìm từ trong vocabulary thật
     if (!lessonDetail || !lessonDetail.vocabularies) return;
 
-    const vocab = lessonDetail.vocabularies.find(v =>
-      v.kanji === word ||
-      v.hiragana === word ||
-      v.romaji.toLowerCase() === word.toLowerCase()
+    const vocab = lessonDetail.vocabularies.find(
+      (v) =>
+        v.kanji === word ||
+        v.hiragana === word ||
+        v.romaji.toLowerCase() === word.toLowerCase(),
     );
 
     if (vocab) {
@@ -438,8 +571,8 @@ const LessonDetail: React.FC = () => {
       // Nếu không có meaning_vi, thử lấy từ mnemonic
       if (!meaning && vocab.mnemonic) {
         // Lấy phần đầu tiên của mnemonic trước dấu :
-        if (vocab.mnemonic.includes(':')) {
-          meaning = vocab.mnemonic.split(':')[1].trim();
+        if (vocab.mnemonic.includes(":")) {
+          meaning = vocab.mnemonic.split(":")[1].trim();
         } else {
           meaning = vocab.mnemonic;
         }
@@ -454,34 +587,38 @@ const LessonDetail: React.FC = () => {
         word,
         meaning: meaning,
         x: event.clientX,
-        y: event.clientY
+        y: event.clientY,
       });
       setShowMeaningButton(null);
     }
   };
 
-  const parseJpTextToLines = (jpText: string): Array<{ speaker: string, text: string }> => {
-    if (!jpText || typeof jpText !== 'string') return [];
+  const parseJpTextToLines = (
+    jpText: string,
+  ): Array<{ speaker: string; text: string }> => {
+    if (!jpText || typeof jpText !== "string") return [];
 
     // Normalize both colon types
-    const normalizedText = jpText.replace(/：/g, ':');
+    const normalizedText = jpText.replace(/：/g, ":");
 
     return normalizedText
-      .split('\n')
-      .map(line => line.trim())
-      .filter(line => line.length > 0)
-      .map(line => {
+      .split("\n")
+      .map((line) => line.trim())
+      .filter((line) => line.length > 0)
+      .map((line) => {
         // Match patterns like "A: text" or "B: text"
         const match = line.match(/^(A|B):\s*(.+)$/);
         if (match) {
           return {
             speaker: match[1],
-            text: match[2].trim()
+            text: match[2].trim(),
           };
         }
         return null;
       })
-      .filter((item): item is { speaker: string, text: string } => item !== null);
+      .filter(
+        (item): item is { speaker: string; text: string } => item !== null,
+      );
   };
 
   const renderTextWithTooltips = (text: string) => {
@@ -490,16 +627,20 @@ const LessonDetail: React.FC = () => {
 
     return words.map((word, index) => {
       // Bỏ qua khoảng trắng và dấu câu
-      if (word.trim() === '' || /[。、？！]/.test(word)) {
+      if (word.trim() === "" || /[。、？！]/.test(word)) {
         return <span key={index}>{word}</span>;
       }
 
       // Kiểm tra xem có phải là từ vựng không
-      const isVocab = lessonDetail && lessonDetail.vocabularies && lessonDetail.vocabularies.some(v =>
-        v.kanji === word ||
-        v.hiragana === word ||
-        v.romaji.toLowerCase() === word.toLowerCase()
-      );
+      const isVocab =
+        lessonDetail &&
+        lessonDetail.vocabularies &&
+        lessonDetail.vocabularies.some(
+          (v) =>
+            v.kanji === word ||
+            v.hiragana === word ||
+            v.romaji.toLowerCase() === word.toLowerCase(),
+        );
 
       if (isVocab) {
         return (
@@ -518,34 +659,47 @@ const LessonDetail: React.FC = () => {
     });
   };
 
-  const renderConversationLines = (lines: Array<{ speaker: string, japanese?: string, text?: string }>) => {
+  const renderConversationLines = (
+    lines: Array<{ speaker: string; japanese?: string; text?: string }>,
+  ) => {
     return (
       <div className="space-y-4">
         {lines.map((line, index) => (
           <div key={index} className="flex items-start gap-3">
-            <div className={`flex-1 px-4 py-3 rounded-xl shadow-sm ${line.speaker === "A"
-              ? "bg-gradient-to-r from-blue-50 to-blue-100 dark:from-blue-900/20 dark:to-blue-800/20 text-secondary-800 dark:text-secondary-200"
-              : "bg-gradient-to-r from-green-50 to-green-100 dark:from-green-900/20 dark:to-green-800/20 text-secondary-800 dark:text-secondary-200"
-              }`}>
-              <div className="flex items-center justify-between mb-1">
-                <div className="font-semibold text-xs text-blue-600 dark:text-blue-400 opacity-75">
-                  {line.speaker}
+            <div
+              className={`flex-1 px-4 py-3 rounded-xl shadow-sm ${
+                line.speaker === "A"
+                  ? "bg-gradient-to-r from-blue-50 to-blue-100 dark:from-blue-900/20 dark:to-blue-800/20 text-secondary-800 dark:text-secondary-200"
+                  : "bg-gradient-to-r from-green-50 to-green-100 dark:from-green-900/20 dark:to-green-800/20 text-secondary-800 dark:text-secondary-200"
+              }`}
+            >
+              <div className="flex items-baseline justify-between gap-3">
+                <div className="flex items-baseline gap-3 min-w-0">
+                  <div className="font-semibold text-sm text-blue-600 dark:text-blue-400 opacity-75 flex-shrink-0">
+                    {line.speaker}
+                  </div>
+                  <div className="text-sm leading-relaxed break-words">
+                    {renderTextWithTooltips(line.japanese || line.text || "")}
+                  </div>
                 </div>
-                <button
+                <Button
+                  type="text"
                   onClick={() => {
-                    const textToSpeak = line.japanese || line.text || '';
+                    const textToSpeak = line.japanese || line.text || "";
+                    const voiceName =
+                      line.speaker === "A"
+                        ? maleVoiceName
+                        : line.speaker === "B"
+                          ? femaleVoiceName
+                          : undefined;
                     if (textToSpeak) {
-                      speakText(textToSpeak);
+                      speakText(textToSpeak, "ja-JP", undefined, voiceName);
                     }
                   }}
-                  className="px-2 py-1 bg-green-600 hover:bg-green-700 text-white rounded-full text-xs transition-colors flex items-center"
+                  icon={<SoundOutlined />}
+                  size="small"
                   title="Nghe phát âm"
-                >
-                  🔊
-                </button>
-              </div>
-              <div className="text-sm leading-relaxed">
-                {renderTextWithTooltips(line.japanese || line.text || '')}
+                />
               </div>
             </div>
           </div>
@@ -572,7 +726,7 @@ const LessonDetail: React.FC = () => {
       const syntheticLine = {
         speaker: "A",
         japanese: dialog.jpText,
-        text: dialog.jpText
+        text: dialog.jpText,
       };
       return renderConversationLines([syntheticLine]);
     }
@@ -585,26 +739,28 @@ const LessonDetail: React.FC = () => {
     );
   };
 
-  const handleAnswerSelect = (exerciseId: string, answer: string | string[]) => {
-    setExerciseAnswers(prev => ({
+  const handleAnswerSelect = (
+    exerciseId: string,
+    answer: string | string[],
+  ) => {
+    setExerciseAnswers((prev) => ({
       ...prev,
-      [exerciseId]: answer
+      [exerciseId]: answer,
     }));
 
     // Find the exercise object
     let exercise: Exercise | undefined;
-    if (exerciseId.includes('exercise_')) {
+    if (exerciseId.includes("exercise_")) {
       // Generated ID from index
-      const index = parseInt(exerciseId.split('_')[1]);
+      const index = parseInt(exerciseId.split("_")[1]);
       exercise = exercises[index]; // This could be undefined
     } else {
       // Real exercise ID
-      exercise = exercises.find(ex => ex.id === exerciseId);
+      exercise = exercises.find((ex) => ex.id === exerciseId);
     }
 
     // Safety check
     if (!exercise || !exercises || exercises.length === 0) {
-      console.error('Exercise not found or exercises array is empty');
       return;
     }
 
@@ -612,51 +768,45 @@ const LessonDetail: React.FC = () => {
 
     if (exercise.type === "reorder") {
       // For reorder, compare arrays
-      const correctAnswer = Array.isArray(exercise.answer) ? exercise.answer : (exercise.answer as string).split(' ').filter(w => w.trim() !== '');
-      const userAnswer = Array.isArray(answer) ? answer : (answer as string).split(' ').filter(w => w.trim() !== '');
+      const correctAnswer = Array.isArray(exercise.answer)
+        ? exercise.answer
+        : (exercise.answer as string).split(" ").filter((w) => w.trim() !== "");
+      const userAnswer = Array.isArray(answer)
+        ? answer
+        : (answer as string).split(" ").filter((w) => w.trim() !== "");
       isCorrect = JSON.stringify(userAnswer) === JSON.stringify(correctAnswer);
     } else {
       // For other types, compare strings
-      isCorrect = exercise.answer === answer ||
-        (Array.isArray(exercise.answer) ? exercise.answer.join(' ') === answer : false);
+      isCorrect =
+        exercise.answer === answer ||
+        (Array.isArray(exercise.answer)
+          ? exercise.answer.join(" ") === answer
+          : false);
     }
 
-    console.log("=== DEBUG COMPARISON ===");
-    console.log("User answer:", JSON.stringify(answer));
-    console.log("API answer:", JSON.stringify(exercise.answer));
-    console.log("API joined:", JSON.stringify(Array.isArray(exercise.answer) ? exercise.answer.join(' ') : 'N/A'));
-    console.log("Is correct:", isCorrect);
-    console.log("=== END DEBUG ===");
-
-    setAnswerStatus(prev => ({
+    setAnswerStatus((prev) => ({
       ...prev,
-      [exerciseId]: isCorrect ? 'correct' : 'incorrect'
+      [exerciseId]: isCorrect ? "correct" : "incorrect",
     }));
 
     // Only show explanation if answer is correct
     if (isCorrect) {
-      setShowExplanation(prev => ({
+      setShowExplanation((prev) => ({
         ...prev,
-        [exerciseId]: true
+        [exerciseId]: true,
       }));
     } else {
       // Hide explanation if answer is incorrect
-      setShowExplanation(prev => ({
+      setShowExplanation((prev) => ({
         ...prev,
-        [exerciseId]: false
+        [exerciseId]: false,
       }));
     }
   };
 
   const handleExerciseSubmit = async (exerciseId?: string, answer?: string) => {
-    console.log("handleExerciseSubmit called");
-    console.log("lessonId:", lessonId);
-    console.log("currentUser:", currentUser);
-    console.log("exerciseId param:", exerciseId);
-
     // Temporarily bypass currentUser check for testing
     if (!lessonId) {
-      console.log("Submission aborted: lessonId is missing.");
       return;
     }
 
@@ -664,24 +814,35 @@ const LessonDetail: React.FC = () => {
       // Prepare answers array for the new API format
       const answers = Object.entries(exerciseAnswers).map(([id, ans]) => ({
         exerciseId: id,
-        answer: Array.isArray(ans) ? ans[0] || "" : (typeof ans === 'string' ? ans : "")
+        answer: Array.isArray(ans)
+          ? ans[0] || ""
+          : typeof ans === "string"
+            ? ans
+            : "",
       }));
 
       // If specific exerciseId is provided, submit only that exercise
       if (exerciseId && answer) {
-        const specificAnswer = [{
-          exerciseId,
-          answer
-        }];
+        const specificAnswer = [
+          {
+            exerciseId,
+            answer,
+          },
+        ];
 
-        const response = await lessonAPI.submitExercises(lessonId, specificAnswer);
+        const response = await lessonAPI.submitExercises(
+          lessonId,
+          specificAnswer,
+        );
         if (response.success && response.data) {
           // Update results for the specific exercise
-          const result = response.data.results.find((r: any) => r.exerciseId === exerciseId);
+          const result = response.data.results.find(
+            (r: any) => r.exerciseId === exerciseId,
+          );
           if (result) {
-            setExerciseResults(prev => ({
+            setExerciseResults((prev) => ({
               ...prev,
-              [exerciseId]: result
+              [exerciseId]: result,
             }));
           }
         }
@@ -694,14 +855,14 @@ const LessonDetail: React.FC = () => {
           response.data.results.forEach((result: any) => {
             newResults[result.exerciseId] = result;
           });
-          setExerciseResults(prev => ({
+          setExerciseResults((prev) => ({
             ...prev,
-            ...newResults
+            ...newResults,
           }));
         }
       }
     } catch (err) {
-      console.error("Exercise submission error:", err);
+      // Exercise submission error
     }
   };
 
@@ -711,19 +872,14 @@ const LessonDetail: React.FC = () => {
 
   const handleMarkLessonComplete = async () => {
     if (!lessonId || !currentUser) {
-      console.error("Missing lessonId or currentUser");
       return;
     }
 
     try {
       setLoading(true);
 
-      console.log('🏁 Marking lesson as complete:', { lessonId, userId: currentUser.id });
-
       // Dùng API mới để đánh dấu hoàn thành nhanh
       const response = await lessonAPI.completeLesson(lessonId);
-
-      console.log('📥 Complete lesson response:', response);
 
       // Refresh lessons list to show updated status
       await loadLessons();
@@ -733,24 +889,22 @@ const LessonDetail: React.FC = () => {
 
       // Update dashboard stats after completing lesson
       try {
-        console.log('📊 Updating dashboard stats after completing lesson');
-
         // Get current dashboard stats first
         const currentStats = await userStatsAPI.getDashboardStats();
 
         // Calculate new stats
         const newLearningStreak = (currentStats.data?.learningStreak || 0) + 1;
-        const newTotalHours = (currentStats.data?.totalStudyTime || 0) + (lessonDetail?.lesson?.estimatedTime || 1);
+        const newTotalHours =
+          (currentStats.data?.totalStudyTime || 0) +
+          (lessonDetail?.lesson?.estimatedTime || 1);
 
         // Update dashboard stats using new endpoint
         await userStatsAPI.updateDashboardStats({
           learningStreak: newLearningStreak,
-          totalStudyTime: newTotalHours
+          totalStudyTime: newTotalHours,
         });
-
-        console.log('✅ Dashboard stats updated successfully');
       } catch (error) {
-        console.error('❌ Failed to update dashboard stats:', error);
+        // Failed to update dashboard stats
       }
 
       // Clear exercise progress from localStorage after marking lesson complete
@@ -772,43 +926,11 @@ const LessonDetail: React.FC = () => {
       setBookmarkedVocab(new Set());
       setShowDialogTranslation({});
     } catch (error) {
-      console.error("❌ Error marking lesson as complete:", error);
+      // Error marking lesson as complete
       alert("Có lỗi xảy ra khi đánh dấu bài học hoàn thành. Vui lòng thử lại.");
     } finally {
       setLoading(false);
     }
-  };
-
-  const toggleBookmark = (vocabId: string) => {
-    setBookmarkedVocab(prev => {
-      const newSet = new Set(prev);
-      if (newSet.has(vocabId)) {
-        newSet.delete(vocabId);
-      } else {
-        newSet.add(vocabId);
-      }
-      return newSet;
-    });
-  };
-
-  const nextVocab = () => {
-    if (lessonDetail && currentVocabIndex < lessonDetail.vocabularies.length - 1) {
-      setCurrentVocabIndex(prev => prev + 1);
-      setShowVocabAnswer(false);
-    }
-  };
-
-  const playAudio = (audioUrl: string) => {
-    console.log('Attempting to play audio:', audioUrl);
-    // Dùng audio file từ public folder
-    const audio = new Audio(audioUrl);
-    audio.play().catch(err => {
-      console.error("Audio playback failed:", err);
-      // Fallback to TTS if audio fails
-      console.log('Falling back to TTS...');
-      return false; // Indicate failure
-    });
-    return true; // Indicate success
   };
 
   const handleAIMessage = async () => {
@@ -821,7 +943,7 @@ const LessonDetail: React.FC = () => {
     };
 
     // Add user message to the conversation
-    setAiMessages(prev => [...prev, userMessage]);
+    setAiMessages((prev) => [...prev, userMessage]);
     setCurrentMessage("");
     setAiLoading(true);
 
@@ -832,8 +954,8 @@ const LessonDetail: React.FC = () => {
         messages: [...aiMessages, userMessage],
         context: {
           currentLesson: lesson?.title || "",
-          learnedVocabulary: vocabularies?.map(v => v.kanji) || [],
-          learnedGrammar: grammars?.map(g => g.pattern) || [],
+          learnedVocabulary: vocabularies?.map((v) => v.kanji) || [],
+          learnedGrammar: grammars?.map((g) => g.pattern) || [],
           difficulty: "medium" as const,
         },
       };
@@ -846,44 +968,40 @@ const LessonDetail: React.FC = () => {
           content: response.data.message.content,
           timestamp: response.data.message.timestamp,
         };
-        setAiMessages(prev => [...prev, aiMessage]);
+        setAiMessages((prev) => [...prev, aiMessage]);
       }
     } catch (err) {
-      console.error("AI chat error:", err);
+      // AI chat error
       // Add error message
       const errorMessage = {
         role: "assistant" as const,
-        content: "ごめんなさい。エラーが発生しました。もう一度お試しください。(Sorry, an error occurred. Please try again.)",
+        content:
+          "ごめんなさい。エラーが発生しました。もう一度お試しください。(Sorry, an error occurred. Please try again.)",
         timestamp: new Date().toISOString(),
       };
-      setAiMessages(prev => [...prev, errorMessage]);
+      setAiMessages((prev) => [...prev, errorMessage]);
     } finally {
       setAiLoading(false);
     }
   };
 
   // Function to update lesson progress
-  const updateLessonProgress = async (progress: number, status: 'not_started' | 'in_progress' | 'completed' | 'review', sectionData?: {
-    vocabularyCompleted?: boolean;
-    grammarCompleted?: boolean;
-    dialogCompleted?: boolean;
-    exercisesScore?: number;
-    aiPracticeCount?: number;
-  }) => {
+  const updateLessonProgress = async (
+    progress: number,
+    status: "not_started" | "in_progress" | "completed" | "review",
+    sectionData?: {
+      vocabularyCompleted?: boolean;
+      grammarCompleted?: boolean;
+      dialogCompleted?: boolean;
+      exercisesScore?: number;
+      aiPracticeCount?: number;
+    },
+  ) => {
     if (!lessonId || !currentUser) {
-      console.error("Missing lessonId or currentUser for progress update");
       return;
     }
 
     try {
-      console.log('🔓 UPDATE PROGRESS:', {
-        lessonId,
-        userId: currentUser.id,
-        status,
-        progress,
-        sectionData
-      });
-
       // API structure mới theo backend documentation
       const apiData = {
         userId: currentUser.id,
@@ -893,67 +1011,52 @@ const LessonDetail: React.FC = () => {
         grammarCompleted: sectionData?.grammarCompleted || false,
         dialogCompleted: sectionData?.dialogCompleted || false,
         exercisesScore: sectionData?.exercisesScore || 0,
-        aiPracticeCount: sectionData?.aiPracticeCount || 0
+        aiPracticeCount: sectionData?.aiPracticeCount || 0,
       };
-
-      console.log('📤 API Data being sent:', apiData);
 
       const response = await lessonAPI.updateProgress(lessonId, apiData);
 
-      console.log('📥 UPDATE PROGRESS Response:', response);
-
       // Refresh lessons list to show updated status
       await loadLessons();
-
-      console.log(`✅ Lesson progress updated: ${progress}% - ${status}`);
     } catch (error) {
-      console.error("❌ Error updating lesson progress:", error);
+      // Error updating lesson progress
     }
   };
 
   // Handler when exercises are completed
   const handleExercisesComplete = async () => {
-    console.log('🎯 handleExercisesComplete called:', {
-      exercisesCompleted,
-      exercisesLength: exercises.length,
-      answerStatusKeys: Object.keys(answerStatus),
-      exerciseAnswersKeys: Object.keys(exerciseAnswers)
-    });
-
     if (!exercisesCompleted && exercises.length > 0) {
       setExercisesCompleted(true);
 
       // Calculate score based on correct answers
-      const correctCount = Object.values(answerStatus).filter(status => status === 'correct').length;
+      const correctCount = Object.values(answerStatus).filter(
+        (status) => status === "correct",
+      ).length;
       const totalAnswered = Object.keys(answerStatus).length;
-      const score = totalAnswered > 0 ? Math.round((correctCount / totalAnswered) * 100) : 0;
-
-      console.log('📊 Exercise completion stats:', {
-        correctCount,
-        totalAnswered,
-        score,
-        exercisesLength: exercises.length
-      });
+      const score =
+        totalAnswered > 0
+          ? Math.round((correctCount / totalAnswered) * 100)
+          : 0;
 
       // Update progress to 100% for exercises completion (hoàn thành bài học)
-      await updateLessonProgress(100, 'completed', {
-        exercisesScore: score
+      await updateLessonProgress(100, "completed", {
+        exercisesScore: score,
       });
 
       // Save completion status to localStorage
-      localStorage.setItem(`lesson_${lessonId}_exercises_completed`, 'true');
-
-      console.log('✅ Exercises completed and progress updated');
+      localStorage.setItem(`lesson_${lessonId}_exercises_completed`, "true");
     } else {
-      console.log('⏭️ Exercises already completed or no exercises');
+      // Exercises already completed or no exercises
     }
   };
 
   // Check if exercises were already completed
   useEffect(() => {
     if (lessonId) {
-      const exercisesCompleted = localStorage.getItem(`lesson_${lessonId}_exercises_completed`);
-      if (exercisesCompleted === 'true') {
+      const exercisesCompleted = localStorage.getItem(
+        `lesson_${lessonId}_exercises_completed`,
+      );
+      if (exercisesCompleted === "true") {
         setExercisesCompleted(true);
       }
     }
@@ -961,24 +1064,18 @@ const LessonDetail: React.FC = () => {
 
   // Check if exercises are completed
   useEffect(() => {
-    console.log('🔍 Checking exercises completion:', {
-      exercisesLength: exercises.length,
-      answerStatusKeys: Object.keys(answerStatus),
-      answerStatusValues: Object.values(answerStatus)
-    });
-
-    if (exercises.length > 0 && Object.keys(answerStatus).length === exercises.length) {
-      const allAnswered = exercises.every(exercise => {
-        const exerciseId = exercise.id || `exercise_${exercises.indexOf(exercise)}`;
+    if (
+      exercises.length > 0 &&
+      Object.keys(answerStatus).length === exercises.length
+    ) {
+      const allAnswered = exercises.every((exercise) => {
+        const exerciseId =
+          exercise.id || `exercise_${exercises.indexOf(exercise)}`;
         const hasStatus = answerStatus[exerciseId] !== undefined;
-        console.log(`Exercise ${exerciseId} answered: ${hasStatus}`);
         return hasStatus;
       });
 
-      console.log('📝 All exercises answered:', allAnswered);
-
       if (allAnswered) {
-        console.log('🚀 Triggering handleExercisesComplete');
         handleExercisesComplete();
       }
     }
@@ -1009,18 +1106,25 @@ const LessonDetail: React.FC = () => {
     const overallProgress = calculateOverallProgress();
 
     if (overallProgress > 0 && exercisesCompleted) {
-      const status = overallProgress === 100 ? 'completed' : 'in_progress';
+      const status = overallProgress === 100 ? "completed" : "in_progress";
 
       updateLessonProgress(overallProgress, status, {
-        exercisesScore: exercisesCompleted ?
-          Math.round((Object.values(answerStatus).filter(status => status === 'correct').length / Object.keys(answerStatus).length) * 100) : 0
+        exercisesScore: exercisesCompleted
+          ? Math.round(
+              (Object.values(answerStatus).filter(
+                (status) => status === "correct",
+              ).length /
+                Object.keys(answerStatus).length) *
+                100,
+            )
+          : 0,
       });
     }
   }, [exercisesCompleted]);
 
   if (loading) {
     return (
-      <div className="flex items-center justify-center min-h-screen">
+      <div className="flex items-center justify-center min-h-full">
         <Spin size="large" />
       </div>
     );
@@ -1028,9 +1132,11 @@ const LessonDetail: React.FC = () => {
 
   if (error || !lessonDetail) {
     return (
-      <div className="flex items-center justify-center min-h-screen">
+      <div className="flex items-center justify-center min-h-full">
         <Card className="text-center">
-          <Title level={2} type="danger">Error</Title>
+          <Title level={2} type="danger">
+            Error
+          </Title>
           <Text type="secondary">{error || "Lesson not found"}</Text>
         </Card>
       </div>
@@ -1038,597 +1144,224 @@ const LessonDetail: React.FC = () => {
   }
 
   return (
-    <Layout className="" style={{ background: 'var(--ant-color-bg-container)', paddingRight: screens.lg ? '256px' : '0' }}>
+    <Layout
+      className="bg-white dark:bg-secondary-900"
+      style={{
+        paddingRight: screens.lg && !desktopSidebarCollapsed ? "280px" : "0",
+      }}
+    >
       {/* Main Content */}
       <Layout>
-        <Header className="bg-white dark:bg-secondary-925 border-b border-secondary-200 dark:border-secondary-900 px-4 lg:px-6" style={{ height: 'auto', padding: '16px 24px' }}>
+        <Header
+          className="bg-white dark:bg-secondary-925 border-b border-secondary-200 dark:border-secondary-900 px-3 lg:px-6"
+          style={{ height: "auto", padding: screens.xs ? "8px 12px" : "16px 24px" }}
+        >
           <div className="flex items-center gap-2 lg:gap-4">
             <div className="flex-1">
-              <div className="flex items-center gap-2 mb-2">
-                <Tooltip title="Quay lại danh sách bài học">
-                  <Button
-                    shape="square"
-                    icon={<ArrowLeftOutlined />}
-                    onClick={() => navigate('/lessons')}
-                    className="border-0 shadow-sm hover:shadow-md"
-                  />
-                </Tooltip>
-                <Title level={2} className="!mb-0 text-lg lg:text-xl">
+              <div className={`flex items-center gap-2 ${screens.xs ? "mb-2" : "mb-2"}`}>
+                <Button
+                  type="text"
+                  icon={<ArrowLeftOutlined />}
+                  onClick={() => navigate("/lessons")}
+                  className="rounded-full w-8 h-8 flex items-center justify-center border border-secondary-200 bg-white text-secondary-700 hover:text-secondary-900 hover:bg-secondary-50 dark:border-secondary-800 dark:bg-secondary-925 dark:text-secondary-300 dark:hover:text-secondary-100 dark:hover:bg-secondary-800/60 transition-colors"
+                />
+                <Title level={2} className="!mb-0 text-base sm:text-lg lg:text-xl leading-snug">
                   {lesson?.lessonNumber}. {lesson?.title}
                 </Title>
-                {!screens.lg && (
-                  <Button
-                    type="text"
-                    icon={<MenuOutlined />}
-                    onClick={() => setSidebarVisible(true)}
-                    className="ml-auto"
-                  />
-                )}
               </div>
-              <Text type="secondary" className="text-sm">{lesson?.description}</Text>
-
-              {/* Debug Section - Test API Calls */}
-              <div className="mt-3 p-3 bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 rounded-lg text-xs">
-                <div className="flex gap-2 flex-wrap mb-2">
-                  <Button size="small" onClick={() => loadAllLessons()}>
-                    📋 Tải tất cả bài học
-                  </Button>
-                  <Button size="small" onClick={() => loadN5Lessons()}>
-                    🎯 Bài học N5
-                  </Button>
-                  <Button size="small" onClick={() => loadN4Lessons()}>
-                    📚 Bài học N4
-                  </Button>
-                  <Button size="small" onClick={() => {
-                    console.log('🧪 Test cập nhật tiến độ');
-                    updateLessonProgress(75, 'in_progress', { exercisesScore: 80 });
-                  }}>
-                    ⚡ Test cập nhật tiến độ
-                  </Button>
-                  <Button size="small" onClick={() => {
-                    console.log('🧪 Test hoàn thành bài học');
-                    if (lessonId && currentUser) {
-                      lessonAPI.completeLesson(lessonId);
-                    }
-                  }}>
-                    🏁 Test hoàn thành
-                  </Button>
-                </div>
-                <div className="text-blue-700 dark:text-blue-300">
-                  <Text type="secondary">
-                    📊 Số bài học: {lessons.length} | 🔓 Đang tải: {lessonsLoading ? 'Có' : 'Không'} |
-                    🆔 Mã bài học: {lessonId} | 📝 Số bài tập: {exercises.length} |
-                    ✅ Hoàn thành: {exercisesCompleted ? 'Rồi' : 'Chưa'}
-                  </Text>
-                </div>
-              </div>
+              <Text type="secondary" className="text-sm leading-relaxed line-clamp-2">
+                {lesson?.description}
+              </Text>
             </div>
           </div>
         </Header>
 
-        <Content className="flex-1">
+        {/* Fixed Sidebar Toggle Button */}
+        {(!screens.lg || desktopSidebarCollapsed) && (
+          <div
+            className="fixed bottom-6 right-4 z-40"
+            style={{ bottom: "24px" }}
+          >
+            <Tooltip title="Danh sách bài học" placement="left">
+              <Button
+                shape="square"
+                icon={<MenuFoldOutlined />}
+                onClick={() =>
+                  screens.lg
+                    ? setDesktopSidebarCollapsed(false)
+                    : setSidebarVisible(true)
+                }
+                className="border border-neutral-200 dark:border-neutral-700 shadow-lg hover:shadow-md bg-white dark:bg-secondary-925 px-2"
+                size="large"
+              >
+                <span>50 Bài</span>
+              </Button>
+            </Tooltip>
+          </div>
+        )}
+
+        <Content className="flex-1 sm:px-0 bg-white dark:bg-secondary-900 flex flex-col min-h-full">
+          {screens.xs && (
+            <style>
+              {`
+                .lesson-tabs .ant-tabs-nav-list {
+                  display: flex;
+                  width: 100%;
+                }
+                .lesson-tabs .ant-tabs-nav,
+                .lesson-tabs .ant-tabs-nav-wrap,
+                .lesson-tabs .ant-tabs-nav-list {
+                  width: 100%;
+                }
+                .lesson-tabs .ant-tabs-tab {
+                  flex: 1 1 0;
+                  justify-content: center;
+                  padding-left: 0;
+                  padding-right: 0;
+                  padding-top: 6px;
+                  padding-bottom: 6px;
+                }
+              `}
+            </style>
+          )}
           <Tabs
             activeKey={activeTab}
             onChange={(key) => setActiveTab(key as TabType)}
-            className="bg-white dark:bg-secondary-925"
-            style={{ margin: '0', padding: "0 8px" }}
-            size={screens.md ? 'large' : 'middle'}
-            tabPlacement={screens.xs ? 'top' : 'top'}
+            className="lesson-tabs bg-white dark:bg-secondary-925"
+            style={{ margin: "0", padding: screens.xs ? "0" : "0 8px", flex: 1 }}
+            size={screens.xs ? "large" : screens.md ? "large" : "middle"}
+            tabPlacement={screens.xs ? "top" : "top"}
+            centered={screens.xs}
             items={[
               {
                 key: "vocabulary",
                 label: (
-                  <span className="flex items-center gap-1">
-                    <BookOutlined />
+                  <span className="flex items-center gap-0.5">
+                    <InfinitejapaneseIcon size={18} color="#000000" strokeWidth={2.5} />
                     {screens.md && <span>TỪ VỰNG</span>}
                   </span>
                 ),
                 children: (
-                  <>
-                    <VocabularyTable
-                      data={vocabularies.map(vocab => {
-                        // Parse kanji_analysis array để lấy Hán Việt
-                        let hanViet = "";
-
-                        if (vocab.kanji_analysis && Array.isArray(vocab.kanji_analysis) && vocab.kanji_analysis.length > 0) {
-                          // Ghép tất cả hanviet từ các chữ
-                          hanViet = vocab.kanji_analysis.map(item => item.hanviet).join(", ");
-                        }
-
-                        return {
-                          id: vocab.id,
-                          kanji: vocab.kanji,
-                          hiragana: vocab.hiragana, // Giữ nguyên field hiragana
-                          katakana: vocab.katakana,
-                          kana: vocab.hiragana || vocab.katakana || "", // Tạo kana từ hiragana/katakana
-                          romaji: vocab.romaji,
-                          hanviet: hanViet || vocab.hanviet, // Dùng hanViet đã parse từ kanji_analysis hoặc gốc
-                          meaning_vi: vocab.meaning_vi, // Dùng meaning_vi từ API
-                          exampleSentence: vocab.example_jp,
-                          example_jp: vocab.example_jp || "",
-                          example_vi: vocab.example_vi, // Thêm example_vi từ API
-                          audioUrl: vocab.audio_url || vocab.audioUrl,
-                          audio_url: vocab.audio_url || vocab.audioUrl || "",
-                          difficulty: vocab.difficulty,
-                          frequency: vocab.frequency,
-                          kanji_analysis: vocab.kanji_analysis, // Thêm kanji_analysis từ API
-                          is_starred: bookmarkedVocab.has(vocab.id),
-                          is_mastered: false,
-                          status: undefined
-                        };
-                      })}
-                      loading={loading}
-                    />
-                  </>
-                )
+                  <VocabularyTable
+                    data={vocabularies}
+                    loading={loading}
+                    onCloseSidebar={() => {
+                      setSidebarVisible(false);
+                      setDesktopSidebarCollapsed(true);
+                    }}
+                    onEnterFlashcard={() => {
+                      sidebarSnapshotRef.current = {
+                        sidebarVisible,
+                        desktopSidebarCollapsed,
+                      };
+                      setSidebarVisible(false);
+                      setDesktopSidebarCollapsed(true);
+                    }}
+                    onExitFlashcard={() => {
+                      const snapshot = sidebarSnapshotRef.current;
+                      if (snapshot) {
+                        setSidebarVisible(snapshot.sidebarVisible);
+                        setDesktopSidebarCollapsed(snapshot.desktopSidebarCollapsed);
+                        sidebarSnapshotRef.current = null;
+                      }
+                    }}
+                  />
+                ),
               },
               {
                 key: "grammar",
                 label: (
-                  <span className="flex items-center gap-1">
-                    <BookOutlined />
+                  <span className="flex items-center gap-0.5">
+                    <ReadOutlined className="text-lg" />
                     {screens.md && <span>NGỮ PHÁP</span>}
                   </span>
                 ),
                 children: (
-                  <div style={{ padding: '24px' }}>
-                    <div className="mb-4">
-                      <Title level={3}>NGỮ PHÁP</Title>
-                      <Text type="secondary">Học ngữ pháp theo giáo trình Minna no Nihongo</Text>
-                    </div>
-
-                    <Card className="bg-white dark:bg-secondary-925 border-secondary-200 dark:border-secondary-900">
-                      <div className="mb-4">
-                        <Title level={4}>Ngữ pháp bài {lesson?.lessonNumber}</Title>
-                      </div>
-
-                      {grammars.length > 0 ? (
-                        <GrammarSectionAccordion sections={grammars.map((grammar, index) => ({
-                          id: `section${index + 1}`,
-                          title: grammar.pattern || `Ngữ pháp ${index + 1}`,
-                          structure: grammar.structure ? [grammar.structure] : [grammar.pattern || ''],
-                          meaning: grammar.meaning_vi ? [grammar.meaning_vi] : (grammar.meaning ? [grammar.meaning] : ['']),
-                          examples: grammar.examples?.map(ex => ({
-                            japanese: ex.japanese,
-                            vietnamese: ex.vietnamese || ex.meaning || ''
-                          })) || [],
-                          comparison: (grammar.comparison) ? [grammar.comparison] : []
-                        }))} />
-                      ) : (
-                        <div className="text-center py-8">
-                          <Text type="secondary" className="text-secondary-600 dark:text-secondary-800">Chưa có dữ liệu ngữ pháp cho bài học này.</Text>
-                        </div>
-                      )}
-                    </Card>
-                  </div>
-                )
+                  <GrammarTab
+                    lessonNumber={lesson?.lessonNumber}
+                    grammars={grammars}
+                  />
+                ),
               },
               {
                 key: "conversation",
                 label: (
-                  <span className="flex items-center gap-1">
-                    <MessageOutlined />
+                  <span className="flex items-center gap-0.5">
+                    <MessageOutlined className="text-lg" />
                     {screens.md && <span>HỘI THOẠI</span>}
                   </span>
                 ),
                 children: (
-                  <div style={{ padding: '24px' }}>
-                    <Title level={3} className="mb-6">HỘI THOẠI</Title>
-                    <Space orientation="vertical" size="large" className="w-full">
-                      {dialogs.map((dialog, index) => (
-                        <Card key={dialog.id || index} className="bg-white dark:bg-secondary-925 border-secondary-200 dark:border-secondary-900">
-                          <Title level={4}>{dialog.title || `Hội thoại ${index + 1}`}</Title>
-                          <Paragraph type="secondary">{dialog.scenario || "Thực hành hội thoại theo bài học"}</Paragraph>
-
-                          {renderDialogConversation(dialog)}
-
-                          {/* Translation Section */}
-                          {dialog.viTranslation && (
-                            <div className="mt-4">
-                              <Button
-                                icon={<TranslationOutlined />}
-                                onClick={() => setShowDialogTranslation(prev => ({
-                                  ...prev,
-                                  [dialog.id || index]: !prev[dialog.id || index]
-                                }))}
-                              >
-                                {showDialogTranslation[dialog.id || index] ? "Ẩn nghĩa" : "Xem nghĩa"}
-                              </Button>
-
-                              {showDialogTranslation[dialog.id || index] && (
-                                <Card className="mt-3 bg-blue-50 dark:bg-blue-900/20 border-blue-200 dark:border-blue-800">
-                                  <Title level={5}>Bản dịch tiếng Việt:</Title>
-                                  <Paragraph className="whitespace-pre-line">
-                                    {dialog.viTranslation}
-                                  </Paragraph>
-                                </Card>
-                              )}
-                            </div>
-                          )}
-
-                          {/* Audio Section */}
-                          <div className="mt-4 text-center">
-                            {dialog.audioUrl ? (
-                              <Button
-                                type="primary"
-                                icon={<SoundOutlined />}
-                                onClick={() => {
-                                  console.log('Audio URL:', dialog.audioUrl);
-                                  const audio = new Audio(dialog.audioUrl!);
-                                  audio.play().catch(err => {
-                                    console.error("Audio playback failed:", err);
-                                    console.log('Falling back to TTS...');
-                                    speakEntireConversation(dialog);
-                                  });
-                                }}
-                              >
-                                Nghe âm thanh
-                              </Button>
-                            ) : (
-                              <Button
-                                icon={<SoundOutlined />}
-                                onClick={() => speakEntireConversation(dialog)}
-                              >
-                                Nghe hội thoại
-                              </Button>
-                            )}
-                          </div>
-                        </Card>
-                      ))}
-                    </Space>
-                  </div>
-                )
+                  <ConversationTab
+                    dialogs={dialogs}
+                    showDialogTranslation={showDialogTranslation}
+                    setShowDialogTranslation={setShowDialogTranslation}
+                    renderDialogConversation={renderDialogConversation}
+                    speakEntireConversation={speakEntireConversation}
+                    japaneseVoices={japaneseVoices}
+                    maleVoiceName={maleVoiceName}
+                    setMaleVoiceName={setMaleVoiceName}
+                    femaleVoiceName={femaleVoiceName}
+                    setFemaleVoiceName={setFemaleVoiceName}
+                  />
+                ),
               },
               {
                 key: "exercises",
                 label: (
-                  <span className="flex items-center gap-1">
-                    <PlayCircleOutlined />
+                  <span className="flex items-center gap-0.5">
+                    <PlayCircleOutlined className="text-lg" />
                     {screens.md && <span>BÀI TẬP</span>}
                   </span>
                 ),
                 children: (
-                  <div style={{ padding: '24px' }}>
-                    <Title level={3} className="mb-6">BÀI TẬP</Title>
-
-                    {/* Exercise Summary */}
-                    {(Object.keys(exerciseResults).length > 0 || Object.keys(exerciseAnswers).length === exercises.length) && (
-                      <Card className="mb-6 bg-white dark:bg-secondary-925 border-secondary-200 dark:border-secondary-900">
-                        <Title level={4}>Kết quả tổng hợp</Title>
-                        <div className="grid grid-cols-3 gap-4">
-                          <div className="text-center">
-                            <Title level={2} style={{ color: '#1890ff' }}>
-                              {Object.keys(exerciseResults).length || Object.keys(exerciseAnswers).length}
-                            </Title>
-                            <Text type="secondary">Đã làm</Text>
-                          </div>
-                          <div className="text-center">
-                            <Title level={2} style={{ color: '#52c41a' }}>
-                              {Object.values(answerStatus).filter(status => status === 'correct').length}
-                            </Title>
-                            <Text type="secondary">Đúng</Text>
-                          </div>
-                          <div className="text-center">
-                            <Title level={2} style={{ color: '#ff4d4f' }}>
-                              {Object.values(answerStatus).filter(status => status === 'incorrect').length}
-                            </Title>
-                            <Text type="secondary">Sai</Text>
-                          </div>
-                        </div>
-
-                        {/* Completion Message */}
-                        {Object.keys(exerciseAnswers).length === exercises.length && (
-                          <Card className="mt-6 bg-green-50 dark:bg-green-900/20 border-green-200 dark:border-green-800">
-                            <div className="text-center">
-                              <div className="text-4xl mb-2">🎉</div>
-                              <Title level={4} type="success" className="mb-2">
-                                Xuất sắc! Bạn đã hoàn thành tất cả bài tập!
-                              </Title>
-                              <Paragraph type="success" className="mb-4">
-                                Bạn đã nắm vững từ vựng, ngữ pháp và cấu trúc câu cơ bản của bài học này.
-                              </Paragraph>
-                              <Space className="justify-center">
-                                <Button
-                                  type="primary"
-                                  icon={<RobotOutlined />}
-                                  onClick={() => setActiveTab("ai")}
-                                >
-                                  Luyện tập với AI
-                                </Button>
-                                <Button
-                                  icon={<TrophyOutlined />}
-                                  onClick={() => setActiveTab("summary")}
-                                >
-                                  Xem tổng kết
-                                </Button>
-                                <Button
-                                  type="primary"
-                                  icon={<CheckCircleOutlined />}
-                                  onClick={handleMarkLessonComplete}
-                                  style={{ backgroundColor: '#52c41a', borderColor: '#52c41a' }}
-                                >
-                                  Hoàn thành bài học
-                                </Button>
-                              </Space>
-                              <Text type="secondary" className="block mt-4">
-                                Hoặc chọn bài tiếp theo ở sidebar để tiếp tục lộ trình học
-                              </Text>
-                            </div>
-                          </Card>
-                        )}
-
-                        {/* Only show submit button if not all exercises are completed */}
-                        {Object.keys(exerciseAnswers).length < exercises.length && (
-                          <Button
-                            type="primary"
-                            onClick={handleAllExercisesSubmit}
-                            className="mt-4 w-full"
-                            style={{ backgroundColor: '#52c41a', borderColor: '#52c41a' }}
-                          >
-                            Nộp tất cả bài tập
-                          </Button>
-                        )}
-                      </Card>
-                    )}
-
-                    {exercises.length > 0 && (
-                      <Card className="bg-white dark:bg-secondary-925 border-secondary-200 dark:border-secondary-900">
-                        <div className="flex justify-between items-center mb-4">
-                          <Title level={4}>
-                            Bài tập {currentExerciseIndex + 1}
-                          </Title>
-                          <Text type="secondary">
-                            {currentExerciseIndex + 1} / {exercises.length}
-                          </Text>
-                        </div>
-
-                        <div className="mb-6">
-                          <Paragraph className="text-lg mb-4">{exercises[currentExerciseIndex].question}</Paragraph>
-
-                          {exercises[currentExerciseIndex].type === "multiple-choice" && (
-                            <Space orientation="vertical" className="w-full">
-                              {(exercises[currentExerciseIndex].content?.options || exercises[currentExerciseIndex].options)?.map((option, index) => {
-                                const exerciseId = exercises[currentExerciseIndex].id || `exercise_${currentExerciseIndex}`;
-                                const isSelected = exerciseAnswers[exerciseId] === option;
-                                const status = answerStatus[exerciseId];
-
-                                return (
-                                  <Card
-                                    key={index}
-                                    className={`cursor-pointer transition-colors ${isSelected && status === 'correct'
-                                      ? 'border-green-300 bg-green-50 dark:border-green-600 dark:bg-green-900/20'
-                                      : isSelected && status === 'incorrect'
-                                        ? 'border-red-300 bg-red-50 dark:border-red-600 dark:bg-red-900/20'
-                                        : 'hover:bg-secondary-100 dark:hover:bg-secondary-900'
-                                      } bg-white dark:bg-secondary-925 border-secondary-200 dark:border-secondary-900`}
-                                    onClick={() => handleAnswerSelect(exerciseId, option)}
-                                  >
-                                    <Space>
-                                      <input
-                                        type="radio"
-                                        name="exercise"
-                                        value={option}
-                                        checked={isSelected}
-                                        onChange={(e) => handleAnswerSelect(exerciseId, e.target.value)}
-                                        className="mr-3"
-                                      />
-                                      <Text className={isSelected && status === 'correct' ? 'text-green-700 dark:text-green-400 font-medium' : isSelected && status === 'incorrect' ? 'text-red-700 dark:text-red-400' : ''}>
-                                        {option}
-                                      </Text>
-                                    </Space>
-                                  </Card>
-                                );
-                              })}
-                            </Space>
-                          )}
-
-                          {(exercises[currentExerciseIndex].type === "fill_blank" || exercises[currentExerciseIndex].type === "fill-blank") && (
-                            <Input
-                              placeholder="Type your answer..."
-                              value={String(exerciseAnswers[exercises[currentExerciseIndex].id || `exercise_${currentExerciseIndex}`] || "")}
-                              onChange={(e) => handleAnswerSelect(exercises[currentExerciseIndex].id || `exercise_${currentExerciseIndex}`, e.target.value)}
-                              className={`mb-4 ${answerStatus[exercises[currentExerciseIndex].id || `exercise_${currentExerciseIndex}`] === 'correct'
-                                ? 'border-green-300 bg-green-50'
-                                : answerStatus[exercises[currentExerciseIndex].id || `exercise_${currentExerciseIndex}`] === 'incorrect'
-                                  ? 'border-red-300 bg-red-50'
-                                  : ''
-                                }`}
-                              size="large"
-                            />
-                          )}
-
-                          {exercises[currentExerciseIndex].type === "reorder" && (
-                            <ReorderExercise
-                              exercise={exercises[currentExerciseIndex]}
-                              setAnswer={(answer) => setExerciseAnswers(prev => ({
-                                ...prev,
-                                [exercises[currentExerciseIndex].id || `exercise_${currentExerciseIndex}`]: answer as string
-                              }))}
-                              onAnswerSelect={handleAnswerSelect}
-                              answerStatus={answerStatus[exercises[currentExerciseIndex].id || `exercise_${currentExerciseIndex}`]}
-                              exerciseAnswers={exerciseAnswers}
-                              exerciseId={exercises[currentExerciseIndex].id || `exercise_${currentExerciseIndex}`}
-                            />
-                          )}
-                        </div>
-
-                        {/* Show explanation immediately when answer is selected */}
-                        {showExplanation[exercises[currentExerciseIndex].id || `exercise_${currentExerciseIndex}`] && (
-                          <Card className="mb-4 bg-blue-50 dark:bg-blue-900/20 border-blue-200 dark:border-blue-800">
-                            <Title level={5} style={{ color: '#1890ff' }}>💡 Giải thích:</Title>
-                            <Text type="secondary">
-                              {exercises[currentExerciseIndex].explanation}
-                            </Text>
-                          </Card>
-                        )}
-
-                        {exerciseResults[exercises[currentExerciseIndex].id || `exercise_${currentExerciseIndex}`] && (
-                          <Card className={`mb-4 ${exerciseResults[exercises[currentExerciseIndex].id || `exercise_${currentExerciseIndex}`].isCorrect
-                            ? 'border-green-200 bg-green-50 dark:border-green-600 dark:bg-green-900/20'
-                            : 'border-red-200 bg-red-50 dark:border-red-600 dark:bg-red-900/20'
-                            } bg-white dark:bg-secondary-925`}>
-                            <Title level={5} type={exerciseResults[exercises[currentExerciseIndex].id || `exercise_${currentExerciseIndex}`].isCorrect ? 'success' : 'danger'}>
-                              {exerciseResults[exercises[currentExerciseIndex].id || `exercise_${currentExerciseIndex}`].isCorrect ? '✅ Correct!' : '❌ Incorrect'}
-                            </Title>
-                            <Paragraph>
-                              {exerciseResults[exercises[currentExerciseIndex].id || `exercise_${currentExerciseIndex}`].explanation}
-                            </Paragraph>
-                            {exerciseResults[exercises[currentExerciseIndex].id || `exercise_${currentExerciseIndex}`].feedback && (
-                              <Paragraph type="secondary">
-                                {exerciseResults[exercises[currentExerciseIndex].id || `exercise_${currentExerciseIndex}`].feedback}
-                              </Paragraph>
-                            )}
-                          </Card>
-                        )}
-
-                        <div className="flex justify-between">
-                          <Button
-                            icon={<LeftOutlined />}
-                            onClick={() => setCurrentExerciseIndex(prev => Math.max(0, prev - 1))}
-                            disabled={currentExerciseIndex === 0}
-                          >
-                            Trước
-                          </Button>
-
-                          {exercises[currentExerciseIndex]?.type === "reorder" && (
-                            <Button
-                              type="primary"
-                              onClick={() => {
-                                const exerciseId = exercises[currentExerciseIndex].id || `exercise_${currentExerciseIndex}`;
-                                const currentAnswer = exerciseAnswers[exerciseId];
-                                const answerToSubmit = Array.isArray(currentAnswer)
-                                  ? currentAnswer[0] || ""
-                                  : (typeof currentAnswer === 'string' ? currentAnswer : "");
-                                handleAnswerSelect(exerciseId, answerToSubmit);
-                              }}
-                            >
-                              Xác nhận sắp xếp
-                            </Button>
-                          )}
-
-                          <Button
-                            icon={<RightOutlined />}
-                            onClick={() => setCurrentExerciseIndex(prev => Math.min(exercises.length - 1, prev + 1))}
-                            disabled={currentExerciseIndex === exercises.length - 1}
-                          >
-                            Tiếp theo
-                          </Button>
-                        </div>
-                      </Card>
-                    )}
-                  </div>
-                )
+                  <ExercisesTab
+                    exercises={exercises}
+                    exerciseResults={exerciseResults}
+                    exerciseAnswers={exerciseAnswers}
+                    answerStatus={answerStatus}
+                    showExplanation={showExplanation}
+                    currentExerciseIndex={currentExerciseIndex}
+                    setCurrentExerciseIndex={setCurrentExerciseIndex}
+                    setExerciseAnswers={setExerciseAnswers}
+                    handleAnswerSelect={handleAnswerSelect}
+                    handleAllExercisesSubmit={handleAllExercisesSubmit}
+                    handleMarkLessonComplete={handleMarkLessonComplete}
+                    onGoToTab={(tab) => setActiveTab(tab)}
+                  />
+                ),
               },
               {
                 key: "ai",
                 label: (
-                  <span className="flex items-center gap-1">
-                    <RobotOutlined />
+                  <span className="flex items-center gap-0.5">
+                    <RobotOutlined className="text-lg" />
                     {screens.md && <span>LUYỆN VỚI AI</span>}
                   </span>
                 ),
                 children: (
-                  <div style={{ padding: '24px' }}>
-                    <Title level={3} className="mb-6">LUYỆN VỚI AI</Title>
-                    <Card className="max-w-4xl mx-auto bg-white dark:bg-secondary-925 border-secondary-200 dark:border-secondary-900">
-                      <div className="mb-4">
-                        <Title level={4} className="mb-2">Luyện tập với AI theo bài Minna</Title>
-                        <Text type="secondary">Hãy thực hành hội thoại theo ngữ pháp của bài {lesson?.lessonNumber}</Text>
-                      </div>
-
-                      <div className="h-96 border border-secondary-200 dark:border-secondary-900 rounded-lg p-4 overflow-y-auto mb-4" style={{ backgroundColor: 'var(--ant-color-bg-container)' }}>
-                        {aiMessages.length === 0 ? (
-                          <div className="flex items-center justify-center h-full">
-                            <Text type="secondary">Bắt đầu cuộc hội thoại với AI...</Text>
-                          </div>
-                        ) : (
-                          <Space orientation="vertical" className="w-full">
-                            {aiMessages.map((message, index) => (
-                              <div key={index} className={`flex ${message.role === "user" ? "justify-end" : "justify-start"}`}>
-                                <Card
-                                  className={`max-w-md ${message.role === "user" ? "bg-blue-100 dark:bg-blue-900/30 border-blue-200 dark:border-blue-700" : "bg-secondary-100 dark:bg-secondary-900 border-secondary-200 dark:border-secondary-700"}`}
-                                  size="small"
-                                >
-                                  <Text strong className="text-sm">{message.role === "user" ? "You" : "AI"}</Text>
-                                  <div className="text-sm mt-1">{message.content}</div>
-                                </Card>
-                              </div>
-                            ))}
-                          </Space>
-                        )}
-                      </div>
-
-                      <Space className="w-full">
-                        <Input
-                          value={currentMessage}
-                          onChange={(e) => setCurrentMessage(e.target.value)}
-                          placeholder="Type your message..."
-                          onKeyPress={(e) => {
-                            if (e.key === "Enter" && !e.shiftKey) {
-                              handleAIMessage();
-                            }
-                          }}
-                          className="flex-1 bg-white dark:bg-secondary-925 border-secondary-300 dark:border-secondary-700"
-                          size="large"
-                        />
-                        <Button
-                          type="primary"
-                          onClick={handleAIMessage}
-                          disabled={!currentMessage.trim() || aiLoading}
-                          loading={aiLoading}
-                          size="large"
-                        >
-                          Gửi
-                        </Button>
-                      </Space>
-                    </Card>
-                  </div>
-                )
+                  <AiPracticeTab
+                    lessonNumber={lesson?.lessonNumber}
+                    aiMessages={aiMessages}
+                    currentMessage={currentMessage}
+                    setCurrentMessage={setCurrentMessage}
+                    aiLoading={aiLoading}
+                    handleAIMessage={handleAIMessage}
+                  />
+                ),
               },
               {
                 key: "summary",
                 label: (
-                  <span className="flex items-center gap-1">
-                    <TrophyOutlined />
+                  <span className="flex items-center gap-0.5">
+                    <TrophyOutlined className="text-lg" />
                     {screens.md && <span>TỔNG KẾT</span>}
                   </span>
                 ),
                 children: (
-                  <div style={{ padding: '24px' }}>
-                    <Title level={3} className="mb-6">TỔNG KẾT</Title>
-                    <div className="max-w-4xl mx-auto">
-                      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                        <Card>
-                          <Title level={4} className="mb-4">📚 Từ vựng trọng tâm</Title>
-                          <Space orientation="vertical" className="w-full">
-                            {vocabularies.slice(0, 5).map((vocab) => (
-                              <Card key={vocab.id} size="small" className="bg-secondary-50 dark:bg-secondary-925">
-                                <div className="flex justify-between items-center">
-                                  <div>
-                                    <Text strong>{vocab.kanji}</Text>
-                                    <Text type="secondary" className="ml-2">({vocab.hiragana})</Text>
-                                  </div>
-                                </div>
-                              </Card>
-                            ))}
-                          </Space>
-                        </Card>
-
-                        <Card>
-                          <Title level={4} className="mb-4">📘 Ngữ pháp chính</Title>
-                          <Space orientation="vertical" className="w-full">
-                            {grammars.map((grammar) => (
-                              <Card key={grammar.id} size="small" className="bg-secondary-50 dark:bg-secondary-925">
-                                <Text strong>{grammar.pattern}</Text>
-                              </Card>
-                            ))}
-                          </Space>
-                        </Card>
-                      </div>
-                    </div>
-                  </div>
-                )
-              }
+                  <SummaryTab vocabularies={vocabularies} grammars={grammars} />
+                ),
+              },
             ]}
           />
         </Content>
@@ -1641,10 +1374,10 @@ const LessonDetail: React.FC = () => {
           style={{
             left: `${showMeaningButton.x}px`,
             top: `${showMeaningButton.y + 20}px`,
-            transform: 'translateX(-50%)',
-            borderRadius: '9999px',
-            padding: '4px 12px',
-            fontSize: '12px'
+            transform: "translateX(-50%)",
+            borderRadius: "9999px",
+            padding: "4px 12px",
+            fontSize: "12px",
           }}
           type="primary"
           size="small"
@@ -1661,8 +1394,8 @@ const LessonDetail: React.FC = () => {
           style={{
             left: `${clickedWord.x}px`,
             top: `${clickedWord.y + 20}px`,
-            transform: 'translateX(-50%)',
-            minWidth: '200px'
+            transform: "translateX(-50%)",
+            minWidth: "200px",
           }}
         >
           <div className="space-y-2">
@@ -1680,128 +1413,17 @@ const LessonDetail: React.FC = () => {
         </div>
       )}
 
-      {/* Mobile Sidebar - Drawer */}
-      <Drawer
-        title={
-          <div className="flex items-center justify-between">
-            <span>Danh sách bài học</span>
-            <Button
-              type="text"
-              icon={<CloseOutlined />}
-              onClick={() => setSidebarVisible(false)}
-            />
-          </div>
-        }
-        placement="right"
-        onClose={() => setSidebarVisible(false)}
-        open={sidebarVisible}
-        size={280}
-        className="lg:hidden"
-      >
-        <div className="space-y-4">
-          <Text type="secondary">Giáo trình Minna no Nihongo</Text>
-
-          {lessonsLoading ? (
-            <div className="p-8 text-center">
-              <Spin size="large" className="mb-4" />
-              <Text type="secondary">Đang tải danh sách bài học...</Text>
-            </div>
-          ) : (
-            <Space orientation="vertical" className="w-full">
-              {lessons.map((lesson) => (
-                <Card
-                  key={lesson.id}
-                  hoverable
-                  onClick={() => {
-                    navigate(`/lessons/${lesson.id}`);
-                    setSidebarVisible(false);
-                  }}
-                  className={`${lessonId === lesson.id ? 'border-l-4 border-l-blue-500 bg-blue-50 dark:bg-blue-900/20' : ''}`}
-                  size="small"
-                >
-                  <div className="flex items-center justify-between mb-2">
-                    <Text type="secondary" className="text-sm">
-                      Bài {lesson.lessonNumber}
-                    </Text>
-                    <Badge
-                      status={lesson.status === 'completed' ? 'success' : lesson.status === 'in_progress' ? 'processing' : 'default'}
-                      text={lesson.status === 'completed' ? '✔' : lesson.status === 'in_progress' ? '🔓' : '🔒'}
-                    />
-                  </div>
-                  <Text strong className="block mb-1">
-                    {lesson.title}
-                  </Text>
-                  {lesson.progress > 0 && (
-                    <Progress
-                      percent={lesson.progress}
-                      showInfo={false}
-                      strokeColor="#1890ff"
-                      size="small"
-                    />
-                  )}
-                </Card>
-              ))}
-            </Space>
-          )}
-        </div>
-      </Drawer>
-
-      {/* Desktop Sidebar - Lesson List */}
-      <Sider
-        width={256}
-        collapsedWidth={0}
-        breakpoint="lg"
-        className="bg-white dark:bg-secondary-925 border-l border-secondary-200 dark:border-secondary-900 fixed right-0 overflow-y-hidden"
-        style={{ zIndex: 1000, top: '64px', height: 'calc(100vh - 64px)' }}
-      >
-        <div className="p-4 border-b border-secondary-200 dark:border-secondary-900 flex-shrink-0">
-          <Title level={4}>Danh sách bài học</Title>
-          <Text type="secondary">Giáo trình Minna no Nihongo</Text>
-        </div>
-
-        <div className="" style={{ height: 'calc(100vh - 152px)', overflowY: 'auto', scrollbarWidth: 'none' }}>
-          {lessonsLoading ? (
-            <div className="p-8 text-center">
-              <Spin size="large" className="mb-4" />
-              <Text type="secondary">Đang tải danh sách bài học...</Text>
-            </div>
-          ) : (
-            <Space orientation="vertical" className="w-full p-2">
-              {lessons.map((lesson) => (
-                <Card
-                  key={lesson.id}
-                  hoverable
-                  onClick={() => navigate(`/lessons/${lesson.id}`)}
-                  className={`${lessonId === lesson.id ? 'border-l-4 border-l-blue-500 bg-blue-50 dark:bg-blue-900/20' : ''}`}
-                  size="small"
-                >
-                  <div className="flex items-center justify-between mb-2">
-                    <Text type="secondary" className="text-sm">
-                      Bài {lesson.lessonNumber}
-                    </Text>
-                    <Badge
-                      status={lesson.status === 'completed' ? 'success' : lesson.status === 'in_progress' ? 'processing' : 'default'}
-                      text={lesson.status === 'completed' ? '✔' : lesson.status === 'in_progress' ? '🔓' : '🔒'}
-                    />
-                  </div>
-                  <Text strong className="block mb-1">
-                    {lesson.title}
-                  </Text>
-                  {lesson.progress > 0 && (
-                    <Progress
-                      percent={lesson.progress}
-                      showInfo={false}
-                      strokeColor="#1890ff"
-                      size="small"
-                    />
-                  )}
-                </Card>
-              ))}
-            </Space>
-          )}
-        </div>
-      </Sider>
-    </Layout >
+      <LessonSidebar
+        lessons={lessons}
+        lessonsLoading={lessonsLoading}
+        lessonId={lessonId}
+        sidebarVisible={sidebarVisible}
+        setSidebarVisible={setSidebarVisible}
+        desktopSidebarCollapsed={desktopSidebarCollapsed}
+        setDesktopSidebarCollapsed={setDesktopSidebarCollapsed}
+        onLessonClick={(lesson) => navigate(`/lessons/${lesson.id}`)}
+      />
+    </Layout>
   );
 };
 

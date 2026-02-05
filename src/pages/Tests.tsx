@@ -1,12 +1,9 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { Button, Typography, Space, Tabs, Row, Col, Card, message } from "antd";
+import { Button, Typography, Tabs, Row, Col, Card, message } from "antd";
 import {
   PlayCircleOutlined,
   TrophyOutlined,
-  BookOutlined,
-  FileTextOutlined,
-  AudioOutlined,
   CheckCircleOutlined,
   FireOutlined,
   AimOutlined
@@ -49,9 +46,6 @@ const Tests: React.FC = () => {
   const averageScore = totalTestsCompleted > 0
     ? Math.round(completedTests.reduce((acc, test) => acc + (test.score || 0), 0) / totalTestsCompleted)
     : 0;
-  const totalStudyTime = completedTests.reduce((acc, test) => acc + test.duration, 0) + 245; // Including current week
-  const currentStreak = 7; // This would be calculated from user activity
-
   // Get recent test attempts from localStorage
   const getRecentAttempts = (): TestAttempt[] => {
     const attempts: TestAttempt[] = [];
@@ -124,49 +118,49 @@ const Tests: React.FC = () => {
 
 
   return (
-    <div className="p-6 space-y-6 bg-secondary-50 dark:bg-secondary-950 min-h-screen">
+    <div className="p-3 sm:p-6 space-y-4 sm:space-y-6 bg-secondary-50 dark:bg-secondary-950 min-h-full">
       {/* Header */}
-      <div className="flex items-center justify-between">
+      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
         <div>
-          <Title level={2} className="!mb-2">
+          <Title level={2} className="!mb-1 text-lg sm:text-2xl !text-secondary-900 dark:!text-secondary-100">
             <AimOutlined className="mr-2 text-secondary-700 dark:text-secondary-400" />
             Thi JLPT
           </Title>
-          <Text type="secondary">Luyện tập và kiểm tra trình độ Nhật ngữ JLPT</Text>
+          <Text className="text-sm !text-secondary-700 dark:!text-secondary-400">
+            Luyện tập và kiểm tra trình độ Nhật ngữ JLPT
+          </Text>
         </div>
-        <Space>
-          <Button icon={<TrophyOutlined />}>Bảng xếp hạng</Button>
-          <Button type="primary" icon={<PlayCircleOutlined />}>Bài thi tùy chỉnh</Button>
-        </Space>
+        <div />
       </div>
 
       {/* Statistics */}
       <TestStatistics
         totalTestsCompleted={totalTestsCompleted}
         averageScore={averageScore}
-        currentStreak={currentStreak}
-        totalStudyTime={totalStudyTime}
       />
 
       {/* Filter Tabs */}
-      <Card>
-        <TestFilters
-          selectedLevel={selectedLevel}
-          onLevelChange={setSelectedLevel}
-          availableCount={availableTests.length}
-          completedCount={completedTests.length}
-        />
-
+      <Card className="overflow-hidden">
         <Tabs
           activeKey={activeTab}
           onChange={setActiveTab}
+          tabBarExtraContent={{
+            right: (
+              <TestFilters
+                selectedLevel={selectedLevel}
+                onLevelChange={setSelectedLevel}
+                availableCount={availableTests.length}
+                completedCount={completedTests.length}
+              />
+            )
+          }}
           items={[
             {
               key: "available",
               label: `Có sẵn (${availableTests.length})`,
               children: (
                 <>
-                  <Row gutter={[24, 24]}>
+                  <Row gutter={[16, 16]}>
                     {availableTests.map(test => (
                       <Col xs={24} md={12} lg={8} key={test.id}>
                         <TestCard
@@ -192,7 +186,7 @@ const Tests: React.FC = () => {
               label: `Đã hoàn thành (${completedTests.length})`,
               children: (
                 <>
-                  <Row gutter={[24, 24]}>
+                  <Row gutter={[16, 16]}>
                     {completedTests.map(test => (
                       <Col xs={24} md={12} lg={8} key={test.id}>
                         <TestCard

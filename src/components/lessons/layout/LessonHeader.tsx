@@ -1,10 +1,14 @@
 import React from "react";
-import { Badge, Button, Progress, Typography, Avatar } from "antd";
+import { Badge, Button, Progress, Typography, Avatar, Drawer } from "antd";
+import { Grid } from "antd";
 import {
     BookOutlined,
     PlayCircleOutlined,
     ClockCircleOutlined,
     FireOutlined,
+    ArrowLeftOutlined,
+    TrophyOutlined,
+    MenuOutlined,
 } from "@ant-design/icons";
 import type { Lesson, LessonDetail } from "../../../types/lesson";
 
@@ -19,6 +23,8 @@ const LessonHeader: React.FC<LessonHeaderProps> = ({
     selectedLesson,
     lessonDetail,
 }) => {
+    const screens = Grid.useBreakpoint();
+    const [mobileMenuVisible, setMobileMenuVisible] = React.useState(false);
     const getLevelColor = (level: string) => {
         switch (level) {
             case 'N5': return 'green';
@@ -31,52 +37,215 @@ const LessonHeader: React.FC<LessonHeaderProps> = ({
     };
 
     return (
-        <div className="bg-white dark:bg-secondary-900 shadow-sm border-b border-secondary-200 dark:border-secondary-800">
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 py-4 sm:py-6">
-                <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-4">
-                    <div className="flex-1">
-                        <div className="flex items-center gap-2 sm:gap-3 mb-3">
-                            <Badge
-                                count={selectedLesson.lessonNumber}
-                                style={{ backgroundColor: '#1890ff' }}
-                                className="text-xl sm:text-2xl"
+        <>
+            {/* Mobile-First Header */}
+            <div className="bg-white dark:bg-secondary-900 shadow-sm border-b border-secondary-200 dark:border-secondary-800 sticky top-0 z-30">
+                <div className="px-4 py-3">
+                    {/* Mobile Header Layout */}
+                    <div className="flex items-center justify-between gap-3">
+                        {/* Left: Back Button */}
+                        <Button
+                            icon={<ArrowLeftOutlined />}
+                            className="border-0 shadow-sm flex-shrink-0"
+                            size={screens.xs ? 'small' : 'middle'}
+                            onClick={() => window.history.back()}
+                        />
+
+                        {/* Center: Title */}
+                        <div className="flex-1 min-w-0 px-3">
+                            <Typography.Title
+                                level={screens.xs ? 5 : 4}
+                                className="!mb-0 !text-secondary-900 dark:!text-secondary-100 line-clamp-1"
                             >
-                                <Avatar size={40} icon={<BookOutlined />} className="bg-blue-100 dark:bg-primary-900" />
-                            </Badge>
-                            <div className="flex-1 min-w-0">
-                                <Title level={2} className="!mb-0 text-secondary-900 dark:text-secondary-100 text-xl sm:text-2xl truncate">
-                                    {selectedLesson.title}
-                                </Title>
-                                <Text className="text-secondary-600 dark:text-secondary-400 text-xs sm:text-sm block truncate">
+                                {selectedLesson.title}
+                            </Typography.Title>
+                            {!screens.xs && (
+                                <Typography.Text className="text-xs text-secondary-600 dark:text-secondary-400 line-clamp-1">
                                     {selectedLesson.description}
-                                </Text>
+                                </Typography.Text>
+                            )}
+                        </div>
+
+                        {/* Right: Actions */}
+                        <div className="flex items-center gap-2 flex-shrink-0">
+                            {screens.xs && (
+                                <>
+                                    <Badge count={Math.round(lessonDetail.lesson.progress)} size="small">
+                                        <TrophyOutlined className="text-lg text-yellow-500" />
+                                    </Badge>
+                                    <Button
+                                        icon={<MenuOutlined />}
+                                        onClick={() => setMobileMenuVisible(true)}
+                                        className="border-0 shadow-sm"
+                                        size="small"
+                                    />
+                                </>
+                            )}
+                            {!screens.xs && (
+                                <Button
+                                    type="primary"
+                                    icon={<PlayCircleOutlined />}
+                                    className="shadow-lg"
+                                >
+                                    Tiếp tục học
+                                </Button>
+                            )}
+                        </div>
+                    </div>
+
+                    {/* Mobile Progress Bar */}
+                    <div className="mt-3">
+                        <Progress
+                            percent={lessonDetail.lesson.progress}
+                            strokeColor={{
+                                '0%': '#108ee9',
+                                '100%': '#52c41a',
+                            }}
+                            size={screens.xs ? 4 : 6}
+                            showInfo={screens.xs ? false : true}
+                            className="mb-2"
+                        />
+                    </div>
+                </div>
+            </div>
+
+            {/* Desktop Header */}
+            {!screens.xs && (
+                <div className="bg-white dark:bg-secondary-900 border-b border-secondary-200 dark:border-secondary-800">
+                    <div className="max-w-7xl mx-auto px-6 py-6">
+                        <div className="flex items-start justify-between gap-6">
+                            <div className="flex-1">
+                                <div className="flex items-center gap-4 mb-4">
+                                    <Badge
+                                        count={selectedLesson.lessonNumber}
+                                        style={{ backgroundColor: '#1890ff' }}
+                                        className="text-2xl"
+                                    >
+                                        <Avatar size={48} icon={<BookOutlined />} className="bg-blue-100 dark:bg-primary-900" />
+                                    </Badge>
+                                    <div className="flex-1">
+                                        <Typography.Title level={2} className="!mb-2 !text-secondary-900 dark:!text-secondary-100">
+                                            {selectedLesson.title}
+                                        </Typography.Title>
+                                        <Typography.Text className="text-secondary-600 dark:text-secondary-400">
+                                            {selectedLesson.description}
+                                        </Typography.Text>
+                                    </div>
+                                </div>
+
+                                {/* Status Tags */}
+                                <div className="flex flex-wrap items-center gap-4">
+                                    <Badge
+                                        color={getLevelColor(selectedLesson.level || 'N5')}
+                                        className="px-3 py-1 text-sm font-medium"
+                                    >
+                                        {selectedLesson.level}
+                                    </Badge>
+                                    <div className="flex items-center gap-2 text-sm text-secondary-600 dark:text-secondary-400">
+                                        <ClockCircleOutlined />
+                                        <span>45 phút</span>
+                                    </div>
+                                    <div className="flex items-center gap-2 text-sm text-secondary-600 dark:text-secondary-400">
+                                        <FireOutlined />
+                                        <span>Trung bình</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            {/* Progress Section */}
+                            <div className="text-center">
+                                <div className="text-3xl font-bold text-primary-600 dark:text-primary-400">
+                                    {lessonDetail.lesson.progress}%
+                                </div>
+                                <div className="text-sm text-secondary-600 dark:text-secondary-400 mb-3">
+                                    {lessonDetail.lesson.status === "completed"
+                                        ? "✅ Hoàn thành"
+                                        : lessonDetail.lesson.status === "in_progress"
+                                            ? "🔓 Đang học"
+                                            : "🔒 Chưa bắt đầu"}
+                                </div>
+                                <Button
+                                    type="primary"
+                                    size="large"
+                                    icon={<PlayCircleOutlined />}
+                                    className="shadow-lg w-full"
+                                >
+                                    Tiếp tục học
+                                </Button>
                             </div>
                         </div>
-                        <div className="flex flex-wrap items-center gap-2 sm:gap-4 mt-3 sm:mt-4">
-                            <Badge
-                                color={getLevelColor(selectedLesson.level || 'N5')}
-                                className="px-2 sm:px-3 py-1 text-xs sm:text-sm font-medium"
-                            >
-                                {selectedLesson.level}
-                            </Badge>
-                            <div className="flex items-center gap-1 sm:gap-2 text-xs sm:text-sm text-secondary-600 dark:text-secondary-400">
-                                <ClockCircleOutlined className="text-xs sm:text-sm" />
-                                <span className="hidden sm:inline">Thời gian: 45 phút</span>
-                                <span className="sm:hidden">45 phút</span>
-                            </div>
-                            <div className="flex items-center gap-1 sm:gap-2 text-xs sm:text-sm text-secondary-600 dark:text-secondary-400">
-                                <FireOutlined className="text-xs sm:text-sm" />
-                                <span className="hidden sm:inline">Độ khó: Trung bình</span>
-                                <span className="sm:hidden">Trung bình</span>
+
+                        {/* Desktop Progress Details */}
+                        <div className="mt-6">
+                            <Progress
+                                percent={lessonDetail.lesson.progress}
+                                strokeColor={{
+                                    '0%': '#108ee9',
+                                    '100%': '#52c41a',
+                                }}
+                                size={8}
+                                showInfo={false}
+                                className="mb-3"
+                            />
+                            <div className="flex justify-between text-sm text-gray-600 dark:text-secondary-400">
+                                <span>Bắt đầu</span>
+                                <span>Vocabulary</span>
+                                <span>Grammar</span>
+                                <span>Dialog</span>
+                                <span>Exercises</span>
+                                <span>Hoàn thành</span>
                             </div>
                         </div>
                     </div>
-                    <div className="flex flex-row lg:flex-col items-center lg:items-end gap-3 lg:gap-3">
-                        <div className="text-center lg:text-right">
-                            <div className="text-2xl sm:text-3xl font-bold text-primary-600 dark:text-primary-400">
+                </div>
+            )}
+
+            {/* Mobile Menu Drawer */}
+            <Drawer
+                title="Thông tin bài học"
+                placement="bottom"
+                onClose={() => setMobileMenuVisible(false)}
+                open={mobileMenuVisible}
+                height="70vh"
+            >
+                <div className="space-y-6">
+                    {/* Lesson Info */}
+                    <div>
+                        <h3 className="font-semibold text-secondary-900 dark:text-secondary-100 mb-3">
+                            {selectedLesson.title}
+                        </h3>
+                        <p className="text-sm text-secondary-600 dark:text-secondary-400 mb-4">
+                            {selectedLesson.description}
+                        </p>
+
+                        <div className="space-y-3">
+                            <div className="flex items-center justify-between p-3 bg-secondary-50 dark:bg-secondary-800 rounded-lg">
+                                <span className="text-sm font-medium">Trình độ</span>
+                                <Badge color={getLevelColor(selectedLesson.level || 'N5')}>
+                                    {selectedLesson.level}
+                                </Badge>
+                            </div>
+                            <div className="flex items-center justify-between p-3 bg-secondary-50 dark:bg-secondary-800 rounded-lg">
+                                <span className="text-sm font-medium">Thời gian</span>
+                                <span className="text-sm">45 phút</span>
+                            </div>
+                            <div className="flex items-center justify-between p-3 bg-secondary-50 dark:bg-secondary-800 rounded-lg">
+                                <span className="text-sm font-medium">Độ khó</span>
+                                <span className="text-sm">Trung bình</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    {/* Progress */}
+                    <div>
+                        <h4 className="font-semibold text-secondary-900 dark:text-secondary-100 mb-3">
+                            Tiến độ học tập
+                        </h4>
+                        <div className="text-center mb-4">
+                            <div className="text-2xl font-bold text-primary-600 dark:text-primary-400">
                                 {lessonDetail.lesson.progress}%
                             </div>
-                            <div className="text-xs sm:text-sm text-secondary-600 dark:text-secondary-400">
+                            <div className="text-sm text-secondary-600 dark:text-secondary-400">
                                 {lessonDetail.lesson.status === "completed"
                                     ? "✅ Hoàn thành"
                                     : lessonDetail.lesson.status === "in_progress"
@@ -86,44 +255,16 @@ const LessonHeader: React.FC<LessonHeaderProps> = ({
                         </div>
                         <Button
                             type="primary"
-                            size="large"
                             icon={<PlayCircleOutlined />}
-                            className="shadow-lg w-full sm:w-auto"
+                            className="w-full shadow-lg"
+                            size="large"
                         >
-                            <span className="hidden sm:inline">Tiếp tục học</span>
-                            <span className="sm:hidden">Học</span>
+                            Tiếp tục học
                         </Button>
                     </div>
                 </div>
-
-                {/* Progress Bar */}
-                <div className="mt-4 sm:mt-6">
-                    <Progress
-                        percent={lessonDetail.lesson.progress}
-                        strokeColor={{
-                            '0%': '#108ee9',
-                            '100%': '#52c41a',
-                        }}
-                        trailColor="#f0f0f0"
-                        strokeWidth={6}
-                        showInfo={false}
-                        className="mb-2"
-                    />
-                    <div className="flex justify-between text-xs text-gray-600 dark:text-secondary-400 overflow-x-auto">
-                        <span className="flex-shrink-0">Bắt đầu</span>
-                        <span className="flex-shrink-0 hidden xs:inline">Vocabulary</span>
-                        <span className="flex-shrink-0 xs:hidden">T.vựng</span>
-                        <span className="flex-shrink-0 hidden xs:inline">Grammar</span>
-                        <span className="flex-shrink-0 xs:hidden">Ng.pháp</span>
-                        <span className="flex-shrink-0 hidden xs:inline">Dialog</span>
-                        <span className="flex-shrink-0 xs:hidden">H.thoại</span>
-                        <span className="flex-shrink-0 hidden xs:inline">Exercises</span>
-                        <span className="flex-shrink-0 xs:hidden">B.tập</span>
-                        <span className="flex-shrink-0">Hoàn thành</span>
-                    </div>
-                </div>
-            </div>
-        </div>
+            </Drawer>
+        </>
     );
 };
 

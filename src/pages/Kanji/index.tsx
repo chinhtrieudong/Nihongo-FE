@@ -99,7 +99,7 @@ const KanjiPage: React.FC = () => {
     };
 
     return (
-        <div className="p-6 bg-secondary-50 dark:bg-secondary-950 min-h-screen">
+        <div className="p-6 bg-secondary-50 dark:bg-secondary-950 min-h-full">
             <div className="mb-8">
                 <Title level={2} className="!mb-2 text-secondary-900 dark:text-secondary-100">
                     <ReadOutlined className="mr-2 text-secondary-700 dark:text-secondary-400" />

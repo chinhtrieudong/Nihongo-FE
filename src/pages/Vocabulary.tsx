@@ -83,7 +83,7 @@ const Kanji: React.FC = () => {
   }
 
   return (
-    <div className="min-h-screen bg-secondary-50 dark:bg-secondary-950 p-6">
+    <div className="min-h-full bg-secondary-50 dark:bg-secondary-950 p-6">
       <div className="max-w-7xl mx-auto space-y-6">
         <div className="flex items-center justify-between">
           <div>

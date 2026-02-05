@@ -33,7 +33,7 @@ const KanjiCard: React.FC<KanjiCardProps> = ({ kanji, onClick }) => {
                 {!isHovered ? (
                     // Front content
                     <>
-                        <div className="text-5xl font-bold mb-2">{kanji.character}</div>
+                        <div className="text-5xl font-bold mb-2 font-kosugi">{kanji.character}</div>
                         <div className="text-lg text-purple-600 dark:text-purple-400 font-medium">{kanji.hanviet}</div>
                         <div className="flex justify-center gap-2 mb-3">
                             <Tag color={getJlptColor(kanji.jlpt_level)}>{kanji.jlpt_level}</Tag>
@@ -44,7 +44,7 @@ const KanjiCard: React.FC<KanjiCardProps> = ({ kanji, onClick }) => {
                 ) : (
                     // Back content
                     <div className="flex flex-col justify-center items-center h-full w-full">
-                        <div className="text-6xl font-bold text-secondary-900 dark:text-secondary-600">{kanji.character}</div>
+                        <div className="text-6xl font-bold text-secondary-900 dark:text-secondary-600 font-kosugi">{kanji.character}</div>
                         <div className="text-xl font-semibold text-secondary-900 dark:text-secondary-600 mt-2">{kanji.meaning_vi}</div>
                     </div>
                 )}

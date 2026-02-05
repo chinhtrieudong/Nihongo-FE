@@ -130,7 +130,7 @@ const Lessons: React.FC = () => {
     };
 
     return (
-        <div className="min-h-screen bg-gradient-to-br from-secondary-50 to-primary-50 dark:from-secondary-950 dark:to-primary-950">
+        <div className="min-h-full bg-gradient-to-br from-secondary-50 to-primary-50 dark:from-secondary-950 dark:to-primary-950">
             {selectedLesson && lessonDetail ? (
                 <>
                     <LessonHeader
@@ -154,7 +154,7 @@ const Lessons: React.FC = () => {
                     </div>
                 </>
             ) : (
-                <div className="flex items-center justify-center min-h-screen px-4">
+                <div className="flex items-center justify-center min-h-full px-4">
                     <Spin size="large" className="text-center">
                         <div className="mt-4">
                             <h3 className="text-lg sm:text-xl">Đang tải bài học...</h3>

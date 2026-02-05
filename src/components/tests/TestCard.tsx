@@ -52,7 +52,7 @@ const TestCard: React.FC<TestCardProps> = ({
     return (
         <Card
             hoverable
-            className={`h-full ${test.completed ? 'border-green-200' : ''}`}
+            className={`${test.completed ? 'border-green-200' : ''}`}
             actions={[
                 <Button
                     type="primary"
@@ -85,7 +85,7 @@ const TestCard: React.FC<TestCardProps> = ({
                     )}
                 </div>
                 <Title level={4} className="!mb-2">{test.title}</Title>
-                <Paragraph type="secondary" className="text-sm !mb-3">
+                <Paragraph className="text-sm !mb-3 !text-secondary-700 dark:!text-secondary-300">
                     {test.description}
                 </Paragraph>
                 <Tag color={getDifficultyColor(test.difficulty)} className="mb-3">
@@ -95,14 +95,14 @@ const TestCard: React.FC<TestCardProps> = ({
 
             <div className="space-y-3">
                 <div className="flex justify-between text-sm">
-                    <span className="text-gray-600">
+                    <span className="text-secondary-700 dark:text-secondary-400">
                         <ClockCircleOutlined className="mr-1" />
                         Thời gian
                     </span>
                     <span className="font-medium">{test.duration} phút</span>
                 </div>
                 <div className="flex justify-between text-sm">
-                    <span className="text-gray-600">
+                    <span className="text-secondary-700 dark:text-secondary-400">
                         <FileTextOutlined className="mr-1" />
                         Số câu
                     </span>
@@ -110,14 +110,14 @@ const TestCard: React.FC<TestCardProps> = ({
                 </div>
                 {test.completed && test.date && (
                     <div className="flex justify-between text-sm">
-                        <span className="text-gray-600">Ngày làm</span>
+                        <span className="text-secondary-700 dark:text-secondary-400">Ngày làm</span>
                         <span className="font-medium">{new Date(test.date).toLocaleDateString('vi-VN')}</span>
                     </div>
                 )}
             </div>
 
             <div className="mt-4 pt-3 border-t">
-                <Text type="secondary" className="text-xs">Phần thi:</Text>
+                <Text className="text-xs !text-secondary-700 dark:!text-secondary-300">Phần thi:</Text>
                 <div className="flex flex-wrap gap-1 mt-1">
                     {test.sections.map(section => (
                         <Tag key={section.id} className="text-xs">

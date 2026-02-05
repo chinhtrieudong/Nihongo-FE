@@ -84,7 +84,7 @@ const SummaryTab: React.FC<SummaryTabProps> = ({
                     percent={progress}
                     strokeColor="#ffffff"
                     trailColor="rgba(255,255,255,0.3)"
-                    strokeWidth={12}
+                    size={12}
                     showInfo={false}
                     className="mb-6"
                 />
@@ -182,10 +182,10 @@ const SummaryTab: React.FC<SummaryTabProps> = ({
                             <div
                                 key={index}
                                 className={`p-4 rounded-lg border-2 ${area.color === 'red'
-                                        ? 'bg-red-50 dark:bg-red-900/20 border-red-200 dark:border-red-800'
-                                        : area.color === 'yellow'
-                                            ? 'bg-yellow-50 dark:bg-yellow-900/20 border-yellow-200 dark:border-yellow-800'
-                                            : 'bg-green-50 dark:bg-green-900/20 border-green-200 dark:border-green-800'
+                                    ? 'bg-red-50 dark:bg-red-900/20 border-red-200 dark:border-red-800'
+                                    : area.color === 'yellow'
+                                        ? 'bg-yellow-50 dark:bg-yellow-900/20 border-yellow-200 dark:border-yellow-800'
+                                        : 'bg-green-50 dark:bg-green-900/20 border-green-200 dark:border-green-800'
                                     }`}
                             >
                                 <div className="flex items-center justify-between mb-2">
@@ -200,10 +200,10 @@ const SummaryTab: React.FC<SummaryTabProps> = ({
                                 <div className="w-full bg-secondary-200 dark:bg-secondary-700 rounded-full h-2">
                                     <div
                                         className={`h-2 rounded-full ${area.color === 'red'
-                                                ? 'bg-red-500 w-1/3'
-                                                : area.color === 'yellow'
-                                                    ? 'bg-yellow-500 w-2/3'
-                                                    : 'bg-green-500 w-full'
+                                            ? 'bg-red-500 w-1/3'
+                                            : area.color === 'yellow'
+                                                ? 'bg-yellow-500 w-2/3'
+                                                : 'bg-green-500 w-full'
                                             }`}
                                     />
                                 </div>

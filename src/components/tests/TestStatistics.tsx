@@ -2,66 +2,38 @@ import React from "react";
 import { Row, Col, Card, Statistic } from "antd";
 import {
     CheckCircleOutlined,
-    StarOutlined,
-    FireOutlined,
-    ClockCircleOutlined
+    StarOutlined
 } from "@ant-design/icons";
 
 interface TestStatisticsProps {
     totalTestsCompleted: number;
     averageScore: number;
-    currentStreak: number;
-    totalStudyTime: number;
 }
 
 const TestStatistics: React.FC<TestStatisticsProps> = ({
     totalTestsCompleted,
-    averageScore,
-    currentStreak,
-    totalStudyTime
+    averageScore
 }) => {
     return (
-        <Row gutter={[24, 24]}>
-            <Col xs={24} sm={12} lg={6}>
-                <Card>
+        <Row gutter={[12, 12]} wrap={false}>
+            <Col flex="1 1 0">
+                <Card size="small" className="h-full">
                     <Statistic
-                        title="Bài thi đã hoàn thành"
+                        title={<span className="text-secondary-700 dark:text-secondary-400">Bài thi đã hoàn thành</span>}
                         value={totalTestsCompleted}
                         prefix={<CheckCircleOutlined className="text-green-500" />}
-                        styles={{ content: { color: '#52c41a' } }}
+                        styles={{ content: { color: '#52c41a', fontSize: 18 } }}
                     />
                 </Card>
             </Col>
-            <Col xs={24} sm={12} lg={6}>
-                <Card>
+            <Col flex="1 1 0">
+                <Card size="small" className="h-full">
                     <Statistic
-                        title="Điểm trung bình"
+                        title={<span className="text-secondary-700 dark:text-secondary-400">Điểm trung bình</span>}
                         value={averageScore}
                         suffix="%"
                         prefix={<StarOutlined className="text-yellow-500" />}
-                        styles={{ content: { color: '#faad14' } }}
-                    />
-                </Card>
-            </Col>
-            <Col xs={24} sm={12} lg={6}>
-                <Card>
-                    <Statistic
-                        title="Chuỗi học tập"
-                        value={currentStreak}
-                        suffix="ngày"
-                        prefix={<FireOutlined className="text-orange-500" />}
-                        styles={{ content: { color: '#fa8c16' } }}
-                    />
-                </Card>
-            </Col>
-            <Col xs={24} sm={12} lg={6}>
-                <Card>
-                    <Statistic
-                        title="Tổng thời gian học"
-                        value={totalStudyTime}
-                        suffix="phút"
-                        prefix={<ClockCircleOutlined className="text-blue-500" />}
-                        styles={{ content: { color: '#1890ff' } }}
+                        styles={{ content: { color: '#faad14', fontSize: 18 } }}
                     />
                 </Card>
             </Col>

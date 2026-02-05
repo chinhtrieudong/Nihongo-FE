@@ -1,16 +1,12 @@
-import React, { useState, useRef, useEffect, useMemo } from 'react';
-import { Card, Button, Typography, Space, Slider, Switch, Tag, Progress, Avatar, Tooltip, message } from 'antd';
+import React, { useState, useRef, useEffect } from 'react';
+import { Card, Button, Typography, Space, Slider, Switch, Tag, Avatar, message } from 'antd';
 import {
     PlayCircleOutlined,
     PauseCircleOutlined,
-    StepForwardOutlined,
-    StepBackwardOutlined,
     ReloadOutlined,
     SoundOutlined,
     EyeOutlined,
-    EyeInvisibleOutlined,
-    UserOutlined,
-    RobotOutlined
+    EyeInvisibleOutlined
 } from '@ant-design/icons';
 import { DialogueLine } from '../../services/conversationLessonAPI';
 
@@ -36,18 +32,18 @@ const ConversationDialogue: React.FC<ConversationDialogueProps> = ({
     const [currentLineIndex, setCurrentLineIndex] = useState(0);
     const [isPlaying, setIsPlaying] = useState(false);
     const [playbackSpeed, setPlaybackSpeed] = useState(1.0);
-    const [showTranslation, setShowTranslation] = useState(true);
-    const [showRomaji, setShowRomaji] = useState(true);
-    const [completedLines, setCompletedLines] = useState<Set<number>>(new Set());
+    const [showTranslation, setShowTranslation] = useState(false);
+    const [showRomaji, setShowRomaji] = useState(false);
     const [isPlayingAll, setIsPlayingAll] = useState(false);
+    const [japaneseVoices, setJapaneseVoices] = useState<SpeechSynthesisVoice[]>([]);
 
     const audioRef = useRef<HTMLAudioElement | null>(null);
     const containerRef = useRef<HTMLDivElement>(null);
+    const isStartingAllRef = useRef(false);
+    const playingIndexRef = useRef<number | null>(null);
+    const isPlayingAllRef = useRef(false);
 
     const currentLine = dialogue[currentLineIndex];
-    const completedCount = useMemo(() => completedLines.size, [completedLines]);
-    const progressPercentage = useMemo(() => dialogue.length > 0 ? (completedCount / dialogue.length) * 100 : 0, [completedCount, dialogue.length]);
-
     // Call onProgress only when currentLineIndex changes
     useEffect(() => {
         if (onProgress) {
@@ -63,10 +59,32 @@ const ConversationDialogue: React.FC<ConversationDialogueProps> = ({
     }, [currentLineIndex]);
 
     useEffect(() => {
-        if (isPlayingAll && !isPlaying && currentLine) {
-            playCurrentLine();
-        }
-    }, [currentLineIndex]);
+        isPlayingAllRef.current = isPlayingAll;
+    }, [isPlayingAll]);
+
+    useEffect(() => {
+        if (!('speechSynthesis' in window)) return;
+
+        const loadVoices = () => {
+            const voices = window.speechSynthesis.getVoices();
+            const japanese = voices.filter(voice =>
+                voice.lang?.startsWith('ja') || voice.name.includes('Japanese')
+            );
+            const naturalJapanese = japanese.filter(voice =>
+                /natural/i.test(voice.name)
+            );
+            setJapaneseVoices(naturalJapanese.length > 0 ? naturalJapanese : japanese);
+        };
+
+        loadVoices();
+        const handler = () => loadVoices();
+        window.speechSynthesis.addEventListener('voiceschanged', handler);
+
+        return () => {
+            window.speechSynthesis.removeEventListener('voiceschanged', handler);
+        };
+    }, []);
+
 
 
     const scrollToCurrentLine = () => {
@@ -83,38 +101,41 @@ const ConversationDialogue: React.FC<ConversationDialogueProps> = ({
         }
     };
 
-    const playCurrentLine = async () => {
-        if (!currentLine) return;
+    const playLineAtIndex = async (lineIndex: number) => {
+        const line = dialogue[lineIndex];
+        if (!line) return;
 
         try {
             setIsPlaying(true);
+            playingIndexRef.current = lineIndex;
 
             // Stop any current audio only
             if (audioRef.current) {
                 audioRef.current.pause();
             }
 
-            console.log('Playing line:', currentLine);
-            console.log('Has audio_url:', !!currentLine.audio_url);
+            if (!isPlayingAllRef.current && 'speechSynthesis' in window) {
+                window.speechSynthesis.cancel();
+            }
 
             // Try to use provided audio URL first
-            if (currentLine.audio_url) {
-                console.log('Attempting to play audio URL:', currentLine.audio_url);
+            if (line.audio_url) {
                 try {
-                    const audio = new Audio(currentLine.audio_url);
+                    const audio = new Audio(line.audio_url);
                     audio.playbackRate = playbackSpeed;
                     audioRef.current = audio;
 
                     audio.onended = () => {
                         console.log('Audio ended');
                         setIsPlaying(false);
-                        markLineAsCompleted(currentLineIndex);
-
+                        playingIndexRef.current = null;
                         // Auto advance to next line
-                        if (currentLineIndex < dialogue.length - 1) {
+                        if (isPlayingAllRef.current && lineIndex < dialogue.length - 1) {
+                            const nextIndex = lineIndex + 1;
                             setTimeout(() => {
-                                setCurrentLineIndex(prev => prev + 1);
-                            }, 500);
+                                setCurrentLineIndex(nextIndex);
+                                playLineAtIndex(nextIndex);
+                            }, 400);
                         } else {
                             // All lines completed
                             setIsPlayingAll(false);
@@ -124,47 +145,52 @@ const ConversationDialogue: React.FC<ConversationDialogueProps> = ({
                         }
                     };
 
-                    audio.onerror = (error) => {
-                        console.log('Audio error, falling back to TTS:', error);
+                    audio.onerror = () => {
                         setIsPlaying(false);
+                        playingIndexRef.current = null;
                         // Fallback to TTS
                         try {
-                            playTTSDirectly(currentLine.text_jp, playbackSpeed);
+                            playTTSDirectly(line.text_jp, playbackSpeed, line.speaker, lineIndex);
                         } catch (ttsError) {
-                            console.log('TTS fallback failed:', ttsError);
                             // TTS errors are already handled in playTTSDirectly
                         }
                     };
 
                     await audio.play();
                 } catch (audioError) {
-                    console.log('Audio play failed, using TTS:', audioError);
                     // Fallback to TTS
                     try {
-                        await playTTSDirectly(currentLine.text_jp, playbackSpeed);
+                        await playTTSDirectly(line.text_jp, playbackSpeed, line.speaker, lineIndex);
                     } catch (ttsError) {
-                        console.log('TTS fallback failed:', ttsError);
                         // TTS errors are already handled in playTTSDirectly
                     }
                 }
             } else {
                 // Use Text-to-Speech directly
-                console.log('Using TTS directly for:', currentLine.text_jp);
                 try {
-                    await playTTSDirectly(currentLine.text_jp, playbackSpeed);
+                    await playTTSDirectly(line.text_jp, playbackSpeed, line.speaker, lineIndex);
                 } catch (ttsError) {
-                    console.log('TTS failed:', ttsError);
                     // TTS errors are already handled in playTTSDirectly
                 }
             }
         } catch (error) {
             console.error('Error in playCurrentLine:', error);
             setIsPlaying(false);
+            playingIndexRef.current = null;
             message.error('Không thể phát âm thanh. Vui lòng thử lại.');
         }
     };
 
-    const playTTSDirectly = async (text: string, speed: number): Promise<void> => {
+    const playCurrentLine = async () => {
+        return playLineAtIndex(currentLineIndex);
+    };
+
+    const playTTSDirectly = async (
+        text: string,
+        speed: number,
+        speaker?: string,
+        lineIndex?: number
+    ): Promise<void> => {
         return new Promise((resolve, reject) => {
             // Check if browser supports speech synthesis
             if (!('speechSynthesis' in window)) {
@@ -172,14 +198,21 @@ const ConversationDialogue: React.FC<ConversationDialogueProps> = ({
                 return;
             }
 
-            // Cancel any ongoing speech
-            window.speechSynthesis.cancel();
-
             // Load voices if not loaded yet
             let voices = window.speechSynthesis.getVoices();
+            const waitForVoices = (): Promise<SpeechSynthesisVoice[]> => {
+                return new Promise((resolve) => {
+                    const handler = () => {
+                        window.speechSynthesis.removeEventListener('voiceschanged', handler);
+                        resolve(window.speechSynthesis.getVoices());
+                    };
+                    window.speechSynthesis.addEventListener('voiceschanged', handler);
+                });
+            };
 
             const speakWithVoice = (availableVoices: SpeechSynthesisVoice[]) => {
                 const utterance = new SpeechSynthesisUtterance(text);
+                const preferredVoices = japaneseVoices.length > 0 ? japaneseVoices : availableVoices;
 
                 // Configure for Japanese
                 utterance.lang = 'ja-JP';
@@ -187,24 +220,44 @@ const ConversationDialogue: React.FC<ConversationDialogueProps> = ({
                 utterance.pitch = 1.0;
                 utterance.volume = 1.0;
 
-                // Try to get Japanese voice
-                const japaneseVoice = availableVoices.find(voice =>
+                const lowerSpeaker = (speaker || '').toLowerCase();
+                const femaleKeywords = ['haruka', 'sayaka', 'ayumi', 'nanami', 'female'];
+                const maleKeywords = ['ichiro', 'keita', 'male'];
+
+                const byName = (keys: string[]) =>
+                    preferredVoices.find(voice =>
+                        keys.some(k => voice.name.toLowerCase().includes(k))
+                    );
+
+                const femaleVoice = byName(femaleKeywords);
+                const maleVoice = byName(maleKeywords);
+                const japaneseVoice = preferredVoices.find(voice =>
                     voice.lang.startsWith('ja') || voice.name.includes('Japanese')
                 );
 
-                if (japaneseVoice) {
-                    utterance.voice = japaneseVoice;
+                if (lowerSpeaker === 'mai') {
+                    utterance.voice = femaleVoice || japaneseVoice || null;
+                } else if (lowerSpeaker === 'john') {
+                    utterance.voice = maleVoice || japaneseVoice || null;
+                } else {
+                    utterance.voice = femaleVoice || maleVoice || japaneseVoice || null;
                 }
 
                 utterance.onend = () => {
                     setIsPlaying(false);
-                    markLineAsCompleted(currentLineIndex);
+                    playingIndexRef.current = null;
 
                     // Auto advance to next line
-                    if (currentLineIndex < dialogue.length - 1) {
+                    if (
+                        isPlayingAllRef.current &&
+                        typeof lineIndex === 'number' &&
+                        lineIndex < dialogue.length - 1
+                    ) {
+                        const nextIndex = lineIndex + 1;
                         setTimeout(() => {
-                            setCurrentLineIndex(prev => prev + 1);
-                        }, 500);
+                            setCurrentLineIndex(nextIndex);
+                            playLineAtIndex(nextIndex);
+                        }, 400);
                     } else {
                         // All lines completed
                         setIsPlayingAll(false);
@@ -222,6 +275,7 @@ const ConversationDialogue: React.FC<ConversationDialogueProps> = ({
                         return; // KHÔNG setIsPlaying(false)
                     } else {
                         setIsPlaying(false);
+                        playingIndexRef.current = null;
                         console.error('TTS error:', event.error);
                         message.error('Không thể phát âm thanh. Vui lòng thử lại.');
                         reject(new Error('TTS error: ' + event.error));
@@ -234,22 +288,18 @@ const ConversationDialogue: React.FC<ConversationDialogueProps> = ({
 
             if (voices.length === 0) {
                 // Wait for voices to be loaded
-                window.speechSynthesis.onvoiceschanged = () => {
-                    voices = window.speechSynthesis.getVoices();
+                waitForVoices().then((loaded) => {
+                    voices = loaded;
                     speakWithVoice(voices);
-                };
+                });
             } else {
                 speakWithVoice(voices);
             }
         });
     };
 
-    const markLineAsCompleted = (lineIndex: number) => {
-        setCompletedLines(prev => new Set(Array.from(prev).concat(lineIndex)));
-    };
-
     const togglePlayPause = () => {
-        if (isPlaying) {
+        if (isPlaying || isPlayingAll) {
             // Cancel any ongoing TTS
             if ('speechSynthesis' in window) {
                 window.speechSynthesis.cancel();
@@ -259,6 +309,7 @@ const ConversationDialogue: React.FC<ConversationDialogueProps> = ({
             }
             setIsPlaying(false);
             setIsPlayingAll(false);
+            isPlayingAllRef.current = false;
         } else {
             playCurrentLine();
         }
@@ -289,7 +340,6 @@ const ConversationDialogue: React.FC<ConversationDialogueProps> = ({
         }
 
         setCurrentLineIndex(0);
-        setCompletedLines(new Set());
         setIsPlaying(false);
         if (audioRef.current) {
             audioRef.current.pause();
@@ -298,8 +348,13 @@ const ConversationDialogue: React.FC<ConversationDialogueProps> = ({
 
     const playAllFromStart = () => {
         restart();
+        isStartingAllRef.current = true;
         setIsPlayingAll(true);
-        setTimeout(() => playCurrentLine(), 100);
+        isPlayingAllRef.current = true;
+        setCurrentLineIndex(0);
+        playLineAtIndex(0).finally(() => {
+            isStartingAllRef.current = false;
+        });
     };
 
     const handleLineClick = (index: number) => {
@@ -309,196 +364,174 @@ const ConversationDialogue: React.FC<ConversationDialogueProps> = ({
         }
     };
 
+
     const getSpeakerAvatar = (speaker: string) => {
-        return speaker === 'user' ?
-            <Avatar icon={<UserOutlined />} className="bg-blue-500" /> :
-            <Avatar icon={<RobotOutlined />} className="bg-green-500" />;
+        const label = speaker?.trim() || '?';
+        const colorClass = label.toLowerCase() === 'mai' ? 'bg-pink-500' : 'bg-blue-500';
+        return (
+            <Avatar className={colorClass}>
+                {label.charAt(0).toUpperCase()}
+            </Avatar>
+        );
     };
 
     const getSpeakerName = (speaker: string) => {
-        return speaker === 'user' ? 'Bạn' : 'Người Nhật';
+        return speaker?.trim() || 'Nhân vật';
     };
 
     return (
         <div className="space-y-6">
-            {/* Progress Overview */}
-            <Card className="shadow-sm">
-                <div className="flex items-center justify-between mb-4">
-                    <Title level={4} className="!mb-0">📝 Đoạn hội thoại</Title>
-                    <div className="flex items-center gap-4">
-                        <Text type="secondary">
-                            Tiến độ: {completedCount}/{dialogue.length}
-                        </Text>
-                        <Tag color={progressPercentage === 100 ? 'green' : 'blue'}>
-                            {Math.round(progressPercentage)}%
-                        </Tag>
-                    </div>
-                </div>
-                <Progress
-                    percent={progressPercentage}
-                    strokeColor={progressPercentage === 100 ? '#52c41a' : '#1890ff'}
-                    showInfo={false}
-                />
-            </Card>
-
             {/* Full Dialogue Display */}
             <Card className="shadow-sm">
-                <div ref={containerRef} className="space-y-4 max-h-96 overflow-y-auto pr-2">
+                <div ref={containerRef} className="space-y-3 max-h-[520px] overflow-y-auto pr-2">
                     {dialogue.map((line, index) => (
+                        (() => {
+                            const isMai = (line.speaker || '').toLowerCase() === 'mai';
+                            const isActive = index === currentLineIndex;
+                            return (
                         <div
                             key={line.line_id}
-                            className={`dialogue-line p-4 rounded-lg border transition-all cursor-pointer ${index === currentLineIndex
-                                ? 'border-blue-400 bg-blue-50 dark:bg-blue-900/20'
-                                : completedLines.has(index)
-                                    ? 'border-green-200 bg-green-50 dark:bg-green-900/20'
-                                    : 'border-gray-200 hover:border-gray-300'
-                                }`}
+                            className={`dialogue-line flex ${isMai ? 'justify-start' : 'justify-end'} cursor-pointer`}
                             onClick={() => handleLineClick(index)}
                         >
-                            <div className="flex items-start gap-3">
-                                <div className="flex-shrink-0 mt-1">
+                            <div className={`flex items-end gap-3 max-w-[78%] ${isMai ? 'flex-row' : 'flex-row-reverse'}`}>
+                                <div className="flex-shrink-0">
                                     {getSpeakerAvatar(line.speaker)}
                                 </div>
-                                <div className="flex-1">
-                                    <div className="flex items-center gap-2 mb-2">
-                                        <Text strong className="text-sm">
+                                <div
+                                    className={[
+                                        'relative rounded-2xl px-4 py-3 border transition-all',
+                                        isMai
+                                            ? 'bg-white dark:bg-secondary-925 border-secondary-200 dark:border-secondary-800'
+                                            : 'bg-blue-50 dark:bg-blue-900/30 border-blue-200 dark:border-blue-800',
+                                        isActive ? 'ring-2 ring-blue-400/50 dark:ring-blue-500/40' : '',
+                                    ].join(' ')}
+                                >
+                                    <div className={`absolute -bottom-1 ${isMai ? '-left-1' : '-right-1'} h-3 w-3 rotate-45 ${
+                                        isMai
+                                            ? 'bg-white dark:bg-secondary-925 border-l border-b border-secondary-200 dark:border-secondary-800'
+                                            : 'bg-blue-50 dark:bg-blue-900/30 border-l border-b border-blue-200 dark:border-blue-800'
+                                    }`} />
+                                    <div className="flex items-center justify-between gap-3 mb-1">
+                                        <Text strong className="text-xs text-secondary-600 dark:text-secondary-300">
                                             {getSpeakerName(line.speaker)}
                                         </Text>
-                                        {index === currentLineIndex && (
-                                            <Tag color="blue">Đang phát</Tag>
-                                        )}
-                                        {completedLines.has(index) && (
-                                            <Tag color="green">✓ Hoàn thành</Tag>
-                                        )}
+                                        <Button
+                                            size="small"
+                                            type={isActive ? 'primary' : 'default'}
+                                            icon={<SoundOutlined />}
+                                            onClick={(e) => {
+                                                e.stopPropagation();
+                                                handleLineClick(index);
+                                                playLineAtIndex(index);
+                                            }}
+                                        />
                                     </div>
-
-                                    <div className="space-y-2">
-                                        <Text className="text-lg block">
+                                    <div className="space-y-1.5">
+                                        <Text className="text-base block">
                                             {line.text_jp}
                                         </Text>
 
                                         {showRomaji && line.romaji && (
-                                            <Text type="secondary" className="text-sm block">
+                                            <Text className="text-xs text-slate-500 dark:text-slate-400 block">
                                                 {line.romaji}
                                             </Text>
                                         )}
 
                                         {showTranslation && line.meaning_vi && (
-                                            <Text className="text-sm text-gray-600 dark:text-gray-400 block">
+                                            <Text className="text-xs text-slate-600 dark:text-slate-400 block">
                                                 {line.meaning_vi}
                                             </Text>
                                         )}
                                     </div>
 
-                                    {/* Audio Controls for each line */}
-                                    <div className="mt-2 flex items-center gap-2">
-                                        <Button
-                                            size="small"
-                                            type={index === currentLineIndex ? 'primary' : 'default'}
-                                            icon={<SoundOutlined />}
-                                            onClick={(e) => {
-                                                e.stopPropagation();
-                                                handleLineClick(index);
-                                                setTimeout(() => playCurrentLine(), 100);
-                                            }}
-                                        >
-                                            {index === currentLineIndex && isPlaying ? 'Đang phát...' : 'Nghe'}
-                                        </Button>
-                                        {!line.audio_url && (
-                                            <Tag color="orange">
-                                                🗣️ TTS
-                                            </Tag>
-                                        )}
-                                    </div>
+                                    {!line.audio_url && (
+                                        <Tag color="orange" className="mt-2">
+                                            🗣️ TTS
+                                        </Tag>
+                                    )}
                                 </div>
                             </div>
                         </div>
+                            );
+                        })()
                     ))}
                 </div>
             </Card>
 
             {/* Playback Controls */}
             <Card className="shadow-sm">
-                <div className="space-y-4">
-                    {/* Main Controls */}
-                    <div className="flex items-center justify-center gap-4">
-                        <Button
-                            icon={<StepBackwardOutlined />}
-                            onClick={goToPreviousLine}
-                            disabled={currentLineIndex === 0}
-                        >
-                            Câu trước
-                        </Button>
+                <div className="flex items-center gap-5 flex-wrap overflow-x-hidden">
+                    {/* Playback Speed */}
+                    <div className="min-w-0 max-w-[360px] flex-shrink-0" style={{ flex: '1 1 0' }}>
+                        <div className="rounded-xl border border-secondary-200/70 dark:border-secondary-800 bg-white/70 dark:bg-secondary-925/70 px-4 py-3">
+                            <Text className="text-xs uppercase tracking-wide text-secondary-500 dark:text-secondary-400 block">
+                                Tốc độ phát
+                            </Text>
+                            <div className="mt-1 flex items-center justify-between">
+                                <Text className="text-sm font-semibold text-secondary-800 dark:text-secondary-100">
+                                    {playbackSpeed}x
+                                </Text>
+                                <Text className="text-xs text-secondary-500 dark:text-secondary-400">
+                                    0.5x – 2.0x
+                                </Text>
+                            </div>
+                            <div className="mt-2">
+                                <Slider
+                                    min={0.5}
+                                    max={2.0}
+                                    step={0.1}
+                                    value={playbackSpeed}
+                                    onChange={setPlaybackSpeed}
+                                />
+                            </div>
+                        </div>
+                    </div>
 
+                    {/* Main Controls */}
+                    <div className="flex items-center gap-3 flex-shrink-0 rounded-xl border border-secondary-200/70 dark:border-secondary-800 bg-white/70 dark:bg-secondary-925/70 px-4 py-3">
                         <Button
                             type="primary"
                             size="large"
-                            icon={isPlaying ? <PauseCircleOutlined /> : <PlayCircleOutlined />}
-                            onClick={togglePlayPause}
+                            icon={isPlayingAll ? <PauseCircleOutlined /> : <PlayCircleOutlined />}
+                            onClick={isPlayingAll ? togglePlayPause : playAllFromStart}
+                            loading={isPlayingAll}
                         >
-                            {isPlaying ? 'Tạm dừng' : 'Phát'}
-                        </Button>
-
-                        <Button
-                            icon={<StepForwardOutlined />}
-                            onClick={goToNextLine}
-                            disabled={currentLineIndex === dialogue.length - 1}
-                        >
-                            Câu tiếp
+                            {isPlayingAll ? 'Đang phát' : 'Phát'}
                         </Button>
 
                         <Button
                             icon={<ReloadOutlined />}
                             onClick={restart}
                         >
-                            Làm lại
-                        </Button>
-
-                        <Button
-                            type="default"
-                            icon={<PlayCircleOutlined />}
-                            onClick={playAllFromStart}
-                        >
-                            Phát tất cả
+                            Phát lại
                         </Button>
                     </div>
 
-                    {/* Settings */}
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                        <div>
-                            <Text className="text-sm mb-2 block">Tốc độ phát: {playbackSpeed}x</Text>
-                            <Slider
-                                min={0.5}
-                                max={2.0}
-                                step={0.1}
-                                value={playbackSpeed}
-                                onChange={setPlaybackSpeed}
+                    {/* Toggles */}
+                    <div className="flex flex-col gap-3 whitespace-nowrap flex-shrink-0 rounded-xl border border-secondary-200/70 dark:border-secondary-800 bg-white/70 dark:bg-secondary-925/70 px-4 py-3">
+                        <Space size={10}>
+                            <Switch
+                                checked={showRomaji}
+                                onChange={setShowRomaji}
+                                checkedChildren={<EyeOutlined />}
+                                unCheckedChildren={<EyeInvisibleOutlined />}
                             />
-                        </div>
-
-                        <div className="flex items-center gap-4">
-                            <Space>
-                                <Switch
-                                    checked={showRomaji}
-                                    onChange={setShowRomaji}
-                                    checkedChildren={<EyeOutlined />}
-                                    unCheckedChildren={<EyeInvisibleOutlined />}
-                                />
-                                <Text>Hiển thị Romaji</Text>
-                            </Space>
-                        </div>
-
-                        <div className="flex items-center gap-4">
-                            <Space>
-                                <Switch
-                                    checked={showTranslation}
-                                    onChange={setShowTranslation}
-                                    checkedChildren={<EyeOutlined />}
-                                    unCheckedChildren={<EyeInvisibleOutlined />}
-                                />
-                                <Text>Hiển thị bản dịch</Text>
-                            </Space>
-                        </div>
+                            <Text className="text-sm text-secondary-800 dark:text-secondary-100">
+                                Hiển thị Romaji
+                            </Text>
+                        </Space>
+                        <Space size={10}>
+                            <Switch
+                                checked={showTranslation}
+                                onChange={setShowTranslation}
+                                checkedChildren={<EyeOutlined />}
+                                unCheckedChildren={<EyeInvisibleOutlined />}
+                            />
+                            <Text className="text-sm text-secondary-800 dark:text-secondary-100">
+                                Hiển thị bản dịch
+                            </Text>
+                        </Space>
                     </div>
                 </div>
             </Card>

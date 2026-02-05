@@ -14,14 +14,14 @@ const MobileLayout: React.FC<MobileLayoutProps> = ({ children }) => {
     <Layout className="mobile-layout">
       {/* Fixed Header */}
       <MobileHeader />
-      
+
       {/* Main Content */}
       <Content className="mobile-main-content">
-        <div className="mobile-content-wrapper">
+        <div className="">
           {children}
         </div>
       </Content>
-      
+
       {/* Drawer (hidden by default) */}
       <MobileDrawer />
 
@@ -35,20 +35,8 @@ const MobileLayout: React.FC<MobileLayoutProps> = ({ children }) => {
           width: 100%;
           margin-left: 0;  /* ✅ QUAN TRỌNG: Không bị đẩy ngang */
           padding-top: 56px;  /* Header height */
-          min-height: 100vh;
+          min-height: calc(100vh - 56px);
           background: #f9fafb;
-        }
-
-        .mobile-content-wrapper {
-          padding: 16px;
-          max-width: 100%;
-          overflow-x: hidden;  /* Ngăn horizontal scroll */
-        }
-
-        /* Đảm bảo content không vượt quá width */
-        .mobile-content-wrapper * {
-          max-width: 100%;
-          box-sizing: border-box;
         }
 
         /* Dark mode styles */

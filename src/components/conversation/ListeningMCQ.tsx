@@ -78,14 +78,21 @@ const ListeningMCQ: React.FC<ListeningMCQProps> = ({
             utterance.pitch = 1.0;
             utterance.volume = 1.0;
 
-            // Try to get Vietnamese voice
+            // Try to get Vietnamese voice (prefer Natural if available)
             const voices = window.speechSynthesis.getVoices();
-            const vietnameseVoice = voices.find(voice =>
+            const vietnameseVoices = voices.filter(voice =>
                 voice.lang.startsWith('vi') || voice.name.includes('Vietnamese')
             );
+            const naturalVietnamese = vietnameseVoices.find(voice =>
+                /natural/i.test(voice.name)
+            );
+            const preferredVietnamese =
+                naturalVietnamese ||
+                vietnameseVoices.find(voice => /online/i.test(voice.name)) ||
+                vietnameseVoices[0];
 
-            if (vietnameseVoice) {
-                utterance.voice = vietnameseVoice;
+            if (preferredVietnamese) {
+                utterance.voice = preferredVietnamese;
             }
 
             utterance.onend = () => {

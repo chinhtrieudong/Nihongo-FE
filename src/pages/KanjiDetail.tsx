@@ -235,7 +235,7 @@ const KanjiDetail: React.FC<KanjiDetailProps> = ({ lessonId: propLessonId }) => 
     if (!kanjiData) {
         return (
             <div className="text-center py-12">
-                <div className="text-6xl mb-4">漢</div>
+                <div className="text-6xl mb-4 font-kosugi">漢</div>
                 <h3 className="text-lg font-semibold text-secondary-900 dark:text-secondary-600 mb-2">Không tìm thấy Hán tự</h3>
                 <p className="text-secondary-600 dark:text-secondary-800">Vui lòng kiểm tra lại đường dẫn hoặc thử tìm kiếm Hán tự khác.</p>
             </div>
@@ -243,7 +243,7 @@ const KanjiDetail: React.FC<KanjiDetailProps> = ({ lessonId: propLessonId }) => 
     }
 
     return (
-        <div className="min-h-screen bg-secondary-50 dark:bg-secondary-950">
+        <div className="min-h-full bg-secondary-50 dark:bg-secondary-950 font-kosugi">
             <div className="flex">
                 {/* Kanji List Panel */}
                 <div className="w-80 bg-white dark:bg-secondary-925 border-r border-secondary-200 dark:border-secondary-900 p-4 overflow-y-auto">
@@ -320,7 +320,9 @@ const KanjiDetail: React.FC<KanjiDetailProps> = ({ lessonId: propLessonId }) => 
                         <div className="space-y-2">
                             {/* This would be populated with filtered kanji list */}
                             <div className="p-3 border border-secondary-200 dark:border-secondary-900 rounded-lg hover:bg-secondary-100 dark:hover:bg-secondary-900 cursor-pointer">
-                                <div className="text-2xl font-bold text-secondary-900 dark:text-secondary-600">{kanjiData.character}</div>
+                                <div className="text-2xl font-bold text-secondary-900 dark:text-secondary-600 font-kosugi">
+                                    {kanjiData.character}
+                                </div>
                                 <div className="text-sm text-purple-600 dark:text-purple-400">{kanjiData.hanviet}</div>
                                 <div className="text-xs text-secondary-600 dark:text-secondary-800">{kanjiData.meaning_vi}</div>
                             </div>
@@ -350,7 +352,9 @@ const KanjiDetail: React.FC<KanjiDetailProps> = ({ lessonId: propLessonId }) => 
                                     icon={<RightOutlined />}
                                     onClick={() => navigateKanji('next')}
                                 />
-                                <h1 className="text-2xl font-bold text-secondary-900 dark:text-secondary-600">Học Hán tự: {kanjiData.character}</h1>
+                                <h1 className="text-2xl font-bold text-secondary-900 dark:text-secondary-600">
+                                    Học Hán tự: <span className="font-kosugi">{kanjiData.character}</span>
+                                </h1>
                             </div>
                             <div className="flex items-center space-x-2">
                                 <Button
@@ -385,7 +389,9 @@ const KanjiDetail: React.FC<KanjiDetailProps> = ({ lessonId: propLessonId }) => 
                             <div className="space-y-4">
                                 <Card title="Thông tin cơ bản" className="h-fit">
                                     <div className="text-center mb-4">
-                                        <div className="text-6xl font-bold text-secondary-900 dark:text-secondary-600 mb-2">{kanjiData.character}</div>
+                                        <div className="text-6xl font-bold text-secondary-900 dark:text-secondary-600 mb-2 font-kosugi">
+                                            {kanjiData.character}
+                                        </div>
                                         <div className="text-xl text-purple-600 dark:text-purple-400 font-medium">{kanjiData.hanviet}</div>
                                         <div className="text-lg text-secondary-600 dark:text-secondary-800">{kanjiData.meaning_vi}</div>
                                     </div>
@@ -475,7 +481,9 @@ const KanjiDetail: React.FC<KanjiDetailProps> = ({ lessonId: propLessonId }) => 
                             <div className="space-y-4">
                                 <Card title="Thứ tự nét" className="h-fit">
                                     <div className="text-center mb-4">
-                                        <div className="text-4xl font-bold text-secondary-900 dark:text-secondary-600 mb-4">{kanjiData.character}</div>
+                                        <div className="text-4xl font-bold text-secondary-900 dark:text-secondary-600 mb-4 font-kosugi">
+                                            {kanjiData.character}
+                                        </div>
                                         <div className="flex justify-center items-center space-x-4">
                                             <Button
                                                 icon={isPlaying ? <PauseCircleOutlined /> : <PlayCircleOutlined />}
@@ -506,7 +514,7 @@ const KanjiDetail: React.FC<KanjiDetailProps> = ({ lessonId: propLessonId }) => 
                                             <div key={index} className="p-2 border border-secondary-200 dark:border-secondary-900 rounded">
                                                 <div className="flex justify-between items-start">
                                                     <div className="flex-1">
-                                                        <div className="font-medium">{word.word}</div>
+                                                        <div className="font-medium font-kosugi">{word.word}</div>
                                                         <div className="text-sm text-secondary-600 dark:text-secondary-800">{word.reading}</div>
                                                         {showRomaji && (
                                                             <div className="text-xs text-secondary-700 dark:text-secondary-800">{word.romaji}</div>
@@ -561,7 +569,9 @@ const KanjiDetail: React.FC<KanjiDetailProps> = ({ lessonId: propLessonId }) => 
                     {currentMode === 'read' && (
                         <Card title="Luyện đọc Hán tự">
                             <div className="text-center">
-                                <div className="text-6xl font-bold text-secondary-900 dark:text-secondary-600 mb-6">{kanjiData.character}</div>
+                                <div className="text-6xl font-bold text-secondary-900 dark:text-secondary-600 mb-6 font-kosugi">
+                                    {kanjiData.character}
+                                </div>
                                 <div className="mb-4">
                                     <Button
                                         type="primary"
@@ -584,15 +594,21 @@ const KanjiDetail: React.FC<KanjiDetailProps> = ({ lessonId: propLessonId }) => 
                         <Card title="Kiểm tra kiến thức">
                             <div className="space-y-4">
                                 <div>
-                                    <h3 className="text-lg font-medium mb-2">Bộ thủ của {kanjiData.character} là gì?</h3>
+                                    <h3 className="text-lg font-medium mb-2">
+                                        Bộ thủ của <span className="font-kosugi">{kanjiData.character}</span> là gì?
+                                    </h3>
                                     <Input placeholder="Nhập bộ thủ..." className="bg-white dark:bg-secondary-925 border-secondary-300 dark:border-secondary-700" />
                                 </div>
                                 <div>
-                                    <h3 className="text-lg font-medium mb-2">Hán Việt của {kanjiData.character} là gì?</h3>
+                                    <h3 className="text-lg font-medium mb-2">
+                                        Hán Việt của <span className="font-kosugi">{kanjiData.character}</span> là gì?
+                                    </h3>
                                     <Input placeholder="Nhập Hán Việt..." className="bg-white dark:bg-secondary-925 border-secondary-300 dark:border-secondary-700" />
                                 </div>
                                 <div>
-                                    <h3 className="text-lg font-medium mb-2">Nghĩa của {kanjiData.character} là gì?</h3>
+                                    <h3 className="text-lg font-medium mb-2">
+                                        Nghĩa của <span className="font-kosugi">{kanjiData.character}</span> là gì?
+                                    </h3>
                                     <Input placeholder="Nhập nghĩa..." className="bg-white dark:bg-secondary-925 border-secondary-300 dark:border-secondary-700" />
                                 </div>
                                 <Button type="primary" className="w-full">Kiểm tra đáp án</Button>
@@ -610,13 +626,13 @@ const KanjiDetail: React.FC<KanjiDetailProps> = ({ lessonId: propLessonId }) => 
                                     </h3>
                                     <div className="space-y-2">
                                         <Button block onClick={() => askAI()}>
-                                            Giải thích {kanjiData.character} cho người mới bắt đầu
+                                            Giải thích <span className="font-kosugi">{kanjiData.character}</span> cho người mới bắt đầu
                                         </Button>
                                         <Button block onClick={() => askAI()}>
-                                            Tại sao {kanjiData.character} lại có nghĩa là "{kanjiData.meaning_vi}"?
+                                            Tại sao <span className="font-kosugi">{kanjiData.character}</span> lại có nghĩa là "{kanjiData.meaning_vi}"?
                                         </Button>
                                         <Button block onClick={() => askAI()}>
-                                            Cho ví dụ thực tế sử dụng {kanjiData.character}
+                                            Cho ví dụ thực tế sử dụng <span className="font-kosugi">{kanjiData.character}</span>
                                         </Button>
                                     </div>
                                 </div>

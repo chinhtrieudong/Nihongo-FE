@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
-import { Collapse, Typography, Tag, Badge, Divider, Space, Tooltip } from 'antd';
-import { CaretRightOutlined, BookOutlined, BulbOutlined, MessageOutlined, SwapOutlined } from '@ant-design/icons';
-import GrammarBlock from './GrammarBlock';
+import { Collapse, Typography, Tag, Badge, Divider, Space, Button } from 'antd';
+import { CaretRightOutlined, BookOutlined, BulbOutlined, MessageOutlined, SwapOutlined, TranslationOutlined, CheckCircleOutlined, ClockCircleOutlined, MinusCircleOutlined, FireOutlined, StarOutlined } from '@ant-design/icons';
 
 const { Title, Text, Paragraph } = Typography;
 
 interface GrammarSection {
   id: string;
   title: string;
+  subtitle?: string;
   structure?: string[];
   meaning?: string[];
   examples?: Array<{ japanese: string; vietnamese: string }>;
@@ -20,6 +20,9 @@ interface GrammarSection {
   examFrequency?: number;
   commonMistakes?: Array<{ mistake: string; correction: string }>;
   relatedPatterns?: string[];
+  preview?: string;
+  status?: 'not_started' | 'in_progress' | 'completed';
+  recommended?: boolean;
 }
 
 interface GrammarSectionAccordionProps {
@@ -33,6 +36,12 @@ const GrammarSectionAccordion: React.FC<GrammarSectionAccordionProps> = ({ secti
     setActiveKeys(keys);
   };
 
+  const toggleKey = (key: string) => {
+    setActiveKeys((prev) =>
+      prev.includes(key) ? prev.filter((k) => k !== key) : [...prev, key]
+    );
+  };
+
   const getImportanceColor = (importance?: string) => {
     switch (importance) {
       case 'high': return 'red';
@@ -44,10 +53,75 @@ const GrammarSectionAccordion: React.FC<GrammarSectionAccordionProps> = ({ secti
 
   const getImportanceText = (importance?: string) => {
     switch (importance) {
-      case 'high': return 'Quan trọng';
-      case 'medium': return 'Trung bình';
-      case 'low': return 'Cơ bản';
+      case 'high':
+        return (
+          <span className="inline-flex items-center gap-1">
+            <FireOutlined />
+            Bắt buộc
+          </span>
+        );
+      case 'medium':
+        return (
+          <span className="inline-flex items-center gap-1">
+            <StarOutlined />
+            Cơ bản
+          </span>
+        );
+      case 'low': return '✨ Mở rộng';
       default: return 'Không xác định';
+    }
+  };
+
+  const getStatusConfig = (status?: 'not_started' | 'in_progress' | 'completed') => {
+    switch (status) {
+      case 'completed':
+        return {
+          label: (
+            <span className="inline-flex items-center gap-1">
+              <CheckCircleOutlined />
+              Đã học
+            </span>
+          ),
+          color: 'green'
+        };
+      case 'in_progress':
+        return {
+          label: (
+            <span className="inline-flex items-center gap-1">
+              <ClockCircleOutlined />
+              Đang học
+            </span>
+          ),
+          color: 'gold'
+        };
+      default:
+        return {
+          label: (
+            <span className="inline-flex items-center gap-1">
+              <MinusCircleOutlined />
+              Chưa học
+            </span>
+          ),
+          color: 'default'
+        };
+    }
+  };
+
+  const getFrequencyLabel = (frequency?: number) => {
+    if (!frequency && frequency !== 0) return null;
+    if (frequency >= 7) return { label: 'Hay ra đề', color: 'purple' };
+    if (frequency >= 4) return { label: 'Có thể ra', color: 'blue' };
+    return { label: 'Ít gặp', color: 'default' };
+  };
+
+  const getPrimaryActionLabel = (status?: 'not_started' | 'in_progress' | 'completed') => {
+    switch (status) {
+      case 'completed':
+        return 'Ôn';
+      case 'in_progress':
+        return 'Tiếp tục';
+      default:
+        return 'Học';
     }
   };
 
@@ -63,97 +137,102 @@ const GrammarSectionAccordion: React.FC<GrammarSectionAccordionProps> = ({ secti
   };
 
   return (
+    <>
     <Collapse
       bordered={false}
-      expandIcon={({ isActive }) => (
-        <CaretRightOutlined
-          rotate={isActive ? 90 : 0}
-          className="text-blue-600 dark:text-blue-400"
-        />
-      )}
-      expandIconPlacement="end"
+      expandIcon={() => null}
       activeKey={activeKeys}
       onChange={onChange}
-      className="bg-white dark:bg-secondary-925"
+      className="grammar-accordion bg-transparent dark:bg-transparent"
       items={sections.map((section) => ({
         key: section.id,
-        label: (
-          <div className="flex items-center justify-between w-full">
-            <div className="flex items-center space-x-3">
-              <BookOutlined className="text-blue-600 dark:text-blue-400" />
-              <Title level={5} className="mb-0 text-secondary-900 dark:text-secondary-100">
-                {section.title}
-              </Title>
+        label: (() => {
+          const isActive = activeKeys.includes(section.id);
+          return (
+            <div className="flex flex-col gap-2">
+              <div className="flex items-start justify-between gap-3">
+                <div className="flex items-center min-w-0 gap-3">
+                  <BookOutlined className="text-blue-600 dark:text-blue-400 flex-shrink-0" />
+                <Title level={5} className="mb-0 text-secondary-900 dark:text-secondary-100 truncate text-[14px] leading-5" style={{ marginBottom: 0 }}>
+                  {section.title}
+                </Title>
+                </div>
+                <div className="flex flex-wrap items-center justify-end gap-2">
+                  {section.recommended && (
+                    <Tag color="gold" className="text-xs">Gợi ý bắt đầu</Tag>
+                  )}
+                  {section.level && (
+                    <Tag color={getLevelColor(section.level)} className="text-xs">
+                      {section.level}
+                    </Tag>
+                  )}
+                  {section.importance && (
+                    <Tag color={getImportanceColor(section.importance)} className="text-xs">
+                      {getImportanceText(section.importance)}
+                    </Tag>
+                  )}
+                  {(() => {
+                    const frequency = getFrequencyLabel(section.examFrequency);
+                    return frequency ? (
+                      <Tag color={frequency.color} className="text-xs">
+                        {frequency.label}
+                      </Tag>
+                    ) : null;
+                  })()}
+                  {section.status && (
+                    <Tag color={getStatusConfig(section.status).color} className="text-xs">
+                      {getStatusConfig(section.status).label}
+                    </Tag>
+                  )}
+                </div>
+              </div>
+
+              <div className="flex items-center justify-between gap-3">
+                <div className="min-w-0">
+                  {section.subtitle && (
+                    <div className="flex items-center space-x-2">
+                      <TranslationOutlined className="text-orange-500 dark:text-orange-400 flex-shrink-0" />
+                    <Text className="text-gray-600 dark:text-secondary-400 text-[14px] leading-5 truncate">
+                      {section.subtitle}
+                    </Text>
+                  </div>
+                )}
+                {section.preview && (
+                  <Text className="text-secondary-500 dark:text-secondary-400 mt-1 truncate text-[14px] leading-5">
+                    Ví dụ: {section.preview}
+                  </Text>
+                )}
+                </div>
+                <button
+                  type="button"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    toggleKey(section.id);
+                  }}
+                  className="inline-flex items-center justify-center w-9 h-9 rounded-full border border-blue-200 dark:border-blue-700 bg-blue-50 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 shadow-sm hover:bg-blue-100 dark:hover:bg-blue-900/40 transition"
+                  aria-label={isActive ? "Thu gọn" : "Mở rộng"}
+                >
+                  <CaretRightOutlined className={isActive ? "rotate-90 transition-transform" : "transition-transform"} />
+                </button>
+              </div>
             </div>
-            <Space size="small">
-              {section.level && (
-                <Tag color={getLevelColor(section.level)}>
-                  {section.level}
-                </Tag>
-              )}
-              {section.importance && (
-                <Badge
-                  color={getImportanceColor(section.importance)}
-                  text={getImportanceText(section.importance)}
-                />
-              )}
-              {section.examFrequency && (
-                <Tag color="blue">
-                  Tần suất: {section.examFrequency}/10
-                </Tag>
-              )}
-            </Space>
-          </div>
-        ),
+          );
+        })(),
         children: (
-          <div className="p-6 bg-secondary-50 dark:bg-secondary-925">
-            {/* Pattern/Structure */}
-            {section.structure && section.structure.length > 0 && (
-              <div className="mb-6">
-                <div className="flex items-center mb-3">
-                  <BookOutlined className="text-blue-600 dark:text-blue-400 mr-2" />
-                  <Title level={5} className="mb-0 text-secondary-900 dark:text-secondary-100">Cấu trúc</Title>
-                </div>
-                <div className="bg-white dark:bg-secondary-925 p-4 rounded-lg border border-blue-200 dark:border-blue-700">
-                  {section.structure.map((item, index) => (
-                    <Paragraph
-                      key={index}
-                      className="mb-2 text-lg font-semibold text-blue-700 dark:text-blue-400"
-                    >
-                      {item}
-                    </Paragraph>
-                  ))}
-                </div>
-              </div>
-            )}
-
-            {/* Formation */}
-            {section.formation && (
-              <div className="mb-6">
-                <div className="flex items-center mb-3">
-                  <BulbOutlined className="text-green-600 dark:text-green-400 mr-2" />
-                  <Title level={5} className="mb-0 text-secondary-900 dark:text-secondary-100">Cách dùng</Title>
-                </div>
-                <div className="bg-white dark:bg-secondary-925 p-4 rounded-lg border border-green-200 dark:border-green-700">
-                  <Paragraph className="mb-0 text-secondary-700 dark:text-secondary-300">
-                    {section.formation}
-                  </Paragraph>
-                </div>
-              </div>
-            )}
-
+          <div className="px-2 py-4 sm:px-3 sm:py-6 bg-transparent dark:bg-transparent border-t border-gray-200 dark:border-gray-600">
             {/* Meaning/Explanation */}
             {section.meaning && section.meaning.length > 0 && (
-              <div className="mb-6">
+              <div className="mb-4 sm:mb-6">
                 <div className="flex items-center mb-3">
-                  <BulbOutlined className="text-orange-600 dark:text-orange-400 mr-2" />
-                  <Title level={5} className="mb-0 text-secondary-900 dark:text-secondary-100">Nghĩa</Title>
+                  <BulbOutlined className="text-blue-600 dark:text-blue-400 mr-2 flex-shrink-0" />
+                  <Title level={5} className="text-secondary-900 dark:text-secondary-100" style={{ marginBottom: 0 }}>Nghĩa</Title>
                 </div>
-                <div className="bg-white dark:bg-secondary-925 p-4 rounded-lg border border-orange-200 dark:border-orange-700">
+                <div className="bg-white dark:bg-secondary-925 p-3 sm:p-4 rounded-lg border border-secondary-200 dark:border-secondary-700">
                   {section.meaning.map((item, index) => (
                     <Paragraph
                       key={index}
-                      className="mb-2 text-secondary-700 dark:text-secondary-300"
+                      className="text-secondary-700 dark:text-secondary-300 break-words"
+                      style={{ marginBottom: 0 }}
                     >
                       {item}
                     </Paragraph>
@@ -162,66 +241,67 @@ const GrammarSectionAccordion: React.FC<GrammarSectionAccordionProps> = ({ secti
               </div>
             )}
 
-            {/* Usage */}
-            {section.usage && (
-              <div className="mb-6">
+            {/* Pattern/Structure */}
+            {section.structure && section.structure.length > 0 && (
+              <div className="mb-4 sm:mb-6">
                 <div className="flex items-center mb-3">
-                  <MessageOutlined className="text-purple-600 dark:text-purple-400 mr-2" />
-                  <Title level={5} className="mb-0 text-secondary-900 dark:text-secondary-100">Cách sử dụng</Title>
+                  <BookOutlined className="text-blue-600 dark:text-blue-400 mr-2 flex-shrink-0" />
+                  <Title level={5} className="text-secondary-900 dark:text-secondary-100" style={{ marginBottom: 0 }}>Cấu trúc</Title>
                 </div>
-                <div className="bg-white dark:bg-secondary-925 p-4 rounded-lg border border-purple-200 dark:border-purple-700">
-                  <Paragraph className="mb-0 text-secondary-700 dark:text-secondary-300">
-                    {section.usage}
-                  </Paragraph>
+                <div className="bg-white dark:bg-secondary-925 p-3 sm:p-4 rounded-lg border border-secondary-200 dark:border-secondary-700">
+                  {section.structure.map((item, index) => (
+                    <Paragraph
+                      key={`${section.id}-structure-${index}`}
+                      className="text-base sm:text-lg font-semibold text-blue-700 dark:text-blue-400 break-words"
+                      style={{ marginBottom: 0 }}
+                    >
+                      {item}
+                    </Paragraph>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            {/* Usage (Merged) */}
+            {(section.formation || section.usage) && (
+              <div className="mb-4 sm:mb-6">
+                <div className="flex items-center mb-3">
+                  <MessageOutlined className="text-purple-600 dark:text-purple-400 mr-2 flex-shrink-0" />
+                  <Title level={5} className="text-secondary-900 dark:text-secondary-100" style={{ marginBottom: 0 }}>Cách dùng</Title>
+                </div>
+                <div className="bg-white dark:bg-secondary-925 p-3 sm:p-4 rounded-lg border border-secondary-200 dark:border-secondary-700 space-y-2">
+                  {section.formation && (
+                    <Paragraph className="text-secondary-700 dark:text-secondary-300 break-words font-semibold" style={{ marginBottom: 0 }}>
+                      {section.formation}
+                    </Paragraph>
+                  )}
+                  {section.usage && (
+                    <Paragraph className="text-secondary-700 dark:text-secondary-300 break-words" style={{ marginBottom: 0 }}>
+                      {section.usage}
+                    </Paragraph>
+                  )}
                 </div>
               </div>
             )}
 
             {/* Examples */}
             {section.examples && section.examples.length > 0 && (
-              <div className="mb-6">
+              <div className="mb-4 sm:mb-6">
                 <div className="flex items-center mb-3">
-                  <MessageOutlined className="text-blue-600 dark:text-blue-400 mr-2" />
-                  <Title level={5} className="mb-0 text-secondary-900 dark:text-secondary-100">Ví dụ</Title>
+                  <MessageOutlined className="text-blue-600 dark:text-blue-400 mr-2 flex-shrink-0" />
+                  <Title level={5} className="text-secondary-900 dark:text-secondary-100" style={{ marginBottom: 0 }}>Ví dụ</Title>
                 </div>
-                <div className="bg-white dark:bg-secondary-925 p-4 rounded-lg border border-blue-200 dark:border-blue-700">
+                <div className="bg-white dark:bg-secondary-925 p-3 sm:p-4 rounded-lg border border-secondary-200 dark:border-secondary-700">
                   {section.examples.map((example, index) => (
                     <div key={index} className="mb-3 last:mb-0">
-                      <Paragraph className="mb-1 text-secondary-900 dark:text-secondary-100 font-medium">
-                        <Tooltip
-                          title={example.vietnamese}
-                          placement="bottomLeft"
-                          arrow={false}
-                          align={{ offset: [0, 4] }}
-                          classNames={{ root: "glass-tooltip" }}
-                          styles={{
-                            root: {
-                              backdropFilter: 'blur(20px) saturate(180%)',
-                              WebkitBackdropFilter: 'blur(20px) saturate(180%)',
-                            },
-                            container: {
-                              color: '#1a1a1a',
-                              fontSize: '14px',
-                              fontWeight: '500',
-                              padding: '8px 12px',
-                              backgroundColor: 'rgba(255, 255, 255, 0.75)',
-                              border: '1px solid rgba(255, 255, 255, 0.4)',
-                              borderRadius: '12px',
-                              boxShadow: '0 8px 32px rgba(31, 38, 135, 0.15)',
-                              backdropFilter: 'blur(20px) saturate(180%)',
-                              WebkitBackdropFilter: 'blur(20px) saturate(180%)',
-                            }
-                          }}
-                          fresh
-                        >
-                          <span className="cursor-help hover:text-blue-600 transition-colors">
-                            {example.japanese}
-                          </span>
-                        </Tooltip>
-                      </Paragraph>
-                      {index < section.examples!.length - 1 && (
-                        <Divider className="my-2" />
-                      )}
+                      <div className="inline-flex items-center gap-2">
+                        <span className="text-secondary-900 dark:text-secondary-100 font-medium">
+                          {example.japanese}
+                        </span>
+                        <span className="text-secondary-900 dark:text-secondary-100 font-medium text-sm">
+                          ({example.vietnamese})
+                        </span>
+                      </div>
                     </div>
                   ))}
                 </div>
@@ -230,16 +310,17 @@ const GrammarSectionAccordion: React.FC<GrammarSectionAccordionProps> = ({ secti
 
             {/* Comparison */}
             {section.comparison && section.comparison.length > 0 && (
-              <div className="mb-6">
+              <div className="mb-4 sm:mb-6">
                 <div className="flex items-center mb-3">
-                  <SwapOutlined className="text-red-600 dark:text-red-400 mr-2" />
-                  <Title level={5} className="mb-0 text-secondary-900 dark:text-secondary-100">So sánh</Title>
+                  <SwapOutlined className="text-red-600 dark:text-red-400 mr-2 flex-shrink-0" />
+                  <Title level={5} className="text-secondary-900 dark:text-secondary-100" style={{ marginBottom: 0 }}>So sánh</Title>
                 </div>
-                <div className="bg-white dark:bg-secondary-925 p-4 rounded-lg border border-red-200 dark:border-red-700">
+                <div className="bg-white dark:bg-secondary-925 p-3 sm:p-4 rounded-lg border border-secondary-200 dark:border-secondary-700">
                   {section.comparison.map((item, index) => (
                     <Paragraph
                       key={index}
-                      className="mb-2 text-secondary-700 dark:text-secondary-300"
+                      className="text-secondary-700 dark:text-secondary-300 break-words"
+                      style={{ marginBottom: 0 }}
                     >
                       {item}
                     </Paragraph>
@@ -250,21 +331,21 @@ const GrammarSectionAccordion: React.FC<GrammarSectionAccordionProps> = ({ secti
 
             {/* Common Mistakes */}
             {section.commonMistakes && section.commonMistakes.length > 0 && (
-              <div className="mb-6">
+              <div className="mb-4 sm:mb-6">
                 <div className="flex items-center mb-3">
-                  <BulbOutlined className="text-red-600 dark:text-red-400 mr-2" />
-                  <Title level={5} className="mb-0 text-secondary-900 dark:text-secondary-100">Lỗi thường gặp</Title>
+                  <BulbOutlined className="text-red-600 dark:text-red-400 mr-2 flex-shrink-0" />
+                  <Title level={5} className="text-secondary-900 dark:text-secondary-100" style={{ marginBottom: 0 }}>Lỗi thường gặp</Title>
                 </div>
-                <div className="bg-red-50 dark:bg-red-900/20 p-4 rounded-lg border border-red-200 dark:border-red-700">
+                <div className="bg-red-50 dark:bg-red-900/20 p-3 sm:p-4 rounded-lg border border-red-200 dark:border-red-700">
                   {section.commonMistakes.map((mistake, index) => (
                     <div key={index} className="mb-3 last:mb-0">
                       <div className="mb-2">
-                        <Text type="danger" className="font-medium">
+                        <Text type="danger" className="font-medium break-words">
                           ❌ Sai: {mistake.mistake}
                         </Text>
                       </div>
                       <div>
-                        <Text type="success" className="font-medium">
+                        <Text type="success" className="font-medium break-words">
                           ✅ Đúng: {mistake.correction}
                         </Text>
                       </div>
@@ -279,15 +360,15 @@ const GrammarSectionAccordion: React.FC<GrammarSectionAccordionProps> = ({ secti
 
             {/* Related Patterns */}
             {section.relatedPatterns && section.relatedPatterns.length > 0 && (
-              <div className="mb-6">
+              <div className="mb-4 sm:mb-6">
                 <div className="flex items-center mb-3">
-                  <BookOutlined className="text-secondary-600 dark:text-secondary-400 mr-2" />
-                  <Title level={5} className="mb-0 text-secondary-900 dark:text-secondary-100">Mẫu liên quan</Title>
+                  <BookOutlined className="text-secondary-600 dark:text-secondary-400 mr-2 flex-shrink-0" />
+                  <Title level={5} className="text-secondary-900 dark:text-secondary-100" style={{ marginBottom: 0 }}>Mẫu liên quan</Title>
                 </div>
-                <div className="bg-secondary-100 dark:bg-secondary-800 p-4 rounded-lg">
+                <div className="bg-secondary-100 dark:bg-secondary-800 p-3 sm:p-4 rounded-lg">
                   <Space wrap>
                     {section.relatedPatterns.map((pattern, index) => (
-                      <Tag key={index} color="blue" className="mb-2">
+                      <Tag key={index} color="blue" className="mb-2 text-xs">
                         {pattern}
                       </Tag>
                     ))}
@@ -295,11 +376,22 @@ const GrammarSectionAccordion: React.FC<GrammarSectionAccordionProps> = ({ secti
                 </div>
               </div>
             )}
+
+            <div className="pt-2">
+              <Button
+                type="primary"
+                size="middle"
+                onClick={(e) => e.stopPropagation()}
+              >
+                ✔ Đánh dấu đã học
+              </Button>
+            </div>
           </div>
         ),
-        className: "mb-4 border border-blue-200 rounded-lg overflow-hidden"
+        className: "mb-4 border border-gray-200 dark:border-gray-600 rounded-xl overflow-hidden hover:border-blue-300 dark:hover:border-blue-500 hover:shadow-md transition-all"
       }))}
     />
+    </>
   );
 };
 

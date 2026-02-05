@@ -333,7 +333,7 @@ const ExercisesTab: React.FC<ExercisesTabProps> = ({
                     percent={(Object.keys(results).length / exercises.length) * 100}
                     strokeColor="#ffffff"
                     trailColor="rgba(255,255,255,0.3)"
-                    strokeWidth={8}
+                    size={8}
                     showInfo={false}
                 />
                 <div className="mt-4 grid grid-cols-3 gap-4">

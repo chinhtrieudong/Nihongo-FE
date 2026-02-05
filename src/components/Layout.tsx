@@ -31,11 +31,11 @@ const Layout: React.FC = () => {
 
   // Desktop Layout
   return (
-    <AntLayout className="min-h-screen bg-gray-50">
+    <AntLayout className="min-h-screen bg-secondary-50 dark:bg-secondary-950">
       <Sidebar />
-      <AntLayout style={{ marginLeft: sidebarOpen ? 256 : 64, transition: 'margin-left 0.2s' }}>
+      <AntLayout style={{ marginLeft: sidebarOpen ? 200 : 64, transition: 'margin-left 0.2s' }}>
         <Header />
-        <Content className="overflow-auto" style={{ minHeight: 'calc(100vh - 64px)' }}>
+        <Content className="overflow-auto theme-surface" style={{ minHeight: 'calc(100vh - 64px)' }}>
           <Outlet />
         </Content>
       </AntLayout>

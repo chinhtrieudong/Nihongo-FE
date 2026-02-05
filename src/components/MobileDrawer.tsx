@@ -6,7 +6,7 @@ import { useAppSelector, useAppDispatch } from "../store/hooks";
 import { closeDrawer } from "../store/slices/uiSlice";
 
 const MobileDrawer: React.FC = () => {
-  const { drawerOpen } = useAppSelector(state => state.ui);
+  const { drawerOpen, darkMode } = useAppSelector(state => state.ui);
   const location = useLocation();
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
@@ -36,7 +36,7 @@ const MobileDrawer: React.FC = () => {
       placement="left"
       open={drawerOpen}
       onClose={handleClose}
-      width="78vw"  // ✅ KHÔNG full màn hình
+      size="default"  // ✅ Use size instead of deprecated width
       closable={false}  // Tắt nút close mặc định
       maskClosable={true}  // Tap overlay để đóng
       styles={{
@@ -94,6 +94,11 @@ const MobileDrawer: React.FC = () => {
           background: #f9fafb;
         }
 
+        .dark .mobile-drawer-header {
+          border-bottom-color: #374151;
+          background: #1f2937;
+        }
+
         .drawer-logo {
           display: flex;
           align-items: center;
@@ -117,6 +122,11 @@ const MobileDrawer: React.FC = () => {
           margin: 0;
           font-size: 18px;
           font-weight: 600;
+          color: #111827;
+        }
+
+        .dark .logo-text h3 {
+          color: #f9fafb;
         }
 
         .logo-text p {
@@ -125,8 +135,12 @@ const MobileDrawer: React.FC = () => {
           color: #6b7280;
         }
 
+        .dark .logo-text p {
+          color: #9ca3af;
+        }
+
         .mobile-drawer-menu {
-          padding: 8px 0;
+          padding: 0;
         }
 
         .drawer-menu-item {
@@ -148,9 +162,18 @@ const MobileDrawer: React.FC = () => {
           background: #f3f4f6;
         }
 
+        .dark .drawer-menu-item:hover {
+          background: #374151;
+        }
+
         .drawer-menu-item.active {
           background: #eff6ff;
           color: #2563eb;
+        }
+
+        .dark .drawer-menu-item.active {
+          background: #1e3a8a;
+          color: #60a5fa;
         }
 
         .menu-icon {
@@ -163,18 +186,40 @@ const MobileDrawer: React.FC = () => {
           justify-content: center;
         }
 
+        .dark .menu-icon {
+          color: #9ca3af;
+        }
+
         .drawer-menu-item.active .menu-icon {
           color: #2563eb;
+        }
+
+        .dark .drawer-menu-item.active .menu-icon {
+          color: #60a5fa;
         }
 
         .menu-label {
           flex: 1;
           font-weight: 500;
+          color: #111827;
+        }
+
+        .dark .menu-label {
+          color: #f9fafb;
         }
 
         .menu-check {
           color: #2563eb;
           font-size: 14px;
+        }
+
+        .dark .menu-check {
+          color: #60a5fa;
+        }
+
+        /* Dark mode for drawer body */
+        .dark .ant-drawer-body {
+          background: #111827;
         }
       `}</style>
     </Drawer>

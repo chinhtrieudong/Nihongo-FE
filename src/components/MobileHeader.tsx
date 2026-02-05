@@ -8,10 +8,8 @@ import { openDrawer, toggleDarkMode } from "../store/slices/uiSlice";
 const MobileHeader: React.FC = () => {
   const location = useLocation();
   const dispatch = useAppDispatch();
-  const { currentUser, darkMode } = useAppSelector(state => ({
-    currentUser: state.user.currentUser,
-    darkMode: state.ui.darkMode
-  }));
+  const currentUser = useAppSelector(state => state.user.currentUser);
+  const darkMode = useAppSelector(state => state.ui.darkMode);
 
   const getPageTitle = (path: string) => {
     const titles: Record<string, string> = {

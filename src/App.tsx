@@ -21,6 +21,7 @@ import TestDetail from "./pages/TestDetail";
 import TestResults from "./pages/TestResults";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
+import IconShowcase from "./components/IconShowcase";
 import ProtectedRoute from "./components/ProtectedRoute";
 import { AuthProvider, useAuth } from "./contexts/AuthContext";
 import "./App.css";
@@ -45,7 +46,7 @@ const AppContent: React.FC = () => {
 
   return (
     <Router future={{ v7_startTransition: true, v7_relativeSplatPath: true }}>
-      <div className="min-h-screen text-secondary-900 dark:text-secondary-600">
+      <div className="min-h-screen bg-secondary-50 dark:bg-secondary-950 text-secondary-900 dark:text-secondary-100">
         <Routes>
           {/* Public routes */}
           <Route path="/login" element={<Login />} />
@@ -75,6 +76,7 @@ const AppContent: React.FC = () => {
             <Route path="tests" element={<Tests />} />
             <Route path="test/:testId" element={<TestDetail />} />
             <Route path="test-results/:testId" element={<TestResults />} />
+            <Route path="icon-showcase" element={<IconShowcase />} />
           </Route>
         </Routes>
       </div>
@@ -89,6 +91,9 @@ const AppWithTheme: React.FC = () => {
     <ConfigProvider
       theme={{
         algorithm: darkMode ? theme.darkAlgorithm : theme.defaultAlgorithm,
+        token: {
+          fontFamily: 'Nunito, "Kosugi Maru", system-ui, sans-serif',
+        },
       }}
     >
       <AppContent />

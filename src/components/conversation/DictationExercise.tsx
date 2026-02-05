@@ -89,14 +89,21 @@ const DictationExerciseComponent: React.FC<DictationExerciseProps> = ({
             utterance.pitch = 1.0;
             utterance.volume = 1.0;
 
-            // Try to get Japanese voice
+            // Try to get Japanese voice (prefer Natural if available)
             const voices = window.speechSynthesis.getVoices();
-            const japaneseVoice = voices.find(voice =>
+            const japaneseVoices = voices.filter(voice =>
                 voice.lang.startsWith('ja') || voice.name.includes('Japanese')
             );
+            const naturalJapanese = japaneseVoices.find(voice =>
+                /natural/i.test(voice.name)
+            );
+            const preferredJapanese =
+                naturalJapanese ||
+                japaneseVoices.find(voice => /online/i.test(voice.name)) ||
+                japaneseVoices[0];
 
-            if (japaneseVoice) {
-                utterance.voice = japaneseVoice;
+            if (preferredJapanese) {
+                utterance.voice = preferredJapanese;
             }
 
             utterance.onend = () => {

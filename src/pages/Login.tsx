@@ -94,7 +94,7 @@ const Login: React.FC = () => {
   };
 
   return (
-    <div className={`min-h-screen bg-gradient-to-br from-indigo-100 via-pink-50 to-sakura-100 dark:from-indigo-900 dark:via-purple-900 dark:to-pink-900 transition-all duration-500 ${isLoaded ? 'opacity-100' : 'opacity-0'}`}>
+    <div className={`min-h-screen bg-secondary-50 dark:bg-secondary-950 transition-all duration-500 ${isLoaded ? 'opacity-100' : 'opacity-0'}`}>
       {/* Header */}
       <header className="absolute top-0 left-0 right-0 z-20 p-3 sm:p-4">
         <div className="max-w-7xl mx-auto flex justify-between items-center">
