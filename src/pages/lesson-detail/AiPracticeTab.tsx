@@ -26,26 +26,23 @@ const AiPracticeTab: React.FC<AiPracticeTabProps> = ({
 }) => {
   return (
     <div style={{ padding: "24px" }}>
-      <Title level={3} className="mb-6">
-        LUYỆN VỚI AI
-      </Title>
-      <Card className="max-w-4xl mx-auto bg-white dark:bg-secondary-925 border-secondary-200 dark:border-secondary-900">
+      <Card className="max-w-4xl mx-auto bg-white dark:bg-secondary-925 border-secondary-200 dark:border-secondary-900" styles={{ body: { padding: 12 } }}>
         <div className="mb-4">
-          <Title level={4} className="mb-2">
+          <Title level={5} className="mb-1 text-sm">
             Luyện tập với AI theo bài Minna
           </Title>
-          <Text type="secondary">
+          <Text className="text-xs text-gray-700 dark:text-secondary-400">
             Hãy thực hành hội thoại theo ngữ pháp của bài {lessonNumber}
           </Text>
         </div>
 
         <div
-          className="h-96 border border-secondary-200 dark:border-secondary-900 rounded-lg p-4 overflow-y-auto mb-4"
+          className="h-80 border border-secondary-200 dark:border-secondary-900 rounded-lg p-3 overflow-y-auto mb-3"
           style={{ backgroundColor: "var(--ant-color-bg-container)" }}
         >
           {aiMessages.length === 0 ? (
             <div className="flex items-center justify-center h-full">
-              <Text type="secondary">Bắt đầu cuộc hội thoại với AI...</Text>
+              <Text type="secondary" className="text-xs">Bắt đầu cuộc hội thoại với AI...</Text>
             </div>
           ) : (
             <Space orientation="vertical" className="w-full">
@@ -61,11 +58,12 @@ const AiPracticeTab: React.FC<AiPracticeTabProps> = ({
                         : "bg-secondary-100 dark:bg-secondary-900 border-secondary-200 dark:border-secondary-700"
                     }`}
                     size="small"
+                    styles={{ body: { padding: 10 } }}
                   >
-                    <Text strong className="text-sm">
+                    <Text strong className="text-xs">
                       {message.role === "user" ? "You" : "AI"}
                     </Text>
-                    <div className="text-sm mt-1">{message.content}</div>
+                    <div className="text-xs mt-1">{message.content}</div>
                   </Card>
                 </div>
               ))}
@@ -84,14 +82,14 @@ const AiPracticeTab: React.FC<AiPracticeTabProps> = ({
               }
             }}
             className="flex-1 bg-white dark:bg-secondary-925 border-secondary-300 dark:border-secondary-700"
-            size="large"
+            size="middle"
           />
           <Button
             type="primary"
             onClick={handleAIMessage}
             disabled={!currentMessage.trim() || aiLoading}
             loading={aiLoading}
-            size="large"
+            size="middle"
           >
             Gửi
           </Button>

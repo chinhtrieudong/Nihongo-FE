@@ -21,7 +21,7 @@ const MobileHeader: React.FC = () => {
       '/tests': 'Thi JLPT',
       '/profile': 'Hồ sơ'
     };
-    return titles[path] || 'Nihongo';
+    return titles[path] || 'Nihon Nào!';
   };
 
   return (

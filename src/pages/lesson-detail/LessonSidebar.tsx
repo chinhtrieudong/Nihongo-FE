@@ -79,7 +79,7 @@ const LessonSidebar: React.FC<LessonSidebarProps> = ({
         className="lesson-sidebar-sider bg-white dark:bg-secondary-925 border-l border-secondary-200 dark:border-secondary-900 fixed right-0 overflow-y-hidden transition-all duration-300"
         style={{ zIndex: 1000, top: "64px", height: "calc(100vh - 64px)" }}
       >
-        <div className="p-4 border-b border-secondary-200 dark:border-secondary-900 flex-shrink-0">
+        <div className="p-4 border-b border-secondary-200 dark:border-secondary-900 flex-shrink-0 h-[60px]">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-2">
               <span className="w-2.5 h-2.5 rounded bg-teal-700 block" />

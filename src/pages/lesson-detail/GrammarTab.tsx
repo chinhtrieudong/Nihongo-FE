@@ -13,11 +13,6 @@ type GrammarTabProps = {
 const GrammarTab: React.FC<GrammarTabProps> = ({ lessonNumber, grammars }) => {
   return (
     <div style={{ padding: "24px" }}>
-      <div className="mb-4">
-        <Title level={3}>NGỮ PHÁP</Title>
-        <Text type="secondary">Học ngữ pháp theo giáo trình Minna no Nihongo</Text>
-      </div>
-
       <Card className="bg-white dark:bg-secondary-925 border-secondary-200 dark:border-secondary-900">
         <div className="mb-4">
           <Title level={4}>Ngữ pháp bài {lessonNumber}</Title>

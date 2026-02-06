@@ -8,7 +8,6 @@ import {
   SoundOutlined,
   MessageOutlined,
   AimOutlined,
-  UserOutlined,
 } from "@ant-design/icons";
 
 const { Sider } = Layout;
@@ -47,11 +46,6 @@ const Sidebar: React.FC = () => {
       icon: <AimOutlined />,
       label: <Link to="/tests">Thi JLPT</Link>,
     },
-    {
-      key: "/profile",
-      icon: <UserOutlined />,
-      label: <Link to="/profile">Hồ sơ</Link>,
-    },
   ];
 
   // Desktop Sidebar Only
@@ -69,14 +63,14 @@ const Sidebar: React.FC = () => {
       }}
     >
       <div className="pt-4 pb-3 flex items-center justify-center">
-        <div className="w-10 h-10 bg-blue-500 rounded-2xl flex items-center justify-center text-white font-bold text-sm shadow-sm">
-          日
-        </div>
+        <img src="/Logo.svg" alt="Nihon Nào!" className="w-10 h-10" />
       </div>
 
       <nav className="flex flex-col items-center gap-3 px-3 py-2">
         {menuItems.map((item) => {
-          const isActive = location.pathname === item.key;
+          const isActive =
+            location.pathname === item.key ||
+            (item.key === "/lessons" && location.pathname.startsWith("/lessons/"));
           return (
             <Link
               key={item.key}

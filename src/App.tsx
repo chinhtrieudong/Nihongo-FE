@@ -13,7 +13,6 @@ import KanjiDetail from "./pages/KanjiDetail";
 import Vocabulary from "./pages/Vocabulary";
 import Grammar from "./pages/Grammar";
 import Pronunciation from "./pages/Pronunciation";
-import Profile from "./pages/Profile";
 import ConversationComponent from "./pages/Conversation";
 import ConversationLesson from "./pages/ConversationLesson";
 import Tests from "./pages/Tests";
@@ -62,7 +61,6 @@ const AppContent: React.FC = () => {
             <Route path="vocabulary" element={<Vocabulary />} />
             <Route path="grammar" element={<Grammar />} />
             <Route path="pronunciation" element={<Pronunciation />} />
-            <Route path="profile" element={<Profile />} />
             <Route path="conversation" element={<ConversationComponent />} />
             <Route path="conversation/:lessonId" element={<ConversationLesson />} />
             <Route path="tests" element={<Tests />} />

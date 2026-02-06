@@ -1,6 +1,6 @@
 import React from "react";
 import { Drawer, Button } from "antd";
-import { CloseOutlined, CheckOutlined, BookOutlined, ReadOutlined, ExperimentOutlined, SoundOutlined, MessageOutlined, AimOutlined, UserOutlined } from "@ant-design/icons";
+import { CloseOutlined, CheckOutlined, BookOutlined, ReadOutlined, ExperimentOutlined, SoundOutlined, MessageOutlined, AimOutlined } from "@ant-design/icons";
 import { useNavigate, useLocation } from "react-router-dom";
 import { useAppSelector, useAppDispatch } from "../store/hooks";
 import { closeDrawer } from "../store/slices/uiSlice";
@@ -18,7 +18,6 @@ const MobileDrawer: React.FC = () => {
     { key: '/pronunciation', icon: <SoundOutlined />, label: 'Phát âm' },
     { key: '/conversation', icon: <MessageOutlined />, label: 'Hội thoại' },
     { key: '/tests', icon: <AimOutlined />, label: 'Thi JLPT' },
-    { key: '/profile', icon: <UserOutlined />, label: 'Hồ sơ' },
   ];
 
   const handleMenuClick = (path: string) => {
@@ -48,9 +47,9 @@ const MobileDrawer: React.FC = () => {
       {/* Custom Header */}
       <div className="mobile-drawer-header">
         <div className="drawer-logo">
-          <div className="logo-icon">日</div>
+          <img src="/Logo.svg" alt="Nihon Nào!" className="logo-icon" />
           <div className="logo-text">
-            <h3>Nihongo</h3>
+            <h3>Nihon Nào!</h3>
             <p>Học tiếng Nhật</p>
           </div>
         </div>
@@ -108,14 +107,6 @@ const MobileDrawer: React.FC = () => {
         .logo-icon {
           width: 40px;
           height: 40px;
-          background: #3b82f6;
-          border-radius: 8px;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          color: white;
-          font-weight: bold;
-          font-size: 18px;
         }
 
         .logo-text h3 {

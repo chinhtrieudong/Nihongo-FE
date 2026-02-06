@@ -45,7 +45,7 @@ import WriteJapaneseIcon from "../components/icons/WriteJapaneseIcon";
 import InfinitejapaneseIcon from "../components/icons/InfinitejapaneseIcon";
 import VocabularyTable from "../components/VocabularyTable";
 
-const { Header, Content } = Layout;
+const { Content } = Layout;
 const { Title, Text } = Typography;
 
 type TabType =
@@ -1151,6 +1151,89 @@ const LessonDetail: React.FC = () => {
     );
   }
 
+  const renderActiveTabContent = () => {
+    switch (activeTab) {
+      case "vocabulary":
+        return (
+          <VocabularyTable
+            data={vocabularies}
+            loading={loading}
+            onCloseSidebar={() => {
+              setSidebarVisible(false);
+              setDesktopSidebarCollapsed(true);
+            }}
+            onEnterFlashcard={() => {
+              sidebarSnapshotRef.current = {
+                sidebarVisible,
+                desktopSidebarCollapsed,
+              };
+              setSidebarVisible(false);
+              setDesktopSidebarCollapsed(true);
+            }}
+            onExitFlashcard={() => {
+              const snapshot = sidebarSnapshotRef.current;
+              if (snapshot) {
+                setSidebarVisible(snapshot.sidebarVisible);
+                setDesktopSidebarCollapsed(snapshot.desktopSidebarCollapsed);
+                sidebarSnapshotRef.current = null;
+              }
+            }}
+          />
+        );
+      case "grammar":
+        return (
+          <GrammarTab lessonNumber={lesson?.lessonNumber} grammars={grammars} />
+        );
+      case "conversation":
+        return (
+          <ConversationTab
+            dialogs={dialogs}
+            showDialogTranslation={showDialogTranslation}
+            setShowDialogTranslation={setShowDialogTranslation}
+            renderDialogConversation={renderDialogConversation}
+            speakEntireConversation={speakEntireConversation}
+            japaneseVoices={japaneseVoices}
+            maleVoiceName={maleVoiceName}
+            setMaleVoiceName={setMaleVoiceName}
+            femaleVoiceName={femaleVoiceName}
+            setFemaleVoiceName={setFemaleVoiceName}
+          />
+        );
+      case "exercises":
+        return (
+          <ExercisesTab
+            exercises={exercises}
+            exerciseResults={exerciseResults}
+            exerciseAnswers={exerciseAnswers}
+            answerStatus={answerStatus}
+            showExplanation={showExplanation}
+            currentExerciseIndex={currentExerciseIndex}
+            setCurrentExerciseIndex={setCurrentExerciseIndex}
+            setExerciseAnswers={setExerciseAnswers}
+            handleAnswerSelect={handleAnswerSelect}
+            handleAllExercisesSubmit={handleAllExercisesSubmit}
+            handleMarkLessonComplete={handleMarkLessonComplete}
+            onGoToTab={(tab) => setActiveTab(tab)}
+          />
+        );
+      case "ai":
+        return (
+          <AiPracticeTab
+            lessonNumber={lesson?.lessonNumber}
+            aiMessages={aiMessages}
+            currentMessage={currentMessage}
+            setCurrentMessage={setCurrentMessage}
+            aiLoading={aiLoading}
+            handleAIMessage={handleAIMessage}
+          />
+        );
+      case "summary":
+        return <SummaryTab vocabularies={vocabularies} grammars={grammars} />;
+      default:
+        return null;
+    }
+  };
+
   return (
     <Layout
       className="bg-white dark:bg-secondary-900"
@@ -1178,29 +1261,6 @@ const LessonDetail: React.FC = () => {
       `}</style>
       {/* Main Content */}
       <Layout>
-        <Header
-          className="bg-white dark:bg-secondary-925 border-b border-secondary-200 dark:border-secondary-900 px-3 lg:px-6"
-          style={{ height: "auto", padding: screens.xs ? "8px 12px" : "16px 24px" }}
-        >
-          <div className="flex items-center gap-2 lg:gap-4">
-            <div className="flex-1">
-              <div className={`flex items-center gap-2 ${screens.xs ? "mb-2" : "mb-2"}`}>
-                <Button
-                  type="text"
-                  icon={<ArrowLeftOutlined />}
-                  onClick={() => navigate("/lessons")}
-                  className="rounded-full w-8 h-8 flex items-center justify-center border border-secondary-200 bg-white text-secondary-700 hover:text-secondary-900 hover:bg-secondary-50 dark:border-secondary-800 dark:bg-secondary-925 dark:text-secondary-300 dark:hover:text-secondary-100 dark:hover:bg-secondary-800/60 transition-colors"
-                />
-                <Title level={2} className="!mb-0 text-base sm:text-lg lg:text-xl leading-snug">
-                  {lesson?.lessonNumber}. {lesson?.title}
-                </Title>
-              </div>
-              <Text type="secondary" className="text-sm leading-relaxed line-clamp-2">
-                {lesson?.description}
-              </Text>
-            </div>
-          </div>
-        </Header>
 
         {/* Fixed Sidebar Toggle Button */}
         {(!screens.lg || desktopSidebarCollapsed) && (
@@ -1250,146 +1310,96 @@ const LessonDetail: React.FC = () => {
               `}
             </style>
           )}
-          <Tabs
-            activeKey={activeTab}
-            onChange={(key) => setActiveTab(key as TabType)}
-            className="lesson-tabs bg-white dark:bg-secondary-925"
-            style={{ margin: "0", padding: screens.xs ? "0" : "0 8px", flex: 1 }}
-            size={screens.xs ? "large" : screens.md ? "large" : "middle"}
-            tabPlacement={screens.xs ? "top" : "top"}
-            centered={screens.xs}
-            items={[
-              {
-                key: "vocabulary",
-                label: (
-                  <span className="flex items-center gap-0.5">
-                    <InfinitejapaneseIcon size={18} color="#000000" strokeWidth={2.5} />
-                    {screens.md && <span>TỪ VỰNG</span>}
-                  </span>
-                ),
-                children: (
-                  <VocabularyTable
-                    data={vocabularies}
-                    loading={loading}
-                    onCloseSidebar={() => {
-                      setSidebarVisible(false);
-                      setDesktopSidebarCollapsed(true);
-                    }}
-                    onEnterFlashcard={() => {
-                      sidebarSnapshotRef.current = {
-                        sidebarVisible,
-                        desktopSidebarCollapsed,
-                      };
-                      setSidebarVisible(false);
-                      setDesktopSidebarCollapsed(true);
-                    }}
-                    onExitFlashcard={() => {
-                      const snapshot = sidebarSnapshotRef.current;
-                      if (snapshot) {
-                        setSidebarVisible(snapshot.sidebarVisible);
-                        setDesktopSidebarCollapsed(snapshot.desktopSidebarCollapsed);
-                        sidebarSnapshotRef.current = null;
-                      }
-                    }}
+          <div className="sticky top-0 z-30 bg-white dark:bg-secondary-925 border-b border-secondary-200 dark:border-secondary-900">
+            <Tabs
+              activeKey={activeTab}
+              onChange={(key) => setActiveTab(key as TabType)}
+              className="lesson-tabs bg-white dark:bg-secondary-925"
+              style={{ margin: 0, padding: screens.xs ? "0" : "0 8px" }}
+              size={screens.xs ? "large" : screens.md ? "large" : "middle"}
+              tabPlacement={screens.xs ? "top" : "top"}
+              centered={screens.xs}
+              items={[
+                {
+                  key: "vocabulary",
+                  label: (
+                    <span className="flex items-center gap-0.5">
+                      <InfinitejapaneseIcon size={18} color="#000000" strokeWidth={2.5} />
+                      {screens.md && <span>TỪ VỰNG</span>}
+                    </span>
+                  ),
+                },
+                {
+                  key: "grammar",
+                  label: (
+                    <span className="flex items-center gap-0.5">
+                      <ReadOutlined className="text-lg" />
+                      {screens.md && <span>NGỮ PHÁP</span>}
+                    </span>
+                  ),
+                },
+                {
+                  key: "conversation",
+                  label: (
+                    <span className="flex items-center gap-0.5">
+                      <MessageOutlined className="text-lg" />
+                      {screens.md && <span>HỘI THOẠI</span>}
+                    </span>
+                  ),
+                },
+                {
+                  key: "exercises",
+                  label: (
+                    <span className="flex items-center gap-0.5">
+                      <PlayCircleOutlined className="text-lg" />
+                      {screens.md && <span>BÀI TẬP</span>}
+                    </span>
+                  ),
+                },
+                {
+                  key: "ai",
+                  label: (
+                    <span className="flex items-center gap-0.5">
+                      <RobotOutlined className="text-lg" />
+                      {screens.md && <span>LUYỆN VỚI AI</span>}
+                    </span>
+                  ),
+                },
+                {
+                  key: "summary",
+                  label: (
+                    <span className="flex items-center gap-0.5">
+                      <TrophyOutlined className="text-lg" />
+                      {screens.md && <span>TỔNG KẾT</span>}
+                    </span>
+                  ),
+                },
+              ]}
+            />
+          </div>
+
+          <div className="px-3 lg:px-6 pt-3">
+            <div className="flex items-center gap-2 lg:gap-4">
+              <div className="flex-1">
+                <div className={`flex items-center gap-2 ${screens.xs ? "mb-2" : "mb-2"}`}>
+                  <Button
+                    type="text"
+                    icon={<ArrowLeftOutlined />}
+                    onClick={() => navigate("/lessons")}
+                    className="rounded-full w-8 h-8 flex items-center justify-center border border-secondary-200 bg-white text-secondary-700 hover:text-secondary-900 hover:bg-secondary-50 dark:border-secondary-800 dark:bg-secondary-925 dark:text-secondary-300 dark:hover:text-secondary-100 dark:hover:bg-secondary-800/60 transition-colors"
                   />
-                ),
-              },
-              {
-                key: "grammar",
-                label: (
-                  <span className="flex items-center gap-0.5">
-                    <ReadOutlined className="text-lg" />
-                    {screens.md && <span>NGỮ PHÁP</span>}
-                  </span>
-                ),
-                children: (
-                  <GrammarTab
-                    lessonNumber={lesson?.lessonNumber}
-                    grammars={grammars}
-                  />
-                ),
-              },
-              {
-                key: "conversation",
-                label: (
-                  <span className="flex items-center gap-0.5">
-                    <MessageOutlined className="text-lg" />
-                    {screens.md && <span>HỘI THOẠI</span>}
-                  </span>
-                ),
-                children: (
-                  <ConversationTab
-                    dialogs={dialogs}
-                    showDialogTranslation={showDialogTranslation}
-                    setShowDialogTranslation={setShowDialogTranslation}
-                    renderDialogConversation={renderDialogConversation}
-                    speakEntireConversation={speakEntireConversation}
-                    japaneseVoices={japaneseVoices}
-                    maleVoiceName={maleVoiceName}
-                    setMaleVoiceName={setMaleVoiceName}
-                    femaleVoiceName={femaleVoiceName}
-                    setFemaleVoiceName={setFemaleVoiceName}
-                  />
-                ),
-              },
-              {
-                key: "exercises",
-                label: (
-                  <span className="flex items-center gap-0.5">
-                    <PlayCircleOutlined className="text-lg" />
-                    {screens.md && <span>BÀI TẬP</span>}
-                  </span>
-                ),
-                children: (
-                  <ExercisesTab
-                    exercises={exercises}
-                    exerciseResults={exerciseResults}
-                    exerciseAnswers={exerciseAnswers}
-                    answerStatus={answerStatus}
-                    showExplanation={showExplanation}
-                    currentExerciseIndex={currentExerciseIndex}
-                    setCurrentExerciseIndex={setCurrentExerciseIndex}
-                    setExerciseAnswers={setExerciseAnswers}
-                    handleAnswerSelect={handleAnswerSelect}
-                    handleAllExercisesSubmit={handleAllExercisesSubmit}
-                    handleMarkLessonComplete={handleMarkLessonComplete}
-                    onGoToTab={(tab) => setActiveTab(tab)}
-                  />
-                ),
-              },
-              {
-                key: "ai",
-                label: (
-                  <span className="flex items-center gap-0.5">
-                    <RobotOutlined className="text-lg" />
-                    {screens.md && <span>LUYỆN VỚI AI</span>}
-                  </span>
-                ),
-                children: (
-                  <AiPracticeTab
-                    lessonNumber={lesson?.lessonNumber}
-                    aiMessages={aiMessages}
-                    currentMessage={currentMessage}
-                    setCurrentMessage={setCurrentMessage}
-                    aiLoading={aiLoading}
-                    handleAIMessage={handleAIMessage}
-                  />
-                ),
-              },
-              {
-                key: "summary",
-                label: (
-                  <span className="flex items-center gap-0.5">
-                    <TrophyOutlined className="text-lg" />
-                    {screens.md && <span>TỔNG KẾT</span>}
-                  </span>
-                ),
-                children: (
-                  <SummaryTab vocabularies={vocabularies} grammars={grammars} />
-                ),
-              },
-            ]}
-          />
+                  <Title level={2} className="!mb-0 text-base sm:text-lg lg:text-xl leading-snug">
+                    {lesson?.lessonNumber}. {lesson?.title}
+                  </Title>
+                </div>
+                <Text type="secondary" className="text-sm leading-relaxed line-clamp-2">
+                  {lesson?.description}
+                </Text>
+              </div>
+            </div>
+          </div>
+
+          <div className="flex-1">{renderActiveTabContent()}</div>
         </Content>
       </Layout>
 

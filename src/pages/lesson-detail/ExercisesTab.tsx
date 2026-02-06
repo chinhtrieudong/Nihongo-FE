@@ -45,9 +45,6 @@ const ExercisesTab: React.FC<ExercisesTabProps> = ({
 }) => {
   return (
     <div style={{ padding: "24px" }}>
-      <Title level={3} className="mb-6">
-        BÀI TẬP
-      </Title>
 
       {(Object.keys(exerciseResults).length > 0 ||
         Object.keys(exerciseAnswers).length === exercises.length) && (
@@ -125,16 +122,16 @@ const ExercisesTab: React.FC<ExercisesTabProps> = ({
       )}
 
       {exercises.length > 0 && (
-        <Card className="bg-white dark:bg-secondary-925 border-secondary-200 dark:border-secondary-900">
+        <Card className="bg-white dark:bg-secondary-925 border-secondary-200 dark:border-secondary-900" styles={{ body: { padding: 12 } }}>
           <div className="flex justify-between items-center mb-4">
-            <Title level={4}>Bài tập {currentExerciseIndex + 1}</Title>
-            <Text type="secondary">
+            <Title level={5} className="!mb-0 text-sm">Bài tập {currentExerciseIndex + 1}</Title>
+            <Text type="secondary" className="text-xs">
               {currentExerciseIndex + 1} / {exercises.length}
             </Text>
           </div>
 
           <div className="mb-6">
-            <Paragraph className="text-lg mb-4">
+            <Paragraph className="text-sm mb-3">
               {exercises[currentExerciseIndex].question}
             </Paragraph>
 
@@ -157,9 +154,10 @@ const ExercisesTab: React.FC<ExercisesTabProps> = ({
                             ? "border-red-300 bg-red-50 dark:border-red-600 dark:bg-red-900/20"
                             : "hover:bg-secondary-100 dark:hover:bg-secondary-900"
                       } bg-white dark:bg-secondary-925 border-secondary-200 dark:border-secondary-900`}
+                      styles={{ body: { padding: 10 } }}
                       onClick={() => handleAnswerSelect(exerciseId, option)}
                     >
-                      <Space>
+                      <Space size={6}>
                         <input
                           type="radio"
                           name="exercise"
@@ -169,13 +167,13 @@ const ExercisesTab: React.FC<ExercisesTabProps> = ({
                           className="mr-3"
                         />
                         <Text
-                          className={
+                          className={`text-sm ${
                             isSelected && status === "correct"
                               ? "text-green-700 dark:text-green-400 font-medium"
                               : isSelected && status === "incorrect"
                                 ? "text-red-700 dark:text-red-400"
                                 : ""
-                          }
+                          }`}
                         >
                           {option}
                         </Text>
@@ -213,7 +211,7 @@ const ExercisesTab: React.FC<ExercisesTabProps> = ({
                       ? "border-red-300 bg-red-50"
                       : ""
                 }`}
-                size="large"
+                size="middle"
               />
             )}
 
