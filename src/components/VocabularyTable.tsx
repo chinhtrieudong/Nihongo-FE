@@ -36,6 +36,10 @@ import { useResponsive } from "../hooks/useResponsive";
 
 const { Title, Text } = Typography;
 
+export type VocabularyTableHandle = {
+  enterFlashcard: () => void;
+};
+
 interface VocabularyTableProps {
   data: VocabularyItemType[];
 
@@ -46,13 +50,17 @@ interface VocabularyTableProps {
   onExitFlashcard?: () => void;
 }
 
-const VocabularyTable: React.FC<VocabularyTableProps> = ({
-  data,
-  loading = false,
-  onCloseSidebar,
-  onEnterFlashcard,
-  onExitFlashcard,
-}) => {
+const VocabularyTable = React.forwardRef<VocabularyTableHandle, VocabularyTableProps>(
+  (
+    {
+      data,
+      loading = false,
+      onCloseSidebar,
+      onEnterFlashcard,
+      onExitFlashcard,
+    },
+    ref,
+  ) => {
   const { screens } = useResponsive();
 
   const [showRomaji, setShowRomaji] = useState(false);
@@ -239,6 +247,19 @@ const VocabularyTable: React.FC<VocabularyTableProps> = ({
     [data, cardStatus],
   );
 
+  React.useImperativeHandle(ref, () => ({
+    enterFlashcard: () => {
+      onEnterFlashcard?.();
+      setViewMode("flashcard");
+      setCurrentCardIndex(0);
+      setIsFlipped(false);
+      setShowAnswer(false);
+      setIsFullscreen(false);
+      setIsStudyComplete(false);
+      setEvaluatedCards(new Set());
+    },
+  }));
+
   // Memoized table columns
   const tableColumns = useMemo(
     () => [
@@ -271,33 +292,33 @@ const VocabularyTable: React.FC<VocabularyTableProps> = ({
       },
       ...(showRomaji
         ? [
-            {
-              title: "Romaji",
-              dataIndex: "romaji",
-              key: "romaji",
-              width: screens.lg ? 110 : 90,
-              render: (text: string) => (
-                <Typography.Text type="secondary">
-                  {text || "-"}
-                </Typography.Text>
-              ),
-            },
-          ]
+          {
+            title: "Romaji",
+            dataIndex: "romaji",
+            key: "romaji",
+            width: screens.lg ? 110 : 90,
+            render: (text: string) => (
+              <Typography.Text type="secondary">
+                {text || "-"}
+              </Typography.Text>
+            ),
+          },
+        ]
         : []),
       ...(showHanViet
         ? [
-            {
-              title: "Hán Việt",
-              dataIndex: "hanviet",
-              key: "hanviet",
-              width: screens.lg ? 110 : 90,
-              render: (text: string) => (
-                <span className="text-secondary-800 dark:text-secondary-300">
-                  {text ? text.toUpperCase().replace(/,/g, "") : "-"}
-                </span>
-              ),
-            },
-          ]
+          {
+            title: "Hán Việt",
+            dataIndex: "hanviet",
+            key: "hanviet",
+            width: screens.lg ? 110 : 90,
+            render: (text: string) => (
+              <span className="text-secondary-800 dark:text-secondary-300">
+                {text ? text.toUpperCase().replace(/,/g, "") : "-"}
+              </span>
+            ),
+          },
+        ]
         : []),
       {
         title: "Nghĩa tiếng Việt",
@@ -585,81 +606,8 @@ const VocabularyTable: React.FC<VocabularyTableProps> = ({
 
   return (
     <div className={screens.xs ? "px-3 py-2" : "p-6"}>
-      {/* Header */}
-      <Card className={`mb-4 ${screens.xs ? "shadow-sm" : ""}`}>
-        {screens.xs ? (
-          <div>
-            <div className="flex items-center justify-between">
-              <div className="flex items-center gap-2">
-                <InfinitejapaneseIcon
-                  size={22}
-                  color="#000000"
-                  strokeWidth={2.5}
-                />
-                <Typography.Title
-                  level={4}
-                  className="!mb-0 !text-secondary-900 dark:!text-secondary-100 text-sm tracking-wide"
-                >
-                  TỪ VỰNG
-                </Typography.Title>
-              </div>
-              <div className="flex items-center gap-2">
-                <Button
-                  type="default"
-                  onClick={() => {
-                    onEnterFlashcard?.();
-                    setViewMode("flashcard");
-                    setIsFullscreen(true);
-                  }}
-                  size="small"
-                  className="h-9 px-3 text-sm font-semibold rounded-full border border-blue-200 bg-blue-50 text-blue-700 hover:bg-blue-100"
-                >
-                  FLASHCARD
-                </Button>
-              </div>
-            </div>
-
-            <div className="mt-4">
-              <div className="border-t border-secondary-200 dark:border-secondary-800 mt-2 mb-2" />
-            </div>
-          </div>
-        ) : (
-          <div className="flex flex-col gap-3">
-            <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-3">
-              <Typography.Title
-                level={2}
-                className="!mb-0 !text-secondary-900 dark:!text-secondary-100"
-              >
-                Từ Vựng
-              </Typography.Title>
-              <div className="flex items-center gap-2">
-                <Button
-                  type="primary"
-                  icon={
-                    <FlashcardsIcon
-                      size={18}
-                      color="#000000"
-                      strokeWidth={2.5}
-                    />
-                  }
-                  onClick={() => {
-                    onEnterFlashcard?.();
-                    setViewMode("flashcard");
-                    setIsFullscreen(true);
-                  }}
-                  size="large"
-                >
-                  Flashcard
-                </Button>
-              </div>
-            </div>
-
-          </div>
-        )}
-      </Card>
-
       {/* Mobile-First Table */}
-      <Card className={screens.xs ? "shadow-sm" : ""}>
+      <div className={`border border-secondary-200 dark:border-secondary-800 bg-white dark:bg-secondary-925 rounded-lg ${screens.xs ? "shadow-sm p-3" : "p-6"}`}>
         {screens.xs ? (
           /* Mobile Card View */
           <div className="space-y-3">
@@ -749,7 +697,7 @@ const VocabularyTable: React.FC<VocabularyTableProps> = ({
             </div>
           )
         )}
-      </Card>
+      </div>
 
       <style>{`
         .vocab-table .ant-table-body::-webkit-scrollbar {
@@ -770,6 +718,7 @@ const VocabularyTable: React.FC<VocabularyTableProps> = ({
       />
     </div>
   );
-};
+  },
+);
 
 export default VocabularyTable;

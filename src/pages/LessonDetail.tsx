@@ -43,7 +43,8 @@ import { Grid } from "antd";
 import { getJapaneseVoices } from "../utils/vocabularyUtils";
 import WriteJapaneseIcon from "../components/icons/WriteJapaneseIcon";
 import InfinitejapaneseIcon from "../components/icons/InfinitejapaneseIcon";
-import VocabularyTable from "../components/VocabularyTable";
+import LetterUppercaseSquareFIcon from "../components/icons/LetterUppercaseSquareFIcon";
+import VocabularyTable, { type VocabularyTableHandle } from "../components/VocabularyTable";
 
 const { Content } = Layout;
 const { Title, Text } = Typography;
@@ -75,6 +76,7 @@ const LessonDetail: React.FC = () => {
     desktopSidebarCollapsed: boolean;
   } | null>(null);
   const [japaneseVoices, setJapaneseVoices] = useState<SpeechSynthesisVoice[]>([]);
+  const vocabularyTableRef = useRef<VocabularyTableHandle | null>(null);
   const [maleVoiceName, setMaleVoiceName] = useState(() => {
     try {
       return localStorage.getItem("tts_voice_male") || "";
@@ -390,8 +392,8 @@ const LessonDetail: React.FC = () => {
       preferredVoices.length > 0
         ? preferredVoices
         : voices.filter(
-            (voice) => voice.lang.startsWith("ja") || voice.lang.startsWith("ja-JP"),
-          );
+          (voice) => voice.lang.startsWith("ja") || voice.lang.startsWith("ja-JP"),
+        );
 
     // Separate male and female voices if available
     const femaleHints = [
@@ -428,17 +430,17 @@ const LessonDetail: React.FC = () => {
     const femaleVoicePreferred = pickByPreference(japaneseVoices, femaleHints);
 
     // Fallback to any Japanese voices
-      const selectedMale = voices.find((voice) => voice.name === maleVoiceName);
-      const selectedFemale = voices.find((voice) => voice.name === femaleVoiceName);
+    const selectedMale = voices.find((voice) => voice.name === maleVoiceName);
+    const selectedFemale = voices.find((voice) => voice.name === femaleVoiceName);
 
-      const maleVoice =
-        selectedMale ||
-        maleVoicePreferred ||
-        (japaneseVoices.length > 0 ? japaneseVoices[0] : voices[0]);
-      const femaleVoice =
-        selectedFemale ||
-        femaleVoicePreferred ||
-        (japaneseVoices.length > 0 ? japaneseVoices[0] : voices[0]);
+    const maleVoice =
+      selectedMale ||
+      maleVoicePreferred ||
+      (japaneseVoices.length > 0 ? japaneseVoices[0] : voices[0]);
+    const femaleVoice =
+      selectedFemale ||
+      femaleVoicePreferred ||
+      (japaneseVoices.length > 0 ? japaneseVoices[0] : voices[0]);
 
     const otherVoices = japaneseVoices.filter(
       (voice) => voice !== maleVoice && voice !== femaleVoice,
@@ -675,11 +677,10 @@ const LessonDetail: React.FC = () => {
         {lines.map((line, index) => (
           <div key={index} className="flex items-start gap-3">
             <div
-              className={`flex-1 px-4 py-3 rounded-xl shadow-sm ${
-                line.speaker === "A"
-                  ? "bg-gradient-to-r from-blue-50 to-blue-100 dark:from-blue-900/20 dark:to-blue-800/20 text-secondary-800 dark:text-secondary-200"
-                  : "bg-gradient-to-r from-green-50 to-green-100 dark:from-green-900/20 dark:to-green-800/20 text-secondary-800 dark:text-secondary-200"
-              }`}
+              className={`flex-1 px-4 py-3 rounded-xl shadow-sm ${line.speaker === "A"
+                ? "bg-gradient-to-r from-blue-50 to-blue-100 dark:from-blue-900/20 dark:to-blue-800/20 text-secondary-800 dark:text-secondary-200"
+                : "bg-gradient-to-r from-green-50 to-green-100 dark:from-green-900/20 dark:to-green-800/20 text-secondary-800 dark:text-secondary-200"
+                }`}
             >
               <div className="flex items-baseline justify-between gap-3">
                 <div className="flex items-baseline gap-3 min-w-0">
@@ -1119,12 +1120,12 @@ const LessonDetail: React.FC = () => {
       updateLessonProgress(overallProgress, status, {
         exercisesScore: exercisesCompleted
           ? Math.round(
-              (Object.values(answerStatus).filter(
-                (status) => status === "correct",
-              ).length /
-                Object.keys(answerStatus).length) *
-                100,
-            )
+            (Object.values(answerStatus).filter(
+              (status) => status === "correct",
+            ).length /
+              Object.keys(answerStatus).length) *
+            100,
+          )
           : 0,
       });
     }
@@ -1151,11 +1152,24 @@ const LessonDetail: React.FC = () => {
     );
   }
 
+  const getTabDisplayName = (tab: TabType) => {
+    const tabNames = {
+      vocabulary: "Từ vựng",
+      grammar: "Ngữ pháp",
+      conversation: "Hội thoại",
+      exercises: "Bài tập",
+      ai: "Luyện với AI",
+      summary: "Tổng kết"
+    };
+    return tabNames[tab] || "";
+  };
+
   const renderActiveTabContent = () => {
     switch (activeTab) {
       case "vocabulary":
         return (
           <VocabularyTable
+            ref={vocabularyTableRef}
             data={vocabularies}
             loading={loading}
             onCloseSidebar={() => {
@@ -1258,6 +1272,19 @@ const LessonDetail: React.FC = () => {
           scrollbar-width: none;
           -ms-overflow-style: none;
         }
+        .lesson-tabs .ant-tabs-tab .anticon {
+          margin-right: 0 !important;
+          transform: translateY(-1px);
+        }
+        .lesson-tabs .ant-tabs-tab .ant-tabs-tab-btn {
+          display: inline-flex;
+          align-items: center;
+        }
+        .lesson-tabs .ant-tabs-tab .ant-tabs-tab-btn > span {
+          display: inline-flex;
+          align-items: center;
+          line-height: 1;
+        }
       `}</style>
       {/* Main Content */}
       <Layout>
@@ -1323,8 +1350,8 @@ const LessonDetail: React.FC = () => {
                 {
                   key: "vocabulary",
                   label: (
-                    <span className="flex items-center gap-0.5">
-                      <InfinitejapaneseIcon size={18} color="#000000" strokeWidth={2.5} />
+                    <span className="flex items-center gap-1">
+                      <InfinitejapaneseIcon size={16} color="#000000" strokeWidth={2} />
                       {screens.md && <span>TỪ VỰNG</span>}
                     </span>
                   ),
@@ -1332,8 +1359,8 @@ const LessonDetail: React.FC = () => {
                 {
                   key: "grammar",
                   label: (
-                    <span className="flex items-center gap-0.5">
-                      <ReadOutlined className="text-lg" />
+                    <span className="flex items-center gap-1">
+                      <ReadOutlined className="text-base" />
                       {screens.md && <span>NGỮ PHÁP</span>}
                     </span>
                   ),
@@ -1341,8 +1368,8 @@ const LessonDetail: React.FC = () => {
                 {
                   key: "conversation",
                   label: (
-                    <span className="flex items-center gap-0.5">
-                      <MessageOutlined className="text-lg" />
+                    <span className="flex items-center gap-1">
+                      <MessageOutlined className="text-base" />
                       {screens.md && <span>HỘI THOẠI</span>}
                     </span>
                   ),
@@ -1350,8 +1377,8 @@ const LessonDetail: React.FC = () => {
                 {
                   key: "exercises",
                   label: (
-                    <span className="flex items-center gap-0.5">
-                      <PlayCircleOutlined className="text-lg" />
+                    <span className="flex items-center gap-1">
+                      <PlayCircleOutlined className="text-base" />
                       {screens.md && <span>BÀI TẬP</span>}
                     </span>
                   ),
@@ -1359,8 +1386,8 @@ const LessonDetail: React.FC = () => {
                 {
                   key: "ai",
                   label: (
-                    <span className="flex items-center gap-0.5">
-                      <RobotOutlined className="text-lg" />
+                    <span className="flex items-center gap-1">
+                      <RobotOutlined className="text-base" />
                       {screens.md && <span>LUYỆN VỚI AI</span>}
                     </span>
                   ),
@@ -1368,8 +1395,8 @@ const LessonDetail: React.FC = () => {
                 {
                   key: "summary",
                   label: (
-                    <span className="flex items-center gap-0.5">
-                      <TrophyOutlined className="text-lg" />
+                    <span className="flex items-center gap-1">
+                      <TrophyOutlined className="text-base" />
                       {screens.md && <span>TỔNG KẾT</span>}
                     </span>
                   ),
@@ -1389,10 +1416,36 @@ const LessonDetail: React.FC = () => {
                     className="rounded-full w-8 h-8 flex items-center justify-center border border-secondary-200 bg-white text-secondary-700 hover:text-secondary-900 hover:bg-secondary-50 dark:border-secondary-800 dark:bg-secondary-925 dark:text-secondary-300 dark:hover:text-secondary-100 dark:hover:bg-secondary-800/60 transition-colors"
                   />
                   <Title level={2} className="!mb-0 text-base sm:text-lg lg:text-xl leading-snug">
-                    {lesson?.lessonNumber}. {lesson?.title}
+                    {lesson?.lessonNumber}. {lesson?.title} - {getTabDisplayName(activeTab)}
                   </Title>
+                  <div className="flex items-center gap-1 ml-2">
+                    <Button
+                      type="text"
+                      size="middle"
+                      className={`px-3 py-1.5 h-auto text-xs font-semibold rounded-lg transition-colors ${activeTab === "vocabulary" && vocabularies.length > 0
+                        ? "bg-green-100 text-green-700 dark:bg-green-800 dark:text-green-200"
+                        : "text-secondary-600 hover:text-secondary-900 hover:bg-secondary-50 dark:text-secondary-400 dark:hover:text-secondary-100 dark:hover:bg-secondary-800/60"
+                        }`}
+                      onClick={() => {
+                        setActiveTab("vocabulary");
+                        // Switch to flashcard mode after a short delay to ensure tab is active
+                        setTimeout(() => {
+                          vocabularyTableRef.current?.enterFlashcard();
+                        }, 100);
+                      }}
+                    >
+                      <div className="flex flex-row items-center">
+                        <LetterUppercaseSquareFIcon
+                          size={16}
+                          color="currentColor"
+                          strokeWidth={2}
+                        />
+                        <span className="ml-1">Flashcard</span>
+                      </div>
+                    </Button>
+                  </div>
                 </div>
-                <Text type="secondary" className="text-sm leading-relaxed line-clamp-2">
+                <Text className="text-sm leading-relaxed line-clamp-2 text-secondary-600 dark:text-secondary-400">
                   {lesson?.description}
                 </Text>
               </div>
