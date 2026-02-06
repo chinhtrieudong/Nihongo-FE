@@ -496,113 +496,8 @@ const VocabularyTable = React.forwardRef<VocabularyTableHandle, VocabularyTableP
     }
   }, [cardStatus, cardsToStudy]);
 
-  if (viewMode === "flashcard") {
-    // Show completion screen if study session is complete
-
-    if (isStudyComplete) {
-      return (
-        <div className="p-6">
-          <Card className="mb-6">
-            <div className="flex justify-between items-center">
-              <Title level={2}>Kết thúc buổi học</Title>
-
-              <Button
-                type="primary"
-                icon={<BookOutlined />}
-                onClick={() => setViewMode("table")}
-              >
-                Xem bảng
-              </Button>
-            </div>
-          </Card>
-
-          <Card className="max-w-4xl mx-auto">
-            <div className="text-center mb-8">
-              <Title
-                level={1}
-                className="text-secondary-900 dark:text-secondary-100 mb-6"
-              >
-                🎉 Hoàn thành!
-              </Title>
-
-              <Row gutter={24} className="mb-8">
-                <Col span={8}>
-                  <Statistic
-                    title="Tổng"
-                    value={totalCount}
-                    styles={{ content: { color: "#1890ff" } }}
-                  />
-                </Col>
-
-                <Col span={8}>
-                  <Statistic
-                    title="Đã nhớ"
-                    value={knownCount}
-                    styles={{ content: { color: "#52c41a" } }}
-                    prefix={<CheckCircleOutlined />}
-                  />
-                </Col>
-
-                <Col span={8}>
-                  <Statistic
-                    title="Chưa nhớ"
-                    value={unknownCount}
-                    styles={{ content: { color: "#ff4d4f" } }}
-                    prefix={<CloseCircleOutlined />}
-                  />
-                </Col>
-              </Row>
-
-              <Space size="large" className="justify-center">
-                <Button
-                  type="primary"
-                  size="large"
-                  icon={<SwapOutlined />}
-                  onClick={() => resetStudySession("all")}
-                >
-                  Học lại toàn bộ
-                </Button>
-
-                {globalUnknownCount > 0 && (
-                  <Button
-                    type="default"
-                    size="large"
-                    onClick={() => resetStudySession("unremembered")}
-                  >
-                    Chỉ học {globalUnknownCount} thẻ chưa nhớ
-                  </Button>
-                )}
-              </Space>
-            </div>
-          </Card>
-        </div>
-      );
-    }
-
-    return (
-      <VocabularyFlashcard
-        currentCard={currentCard}
-        currentCardIndex={currentCardIndex}
-        cardsToStudy={cardsToStudy}
-        isFlipped={isFlipped}
-        isFullscreen={isFullscreen}
-        screens={screens}
-        onFlipCard={flipCard}
-        onMemoryEvaluation={handleMemoryEvaluation}
-        onSetIsFullscreen={setIsFullscreen}
-        onBackToTable={() => {
-          onExitFlashcard?.();
-          setViewMode("table");
-          setCurrentCardIndex(0);
-          setIsFlipped(false);
-          setIsFullscreen(false);
-        }}
-        onCloseSidebar={onCloseSidebar}
-        onResetCards={() => resetStudySession("all")}
-        onShuffleCards={shuffleCards}
-      />
-    );
-  }
+  const showFlashcard = viewMode === "flashcard" && !isStudyComplete;
+  const showCompletion = viewMode === "flashcard" && isStudyComplete;
 
   return (
     <div className={screens.xs ? "px-3 py-2" : "p-6"}>
@@ -619,7 +514,11 @@ const VocabularyTable = React.forwardRef<VocabularyTableHandle, VocabularyTableP
                 }
                 item={item}
                 index={index}
-                showHanViet={viewMode === "table" ? showHanViet : false}
+                showHanViet={
+                  viewMode === "table" || viewMode === "flashcard"
+                    ? showHanViet
+                    : false
+                }
                 onWordClick={handleWordClick}
               />
             ))}
@@ -632,7 +531,7 @@ const VocabularyTable = React.forwardRef<VocabularyTableHandle, VocabularyTableP
           </div>
         ) : (
           /* Desktop/Tablet Table View */
-          viewMode === "table" ? (
+          viewMode === "table" || viewMode === "flashcard" ? (
             <Table
               dataSource={filteredData}
               loading={loading}
@@ -716,6 +615,113 @@ const VocabularyTable = React.forwardRef<VocabularyTableHandle, VocabularyTableP
         showModal={showModal}
         setShowModal={setShowModal}
       />
+
+      {showFlashcard && (
+        <VocabularyFlashcard
+          currentCard={currentCard}
+          currentCardIndex={currentCardIndex}
+          cardsToStudy={cardsToStudy}
+          isFlipped={isFlipped}
+          isFullscreen={isFullscreen}
+          screens={screens}
+          onFlipCard={flipCard}
+          onMemoryEvaluation={handleMemoryEvaluation}
+          onSetIsFullscreen={setIsFullscreen}
+          onBackToTable={() => {
+            onExitFlashcard?.();
+            setViewMode("table");
+            setCurrentCardIndex(0);
+            setIsFlipped(false);
+            setIsFullscreen(false);
+          }}
+          onCloseSidebar={onCloseSidebar}
+          onResetCards={() => resetStudySession("all")}
+          onShuffleCards={shuffleCards}
+        />
+      )}
+
+      {showCompletion && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 p-4">
+          <div className="w-full max-w-4xl bg-white dark:bg-secondary-925 rounded-2xl border border-secondary-200 dark:border-secondary-800 shadow-2xl p-6">
+            <Card className="mb-6">
+              <div className="flex justify-between items-center">
+                <Title level={2}>Kết thúc buổi học</Title>
+
+                <Button
+                  type="primary"
+                  icon={<BookOutlined />}
+                  onClick={() => {
+                    onExitFlashcard?.();
+                    setViewMode("table");
+                  }}
+                >
+                  Xem bảng
+                </Button>
+              </div>
+            </Card>
+
+            <Card className="max-w-4xl mx-auto">
+              <div className="text-center mb-8">
+                <Title
+                  level={1}
+                  className="text-secondary-900 dark:text-secondary-100 mb-6"
+                >
+                  🎉 Hoàn thành!
+                </Title>
+
+                <Row gutter={24} className="mb-8">
+                  <Col span={8}>
+                    <Statistic
+                      title="Tổng"
+                      value={totalCount}
+                      styles={{ content: { color: "#1890ff" } }}
+                    />
+                  </Col>
+
+                  <Col span={8}>
+                    <Statistic
+                      title="Đã nhớ"
+                      value={knownCount}
+                      styles={{ content: { color: "#52c41a" } }}
+                      prefix={<CheckCircleOutlined />}
+                    />
+                  </Col>
+
+                  <Col span={8}>
+                    <Statistic
+                      title="Chưa nhớ"
+                      value={unknownCount}
+                      styles={{ content: { color: "#ff4d4f" } }}
+                      prefix={<CloseCircleOutlined />}
+                    />
+                  </Col>
+                </Row>
+
+                <Space size="large" className="justify-center">
+                  <Button
+                    type="primary"
+                    size="large"
+                    icon={<SwapOutlined />}
+                    onClick={() => resetStudySession("all")}
+                  >
+                    Học lại toàn bộ
+                  </Button>
+
+                  {globalUnknownCount > 0 && (
+                    <Button
+                      type="default"
+                      size="large"
+                      onClick={() => resetStudySession("unremembered")}
+                    >
+                      Chỉ học {globalUnknownCount} thẻ chưa nhớ
+                    </Button>
+                  )}
+                </Space>
+              </div>
+            </Card>
+          </div>
+        </div>
+      )}
     </div>
   );
   },

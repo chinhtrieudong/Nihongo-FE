@@ -3,7 +3,6 @@ import {
   Button,
   Typography,
   Progress,
-  Tooltip,
   Modal,
   Switch,
   Select,
@@ -15,12 +14,10 @@ import {
   SoundOutlined,
   CloseOutlined,
   CheckOutlined,
-  FullscreenOutlined,
-  FullscreenExitOutlined,
-  SwapOutlined,
-  LeftOutlined,
   SettingOutlined,
 } from "@ant-design/icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faShuffle, faRotateLeft } from "@fortawesome/free-solid-svg-icons";
 import type { VocabularyItem as VocabularyItemType } from "../types/lesson";
 import { speakText } from "../utils/vocabularyUtils";
 
@@ -94,16 +91,13 @@ const VocabularyFlashcard: React.FC<VocabularyFlashcardProps> = ({
     return currentCard?.hiragana || currentCard?.katakana || "";
   }, [currentCard]);
 
-  const speakJapaneseNow = useCallback(
-    (text: string) => {
-      if (!text) return;
-      if ("speechSynthesis" in window) {
-        window.speechSynthesis.cancel();
-      }
-      speakText(text);
-    },
-    []
-  );
+  const speakJapaneseNow = useCallback((text: string) => {
+    if (!text) return;
+    if ("speechSynthesis" in window) {
+      window.speechSynthesis.cancel();
+    }
+    speakText(text);
+  }, []);
 
   // Auto-speak functionality (faster)
   useEffect(() => {
@@ -278,109 +272,39 @@ const VocabularyFlashcard: React.FC<VocabularyFlashcardProps> = ({
   };
 
   if (!currentCard) return null;
-
-  // Debug flashcard data
-  console.log("=== FLASHCARD DATA ===");
-  console.log("Current Card:", currentCard);
-  console.log("Card Index:", currentCardIndex, "of", cardsToStudy.length);
-  console.log("Is Flipped:", isFlipped);
-  console.log("Is Fullscreen:", isFullscreen);
-  console.log("Front Face Setting:", frontFace);
-  console.log("Auto Speak:", autoSpeak);
-  console.log("========================");
-
   // Render fullscreen-only view
   return (
-    <div className="fixed inset-0 z-50 flex flex-col bg-neutral-50 dark:bg-neutral-900">
-      {/* HEADER */}
-      <div className="px-4 sm:px-6 pt-4">
-        <div className="max-w-[780px] mx-auto">
-          <div className="flex items-center justify-between mb-2 gap-3">
-            {onBackToTable && (
-              <Tooltip title="Quay lại bảng từ vựng" placement="bottom">
-                <Button
-                  type="text"
-                  size="middle"
-                  icon={<LeftOutlined className="text-lg" />}
-                  onClick={onBackToTable}
-                  className="
-                      flex items-center justify-center
-                      w-9 h-9 rounded-lg
-                      text-neutral-600 hover:text-blue-600 dark:text-neutral-300 dark:hover:text-blue-400
-                      hover:bg-neutral-100 dark:hover:bg-neutral-800
-                      transition-colors duration-200
-                      border border-neutral-200 dark:border-neutral-700
-                      shadow-sm hover:shadow
-                    "
-                />
-              </Tooltip>
-            )}
-            <div className="flex-1">
-              <div className="h-1.5 w-full bg-neutral-200 dark:bg-neutral-700 rounded-full overflow-hidden">
-                <div
-                  className="h-full bg-blue-500 transition-all duration-300 ease-out"
-                  style={{
-                    width: `${((currentCardIndex + 1) / cardsToStudy.length) * 100}%`,
-                    background: "linear-gradient(90deg, #3b82f6, #60a5fa)",
-                  }}
-                />
-              </div>
-            </div>
-            <div className="ml-6 flex items-center space-x-3">
-              <span className="text-base font-semibold text-neutral-700 dark:text-neutral-200">
-                {currentCardIndex + 1}
-                <span className="text-neutral-400">/{cardsToStudy.length}</span>
-              </span>
-              {onShuffleCards && (
-                <Tooltip title="Trộn thẻ" placement="bottom">
-                  <Button
-                    type="text"
-                    size="large"
-                    className="text-neutral-600 hover:text-neutral-800 dark:text-neutral-300 dark:hover:text-neutral-100 font-semibold"
-                    icon={<SwapOutlined />}
-                    onClick={onShuffleCards}
-                  />
-                </Tooltip>
-              )}
-              <Tooltip title="Cài đặt" placement="bottom">
-                <Button
-                  type="text"
-                  size="large"
-                  className="text-neutral-600 hover:text-neutral-800 dark:text-neutral-300 dark:hover:text-neutral-100 font-semibold"
-                  icon={<SettingOutlined />}
-                  onClick={() => setSettingsVisible(true)}
-                />
-              </Tooltip>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* CARD */}
-      <div className="flex-1 flex items-center justify-center px-4 sm:px-8">
-        <div
-          onClick={onFlipCard}
-          className="
+    <div
+      className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 p-4"
+      onClick={onBackToTable}
+    >
+      <div
+        className="w-full max-w-[700px] bg-slate-700 rounded-xl shadow-2xl flex flex-col overflow-hidden"
+        style={{ transform: "scale(1)" }}
+        onClick={(e) => e.stopPropagation()}
+      >
+        {/* CARD */}
+        <div className="flex-1 flex items-center justify-center">
+          <div
+            onClick={onFlipCard}
+            className="
               relative
               w-full
-              max-w-[780px]
-              h-full
-              rounded-3xl
-              bg-white
-              dark:bg-neutral-800
-              border
-              border-neutral-200
-              dark:border-neutral-700
+              h-[65vh]
+              rounded-t-3xl rounded-b-none
+              bg-slate-700
+              border-b
+              border-slate-500
               shadow-lg
               transition-all
               cursor-pointer
               select-none
             "
-        >
-          {/* AUDIO */}
-          <button
-            onClick={handlePlayAudio}
-            className="
+          >
+            {/* AUDIO */}
+            <button
+              onClick={handlePlayAudio}
+              className="
               absolute
               top-4
               right-4
@@ -393,111 +317,119 @@ const VocabularyFlashcard: React.FC<VocabularyFlashcardProps> = ({
               hover:bg-neutral-100
               dark:hover:bg-neutral-700
             "
-          >
-            <SoundOutlined className="text-xl" />
-          </button>
+            >
+              <SoundOutlined className="text-xl" />
+            </button>
 
-          {/* FRONT */}
-          {!isFlipped && (
-            <div className="h-full flex flex-col items-center justify-center text-center px-6">
-              <div
-                className={`${
-                  getFrontContent().isVietnamese
-                    ? "text-2xl sm:text-3xl"
-                    : "text-[32px]"
-                } font-semibold tracking-wide text-neutral-900 dark:text-neutral-100 ${
-                  getFrontContent().isVietnamese
-                    ? "font-lucida-grande"
-                    : "font-osaka"
-                } flex flex-col items-center`}
-              >
-                {getFrontContent().main}
-              </div>
-
-              {getFrontContent().sub && (
+            {/* FRONT */}
+            {!isFlipped && (
+              <div className="h-full flex flex-col items-center justify-center text-center px-6">
                 <div
-                  className={`mt-2 ${
+                  className={`${
                     getFrontContent().isVietnamese
                       ? "text-2xl sm:text-3xl"
                       : "text-[32px]"
-                  } text-neutral-500 dark:text-neutral-400 ${
+                  } font-semibold tracking-wide text-neutral-900 dark:text-neutral-100 ${
                     getFrontContent().isVietnamese
                       ? "font-lucida-grande"
                       : "font-osaka"
-                  }`}
+                  } flex flex-col items-center`}
                 >
-                  {getFrontContent()
-                    .sub.split("\n")
-                    .map((line, index) => (
-                      <div key={index} className="flex flex-col items-center">
-                        {line}
-                      </div>
-                    ))}
+                  {getFrontContent().main}
                 </div>
-              )}
 
-              <div className="absolute bottom-4 text-[11px] text-neutral-400 dark:text-neutral-500">
-                {screens?.xs ? "Chạm để lật" : "Phím cách để lật"}
+                {getFrontContent().sub && (
+                  <div
+                    className={`mt-2 ${
+                      getFrontContent().isVietnamese
+                        ? "text-2xl sm:text-3xl"
+                        : "text-[32px]"
+                    } text-neutral-500 dark:text-neutral-400 ${
+                      getFrontContent().isVietnamese
+                        ? "font-lucida-grande"
+                        : "font-osaka"
+                    }`}
+                  >
+                    {getFrontContent()
+                      .sub.split("\n")
+                      .map((line, index) => (
+                        <div key={index} className="flex flex-col items-center">
+                          {line}
+                        </div>
+                      ))}
+                  </div>
+                )}
+
+                <div className="absolute bottom-4 text-[11px] text-neutral-400 dark:text-neutral-500">
+                  {screens?.xs ? "Chạm để lật" : "Phím cách để lật"}
+                </div>
               </div>
-            </div>
-          )}
+            )}
 
-          {/* BACK */}
-          {isFlipped && (
-            <div className="h-full flex flex-col items-center justify-center text-center px-8">
-              <div
-                className={`${
-                  getBackContent().isVietnamese
-                    ? "text-2xl sm:text-3xl"
-                    : "text-[32px]"
-                } font-semibold tracking-wide text-neutral-900 dark:text-neutral-100 ${
-                  getBackContent().isVietnamese
-                    ? "font-lucida-grande"
-                    : "font-osaka"
-                } flex flex-col items-center`}
-              >
-                {getBackContent().main}
-              </div>
-
-              {getBackContent().sub && (
+            {/* BACK */}
+            {isFlipped && (
+              <div className="h-full flex flex-col items-center justify-center text-center px-8">
                 <div
-                  className={`mt-2 ${
+                  className={`${
                     getBackContent().isVietnamese
                       ? "text-2xl sm:text-3xl"
                       : "text-[32px]"
-                  } text-neutral-500 dark:text-neutral-400 ${
+                  } font-semibold tracking-wide text-neutral-900 dark:text-neutral-100 ${
                     getBackContent().isVietnamese
                       ? "font-lucida-grande"
                       : "font-osaka"
-                  }`}
+                  } flex flex-col items-center`}
                 >
-                  {getBackContent()
-                    .sub.split("\n")
-                    .map((line, index) => (
-                      <div key={index} className="flex flex-col items-center">
-                        {line}
-                      </div>
-                    ))}
+                  {getBackContent().main}
                 </div>
-              )}
 
-              <div className="absolute bottom-4 text-[11px] text-neutral-400 dark:text-neutral-500 tracking-wide">
-                ← Chưa nhớ · Đã nhớ →
+                {getBackContent().sub && (
+                  <div
+                    className={`mt-2 ${
+                      getBackContent().isVietnamese
+                        ? "text-2xl sm:text-3xl"
+                        : "text-[32px]"
+                    } text-neutral-500 dark:text-neutral-400 ${
+                      getBackContent().isVietnamese
+                        ? "font-lucida-grande"
+                        : "font-osaka"
+                    }`}
+                  >
+                    {getBackContent()
+                      .sub.split("\n")
+                      .map((line, index) => (
+                        <div key={index} className="flex flex-col items-center">
+                          {line}
+                        </div>
+                      ))}
+                  </div>
+                )}
+
+                <div className="absolute bottom-4 text-[11px] text-neutral-400 dark:text-neutral-500 tracking-wide">
+                  ← Chưa nhớ · Đã nhớ →
+                </div>
               </div>
-            </div>
-          )}
+            )}
+          </div>
         </div>
-      </div>
 
-      {/* ACTION BAR */}
-      <div className="bottom-0 bg-gradient-to-t from-neutral-50/95 to-neutral-50 dark:from-neutral-900/95 dark:to-neutral-900 px-4 sm:px-8 pb-2 pt-6 backdrop-blur-sm">
-        <div className="max-w-md mx-auto">
-          {/* Action Buttons */}
-          <div className="flex items-center justify-center gap-6">
-            {/* Unknown Button */}
-            <button
-              onClick={() => onMemoryEvaluation("unknown")}
-              className="
+        {/* ACTION BAR */}
+        <div className="relative bg-slate-900 px-4 sm:px-8 pb-7 pt-4">
+          <div className="flex items-center justify-between gap-4">
+            <div className="flex items-center gap-2 w-[120px] justify-start">
+              <Button
+                type="text"
+                size="large"
+                className="text-neutral-600 hover:text-neutral-800 dark:text-neutral-300 dark:hover:text-neutral-100 font-semibold"
+                icon={<SettingOutlined />}
+                onClick={() => setSettingsVisible(true)}
+              />
+            </div>
+            <div className="flex items-center justify-center gap-6 flex-1">
+              {/* Unknown Button */}
+              <button
+                onClick={() => onMemoryEvaluation("unknown")}
+                className="
                 group
                 relative
                 w-14 h-14
@@ -521,53 +453,26 @@ const VocabularyFlashcard: React.FC<VocabularyFlashcardProps> = ({
                 shadow-sm
                 hover:shadow-md
               "
-              title="Chưa nhớ"
-            >
-              <CloseOutlined className="text-lg" />
-              <span className="absolute -bottom-6 text-xs text-neutral-500 dark:text-neutral-400 opacity-0 group-hover:opacity-100 transition-opacity">
-                Chưa nhớ
-              </span>
-            </button>
+                title="Chưa nhớ"
+              >
+                <CloseOutlined className="text-lg" />
+              </button>
 
-            {/* Flip Button */}
-            <button
-              onClick={onFlipCard}
-              className="
-                group
-                relative
-                w-14 h-14
-                rounded-2xl
-                border-2
-                border-neutral-300
-                dark:border-neutral-600
-                bg-white
-                dark:bg-neutral-800
-                text-neutral-600
-                dark:text-neutral-300
-                hover:border-neutral-400
-                dark:hover:border-neutral-500
-                hover:bg-neutral-50
-                dark:hover:bg-neutral-700
-                hover:scale-105
-                active:scale-95
-                transition-all
-                duration-200
-                flex items-center justify-center
-                shadow-sm
-                hover:shadow-md
-              "
-              title="Lật thẻ"
-            >
-              <SwapOutlined className="text-lg" />
-              <span className="absolute -bottom-6 text-xs text-neutral-500 dark:text-neutral-400 opacity-0 group-hover:opacity-100 transition-opacity">
-                Lật thẻ
-              </span>
-            </button>
+              {/* Progress Counter */}
+              <div className="min-w-[4.5rem] text-center">
+                <span className="inline-flex items-center rounded-full px-3 py-1 text-base font-semibold text-neutral-800 dark:text-neutral-100">
+                  {currentCardIndex + 1}
+                  <span className="mx-1 text-neutral-400">/</span>
+                  <span className="text-neutral-500 dark:text-neutral-300">
+                    {cardsToStudy.length}
+                  </span>
+                </span>
+              </div>
 
-            {/* Known Button */}
-            <button
-              onClick={() => onMemoryEvaluation("known")}
-              className="
+              {/* Known Button */}
+              <button
+                onClick={() => onMemoryEvaluation("known")}
+                className="
                 group
                 relative
                 w-14 h-14
@@ -591,32 +496,42 @@ const VocabularyFlashcard: React.FC<VocabularyFlashcardProps> = ({
                 shadow-sm
                 hover:shadow-md
               "
-              title="Đã nhớ"
-            >
-              <CheckOutlined className="text-lg" />
-              <span className="absolute -bottom-6 text-xs text-neutral-500 dark:text-neutral-400 opacity-0 group-hover:opacity-100 transition-opacity">
-                Đã nhớ
-              </span>
-            </button>
+                title="Đã nhớ"
+              >
+                <CheckOutlined className="text-lg" />
+              </button>
+            </div>
+            <div className="flex items-center gap-2 justify-end w-[120px]">
+              {onResetCards && (
+                <Button
+                  type="text"
+                  size="large"
+                  className="text-neutral-600 hover:text-neutral-800 dark:text-neutral-300 dark:hover:text-neutral-100 font-semibold"
+                  icon={<FontAwesomeIcon icon={faRotateLeft} />}
+                  onClick={onResetCards}
+                />
+              )}
+              {onShuffleCards && (
+                <Button
+                  type="text"
+                  size="large"
+                  className="text-neutral-600 hover:text-neutral-800 dark:text-neutral-300 dark:hover:text-neutral-100 font-semibold"
+                  icon={<FontAwesomeIcon icon={faShuffle} />}
+                  onClick={onShuffleCards}
+                />
+              )}
+            </div>
           </div>
-
-          {/* Keyboard Shortcuts Hint */}
-          <div className="mt-2 text-center pb-2">
-            <p className="text-xs text-neutral-400 dark:text-neutral-500">
-              Phím tắt:{" "}
-              <kbd className="px-1 py-0.5 bg-neutral-200 dark:bg-neutral-700 rounded text-xs">
-                ←
-              </kbd>{" "}
-              Chưa nhớ •{" "}
-              <kbd className="px-1 py-0.5 bg-neutral-200 dark:bg-neutral-700 rounded text-xs">
-                Space
-              </kbd>{" "}
-              Lật •{" "}
-              <kbd className="px-1 py-0.5 bg-neutral-200 dark:bg-neutral-700 rounded text-xs">
-                →
-              </kbd>{" "}
-              Đã nhớ
-            </p>
+          <div className="absolute bottom-0 left-0 right-0">
+            <div className="h-1.5 w-full bg-neutral-200 dark:bg-neutral-700 rounded-full overflow-hidden">
+              <div
+                className="h-full bg-blue-500 transition-all duration-300 ease-out"
+                style={{
+                  width: `${((currentCardIndex + 1) / cardsToStudy.length) * 100}%`,
+                  background: "linear-gradient(90deg, #3b82f6, #60a5fa)",
+                }}
+              />
+            </div>
           </div>
         </div>
       </div>
@@ -693,7 +608,10 @@ const VocabularyFlashcard: React.FC<VocabularyFlashcardProps> = ({
                         <Text className="text-secondary-800 dark:text-secondary-200">
                           Hiện Hán Việt (nếu có)
                         </Text>
-                        <Switch checked={showHanViet} onChange={setShowHanViet} />
+                        <Switch
+                          checked={showHanViet}
+                          onChange={setShowHanViet}
+                        />
                       </div>
                       <div className="flex items-center justify-between">
                         <Text className="text-secondary-800 dark:text-secondary-200">
@@ -733,6 +651,7 @@ const VocabularyFlashcard: React.FC<VocabularyFlashcardProps> = ({
               type="default"
               block
               danger
+              icon={<FontAwesomeIcon icon={faRotateLeft} />}
               onClick={() => {
                 if (onResetCards) {
                   onResetCards();
@@ -745,6 +664,7 @@ const VocabularyFlashcard: React.FC<VocabularyFlashcardProps> = ({
             <Button
               type="default"
               block
+              icon={<FontAwesomeIcon icon={faShuffle} />}
               onClick={() => {
                 if (onShuffleCards) {
                   onShuffleCards();
