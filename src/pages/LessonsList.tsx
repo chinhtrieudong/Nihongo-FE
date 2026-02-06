@@ -13,7 +13,6 @@ import {
   Typography,
   Select,
   Space,
-  Progress,
 } from "antd";
 import {
   BookOutlined,
@@ -21,13 +20,15 @@ import {
   PlayCircleOutlined,
   ReloadOutlined,
   FilterOutlined,
+  CheckCircleOutlined,
+  ClockCircleOutlined,
+  MinusCircleOutlined,
 } from "@ant-design/icons";
 
 const { Title, Text } = Typography;
 const { Option } = Select;
 
 interface FilterState {
-  level: string[];
   status: string[];
   sortBy: string;
 }
@@ -41,7 +42,6 @@ const LessonsList: React.FC = () => {
   const [error, setError] = useState<string | null>(null);
   const [searchQuery, setSearchQuery] = useState("");
   const [filters, setFilters] = useState<FilterState>({
-    level: [],
     status: [],
     sortBy: "lessonOrder",
   });
@@ -94,6 +94,26 @@ const LessonsList: React.FC = () => {
     }
   };
 
+  const getStatusLabel = (status?: string) => {
+    switch (status) {
+      case "completed":
+        return {
+          className: "bg-green-500 text-white",
+          icon: <CheckCircleOutlined />,
+        };
+      case "in_progress":
+        return {
+          className: "bg-blue-500 text-white",
+          icon: <ClockCircleOutlined />,
+        };
+      default:
+        return {
+          className: "bg-secondary-400 text-white",
+          icon: <MinusCircleOutlined />,
+        };
+    }
+  };
+
   const filteredAndSortedLessons = useMemo(() => {
     let filtered = lessons.filter((lesson) => {
       const searchMatch =
@@ -103,28 +123,17 @@ const LessonsList: React.FC = () => {
         `bài ${lesson.lessonNumber}`.includes(searchQuery.toLowerCase()) ||
         `lesson ${lesson.lessonNumber}`.includes(searchQuery.toLowerCase());
 
-      const levelMatch =
-        filters.level.length === 0 ||
-        !lesson.level ||
-        filters.level.includes(lesson.level);
       const statusMatch =
         filters.status.length === 0 ||
         (lesson.status && filters.status.includes(lesson.status));
 
-      return searchMatch && levelMatch && statusMatch;
+      return searchMatch && statusMatch;
     });
 
     filtered.sort((a, b) => {
       switch (filters.sortBy) {
         case "lessonOrder":
           return a.lessonNumber - b.lessonNumber;
-        case "progress":
-          return (b.progress || 0) - (a.progress || 0);
-        case "recentlyLearned":
-          return (
-            new Date((b as any).updatedAt || 0).getTime() -
-            new Date((a as any).updatedAt || 0).getTime()
-          );
         default:
           return a.lessonNumber - b.lessonNumber;
       }
@@ -174,50 +183,49 @@ const LessonsList: React.FC = () => {
     <div className="min-h-full bg-secondary-50 dark:bg-secondary-950 text-secondary-900 dark:text-secondary-100">
       <div className="w-full px-4 sm:px-6 py-6">
         <div className="mb-5">
-          <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-lg bg-primary-100 dark:bg-primary-900 flex items-center justify-center">
-              <BookOutlined className="text-primary-600 dark:text-primary-400" />
+          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+            <div className="flex items-center gap-3">
+              <div className="w-10 h-10 rounded-lg bg-primary-100 dark:bg-primary-900 flex items-center justify-center">
+                <BookOutlined className="text-primary-600 dark:text-primary-400" />
+              </div>
+              <div>
+                <Title
+                  level={3}
+                  className="!mb-0 text-gray-900 dark:text-secondary-100"
+                >
+                  Minna no Nihongo
+                </Title>
+                <Text className="text-secondary-600 dark:text-secondary-400">
+                  Học theo lộ trình JLPT • N5 → N4
+                </Text>
+              </div>
             </div>
-            <div>
-              <Title level={3} className="!mb-0 text-gray-900 dark:text-secondary-100">
-                Minna no Nihongo
-              </Title>
-              <Text className="text-secondary-600 dark:text-secondary-400">
-                Học theo lộ trình JLPT • N5 → N4
-              </Text>
+            <div className="text-sm text-secondary-600 dark:text-secondary-400">
+              Tổng {lessons.length} bài
             </div>
           </div>
         </div>
 
         <Card className="mb-4 shadow-sm" styles={{ body: { padding: "16px" } }}>
-          <div className="space-y-3">
+          <div className="flex items-center gap-3">
             <Input
               placeholder="Tìm kiếm bài học..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               prefix={<SearchOutlined />}
               size="large"
-              className="w-full"
+              className="flex-1"
               allowClear
             />
-            <Space wrap className="w-full">
-              <Select
-                mode="multiple"
-                value={filters.level}
-                onChange={(value) => setFilters((prev) => ({ ...prev, level: value }))}
-                placeholder="JLPT"
-                className="min-w-[140px]"
-              >
-                <Option value="N5">N5</Option>
-                <Option value="N4">N4</Option>
-                <Option value="N3">N3</Option>
-              </Select>
+            <Space className="shrink-0">
               <Select
                 mode="multiple"
                 value={filters.status}
-                onChange={(value) => setFilters((prev) => ({ ...prev, status: value }))}
+                onChange={(value) =>
+                  setFilters((prev) => ({ ...prev, status: value }))
+                }
                 placeholder="Trạng thái"
-                className="min-w-[160px]"
+                className="min-w-[180px]"
               >
                 <Option value="completed">Đã học</Option>
                 <Option value="in_progress">Đang học</Option>
@@ -225,14 +233,14 @@ const LessonsList: React.FC = () => {
               </Select>
               <Select
                 value={filters.sortBy}
-                onChange={(value) => setFilters((prev) => ({ ...prev, sortBy: value }))}
+                onChange={(value) =>
+                  setFilters((prev) => ({ ...prev, sortBy: value }))
+                }
                 placeholder="Sắp xếp"
-                className="min-w-[160px]"
+                className="min-w-[180px]"
                 suffixIcon={<FilterOutlined />}
               >
                 <Option value="lessonOrder">Thứ tự bài học</Option>
-                <Option value="progress">Tiến độ %</Option>
-                <Option value="recentlyLearned">Gần đây</Option>
               </Select>
             </Space>
           </div>
@@ -241,53 +249,52 @@ const LessonsList: React.FC = () => {
         {filteredAndSortedLessons.length === 0 ? (
           <Empty description="Không tìm thấy bài học nào" className="py-12" />
         ) : (
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-[1200px] mx-auto">
             {filteredAndSortedLessons.map((lesson) => {
+              const statusLabel = getStatusLabel(lesson.status);
               const actionButton = getActionButton(lesson);
               return (
-                <Card
+                <div
                   key={lesson.id}
-                  className="shadow-sm hover:shadow-md transition-all cursor-pointer border border-secondary-200 dark:border-secondary-800 rounded-lg"
-                  onClick={() => handleLessonClick(lesson)}
-                  hoverable
+                  className="group relative w-[240px] max-w-full rounded-2xl overflow-hidden border-2 border-blue-300 bg-white dark:bg-secondary-900 shadow-sm hover:-translate-y-1 transition-all duration-200"
                 >
-                  <div className="flex items-start gap-3">
-                    <div className="w-9 h-9 rounded-full bg-secondary-100 dark:bg-secondary-800 flex items-center justify-center text-secondary-700 dark:text-secondary-300 font-semibold text-sm">
-                      {lesson.lessonNumber}
+                  <button
+                    className="w-full text-left"
+                    onClick={() => handleLessonClick(lesson)}
+                  >
+                    <div className="relative h-44 w-full overflow-hidden bg-white border-b-2 border-b-blue-300 border-blue-300 flex items-center justify-center">
+                      {lesson.image_url ? (
+                        <img
+                          src={lesson.image_url}
+                          alt={lesson.title}
+                          loading="lazy"
+                          className="block w-3/5 h-auto max-h-full object-contain"
+                        />
+                      ) : (
+                        <div className="absolute inset-0 flex items-center justify-center text-secondary-700 dark:text-secondary-300 text-sm font-semibold">
+                          Bài {lesson.lessonNumber}
+                        </div>
+                      )}
                     </div>
 
-                    <div className="flex-1 min-w-0">
-                      <div className="flex items-start justify-between gap-3">
-                        <div className="min-w-0">
-                          <Title level={5} className="!mb-1 text-sm text-gray-900 dark:text-secondary-100 line-clamp-1">
-                            {lesson.title}
-                          </Title>
-                          <Text className="text-secondary-600 dark:text-secondary-400 text-xs line-clamp-2">
-                            {lesson.description}
-                          </Text>
+                    <div className="p-4">
+                      <div className="min-w-0">
+                        <div className="text-sm font-bold text-secondary-900 dark:text-secondary-100 line-clamp-2">
+                          Bài {lesson.lessonNumber}: {lesson.title}
                         </div>
-                        {lesson.level && (
-                          <Tag color={lesson.level === "N5" ? "green" : "blue"}>
-                            {lesson.level}
-                          </Tag>
-                        )}
+                        <div className="mt-2 text-xs font-medium text-secondary-900 dark:text-secondary-200 line-clamp-3">
+                          {lesson.description}
+                        </div>
                       </div>
                     </div>
+                  </button>
 
-                    <Button
-                      type={actionButton.type}
-                      icon={actionButton.icon}
-                      className={actionButton.className}
-                      size="small"
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        handleLessonClick(lesson);
-                      }}
-                    >
-                      {actionButton.text}
-                    </Button>
+                  <div className="absolute top-2 left-2">
+                    <span className={`inline-flex items-center justify-center w-6 h-6 rounded-full text-xs ${statusLabel.className}`}>
+                      {statusLabel.icon}
+                    </span>
                   </div>
-                </Card>
+                </div>
               );
             })}
           </div>

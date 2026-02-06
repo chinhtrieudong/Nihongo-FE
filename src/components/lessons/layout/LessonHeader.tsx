@@ -1,5 +1,5 @@
 import React from "react";
-import { Badge, Button, Progress, Typography, Avatar, Drawer } from "antd";
+import { Badge, Button, Typography, Avatar, Drawer } from "antd";
 import { Grid } from "antd";
 import {
     BookOutlined,
@@ -7,7 +7,6 @@ import {
     ClockCircleOutlined,
     FireOutlined,
     ArrowLeftOutlined,
-    TrophyOutlined,
     MenuOutlined,
 } from "@ant-design/icons";
 import type { Lesson, LessonDetail } from "../../../types/lesson";
@@ -69,17 +68,12 @@ const LessonHeader: React.FC<LessonHeaderProps> = ({
                         {/* Right: Actions */}
                         <div className="flex items-center gap-2 flex-shrink-0">
                             {screens.xs && (
-                                <>
-                                    <Badge count={Math.round(lessonDetail.lesson.progress)} size="small">
-                                        <TrophyOutlined className="text-lg text-yellow-500" />
-                                    </Badge>
-                                    <Button
-                                        icon={<MenuOutlined />}
-                                        onClick={() => setMobileMenuVisible(true)}
-                                        className="border-0 shadow-sm"
-                                        size="small"
-                                    />
-                                </>
+                                <Button
+                                    icon={<MenuOutlined />}
+                                    onClick={() => setMobileMenuVisible(true)}
+                                    className="border-0 shadow-sm"
+                                    size="small"
+                                />
                             )}
                             {!screens.xs && (
                                 <Button
@@ -93,18 +87,13 @@ const LessonHeader: React.FC<LessonHeaderProps> = ({
                         </div>
                     </div>
 
-                    {/* Mobile Progress Bar */}
-                    <div className="mt-3">
-                        <Progress
-                            percent={lessonDetail.lesson.progress}
-                            strokeColor={{
-                                '0%': '#108ee9',
-                                '100%': '#52c41a',
-                            }}
-                            size={screens.xs ? 4 : 6}
-                            showInfo={screens.xs ? false : true}
-                            className="mb-2"
-                        />
+                    {/* Mobile Status */}
+                    <div className="mt-3 text-sm text-secondary-600 dark:text-secondary-400">
+                        {lessonDetail.lesson.status === "completed"
+                            ? "✅ Hoàn thành"
+                            : lessonDetail.lesson.status === "in_progress"
+                                ? "🔓 Đang học"
+                                : "🔒 Chưa bắt đầu"}
                     </div>
                 </div>
             </div>
@@ -152,11 +141,8 @@ const LessonHeader: React.FC<LessonHeaderProps> = ({
                                 </div>
                             </div>
 
-                            {/* Progress Section */}
+                            {/* Status Section */}
                             <div className="text-center">
-                                <div className="text-3xl font-bold text-primary-600 dark:text-primary-400">
-                                    {lessonDetail.lesson.progress}%
-                                </div>
                                 <div className="text-sm text-secondary-600 dark:text-secondary-400 mb-3">
                                     {lessonDetail.lesson.status === "completed"
                                         ? "✅ Hoàn thành"
@@ -175,27 +161,7 @@ const LessonHeader: React.FC<LessonHeaderProps> = ({
                             </div>
                         </div>
 
-                        {/* Desktop Progress Details */}
-                        <div className="mt-6">
-                            <Progress
-                                percent={lessonDetail.lesson.progress}
-                                strokeColor={{
-                                    '0%': '#108ee9',
-                                    '100%': '#52c41a',
-                                }}
-                                size={8}
-                                showInfo={false}
-                                className="mb-3"
-                            />
-                            <div className="flex justify-between text-sm text-gray-600 dark:text-secondary-400">
-                                <span>Bắt đầu</span>
-                                <span>Vocabulary</span>
-                                <span>Grammar</span>
-                                <span>Dialog</span>
-                                <span>Exercises</span>
-                                <span>Hoàn thành</span>
-                            </div>
-                        </div>
+                        {/* Desktop Progress Details removed */}
                     </div>
                 </div>
             )}
@@ -239,19 +205,14 @@ const LessonHeader: React.FC<LessonHeaderProps> = ({
                     {/* Progress */}
                     <div>
                         <h4 className="font-semibold text-secondary-900 dark:text-secondary-100 mb-3">
-                            Tiến độ học tập
+                            Trạng thái học tập
                         </h4>
-                        <div className="text-center mb-4">
-                            <div className="text-2xl font-bold text-primary-600 dark:text-primary-400">
-                                {lessonDetail.lesson.progress}%
-                            </div>
-                            <div className="text-sm text-secondary-600 dark:text-secondary-400">
-                                {lessonDetail.lesson.status === "completed"
-                                    ? "✅ Hoàn thành"
-                                    : lessonDetail.lesson.status === "in_progress"
-                                        ? "🔓 Đang học"
-                                        : "🔒 Chưa bắt đầu"}
-                            </div>
+                        <div className="text-sm text-secondary-600 dark:text-secondary-400 mb-4">
+                            {lessonDetail.lesson.status === "completed"
+                                ? "✅ Hoàn thành"
+                                : lessonDetail.lesson.status === "in_progress"
+                                    ? "🔓 Đang học"
+                                    : "🔒 Chưa bắt đầu"}
                         </div>
                         <Button
                             type="primary"

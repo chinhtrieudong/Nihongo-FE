@@ -108,7 +108,8 @@ export interface Lesson {
   level?: "N5" | "N4" | "N3" | "N2" | "N1";
   description: string;
   status: "not_started" | "in_progress" | "completed";
-  progress: number;
+  progress?: number;
+  image_url?: string;
   estimatedTime?: number;
   prerequisites?: string[];
   relatedLessons?: string[];

@@ -236,6 +236,7 @@ const LessonDetail: React.FC = () => {
     lessonId,
   ]);
 
+
   // Lessons list state
   const [lessons, setLessons] = useState<Lesson[]>([]);
   const [lessonsLoading, setLessonsLoading] = useState(false);
@@ -303,6 +304,13 @@ const LessonDetail: React.FC = () => {
 
     document.addEventListener("click", handleClickOutside);
     return () => document.removeEventListener("click", handleClickOutside);
+  }, []);
+
+  useEffect(() => {
+    document.body.classList.add("lesson-detail-page");
+    return () => {
+      document.body.classList.remove("lesson-detail-page");
+    };
   }, []);
 
   const loadLessons = async (
@@ -1150,6 +1158,24 @@ const LessonDetail: React.FC = () => {
         paddingRight: screens.lg && !desktopSidebarCollapsed ? "280px" : "0",
       }}
     >
+      <style>{`
+        .lesson-detail-page .theme-surface::-webkit-scrollbar {
+          width: 0;
+          height: 0;
+        }
+        .lesson-detail-page .theme-surface {
+          scrollbar-width: none;
+          -ms-overflow-style: none;
+        }
+        .lesson-detail-content::-webkit-scrollbar {
+          width: 0;
+          height: 0;
+        }
+        .lesson-detail-content {
+          scrollbar-width: none;
+          -ms-overflow-style: none;
+        }
+      `}</style>
       {/* Main Content */}
       <Layout>
         <Header
@@ -1200,7 +1226,7 @@ const LessonDetail: React.FC = () => {
           </div>
         )}
 
-        <Content className="flex-1 sm:px-0 bg-white dark:bg-secondary-900 flex flex-col min-h-full">
+        <Content className="lesson-detail-content flex-1 sm:px-0 bg-white dark:bg-secondary-900 flex flex-col min-h-full overflow-auto">
           {screens.xs && (
             <style>
               {`

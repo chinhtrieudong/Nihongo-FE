@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useAppSelector } from "../../../store/hooks";
+import { useRequireAuth } from "../../../hooks/useRequireAuth";
 import { lessonAPI } from "../../../services/api";
 import { Badge, Button, Input, Progress, message } from "antd";
 import {
@@ -20,12 +21,16 @@ const ExercisesTab: React.FC<ExercisesTabProps> = ({
     lessonId,
 }) => {
     const { currentUser } = useAppSelector((state) => state.user);
+    const requireAuth = useRequireAuth();
     const [answers, setAnswers] = useState<Record<string, any>>({});
     const [results, setResults] = useState<Record<string, any>>({});
     const [currentExercise, setCurrentExercise] = useState(0);
     const [showHint, setShowHint] = useState(false);
 
     const submitAnswer = async (exerciseId: string, answer: any) => {
+        if (!requireAuth(undefined, { message: "Vui lòng đăng nhập để nộp bài." })) {
+            return;
+        }
         if (!currentUser) return;
 
         try {

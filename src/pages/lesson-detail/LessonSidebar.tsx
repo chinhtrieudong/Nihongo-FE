@@ -30,6 +30,19 @@ const LessonSidebar: React.FC<LessonSidebarProps> = ({
 }) => {
   return (
     <>
+      <style>{`
+        .lesson-sidebar-sider .ant-layout-sider-children {
+          overflow: hidden;
+        }
+        .lesson-sidebar-scroll::-webkit-scrollbar {
+          width: 0;
+          height: 0;
+        }
+        .lesson-sidebar-scroll {
+          scrollbar-width: none;
+          -ms-overflow-style: none;
+        }
+      `}</style>
       <Drawer
         title={<span>50 bài Minna no Nihongo</span>}
         placement="right"
@@ -63,7 +76,7 @@ const LessonSidebar: React.FC<LessonSidebarProps> = ({
         collapsed={desktopSidebarCollapsed}
         onCollapse={setDesktopSidebarCollapsed}
         breakpoint="lg"
-        className="bg-white dark:bg-secondary-925 border-l border-secondary-200 dark:border-secondary-900 fixed right-0 overflow-y-hidden transition-all duration-300"
+        className="lesson-sidebar-sider bg-white dark:bg-secondary-925 border-l border-secondary-200 dark:border-secondary-900 fixed right-0 overflow-y-hidden transition-all duration-300"
         style={{ zIndex: 1000, top: "64px", height: "calc(100vh - 64px)" }}
       >
         <div className="p-4 border-b border-secondary-200 dark:border-secondary-900 flex-shrink-0">
@@ -102,8 +115,8 @@ const LessonSidebar: React.FC<LessonSidebarProps> = ({
         </div>
 
         <div
-          className=""
-          style={{ height: "calc(100vh - 152px)", overflowY: "auto", scrollbarWidth: "none" }}
+          className="lesson-sidebar-scroll"
+          style={{ height: "calc(100vh - 152px)", overflowY: "auto" }}
         >
           {lessonsLoading ? (
             <div className="p-8 text-center">

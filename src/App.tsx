@@ -22,7 +22,6 @@ import TestResults from "./pages/TestResults";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import IconShowcase from "./components/IconShowcase";
-import ProtectedRoute from "./components/ProtectedRoute";
 import { AuthProvider, useAuth } from "./contexts/AuthContext";
 import "./App.css";
 
@@ -52,15 +51,8 @@ const AppContent: React.FC = () => {
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
 
-          {/* Protected routes */}
-          <Route
-            path="/"
-            element={
-              <ProtectedRoute>
-                <Layout />
-              </ProtectedRoute>
-            }
-          >
+          {/* Public routes */}
+          <Route path="/" element={<Layout />}>
             <Route index element={<LessonsList />} />
             <Route path="lessons" element={<LessonsList />} />
             <Route path="lessons/:lessonId" element={<LessonDetail />} />

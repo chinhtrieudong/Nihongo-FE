@@ -1,8 +1,8 @@
 import React from "react";
-import { Layout, Menu, Typography } from "antd";
+import { Layout, Typography } from "antd";
 import { Link, useLocation } from "react-router-dom";
 import {
-  BookOutlined,
+  HomeOutlined,
   ReadOutlined,
   ExperimentOutlined,
   SoundOutlined,
@@ -10,20 +10,17 @@ import {
   AimOutlined,
   UserOutlined,
 } from "@ant-design/icons";
-import { useAppSelector } from "../store/hooks";
 
 const { Sider } = Layout;
 const { Title } = Typography;
 
 const Sidebar: React.FC = () => {
   const location = useLocation();
-  const { sidebarOpen } = useAppSelector((state) => state.ui);
-
   const menuItems = [
     {
       key: "/lessons",
-      icon: <BookOutlined />,
-      label: <Link to="/lessons">Bài học</Link>,
+      icon: <HomeOutlined />,
+      label: <Link to="/lessons">Trang chủ</Link>,
     },
     {
       key: "/kanji",
@@ -60,9 +57,7 @@ const Sidebar: React.FC = () => {
   // Desktop Sidebar Only
   return (
     <Sider
-      collapsed={!sidebarOpen}
-      collapsedWidth={64}
-      width={200}
+      width={96}
       className="bg-white dark:bg-secondary-925 border-r border-secondary-200 dark:border-secondary-900"
       style={{
         overflow: 'hidden',
@@ -73,38 +68,35 @@ const Sidebar: React.FC = () => {
         bottom: 0,
       }}
     >
-      <div className="p-4">
-        <div className="flex items-center h-8">
-          {/* Logo */}
-          <div className="flex-shrink-0 w-8 h-8 bg-blue-500 rounded-lg flex items-center justify-center text-white font-bold text-sm">
-            日
-          </div>
+      <div className="pt-4 pb-3 flex items-center justify-center">
+        <div className="w-10 h-10 bg-blue-500 rounded-2xl flex items-center justify-center text-white font-bold text-sm shadow-sm">
+          日
+        </div>
+      </div>
 
-          {/* Title */}
-          <div
-            className={`ml-3 transition-all duration-200 overflow-hidden ${sidebarOpen ? "opacity-100 w-[120px]" : "opacity-0 w-0"
+      <nav className="flex flex-col items-center gap-3 px-3 py-2">
+        {menuItems.map((item) => {
+          const isActive = location.pathname === item.key;
+          return (
+            <Link
+              key={item.key}
+              to={item.key}
+              className={`w-full rounded-2xl px-2 py-3 flex flex-col items-center gap-1 text-xs font-medium transition-colors ${
+                isActive
+                  ? "bg-secondary-100 text-secondary-900 dark:bg-secondary-800 dark:text-secondary-100"
+                  : "text-secondary-500 hover:bg-secondary-100/70 hover:text-secondary-900 dark:text-secondary-400 dark:hover:bg-secondary-800/60 dark:hover:text-secondary-100"
               }`}
-          >
-            <Title level={4} className="!mb-0 text-blue-600 font-bold whitespace-nowrap">
-              Nihongo
-            </Title>
-          </div>
-        </div>
-      </div>
+            >
+              <span className="text-lg">{item.icon}</span>
+              <span className="text-center leading-tight">
+                {typeof item.label === "string" ? item.label : (item.label as any).props.children}
+              </span>
+            </Link>
+          );
+        })}
+      </nav>
 
-      <Menu
-        mode="inline"
-        selectedKeys={[location.pathname]}
-        className="border-none bg-transparent"
-        items={menuItems}
-        style={{ padding: '16px' }}
-      />
-
-      <div className="absolute bottom-0 left-0 right-0 p-4 border-t border-secondary-200 dark:border-secondary-900">
-        <div className={`text-xs text-secondary-700 dark:text-secondary-400 ${sidebarOpen ? 'text-left' : 'text-center'}`}>
-          {sidebarOpen ? 'Nihongo v1.0' : 'v1.0'}
-        </div>
-      </div>
+      <div className="absolute bottom-0 left-0 right-0 p-4" />
     </Sider>
   );
 };

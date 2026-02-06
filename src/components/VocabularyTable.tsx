@@ -2,7 +2,6 @@ import React, { useState, useMemo, useEffect, useCallback } from "react";
 
 import {
   Table,
-  Input,
   Button,
   Card,
   Typography,
@@ -19,7 +18,6 @@ import {
 } from "antd";
 
 import {
-  SearchOutlined,
   SoundOutlined,
   BookOutlined,
   SwapOutlined,
@@ -56,8 +54,6 @@ const VocabularyTable: React.FC<VocabularyTableProps> = ({
   onExitFlashcard,
 }) => {
   const { screens } = useResponsive();
-
-  const [searchTerm, setSearchTerm] = useState("");
 
   const [showRomaji, setShowRomaji] = useState(false);
 
@@ -148,22 +144,7 @@ const VocabularyTable: React.FC<VocabularyTableProps> = ({
   ).length;
   const currentCard = cardsToStudy[currentCardIndex];
 
-  // Memoized filtered data
-  const filteredData = useMemo(() => {
-    if (!searchTerm) return data;
-
-    const lowerSearchTerm = searchTerm.toLowerCase();
-    return data.filter(
-      (item) =>
-        item.kanji.includes(searchTerm) ||
-        (item.hiragana && item.hiragana.includes(searchTerm)) ||
-        (item.katakana && item.katakana.includes(searchTerm)) ||
-        item.romaji.toLowerCase().includes(lowerSearchTerm) ||
-        (item.meaning_vi &&
-          item.meaning_vi.toLowerCase().includes(lowerSearchTerm)) ||
-        (item.hanviet && item.hanviet.toLowerCase().includes(lowerSearchTerm)),
-    );
-  }, [data, searchTerm]);
+  const filteredData = data;
 
   // Memoized event handlers
   const handleWordClick = useCallback((word: VocabularyItemType) => {
@@ -311,9 +292,9 @@ const VocabularyTable: React.FC<VocabularyTableProps> = ({
               key: "hanviet",
               width: screens.lg ? 110 : 90,
               render: (text: string) => (
-                <Typography.Text type="secondary">
+                <span className="text-secondary-800 dark:text-secondary-300">
                   {text ? text.toUpperCase().replace(/,/g, "") : "-"}
-                </Typography.Text>
+                </span>
               ),
             },
           ]
@@ -624,20 +605,6 @@ const VocabularyTable: React.FC<VocabularyTableProps> = ({
               </div>
               <div className="flex items-center gap-2">
                 <Button
-                  type={viewMode === "table" ? "primary" : "default"}
-                  size="small"
-                  onClick={() => setViewMode("table")}
-                >
-                  Bảng
-                </Button>
-                <Button
-                  type={viewMode === "study" ? "primary" : "default"}
-                  size="small"
-                  onClick={() => setViewMode("study")}
-                >
-                  Học
-                </Button>
-                <Button
                   type="default"
                   onClick={() => {
                     onEnterFlashcard?.();
@@ -654,30 +621,6 @@ const VocabularyTable: React.FC<VocabularyTableProps> = ({
 
             <div className="mt-4">
               <div className="border-t border-secondary-200 dark:border-secondary-800 mt-2 mb-2" />
-              {viewMode === "table" && (
-                <div className="flex items-center justify-between gap-4">
-                  <div className="flex items-center gap-2">
-                    <Typography.Text className="text-base text-gray-700 dark:text-secondary-300">
-                      Hán Việt
-                    </Typography.Text>
-                    <Switch
-                      checked={showHanViet}
-                      onChange={(checked) => setShowHanViet(checked)}
-                      size="default"
-                    />
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <Typography.Text className="text-base text-gray-700 dark:text-secondary-300">
-                      Romaji
-                    </Typography.Text>
-                    <Switch
-                      checked={showRomaji}
-                      onChange={(checked) => setShowRomaji(checked)}
-                      size="default"
-                    />
-                  </div>
-                </div>
-              )}
             </div>
           </div>
         ) : (
@@ -690,18 +633,6 @@ const VocabularyTable: React.FC<VocabularyTableProps> = ({
                 Từ Vựng
               </Typography.Title>
               <div className="flex items-center gap-2">
-                <Button
-                  type={viewMode === "table" ? "primary" : "default"}
-                  onClick={() => setViewMode("table")}
-                >
-                  Bảng
-                </Button>
-                <Button
-                  type={viewMode === "study" ? "primary" : "default"}
-                  onClick={() => setViewMode("study")}
-                >
-                  Học
-                </Button>
                 <Button
                   type="primary"
                   icon={
@@ -723,39 +654,6 @@ const VocabularyTable: React.FC<VocabularyTableProps> = ({
               </div>
             </div>
 
-            <Input.Search
-              placeholder="Tìm kiếm từ vựng..."
-              value={searchTerm}
-              onChange={(e) => setSearchTerm(e.target.value)}
-              allowClear
-              size="large"
-              className="w-full"
-            />
-
-            {viewMode === "table" && (
-              <div className="flex flex-col sm:flex-row sm:items-center gap-3">
-                <div className="flex items-center gap-2">
-                  <Typography.Text className="text-sm text-gray-600 dark:text-secondary-400">
-                    Ẩn Hán Việt:
-                  </Typography.Text>
-                  <Switch
-                    checked={!showHanViet}
-                    onChange={(checked) => setShowHanViet(!checked)}
-                    size="default"
-                  />
-                </div>
-                <div className="flex items-center gap-2">
-                  <Typography.Text className="text-sm text-gray-600 dark:text-secondary-400">
-                    Hiển thị Romaji:
-                  </Typography.Text>
-                  <Switch
-                    checked={showRomaji}
-                    onChange={(checked) => setShowRomaji(checked)}
-                    size="default"
-                  />
-                </div>
-              </div>
-            )}
           </div>
         )}
       </Card>
@@ -796,6 +694,7 @@ const VocabularyTable: React.FC<VocabularyTableProps> = ({
               }
               pagination={false}
               scroll={{ x: "max-content" }}
+              className="vocab-table"
               columns={screens.md ? tableColumns : tabletColumns}
               onRow={(record: VocabularyItemType) => ({
                 onClick: () => handleWordClick(record),
@@ -851,6 +750,17 @@ const VocabularyTable: React.FC<VocabularyTableProps> = ({
           )
         )}
       </Card>
+
+      <style>{`
+        .vocab-table .ant-table-body::-webkit-scrollbar {
+          width: 0;
+          height: 0;
+        }
+        .vocab-table .ant-table-body {
+          scrollbar-width: none;
+          -ms-overflow-style: none;
+        }
+      `}</style>
 
       {/* Detail Modal */}
       <VocabularyDetailModal
