@@ -275,11 +275,15 @@ const VocabularyFlashcard: React.FC<VocabularyFlashcardProps> = ({
   // Render fullscreen-only view
   return (
     <div
-      className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 p-4"
-      onClick={onBackToTable}
+      className="fixed inset-0 z-[1000] flex items-center justify-center bg-black/40 p-4"
+      onClick={() => {
+        if (!settingsVisible) {
+          onBackToTable?.();
+        }
+      }}
     >
       <div
-        className="w-full max-w-[700px] bg-slate-700 rounded-xl shadow-2xl flex flex-col overflow-hidden"
+        className="w-full max-w-[700px] sm:max-w-[720px] md:max-w-[760px] bg-slate-700 rounded-xl shadow-2xl flex flex-col overflow-hidden"
         style={{ transform: "scale(1)" }}
         onClick={(e) => e.stopPropagation()}
       >
@@ -290,7 +294,9 @@ const VocabularyFlashcard: React.FC<VocabularyFlashcardProps> = ({
             className="
               relative
               w-full
-              h-[65vh]
+              h-[50vh]
+              sm:h-[60vh]
+              md:h-[65vh]
               rounded-t-3xl rounded-b-none
               bg-slate-700
               border-b
@@ -300,6 +306,10 @@ const VocabularyFlashcard: React.FC<VocabularyFlashcardProps> = ({
               cursor-pointer
               select-none
             "
+            style={{
+              fontFamily:
+                '"Kosugi Maru", "Hiragino Sans", "Yu Gothic", "Meiryo", sans-serif',
+            }}
           >
             {/* AUDIO */}
             <button
@@ -327,13 +337,17 @@ const VocabularyFlashcard: React.FC<VocabularyFlashcardProps> = ({
                 <div
                   className={`${
                     getFrontContent().isVietnamese
-                      ? "text-2xl sm:text-3xl"
-                      : "text-[32px]"
-                  } font-semibold tracking-wide text-neutral-900 dark:text-neutral-100 ${
+                      ? "text-[26px] sm:text-[32px]"
+                      : "text-[34px]"
+                  } font-semibold tracking-wide text-neutral-100 flex flex-col items-center`}
+                  style={
                     getFrontContent().isVietnamese
-                      ? "font-lucida-grande"
-                      : "font-osaka"
-                  } flex flex-col items-center`}
+                      ? {
+                          fontFamily:
+                            '"Nunito", "Noto Sans", "Hiragino Sans", "Yu Gothic", "Meiryo", sans-serif',
+                        }
+                      : undefined
+                  }
                 >
                   {getFrontContent().main}
                 </div>
@@ -342,13 +356,17 @@ const VocabularyFlashcard: React.FC<VocabularyFlashcardProps> = ({
                   <div
                     className={`mt-2 ${
                       getFrontContent().isVietnamese
-                        ? "text-2xl sm:text-3xl"
-                        : "text-[32px]"
-                    } text-neutral-500 dark:text-neutral-400 ${
+                        ? "text-[26px] sm:text-[32px]"
+                        : "text-[34px]"
+                    } text-neutral-300`}
+                    style={
                       getFrontContent().isVietnamese
-                        ? "font-lucida-grande"
-                        : "font-osaka"
-                    }`}
+                        ? {
+                            fontFamily:
+                              '"Nunito", "Noto Sans", "Hiragino Sans", "Yu Gothic", "Meiryo", sans-serif',
+                          }
+                        : undefined
+                    }
                   >
                     {getFrontContent()
                       .sub.split("\n")
@@ -360,7 +378,13 @@ const VocabularyFlashcard: React.FC<VocabularyFlashcardProps> = ({
                   </div>
                 )}
 
-                <div className="absolute bottom-4 text-[11px] text-neutral-400 dark:text-neutral-500">
+                <div
+                  className="absolute bottom-4 text-[11px] text-neutral-400"
+                  style={{
+                    fontFamily:
+                      '"Nunito", "Noto Sans", "Hiragino Sans", "Yu Gothic", "Meiryo", sans-serif',
+                  }}
+                >
                   {screens?.xs ? "Chạm để lật" : "Phím cách để lật"}
                 </div>
               </div>
@@ -372,13 +396,17 @@ const VocabularyFlashcard: React.FC<VocabularyFlashcardProps> = ({
                 <div
                   className={`${
                     getBackContent().isVietnamese
-                      ? "text-2xl sm:text-3xl"
-                      : "text-[32px]"
-                  } font-semibold tracking-wide text-neutral-900 dark:text-neutral-100 ${
+                      ? "text-[26px] sm:text-[32px]"
+                      : "text-[34px]"
+                  } font-semibold tracking-wide text-neutral-100 flex flex-col items-center`}
+                  style={
                     getBackContent().isVietnamese
-                      ? "font-lucida-grande"
-                      : "font-osaka"
-                  } flex flex-col items-center`}
+                      ? {
+                          fontFamily:
+                            '"Nunito", "Noto Sans", "Hiragino Sans", "Yu Gothic", "Meiryo", sans-serif',
+                        }
+                      : undefined
+                  }
                 >
                   {getBackContent().main}
                 </div>
@@ -387,13 +415,17 @@ const VocabularyFlashcard: React.FC<VocabularyFlashcardProps> = ({
                   <div
                     className={`mt-2 ${
                       getBackContent().isVietnamese
-                        ? "text-2xl sm:text-3xl"
-                        : "text-[32px]"
-                    } text-neutral-500 dark:text-neutral-400 ${
+                        ? "text-[26px] sm:text-[32px]"
+                        : "text-[34px]"
+                    } text-neutral-300`}
+                    style={
                       getBackContent().isVietnamese
-                        ? "font-lucida-grande"
-                        : "font-osaka"
-                    }`}
+                        ? {
+                            fontFamily:
+                              '"Nunito", "Noto Sans", "Hiragino Sans", "Yu Gothic", "Meiryo", sans-serif',
+                          }
+                        : undefined
+                    }
                   >
                     {getBackContent()
                       .sub.split("\n")
@@ -405,7 +437,13 @@ const VocabularyFlashcard: React.FC<VocabularyFlashcardProps> = ({
                   </div>
                 )}
 
-                <div className="absolute bottom-4 text-[11px] text-neutral-400 dark:text-neutral-500 tracking-wide">
+                <div
+                  className="absolute bottom-4 text-[11px] text-neutral-400 tracking-wide"
+                  style={{
+                    fontFamily:
+                      '"Nunito", "Noto Sans", "Hiragino Sans", "Yu Gothic", "Meiryo", sans-serif',
+                  }}
+                >
                   ← Chưa nhớ · Đã nhớ →
                 </div>
               </div>
@@ -414,13 +452,13 @@ const VocabularyFlashcard: React.FC<VocabularyFlashcardProps> = ({
         </div>
 
         {/* ACTION BAR */}
-        <div className="relative bg-slate-900 px-4 sm:px-8 pb-7 pt-4">
+        <div className="flashcard-action-bar relative bg-slate-900 px-4 sm:px-8 pb-7 pt-4">
           <div className="flex items-center justify-between gap-4">
             <div className="flex items-center gap-2 w-[120px] justify-start">
               <Button
                 type="text"
                 size="large"
-                className="text-neutral-600 hover:text-neutral-800 dark:text-neutral-300 dark:hover:text-neutral-100 font-semibold"
+                className="text-neutral-200 hover:text-white font-semibold hover:bg-white/10"
                 icon={<SettingOutlined />}
                 onClick={() => setSettingsVisible(true)}
               />
@@ -435,16 +473,11 @@ const VocabularyFlashcard: React.FC<VocabularyFlashcardProps> = ({
                 w-14 h-14
                 rounded-2xl
                 border-2
-                border-red-400
-                dark:border-red-600
-                bg-white
-                dark:bg-neutral-800
-                text-red-600
-                dark:text-red-400
-                hover:border-red-500
-                dark:hover:border-red-500
-                hover:bg-red-50
-                dark:hover:bg-red-500/10
+                border-red-400/70
+                bg-red-500/20
+                text-red-200
+                hover:border-red-300
+                hover:bg-red-500/30
                 hover:scale-105
                 active:scale-95
                 transition-all
@@ -455,15 +488,15 @@ const VocabularyFlashcard: React.FC<VocabularyFlashcardProps> = ({
               "
                 title="Chưa nhớ"
               >
-                <CloseOutlined className="text-lg" />
+                <CloseOutlined className="text-lg text-red-100" />
               </button>
 
               {/* Progress Counter */}
               <div className="min-w-[4.5rem] text-center">
-                <span className="inline-flex items-center rounded-full px-3 py-1 text-base font-semibold text-neutral-800 dark:text-neutral-100">
+                <span className="inline-flex items-center rounded-full px-3 py-1 text-base font-semibold text-neutral-100">
                   {currentCardIndex + 1}
                   <span className="mx-1 text-neutral-400">/</span>
-                  <span className="text-neutral-500 dark:text-neutral-300">
+                  <span className="text-neutral-300">
                     {cardsToStudy.length}
                   </span>
                 </span>
@@ -478,16 +511,11 @@ const VocabularyFlashcard: React.FC<VocabularyFlashcardProps> = ({
                 w-14 h-14
                 rounded-2xl
                 border-2
-                border-green-400
-                dark:border-green-600
-                bg-white
-                dark:bg-neutral-800
-                text-green-600
-                dark:text-green-400
-                hover:border-green-500
-                dark:hover:border-green-500
-                hover:bg-green-50
-                dark:hover:bg-green-500/10
+                border-green-400/70
+                bg-green-500/20
+                text-green-200
+                hover:border-green-300
+                hover:bg-green-500/30
                 hover:scale-105
                 active:scale-95
                 transition-all
@@ -498,7 +526,7 @@ const VocabularyFlashcard: React.FC<VocabularyFlashcardProps> = ({
               "
                 title="Đã nhớ"
               >
-                <CheckOutlined className="text-lg" />
+                <CheckOutlined className="text-lg text-green-100" />
               </button>
             </div>
             <div className="flex items-center gap-2 justify-end w-[120px]">
@@ -506,7 +534,7 @@ const VocabularyFlashcard: React.FC<VocabularyFlashcardProps> = ({
                 <Button
                   type="text"
                   size="large"
-                  className="text-neutral-600 hover:text-neutral-800 dark:text-neutral-300 dark:hover:text-neutral-100 font-semibold"
+                  className="text-neutral-200 hover:text-white font-semibold hover:bg-white/10"
                   icon={<FontAwesomeIcon icon={faRotateLeft} />}
                   onClick={onResetCards}
                 />
@@ -515,7 +543,7 @@ const VocabularyFlashcard: React.FC<VocabularyFlashcardProps> = ({
                 <Button
                   type="text"
                   size="large"
-                  className="text-neutral-600 hover:text-neutral-800 dark:text-neutral-300 dark:hover:text-neutral-100 font-semibold"
+                  className="text-neutral-200 hover:text-white font-semibold hover:bg-white/10"
                   icon={<FontAwesomeIcon icon={faShuffle} />}
                   onClick={onShuffleCards}
                 />
@@ -543,26 +571,44 @@ const VocabularyFlashcard: React.FC<VocabularyFlashcardProps> = ({
         onCancel={() => setSettingsVisible(false)}
         footer={null}
         width={480}
-        style={{ top: 40 }}
+        style={{ top: 50 }}
         className="flashcard-settings-modal"
-        styles={{ body: { maxHeight: "none", overflowY: "visible" } }}
+        wrapClassName="flashcard-settings-wrap"
+        getContainer={false}
+        styles={{
+          body: {
+            background: "rgba(15, 23, 42, 0.6)",
+            padding: 0,
+            maxHeight: "none",
+            overflowY: "visible",
+          },
+        }}
       >
-        <div className="space-y-5">
+        <div className="rounded-xl  border-slate-700 bg-slate-1000 p-6 space-y-5 text-white shadow-2xl">
           {/* Front Face Setting */}
-          <div className="rounded-xl border border-secondary-200/70 dark:border-secondary-800 bg-secondary-50/70 dark:bg-secondary-900/40 p-4">
+          <div className="rounded-xl border border-slate-700 bg-slate-800/80 p-4">
             <div className="flex items-center justify-between gap-3">
               <div>
-                <Text className="font-semibold text-secondary-900 dark:text-secondary-100">
+                <Text
+                  className="font-semibold text-white"
+                  style={{ textShadow: "0 1px 6px rgba(0,0,0,0.45)" }}
+                >
                   Mặt trước
                 </Text>
-                <div className="text-xs text-secondary-500 dark:text-secondary-400">
+                <div className="text-xs text-white/80">
                   Chọn nội dung hiển thị khi mở thẻ
                 </div>
               </div>
               <Select
                 value={frontFace}
                 onChange={setFrontFace}
-                style={{ width: 180 }}
+                style={{ width: 140 }}
+                className="flashcard-settings-select-trigger bg-slate-900"
+                getPopupContainer={(trigger) =>
+                  trigger.parentElement || document.body
+                }
+                classNames={{ popup: { root: "flashcard-settings-dropdown" } }}
+                styles={{ popup: { root: { backgroundColor: "#111827" } } }}
                 options={[
                   { label: "Tiếng Nhật", value: "japanese" },
                   { label: "Tiếng Việt", value: "vietnamese" },
@@ -572,7 +618,7 @@ const VocabularyFlashcard: React.FC<VocabularyFlashcardProps> = ({
           </div>
 
           {/* Face Settings with Collapse */}
-          <div className="rounded-xl border border-secondary-200/70 dark:border-secondary-800 bg-white dark:bg-secondary-925">
+          <div className="rounded-xl border border-slate-700 bg-slate-800/60">
             <Collapse
               ghost
               items={[
@@ -582,13 +628,11 @@ const VocabularyFlashcard: React.FC<VocabularyFlashcardProps> = ({
                   children: (
                     <div className="space-y-3">
                       <div className="flex items-center justify-between">
-                        <Text className="text-secondary-800 dark:text-secondary-200">
-                          Hiện Kanji (nếu có)
-                        </Text>
+                        <Text className="text-white">Hiện Kanji (nếu có)</Text>
                         <Switch checked={showKanji} onChange={setShowKanji} />
                       </div>
                       <div className="flex items-center justify-between">
-                        <Text className="text-secondary-800 dark:text-secondary-200">
+                        <Text className="text-white">
                           Hiện ví dụ tiếng Nhật
                         </Text>
                         <Switch
@@ -605,7 +649,7 @@ const VocabularyFlashcard: React.FC<VocabularyFlashcardProps> = ({
                   children: (
                     <div className="space-y-3">
                       <div className="flex items-center justify-between">
-                        <Text className="text-secondary-800 dark:text-secondary-200">
+                        <Text className="text-white">
                           Hiện Hán Việt (nếu có)
                         </Text>
                         <Switch
@@ -614,9 +658,7 @@ const VocabularyFlashcard: React.FC<VocabularyFlashcardProps> = ({
                         />
                       </div>
                       <div className="flex items-center justify-between">
-                        <Text className="text-secondary-800 dark:text-secondary-200">
-                          Hiện nghĩa ví dụ
-                        </Text>
+                        <Text className="text-white">Hiện nghĩa ví dụ</Text>
                         <Switch
                           checked={showVietnameseExample}
                           onChange={setShowVietnameseExample}
@@ -631,13 +673,16 @@ const VocabularyFlashcard: React.FC<VocabularyFlashcardProps> = ({
           </div>
 
           {/* Auto Speak Setting */}
-          <div className="rounded-xl border border-secondary-200/70 dark:border-secondary-800 bg-secondary-50/70 dark:bg-secondary-900/40 p-4">
+          <div className="rounded-xl border border-slate-700 bg-slate-800/80 p-4">
             <div className="flex items-center justify-between gap-4">
               <div>
-                <Text className="font-semibold text-secondary-900 dark:text-secondary-100">
+                <Text
+                  className="font-semibold text-white"
+                  style={{ textShadow: "0 1px 6px rgba(0,0,0,0.45)" }}
+                >
                   Chuyển văn bản thành lời nói
                 </Text>
-                <div className="text-sm text-secondary-500 dark:text-secondary-400">
+                <div className="text-sm text-white/80">
                   Tự động phát âm khi lật sang mặt tiếng Nhật
                 </div>
               </div>
@@ -646,7 +691,7 @@ const VocabularyFlashcard: React.FC<VocabularyFlashcardProps> = ({
           </div>
 
           {/* Action Buttons */}
-          <div className="rounded-xl border border-secondary-200/70 dark:border-secondary-800 bg-white dark:bg-secondary-925 p-4 space-y-3">
+          <div className="rounded-xl border border-slate-700 bg-slate-800/60 p-4 space-y-3">
             <Button
               type="default"
               block

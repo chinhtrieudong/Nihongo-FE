@@ -88,14 +88,14 @@ const Lessons: React.FC = () => {
     const loadLessonDetail = async (lessonId: string) => {
         setLoading(true);
         try {
-            const response = await lessonAPI.getLessonDetail(
-                lessonId
-            );
-            if (response.success && response.data) {
+            const response = await lessonAPI.getLessonDetail(lessonId);
+            if (response?.lesson) {
+                setLessonDetail(response);
+            } else if (response?.success && response?.data) {
                 setLessonDetail(response.data);
             } else {
                 console.error(
-                    "API response missing success for lesson detail:",
+                    "API response missing data for lesson detail:",
                     response
                 );
             }

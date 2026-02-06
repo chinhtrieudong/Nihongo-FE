@@ -74,7 +74,11 @@ const LessonSidebar: React.FC<LessonSidebarProps> = ({
         width={280}
         collapsedWidth={0}
         collapsed={desktopSidebarCollapsed}
-        onCollapse={setDesktopSidebarCollapsed}
+        onCollapse={(collapsed, type) => {
+          if (type !== "responsive") {
+            setDesktopSidebarCollapsed(collapsed);
+          }
+        }}
         breakpoint="lg"
         className="lesson-sidebar-sider bg-white dark:bg-secondary-925 border-l border-secondary-200 dark:border-secondary-900 fixed right-0 overflow-y-hidden transition-all duration-300"
         style={{ zIndex: 1000, top: "64px", height: "calc(100vh - 64px)" }}

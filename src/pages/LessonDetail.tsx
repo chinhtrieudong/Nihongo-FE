@@ -70,7 +70,7 @@ const LessonDetail: React.FC = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [sidebarVisible, setSidebarVisible] = useState(false);
-  const [desktopSidebarCollapsed, setDesktopSidebarCollapsed] = useState(false);
+  const [desktopSidebarCollapsed, setDesktopSidebarCollapsed] = useState(true);
   const sidebarSnapshotRef = useRef<{
     sidebarVisible: boolean;
     desktopSidebarCollapsed: boolean;
@@ -1285,6 +1285,9 @@ const LessonDetail: React.FC = () => {
           align-items: center;
           line-height: 1;
         }
+        .lesson-tabs .ant-tabs-nav {
+          margin-bottom: 0 !important;
+        }
       `}</style>
       {/* Main Content */}
       <Layout>
@@ -1415,7 +1418,7 @@ const LessonDetail: React.FC = () => {
                     onClick={() => navigate("/lessons")}
                     className="rounded-full w-8 h-8 flex items-center justify-center border border-secondary-200 bg-white text-secondary-700 hover:text-secondary-900 hover:bg-secondary-50 dark:border-secondary-800 dark:bg-secondary-925 dark:text-secondary-300 dark:hover:text-secondary-100 dark:hover:bg-secondary-800/60 transition-colors"
                   />
-                  <Title level={2} className="!mb-0 text-base sm:text-lg lg:text-xl leading-snug">
+                  <Title level={2} className="!mb-0 pt-2 text-base sm:text-lg lg:text-xl leading-snug">
                     {lesson?.lessonNumber}. {lesson?.title} - {getTabDisplayName(activeTab)}
                   </Title>
                   <div className="flex items-center gap-1 ml-2">

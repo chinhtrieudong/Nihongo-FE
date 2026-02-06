@@ -48,7 +48,7 @@ const Header: React.FC = () => {
           <Dropdown
             placement="bottomRight"
             trigger={["click"]}
-            dropdownRender={() => (
+            popupRender={() => (
               <div className="header-user-menu">
                 <div className="header-user-meta">
                   <div className="header-user-name">{displayName}</div>

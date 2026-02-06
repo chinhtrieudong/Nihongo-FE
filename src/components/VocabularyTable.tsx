@@ -20,10 +20,11 @@ import {
 import {
   SoundOutlined,
   BookOutlined,
-  SwapOutlined,
   CheckCircleOutlined,
   CloseCircleOutlined,
 } from "@ant-design/icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faRotateLeft } from "@fortawesome/free-solid-svg-icons";
 import FlashcardsIcon from "./icons/FlashcardsIcon";
 import InfinitejapaneseIcon from "./icons/InfinitejapaneseIcon";
 
@@ -50,7 +51,10 @@ interface VocabularyTableProps {
   onExitFlashcard?: () => void;
 }
 
-const VocabularyTable = React.forwardRef<VocabularyTableHandle, VocabularyTableProps>(
+const VocabularyTable = React.forwardRef<
+  VocabularyTableHandle,
+  VocabularyTableProps
+>(
   (
     {
       data,
@@ -61,476 +65,483 @@ const VocabularyTable = React.forwardRef<VocabularyTableHandle, VocabularyTableP
     },
     ref,
   ) => {
-  const { screens } = useResponsive();
+    const { screens } = useResponsive();
 
-  const [showRomaji, setShowRomaji] = useState(false);
+    const [showRomaji, setShowRomaji] = useState(false);
 
-  const [showHanViet, setShowHanViet] = useState(true);
+    const [showHanViet, setShowHanViet] = useState(true);
 
-  const [selectedWord, setSelectedWord] = useState<VocabularyItemType | null>(
-    null,
-  );
+    const [selectedWord, setSelectedWord] = useState<VocabularyItemType | null>(
+      null,
+    );
 
-  const [showModal, setShowModal] = useState(false);
+    const [showModal, setShowModal] = useState(false);
 
-  const [viewMode, setViewMode] = useState<"table" | "study" | "flashcard">(
-    "table",
-  );
+    const [viewMode, setViewMode] = useState<"table" | "study" | "flashcard">(
+      "table",
+    );
 
-  type SessionStatus = "unanswered" | "known" | "unknown";
+    type SessionStatus = "unanswered" | "known" | "unknown";
 
-  const [cardStatus, setCardStatus] = useState<Record<string, SessionStatus>>(
-    {},
-  );
+    const [cardStatus, setCardStatus] = useState<Record<string, SessionStatus>>(
+      {},
+    );
 
-  const [currentCardIndex, setCurrentCardIndex] = useState(0);
+    const [currentCardIndex, setCurrentCardIndex] = useState(0);
 
-  const [showAnswer, setShowAnswer] = useState(false);
+    const [showAnswer, setShowAnswer] = useState(false);
 
-  const [isFlipped, setIsFlipped] = useState(false);
+    const [isFlipped, setIsFlipped] = useState(false);
 
-  const [isFullscreen, setIsFullscreen] = useState(false);
+    const [isFullscreen, setIsFullscreen] = useState(false);
 
-  const [isStudyComplete, setIsStudyComplete] = useState(false);
+    const [isStudyComplete, setIsStudyComplete] = useState(false);
 
-  const [studyMode, setStudyMode] = useState<"all" | "unremembered">("all");
+    const [studyMode, setStudyMode] = useState<"all" | "unremembered">("all");
 
-  // Track which cards have been evaluated in this session
+    // Track which cards have been evaluated in this session
 
-  const [evaluatedCards, setEvaluatedCards] = useState<Set<string>>(new Set());
+    const [evaluatedCards, setEvaluatedCards] = useState<Set<string>>(
+      new Set(),
+    );
 
-  const [shuffledCards, setShuffledCards] = useState<VocabularyItemType[]>([]);
+    const [shuffledCards, setShuffledCards] = useState<VocabularyItemType[]>(
+      [],
+    );
 
-  // Replace duplicate ID generation with helper function
-  useEffect(() => {
-    const initialStatus: Record<string, SessionStatus> = {};
-    data.forEach((item, index) => {
-      const uniqueId = generateVocabularyId(item, index);
-      initialStatus[uniqueId] = "unanswered";
-    });
-    setCardStatus(initialStatus);
-
-    if (data.length > 0 && shuffledCards.length === 0) {
-      const cardsWithIds = data.map((item, index) => ({
-        ...item,
-        id: generateVocabularyId(item, index),
-      }));
-      setShuffledCards(cardsWithIds);
-    }
-  }, [data]);
-
-  const cardsToStudy = useMemo(() => {
-    if (shuffledCards.length > 0) {
-      return shuffledCards;
-    }
-    return data.map((item, index) => ({
-      ...item,
-      id: generateVocabularyId(item, index),
-    }));
-  }, [shuffledCards, data]);
-
-  // Memoized count calculations
-  const sessionKnownCount = useMemo(() => {
-    const currentCardIds = new Set(cardsToStudy.map((c) => c.id));
-    return Object.entries(cardStatus).filter(
-      ([id, status]) => currentCardIds.has(id) && status === "known",
-    ).length;
-  }, [cardStatus, cardsToStudy]);
-
-  const sessionUnknownCount = useMemo(() => {
-    const currentCardIds = new Set(cardsToStudy.map((c) => c.id));
-    return Object.entries(cardStatus).filter(
-      ([id, status]) => currentCardIds.has(id) && status === "unknown",
-    ).length;
-  }, [cardStatus, cardsToStudy]);
-
-  const totalCount = cardsToStudy.length;
-  const knownCount = sessionKnownCount;
-  const unknownCount = sessionUnknownCount;
-  const globalUnknownCount = Object.values(cardStatus).filter(
-    (s) => s === "unknown",
-  ).length;
-  const currentCard = cardsToStudy[currentCardIndex];
-
-  const filteredData = data;
-
-  // Memoized event handlers
-  const handleWordClick = useCallback((word: VocabularyItemType) => {
-    setSelectedWord(word);
-    setShowModal(true);
-  }, []);
-
-  const handlePlayAudio = useCallback(
-    (audioUrl: string, e: React.MouseEvent<HTMLButtonElement>) => {
-      e.stopPropagation();
-      const audio = new Audio(audioUrl);
-      audio.play().catch((err) => console.error("Audio playback failed:", err));
-    },
-    [],
-  );
-
-  const handlePlayHiraKanaAudio = useCallback(
-    (text: string, event?: React.MouseEvent) => {
-      if (event) {
-        event.stopPropagation();
-      }
-      speakText(text);
-    },
-    [],
-  );
-
-  // Memoized handlers
-  const handleMemoryEvaluation = useCallback(
-    (status: "unknown" | "known") => {
-      if (!currentCard) return;
-
-      setCardStatus((prev) => ({
-        ...prev,
-        [currentCard.id]: status,
-      }));
-
-      moveToNextCard();
-    },
-    [currentCard],
-  );
-
-  const moveToNextCard = useCallback(() => {
-    if (currentCardIndex < cardsToStudy.length - 1) {
-      setCurrentCardIndex((prev) => prev + 1);
-      setIsFlipped(false);
-      setShowAnswer(false);
-    } else {
-      setIsStudyComplete(true);
-    }
-  }, [currentCardIndex, cardsToStudy.length]);
-
-  const shuffleCards = useCallback(() => {
-    const shuffled = [...cardsToStudy].sort(() => Math.random() - 0.5);
-    setShuffledCards(shuffled);
-    setCurrentCardIndex(0);
-    setIsFlipped(false);
-    setShowAnswer(false);
-  }, [cardsToStudy]);
-
-  const resetStudySession = useCallback(
-    (mode: "all" | "unremembered" = "all") => {
-      setStudyMode(mode);
-
-      const dataWithIds = data.map((item, index) => ({
-        ...item,
-        id: generateVocabularyId(item, index),
-      }));
-
-      const cardsToUse =
-        mode === "unremembered"
-          ? dataWithIds.filter((card) => cardStatus[card.id] === "unknown")
-          : dataWithIds;
-
-      const shuffled = [...cardsToUse].sort(() => Math.random() - 0.5);
-
-      const resetStatus: Record<string, SessionStatus> = {};
-      cardsToUse.forEach((c) => (resetStatus[c.id] = "unanswered"));
-
-      const newStatus = { ...cardStatus };
-      Object.keys(resetStatus).forEach((id) => {
-        newStatus[id] = "unanswered";
+    // Replace duplicate ID generation with helper function
+    useEffect(() => {
+      const initialStatus: Record<string, SessionStatus> = {};
+      data.forEach((item, index) => {
+        const uniqueId = generateVocabularyId(item, index);
+        initialStatus[uniqueId] = "unanswered";
       });
+      setCardStatus(initialStatus);
 
-      setCardStatus(newStatus);
+      if (data.length > 0 && shuffledCards.length === 0) {
+        const cardsWithIds = data.map((item, index) => ({
+          ...item,
+          id: generateVocabularyId(item, index),
+        }));
+        setShuffledCards(cardsWithIds);
+      }
+    }, [data]);
+
+    const cardsToStudy = useMemo(() => {
+      if (shuffledCards.length > 0) {
+        return shuffledCards;
+      }
+      return data.map((item, index) => ({
+        ...item,
+        id: generateVocabularyId(item, index),
+      }));
+    }, [shuffledCards, data]);
+
+    // Memoized count calculations
+    const sessionKnownCount = useMemo(() => {
+      const currentCardIds = new Set(cardsToStudy.map((c) => c.id));
+      return Object.entries(cardStatus).filter(
+        ([id, status]) => currentCardIds.has(id) && status === "known",
+      ).length;
+    }, [cardStatus, cardsToStudy]);
+
+    const sessionUnknownCount = useMemo(() => {
+      const currentCardIds = new Set(cardsToStudy.map((c) => c.id));
+      return Object.entries(cardStatus).filter(
+        ([id, status]) => currentCardIds.has(id) && status === "unknown",
+      ).length;
+    }, [cardStatus, cardsToStudy]);
+
+    const totalCount = cardsToStudy.length;
+    const knownCount = sessionKnownCount;
+    const unknownCount = sessionUnknownCount;
+    const globalUnknownCount = Object.values(cardStatus).filter(
+      (s) => s === "unknown",
+    ).length;
+    const currentCard = cardsToStudy[currentCardIndex];
+
+    const filteredData = data;
+
+    // Memoized event handlers
+    const handleWordClick = useCallback((word: VocabularyItemType) => {
+      setSelectedWord(word);
+      setShowModal(true);
+    }, []);
+
+    const handlePlayAudio = useCallback(
+      (audioUrl: string, e: React.MouseEvent<HTMLButtonElement>) => {
+        e.stopPropagation();
+        const audio = new Audio(audioUrl);
+        audio
+          .play()
+          .catch((err) => console.error("Audio playback failed:", err));
+      },
+      [],
+    );
+
+    const handlePlayHiraKanaAudio = useCallback(
+      (text: string, event?: React.MouseEvent) => {
+        if (event) {
+          event.stopPropagation();
+        }
+        speakText(text);
+      },
+      [],
+    );
+
+    // Memoized handlers
+    const handleMemoryEvaluation = useCallback(
+      (status: "unknown" | "known") => {
+        if (!currentCard) return;
+
+        setCardStatus((prev) => ({
+          ...prev,
+          [currentCard.id]: status,
+        }));
+
+        moveToNextCard();
+      },
+      [currentCard],
+    );
+
+    const moveToNextCard = useCallback(() => {
+      if (currentCardIndex < cardsToStudy.length - 1) {
+        setCurrentCardIndex((prev) => prev + 1);
+        setIsFlipped(false);
+        setShowAnswer(false);
+      } else {
+        setIsStudyComplete(true);
+      }
+    }, [currentCardIndex, cardsToStudy.length]);
+
+    const shuffleCards = useCallback(() => {
+      const shuffled = [...cardsToStudy].sort(() => Math.random() - 0.5);
       setShuffledCards(shuffled);
       setCurrentCardIndex(0);
       setIsFlipped(false);
       setShowAnswer(false);
-      setIsStudyComplete(false);
-      setEvaluatedCards(new Set());
-    },
-    [data, cardStatus],
-  );
+    }, [cardsToStudy]);
 
-  React.useImperativeHandle(ref, () => ({
-    enterFlashcard: () => {
-      onEnterFlashcard?.();
-      setViewMode("flashcard");
-      setCurrentCardIndex(0);
-      setIsFlipped(false);
-      setShowAnswer(false);
-      setIsFullscreen(false);
-      setIsStudyComplete(false);
-      setEvaluatedCards(new Set());
-    },
-  }));
+    const resetStudySession = useCallback(
+      (mode: "all" | "unremembered" = "all") => {
+        setStudyMode(mode);
 
-  // Memoized table columns
-  const tableColumns = useMemo(
-    () => [
-      {
-        title: "STT",
-        dataIndex: "index",
-        key: "index",
-        width: screens.lg ? 60 : 50,
-        render: (_: any, __: any, index: number) => index + 1,
+        const dataWithIds = data.map((item, index) => ({
+          ...item,
+          id: generateVocabularyId(item, index),
+        }));
+
+        const cardsToUse =
+          mode === "unremembered"
+            ? dataWithIds.filter((card) => cardStatus[card.id] === "unknown")
+            : dataWithIds;
+
+        const shuffled = [...cardsToUse].sort(() => Math.random() - 0.5);
+
+        const resetStatus: Record<string, SessionStatus> = {};
+        cardsToUse.forEach((c) => (resetStatus[c.id] = "unanswered"));
+
+        const newStatus = { ...cardStatus };
+        Object.keys(resetStatus).forEach((id) => {
+          newStatus[id] = "unanswered";
+        });
+
+        setCardStatus(newStatus);
+        setShuffledCards(shuffled);
+        setCurrentCardIndex(0);
+        setIsFlipped(false);
+        setShowAnswer(false);
+        setIsStudyComplete(false);
+        setEvaluatedCards(new Set());
       },
-      {
-        title: "Kanji",
-        dataIndex: "kanji",
-        key: "kanji",
-        width: screens.lg ? 90 : 80,
-        render: (text: string) => (
-          <Typography.Text strong className="font-kosugi text-lg">
-            {text || "-"}
-          </Typography.Text>
-        ),
+      [data, cardStatus],
+    );
+
+    React.useImperativeHandle(ref, () => ({
+      enterFlashcard: () => {
+        onEnterFlashcard?.();
+        setViewMode("flashcard");
+        setCurrentCardIndex(0);
+        setIsFlipped(false);
+        setShowAnswer(false);
+        setIsFullscreen(false);
+        setIsStudyComplete(false);
+        setEvaluatedCards(new Set());
       },
-      {
-        title: "Hira/Kana",
-        dataIndex: "hiragana",
-        key: "hiragana",
-        width: screens.lg ? 150 : 130,
-        render: (text: string, record: any) => (
-          <Typography.Text>{text || record.katakana || "-"}</Typography.Text>
-        ),
-      },
-      ...(showRomaji
-        ? [
-          {
-            title: "Romaji",
-            dataIndex: "romaji",
-            key: "romaji",
-            width: screens.lg ? 110 : 90,
-            render: (text: string) => (
-              <Typography.Text type="secondary">
-                {text || "-"}
-              </Typography.Text>
-            ),
-          },
-        ]
-        : []),
-      ...(showHanViet
-        ? [
-          {
-            title: "Hán Việt",
-            dataIndex: "hanviet",
-            key: "hanviet",
-            width: screens.lg ? 110 : 90,
-            render: (text: string) => (
-              <span className="text-secondary-800 dark:text-secondary-300">
-                {text ? text.toUpperCase().replace(/,/g, "") : "-"}
-              </span>
-            ),
-          },
-        ]
-        : []),
-      {
-        title: "Nghĩa tiếng Việt",
-        dataIndex: "meaning_vi",
-        key: "meaning_vi",
-        width: screens.lg ? 150 : 130,
-        render: (text: string) => (
-          <Typography.Text>{text || "-"}</Typography.Text>
-        ),
-      },
-      {
-        title: "Nghe",
-        key: "audio",
-        width: screens.lg ? 80 : 70,
-        align: "center" as const,
-        render: (_: any, record: any) => {
-          const hiraKanaText = record.hiragana || record.katakana || "";
-          return (
-            <Button
-              type="text"
-              icon={<SoundOutlined />}
-              onClick={(e) => {
-                e.stopPropagation();
-                if (hiraKanaText) {
-                  handlePlayHiraKanaAudio(hiraKanaText, e);
-                }
-              }}
-              disabled={!hiraKanaText}
-            />
-          );
+    }));
+
+    // Memoized table columns
+    const tableColumns = useMemo(
+      () => [
+        {
+          title: "STT",
+          dataIndex: "index",
+          key: "index",
+          width: screens.lg ? 60 : 50,
+          render: (_: any, __: any, index: number) => index + 1,
         },
-      },
-    ],
-    [showRomaji, showHanViet, handlePlayHiraKanaAudio, screens.lg],
-  );
-
-  const tabletColumns = useMemo(
-    () => [
-      {
-        title: "Kanji",
-        dataIndex: "kanji",
-        key: "kanji",
-        width: 80,
-        render: (text: string) => (
-          <Typography.Text strong className="font-kosugi text-lg">
-            {text || "-"}
-          </Typography.Text>
-        ),
-      },
-      {
-        title: "Hira/Kana",
-        dataIndex: "hiragana",
-        key: "hiragana",
-        width: 120,
-        render: (text: string, record: any) => (
-          <Typography.Text>{text || record.katakana || "-"}</Typography.Text>
-        ),
-      },
-      {
-        title: "Nghĩa",
-        dataIndex: "meaning_vi",
-        key: "meaning_vi",
-        width: 150,
-        render: (text: string) => (
-          <Typography.Text>{text || "-"}</Typography.Text>
-        ),
-      },
-      {
-        title: "Nghe",
-        key: "audio",
-        width: 60,
-        align: "center" as const,
-        render: (_: any, record: any) => {
-          const hiraKanaText = record.hiragana || record.katakana || "";
-          return (
-            <Button
-              type="text"
-              icon={<SoundOutlined />}
-              onClick={(e) => {
-                e.stopPropagation();
-                if (hiraKanaText) {
-                  handlePlayHiraKanaAudio(hiraKanaText, e);
-                }
-              }}
-              disabled={!hiraKanaText}
-            />
-          );
+        {
+          title: "Kanji",
+          dataIndex: "kanji",
+          key: "kanji",
+          width: screens.lg ? 90 : 80,
+          render: (text: string) => (
+            <Typography.Text strong className="font-kosugi text-lg">
+              {text || "-"}
+            </Typography.Text>
+          ),
         },
-      },
-    ],
-    [handlePlayHiraKanaAudio],
-  );
+        {
+          title: "Hira/Kana",
+          dataIndex: "hiragana",
+          key: "hiragana",
+          width: screens.lg ? 150 : 130,
+          render: (text: string, record: any) => (
+            <Typography.Text>{text || record.katakana || "-"}</Typography.Text>
+          ),
+        },
+        ...(showRomaji
+          ? [
+              {
+                title: "Romaji",
+                dataIndex: "romaji",
+                key: "romaji",
+                width: screens.lg ? 110 : 90,
+                render: (text: string) => (
+                  <Typography.Text type="secondary">
+                    {text || "-"}
+                  </Typography.Text>
+                ),
+              },
+            ]
+          : []),
+        ...(showHanViet
+          ? [
+              {
+                title: "Hán Việt",
+                dataIndex: "hanviet",
+                key: "hanviet",
+                width: screens.lg ? 110 : 90,
+                render: (text: string) => (
+                  <span className="text-secondary-800 dark:text-secondary-300">
+                    {text ? text.toUpperCase().replace(/,/g, "") : "-"}
+                  </span>
+                ),
+              },
+            ]
+          : []),
+        {
+          title: "Nghĩa tiếng Việt",
+          dataIndex: "meaning_vi",
+          key: "meaning_vi",
+          width: screens.lg ? 150 : 130,
+          render: (text: string) => (
+            <Typography.Text>{text || "-"}</Typography.Text>
+          ),
+        },
+        {
+          title: "Nghe",
+          key: "audio",
+          width: screens.lg ? 80 : 70,
+          align: "center" as const,
+          render: (_: any, record: any) => {
+            const hiraKanaText = record.hiragana || record.katakana || "";
+            return (
+              <Button
+                type="text"
+                icon={<SoundOutlined />}
+                onClick={(e) => {
+                  e.stopPropagation();
+                  if (hiraKanaText) {
+                    handlePlayHiraKanaAudio(hiraKanaText, e);
+                  }
+                }}
+                disabled={!hiraKanaText}
+              />
+            );
+          },
+        },
+      ],
+      [showRomaji, showHanViet, handlePlayHiraKanaAudio, screens.lg],
+    );
 
-  const flipCard = () => {
-    setIsFlipped(!isFlipped);
-    setShowAnswer(!showAnswer);
-  };
+    const tabletColumns = useMemo(
+      () => [
+        {
+          title: "Kanji",
+          dataIndex: "kanji",
+          key: "kanji",
+          width: 80,
+          render: (text: string) => (
+            <Typography.Text strong className="font-kosugi text-lg">
+              {text || "-"}
+            </Typography.Text>
+          ),
+        },
+        {
+          title: "Hira/Kana",
+          dataIndex: "hiragana",
+          key: "hiragana",
+          width: 120,
+          render: (text: string, record: any) => (
+            <Typography.Text>{text || record.katakana || "-"}</Typography.Text>
+          ),
+        },
+        {
+          title: "Nghĩa",
+          dataIndex: "meaning_vi",
+          key: "meaning_vi",
+          width: 150,
+          render: (text: string) => (
+            <Typography.Text>{text || "-"}</Typography.Text>
+          ),
+        },
+        {
+          title: "Nghe",
+          key: "audio",
+          width: 60,
+          align: "center" as const,
+          render: (_: any, record: any) => {
+            const hiraKanaText = record.hiragana || record.katakana || "";
+            return (
+              <Button
+                type="text"
+                icon={<SoundOutlined />}
+                onClick={(e) => {
+                  e.stopPropagation();
+                  if (hiraKanaText) {
+                    handlePlayHiraKanaAudio(hiraKanaText, e);
+                  }
+                }}
+                disabled={!hiraKanaText}
+              />
+            );
+          },
+        },
+      ],
+      [handlePlayHiraKanaAudio],
+    );
 
-  // Removed duplicate currentCard declaration
-
-  useEffect(() => {
-    const handleKeyDown = (e: KeyboardEvent) => {
-      switch (e.key) {
-        case " ":
-          e.preventDefault();
-
-          flipCard();
-
-          break;
-
-        case "ArrowLeft":
-          handleMemoryEvaluation("unknown");
-
-          break;
-
-        case "ArrowRight":
-          handleMemoryEvaluation("known");
-
-          break;
-
-        case "s":
-
-        case "S":
-          shuffleCards();
-
-          break;
-      }
+    const flipCard = () => {
+      setIsFlipped(!isFlipped);
+      setShowAnswer(!showAnswer);
     };
 
-    // ✅ Chỉ kích hoạt phím tắt khi chưa hoàn thành
+    // Removed duplicate currentCard declaration
 
-    if (viewMode === "flashcard" && !isStudyComplete) {
-      window.addEventListener("keydown", handleKeyDown);
+    useEffect(() => {
+      const handleKeyDown = (e: KeyboardEvent) => {
+        switch (e.key) {
+          case " ":
+            e.preventDefault();
 
-      return () => window.removeEventListener("keydown", handleKeyDown);
-    }
-  }, [
-    viewMode,
-    currentCardIndex,
-    cardsToStudy,
-    isFlipped,
-    currentCard,
-    isStudyComplete,
-  ]);
+            flipCard();
 
-  useEffect(() => {
-    // ✅ Chỉ hoàn thành khi đã đánh giá HẾT tất cả thẻ (không còn 'unanswered')
+            break;
 
-    const currentCardIds = new Set(cardsToStudy.map((c) => c.id));
+          case "ArrowLeft":
+            handleMemoryEvaluation("unknown");
 
-    const unansweredCount = Object.entries(cardStatus)
+            break;
 
-      .filter(
-        ([id, status]) => currentCardIds.has(id) && status === "unanswered",
-      ).length;
+          case "ArrowRight":
+            handleMemoryEvaluation("known");
 
-    // Đếm số thẻ đã đánh giá (known + unknown)
+            break;
 
-    const evaluatedCount = Object.entries(cardStatus)
+          case "s":
 
-      .filter(
-        ([id, status]) =>
-          currentCardIds.has(id) &&
-          (status === "known" || status === "unknown"),
-      ).length;
+          case "S":
+            shuffleCards();
 
-    // Chỉ hoàn thành khi: không còn unanswered VÀ đã có ít nhất 1 thẻ được đánh giá
+            break;
+        }
+      };
 
-    if (
-      unansweredCount === 0 &&
-      evaluatedCount > 0 &&
-      cardsToStudy.length > 0
-    ) {
-      setIsStudyComplete(true);
-    }
-  }, [cardStatus, cardsToStudy]);
+      // ✅ Chỉ kích hoạt phím tắt khi chưa hoàn thành
 
-  const showFlashcard = viewMode === "flashcard" && !isStudyComplete;
-  const showCompletion = viewMode === "flashcard" && isStudyComplete;
+      if (viewMode === "flashcard" && !isStudyComplete) {
+        window.addEventListener("keydown", handleKeyDown);
 
-  return (
-    <div className={screens.xs ? "px-3 py-2" : "p-6"}>
-      {/* Mobile-First Table */}
-      <div className={`border border-secondary-200 dark:border-secondary-800 bg-white dark:bg-secondary-925 rounded-lg ${screens.xs ? "shadow-sm p-3" : "p-6"}`}>
-        {screens.xs ? (
-          /* Mobile Card View */
-          <div className="space-y-3">
-            {filteredData.map((item, index) => (
-              <VocabularyCard
-                key={
-                  item.id ||
-                  `${item.kanji}_${item.hiragana || item.katakana}_${index}`
-                }
-                item={item}
-                index={index}
-                showHanViet={
-                  viewMode === "table" || viewMode === "flashcard"
-                    ? showHanViet
-                    : false
-                }
-                onWordClick={handleWordClick}
-              />
-            ))}
-            {filteredData.length === 0 && (
-              <Empty
-                description="Không tìm thấy từ vựng nào"
-                className="py-8"
-              />
-            )}
-          </div>
-        ) : (
-          /* Desktop/Tablet Table View */
+        return () => window.removeEventListener("keydown", handleKeyDown);
+      }
+    }, [
+      viewMode,
+      currentCardIndex,
+      cardsToStudy,
+      isFlipped,
+      currentCard,
+      isStudyComplete,
+    ]);
+
+    useEffect(() => {
+      // ✅ Chỉ hoàn thành khi đã đánh giá HẾT tất cả thẻ (không còn 'unanswered')
+
+      const currentCardIds = new Set(cardsToStudy.map((c) => c.id));
+
+      const unansweredCount = Object.entries(cardStatus)
+
+        .filter(
+          ([id, status]) => currentCardIds.has(id) && status === "unanswered",
+        ).length;
+
+      // Đếm số thẻ đã đánh giá (known + unknown)
+
+      const evaluatedCount = Object.entries(cardStatus)
+
+        .filter(
+          ([id, status]) =>
+            currentCardIds.has(id) &&
+            (status === "known" || status === "unknown"),
+        ).length;
+
+      // Chỉ hoàn thành khi: không còn unanswered VÀ đã có ít nhất 1 thẻ được đánh giá
+
+      if (
+        unansweredCount === 0 &&
+        evaluatedCount > 0 &&
+        cardsToStudy.length > 0
+      ) {
+        setIsStudyComplete(true);
+      }
+    }, [cardStatus, cardsToStudy]);
+
+    const showFlashcard = viewMode === "flashcard" && !isStudyComplete;
+    const showCompletion = viewMode === "flashcard" && isStudyComplete;
+
+    return (
+      <div className={screens.xs ? "px-3 py-2" : "p-6"}>
+        {/* Mobile-First Table */}
+        <div
+          className={`border border-secondary-200 dark:border-secondary-800 bg-white dark:bg-secondary-925 rounded-lg ${screens.xs ? "shadow-sm p-3" : "p-6"}`}
+        >
+          {screens.xs ? (
+            /* Mobile Card View */
+            <div className="space-y-3">
+              {filteredData.map((item, index) => (
+                <VocabularyCard
+                  key={
+                    item.id ||
+                    `${item.kanji}_${item.hiragana || item.katakana}_${index}`
+                  }
+                  item={item}
+                  index={index}
+                  showHanViet={
+                    viewMode === "table" || viewMode === "flashcard"
+                      ? showHanViet
+                      : false
+                  }
+                  onWordClick={handleWordClick}
+                />
+              ))}
+              {filteredData.length === 0 && (
+                <Empty
+                  description="Không tìm thấy từ vựng nào"
+                  className="py-8"
+                />
+              )}
+            </div>
+          ) : /* Desktop/Tablet Table View */
           viewMode === "table" || viewMode === "flashcard" ? (
             <Table
               dataSource={filteredData}
@@ -594,11 +605,10 @@ const VocabularyTable = React.forwardRef<VocabularyTableHandle, VocabularyTableP
                 />
               )}
             </div>
-          )
-        )}
-      </div>
+          )}
+        </div>
 
-      <style>{`
+        <style>{`
         .vocab-table .ant-table-body::-webkit-scrollbar {
           width: 0;
           height: 0;
@@ -609,121 +619,148 @@ const VocabularyTable = React.forwardRef<VocabularyTableHandle, VocabularyTableP
         }
       `}</style>
 
-      {/* Detail Modal */}
-      <VocabularyDetailModal
-        selectedWord={selectedWord}
-        showModal={showModal}
-        setShowModal={setShowModal}
-      />
-
-      {showFlashcard && (
-        <VocabularyFlashcard
-          currentCard={currentCard}
-          currentCardIndex={currentCardIndex}
-          cardsToStudy={cardsToStudy}
-          isFlipped={isFlipped}
-          isFullscreen={isFullscreen}
-          screens={screens}
-          onFlipCard={flipCard}
-          onMemoryEvaluation={handleMemoryEvaluation}
-          onSetIsFullscreen={setIsFullscreen}
-          onBackToTable={() => {
-            onExitFlashcard?.();
-            setViewMode("table");
-            setCurrentCardIndex(0);
-            setIsFlipped(false);
-            setIsFullscreen(false);
-          }}
-          onCloseSidebar={onCloseSidebar}
-          onResetCards={() => resetStudySession("all")}
-          onShuffleCards={shuffleCards}
+        {/* Detail Modal */}
+        <VocabularyDetailModal
+          selectedWord={selectedWord}
+          showModal={showModal}
+          setShowModal={setShowModal}
         />
-      )}
 
-      {showCompletion && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 p-4">
-          <div className="w-full max-w-4xl bg-white dark:bg-secondary-925 rounded-2xl border border-secondary-200 dark:border-secondary-800 shadow-2xl p-6">
-            <Card className="mb-6">
-              <div className="flex justify-between items-center">
-                <Title level={2}>Kết thúc buổi học</Title>
+        {showFlashcard && (
+          <VocabularyFlashcard
+            currentCard={currentCard}
+            currentCardIndex={currentCardIndex}
+            cardsToStudy={cardsToStudy}
+            isFlipped={isFlipped}
+            isFullscreen={isFullscreen}
+            screens={screens}
+            onFlipCard={flipCard}
+            onMemoryEvaluation={handleMemoryEvaluation}
+            onSetIsFullscreen={setIsFullscreen}
+            onBackToTable={() => {
+              onExitFlashcard?.();
+              setViewMode("table");
+              setCurrentCardIndex(0);
+              setIsFlipped(false);
+              setIsFullscreen(false);
+            }}
+            onCloseSidebar={onCloseSidebar}
+            onResetCards={() => resetStudySession("all")}
+            onShuffleCards={shuffleCards}
+          />
+        )}
 
-                <Button
-                  type="primary"
-                  icon={<BookOutlined />}
+        {showCompletion && (
+          <div
+            className="fixed inset-0 z-[1000] flex items-center justify-center bg-black/40 p-4"
+            onClick={() => {
+              onExitFlashcard?.();
+              setViewMode("table");
+            }}
+          >
+            <div
+              className="flashcard-complete-modal w-full max-w-xl text-white"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <div className="rounded-xl border border-slate-600 bg-slate-900 p-8 text-white min-h-[300px] flex flex-col justify-between relative overflow-hidden">
+                <div className="pointer-events-none absolute -top-24 -right-24 h-64 w-64 rounded-full bg-blue-500/10 blur-3xl" />
+                <div className="pointer-events-none absolute -bottom-24 -left-24 h-64 w-64 rounded-full bg-emerald-500/10 blur-3xl" />
+                <button
+                  type="button"
+                  aria-label="Đóng"
                   onClick={() => {
                     onExitFlashcard?.();
                     setViewMode("table");
                   }}
+                  className="absolute top-3 right-3 h-9 w-9 rounded-full text-white/80 hover:text-white transition-colors flex items-center justify-center"
                 >
-                  Xem bảng
-                </Button>
-              </div>
-            </Card>
+                  ✕
+                </button>
+                <div className="text-center">
+                  <Title level={1} className="!mb-2 text-white">
+                    🎉 Hoàn thành!
+                  </Title>
+                  <div className="text-sm text-white/70 mb-4">
+                    Bạn đã hoàn thành phiên học hôm nay
+                  </div>
 
-            <Card className="max-w-4xl mx-auto">
-              <div className="text-center mb-8">
-                <Title
-                  level={1}
-                  className="text-secondary-900 dark:text-secondary-100 mb-6"
-                >
-                  🎉 Hoàn thành!
-                </Title>
+                  <Row gutter={16} className="mb-2">
+                    <Col span={8}>
+                      <div className="rounded-lg border border-slate-600/60 bg-white/5 px-3 py-2">
+                        <div className="text-xs uppercase tracking-wide text-white/60 mb-1">
+                          Tổng
+                        </div>
+                        <Statistic
+                          value={totalCount}
+                          valueStyle={{ color: "#93c5fd" }}
+                          className="text-white"
+                        />
+                      </div>
+                    </Col>
 
-                <Row gutter={24} className="mb-8">
-                  <Col span={8}>
-                    <Statistic
-                      title="Tổng"
-                      value={totalCount}
-                      styles={{ content: { color: "#1890ff" } }}
-                    />
-                  </Col>
+                    <Col span={8}>
+                      <div className="rounded-lg border border-slate-600/60 bg-white/5 px-3 py-2">
+                        <div className="text-xs uppercase tracking-wide text-white/60 mb-1">
+                          Đã nhớ
+                        </div>
+                        <Statistic
+                          value={knownCount}
+                          valueStyle={{ color: "#86efac" }}
+                          prefix={
+                            <CheckCircleOutlined style={{ color: "#86efac" }} />
+                          }
+                          className="text-white"
+                        />
+                      </div>
+                    </Col>
 
-                  <Col span={8}>
-                    <Statistic
-                      title="Đã nhớ"
-                      value={knownCount}
-                      styles={{ content: { color: "#52c41a" } }}
-                      prefix={<CheckCircleOutlined />}
-                    />
-                  </Col>
+                    <Col span={8}>
+                      <div className="rounded-lg border border-slate-600/60 bg-white/5 px-3 py-2">
+                        <div className="text-xs uppercase tracking-wide text-white/60 mb-1">
+                          Chưa nhớ
+                        </div>
+                        <Statistic
+                          value={unknownCount}
+                          valueStyle={{ color: "#fca5a5" }}
+                          prefix={
+                            <CloseCircleOutlined style={{ color: "#fca5a5" }} />
+                          }
+                          className="text-white"
+                        />
+                      </div>
+                    </Col>
+                  </Row>
+                </div>
 
-                  <Col span={8}>
-                    <Statistic
-                      title="Chưa nhớ"
-                      value={unknownCount}
-                      styles={{ content: { color: "#ff4d4f" } }}
-                      prefix={<CloseCircleOutlined />}
-                    />
-                  </Col>
-                </Row>
-
-                <Space size="large" className="justify-center">
-                  <Button
-                    type="primary"
-                    size="large"
-                    icon={<SwapOutlined />}
-                    onClick={() => resetStudySession("all")}
-                  >
-                    Học lại toàn bộ
-                  </Button>
-
-                  {globalUnknownCount > 0 && (
+                <div className="flex items-center justify-center pt-0">
+                  <Space size="large">
                     <Button
-                      type="default"
+                      type="primary"
                       size="large"
-                      onClick={() => resetStudySession("unremembered")}
+                      icon={<FontAwesomeIcon icon={faRotateLeft} />}
+                      onClick={() => resetStudySession("all")}
                     >
-                      Chỉ học {globalUnknownCount} thẻ chưa nhớ
+                      Học lại toàn bộ
                     </Button>
-                  )}
-                </Space>
+
+                    {globalUnknownCount > 0 && (
+                      <Button
+                        type="default"
+                        size="large"
+                        className="bg-transparent text-neutral-200 border-neutral-500 hover:text-white hover:border-neutral-300 hover:bg-white/10"
+                        onClick={() => resetStudySession("unremembered")}
+                      >
+                        Chỉ học {globalUnknownCount} thẻ chưa nhớ
+                      </Button>
+                    )}
+                  </Space>
+                </div>
               </div>
-            </Card>
+            </div>
           </div>
-        </div>
-      )}
-    </div>
-  );
+        )}
+      </div>
+    );
   },
 );
 

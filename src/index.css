@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Kosugi+Maru&family=Nunito:wght@400;500;600;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Kosugi+Maru&family=Nunito:wght@400;500;600;700&display=swap");
 
 @tailwind base;
 @tailwind components;
@@ -36,6 +36,15 @@
     font-family: "Nunito", "Kosugi Maru", system-ui, sans-serif;
   }
 
+  .vocab-table .ant-table,
+  .vocab-table .ant-table-container,
+  .vocab-table .ant-table-content,
+  .vocab-table .ant-table-body,
+  .vocab-table .ant-table-thead > tr > th,
+  .vocab-table .ant-table-tbody > tr > td {
+    @apply bg-white dark:bg-secondary-925;
+  }
+
   .theme-surface .ant-card:not([class*="bg-"]) {
     @apply bg-white dark:bg-secondary-925 border border-secondary-200 dark:border-secondary-900;
   }
@@ -52,24 +61,183 @@
     @apply border-secondary-200 dark:border-secondary-900;
   }
 
+  .flashcard-settings-wrap .ant-modal,
+  .flashcard-settings-modal.ant-modal,
   .flashcard-settings-modal .ant-modal-content {
-    @apply bg-white dark:bg-secondary-925;
+    background-color: transparent !important;
   }
 
+  .flashcard-settings-wrap .ant-modal-header,
   .flashcard-settings-modal .ant-modal-header {
-    @apply bg-transparent border-secondary-200 dark:border-secondary-800;
+    background-color: transparent !important;
+    border-color: #334155 !important;
+  }
+
+  .flashcard-settings-wrap .ant-modal-body,
+  .flashcard-settings-modal .ant-modal-body {
+    background-color: transparent !important;
+  }
+
+  .flashcard-settings-wrap .ant-modal-body,
+  .flashcard-settings-modal .ant-modal-body {
+    border: 0 !important;
+  }
+
+  .flashcard-settings-wrap .ant-modal-content,
+  .flashcard-settings-wrap .ant-modal-body,
+  .flashcard-settings-modal .ant-modal-content,
+  .flashcard-settings-modal .ant-modal-body {
+    padding: 0 !important;
+  }
+
+  .flashcard-settings-modal {
+    background: transparent !important;
+  }
+
+  .flashcard-settings-wrap .ant-modal-content,
+  .flashcard-settings-modal .ant-modal-content {
+    border: 0 !important;
+    box-shadow: none !important;
+    background: transparent !important;
+  }
+  .flashcard-settings-wrap .ant-modal,
+  .flashcard-settings-modal .ant-modal {
+    border: 0 !important;
+    outline: 0 !important;
+    box-shadow: none !important;
+    background: transparent !important;
+  }
+  .flashcard-settings-wrap .ant-modal-container {
+    background: rgba(15, 23, 42, 0.6) !important;
+  }
+
+  .flashcard-settings-wrap .ant-modal-header,
+  .flashcard-settings-modal .ant-modal-header {
+    padding: 0 !important;
+  }
+
+  .flashcard-settings-wrap .ant-modal-body > *,
+  .flashcard-settings-modal .ant-modal-body > * {
+    padding: 0 !important;
   }
 
   .flashcard-settings-modal .ant-modal-title {
-    @apply text-secondary-900 dark:text-secondary-100;
+    color: #ffffff !important;
+  }
+  .flashcard-settings-modal .ant-typography,
+  .flashcard-settings-modal .ant-typography * {
+    color: #ffffff !important;
   }
 
   .flashcard-settings-modal .ant-modal-close {
-    @apply text-secondary-500 hover:text-secondary-700 dark:text-secondary-300 dark:hover:text-secondary-100;
+    color: rgba(255, 255, 255, 0.7) !important;
+  }
+
+  .flashcard-settings-modal .ant-modal-close:hover {
+    color: #ffffff !important;
   }
 
   .flashcard-settings-modal .ant-collapse-header {
-    @apply text-secondary-900 dark:text-secondary-100 font-medium;
+    color: #ffffff !important;
+    font-weight: 600;
+  }
+  .flashcard-settings-modal .ant-collapse-content {
+    background: transparent !important;
+  }
+  .flashcard-settings-modal .ant-select-selector {
+    background: #1f2937 !important;
+    border-color: #334155 !important;
+    color: #e5e7eb !important;
+  }
+  .flashcard-settings-select-trigger {
+    color: #e5e7eb !important;
+    border: none;
+  }
+  .flashcard-settings-modal .ant-select-single .ant-select-selector,
+  .flashcard-settings-select-trigger .ant-select-selector {
+    background: #0b1220 !important;
+    color: #e5e7eb !important;
+    border-color: transparent !important;
+  }
+  .flashcard-settings-modal .ant-select-selector::after {
+    background: #1f2937 !important;
+  }
+  .flashcard-settings-modal .ant-select-selector,
+  .flashcard-settings-modal .ant-select-selection-item,
+  .flashcard-settings-modal .ant-select-selection-placeholder {
+    background: #0b1220 !important;
+    color: #f8fafc !important;
+  }
+  .flashcard-settings-select-trigger .ant-select-selector,
+  .flashcard-settings-select-trigger .ant-select-selection-item,
+  .flashcard-settings-select-trigger .ant-select-selection-placeholder {
+    background: #1f2937 !important;
+    color: #e5e7eb !important;
+  }
+  .flashcard-settings-modal
+    .ant-select-selector
+    .ant-select-selection-search-input {
+    color: #e5e7eb !important;
+  }
+  .flashcard-settings-modal .ant-select-selector .ant-select-selection-item {
+    color: #e5e7eb !important;
+  }
+  .flashcard-settings-modal
+    .ant-select:not(.ant-select-disabled)
+    .ant-select-selector {
+    background: #1f2937 !important;
+    border-color: #334155 !important;
+    box-shadow: none !important;
+  }
+  .flashcard-settings-modal .ant-select-focused .ant-select-selector,
+  .flashcard-settings-modal .ant-select-selector:focus,
+  .flashcard-settings-modal .ant-select-selector:active {
+    border-color: transparent !important;
+    box-shadow: none !important;
+  }
+  .flashcard-settings-modal .ant-select-selection-item {
+    color: #e5e7eb !important;
+  }
+  .flashcard-settings-modal .ant-select-suffix {
+    color: #ffffff !important;
+  }
+  .flashcard-settings-modal .ant-select-arrow .anticon {
+    color: #ffffff !important;
+  }
+  .flashcard-settings-modal .ant-select-selection-item,
+  .flashcard-settings-modal .ant-select-selection-placeholder {
+    color: #ffffff !important;
+  }
+  .flashcard-settings-modal .ant-btn {
+    background: #1f2937 !important;
+    border-color: #334155 !important;
+  }
+  .flashcard-settings-modal .ant-btn.ant-btn-dangerous {
+    background: #1f2937 !important;
+    border-color: #ef4444 !important;
+    color: #fecaca !important;
+  }
+  .flashcard-settings-modal .ant-btn-default {
+    color: #e5e7eb !important;
+  }
+  .flashcard-settings-modal .ant-btn-default:hover {
+    background: #243041 !important;
+    border-color: #475569 !important;
+    color: #ffffff !important;
+  }
+  .flashcard-settings-dropdown {
+    background: #111827 !important;
+    border: 1px solid #334155 !important;
+  }
+  .flashcard-settings-dropdown .ant-select-item {
+    color: #e5e7eb !important;
+  }
+  .flashcard-settings-dropdown .ant-select-item-option-active {
+    background: #1f2937 !important;
+  }
+  .flashcard-settings-dropdown .ant-select-item-option-selected {
+    background: #0f172a !important;
+    color: #ffffff !important;
   }
 
   .flashcard-settings-modal .ant-modal-body {
@@ -81,12 +249,47 @@
     display: none;
   }
 
+  .flashcard-complete-modal .ant-typography,
+  .flashcard-complete-modal .ant-statistic-title,
+  .flashcard-complete-modal .ant-statistic-content,
+  .flashcard-complete-modal .ant-statistic-content-value,
+  .flashcard-complete-modal .ant-statistic-content-prefix,
+  .flashcard-complete-modal .ant-btn {
+    color: #ffffff !important;
+  }
+  .flashcard-complete-modal .ant-btn-default,
+  .flashcard-complete-modal .ant-btn-default:focus,
+  .flashcard-complete-modal .ant-btn-default:active {
+    background: transparent !important;
+    border-color: #64748b !important;
+    color: #ffffff !important;
+  }
+  .flashcard-complete-modal .ant-btn-default:hover {
+    background: rgba(255, 255, 255, 0.08) !important;
+    border-color: #94a3b8 !important;
+    color: #ffffff !important;
+  }
+
+  .flashcard-action-bar .ant-btn-text,
+  .flashcard-action-bar .ant-btn-text:hover,
+  .flashcard-action-bar .ant-btn-text:focus,
+  .flashcard-action-bar .ant-btn-text:active {
+    color: #ffffff !important;
+    background: transparent !important;
+  }
+  .flashcard-action-bar .ant-btn-text:hover {
+    background: rgba(255, 255, 255, 0.08) !important;
+  }
+
   .theme-surface .tests-select .ant-select-selector,
   .theme-surface .tests-select .ant-select-selection-item {
     @apply text-secondary-900 dark:text-secondary-100;
   }
 
-  .theme-surface .ant-typography:not(.ant-typography-danger):not(.ant-typography-success):not(.ant-typography-warning):not(.ant-typography-secondary) {
+  .theme-surface
+    .ant-typography:not(.ant-typography-danger):not(
+      .ant-typography-success
+    ):not(.ant-typography-warning):not(.ant-typography-secondary) {
     @apply text-secondary-900 dark:text-secondary-100;
   }
 
@@ -111,7 +314,8 @@
   }
 
   .font-japanese {
-    font-family: "Kosugi Maru", 'Hiragino Sans', 'Yu Gothic', 'Meiryo', sans-serif;
+    font-family:
+      "Kosugi Maru", "Hiragino Sans", "Yu Gothic", "Meiryo", sans-serif;
     line-height: 1.8;
     letter-spacing: 0.02em;
   }
@@ -147,8 +351,8 @@
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-    monospace;
+  font-family:
+    source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
 }
 
 /* Tooltip overrides for both light and dark modes */
@@ -176,9 +380,16 @@ div.ant-tooltip-arrow-content {
 
 /* Shake animation for error messages */
 @keyframes shake {
-  0%, 100% { transform: translateX(0); }
-  25% { transform: translateX(-5px); }
-  75% { transform: translateX(5px); }
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(-5px);
+  }
+  75% {
+    transform: translateX(5px);
+  }
 }
 
 /* Height-based responsive design for 14-inch laptops */
@@ -187,46 +398,46 @@ div.ant-tooltip-arrow-content {
     padding: 16px;
     padding-top: 32px;
   }
-  
+
   .login-card {
     padding: 16px;
   }
-  
+
   .illustration {
     transform: scale(0.85);
     max-height: 60vh;
   }
-  
+
   .illustration .bg-gradient-to-br {
     padding: 12px;
   }
-  
+
   .input-field {
     height: 44px;
     padding-top: 8px;
     padding-bottom: 8px;
   }
-  
+
   .btn-primary {
     height: 44px;
     padding-top: 8px;
     padding-bottom: 8px;
   }
-  
+
   /* Reduce font sizes for small height */
   .login-card h2 {
     font-size: clamp(16px, 2vw, 20px);
   }
-  
+
   .login-card p {
     font-size: clamp(11px, 1.4vw, 14px);
   }
-  
+
   /* Reduce spacing */
   .space-y-3 > * + * {
     margin-top: 0.5rem;
   }
-  
+
   .space-y-4 > * + * {
     margin-top: 0.75rem;
   }
@@ -237,19 +448,19 @@ div.ant-tooltip-arrow-content {
     padding: 24px;
     padding-top: 64px;
   }
-  
+
   .login-card {
     padding: 32px;
   }
-  
+
   .illustration {
     transform: scale(1);
   }
-  
+
   .input-field {
     height: 56px;
   }
-  
+
   .btn-primary {
     height: 56px;
   }
