@@ -49,6 +49,9 @@ interface VocabularyTableProps {
   onCloseSidebar?: () => void;
   onEnterFlashcard?: () => void;
   onExitFlashcard?: () => void;
+
+  // Voice settings for TTS
+  femaleVoiceName?: string;
 }
 
 const VocabularyTable = React.forwardRef<
@@ -180,11 +183,11 @@ const VocabularyTable = React.forwardRef<
     );
 
     const handlePlayHiraKanaAudio = useCallback(
-      (text: string, event?: React.MouseEvent) => {
+      (text: string, event?: React.MouseEvent, voiceName?: string) => {
         if (event) {
           event.stopPropagation();
         }
-        speakText(text);
+        speakText(text, 'ja-JP', voiceName);
       },
       [],
     );
@@ -302,33 +305,33 @@ const VocabularyTable = React.forwardRef<
         },
         ...(showRomaji
           ? [
-              {
-                title: "Romaji",
-                dataIndex: "romaji",
-                key: "romaji",
-                width: screens.lg ? 110 : 90,
-                render: (text: string) => (
-                  <Typography.Text type="secondary">
-                    {text || "-"}
-                  </Typography.Text>
-                ),
-              },
-            ]
+            {
+              title: "Romaji",
+              dataIndex: "romaji",
+              key: "romaji",
+              width: screens.lg ? 110 : 90,
+              render: (text: string) => (
+                <Typography.Text type="secondary">
+                  {text || "-"}
+                </Typography.Text>
+              ),
+            },
+          ]
           : []),
         ...(showHanViet
           ? [
-              {
-                title: "Hán Việt",
-                dataIndex: "hanviet",
-                key: "hanviet",
-                width: screens.lg ? 110 : 90,
-                render: (text: string) => (
-                  <span className="text-secondary-800 dark:text-secondary-300">
-                    {text ? text.toUpperCase().replace(/,/g, "") : "-"}
-                  </span>
-                ),
-              },
-            ]
+            {
+              title: "Hán Việt",
+              dataIndex: "hanviet",
+              key: "hanviet",
+              width: screens.lg ? 110 : 90,
+              render: (text: string) => (
+                <span className="text-secondary-800 dark:text-secondary-300">
+                  {text ? text.toUpperCase().replace(/,/g, "") : "-"}
+                </span>
+              ),
+            },
+          ]
           : []),
         {
           title: "Nghĩa tiếng Việt",
@@ -542,70 +545,70 @@ const VocabularyTable = React.forwardRef<
               )}
             </div>
           ) : /* Desktop/Tablet Table View */
-          viewMode === "table" || viewMode === "flashcard" ? (
-            <Table
-              dataSource={filteredData}
-              loading={loading}
-              rowKey={(record) =>
-                record.id ||
-                `${record.kanji}_${record.hiragana || record.katakana}_${Math.random().toString(36).substr(2, 9)}`
-              }
-              pagination={false}
-              scroll={{ x: "max-content" }}
-              className="vocab-table"
-              columns={screens.md ? tableColumns : tabletColumns}
-              onRow={(record: VocabularyItemType) => ({
-                onClick: () => handleWordClick(record),
-                style: { cursor: "pointer" },
-              })}
-            />
-          ) : (
-            <div className="space-y-3">
-              {filteredData.map((item, index) => (
-                <div
-                  key={
-                    item.id ||
-                    `${item.kanji}_${item.hiragana || item.katakana}_${index}`
-                  }
-                  className="rounded-lg border border-secondary-200 dark:border-secondary-800 bg-white dark:bg-secondary-925 p-3 hover:shadow-sm transition-shadow cursor-pointer"
-                  onClick={() => handleWordClick(item)}
-                >
-                  <div className="flex items-start justify-between gap-3">
-                    <div className="flex-1 min-w-0">
-                      <div className="text-2xl font-bold font-kosugi text-secondary-900 dark:text-secondary-100">
-                        {item.kanji || item.hiragana || item.katakana || "-"}
+            viewMode === "table" || viewMode === "flashcard" ? (
+              <Table
+                dataSource={filteredData}
+                loading={loading}
+                rowKey={(record) =>
+                  record.id ||
+                  `${record.kanji}_${record.hiragana || record.katakana}_${Math.random().toString(36).substr(2, 9)}`
+                }
+                pagination={false}
+                scroll={{ x: "max-content" }}
+                className="vocab-table"
+                columns={screens.md ? tableColumns : tabletColumns}
+                onRow={(record: VocabularyItemType) => ({
+                  onClick: () => handleWordClick(record),
+                  style: { cursor: "pointer" },
+                })}
+              />
+            ) : (
+              <div className="space-y-3">
+                {filteredData.map((item, index) => (
+                  <div
+                    key={
+                      item.id ||
+                      `${item.kanji}_${item.hiragana || item.katakana}_${index}`
+                    }
+                    className="rounded-lg border border-secondary-200 dark:border-secondary-800 bg-white dark:bg-secondary-925 p-3 hover:shadow-sm transition-shadow cursor-pointer"
+                    onClick={() => handleWordClick(item)}
+                  >
+                    <div className="flex items-start justify-between gap-3">
+                      <div className="flex-1 min-w-0">
+                        <div className="text-2xl font-bold font-kosugi text-secondary-900 dark:text-secondary-100">
+                          {item.kanji || item.hiragana || item.katakana || "-"}
+                        </div>
+                        <div className="text-sm text-secondary-600 dark:text-secondary-400">
+                          {item.hiragana || item.katakana || "-"}
+                        </div>
+                        <div className="mt-1 text-base text-secondary-900 dark:text-secondary-100">
+                          {item.meaning_vi || "-"}
+                        </div>
                       </div>
-                      <div className="text-sm text-secondary-600 dark:text-secondary-400">
-                        {item.hiragana || item.katakana || "-"}
-                      </div>
-                      <div className="mt-1 text-base text-secondary-900 dark:text-secondary-100">
-                        {item.meaning_vi || "-"}
-                      </div>
+                      <Button
+                        type="text"
+                        icon={<SoundOutlined />}
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          const hiraKanaText =
+                            item.hiragana || item.katakana || "";
+                          if (hiraKanaText) {
+                            handlePlayHiraKanaAudio(hiraKanaText, e);
+                          }
+                        }}
+                        disabled={!item.hiragana && !item.katakana}
+                      />
                     </div>
-                    <Button
-                      type="text"
-                      icon={<SoundOutlined />}
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        const hiraKanaText =
-                          item.hiragana || item.katakana || "";
-                        if (hiraKanaText) {
-                          handlePlayHiraKanaAudio(hiraKanaText, e);
-                        }
-                      }}
-                      disabled={!item.hiragana && !item.katakana}
-                    />
                   </div>
-                </div>
-              ))}
-              {filteredData.length === 0 && (
-                <Empty
-                  description="Không tìm thấy từ vựng nào"
-                  className="py-8"
-                />
-              )}
-            </div>
-          )}
+                ))}
+                {filteredData.length === 0 && (
+                  <Empty
+                    description="Không tìm thấy từ vựng nào"
+                    className="py-8"
+                  />
+                )}
+              </div>
+            )}
         </div>
 
         <style>{`
@@ -644,7 +647,6 @@ const VocabularyTable = React.forwardRef<
               setIsFlipped(false);
               setIsFullscreen(false);
             }}
-            onCloseSidebar={onCloseSidebar}
             onResetCards={() => resetStudySession("all")}
             onShuffleCards={shuffleCards}
           />

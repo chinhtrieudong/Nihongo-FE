@@ -24,19 +24,20 @@ import { speakText } from "../utils/vocabularyUtils";
 const { Text } = Typography;
 
 interface VocabularyFlashcardProps {
-  currentCard: VocabularyItemType | undefined;
+  currentCard: VocabularyItemType | null;
   currentCardIndex: number;
   cardsToStudy: VocabularyItemType[];
   isFlipped: boolean;
   isFullscreen: boolean;
   screens: any;
   onFlipCard: () => void;
-  onMemoryEvaluation: (status: "known" | "unknown") => void;
+  onMemoryEvaluation: (status: "unknown" | "known") => void;
   onSetIsFullscreen: (fullscreen: boolean) => void;
-  onBackToTable?: () => void;
-  onCloseSidebar?: () => void;
+  onBackToTable: () => void;
   onResetCards?: () => void;
   onShuffleCards?: () => void;
+  // Voice settings for TTS
+  femaleVoiceName?: string;
 }
 
 const VocabularyFlashcard: React.FC<VocabularyFlashcardProps> = ({
@@ -50,9 +51,9 @@ const VocabularyFlashcard: React.FC<VocabularyFlashcardProps> = ({
   onMemoryEvaluation,
   onSetIsFullscreen,
   onBackToTable,
-  onCloseSidebar,
   onResetCards,
   onShuffleCards,
+  femaleVoiceName,
 }) => {
   const [settingsVisible, setSettingsVisible] = useState(false);
   const [frontFace, setFrontFace] = useState<"japanese" | "vietnamese">(
@@ -80,9 +81,9 @@ const VocabularyFlashcard: React.FC<VocabularyFlashcardProps> = ({
     (e: React.MouseEvent) => {
       e.stopPropagation();
       const text = currentCard?.hiragana || currentCard?.katakana || "";
-      if (text) speakText(text);
+      if (text) speakText(text, 'ja-JP', femaleVoiceName);
     },
-    [currentCard],
+    [currentCard, femaleVoiceName],
   );
 
   // Note: keep sidebar open while viewing flashcards
@@ -96,8 +97,8 @@ const VocabularyFlashcard: React.FC<VocabularyFlashcardProps> = ({
     if ("speechSynthesis" in window) {
       window.speechSynthesis.cancel();
     }
-    speakText(text);
-  }, []);
+    speakText(text, 'ja-JP', femaleVoiceName);
+  }, [femaleVoiceName]);
 
   // Auto-speak functionality (faster)
   useEffect(() => {
@@ -335,17 +336,16 @@ const VocabularyFlashcard: React.FC<VocabularyFlashcardProps> = ({
             {!isFlipped && (
               <div className="h-full flex flex-col items-center justify-center text-center px-6">
                 <div
-                  className={`${
-                    getFrontContent().isVietnamese
-                      ? "text-[26px] sm:text-[32px]"
-                      : "text-[34px]"
-                  } font-semibold tracking-wide text-neutral-100 flex flex-col items-center`}
+                  className={`${getFrontContent().isVietnamese
+                    ? "text-[26px] sm:text-[32px]"
+                    : "text-[34px]"
+                    } font-semibold tracking-wide text-neutral-100 flex flex-col items-center`}
                   style={
                     getFrontContent().isVietnamese
                       ? {
-                          fontFamily:
-                            '"Nunito", "Noto Sans", "Hiragino Sans", "Yu Gothic", "Meiryo", sans-serif',
-                        }
+                        fontFamily:
+                          '"Nunito", "Noto Sans", "Hiragino Sans", "Yu Gothic", "Meiryo", sans-serif',
+                      }
                       : undefined
                   }
                 >
@@ -354,17 +354,16 @@ const VocabularyFlashcard: React.FC<VocabularyFlashcardProps> = ({
 
                 {getFrontContent().sub && (
                   <div
-                    className={`mt-2 ${
-                      getFrontContent().isVietnamese
-                        ? "text-[26px] sm:text-[32px]"
-                        : "text-[34px]"
-                    } text-neutral-300`}
+                    className={`mt-2 ${getFrontContent().isVietnamese
+                      ? "text-[26px] sm:text-[32px]"
+                      : "text-[34px]"
+                      } text-neutral-300`}
                     style={
                       getFrontContent().isVietnamese
                         ? {
-                            fontFamily:
-                              '"Nunito", "Noto Sans", "Hiragino Sans", "Yu Gothic", "Meiryo", sans-serif',
-                          }
+                          fontFamily:
+                            '"Nunito", "Noto Sans", "Hiragino Sans", "Yu Gothic", "Meiryo", sans-serif',
+                        }
                         : undefined
                     }
                   >
@@ -394,17 +393,16 @@ const VocabularyFlashcard: React.FC<VocabularyFlashcardProps> = ({
             {isFlipped && (
               <div className="h-full flex flex-col items-center justify-center text-center px-8">
                 <div
-                  className={`${
-                    getBackContent().isVietnamese
-                      ? "text-[26px] sm:text-[32px]"
-                      : "text-[34px]"
-                  } font-semibold tracking-wide text-neutral-100 flex flex-col items-center`}
+                  className={`${getBackContent().isVietnamese
+                    ? "text-[26px] sm:text-[32px]"
+                    : "text-[34px]"
+                    } font-semibold tracking-wide text-neutral-100 flex flex-col items-center`}
                   style={
                     getBackContent().isVietnamese
                       ? {
-                          fontFamily:
-                            '"Nunito", "Noto Sans", "Hiragino Sans", "Yu Gothic", "Meiryo", sans-serif',
-                        }
+                        fontFamily:
+                          '"Nunito", "Noto Sans", "Hiragino Sans", "Yu Gothic", "Meiryo", sans-serif',
+                      }
                       : undefined
                   }
                 >
@@ -413,17 +411,16 @@ const VocabularyFlashcard: React.FC<VocabularyFlashcardProps> = ({
 
                 {getBackContent().sub && (
                   <div
-                    className={`mt-2 ${
-                      getBackContent().isVietnamese
-                        ? "text-[26px] sm:text-[32px]"
-                        : "text-[34px]"
-                    } text-neutral-300`}
+                    className={`mt-2 ${getBackContent().isVietnamese
+                      ? "text-[26px] sm:text-[32px]"
+                      : "text-[34px]"
+                      } text-neutral-300`}
                     style={
                       getBackContent().isVietnamese
                         ? {
-                            fontFamily:
-                              '"Nunito", "Noto Sans", "Hiragino Sans", "Yu Gothic", "Meiryo", sans-serif',
-                          }
+                          fontFamily:
+                            '"Nunito", "Noto Sans", "Hiragino Sans", "Yu Gothic", "Meiryo", sans-serif',
+                        }
                         : undefined
                     }
                   >

@@ -13,22 +13,26 @@ import { speakText } from '../utils/vocabularyUtils';
 const { Text } = Typography;
 
 interface VocabularyCardProps {
-  item: VocabularyItemType;
   index: number;
+  item: VocabularyItemType;
   showHanViet: boolean;
   onWordClick: (word: VocabularyItemType) => void;
+
+  // Voice settings for TTS
+  femaleVoiceName?: string;
 }
 
 const VocabularyCard: React.FC<VocabularyCardProps> = ({
   item,
   index,
   showHanViet,
-  onWordClick
+  onWordClick,
+  femaleVoiceName
 }) => {
   const handlePlayAudio = useCallback((text: string, e: React.MouseEvent) => {
     e.stopPropagation();
-    speakText(text);
-  }, []);
+    speakText(text, 'ja-JP', femaleVoiceName);
+  }, [femaleVoiceName]);
 
   return (
     <Card

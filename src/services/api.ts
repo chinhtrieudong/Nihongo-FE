@@ -5,11 +5,11 @@ import {
   ExerciseSubmitResponse,
   AIRoleplayResponse,
   WeakPointsResponse,
-  AIPrompts
+  AIPrompts,
 } from "../types/lesson";
 
 const API_BASE_URL =
-  process.env.REACT_APP_API_URL || "/api/v1";
+  process.env.REACT_APP_API_URL || "http://localhost:5000/api/v1";
 
 // Create axios instance with default config
 const api = axios.create({
@@ -30,7 +30,7 @@ api.interceptors.request.use(
   },
   (error) => {
     return Promise.reject(error);
-  }
+  },
 );
 
 // Response interceptor to handle token refresh
@@ -67,7 +67,7 @@ api.interceptors.response.use(
     }
 
     return Promise.reject(error);
-  }
+  },
 );
 
 export interface LoginData {
@@ -127,17 +127,17 @@ export const authAPI = {
       return response.data;
     } catch (error) {
       // If /auth/me doesn't exist, create a mock user from token
-      const token = localStorage.getItem('accessToken');
+      const token = localStorage.getItem("accessToken");
       if (token) {
-        const decoded = JSON.parse(atob(token.split('.')[1]));
+        const decoded = JSON.parse(atob(token.split(".")[1]));
         return {
           success: true,
           data: {
-            id: decoded.id || decoded.sub || 'temp-user',
-            username: decoded.username || decoded.name || 'User',
-            email: decoded.email || 'user@example.com',
-            role: decoded.role || 'student'
-          }
+            id: decoded.id || decoded.sub || "temp-user",
+            username: decoded.username || decoded.name || "User",
+            email: decoded.email || "user@example.com",
+            role: decoded.role || "student",
+          },
         };
       }
       throw error;
@@ -169,12 +169,16 @@ export const vocabularyAPI = {
 
 // Lesson API functions
 export const lessonAPI = {
-  getLessons: async (level?: string, limit?: number, offset?: number): Promise<LessonsResponse> => {
+  getLessons: async (
+    level?: string,
+    limit?: number,
+    offset?: number,
+  ): Promise<LessonsResponse> => {
     const params: any = {};
     if (level) params.level = level;
     if (limit) params.limit = limit;
     if (offset) params.offset = offset;
-    
+
     const response = await api.get("/lessons", { params });
     return response.data;
   },
@@ -184,15 +188,18 @@ export const lessonAPI = {
     return response.data;
   },
 
-  updateProgress: async (lessonId: string, data: {
-    status: "not_started" | "in_progress" | "completed" | "review";
-    progress: number;
-    vocabularyCompleted?: boolean;
-    grammarCompleted?: boolean;
-    dialogCompleted?: boolean;
-    exercisesScore?: number;
-    aiPracticeCount?: number;
-  }) => {
+  updateProgress: async (
+    lessonId: string,
+    data: {
+      status: "not_started" | "in_progress" | "completed" | "review";
+      progress: number;
+      vocabularyCompleted?: boolean;
+      grammarCompleted?: boolean;
+      dialogCompleted?: boolean;
+      exercisesScore?: number;
+      aiPracticeCount?: number;
+    },
+  ) => {
     const response = await api.put(`/lessons/${lessonId}/progress`, data);
     return response.data;
   },
@@ -202,23 +209,27 @@ export const lessonAPI = {
     return response.data;
   },
 
-  submitExercise: async (lessonId: string, exerciseId: string, answer: string): Promise<ExerciseSubmitResponse> => {
+  submitExercise: async (
+    lessonId: string,
+    exerciseId: string,
+    answer: string,
+  ): Promise<ExerciseSubmitResponse> => {
     const response = await api.post(
       `/lessons/${lessonId}/exercises/${exerciseId}/submit`,
       {
         answer,
-      }
+      },
     );
     return response.data;
   },
 
-  submitExercises: async (lessonId: string, answers: Array<{exerciseId: string, answer: string | string[]}>): Promise<any> => {
-    const response = await api.post(
-      `/lessons/${lessonId}/exercises/submit`,
-      {
-        answers
-      }
-    );
+  submitExercises: async (
+    lessonId: string,
+    answers: Array<{ exerciseId: string; answer: string | string[] }>,
+  ): Promise<any> => {
+    const response = await api.post(`/lessons/${lessonId}/exercises/submit`, {
+      answers,
+    });
     return response.data;
   },
 
@@ -228,18 +239,23 @@ export const lessonAPI = {
   },
 
   searchLessons: async (query: string) => {
-    const response = await api.get(`/lessons/search?q=${encodeURIComponent(query)}`);
+    const response = await api.get(
+      `/lessons/search?q=${encodeURIComponent(query)}`,
+    );
     return response.data;
   },
 
   // AI Practice endpoints
-  aiRoleplay: async (lessonId: string, data: {
-    message: string;
-    context: {
-      currentLesson: string;
-      difficulty: "easy" | "medium" | "hard";
-    };
-  }): Promise<AIRoleplayResponse> => {
+  aiRoleplay: async (
+    lessonId: string,
+    data: {
+      message: string;
+      context: {
+        currentLesson: string;
+        difficulty: "easy" | "medium" | "hard";
+      };
+    },
+  ): Promise<AIRoleplayResponse> => {
     const response = await api.post(`/lessons/${lessonId}/ai/roleplay`, data);
     return response.data;
   },
@@ -268,13 +284,16 @@ export const lessonAPI = {
     search?: string;
   }) => {
     const params = new URLSearchParams();
-    if (filters.lesson && filters.lesson !== 'all') params.append('lesson', filters.lesson);
-    if (filters.radical && filters.radical !== 'all') params.append('radical', filters.radical);
-    if (filters.strokeCount && filters.strokeCount !== 'all') params.append('strokeCount', filters.strokeCount);
-    if (filters.search) params.append('search', filters.search);
-    
+    if (filters.lesson && filters.lesson !== "all")
+      params.append("lesson", filters.lesson);
+    if (filters.radical && filters.radical !== "all")
+      params.append("radical", filters.radical);
+    if (filters.strokeCount && filters.strokeCount !== "all")
+      params.append("strokeCount", filters.strokeCount);
+    if (filters.search) params.append("search", filters.search);
+
     // Use the level in the path (e.g., /kanji/n5) and include other filters as query params
-    const levelPath = filters.level ? `/${filters.level.toLowerCase()}` : '/n5';
+    const levelPath = filters.level ? `/${filters.level.toLowerCase()}` : "/n5";
     const response = await api.get(`/kanji${levelPath}?${params.toString()}`);
     return response.data;
   },

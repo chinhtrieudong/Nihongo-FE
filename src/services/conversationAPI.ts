@@ -1,4 +1,4 @@
-import axios, { AxiosInstance, AxiosResponse } from 'axios';
+import axios, { AxiosInstance, AxiosResponse } from "axios";
 
 // Base types
 export interface Scenario {
@@ -6,7 +6,7 @@ export interface Scenario {
   title: string;
   description: string;
   category: string;
-  level: 'N5' | 'N4' | 'N3' | 'N2' | 'N1';
+  level: "N5" | "N4" | "N3" | "N2" | "N1";
   context: string;
   aiRole: string;
   userRole: string;
@@ -28,7 +28,7 @@ export interface Dialog {
   title: string;
   description: string;
   category: string;
-  level: 'N5' | 'N4' | 'N3' | 'N2' | 'N1';
+  level: "N5" | "N4" | "N3" | "N2" | "N1";
   lines: DialogLine[];
   difficulty: number;
   estimatedDuration: number;
@@ -48,7 +48,7 @@ export interface DialogLine {
 
 export interface Message {
   id: string;
-  role: 'user' | 'assistant';
+  role: "user" | "assistant";
   content: string;
   romaji?: string;
   meaning?: string;
@@ -219,10 +219,10 @@ class ConversationAPI {
   private token: string | null;
 
   constructor(token?: string) {
-    this.token = token || localStorage.getItem('accessToken');
-    
+    this.token = token || localStorage.getItem("accessToken");
+
     this.client = axios.create({
-      baseURL: 'http://localhost:3000/api/v1/conversation',
+      baseURL: "http://localhost:5000/api/v1/conversation",
       timeout: 30000,
     });
 
@@ -234,7 +234,7 @@ class ConversationAPI {
         }
         return config;
       },
-      (error) => Promise.reject(error)
+      (error) => Promise.reject(error),
     );
 
     // Response interceptor for error handling
@@ -243,25 +243,25 @@ class ConversationAPI {
       (error) => {
         if (error.response?.status === 401) {
           // Token expired or invalid
-          localStorage.removeItem('accessToken');
+          localStorage.removeItem("accessToken");
           // window.location.href = '/login';
-          console.warn('401 but ignore in practice mode');
+          console.warn("401 but ignore in practice mode");
         }
         return Promise.reject(error);
-      }
+      },
     );
   }
 
   // Update token
   setToken(token: string) {
     this.token = token;
-    localStorage.setItem('accessToken', token);
+    localStorage.setItem("accessToken", token);
   }
 
   // Remove token
   removeToken() {
     this.token = null;
-    localStorage.removeItem('accessToken');
+    localStorage.removeItem("accessToken");
   }
 
   // ============ PUBLIC ENDPOINTS ============
@@ -277,8 +277,9 @@ class ConversationAPI {
     limit?: number;
   }): Promise<ApiResponse<{ scenarios: Scenario[]; pagination: Pagination }>> {
     try {
-      const response: AxiosResponse<ApiResponse<{ scenarios: Scenario[]; pagination: Pagination }>> = 
-        await this.client.get('/scenarios', { params });
+      const response: AxiosResponse<
+        ApiResponse<{ scenarios: Scenario[]; pagination: Pagination }>
+      > = await this.client.get("/scenarios", { params });
       return response.data;
     } catch (error) {
       throw this.handleError(error);
@@ -288,9 +289,11 @@ class ConversationAPI {
   /**
    * Get scenario details by ID
    */
-  async getScenarioById(id: string): Promise<ApiResponse<{ scenario: Scenario }>> {
+  async getScenarioById(
+    id: string,
+  ): Promise<ApiResponse<{ scenario: Scenario }>> {
     try {
-      const response: AxiosResponse<ApiResponse<{ scenario: Scenario }>> = 
+      const response: AxiosResponse<ApiResponse<{ scenario: Scenario }>> =
         await this.client.get(`/scenarios/${id}`);
       return response.data;
     } catch (error) {
@@ -309,8 +312,9 @@ class ConversationAPI {
     limit?: number;
   }): Promise<ApiResponse<{ dialogs: Dialog[]; pagination: Pagination }>> {
     try {
-      const response: AxiosResponse<ApiResponse<{ dialogs: Dialog[]; pagination: Pagination }>> = 
-        await this.client.get('/dialogs', { params });
+      const response: AxiosResponse<
+        ApiResponse<{ dialogs: Dialog[]; pagination: Pagination }>
+      > = await this.client.get("/dialogs", { params });
       return response.data;
     } catch (error) {
       throw this.handleError(error);
@@ -322,7 +326,7 @@ class ConversationAPI {
    */
   async getDialogById(id: string): Promise<ApiResponse<{ dialog: Dialog }>> {
     try {
-      const response: AxiosResponse<ApiResponse<{ dialog: Dialog }>> = 
+      const response: AxiosResponse<ApiResponse<{ dialog: Dialog }>> =
         await this.client.get(`/dialogs/${id}`);
       return response.data;
     } catch (error) {
@@ -335,10 +339,13 @@ class ConversationAPI {
   /**
    * Start AI conversation
    */
-  async startConversation(scenarioId: string, level?: string): Promise<ApiResponse<Conversation>> {
+  async startConversation(
+    scenarioId: string,
+    level?: string,
+  ): Promise<ApiResponse<Conversation>> {
     try {
-      const response: AxiosResponse<ApiResponse<Conversation>> = 
-        await this.client.post('/ai/start', { scenarioId, level });
+      const response: AxiosResponse<ApiResponse<Conversation>> =
+        await this.client.post("/ai/start", { scenarioId, level });
       return response.data;
     } catch (error) {
       throw this.handleError(error);
@@ -348,10 +355,13 @@ class ConversationAPI {
   /**
    * Send chat message
    */
-  async sendMessage(conversationId: string, message: string): Promise<ApiResponse<ChatResponse>> {
+  async sendMessage(
+    conversationId: string,
+    message: string,
+  ): Promise<ApiResponse<ChatResponse>> {
     try {
-      const response: AxiosResponse<ApiResponse<ChatResponse>> = 
-        await this.client.post('/ai/chat', { conversationId, message });
+      const response: AxiosResponse<ApiResponse<ChatResponse>> =
+        await this.client.post("/ai/chat", { conversationId, message });
       return response.data;
     } catch (error) {
       throw this.handleError(error);
@@ -361,9 +371,11 @@ class ConversationAPI {
   /**
    * End AI conversation
    */
-  async endConversation(conversationId: string): Promise<ApiResponse<ConversationEnd>> {
+  async endConversation(
+    conversationId: string,
+  ): Promise<ApiResponse<ConversationEnd>> {
     try {
-      const response: AxiosResponse<ApiResponse<ConversationEnd>> = 
+      const response: AxiosResponse<ApiResponse<ConversationEnd>> =
         await this.client.post(`/ai/end/${conversationId}`);
       return response.data;
     } catch (error) {
@@ -381,8 +393,8 @@ class ConversationAPI {
     targetText: string;
   }): Promise<ApiResponse<VoiceRecording>> {
     try {
-      const response: AxiosResponse<ApiResponse<VoiceRecording>> = 
-        await this.client.post('/voice/start', params);
+      const response: AxiosResponse<ApiResponse<VoiceRecording>> =
+        await this.client.post("/voice/start", params);
       return response.data;
     } catch (error) {
       throw this.handleError(error);
@@ -398,13 +410,13 @@ class ConversationAPI {
   }): Promise<ApiResponse<{ analysis: VoiceAnalysis }>> {
     try {
       const formData = new FormData();
-      formData.append('recordingId', params.recordingId);
-      formData.append('audioFile', params.audioFile);
+      formData.append("recordingId", params.recordingId);
+      formData.append("audioFile", params.audioFile);
 
-      const response: AxiosResponse<ApiResponse<{ analysis: VoiceAnalysis }>> = 
-        await this.client.post('/voice/upload', formData, {
+      const response: AxiosResponse<ApiResponse<{ analysis: VoiceAnalysis }>> =
+        await this.client.post("/voice/upload", formData, {
           headers: {
-            'Content-Type': 'multipart/form-data',
+            "Content-Type": "multipart/form-data",
           },
         });
       return response.data;
@@ -420,7 +432,7 @@ class ConversationAPI {
    */
   async getUserStats(): Promise<ApiResponse<UserStats>> {
     try {
-      const response: AxiosResponse<ApiResponse<UserStats>> = 
+      const response: AxiosResponse<ApiResponse<UserStats>> =
         await this.client.get(`/stats`);
       return response.data;
     } catch (error) {
@@ -438,12 +450,14 @@ class ConversationAPI {
   }): Promise<ApiResponse<{ conversations: Conversation[]; total: number }>> {
     try {
       const queryParams = new URLSearchParams();
-      if (params?.type) queryParams.append('type', params.type);
-      if (params?.limit) queryParams.append('limit', params.limit.toString());
-      if (params?.offset) queryParams.append('offset', params.offset.toString());
+      if (params?.type) queryParams.append("type", params.type);
+      if (params?.limit) queryParams.append("limit", params.limit.toString());
+      if (params?.offset)
+        queryParams.append("offset", params.offset.toString());
 
-      const response: AxiosResponse<ApiResponse<{ conversations: Conversation[]; total: number }>> = 
-        await this.client.get(`/conversations?${queryParams.toString()}`);
+      const response: AxiosResponse<
+        ApiResponse<{ conversations: Conversation[]; total: number }>
+      > = await this.client.get(`/conversations?${queryParams.toString()}`);
       return response.data;
     } catch (error) {
       throw this.handleError(error);
@@ -461,8 +475,8 @@ class ConversationAPI {
     speed?: number;
   }): Promise<ApiResponse<AudioGeneration>> {
     try {
-      const response: AxiosResponse<ApiResponse<AudioGeneration>> = 
-        await this.client.get('/audio/text-to-speech', { params });
+      const response: AxiosResponse<ApiResponse<AudioGeneration>> =
+        await this.client.get("/audio/text-to-speech", { params });
       return response.data;
     } catch (error) {
       throw this.handleError(error);
@@ -472,9 +486,12 @@ class ConversationAPI {
   /**
    * Get dialog line audio
    */
-  async getDialogLineAudio(dialogId: string, lineId: string): Promise<ApiResponse<AudioGeneration>> {
+  async getDialogLineAudio(
+    dialogId: string,
+    lineId: string,
+  ): Promise<ApiResponse<AudioGeneration>> {
     try {
-      const response: AxiosResponse<ApiResponse<AudioGeneration>> = 
+      const response: AxiosResponse<ApiResponse<AudioGeneration>> =
         await this.client.get(`/audio/dialog/${dialogId}/${lineId}`);
       return response.data;
     } catch (error) {
@@ -490,18 +507,22 @@ class ConversationAPI {
   private handleError(error: any): Error {
     if (error.response?.data) {
       const apiError = error.response.data;
-      return new Error(apiError.error?.message || apiError.message || 'API Error occurred');
+      return new Error(
+        apiError.error?.message || apiError.message || "API Error occurred",
+      );
     }
-    
-    if (error.code === 'ECONNABORTED') {
-      return new Error('Request timeout. Please check your connection and try again.');
+
+    if (error.code === "ECONNABORTED") {
+      return new Error(
+        "Request timeout. Please check your connection and try again.",
+      );
     }
-    
-    if (error.code === 'NETWORK_ERROR') {
-      return new Error('Network error. Please check your internet connection.');
+
+    if (error.code === "NETWORK_ERROR") {
+      return new Error("Network error. Please check your internet connection.");
     }
-    
-    return new Error('An unexpected error occurred. Please try again.');
+
+    return new Error("An unexpected error occurred. Please try again.");
   }
 
   /**
@@ -513,11 +534,11 @@ class ConversationAPI {
     reset: number;
   } | null {
     const headers = response.headers;
-    if (headers['x-ratelimit-limit']) {
+    if (headers["x-ratelimit-limit"]) {
       return {
-        limit: parseInt(headers['x-ratelimit-limit']),
-        remaining: parseInt(headers['x-ratelimit-remaining']),
-        reset: parseInt(headers['x-ratelimit-reset']),
+        limit: parseInt(headers["x-ratelimit-limit"]),
+        remaining: parseInt(headers["x-ratelimit-remaining"]),
+        reset: parseInt(headers["x-ratelimit-reset"]),
       };
     }
     return null;

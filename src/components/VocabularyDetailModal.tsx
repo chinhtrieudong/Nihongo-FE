@@ -20,17 +20,20 @@ interface VocabularyDetailModalProps {
   selectedWord: VocabularyItemType | null;
   showModal: boolean;
   setShowModal: (show: boolean) => void;
+  // Voice settings for TTS
+  femaleVoiceName?: string;
 }
 
 const VocabularyDetailModal: React.FC<VocabularyDetailModalProps> = ({
   selectedWord,
   showModal,
   setShowModal,
+  femaleVoiceName,
 }) => {
   const { message } = AntdApp.useApp();
   const handlePlayAudio = useCallback((text: string, e: React.MouseEvent) => {
     e.stopPropagation();
-    speakText(text);
+    speakText(text, 'ja-JP');
   }, []);
 
   const handleCopy = useCallback(() => {
@@ -276,10 +279,10 @@ const VocabularyDetailModal: React.FC<VocabularyDetailModalProps> = ({
                         <Text className="font-semibold text-lg text-orange-800 dark:text-orange-600">
                           {kanji.character}
                         </Text>
-                      <div className="text-sm text-secondary-700 dark:text-secondary-800">
-                        <Text strong>Hán Việt:</Text>{" "}
-                        {kanji.hanviet ? kanji.hanviet.toUpperCase() : "N/A"}
-                      </div>
+                        <div className="text-sm text-secondary-700 dark:text-secondary-800">
+                          <Text strong>Hán Việt:</Text>{" "}
+                          {kanji.hanviet ? kanji.hanviet.toUpperCase() : "N/A"}
+                        </div>
                         <div className="text-sm text-secondary-700 dark:text-secondary-800">
                           <Text strong>Bộ thủ:</Text>{" "}
                           {kanji.radicals && kanji.radicals.length > 0 ? (

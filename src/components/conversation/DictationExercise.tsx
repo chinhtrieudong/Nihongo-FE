@@ -2,6 +2,7 @@ import React, { useState, useRef, useEffect } from 'react';
 import { Card, Button, Input, Typography, Space, Progress, Tag, message } from 'antd';
 import { SoundOutlined, BulbOutlined, CheckCircleOutlined, CloseCircleOutlined } from '@ant-design/icons';
 import { DictationExercise } from '../../services/conversationLessonAPI';
+import { getNanamiNaturalVoice } from '../../utils/vocabularyUtils';
 
 const { Text, Title } = Typography;
 const { TextArea } = Input;
@@ -94,16 +95,18 @@ const DictationExerciseComponent: React.FC<DictationExerciseProps> = ({
             const japaneseVoices = voices.filter(voice =>
                 voice.lang.startsWith('ja') || voice.name.includes('Japanese')
             );
-            const naturalJapanese = japaneseVoices.find(voice =>
-                /natural/i.test(voice.name)
-            );
-            const preferredJapanese =
-                naturalJapanese ||
-                japaneseVoices.find(voice => /online/i.test(voice.name)) ||
-                japaneseVoices[0];
+
+            // CHỈ sử dụng Microsoft Nanami Online (Natural)
+            const nanamiNatural = getNanamiNaturalVoice();
+            const preferredJapanese = nanamiNatural;
 
             if (preferredJapanese) {
                 utterance.voice = preferredJapanese;
+            } else {
+                // Nếu không có Microsoft Nanami, không phát âm
+                console.warn('Microsoft Nanami Online (Natural) not available. Please install the voice.');
+                reject(new Error('Microsoft Nanami Online (Natural) not available'));
+                return;
             }
 
             utterance.onend = () => {

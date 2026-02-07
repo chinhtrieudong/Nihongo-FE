@@ -40,7 +40,7 @@ import {
   MenuFoldOutlined,
 } from "@ant-design/icons";
 import { Grid } from "antd";
-import { getJapaneseVoices } from "../utils/vocabularyUtils";
+import { getJapaneseVoices, getBestFemaleNaturalVoice, getNanamiNaturalVoice, speakText } from "../utils/vocabularyUtils";
 import WriteJapaneseIcon from "../components/icons/WriteJapaneseIcon";
 import InfinitejapaneseIcon from "../components/icons/InfinitejapaneseIcon";
 import LetterUppercaseSquareFIcon from "../components/icons/LetterUppercaseSquareFIcon";
@@ -77,13 +77,6 @@ const LessonDetail: React.FC = () => {
   } | null>(null);
   const [japaneseVoices, setJapaneseVoices] = useState<SpeechSynthesisVoice[]>([]);
   const vocabularyTableRef = useRef<VocabularyTableHandle | null>(null);
-  const [maleVoiceName, setMaleVoiceName] = useState(() => {
-    try {
-      return localStorage.getItem("tts_voice_male") || "";
-    } catch {
-      return "";
-    }
-  });
   const [femaleVoiceName, setFemaleVoiceName] = useState(() => {
     try {
       return localStorage.getItem("tts_voice_female") || "";
@@ -263,6 +256,22 @@ const LessonDetail: React.FC = () => {
     const loadVoices = () => {
       const voices = getJapaneseVoices();
       setJapaneseVoices(voices);
+
+      // Ưu tiên Nanami Online (Natural) cho giọng nữ
+      if (!femaleVoiceName) {
+        const nanamiNatural = getNanamiNaturalVoice();
+        if (nanamiNatural) {
+          setFemaleVoiceName(nanamiNatural.name);
+          console.log('🎯 Set female voice to Microsoft Nanami Online (Natural):', nanamiNatural.name);
+        } else {
+          // Fallback to best female natural voice
+          const bestFemaleVoice = getBestFemaleNaturalVoice();
+          if (bestFemaleVoice) {
+            setFemaleVoiceName(bestFemaleVoice.name);
+            console.log(' Fallback female voice to:', bestFemaleVoice.name);
+          }
+        }
+      }
     };
 
     // Load voices immediately
@@ -272,15 +281,7 @@ const LessonDetail: React.FC = () => {
     if (window.speechSynthesis.onvoiceschanged !== undefined) {
       window.speechSynthesis.onvoiceschanged = loadVoices;
     }
-  }, []);
-
-  useEffect(() => {
-    try {
-      localStorage.setItem("tts_voice_male", maleVoiceName);
-    } catch {
-      // ignore storage errors
-    }
-  }, [maleVoiceName]);
+  }, [femaleVoiceName]);
 
   useEffect(() => {
     try {
@@ -337,47 +338,7 @@ const LessonDetail: React.FC = () => {
     }
   };
 
-  // Text-to-Speech functionality
-  const speakText = (
-    text: string,
-    lang: string = "ja-JP",
-    voiceIndex?: number,
-    voiceName?: string,
-  ) => {
-    if ("speechSynthesis" in window) {
-      // Cancel any ongoing speech
-      window.speechSynthesis.cancel();
-
-      const utterance = new SpeechSynthesisUtterance(text);
-      utterance.lang = lang;
-      utterance.rate = 0.8; // Slightly slower for better comprehension
-      utterance.pitch = 1;
-      utterance.volume = 1;
-
-      // Get available voices and set specific voice if index is provided
-      const voices = window.speechSynthesis.getVoices();
-      if (voiceName) {
-        const byName = voices.find((voice) => voice.name === voiceName);
-        if (byName) {
-          utterance.voice = byName;
-        }
-      }
-      if (!utterance.voice && voiceIndex !== undefined && voices[voiceIndex]) {
-        utterance.voice = voices[voiceIndex];
-      } else if (!utterance.voice) {
-        const preferredVoice = getJapaneseVoices()[0];
-        if (preferredVoice) {
-          utterance.voice = preferredVoice;
-        }
-      }
-
-      window.speechSynthesis.speak(utterance);
-    } else {
-      // Text-to-speech not supported
-    }
-  };
-
-  // Function to speak entire conversation with alternating voices
+  // Function to speak entire conversation with Microsoft Nanami Online (Natural)
   const speakEntireConversation = (dialog: Dialog) => {
     if (!("speechSynthesis" in window)) {
       return;
@@ -386,65 +347,17 @@ const LessonDetail: React.FC = () => {
     // Load voices
     const voices = window.speechSynthesis.getVoices();
 
-    // Find Japanese voices (preferably higher quality)
-    const preferredVoices = getJapaneseVoices();
-    const japaneseVoices =
-      preferredVoices.length > 0
-        ? preferredVoices
-        : voices.filter(
-          (voice) => voice.lang.startsWith("ja") || voice.lang.startsWith("ja-JP"),
-        );
-
-    // Separate male and female voices if available
-    const femaleHints = [
-      "nanami online (natural)",
-      "nanami",
-      "ayumi",
-      "haruka",
-      "sayaka",
-      "female",
-      "josei",
-      "onna",
-    ];
-    const maleHints = [
-      "keita online (natural)",
-      "keita",
-      "ichiro",
-      "otoya",
-      "male",
-      "dan",
-      "otoko",
-    ];
-
-    const pickByPreference = (voicesList: SpeechSynthesisVoice[], hints: string[]) => {
-      for (const hint of hints) {
-        const found = voicesList.find((voice) =>
-          voice.name.toLowerCase().includes(hint),
-        );
-        if (found) return found;
-      }
-      return undefined;
-    };
-
-    const maleVoicePreferred = pickByPreference(japaneseVoices, maleHints);
-    const femaleVoicePreferred = pickByPreference(japaneseVoices, femaleHints);
-
-    // Fallback to any Japanese voices
-    const selectedMale = voices.find((voice) => voice.name === maleVoiceName);
-    const selectedFemale = voices.find((voice) => voice.name === femaleVoiceName);
-
-    const maleVoice =
-      selectedMale ||
-      maleVoicePreferred ||
-      (japaneseVoices.length > 0 ? japaneseVoices[0] : voices[0]);
-    const femaleVoice =
-      selectedFemale ||
-      femaleVoicePreferred ||
-      (japaneseVoices.length > 0 ? japaneseVoices[0] : voices[0]);
-
-    const otherVoices = japaneseVoices.filter(
-      (voice) => voice !== maleVoice && voice !== femaleVoice,
+    // CHỈ sử dụng Microsoft Nanami Online (Natural) cho tất cả
+    const microsoftNanami = voices.find(voice =>
+      voice.name.toLowerCase().includes('microsoft') &&
+      voice.name.toLowerCase().includes('nanami') &&
+      voice.name.toLowerCase().includes('online (natural)')
     );
+
+    if (!microsoftNanami) {
+      console.warn('Microsoft Nanami Online (Natural) not available for conversation');
+      return;
+    }
 
     let conversationLines: Array<{ speaker: string; text: string }> = [];
 
@@ -459,65 +372,61 @@ const LessonDetail: React.FC = () => {
     }
     // Extract text from jpText if available
     else if (dialog.jpText) {
-      const parsedLines = parseJpTextToLines(dialog.jpText);
+      const parsedLines = parseJpTextToLines(dialog.jpText || "");
       if (parsedLines.length > 0) {
         conversationLines = parsedLines
-          .map((line) => ({
+          .map((line: any) => ({
             speaker: line.speaker,
             text: line.text || "",
           }))
-          .filter((line) => line.text.trim() !== "");
+          .filter((line: any) => line.text.trim() !== "");
       } else {
         // If jpText doesn't have speaker prefixes, treat as single line
         conversationLines = [
           {
-            speaker: "A",
-            text: dialog.jpText,
+            speaker: "narrator",
+            text: dialog.jpText || "",
           },
         ];
       }
     }
 
-    // Speak each line with appropriate voice
     let currentIndex = 0;
-    const speakNextLine = () => {
-      if (currentIndex >= conversationLines.length) return;
 
-      const line = conversationLines[currentIndex];
-      let voice = femaleVoice; // default
-      if (line.speaker === "A") {
-        voice = maleVoice;
-      } else if (line.speaker === "B") {
-        voice = femaleVoice;
-      } else {
-        const speakerIndex = line.speaker
-          ? line.speaker.charCodeAt(0) - "A".charCodeAt(0)
-          : 0;
-        const pool = otherVoices.length > 0 ? otherVoices : japaneseVoices;
-        if (pool.length > 0) {
-          voice = pool[Math.abs(speakerIndex) % pool.length];
-        }
+    const speakNextLine = () => {
+      if (currentIndex >= conversationLines.length) {
+        return;
       }
 
+      const line = conversationLines[currentIndex];
       const utterance = new SpeechSynthesisUtterance(line.text);
-      utterance.lang = "ja-JP";
-      utterance.rate = 0.8;
-      utterance.pitch = 1;
-      utterance.volume = 1;
-      utterance.voice = voice;
+
+      // Sử dụng Microsoft Nanami Online (Natural) cho tất cả các dòng
+      utterance.voice = microsoftNanami;
+      utterance.lang = microsoftNanami.lang || 'ja-JP';
+      utterance.rate = 0.85;
+      utterance.pitch = 1.0;
+      utterance.volume = 1.0;
 
       utterance.onend = () => {
         currentIndex++;
-        // Small delay between lines for natural conversation flow
+        // Chờ một chút giữa các dòng
+        setTimeout(speakNextLine, 300);
+      };
+
+      utterance.onerror = (event) => {
+        console.error('Conversation speech error:', event.error);
+        currentIndex++;
         setTimeout(speakNextLine, 300);
       };
 
       window.speechSynthesis.speak(utterance);
     };
 
-    // Start speaking
+    // Bắt đầu nói
     speakNextLine();
   };
+
 
   const loadLessonDetail = async () => {
     if (!lessonId) return;
@@ -695,14 +604,10 @@ const LessonDetail: React.FC = () => {
                   type="text"
                   onClick={() => {
                     const textToSpeak = line.japanese || line.text || "";
-                    const voiceName =
-                      line.speaker === "A"
-                        ? maleVoiceName
-                        : line.speaker === "B"
-                          ? femaleVoiceName
-                          : undefined;
+                    // CHỈ dùng Microsoft Nanami Online (Natural) cho tất cả speakers
+                    const voiceName = femaleVoiceName; // Luôn dùng female voice (Nanami)
                     if (textToSpeak) {
-                      speakText(textToSpeak, "ja-JP", undefined, voiceName);
+                      speakText(textToSpeak, "ja-JP", voiceName);
                     }
                   }}
                   icon={<SoundOutlined />}
@@ -1172,6 +1077,7 @@ const LessonDetail: React.FC = () => {
             ref={vocabularyTableRef}
             data={vocabularies}
             loading={loading}
+            femaleVoiceName={femaleVoiceName}
             onCloseSidebar={() => {
               setSidebarVisible(false);
               setDesktopSidebarCollapsed(true);
@@ -1206,11 +1112,6 @@ const LessonDetail: React.FC = () => {
             setShowDialogTranslation={setShowDialogTranslation}
             renderDialogConversation={renderDialogConversation}
             speakEntireConversation={speakEntireConversation}
-            japaneseVoices={japaneseVoices}
-            maleVoiceName={maleVoiceName}
-            setMaleVoiceName={setMaleVoiceName}
-            femaleVoiceName={femaleVoiceName}
-            setFemaleVoiceName={setFemaleVoiceName}
           />
         );
       case "exercises":

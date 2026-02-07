@@ -29,6 +29,7 @@ import {
   type Category,
   type Stats
 } from '../services/pronunciationAPI';
+import { getNanamiNaturalVoice } from "../utils/vocabularyUtils";
 
 const { Title, Text } = Typography;
 const { Option } = Select;
@@ -158,13 +159,10 @@ const Pronunciation: React.FC = () => {
         const japaneseVoices = voices.filter(voice =>
           voice.lang.includes('ja') || voice.name.includes('Japanese')
         );
-        const naturalJapanese = japaneseVoices.find(voice =>
-          /natural/i.test(voice.name)
-        );
-        const preferredJapanese =
-          naturalJapanese ||
-          japaneseVoices.find(voice => /online/i.test(voice.name)) ||
-          japaneseVoices[0];
+
+        // CHỈ sử dụng Microsoft Nanami Online (Natural)
+        const nanamiNatural = getNanamiNaturalVoice();
+        const preferredJapanese = nanamiNatural;
 
         const utterance = new SpeechSynthesisUtterance(currentExercise.japanese);
 
@@ -173,7 +171,11 @@ const Pronunciation: React.FC = () => {
           utterance.voice = preferredJapanese;
           utterance.lang = preferredJapanese.lang;
         } else {
-          utterance.lang = 'ja-JP';
+          // Nếu không có Microsoft Nanami, không phát âm
+          console.warn('Microsoft Nanami Online (Natural) not available. Please install the voice.');
+          message.warning('Microsoft Nanami Online (Natural) not available. Please install the voice.');
+          setIsPlaying(false);
+          return;
         }
 
         utterance.rate = 0.8;

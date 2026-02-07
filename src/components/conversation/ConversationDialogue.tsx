@@ -9,6 +9,7 @@ import {
     EyeInvisibleOutlined
 } from '@ant-design/icons';
 import { DialogueLine } from '../../services/conversationLessonAPI';
+import { getNanamiNaturalVoice } from '../../utils/vocabularyUtils';
 
 const { Text, Title } = Typography;
 
@@ -221,19 +222,22 @@ const ConversationDialogue: React.FC<ConversationDialogueProps> = ({
                 utterance.volume = 1.0;
 
                 const lowerSpeaker = (speaker || '').toLowerCase();
-                const femaleKeywords = ['haruka', 'sayaka', 'ayumi', 'nanami', 'female'];
-                const maleKeywords = ['ichiro', 'keita', 'male'];
+                const femaleKeywords = ['nanami online (natural)', 'nanami', 'haruka', 'sayaka', 'ayumi', 'female'];
+                const maleKeywords = ['keita online (natural)', 'keita', 'ichiro', 'male'];
 
                 const byName = (keys: string[]) =>
                     preferredVoices.find(voice =>
                         keys.some(k => voice.name.toLowerCase().includes(k))
                     );
 
-                const femaleVoice = byName(femaleKeywords);
-                const maleVoice = byName(maleKeywords);
-                const japaneseVoice = preferredVoices.find(voice =>
-                    voice.lang.startsWith('ja') || voice.name.includes('Japanese')
-                );
+                // Ưu tiên Microsoft Nanami Online (Natural) cho giọng nữ
+                const microsoftNanami = getNanamiNaturalVoice();
+                const femaleVoice = microsoftNanami;
+
+                // CHỈ sử dụng Microsoft Nanami Online (Natural) cho tất cả speakers
+                const maleVoice = microsoftNanami; // Dùng Nanami cho cả nam và nữ
+
+                const japaneseVoice = microsoftNanami; // Chỉ dùng Nanami
 
                 if (lowerSpeaker === 'mai') {
                     utterance.voice = femaleVoice || japaneseVoice || null;
@@ -389,70 +393,69 @@ const ConversationDialogue: React.FC<ConversationDialogueProps> = ({
                             const isMai = (line.speaker || '').toLowerCase() === 'mai';
                             const isActive = index === currentLineIndex;
                             return (
-                        <div
-                            key={line.line_id}
-                            className={`dialogue-line flex ${isMai ? 'justify-start' : 'justify-end'} cursor-pointer`}
-                            onClick={() => handleLineClick(index)}
-                        >
-                            <div className={`flex items-end gap-3 max-w-[78%] ${isMai ? 'flex-row' : 'flex-row-reverse'}`}>
-                                <div className="flex-shrink-0">
-                                    {getSpeakerAvatar(line.speaker)}
-                                </div>
                                 <div
-                                    className={[
-                                        'relative rounded-2xl px-4 py-3 border transition-all',
-                                        isMai
-                                            ? 'bg-white dark:bg-secondary-925 border-secondary-200 dark:border-secondary-800'
-                                            : 'bg-blue-50 dark:bg-blue-900/30 border-blue-200 dark:border-blue-800',
-                                        isActive ? 'ring-2 ring-blue-400/50 dark:ring-blue-500/40' : '',
-                                    ].join(' ')}
+                                    key={line.line_id}
+                                    className={`dialogue-line flex ${isMai ? 'justify-start' : 'justify-end'} cursor-pointer`}
+                                    onClick={() => handleLineClick(index)}
                                 >
-                                    <div className={`absolute -bottom-1 ${isMai ? '-left-1' : '-right-1'} h-3 w-3 rotate-45 ${
-                                        isMai
-                                            ? 'bg-white dark:bg-secondary-925 border-l border-b border-secondary-200 dark:border-secondary-800'
-                                            : 'bg-blue-50 dark:bg-blue-900/30 border-l border-b border-blue-200 dark:border-blue-800'
-                                    }`} />
-                                    <div className="flex items-center justify-between gap-3 mb-1">
-                                        <Text strong className="text-xs text-secondary-600 dark:text-secondary-300">
-                                            {getSpeakerName(line.speaker)}
-                                        </Text>
-                                        <Button
-                                            size="small"
-                                            type={isActive ? 'primary' : 'default'}
-                                            icon={<SoundOutlined />}
-                                            onClick={(e) => {
-                                                e.stopPropagation();
-                                                handleLineClick(index);
-                                                playLineAtIndex(index);
-                                            }}
-                                        />
+                                    <div className={`flex items-end gap-3 max-w-[78%] ${isMai ? 'flex-row' : 'flex-row-reverse'}`}>
+                                        <div className="flex-shrink-0">
+                                            {getSpeakerAvatar(line.speaker)}
+                                        </div>
+                                        <div
+                                            className={[
+                                                'relative rounded-2xl px-4 py-3 border transition-all',
+                                                isMai
+                                                    ? 'bg-white dark:bg-secondary-925 border-secondary-200 dark:border-secondary-800'
+                                                    : 'bg-blue-50 dark:bg-blue-900/30 border-blue-200 dark:border-blue-800',
+                                                isActive ? 'ring-2 ring-blue-400/50 dark:ring-blue-500/40' : '',
+                                            ].join(' ')}
+                                        >
+                                            <div className={`absolute -bottom-1 ${isMai ? '-left-1' : '-right-1'} h-3 w-3 rotate-45 ${isMai
+                                                ? 'bg-white dark:bg-secondary-925 border-l border-b border-secondary-200 dark:border-secondary-800'
+                                                : 'bg-blue-50 dark:bg-blue-900/30 border-l border-b border-blue-200 dark:border-blue-800'
+                                                }`} />
+                                            <div className="flex items-center justify-between gap-3 mb-1">
+                                                <Text strong className="text-xs text-secondary-600 dark:text-secondary-300">
+                                                    {getSpeakerName(line.speaker)}
+                                                </Text>
+                                                <Button
+                                                    size="small"
+                                                    type={isActive ? 'primary' : 'default'}
+                                                    icon={<SoundOutlined />}
+                                                    onClick={(e) => {
+                                                        e.stopPropagation();
+                                                        handleLineClick(index);
+                                                        playLineAtIndex(index);
+                                                    }}
+                                                />
+                                            </div>
+                                            <div className="space-y-1.5">
+                                                <Text className="text-base block">
+                                                    {line.text_jp}
+                                                </Text>
+
+                                                {showRomaji && line.romaji && (
+                                                    <Text className="text-xs text-slate-500 dark:text-slate-400 block">
+                                                        {line.romaji}
+                                                    </Text>
+                                                )}
+
+                                                {showTranslation && line.meaning_vi && (
+                                                    <Text className="text-xs text-slate-600 dark:text-slate-400 block">
+                                                        {line.meaning_vi}
+                                                    </Text>
+                                                )}
+                                            </div>
+
+                                            {!line.audio_url && (
+                                                <Tag color="orange" className="mt-2">
+                                                    🗣️ TTS
+                                                </Tag>
+                                            )}
+                                        </div>
                                     </div>
-                                    <div className="space-y-1.5">
-                                        <Text className="text-base block">
-                                            {line.text_jp}
-                                        </Text>
-
-                                        {showRomaji && line.romaji && (
-                                            <Text className="text-xs text-slate-500 dark:text-slate-400 block">
-                                                {line.romaji}
-                                            </Text>
-                                        )}
-
-                                        {showTranslation && line.meaning_vi && (
-                                            <Text className="text-xs text-slate-600 dark:text-slate-400 block">
-                                                {line.meaning_vi}
-                                            </Text>
-                                        )}
-                                    </div>
-
-                                    {!line.audio_url && (
-                                        <Tag color="orange" className="mt-2">
-                                            🗣️ TTS
-                                        </Tag>
-                                    )}
                                 </div>
-                            </div>
-                        </div>
                             );
                         })()
                     ))}

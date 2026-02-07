@@ -1,14 +1,22 @@
-import axios, { AxiosInstance, AxiosResponse } from 'axios';
+import axios, { AxiosInstance, AxiosResponse } from "axios";
 
 // Types based on API documentation
 export interface ConversationLesson {
   lesson_id: number;
   lesson_title: string;
   situation_vi: string;
-  level: 'N5' | 'N4' | 'N3' | 'N2' | 'N1';
-  category: 'greetings' | 'self_introduction' | 'daily_life' | 
-           'shopping' | 'restaurant' | 'travel' | 'business' | 
-           'school' | 'hospital' | 'other';
+  level: "N5" | "N4" | "N3" | "N2" | "N1";
+  category:
+    | "greetings"
+    | "self_introduction"
+    | "daily_life"
+    | "shopping"
+    | "restaurant"
+    | "travel"
+    | "business"
+    | "school"
+    | "hospital"
+    | "other";
   difficulty: 1 | 2 | 3 | 4 | 5;
   estimated_duration: number;
   dialogue: DialogueLine[];
@@ -61,7 +69,7 @@ export interface RoleplayExercise {
 
 export interface ShadowingExercise {
   line_id: number;
-  focus: 'intonation' | 'speed' | 'emotion';
+  focus: "intonation" | "speed" | "emotion";
 }
 
 export interface ReactionSpeakingExercise {
@@ -73,22 +81,35 @@ export interface ReactionSpeakingExercise {
 
 // API Response Types
 export interface GetLessonsParams {
-  level?: 'N5' | 'N4' | 'N3' | 'N2' | 'N1';
-  category?: 'greetings' | 'self_introduction' | 'daily_life' | 
-             'shopping' | 'restaurant' | 'travel' | 'business' | 
-             'school' | 'hospital' | 'other';
+  level?: "N5" | "N4" | "N3" | "N2" | "N1";
+  category?:
+    | "greetings"
+    | "self_introduction"
+    | "daily_life"
+    | "shopping"
+    | "restaurant"
+    | "travel"
+    | "business"
+    | "school"
+    | "hospital"
+    | "other";
   difficulty?: 1 | 2 | 3 | 4 | 5;
   page?: number;
   limit?: number;
 }
 
 export interface GetExercisesParams {
-  exerciseType?: 'dictation' | 'comprehension_mcq' | 'reorder' | 
-                  'roleplay' | 'shadowing' | 'reaction_speaking';
+  exerciseType?:
+    | "dictation"
+    | "comprehension_mcq"
+    | "reorder"
+    | "roleplay"
+    | "shadowing"
+    | "reaction_speaking";
 }
 
 export interface SubmitAnswersRequest {
-  exerciseType: 'dictation' | 'comprehension_mcq' | 'reorder';
+  exerciseType: "dictation" | "comprehension_mcq" | "reorder";
   answers: string[] | number[];
 }
 
@@ -139,10 +160,10 @@ class ConversationLessonAPI {
   private token: string | null;
 
   constructor(token?: string) {
-    this.token = token || localStorage.getItem('token') || 'mock-token';
-    
+    this.token = token || localStorage.getItem("token") || "mock-token";
+
     this.client = axios.create({
-      baseURL: 'http://localhost:3000/api/v1/conversation',
+      baseURL: "http://localhost:5000/api/v1/conversation",
       timeout: 30000,
     });
 
@@ -154,7 +175,7 @@ class ConversationLessonAPI {
         }
         return config;
       },
-      (error) => Promise.reject(error)
+      (error) => Promise.reject(error),
     );
 
     // Response interceptor for error handling
@@ -163,23 +184,23 @@ class ConversationLessonAPI {
       (error) => {
         if (error.response?.status === 401) {
           // Token expired or invalid
-          console.warn('401 but ignore in practice mode');
+          console.warn("401 but ignore in practice mode");
         }
         return Promise.reject(error);
-      }
+      },
     );
   }
 
   // Update token
   setToken(token: string) {
     this.token = token;
-    localStorage.setItem('token', token);
+    localStorage.setItem("token", token);
   }
 
   // Remove token
   removeToken() {
     this.token = null;
-    localStorage.removeItem('token');
+    localStorage.removeItem("token");
   }
 
   // ============ LESSON ENDPOINTS ============
@@ -187,10 +208,13 @@ class ConversationLessonAPI {
   /**
    * Get all conversation lessons
    */
-  async getLessons(params?: GetLessonsParams): Promise<ApiResponse<PaginatedResponse<ConversationLesson>>> {
+  async getLessons(
+    params?: GetLessonsParams,
+  ): Promise<ApiResponse<PaginatedResponse<ConversationLesson>>> {
     try {
-      const response: AxiosResponse<ApiResponse<PaginatedResponse<ConversationLesson>>> = 
-        await this.client.get('/lessons', { params });
+      const response: AxiosResponse<
+        ApiResponse<PaginatedResponse<ConversationLesson>>
+      > = await this.client.get("/lessons", { params });
       return response.data;
     } catch (error) {
       throw this.handleError(error);
@@ -200,9 +224,11 @@ class ConversationLessonAPI {
   /**
    * Get lesson by ID
    */
-  async getLessonById(id: string | number): Promise<ApiResponse<ConversationLesson>> {
+  async getLessonById(
+    id: string | number,
+  ): Promise<ApiResponse<ConversationLesson>> {
     try {
-      const response: AxiosResponse<ApiResponse<ConversationLesson>> = 
+      const response: AxiosResponse<ApiResponse<ConversationLesson>> =
         await this.client.get(`/lessons/${id}`);
       return response.data;
     } catch (error) {
@@ -213,10 +239,24 @@ class ConversationLessonAPI {
   /**
    * Get lesson exercises
    */
-  async getLessonExercises(id: string | number, params?: GetExercisesParams): Promise<ApiResponse<{ lesson_id: number; lesson_title: string; exercises: Partial<Exercises> }>> {
+  async getLessonExercises(
+    id: string | number,
+    params?: GetExercisesParams,
+  ): Promise<
+    ApiResponse<{
+      lesson_id: number;
+      lesson_title: string;
+      exercises: Partial<Exercises>;
+    }>
+  > {
     try {
-      const response: AxiosResponse<ApiResponse<{ lesson_id: number; lesson_title: string; exercises: Partial<Exercises> }>> = 
-        await this.client.get(`/lessons/${id}/exercises`, { params });
+      const response: AxiosResponse<
+        ApiResponse<{
+          lesson_id: number;
+          lesson_title: string;
+          exercises: Partial<Exercises>;
+        }>
+      > = await this.client.get(`/lessons/${id}/exercises`, { params });
       return response.data;
     } catch (error) {
       throw this.handleError(error);
@@ -226,9 +266,12 @@ class ConversationLessonAPI {
   /**
    * Submit exercise answers
    */
-  async submitAnswers(id: string | number, data: SubmitAnswersRequest): Promise<ApiResponse<SubmitAnswersResponse>> {
+  async submitAnswers(
+    id: string | number,
+    data: SubmitAnswersRequest,
+  ): Promise<ApiResponse<SubmitAnswersResponse>> {
     try {
-      const response: AxiosResponse<ApiResponse<SubmitAnswersResponse>> = 
+      const response: AxiosResponse<ApiResponse<SubmitAnswersResponse>> =
         await this.client.post(`/lessons/${id}/submit`, data);
       return response.data;
     } catch (error) {
@@ -244,18 +287,22 @@ class ConversationLessonAPI {
   private handleError(error: any): Error {
     if (error.response?.data) {
       const apiError = error.response.data;
-      return new Error(apiError.error?.message || apiError.message || 'API Error occurred');
+      return new Error(
+        apiError.error?.message || apiError.message || "API Error occurred",
+      );
     }
-    
-    if (error.code === 'ECONNABORTED') {
-      return new Error('Request timeout. Please check your connection and try again.');
+
+    if (error.code === "ECONNABORTED") {
+      return new Error(
+        "Request timeout. Please check your connection and try again.",
+      );
     }
-    
-    if (error.code === 'NETWORK_ERROR') {
-      return new Error('Network error. Please check your internet connection.');
+
+    if (error.code === "NETWORK_ERROR") {
+      return new Error("Network error. Please check your internet connection.");
     }
-    
-    return new Error('An unexpected error occurred. Please try again.');
+
+    return new Error("An unexpected error occurred. Please try again.");
   }
 
   /**
@@ -267,11 +314,11 @@ class ConversationLessonAPI {
     reset: number;
   } | null {
     const headers = response.headers;
-    if (headers['x-ratelimit-limit']) {
+    if (headers["x-ratelimit-limit"]) {
       return {
-        limit: parseInt(headers['x-ratelimit-limit']),
-        remaining: parseInt(headers['x-ratelimit-remaining']),
-        reset: parseInt(headers['x-ratelimit-reset']),
+        limit: parseInt(headers["x-ratelimit-limit"]),
+        remaining: parseInt(headers["x-ratelimit-remaining"]),
+        reset: parseInt(headers["x-ratelimit-reset"]),
       };
     }
     return null;

@@ -3,6 +3,7 @@ import { KanjiItem } from '../../../types/kanji.js';
 import { Modal, Tabs, Tag, Button, Collapse, Typography, Card } from 'antd';
 import { SoundOutlined, ReloadOutlined } from '@ant-design/icons';
 import HanziWriter from 'hanzi-writer';
+import { getNanamiNaturalVoice } from '../../../utils/vocabularyUtils';
 
 const { Panel } = Collapse;
 const { Title, Text } = Typography;
@@ -41,13 +42,17 @@ const KanjiModal: React.FC<KanjiModalProps> = ({ kanji, visible, onClose }) => {
             // Try to use a Japanese voice (prefer Natural if available)
             const voices = window.speechSynthesis.getVoices();
             const japaneseVoices = voices.filter(voice => voice.lang.includes('ja'));
-            const naturalJapanese = japaneseVoices.find(voice => /natural/i.test(voice.name));
-            const preferredJapanese =
-                naturalJapanese ||
-                japaneseVoices.find(voice => /online/i.test(voice.name)) ||
-                japaneseVoices[0];
+
+            // CHỈ sử dụng Microsoft Nanami Online (Natural)
+            const nanamiNatural = getNanamiNaturalVoice();
+            const preferredJapanese = nanamiNatural;
+
             if (preferredJapanese) {
                 utterance.voice = preferredJapanese;
+            } else {
+                // Nếu không có Microsoft Nanami, không phát âm
+                console.warn('Microsoft Nanami Online (Natural) not available. Please install the voice.');
+                return;
             }
 
             window.speechSynthesis.speak(utterance);

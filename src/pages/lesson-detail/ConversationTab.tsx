@@ -13,11 +13,6 @@ type ConversationTabProps = {
   >;
   renderDialogConversation: (dialog: Dialog) => React.ReactNode;
   speakEntireConversation: (dialog: Dialog) => void;
-  japaneseVoices: SpeechSynthesisVoice[];
-  maleVoiceName: string;
-  setMaleVoiceName: React.Dispatch<React.SetStateAction<string>>;
-  femaleVoiceName: string;
-  setFemaleVoiceName: React.Dispatch<React.SetStateAction<string>>;
 };
 
 const ConversationTab: React.FC<ConversationTabProps> = ({
@@ -26,42 +21,12 @@ const ConversationTab: React.FC<ConversationTabProps> = ({
   setShowDialogTranslation,
   renderDialogConversation,
   speakEntireConversation,
-  japaneseVoices,
-  maleVoiceName,
-  setMaleVoiceName,
-  femaleVoiceName,
-  setFemaleVoiceName,
 }) => {
   return (
     <div style={{ padding: "24px" }}>
       <div className="flex flex-col gap-2 mb-4">
-        <div className="flex flex-col sm:flex-row gap-2 sm:gap-3">
-          <Select
-            className="w-full sm:w-64"
-            size="middle"
-            value={maleVoiceName || undefined}
-            placeholder="Giọng Nam (A)"
-            onChange={(value) => setMaleVoiceName(value)}
-            options={japaneseVoices.map((voice) => ({
-              label: voice.name,
-              value: voice.name,
-            }))}
-            dropdownStyle={{ maxWidth: 320 }}
-            variant="filled"
-          />
-          <Select
-            className="w-full sm:w-64"
-            size="middle"
-            value={femaleVoiceName || undefined}
-            placeholder="Giọng Nữ (B)"
-            onChange={(value) => setFemaleVoiceName(value)}
-            options={japaneseVoices.map((voice) => ({
-              label: voice.name,
-              value: voice.name,
-            }))}
-            dropdownStyle={{ maxWidth: 320 }}
-            variant="filled"
-          />
+        <div className="text-sm text-gray-600 dark:text-gray-400">
+          Đang sử dụng Microsoft Nanami Online (Natural) cho tất cả speakers
         </div>
       </div>
       <Space orientation="vertical" size="large" className="w-full">
