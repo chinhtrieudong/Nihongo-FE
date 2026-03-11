@@ -10,6 +10,8 @@
 
 # production
 /build
+/build_out_*/
+/build_tmp
 
 # misc
 .DS_Store
@@ -42,6 +44,7 @@ Desktop.ini
 # Logs
 logs
 *.log
+/start.err
 
 # Runtime data
 pids
