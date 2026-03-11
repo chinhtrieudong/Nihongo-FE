@@ -14,13 +14,12 @@ import {
   Statistic,
   Divider
 } from 'antd';
-import { SearchOutlined, ExperimentOutlined, PlayCircleOutlined } from '@ant-design/icons';
+import type { SelectProps } from 'antd';
+import { SearchOutlined, ExperimentOutlined } from '@ant-design/icons';
 import { grammarAPI, GrammarItem } from '../services/grammarApi';
 import GrammarSectionAccordion from '../components/GrammarSectionAccordion';
 
 const { Title, Text, Paragraph } = Typography;
-const { Option } = Select;
-
 const Grammar: React.FC = () => {
   const [selectedLevel, setSelectedLevel] = useState<string[]>(['N5']);
   const [selectedCategory, setSelectedCategory] = useState<string[]>([]);
@@ -65,6 +64,7 @@ const Grammar: React.FC = () => {
 
         if (response.success && response.data) {
           setGrammarData(response.data.grammar);
+          console.log('Grammar data from API:', response.data.grammar);
           if (response.data.pagination) {
             setTotalItems(response.data.pagination.total);
             setHasMore(response.data.pagination.hasMore);
@@ -81,40 +81,50 @@ const Grammar: React.FC = () => {
     loadGrammarData();
   }, [selectedLevel, selectedCategory, searchQuery, currentPage]);
 
-  const getProgressMap = () => {
-    try {
-      const raw = localStorage.getItem('grammarProgress');
-      return raw ? JSON.parse(raw) as Record<string, 'not_started' | 'in_progress' | 'completed'> : {};
-    } catch {
-      return {};
-    }
-  };
-
-  const progressMap = getProgressMap();
-
   // Transform grammar data to match expected format for GrammarSectionAccordion
   const transformedSections = grammarData.map((item, index) => {
-    const status = progressMap[item.id] || (index === 0 ? 'in_progress' : 'not_started');
-    return {
-    id: item.id,
-    title: item.pattern,
-    subtitle: item.explanation,
-    structure: [item.pattern],
-    meaning: [item.explanation],
-    examples: item.examples.map(ex => ({ japanese: ex.japanese, vietnamese: ex.vietnamese })),
-    preview: item.examples && item.examples.length > 0 ? item.examples[0].japanese : undefined,
-    comparison: item.comparison ? [item.comparison] : [],
-    formation: item.formation,
-    usage: item.usage,
-    level: item.level,
-    category: item.category,
-    importance: item.importance,
-    examFrequency: item.exam_frequency,
-    commonMistakes: item.common_mistakes,
-    relatedPatterns: item.related_patterns,
-    status,
-    recommended: index === 0
-  };
+    // Only include fields that actually exist in the API data
+    const section: any = {
+      id: item.id,
+      title: item.pattern,
+      subtitle: item.meaning_vi,
+    };
+
+    // Conditionally add fields only if they exist and have data
+    if (item.structure) {
+      section.structure = [item.structure];
+    }
+
+    if (item.meaning_vi) {
+      section.meaning = [item.meaning_vi];
+    }
+
+    if (item.examples && item.examples.length > 0) {
+      section.examples = item.examples;
+      section.preview = item.examples[0].japanese;
+    }
+
+    if (item.comparisons && item.comparisons.length > 0) {
+      section.comparison = item.comparisons;
+    }
+
+    if (item.structure) {
+      section.formation = item.structure;
+    }
+
+    if (item.usage_vi) {
+      section.usage = item.usage_vi;
+    }
+
+    if (item.level) {
+      section.level = item.level;
+    }
+
+    if (item.importance) {
+      section.importance = item.importance;
+    }
+
+    return section;
   });
 
   const handleSearch = (value: string) => {
@@ -176,83 +186,105 @@ const Grammar: React.FC = () => {
     return colors[category] || 'default';
   };
 
+  const renderLevelTag: SelectProps<string[]>['tagRender'] = (props) => {
+    const { label, value, closable, onClose } = props;
+    return (
+      <Tag
+        color={getLevelColor(String(value))}
+        closable={closable}
+        onClose={onClose}
+        className="mr-1"
+      >
+        {label}
+      </Tag>
+    );
+  };
+
+  const renderCategoryTag: SelectProps<string[]>['tagRender'] = (props) => {
+    const { label, value, closable, onClose } = props;
+    return (
+      <Tag
+        color={getCategoryColor(String(value))}
+        closable={closable}
+        onClose={onClose}
+        className="mr-1"
+      >
+        {label}
+      </Tag>
+    );
+  };
+
   return (
-    <div className="grammar-page bg-secondary-50 dark:bg-secondary-950 min-h-full text-secondary-900 dark:text-secondary-100">
+    <div className="grammar-page min-h-full text-secondary-900 dark:text-secondary-100">
       {/* Desktop Layout */}
       <div className="max-w-7xl mx-auto p-3 sm:p-4 lg:p-6">
         {/* Header */}
-        <Card className="mb-4 sm:mb-6 bg-white dark:bg-secondary-925 border border-secondary-200 dark:border-secondary-900" variant="borderless">
-          <div className="text-center">
-            <Title level={2} className="mb-2 text-xl sm:text-2xl lg:text-3xl !text-secondary-900 dark:!text-secondary-100">
-              <ExperimentOutlined className="mr-2" />
-              Ngữ pháp Nhật Bản
-            </Title>
-            <Paragraph type="secondary" className="text-base sm:text-lg mb-4 !text-secondary-700 dark:!text-secondary-300">
-              Học ngữ pháp theo JLPT • Có ví dụ • Có luyện tập
-            </Paragraph>
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-2">
-              <Button type="primary" size="middle" icon={<PlayCircleOutlined />}>
-                Bắt đầu học N5
-              </Button>
-              <Button size="middle">
-                Tiếp tục bài đang học
-              </Button>
+        <div className="mb-4 sm:mb-5 rounded-2xl border border-[#d5dfef] bg-[#d6e4f8] bg-[linear-gradient(to_right,rgba(255,255,255,0.45)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.45)_1px,transparent_1px)] [background-size:24px_24px] px-4 py-4 sm:px-6 sm:py-5">
+          <div className="flex items-center gap-3 sm:gap-4 min-w-0">
+            <span className="inline-flex items-center justify-center text-secondary-700 dark:text-secondary-400 shrink-0">
+              <ExperimentOutlined className="text-[34px] sm:text-[40px]" />
+            </span>
+            <div className="min-w-0">
+              <h1 className="text-2xl sm:text-4xl font-semibold leading-tight text-[#2a2f3f] truncate">
+                Học Ngữ pháp
+              </h1>
+              <p className="mt-1 text-sm sm:text-lg text-[#2c3853]">
+                Học theo lộ trình JLPT • Có ví dụ • Có luyện tập
+              </p>
             </div>
           </div>
-        </Card>
+        </div>
 
         {/* Filters and Search */}
-        <Card className="mb-4 sm:mb-6 bg-white dark:bg-secondary-925 border border-secondary-200 dark:border-secondary-900" variant="borderless">
-          <Row gutter={[8, 8]} align="middle">
-            <Col xs={24} sm={24} md={12}>
+        <div className="mb-4 rounded-2xl border border-[#e6e8ee] bg-[#f3f4f8] shadow-none p-2.5 sm:p-3">
+          <div className="flex flex-col md:flex-row md:items-center gap-1.5">
+            <div className="flex-1 min-w-0">
               <Input
-                placeholder="🔍 Tìm ngữ pháp: ～ですか / 何～ / この～"
+                placeholder="Tìm ngữ pháp: ～ですか / 何～ / この～"
                 value={searchQuery}
                 onChange={(e) => handleSearch(e.target.value)}
                 allowClear
-                size="middle"
-                prefix={<SearchOutlined />}
+                size="small"
+                prefix={<SearchOutlined className="text-secondary-500" />}
+                className="w-full [&_.ant-input-prefix]:text-secondary-500"
               />
-            </Col>
-            <Col xs={12} sm={12} md={6}>
+            </div>
+            <div className="w-full md:w-[180px]">
               <Select
                 value={selectedLevel}
                 onChange={handleLevelChange}
-                size="middle"
-                className="w-full"
                 mode="multiple"
                 maxTagCount="responsive"
+                tagRender={renderLevelTag}
                 allowClear
-                placeholder="JLPT: N5"
-              >
-                {levels.map(level => (
-                  <Option key={level} value={level}>
-                    <Tag color={getLevelColor(level)}>{level}</Tag>
-                  </Option>
-                ))}
-              </Select>
-            </Col>
-            <Col xs={12} sm={12} md={6}>
+                placeholder="Chọn cấp độ"
+                size="small"
+                className="w-full [&_.ant-select-selector]:!rounded-xl [&_.ant-select-selector]:!border-[#d9dce5] [&_.ant-select-selector]:!bg-white"
+                options={levels.map((level) => ({
+                  value: level,
+                  label: <Tag color={getLevelColor(level)} className="m-0">{level}</Tag>,
+                }))}
+              />
+            </div>
+            <div className="w-full md:w-[180px]">
               <Select
                 value={selectedCategory}
                 onChange={handleCategoryChange}
-                size="middle"
-                className="w-full"
                 mode="multiple"
                 maxTagCount="responsive"
+                tagRender={renderCategoryTag}
                 allowClear
-                placeholder="Loại: Câu hỏi"
-              >
-                {categories.map(cat => (
-                  <Option key={cat.value} value={cat.value}>
-                    <Tag color={getCategoryColor(cat.value)} className="mr-1">{cat.label}</Tag>
-                    {cat.label}
-                  </Option>
-                ))}
-              </Select>
-            </Col>
-          </Row>
-        </Card>
+                placeholder="Chọn danh mục"
+                size="small"
+                className="w-full [&_.ant-select-selector]:!rounded-xl [&_.ant-select-selector]:!border-[#d9dce5] [&_.ant-select-selector]:!bg-white"
+                options={categories.map((cat) => ({
+                  value: cat.value,
+                  label: <Tag color={getCategoryColor(cat.value)} className="m-0">{cat.label}</Tag>,
+                }))}
+              />
+            </div>
+          </div>
+        </div>
 
         {/* Results Statistics */}
         {totalItems > 0 && (
@@ -279,8 +311,8 @@ const Grammar: React.FC = () => {
                   value={
                     selectedCategory.length
                       ? selectedCategory
-                          .map(value => categories.find(c => c.value === value)?.label || value)
-                          .join(', ')
+                        .map(value => categories.find(c => c.value === value)?.label || value)
+                        .join(', ')
                       : 'Tất cả'
                   }
                   valueStyle={{ fontSize: '1.2rem', color: 'inherit' }}
@@ -326,13 +358,11 @@ const Grammar: React.FC = () => {
                   <Divider />
                   <div className="text-center mt-4">
                     <Button
-                      type="primary"
-                      size="large"
                       onClick={loadMore}
                       loading={loading}
-                      icon={<SearchOutlined />}
+                      className="rounded-xl"
                     >
-                      Tải thêm kết quả
+                      {loading ? 'Đang tải...' : 'Xem thêm'}
                     </Button>
                   </div>
                 </>

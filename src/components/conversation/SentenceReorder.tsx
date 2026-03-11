@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import { Card, Button, Typography, Space, Progress, Tag, message } from 'antd';
-import { SwapOutlined, CheckCircleOutlined, CloseCircleOutlined, ReloadOutlined } from '@ant-design/icons';
+import { CheckCircleOutlined, CloseCircleOutlined, ReloadOutlined } from '@ant-design/icons';
 import { ReorderExercise } from '../../services/conversationLessonAPI';
 
-const { Text, Title } = Typography;
+const { Text } = Typography;
 
 interface WordChipProps {
     word: string;
@@ -46,20 +46,25 @@ const SentenceReorder: React.FC<SentenceReorderProps> = ({
     const [currentExerciseIndex, setCurrentExerciseIndex] = useState(0);
     const [availableWords, setAvailableWords] = useState<string[]>([]);
     const [orderedWords, setOrderedWords] = useState<string[]>([]);
-    const [selectedWordIndex, setSelectedWordIndex] = useState<number | null>(null);
     const [showResult, setShowResult] = useState(false);
     const [answers, setAnswers] = useState<string[]>([]);
     const [isCompleted, setIsCompleted] = useState(false);
+    const submittedOnceRef = useRef(false);
 
     const currentExercise = exercises[currentExerciseIndex];
     const progress = ((currentExerciseIndex + 1) / exercises.length) * 100;
+
+    const normalizeJaForCompare = (value: string) => {
+        const normalized = value.normalize("NFKC");
+        const noWhitespace = normalized.replace(/\s+/g, "");
+        return noWhitespace.replace(/[。．\.！!？?、,，]+$/g, "");
+    };
 
     useEffect(() => {
         onProgress(currentExerciseIndex + 1, exercises.length);
         if (currentExercise) {
             setAvailableWords([...currentExercise.scrambled]);
             setOrderedWords([]);
-            setSelectedWordIndex(null);
             setShowResult(false);
         }
     }, [currentExerciseIndex, currentExercise]);
@@ -75,7 +80,6 @@ const SentenceReorder: React.FC<SentenceReorderProps> = ({
             newOrdered.push(word);
             setAvailableWords(newAvailable);
             setOrderedWords(newOrdered);
-            setSelectedWordIndex(null);
         } else {
             // Move from ordered back to available
             const newAvailable = [...availableWords];
@@ -84,19 +88,16 @@ const SentenceReorder: React.FC<SentenceReorderProps> = ({
             newAvailable.push(word);
             setAvailableWords(newAvailable);
             setOrderedWords(newOrdered);
-            setSelectedWordIndex(null);
         }
     };
 
-    const swapWords = (index1: number, index2: number) => {
-        const newOrdered = [...orderedWords];
-        [newOrdered[index1], newOrdered[index2]] = [newOrdered[index2], newOrdered[index1]];
-        setOrderedWords(newOrdered);
-    };
-
     const checkAnswer = () => {
+        if (!currentExercise) return;
+
         const userAnswer = orderedWords.join('');
-        const isCorrect = userAnswer === currentExercise.correct;
+        const isCorrect =
+            normalizeJaForCompare(userAnswer) ===
+            normalizeJaForCompare(currentExercise.correct);
         const newAnswers = [...answers];
         newAnswers[currentExerciseIndex] = userAnswer;
         setAnswers(newAnswers);
@@ -113,15 +114,23 @@ const SentenceReorder: React.FC<SentenceReorderProps> = ({
                 setCurrentExerciseIndex(currentExerciseIndex + 1);
             } else {
                 setIsCompleted(true);
-                onSubmit(newAnswers);
+                if (!submittedOnceRef.current) {
+                    submittedOnceRef.current = true;
+                    onSubmit(newAnswers);
+                }
             }
         }, 3000);
     };
 
+    const userAnswer = orderedWords.join('');
+    const isCorrectAnswer =
+        !!currentExercise &&
+        normalizeJaForCompare(userAnswer) ===
+            normalizeJaForCompare(currentExercise.correct);
+
     const resetWords = () => {
         setAvailableWords([...currentExercise.scrambled]);
         setOrderedWords([]);
-        setSelectedWordIndex(null);
         setShowResult(false);
     };
 
@@ -131,30 +140,6 @@ const SentenceReorder: React.FC<SentenceReorderProps> = ({
         ).length;
         return Math.round((correct / exercises.length) * 100);
     };
-
-    if (isCompleted) {
-        return (
-            <Card className="text-center py-8">
-                <div className="space-y-4">
-                    <CheckCircleOutlined className="text-6xl text-green-500" />
-                    <Title level={3}>Hoàn thành sắp xếp câu! 🎉</Title>
-                    <div className="space-y-2">
-                        <Text className="text-lg">
-                            Đúng: {answers.filter((answer, index) =>
-                                answer === exercises[index]?.correct
-                            ).length}/{exercises.length}
-                        </Text>
-                        <Text className="text-xl font-bold text-blue-600">
-                            Điểm: {getScore()}%
-                        </Text>
-                    </div>
-                    <Button type="primary" size="large" onClick={() => onSubmit(answers)}>
-                        Tiếp tục
-                    </Button>
-                </div>
-            </Card>
-        );
-    }
 
     if (!currentExercise) {
         return (
@@ -224,26 +209,15 @@ const SentenceReorder: React.FC<SentenceReorderProps> = ({
                     <div className="min-h-[80px] p-4 bg-blue-50 dark:bg-blue-900/20 rounded-lg border-2 border-dashed border-blue-300 dark:border-blue-600">
                         <div className="flex flex-wrap justify-center items-center">
                             {orderedWords.map((word, index) => (
-                                <div key={`ordered-${index}`} className="flex items-center">
-                                    {index > 0 && (
-                                        <Button
-                                            type="text"
-                                            size="small"
-                                            icon={<SwapOutlined />}
-                                            onClick={() => swapWords(index - 1, index)}
-                                            className="mx-1"
-                                            disabled={showResult}
-                                        />
-                                    )}
-                                    <WordChip
-                                        word={word}
-                                        index={index}
-                                        onClick={(i) => handleWordClick(i, false)}
-                                        isSelected={selectedWordIndex === index}
-                                        isCorrect={showResult && orderedWords.join('') === currentExercise.correct}
-                                        showResult={showResult}
-                                    />
-                                </div>
+                                <WordChip
+                                    key={`ordered-${index}`}
+                                    word={word}
+                                    index={index}
+                                    onClick={(i) => handleWordClick(i, false)}
+                                    isSelected={false}
+                                    isCorrect={showResult && isCorrectAnswer}
+                                    showResult={showResult}
+                                />
                             ))}
                             {orderedWords.length === 0 && (
                                 <Text type="secondary" className="text-sm">
@@ -264,11 +238,11 @@ const SentenceReorder: React.FC<SentenceReorderProps> = ({
                             </Text>
                         </div>
 
-                        {orderedWords.join('') !== currentExercise.correct && (
+                        {!isCorrectAnswer && (
                             <div className="p-3 bg-red-50 dark:bg-red-900/20 rounded-lg border border-red-200 dark:border-red-800">
                                 <Text className="text-red-700 dark:text-red-300">
                                     <CloseCircleOutlined className="mr-2" />
-                                    Câu của bạn: {orderedWords.join('')}
+                                    Câu của bạn: {userAnswer}
                                 </Text>
                             </div>
                         )}
@@ -281,7 +255,6 @@ const SentenceReorder: React.FC<SentenceReorderProps> = ({
                         <Button
                             icon={<ReloadOutlined />}
                             onClick={resetWords}
-                            disabled={showResult}
                         >
                             Làm lại
                         </Button>
@@ -296,7 +269,7 @@ const SentenceReorder: React.FC<SentenceReorderProps> = ({
                     <Button
                         type="primary"
                         onClick={checkAnswer}
-                        disabled={orderedWords.length === 0 || showResult}
+                        disabled={orderedWords.length === 0 || showResult || isCompleted}
                         className="ml-auto"
                     >
                         Kiểm tra
@@ -306,7 +279,7 @@ const SentenceReorder: React.FC<SentenceReorderProps> = ({
                 {/* Instructions */}
                 <div className="mt-6 pt-4 border-t border-gray-200 dark:border-gray-700">
                     <Text type="secondary" className="text-xs">
-                        Hướng dẫn: Chọn từ để thêm vào câu. Dùng nút ↔ để hoán đổi vị trí từ. Chọn từ trong câu để xóa.
+                        Hướng dẫn: Chọn từ để thêm vào câu. Chọn từ trong câu để xóa.
                     </Text>
                 </div>
             </div>

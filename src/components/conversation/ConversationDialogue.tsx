@@ -4,7 +4,6 @@ import {
     PlayCircleOutlined,
     PauseCircleOutlined,
     ReloadOutlined,
-    SoundOutlined,
     EyeOutlined,
     EyeInvisibleOutlined
 } from '@ant-design/icons';
@@ -43,6 +42,9 @@ const ConversationDialogue: React.FC<ConversationDialogueProps> = ({
     const isStartingAllRef = useRef(false);
     const playingIndexRef = useRef<number | null>(null);
     const isPlayingAllRef = useRef(false);
+    const playbackTokenRef = useRef(0);
+
+    const [nextLineToPlay, setNextLineToPlay] = useState<number | null>(null);
 
     const currentLine = dialogue[currentLineIndex];
     // Call onProgress only when currentLineIndex changes
@@ -62,6 +64,14 @@ const ConversationDialogue: React.FC<ConversationDialogueProps> = ({
     useEffect(() => {
         isPlayingAllRef.current = isPlayingAll;
     }, [isPlayingAll]);
+
+    // Handle progression to next line
+    useEffect(() => {
+        if (nextLineToPlay !== null) {
+            playLineAtIndex(nextLineToPlay);
+            setNextLineToPlay(null);
+        }
+    }, [nextLineToPlay]);
 
     useEffect(() => {
         if (!('speechSynthesis' in window)) return;
@@ -106,16 +116,24 @@ const ConversationDialogue: React.FC<ConversationDialogueProps> = ({
         const line = dialogue[lineIndex];
         if (!line) return;
 
+        console.log(`🎵 Starting playback for line ${lineIndex}:`, line.text_jp);
+
         try {
+            // Invalidate any previous callbacks from older playback sessions.
+            const token = ++playbackTokenRef.current;
+
             setIsPlaying(true);
             playingIndexRef.current = lineIndex;
 
             // Stop any current audio only
             if (audioRef.current) {
                 audioRef.current.pause();
+                audioRef.current.currentTime = 0;
+                audioRef.current = null;
             }
 
-            if (!isPlayingAllRef.current && 'speechSynthesis' in window) {
+            // Always cancel ongoing TTS before starting a new line to avoid overlap.
+            if ('speechSynthesis' in window) {
                 window.speechSynthesis.cancel();
             }
 
@@ -127,31 +145,50 @@ const ConversationDialogue: React.FC<ConversationDialogueProps> = ({
                     audioRef.current = audio;
 
                     audio.onended = () => {
-                        console.log('Audio ended');
+                        if (token !== playbackTokenRef.current) return;
+                        const currentPlayingIndex = playingIndexRef.current;
+                        console.log(`🎵 Audio ended for line ${currentPlayingIndex}`);
                         setIsPlaying(false);
                         playingIndexRef.current = null;
-                        // Auto advance to next line
-                        if (isPlayingAllRef.current && lineIndex < dialogue.length - 1) {
-                            const nextIndex = lineIndex + 1;
+
+                        const wasPlayingAll = isPlayingAllRef.current;
+
+                        // Auto advance to next line (only in "play all" mode)
+                        if (
+                            wasPlayingAll &&
+                            currentPlayingIndex !== null &&
+                            currentPlayingIndex < dialogue.length - 1
+                        ) {
+                            const nextIndex = currentPlayingIndex + 1;
+                            console.log(`🎵 Advancing to line ${nextIndex} after 100ms delay`);
                             setTimeout(() => {
+                                if (token !== playbackTokenRef.current) return;
+                                console.log(`🎵 Setting current line index to ${nextIndex} and starting playback`);
                                 setCurrentLineIndex(nextIndex);
                                 playLineAtIndex(nextIndex);
-                            }, 400);
-                        } else {
-                            // All lines completed
+                            }, 100);
+                            return;
+                        }
+
+                        // Completed (only mark step complete when finishing "play all")
+                        if (wasPlayingAll) {
+                            console.log(`🎵 Completed play-all (total: ${dialogue.length})`);
                             setIsPlayingAll(false);
                             if (onStepComplete) {
                                 onStepComplete();
                             }
+                        } else {
+                            console.log(`🎵 Completed single-line playback`);
                         }
                     };
 
                     audio.onerror = () => {
+                        if (token !== playbackTokenRef.current) return;
                         setIsPlaying(false);
                         playingIndexRef.current = null;
                         // Fallback to TTS
                         try {
-                            playTTSDirectly(line.text_jp, playbackSpeed, line.speaker, lineIndex);
+                            playTTSDirectly(line.text_jp, playbackSpeed, line.speaker, lineIndex, token);
                         } catch (ttsError) {
                             // TTS errors are already handled in playTTSDirectly
                         }
@@ -161,15 +198,16 @@ const ConversationDialogue: React.FC<ConversationDialogueProps> = ({
                 } catch (audioError) {
                     // Fallback to TTS
                     try {
-                        await playTTSDirectly(line.text_jp, playbackSpeed, line.speaker, lineIndex);
+                        await playTTSDirectly(line.text_jp, playbackSpeed, line.speaker, lineIndex, token);
                     } catch (ttsError) {
                         // TTS errors are already handled in playTTSDirectly
                     }
                 }
             } else {
                 // Use Text-to-Speech directly
+                console.log(`🎵 Using TTS for line ${lineIndex}:`, line.text_jp);
                 try {
-                    await playTTSDirectly(line.text_jp, playbackSpeed, line.speaker, lineIndex);
+                    await playTTSDirectly(line.text_jp, playbackSpeed, line.speaker, lineIndex, token);
                 } catch (ttsError) {
                     // TTS errors are already handled in playTTSDirectly
                 }
@@ -190,8 +228,10 @@ const ConversationDialogue: React.FC<ConversationDialogueProps> = ({
         text: string,
         speed: number,
         speaker?: string,
-        lineIndex?: number
+        lineIndex?: number,
+        playToken?: number
     ): Promise<void> => {
+        const token = playToken ?? playbackTokenRef.current;
         return new Promise((resolve, reject) => {
             // Check if browser supports speech synthesis
             if (!('speechSynthesis' in window)) {
@@ -247,36 +287,67 @@ const ConversationDialogue: React.FC<ConversationDialogueProps> = ({
                     utterance.voice = femaleVoice || maleVoice || japaneseVoice || null;
                 }
 
+                // 🔥 FIX CỐT LÕI: Set playingIndexRef before speaking
+                if (typeof lineIndex === 'number') {
+                    playingIndexRef.current = lineIndex;
+                }
+                setIsPlaying(true);
+
                 utterance.onend = () => {
+                    if (token !== playbackTokenRef.current) {
+                        resolve();
+                        return;
+                    }
+                    const currentPlayingIndex = playingIndexRef.current;
+                    console.log(`🎵 TTS ended for line ${currentPlayingIndex}`);
                     setIsPlaying(false);
                     playingIndexRef.current = null;
 
-                    // Auto advance to next line
+                    const wasPlayingAll = isPlayingAllRef.current;
+
+                    // Auto advance to next line (only in "play all" mode)
                     if (
-                        isPlayingAllRef.current &&
-                        typeof lineIndex === 'number' &&
-                        lineIndex < dialogue.length - 1
+                        wasPlayingAll &&
+                        currentPlayingIndex !== null &&
+                        currentPlayingIndex < dialogue.length - 1
                     ) {
-                        const nextIndex = lineIndex + 1;
+                        const nextIndex = currentPlayingIndex + 1;
+                        console.log(`🎵 TTS advancing to line ${nextIndex} after 100ms delay`);
                         setTimeout(() => {
+                            if (token !== playbackTokenRef.current) return;
+                            console.log(`🎵 TTS setting current line index to ${nextIndex} and starting playback`);
                             setCurrentLineIndex(nextIndex);
                             playLineAtIndex(nextIndex);
-                        }, 400);
-                    } else {
-                        // All lines completed
+                        }, 100);
+                        resolve();
+                        return;
+                    }
+
+                    // Completed (only mark step complete when finishing "play all")
+                    if (wasPlayingAll) {
+                        console.log(`🎵 TTS completed play-all (total: ${dialogue.length})`);
                         setIsPlayingAll(false);
                         if (onStepComplete) {
                             onStepComplete();
                         }
+                    } else {
+                        console.log(`🎵 TTS completed single-line playback`);
                     }
                     resolve();
                 };
 
                 utterance.onerror = (event) => {
+                    if (token !== playbackTokenRef.current) {
+                        resolve();
+                        return;
+                    }
                     // Handle 'interrupted' gracefully - it's expected when user cancels
                     if (event.error === 'interrupted') {
-                        console.log('TTS interrupted by user, ignore');
-                        return; // KHÔNG setIsPlaying(false)
+                        console.log('TTS interrupted by user');
+                        setIsPlaying(false);
+                        playingIndexRef.current = null;
+                        resolve();
+                        return;
                     } else {
                         setIsPlaying(false);
                         playingIndexRef.current = null;
@@ -304,16 +375,24 @@ const ConversationDialogue: React.FC<ConversationDialogueProps> = ({
 
     const togglePlayPause = () => {
         if (isPlaying || isPlayingAll) {
+            // Invalidate any pending callbacks.
+            playbackTokenRef.current += 1;
             // Cancel any ongoing TTS
             if ('speechSynthesis' in window) {
                 window.speechSynthesis.cancel();
             }
+            // Stop any audio playback
             if (audioRef.current) {
                 audioRef.current.pause();
+                audioRef.current.currentTime = 0;
+                audioRef.current = null;
             }
+            // Reset all playing states
             setIsPlaying(false);
             setIsPlayingAll(false);
             isPlayingAllRef.current = false;
+            playingIndexRef.current = null;
+            isStartingAllRef.current = false;
         } else {
             playCurrentLine();
         }
@@ -338,6 +417,8 @@ const ConversationDialogue: React.FC<ConversationDialogueProps> = ({
     };
 
     const restart = () => {
+        // Invalidate any pending callbacks.
+        playbackTokenRef.current += 1;
         // Cancel any ongoing TTS first
         if ('speechSynthesis' in window) {
             window.speechSynthesis.cancel();
@@ -345,16 +426,38 @@ const ConversationDialogue: React.FC<ConversationDialogueProps> = ({
 
         setCurrentLineIndex(0);
         setIsPlaying(false);
+        setIsPlayingAll(false);
+        isPlayingAllRef.current = false;
+        playingIndexRef.current = null;
         if (audioRef.current) {
             audioRef.current.pause();
+            audioRef.current.currentTime = 0;
+            audioRef.current = null;
         }
     };
 
     const playAllFromStart = () => {
-        restart();
-        isStartingAllRef.current = true;
+        console.log(`🎵 Starting play all from beginning, total dialogues: ${dialogue.length}`);
+        // Invalidate any pending callbacks.
+        playbackTokenRef.current += 1;
+        // Stop any current playback first
+        if ('speechSynthesis' in window) {
+            window.speechSynthesis.cancel();
+        }
+        if (audioRef.current) {
+            audioRef.current.pause();
+            audioRef.current.currentTime = 0;
+            audioRef.current = null;
+        }
+
+        // Reset states
+        setIsPlaying(false);
         setIsPlayingAll(true);
         isPlayingAllRef.current = true;
+        playingIndexRef.current = null;
+        isStartingAllRef.current = true;
+
+        // Start from first line
         setCurrentLineIndex(0);
         playLineAtIndex(0).finally(() => {
             isStartingAllRef.current = false;
@@ -362,10 +465,23 @@ const ConversationDialogue: React.FC<ConversationDialogueProps> = ({
     };
 
     const handleLineClick = (index: number) => {
+        // If user manually navigates to a line while auto-playing, stop auto-play mode.
+        if (isPlayingAllRef.current) {
+            setIsPlayingAll(false);
+            isPlayingAllRef.current = false;
+        }
+
+        // Clicking the current active line while playing acts as a stop.
+        if (index === currentLineIndex && (isPlaying || isPlayingAll)) {
+            togglePlayPause();
+            return;
+        }
+
         setCurrentLineIndex(index);
         if (onLineChange) {
             onLineChange(index);
         }
+        playLineAtIndex(index);
     };
 
 
@@ -387,7 +503,7 @@ const ConversationDialogue: React.FC<ConversationDialogueProps> = ({
         <div className="space-y-6">
             {/* Full Dialogue Display */}
             <Card className="shadow-sm">
-                <div ref={containerRef} className="space-y-3 max-h-[520px] overflow-y-auto pr-2">
+                <div ref={containerRef} className="space-y-3 max-h-[520px] overflow-y-auto p-2">
                     {dialogue.map((line, index) => (
                         (() => {
                             const isMai = (line.speaker || '').toLowerCase() === 'mai';
@@ -411,24 +527,10 @@ const ConversationDialogue: React.FC<ConversationDialogueProps> = ({
                                                 isActive ? 'ring-2 ring-blue-400/50 dark:ring-blue-500/40' : '',
                                             ].join(' ')}
                                         >
-                                            <div className={`absolute -bottom-1 ${isMai ? '-left-1' : '-right-1'} h-3 w-3 rotate-45 ${isMai
-                                                ? 'bg-white dark:bg-secondary-925 border-l border-b border-secondary-200 dark:border-secondary-800'
-                                                : 'bg-blue-50 dark:bg-blue-900/30 border-l border-b border-blue-200 dark:border-blue-800'
-                                                }`} />
                                             <div className="flex items-center justify-between gap-3 mb-1">
                                                 <Text strong className="text-xs text-secondary-600 dark:text-secondary-300">
                                                     {getSpeakerName(line.speaker)}
                                                 </Text>
-                                                <Button
-                                                    size="small"
-                                                    type={isActive ? 'primary' : 'default'}
-                                                    icon={<SoundOutlined />}
-                                                    onClick={(e) => {
-                                                        e.stopPropagation();
-                                                        handleLineClick(index);
-                                                        playLineAtIndex(index);
-                                                    }}
-                                                />
                                             </div>
                                             <div className="space-y-1.5">
                                                 <Text className="text-base block">
@@ -464,9 +566,39 @@ const ConversationDialogue: React.FC<ConversationDialogueProps> = ({
 
             {/* Playback Controls */}
             <Card className="shadow-sm">
-                <div className="flex items-center gap-5 flex-wrap overflow-x-hidden">
-                    {/* Playback Speed */}
-                    <div className="min-w-0 max-w-[360px] flex-shrink-0" style={{ flex: '1 1 0' }}>
+                <div className="flex flex-col gap-4 overflow-x-hidden">
+                    {/* Main Controls */}
+                    <div className="flex items-center gap-3 flex-wrap rounded-xl border border-secondary-200/70 dark:border-secondary-800 bg-white/70 dark:bg-secondary-925/70 px-4 py-3">
+                        <Button
+                            type="primary"
+                            size="large"
+                            icon={(isPlayingAll || isPlaying) ? <PauseCircleOutlined /> : <PlayCircleOutlined />}
+                            onClick={(isPlayingAll || isPlaying) ? togglePlayPause : playAllFromStart}
+                            loading={isPlayingAll}
+                        >
+                            {(isPlayingAll || isPlaying) ? 'Dừng' : 'Phát'}
+                        </Button>
+
+                        <Button
+                            type="default"
+                            size="large"
+                            icon={<PauseCircleOutlined />}
+                            onClick={togglePlayPause}
+                            disabled={!(isPlayingAll || isPlaying)}
+                        >
+                            Dừng
+                        </Button>
+
+                        <Button
+                            icon={<ReloadOutlined />}
+                            onClick={restart}
+                        >
+                            Phát lại
+                        </Button>
+                    </div>
+
+                    {/* Speed (left) + Toggles (right) */}
+                    <div className="grid grid-cols-1 md:grid-cols-[1fr_320px] gap-4 items-stretch">
                         <div className="rounded-xl border border-secondary-200/70 dark:border-secondary-800 bg-white/70 dark:bg-secondary-925/70 px-4 py-3">
                             <Text className="text-xs uppercase tracking-wide text-secondary-500 dark:text-secondary-400 block">
                                 Tốc độ phát
@@ -489,52 +621,33 @@ const ConversationDialogue: React.FC<ConversationDialogueProps> = ({
                                 />
                             </div>
                         </div>
-                    </div>
 
-                    {/* Main Controls */}
-                    <div className="flex items-center gap-3 flex-shrink-0 rounded-xl border border-secondary-200/70 dark:border-secondary-800 bg-white/70 dark:bg-secondary-925/70 px-4 py-3">
-                        <Button
-                            type="primary"
-                            size="large"
-                            icon={isPlayingAll ? <PauseCircleOutlined /> : <PlayCircleOutlined />}
-                            onClick={isPlayingAll ? togglePlayPause : playAllFromStart}
-                            loading={isPlayingAll}
-                        >
-                            {isPlayingAll ? 'Đang phát' : 'Phát'}
-                        </Button>
-
-                        <Button
-                            icon={<ReloadOutlined />}
-                            onClick={restart}
-                        >
-                            Phát lại
-                        </Button>
-                    </div>
-
-                    {/* Toggles */}
-                    <div className="flex flex-col gap-3 whitespace-nowrap flex-shrink-0 rounded-xl border border-secondary-200/70 dark:border-secondary-800 bg-white/70 dark:bg-secondary-925/70 px-4 py-3">
-                        <Space size={10}>
-                            <Switch
-                                checked={showRomaji}
-                                onChange={setShowRomaji}
-                                checkedChildren={<EyeOutlined />}
-                                unCheckedChildren={<EyeInvisibleOutlined />}
-                            />
-                            <Text className="text-sm text-secondary-800 dark:text-secondary-100">
-                                Hiển thị Romaji
-                            </Text>
-                        </Space>
-                        <Space size={10}>
-                            <Switch
-                                checked={showTranslation}
-                                onChange={setShowTranslation}
-                                checkedChildren={<EyeOutlined />}
-                                unCheckedChildren={<EyeInvisibleOutlined />}
-                            />
-                            <Text className="text-sm text-secondary-800 dark:text-secondary-100">
-                                Hiển thị bản dịch
-                            </Text>
-                        </Space>
+                        <div className="rounded-xl border border-secondary-200/70 dark:border-secondary-800 bg-white/70 dark:bg-secondary-925/70 px-4 py-3">
+                            <div className="flex flex-col gap-3">
+                                <div className="flex items-center justify-between gap-4">
+                                    <Text className="text-sm text-secondary-800 dark:text-secondary-100">
+                                        Hiển thị Romaji
+                                    </Text>
+                                    <Switch
+                                        checked={showRomaji}
+                                        onChange={setShowRomaji}
+                                        checkedChildren={<EyeOutlined />}
+                                        unCheckedChildren={<EyeInvisibleOutlined />}
+                                    />
+                                </div>
+                                <div className="flex items-center justify-between gap-4">
+                                    <Text className="text-sm text-secondary-800 dark:text-secondary-100">
+                                        Hiển thị bản dịch
+                                    </Text>
+                                    <Switch
+                                        checked={showTranslation}
+                                        onChange={setShowTranslation}
+                                        checkedChildren={<EyeOutlined />}
+                                        unCheckedChildren={<EyeInvisibleOutlined />}
+                                    />
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </Card>

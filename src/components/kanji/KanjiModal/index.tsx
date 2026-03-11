@@ -138,10 +138,14 @@ const KanjiModal: React.FC<KanjiModalProps> = ({ kanji, visible, onClose }) => {
     };
 
     const getReadings = () => {
-        const onyomi = kanji.onyomi ? kanji.onyomi.map((o: { kana: string; romaji: string }) => o.kana).join(', ') : '';
-        const kunyomi = kanji.kunyomi ? kanji.kunyomi.map((k: { kana: string; romaji: string }) => k.kana).join(', ') : '';
-        const onyomiWithRomaji = kanji.onyomi ? kanji.onyomi.map((o: { kana: string; romaji: string }) => `${o.kana} (${o.romaji})`).join(', ') : '';
-        const kunyomiWithRomaji = kanji.kunyomi ? kanji.kunyomi.map((k: { kana: string; romaji: string }) => `${k.kana} (${k.romaji})`).join(', ') : '';
+        const onyomi = kanji.onyomi ? kanji.onyomi.map((o) => o.kana).join(', ') : '';
+        const kunyomi = kanji.kunyomi ? kanji.kunyomi.map((k) => k.kana).join(', ') : '';
+        const onyomiWithRomaji = kanji.onyomi
+            ? kanji.onyomi.map((o) => (o.romaji ? `${o.kana} (${o.romaji})` : o.kana)).join(', ')
+            : '';
+        const kunyomiWithRomaji = kanji.kunyomi
+            ? kanji.kunyomi.map((k) => (k.romaji ? `${k.kana} (${k.romaji})` : k.kana)).join(', ')
+            : '';
 
         return { onyomi, kunyomi, onyomiWithRomaji, kunyomiWithRomaji };
     };
@@ -549,7 +553,9 @@ const KanjiModal: React.FC<KanjiModalProps> = ({ kanji, visible, onClose }) => {
                                     </Panel>
                                     <Panel header="Cấu tạo chữ" key="structure">
                                         <p>{kanji.structure}</p>
-                                        <p className="text-sm text-secondary-600 dark:text-secondary-800 mt-2">{kanji.image_explanation}</p>
+                                        <p className="text-sm text-secondary-600 dark:text-secondary-800 mt-2">
+                                            {kanji.memory_tip || kanji.image_explanation || 'Chưa có cách nhớ'}
+                                        </p>
                                     </Panel>
                                     {kanji.kanji_analysis && kanji.kanji_analysis.length > 0 && (
                                         <Panel header="Phân tích chi tiết" key="analysis">

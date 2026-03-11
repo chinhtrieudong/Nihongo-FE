@@ -27,7 +27,9 @@ const LessonRange: React.FC<LessonRangeProps> = ({
             progress: 0,
           };
           const isFake = !realLesson;
-          const isCurrentLesson = lesson.id === currentLessonId;
+          const isCurrentLesson =
+            lesson.lessonNumber.toString() === currentLessonId ||
+            lesson.id === currentLessonId;
           const isCompleted = lesson.status === 'completed';
           const isInProgress = lesson.status === 'in_progress';
           const isLocked = lesson.status === 'not_started';

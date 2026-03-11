@@ -3,6 +3,7 @@ import { Button, Drawer, Layout, Spin, Tooltip, Typography } from "antd";
 import { CloseOutlined } from "@ant-design/icons";
 import type { Lesson } from "../../types/lesson";
 import LessonRange from "../../components/LessonRange";
+import { APP_HEADER_HEIGHT_PX } from "../../constants/layout";
 
 const { Sider } = Layout;
 const { Title, Text } = Typography;
@@ -55,7 +56,9 @@ const LessonSidebar: React.FC<LessonSidebarProps> = ({
           {lessonsLoading ? (
             <div className="p-8 text-center">
               <Spin size="large" className="mb-4" />
-              <Text type="secondary">Đang tải danh sách bài học...</Text>
+              <Text className="!text-secondary-700 dark:!text-secondary-400">
+                Đang tải danh sách bài học...
+              </Text>
             </div>
           ) : (
             <LessonRange
@@ -81,7 +84,11 @@ const LessonSidebar: React.FC<LessonSidebarProps> = ({
         }}
         breakpoint="lg"
         className="lesson-sidebar-sider bg-white dark:bg-secondary-925 border-l border-secondary-200 dark:border-secondary-900 fixed right-0 overflow-y-hidden transition-all duration-300"
-        style={{ zIndex: 1000, top: "64px", height: "calc(100vh - 64px)" }}
+        style={{
+          zIndex: 1000,
+          top: `${APP_HEADER_HEIGHT_PX}px`,
+          height: `calc(100vh - ${APP_HEADER_HEIGHT_PX}px)`,
+        }}
       >
         <div className="p-4 border-b border-secondary-200 dark:border-secondary-900 flex-shrink-0 h-[60px]">
           <div className="flex items-center justify-between">
@@ -125,7 +132,9 @@ const LessonSidebar: React.FC<LessonSidebarProps> = ({
           {lessonsLoading ? (
             <div className="p-8 text-center">
               <Spin size="large" className="mb-4" />
-              <Text type="secondary">Đang tải danh sách bài học...</Text>
+              <Text className="!text-secondary-700 dark:!text-secondary-400">
+                Đang tải danh sách bài học...
+              </Text>
             </div>
           ) : (
             <div className="p-3">

@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Kosugi+Maru&family=Nunito:wght@400;500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Itim&family=Noto+Sans:wght@400;500;600;700&family=Noto+Sans+JP:wght@400;500;700&family=Noto+Serif+JP:wght@400;500;700&family=RocknRoll+One&family=Yuji+Syuku&family=Zen+Maru+Gothic:wght@400;500;700&display=swap");
 
 @tailwind base;
 @tailwind components;
@@ -6,22 +6,47 @@
 
 @layer base {
   :root {
-    --ant-font-family: "Nunito", "Kosugi Maru", system-ui, sans-serif;
+    --ant-font-family: "Itim", "Noto Sans", "Noto Sans JP", system-ui, sans-serif;
+    --app-font-family: "Itim", "Noto Sans", "Noto Sans JP", system-ui, sans-serif;
+    --kanji-font-family: "Noto Serif JP", "Noto Sans", system-ui, serif;
   }
 
   html {
-    font-family: "Nunito", "Kosugi Maru", system-ui, sans-serif;
+    font-family: var(--app-font-family);
   }
 
   body {
     @apply bg-secondary-50 dark:bg-secondary-950 text-secondary-900 dark:text-secondary-100;
-    font-family: "Nunito", "Kosugi Maru", system-ui, sans-serif;
+    font-family: var(--app-font-family);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    /* Washi paper background texture - super subtle for Kanji learning */
+    background-image:
+      radial-gradient(circle at 25% 25%, rgba(255, 248, 240, 0.15) 0%, transparent 50%),
+      radial-gradient(circle at 75% 75%, rgba(255, 248, 240, 0.1) 0%, transparent 50%),
+      linear-gradient(45deg, rgba(245, 240, 230, 0.08) 25%, transparent 25%),
+      linear-gradient(-45deg, rgba(245, 240, 230, 0.08) 25%, transparent 25%),
+      linear-gradient(45deg, transparent 75%, rgba(245, 240, 230, 0.08) 75%),
+      linear-gradient(-45deg, transparent 75%, rgba(245, 240, 230, 0.08) 75%);
+    background-size: 20px 20px, 30px 30px, 40px 40px, 40px 40px, 40px 40px, 40px 40px;
+    background-position: 0 0, 10px 10px, 0 0, 20px 20px, 0 0, 20px 20px;
+    background-attachment: fixed;
   }
 }
 
 @layer components {
+  .app-surface {
+    @apply bg-secondary-50 dark:bg-secondary-950;
+  }
+
+  .flashcard-open .app-sidebar,
+  .flashcard-open .app-header,
+  .flashcard-open .lesson-sidebar-toggle {
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 180ms ease;
+  }
+
   :where(
     .ant-typography,
     .ant-table,
@@ -33,7 +58,7 @@
     .ant-menu,
     .ant-tooltip
   ) {
-    font-family: "Nunito", "Kosugi Maru", system-ui, sans-serif;
+    font-family: var(--app-font-family);
   }
 
   .vocab-table .ant-table,
@@ -59,6 +84,15 @@
 
   .theme-surface .ant-card-actions > li {
     @apply border-secondary-200 dark:border-secondary-900;
+  }
+
+  /* TabNav border (Ant Tabs) */
+  .theme-surface .ant-tabs-nav::before {
+    border-bottom: 1px solid #e2e8f0 !important; /* secondary-200 */
+  }
+
+  .dark .theme-surface .ant-tabs-nav::before {
+    border-bottom-color: #27272a !important; /* secondary-900 */
   }
 
   .flashcard-settings-wrap .ant-modal,
@@ -314,8 +348,7 @@
   }
 
   .font-japanese {
-    font-family:
-      "Kosugi Maru", "Hiragino Sans", "Yu Gothic", "Meiryo", sans-serif;
+    font-family: var(--kanji-font-family);
     line-height: 1.8;
     letter-spacing: 0.02em;
   }

@@ -11,6 +11,113 @@ import {
 const API_BASE_URL =
   process.env.REACT_APP_API_URL || "http://localhost:5000/api/v1";
 
+// Centralized API Endpoints Configuration
+export const API_ENDPOINTS = {
+  // Authentication
+  AUTH: {
+    LOGIN: "/auth/login",
+    REGISTER: "/auth/register",
+    LOGOUT: "/auth/logout",
+    REFRESH: "/auth/refresh",
+    ME: "/auth/me",
+  },
+
+  // Users
+  USERS: {
+    PROFILE: "/users/profile",
+    STATS: {
+      DASHBOARD: "/users/stats/dashboard",
+      STREAK: "/users/stats/streak",
+      WEEKLY: "/users/stats/weekly",
+      STUDY_TIME: "/users/stats/study-time",
+      AVERAGE_SCORE: "/users/stats/average-score",
+    },
+  },
+
+  // Lessons
+  LESSONS: {
+    LIST: "/lessons",
+    DETAIL: (id: string) => `/lessons/${id}`,
+    BY_NUMBER: (number: number) => `/lessons/number/${number}`,
+    PROGRESS: (lessonNumber: number) => `/lesson/${lessonNumber}/progress`,
+    UPDATE_PROGRESS: (lessonId: string) => `/lessons/${lessonId}/progress`,
+    COMPLETE: (lessonId: string) => `/lessons/${lessonId}/complete`,
+    EXERCISES: {
+      SUBMIT: (lessonId: string, exerciseId: string) => `/lessons/${lessonId}/exercises/${exerciseId}/submit`,
+      SUBMIT_MULTIPLE: (lessonId: string) => `/lessons/${lessonId}/exercises/submit`,
+    },
+    RELATED: (lessonId: string) => `/lessons/${lessonId}/related`,
+    SEARCH: "/lessons/search",
+    KANJI: (lessonId: string) => `/lessons/${lessonId}/kanji`,
+    AI_ROLEPLAY: (lessonId: string) => `/lessons/${lessonId}/ai/roleplay`,
+    WEAK_POINTS: (lessonId: string) => `/lessons/${lessonId}/weak-points`,
+  },
+
+  // Vocabulary
+  VOCABULARY: "/vocabulary",
+
+  // Kanji
+  KANJI: {
+    CHARACTER: (kanji: string) => `/kanji/character/${encodeURIComponent(kanji)}`,
+    LIST: "/kanji",
+    BY_LEVEL: (level: string) => `/kanji/${level.toLowerCase()}`,
+    RADICALS: {
+      LIST: "/kanji/radicals",
+      DETAIL: (symbol: string) => `/kanji/radicals/${encodeURIComponent(symbol)}`,
+      KANJI_BY_RADICAL: (symbol: string) => `/kanji/radicals/${encodeURIComponent(symbol)}/kanji`,
+    },
+  },
+
+  // AI
+  AI: {
+    CHAT: "/ai/chat",
+    PRONUNCIATION: "/ai/pronunciation",
+  },
+
+  // Conversation
+  CONVERSATION: {
+    LESSONS: "/lessons",
+    EXERCISES: (id: string) => `/lessons/${id}/exercises`,
+    SUBMIT: (id: string) => `/lessons/${id}/submit`,
+    SCENARIOS: "/scenarios",
+    DIALOGS: "/dialogs",
+    AI: {
+      START: "/ai/start",
+      CHAT: "/ai/chat",
+      END: (conversationId: string) => `/ai/end/${conversationId}`,
+    },
+    VOICE: {
+      START: "/voice/start",
+      UPLOAD: "/voice/upload",
+    },
+    STATS: "/stats",
+    HISTORY: "/conversations",
+    AUDIO: {
+      TEXT_TO_SPEECH: "/audio/text-to-speech",
+      DIALOG_LINE: (dialogId: string, lineId: string) => `/audio/dialog/${dialogId}/${lineId}`,
+    },
+  },
+
+  // Progress
+  PROGRESS: "/progress",
+
+  // Health Check
+  HEALTH: "/health",
+} as const;
+
+// Minna JSON API endpoints (separate service)
+export const MINNA_ENDPOINTS = {
+  LESSON: {
+    VOCABULARY: (lessonNumber: number) => `/lesson/${lessonNumber}/vocabulary`,
+    GRAMMAR: (lessonNumber: number) => `/lesson/${lessonNumber}/grammar`,
+    DIALOG: (lessonNumber: number) => `/lesson/${lessonNumber}/dialog`,
+    BUNKEI: (lessonNumber: number) => `/lesson/${lessonNumber}/bunkei`,
+    RENSHOU: (lessonNumber: number) => `/lesson/${lessonNumber}/renshou`,
+    REIBUN: (lessonNumber: number) => `/lesson/${lessonNumber}/reibun`,
+    AI_CHAT: (lessonNumber: number) => `/lesson/${lessonNumber}/ai/chat`,
+  },
+};
+
 // Create axios instance with default config
 const api = axios.create({
   baseURL: API_BASE_URL,
@@ -70,6 +177,31 @@ api.interceptors.response.use(
   },
 );
 
+// Add minna-json API after the main api
+const MINNA_JSON_API_BASE_URL = "http://localhost:5000/api/v1";
+
+// Create separate axios instance for minna-json endpoints
+const minnaJsonApi = axios.create({
+  baseURL: MINNA_JSON_API_BASE_URL,
+  headers: {
+    "Content-Type": "application/json",
+  },
+});
+
+// Request interceptor for minna-json API
+minnaJsonApi.interceptors.request.use(
+  (config) => {
+    const token = localStorage.getItem("accessToken");
+    if (token) {
+      config.headers.Authorization = `Bearer ${token}`;
+    }
+    return config;
+  },
+  (error) => {
+    return Promise.reject(error);
+  },
+);
+
 export interface LoginData {
   email: string;
   password: string;
@@ -101,21 +233,21 @@ export interface AuthResponse {
 // Auth API functions
 export const authAPI = {
   login: async (data: LoginData): Promise<AuthResponse> => {
-    const response = await api.post("/auth/login", data);
+    const response = await api.post(API_ENDPOINTS.AUTH.LOGIN, data);
     return response.data;
   },
 
   register: async (data: RegisterData): Promise<AuthResponse> => {
-    const response = await api.post("/auth/register", data);
+    const response = await api.post(API_ENDPOINTS.AUTH.REGISTER, data);
     return response.data;
   },
 
   logout: async (): Promise<void> => {
-    await api.post("/auth/logout");
+    await api.post(API_ENDPOINTS.AUTH.LOGOUT);
   },
 
   refreshToken: async (refreshToken: string) => {
-    const response = await api.post("/auth/refresh", { refreshToken });
+    const response = await api.post(API_ENDPOINTS.AUTH.REFRESH, { refreshToken });
     return response.data;
   },
 
@@ -123,7 +255,7 @@ export const authAPI = {
     // Try to get user info from a simple endpoint that doesn't require authentication
     // This is a temporary solution for development
     try {
-      const response = await api.get("/auth/me");
+      const response = await api.get(API_ENDPOINTS.AUTH.ME);
       return response.data;
     } catch (error) {
       // If /auth/me doesn't exist, create a mock user from token
@@ -148,12 +280,12 @@ export const authAPI = {
 // User API functions
 export const userAPI = {
   getProfile: async () => {
-    const response = await api.get("/users/profile");
+    const response = await api.get(API_ENDPOINTS.USERS.PROFILE);
     return response.data;
   },
 
   updateProfile: async (data: any) => {
-    const response = await api.put("/users/profile", data);
+    const response = await api.put(API_ENDPOINTS.USERS.PROFILE, data);
     return response.data;
   },
 };
@@ -162,7 +294,12 @@ export const userAPI = {
 export const vocabularyAPI = {
   getVocabulary: async (level?: string) => {
     const params = level ? { level } : {};
-    const response = await api.get("/vocabulary", { params });
+    const response = await api.get(API_ENDPOINTS.VOCABULARY, { params });
+    return response.data;
+  },
+
+  getVocabularyByLesson: async (lessonNumber: number): Promise<any> => {
+    const response = await minnaJsonApi.get(MINNA_ENDPOINTS.LESSON.VOCABULARY(lessonNumber));
     return response.data;
   },
 };
@@ -185,6 +322,17 @@ export const lessonAPI = {
 
   getLessonDetail: async (id: string): Promise<any> => {
     const response = await api.get(`/lessons/${id}`);
+    return response.data;
+  },
+
+  getLessonByNumber: async (lessonNumber: number): Promise<any> => {
+    const response = await api.get(`/lessons/number/${lessonNumber}`);
+    return response.data;
+  },
+
+  getLessonProgress: async (lessonNumber: number, userId?: string) => {
+    const params = userId ? { user_id: userId } : {};
+    const response = await api.get(`/lesson/${lessonNumber}/progress`, { params });
     return response.data;
   },
 
@@ -267,7 +415,7 @@ export const lessonAPI = {
 
   // Kanji endpoints
   getKanji: async (kanji: string) => {
-    const response = await api.get(`/kanji/${kanji}`);
+    const response = await api.get(`/kanji/character/${encodeURIComponent(kanji)}`);
     return response.data;
   },
 
@@ -282,6 +430,10 @@ export const lessonAPI = {
     radical?: string;
     strokeCount?: string;
     search?: string;
+    sortBy?: string;
+    order?: "asc" | "desc";
+    page?: number;
+    limit?: number;
   }) => {
     const params = new URLSearchParams();
     if (filters.lesson && filters.lesson !== "all")
@@ -291,10 +443,45 @@ export const lessonAPI = {
     if (filters.strokeCount && filters.strokeCount !== "all")
       params.append("strokeCount", filters.strokeCount);
     if (filters.search) params.append("search", filters.search);
+    params.append("sortBy", filters.sortBy || "level");
+    params.append("order", filters.order || "asc");
+    if (typeof filters.page === "number" && filters.page > 0) {
+      params.append("page", String(filters.page));
+    }
+    if (typeof filters.limit === "number" && filters.limit > 0) {
+      params.append("limit", String(filters.limit));
+    }
 
-    // Use the level in the path (e.g., /kanji/n5) and include other filters as query params
-    const levelPath = filters.level ? `/${filters.level.toLowerCase()}` : "/n5";
-    const response = await api.get(`/kanji${levelPath}?${params.toString()}`);
+    // Use level path only when a specific level is selected; otherwise fetch all levels from /kanji
+    const hasLevel = Boolean(filters.level && filters.level !== "all");
+    const levelPath = hasLevel ? `/${String(filters.level).toLowerCase()}` : "";
+    const queryString = params.toString();
+    const response = await api.get(
+      queryString ? `/kanji${levelPath}?${queryString}` : `/kanji${levelPath}`,
+    );
+    return response.data;
+  },
+
+  getKanjiByRadical: async (
+    radicalSymbol: string,
+    page = 1,
+    limit = 20,
+  ) => {
+    const encoded = encodeURIComponent(radicalSymbol);
+    const response = await api.get(
+      `/kanji/radicals/${encoded}/kanji?page=${page}&limit=${limit}`,
+    );
+    return response.data;
+  },
+
+  getRadicals: async (page = 1, limit = 214) => {
+    const response = await api.get(`/kanji/radicals?page=${page}&limit=${limit}`);
+    return response.data;
+  },
+
+  getRadicalDetail: async (symbol: string) => {
+    const encoded = encodeURIComponent(symbol);
+    const response = await api.get(`/kanji/radicals/${encoded}`);
     return response.data;
   },
 };
@@ -356,13 +543,52 @@ export const userStatsAPI = {
 
 // AI API functions
 export const aiAPI = {
-  chat: async (message: string) => {
-    const response = await api.post("/ai/chat", { message });
-    return response.data;
+  chat: async (data: {
+    lessonId: string;
+    messages: Array<{ role: string; content: string; timestamp: string }>;
+    context: {
+      currentLesson: string;
+      learnedVocabulary: string[];
+      learnedGrammar: string[];
+      difficulty: "easy" | "medium" | "hard";
+    };
+  }) => {
+    // Use Minna AI chat endpoint for lesson-specific chat
+    // Extract the latest user message and lesson number from the data
+    const latestUserMessage = data.messages.filter(msg => msg.role === 'user').pop();
+    if (!latestUserMessage) throw new Error('No user message found');
+
+    // Try to extract lesson number from lessonId (assuming it's in format like "lesson-1" or just the number)
+    const lessonNumber = data.lessonId.replace('lesson-', '') || '1';
+
+    const requestBody = {
+      message: latestUserMessage.content,
+      context: data.context
+    };
+
+    const response = await api.post(`/lesson/${lessonNumber}/ai/chat`, requestBody);
+    
+    // Transform the response to match the expected ChatMessage format
+    const apiResponse = response.data;
+    if (apiResponse.success && apiResponse.data) {
+      return {
+        success: true,
+        data: {
+          message: {
+            role: 'assistant',
+            content: apiResponse.data.response,
+            timestamp: apiResponse.data.timestamp || new Date().toISOString()
+          }
+        }
+      };
+    }
+    
+    return apiResponse;
   },
 
   pronunciation: async (audioData: any) => {
-    const response = await api.post("/ai/pronunciation", audioData);
+    const aiBaseUrl = process.env.REACT_APP_AI_API_URL || "http://localhost:5000/api/v1";
+    const response = await api.post(`${aiBaseUrl}/ai/pronunciation`, audioData);
     return response.data;
   },
 };
@@ -370,9 +596,10 @@ export const aiAPI = {
 // Health check
 export const healthAPI = {
   check: async () => {
-    const response = await api.get("/health");
+    const response = await api.get(API_ENDPOINTS.HEALTH);
     return response.data;
   },
 };
 
 export default api;
+export { minnaJsonApi };

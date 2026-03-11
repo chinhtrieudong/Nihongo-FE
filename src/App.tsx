@@ -5,12 +5,15 @@ import { ConfigProvider, theme, App as AntdApp } from "antd";
 import { store } from "./store";
 import { useAppSelector } from "./store/hooks";
 import ThemeProvider from "./components/ThemeProvider";
+import ErrorBoundary from "./components/ErrorBoundary";
 import Layout from "./components/Layout";
 import LessonsList from "./pages/LessonsList";
 import LessonDetail from "./pages/LessonDetail";
 import KanjiPage from "./pages/Kanji";
 import KanjiDetail from "./pages/KanjiDetail";
+import RadicalDetail from "./pages/RadicalDetail";
 import Vocabulary from "./pages/Vocabulary";
+import VocabularyPage from "./pages/VocabularyPage";
 import Grammar from "./pages/Grammar";
 import Pronunciation from "./pages/Pronunciation";
 import ConversationComponent from "./pages/Conversation";
@@ -21,13 +24,18 @@ import TestResults from "./pages/TestResults";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import IconShowcase from "./components/IconShowcase";
+import APITester from "./components/APITester";
+import AdminDashboard from "./pages/AdminDataManager";
 import { AuthProvider, useAuth } from "./contexts/AuthContext";
+import AdminRoute from "./components/AdminRoute";
+import AdminLayout from "./components/AdminLayout";
 import {
   getAvailableQualityPresets,
   setQualityPreset,
   getQualityPreset,
 } from "./services/voicevoxService";
 import "./App.css";
+import "./styles/academic-grid.css";
 
 // Log available voices to console
 const logAvailableVoices = () => {
@@ -158,35 +166,51 @@ const AppContent: React.FC = () => {
 
   return (
     <Router future={{ v7_startTransition: true, v7_relativeSplatPath: true }}>
-      <div className="min-h-screen bg-secondary-50 dark:bg-secondary-950 text-secondary-900 dark:text-secondary-100">
-        <Routes>
-          {/* Public routes */}
-          <Route path="/login" element={<Login />} />
-          <Route path="/register" element={<Register />} />
+      <ErrorBoundary>
+        <div className="min-h-screen text-secondary-900 dark:text-secondary-100">
+          <Routes>
+            {/* Public routes */}
+            <Route path="/login" element={<Login />} />
+            <Route path="/register" element={<Register />} />
 
-          {/* Public routes */}
-          <Route path="/" element={<Layout />}>
-            <Route index element={<LessonsList />} />
-            <Route path="lessons" element={<LessonsList />} />
-            <Route path="lessons/:lessonId" element={<LessonDetail />} />
-            <Route path="lessons/:lessonId/kanji" element={<KanjiDetail />} />
-            <Route path="kanji" element={<KanjiPage />} />
-            <Route path="kanji/:kanji" element={<KanjiDetail />} />
-            <Route path="vocabulary" element={<Vocabulary />} />
-            <Route path="grammar" element={<Grammar />} />
-            <Route path="pronunciation" element={<Pronunciation />} />
-            <Route path="conversation" element={<ConversationComponent />} />
+            {/* Public routes */}
+            <Route path="/" element={<Layout />}>
+              <Route index element={<LessonsList />} />
+              <Route path="lessons" element={<LessonsList />} />
+              <Route path="lessons/:lessonNumber" element={<ErrorBoundary><LessonDetail /></ErrorBoundary>} />
+              <Route path="lessons/:lessonNumber/kanji" element={<KanjiDetail />} />
+              <Route path="kanji" element={<KanjiPage />} />
+              <Route path="kanji/radicals/:symbol" element={<RadicalDetail />} />
+              <Route path="kanji/:kanji" element={<KanjiDetail />} />
+              <Route path="vocabulary" element={<Vocabulary />} />
+              <Route path="vocabulary-list/:lessonNumber" element={<VocabularyPage />} />
+              <Route path="grammar" element={<Grammar />} />
+              <Route path="pronunciation" element={<Pronunciation />} />
+              <Route path="conversation" element={<ConversationComponent />} />
+              <Route
+                path="conversation/:lessonId"
+                element={<ConversationLesson />}
+              />
+              <Route path="tests" element={<Tests />} />
+              <Route path="test/:testId" element={<TestDetail />} />
+              <Route path="test-results/:testId" element={<TestResults />} />
+              <Route path="icon-showcase" element={<IconShowcase />} />
+              <Route path="api-tester" element={<APITester />} />
+            </Route>
+
             <Route
-              path="conversation/:lessonId"
-              element={<ConversationLesson />}
-            />
-            <Route path="tests" element={<Tests />} />
-            <Route path="test/:testId" element={<TestDetail />} />
-            <Route path="test-results/:testId" element={<TestResults />} />
-            <Route path="icon-showcase" element={<IconShowcase />} />
-          </Route>
-        </Routes>
-      </div>
+              path="/admin"
+              element={
+                <AdminRoute>
+                  <AdminLayout />
+                </AdminRoute>
+              }
+            >
+              <Route index element={<AdminDashboard />} />
+            </Route>
+          </Routes>
+        </div>
+      </ErrorBoundary>
     </Router>
   );
 };
@@ -199,7 +223,7 @@ const AppWithTheme: React.FC = () => {
       theme={{
         algorithm: darkMode ? theme.darkAlgorithm : theme.defaultAlgorithm,
         token: {
-          fontFamily: 'Nunito, "Kosugi Maru", system-ui, sans-serif',
+          fontFamily: "var(--app-font-family)",
         },
       }}
     >

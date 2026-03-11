@@ -25,6 +25,7 @@ import {
   conversationLessonAPI,
   type ConversationLesson,
 } from "../services/conversationLessonAPI";
+import PageTitle from "../components/PageTitle";
 
 const { Option } = Select;
 const { Title, Text } = Typography;
@@ -205,7 +206,7 @@ const ConversationComponent: React.FC = () => {
   }
 
   return (
-    <div className="min-h-full bg-secondary-50 dark:bg-secondary-950 overflow-x-hidden">
+    <div className="min-h-full overflow-x-hidden">
       <div className="mx-auto max-w-7xl px-3 sm:px-6 lg:px-8 py-6 lg:py-8">
         <div className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-blue-50 via-white to-rose-50 dark:from-slate-900 dark:via-slate-800 dark:to-slate-900 p-5 sm:p-7 mb-6">
           <div className="absolute inset-0 opacity-60 dark:opacity-40">
@@ -215,16 +216,15 @@ const ConversationComponent: React.FC = () => {
           <div className="relative">
             <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4">
               <div>
-                <Title
-                  level={2}
-                  className="!mb-1 !text-slate-900 dark:!text-white"
-                >
-                  <MessageOutlined className="mr-2 text-slate-600 dark:text-white/80" />
-                  Luyện hội thoại theo ngữ cảnh
-                </Title>
-                <Text className="text-slate-600 dark:text-white/70">
-                  Học nhanh qua tình huống đời sống, ngắn gọn và dễ nhớ.
-                </Text>
+                <PageTitle
+                  title="Luyện hội thoại theo ngữ cảnh"
+                  subtitle="Học nhanh qua tình huống đời sống, ngắn gọn và dễ nhớ."
+                  icon={
+                    <MessageOutlined className="text-slate-600 dark:text-white/80" />
+                  }
+                  titleClassName="!text-slate-900 dark:!text-white"
+                  subtitleClassName="!text-slate-600 dark:!text-white/70"
+                />
               </div>
               <div className="w-full sm:w-80">
                 <Search

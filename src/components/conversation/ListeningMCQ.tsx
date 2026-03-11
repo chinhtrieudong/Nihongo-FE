@@ -9,13 +9,16 @@ interface ListeningMCQProps {
     exercises: MCQExercise[];
     onSubmit: (answers: number[]) => void;
     onProgress: (current: number, total: number) => void;
+    variant?: 'listening' | 'reading';
 }
 
 const ListeningMCQ: React.FC<ListeningMCQProps> = ({
     exercises,
     onSubmit,
-    onProgress
+    onProgress,
+    variant = 'listening'
 }) => {
+    const isAudioEnabled = variant === 'listening';
     const [currentExerciseIndex, setCurrentExerciseIndex] = useState(0);
     const [selectedAnswer, setSelectedAnswer] = useState<number | null>(null);
     const [showResult, setShowResult] = useState(false);
@@ -23,16 +26,21 @@ const ListeningMCQ: React.FC<ListeningMCQProps> = ({
     const [isPlaying, setIsPlaying] = useState(false);
     const [isPlayingAll, setIsPlayingAll] = useState(false);
     const [isCompleted, setIsCompleted] = useState(false);
+    const submittedOnceRef = useRef(false);
 
     const audioRef = useRef<HTMLAudioElement | null>(null);
     const containerRef = useRef<HTMLDivElement>(null);
     const playingAllRef = useRef(false); // Track if currently playing all
 
     const currentExercise = exercises[currentExerciseIndex];
-    const progress = ((currentExerciseIndex + 1) / exercises.length) * 100;
+    const answeredCount = useMemo(
+        () => answers.filter((a) => typeof a === 'number').length,
+        [answers]
+    );
+    const progress = exercises.length > 0 ? (answeredCount / exercises.length) * 100 : 0;
 
     React.useEffect(() => {
-        onProgress(currentExerciseIndex + 1, exercises.length);
+        onProgress(answeredCount, exercises.length);
 
         // Only reset if not playing all
         if (!playingAllRef.current) {
@@ -46,7 +54,7 @@ const ListeningMCQ: React.FC<ListeningMCQProps> = ({
                 scrollToCurrentExercise();
             });
         }
-    }, [currentExerciseIndex, onProgress]);
+    }, [currentExerciseIndex, answeredCount, exercises.length, onProgress]);
 
     const scrollToCurrentExercise = useCallback(() => {
         if (containerRef.current) {
@@ -109,6 +117,7 @@ const ListeningMCQ: React.FC<ListeningMCQProps> = ({
     }, []);
 
     const playAudio = useCallback(async () => {
+        if (!isAudioEnabled) return;
         if (!currentExercise) return;
 
         try {
@@ -132,9 +141,10 @@ const ListeningMCQ: React.FC<ListeningMCQProps> = ({
             setIsPlaying(false);
             message.warning('Không thể phát âm thanh. Vui lòng thử lại.');
         }
-    }, [currentExercise, playTTSForExercise]);
+    }, [currentExercise, playTTSForExercise, isAudioEnabled]);
 
     const playAllAudio = useCallback(async () => {
+        if (!isAudioEnabled) return;
         try {
             playingAllRef.current = true;
             setIsPlayingAll(true);
@@ -174,7 +184,7 @@ const ListeningMCQ: React.FC<ListeningMCQProps> = ({
             setIsPlaying(false);
             message.error('Không thể phát tất cả âm thanh. Vui lòng thử lại.');
         }
-    }, [exercises, playTTSForExercise]);
+    }, [exercises, playTTSForExercise, isAudioEnabled]);
 
     const checkAnswer = useCallback(() => {
         if (selectedAnswer === null) {
@@ -199,7 +209,10 @@ const ListeningMCQ: React.FC<ListeningMCQProps> = ({
                 setCurrentExerciseIndex(currentExerciseIndex + 1);
             } else {
                 setIsCompleted(true);
-                onSubmit(newAnswers);
+                if (!submittedOnceRef.current) {
+                    submittedOnceRef.current = true;
+                    onSubmit(newAnswers);
+                }
             }
         }, 3000);
     }, [selectedAnswer, currentExercise, answers, currentExerciseIndex, exercises.length, onSubmit]);
@@ -218,39 +231,42 @@ const ListeningMCQ: React.FC<ListeningMCQProps> = ({
     }, [currentExerciseIndex]);
 
     // Memoize buttons to prevent re-render
-    const audioButtons = useMemo(() => (
-        <Space className="mb-4">
-            <Button
-                type="primary"
-                size="large"
-                icon={<SoundOutlined />}
-                onClick={playAudio}
-                loading={isPlaying && !isPlayingAll}
-                disabled={isPlayingAll}
-                style={{
-                    transition: 'opacity 0.3s ease, background-color 0.3s ease',
-                    minWidth: '150px'
-                }}
-            >
-                {isPlaying && !isPlayingAll ? 'Đang phát...' : 'Nghe câu hỏi'}
-            </Button>
+    const audioButtons = useMemo(() => {
+        if (!isAudioEnabled) return null;
+        return (
+            <Space className="mb-4">
+                <Button
+                    type="primary"
+                    size="large"
+                    icon={<SoundOutlined />}
+                    onClick={playAudio}
+                    loading={isPlaying && !isPlayingAll}
+                    disabled={isPlayingAll}
+                    style={{
+                        transition: 'opacity 0.3s ease, background-color 0.3s ease',
+                        minWidth: '150px'
+                    }}
+                >
+                    {isPlaying && !isPlayingAll ? 'Đang phát...' : 'Nghe câu hỏi'}
+                </Button>
 
-            <Button
-                type="default"
-                size="large"
-                icon={<SoundOutlined />}
-                onClick={playAllAudio}
-                loading={isPlayingAll}
-                disabled={isPlaying && !isPlayingAll}
-                style={{
-                    transition: 'opacity 0.3s ease, background-color 0.3s ease',
-                    minWidth: '150px'
-                }}
-            >
-                {isPlayingAll ? 'Đang phát tất cả...' : 'Phát tất cả'}
-            </Button>
-        </Space>
-    ), [isPlaying, isPlayingAll, playAudio, playAllAudio]);
+                <Button
+                    type="default"
+                    size="large"
+                    icon={<SoundOutlined />}
+                    onClick={playAllAudio}
+                    loading={isPlayingAll}
+                    disabled={isPlaying && !isPlayingAll}
+                    style={{
+                        transition: 'opacity 0.3s ease, background-color 0.3s ease',
+                        minWidth: '150px'
+                    }}
+                >
+                    {isPlayingAll ? 'Đang phát tất cả...' : 'Phát tất cả'}
+                </Button>
+            </Space>
+        );
+    }, [isAudioEnabled, isPlaying, isPlayingAll, playAudio, playAllAudio]);
 
     const actionButtons = useMemo(() => (
         <div className="flex justify-between mt-4" style={{ minHeight: '40px' }}>
@@ -282,30 +298,6 @@ const ListeningMCQ: React.FC<ListeningMCQProps> = ({
         </div>
     ), [currentExerciseIndex, selectedAnswer, showResult, checkAnswer, handlePrevious]);
 
-    if (isCompleted) {
-        return (
-            <Card className="text-center py-8">
-                <div className="space-y-4">
-                    <CheckCircleOutlined className="text-6xl text-green-500" />
-                    <Typography.Title level={3}>Hoàn thành trắc nghiệm! 🎉</Typography.Title>
-                    <div className="space-y-2">
-                        <Text className="text-lg">
-                            Đúng: {answers.filter((answer, index) =>
-                                answer === exercises[index]?.correct_index
-                            ).length}/{exercises.length}
-                        </Text>
-                        <Text className="text-xl font-bold text-blue-600">
-                            Điểm: {getScore()}%
-                        </Text>
-                    </div>
-                    <Button type="primary" size="large" onClick={() => onSubmit(answers)}>
-                        Tiếp tục
-                    </Button>
-                </div>
-            </Card>
-        );
-    }
-
     if (!currentExercise) {
         return (
             <Card className="text-center py-8">
@@ -319,9 +311,12 @@ const ListeningMCQ: React.FC<ListeningMCQProps> = ({
             className="shadow-lg"
             title={
                 <div className="flex justify-between items-center">
-                    <Text strong className="text-lg">🧠 Bài tập nghe-hiểu</Text>
+                    <Text strong className="text-lg">
+                        {variant === 'listening' ? '🧠 Bài tập nghe-hiểu' : '📖 Bài tập đọc-hiểu'}
+                    </Text>
                     <Space>
-                        <Tag color="blue">{currentExerciseIndex + 1}/{exercises.length}</Tag>
+                        <Tag color="blue">Câu {currentExerciseIndex + 1}/{exercises.length}</Tag>
+                        <Tag color="geekblue">{answeredCount}/{exercises.length}</Tag>
                         <Tag color="green">{Math.round(progress)}%</Tag>
                     </Space>
                 </div>
@@ -332,13 +327,14 @@ const ListeningMCQ: React.FC<ListeningMCQProps> = ({
 
             <div ref={containerRef} className="space-y-6 max-h-96 overflow-y-auto pr-2">
                 {/* Audio Player */}
-                <div className="text-center">
-                    {audioButtons}
-
-                    <div className="text-sm text-gray-500">
-                        Nghe kỹ câu hỏi và chọn đáp án đúng nhất
+                {audioButtons && (
+                    <div className="text-center">
+                        {audioButtons}
+                        <div className="text-sm text-gray-500">
+                            Nghe kỹ câu hỏi và chọn đáp án đúng nhất
+                        </div>
                     </div>
-                </div>
+                )}
 
                 {/* Question */}
                 <div className="exercise-item text-center p-4 bg-blue-50 dark:bg-blue-900/20 rounded-lg">
@@ -404,13 +400,15 @@ const ListeningMCQ: React.FC<ListeningMCQProps> = ({
                     {/* Instructions */}
                     <div className="mt-6 pt-4 border-t border-gray-200 dark:border-gray-700">
                         <Text type="secondary" className="text-xs">
-                            Hướng dẫn: Nghe câu hỏi bằng tiếng Nhật và chọn đáp án đúng bằng tiếng Việt.
+                            {variant === 'listening'
+                                ? 'Hướng dẫn: Nghe câu hỏi và chọn đáp án đúng nhất.'
+                                : 'Hướng dẫn: Đọc câu hỏi và chọn đáp án đúng nhất.'}
                         </Text>
                     </div>
                 </div>
             </div>
 
-            <audio ref={audioRef} />
+            {isAudioEnabled && <audio ref={audioRef} />}
         </Card>
     );
 };

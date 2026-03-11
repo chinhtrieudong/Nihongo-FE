@@ -6,9 +6,6 @@ import {
   Modal,
   Switch,
   Select,
-  Divider,
-  Space,
-  Collapse,
 } from "antd";
 import {
   SoundOutlined,
@@ -276,7 +273,7 @@ const VocabularyFlashcard: React.FC<VocabularyFlashcardProps> = ({
   // Render fullscreen-only view
   return (
     <div
-      className="fixed inset-0 z-[1000] flex items-center justify-center bg-black/40 p-4"
+      className="fixed inset-0 z-[1100] flex items-center justify-center bg-black/55 backdrop-blur-sm p-4"
       onClick={() => {
         if (!settingsVisible) {
           onBackToTable?.();
@@ -307,10 +304,6 @@ const VocabularyFlashcard: React.FC<VocabularyFlashcardProps> = ({
               cursor-pointer
               select-none
             "
-            style={{
-              fontFamily:
-                '"Kosugi Maru", "Hiragino Sans", "Yu Gothic", "Meiryo", sans-serif',
-            }}
           >
             {/* AUDIO */}
             <button
@@ -342,11 +335,8 @@ const VocabularyFlashcard: React.FC<VocabularyFlashcardProps> = ({
                     } font-semibold tracking-wide text-neutral-100 flex flex-col items-center`}
                   style={
                     getFrontContent().isVietnamese
-                      ? {
-                        fontFamily:
-                          '"Nunito", "Noto Sans", "Hiragino Sans", "Yu Gothic", "Meiryo", sans-serif',
-                      }
-                      : undefined
+                      ? undefined
+                      : { fontFamily: "var(--kanji-font-family)" }
                   }
                 >
                   {getFrontContent().main}
@@ -360,11 +350,8 @@ const VocabularyFlashcard: React.FC<VocabularyFlashcardProps> = ({
                       } text-neutral-300`}
                     style={
                       getFrontContent().isVietnamese
-                        ? {
-                          fontFamily:
-                            '"Nunito", "Noto Sans", "Hiragino Sans", "Yu Gothic", "Meiryo", sans-serif',
-                        }
-                        : undefined
+                        ? undefined
+                        : { fontFamily: "var(--kanji-font-family)" }
                     }
                   >
                     {getFrontContent()
@@ -379,10 +366,6 @@ const VocabularyFlashcard: React.FC<VocabularyFlashcardProps> = ({
 
                 <div
                   className="absolute bottom-4 text-[11px] text-neutral-400"
-                  style={{
-                    fontFamily:
-                      '"Nunito", "Noto Sans", "Hiragino Sans", "Yu Gothic", "Meiryo", sans-serif',
-                  }}
                 >
                   {screens?.xs ? "Chạm để lật" : "Phím cách để lật"}
                 </div>
@@ -399,11 +382,8 @@ const VocabularyFlashcard: React.FC<VocabularyFlashcardProps> = ({
                     } font-semibold tracking-wide text-neutral-100 flex flex-col items-center`}
                   style={
                     getBackContent().isVietnamese
-                      ? {
-                        fontFamily:
-                          '"Nunito", "Noto Sans", "Hiragino Sans", "Yu Gothic", "Meiryo", sans-serif',
-                      }
-                      : undefined
+                      ? undefined
+                      : { fontFamily: "var(--kanji-font-family)" }
                   }
                 >
                   {getBackContent().main}
@@ -417,11 +397,8 @@ const VocabularyFlashcard: React.FC<VocabularyFlashcardProps> = ({
                       } text-neutral-300`}
                     style={
                       getBackContent().isVietnamese
-                        ? {
-                          fontFamily:
-                            '"Nunito", "Noto Sans", "Hiragino Sans", "Yu Gothic", "Meiryo", sans-serif',
-                        }
-                        : undefined
+                        ? undefined
+                        : { fontFamily: "var(--kanji-font-family)" }
                     }
                   >
                     {getBackContent()
@@ -436,10 +413,6 @@ const VocabularyFlashcard: React.FC<VocabularyFlashcardProps> = ({
 
                 <div
                   className="absolute bottom-4 text-[11px] text-neutral-400 tracking-wide"
-                  style={{
-                    fontFamily:
-                      '"Nunito", "Noto Sans", "Hiragino Sans", "Yu Gothic", "Meiryo", sans-serif',
-                  }}
                 >
                   ← Chưa nhớ · Đã nhớ →
                 </div>
@@ -614,59 +587,28 @@ const VocabularyFlashcard: React.FC<VocabularyFlashcardProps> = ({
             </div>
           </div>
 
-          {/* Face Settings with Collapse */}
-          <div className="rounded-xl border border-slate-700 bg-slate-800/60">
-            <Collapse
-              ghost
-              items={[
-                {
-                  key: "japanese",
-                  label: "Mặt tiếng Nhật",
-                  children: (
-                    <div className="space-y-3">
-                      <div className="flex items-center justify-between">
-                        <Text className="text-white">Hiện Kanji (nếu có)</Text>
-                        <Switch checked={showKanji} onChange={setShowKanji} />
-                      </div>
-                      <div className="flex items-center justify-between">
-                        <Text className="text-white">
-                          Hiện ví dụ tiếng Nhật
-                        </Text>
-                        <Switch
-                          checked={showJapaneseExample}
-                          onChange={setShowJapaneseExample}
-                        />
-                      </div>
-                    </div>
-                  ),
-                },
-                {
-                  key: "vietnamese",
-                  label: "Mặt tiếng Việt",
-                  children: (
-                    <div className="space-y-3">
-                      <div className="flex items-center justify-between">
-                        <Text className="text-white">
-                          Hiện Hán Việt (nếu có)
-                        </Text>
-                        <Switch
-                          checked={showHanViet}
-                          onChange={setShowHanViet}
-                        />
-                      </div>
-                      <div className="flex items-center justify-between">
-                        <Text className="text-white">Hiện nghĩa ví dụ</Text>
-                        <Switch
-                          checked={showVietnameseExample}
-                          onChange={setShowVietnameseExample}
-                        />
-                      </div>
-                    </div>
-                  ),
-                },
-              ]}
-              defaultActiveKey={[]}
-            />
+          {/* Example Visibility */}
+          <div className="rounded-xl border border-slate-700 bg-slate-800/80 p-4">
+            <div className="flex items-center justify-between gap-4">
+              <div>
+                <Text
+                  className="font-semibold text-white"
+                  style={{ textShadow: "0 1px 6px rgba(0,0,0,0.45)" }}
+                >
+                  Hiển thị ví dụ
+                </Text>
+                <div className="text-sm text-white/80">
+                  Áp dụng cho cả mặt tiếng Nhật và tiếng Việt
+                </div>
+              </div>
+              <Switch
+                checked={showJapaneseExample && showVietnameseExample}
+                onChange={(checked) => {
+                  setShowJapaneseExample(checked);
+                  setShowVietnameseExample(checked);
+                }}
+              />
+            </div>
           </div>
 
           {/* Auto Speak Setting */}

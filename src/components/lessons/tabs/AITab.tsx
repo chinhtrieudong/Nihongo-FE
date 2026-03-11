@@ -1,15 +1,13 @@
 import React, { useState } from "react";
 import {
-    useChatMutation,
-    useAnalyzePronunciationMutation,
-    useSubmitExerciseMutation,
-} from "../../../services/aiService";
-import {
     AI_SYSTEM_PROMPTS,
     formatPrompt,
     CONVERSATION_STARTERS,
 } from "../../../services/aiService";
-import { Badge, Button, Input } from "antd";
+import { aiAPI } from "../../../services/api";
+import {
+    Badge, Button, Input
+} from "antd";
 import {
     MessageOutlined,
     AudioOutlined,
@@ -39,10 +37,7 @@ const AITab: React.FC<AITabProps> = ({ lesson }) => {
     const [currentExercise, setCurrentExercise] = useState<any>(null);
     const [pronunciationResult, setPronunciationResult] = useState<any>(null);
     const [activeFeature, setActiveFeature] = useState<string | null>(null);
-
-    const [chatMutation] = useChatMutation();
-    const [pronunciationMutation] = useAnalyzePronunciationMutation();
-    const [exerciseMutation] = useSubmitExerciseMutation();
+    const [isLoadingChat, setIsLoadingChat] = useState(false);
 
     const startConversation = async () => {
         setIsChatting(true);
@@ -60,7 +55,15 @@ const AITab: React.FC<AITabProps> = ({ lesson }) => {
     };
 
     const sendMessage = async () => {
-        if (!inputMessage.trim()) return;
+        console.log("🚀 sendMessage called with inputMessage:", inputMessage);
+        console.log("🚀 isLoadingChat:", isLoadingChat);
+
+        if (!inputMessage.trim()) {
+            console.log("❌ Input message is empty, returning");
+            return;
+        }
+
+        console.log("✅ Input message valid, proceeding...");
 
         const userMessage = {
             role: "user" as const,
@@ -69,10 +72,12 @@ const AITab: React.FC<AITabProps> = ({ lesson }) => {
         };
 
         setChatMessages((prev) => [...prev, userMessage]);
+        const messageToSend = inputMessage;
         setInputMessage("");
+        setIsLoadingChat(true);
 
         try {
-            const response = await chatMutation({
+            console.log("Sending message to AI:", {
                 lessonId: lesson.id,
                 messages: [...chatMessages, userMessage],
                 context: {
@@ -83,12 +88,39 @@ const AITab: React.FC<AITabProps> = ({ lesson }) => {
                 },
             });
 
-            if (response.data?.success) {
-                setChatMessages((prev) => [...prev, response.data.data.message]);
+            const data = await aiAPI.chat({
+                lessonId: lesson.id,
+                messages: [...chatMessages, userMessage],
+                context: {
+                    currentLesson: lesson.title,
+                    learnedVocabulary: [],
+                    learnedGrammar: [],
+                    difficulty: "easy",
+                },
+            });
+
+            console.log("AI API response:", data);
+
+            if (data.success) {
+                // Add AI response to chat
+                setChatMessages((prev) => [...prev, data.data.message]);
+
+                // Optional: Show feedback if available
+                if (data.data.feedback) {
+                    console.log("AI Feedback:", data.data.feedback);
+                }
+            } else {
+                throw new Error('AI response failed');
             }
         } catch (error) {
             console.error("Failed to send message:", error);
             message.error('Không thể gửi tin nhắn, vui lòng thử lại!');
+
+            // Revert the user message on error
+            setChatMessages((prev) => prev.slice(0, -1));
+            setInputMessage(messageToSend);
+        } finally {
+            setIsLoadingChat(false);
         }
     };
 
@@ -114,21 +146,26 @@ const AITab: React.FC<AITabProps> = ({ lesson }) => {
     };
 
     const submitExercise = async (userResponse: string) => {
+        // Mock implementation for personalized exercise feature
         try {
-            const response = await exerciseMutation({
-                lessonId: lesson.id,
-                exerciseType: "conversation",
-                prompt: currentExercise.prompt,
-                userResponse,
-            });
+            // Simulate API delay
+            await new Promise(resolve => setTimeout(resolve, 1500));
 
-            if (response.data?.success) {
-                setCurrentExercise({
-                    ...currentExercise,
-                    result: response.data.data,
-                });
-                message.success('Bài tập đã được nộp!');
-            }
+            // Mock successful response
+            const mockResult = {
+                score: Math.floor(Math.random() * 30) + 70, // 70-100 score
+                feedback: userResponse.trim()
+                    ? "Bài làm của bạn rất tốt! Hãy tiếp tục luyện tập nhé! 👍"
+                    : "Hãy thử nhập câu trả lời của bạn trước khi nộp bài!",
+                corrections: userResponse.trim() ? [] : ["Cần nhập câu trả lời"],
+                explanation: "Đây là tính năng bài tập cá nhân hóa đang được phát triển."
+            };
+
+            setCurrentExercise({
+                ...currentExercise,
+                result: mockResult,
+            });
+            message.success('Bài tập đã được nộp!');
         } catch (error) {
             console.error("Failed to submit exercise:", error);
             message.error('Có lỗi xảy ra, vui lòng thử lại!');
@@ -366,15 +403,21 @@ const AITab: React.FC<AITabProps> = ({ lesson }) => {
                                         type="text"
                                         value={inputMessage}
                                         onChange={(e) => setInputMessage(e.target.value)}
-                                        onKeyPress={(e) => e.key === "Enter" && sendMessage()}
+                                        onKeyPress={(e) => e.key === "Enter" && !isLoadingChat && sendMessage()}
                                         placeholder="Nhập tin nhắn..."
                                         size="large"
                                         className="flex-1"
+                                        disabled={isLoadingChat}
                                     />
                                     <Button
                                         type="primary"
                                         size="large"
-                                        onClick={sendMessage}
+                                        onClick={() => {
+                                            console.log("🔘 Send button clicked!");
+                                            sendMessage();
+                                        }}
+                                        loading={isLoadingChat}
+                                        disabled={!inputMessage.trim() || isLoadingChat}
                                         icon={<ArrowRightOutlined />}
                                     >
                                         Gửi

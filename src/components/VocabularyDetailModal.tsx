@@ -1,4 +1,4 @@
-import React, { useCallback } from "react";
+import React, { useCallback, useMemo } from "react";
 import {
   Modal,
   Typography,
@@ -7,7 +7,6 @@ import {
   Col,
   Button,
   Tag,
-  Tooltip,
   App as AntdApp,
 } from "antd";
 import { SoundOutlined } from "@ant-design/icons";
@@ -135,6 +134,73 @@ const VocabularyDetailModal: React.FC<VocabularyDetailModalProps> = ({
     return parts.join("·");
   }, []);
 
+  const formatSingleReading = useCallback((reading: unknown) => {
+    if (typeof reading === "string") return reading;
+    if (reading && typeof reading === "object") {
+      const kana = (reading as { kana?: string }).kana || "";
+      const romaji = (reading as { romaji?: string }).romaji || "";
+      if (kana && romaji) return `${kana} (${romaji})`;
+      return kana || romaji || "";
+    }
+    return "";
+  }, []);
+
+  const formatReadings = useCallback(
+    (readings: unknown) => {
+      if (!Array.isArray(readings) || readings.length === 0) return "N/A";
+      const values = readings
+        .map((item) => formatSingleReading(item))
+        .filter((item) => item && item.trim().length > 0);
+      return values.length > 0 ? values.join(", ") : "N/A";
+    },
+    [formatSingleReading],
+  );
+
+  const formatRadical = useCallback((radical: unknown) => {
+    if (typeof radical === "string") return radical;
+    if (radical && typeof radical === "object") {
+      const rad = radical as {
+        radical?: string;
+        value?: string;
+        hanviet?: string;
+        meaning?: string;
+      };
+      const symbol = rad.radical || rad.value || "";
+      const hanviet = rad.hanviet ? ` - ${rad.hanviet}` : "";
+      const meaning = rad.meaning ? ` (${rad.meaning})` : "";
+      const label = `${symbol}${hanviet}${meaning}`.trim();
+      return label || "-";
+    }
+    return "-";
+  }, []);
+
+  const normalizedKanjiAnalysis = useMemo(() => {
+    const raw = selectedWord?.kanji_analysis;
+    if (!raw) return [];
+    if (Array.isArray(raw)) return raw;
+    if (typeof raw === "string") {
+      try {
+        const parsed = JSON.parse(raw);
+        if (Array.isArray(parsed)) return parsed;
+        if (parsed && typeof parsed === "object") return [parsed];
+      } catch {
+        return [];
+      }
+      return [];
+    }
+    if (typeof raw === "object") return [raw];
+    return [];
+  }, [selectedWord?.kanji_analysis]);
+
+  const displayMeaning = selectedWord?.meaning_vi || selectedWord?.meaningVi;
+  const displayJlpt =
+    selectedWord?.jlpt ||
+    selectedWord?.jpt ||
+    selectedWord?.jlpt_level ||
+    selectedWord?.jpt_level;
+  const displayExampleJp = selectedWord?.example_jp || selectedWord?.exampleSentence;
+  const displayExampleVi = selectedWord?.example_vi || selectedWord?.exampleSentenceVi;
+
   return (
     <>
       <style>{`
@@ -248,20 +314,24 @@ const VocabularyDetailModal: React.FC<VocabularyDetailModalProps> = ({
           </Row>
 
           <div>
-            <Text strong className="text-secondary-900 dark:text-secondary-600">
-              Nghĩa tiếng Việt
-            </Text>
+            <div className="mb-2 flex items-center gap-2 flex-wrap">
+              <Text strong className="text-secondary-900 dark:text-secondary-600">
+                Nghĩa tiếng Việt
+              </Text>
+              {displayJlpt && (
+                <Tag color="green" className="!text-sm !px-2 !py-0.5 !font-semibold !m-0">
+                  {displayJlpt}
+                </Tag>
+              )}
+            </div>
             <div className="p-3 bg-secondary-50 dark:bg-secondary-925 rounded">
               <Text className="text-xl font-semibold text-secondary-900 dark:text-secondary-600">
-                {selectedWord?.meaning_vi || "-"}
+                {displayMeaning || "-"}
               </Text>
             </div>
           </div>
 
-          {selectedWord?.kanji &&
-            selectedWord.kanji_analysis &&
-            Array.isArray(selectedWord.kanji_analysis) &&
-            selectedWord.kanji_analysis.length > 0 && (
+          {normalizedKanjiAnalysis.length > 0 && (
               <div>
                 <Text
                   strong
@@ -271,7 +341,7 @@ const VocabularyDetailModal: React.FC<VocabularyDetailModalProps> = ({
                 </Text>
                 <div className="p-3 bg-orange-50 dark:bg-orange-900/20 rounded border border-orange-200 dark:border-orange-800">
                   <Space orientation="vertical" className="w-full">
-                    {selectedWord.kanji_analysis.map((kanji, index) => (
+                    {normalizedKanjiAnalysis.map((kanji: any, index: number) => (
                       <div
                         key={index}
                         className="border-b border-orange-200 pb-2 last:border-b-0"
@@ -284,16 +354,35 @@ const VocabularyDetailModal: React.FC<VocabularyDetailModalProps> = ({
                           {kanji.hanviet ? kanji.hanviet.toUpperCase() : "N/A"}
                         </div>
                         <div className="text-sm text-secondary-700 dark:text-secondary-800">
+                          <Text strong>Âm ON:</Text> {formatReadings(kanji.onyomi)}
+                        </div>
+                        <div className="text-sm text-secondary-700 dark:text-secondary-800">
+                          <Text strong>Âm KUN:</Text> {formatReadings(kanji.kunyomi)}
+                        </div>
+                        {(kanji.jlpt_level ||
+                          kanji.jpt_level ||
+                          kanji.jlpt ||
+                          kanji.jpt ||
+                          displayJlpt) && (
+                          <div className="text-sm text-secondary-700 dark:text-secondary-800">
+                            {kanji.jlpt_level ||
+                              kanji.jpt_level ||
+                              kanji.jlpt ||
+                              kanji.jpt ||
+                              displayJlpt}
+                          </div>
+                        )}
+                        <div className="text-sm text-secondary-700 dark:text-secondary-800">
                           <Text strong>Bộ thủ:</Text>{" "}
                           {kanji.radicals && kanji.radicals.length > 0 ? (
                             <Space wrap>
-                              {kanji.radicals.map((radical, radIndex) => (
+                              {kanji.radicals.map((radical: unknown, radIndex: number) => (
                                 <Tag
                                   key={radIndex}
                                   color="blue"
                                   className="mb-1"
                                 >
-                                  {radical.radical} - {radical.hanviet}
+                                  {formatRadical(radical)}
                                 </Tag>
                               ))}
                             </Space>
@@ -322,11 +411,11 @@ const VocabularyDetailModal: React.FC<VocabularyDetailModalProps> = ({
               Ví dụ
             </Text>
             <div className="p-3 bg-gray-50 dark:bg-gray-800 rounded">
-              {selectedWord?.example_jp ? (
+              {displayExampleJp ? (
                 <Text className="text-lg text-gray-700 dark:text-gray-300">
-                  {selectedWord.example_jp}
-                  {selectedWord.example_vi
-                    ? ` (${selectedWord.example_vi})`
+                  {displayExampleJp}
+                  {displayExampleVi
+                    ? ` (${displayExampleVi})`
                     : " (Không có bản dịch...)"}
                 </Text>
               ) : (

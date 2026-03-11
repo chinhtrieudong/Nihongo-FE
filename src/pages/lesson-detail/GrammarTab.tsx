@@ -3,43 +3,82 @@ import { Card, Typography } from "antd";
 import GrammarSectionAccordion from "../../components/GrammarSectionAccordion";
 import type { GrammarPattern } from "../../types/lesson";
 
-const { Title, Text } = Typography;
+const { Text } = Typography;
 
 type GrammarTabProps = {
-  lessonNumber?: number;
   grammars: GrammarPattern[];
+  lessonInfo?: {
+    level?: string;
+  };
 };
 
-const GrammarTab: React.FC<GrammarTabProps> = ({ lessonNumber, grammars }) => {
+const GrammarTab: React.FC<GrammarTabProps> = ({ grammars, lessonInfo }) => {
+  // Transform grammar data to match expected format for GrammarSectionAccordion
+  // Only include fields that actually exist in the API data
+  const transformedSections = grammars.map((item, index) => {
+    // Only include fields that actually exist in the API data
+    const section: any = {
+      id: item.id || `grammar_${index}`,
+      title: item.pattern,
+      subtitle: item.meaning_vi,
+    };
+
+    // Conditionally add fields only if they exist and have data
+    if (item.structure) {
+      section.structure = [item.structure];
+    }
+
+    if (item.meaning_vi) {
+      section.meaning = [item.meaning_vi];
+    }
+
+    if (item.examples && item.examples.length > 0) {
+      section.examples = item.examples;
+      section.preview = item.examples[0].japanese;
+    }
+
+    if (item.comparison && item.comparison.length > 0) {
+      section.comparison = item.comparison;
+    }
+
+    if (item.structure) {
+      section.formation = item.structure;
+    }
+
+    if (item.usage_vi) {
+      section.usage = item.usage_vi;
+    }
+
+    if (item.level) {
+      section.level = item.level;
+    }
+
+    if (item.importance) {
+      section.importance = item.importance;
+    }
+
+    return section;
+  });
+
   return (
     <div style={{ padding: "24px" }}>
       <Card className="bg-white dark:bg-secondary-925 border-secondary-200 dark:border-secondary-900">
-        <div className="mb-4">
-          <Title level={4}>Ngữ pháp bài {lessonNumber}</Title>
+        <div className="mb-4 flex items-center gap-4">
+          <Text className="!text-secondary-700 dark:!text-secondary-400">
+            Tổng số mẫu ngữ pháp: <strong>{grammars.length}</strong>
+          </Text>
+          {lessonInfo?.level && (
+            <Text className="!text-secondary-700 dark:!text-secondary-400">
+              Cấp độ: <strong>{lessonInfo.level}</strong>
+            </Text>
+          )}
         </div>
 
         {grammars.length > 0 ? (
-          <GrammarSectionAccordion
-            sections={grammars.map((grammar, index) => ({
-              id: `section${index + 1}`,
-              title: grammar.pattern || `Ngữ pháp ${index + 1}`,
-              structure: grammar.structure ? [grammar.structure] : [grammar.pattern || ""],
-              meaning: grammar.meaning_vi
-                ? [grammar.meaning_vi]
-                : grammar.meaning
-                  ? [grammar.meaning]
-                  : [""],
-              examples:
-                grammar.examples?.map((ex) => ({
-                  japanese: ex.japanese,
-                  vietnamese: ex.vietnamese || ex.meaning || "",
-                })) || [],
-              comparison: grammar.comparison ? [grammar.comparison] : [],
-            }))}
-          />
+          <GrammarSectionAccordion sections={transformedSections} />
         ) : (
           <div className="text-center py-8">
-            <Text type="secondary" className="text-secondary-600 dark:text-secondary-800">
+            <Text className="!text-secondary-700 dark:!text-secondary-400">
               Chưa có dữ liệu ngữ pháp cho bài học này.
             </Text>
           </div>

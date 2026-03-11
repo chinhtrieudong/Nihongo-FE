@@ -765,28 +765,33 @@ const Pronunciation: React.FC = () => {
   };
 
   return (
-    <div className="p-6 space-y-3 bg-secondary-50 dark:bg-secondary-950 min-h-full">
+    <div className="min-h-full px-3 sm:px-4 md:px-6 py-4 sm:py-6 space-y-3">
       {/* Header */}
-      <div>
-        <div className="flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
-          <div>
-            <Title level={2} className="!mb-1 text-secondary-900 dark:text-secondary-100 text-xl sm:text-2xl">
-              <SoundOutlined className="mr-2 text-secondary-500" />
-              Luyện phát âm
-            </Title>
-            <Text className="text-secondary-600 dark:text-secondary-400 text-sm">
-              Nghe mẫu, thu âm và nhận phản hồi nhanh.
-            </Text>
+      <div className="mb-4 sm:mb-5 rounded-2xl border border-[#d5dfef] bg-[#d6e4f8] bg-[linear-gradient(to_right,rgba(255,255,255,0.45)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.45)_1px,transparent_1px)] [background-size:24px_24px] px-4 py-4 sm:px-6 sm:py-5">
+        <div className="flex items-start sm:items-center justify-between gap-4">
+          <div className="flex items-center gap-3 sm:gap-4 min-w-0">
+            <span className="inline-flex items-center justify-center text-secondary-700 dark:text-secondary-400 shrink-0">
+              <SoundOutlined className="text-[34px] sm:text-[40px]" />
+            </span>
+            <div className="min-w-0">
+              <h1 className="text-2xl sm:text-4xl font-semibold leading-tight text-[#2a2f3f] truncate">
+                Luyện phát âm
+              </h1>
+              <p className="mt-1 text-sm sm:text-lg text-[#2c3853]">
+                Nghe mẫu, thu âm và nhận phản hồi nhanh.
+              </p>
+            </div>
           </div>
-          <div className="flex items-center gap-2">
-            <Button
-              icon={<SettingOutlined />}
-              onClick={() => setShowFilters((prev) => !prev)}
-            >
-              Bộ lọc
-            </Button>
-          </div>
+
+          <Button
+            icon={<SettingOutlined />}
+            onClick={() => setShowFilters((prev) => !prev)}
+            className="shrink-0"
+          >
+            Bộ lọc
+          </Button>
         </div>
+
         {showFilters && (
           <div className="mt-3 flex flex-col sm:flex-row gap-2">
             <Select

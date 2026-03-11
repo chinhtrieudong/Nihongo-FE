@@ -1,7 +1,8 @@
 export interface Radical {
-  radical: string;
-  hanviet: string;
-  meaning: string;
+  radical?: string;
+  hanviet?: string;
+  meaning?: string;
+  value?: string;
 }
 
 export interface KanjiAnalysis {
@@ -9,7 +10,13 @@ export interface KanjiAnalysis {
   hiragana?: string;
   hanviet: string;
   meaning: string;
-  radicals: Radical[];
+  radicals?: Array<Radical | string>;
+  onyomi?: Array<string | { kana?: string; romaji?: string }>;
+  kunyomi?: Array<string | { kana?: string; romaji?: string }>;
+  jlpt?: string;
+  jlpt_level?: string;
+  jpt?: string;
+  jpt_level?: string;
   image_explanation?: string;
 }
 
@@ -29,8 +36,13 @@ export interface VocabularyItem {
   mnemonic?: string;
   kanji_analysis?: string | KanjiAnalysis[];
   exampleSentence?: string;
+  exampleSentenceVi?: string;
   example_jp?: string;
   example_vi?: string;
+  jlpt?: string;
+  jlpt_level?: string;
+  jpt?: string;
+  jpt_level?: string;
   difficulty?: "easy" | "medium" | "hard";
   frequency?: "low" | "medium" | "high";
   tags?: string[];
@@ -58,9 +70,10 @@ export interface GrammarPattern {
   structure?: string;
   formation?: string;
   examples: Example[];
-  commonMistakes?: string[];
   comparison?: string;
-  visualAid?: string;
+  level: string;
+  importance: string;
+  status: string;
 }
 
 export interface DialogLine {
@@ -80,11 +93,25 @@ export interface Dialog {
   romaji?: string;
   viTranslation?: string;
   audioUrl?: string;
+  // New kaiwa properties
+  title_jp?: string;
+  setting?: string;
+  characters?: string[];
+  dialogue?: Array<{
+    speaker: string;
+    jpText: string;
+    romaji: string;
+    viTranslation: string;
+    speaker_role: string;
+  }>;
+  total_lines?: number;
+  vocabulary_focus?: string[];
+  grammar_focus?: string[];
 }
 
 export interface Exercise {
   id: string;
-  type: "multiple-choice" | "fill-blank" | "fill_blank" | "reorder" | "listening" | "writing";
+  type: "multiple-choice" | "fill-blank" | "fill_blank" | "reorder" | "listening" | "writing" | "listening_comprehension" | "dialogue_comprehension";
   title?: string;
   question: string;
   answer?: string | string[];
@@ -99,6 +126,33 @@ export interface Exercise {
   difficulty?: "easy" | "medium" | "hard";
   points?: number;
   explanation?: string;
+  // Mondai-specific properties
+  audioUrl?: string;
+  description?: string;
+  instructions?: string;
+  items?: Array<{
+    question: string;
+    question_translation?: string;
+    type: string;
+    correct_answer?: string;
+    correct_answer_translation?: string;
+    explanation?: string;
+  }>;
+  dialogues?: Array<{
+    dialogue_number: number;
+    content: Array<{
+      speaker: string;
+      japanese: string;
+      translation: string;
+    }>;
+    questions: Array<{
+      question: string;
+      type: string;
+      options?: string[];
+      correct_answer?: string;
+      explanation?: string;
+    }>;
+  }>;
 }
 
 export interface Lesson {
@@ -144,6 +198,9 @@ export interface LessonDetail {
   grammars: GrammarPattern[];
   dialogs: Dialog[];
   exercises: Exercise[];
+  renshuuData: any[];
+  reibunData: any[];
+  bunkeiData: any[];
   aiPrompts: {
     roleplayPrompt: string;
     speakingTestPrompt: string;

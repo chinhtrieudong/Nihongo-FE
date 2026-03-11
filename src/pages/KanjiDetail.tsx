@@ -1,658 +1,414 @@
-import React, { useState, useEffect } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
-import { lessonAPI } from '../services/api';
-import {
-    PlayCircleOutlined,
-    PauseCircleOutlined,
-    SoundOutlined,
-    EditOutlined,
-    ReadOutlined,
-    QuestionCircleOutlined,
-    RobotOutlined,
-    EyeOutlined,
-    EyeInvisibleOutlined,
-    LeftOutlined,
-    RightOutlined,
-    BookOutlined,
-    FormOutlined,
-    AudioOutlined,
-    BulbOutlined,
-    ArrowLeftOutlined
-} from '@ant-design/icons';
-import { Collapse, Card, Button, Input, Select, Tabs, Space, Divider, Tag, Tooltip } from 'antd';
-
-const { Panel } = Collapse;
-const { TabPane } = Tabs;
+import React, { useState, useEffect } from "react";
+import { useLocation, useNavigate, useParams } from "react-router-dom";
+import { lessonAPI } from "../services/api";
+import { SoundOutlined, ArrowLeftOutlined, PauseCircleOutlined, PlayCircleOutlined, ReloadOutlined } from "@ant-design/icons";
+import { Card, Button, Row, Col } from "antd";
 
 // Utility functions to transform backend data
 const getSimpleReadings = (kanjiData: KanjiData) => ({
-    onyomi: kanjiData.onyomi.map(o => o.kana),
-    kunyomi: kanjiData.kunyomi.map(k => k.kana),
-    onyomiWithRomaji: kanjiData.onyomi.map(o => `${o.kana} (${o.romaji})`),
-    kunyomiWithRomaji: kanjiData.kunyomi.map(k => `${k.kana} (${k.romaji})`)
+  onyomi: (kanjiData.onyomi ?? []).map((o) => o.kana),
+  kunyomi: (kanjiData.kunyomi ?? []).map((k) => k.kana),
 });
 
 const getSimpleWords = (kanjiData: KanjiData) =>
-    kanjiData.vocabulary_examples.map(v => ({
-        word: v.word,
-        reading: v.hiragana,
-        romaji: v.romaji,
-        hanviet: v.hanviet,
-        meaning: v.meaning_vi,
-        example: v.example_jp,
-        exampleVi: v.example_vi,
-        audio_url: v.audio_url
-    }));
+  (kanjiData.vocabulary_examples ?? []).map((v) => ({
+    word: v.word,
+    reading: v.hiragana,
+    romaji: v.romaji,
+    hanviet: v.hanviet,
+    meaning: v.meaning_vi,
+    example: v.example_jp,
+    exampleVi: v.example_vi,
+    audio_url: v.audio_url,
+  }));
 
 const getJLPTColor = (level: string) => {
-    switch (level) {
-        case 'N5': return 'green';
-        case 'N4': return 'blue';
-        case 'N3': return 'orange';
-        case 'N2': return 'red';
-        case 'N1': return 'purple';
-        default: return 'default';
-    }
+  switch (level) {
+    case "N5":
+      return "green";
+    case "N4":
+      return "blue";
+    case "N3":
+      return "orange";
+    case "N2":
+      return "red";
+    case "N1":
+      return "purple";
+    default:
+      return "default";
+  }
 };
 
 // Backend response interfaces
 interface OnyomiReading {
-    kana: string;
-    romaji: string;
-    _id?: string;
+  kana: string;
+  romaji: string;
+  _id?: string;
 }
 
 interface KunyomiReading {
-    kana: string;
-    romaji: string;
-    _id?: string;
+  kana: string;
+  romaji: string;
+  _id?: string;
 }
 
 interface Radical {
-    symbol: string;
-    hanviet: string;
-    name_vi: string;
-    meaning: string;
+  symbol: string;
+  hanviet: string;
+  name_vi: string;
+  meaning: string;
 }
 
 interface KanjiAnalysis {
-    component: string;
-    hanviet: string;
-    role: string;
-    meaning: string;
-    position: string;
-    _id?: string;
+  component: string;
+  hanviet: string;
+  role: string;
+  meaning: string;
+  position: string;
+  _id?: string;
 }
 
 interface VocabularyExample {
-    word: string;
-    hiragana: string;
-    romaji: string;
-    hanviet: string;
-    meaning_vi: string;
-    example_jp: string;
-    example_vi: string;
-    audio_url: string;
-    _id?: string;
+  word: string;
+  hiragana: string;
+  romaji: string;
+  hanviet: string;
+  meaning_vi: string;
+  example_jp: string;
+  example_vi: string;
+  audio_url: string;
+  _id?: string;
 }
 
 // Main KanjiData interface matching backend
 interface KanjiData {
-    _id: string;
-    character: string;
-    hanviet: string;
-    meaning_vi: string;
-    onyomi: OnyomiReading[];
-    kunyomi: KunyomiReading[];
-    stroke_count: number;
-    jlpt_level: string;
-    frequency: string;
-    radical: Radical;
-    structure: string;
-    image_explanation: string;
-    kanji_analysis: KanjiAnalysis[];
-    vocabulary_examples: VocabularyExample[];
-    category: string;
-    createdAt: string;
-    updatedAt: string;
-    __v: number;
+  _id: string;
+  character: string;
+  hanviet: string;
+  meaning_vi: string;
+  onyomi: OnyomiReading[];
+  kunyomi: KunyomiReading[];
+  stroke_count: number;
+  jlpt_level: string;
+  frequency: string;
+  radical: Radical;
+  structure: string;
+  image_explanation: string;
+  memory_tip?: string;
+  "memory-tip"?: string;
+  kanji_analysis: KanjiAnalysis[];
+  vocabulary_examples: VocabularyExample[];
+  category: string;
+  createdAt: string;
+  updatedAt: string;
+  __v: number;
 }
+
+const getMemoryTip = (kanjiData: KanjiData) =>
+  kanjiData.memory_tip || kanjiData["memory-tip"] || kanjiData.image_explanation || "Chưa có";
 
 interface KanjiDetailProps {
-    lessonId?: string;
+  lessonId?: string;
 }
 
-const KanjiDetail: React.FC<KanjiDetailProps> = ({ lessonId: propLessonId }) => {
-    const { kanji, lessonId: urlLessonId } = useParams();
-    const navigate = useNavigate();
+const KanjiDetail: React.FC<KanjiDetailProps> = ({
+  lessonId: propLessonId,
+}) => {
+  const { kanji, lessonId: urlLessonId } = useParams();
+  const navigate = useNavigate();
+  const location = useLocation();
+  const lessonId = propLessonId || urlLessonId;
 
-    const lessonId = propLessonId || urlLessonId;
+  const [kanjiData, setKanjiData] = useState<KanjiData | null>(null);
+  const [loading, setLoading] = useState(true);
+  const navState = (location.state as {
+    from?: string;
+    fromRadicalList?: string;
+  } | null);
+  const backLabel =
+    navState?.from && navState.from.startsWith("/kanji/radicals/")
+      ? "Quay lại chi tiết bộ thủ"
+      : "Quay lại danh sách Hán tự";
 
-    const [kanjiData, setKanjiData] = useState<KanjiData | null>(null);
-    const [loading, setLoading] = useState(true);
-    const [currentMode, setCurrentMode] = useState<'learn' | 'write' | 'read' | 'quiz' | 'ai'>('learn');
-    const [showAnswer, setShowAnswer] = useState(false);
-    const [isPlaying, setIsPlaying] = useState(false);
-    const [strokeSpeed, setStrokeSpeed] = useState(1);
-    const [currentStroke, setCurrentStroke] = useState(0);
-    const [searchTerm, setSearchTerm] = useState('');
-    const [selectedLesson, setSelectedLesson] = useState(lessonId || 'all');
-    const [selectedLevel, setSelectedLevel] = useState('all');
-    const [selectedRadical, setSelectedRadical] = useState('all');
-    const [selectedStrokeCount, setSelectedStrokeCount] = useState('all');
-    const [showRomaji, setShowRomaji] = useState(false); // New state for romaji toggle
-
-    useEffect(() => {
-        const fetchKanjiData = async () => {
-            try {
-                setLoading(true);
-                let response;
-
-                if (kanji) {
-                    // Fetch specific kanji
-                    response = await lessonAPI.getKanji(kanji);
-                } else if (lessonId) {
-                    // Fetch kanji for specific lesson
-                    response = await lessonAPI.getLessonKanji(lessonId);
-                } else {
-                    // Fetch all kanji with filters
-                    response = await lessonAPI.getAllKanji({
-                        lesson: selectedLesson,
-                        level: selectedLevel,
-                        radical: selectedRadical,
-                        strokeCount: selectedStrokeCount,
-                        search: searchTerm
-                    });
-                }
-
-                if (response.success) {
-                    setKanjiData(response.data);
-                }
-            } catch (error) {
-                console.error('Failed to fetch kanji data:', error);
-            } finally {
-                setLoading(false);
-            }
-        };
-
-        fetchKanjiData();
-    }, [kanji, lessonId, selectedLesson, selectedLevel, selectedRadical, selectedStrokeCount, searchTerm]);
-
-    const handleKeyPress = (e: KeyboardEvent) => {
-        switch (e.key) {
-            case ' ':
-                e.preventDefault();
-                setShowAnswer(!showAnswer);
-                break;
-            case 'ArrowLeft':
-                navigateKanji('prev');
-                break;
-            case 'ArrowRight':
-                navigateKanji('next');
-                break;
-            case 'r':
-                setCurrentMode('write');
-                break;
-            case 'a':
-                setCurrentMode('read');
-                break;
-        }
-    };
-
-    useEffect(() => {
-        window.addEventListener('keydown', handleKeyPress);
-        return () => window.removeEventListener('keydown', handleKeyPress);
-    }, [showAnswer]);
-
-    const navigateKanji = (direction: 'prev' | 'next') => {
-        // Implementation for navigating between kanji
-        console.log(`Navigate ${direction}`);
-    };
-
-    const playStrokeOrder = () => {
-        setIsPlaying(!isPlaying);
-        // Implementation for stroke order animation
-    };
-
-    const handleSpeechRecognition = () => {
-        // Implementation for speech recognition
-        console.log('Start speech recognition');
-    };
-
-    const askAI = () => {
-        // Implementation for AI explanation
-        console.log('Ask AI about kanji');
-    };
-
-    if (loading) {
-        return (
-            <div className="flex items-center justify-center h-64">
-                <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600"></div>
-            </div>
-        );
+  const handleBack = () => {
+    const fromPath = navState?.from;
+    if (fromPath) {
+      const nextState =
+        navState?.fromRadicalList && fromPath.startsWith("/kanji/radicals/")
+          ? { from: navState.fromRadicalList }
+          : undefined;
+      navigate(fromPath, nextState ? { state: nextState } : undefined);
+      return;
     }
 
-    if (!kanjiData) {
-        return (
-            <div className="text-center py-12">
-                <div className="text-6xl mb-4 font-kosugi">漢</div>
-                <h3 className="text-lg font-semibold text-secondary-900 dark:text-secondary-600 mb-2">Không tìm thấy Hán tự</h3>
-                <p className="text-secondary-600 dark:text-secondary-800">Vui lòng kiểm tra lại đường dẫn hoặc thử tìm kiếm Hán tự khác.</p>
-            </div>
-        );
+    if (window.history.length > 1) {
+      navigate(-1);
+      return;
+    }
+    navigate("/kanji");
+  };
+
+  useEffect(() => {
+    const fetchKanjiData = async () => {
+      try {
+        setLoading(true);
+        let response;
+
+        if (kanji) {
+          response = await lessonAPI.getKanji(kanji);
+        } else if (lessonId) {
+          response = await lessonAPI.getLessonKanji(lessonId);
+        } else {
+          response = await lessonAPI.getAllKanji({});
+        }
+
+        if (response.success) {
+          setKanjiData(response.data);
+        }
+      } catch (error) {
+        console.error("Failed to fetch kanji data:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchKanjiData();
+  }, [kanji, lessonId]);
+
+  if (loading) {
+    return (
+      <div className="flex items-center justify-center h-64">
+        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 dark:border-blue-400"></div>
+      </div>
+    );
+  }
+
+  if (!kanjiData) {
+    return (
+      <div className="text-center py-12">
+        <div className="text-6xl mb-4 font-kosugi">漢</div>
+        <h3 className="text-lg font-semibold text-secondary-900 dark:text-secondary-600 mb-2 font-sans">
+          Không tìm thấy Hán tự
+        </h3>
+        <p className="text-secondary-600 dark:text-secondary-800 font-sans">
+          Vui lòng kiểm tra lại đường dẫn hoặc thử tìm kiếm Hán tự khác.
+        </p>
+      </div>
+    );
+  }
+
+  // KanjiVG Stroke Order Component
+  const KanjiStrokeOrder: React.FC<{ kanji: string }> = ({ kanji }) => {
+    const [svgContent, setSvgContent] = useState<string>('')
+    const [loading, setLoading] = useState(true)
+
+    useEffect(() => {
+      const fetchKanjiSVG = async () => {
+        try {
+          setLoading(true)
+          // Get Unicode code point for the character
+          const codePoint = kanji.charCodeAt(0).toString(16).padStart(5, '0')
+
+          // Fetch from KanjiVG (free SVG kanji resource)
+          const response = await fetch(
+            `https://raw.githubusercontent.com/KanjiVG/kanjivg/master/kanji/${codePoint}.svg`
+          )
+
+          if (!response.ok) {
+            // Fallback: display character in large text if SVG not found
+            setSvgContent('not-found')
+            setLoading(false)
+            return
+          }
+
+          const svg = await response.text()
+          // Clean SVG content by removing HTML entities and extracting only the SVG element
+          const cleanedSvg = svg
+            .replace(/<!\[CDATA\[[\s\S]*?\]\]>/g, '') // Remove CDATA sections
+            .replace(/<!--[\s\S]*?-->/g, '') // Remove comments
+            .replace(/<\?xml.*?\?>/g, '') // Remove XML declarations
+            .replace(/<!DOCTYPE.*?>/g, '') // Remove DOCTYPE declarations
+            .replace(/&gt;/g, '>') // Decode HTML entities
+            .replace(/&lt;/g, '<')
+            .replace(/&amp;/g, '&')
+            .replace(/&quot;/g, '"')
+            .replace(/&#x27;/g, "'")
+            .trim()
+
+          // Extract SVG content between <svg> tags
+          const svgMatch = cleanedSvg.match(/<svg[^>]*>[\s\S]*<\/svg>/)
+          const finalSvg = svgMatch ? svgMatch[0] : cleanedSvg
+
+          setSvgContent(finalSvg)
+        } catch (error) {
+          console.log('[v0] SVG fetch error:', error)
+          setSvgContent('error')
+        } finally {
+          setLoading(false)
+        }
+      }
+
+      if (kanji) {
+        fetchKanjiSVG()
+      }
+    }, [kanji])
+
+    if (loading) {
+      return (
+        <div className="bg-white dark:bg-secondary-800 rounded-lg border border-secondary-200 dark:border-secondary-700 flex items-center justify-center w-full h-64">
+          <p className="text-secondary-600 dark:text-secondary-400">Đang tải nét viết...</p>
+        </div>
+      )
+    }
+
+    if (svgContent === 'error' || svgContent === 'not-found') {
+      return (
+        <div className="bg-white dark:bg-secondary-800 rounded-lg border border-secondary-200 dark:border-secondary-700 flex items-center justify-center w-full h-64">
+          <div className="text-center">
+            <p className="text-[15rem] font-bold text-secondary-900 dark:text-secondary-100 mb-2">{kanji}</p>
+            <p className="text-xs text-secondary-500 dark:text-secondary-400">Không có dữ liệu nét viết</p>
+          </div>
+        </div>
+      )
     }
 
     return (
-        <div className="min-h-full bg-secondary-50 dark:bg-secondary-950 font-kosugi">
-            <div className="flex">
-                {/* Kanji List Panel */}
-                <div className="w-80 bg-white dark:bg-secondary-925 border-r border-secondary-200 dark:border-secondary-900 p-4 overflow-y-auto">
-                    <div className="mb-4">
-                        <h3 className="text-lg font-semibold text-secondary-900 dark:text-secondary-600 mb-4">Bộ lọc</h3>
+      <div className="bg-white dark:bg-secondary-800 rounded-lg border border-secondary-200 dark:border-secondary-700 overflow-hidden">
+        <div
+          dangerouslySetInnerHTML={{ __html: svgContent }}
+          className="w-full h-64 flex items-center justify-center"
+          style={{
+            background: 'white',
+            transform: 'scale(1.8)',
+            transformOrigin: 'center',
+          }}
+        />
+      </div>
+    )
+  };
 
-                        {/* Lesson Filter */}
-                        <div className="mb-3">
-                            <label className="block text-sm font-medium text-secondary-700 dark:text-secondary-800 mb-1">Bài học</label>
-                            <Select
-                                value={selectedLesson}
-                                onChange={setSelectedLesson}
-                                className="w-full bg-white dark:bg-secondary-925 border-secondary-300 dark:border-secondary-700"
-                                placeholder="Chọn bài học"
-                            >
-                                <Select.Option value="all">Tất cả</Select.Option>
-                                {Array.from({ length: 50 }, (_, i) => (
-                                    <Select.Option key={i + 1} value={i + 1}>Bài {i + 1}</Select.Option>
-                                ))}
-                            </Select>
-                        </div>
+  return (
+    <div className="min-h-full font-kosugi p-6">
+      {/* Header */}
+      <div className="mb-6">
+        <div className="flex items-center justify-between mb-4">
+          <button
+            onClick={handleBack}
+            className="flex items-center text-black dark:text-secondary-400 hover:text-secondary-900 dark:hover:text-secondary-100 transition-colors font-sans"
+          >
+            <ArrowLeftOutlined className="mr-2" />
+            {backLabel}
+          </button>
 
-                        {/* JLPT Level Filter */}
-                        <div className="mb-3">
-                            <label className="block text-sm font-medium text-secondary-700 dark:text-secondary-800 mb-1">Trình độ JLPT</label>
-                            <Select
-                                value={selectedLevel}
-                                onChange={setSelectedLevel}
-                                className="w-full bg-white dark:bg-secondary-925 border-secondary-300 dark:border-secondary-700"
-                                placeholder="Chọn trình độ"
-                            >
-                                <Select.Option value="all">Tất cả</Select.Option>
-                                <Select.Option value="N5">N5</Select.Option>
-                                <Select.Option value="N4">N4</Select.Option>
-                                <Select.Option value="N3">N3</Select.Option>
-                                <Select.Option value="N2">N2</Select.Option>
-                                <Select.Option value="N1">N1</Select.Option>
-                            </Select>
-                        </div>
-
-                        {/* Stroke Count Filter */}
-                        <div className="mb-3">
-                            <label className="block text-sm font-medium text-secondary-700 dark:text-secondary-800 mb-1">Số nét</label>
-                            <Select
-                                value={selectedStrokeCount}
-                                onChange={setSelectedStrokeCount}
-                                className="w-full bg-white dark:bg-secondary-925 border-secondary-300 dark:border-secondary-700"
-                                placeholder="Chọn số nét"
-                            >
-                                <Select.Option value="all">Tất cả</Select.Option>
-                                {Array.from({ length: 20 }, (_, i) => (
-                                    <Select.Option key={i + 1} value={i + 1}>{i + 1} nét</Select.Option>
-                                ))}
-                            </Select>
-                        </div>
-
-                        {/* Search */}
-                        <div className="mb-4">
-                            <label className="block text-sm font-medium text-secondary-700 dark:text-secondary-800 mb-1">Tìm kiếm</label>
-                            <Input
-                                placeholder="Hán tự, Hán Việt, nghĩa..."
-                                value={searchTerm}
-                                onChange={(e) => setSearchTerm(e.target.value)}
-                                className="bg-white dark:bg-secondary-925 border-secondary-300 dark:border-secondary-700"
-                            />
-                        </div>
-                    </div>
-
-                    <Divider />
-
-                    {/* Kanji List */}
-                    <div>
-                        <h3 className="text-lg font-semibold text-secondary-900 dark:text-secondary-600 mb-4">Danh sách Hán tự</h3>
-                        <div className="space-y-2">
-                            {/* This would be populated with filtered kanji list */}
-                            <div className="p-3 border border-secondary-200 dark:border-secondary-900 rounded-lg hover:bg-secondary-100 dark:hover:bg-secondary-900 cursor-pointer">
-                                <div className="text-2xl font-bold text-secondary-900 dark:text-secondary-600 font-kosugi">
-                                    {kanjiData.character}
-                                </div>
-                                <div className="text-sm text-purple-600 dark:text-purple-400">{kanjiData.hanviet}</div>
-                                <div className="text-xs text-secondary-600 dark:text-secondary-800">{kanjiData.meaning_vi}</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                {/* Main Content Area */}
-                <div className="flex-1 p-6">
-                    {/* Header */}
-                    <div className="mb-6">
-                        <div className="flex items-center justify-between">
-                            <div className="flex items-center space-x-4">
-                                <Tooltip title="Quay lại danh sách kanji">
-                                    <Button
-                                        shape="circle"
-                                        icon={<ArrowLeftOutlined />}
-                                        onClick={() => navigate('/kanji')}
-                                        className="border-0 shadow-sm hover:shadow-md"
-                                    />
-                                </Tooltip>
-                                <Button
-                                    icon={<LeftOutlined />}
-                                    onClick={() => navigateKanji('prev')}
-                                />
-                                <Button
-                                    icon={<RightOutlined />}
-                                    onClick={() => navigateKanji('next')}
-                                />
-                                <h1 className="text-2xl font-bold text-secondary-900 dark:text-secondary-600">
-                                    Học Hán tự: <span className="font-kosugi">{kanjiData.character}</span>
-                                </h1>
-                            </div>
-                            <div className="flex items-center space-x-2">
-                                <Button
-                                    icon={showAnswer ? <EyeInvisibleOutlined /> : <EyeOutlined />}
-                                    onClick={() => setShowAnswer(!showAnswer)}
-                                >
-                                    {showAnswer ? 'Ẩn' : 'Hiện'} đáp án
-                                </Button>
-                                <Button
-                                    size="small"
-                                    onClick={() => setShowRomaji(!showRomaji)}
-                                >
-                                    {showRomaji ? 'Ẩn' : 'Hiện'} Romaji
-                                </Button>
-                            </div>
-                        </div>
-                    </div>
-
-                    {/* Learning Modes Tabs */}
-                    <Tabs activeKey={currentMode} onChange={(key: string) => setCurrentMode(key as any)} className="mb-6">
-                        <TabPane tab={<span><BookOutlined />Học chữ</span>} key="learn" />
-                        <TabPane tab={<span><EditOutlined />Viết</span>} key="write" />
-                        <TabPane tab={<span><AudioOutlined />Đọc</span>} key="read" />
-                        <TabPane tab={<span><QuestionCircleOutlined />Nhớ mặt chữ</span>} key="quiz" />
-                        <TabPane tab={<span><RobotOutlined />Hỏi AI</span>} key="ai" />
-                    </Tabs>
-
-                    {/* Learn Mode Content */}
-                    {currentMode === 'learn' && (
-                        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-                            {/* Left Column - Core Info */}
-                            <div className="space-y-4">
-                                <Card title="Thông tin cơ bản" className="h-fit">
-                                    <div className="text-center mb-4">
-                                        <div className="text-6xl font-bold text-secondary-900 dark:text-secondary-600 mb-2 font-kosugi">
-                                            {kanjiData.character}
-                                        </div>
-                                        <div className="text-xl text-purple-600 dark:text-purple-400 font-medium">{kanjiData.hanviet}</div>
-                                        <div className="text-lg text-secondary-600 dark:text-secondary-800">{kanjiData.meaning_vi}</div>
-                                    </div>
-
-                                    <div className="space-y-2">
-                                        <div className="flex justify-between">
-                                            <span className="font-medium">Onyomi:</span>
-                                            <span>{getSimpleReadings(kanjiData).onyomi.join(', ')}</span>
-                                        </div>
-                                        {showRomaji && (
-                                            <div className="flex justify-between text-sm text-secondary-700 dark:text-secondary-400">
-                                                <span></span>
-                                                <span>{getSimpleReadings(kanjiData).onyomiWithRomaji.join(', ')}</span>
-                                            </div>
-                                        )}
-                                        <div className="flex justify-between">
-                                            <span className="font-medium">Kunyomi:</span>
-                                            <span>{getSimpleReadings(kanjiData).kunyomi.join(', ')}</span>
-                                        </div>
-                                        {showRomaji && (
-                                            <div className="flex justify-between text-sm text-secondary-700 dark:text-secondary-400">
-                                                <span></span>
-                                                <span>{getSimpleReadings(kanjiData).kunyomiWithRomaji.join(', ')}</span>
-                                            </div>
-                                        )}
-                                        <div className="flex justify-between">
-                                            <span className="font-medium">Số nét:</span>
-                                            <span>{kanjiData.stroke_count}</span>
-                                        </div>
-                                        <div className="flex justify-between">
-                                            <span className="font-medium">JLPT:</span>
-                                            <Tag color={getJLPTColor(kanjiData.jlpt_level)}>
-                                                {kanjiData.jlpt_level}
-                                            </Tag>
-                                        </div>
-                                        <div className="flex justify-between">
-                                            <span className="font-medium">Tần suất:</span>
-                                            <span>{kanjiData.frequency}</span>
-                                        </div>
-                                        <div className="flex justify-between">
-                                            <span className="font-medium">Danh mục:</span>
-                                            <Tag>{kanjiData.category}</Tag>
-                                        </div>
-                                    </div>
-
-                                    <div className="mt-4">
-                                        <Button
-                                            size="small"
-                                            onClick={() => setShowRomaji(!showRomaji)}
-                                        >
-                                            {showRomaji ? 'Ẩn' : 'Hiện'} Romaji
-                                        </Button>
-                                    </div>
-                                </Card>
-
-                                <Card title="Bộ thủ & Cấu tạo" className="h-fit">
-                                    <Collapse>
-                                        <Panel header={`Bộ thủ: ${kanjiData.radical.symbol} - ${kanjiData.radical.name_vi}`} key="radical">
-                                            <p><strong>Ký hiệu:</strong> {kanjiData.radical.symbol}</p>
-                                            <p><strong>Tên Hán Việt:</strong> {kanjiData.radical.hanviet}</p>
-                                            <p><strong>Tên tiếng Việt:</strong> {kanjiData.radical.name_vi}</p>
-                                            <p><strong>Nghĩa:</strong> {kanjiData.radical.meaning}</p>
-                                        </Panel>
-                                        <Panel header="Cấu tạo chữ" key="structure">
-                                            <p>{kanjiData.structure}</p>
-                                            <p className="text-sm text-secondary-600 dark:text-secondary-800 mt-2">{kanjiData.image_explanation}</p>
-                                        </Panel>
-                                        <Panel header="Phân tích chi tiết" key="analysis">
-                                            <div className="space-y-2">
-                                                {kanjiData.kanji_analysis.map((analysis, index) => (
-                                                    <div key={index} className="p-2 border border-secondary-200 dark:border-secondary-900 rounded">
-                                                        <div className="flex justify-between">
-                                                            <span className="font-medium">{analysis.component}</span>
-                                                            <Tag>{analysis.role}</Tag>
-                                                        </div>
-                                                        <div className="text-sm text-secondary-600 dark:text-secondary-800">{analysis.hanviet} - {analysis.meaning}</div>
-                                                        <div className="text-xs text-secondary-700 dark:text-secondary-800">Vị trí: {analysis.position}</div>
-                                                    </div>
-                                                ))}
-                                            </div>
-                                        </Panel>
-                                    </Collapse>
-                                </Card>
-                            </div>
-
-                            {/* Right Column - Stroke Order & Vocabulary */}
-                            <div className="space-y-4">
-                                <Card title="Thứ tự nét" className="h-fit">
-                                    <div className="text-center mb-4">
-                                        <div className="text-4xl font-bold text-secondary-900 dark:text-secondary-600 mb-4 font-kosugi">
-                                            {kanjiData.character}
-                                        </div>
-                                        <div className="flex justify-center items-center space-x-4">
-                                            <Button
-                                                icon={isPlaying ? <PauseCircleOutlined /> : <PlayCircleOutlined />}
-                                                onClick={playStrokeOrder}
-                                            >
-                                                {isPlaying ? 'Dừng' : 'Phát'}
-                                            </Button>
-                                            <Select
-                                                value={strokeSpeed}
-                                                onChange={setStrokeSpeed}
-                                                className="w-24"
-                                            >
-                                                <Select.Option value={0.5}>0.5x</Select.Option>
-                                                <Select.Option value={1}>1x</Select.Option>
-                                                <Select.Option value={1.5}>1.5x</Select.Option>
-                                                <Select.Option value={2}>2x</Select.Option>
-                                            </Select>
-                                        </div>
-                                    </div>
-                                    <div className="text-center text-sm text-secondary-600 dark:text-secondary-800">
-                                        Nét thứ {currentStroke + 1} / {kanjiData.stroke_count}
-                                    </div>
-                                </Card>
-
-                                <Card title="Từ vựng sử dụng" className="h-fit">
-                                    <div className="space-y-2">
-                                        {getSimpleWords(kanjiData).map((word, index) => (
-                                            <div key={index} className="p-2 border border-secondary-200 dark:border-secondary-900 rounded">
-                                                <div className="flex justify-between items-start">
-                                                    <div className="flex-1">
-                                                        <div className="font-medium font-kosugi">{word.word}</div>
-                                                        <div className="text-sm text-secondary-600 dark:text-secondary-800">{word.reading}</div>
-                                                        {showRomaji && (
-                                                            <div className="text-xs text-secondary-700 dark:text-secondary-800">{word.romaji}</div>
-                                                        )}
-                                                        <div className="text-sm text-purple-600">{word.hanviet}</div>
-                                                        <div className="text-sm text-secondary-700 dark:text-secondary-800">{word.meaning}</div>
-                                                        {word.example && (
-                                                            <div className="mt-1 p-2 bg-secondary-50 dark:bg-secondary-925 rounded text-sm">
-                                                                <div className="text-secondary-800 dark:text-secondary-700">{word.example}</div>
-                                                                <div className="text-secondary-600 dark:text-secondary-800">{word.exampleVi}</div>
-                                                            </div>
-                                                        )}
-                                                    </div>
-                                                    {word.audio_url && (
-                                                        <Button
-                                                            icon={<SoundOutlined />}
-                                                            size="small"
-                                                            onClick={() => console.log('Play audio:', word.audio_url)}
-                                                        />
-                                                    )}
-                                                </div>
-                                            </div>
-                                        ))}
-                                    </div>
-                                </Card>
-                            </div>
-                        </div>
-                    )}
-
-                    {/* Write Mode */}
-                    {currentMode === 'write' && (
-                        <Card title="Luyện viết Hán tự">
-                            <div className="text-center">
-                                <div className="mb-4">
-                                    <canvas
-                                        width={400}
-                                        height={400}
-                                        className="border-2 border-secondary-300 dark:border-secondary-700 rounded-lg mx-auto"
-                                        style={{ touchAction: 'none' }}
-                                    />
-                                </div>
-                                <div className="space-x-2">
-                                    <Button type="primary">Kiểm tra</Button>
-                                    <Button>Xóa</Button>
-                                    <Button icon={<EyeOutlined />}>Hiện gợi ý</Button>
-                                </div>
-                            </div>
-                        </Card>
-                    )}
-
-                    {/* Read Mode */}
-                    {currentMode === 'read' && (
-                        <Card title="Luyện đọc Hán tự">
-                            <div className="text-center">
-                                <div className="text-6xl font-bold text-secondary-900 dark:text-secondary-600 mb-6 font-kosugi">
-                                    {kanjiData.character}
-                                </div>
-                                <div className="mb-4">
-                                    <Button
-                                        type="primary"
-                                        size="large"
-                                        icon={<AudioOutlined />}
-                                        onClick={handleSpeechRecognition}
-                                    >
-                                        Bắt đầu ghi âm
-                                    </Button>
-                                </div>
-                                <div className="text-sm text-secondary-600 dark:text-secondary-800">
-                                    Nhấn nút và đọc to Hán tự trên. Hệ thống sẽ nhận diện và đánh giá phát âm của bạn.
-                                </div>
-                            </div>
-                        </Card>
-                    )}
-
-                    {/* Quiz Mode */}
-                    {currentMode === 'quiz' && (
-                        <Card title="Kiểm tra kiến thức">
-                            <div className="space-y-4">
-                                <div>
-                                    <h3 className="text-lg font-medium mb-2">
-                                        Bộ thủ của <span className="font-kosugi">{kanjiData.character}</span> là gì?
-                                    </h3>
-                                    <Input placeholder="Nhập bộ thủ..." className="bg-white dark:bg-secondary-925 border-secondary-300 dark:border-secondary-700" />
-                                </div>
-                                <div>
-                                    <h3 className="text-lg font-medium mb-2">
-                                        Hán Việt của <span className="font-kosugi">{kanjiData.character}</span> là gì?
-                                    </h3>
-                                    <Input placeholder="Nhập Hán Việt..." className="bg-white dark:bg-secondary-925 border-secondary-300 dark:border-secondary-700" />
-                                </div>
-                                <div>
-                                    <h3 className="text-lg font-medium mb-2">
-                                        Nghĩa của <span className="font-kosugi">{kanjiData.character}</span> là gì?
-                                    </h3>
-                                    <Input placeholder="Nhập nghĩa..." className="bg-white dark:bg-secondary-925 border-secondary-300 dark:border-secondary-700" />
-                                </div>
-                                <Button type="primary" className="w-full">Kiểm tra đáp án</Button>
-                            </div>
-                        </Card>
-                    )}
-
-                    {/* AI Mode */}
-                    {currentMode === 'ai' && (
-                        <Card title="Hỏi AI về Hán tự">
-                            <div className="space-y-4">
-                                <div className="bg-blue-50 dark:bg-blue-900/20 p-4 rounded-lg">
-                                    <h3 className="text-lg font-medium mb-2">
-                                        <BulbOutlined /> Gợi ý câu hỏi:
-                                    </h3>
-                                    <div className="space-y-2">
-                                        <Button block onClick={() => askAI()}>
-                                            Giải thích <span className="font-kosugi">{kanjiData.character}</span> cho người mới bắt đầu
-                                        </Button>
-                                        <Button block onClick={() => askAI()}>
-                                            Tại sao <span className="font-kosugi">{kanjiData.character}</span> lại có nghĩa là "{kanjiData.meaning_vi}"?
-                                        </Button>
-                                        <Button block onClick={() => askAI()}>
-                                            Cho ví dụ thực tế sử dụng <span className="font-kosugi">{kanjiData.character}</span>
-                                        </Button>
-                                    </div>
-                                </div>
-                                <div>
-                                    <Input.TextArea
-                                        rows={4}
-                                        placeholder="Nhập câu hỏi của bạn về Hán tự này..."
-                                        className="bg-white dark:bg-secondary-925 border-secondary-300 dark:border-secondary-700"
-                                    />
-                                    <Button type="primary" className="mt-2" icon={<RobotOutlined />}>
-                                        Gửi câu hỏi
-                                    </Button>
-                                </div>
-                            </div>
-                        </Card>
-                    )}
-                </div>
-            </div>
+          <div className="flex items-center gap-2">
+          </div>
         </div>
-    );
+      </div>
+
+      {/* Main Content - 3 Column Layout */}
+      <Row gutter={[24, 24]} className="mb-6">
+        {/* Left Column - Kanji Display */}
+        <Col xs={24} md={8}>
+          <Card title="Thứ tự nét viết">
+            <KanjiStrokeOrder kanji={kanjiData.character} />
+          </Card>
+        </Col>
+
+        {/* Middle Column - Basic Info */}
+        <Col xs={24} md={8}>
+          <Card title={`${kanjiData.character} - ${kanjiData.hanviet}`}>
+            <div className="space-y-4">
+              <div className="flex items-baseline gap-2">
+                <h3 className="font-medium text-secondary-700 dark:text-secondary-300">Ý nghĩa:</h3>
+                <p className="text-lg font-semibold text-blue-600 dark:text-blue-400">
+                  {kanjiData.meaning_vi}
+                </p>
+              </div>
+              <div className="flex items-baseline gap-2">
+                <h3 className="font-medium text-secondary-700 dark:text-secondary-300">Trình độ JLPT:</h3>
+                <p className="text-lg font-semibold text-blue-600 dark:text-blue-400">
+                  {kanjiData.jlpt_level}
+                </p>
+              </div>
+              <div className="flex items-baseline gap-2">
+                <h3 className="font-medium text-secondary-700 dark:text-secondary-300">Âm On:</h3>
+                <p className="text-lg font-osaka font-semibold text-blue-600 dark:text-blue-400">
+                  {getSimpleReadings(kanjiData).onyomi.join(", ")}
+                </p>
+              </div>
+              <div className="flex items-baseline gap-2">
+                <h3 className="font-medium text-secondary-700 dark:text-secondary-300">Âm Kun:</h3>
+                <p className="text-lg font-osaka font-semibold text-blue-600 dark:text-blue-400">
+                  {getSimpleReadings(kanjiData).kunyomi.join(", ")}
+                </p>
+              </div>
+              <div className="flex items-baseline gap-2">
+                <h3 className="font-medium text-secondary-700 dark:text-secondary-300">Số nét:</h3>
+                <p className="text-lg font-semibold text-blue-600 dark:text-blue-400">
+                  {kanjiData.stroke_count}
+                </p>
+              </div>
+              <div className="flex items-baseline gap-2">
+                <h3 className="font-medium text-secondary-700 dark:text-secondary-300">Bộ thủ:</h3>
+                <p className="text-xl font-semibold text-blue-600 dark:text-blue-400">
+                  {kanjiData.radical.symbol}
+                </p>
+              </div>
+              <div className="flex items-start gap-2">
+                <h3 className="font-medium text-secondary-700 dark:text-secondary-300 mt-1">Cách nhớ: <span className="font-semibold text-blue-600 dark:text-blue-400 leading-relaxed flex-1">
+                  {getMemoryTip(kanjiData)}
+                </span></h3>
+              </div>
+            </div>
+          </Card>
+        </Col>
+
+        {/* Right Column - Vocabulary */}
+        <Col xs={24} md={8}>
+          <Card title="Từ vựng liên quan">
+            <div className="space-y-4">
+              {getSimpleWords(kanjiData).slice(0, 5).map((word, index) => (
+                <div
+                  key={index}
+                  className="p-3 border border-secondary-200 dark:border-secondary-800 rounded-lg hover:bg-secondary-100 dark:hover:bg-secondary-800 transition-colors"
+                >
+                  <div className="flex justify-between items-start">
+                    <div className="flex-1">
+                      <div className="flex items-center gap-2">
+                        <span className="text-lg font-bold text-secondary-900 dark:text-white">
+                          {word.word}
+                        </span>
+                        <span className="text-sm text-purple-600 dark:text-purple-400">
+                          {word.hanviet}
+                        </span>
+                      </div>
+                      <div className="text-sm text-secondary-800 dark:text-secondary-400 mt-1">
+                        {word.reading} - {word.meaning}
+                      </div>
+                      {word.example && (
+                        <div className="mt-2 text-sm text-secondary-500 dark:text-secondary-400 italic">
+                          <div>Ví dụ: {word.example}</div>
+                          <div>{word.exampleVi}</div>
+                        </div>
+                      )}
+                    </div>
+                    {word.audio_url && (
+                      <Button
+                        icon={<SoundOutlined />}
+                        size="small"
+                        onClick={() => console.log("Play audio:", word.audio_url)}
+                        className="ml-2"
+                      />
+                    )}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </Card>
+        </Col>
+      </Row>
+    </div>
+  );
 };
 
 export default KanjiDetail;

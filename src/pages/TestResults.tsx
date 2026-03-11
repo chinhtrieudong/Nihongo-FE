@@ -26,6 +26,7 @@ import {
 } from "@ant-design/icons";
 import { jlptTests, type Test } from "../data/jlptTests";
 import { sampleQuestions, type Question } from "../data/sampleQuestions";
+import PageTitle from "../components/PageTitle";
 
 const { Title, Text, Paragraph } = Typography;
 
@@ -195,7 +196,7 @@ const TestResults: React.FC = () => {
   }
 
   return (
-    <div className="bg-secondary-50 dark:bg-secondary-950 min-h-full w-full">
+    <div className="min-h-full w-full">
       <div className="px-3 sm:px-6 py-4 sm:py-6">
         <style>
           {`
@@ -206,33 +207,29 @@ const TestResults: React.FC = () => {
         </style>
         {/* Header */}
         <div className="mb-6">
-          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
-            <div>
-              <Title level={2} className="!mb-1 text-lg sm:text-2xl">
-                Kết quả bài thi
-              </Title>
-              <Text type="secondary" className="text-sm">
-                {test.title}
-              </Text>
-            </div>
-            <div className="flex flex-row gap-2 w-full sm:w-auto">
-              <Button
-                icon={<LeftOutlined />}
-                onClick={() => navigate("/tests")}
-                className="flex-1 sm:w-auto"
-              >
-                Quay lại danh sách
-              </Button>
-              <Button
-                type="primary"
-                icon={<ReloadOutlined />}
-                onClick={() => navigate(`/test/${testId}`)}
-                className="flex-1 sm:w-auto"
-              >
-                Làm lại bài thi
-              </Button>
-            </div>
-          </div>
+          <PageTitle
+            title="Kết quả bài thi"
+            subtitle={test.title}
+            extra={
+              <div className="flex flex-row gap-2 w-full sm:w-auto">
+                <Button
+                  icon={<LeftOutlined />}
+                  onClick={() => navigate("/tests")}
+                  className="flex-1 sm:w-auto"
+                >
+                  Quay lại danh sách
+                </Button>
+                <Button
+                  type="primary"
+                  icon={<ReloadOutlined />}
+                  onClick={() => navigate(`/test/${testId}`)}
+                  className="flex-1 sm:w-auto"
+                >
+                  Làm lại bài thi
+                </Button>
+              </div>
+            }
+          />
         </div>
 
         {/* Overall Score */}

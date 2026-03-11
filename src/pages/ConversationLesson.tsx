@@ -13,6 +13,11 @@ import SentenceReorder from '../components/conversation/SentenceReorder';
 
 const { Title, Text } = Typography;
 
+const EXERCISE_ORDER = ['dialogue', 'dictation', 'comprehension', 'reorder'] as const;
+type ExerciseKey = (typeof EXERCISE_ORDER)[number];
+const isExerciseKey = (value: string): value is ExerciseKey =>
+    (EXERCISE_ORDER as readonly string[]).includes(value);
+
 const ConversationLessonPage: React.FC = () => {
     const { lessonId } = useParams<{ lessonId: string }>();
     const navigate = useNavigate();
@@ -50,12 +55,6 @@ const ConversationLessonPage: React.FC = () => {
         }
     };
 
-    const handleExerciseComplete = useCallback((type: string, data: any) => {
-        setCompletedExercises(prev => new Set(Array.from(prev).concat(type)));
-        messageApi.success(`Hoàn thành ${getExerciseName(type)}`);
-    }, []);
-
-
     const getExerciseName = (type: string) => {
         const names: { [key: string]: string } = {
             'dialogue': 'Hội thoại',
@@ -65,6 +64,24 @@ const ConversationLessonPage: React.FC = () => {
         };
         return names[type] || type;
     };
+
+    const handleExerciseComplete = useCallback((type: string, data: any) => {
+        if (!isExerciseKey(type)) return;
+
+        let wasAlreadyCompleted = false;
+        setCompletedExercises((prev) => {
+            wasAlreadyCompleted = prev.has(type);
+            if (wasAlreadyCompleted) return prev;
+            const next = new Set(prev);
+            next.add(type);
+            return next;
+        });
+
+        if (!wasAlreadyCompleted) {
+            messageApi.success(`Hoàn thành ${getExerciseName(type)}`);
+        }
+
+    }, [messageApi]);
 
     const getExerciseIcon = (type: string) => {
         const icons: { [key: string]: React.ReactNode } = {
@@ -110,6 +127,7 @@ const ConversationLessonPage: React.FC = () => {
             children: (
                 <DictationExerciseComponent
                     exercises={lesson?.exercises?.dictation || []}
+                    dialogue={lesson?.dialogue || []}
                     onSubmit={(answers) => handleExerciseComplete('dictation', answers)}
                     onProgress={handleProgressCallback}
                 />
@@ -126,6 +144,7 @@ const ConversationLessonPage: React.FC = () => {
             children: (
                 <ListeningMCQ
                     exercises={lesson?.exercises?.comprehension_mcq || []}
+                    variant="reading"
                     onSubmit={(answers) => handleExerciseComplete('comprehension', answers)}
                     onProgress={handleProgressCallback}
                 />
@@ -172,7 +191,7 @@ const ConversationLessonPage: React.FC = () => {
 
 
     return (
-            <div className="min-h-full bg-secondary-50 dark:bg-secondary-950 overflow-x-hidden">
+            <div className="min-h-full overflow-x-hidden">
             {contextHolder}
             {/* Header - Responsive */}
             <div className="bg-white dark:bg-secondary-900 border-b border-secondary-200 dark:border-secondary-700 sticky top-0 z-30">
@@ -230,7 +249,7 @@ const ConversationLessonPage: React.FC = () => {
 
             {/* Mobile Progress Button */}
             {screens.xs && (
-                <div className="sticky top-16 z-20 bg-white dark:bg-secondary-900 border-b px-4 py-2">
+                <div className="sticky top-14 z-20 bg-white dark:bg-secondary-900 border-b px-4 py-2">
                     <Button
                         type="primary"
                         icon={<TrophyOutlined />}
@@ -243,38 +262,40 @@ const ConversationLessonPage: React.FC = () => {
                 </div>
             )}
 
-            <Row gutter={[16, 16]}>
-                <Col xs={24} lg={16}>
-                    <Card className="shadow-sm" styles={{ body: { padding: screens.xs ? '12px' : '24px' } }}>
-                        <Tabs
-                            activeKey={activeTab}
-                            onChange={setActiveTab}
-                            items={tabItems}
-                            size={screens.xs ? 'small' : 'middle'}
-                        />
-                    </Card>
-                </Col>
-                {!screens.xs && (
-                    <Col xs={24} lg={8}>
-                        <Card className="mb-4 shadow-sm" title="Tiến độ học tập">
-                            <Progress percent={Math.round((completedExercises.size / 4) * 100)} />
-                            <div className="mt-4 space-y-2">
-                                {['dialogue', 'dictation', 'comprehension', 'reorder'].map(key => (
-                                    <div key={key} className="flex items-center justify-between">
-                                        <span className="flex items-center gap-2">
-                                            {getExerciseIcon(key)}
-                                            <Text className={completedExercises.has(key) ? 'line-through' : ''}>
-                                                {getExerciseName(key)}
-                                            </Text>
-                                        </span>
-                                        {completedExercises.has(key) && <CheckCircleOutlined className="text-green-500" />}
-                                    </div>
-                                ))}
-                            </div>
+            <div className="max-w-7xl mx-auto w-full px-4 sm:px-6 py-4 sm:py-6">
+                <Row gutter={[16, 16]}>
+                    <Col xs={24} lg={16}>
+                        <Card className="shadow-sm" styles={{ body: { padding: screens.xs ? '12px' : '24px' } }}>
+                            <Tabs
+                                activeKey={activeTab}
+                                onChange={setActiveTab}
+                                items={tabItems}
+                                size={screens.xs ? 'small' : 'middle'}
+                            />
                         </Card>
                     </Col>
-                )}
-            </Row>
+                    {!screens.xs && (
+                        <Col xs={24} lg={8}>
+                            <Card className="mb-4 shadow-sm" title="Tiến độ học tập">
+                                <Progress percent={Math.round((completedExercises.size / 4) * 100)} />
+                                <div className="mt-4 space-y-2">
+                                    {['dialogue', 'dictation', 'comprehension', 'reorder'].map(key => (
+                                        <div key={key} className="flex items-center justify-between">
+                                            <span className="flex items-center gap-2">
+                                                {getExerciseIcon(key)}
+                                                <Text className={completedExercises.has(key) ? 'line-through' : ''}>
+                                                    {getExerciseName(key)}
+                                                </Text>
+                                            </span>
+                                            {completedExercises.has(key) && <CheckCircleOutlined className="text-green-500" />}
+                                        </div>
+                                    ))}
+                                </div>
+                            </Card>
+                        </Col>
+                    )}
+                </Row>
+            </div>
 
             {/* Mobile Progress Drawer */}
             <Drawer

@@ -26,12 +26,12 @@ const AiPracticeTab: React.FC<AiPracticeTabProps> = ({
 }) => {
   return (
     <div style={{ padding: "24px" }}>
-      <Card className="max-w-4xl mx-auto bg-white dark:bg-secondary-925 border-secondary-200 dark:border-secondary-900" styles={{ body: { padding: 12 } }}>
+      <Card className="w-full bg-white dark:bg-secondary-925 border-secondary-200 dark:border-secondary-900" styles={{ body: { padding: 12 } }}>
         <div className="mb-4">
-          <Title level={5} className="mb-1 text-sm">
+          <Title level={5} className="mb-1 text-base">
             Luyện tập với AI theo bài Minna
           </Title>
-          <Text className="text-xs text-gray-700 dark:text-secondary-400">
+          <Text className="text-sm text-gray-700 dark:text-secondary-400">
             Hãy thực hành hội thoại theo ngữ pháp của bài {lessonNumber}
           </Text>
         </div>
@@ -42,7 +42,9 @@ const AiPracticeTab: React.FC<AiPracticeTabProps> = ({
         >
           {aiMessages.length === 0 ? (
             <div className="flex items-center justify-center h-full">
-              <Text type="secondary" className="text-xs">Bắt đầu cuộc hội thoại với AI...</Text>
+              <Text className="text-sm !text-secondary-700 dark:!text-secondary-400">
+                Bắt đầu cuộc hội thoại với AI...
+              </Text>
             </div>
           ) : (
             <Space orientation="vertical" className="w-full">
@@ -52,18 +54,17 @@ const AiPracticeTab: React.FC<AiPracticeTabProps> = ({
                   className={`flex ${message.role === "user" ? "justify-end" : "justify-start"}`}
                 >
                   <Card
-                    className={`max-w-md ${
-                      message.role === "user"
-                        ? "bg-blue-100 dark:bg-blue-900/30 border-blue-200 dark:border-blue-700"
-                        : "bg-secondary-100 dark:bg-secondary-900 border-secondary-200 dark:border-secondary-700"
-                    }`}
+                    className={`max-w-md ${message.role === "user"
+                      ? "bg-blue-100 dark:bg-blue-900/30 border-blue-200 dark:border-blue-700"
+                      : "bg-secondary-100 dark:bg-secondary-900 border-secondary-200 dark:border-secondary-700"
+                      }`}
                     size="small"
                     styles={{ body: { padding: 10 } }}
                   >
-                    <Text strong className="text-xs">
+                    <Text strong className="text-sm">
                       {message.role === "user" ? "You" : "AI"}
                     </Text>
-                    <div className="text-xs mt-1">{message.content}</div>
+                    <div className="text-sm mt-1">{message.content}</div>
                   </Card>
                 </div>
               ))}
@@ -71,7 +72,7 @@ const AiPracticeTab: React.FC<AiPracticeTabProps> = ({
           )}
         </div>
 
-        <Space className="w-full">
+        <div className="flex w-full gap-2">
           <Input
             value={currentMessage}
             onChange={(e) => setCurrentMessage(e.target.value)}
@@ -90,10 +91,11 @@ const AiPracticeTab: React.FC<AiPracticeTabProps> = ({
             disabled={!currentMessage.trim() || aiLoading}
             loading={aiLoading}
             size="middle"
+            className="shrink-0"
           >
             Gửi
           </Button>
-        </Space>
+        </div>
       </Card>
     </div>
   );

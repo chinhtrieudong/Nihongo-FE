@@ -277,19 +277,12 @@ const VocabularyTable = React.forwardRef<
     const tableColumns = useMemo(
       () => [
         {
-          title: "STT",
-          dataIndex: "index",
-          key: "index",
-          width: screens.lg ? 60 : 50,
-          render: (_: any, __: any, index: number) => index + 1,
-        },
-        {
           title: "Kanji",
           dataIndex: "kanji",
           key: "kanji",
           width: screens.lg ? 90 : 80,
           render: (text: string) => (
-            <Typography.Text strong className="font-kosugi text-lg">
+            <Typography.Text strong className="font-kosugi text-2xl leading-none">
               {text || "-"}
             </Typography.Text>
           ),
@@ -300,7 +293,9 @@ const VocabularyTable = React.forwardRef<
           key: "hiragana",
           width: screens.lg ? 150 : 130,
           render: (text: string, record: any) => (
-            <Typography.Text>{text || record.katakana || "-"}</Typography.Text>
+            <Typography.Text className="!text-lg">
+              {text || record.katakana || "-"}
+            </Typography.Text>
           ),
         },
         ...(showRomaji
@@ -311,7 +306,7 @@ const VocabularyTable = React.forwardRef<
               key: "romaji",
               width: screens.lg ? 110 : 90,
               render: (text: string) => (
-                <Typography.Text type="secondary">
+                <Typography.Text type="secondary" className="!text-base">
                   {text || "-"}
                 </Typography.Text>
               ),
@@ -326,7 +321,7 @@ const VocabularyTable = React.forwardRef<
               key: "hanviet",
               width: screens.lg ? 110 : 90,
               render: (text: string) => (
-                <span className="text-secondary-800 dark:text-secondary-300">
+                <span className="text-lg font-medium text-secondary-800 dark:text-secondary-300">
                   {text ? text.toUpperCase().replace(/,/g, "") : "-"}
                 </span>
               ),
@@ -339,7 +334,7 @@ const VocabularyTable = React.forwardRef<
           key: "meaning_vi",
           width: screens.lg ? 150 : 130,
           render: (text: string) => (
-            <Typography.Text>{text || "-"}</Typography.Text>
+            <Typography.Text className="!text-lg">{text || "-"}</Typography.Text>
           ),
         },
         {
@@ -376,7 +371,7 @@ const VocabularyTable = React.forwardRef<
           key: "kanji",
           width: 80,
           render: (text: string) => (
-            <Typography.Text strong className="font-kosugi text-lg">
+            <Typography.Text strong className="font-kosugi text-2xl leading-none">
               {text || "-"}
             </Typography.Text>
           ),
@@ -387,7 +382,9 @@ const VocabularyTable = React.forwardRef<
           key: "hiragana",
           width: 120,
           render: (text: string, record: any) => (
-            <Typography.Text>{text || record.katakana || "-"}</Typography.Text>
+            <Typography.Text className="!text-lg">
+              {text || record.katakana || "-"}
+            </Typography.Text>
           ),
         },
         {
@@ -396,7 +393,7 @@ const VocabularyTable = React.forwardRef<
           key: "meaning_vi",
           width: 150,
           render: (text: string) => (
-            <Typography.Text>{text || "-"}</Typography.Text>
+            <Typography.Text className="!text-lg">{text || "-"}</Typography.Text>
           ),
         },
         {
@@ -488,7 +485,7 @@ const VocabularyTable = React.forwardRef<
           ([id, status]) => currentCardIds.has(id) && status === "unanswered",
         ).length;
 
-      // Đếm số thẻ đã đánh giá (known + unknown)
+      // Đếm số thẻ đã đánh giá (known + unknown）
 
       const evaluatedCount = Object.entries(cardStatus)
 
@@ -512,8 +509,16 @@ const VocabularyTable = React.forwardRef<
     const showFlashcard = viewMode === "flashcard" && !isStudyComplete;
     const showCompletion = viewMode === "flashcard" && isStudyComplete;
 
+    useEffect(() => {
+      const isFlashcardView = viewMode === "flashcard";
+      document.body.classList.toggle("flashcard-open", isFlashcardView);
+      return () => {
+        document.body.classList.remove("flashcard-open");
+      };
+    }, [viewMode]);
+
     return (
-      <div className={screens.xs ? "px-3 py-2" : "p-6"}>
+      <div className={"p-0"}>
         {/* Mobile-First Table */}
         <div
           className={`border border-secondary-200 dark:border-secondary-800 bg-white dark:bg-secondary-925 rounded-lg ${screens.xs ? "shadow-sm p-3" : "p-6"}`}
@@ -578,10 +583,10 @@ const VocabularyTable = React.forwardRef<
                         <div className="text-2xl font-bold font-kosugi text-secondary-900 dark:text-secondary-100">
                           {item.kanji || item.hiragana || item.katakana || "-"}
                         </div>
-                        <div className="text-sm text-secondary-600 dark:text-secondary-400">
+                        <div className="text-base text-secondary-600 dark:text-secondary-400">
                           {item.hiragana || item.katakana || "-"}
                         </div>
-                        <div className="mt-1 text-base text-secondary-900 dark:text-secondary-100">
+                        <div className="mt-1 text-lg text-secondary-900 dark:text-secondary-100">
                           {item.meaning_vi || "-"}
                         </div>
                       </div>
@@ -620,6 +625,14 @@ const VocabularyTable = React.forwardRef<
           scrollbar-width: none;
           -ms-overflow-style: none;
         }
+        .vocab-table .ant-table-thead > tr > th {
+          font-size: 1.08rem;
+          font-weight: 700;
+        }
+        .vocab-table .ant-table-tbody > tr > td {
+          font-size: 1.06rem;
+          line-height: 1.7;
+        }
       `}</style>
 
         {/* Detail Modal */}
@@ -654,7 +667,7 @@ const VocabularyTable = React.forwardRef<
 
         {showCompletion && (
           <div
-            className="fixed inset-0 z-[1000] flex items-center justify-center bg-black/40 p-4"
+            className="fixed inset-0 z-[1100] flex items-center justify-center bg-black/55 backdrop-blur-sm p-4"
             onClick={() => {
               onExitFlashcard?.();
               setViewMode("table");

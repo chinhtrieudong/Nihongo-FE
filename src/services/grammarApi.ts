@@ -64,25 +64,17 @@ grammarApi.interceptors.response.use(
 export interface GrammarItem {
   id: string;
   pattern: string;
-  level: "N5" | "N4" | "N3" | "N2" | "N1";
-  category: "particles" | "verb-forms" | "adjectives" | "conjunctions" | "expressions" | "time" | "comparison" | "conditionals";
-  importance: "high" | "medium" | "low";
-  exam_frequency: number;
-  explanation: string;
-  formation: string;
+  meaning_vi: string;
+  usage_vi: string;
+  structure: string;
+  comparisons: string[];
   examples: Array<{
     japanese: string;
-    romaji: string;
     vietnamese: string;
   }>;
-  usage: string;
-  structure: string;
-  comparison: string;
-  related_patterns: string[];
-  common_mistakes: Array<{
-    mistake: string;
-    correction: string;
-  }>;
+  level: string;
+  importance: string;
+  status: string;
 }
 
 export interface GrammarResponse {

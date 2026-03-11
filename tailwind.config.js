@@ -6,6 +6,9 @@ module.exports = {
   darkMode: 'class',
   theme: {
     extend: {
+      screens: {
+        'xs': '480px',
+      },
       colors: {
         primary: {
           50: '#eff6ff',
@@ -52,10 +55,10 @@ module.exports = {
         }
       },
       fontFamily: {
-        sans: ['Nunito', '"Kosugi Maru"', 'system-ui', 'sans-serif'],
-        japanese: ['Noto Sans JP', 'Hiragino Sans', 'Yu Gothic', 'Meiryo', 'sans-serif'],
-        osaka: ['Osaka', 'Hiragino Sans', 'Yu Gothic', 'Meiryo', 'sans-serif'],
-        kosugi: ['"Kosugi Maru"', 'Hiragino Sans', 'Yu Gothic', 'Meiryo', 'sans-serif'],
+        sans: ['var(--app-font-family)', 'system-ui', 'sans-serif'],
+        japanese: ['var(--kanji-font-family)', 'system-ui', 'sans-serif'],
+        osaka: ['var(--kanji-font-family)', 'system-ui', 'sans-serif'],
+        kosugi: ['var(--kanji-font-family)', 'system-ui', 'sans-serif'],
       },
       animation: {
         'fade-in': 'fadeIn 0.5s ease-in-out',

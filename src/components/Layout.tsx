@@ -6,6 +6,7 @@ import Sidebar from "./Sidebar";
 import MobileLayout from "./MobileLayout";
 import { useAppSelector, useAppDispatch } from "../store/hooks";
 import { setMobile } from "../store/slices/uiSlice";
+import { APP_HEADER_HEIGHT_PX, APP_SIDEBAR_SIZE_PX } from "../constants/layout";
 
 const { Content } = AntLayout;
 
@@ -31,11 +32,20 @@ const Layout: React.FC = () => {
 
   // Desktop Layout
   return (
-    <AntLayout className="min-h-screen bg-secondary-50 dark:bg-secondary-950">
+    <AntLayout className="min-h-screen app-surface">
+      <Header />
       <Sidebar />
-      <AntLayout style={{ marginLeft: 96, transition: "margin-left 0.2s" }}>
-        <Header />
-        <Content className="overflow-auto theme-surface" style={{ minHeight: 'calc(100vh - 64px)' }}>
+      <AntLayout
+        style={{
+          marginLeft: APP_SIDEBAR_SIZE_PX,
+          marginTop: APP_HEADER_HEIGHT_PX,
+          transition: "margin-left 0.2s",
+        }}
+      >
+        <Content
+          className="theme-surface academic-canvas app-surface"
+          style={{ minHeight: `calc(100vh - ${APP_HEADER_HEIGHT_PX}px)` }}
+        >
           <Outlet />
         </Content>
       </AntLayout>

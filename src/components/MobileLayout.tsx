@@ -11,12 +11,12 @@ interface MobileLayoutProps {
 
 const MobileLayout: React.FC<MobileLayoutProps> = ({ children }) => {
   return (
-    <Layout className="mobile-layout">
+    <Layout className="mobile-layout app-surface">
       {/* Fixed Header */}
       <MobileHeader />
 
       {/* Main Content */}
-      <Content className="mobile-main-content">
+      <Content className="mobile-main-content academic-canvas app-surface">
         <div className="">
           {children}
         </div>
@@ -28,7 +28,6 @@ const MobileLayout: React.FC<MobileLayoutProps> = ({ children }) => {
       <style>{`
         .mobile-layout {
           min-height: 100vh;
-          background: #f9fafb;
         }
 
         .mobile-main-content {
@@ -36,16 +35,6 @@ const MobileLayout: React.FC<MobileLayoutProps> = ({ children }) => {
           margin-left: 0;  /* ✅ QUAN TRỌNG: Không bị đẩy ngang */
           padding-top: 56px;  /* Header height */
           min-height: calc(100vh - 56px);
-          background: #f9fafb;
-        }
-
-        /* Dark mode styles */
-        .dark .mobile-layout {
-          background: #111827;
-        }
-
-        .dark .mobile-main-content {
-          background: #111827;
         }
       `}</style>
     </Layout>

@@ -1,12 +1,12 @@
 export interface OnyomiReading {
   kana: string;
-  romaji: string;
+  romaji?: string;
   _id?: string;
 }
 
 export interface KunyomiReading {
   kana: string;
-  romaji: string;
+  romaji?: string;
   _id?: string;
 }
 
@@ -54,6 +54,9 @@ export interface KanjiItem {
   kanji_analysis: KanjiAnalysis[];
   vocabulary_examples: VocabularyExample[];
   category: string;
+  level?: string;
+  color?: string;
+  memory_tip?: string;
   createdAt: string;
   updatedAt: string;
   __v: number;

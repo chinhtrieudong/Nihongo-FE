@@ -1,13 +1,14 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef, useCallback } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { useAppSelector } from "../store/hooks";
-import { lessonAPI, userStatsAPI } from "../services/api";
-import { useChatMutation } from "../services/aiService";
+import { lessonAPI, vocabularyAPI, aiAPI } from "../services/api";
+import { minnaJsonApi } from "../services/api";
+import { useLessonDetail } from "../hooks/useLessonDetail";
 import GrammarTab from "./lesson-detail/GrammarTab";
 import ConversationTab from "./lesson-detail/ConversationTab";
 import ExercisesTab from "./lesson-detail/ExercisesTab";
+import VocabularyTab from "./lesson-detail/VocabularyTab";
 import AiPracticeTab from "./lesson-detail/AiPracticeTab";
-import SummaryTab from "./lesson-detail/SummaryTab";
 import LessonSidebar from "./lesson-detail/LessonSidebar";
 import type {
   LessonDetail as LessonDetailType,
@@ -19,32 +20,26 @@ import {
   Layout,
   Typography,
   Tabs,
+  Badge,
   Button,
   Card,
   Spin,
   Tooltip,
-  Space,
-  Progress,
-  Badge,
+  Tag,
 } from "antd";
 import {
-  BookOutlined,
   ReadOutlined,
   PlayCircleOutlined,
   MessageOutlined,
-  SoundOutlined,
   RobotOutlined,
-  TrophyOutlined,
   ArrowLeftOutlined,
-  MenuOutlined,
   MenuFoldOutlined,
 } from "@ant-design/icons";
 import { Grid } from "antd";
-import { getJapaneseVoices, getBestFemaleNaturalVoice, getNanamiNaturalVoice, speakText } from "../utils/vocabularyUtils";
-import WriteJapaneseIcon from "../components/icons/WriteJapaneseIcon";
+import { getBestFemaleNaturalVoice, getNanamiNaturalVoice } from "../utils/vocabularyUtils";
 import InfinitejapaneseIcon from "../components/icons/InfinitejapaneseIcon";
 import LetterUppercaseSquareFIcon from "../components/icons/LetterUppercaseSquareFIcon";
-import VocabularyTable, { type VocabularyTableHandle } from "../components/VocabularyTable";
+import type { VocabularyTableHandle } from "../components/VocabularyTable";
 
 const { Content } = Layout;
 const { Title, Text } = Typography;
@@ -55,14 +50,26 @@ type TabType =
   | "conversation"
   | "exercises"
   | "ai"
-  | "summary";
+  | "renshuu"
+  | "reibun"
+  | "bunkei";
 
 const LessonDetail: React.FC = () => {
   const { currentUser } = useAppSelector((state) => state.user);
-  const { lessonId } = useParams<{ lessonId: string }>();
+  const { lessonNumber } = useParams<{ lessonNumber: string }>();
   const navigate = useNavigate();
-  const [chatMutation] = useChatMutation();
   const screens = Grid.useBreakpoint();
+
+  // Use new lesson detail hook for metadata and progress
+  const lessonNum = lessonNumber ? parseInt(lessonNumber) : 0;
+
+  // Debug log to see what we're getting
+  // console.log('🔍 Lesson number from URL:', lessonNumber);
+  // console.log('🔍 Parsed lesson number:', lessonNum);
+  const {
+    loading: detailLoading,
+    error: detailError,
+  } = useLessonDetail(lessonNum);
   const [lessonDetail, setLessonDetail] = useState<LessonDetailType | null>(
     null,
   );
@@ -71,11 +78,6 @@ const LessonDetail: React.FC = () => {
   const [error, setError] = useState<string | null>(null);
   const [sidebarVisible, setSidebarVisible] = useState(false);
   const [desktopSidebarCollapsed, setDesktopSidebarCollapsed] = useState(true);
-  const sidebarSnapshotRef = useRef<{
-    sidebarVisible: boolean;
-    desktopSidebarCollapsed: boolean;
-  } | null>(null);
-  const [japaneseVoices, setJapaneseVoices] = useState<SpeechSynthesisVoice[]>([]);
   const vocabularyTableRef = useRef<VocabularyTableHandle | null>(null);
   const [femaleVoiceName, setFemaleVoiceName] = useState(() => {
     try {
@@ -85,14 +87,20 @@ const LessonDetail: React.FC = () => {
     }
   });
 
-  // Extract lesson data early to avoid undefined issues
   const {
     lesson,
     vocabularies = [],
     grammars = [],
     dialogs = [],
     exercises = [],
+    renshuuData = [],
+    reibunData = [],
+    bunkeiData = [],
   } = lessonDetail || {};
+
+  // Update loading and error to use hook states
+  const combinedLoading = loading || detailLoading;
+  const combinedError = error || detailError;
 
   // AI Practice state
   const [aiMessages, setAiMessages] = useState<
@@ -123,9 +131,9 @@ const LessonDetail: React.FC = () => {
 
   // Load exercise progress from localStorage on component mount
   useEffect(() => {
-    if (lessonId) {
+    if (lessonNum) {
       const savedProgress = localStorage.getItem(
-        `lesson_${lessonId}_exercise_progress`,
+        `lesson_${lessonNum}_exercise_progress`,
       );
       if (savedProgress) {
         try {
@@ -140,11 +148,11 @@ const LessonDetail: React.FC = () => {
         }
       }
     }
-  }, [lessonId]);
+  }, [lessonNum]);
 
   // Save exercise progress to localStorage whenever it changes
   useEffect(() => {
-    if (lessonId) {
+    if (lessonNum) {
       const progress = {
         exerciseAnswers,
         exerciseResults,
@@ -153,7 +161,7 @@ const LessonDetail: React.FC = () => {
         currentExerciseIndex,
       };
       localStorage.setItem(
-        `lesson_${lessonId}_exercise_progress`,
+        `lesson_${lessonNum}_exercise_progress`,
         JSON.stringify(progress),
       );
     }
@@ -163,7 +171,7 @@ const LessonDetail: React.FC = () => {
     showExplanation,
     answerStatus,
     currentExerciseIndex,
-    lessonId,
+    lessonNum,
   ]);
 
   // Flashcard state
@@ -189,9 +197,9 @@ const LessonDetail: React.FC = () => {
 
   // Load flashcard progress from localStorage on component mount
   useEffect(() => {
-    if (lessonId) {
+    if (lessonNum) {
       const savedFlashcardProgress = localStorage.getItem(
-        `lesson_${lessonId}_flashcard_progress`,
+        `lesson_${lessonNum}_flashcard_progress`,
       );
       if (savedFlashcardProgress) {
         try {
@@ -207,11 +215,11 @@ const LessonDetail: React.FC = () => {
         }
       }
     }
-  }, [lessonId]);
+  }, [lessonNum]);
 
   // Save flashcard progress to localStorage whenever it changes
   useEffect(() => {
-    if (lessonId) {
+    if (lessonNum) {
       const flashcardProgress = {
         currentVocabIndex,
         showVocabAnswer,
@@ -219,7 +227,7 @@ const LessonDetail: React.FC = () => {
         showDialogTranslation,
       };
       localStorage.setItem(
-        `lesson_${lessonId}_flashcard_progress`,
+        `lesson_${lessonNum}_flashcard_progress`,
         JSON.stringify(flashcardProgress),
       );
     }
@@ -228,20 +236,265 @@ const LessonDetail: React.FC = () => {
     showVocabAnswer,
     bookmarkedVocab,
     showDialogTranslation,
-    lessonId,
+    lessonNum,
   ]);
-
 
   // Lessons list state
   const [lessons, setLessons] = useState<Lesson[]>([]);
   const [lessonsLoading, setLessonsLoading] = useState(false);
 
+  const loadLessonDetail = useCallback(async () => {
+    if (!Number.isFinite(lessonNum) || lessonNum < 1 || lessonNum > 50) {
+      setError("Mã bài học không hợp lệ");
+      setLessonDetail(null);
+      return;
+    }
+
+    setLoading(true);
+    setError(null);
+    try {
+      const lessonNumber = lessonNum;
+
+      // Get lesson metadata from bunkei API (has the most complete lesson info)
+      let lessonMetadata = {
+        id: `lesson_${lessonNum}`,
+        lessonNumber: lessonNumber,
+        title: `Bài ${lessonNumber}`, // fallback
+        level: "N5" as const,
+        description: `Nội dung bài học ${lessonNumber}`,
+        status: "not_started" as const,
+        progress: 0,
+        image_url: undefined
+      };
+
+      // Try to get lesson metadata from bunkei API first (most complete)
+      try {
+        const bunkeiCheckResponse = await minnaJsonApi.get(`/lesson/${lessonNumber}/bunkei`);
+        if (bunkeiCheckResponse.data.success && bunkeiCheckResponse.data.lesson) {
+          const lessonData = bunkeiCheckResponse.data.lesson;
+          lessonMetadata = {
+            id: `lesson_${lessonNum}`,
+            lessonNumber: lessonData.lessonNumber || lessonNumber,
+            title: lessonData.title_vi || lessonData.title || `Bài ${lessonNumber}`,
+            level: lessonData.level || "N5",
+            description: lessonData.description_vi || lessonData.description_jp || `Nội dung bài học ${lessonNumber}`,
+            status: "not_started" as const,
+            progress: 0,
+            image_url: undefined
+          };
+        }
+      } catch (lessonErr) {
+        console.warn('Failed to load lesson metadata:', lessonErr);
+      }
+
+      // Get vocabulary
+      let vocabularies = [];
+      try {
+        const vocabResponse = await vocabularyAPI.getVocabularyByLesson(lessonNumber);
+        console.log('🔍 Vocabulary API Response:', vocabResponse);
+        if (vocabResponse.success && vocabResponse.data && Array.isArray(vocabResponse.data)) {
+          console.log('🔍 Raw vocabulary data:', vocabResponse.data);
+          vocabularies = vocabResponse.data.map((item: any) => ({
+            id: item.kanji || item.hiragana,
+            kanji: item.kanji,
+            hiragana: item.hiragana,
+            katakana: item.katakana || null,
+            romaji: item.romaji,
+            hanviet: item.hanviet,
+            meaning_vi: item.meaningVi,
+            meaning_en: item.meaningEn || "",
+            example_jp: item.exampleSentence,
+            example_vi: item.exampleSentenceVi || item.exampleSentence,
+            example_en: item.exampleEn || "",
+            audio_url: item.audioUrl,
+            difficulty: item.difficulty || "easy",
+            frequency: item.frequency || "high",
+            kanji_analysis: item.kanji_analysis || [],
+            jlpt: item.jlpt || item.jpt || "N5",
+            jpt: item.jpt,
+            mnemonic: item.mnemonic || "",
+            part_of_speech: item.part_of_speech || "",
+            notes: item.notes || ""
+          }));
+          console.log('🔍 Processed vocabularies:', vocabularies);
+        } else {
+          console.error('❌ Vocabulary API failed:', vocabResponse);
+          console.error('Response structure:', {
+            success: vocabResponse?.success,
+            hasData: !!vocabResponse?.data,
+            isDataArray: Array.isArray(vocabResponse?.data),
+            dataLength: vocabResponse?.data?.length,
+            fullResponse: vocabResponse
+          });
+        }
+      } catch (vocabErr) {
+        console.error('Failed to load vocabulary:', vocabErr);
+      }
+
+      // Get grammar
+      let grammars = [];
+      try {
+        const grammarResponse = await minnaJsonApi.get(`/lesson/${lessonNumber}/grammar`);
+        if (grammarResponse.data.success) {
+          grammars = grammarResponse.data.data.map((item: any) => ({
+            id: item.id,
+            pattern: item.pattern,
+            meaning_vi: item.explanation || '',
+            usage_vi: item.explanation || '',
+            structure: item.structure || '',
+            comparisons: [],
+            examples: item.examples ? item.examples.map((ex: any) => ({
+              japanese: ex.japanese || '',
+              vietnamese: ex.vietnamese || ''
+            })) : [],
+            level: item.level,
+            importance: 'medium'
+          }));
+        }
+      } catch (grammarErr) {
+        console.warn('Failed to load grammar:', grammarErr);
+      }
+
+      // Get kaiwa (conversation)
+      let dialogs = [];
+      try {
+        const kaiwaResponse = await minnaJsonApi.get(`/lesson/${lessonNumber}/kaiwa`);
+        if (kaiwaResponse.data.success && kaiwaResponse.data.data.length > 0) {
+          // Treat the entire kaiwaData object as one dialog with dialogue array
+          dialogs = kaiwaResponse.data.data;
+        }
+      } catch (dialogErr) {
+        console.warn('Failed to load dialogs:', dialogErr);
+      }
+
+      // Get exercises (from mondai)
+      let exercises = [];
+      try {
+        const mondaiResponse = await minnaJsonApi.get(`/lesson/${lessonNumber}/mondai`);
+        if (mondaiResponse.data.success) {
+          // Preserve the full mondai structure
+          exercises = mondaiResponse.data.data.map((mondai: any) => ({
+            id: mondai.id,
+            title: mondai.title,
+            type: mondai.type,
+            description: mondai.description,
+            instructions: mondai.instructions,
+            audioUrl: mondai.audioUrl,
+            items: mondai.items,
+            dialogues: mondai.dialogues,
+            // Keep original structure for compatibility
+            question: mondai.title || mondai.description,
+            options: [],
+            answer: '',
+            explanation: mondai.description || ''
+          }));
+        }
+      } catch (exerciseErr) {
+        console.warn('Failed to load exercises:', exerciseErr);
+      }
+
+      // Get renshuu (practice)
+      let renshuuData = [];
+      try {
+        const renshuuResponse = await minnaJsonApi.get(`/lesson/${lessonNumber}/renshuu`);
+        if (renshuuResponse.data.success) {
+          renshuuData = renshuuResponse.data.data || [];
+        }
+      } catch (renshuuErr) {
+        console.warn('Failed to load renshuu:', renshuuErr);
+        // Mock data for testing UI
+        renshuuData = [
+          {
+            id: 'renshuu_1',
+            title: 'Bài tập thực hành 1',
+            description: 'Luyện tập cấu trúc câu cơ bản',
+            content: 'Hãy tạo câu với từ vựng đã học'
+          },
+          {
+            id: 'renshuu_2',
+            title: 'Bài tập thực hành 2',
+            description: 'Luyện tập ngữ pháp',
+            content: 'Sử dụng mẫu câu đã học để tạo hội thoại ngắn'
+          }
+        ];
+      }
+
+      // Get reibun (example sentences)
+      let reibunData = [];
+      try {
+        const reibunResponse = await minnaJsonApi.get(`/lesson/${lessonNumber}/reibun`);
+        if (reibunResponse.data.success) {
+          reibunData = reibunResponse.data.data || [];
+        }
+      } catch (reibunErr) {
+        console.warn('Failed to load reibun:', reibunErr);
+      }
+
+      // Get bunkei (sentence patterns)
+      let bunkeiData = [];
+      try {
+        const bunkeiResponse = await minnaJsonApi.get(`/lesson/${lessonNumber}/bunkei`);
+        if (bunkeiResponse.data.success) {
+          const sharedBunkeiAudioUrl =
+            bunkeiResponse.data.audioUrl || bunkeiResponse.data.lesson?.audioUrl || "";
+          bunkeiData = (bunkeiResponse.data.data || []).map((item: any) => ({
+            ...item,
+            audioUrl: item.audioUrl || item.audio_url || sharedBunkeiAudioUrl,
+          }));
+        }
+      } catch (bunkeiErr) {
+        console.warn('Failed to load bunkei:', bunkeiErr);
+      }
+
+      // Combine all data
+      const lessonDetailData = {
+        lesson: lessonMetadata,
+        vocabularies,
+        grammars,
+        dialogs,
+        exercises,
+        renshuuData,
+        reibunData,
+        bunkeiData,
+        aiPrompts: {
+          roleplayPrompt: "",
+          speakingTestPrompt: "",
+          grammarCheckPrompt: "",
+          personalizedPracticePrompt: ""
+        },
+        userProgress: {
+          lessonId: lessonNum.toString(),
+          status: "not_started" as const,
+          score: 0,
+          timeSpent: 0,
+          completedVocabulary: [],
+          completedGrammar: [],
+          completedExercises: []
+        },
+        recommendations: {
+          nextLesson: undefined,
+          reviewItems: [],
+          weakAreas: []
+        }
+      };
+
+      setLessonDetail(lessonDetailData as LessonDetailType);
+      // console.log('🔍 LessonDetail set:', lessonDetailData);
+      // console.log('🔍 Vocabularies in lessonDetail:', lessonDetailData.vocabularies);
+    } catch (err) {
+      console.error('Error loading lesson detail:', err);
+      setError("Error loading lesson");
+    } finally {
+      setLoading(false);
+    }
+  }, [lessonNum]);
+
   useEffect(() => {
-    if (lessonId) {
+    if (lessonNum) {
       loadLessonDetail();
     }
     loadLessons();
-  }, [lessonId]);
+  }, [lessonNum]);
 
   // Auto refresh lessons list when progress updates
   useEffect(() => {
@@ -254,9 +507,6 @@ const LessonDetail: React.FC = () => {
   // Load voices when component mounts
   useEffect(() => {
     const loadVoices = () => {
-      const voices = getJapaneseVoices();
-      setJapaneseVoices(voices);
-
       // Ưu tiên Nanami Online (Natural) cho giọng nữ
       if (!femaleVoiceName) {
         const nanamiNatural = getNanamiNaturalVoice();
@@ -339,7 +589,7 @@ const LessonDetail: React.FC = () => {
   };
 
   // Function to speak entire conversation with Microsoft Nanami Online (Natural)
-  const speakEntireConversation = (dialog: Dialog) => {
+  const speakEntireConversation = (dialog: Dialog, rate: number = 1) => {
     if (!("speechSynthesis" in window)) {
       return;
     }
@@ -404,7 +654,7 @@ const LessonDetail: React.FC = () => {
       // Sử dụng Microsoft Nanami Online (Natural) cho tất cả các dòng
       utterance.voice = microsoftNanami;
       utterance.lang = microsoftNanami.lang || 'ja-JP';
-      utterance.rate = 0.85;
+      utterance.rate = 0.85 * rate;
       utterance.pitch = 1.0;
       utterance.volume = 1.0;
 
@@ -427,26 +677,6 @@ const LessonDetail: React.FC = () => {
     speakNextLine();
   };
 
-
-  const loadLessonDetail = async () => {
-    if (!lessonId) return;
-
-    setLoading(true);
-    setError(null);
-    try {
-      const response = await lessonAPI.getLessonDetail(lessonId);
-      // API mới trả về trực tiếp data, không có success wrapper
-      if (response) {
-        setLessonDetail(response as LessonDetailType);
-      } else {
-        setError("Failed to load lesson details");
-      }
-    } catch (err) {
-      setError("Error loading lesson");
-    } finally {
-      setLoading(false);
-    }
-  };
 
   const handleWordHover = (word: string, event: React.MouseEvent) => {
     // Tìm từ trong vocabulary thật
@@ -600,20 +830,6 @@ const LessonDetail: React.FC = () => {
                     {renderTextWithTooltips(line.japanese || line.text || "")}
                   </div>
                 </div>
-                <Button
-                  type="text"
-                  onClick={() => {
-                    const textToSpeak = line.japanese || line.text || "";
-                    // CHỈ dùng Microsoft Nanami Online (Natural) cho tất cả speakers
-                    const voiceName = femaleVoiceName; // Luôn dùng female voice (Nanami)
-                    if (textToSpeak) {
-                      speakText(textToSpeak, "ja-JP", voiceName);
-                    }
-                  }}
-                  icon={<SoundOutlined />}
-                  size="small"
-                  title="Nghe phát âm"
-                />
               </div>
             </div>
           </div>
@@ -720,7 +936,7 @@ const LessonDetail: React.FC = () => {
 
   const handleExerciseSubmit = async (exerciseId?: string, answer?: string) => {
     // Temporarily bypass currentUser check for testing
-    if (!lessonId) {
+    if (!lessonNum) {
       return;
     }
 
@@ -745,7 +961,7 @@ const LessonDetail: React.FC = () => {
         ];
 
         const response = await lessonAPI.submitExercises(
-          lessonId,
+          lessonNum.toString(),
           specificAnswer,
         );
         if (response.success && response.data) {
@@ -762,7 +978,7 @@ const LessonDetail: React.FC = () => {
         }
       } else {
         // Submit all answered exercises
-        const response = await lessonAPI.submitExercises(lessonId, answers);
+        const response = await lessonAPI.submitExercises(lessonNum.toString(), answers);
         if (response.success && response.data) {
           // Update results for all exercises
           const newResults: Record<string, any> = {};
@@ -785,47 +1001,20 @@ const LessonDetail: React.FC = () => {
   };
 
   const handleMarkLessonComplete = async () => {
-    if (!lessonId || !currentUser) {
+    if (!lessonNum) {
       return;
     }
 
     try {
-      setLoading(true);
-
-      // Dùng API mới để đánh dấu hoàn thành nhanh
-      const response = await lessonAPI.completeLesson(lessonId);
-
-      // Refresh lessons list to show updated status
-      await loadLessons();
-
-      // Show success message
-      alert("Bài học đã được đánh dấu là hoàn thành!");
-
-      // Update dashboard stats after completing lesson
-      try {
-        // Get current dashboard stats first
-        const currentStats = await userStatsAPI.getDashboardStats();
-
-        // Calculate new stats
-        const newLearningStreak = (currentStats.data?.learningStreak || 0) + 1;
-        const newTotalHours =
-          (currentStats.data?.totalStudyTime || 0) +
-          (lessonDetail?.lesson?.estimatedTime || 1);
-
-        // Update dashboard stats using new endpoint
-        await userStatsAPI.updateDashboardStats({
-          learningStreak: newLearningStreak,
-          totalStudyTime: newTotalHours,
-        });
-      } catch (error) {
-        // Failed to update dashboard stats
-      }
+      // Local-only: do not update user lesson status on backend
+      localStorage.setItem(`lesson_${lessonNum}_exercises_completed`, "true");
+      setExercisesCompleted(true);
 
       // Clear exercise progress from localStorage after marking lesson complete
-      localStorage.removeItem(`lesson_${lessonId}_exercise_progress`);
+      localStorage.removeItem(`lesson_${lessonNum}_exercise_progress`);
 
       // Clear flashcard progress from localStorage after marking lesson complete
-      localStorage.removeItem(`lesson_${lessonId}_flashcard_progress`);
+      localStorage.removeItem(`lesson_${lessonNum}_flashcard_progress`);
 
       // Reset exercise state
       setExerciseAnswers({});
@@ -839,16 +1028,16 @@ const LessonDetail: React.FC = () => {
       setShowVocabAnswer(false);
       setBookmarkedVocab(new Set());
       setShowDialogTranslation({});
+
+      alert("Đã hoàn thành bài học (chỉ lưu local, không cập nhật status người dùng).");
     } catch (error) {
       // Error marking lesson as complete
       alert("Có lỗi xảy ra khi đánh dấu bài học hoàn thành. Vui lòng thử lại.");
-    } finally {
-      setLoading(false);
     }
   };
 
   const handleAIMessage = async () => {
-    if (!currentMessage.trim() || !lessonId || !currentUser) return;
+    if (!currentMessage.trim() || !lessonNum || !currentUser) return;
 
     const userMessage = {
       role: "user" as const,
@@ -862,9 +1051,8 @@ const LessonDetail: React.FC = () => {
     setAiLoading(true);
 
     try {
-      const chatRequest = {
-        userId: currentUser.id,
-        lessonId,
+      const response = await aiAPI.chat({
+        lessonId: lessonNum.toString(),
         messages: [...aiMessages, userMessage],
         context: {
           currentLesson: lesson?.title || "",
@@ -872,9 +1060,7 @@ const LessonDetail: React.FC = () => {
           learnedGrammar: grammars?.map((g) => g.pattern) || [],
           difficulty: "medium" as const,
         },
-      };
-
-      const response = await chatMutation(chatRequest).unwrap();
+      });
 
       if (response.success && response.data) {
         const aiMessage = {
@@ -899,82 +1085,29 @@ const LessonDetail: React.FC = () => {
     }
   };
 
-  // Function to update lesson progress
-  const updateLessonProgress = async (
-    progress: number,
-    status: "not_started" | "in_progress" | "completed" | "review",
-    sectionData?: {
-      vocabularyCompleted?: boolean;
-      grammarCompleted?: boolean;
-      dialogCompleted?: boolean;
-      exercisesScore?: number;
-      aiPracticeCount?: number;
-    },
-  ) => {
-    if (!lessonId || !currentUser) {
-      return;
-    }
-
-    try {
-      // API structure mới theo backend documentation
-      const apiData = {
-        userId: currentUser.id,
-        status,
-        progress,
-        vocabularyCompleted: sectionData?.vocabularyCompleted || false,
-        grammarCompleted: sectionData?.grammarCompleted || false,
-        dialogCompleted: sectionData?.dialogCompleted || false,
-        exercisesScore: sectionData?.exercisesScore || 0,
-        aiPracticeCount: sectionData?.aiPracticeCount || 0,
-      };
-
-      const response = await lessonAPI.updateProgress(lessonId, apiData);
-
-      // Refresh lessons list to show updated status
-      await loadLessons();
-    } catch (error) {
-      // Error updating lesson progress
-    }
-  };
-
   // Handler when exercises are completed
-  const handleExercisesComplete = async () => {
+  const handleExercisesComplete = useCallback(async () => {
     if (!exercisesCompleted && exercises.length > 0) {
       setExercisesCompleted(true);
 
-      // Calculate score based on correct answers
-      const correctCount = Object.values(answerStatus).filter(
-        (status) => status === "correct",
-      ).length;
-      const totalAnswered = Object.keys(answerStatus).length;
-      const score =
-        totalAnswered > 0
-          ? Math.round((correctCount / totalAnswered) * 100)
-          : 0;
-
-      // Update progress to 100% for exercises completion (hoàn thành bài học)
-      await updateLessonProgress(100, "completed", {
-        exercisesScore: score,
-      });
-
       // Save completion status to localStorage
-      localStorage.setItem(`lesson_${lessonId}_exercises_completed`, "true");
+      localStorage.setItem(`lesson_${lessonNum}_exercises_completed`, "true");
     } else {
       // Exercises already completed or no exercises
     }
-  };
+  }, [exercisesCompleted, exercises.length, lessonNum]);
 
   // Check if exercises were already completed
   useEffect(() => {
-    if (lessonId) {
+    if (lessonNum) {
       const exercisesCompleted = localStorage.getItem(
-        `lesson_${lessonId}_exercises_completed`,
+        `lesson_${lessonNum}_exercises_completed`,
       );
       if (exercisesCompleted === "true") {
         setExercisesCompleted(true);
       }
     }
-  }, [lessonId]);
+  }, [lessonNum]);
 
   // Check if exercises are completed
   useEffect(() => {
@@ -993,50 +1126,9 @@ const LessonDetail: React.FC = () => {
         handleExercisesComplete();
       }
     }
-  }, [answerStatus, exercises]);
+  }, [answerStatus, exercises, exercisesCompleted, lessonNum]);
 
-  // Calculate overall progress based on completed sections
-  const calculateOverallProgress = () => {
-    let progress = 0;
-
-    if (exercisesCompleted) {
-      progress = 100; // Hoàn thành bài học khi làm xong bài tập
-    }
-
-    // Add logic for grammar and dialog completion when implemented
-    // if (grammarCompleted) {
-    //   progress += 15;
-    // }
-
-    // if (dialogCompleted) {
-    //   progress += 10;
-    // }
-
-    return progress;
-  };
-
-  // Update overall progress when sections are completed
-  useEffect(() => {
-    const overallProgress = calculateOverallProgress();
-
-    if (overallProgress > 0 && exercisesCompleted) {
-      const status = overallProgress === 100 ? "completed" : "in_progress";
-
-      updateLessonProgress(overallProgress, status, {
-        exercisesScore: exercisesCompleted
-          ? Math.round(
-            (Object.values(answerStatus).filter(
-              (status) => status === "correct",
-            ).length /
-              Object.keys(answerStatus).length) *
-            100,
-          )
-          : 0,
-      });
-    }
-  }, [exercisesCompleted]);
-
-  if (loading) {
+  if (combinedLoading) {
     return (
       <div className="flex items-center justify-center min-h-full">
         <Spin size="large" />
@@ -1044,14 +1136,16 @@ const LessonDetail: React.FC = () => {
     );
   }
 
-  if (error || !lessonDetail) {
+  if (combinedError || !lessonDetail) {
     return (
       <div className="flex items-center justify-center min-h-full">
         <Card className="text-center">
           <Title level={2} type="danger">
             Error
           </Title>
-          <Text type="secondary">{error || "Lesson not found"}</Text>
+          <Text className="!text-secondary-700 dark:!text-secondary-400">
+            {error || "Lesson not found"}
+          </Text>
         </Card>
       </div>
     );
@@ -1061,48 +1155,86 @@ const LessonDetail: React.FC = () => {
     const tabNames = {
       vocabulary: "Từ vựng",
       grammar: "Ngữ pháp",
-      conversation: "Hội thoại",
-      exercises: "Bài tập",
+      conversation: "Kaiwa",
+      exercises: "Mondai",
       ai: "Luyện với AI",
-      summary: "Tổng kết"
+      renshuu: "Renshuu",
+      reibun: "Reibun",
+      bunkei: "Bunkei",
     };
     return tabNames[tab] || "";
   };
+
+  const pickFirstText = (...values: unknown[]): string => {
+    for (const value of values) {
+      if (typeof value === "string" && value.trim().length > 0) {
+        return value.trim();
+      }
+      if (typeof value === "number") {
+        return String(value);
+      }
+    }
+    return "";
+  };
+
+  const getRomajiText = (item: any): string =>
+    pickFirstText(
+      item?.romaji,
+      item?.romaJi,
+      item?.jp_romaji,
+      item?.jpRomaji,
+      item?.text_romaji,
+      item?.textRomaji,
+      item?.question_romaji,
+      item?.questionRomaji,
+    );
+
+  const getMeaningText = (item: any): string =>
+    pickFirstText(
+      item?.meaning,
+      item?.meaning_vi,
+      item?.meaningVi,
+      item?.translation,
+      item?.viTranslation,
+      item?.question_translation,
+      item?.questionTranslation,
+    );
+
+  const getJapaneseText = (item: any): string =>
+    pickFirstText(item?.pattern, item?.text, item?.japanese, item?.jpText, item?.question);
+  const showTabCounts = !screens.xs;
+  const showFullTabLabels =
+    (screens.xxl || (screens.xl && desktopSidebarCollapsed)) && !screens.xs;
+  const showCompactTabLabels = !showFullTabLabels && screens.md;
 
   const renderActiveTabContent = () => {
     switch (activeTab) {
       case "vocabulary":
         return (
-          <VocabularyTable
+          <VocabularyTab
             ref={vocabularyTableRef}
-            data={vocabularies}
+            vocabularies={vocabularies}
             loading={loading}
-            femaleVoiceName={femaleVoiceName}
+            bookmarkedVocab={bookmarkedVocab}
             onCloseSidebar={() => {
               setSidebarVisible(false);
               setDesktopSidebarCollapsed(true);
             }}
-            onEnterFlashcard={() => {
-              sidebarSnapshotRef.current = {
-                sidebarVisible,
-                desktopSidebarCollapsed,
-              };
-              setSidebarVisible(false);
-              setDesktopSidebarCollapsed(true);
-            }}
-            onExitFlashcard={() => {
-              const snapshot = sidebarSnapshotRef.current;
-              if (snapshot) {
-                setSidebarVisible(snapshot.sidebarVisible);
-                setDesktopSidebarCollapsed(snapshot.desktopSidebarCollapsed);
-                sidebarSnapshotRef.current = null;
-              }
+            lessonInfo={{
+              title: lesson?.title,
+              lessonNumber: lesson?.lessonNumber,
+              level: lesson?.level
             }}
           />
         );
       case "grammar":
         return (
-          <GrammarTab lessonNumber={lesson?.lessonNumber} grammars={grammars} />
+          <GrammarTab
+            grammars={grammars}
+            lessonInfo={{
+              level: lesson?.level
+            }}
+          />
         );
       case "conversation":
         return (
@@ -1112,6 +1244,11 @@ const LessonDetail: React.FC = () => {
             setShowDialogTranslation={setShowDialogTranslation}
             renderDialogConversation={renderDialogConversation}
             speakEntireConversation={speakEntireConversation}
+            lessonInfo={{
+              title: lesson?.title,
+              lessonNumber: lesson?.lessonNumber,
+              level: lesson?.level
+            }}
           />
         );
       case "exercises":
@@ -1129,6 +1266,11 @@ const LessonDetail: React.FC = () => {
             handleAllExercisesSubmit={handleAllExercisesSubmit}
             handleMarkLessonComplete={handleMarkLessonComplete}
             onGoToTab={(tab) => setActiveTab(tab)}
+            lessonInfo={{
+              title: lesson?.title,
+              lessonNumber: lesson?.lessonNumber,
+              level: lesson?.level
+            }}
           />
         );
       case "ai":
@@ -1142,8 +1284,380 @@ const LessonDetail: React.FC = () => {
             handleAIMessage={handleAIMessage}
           />
         );
-      case "summary":
-        return <SummaryTab vocabularies={vocabularies} grammars={grammars} />;
+      case "renshuu":
+        return (
+          <div className="p-6">
+            <Card className="bg-white dark:bg-secondary-925 border-secondary-200 dark:border-secondary-900">
+              <Text className="block mb-4 !text-secondary-700 dark:!text-secondary-400">
+                Bài tập thực hành ({renshuuData.length} mục)
+              </Text>
+              {renshuuData.length > 0 ? (
+                <div className="space-y-4">
+                  {renshuuData.map((item: any, index: number) => (
+                    <Card key={index} size="small">
+                      <div className="space-y-2">
+                        <div className="flex items-baseline gap-2 flex-wrap">
+                          <Text strong className="!mb-0">
+                            {item.title || `Bài tập ${index + 1}`}
+                          </Text>
+                          {item.title_jp && (
+                            <Text className="text-xs !mb-0 !text-secondary-700 dark:!text-secondary-400">
+                              {item.title_jp}
+                            </Text>
+                          )}
+                          {item.description && (
+                            <Text className="!mb-0 text-secondary-700 dark:text-secondary-400">
+                              {item.description}
+                            </Text>
+                          )}
+                          {getRomajiText(item) && (
+                            <Text className="!mb-0 text-xs italic !text-secondary-700 dark:!text-secondary-400">
+                              {getRomajiText(item)}
+                            </Text>
+                          )}
+                          {getMeaningText(item) &&
+                            getMeaningText(item) !== item.description && (
+                              <Text className="!mb-0 text-green-600 dark:text-green-400">
+                                {getMeaningText(item)}
+                              </Text>
+                            )}
+                        </div>
+                        {item.audioUrl && (
+                          <Card size="small" className="mt-3 bg-blue-50 dark:bg-blue-900/20 border-blue-200 dark:border-blue-800">
+                            <Text className="text-sm text-blue-700 dark:text-blue-300 block mb-2">
+                              🎵 Nghe và lặp lại hội thoại
+                            </Text>
+                            <audio controls preload="metadata" className="w-full">
+                              <source src={item.audioUrl} />
+                            </audio>
+                          </Card>
+                        )}
+                        {item.content && (
+                          <div className="mt-3">
+                            {typeof item.content === 'string' ? (
+                              <Card size="small" className="bg-blue-50 dark:bg-blue-900/20 border-blue-200 dark:border-blue-800">
+                                <Text className="text-sm text-blue-700 dark:text-blue-300">
+                                  📝 {item.content}
+                                </Text>
+                              </Card>
+                            ) : (
+                              <div className="space-y-3">
+                                {/* Dialogue Content */}
+                                {item.content.dialogue && (
+                                  <Card size="small" className="bg-purple-50 dark:bg-purple-900/20 border-purple-200 dark:border-purple-800">
+                                    <Title level={5} className="text-purple-600 dark:text-purple-400 mb-3">
+                                      💬 Hội thoại mẫu:
+                                    </Title>
+                                    <div className="space-y-3">
+                                      {typeof item.content.dialogue === 'object' && item.content.dialogue !== null ? (
+                                        Object.entries(item.content.dialogue).map(([speaker, content]: [string, any]) => (
+                                          <div key={speaker} className="bg-white dark:bg-gray-700 p-3 rounded-lg border border-purple-200 dark:border-purple-600">
+                                            <div className="flex items-start gap-3">
+                                              <Text strong className="text-purple-600 dark:text-purple-400 min-w-[24px]">
+                                                {speaker}:
+                                              </Text>
+                                              <div className="flex-1">
+                                                <Text className="text-sm text-purple-800 dark:text-purple-200 block">
+                                                  {getJapaneseText(content) ||
+                                                    (typeof content === "string"
+                                                      ? content
+                                                      : JSON.stringify(content))}
+                                                </Text>
+                                                {getRomajiText(content) && (
+                                                  <Text className="text-xs text-gray-600 dark:text-gray-400 italic block mt-1">
+                                                    {getRomajiText(content)}
+                                                  </Text>
+                                                )}
+                                                {getMeaningText(content) && (
+                                                  <Text className="text-xs text-green-600 dark:text-green-400 block mt-1">
+                                                    {getMeaningText(content)}
+                                                  </Text>
+                                                )}
+                                              </div>
+                                            </div>
+                                          </div>
+                                        ))
+                                      ) : (
+                                        <Text className="text-sm text-purple-700 dark:text-purple-300">
+                                          {typeof item.content.dialogue === 'string'
+                                            ? item.content.dialogue
+                                            : JSON.stringify(item.content.dialogue)}
+                                        </Text>
+                                      )}
+                                    </div>
+                                  </Card>
+                                )}
+
+                                {/* Practice Content */}
+                                {item.content.practice && (
+                                  <Card size="small" className="bg-green-50 dark:bg-green-900/20 border-green-200 dark:border-green-800">
+                                    <Title level={5} className="text-green-600 dark:text-green-400 mb-3">
+                                      🏃‍♂️ Bài tập thực hành:
+                                    </Title>
+                                    <div className="space-y-3">
+                                      {Array.isArray(item.content.practice) ? (
+                                        item.content.practice.map((practiceItem: any, practiceIndex: number) => (
+                                          <div key={practiceIndex} className="bg-white dark:bg-gray-700 p-3 rounded-lg border border-green-200 dark:border-green-600">
+                                            <Text className="text-sm font-medium text-green-700 dark:text-green-300 mb-2">
+                                              Ví dụ {practiceIndex + 1}:
+                                            </Text>
+                                            {practiceItem.substitutions && (
+                                              <div className="space-y-1">
+                                                {Object.entries(practiceItem.substitutions).map(([placeholder, value]) => (
+                                                  <div key={placeholder} className="flex items-center gap-2 text-sm">
+                                                    <Text className="font-medium text-green-600 dark:text-green-400 min-w-[24px]">
+                                                      {placeholder}:
+                                                    </Text>
+                                                    <Text className="text-green-700 dark:text-green-300">
+                                                      {String(value)}
+                                                    </Text>
+                                                  </div>
+                                                ))}
+                                              </div>
+                                            )}
+                                          </div>
+                                        ))
+                                      ) : (
+                                        <Text className="text-sm text-green-700 dark:text-green-300">
+                                          {typeof item.content.practice === 'string'
+                                            ? item.content.practice
+                                            : JSON.stringify(item.content.practice)}
+                                        </Text>
+                                      )}
+                                    </div>
+                                  </Card>
+                                )}
+
+                                {/* Other content */}
+                                {Object.entries(item.content)
+                                  .filter(([key]) => !['practice', 'dialogue'].includes(key))
+                                  .map(([key, value]) => (
+                                    <Card key={key} size="small" className="bg-gray-50 dark:bg-gray-800 border-gray-200 dark:border-gray-700">
+                                      <Title level={5} className="text-gray-600 dark:text-gray-400 mb-1 capitalize">
+                                        {key.replace(/_/g, ' ')}:
+                                      </Title>
+                                      <Text className="text-sm text-gray-700 dark:text-gray-300">
+                                        {typeof value === 'string' ? value : JSON.stringify(value)}
+                                      </Text>
+                                    </Card>
+                                  ))}
+                              </div>
+                            )}
+                          </div>
+                        )}
+                      </div>
+                    </Card>
+                  ))}
+                </div>
+              ) : (
+                <Text className="!text-secondary-700 dark:!text-secondary-400">
+                  Chưa có dữ liệu bài tập thực hành
+                </Text>
+              )}
+            </Card>
+          </div>
+        );
+      case "reibun":
+        return (
+          <div className="p-6">
+            <Card className="bg-white dark:bg-secondary-925 border-secondary-200 dark:border-secondary-900">
+              <Title level={3}>Reibun - 例文 ({lesson?.title || `Bài ${lessonNum}`})</Title>
+              <Text className="block mb-4 !text-secondary-700 dark:!text-secondary-400">
+                Hội thoại ví dụ ({reibunData.length} đoạn)
+              </Text>
+              {reibunData.length > 0 ? (
+                <div className="space-y-6">
+                  {reibunData.map((item: any, index: number) => (
+                    <div key={index} className="space-y-4">
+                      {/* Dialogue Header */}
+                      <Card size="small" className="bg-blue-50 dark:bg-blue-900/20 border-blue-200 dark:border-blue-800">
+                        <div className="space-y-2">
+                          <Title level={4} className="text-blue-600 dark:text-blue-400">
+                            {item.title || `Đoạn hội thoại ${index + 1}`}
+                          </Title>
+                          {item.description && (
+                            <Text className="text-secondary-700 dark:text-secondary-400">
+                              {item.description}
+                            </Text>
+                          )}
+                          <div className="flex items-center gap-4 text-sm">
+                            <Text className="!text-secondary-700 dark:!text-secondary-400">
+                              <strong>{item.total_lines}</strong> câu thoại
+                            </Text>
+                          </div>
+                          {item.audioUrl && (
+                            <div className="mt-2">
+                              <audio controls preload="metadata" className="block w-full min-w-0">
+                                <source src={item.audioUrl} />
+                              </audio>
+                            </div>
+                          )}
+                        </div>
+                      </Card>
+
+                      {/* Dialogue Content */}
+                      <Card>
+                        <div className="space-y-3">
+                          {item.dialogue && item.dialogue.map((line: any, lineIndex: number) => (
+                            <div key={lineIndex} className="flex items-start gap-3">
+                              <div className={`flex-1 px-4 py-3 rounded-xl shadow-sm ${line.speaker === "A"
+                                ? "bg-gradient-to-r from-blue-50 to-blue-100 dark:from-blue-900/20 dark:to-blue-800/20 text-secondary-800 dark:text-secondary-200"
+                                : "bg-gradient-to-r from-green-50 to-green-100 dark:from-green-900/20 dark:to-green-800/20 text-secondary-800 dark:text-secondary-200"
+                                }`}>
+                                <div className="flex items-baseline justify-between gap-3">
+                                  <div className="flex items-baseline gap-3 min-w-0">
+                                    <div className="font-semibold text-sm text-blue-600 dark:text-blue-400 opacity-75 flex-shrink-0">
+                                      {line.speaker}
+                                    </div>
+                                    <div className="text-sm leading-relaxed break-words flex-1">
+                                      <div className="font-medium text-base mb-1">
+                                        {getJapaneseText(line) || "Chưa có nội dung"}
+                                      </div>
+                                      {getRomajiText(line) && (
+                                        <div className="text-xs text-gray-600 dark:text-gray-400 italic">
+                                          {getRomajiText(line)}
+                                        </div>
+                                      )}
+                                      {getMeaningText(line) && (
+                                        <div className="text-sm text-green-600 dark:text-green-400 mt-1">
+                                          {getMeaningText(line)}
+                                        </div>
+                                      )}
+                                      {line.context && (
+                                        <div className="text-xs text-gray-500 dark:text-gray-500 mt-1">
+                                          💡 {line.context}
+                                        </div>
+                                      )}
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          ))}
+                        </div>
+                      </Card>
+
+                      {/* Grammar Focus */}
+                      {item.grammar_focus && item.grammar_focus.length > 0 && (
+                        <Card size="small" className="bg-purple-50 dark:bg-purple-900/20 border-purple-200 dark:border-purple-800">
+                          <Title level={5} className="text-purple-600 dark:text-purple-400 mb-2">
+                            📚 Điểm ngữ pháp chính:
+                          </Title>
+                          <div className="flex flex-wrap gap-2">
+                            {item.grammar_focus.map((grammar: string, gIndex: number) => (
+                              <Tag key={gIndex} color="purple">{grammar}</Tag>
+                            ))}
+                          </div>
+                        </Card>
+                      )}
+
+                      {/* Vocabulary Focus */}
+                      {item.vocabulary_focus && item.vocabulary_focus.length > 0 && (
+                        <Card size="small" className="bg-orange-50 dark:bg-orange-900/20 border-orange-200 dark:border-orange-800">
+                          <Title level={5} className="text-orange-600 dark:text-orange-400 mb-2">
+                            📝 Từ vựng chính:
+                          </Title>
+                          <div className="flex flex-wrap gap-2">
+                            {item.vocabulary_focus.map((vocab: string, vIndex: number) => (
+                              <Tag key={vIndex} color="orange">{vocab}</Tag>
+                            ))}
+                          </div>
+                        </Card>
+                      )}
+                    </div>
+                  ))}
+                </div>
+              ) : (
+                <Text className="!text-secondary-700 dark:!text-secondary-400">
+                  Chưa có dữ liệu hội thoại ví dụ
+                </Text>
+              )}
+            </Card>
+          </div>
+        );
+      case "bunkei":
+        return (
+          <div className="p-6">
+            <Card className="bg-white dark:bg-secondary-925 border-secondary-200 dark:border-secondary-900">
+              <Title level={3}>Bunkei - 文型 ({lesson?.title || `Bài ${lessonNum}`})</Title>
+              <Text className="block mb-4 !text-secondary-700 dark:!text-secondary-400">
+                Mẫu câu ({bunkeiData.length} mẫu)
+              </Text>
+
+              {/* Shared Audio Control */}
+              {bunkeiData.length > 0 && bunkeiData[0].audioUrl && (
+                <Card className="mb-6 bg-blue-50 dark:bg-blue-900/20 border-blue-200 dark:border-blue-800">
+                  <div className="mb-3">
+                    <Text strong className="text-blue-700 dark:text-blue-300">
+                      Audio mẫu câu
+                    </Text>
+                    <Text className="block text-sm mt-1 text-secondary-700 dark:text-secondary-400">
+                      Nghe tất cả mẫu câu để làm quen với các cấu trúc ngữ pháp
+                    </Text>
+                  </div>
+                  <audio controls preload="metadata" className="w-full">
+                    <source src={bunkeiData[0].audioUrl} />
+                  </audio>
+                </Card>
+              )}
+
+              {bunkeiData.length > 0 ? (
+                <div className="space-y-4">
+                  {bunkeiData.map((item: any, index: number) => (
+                    <Card key={index} size="small" className="hover:shadow-md transition-shadow">
+                      <div className="space-y-3">
+                        {/* Pattern */}
+                        <div className="text-center">
+                          <div className="text-xl font-bold text-blue-600 dark:text-blue-400 mb-2">
+                            {getJapaneseText(item) || "Chưa có mẫu câu"}
+                          </div>
+                          {getRomajiText(item) && (
+                            <div className="text-sm text-gray-600 dark:text-gray-400 italic mb-2">
+                              {getRomajiText(item)}
+                            </div>
+                          )}
+                          {getMeaningText(item) && (
+                            <div className="text-lg text-green-600 dark:text-green-400 font-medium">
+                              {getMeaningText(item)}
+                            </div>
+                          )}
+                        </div>
+
+                        {/* Type */}
+                        <div className="flex items-center justify-center">
+                          <Tag color={
+                            item.type === 'introduction' ? 'blue' :
+                              item.type === 'negative' ? 'red' :
+                                item.type === 'question' ? 'orange' :
+                                  item.type === 'addition' ? 'green' : 'default'
+                          }>
+                            {item.type === 'introduction' ? 'Giới thiệu' :
+                              item.type === 'negative' ? 'Phủ định' :
+                                item.type === 'question' ? 'Câu hỏi' :
+                                  item.type === 'addition' ? 'Thêm vào' : item.type}
+                          </Tag>
+                        </div>
+
+                        {/* Explanation */}
+                        {item.explanation && (
+                          <Card size="small" className="bg-gray-50 dark:bg-gray-800 border-gray-200 dark:border-gray-700">
+                            <Text className="text-sm text-gray-700 dark:text-gray-300">
+                              💡 {item.explanation}
+                            </Text>
+                          </Card>
+                        )}
+                      </div>
+                    </Card>
+                  ))}
+                </div>
+              ) : (
+                <Text className="!text-secondary-700 dark:!text-secondary-400">
+                  Chưa có dữ liệu mẫu câu
+                </Text>
+              )}
+            </Card>
+          </div>
+        );
       default:
         return null;
     }
@@ -1173,9 +1687,34 @@ const LessonDetail: React.FC = () => {
           scrollbar-width: none;
           -ms-overflow-style: none;
         }
+        /* Improve readability for lesson detail content */
+        .lesson-detail-content .text-xs {
+          font-size: 0.8125rem !important;
+          line-height: 1.25rem !important;
+        }
+        .lesson-detail-content .text-sm {
+          font-size: 0.9375rem !important;
+          line-height: 1.45rem !important;
+        }
+        .lesson-detail-content .ant-tag {
+          font-size: 0.8125rem !important;
+          line-height: 1.25rem !important;
+        }
+        .lesson-detail-content .ant-typography h5,
+        .lesson-detail-content h5.ant-typography {
+          font-size: 1rem !important;
+          line-height: 1.5rem !important;
+        }
         .lesson-tabs .ant-tabs-tab .anticon {
           margin-right: 0 !important;
           transform: translateY(-1px);
+          transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+        }
+        .lesson-tabs .ant-tabs-tab:hover .anticon {
+          transform: translateY(-1px) scale(1.1) !important;
+        }
+        .lesson-tabs .ant-tabs-tab.ant-tabs-tab-active .anticon {
+          color: #3b82f6 !important;
         }
         .lesson-tabs .ant-tabs-tab .ant-tabs-tab-btn {
           display: inline-flex;
@@ -1186,77 +1725,123 @@ const LessonDetail: React.FC = () => {
           align-items: center;
           line-height: 1;
         }
+        .lesson-tabs.ant-tabs {
+          height: 100% !important;
+        }
         .lesson-tabs .ant-tabs-nav {
           margin-bottom: 0 !important;
+          height: 100% !important;
+        }
+        .lesson-tabs .ant-tabs-nav-wrap {
+          height: 100% !important;
+        }
+        .lesson-tabs .ant-tabs-nav-list {
+          height: 100% !important;
+          padding-inline: 8px !important;
+        }
+        .lesson-tabs .ant-tabs-tab {
+          transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+          margin: 0 !important;
+          flex: 0 0 auto !important;
+          justify-content: flex-start !important;
+          height: 100% !important;
+          display: flex !important;
+          align-items: center !important;
+          padding: 0 12px !important;
+        }
+        .lesson-tabs .ant-tabs-tab:hover {
+          background-color: rgba(59, 130, 246, 0.05) !important;
+          transform: translateY(-1px) !important;
+        }
+        .lesson-tabs .ant-tabs-tab.ant-tabs-tab-active {
+          background-color: rgba(59, 130, 246, 0.1) !important;
+          border-bottom: 2px solid #3b82f6 !important;
+          box-shadow: 0 2px 8px rgba(59, 130, 246, 0.15) !important;
+        }
+        .lesson-tabs .ant-tabs-tab.ant-tabs-tab-active .ant-tabs-tab-btn {
+          color: #3b82f6 !important;
+          font-weight: 600 !important;
+        }
+        .lesson-tabs .ant-tabs-ink-bar {
+          background: linear-gradient(90deg, #3b82f6, #06b6d4) !important;
+          height: 3px !important;
+          border-radius: 2px 2px 0 0 !important;
         }
       `}</style>
       {/* Main Content */}
       <Layout>
 
-        {/* Fixed Sidebar Toggle Button */}
-        {(!screens.lg || desktopSidebarCollapsed) && (
-          <div
-            className="fixed bottom-6 right-4 z-40"
-            style={{ bottom: "24px" }}
-          >
-            <Tooltip title="Danh sách bài học" placement="left">
-              <Button
-                shape="square"
-                icon={<MenuFoldOutlined />}
-                onClick={() =>
-                  screens.lg
-                    ? setDesktopSidebarCollapsed(false)
-                    : setSidebarVisible(true)
-                }
-                className="border border-neutral-200 dark:border-neutral-700 shadow-lg hover:shadow-md bg-white dark:bg-secondary-925 px-2"
-                size="large"
-              >
-                <span>50 Bài</span>
-              </Button>
-            </Tooltip>
-          </div>
-        )}
-
-        <Content className="lesson-detail-content flex-1 sm:px-0 bg-white dark:bg-secondary-900 flex flex-col min-h-full overflow-auto">
+        <Content className="lesson-detail-content academic-canvas app-surface flex-1 sm:px-0 flex flex-col min-h-full">
           {screens.xs && (
             <style>
               {`
+                .lesson-tabs .ant-tabs-nav {
+                  margin: 0 !important;
+                }
+                .lesson-tabs .ant-tabs-nav-wrap {
+                  overflow-x: auto !important;
+                  scrollbar-width: none;
+                }
+                .lesson-tabs .ant-tabs-nav-wrap::-webkit-scrollbar {
+                  display: none;
+                }
                 .lesson-tabs .ant-tabs-nav-list {
                   display: flex;
-                  width: 100%;
+                  width: max-content;
+                  min-width: 100%;
+                  gap: 8px;
+                  padding: 8px 10px;
                 }
                 .lesson-tabs .ant-tabs-nav,
-                .lesson-tabs .ant-tabs-nav-wrap,
-                .lesson-tabs .ant-tabs-nav-list {
+                .lesson-tabs .ant-tabs-nav-wrap {
                   width: 100%;
                 }
                 .lesson-tabs .ant-tabs-tab {
-                  flex: 1 1 0;
+                  flex: 0 0 auto;
+                  min-width: 52px;
                   justify-content: center;
-                  padding-left: 0;
-                  padding-right: 0;
-                  padding-top: 6px;
-                  padding-bottom: 6px;
+                  margin: 0 !important;
+                  border-radius: 6px !important;
+                  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+                  height: 44px !important;
+                  display: flex !important;
+                  align-items: center !important;
+                  padding: 0 8px !important;
+                }
+                .lesson-tabs .ant-tabs-tab:hover {
+                  background-color: rgba(59, 130, 246, 0.08) !important;
+                  transform: translateY(-1px) !important;
+                }
+                .lesson-tabs .ant-tabs-tab.ant-tabs-tab-active {
+                  background-color: rgba(59, 130, 246, 0.15) !important;
+                  box-shadow: 0 2px 6px rgba(59, 130, 246, 0.2) !important;
+                }
+                .lesson-tabs .ant-tabs-ink-bar {
+                  display: none !important;
                 }
               `}
             </style>
           )}
-          <div className="sticky top-0 z-30 bg-white dark:bg-secondary-925 border-b border-secondary-200 dark:border-secondary-900">
+          <div className="sticky top-0 z-30 bg-gradient-to-r from-white via-white to-white dark:from-secondary-925 dark:via-secondary-925 dark:to-secondary-925 border-b border-secondary-200 dark:border-secondary-700 shadow-sm backdrop-blur-sm bg-opacity-95 dark:bg-opacity-95 h-[60px] flex items-center gap-2 pr-2">
             <Tabs
               activeKey={activeTab}
               onChange={(key) => setActiveTab(key as TabType)}
-              className="lesson-tabs bg-white dark:bg-secondary-925"
-              style={{ margin: 0, padding: screens.xs ? "0" : "0 8px" }}
+              className="lesson-tabs bg-white dark:bg-secondary-925 flex-1 min-w-0"
+              style={{ margin: 0, padding: 0 }}
               size={screens.xs ? "large" : screens.md ? "large" : "middle"}
               tabPlacement={screens.xs ? "top" : "top"}
-              centered={screens.xs}
+              centered={false}
               items={[
                 {
                   key: "vocabulary",
                   label: (
                     <span className="flex items-center gap-1">
                       <InfinitejapaneseIcon size={16} color="#000000" strokeWidth={2} />
-                      {screens.md && <span>TỪ VỰNG</span>}
+                      {showFullTabLabels && <span>TỪ VỰNG</span>}
+                      {showCompactTabLabels && <span>TỪ</span>}
+                      {showTabCounts && vocabularies.length > 0 && (
+                        <Badge count={vocabularies.length} size="small" />
+                      )}
                     </span>
                   ),
                 },
@@ -1265,7 +1850,11 @@ const LessonDetail: React.FC = () => {
                   label: (
                     <span className="flex items-center gap-1">
                       <ReadOutlined className="text-base" />
-                      {screens.md && <span>NGỮ PHÁP</span>}
+                      {showFullTabLabels && <span>NGỮ PHÁP</span>}
+                      {showCompactTabLabels && <span>NP</span>}
+                      {showTabCounts && grammars.length > 0 && (
+                        <Badge count={grammars.length} size="small" />
+                      )}
                     </span>
                   ),
                 },
@@ -1274,7 +1863,11 @@ const LessonDetail: React.FC = () => {
                   label: (
                     <span className="flex items-center gap-1">
                       <MessageOutlined className="text-base" />
-                      {screens.md && <span>HỘI THOẠI</span>}
+                      {showFullTabLabels && <span>KAIWA</span>}
+                      {showCompactTabLabels && <span>KAIWA</span>}
+                      {showTabCounts && dialogs.length > 0 && (
+                        <Badge count={dialogs.length} size="small" />
+                      )}
                     </span>
                   ),
                 },
@@ -1283,7 +1876,50 @@ const LessonDetail: React.FC = () => {
                   label: (
                     <span className="flex items-center gap-1">
                       <PlayCircleOutlined className="text-base" />
-                      {screens.md && <span>BÀI TẬP</span>}
+                      {showFullTabLabels && <span>MONDAI</span>}
+                      {showCompactTabLabels && <span>MONDAI</span>}
+                      {showTabCounts && exercises.length > 0 && (
+                        <Badge count={exercises.length} size="small" />
+                      )}
+                    </span>
+                  ),
+                },
+                {
+                  key: "renshuu",
+                  label: (
+                    <span className="flex items-center gap-1">
+                      <PlayCircleOutlined className="text-base" />
+                      {showFullTabLabels && <span>RENSHUU</span>}
+                      {showCompactTabLabels && <span>RH</span>}
+                      {showTabCounts && renshuuData.length > 0 && (
+                        <Badge count={renshuuData.length} size="small" />
+                      )}
+                    </span>
+                  ),
+                },
+                {
+                  key: "reibun",
+                  label: (
+                    <span className="flex items-center gap-1">
+                      <ReadOutlined className="text-base" />
+                      {showFullTabLabels && <span>REIBUN</span>}
+                      {showCompactTabLabels && <span>RB</span>}
+                      {showTabCounts && reibunData.length > 0 && (
+                        <Badge count={reibunData.length} size="small" />
+                      )}
+                    </span>
+                  ),
+                },
+                {
+                  key: "bunkei",
+                  label: (
+                    <span className="flex items-center gap-1">
+                      <MessageOutlined className="text-base" />
+                      {showFullTabLabels && <span>BUNKEI</span>}
+                      {showCompactTabLabels && <span>BK</span>}
+                      {showTabCounts && bunkeiData.length > 0 && (
+                        <Badge count={bunkeiData.length} size="small" />
+                      )}
                     </span>
                   ),
                 },
@@ -1292,21 +1928,30 @@ const LessonDetail: React.FC = () => {
                   label: (
                     <span className="flex items-center gap-1">
                       <RobotOutlined className="text-base" />
-                      {screens.md && <span>LUYỆN VỚI AI</span>}
-                    </span>
-                  ),
-                },
-                {
-                  key: "summary",
-                  label: (
-                    <span className="flex items-center gap-1">
-                      <TrophyOutlined className="text-base" />
-                      {screens.md && <span>TỔNG KẾT</span>}
+                      {showFullTabLabels && <span>LUYỆN VỚI AI</span>}
+                      {showCompactTabLabels && <span>AI</span>}
                     </span>
                   ),
                 },
               ]}
             />
+            {(!screens.lg || desktopSidebarCollapsed) && (
+              <Tooltip title="Danh sách bài học" placement={screens.xs ? "bottom" : "left"}>
+                <Button
+                  shape="square"
+                  icon={<MenuFoldOutlined />}
+                  onClick={() =>
+                    screens.lg
+                      ? setDesktopSidebarCollapsed(false)
+                      : setSidebarVisible(true)
+                  }
+                  className={`border border-neutral-200 dark:border-neutral-700 shadow-sm hover:shadow-md bg-white dark:bg-secondary-925 px-2 h-9 ${screens.xs ? "w-9 !px-0" : ""}`}
+                  size={screens.xs ? "small" : "middle"}
+                >
+                  {!screens.xs && <span>50 Bài</span>}
+                </Button>
+              </Tooltip>
+            )}
           </div>
 
           <div className="px-3 lg:px-6 pt-3">
@@ -1317,40 +1962,44 @@ const LessonDetail: React.FC = () => {
                     type="text"
                     icon={<ArrowLeftOutlined />}
                     onClick={() => navigate("/lessons")}
-                    className="rounded-full w-8 h-8 flex items-center justify-center border border-secondary-200 bg-white text-secondary-700 hover:text-secondary-900 hover:bg-secondary-50 dark:border-secondary-800 dark:bg-secondary-925 dark:text-secondary-300 dark:hover:text-secondary-100 dark:hover:bg-secondary-800/60 transition-colors"
+                    className="rounded-full w-8 h-8 flex items-center justify-center border-0 bg-transparent shadow-none text-inherit hover:text-inherit dark:text-inherit dark:hover:text-inherit hover:bg-transparent dark:hover:bg-transparent transition-colors"
                   />
-                  <Title level={2} className="!mb-0 pt-2 text-base sm:text-lg lg:text-xl leading-snug">
-                    {lesson?.lessonNumber}. {lesson?.title} - {getTabDisplayName(activeTab)}
+                  <Title level={2} className="!mb-0 text-base sm:text-lg lg:text-xl leading-snug">
+                    {getTabDisplayName(activeTab)}
                   </Title>
-                  <div className="flex items-center gap-1 ml-2">
-                    <Button
-                      type="text"
-                      size="middle"
-                      className={`px-3 py-1.5 h-auto text-xs font-semibold rounded-lg transition-colors ${activeTab === "vocabulary" && vocabularies.length > 0
-                        ? "bg-green-100 text-green-700 dark:bg-green-800 dark:text-green-200"
-                        : "text-secondary-600 hover:text-secondary-900 hover:bg-secondary-50 dark:text-secondary-400 dark:hover:text-secondary-100 dark:hover:bg-secondary-800/60"
-                        }`}
-                      onClick={() => {
-                        setActiveTab("vocabulary");
-                        // Switch to flashcard mode after a short delay to ensure tab is active
-                        setTimeout(() => {
-                          vocabularyTableRef.current?.enterFlashcard();
-                        }, 100);
-                      }}
-                    >
-                      <div className="flex flex-row items-center">
-                        <LetterUppercaseSquareFIcon
-                          size={16}
-                          color="currentColor"
-                          strokeWidth={2}
-                        />
-                        <span className="ml-1">Flashcard</span>
-                      </div>
-                    </Button>
-                  </div>
+                  {activeTab === "vocabulary" && (
+                    <div className="flex items-center gap-1 ml-2">
+                      <Button
+                        type="text"
+                        size="middle"
+                        className={`px-3 py-1.5 h-auto text-xs font-semibold rounded-lg border transition-colors ${vocabularies.length > 0
+                          ? "bg-green-100 text-green-700 border-green-300 dark:bg-green-800 dark:text-green-200 dark:border-green-600"
+                          : "text-secondary-600 border-secondary-200 hover:text-secondary-900 hover:bg-secondary-50 hover:border-secondary-300 dark:text-secondary-400 dark:border-secondary-700 dark:hover:text-secondary-100 dark:hover:bg-secondary-800/60 dark:hover:border-secondary-500"
+                          }`}
+                        onClick={() => {
+                          setActiveTab("vocabulary");
+                          // Switch to flashcard mode after a short delay to ensure tab is active
+                          setTimeout(() => {
+                            vocabularyTableRef.current?.enterFlashcard();
+                          }, 100);
+                        }}
+                      >
+                        <div className="flex flex-row items-center">
+                          <LetterUppercaseSquareFIcon
+                            size={16}
+                            color="currentColor"
+                            strokeWidth={2}
+                          />
+                          <span className="ml-1">Flashcard</span>
+                        </div>
+                      </Button>
+                    </div>
+                  )}
                 </div>
-                <Text className="text-sm leading-relaxed line-clamp-2 text-secondary-600 dark:text-secondary-400">
-                  {lesson?.description}
+                <Text className="text-base sm:text-lg leading-relaxed line-clamp-2 text-secondary-700 dark:text-secondary-300">
+                  {lesson?.description
+                    ? `${lesson?.lessonNumber || lessonNum}. ${lesson.description}`
+                    : ""}
                 </Text>
               </div>
             </div>
@@ -1409,12 +2058,12 @@ const LessonDetail: React.FC = () => {
       <LessonSidebar
         lessons={lessons}
         lessonsLoading={lessonsLoading}
-        lessonId={lessonId}
+        lessonId={lessonNum.toString()}
         sidebarVisible={sidebarVisible}
         setSidebarVisible={setSidebarVisible}
         desktopSidebarCollapsed={desktopSidebarCollapsed}
         setDesktopSidebarCollapsed={setDesktopSidebarCollapsed}
-        onLessonClick={(lesson) => navigate(`/lessons/${lesson.id}`)}
+        onLessonClick={(lesson) => navigate(`/lessons/${lesson.lessonNumber}`)}
       />
     </Layout>
   );

@@ -4,6 +4,7 @@ import { LogoutOutlined, SunOutlined, MoonOutlined } from "@ant-design/icons";
 import { useAppSelector, useAppDispatch } from "../store/hooks";
 import { toggleDarkMode } from "../store/slices/uiSlice";
 import { logoutUser } from "../store/slices/userSlice";
+import { APP_HEADER_HEIGHT_PX } from "../constants/layout";
 
 const { Header: AntHeader } = Layout;
 
@@ -21,20 +22,30 @@ const Header: React.FC = () => {
 
   return (
     <AntHeader
-      className="bg-white dark:bg-secondary-925 shadow-sm border-b border-gray-200 dark:border-gray-700 px-6 flex items-center justify-center border-l-0"
+      className="app-header bg-white dark:bg-secondary-925 shadow-sm border-b border-gray-200 dark:border-gray-700 flex items-center justify-start border-l-0"
       style={{
-        padding: '0 24px',
-        position: 'sticky',
+        padding: "0 12px",
+        height: APP_HEADER_HEIGHT_PX,
+        position: "fixed",
         top: 0,
-        zIndex: 50
+        left: 0,
+        right: 0,
+        zIndex: 50,
       }}
     >
-      <div className="flex items-center justify-between w-full max-w-7xl">
-        <div
-          className="text-lg font-semibold text-secondary-900 dark:text-secondary-100"
-          style={{ fontFamily: "\"Caveat\", cursive" }}
-        >
-          Nihon Nào!
+      <div className="flex items-center justify-between w-full">
+        <div className="flex items-center gap-3">
+          <img
+            src="/Logo.svg"
+            alt="Nihon Nào!"
+            className="w-9 h-9 select-none"
+            draggable={false}
+          />
+          <div
+            className="text-lg font-semibold text-secondary-900 dark:text-secondary-100"
+          >
+            Nihon Nào!
+          </div>
         </div>
 
         <div className="flex items-center space-x-4">

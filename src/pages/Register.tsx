@@ -118,7 +118,7 @@ const Register: React.FC = () => {
   };
 
   return (
-    <div className={`min-h-screen bg-secondary-50 dark:bg-secondary-950 transition-all duration-500 ${isLoaded ? 'opacity-100' : 'opacity-0'}`}>
+    <div className={`academic-canvas app-surface min-h-screen transition-all duration-500 ${isLoaded ? 'opacity-100' : 'opacity-0'}`}>
       {/* Header */}
       <header className="absolute top-0 left-0 right-0 z-20 p-3 sm:p-4">
         <div className="max-w-7xl mx-auto flex justify-between items-center">

@@ -1,10 +1,12 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import type { FontPresetKey } from "../../constants/fonts";
 
 interface UiState {
   darkMode: boolean;
   sidebarOpen: boolean;
   drawerOpen: boolean;
   isMobile: boolean;
+  fontPreset: FontPresetKey;
   currentView:
     | "dashboard"
     | "lessons"
@@ -29,11 +31,27 @@ interface Notification {
 
 const getInitialState = (): UiState => {
   const savedDarkMode = localStorage.getItem('darkMode');
+  const savedFontPresetRaw = localStorage.getItem("fontPreset") as
+    | FontPresetKey
+    | "noto_sans_jp"
+    | "ud_digi_kyokasho"
+    | "comfortaa"
+    | "default"
+    | null;
+  const savedFontPreset =
+    savedFontPresetRaw && savedFontPresetRaw !== "default"
+      ? (savedFontPresetRaw === "ud_digi_kyokasho"
+          ? "noto_serif_jp"
+          : savedFontPresetRaw === "comfortaa"
+            ? "rocknroll_one"
+            : savedFontPresetRaw) as FontPresetKey
+      : ("noto_serif_jp" as FontPresetKey);
   return {
     darkMode: savedDarkMode === 'true',
     sidebarOpen: false,
     drawerOpen: false,
     isMobile: false,
+    fontPreset: savedFontPreset,
     currentView: "dashboard",
     notifications: [],
     loadingStates: {},
@@ -71,6 +89,10 @@ const uiSlice = createSlice({
     },
     setMobile: (state, action: PayloadAction<boolean>) => {
       state.isMobile = action.payload;
+    },
+    setFontPreset: (state, action: PayloadAction<FontPresetKey>) => {
+      state.fontPreset = action.payload;
+      localStorage.setItem("fontPreset", state.fontPreset);
     },
     setCurrentView: (state, action: PayloadAction<UiState["currentView"]>) => {
       state.currentView = action.payload;
@@ -127,6 +149,7 @@ export const {
   openDrawer,
   closeDrawer,
   setMobile,
+  setFontPreset,
   setCurrentView,
   addNotification,
   removeNotification,

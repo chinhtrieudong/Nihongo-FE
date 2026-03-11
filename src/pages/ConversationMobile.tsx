@@ -397,7 +397,7 @@ const ConversationMobile: React.FC = () => {
   );
 
   return (
-    <div className="min-h-full bg-secondary-50 dark:bg-secondary-950">
+    <div className="min-h-full">
       {/* Header */}
       <div className="sticky top-0 z-20 bg-white dark:bg-secondary-900 px-4 py-3 border-b border-gray-100 dark:border-gray-800">
         <Row justify="space-between" align="middle">
@@ -426,7 +426,7 @@ const ConversationMobile: React.FC = () => {
       </div>
 
       {/* Page Title */}
-      <div className="px-4 py-6 bg-secondary-50 dark:bg-secondary-950">
+      <div className="px-4 py-6">
         <Title level={2} className="!mb-2 !text-gray-900 dark:!text-gray-100 text-2xl font-bold">
           Bài học hội thoại
         </Title>

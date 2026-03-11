@@ -1,0 +1,40 @@
+/* Academic Grid Background Styles
+   Uses a pseudo-element so the grid can sit behind content without being overridden by utility bg-* classes. */
+.academic-canvas {
+  position: relative;
+  z-index: 0; /* create stacking context */
+  isolation: isolate;
+  /* Light theme: white grid lines on a soft light-blue paper */
+  --academic-grid-bg: rgba(219, 234, 254, 0.55);
+  --academic-grid-line: rgba(255, 255, 255, 0.85);
+}
+
+.dark .academic-canvas {
+  /* Dark theme: slightly tinted blue surface with subtle white grid */
+  --academic-grid-bg: rgba(30, 58, 138, 0.18);
+  --academic-grid-line: rgba(255, 255, 255, 0.16);
+}
+
+.dark .academic-canvas::before {
+  display: none;
+}
+
+.academic-canvas::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  /* Match whatever bg-* utility set on the content container (or allow override). */
+  background-color: var(--academic-grid-bg, inherit);
+  background-image:
+    linear-gradient(var(--academic-grid-line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--academic-grid-line) 1px, transparent 1px);
+  background-size: 16px 16px;
+  background-attachment: fixed;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.academic-canvas > * {
+  position: relative;
+  z-index: 1;
+}

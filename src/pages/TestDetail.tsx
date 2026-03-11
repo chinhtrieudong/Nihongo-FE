@@ -517,7 +517,7 @@ const TestDetail: React.FC = () => {
     const progress = totalQuestions > 0 ? (answeredQuestions / totalQuestions) * 100 : 0;
 
     return (
-        <div className="p-6 max-w-7xl mx-auto bg-secondary-50 dark:bg-secondary-950 min-h-full">
+        <div className="p-6 max-w-7xl mx-auto min-h-full">
             {/* Instructions Modal */}
             <Modal
                 title="Hướng dẫn bài thi"

@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { Card, Button, Input, Typography, Space, Progress, Tag, message } from 'antd';
 import { SoundOutlined, BulbOutlined, CheckCircleOutlined, CloseCircleOutlined } from '@ant-design/icons';
-import { DictationExercise } from '../../services/conversationLessonAPI';
+import { DialogueLine, DictationExercise } from '../../services/conversationLessonAPI';
 import { getNanamiNaturalVoice } from '../../utils/vocabularyUtils';
 
 const { Text, Title } = Typography;
@@ -9,12 +9,14 @@ const { TextArea } = Input;
 
 interface DictationExerciseProps {
     exercises: DictationExercise[];
+    dialogue?: DialogueLine[];
     onSubmit: (answers: string[]) => void;
     onProgress: (current: number, total: number) => void;
 }
 
 const DictationExerciseComponent: React.FC<DictationExerciseProps> = ({
     exercises,
+    dialogue,
     onSubmit,
     onProgress
 }) => {
@@ -33,16 +35,65 @@ const DictationExerciseComponent: React.FC<DictationExerciseProps> = ({
     const currentExercise = exercises[currentExerciseIndex];
     const progress = ((currentExerciseIndex + 1) / exercises.length) * 100;
 
+    const normalizeJaForCompare = (value: string) => {
+        // Normalize width/compatibility forms (e.g. full-width punctuation), then remove spaces/newlines.
+        const normalized = value.normalize("NFKC");
+        const noWhitespace = normalized.replace(/\s+/g, "");
+        // Ignore common Japanese/Vietnamese sentence-ending punctuation differences.
+        return noWhitespace.replace(/[。．\.！!？?、,，]+$/g, "");
+    };
+
     useEffect(() => {
         onProgress(currentExerciseIndex + 1, exercises.length);
         setUserInput('');
         setShowHint(false);
         setStartTime(Date.now());
-    }, [currentExerciseIndex]);
+
+        // Stop any ongoing playback when moving between questions
+        if ('speechSynthesis' in window) {
+            window.speechSynthesis.cancel();
+        }
+        if (audioRef.current) {
+            audioRef.current.pause();
+            audioRef.current.currentTime = 0;
+            audioRef.current = null;
+        }
+        setIsPlaying(false);
+    }, [currentExerciseIndex, exercises.length, onProgress]);
 
     useEffect(() => {
         inputRef.current?.focus();
     }, []);
+
+    useEffect(() => {
+        return () => {
+            if ('speechSynthesis' in window) {
+                window.speechSynthesis.cancel();
+            }
+            if (audioRef.current) {
+                audioRef.current.pause();
+                audioRef.current.currentTime = 0;
+                audioRef.current = null;
+            }
+        };
+    }, []);
+
+    const getDialogueLine = (exercise: DictationExercise) => {
+        if (!dialogue || dialogue.length === 0) return undefined;
+        return dialogue.find((line) => line.line_id === exercise.line_id);
+    };
+
+    const buildCompleteSentence = (exercise: DictationExercise) => {
+        const text = exercise.text_with_blank || '';
+        const answer = exercise.answer || '';
+
+        // Replace common blank placeholders (___, ____, ＿＿＿, etc.)
+        const replaced = text.replace(/_{2,}|＿{2,}/g, answer);
+        if (replaced !== text) return replaced;
+
+        // Fallback for legacy placeholder
+        return text.replace('___', answer);
+    };
 
     const playAudio = async () => {
         if (!currentExercise) return;
@@ -60,9 +111,29 @@ const DictationExerciseComponent: React.FC<DictationExerciseProps> = ({
                 audioRef.current.pause();
             }
 
-            // Try to use provided audio URL first, fallback to TTS
-            // For now, always use TTS since DictationExercise doesn't have audio_url
-            await playTTSAudio();
+            // Prefer original dialogue audio/text when available (line_id mapping)
+            const linkedLine = getDialogueLine(currentExercise);
+            if (linkedLine?.audio_url) {
+                const audio = new Audio(linkedLine.audio_url);
+                audioRef.current = audio;
+                audio.playbackRate = 0.9;
+                audio.onended = () => {
+                    setIsPlaying(false);
+                    audioRef.current = null;
+                };
+                audio.onerror = () => {
+                    setIsPlaying(false);
+                    audioRef.current = null;
+                    // Fallback to TTS
+                    playTTSAudio(linkedLine.text_jp || buildCompleteSentence(currentExercise)).catch(() => null);
+                };
+
+                await audio.play();
+                return;
+            }
+
+            const ttsText = linkedLine?.text_jp || buildCompleteSentence(currentExercise);
+            await playTTSAudio(ttsText);
         } catch (error) {
             console.error('Error playing audio:', error);
             setIsPlaying(false);
@@ -70,9 +141,7 @@ const DictationExerciseComponent: React.FC<DictationExerciseProps> = ({
         }
     };
 
-    const playTTSAudio = async () => {
-        if (!currentExercise) return;
-
+    const playTTSAudio = async (textToSpeak: string) => {
         return new Promise<void>((resolve, reject) => {
             // Check if browser supports speech synthesis
             if (!('speechSynthesis' in window)) {
@@ -80,9 +149,7 @@ const DictationExerciseComponent: React.FC<DictationExerciseProps> = ({
                 return;
             }
 
-            // Speak the complete sentence with the answer filled in
-            const completeSentence = currentExercise.text_with_blank.replace('___', currentExercise.answer);
-            const utterance = new SpeechSynthesisUtterance(completeSentence);
+            const utterance = new SpeechSynthesisUtterance(textToSpeak);
 
             // Configure for Japanese
             utterance.lang = 'ja-JP';
@@ -119,7 +186,7 @@ const DictationExerciseComponent: React.FC<DictationExerciseProps> = ({
                 reject(new Error('TTS error: ' + event.error));
             };
 
-            console.log('Speaking complete sentence:', completeSentence);
+            console.log('Speaking dictation sentence:', textToSpeak);
             window.speechSynthesis.speak(utterance);
         });
     };
@@ -127,7 +194,9 @@ const DictationExerciseComponent: React.FC<DictationExerciseProps> = ({
     const checkAnswer = () => {
         if (!currentExercise || !userInput.trim()) return;
 
-        const isCorrect = userInput.trim().toLowerCase() === currentExercise.answer.toLowerCase();
+        const userNormalized = normalizeJaForCompare(userInput.trim());
+        const answerNormalized = normalizeJaForCompare(currentExercise.answer);
+        const isCorrect = userNormalized === answerNormalized;
         const newAnswers = [...answers];
         const newResults = [...results];
 
@@ -173,27 +242,6 @@ const DictationExerciseComponent: React.FC<DictationExerciseProps> = ({
         return Math.max(0, Math.round(100 - totalTime));
     };
 
-    if (isCompleted) {
-        return (
-            <Card className="text-center py-8">
-                <div className="space-y-4">
-                    <CheckCircleOutlined className="text-6xl text-green-500" />
-                    <Title level={3}>Hoàn thành! 🎉</Title>
-                    <div className="space-y-2">
-                        <Text className="text-lg">Độ chính xác: {getAccuracy()}%</Text>
-                        <Text className="text-lg">Thời gian: {getTimeBonus()} điểm</Text>
-                        <Text className="text-xl font-bold text-blue-600">
-                            Tổng điểm: {getAccuracy() + getTimeBonus()}
-                        </Text>
-                    </div>
-                    <Button type="primary" size="large" onClick={() => onSubmit(answers)}>
-                        Tiếp tục
-                    </Button>
-                </div>
-            </Card>
-        );
-    }
-
     if (!currentExercise) {
         return (
             <Card className="text-center py-8">
@@ -227,6 +275,7 @@ const DictationExerciseComponent: React.FC<DictationExerciseProps> = ({
                         icon={<SoundOutlined />}
                         onClick={playAudio}
                         loading={isPlaying}
+                        disabled={isCompleted}
                         className="mb-4"
                     >
                         {isPlaying ? 'Đang phát...' : 'Nghe câu'}
@@ -255,6 +304,7 @@ const DictationExerciseComponent: React.FC<DictationExerciseProps> = ({
                             placeholder="Nhập câu hoàn chỉnh..."
                             className="text-lg"
                             rows={3}
+                            disabled={isCompleted}
                             style={{
                                 borderColor: results[currentExerciseIndex] === false ? '#ff4d4f' : undefined
                             }}
@@ -310,7 +360,7 @@ const DictationExerciseComponent: React.FC<DictationExerciseProps> = ({
                             <Button
                                 type="primary"
                                 onClick={checkAnswer}
-                                disabled={!userInput.trim()}
+                                disabled={!userInput.trim() || isCompleted}
                             >
                                 Kiểm tra
                             </Button>

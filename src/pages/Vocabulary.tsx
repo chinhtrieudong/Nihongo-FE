@@ -2,10 +2,8 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { lessonAPI } from "../services/api";
 import type { VocabularyItem } from "../types/lesson";
-import { Typography } from "antd";
 import { BookOutlined } from "@ant-design/icons";
-
-const { Title } = Typography;
+import PageTitle from "../components/PageTitle";
 
 // Updated interface to match backend kanji structure
 interface KanjiItem {
@@ -83,37 +81,35 @@ const Kanji: React.FC = () => {
   }
 
   return (
-    <div className="min-h-full bg-secondary-50 dark:bg-secondary-950 p-6">
+    <div className="min-h-full p-6">
       <div className="max-w-7xl mx-auto space-y-6">
-        <div className="flex items-center justify-between">
-          <div>
-            <Title level={2} className="!mb-2 text-secondary-900 dark:text-secondary-100">
-              <BookOutlined className="mr-2 text-secondary-700 dark:text-secondary-400" />
-              Từ vựng
-            </Title>
-            <p className="text-secondary-600 dark:text-secondary-400">Học từ vựng theo giáo trình Minna no Nihongo</p>
-          </div>
-          <div className="flex gap-4">
-            <select
-              value={selectedLevel}
-              onChange={(e) => setSelectedLevel(e.target.value)}
-              className="px-4 py-2 border border-secondary-300 dark:border-secondary-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 bg-white dark:bg-secondary-800 text-secondary-900 dark:text-secondary-100"
-            >
-              <option value="all">Tất cả</option>
-              <option value="N5">N5</option>
-              <option value="N4">N4</option>
-              <option value="N3">N3</option>
-              <option value="N2">N2</option>
-              <option value="N1">N1</option>
-            </select>
-            <button
-              onClick={() => navigate('/lessons')}
-              className="px-4 py-2 bg-primary-600 hover:bg-primary-700 text-white rounded-lg transition-colors"
-            >
-              📚 Bài học
-            </button>
-          </div>
-        </div>
+        <PageTitle
+          title="Từ vựng"
+          subtitle="Học từ vựng theo giáo trình Minna no Nihongo"
+          icon={<BookOutlined className="text-secondary-700 dark:text-secondary-400" />}
+          extra={
+            <>
+              <select
+                value={selectedLevel}
+                onChange={(e) => setSelectedLevel(e.target.value)}
+                className="px-4 py-2 border border-secondary-300 dark:border-secondary-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 bg-white dark:bg-secondary-800 text-secondary-900 dark:text-secondary-100"
+              >
+                <option value="all">Tất cả</option>
+                <option value="N5">N5</option>
+                <option value="N4">N4</option>
+                <option value="N3">N3</option>
+                <option value="N2">N2</option>
+                <option value="N1">N1</option>
+              </select>
+              <button
+                onClick={() => navigate('/lessons')}
+                className="px-4 py-2 bg-primary-600 hover:bg-primary-700 text-white rounded-lg transition-colors"
+              >
+                📚 Bài học
+              </button>
+            </>
+          }
+        />
 
         {/* Search */}
         <div className="bg-white dark:bg-secondary-800 rounded-lg shadow-sm border border-secondary-200 dark:border-secondary-700 p-4">

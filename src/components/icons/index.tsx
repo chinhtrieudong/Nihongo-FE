@@ -3,3 +3,4 @@ export { default as KanjitreeIcon } from "./KanjitreeIcon";
 export { default as InfinitejapaneseIcon } from "./InfinitejapaneseIcon";
 export { default as WriteJapaneseIcon } from "./WriteJapaneseIcon";
 export { default as FlashcardsIcon } from "./FlashcardsIcon";
+export { default as KanjiPageIcon } from "./KanjiPageIcon";

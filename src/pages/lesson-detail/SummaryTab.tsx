@@ -27,7 +27,7 @@ const SummaryTab: React.FC<SummaryTabProps> = ({ vocabularies, grammars }) => {
                   <div className="flex justify-between items-center">
                     <div>
                       <Text strong>{vocab.kanji}</Text>
-                      <Text type="secondary" className="ml-2">
+                      <Text className="ml-2 !text-secondary-700 dark:!text-secondary-400">
                         ({vocab.hiragana})
                       </Text>
                     </div>

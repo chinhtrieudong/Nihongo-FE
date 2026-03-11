@@ -62,7 +62,7 @@ const LessonNavigation: React.FC<LessonNavigationProps> = ({
                         <button
                             key={tab.id}
                             onClick={() => setActiveTab(tab.id)}
-                            className={`flex items-center gap-2 px-6 py-4 font-medium transition-all duration-200 whitespace-nowrap flex-shrink-0 ${activeTab === tab.id
+                            className={`flex items-center gap-2 px-3 py-2 font-medium transition-all duration-200 whitespace-nowrap flex-shrink-0 ${activeTab === tab.id
                                 ? 'text-primary-600 dark:text-primary-400 border-b-2 border-primary-600 dark:border-primary-400 bg-primary-50 dark:bg-primary-900/20'
                                 : 'text-secondary-600 dark:text-secondary-400 hover:text-secondary-900 dark:hover:text-secondary-200 hover:bg-secondary-50 dark:hover:bg-secondary-800'
                                 }`}
