@@ -222,7 +222,7 @@ class ConversationAPI {
     this.token = token || localStorage.getItem("accessToken");
 
     this.client = axios.create({
-      baseURL: `${process.env.REACT_APP_API_URL || "http://localhost:5000/api/v1"}/conversation`,
+      baseURL: `${import.meta.env.VITE_API_URL || "http://localhost:5000/api/v1"}/conversation`,
       timeout: 30000,
     });
 

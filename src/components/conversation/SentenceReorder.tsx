@@ -134,13 +134,6 @@ const SentenceReorder: React.FC<SentenceReorderProps> = ({
         setShowResult(false);
     };
 
-    const getScore = () => {
-        const correct = answers.filter((answer, index) =>
-            answer === exercises[index]?.correct
-        ).length;
-        return Math.round((correct / exercises.length) * 100);
-    };
-
     if (!currentExercise) {
         return (
             <Card className="text-center py-8">

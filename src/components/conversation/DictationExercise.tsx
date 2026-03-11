@@ -4,7 +4,7 @@ import { SoundOutlined, BulbOutlined, CheckCircleOutlined, CloseCircleOutlined }
 import { DialogueLine, DictationExercise } from '../../services/conversationLessonAPI';
 import { getNanamiNaturalVoice } from '../../utils/vocabularyUtils';
 
-const { Text, Title } = Typography;
+const { Text } = Typography;
 const { TextArea } = Input;
 
 interface DictationExerciseProps {
@@ -159,10 +159,6 @@ const DictationExerciseComponent: React.FC<DictationExerciseProps> = ({
 
             // Try to get Japanese voice (prefer Natural if available)
             const voices = window.speechSynthesis.getVoices();
-            const japaneseVoices = voices.filter(voice =>
-                voice.lang.startsWith('ja') || voice.name.includes('Japanese')
-            );
-
             // CHỈ sử dụng Microsoft Nanami Online (Natural)
             const nanamiNatural = getNanamiNaturalVoice();
             const preferredJapanese = nanamiNatural;
@@ -230,16 +226,6 @@ const DictationExerciseComponent: React.FC<DictationExerciseProps> = ({
 
     const showHintHandler = () => {
         setShowHint(true);
-    };
-
-    const getAccuracy = () => {
-        const correct = results.filter(r => r).length;
-        return Math.round((correct / results.length) * 100);
-    };
-
-    const getTimeBonus = () => {
-        const totalTime = (Date.now() - startTime) / 1000;
-        return Math.max(0, Math.round(100 - totalTime));
     };
 
     if (!currentExercise) {

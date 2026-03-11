@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, Card, Row, Col, Typography } from 'antd';
+import { Card, Row, Col, Typography } from 'antd';
 import {
   MenuOutlined,
   BookOutlined,

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
 import { lessonAPI } from "../services/api";
-import { SoundOutlined, ArrowLeftOutlined, PauseCircleOutlined, PlayCircleOutlined, ReloadOutlined } from "@ant-design/icons";
+import { SoundOutlined, ArrowLeftOutlined } from "@ant-design/icons";
 import { Card, Button, Row, Col } from "antd";
 
 // Utility functions to transform backend data
@@ -21,23 +21,6 @@ const getSimpleWords = (kanjiData: KanjiData) =>
     exampleVi: v.example_vi,
     audio_url: v.audio_url,
   }));
-
-const getJLPTColor = (level: string) => {
-  switch (level) {
-    case "N5":
-      return "green";
-    case "N4":
-      return "blue";
-    case "N3":
-      return "orange";
-    case "N2":
-      return "red";
-    case "N1":
-      return "purple";
-    default:
-      return "default";
-  }
-};
 
 // Backend response interfaces
 interface OnyomiReading {

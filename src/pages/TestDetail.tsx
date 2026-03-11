@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from "react";
+import React, { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import {
     Card,
@@ -15,11 +15,9 @@ import {
     Col,
     Tag,
     Drawer,
-    List,
     Badge,
     Tooltip,
-    Alert,
-    Affix
+    Alert
 } from "antd";
 import {
     ClockCircleOutlined,
@@ -28,7 +26,6 @@ import {
     CheckCircleOutlined,
     PlayCircleOutlined,
     ArrowLeftOutlined,
-    PauseCircleOutlined,
     StopOutlined,
     BookOutlined,
     FlagOutlined,
@@ -36,8 +33,7 @@ import {
     QuestionCircleOutlined,
     FullscreenOutlined,
     CompressOutlined,
-    SoundOutlined,
-    FileTextOutlined
+    SoundOutlined
 } from "@ant-design/icons";
 import { jlptTests, type Test, type TestSection } from "../data/jlptTests";
 import { sampleQuestions, type Question } from "../data/sampleQuestions";
@@ -70,7 +66,6 @@ const TestDetail: React.FC = () => {
     const [answers, setAnswers] = useState<Record<string, string | number>>({});
     const [timeRemaining, setTimeRemaining] = useState(0);
     const [isTestActive, setIsTestActive] = useState(false);
-    const [showConfirmModal, setShowConfirmModal] = useState(false);
     const [showSubmitModal, setShowSubmitModal] = useState(false);
     const [showInstructionsModal, setShowInstructionsModal] = useState(true);
     const [showQuestionOverview, setShowQuestionOverview] = useState(false);

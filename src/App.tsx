@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { Provider } from "react-redux";
 import { ConfigProvider, theme, App as AntdApp } from "antd";
@@ -29,126 +29,12 @@ import AdminDashboard from "./pages/AdminDataManager";
 import { AuthProvider, useAuth } from "./contexts/AuthContext";
 import AdminRoute from "./components/AdminRoute";
 import AdminLayout from "./components/AdminLayout";
-import {
-  getAvailableQualityPresets,
-  setQualityPreset,
-  getQualityPreset,
-} from "./services/voicevoxService";
 import "./App.css";
 import "./styles/academic-grid.css";
-
-// Log available voices to console
-const logAvailableVoices = () => {
-  const synth = window.speechSynthesis;
-
-  // Load voices asynchronously
-  const voices = synth.getVoices();
-
-  if (voices.length === 0) {
-    // Some browsers load voices asynchronously
-    synth.onvoiceschanged = () => {
-      const loadedVoices = synth.getVoices();
-      displayVoices(loadedVoices);
-    };
-  } else {
-    displayVoices(voices);
-  }
-};
-
-const displayVoices = (voices: SpeechSynthesisVoice[]) => {
-  console.log(
-    "%c🎤 Available Voices & Quality Settings",
-    "color: #1890ff; font-size: 16px; font-weight: bold",
-  );
-  console.log("════════════════════════════════════════════════════");
-
-  // Get all voices
-  console.log(
-    "%c📢 All Available Voices:",
-    "color: #faad14; font-weight: bold",
-  );
-  voices.forEach((voice, index) => {
-    const tag = voice.default ? "🌟" : "  ";
-    console.log(
-      `  ${tag} [${index}] ${voice.name.padEnd(35)} | ${voice.lang} ${voice.default ? "(default)" : ""}`,
-    );
-  });
-
-  // Get Japanese voices only
-  const japaneseVoices = voices.filter((v) => v.lang.startsWith("ja"));
-  console.log(
-    "%c🇯🇵 Japanese Voices Only:",
-    "color: #52c41a; font-weight: bold",
-  );
-
-  if (japaneseVoices.length === 0) {
-    console.warn("❌ No Japanese voices found!");
-  } else {
-    japaneseVoices.forEach((voice) => {
-      const voiceIndex = voices.indexOf(voice);
-      const tag = voice.default ? "🌟" : "  ";
-      console.log(
-        `  ${tag} [${voiceIndex}] ${voice.name.padEnd(35)} | ${voice.lang}`,
-      );
-    });
-  }
-
-  // Voice quality presets
-  const presets = getAvailableQualityPresets();
-  const currentPreset = getQualityPreset();
-  console.log(
-    "%c🎧 Voice Quality Presets:",
-    "color: #13c2c2; font-weight: bold",
-  );
-  console.log(
-    `  Current: ${currentPreset === "CLEAR" ? "✨" : "  "} ${currentPreset}`,
-  );
-  presets.forEach((preset) => {
-    const marker = preset === currentPreset ? "✨" : "  ";
-    console.log(`  ${marker} ${preset}`);
-  });
-
-  // Usage examples
-  console.log("%c💡 Usage Examples:", "color: #eb2f96; font-weight: bold");
-  console.log(`
-// 🎤 TO SPEAK TEXT:
-import { speakWithVoicevox } from './services/voicevoxService';
-speakWithVoicevox('こんにちは', 3); // Replace 3 with voice index
-
-// 🎯 TO SPEAK WITH VOICE NAME:
-import { speakWithVoiceName } from './services/voicevoxService';
-speakWithVoiceName('こんにちは', 'Ayumi');
-
-// 🎧 TO CHANGE VOICE QUALITY:
-import { setQualityPreset } from './services/voicevoxService';
-setQualityPreset('CLEAR');     // Clearer pronunciation
-setQualityPreset('NATURAL');   // Natural sounding
-setQualityPreset('FAST');      // Faster delivery
-setQualityPreset('NORMAL');    // Standard settings
-
-// 📊 TO GET ALL SPEAKERS:
-import { getAvailableSpeakers } from './services/voicevoxService';
-getAvailableSpeakers().then(speakers => {
-  console.table(speakers);
-});
-
-// 📋 TO GET ALL VOICES:
-import { getAllAvailableVoices } from './services/voicevoxService';
-const allVoices = getAllAvailableVoices();
-console.table(allVoices);
-  `);
-
-  console.log("════════════════════════════════════════════════════");
-};
 
 // Component to handle app with authentication
 const AppContent: React.FC = () => {
   const { isLoading, isInitialized } = useAuth();
-
-  // Note: Call logAvailableVoices() in console if needed
-  useEffect(() => {
-    // Removed automatic logging to keep console clean
-  }, []);
 
   // Show loading screen while auth is initializing
   if (!isInitialized || isLoading) {

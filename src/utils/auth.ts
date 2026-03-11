@@ -1,7 +1,5 @@
 import { store } from '../store';
 import { loginSuccess, loginStart, loginFailure } from '../store/slices/userSlice';
-import { authAPI } from '../services/api';
-
 // Check for existing tokens on app initialization
 export const initializeAuth = async () => {
   

@@ -160,7 +160,6 @@ export const speakWithVoicevox = async (
       }
     }, 30000);
 
-    const originalOnEnd = speechUtterance.onend;
     speechUtterance.onend = () => {
       clearTimeout(timeout);
       isSpeaking = false;

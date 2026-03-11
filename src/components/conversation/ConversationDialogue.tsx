@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { Card, Button, Typography, Space, Slider, Switch, Tag, Avatar, message } from 'antd';
+import { Card, Button, Typography, Slider, Switch, Tag, Avatar, message } from 'antd';
 import {
     PlayCircleOutlined,
     PauseCircleOutlined,
@@ -10,7 +10,7 @@ import {
 import { DialogueLine } from '../../services/conversationLessonAPI';
 import { getNanamiNaturalVoice } from '../../utils/vocabularyUtils';
 
-const { Text, Title } = Typography;
+const { Text } = Typography;
 
 interface ConversationDialogueProps {
     dialogue: DialogueLine[];
@@ -46,7 +46,6 @@ const ConversationDialogue: React.FC<ConversationDialogueProps> = ({
 
     const [nextLineToPlay, setNextLineToPlay] = useState<number | null>(null);
 
-    const currentLine = dialogue[currentLineIndex];
     // Call onProgress only when currentLineIndex changes
     useEffect(() => {
         if (onProgress) {
@@ -262,14 +261,6 @@ const ConversationDialogue: React.FC<ConversationDialogueProps> = ({
                 utterance.volume = 1.0;
 
                 const lowerSpeaker = (speaker || '').toLowerCase();
-                const femaleKeywords = ['nanami online (natural)', 'nanami', 'haruka', 'sayaka', 'ayumi', 'female'];
-                const maleKeywords = ['keita online (natural)', 'keita', 'ichiro', 'male'];
-
-                const byName = (keys: string[]) =>
-                    preferredVoices.find(voice =>
-                        keys.some(k => voice.name.toLowerCase().includes(k))
-                    );
-
                 // Ưu tiên Microsoft Nanami Online (Natural) cho giọng nữ
                 const microsoftNanami = getNanamiNaturalVoice();
                 const femaleVoice = microsoftNanami;
@@ -395,24 +386,6 @@ const ConversationDialogue: React.FC<ConversationDialogueProps> = ({
             isStartingAllRef.current = false;
         } else {
             playCurrentLine();
-        }
-    };
-
-    const goToPreviousLine = () => {
-        if (currentLineIndex > 0) {
-            setCurrentLineIndex(prev => prev - 1);
-            if (onLineChange) {
-                onLineChange(currentLineIndex - 1);
-            }
-        }
-    };
-
-    const goToNextLine = () => {
-        if (currentLineIndex < dialogue.length - 1) {
-            setCurrentLineIndex(prev => prev + 1);
-            if (onLineChange) {
-                onLineChange(currentLineIndex + 1);
-            }
         }
     };
 

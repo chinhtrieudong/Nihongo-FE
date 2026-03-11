@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { Button, Typography, Tabs, Row, Col, Card, message } from "antd";
+import { Typography, Tabs, Row, Col, Card, message } from "antd";
 import {
   PlayCircleOutlined,
   TrophyOutlined,
@@ -34,10 +34,6 @@ const Tests: React.FC = () => {
   const [showStartModal, setShowStartModal] = useState<boolean>(false);
   const navigate = useNavigate();
 
-  const filteredTests = selectedLevel === "all"
-    ? jlptTests
-    : jlptTests.filter(test => test.level === selectedLevel);
-
   const completedTests = jlptTests.filter(test => test.completed);
   const availableTests = jlptTests.filter(test => !test.completed);
 
@@ -46,19 +42,6 @@ const Tests: React.FC = () => {
   const averageScore = totalTestsCompleted > 0
     ? Math.round(completedTests.reduce((acc, test) => acc + (test.score || 0), 0) / totalTestsCompleted)
     : 0;
-  // Get recent test attempts from localStorage
-  const getRecentAttempts = (): TestAttempt[] => {
-    const attempts: TestAttempt[] = [];
-    for (let i = 0; i < localStorage.length; i++) {
-      const key = localStorage.key(i);
-      if (key && key.startsWith('attempt_')) {
-        const attempt = JSON.parse(localStorage.getItem(key) || '{}');
-        attempts.push(attempt);
-      }
-    }
-    return attempts.sort((a, b) => new Date(b.startTime).getTime() - new Date(a.startTime).getTime()).slice(0, 10);
-  };
-
   const getDifficultyColor = (difficulty: string) => {
     switch (difficulty) {
       case "Beginner": return "green";

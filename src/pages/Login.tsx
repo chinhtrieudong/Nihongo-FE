@@ -6,7 +6,7 @@ import { toggleDarkMode } from "../store/slices/uiSlice";
 import { authAPI } from "../services/api";
 import { Switch, Checkbox, Divider } from "antd";
 import type { CheckboxChangeEvent } from "antd/es/checkbox";
-import { SunOutlined, MoonOutlined, MailOutlined, LockOutlined, EyeOutlined, EyeInvisibleOutlined, GoogleOutlined, AppleOutlined, FacebookOutlined } from "@ant-design/icons";
+import { SunOutlined, MoonOutlined, MailOutlined, LockOutlined, EyeOutlined, EyeInvisibleOutlined, GoogleOutlined, FacebookOutlined } from "@ant-design/icons";
 
 interface LoginFormData {
   email: string;

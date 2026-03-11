@@ -25,7 +25,6 @@ const ListeningMCQ: React.FC<ListeningMCQProps> = ({
     const [answers, setAnswers] = useState<number[]>([]);
     const [isPlaying, setIsPlaying] = useState(false);
     const [isPlayingAll, setIsPlayingAll] = useState(false);
-    const [isCompleted, setIsCompleted] = useState(false);
     const submittedOnceRef = useRef(false);
 
     const audioRef = useRef<HTMLAudioElement | null>(null);
@@ -208,7 +207,6 @@ const ListeningMCQ: React.FC<ListeningMCQProps> = ({
             if (currentExerciseIndex < exercises.length - 1) {
                 setCurrentExerciseIndex(currentExerciseIndex + 1);
             } else {
-                setIsCompleted(true);
                 if (!submittedOnceRef.current) {
                     submittedOnceRef.current = true;
                     onSubmit(newAnswers);
@@ -216,13 +214,6 @@ const ListeningMCQ: React.FC<ListeningMCQProps> = ({
             }
         }, 3000);
     }, [selectedAnswer, currentExercise, answers, currentExerciseIndex, exercises.length, onSubmit]);
-
-    const getScore = useCallback(() => {
-        const correct = answers.filter((answer, index) =>
-            answer === exercises[index]?.correct_index
-        ).length;
-        return Math.round((correct / exercises.length) * 100);
-    }, [answers, exercises]);
 
     const handlePrevious = useCallback(() => {
         if (currentExerciseIndex > 0) {

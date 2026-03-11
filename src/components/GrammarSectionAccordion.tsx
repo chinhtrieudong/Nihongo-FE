@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Collapse, Typography, Tag, Badge, Divider, Space, Button } from 'antd';
+import { Collapse, Typography, Tag } from 'antd';
 import { CaretRightOutlined, BookOutlined, BulbOutlined, MessageOutlined, SwapOutlined, TranslationOutlined, CheckCircleOutlined, ClockCircleOutlined, MinusCircleOutlined, FireOutlined, StarOutlined } from '@ant-design/icons';
 
 const { Title, Text, Paragraph } = Typography;
@@ -99,24 +99,6 @@ const GrammarSectionAccordion: React.FC<GrammarSectionAccordionProps> = ({ secti
           ),
           color: 'default'
         };
-    }
-  };
-
-  const getFrequencyLabel = (frequency?: number) => {
-    if (!frequency && frequency !== 0) return null;
-    if (frequency >= 7) return { label: 'Hay ra đề', color: 'purple' };
-    if (frequency >= 4) return { label: 'Có thể ra', color: 'blue' };
-    return { label: 'Ít gặp', color: 'default' };
-  };
-
-  const getPrimaryActionLabel = (status?: 'not_started' | 'in_progress' | 'completed') => {
-    switch (status) {
-      case 'completed':
-        return 'Ôn';
-      case 'in_progress':
-        return 'Tiếp tục';
-      default:
-        return 'Học';
     }
   };
 

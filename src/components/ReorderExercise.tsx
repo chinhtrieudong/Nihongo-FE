@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Exercise } from '../types/lesson';
 
 interface ReorderExerciseProps {
@@ -10,7 +10,13 @@ interface ReorderExerciseProps {
   exerciseId: string;
 }
 
-const ReorderExercise: React.FC<ReorderExerciseProps> = ({ exercise, setAnswer, onAnswerSelect, answerStatus, exerciseAnswers, exerciseId }) => {
+const ReorderExercise: React.FC<ReorderExerciseProps> = ({
+  exercise,
+  setAnswer,
+  answerStatus,
+  exerciseAnswers,
+  exerciseId,
+}) => {
   // Parse words from options array (for reorder exercises)
   const getWords = () => {
     // For reorder exercises, options should contain individual words
@@ -20,7 +26,7 @@ const ReorderExercise: React.FC<ReorderExerciseProps> = ({ exercise, setAnswer, 
     return [];
   };
 
-  const [words, setWords] = useState<string[]>(getWords());
+  const [words] = useState<string[]>(getWords());
   const [selectedOrder, setSelectedOrder] = useState<string[]>(() => {
     // Initialize from saved answer if exists
     const savedAnswer = exerciseAnswers[exerciseId] as string || '';
@@ -47,17 +53,6 @@ const ReorderExercise: React.FC<ReorderExerciseProps> = ({ exercise, setAnswer, 
     const answer = selectedOrder.join(' ');
     setAnswer(answer);
   }, [selectedOrder]); // Remove setAnswer from dependencies
-
-  const handleSubmit = () => {
-    // Convert array to string for setAnswer compatibility
-    const answer = selectedOrder.join(' ');
-    setAnswer(answer);
-
-    // Check answer when confirming - pass array for proper checking
-    if (onAnswerSelect && exercise.id) {
-      onAnswerSelect(exercise.id, selectedOrder);
-    }
-  };
 
   return (
     <div className="space-y-4">

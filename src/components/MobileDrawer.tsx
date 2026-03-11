@@ -6,7 +6,7 @@ import { useAppSelector, useAppDispatch } from "../store/hooks";
 import { closeDrawer } from "../store/slices/uiSlice";
 
 const MobileDrawer: React.FC = () => {
-  const { drawerOpen, darkMode } = useAppSelector(state => state.ui);
+  const { drawerOpen } = useAppSelector(state => state.ui);
   const location = useLocation();
   const dispatch = useAppDispatch();
   const navigate = useNavigate();

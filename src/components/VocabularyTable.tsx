@@ -3,30 +3,21 @@ import React, { useState, useMemo, useEffect, useCallback } from "react";
 import {
   Table,
   Button,
-  Card,
   Typography,
-  Switch,
   Empty,
   Statistic,
   Row,
   Col,
   Space,
-  Modal,
-  Tag,
-  Tooltip,
-  Progress,
 } from "antd";
 
 import {
   SoundOutlined,
-  BookOutlined,
   CheckCircleOutlined,
   CloseCircleOutlined,
 } from "@ant-design/icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faRotateLeft } from "@fortawesome/free-solid-svg-icons";
-import FlashcardsIcon from "./icons/FlashcardsIcon";
-import InfinitejapaneseIcon from "./icons/InfinitejapaneseIcon";
 
 import type { VocabularyItem as VocabularyItemType } from "../types/lesson";
 import { generateVocabularyId, speakText } from "../utils/vocabularyUtils";
@@ -35,7 +26,7 @@ import VocabularyCard from "./VocabularyCard";
 import VocabularyDetailModal from "./VocabularyDetailModal";
 import { useResponsive } from "../hooks/useResponsive";
 
-const { Title, Text } = Typography;
+const { Title } = Typography;
 
 export type VocabularyTableHandle = {
   enterFlashcard: () => void;
@@ -70,9 +61,9 @@ const VocabularyTable = React.forwardRef<
   ) => {
     const { screens } = useResponsive();
 
-    const [showRomaji, setShowRomaji] = useState(false);
+    const [showRomaji] = useState(false);
 
-    const [showHanViet, setShowHanViet] = useState(true);
+    const [showHanViet] = useState(true);
 
     const [selectedWord, setSelectedWord] = useState<VocabularyItemType | null>(
       null,
@@ -99,14 +90,6 @@ const VocabularyTable = React.forwardRef<
     const [isFullscreen, setIsFullscreen] = useState(false);
 
     const [isStudyComplete, setIsStudyComplete] = useState(false);
-
-    const [studyMode, setStudyMode] = useState<"all" | "unremembered">("all");
-
-    // Track which cards have been evaluated in this session
-
-    const [evaluatedCards, setEvaluatedCards] = useState<Set<string>>(
-      new Set(),
-    );
 
     const [shuffledCards, setShuffledCards] = useState<VocabularyItemType[]>(
       [],
@@ -171,17 +154,6 @@ const VocabularyTable = React.forwardRef<
       setShowModal(true);
     }, []);
 
-    const handlePlayAudio = useCallback(
-      (audioUrl: string, e: React.MouseEvent<HTMLButtonElement>) => {
-        e.stopPropagation();
-        const audio = new Audio(audioUrl);
-        audio
-          .play()
-          .catch((err) => console.error("Audio playback failed:", err));
-      },
-      [],
-    );
-
     const handlePlayHiraKanaAudio = useCallback(
       (text: string, event?: React.MouseEvent, voiceName?: string) => {
         if (event) {
@@ -227,8 +199,6 @@ const VocabularyTable = React.forwardRef<
 
     const resetStudySession = useCallback(
       (mode: "all" | "unremembered" = "all") => {
-        setStudyMode(mode);
-
         const dataWithIds = data.map((item, index) => ({
           ...item,
           id: generateVocabularyId(item, index),
@@ -255,7 +225,6 @@ const VocabularyTable = React.forwardRef<
         setIsFlipped(false);
         setShowAnswer(false);
         setIsStudyComplete(false);
-        setEvaluatedCards(new Set());
       },
       [data, cardStatus],
     );
@@ -269,7 +238,6 @@ const VocabularyTable = React.forwardRef<
         setShowAnswer(false);
         setIsFullscreen(false);
         setIsStudyComplete(false);
-        setEvaluatedCards(new Set());
       },
     }));
 

@@ -1,16 +1,13 @@
 import React, { useCallback } from 'react';
 import {
   Card,
-  Button,
-  Typography
+  Button
 } from 'antd';
 import {
   SoundOutlined
 } from '@ant-design/icons';
 import type { VocabularyItem as VocabularyItemType } from '../types/lesson';
 import { speakText } from '../utils/vocabularyUtils';
-
-const { Text } = Typography;
 
 interface VocabularyCardProps {
   index: number;

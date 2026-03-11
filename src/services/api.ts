@@ -1,15 +1,13 @@
 import axios from "axios";
 import {
   LessonsResponse,
-  LessonDetailResponse,
   ExerciseSubmitResponse,
   AIRoleplayResponse,
   WeakPointsResponse,
-  AIPrompts,
 } from "../types/lesson";
 
 const API_BASE_URL =
-  process.env.REACT_APP_API_URL || "http://localhost:5000/api/v1";
+  import.meta.env.VITE_API_URL || "http://localhost:5000/api/v1";
 
 // Centralized API Endpoints Configuration
 export const API_ENDPOINTS = {
@@ -587,7 +585,8 @@ export const aiAPI = {
   },
 
   pronunciation: async (audioData: any) => {
-    const aiBaseUrl = process.env.REACT_APP_AI_API_URL || "http://localhost:5000/api/v1";
+    const aiBaseUrl =
+      import.meta.env.VITE_AI_API_URL || "http://localhost:5000/api/v1";
     const response = await api.post(`${aiBaseUrl}/ai/pronunciation`, audioData);
     return response.data;
   },

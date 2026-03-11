@@ -10,6 +10,7 @@
 
 # production
 /build
+/dist
 /build_out_*/
 /build_tmp
 

@@ -1,9 +1,9 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import { Card, Typography, Button, Spin, message, Tooltip, Tabs, Progress, Divider, Tag, Row, Col, Drawer, Badge, Space } from 'antd';
+import { Card, Typography, Button, Spin, message, Tooltip, Tabs, Progress, Tag, Row, Col, Drawer, Badge, Space } from 'antd';
 import { ArrowLeftOutlined, PlayCircleOutlined, BookOutlined, EditOutlined, CheckCircleOutlined, ClockCircleOutlined, TrophyOutlined } from '@ant-design/icons';
 import { Grid } from 'antd';
-import { ConversationLesson, DialogueLine, DictationExercise, MCQExercise, ReorderExercise, conversationLessonAPI } from '../services/conversationLessonAPI';
+import { ConversationLesson, conversationLessonAPI } from '../services/conversationLessonAPI';
 
 // Import components
 import ConversationDialogue from '../components/conversation/ConversationDialogue';

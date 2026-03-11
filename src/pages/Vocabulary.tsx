@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { lessonAPI } from "../services/api";
-import type { VocabularyItem } from "../types/lesson";
 import { BookOutlined } from "@ant-design/icons";
 import PageTitle from "../components/PageTitle";
 

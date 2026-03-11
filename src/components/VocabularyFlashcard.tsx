@@ -2,7 +2,6 @@ import React, { useCallback, useEffect, useState } from "react";
 import {
   Button,
   Typography,
-  Progress,
   Modal,
   Switch,
   Select,
@@ -57,9 +56,9 @@ const VocabularyFlashcard: React.FC<VocabularyFlashcardProps> = ({
     "japanese",
   );
   const [autoSpeak, setAutoSpeak] = useState(false);
-  const [showKanji, setShowKanji] = useState(true);
+  const [showKanji] = useState(true);
   const [showJapaneseExample, setShowJapaneseExample] = useState(false);
-  const [showHanViet, setShowHanViet] = useState(true);
+  const [showHanViet] = useState(true);
   const [showVietnameseExample, setShowVietnameseExample] = useState(false);
 
   const warmUpTTS = useCallback(() => {

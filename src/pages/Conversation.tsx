@@ -9,7 +9,6 @@ import {
   Tag,
   Space,
   Input,
-  Grid,
 } from "antd";
 import {
   BookOutlined,
@@ -35,7 +34,6 @@ export {}; // Export to make it a module for isolatedModules
 
 const ConversationComponent: React.FC = () => {
   const navigate = useNavigate();
-  const screens = Grid.useBreakpoint();
   const [lessons, setLessons] = useState<ConversationLesson[]>([]);
   const [loading, setLoading] = useState(true);
   const [searchTerm, setSearchTerm] = useState("");

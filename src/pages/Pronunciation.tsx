@@ -8,7 +8,6 @@ import {
   Progress,
   App as AntdApp,
   Tag,
-  Tooltip,
 } from "antd";
 import {
   SoundOutlined,
@@ -25,9 +24,7 @@ import {
 import {
   pronunciationAPI,
   type Exercise,
-  type Practice,
   type Category,
-  type Stats
 } from '../services/pronunciationAPI';
 import { getNanamiNaturalVoice } from "../utils/vocabularyUtils";
 
@@ -40,8 +37,6 @@ const Pronunciation: React.FC = () => {
   const [currentExercise, setCurrentExercise] = useState<Exercise | null>(null);
   const [exercises, setExercises] = useState<Exercise[]>([]);
   const [categories, setCategories] = useState<Category[]>([]);
-  const [practiceHistory, setPracticeHistory] = useState<Practice[]>([]);
-  const [userStats, setUserStats] = useState<Stats | null>(null);
   const [isRecording, setIsRecording] = useState(false);
   const [isPlaying, setIsPlaying] = useState(false);
   const [userInput, setUserInput] = useState("");
@@ -110,26 +105,6 @@ const Pronunciation: React.FC = () => {
     loadCategories();
   }, [loadExercises, loadCategories]);
 
-  // Load practice history and stats (kept for future expansion)
-
-  const loadPracticeHistory = async () => {
-    try {
-      const data = await pronunciationAPI.getHistory(1, 20);
-      setPracticeHistory(data.practices);
-    } catch (error) {
-      message.error('Không thể tải lịch sử. Vui lòng thử lại.');
-    }
-  };
-
-  const loadUserStats = async () => {
-    try {
-      const stats = await pronunciationAPI.getStats();
-      setUserStats(stats);
-    } catch (error) {
-      console.error('Failed to load stats:', error);
-    }
-  };
-
   const levels = [
     { value: "N5", label: "N5" },
     { value: "N4", label: "N4" },
@@ -156,10 +131,6 @@ const Pronunciation: React.FC = () => {
 
         // Get available voices and find Japanese voice (prefer Natural if available)
         const voices = window.speechSynthesis.getVoices();
-        const japaneseVoices = voices.filter(voice =>
-          voice.lang.includes('ja') || voice.name.includes('Japanese')
-        );
-
         // CHỈ sử dụng Microsoft Nanami Online (Natural)
         const nanamiNatural = getNanamiNaturalVoice();
         const preferredJapanese = nanamiNatural;
@@ -483,24 +454,6 @@ const Pronunciation: React.FC = () => {
 
       const { score, text, confidence } = recognitionResultRef.current;
 
-      const practice: Practice = {
-        practiceId: `practice_${Date.now()}`,
-        exercise: currentExercise,
-        score,
-        feedback: getImprovementSuggestions(score)[0] || "Cố gắng thêm nhé!",
-        detailedAnalysis: {
-          pronunciationAccuracy: score,
-          fluency: score,
-          intonation: score,
-          overallScore: score,
-          improvements: getImprovementSuggestions(score),
-        },
-        audioUrl: recordedAudioUrl || `blob:${window.location.origin}/${Date.now()}`,
-        createdAt: new Date().toISOString(),
-      };
-
-      setPracticeHistory(prev => [practice, ...prev.slice(0, 9)]);
-
       if (score >= 70) {
         message.success(`Điểm số: ${score}/100`);
       } else {
@@ -527,118 +480,6 @@ const Pronunciation: React.FC = () => {
     setLastFeedback(getImprovementSuggestions(finalScore)[0] || "Cố gắng thêm nhé!");
     setShowResults(true);
     setUserInput(`Text nhận dạng: "${text.trim()}"`);
-  };
-
-  const analyzePronunciationWithSpeechRecognition = async (targetText: string, audioUrl: string | null): Promise<number> => {
-    return new Promise((resolve, reject) => {
-      console.log('🎤 Starting pronunciation analysis...');
-      console.log('📝 Target text:', targetText);
-
-      // Check browser support
-      if (!('webkitSpeechRecognition' in window) && !('SpeechRecognition' in window)) {
-        console.log('❌ Speech recognition not supported in this browser');
-        reject(new Error('Speech recognition not supported'));
-        return;
-      }
-
-      console.log('✅ Speech recognition is supported');
-      const SpeechRecognition = (window as any).SpeechRecognition || (window as any).webkitSpeechRecognition;
-      const recognition = new SpeechRecognition();
-
-      recognition.lang = 'ja-JP';
-      recognition.continuous = false;
-      recognition.interimResults = false;
-      recognition.maxAlternatives = 5;
-
-      console.log('🔧 Recognition config:', {
-        lang: recognition.lang,
-        continuous: recognition.continuous,
-        interimResults: recognition.interimResults,
-        maxAlternatives: recognition.maxAlternatives
-      });
-
-      recognition.onresult = (event: any) => {
-        console.log('🎯 Speech recognition result received:', event);
-        const results = event.results[0];
-        console.log('📊 Results array:', results);
-
-        let bestMatch = "";
-        let bestConfidence = 0;
-
-        // Find the best match with highest confidence
-        for (let i = 0; i < results.length; i++) {
-          const result = results[i];
-          console.log(`🔍 Result ${i}:`, {
-            transcript: result.transcript,
-            confidence: result.confidence
-          });
-
-          if (result.confidence > bestConfidence) {
-            bestConfidence = result.confidence;
-            bestMatch = result.transcript.trim();
-          }
-        }
-
-        console.log('🏆 Best match selected:', {
-          text: bestMatch,
-          confidence: bestConfidence
-        });
-
-        // Calculate similarity score
-        const similarity = calculateTextSimilarity(targetText, bestMatch);
-        const confidenceScore = bestConfidence * 100;
-
-        // Combine similarity and confidence for final score
-        const finalScore = Math.round((similarity * 0.7) + (confidenceScore * 0.3));
-
-        console.log('📈 Score calculation:');
-        console.log(`   Target: "${targetText}"`);
-        console.log(`   Recognized: "${bestMatch}"`);
-        console.log(`   Confidence: ${bestConfidence} → ${confidenceScore}%`);
-        console.log(`   Similarity: ${similarity}%`);
-        console.log(`   Final Score: ${finalScore}% (70% similarity + 30% confidence)`);
-
-        resolve(finalScore);
-      };
-
-      recognition.onerror = (event: any) => {
-        console.error('❌ Speech recognition error:', {
-          error: event.error,
-          message: event.message,
-          event: event
-        });
-        reject(new Error(`Speech recognition failed: ${event.error}`));
-      };
-
-      recognition.ontimeout = () => {
-        console.log('⏰ Speech recognition timeout');
-        reject(new Error('Speech recognition timeout'));
-      };
-
-      recognition.onstart = () => {
-        console.log('🎙️ Speech recognition started');
-      };
-
-      recognition.onend = () => {
-        console.log('🏁 Speech recognition ended');
-      };
-
-      // Start recognition with the recorded audio
-      console.log('🔊 Playing recorded audio for recognition...');
-      if (audioUrl) {
-        const audio = new Audio(audioUrl);
-        audio.play().then(() => {
-          console.log('🎵 Audio playback started, starting recognition...');
-          recognition.start();
-        }).catch((error) => {
-          console.error('❌ Audio playback error:', error);
-          reject(error);
-        });
-      } else {
-        console.error('❌ No recorded audio available');
-        reject(new Error('No recorded audio available'));
-      }
-    });
   };
 
   const calculateTextSimilarity = (text1: string, text2: string): number => {
@@ -710,22 +551,6 @@ const Pronunciation: React.FC = () => {
     if (score >= 70) return suggestions.slice(0, 3);
     if (score >= 60) return suggestions.slice(0, 4);
     return suggestions;
-  };
-
-  const fallbackToSimulatedScoring = () => {
-    const simulatedScore = Math.floor(Math.random() * 30) + 70;
-    const feedbackMessages = [
-      "Tốt! Phát âm khá rõ ràng.",
-      "Khá tốt! Cần cải thiện thêm một chút.",
-      "Rất tốt! Giọng điệu tự nhiên.",
-      "Xuất sắc! Phát âm chuẩn xác."
-    ];
-    const randomFeedback = feedbackMessages[Math.floor(Math.random() * feedbackMessages.length)];
-
-    setLastScore(simulatedScore);
-    setLastFeedback(randomFeedback);
-    setShowResults(true);
-    setUserInput("Bản ghi âm đã được lưu. Click để nghe lại.");
   };
 
   const handleNextExercise = () => {

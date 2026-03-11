@@ -78,7 +78,7 @@ export interface ExerciseResponse {
 export const aiApi = createApi({
   reducerPath: "aiApi",
   baseQuery: fetchBaseQuery({
-    baseUrl: process.env.REACT_APP_AI_API_URL || "http://localhost:5000/api/v1",
+    baseUrl: import.meta.env.VITE_AI_API_URL || "http://localhost:5000/api/v1",
     prepareHeaders: (headers) => {
       const token = localStorage.getItem("accessToken");
       if (token) {
