@@ -24,7 +24,6 @@ import {
   conversationLessonAPI,
   type ConversationLesson,
 } from "../services/conversationLessonAPI";
-import PageTitle from "../components/PageTitle";
 
 const { Option } = Select;
 const { Title, Text } = Typography;
@@ -204,61 +203,20 @@ const ConversationComponent: React.FC = () => {
   }
 
   return (
-    <div className="min-h-full overflow-x-hidden">
-      <div className="mx-auto max-w-7xl px-3 sm:px-6 lg:px-8 py-6 lg:py-8">
-        <div className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-blue-50 via-white to-rose-50 dark:from-slate-900 dark:via-slate-800 dark:to-slate-900 p-5 sm:p-7 mb-6">
-          <div className="absolute inset-0 opacity-60 dark:opacity-40">
-            <div className="absolute -top-20 -right-24 h-64 w-64 rounded-full bg-blue-400 blur-3xl dark:bg-blue-500" />
-            <div className="absolute -bottom-24 -left-20 h-64 w-64 rounded-full bg-rose-300 blur-3xl dark:bg-fuchsia-500" />
-          </div>
-          <div className="relative">
-            <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4">
-              <div>
-                <PageTitle
-                  title="Luyện hội thoại theo ngữ cảnh"
-                  subtitle="Học nhanh qua tình huống đời sống, ngắn gọn và dễ nhớ."
-                  icon={
-                    <MessageOutlined className="text-slate-600 dark:text-white/80" />
-                  }
-                  titleClassName="!text-slate-900 dark:!text-white"
-                  subtitleClassName="!text-slate-600 dark:!text-white/70"
-                />
-              </div>
-              <div className="w-full sm:w-80">
-                <Search
-                  placeholder="Tìm bài hội thoại..."
-                  value={searchTerm}
-                  onChange={(e) => setSearchTerm(e.target.value)}
-                  onSearch={handleSearch}
-                  allowClear
-                />
-              </div>
-            </div>
-
-            <div className="mt-4 flex flex-wrap items-center gap-2 text-xs text-slate-600 dark:text-white/70">
-              <div className="rounded-full border border-slate-200/80 px-3 py-1 dark:border-white/20">
-                {lessons.length} bài học
-              </div>
-              {filters.level.length > 0 && (
-                <div className="rounded-full border border-slate-200/80 px-3 py-1 dark:border-white/20">
-                  Trình độ: {filters.level.join(", ")}
-                </div>
-              )}
-              {filters.category.length > 0 && (
-                <div className="rounded-full border border-slate-200/80 px-3 py-1 dark:border-white/20">
-                  {filters.category.map((cat) => getCategoryText(cat)).join(", ")}
-                </div>
-              )}
-              {searchTerm && (
-                <div className="rounded-full border border-slate-200/80 px-3 py-1 dark:border-white/20">
-                  "{searchTerm}"
-                </div>
-              )}
-            </div>
-          </div>
+    <div className="min-h-full bg-gray-50 dark:bg-secondary-900 academic-canvas">
+      <div className="max-w-6xl mx-auto px-4 py-8">
+        {/* Header Section */}
+        <div className="mb-6">
+          <h1 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-secondary-100 mb-3">
+            Luyện hội thoại theo ngữ cảnh
+          </h1>
+          <p className="text-gray-600 dark:text-secondary-400 text-lg">
+            Học nhanh qua tình huống đời sống, ngắn gọn và dễ nhớ.
+          </p>
         </div>
 
-        <div className="mb-5">
+        {/* Filters */}
+        <div className="mb-6">
           <div className="flex flex-col lg:flex-row lg:items-center gap-3">
             <div className="flex items-center gap-2 text-secondary-700 dark:text-secondary-300">
               <FilterOutlined />
@@ -324,6 +282,18 @@ const ConversationComponent: React.FC = () => {
               </Button>
             </div>
           </div>
+        </div>
+
+        {/* Search */}
+        <div className="mb-6">
+          <Search
+            placeholder="Tìm bài hội thoại..."
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+            onSearch={handleSearch}
+            allowClear
+            className="w-full"
+          />
         </div>
 
         <Spin spinning={loading}>

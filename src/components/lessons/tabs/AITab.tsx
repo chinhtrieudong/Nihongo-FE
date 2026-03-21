@@ -23,6 +23,7 @@ import {
 } from "@ant-design/icons";
 import { message } from "antd";
 import type { Lesson } from "../../../types/lesson";
+import { formatAIText } from "../../../utils/textFormatter";
 
 interface AITabProps {
     lesson: Lesson;
@@ -389,13 +390,27 @@ const AITab: React.FC<AITabProps> = ({ lesson }) => {
                                                     : "bg-white dark:bg-secondary-700 text-secondary-900 dark:text-secondary-100 rounded-tl-none border border-secondary-200 dark:border-secondary-600"
                                                     }`}
                                             >
-                                                {msg.content}
+                                                {msg.role === "assistant" ? formatAIText(msg.content) : msg.content}
                                             </div>
                                             <div className="text-xs text-secondary-500 mt-1">
                                                 {new Date(msg.timestamp).toLocaleTimeString()}
                                             </div>
                                         </div>
                                     ))}
+                                    {isLoadingChat && (
+                                        <div className="mb-4 text-left">
+                                            <div className="inline-block max-w-xs p-3 rounded-2xl bg-white dark:bg-secondary-700 text-secondary-900 dark:text-secondary-100 rounded-tl-none border border-secondary-200 dark:border-secondary-600">
+                                                <div className="flex items-center gap-2">
+                                                    <div className="flex space-x-1">
+                                                        <div className="w-2 h-2 bg-blue-500 rounded-full animate-bounce" style={{ animationDelay: '0ms' }}></div>
+                                                        <div className="w-2 h-2 bg-blue-500 rounded-full animate-bounce" style={{ animationDelay: '150ms' }}></div>
+                                                        <div className="w-2 h-2 bg-blue-500 rounded-full animate-bounce" style={{ animationDelay: '300ms' }}></div>
+                                                    </div>
+                                                    <span className="text-sm text-secondary-500">AI đang tạo phản hồi...</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    )}
                                 </div>
 
                                 <div className="flex gap-2">

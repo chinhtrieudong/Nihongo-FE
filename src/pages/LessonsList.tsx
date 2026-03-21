@@ -1,5 +1,5 @@
 import React, { useEffect, useMemo, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
 import { lessonAPI } from "../services/api";
 import type { Lesson, LessonsResponse } from "../types/lesson";
 import { useAppSelector } from "../store/hooks";
@@ -15,36 +15,73 @@ import {
 import {
   SearchOutlined,
   FilterOutlined,
+  ArrowLeftOutlined,
 } from "@ant-design/icons";
 
 const { Title, Text } = Typography;
 const { Option } = Select;
 
 interface FilterState {
-  sortBy: string;
+  level: string;
 }
+
+interface TextbookInfo {
+  name: string;
+  nameJp: string;
+  description: string;
+}
+
+const textbookInfo: Record<string, TextbookInfo> = {
+  minna_no_nihongo: {
+    name: "Minna no Nihongo",
+    nameJp: "みんなの日本語",
+    description: "Học theo lộ trình JLPT • N5 → N4"
+  },
+  genki: {
+    name: "Genki",
+    nameJp: "げんき",
+    description: "Giáo trình tiếng Nhật hiện đại"
+  },
+  shin_nihongo: {
+    name: "Shin Nihongo no Kiso",
+    nameJp: "新日本語の基礎",
+    description: "Ngữ pháp hệ thống • N5 → N4"
+  },
+  irodori: {
+    name: "Irodori",
+    nameJp: "いろどり",
+    description: "Tiếng Nhật cho cuộc sống hàng ngày"
+  },
+  nihongo_sou_matome: {
+    name: "Nihongo Sou Matome",
+    nameJp: "日本語総まとめ",
+    description: "Ôn tập JLPT hiệu quả • N3 → N1"
+  }
+};
 
 const LessonsList: React.FC = () => {
   const { currentUser } = useAppSelector((state) => state.user);
   const navigate = useNavigate();
+  const [searchParams] = useSearchParams();
+  const textbookId = searchParams.get('textbook') || 'minna_no_nihongo';
 
   const [lessons, setLessons] = useState<Lesson[]>([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [searchQuery, setSearchQuery] = useState("");
   const [filters, setFilters] = useState<FilterState>({
-    sortBy: "lessonOrder",
+    level: "all",
   });
 
   useEffect(() => {
     loadLessons();
-  }, [currentUser]);
+  }, [currentUser, textbookId]);
 
   const loadLessons = async () => {
     setLoading(true);
     setError(null);
     try {
-      const response: LessonsResponse = await lessonAPI.getLessons();
+      const response: LessonsResponse = await lessonAPI.getLessons(undefined, undefined, undefined, textbookId);
       if (response.success && response.data) {
         setLessons(response.data.lessons);
       } else {
@@ -65,17 +102,13 @@ const LessonsList: React.FC = () => {
         lesson.description.toLowerCase().includes(searchQuery.toLowerCase()) ||
         `bài ${lesson.lessonNumber}`.includes(searchQuery.toLowerCase()) ||
         `lesson ${lesson.lessonNumber}`.includes(searchQuery.toLowerCase());
-      return searchMatch;
+      
+      const levelMatch = filters.level === "all" || lesson.level === filters.level;
+      
+      return searchMatch && levelMatch;
     });
 
-    filtered.sort((a, b) => {
-      switch (filters.sortBy) {
-        case "lessonOrder":
-          return a.lessonNumber - b.lessonNumber;
-        default:
-          return a.lessonNumber - b.lessonNumber;
-      }
-    });
+    filtered.sort((a, b) => a.lessonNumber - b.lessonNumber);
 
     return filtered;
   }, [lessons, searchQuery, filters]);
@@ -119,66 +152,52 @@ const LessonsList: React.FC = () => {
   }
 
   return (
-    <div className="min-h-full text-secondary-900 dark:text-secondary-100">
-      <div className="w-full px-3 sm:px-4 md:px-6 py-4 sm:py-6">
-        <div className="mb-4 sm:mb-5 rounded-2xl border border-[#d5dfef] bg-[#d6e4f8] bg-[linear-gradient(to_right,rgba(255,255,255,0.45)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.45)_1px,transparent_1px)] [background-size:24px_24px] px-4 py-4 sm:px-6 sm:py-5">
-          <div className="flex items-center gap-4">
-            <span className="inline-flex items-center justify-center text-secondary-700 dark:text-secondary-400">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 48 48"
-                width="72"
-                height="72"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="4"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                style={{ opacity: 1 }}
-              >
-                <path
-                  fill="none"
-                  d="M24 5.5v37M6.704 16.092h34.592m-17.296 0c0 4.964-12.925 16.087-17.24 18.88M24 16.092c0 4.964 12.925 16.087 17.24 18.88"
-                />
-              </svg>
-            </span>
-            <div>
-              <h1 className="text-2xl sm:text-4xl font-semibold leading-tight text-[#2a2f3f]">
-                Minna no Nihongo
-              </h1>
-              <p className="mt-1 text-sm sm:text-lg text-[#2c3853]">
-                Học theo lộ trình JLPT • N5 → N4
-              </p>
-            </div>
+    <div className="min-h-full bg-gray-50 dark:bg-secondary-900 academic-canvas">
+      <div className="max-w-6xl mx-auto px-4 py-8">
+        {/* Header Section */}
+        <div className="mb-6">
+          <div className="flex flex-col gap-4">
+            <Button
+              icon={<ArrowLeftOutlined />}
+              onClick={() => navigate('/')}
+              className="rounded-xl w-fit"
+            >
+              Quay lại
+            </Button>
+            <h1 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-secondary-100">
+              {textbookInfo[textbookId]?.name || "Minna no Nihongo"}
+            </h1>
           </div>
         </div>
 
+        {/* Search and Filter Section */}
         <Card
-          className="mb-4 rounded-2xl border border-[#e6e8ee] bg-[#f3f4f8] shadow-none"
-          styles={{ body: { padding: isMobile ? "8px" : "10px" } }}
+          className="mb-8 rounded-2xl border border-gray-200 dark:border-secondary-700 bg-white dark:bg-secondary-800 shadow-sm"
+          styles={{ body: { padding: isMobile ? "12px" : "16px" } }}
         >
-          <div className="flex flex-col md:flex-row md:items-center gap-1.5">
+          <div className="flex flex-col md:flex-row md:items-center gap-3">
             <Input
               placeholder="Tìm kiếm bài học..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              prefix={<SearchOutlined />}
-              size="small"
-              className="w-full md:flex-1 [&_.ant-input-prefix]:text-secondary-500"
+              prefix={<SearchOutlined className="text-gray-400" />}
+              size="middle"
+              className="w-full md:flex-1"
               allowClear
             />
-            <div className="grid grid-cols-1 md:flex md:w-auto gap-1.5 md:min-w-[180px]">
+            <div className="grid grid-cols-1 md:flex md:w-auto gap-3 md:min-w-[120px]">
               <Select
-                value={filters.sortBy}
+                value={filters.level}
                 onChange={(value) =>
-                  setFilters((prev) => ({ ...prev, sortBy: value }))
+                  setFilters((prev) => ({ ...prev, level: value }))
                 }
-                placeholder="Sắp xếp"
-                className="w-full md:w-[180px] [&_.ant-select-selector]:!rounded-xl [&_.ant-select-selector]:!border-[#d9dce5] [&_.ant-select-selector]:!bg-white [&_.ant-select-selection-item]:!text-[#111827]"
-                suffixIcon={<FilterOutlined />}
-                size="small"
+                placeholder="Cấp độ"
+                className="w-full md:w-[120px]"
+                size="middle"
               >
-                <Option value="lessonOrder">Thứ tự bài học</Option>
+                <Option value="all">Tất cả</Option>
+                <Option value="N5">N5</Option>
+                <Option value="N4">N4</Option>
               </Select>
             </div>
           </div>
@@ -191,38 +210,50 @@ const LessonsList: React.FC = () => {
             image={Empty.PRESENTED_IMAGE_SIMPLE}
           />
         ) : (
-          <div className="grid grid-cols-1 xs:grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6">
+          <div className="grid grid-cols-1 xs:grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 sm:gap-8">
             {filteredAndSortedLessons.map((lesson) => {
               return (
                 <div
                   key={lesson.id}
-                  className="group relative w-full rounded-xl sm:rounded-2xl overflow-hidden border-2 border-blue-300 bg-white dark:bg-secondary-900 shadow-sm hover:shadow-lg hover:-translate-y-1 active:scale-95 transition-all duration-200 cursor-pointer"
+                  className="group relative w-full rounded-xl sm:rounded-2xl overflow-hidden border-2 border-gray-200 dark:border-secondary-700 bg-white dark:bg-secondary-800 shadow-sm hover:shadow-lg hover:-translate-y-1 active:scale-95 transition-all duration-200 cursor-pointer"
                 >
+                  {/* Color strip */}
+                  <div 
+                    className="h-2"
+                    style={{ backgroundColor: lesson.level === 'N5' ? '#3B82F6' : '#10B981' }}
+                  />
                   <button
                     className="w-full text-left focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-50 rounded-xl sm:rounded-2xl"
                     onClick={() => handleLessonClick(lesson)}
                   >
-                    <div className="relative h-32 sm:h-40 md:h-44 w-full overflow-hidden bg-white border-b-2 border-b-blue-300 border-blue-300 flex items-center justify-center">
+                    <div className="relative h-32 sm:h-40 md:h-44 w-full overflow-hidden bg-gradient-to-br from-blue-50 to-indigo-100 dark:from-secondary-700 dark:to-secondary-800">
                       {lesson.image_url ? (
                         <img
                           src={lesson.image_url}
                           alt={lesson.title}
                           loading="lazy"
-                          className="block w-3/5 h-auto max-h-full object-contain"
+                          className="w-full h-full object-cover"
                         />
                       ) : (
-                        <div className="absolute inset-0 flex items-center justify-center text-secondary-700 dark:text-secondary-300 text-xs sm:text-sm font-semibold">
-                          Bài {lesson.lessonNumber}
+                        <div className="absolute inset-0 flex items-center justify-center">
+                          <div className="text-center">
+                            <div className="text-4xl sm:text-5xl font-bold text-blue-500 dark:text-blue-400 mb-2">
+                              {lesson.lessonNumber}
+                            </div>
+                            <div className="text-xs text-gray-500 dark:text-secondary-400">
+                              Bài học
+                            </div>
+                          </div>
                         </div>
                       )}
                     </div>
 
                     <div className="p-3 sm:p-4">
                       <div className="min-w-0">
-                        <div className="text-xs sm:text-sm font-bold text-secondary-900 dark:text-secondary-100 line-clamp-2">
+                        <div className="text-sm sm:text-base font-bold text-gray-900 dark:text-secondary-100 line-clamp-2 mb-1">
                           Bài {lesson.lessonNumber}: {lesson.title}
                         </div>
-                        <div className="mt-1 sm:mt-2 text-xs text-secondary-900 dark:text-secondary-200 line-clamp-2 sm:line-clamp-3">
+                        <div className="text-xs text-gray-600 dark:text-secondary-400 line-clamp-2 sm:line-clamp-3">
                           {lesson.description}
                         </div>
                       </div>

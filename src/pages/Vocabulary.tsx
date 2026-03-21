@@ -172,7 +172,7 @@ const Kanji: React.FC = () => {
                     </div>
 
                     <div className="text-xs text-blue-600 dark:text-blue-400">
-                      Cách đọc: {kanji.onyomi.map(o => o.kana).join(', ')}
+                      Cách đọc: {kanji.onyomi.join(', ')}
                     </div>
                   </div>
                 </div>

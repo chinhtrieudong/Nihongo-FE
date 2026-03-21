@@ -7,6 +7,8 @@ interface UiState {
   drawerOpen: boolean;
   isMobile: boolean;
   fontPreset: FontPresetKey;
+  uiFontFamily: string;
+  japaneseFontFamily: string;
   currentView:
     | "dashboard"
     | "lessons"
@@ -46,12 +48,17 @@ const getInitialState = (): UiState => {
             ? "rocknroll_one"
             : savedFontPresetRaw) as FontPresetKey
       : ("noto_serif_jp" as FontPresetKey);
+  const savedUIFontFamily = localStorage.getItem("uiFontFamily") || "default";
+  const savedJapaneseFontFamily = localStorage.getItem("japaneseFontFamily") || "default_jp";
+  
   return {
     darkMode: savedDarkMode === 'true',
     sidebarOpen: false,
     drawerOpen: false,
     isMobile: false,
     fontPreset: savedFontPreset,
+    uiFontFamily: savedUIFontFamily,
+    japaneseFontFamily: savedJapaneseFontFamily,
     currentView: "dashboard",
     notifications: [],
     loadingStates: {},
@@ -93,6 +100,14 @@ const uiSlice = createSlice({
     setFontPreset: (state, action: PayloadAction<FontPresetKey>) => {
       state.fontPreset = action.payload;
       localStorage.setItem("fontPreset", state.fontPreset);
+    },
+    setUIFontFamily: (state, action: PayloadAction<string>) => {
+      state.uiFontFamily = action.payload;
+      localStorage.setItem("uiFontFamily", state.uiFontFamily);
+    },
+    setJapaneseFontFamily: (state, action: PayloadAction<string>) => {
+      state.japaneseFontFamily = action.payload;
+      localStorage.setItem("japaneseFontFamily", state.japaneseFontFamily);
     },
     setCurrentView: (state, action: PayloadAction<UiState["currentView"]>) => {
       state.currentView = action.payload;
@@ -150,6 +165,8 @@ export const {
   closeDrawer,
   setMobile,
   setFontPreset,
+  setUIFontFamily,
+  setJapaneseFontFamily,
   setCurrentView,
   addNotification,
   removeNotification,

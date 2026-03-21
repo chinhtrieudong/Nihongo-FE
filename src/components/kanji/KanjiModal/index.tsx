@@ -87,7 +87,7 @@ const KanjiModal: React.FC<KanjiModalProps> = ({ kanji, visible, onClose }) => {
                     // Check if dark mode is active
                     const isDarkMode = document.documentElement.classList.contains('dark');
 
-                    hanziWriterRef.current = HanziWriter.create(targetDiv, kanji.character, {
+                    hanziWriterRef.current = HanziWriter.create(targetDiv, kanji.character || '', {
                         width: 200,
                         height: 200,
                         padding: 5,
@@ -138,16 +138,10 @@ const KanjiModal: React.FC<KanjiModalProps> = ({ kanji, visible, onClose }) => {
     };
 
     const getReadings = () => {
-        const onyomi = kanji.onyomi ? kanji.onyomi.map((o) => o.kana).join(', ') : '';
-        const kunyomi = kanji.kunyomi ? kanji.kunyomi.map((k) => k.kana).join(', ') : '';
-        const onyomiWithRomaji = kanji.onyomi
-            ? kanji.onyomi.map((o) => (o.romaji ? `${o.kana} (${o.romaji})` : o.kana)).join(', ')
-            : '';
-        const kunyomiWithRomaji = kanji.kunyomi
-            ? kanji.kunyomi.map((k) => (k.romaji ? `${k.kana} (${k.romaji})` : k.kana)).join(', ')
-            : '';
+        const onyomi = kanji.onyomi ? kanji.onyomi.join(', ') : '';
+        const kunyomi = kanji.kunyomi ? kanji.kunyomi.join(', ') : '';
 
-        return { onyomi, kunyomi, onyomiWithRomaji, kunyomiWithRomaji };
+        return { onyomi, kunyomi, onyomiWithRomaji: onyomi, kunyomiWithRomaji: kunyomi };
     };
 
     const readings = getReadings();
@@ -545,11 +539,11 @@ const KanjiModal: React.FC<KanjiModalProps> = ({ kanji, visible, onClose }) => {
 
                             <Card title="Bộ thủ & Cấu tạo" className="h-fit">
                                 <Collapse>
-                                    <Panel header={`Bộ thủ: ${kanji.radical.symbol} - ${kanji.radical.name_vi}`} key="radical">
-                                        <p><strong>Ký hiệu:</strong> {kanji.radical.symbol}</p>
-                                        <p><strong>Tên Hán Việt:</strong> {kanji.radical.hanviet}</p>
-                                        <p><strong>Tên tiếng Việt:</strong> {kanji.radical.name_vi}</p>
-                                        <p><strong>Nghĩa:</strong> {kanji.radical.meaning}</p>
+                                    <Panel header={`Bộ thủ: ${typeof kanji.radical === 'object' ? kanji.radical.symbol : kanji.radical || 'N/A'} - ${typeof kanji.radical === 'object' ? kanji.radical.name_vi : 'N/A'}`} key="radical">
+                                        <p><strong>Ký hiệu:</strong> {typeof kanji.radical === 'object' ? kanji.radical.symbol : kanji.radical || 'N/A'}</p>
+                                        <p><strong>Tên Hán Việt:</strong> {typeof kanji.radical === 'object' ? kanji.radical.hanviet : 'N/A'}</p>
+                                        <p><strong>Tên tiếng Việt:</strong> {typeof kanji.radical === 'object' ? kanji.radical.name_vi : 'N/A'}</p>
+                                        <p><strong>Nghĩa:</strong> {typeof kanji.radical === 'object' ? kanji.radical.meaning : 'N/A'}</p>
                                     </Panel>
                                     <Panel header="Cấu tạo chữ" key="structure">
                                         <p>{kanji.structure}</p>

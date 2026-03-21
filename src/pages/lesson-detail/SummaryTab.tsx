@@ -23,7 +23,7 @@ const SummaryTab: React.FC<SummaryTabProps> = ({ vocabularies, grammars }) => {
             </Title>
             <Space orientation="vertical" className="w-full">
               {vocabularies.slice(0, 5).map((vocab) => (
-                <Card key={vocab.id} size="small" className="bg-secondary-50 dark:bg-secondary-925">
+                <Card key={vocab.id} size="small" className="bg-secondary-50 dark:bg-secondary-800">
                   <div className="flex justify-between items-center">
                     <div>
                       <Text strong>{vocab.kanji}</Text>
@@ -44,7 +44,7 @@ const SummaryTab: React.FC<SummaryTabProps> = ({ vocabularies, grammars }) => {
             </Title>
             <Space orientation="vertical" className="w-full">
               {grammars.map((grammar) => (
-                <Card key={grammar.id} size="small" className="bg-secondary-50 dark:bg-secondary-925">
+                <Card key={grammar.id} size="small" className="bg-secondary-50 dark:bg-secondary-800">
                   <Text strong>{grammar.pattern}</Text>
                 </Card>
               ))}

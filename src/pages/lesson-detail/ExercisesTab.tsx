@@ -96,7 +96,7 @@ const ExercisesTab: React.FC<ExercisesTabProps> = ({
 
   return (
     <div style={{ padding: "24px" }}>
-      <Card className="bg-white dark:bg-secondary-925 border-secondary-200 dark:border-secondary-900 mb-6">
+      <Card className="bg-white dark:bg-secondary-800 border-secondary-200 dark:border-secondary-700 mb-6">
         <div className="flex items-center gap-4">
           <Text className="!text-secondary-700 dark:!text-secondary-400">
             Tổng số bài tập: <strong>{exercises.length}</strong>
@@ -111,7 +111,7 @@ const ExercisesTab: React.FC<ExercisesTabProps> = ({
 
       {(Object.keys(exerciseResults).length > 0 ||
         Object.keys(exerciseAnswers).length === exercises.length) && (
-          <Card className="mb-6 bg-white dark:bg-secondary-925 border-secondary-200 dark:border-secondary-900">
+          <Card className="mb-6 bg-white dark:bg-secondary-800 border-secondary-200 dark:border-secondary-700">
             <Title level={4}>Kết quả tổng hợp</Title>
             <div className="grid grid-cols-3 gap-4">
               <div className="text-center">
@@ -182,7 +182,7 @@ const ExercisesTab: React.FC<ExercisesTabProps> = ({
         )}
 
       {exercises.length > 0 && (
-        <Card className="bg-white dark:bg-secondary-925 border-secondary-200 dark:border-secondary-900" styles={{ body: { padding: 12 } }}>
+        <Card className="bg-white dark:bg-secondary-800 border-secondary-200 dark:border-secondary-700" styles={{ body: { padding: 12 } }}>
           <div className="flex justify-between items-center mb-4">
             <Title level={5} className="!mb-0 text-sm">Bài tập {currentExerciseIndex + 1}</Title>
             <Text className="text-xs !text-secondary-700 dark:!text-secondary-400">
@@ -233,7 +233,7 @@ const ExercisesTab: React.FC<ExercisesTabProps> = ({
                 );
 
                 return (
-                  <Card key={itemIndex} size="small" className="bg-white dark:bg-secondary-925 border-secondary-200 dark:border-secondary-900">
+                  <Card key={itemIndex} size="small" className="bg-white dark:bg-secondary-800 border-secondary-200 dark:border-secondary-700">
                     <div className="space-y-3">
                       <div className="flex items-start gap-3">
                         <Text strong className="text-blue-600 dark:text-blue-400 min-w-[24px]">
@@ -315,7 +315,7 @@ const ExercisesTab: React.FC<ExercisesTabProps> = ({
           {exercises[currentExerciseIndex].dialogues && Array.isArray(exercises[currentExerciseIndex].dialogues) && (
             <div className="space-y-4 mb-4">
               {exercises[currentExerciseIndex].dialogues!.map((dialogue: any, dialogueIndex: number) => (
-                <Card key={dialogueIndex} className="bg-white dark:bg-secondary-925 border-secondary-200 dark:border-secondary-900">
+                <Card key={dialogueIndex} className="bg-white dark:bg-secondary-800 border-secondary-200 dark:border-secondary-700">
                   <Title level={5} className="mb-3 text-purple-600 dark:text-purple-400">
                     💬 Hội thoại {dialogue.dialogue_number}
                   </Title>
@@ -395,7 +395,7 @@ const ExercisesTab: React.FC<ExercisesTabProps> = ({
                                     : isSelected && status === "incorrect"
                                       ? "border-red-300 bg-red-50 dark:border-red-600 dark:bg-red-900/20"
                                       : "hover:bg-secondary-100 dark:hover:bg-secondary-900"
-                                    } bg-white dark:bg-secondary-925 border-secondary-200 dark:border-secondary-900`}
+                                    } bg-white dark:bg-secondary-800 border-secondary-200 dark:border-secondary-700`}
                                   onClick={() => handleAnswerSelect(questionId, option)}
                                 >
                                   <Space size={6}>
@@ -467,7 +467,7 @@ const ExercisesTab: React.FC<ExercisesTabProps> = ({
                             : isSelected && status === "incorrect"
                               ? "border-red-300 bg-red-50 dark:border-red-600 dark:bg-red-900/20"
                               : "hover:bg-secondary-100 dark:hover:bg-secondary-900"
-                            } bg-white dark:bg-secondary-925 border-secondary-200 dark:border-secondary-900`}
+                            } bg-white dark:bg-secondary-800 border-secondary-200 dark:border-secondary-700`}
                           styles={{ body: { padding: 10 } }}
                           onClick={() => handleAnswerSelect(exerciseId, option)}
                         >
@@ -575,7 +575,7 @@ const ExercisesTab: React.FC<ExercisesTabProps> = ({
                 ].isCorrect
                   ? "border-green-200 bg-green-50 dark:border-green-600 dark:bg-green-900/20"
                   : "border-red-200 bg-red-50 dark:border-red-600 dark:bg-red-900/20"
-                  } bg-white dark:bg-secondary-925`}
+                  } bg-white dark:bg-secondary-800`}
               >
                 <Title
                   level={5}

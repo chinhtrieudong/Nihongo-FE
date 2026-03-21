@@ -38,27 +38,47 @@ export interface VocabularyExample {
   _id?: string;
 }
 
-export interface KanjiItem {
-  _id: string;
-  character: string;
+export interface RelatedVocabulary {
   hanviet: string;
   meaning_vi: string;
-  onyomi: OnyomiReading[];
-  kunyomi: KunyomiReading[];
-  stroke_count: number;
-  jlpt_level: string;
-  frequency: string;
-  radical: Radical;
-  structure: string;
-  image_explanation: string;
-  kanji_analysis: KanjiAnalysis[];
-  vocabulary_examples: VocabularyExample[];
-  category: string;
-  level?: string;
+  vocab_kanji: string;
+  vocab_reading: string;
+}
+
+export interface KanjiItem {
+  kanji?: string;
+  character?: string;
+  hanviet: string;
+  jlpt?: string;
+  jlpt_level?: string;
   color?: string;
+  onyomi: string[];
+  kunyomi: string[];
+  meaning?: string;
+  meaningVi?: string;
+  meaning_vi?: string;
+  stroke_count?: number;
+  strokeCount?: number;
+  radicals?: string[];
+  radical?: Radical | string;
   memory_tip?: string;
-  createdAt: string;
-  updatedAt: string;
-  __v: number;
-  stroke_order?: string[];
+  memoryTip?: string;
+  related_vocabulary?: RelatedVocabulary[];
+  frequency?: string;
+  category?: string;
+  structure?: string;
+  image_explanation?: string;
+  kanji_analysis?: KanjiAnalysis[];
+  vocabulary_examples?: VocabularyExample[];
+}
+
+// API Response types
+export interface KanjiListResponse {
+  success: boolean;
+  data: KanjiItem[];
+}
+
+export interface KanjiDetailResponse {
+  success: boolean;
+  data: KanjiItem;
 }

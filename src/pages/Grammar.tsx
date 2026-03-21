@@ -215,28 +215,21 @@ const Grammar: React.FC = () => {
   };
 
   return (
-    <div className="grammar-page min-h-full text-secondary-900 dark:text-secondary-100">
+    <div className="grammar-page min-h-full bg-gray-50 dark:bg-secondary-900 academic-canvas">
       {/* Desktop Layout */}
-      <div className="max-w-7xl mx-auto p-3 sm:p-4 lg:p-6">
-        {/* Header */}
-        <div className="mb-4 sm:mb-5 rounded-2xl border border-[#d5dfef] bg-[#d6e4f8] bg-[linear-gradient(to_right,rgba(255,255,255,0.45)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.45)_1px,transparent_1px)] [background-size:24px_24px] px-4 py-4 sm:px-6 sm:py-5">
-          <div className="flex items-center gap-3 sm:gap-4 min-w-0">
-            <span className="inline-flex items-center justify-center text-secondary-700 dark:text-secondary-400 shrink-0">
-              <ExperimentOutlined className="text-[34px] sm:text-[40px]" />
-            </span>
-            <div className="min-w-0">
-              <h1 className="text-2xl sm:text-4xl font-semibold leading-tight text-[#2a2f3f] truncate">
-                Học Ngữ pháp
-              </h1>
-              <p className="mt-1 text-sm sm:text-lg text-[#2c3853]">
-                Học theo lộ trình JLPT • Có ví dụ • Có luyện tập
-              </p>
-            </div>
-          </div>
+      <div className="max-w-6xl mx-auto px-4 py-8">
+        {/* Header Section */}
+        <div className="mb-6">
+          <h1 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-secondary-100 mb-3">
+            Học Ngữ pháp
+          </h1>
+          <p className="text-gray-600 dark:text-secondary-400 text-lg">
+            Học theo lộ trình JLPT • Có ví dụ • Có luyện tập
+          </p>
         </div>
 
         {/* Filters and Search */}
-        <div className="mb-4 rounded-2xl border border-[#e6e8ee] bg-[#f3f4f8] shadow-none p-2.5 sm:p-3">
+        <div className="mb-6 rounded-2xl border border-[#e6e8ee] dark:border-secondary-700 bg-[#f3f4f8] dark:bg-secondary-800 shadow-none p-2.5 sm:p-3">
           <div className="flex flex-col md:flex-row md:items-center gap-1.5">
             <div className="flex-1 min-w-0">
               <Input
@@ -288,7 +281,7 @@ const Grammar: React.FC = () => {
 
         {/* Results Statistics */}
         {totalItems > 0 && (
-          <Card className="mb-4 sm:mb-6 bg-white dark:bg-secondary-925 border border-secondary-200 dark:border-secondary-900" variant="borderless">
+          <Card className="mb-6 sm:mb-8 bg-white dark:bg-secondary-800 border border-secondary-200 dark:border-secondary-700" variant="borderless">
             <Row gutter={[8, 16]}>
               <Col xs={24} sm={8}>
                 <Statistic
@@ -348,7 +341,7 @@ const Grammar: React.FC = () => {
                   </Space>
                 </div>
               }
-              className="grammar-content-card bg-white dark:bg-secondary-925 border border-secondary-200 dark:border-secondary-900"
+              className="grammar-content-card bg-white dark:bg-secondary-800 border border-secondary-200 dark:border-secondary-700"
             >
               <GrammarSectionAccordion sections={transformedSections} />
 
@@ -370,7 +363,7 @@ const Grammar: React.FC = () => {
             </Card>
           ) : (
             !loading && (
-              <Card className="bg-white dark:bg-secondary-925 border border-secondary-200 dark:border-secondary-900" variant="borderless">
+              <Card className="bg-white dark:bg-secondary-800 border border-secondary-200 dark:border-secondary-700" variant="borderless">
                 <Empty
                   image={Empty.PRESENTED_IMAGE_SIMPLE}
                   description={

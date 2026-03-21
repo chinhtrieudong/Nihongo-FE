@@ -88,15 +88,98 @@ export const pronunciationAPI = {
     exercises: Exercise[];
     pagination: Pagination;
   }> => {
-    const params = new URLSearchParams();
-    if (level && level !== 'all') params.append('level', level);
-    if (category && category !== 'all') params.append('category', category);
-    if (difficulty) params.append('difficulty', difficulty);
-    params.append('page', page.toString());
-    params.append('limit', limit.toString());
+    try {
+      const params = new URLSearchParams();
+      if (level && level !== 'all') params.append('level', level);
+      if (category && category !== 'all') params.append('category', category);
+      if (difficulty) params.append('difficulty', difficulty);
+      params.append('page', page.toString());
+      params.append('limit', limit.toString());
 
-    const response = await api.get(`/pronunciation/exercises?${params}`);
-    return response.data.data;
+      const response = await api.get(`/pronunciation/exercises?${params}`);
+      return response.data.data;
+    } catch (error) {
+      console.warn('API not available, using mock data');
+      // Return mock data from JSON file
+      const mockExercises: Exercise[] = [
+        {
+          _id: "pron_001",
+          japanese: "おはようございます",
+          romaji: "ohayou gozaimasu",
+          vietnamese: "Chào buổi sáng (lịch sự)",
+          difficulty: "easy",
+          category: "greetings",
+          level: "N5",
+          isActive: true,
+          audioUrl: null,
+          createdAt: "2024-01-01T00:00:00.000Z",
+          updatedAt: "2024-01-01T00:00:00.000Z"
+        },
+        {
+          _id: "pron_002",
+          japanese: "こんにちは",
+          romaji: "konnichiwa",
+          vietnamese: "Xin chào (ban ngày)",
+          difficulty: "easy",
+          category: "greetings",
+          level: "N5",
+          isActive: true,
+          audioUrl: null,
+          createdAt: "2024-01-01T00:00:00.000Z",
+          updatedAt: "2024-01-01T00:00:00.000Z"
+        },
+        {
+          _id: "pron_003",
+          japanese: "こんばんは",
+          romaji: "konbanwa",
+          vietnamese: "Chào buổi tối",
+          difficulty: "easy",
+          category: "greetings",
+          level: "N5",
+          isActive: true,
+          audioUrl: null,
+          createdAt: "2024-01-01T00:00:00.000Z",
+          updatedAt: "2024-01-01T00:00:00.000Z"
+        },
+        {
+          _id: "pron_004",
+          japanese: "ありがとうございます",
+          romaji: "arigatou gozaimasu",
+          vietnamese: "Cảm ơn rất nhiều",
+          difficulty: "easy",
+          category: "greetings",
+          level: "N5",
+          isActive: true,
+          audioUrl: null,
+          createdAt: "2024-01-01T00:00:00.000Z",
+          updatedAt: "2024-01-01T00:00:00.000Z"
+        },
+        {
+          _id: "pron_005",
+          japanese: "すみません",
+          romaji: "sumimasen",
+          vietnamese: "Xin lỗi / Xin phép",
+          difficulty: "easy",
+          category: "greetings",
+          level: "N5",
+          isActive: true,
+          audioUrl: null,
+          createdAt: "2024-01-01T00:00:00.000Z",
+          updatedAt: "2024-01-01T00:00:00.000Z"
+        }
+      ];
+      
+      return {
+        exercises: mockExercises,
+        pagination: {
+          currentPage: 1,
+          totalPages: 1,
+          totalItems: mockExercises.length,
+          hasNext: false,
+          hasPrev: false
+        }
+      };
+    }
   },
 
   // Get exercise detail

@@ -8,7 +8,7 @@ interface KanjiFilterProps {
     strokeFilters: string[];
     onLevelChange: (levels: string[]) => void;
     onSearch: (term: string) => void;
-    onStrokeFilterChange: (values: string[]) => void;
+    onStrokeFilterChange: (value: string | undefined) => void;
 }
 
 const KanjiFilter: React.FC<KanjiFilterProps> = ({
@@ -43,6 +43,7 @@ const KanjiFilter: React.FC<KanjiFilterProps> = ({
                         className="w-full [&_.ant-select-selector]:!rounded-xl [&_.ant-select-selector]:!border-[#d9dce5] [&_.ant-select-selector]:!bg-white"
                         size="small"
                         options={[
+                            { value: 'all', label: <span className="font-medium text-gray-700">Tất cả</span> },
                             { value: 'N5', label: <span className="font-medium text-emerald-700">N5</span> },
                             { value: 'N4', label: <span className="font-medium text-sky-700">N4</span> },
                             { value: 'N3', label: <span className="font-medium text-amber-700">N3</span> },
@@ -54,19 +55,16 @@ const KanjiFilter: React.FC<KanjiFilterProps> = ({
                 </div>
                 <div className="w-full md:w-[160px]">
                     <Select
-                        mode="multiple"
-                        value={strokeFilters}
+                        value={strokeFilters[0]}
                         onChange={onStrokeFilterChange}
                         placeholder="Lọc số nét"
-                        maxTagCount="responsive"
                         className="w-full [&_.ant-select-selector]:!rounded-xl [&_.ant-select-selector]:!border-[#d9dce5] [&_.ant-select-selector]:!bg-white"
                         size="small"
                         options={[
-                            { value: 'low', label: '1 - 5 nét' },
-                            { value: 'mid', label: '6 - 10 nét' },
-                            { value: 'high', label: '11+ nét' },
+                            { value: 'hantu', label: 'Hán tự' },
                             { value: 'radical214', label: '214 bộ thủ' },
                         ]}
+                        allowClear
                     />
                 </div>
             </div>

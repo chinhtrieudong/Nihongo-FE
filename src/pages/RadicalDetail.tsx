@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
-import { ArrowLeftOutlined } from "@ant-design/icons";
-import { Spin } from "antd";
+import { ArrowLeftOutlined, LeftOutlined, RightOutlined } from "@ant-design/icons";
+import { Spin, Button } from "antd";
 import { lessonAPI } from "../services/api";
 
 type RadicalDetailData = {
@@ -9,8 +9,16 @@ type RadicalDetailData = {
   hanviet?: string;
   name_vi?: string;
   meaning?: string;
+  meaningVi?: string;
+  jlpt?: string;
   stroke_count?: number;
   kanji_count?: number;
+  variants?: string[];
+  example_kanji?: Array<{
+    kanji: string;
+    hanviet?: string;
+    meaning_vi?: string;
+  }>;
 };
 
 type KanjiSummary = {
@@ -36,6 +44,12 @@ const JLPT_BADGE_CLASS: Record<string, string> = {
   N1: "bg-rose-50 text-rose-700 border-rose-200",
 };
 
+const normalizeJlptLevel = (value?: string) => {
+  if (!value) return "";
+  const normalized = value.toUpperCase().trim();
+  return ["N5", "N4", "N3", "N2", "N1"].includes(normalized) ? normalized : "";
+};
+
 const RadicalDetail: React.FC = () => {
   const { symbol } = useParams<{ symbol: string }>();
   const navigate = useNavigate();
@@ -44,7 +58,27 @@ const RadicalDetail: React.FC = () => {
   const [radical, setRadical] = useState<RadicalDetailData | null>(null);
   const [items, setItems] = useState<KanjiSummary[]>([]);
   const [vocabularyWords, setVocabularyWords] = useState<DemoWord[]>([]);
+  const [allRadicals, setAllRadicals] = useState<string[]>([]);
+  const [currentIndex, setCurrentIndex] = useState<number>(-1);
   const listFromPath = (location.state as { from?: string } | null)?.from;
+
+  // Load all radicals for navigation
+  useEffect(() => {
+    const loadAllRadicals = async () => {
+      try {
+        const response = await lessonAPI.getRadicals();
+        // Response format: { success: true, data: [...], count: ... }
+        const radicals = response?.data?.data || response?.data?.items || response?.data || [];
+        const symbols = radicals.map((r: any) => r.symbol).filter(Boolean);
+        setAllRadicals(symbols);
+        const idx = symbols.indexOf(symbol || "");
+        setCurrentIndex(idx);
+      } catch (error) {
+        console.error("Failed to load radicals list:", error);
+      }
+    };
+    loadAllRadicals();
+  }, [symbol]);
 
   useEffect(() => {
     const loadData = async () => {
@@ -56,11 +90,61 @@ const RadicalDetail: React.FC = () => {
           lessonAPI.getKanjiByRadical(symbol, 1, 40),
         ]);
 
-        const kanjiItems: KanjiSummary[] = kanjiResponse?.data?.items || [];
-        setRadical(radicalResponse?.data || null);
-        setItems(kanjiItems);
+        const rawRadical = radicalResponse?.data?.data || radicalResponse?.data || null;
+        const exampleItems: KanjiSummary[] = Array.isArray(rawRadical?.example_kanji)
+          ? rawRadical.example_kanji
+              .map((item: any, index: number) => ({
+                _id: `${item.kanji || "kanji"}-${index}`,
+                character: item.kanji || "",
+                hanviet: item.hanviet || "",
+                meaning_vi: item.meaning_vi || "",
+              }))
+              .filter((item: KanjiSummary) => Boolean(item.character))
+          : [];
 
-        const chars = kanjiItems.slice(0, 5).map((item) => item.character);
+        const rawKanjiItems = Array.isArray(kanjiResponse?.data?.data?.items)
+          ? kanjiResponse.data.data.items
+          : Array.isArray(kanjiResponse?.data?.items)
+            ? kanjiResponse.data.items
+            : Array.isArray(kanjiResponse?.data)
+              ? kanjiResponse.data
+              : [];
+
+        const kanjiItems: KanjiSummary[] = rawKanjiItems
+          .map((item: any, index: number) => ({
+            _id:
+              item._id ||
+              item.id ||
+              `${item.character || item.kanji || "kanji"}-${index}`,
+            character: item.character || item.kanji || "",
+            hanviet: item.hanviet || item.han_viet || "",
+            meaning_vi: item.meaning_vi || item.meaningVi || "",
+            stroke_count: item.stroke_count ?? item.strokes,
+            jlpt_level: normalizeJlptLevel(
+              item.jlpt_level || item.jlpt || item.level,
+            ),
+          }))
+          .filter((item: KanjiSummary) => Boolean(item.character));
+
+        setRadical(
+          rawRadical
+            ? {
+                ...rawRadical,
+                meaningVi: rawRadical.meaningVi || rawRadical.meaning_vi,
+                variants: Array.isArray(rawRadical.variants)
+                  ? rawRadical.variants
+                  : [],
+                example_kanji: Array.isArray(rawRadical.example_kanji)
+                  ? rawRadical.example_kanji
+                  : [],
+              }
+            : null,
+        );
+
+        const mergedItems = kanjiItems.length > 0 ? kanjiItems : exampleItems;
+        setItems(mergedItems);
+
+        const chars = mergedItems.slice(0, 5).map((item) => item.character);
         const detailResponses = await Promise.all(
           chars.map((char) => lessonAPI.getKanji(char).catch(() => null)),
         );
@@ -104,6 +188,24 @@ const RadicalDetail: React.FC = () => {
     navigate("/kanji?stroke=radical214");
   };
 
+  const navigateToPrev = () => {
+    if (currentIndex > 0) {
+      const prevSymbol = allRadicals[currentIndex - 1];
+      navigate(`/kanji/radicals/${encodeURIComponent(prevSymbol)}`, {
+        state: location.state,
+      });
+    }
+  };
+
+  const navigateToNext = () => {
+    if (currentIndex < allRadicals.length - 1) {
+      const nextSymbol = allRadicals[currentIndex + 1];
+      navigate(`/kanji/radicals/${encodeURIComponent(nextSymbol)}`, {
+        state: location.state,
+      });
+    }
+  };
+
   if (loading) {
     return (
       <div className="flex items-center justify-center h-64">
@@ -122,16 +224,57 @@ const RadicalDetail: React.FC = () => {
 
   const displaySymbol = radical.symbol || symbol || "—";
   const kanjiCount = radical.kanji_count ?? items.length;
+  const displayHanviet = radical.hanviet || "";
+  const displayNameVi = radical.name_vi || radical.meaningVi || "";
+  const displayMeaningVi = radical.meaningVi || "";
+  const displayMeaningEn = radical.meaning || "";
+  const jlptLabel = normalizeJlptLevel(radical.jlpt);
+  const exampleKanjiItems: KanjiSummary[] = Array.isArray(radical.example_kanji)
+    ? radical.example_kanji
+        .map((item, index) => ({
+          _id: `${item.kanji || "kanji"}-${index}`,
+          character: item.kanji || "",
+          hanviet: item.hanviet || "",
+          meaning_vi: item.meaning_vi || "",
+        }))
+        .filter((item) => Boolean(item.character))
+    : [];
 
   return (
     <div className="min-h-full px-3 sm:px-4 md:px-6 py-4 sm:py-6">
-      <button
-        onClick={handleBack}
-        className="mb-3 inline-flex items-center gap-2 rounded-xl border border-slate-200 px-3 py-1.5 text-sm text-slate-700 transition-colors hover:text-slate-900"
-      >
-        <ArrowLeftOutlined />
-        Về danh sách bộ thủ
-      </button>
+      <div className="mb-3 flex items-center justify-between">
+        <div className="flex items-center gap-2">
+          <Button
+            icon={<ArrowLeftOutlined />}
+            onClick={handleBack}
+            className="rounded-xl"
+          >
+            Quay lại danh sách Hán tự
+          </Button>
+        </div>
+
+        <div className="flex items-center gap-2">
+          <Button
+            icon={<LeftOutlined />}
+            onClick={navigateToPrev}
+            disabled={currentIndex <= 0}
+            className="rounded-xl"
+          >
+            Trước
+          </Button>
+          <span className="text-sm text-slate-500">
+            {currentIndex + 1} / {allRadicals.length}
+          </span>
+          <Button
+            icon={<RightOutlined />}
+            onClick={navigateToNext}
+            disabled={currentIndex >= allRadicals.length - 1}
+            className="rounded-xl"
+          >
+            Sau
+          </Button>
+        </div>
+      </div>
 
       <div className="mb-4 rounded-2xl border border-[#d5dfef] bg-[#d6e4f8] bg-[linear-gradient(to_right,rgba(255,255,255,0.45)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.45)_1px,transparent_1px)] [background-size:24px_24px] p-4 sm:p-5">
         <div className="grid grid-cols-1 lg:grid-cols-[160px_minmax(0,1fr)] gap-4 sm:gap-5">
@@ -140,7 +283,7 @@ const RadicalDetail: React.FC = () => {
               {displaySymbol}
             </div>
             <div className="mt-1 text-sm font-medium text-[#334155]">
-              {radical.hanviet || radical.name_vi || "Bộ thủ"}
+              {displayHanviet || displayNameVi || "Bộ thủ"}
             </div>
           </div>
 
@@ -149,11 +292,12 @@ const RadicalDetail: React.FC = () => {
               Bộ thủ <span className="font-kosugi">{displaySymbol}</span>
             </h1>
             <p className="mt-1 text-sm sm:text-lg text-[#2c3853]">
-              {radical.hanviet || radical.name_vi || "Không rõ tên"} •{" "}
-              {radical.meaning || "Không có nghĩa"}
+              {displayHanviet ? `${displayHanviet} • ${displayNameVi || ""}` : (displayNameVi || "Không rõ tên")}{" "}
+              {displayMeaningVi || "Không có nghĩa"}
+              {displayMeaningEn ? ` (${displayMeaningEn})` : ""}
             </p>
 
-            <div className="mt-3 grid grid-cols-2 sm:grid-cols-3 gap-2">
+            <div className="mt-3 grid grid-cols-2 sm:grid-cols-4 gap-2">
               <div className="rounded-xl border border-white/70 bg-white/70 px-3 py-2">
                 <div className="text-[11px] uppercase tracking-wide text-slate-500">
                   Số nét
@@ -164,13 +308,21 @@ const RadicalDetail: React.FC = () => {
               </div>
               <div className="rounded-xl border border-white/70 bg-white/70 px-3 py-2">
                 <div className="text-[11px] uppercase tracking-wide text-slate-500">
+                  JLPT
+                </div>
+                <div className="text-lg font-semibold text-slate-800">
+                  {jlptLabel || "-"}
+                </div>
+              </div>
+              <div className="rounded-xl border border-white/70 bg-white/70 px-3 py-2">
+                <div className="text-[11px] uppercase tracking-wide text-slate-500">
                   Số Kanji
                 </div>
                 <div className="text-lg font-semibold text-slate-800">
                   {kanjiCount}
                 </div>
               </div>
-              <div className="rounded-xl border border-white/70 bg-white/70 px-3 py-2 col-span-2 sm:col-span-1">
+              <div className="rounded-xl border border-white/70 bg-white/70 px-3 py-2">
                 <div className="text-[11px] uppercase tracking-wide text-slate-500">
                   Mã bộ thủ
                 </div>
@@ -179,9 +331,24 @@ const RadicalDetail: React.FC = () => {
                 </div>
               </div>
             </div>
+
+            {Array.isArray(radical.variants) && radical.variants.length > 0 ? (
+              <div className="mt-3 flex flex-wrap items-center gap-2">
+                <span className="text-xs font-medium text-slate-600">Biến thể:</span>
+                {radical.variants.map((variant) => (
+                  <span
+                    key={variant}
+                    className="inline-flex items-center rounded-full border border-slate-200 bg-white/70 px-2.5 py-0.5 text-xs font-semibold text-slate-700"
+                  >
+                    {variant}
+                  </span>
+                ))}
+              </div>
+            ) : null}
           </div>
         </div>
       </div>
+
 
       <div className="rounded-2xl border border-[#e6e8ee] bg-white/95 p-4 sm:p-5 mb-4">
         <div className="mb-3 flex items-center justify-between gap-3">
@@ -201,14 +368,18 @@ const RadicalDetail: React.FC = () => {
               <button
                 key={item._id}
                 className="rounded-xl border-2 border-slate-200 bg-white p-3 text-left transition-all hover:border-slate-400 hover:shadow-sm"
-                onClick={() =>
+                onClick={() => {
+                  const kanjiList = items.map((k) => k.character);
+                  const kanjiIndex = items.findIndex((k) => k._id === item._id);
                   navigate(`/kanji/${item.character}`, {
                     state: {
                       from: `${location.pathname}${location.search}`,
                       fromRadicalList: listFromPath,
+                      kanjiList,
+                      currentIndex: kanjiIndex,
                     },
-                  })
-                }
+                  });
+                }}
               >
                 <div className="text-4xl font-kosugi leading-none text-center mb-2 text-[#1f2a44]">
                   {item.character}
@@ -240,27 +411,6 @@ const RadicalDetail: React.FC = () => {
         )}
       </div>
 
-      <div className="rounded-2xl border border-[#e6e8ee] bg-white/95 p-4 sm:p-5">
-        <h2 className="text-lg font-semibold text-[#1f2a44] mb-3">Từ vựng tham khảo</h2>
-        {vocabularyWords.length === 0 ? (
-          <div className="rounded-xl border border-dashed border-slate-300 bg-slate-50/70 p-6 text-center text-secondary-600">
-            Chưa có dữ liệu từ vựng từ endpoint cho bộ thủ này.
-          </div>
-        ) : (
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
-            {vocabularyWords.map((word, index) => (
-              <div
-                key={`${word.word}-${index}`}
-                className="rounded-xl border border-secondary-200 bg-slate-50/60 p-3"
-              >
-                <div className="text-lg font-semibold text-slate-900">{word.word}</div>
-                <div className="text-sm text-secondary-600">{word.reading}</div>
-                <div className="text-sm text-slate-700">{word.meaning}</div>
-              </div>
-            ))}
-          </div>
-        )}
-      </div>
     </div>
   );
 };

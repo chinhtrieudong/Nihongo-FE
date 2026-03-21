@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { Provider } from "react-redux";
 import { ConfigProvider, theme, App as AntdApp } from "antd";
@@ -7,6 +7,7 @@ import { useAppSelector } from "./store/hooks";
 import ThemeProvider from "./components/ThemeProvider";
 import ErrorBoundary from "./components/ErrorBoundary";
 import Layout from "./components/Layout";
+import Home from "./pages/Home";
 import LessonsList from "./pages/LessonsList";
 import LessonDetail from "./pages/LessonDetail";
 import KanjiPage from "./pages/Kanji";
@@ -61,7 +62,7 @@ const AppContent: React.FC = () => {
 
             {/* Public routes */}
             <Route path="/" element={<Layout />}>
-              <Route index element={<LessonsList />} />
+              <Route index element={<Home />} />
               <Route path="lessons" element={<LessonsList />} />
               <Route path="lessons/:lessonNumber" element={<ErrorBoundary><LessonDetail /></ErrorBoundary>} />
               <Route path="lessons/:lessonNumber/kanji" element={<KanjiDetail />} />
@@ -101,6 +102,59 @@ const AppContent: React.FC = () => {
   );
 };
 
+const FontProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+  const { uiFontFamily, japaneseFontFamily, fontPreset } = useAppSelector((state) => state.ui);
+
+  useEffect(() => {
+    const root = document.documentElement;
+    
+    // Map font keys to CSS font-family values
+    const uiFontMap: Record<string, string> = {
+      default: "'Itim', 'Noto Sans', system-ui, sans-serif",
+      noto_sans: "'Noto Sans', sans-serif",
+      inter: "'Inter', sans-serif",
+      poppins: "'Poppins', sans-serif",
+      roboto: "'Roboto', sans-serif",
+      be_vietnam: "'Be Vietnam Pro', sans-serif",
+      montserrat: "'Montserrat', sans-serif",
+    };
+
+    const japaneseFontMap: Record<string, string> = {
+      default_jp: "'Noto Sans JP', sans-serif",
+      noto_sans_jp: "'Noto Sans JP', sans-serif",
+      noto_serif_jp: "'Noto Serif JP', serif",
+      zen_kaku_gothic: "'Zen Kaku Gothic New', sans-serif",
+      shippori_mincho: "'Shippori Mincho', serif",
+      sawarabi_gothic: "'Sawarabi Gothic', sans-serif",
+    };
+
+    const kanjiFontMap: Record<string, string> = {
+      noto_sans_jp: "'Noto Sans JP', 'Noto Sans', system-ui, sans-serif",
+      noto_serif_jp: "'Noto Serif JP', 'Noto Sans', system-ui, serif",
+      zen_maru_gothic: "'Zen Maru Gothic', 'Noto Serif JP', 'Noto Sans', system-ui, sans-serif",
+      yuji_syuku: "'Yuji Syuku', 'Noto Serif JP', 'Noto Sans', system-ui, serif",
+      rocknroll_one: "'RocknRoll One', 'Noto Sans JP', 'Noto Sans', system-ui, sans-serif",
+      itim: "'Itim', 'Noto Sans JP', 'Noto Sans', system-ui, sans-serif",
+    };
+
+    // Apply UI font
+    const uiFont = uiFontMap[uiFontFamily] || uiFontMap.default;
+    root.style.setProperty('--app-font-family', uiFont);
+    root.style.setProperty('--ant-font-family', uiFont);
+
+    // Apply Japanese font
+    const jpFont = japaneseFontMap[japaneseFontFamily] || japaneseFontMap.default_jp;
+    root.style.setProperty('--japanese-font-family', jpFont);
+
+    // Apply Kanji font
+    const kanjiFont = kanjiFontMap[fontPreset] || kanjiFontMap.noto_serif_jp;
+    root.style.setProperty('--kanji-font-family', kanjiFont);
+
+  }, [uiFontFamily, japaneseFontFamily, fontPreset]);
+
+  return <>{children}</>;
+};
+
 const AppWithTheme: React.FC = () => {
   const { darkMode } = useAppSelector((state) => state.ui);
 
@@ -113,7 +167,9 @@ const AppWithTheme: React.FC = () => {
         },
       }}
     >
-      <AppContent />
+      <FontProvider>
+        <AppContent />
+      </FontProvider>
     </ConfigProvider>
   );
 };

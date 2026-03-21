@@ -62,7 +62,7 @@ const GrammarTab: React.FC<GrammarTabProps> = ({ grammars, lessonInfo }) => {
 
   return (
     <div style={{ padding: "24px" }}>
-      <Card className="bg-white dark:bg-secondary-925 border-secondary-200 dark:border-secondary-900">
+      <Card className="bg-white dark:bg-secondary-800 border-secondary-200 dark:border-secondary-700">
         <div className="mb-4 flex items-center gap-4">
           <Text className="!text-secondary-700 dark:!text-secondary-400">
             Tổng số mẫu ngữ pháp: <strong>{grammars.length}</strong>

@@ -590,35 +590,20 @@ const Pronunciation: React.FC = () => {
   };
 
   return (
-    <div className="min-h-full px-3 sm:px-4 md:px-6 py-4 sm:py-6 space-y-3">
-      {/* Header */}
-      <div className="mb-4 sm:mb-5 rounded-2xl border border-[#d5dfef] bg-[#d6e4f8] bg-[linear-gradient(to_right,rgba(255,255,255,0.45)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.45)_1px,transparent_1px)] [background-size:24px_24px] px-4 py-4 sm:px-6 sm:py-5">
-        <div className="flex items-start sm:items-center justify-between gap-4">
-          <div className="flex items-center gap-3 sm:gap-4 min-w-0">
-            <span className="inline-flex items-center justify-center text-secondary-700 dark:text-secondary-400 shrink-0">
-              <SoundOutlined className="text-[34px] sm:text-[40px]" />
-            </span>
-            <div className="min-w-0">
-              <h1 className="text-2xl sm:text-4xl font-semibold leading-tight text-[#2a2f3f] truncate">
-                Luyện phát âm
-              </h1>
-              <p className="mt-1 text-sm sm:text-lg text-[#2c3853]">
-                Nghe mẫu, thu âm và nhận phản hồi nhanh.
-              </p>
-            </div>
-          </div>
-
-          <Button
-            icon={<SettingOutlined />}
-            onClick={() => setShowFilters((prev) => !prev)}
-            className="shrink-0"
-          >
-            Bộ lọc
-          </Button>
+    <div className="min-h-full bg-gray-50 dark:bg-secondary-900 academic-canvas">
+      <div className="max-w-6xl mx-auto px-4 py-8">
+        {/* Header Section */}
+        <div className="mb-6">
+          <h1 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-secondary-100 mb-3">
+            Luyện phát âm
+          </h1>
+          <p className="text-gray-600 dark:text-secondary-400 text-lg">
+            Nghe mẫu, thu âm và nhận phản hồi nhanh.
+          </p>
         </div>
 
         {showFilters && (
-          <div className="mt-3 flex flex-col sm:flex-row gap-2">
+          <div className="flex flex-col sm:flex-row gap-3">
             <Select
               value={selectedLevel}
               onChange={setSelectedLevel}
@@ -645,15 +630,14 @@ const Pronunciation: React.FC = () => {
             </Select>
           </div>
         )}
-      </div>
 
-      {!currentExercise ? (
-        <Card>
-          <Text type="secondary">Chưa có bài luyện phát âm.</Text>
-        </Card>
-      ) : (
-        <Card className="shadow-sm">
-          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 mb-3">
+        {!currentExercise ? (
+          <Card className="p-6">
+            <Text type="secondary">Chưa có bài luyện phát âm.</Text>
+          </Card>
+        ) : (
+          <Card className="shadow-sm p-4 sm:p-6">
+          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
             <div className="flex items-center gap-2 flex-wrap">
               <span className="text-secondary-700 dark:text-secondary-300">
                 Bài tập #{exercises.findIndex(ex => ex._id === currentExercise._id) + 1}
@@ -679,7 +663,7 @@ const Pronunciation: React.FC = () => {
             </Space>
           </div>
 
-          <div className="rounded-xl border border-secondary-200 dark:border-secondary-900 p-4 sm:p-5 text-center space-y-2">
+          <div className="rounded-xl border border-secondary-200 dark:border-secondary-700 p-4 sm:p-6 text-center space-y-3">
             <Title level={1} className="!mb-0 font-kosugi tracking-wide">
               {currentExercise.japanese}
             </Title>
@@ -701,10 +685,10 @@ const Pronunciation: React.FC = () => {
             </Button>
           </div>
 
-          <div className="mt-4 grid gap-3 sm:grid-cols-[1fr_1.2fr]">
-            <div className="rounded-xl border border-secondary-200 dark:border-secondary-900 p-3 sm:p-4 space-y-2">
+          <div className="grid gap-4 sm:grid-cols-[1fr_1.2fr] mt-4">
+            <div className="rounded-xl border border-secondary-200 dark:border-secondary-700 p-4 sm:p-5 space-y-2">
               <div className="font-semibold">Nghe mẫu</div>
-              <Text className="text-secondary-600 dark:text-secondary-400 text-sm">
+              <Text className="text-secondary-600 dark:text-secondary-400">
                 Nghe lại câu mẫu trước khi nói.
               </Text>
               <div className="flex flex-col sm:flex-row gap-2">
@@ -730,12 +714,12 @@ const Pronunciation: React.FC = () => {
               </div>
             </div>
 
-            <div className="rounded-xl border border-secondary-200 dark:border-secondary-900 p-3 sm:p-4 space-y-2">
+            <div className="rounded-xl border border-secondary-200 dark:border-secondary-700 p-4 sm:p-5 space-y-2">
               <div className="flex items-center justify-between">
                 <div className="font-semibold">Thu âm của bạn</div>
                 <span className="text-xs text-secondary-500">3–5 giây</span>
               </div>
-              <Text className="text-secondary-600 dark:text-secondary-400 text-sm">
+              <Text className="text-secondary-600 dark:text-secondary-400">
                 Nhấn mic và đọc to rõ ràng.
               </Text>
               {recognitionError && (
@@ -751,10 +735,10 @@ const Pronunciation: React.FC = () => {
                   className="h-12 w-12 rounded-full flex items-center justify-center"
                 />
                 <div className="flex-1">
-                  <div className="text-sm text-secondary-700 dark:text-secondary-300">
+                  <div className="text-sm text-secondary-700 dark:text-secondary-400">
                     {isRecording ? `Đang ghi... còn ${remainingSeconds}s` : "Sẵn sàng thu âm"}
                   </div>
-                  <div className="mt-2 flex items-end gap-1 h-6">
+                  <div className="flex items-end gap-1 h-6">
                     {Array.from({ length: 10 }).map((_, index) => (
                       <div
                         key={index}
@@ -780,7 +764,7 @@ const Pronunciation: React.FC = () => {
               )}
 
               {recognitionError && (
-                <div className="mt-2 space-y-2">
+                <div className="space-y-2">
                   <Text className="text-xs text-secondary-600 dark:text-secondary-400">
                     Nếu Speech Recognition không hoạt động, bạn có thể nhập transcript để chấm.
                   </Text>
@@ -802,7 +786,7 @@ const Pronunciation: React.FC = () => {
               )}
 
               {showResults && lastScore !== null && (
-                <div className="p-3 bg-secondary-50 dark:bg-secondary-925 rounded-lg text-center">
+                <div className="p-4 bg-secondary-50 dark:bg-secondary-800 rounded-lg text-center">
                   <div className={`text-2xl font-bold ${lastScore >= 80 ? 'text-green-600 dark:text-green-400' :
                     lastScore >= 60 ? 'text-blue-600 dark:text-blue-400' :
                       'text-orange-600 dark:text-orange-400'
@@ -816,12 +800,12 @@ const Pronunciation: React.FC = () => {
               )}
 
               {userInput && (
-                <div className="p-3 bg-secondary-50 dark:bg-secondary-925 rounded-lg">
+                <div className="p-4 bg-secondary-50 dark:bg-secondary-800 rounded-lg">
                   <Text strong>Kết quả thu âm:</Text>
-                  <div className="mt-2 p-3 bg-white dark:bg-secondary-925 rounded border border-secondary-200 dark:border-secondary-900">
+                  <div className="p-3 bg-white dark:bg-secondary-800 rounded border border-secondary-200 dark:border-secondary-700">
                     {userInput}
                   </div>
-                  <div className="mt-3 flex flex-col sm:flex-row gap-2">
+                  <div className="flex flex-col sm:flex-row gap-2">
                     <Button
                       icon={<PlayCircleOutlined />}
                       onClick={playRecordedAudio}
@@ -846,6 +830,7 @@ const Pronunciation: React.FC = () => {
           </div>
         </Card>
       )}
+      </div>
     </div>
   );
 };

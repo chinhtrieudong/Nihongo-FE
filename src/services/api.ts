@@ -308,11 +308,13 @@ export const lessonAPI = {
     level?: string,
     limit?: number,
     offset?: number,
+    textbook?: string,
   ): Promise<LessonsResponse> => {
     const params: any = {};
     if (level) params.level = level;
     if (limit) params.limit = limit;
     if (offset) params.offset = offset;
+    if (textbook) params.textbook = textbook;
 
     const response = await api.get("/lessons", { params });
     return response.data;
@@ -472,8 +474,8 @@ export const lessonAPI = {
     return response.data;
   },
 
-  getRadicals: async (page = 1, limit = 214) => {
-    const response = await api.get(`/kanji/radicals?page=${page}&limit=${limit}`);
+  getRadicals: async (_page = 1, _limit = 214) => {
+    const response = await api.get(`/kanji/radicals/all`);
     return response.data;
   },
 

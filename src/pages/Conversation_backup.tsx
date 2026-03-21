@@ -187,7 +187,7 @@ const ConversationComponent: React.FC = () => {
   }
 
   return (
-    <div className="p-6 bg-secondary-50 dark:bg-secondary-950 min-h-full">
+    <div className="p-6 bg-secondary-50 dark:bg-secondary-800 min-h-full">
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <div className="mb-8">

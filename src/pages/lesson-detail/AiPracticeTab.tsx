@@ -1,5 +1,7 @@
-import React from "react";
+import React, { useRef, useEffect, useState } from "react";
 import { Button, Card, Input, Space, Typography } from "antd";
+import { DownOutlined } from "@ant-design/icons";
+import { formatAIText } from "../../utils/textFormatter";
 
 const { Title, Text } = Typography;
 
@@ -24,9 +26,29 @@ const AiPracticeTab: React.FC<AiPracticeTabProps> = ({
   aiLoading,
   handleAIMessage,
 }) => {
+  const messagesEndRef = useRef<HTMLDivElement>(null);
+  const messagesContainerRef = useRef<HTMLDivElement>(null);
+  const [showScrollButton, setShowScrollButton] = useState(false);
+
+  const scrollToBottom = () => {
+    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+  };
+
+  const handleScroll = () => {
+    if (messagesContainerRef.current) {
+      const { scrollTop, scrollHeight, clientHeight } = messagesContainerRef.current;
+      const isAtBottom = scrollHeight - scrollTop - clientHeight < 50;
+      setShowScrollButton(!isAtBottom);
+    }
+  };
+
+  useEffect(() => {
+    scrollToBottom();
+  }, [aiMessages]);
+
   return (
     <div style={{ padding: "24px" }}>
-      <Card className="w-full bg-white dark:bg-secondary-925 border-secondary-200 dark:border-secondary-900" styles={{ body: { padding: 12 } }}>
+      <Card className="w-full bg-white dark:bg-secondary-800 border-secondary-200 dark:border-secondary-700" styles={{ body: { padding: 12 } }}>
         <div className="mb-4">
           <Title level={5} className="mb-1 text-base">
             Luyện tập với AI theo bài Minna
@@ -36,10 +58,13 @@ const AiPracticeTab: React.FC<AiPracticeTabProps> = ({
           </Text>
         </div>
 
-        <div
-          className="h-80 border border-secondary-200 dark:border-secondary-900 rounded-lg p-3 overflow-y-auto mb-3"
-          style={{ backgroundColor: "var(--ant-color-bg-container)" }}
-        >
+        <div className="relative">
+          <div
+            ref={messagesContainerRef}
+            onScroll={handleScroll}
+            className="h-80 border border-secondary-200 dark:border-secondary-700 rounded-lg p-3 overflow-y-auto mb-3"
+            style={{ backgroundColor: "var(--ant-color-bg-container)" }}
+          >
           {aiMessages.length === 0 ? (
             <div className="flex items-center justify-center h-full">
               <Text className="text-sm !text-secondary-700 dark:!text-secondary-400">
@@ -54,7 +79,7 @@ const AiPracticeTab: React.FC<AiPracticeTabProps> = ({
                   className={`flex ${message.role === "user" ? "justify-end" : "justify-start"}`}
                 >
                   <Card
-                    className={`max-w-md ${message.role === "user"
+                    className={`max-w-[85%] ${message.role === "user"
                       ? "bg-blue-100 dark:bg-blue-900/30 border-blue-200 dark:border-blue-700"
                       : "bg-secondary-100 dark:bg-secondary-900 border-secondary-200 dark:border-secondary-700"
                       }`}
@@ -64,11 +89,46 @@ const AiPracticeTab: React.FC<AiPracticeTabProps> = ({
                     <Text strong className="text-sm">
                       {message.role === "user" ? "You" : "AI"}
                     </Text>
-                    <div className="text-sm mt-1">{message.content}</div>
+                    <div className="text-sm mt-1">
+                      {message.role === "assistant" ? formatAIText(message.content) : message.content}
+                    </div>
                   </Card>
                 </div>
               ))}
+              {aiLoading && (
+                <div className="flex justify-start">
+                  <Card
+                    className="max-w-[85%] bg-secondary-100 dark:bg-secondary-900 border-secondary-200 dark:border-secondary-700"
+                    size="small"
+                    styles={{ body: { padding: 10 } }}
+                  >
+                    <Text strong className="text-sm">AI</Text>
+                    <div className="flex items-center gap-2 mt-1">
+                      <div className="flex space-x-1">
+                        <div className="w-2 h-2 bg-blue-500 rounded-full animate-bounce" style={{ animationDelay: '0ms' }}></div>
+                        <div className="w-2 h-2 bg-blue-500 rounded-full animate-bounce" style={{ animationDelay: '150ms' }}></div>
+                        <div className="w-2 h-2 bg-blue-500 rounded-full animate-bounce" style={{ animationDelay: '300ms' }}></div>
+                      </div>
+                      <span className="text-sm text-secondary-500">AI đang tạo phản hồi...</span>
+                    </div>
+                  </Card>
+                </div>
+              )}
+              <div ref={messagesEndRef} />
             </Space>
+          )}
+          </div>
+          {showScrollButton && (
+            <Button
+              type="default"
+              shape="round"
+              icon={<DownOutlined />}
+              onClick={scrollToBottom}
+              className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
+              style={{ zIndex: 10 }}
+            >
+              Xuống dưới
+            </Button>
           )}
         </div>
 
@@ -82,7 +142,7 @@ const AiPracticeTab: React.FC<AiPracticeTabProps> = ({
                 handleAIMessage();
               }
             }}
-            className="flex-1 bg-white dark:bg-secondary-925 border-secondary-300 dark:border-secondary-700"
+            className="flex-1 bg-white dark:bg-secondary-800 border-secondary-300 dark:border-secondary-700"
             size="middle"
           />
           <Button

@@ -83,14 +83,14 @@ const LessonSidebar: React.FC<LessonSidebarProps> = ({
           }
         }}
         breakpoint="lg"
-        className="lesson-sidebar-sider bg-white dark:bg-secondary-925 border-l border-secondary-200 dark:border-secondary-900 fixed right-0 overflow-y-hidden transition-all duration-300"
+        className="lesson-sidebar-sider bg-white dark:bg-secondary-800 border-l border-secondary-200 dark:border-secondary-700 fixed right-0 overflow-y-hidden transition-all duration-300"
         style={{
           zIndex: 1000,
           top: `${APP_HEADER_HEIGHT_PX}px`,
           height: `calc(100vh - ${APP_HEADER_HEIGHT_PX}px)`,
         }}
       >
-        <div className="p-4 border-b border-secondary-200 dark:border-secondary-900 flex-shrink-0 h-[60px]">
+        <div className="p-4 border-b border-secondary-200 dark:border-secondary-700 flex-shrink-0 h-[60px]">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-2">
               <span className="w-2.5 h-2.5 rounded bg-teal-700 block" />
@@ -116,7 +116,7 @@ const LessonSidebar: React.FC<LessonSidebarProps> = ({
                   duration-200
                   flex items-center justify-center
                   bg-white
-                  dark:bg-secondary-925
+                  dark:bg-secondary-800
                   shadow-sm
                   hover:shadow
                 "

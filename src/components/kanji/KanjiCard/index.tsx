@@ -7,6 +7,8 @@ interface KanjiCardProps {
     kanji: KanjiItem;
     isRadical?: boolean;
     onClick?: (kanji: KanjiItem) => void;
+    allKanji?: string[];
+    currentIndex?: number;
 }
 
 const normalizeLevel = (value?: string) => {
@@ -71,30 +73,34 @@ const getLevelStyles = (level?: string) => {
     }
 };
 
-const KanjiCard: React.FC<KanjiCardProps> = ({ kanji, isRadical = false, onClick }) => {
+const KanjiCard: React.FC<KanjiCardProps> = ({ kanji, isRadical = false, onClick, allKanji, currentIndex }) => {
     const navigate = useNavigate();
     const location = useLocation();
-    const colorLevel = normalizeLevel(kanji.jlpt_level) || normalizeLevel(kanji.level);
+    const colorLevel = normalizeLevel(kanji.jlpt) || normalizeLevel(kanji.color);
     const levelStyles = getLevelStyles(colorLevel);
     const onyomiText =
         kanji.onyomi && kanji.onyomi.length > 0
-            ? kanji.onyomi.map((item) => item.kana).join(", ")
+            ? kanji.onyomi.join(", ")
             : "Không có";
     const kunyomiText =
         kanji.kunyomi && kanji.kunyomi.length > 0
-            ? kanji.kunyomi.map((item) => item.kana).join(", ")
+            ? kanji.kunyomi.join(", ")
             : "Không có";
     const bottomMetaText = isRadical
-        ? `Số nét: ${kanji.stroke_count ?? "-"}`
+        ? `${kanji.meaningVi || 'Bộ thủ'} • ${kanji.stroke_count ?? "-"} nét`
         : `${onyomiText} • ${kunyomiText}`;
 
     const handleCardClick = () => {
         const targetPath = isRadical
-            ? `/kanji/radicals/${encodeURIComponent(kanji.character)}`
-            : `/kanji/${kanji.character}`;
+            ? `/kanji/radicals/${encodeURIComponent(kanji.kanji || '')}`
+            : `/kanji/${kanji.kanji || ''}`;
 
         navigate(targetPath, {
-            state: { from: `${location.pathname}${location.search}` },
+            state: {
+                from: `${location.pathname}${location.search}`,
+                kanjiList: allKanji,
+                currentIndex,
+            },
         });
 
         // Also call onClick if provided
@@ -106,39 +112,39 @@ const KanjiCard: React.FC<KanjiCardProps> = ({ kanji, isRadical = false, onClick
     return (
         <Card
             hoverable
-            className={`h-[122px] sm:h-[130px] transition-all duration-200 hover:-translate-y-0.5 hover:shadow-md cursor-pointer border-2 ${levelStyles.card}`}
+            className={`h-[140px] sm:h-[150px] w-full rounded-xl transition-all duration-200 hover:-translate-y-1 hover:shadow-lg cursor-pointer border-2 ${levelStyles.card}`}
             onClick={handleCardClick}
-            styles={{ body: { padding: '8px', height: '100%' } }}
+            styles={{ body: { padding: '10px', height: '100%', width: '100%' } }}
         >
             <div className="h-full flex flex-col text-center">
                 <div className="flex-1 flex items-center justify-center">
-                    <div className={`text-[34px] sm:text-[38px] font-bold font-kosugi leading-none ${levelStyles.char}`}>
-                        {kanji.character}
+                    <div className={`text-[40px] sm:text-[44px] font-bold font-kosugi leading-none ${levelStyles.char}`}>
+                        {kanji.kanji}
                     </div>
                 </div>
                 <div className={`w-full border-t pt-1.5 ${levelStyles.divider}`}>
                     {isRadical ? (
                         <>
-                            <div className={`text-[11px] font-medium truncate ${levelStyles.hanviet}`}>
+                            <div className={`text-[12px] font-medium truncate ${levelStyles.hanviet}`}>
                                 {kanji.hanviet || 'Không có Hán Việt'}
                             </div>
-                            <div className="mt-1 text-[10px] leading-tight text-secondary-700 truncate">
+                            <div className="mt-1 text-[11px] leading-tight text-secondary-700 truncate">
                                 {bottomMetaText}
                             </div>
                         </>
                     ) : (
                         <>
-                            <div className="mt-1 text-[10px] leading-tight text-secondary-700 truncate">
+                            <div className="mt-1 text-[11px] leading-tight text-secondary-700 truncate">
                                 {bottomMetaText}
                             </div>
-                            <div className={`text-[11px] font-medium truncate ${levelStyles.hanviet}`}>
+                            <div className={`text-[12px] font-medium truncate ${levelStyles.hanviet}`}>
                                 {kanji.hanviet || 'Không có Hán Việt'}
                             </div>
                         </>
                     )}
                 </div>
                 <div className="sr-only">
-                    Mở chi tiết ký tự {kanji.character}
+                    Mở chi tiết ký tự {kanji.kanji}
                 </div>
             </div>
         </Card>

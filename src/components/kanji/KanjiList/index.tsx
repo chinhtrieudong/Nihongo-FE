@@ -57,13 +57,15 @@ const KanjiList: React.FC<KanjiListProps> = ({
                 </span>
             </div>
 
-            <div className="grid grid-cols-3 xs:grid-cols-4 sm:grid-cols-5 md:grid-cols-6 lg:grid-cols-8 xl:grid-cols-10 gap-2.5 sm:gap-3">
-                {kanjiList.map((kanji) => (
+            <div className="grid grid-cols-2 xs:grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 xl:grid-cols-7 gap-3 sm:gap-4">
+                {kanjiList.map((kanji, index) => (
                     <KanjiCard
-                        key={kanji._id}
+                        key={`${kanji.kanji}-${kanji.jlpt || 'na'}-${kanji.stroke_count || 'na'}-${kanji.hanviet || 'na'}-${index}`}
                         kanji={kanji}
                         isRadical={isRadicalMode}
                         onClick={onKanjiClick}
+                        allKanji={kanjiList.map((k) => k.kanji || '')}
+                        currentIndex={index}
                     />
                 ))}
             </div>

@@ -1287,7 +1287,7 @@ const LessonDetail: React.FC = () => {
       case "renshuu":
         return (
           <div className="p-6">
-            <Card className="bg-white dark:bg-secondary-925 border-secondary-200 dark:border-secondary-900">
+            <Card className="bg-white dark:bg-secondary-800 border-secondary-200 dark:border-secondary-700">
               <Text className="block mb-4 !text-secondary-700 dark:!text-secondary-400">
                 Bài tập thực hành ({renshuuData.length} mục)
               </Text>
@@ -1460,7 +1460,7 @@ const LessonDetail: React.FC = () => {
       case "reibun":
         return (
           <div className="p-6">
-            <Card className="bg-white dark:bg-secondary-925 border-secondary-200 dark:border-secondary-900">
+            <Card className="bg-white dark:bg-secondary-800 border-secondary-200 dark:border-secondary-700">
               <Title level={3}>Reibun - 例文 ({lesson?.title || `Bài ${lessonNum}`})</Title>
               <Text className="block mb-4 !text-secondary-700 dark:!text-secondary-400">
                 Hội thoại ví dụ ({reibunData.length} đoạn)
@@ -1578,7 +1578,7 @@ const LessonDetail: React.FC = () => {
       case "bunkei":
         return (
           <div className="p-6">
-            <Card className="bg-white dark:bg-secondary-925 border-secondary-200 dark:border-secondary-900">
+            <Card className="bg-white dark:bg-secondary-800 border-secondary-200 dark:border-secondary-700">
               <Title level={3}>Bunkei - 文型 ({lesson?.title || `Bài ${lessonNum}`})</Title>
               <Text className="block mb-4 !text-secondary-700 dark:!text-secondary-400">
                 Mẫu câu ({bunkeiData.length} mẫu)
@@ -1826,7 +1826,7 @@ const LessonDetail: React.FC = () => {
             <Tabs
               activeKey={activeTab}
               onChange={(key) => setActiveTab(key as TabType)}
-              className="lesson-tabs bg-white dark:bg-secondary-925 flex-1 min-w-0"
+              className="lesson-tabs bg-white dark:bg-secondary-800 flex-1 min-w-0"
               style={{ margin: 0, padding: 0 }}
               size={screens.xs ? "large" : screens.md ? "large" : "middle"}
               tabPlacement={screens.xs ? "top" : "top"}
@@ -1945,7 +1945,7 @@ const LessonDetail: React.FC = () => {
                       ? setDesktopSidebarCollapsed(false)
                       : setSidebarVisible(true)
                   }
-                  className={`border border-neutral-200 dark:border-neutral-700 shadow-sm hover:shadow-md bg-white dark:bg-secondary-925 px-2 h-9 ${screens.xs ? "w-9 !px-0" : ""}`}
+                  className={`border border-neutral-200 dark:border-neutral-700 shadow-sm hover:shadow-md bg-white dark:bg-secondary-800 px-2 h-9 ${screens.xs ? "w-9 !px-0" : ""}`}
                   size={screens.xs ? "small" : "middle"}
                 >
                   {!screens.xs && <span>50 Bài</span>}
@@ -1959,11 +1959,12 @@ const LessonDetail: React.FC = () => {
               <div className="flex-1">
                 <div className={`flex items-center gap-2 ${screens.xs ? "mb-2" : "mb-2"}`}>
                   <Button
-                    type="text"
                     icon={<ArrowLeftOutlined />}
                     onClick={() => navigate("/lessons")}
-                    className="rounded-full w-8 h-8 flex items-center justify-center border-0 bg-transparent shadow-none text-inherit hover:text-inherit dark:text-inherit dark:hover:text-inherit hover:bg-transparent dark:hover:bg-transparent transition-colors"
-                  />
+                    className="rounded-xl"
+                  >
+                    Quay lại
+                  </Button>
                   <Title level={2} className="!mb-0 text-base sm:text-lg lg:text-xl leading-snug">
                     {getTabDisplayName(activeTab)}
                   </Title>
