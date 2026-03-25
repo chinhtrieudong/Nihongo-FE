@@ -203,7 +203,7 @@ const Sidebar: React.FC = () => {
                 className="w-full rounded-2xl py-3 flex items-center justify-center transition-colors text-slate-600 hover:bg-slate-100/70 hover:text-slate-900 dark:text-secondary-300 dark:hover:bg-secondary-800/50 dark:hover:text-secondary-100"
               >
                 <span className="text-xl leading-none">
-                  <SettingOutlined />
+                  <FontSizeOutlined />
                 </span>
               </button>
             </Tooltip>
