@@ -152,7 +152,7 @@ const Kanji: React.FC = () => {
               {filteredKanji.map((kanji, index) => (
                 <div key={`${kanji.character}-${index}`} className="bg-white dark:bg-secondary-800 border border-secondary-200 dark:border-secondary-700 rounded-lg p-4 hover:shadow-md transition-shadow">
                   <div className="text-center">
-                    <div className="text-4xl font-bold text-secondary-900 dark:text-secondary-100 mb-2">
+                    <div className="text-4xl font-bold text-secondary-900 dark:text-secondary-100 mb-2 font-kosugi">
                       {kanji.character}
                     </div>
                     <div className="text-lg text-purple-600 dark:text-purple-400 font-medium mb-2">
@@ -171,7 +171,7 @@ const Kanji: React.FC = () => {
                       </div>
                     </div>
 
-                    <div className="text-xs text-blue-600 dark:text-blue-400">
+                    <div className="text-xs text-blue-600 dark:text-blue-400 font-japanese">
                       Cách đọc: {kanji.onyomi.join(', ')}
                     </div>
                   </div>

@@ -6,10 +6,9 @@
 
 @layer base {
   :root {
-    --ant-font-family: "Itim", "Noto Sans", system-ui, sans-serif;
     --app-font-family: "Itim", "Noto Sans", system-ui, sans-serif;
     --kanji-font-family: "Noto Serif JP", "Noto Sans", system-ui, serif;
-    --japanese-font-family: "Noto Sans JP", "Noto Sans", system-ui, sans-serif;
+    --jp-font-family: "Noto Sans JP", "Noto Sans", system-ui, sans-serif;
   }
 
   * {
@@ -53,7 +52,6 @@
   }
 
   :where(
-    .ant-typography,
     .ant-table,
     .ant-btn,
     .ant-input,
@@ -101,6 +99,18 @@
     .ant-watermark
   ) {
     font-family: var(--app-font-family) !important;
+  }
+
+  /* Override for kanji-text - must have higher specificity */
+  .kanji-text,
+  .kanji-text.ant-typography {
+    font-family: var(--kanji-font-family) !important;
+  }
+
+  /* Override for jp-text - Japanese text (hiragana/katakana) */
+  .jp-text,
+  .jp-text.ant-typography {
+    font-family: var(--jp-font-family) !important;
   }
 
   .vocab-table .ant-table,
@@ -325,6 +335,48 @@
     display: none;
   }
 
+  /* Font Settings Drawer */
+  .font-settings-drawer .ant-drawer-header {
+    background: var(--ant-color-bg-container) !important;
+    border-bottom: 1px solid var(--ant-color-border-secondary) !important;
+  }
+
+  .font-settings-drawer .ant-drawer-title {
+    color: var(--ant-color-text) !important;
+  }
+
+  .font-settings-drawer .ant-drawer-close {
+    color: var(--ant-color-text-secondary) !important;
+  }
+
+  .font-settings-drawer .ant-drawer-close:hover {
+    color: var(--ant-color-text) !important;
+  }
+
+  .font-settings-drawer .ant-drawer-body {
+    background: var(--ant-color-bg-container) !important;
+  }
+
+  /* Dark mode specific styles for font settings */
+  .dark .font-settings-drawer .ant-drawer-header {
+    background: #1a2332 !important;
+    border-bottom-color: #2d3748 !important;
+  }
+
+  .dark .font-settings-drawer .ant-drawer-body {
+    background: #1a2332 !important;
+  }
+
+  /* Light mode specific styles for font settings */
+  .font-settings-drawer .ant-drawer-header {
+    background: #ffffff !important;
+    border-bottom-color: #e5e7eb !important;
+  }
+
+  .font-settings-drawer .ant-drawer-body {
+    background: #ffffff !important;
+  }
+
   .flashcard-complete-modal .ant-typography,
   .flashcard-complete-modal .ant-statistic-title,
   .flashcard-complete-modal .ant-statistic-content,
@@ -390,9 +442,67 @@
   }
 
   .font-japanese {
-    font-family: var(--kanji-font-family);
+    font-family: var(--jp-font-family) !important;
     line-height: 1.8;
     letter-spacing: 0.02em;
+  }
+
+  .font-kanji,
+  .font-kosugi,
+  .font-osaka {
+    font-family: var(--kanji-font-family) !important;
+    line-height: 1.8;
+    letter-spacing: 0.02em;
+  }
+
+  /* Kanji text - uses dynamic font from Redux */
+  .kanji-text {
+    font-family: var(--kanji-font-family) !important;
+    line-height: 1.8;
+    letter-spacing: 0.02em;
+  }
+
+  /* Ensure kanji-text overrides all other font rules */
+  .kanji-text.ant-typography,
+  .ant-typography.kanji-text,
+  .kanji-text.font-kosugi,
+  .kanji-text.font-japanese,
+  .kanji-text.font-kanji,
+  .kanji-text.font-osaka {
+    font-family: var(--kanji-font-family) !important;
+  }
+
+  /* Japanese text - uses dynamic font from Redux */
+  .jp-text {
+    font-family: var(--jp-font-family) !important;
+    line-height: 1.8;
+    letter-spacing: 0.02em;
+  }
+
+  /* Ensure jp-text overrides all other font rules */
+  .jp-text.ant-typography,
+  .ant-typography.jp-text,
+  .jp-text.font-japanese {
+    font-family: var(--jp-font-family) !important;
+  }
+
+  /* Ensure font-kosugi overrides Ant Design Typography styles */
+  .ant-typography.font-kosugi,
+  .ant-typography.font-japanese,
+  .ant-typography.font-kanji,
+  .ant-typography.font-osaka {
+    font-family: var(--kanji-font-family) !important;
+  }
+
+  .ant-typography.font-japanese {
+    font-family: var(--jp-font-family) !important;
+  }
+
+  .ant-typography.font-kosugi *,
+  .ant-typography.font-japanese *,
+  .ant-typography.font-kanji *,
+  .ant-typography.font-osaka * {
+    font-family: inherit !important;
   }
 
   .backface-hidden {

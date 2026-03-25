@@ -59,8 +59,8 @@ const FlashCard: React.FC<FlashCardProps> = ({
                         key={index}
                         onClick={() => onSelectCard(index)}
                         className={`w-2 h-2 rounded-full transition-all duration-300 ${index === currentIndex
-                                ? 'w-8 bg-primary-600'
-                                : 'bg-gray-300 dark:bg-secondary-600 hover:bg-gray-400'
+                            ? 'w-8 bg-primary-600'
+                            : 'bg-gray-300 dark:bg-secondary-600 hover:bg-gray-400'
                             }`}
                     />
                 ))}
@@ -79,10 +79,10 @@ const FlashCard: React.FC<FlashCardProps> = ({
                     {/* Front of card */}
                     <div className="absolute inset-0 w-full h-full backface-hidden">
                         <div className="bg-gradient-to-br from-primary-500 to-primary-600 dark:from-primary-700 dark:to-primary-800 rounded-2xl shadow-2xl p-8 h-full flex flex-col justify-center items-center text-white">
-                            <div className="text-5xl font-bold mb-4 text-center">
+                            <div className="text-5xl font-bold mb-4 text-center font-kosugi">
                                 {card.kanji}
                             </div>
-                            <div className="text-2xl mb-3 text-center opacity-90">
+                            <div className="text-2xl mb-3 text-center opacity-90 font-japanese">
                                 {card.hiragana}
                             </div>
                             <div className="text-lg opacity-80 text-center">

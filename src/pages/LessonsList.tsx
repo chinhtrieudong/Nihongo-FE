@@ -37,25 +37,10 @@ const textbookInfo: Record<string, TextbookInfo> = {
     nameJp: "みんなの日本語",
     description: "Học theo lộ trình JLPT • N5 → N4"
   },
-  genki: {
-    name: "Genki",
-    nameJp: "げんき",
-    description: "Giáo trình tiếng Nhật hiện đại"
-  },
-  shin_nihongo: {
-    name: "Shin Nihongo no Kiso",
-    nameJp: "新日本語の基礎",
-    description: "Ngữ pháp hệ thống • N5 → N4"
-  },
-  irodori: {
-    name: "Irodori",
-    nameJp: "いろどり",
-    description: "Tiếng Nhật cho cuộc sống hàng ngày"
-  },
-  nihongo_sou_matome: {
-    name: "Nihongo Sou Matome",
-    nameJp: "日本語総まとめ",
-    description: "Ôn tập JLPT hiệu quả • N3 → N1"
+  tango: {
+    name: "Tango",
+    nameJp: "たんご",
+    description: "Từ vựng theo chủ đề • N5 → N4"
   }
 };
 
@@ -100,21 +85,21 @@ const LessonsList: React.FC = () => {
         searchQuery === "" ||
         lesson.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
         lesson.description.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        `bài ${lesson.lessonNumber}`.includes(searchQuery.toLowerCase()) ||
-        `lesson ${lesson.lessonNumber}`.includes(searchQuery.toLowerCase());
-      
+        `bài ${lesson.lesson_number}`.includes(searchQuery.toLowerCase()) ||
+        `lesson ${lesson.lesson_number}`.includes(searchQuery.toLowerCase());
+
       const levelMatch = filters.level === "all" || lesson.level === filters.level;
-      
+
       return searchMatch && levelMatch;
     });
 
-    filtered.sort((a, b) => a.lessonNumber - b.lessonNumber);
+    filtered.sort((a, b) => a.lesson_number - b.lesson_number);
 
     return filtered;
   }, [lessons, searchQuery, filters]);
 
   const handleLessonClick = (lesson: Lesson) => {
-    navigate(`/lessons/${lesson.lessonNumber}`);
+    navigate(`/mina/${lesson.lesson_number}`);
   };
   const isMobile = typeof window !== "undefined" && window.innerWidth < 576;
 
@@ -218,7 +203,7 @@ const LessonsList: React.FC = () => {
                   className="group relative w-full rounded-xl sm:rounded-2xl overflow-hidden border-2 border-gray-200 dark:border-secondary-700 bg-white dark:bg-secondary-800 shadow-sm hover:shadow-lg hover:-translate-y-1 active:scale-95 transition-all duration-200 cursor-pointer"
                 >
                   {/* Color strip */}
-                  <div 
+                  <div
                     className="h-2"
                     style={{ backgroundColor: lesson.level === 'N5' ? '#3B82F6' : '#10B981' }}
                   />
@@ -238,7 +223,7 @@ const LessonsList: React.FC = () => {
                         <div className="absolute inset-0 flex items-center justify-center">
                           <div className="text-center">
                             <div className="text-4xl sm:text-5xl font-bold text-blue-500 dark:text-blue-400 mb-2">
-                              {lesson.lessonNumber}
+                              {lesson.lesson_number}
                             </div>
                             <div className="text-xs text-gray-500 dark:text-secondary-400">
                               Bài học
@@ -251,10 +236,10 @@ const LessonsList: React.FC = () => {
                     <div className="p-3 sm:p-4">
                       <div className="min-w-0">
                         <div className="text-sm sm:text-base font-bold text-gray-900 dark:text-secondary-100 line-clamp-2 mb-1">
-                          Bài {lesson.lessonNumber}: {lesson.title}
+                          Bài {lesson.lesson_number}: {lesson.title_vi || lesson.title}
                         </div>
                         <div className="text-xs text-gray-600 dark:text-secondary-400 line-clamp-2 sm:line-clamp-3">
-                          {lesson.description}
+                          {lesson.description_vi || lesson.description}
                         </div>
                       </div>
                     </div>

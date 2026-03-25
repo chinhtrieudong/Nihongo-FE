@@ -4,6 +4,8 @@ import { lessonAPI } from "../services/api";
 import { SoundOutlined, ArrowLeftOutlined, LeftOutlined, RightOutlined } from "@ant-design/icons";
 import { Card, Button, Row, Col } from "antd";
 import { KanjiItem, KanjiDetailResponse } from "../types/kanji";
+import { useAppSelector } from "../store/hooks";
+import { getFontPreset } from "../constants/fonts";
 
 interface KanjiDetailProps {
   lessonId?: string;
@@ -16,6 +18,8 @@ const KanjiDetail: React.FC<KanjiDetailProps> = ({
   const navigate = useNavigate();
   const location = useLocation();
   const lessonId = propLessonId || urlLessonId;
+  const { fontPreset } = useAppSelector((state) => state.ui);
+  const selectedPreset = getFontPreset(fontPreset);
 
   const [kanjiData, setKanjiData] = useState<KanjiItem | null>(null);
   const [loading, setLoading] = useState(true);
@@ -125,7 +129,7 @@ const KanjiDetail: React.FC<KanjiDetailProps> = ({
   if (!kanjiData) {
     return (
       <div className="text-center py-12">
-        <div className="text-6xl mb-4 font-kosugi">漢</div>
+        <div className="text-6xl mb-4 kanji-text">漢</div>
         <h3 className="text-lg font-semibold text-secondary-900 dark:text-secondary-600 mb-2 font-sans">
           Không tìm thấy Hán tự
         </h3>
@@ -224,7 +228,7 @@ const KanjiDetail: React.FC<KanjiDetailProps> = ({
       return (
         <div className="bg-white dark:bg-secondary-800 rounded-lg border border-secondary-200 dark:border-secondary-700 flex items-center justify-center w-full h-64">
           <div className="text-center">
-            <p className="text-[15rem] font-bold text-secondary-900 dark:text-secondary-100 mb-2">
+            <p className="text-[15rem] font-bold text-secondary-900 dark:text-secondary-100 mb-2 kanji-text">
               {primaryChar || "?"}
             </p>
             <p className="text-xs text-secondary-500 dark:text-secondary-400">
@@ -251,7 +255,7 @@ const KanjiDetail: React.FC<KanjiDetailProps> = ({
   };
 
   return (
-    <div className="min-h-full font-kosugi p-6">
+    <div className="min-h-full p-6">
       {/* Header */}
       <div className="mb-6">
         <div className="flex items-center justify-between mb-4">
@@ -300,7 +304,7 @@ const KanjiDetail: React.FC<KanjiDetailProps> = ({
 
         {/* Middle Column - Basic Info */}
         <Col xs={24} md={9}>
-          <Card 
+          <Card
             title={
               <span>
                 {(kanjiData as any).character || kanjiData.kanji}
@@ -324,13 +328,13 @@ const KanjiDetail: React.FC<KanjiDetailProps> = ({
               </div>
               <div className="flex items-baseline gap-2">
                 <h3 className="font-medium text-secondary-700 dark:text-secondary-300">Âm On:</h3>
-                <p className="text-lg font-osaka font-semibold text-blue-600 dark:text-blue-400">
+                <p className="text-lg font-semibold text-blue-600 dark:text-blue-400 jp-text">
                   {kanjiData.onyomi.join(", ")}
                 </p>
               </div>
               <div className="flex items-baseline gap-2">
                 <h3 className="font-medium text-secondary-700 dark:text-secondary-300">Âm Kun:</h3>
-                <p className="text-lg font-osaka font-semibold text-blue-600 dark:text-blue-400">
+                <p className="text-lg font-semibold text-blue-600 dark:text-blue-400 jp-text">
                   {kanjiData.kunyomi.join(", ")}
                 </p>
               </div>
@@ -361,27 +365,27 @@ const KanjiDetail: React.FC<KanjiDetailProps> = ({
                   key={index}
                   className="flex items-center gap-2 p-3 border border-secondary-200 dark:border-secondary-700 rounded-lg hover:bg-secondary-50 dark:hover:bg-secondary-800 transition-colors"
                 >
-                  <span className="text-xl font-bold text-blue-600 dark:text-blue-400">
+                  <span className="text-xl font-bold text-blue-600 dark:text-blue-400 kanji-text">
                     {word.vocab_kanji}
                   </span>
                   {word.vocab_kanji !== word.vocab_reading && (
                     <>
-                      <span className="text-base text-blue-600 dark:text-blue-400 font-japanese">
+                      <span className="text-base text-blue-600 dark:text-blue-400 jp-text">
                         ({word.vocab_reading})
                       </span>
-                      <span className="text-black dark:text-white">|</span>
+                      <span className="text-secondary-300 dark:text-secondary-600 text-xs">|</span>
                     </>
                   )}
-                  <span className="text-sm text-black dark:text-white">
+                  <span className="text-sm font-medium text-secondary-800 dark:text-secondary-200">
                     {word.hanviet}
                   </span>
-                  <span className="text-black dark:text-white">|</span>
-                  <span className="text-base text-black dark:text-white">
+                  <span className="text-secondary-300 dark:text-secondary-600 text-xs">|</span>
+                  <span className="text-base font-medium text-secondary-800 dark:text-secondary-200">
                     {word.meaning_vi ? word.meaning_vi.charAt(0).toUpperCase() + word.meaning_vi.slice(1) : ''}
                   </span>
                 </div>
               ))}
-              
+
               {(!kanjiData.related_vocabulary || kanjiData.related_vocabulary.length === 0) && (
                 <div className="text-center py-6 text-secondary-500 dark:text-secondary-400">
                   Chưa có từ vựng liên quan

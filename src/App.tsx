@@ -14,7 +14,6 @@ import KanjiPage from "./pages/Kanji";
 import KanjiDetail from "./pages/KanjiDetail";
 import RadicalDetail from "./pages/RadicalDetail";
 import Vocabulary from "./pages/Vocabulary";
-import VocabularyPage from "./pages/VocabularyPage";
 import Grammar from "./pages/Grammar";
 import Pronunciation from "./pages/Pronunciation";
 import ConversationComponent from "./pages/Conversation";
@@ -24,9 +23,6 @@ import TestDetail from "./pages/TestDetail";
 import TestResults from "./pages/TestResults";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
-import IconShowcase from "./components/IconShowcase";
-import APITester from "./components/APITester";
-import AdminDashboard from "./pages/AdminDataManager";
 import { AuthProvider, useAuth } from "./contexts/AuthContext";
 import AdminRoute from "./components/AdminRoute";
 import AdminLayout from "./components/AdminLayout";
@@ -64,13 +60,12 @@ const AppContent: React.FC = () => {
             <Route path="/" element={<Layout />}>
               <Route index element={<Home />} />
               <Route path="lessons" element={<LessonsList />} />
-              <Route path="lessons/:lessonNumber" element={<ErrorBoundary><LessonDetail /></ErrorBoundary>} />
+              <Route path="mina/:lessonNumber" element={<ErrorBoundary><LessonDetail /></ErrorBoundary>} />
               <Route path="lessons/:lessonNumber/kanji" element={<KanjiDetail />} />
               <Route path="kanji" element={<KanjiPage />} />
               <Route path="kanji/radicals/:symbol" element={<RadicalDetail />} />
               <Route path="kanji/:kanji" element={<KanjiDetail />} />
               <Route path="vocabulary" element={<Vocabulary />} />
-              <Route path="vocabulary-list/:lessonNumber" element={<VocabularyPage />} />
               <Route path="grammar" element={<Grammar />} />
               <Route path="pronunciation" element={<Pronunciation />} />
               <Route path="conversation" element={<ConversationComponent />} />
@@ -81,8 +76,6 @@ const AppContent: React.FC = () => {
               <Route path="tests" element={<Tests />} />
               <Route path="test/:testId" element={<TestDetail />} />
               <Route path="test-results/:testId" element={<TestResults />} />
-              <Route path="icon-showcase" element={<IconShowcase />} />
-              <Route path="api-tester" element={<APITester />} />
             </Route>
 
             <Route
@@ -93,7 +86,7 @@ const AppContent: React.FC = () => {
                 </AdminRoute>
               }
             >
-              <Route index element={<AdminDashboard />} />
+              <Route index element={<div>Admin Dashboard</div>} />
             </Route>
           </Routes>
         </div>
@@ -107,7 +100,7 @@ const FontProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => 
 
   useEffect(() => {
     const root = document.documentElement;
-    
+
     // Map font keys to CSS font-family values
     const uiFontMap: Record<string, string> = {
       default: "'Itim', 'Noto Sans', system-ui, sans-serif",
@@ -129,22 +122,21 @@ const FontProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => 
     };
 
     const kanjiFontMap: Record<string, string> = {
-      noto_sans_jp: "'Noto Sans JP', 'Noto Sans', system-ui, sans-serif",
-      noto_serif_jp: "'Noto Serif JP', 'Noto Sans', system-ui, serif",
-      zen_maru_gothic: "'Zen Maru Gothic', 'Noto Serif JP', 'Noto Sans', system-ui, sans-serif",
-      yuji_syuku: "'Yuji Syuku', 'Noto Serif JP', 'Noto Sans', system-ui, serif",
-      rocknroll_one: "'RocknRoll One', 'Noto Sans JP', 'Noto Sans', system-ui, sans-serif",
-      itim: "'Itim', 'Noto Sans JP', 'Noto Sans', system-ui, sans-serif",
+      noto_sans_jp: '"Noto Sans JP", "Noto Sans", system-ui, sans-serif',
+      noto_serif_jp: '"Noto Serif JP", "Noto Sans", system-ui, serif',
+      zen_maru_gothic: '"Zen Maru Gothic", "Noto Serif JP", "Noto Sans", system-ui, sans-serif',
+      yuji_syuku: '"Yuji Syuku", "Noto Serif JP", "Noto Sans", system-ui, serif',
+      rocknroll_one: '"RocknRoll One", "Noto Sans JP", "Noto Sans", system-ui, sans-serif',
+      itim: '"Itim", "Noto Sans JP", "Noto Sans", system-ui, sans-serif',
     };
 
     // Apply UI font
     const uiFont = uiFontMap[uiFontFamily] || uiFontMap.default;
     root.style.setProperty('--app-font-family', uiFont);
-    root.style.setProperty('--ant-font-family', uiFont);
 
     // Apply Japanese font
     const jpFont = japaneseFontMap[japaneseFontFamily] || japaneseFontMap.default_jp;
-    root.style.setProperty('--japanese-font-family', jpFont);
+    root.style.setProperty('--jp-font-family', jpFont);
 
     // Apply Kanji font
     const kanjiFont = kanjiFontMap[fontPreset] || kanjiFontMap.noto_serif_jp;

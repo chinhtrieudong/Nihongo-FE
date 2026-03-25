@@ -313,9 +313,6 @@ const ListeningMCQ: React.FC<ListeningMCQProps> = ({
                 </div>
             }
         >
-            {/* Progress */}
-            <Progress percent={progress} className="mb-6" />
-
             <div ref={containerRef} className="space-y-6 max-h-96 overflow-y-auto pr-2">
                 {/* Audio Player */}
                 {audioButtons && (

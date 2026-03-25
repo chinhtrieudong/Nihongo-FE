@@ -4,6 +4,8 @@ import { SoundOutlined, BookOutlined } from "@ant-design/icons";
 import { vocabularyAPI } from "../services/api";
 import type { VocabularyItem } from "../types/lesson";
 import { speakText } from "../utils/vocabularyUtils";
+import { useAppSelector } from "../store/hooks";
+import { getFontPreset } from "../constants/fonts";
 
 const { Title, Text } = Typography;
 
@@ -12,13 +14,15 @@ interface VocabularyListProps {
   femaleVoiceName?: string;
 }
 
-const VocabularyList: React.FC<VocabularyListProps> = ({ 
-  lessonNumber, 
-  femaleVoiceName 
+const VocabularyList: React.FC<VocabularyListProps> = ({
+  lessonNumber,
+  femaleVoiceName
 }) => {
   const [vocabulary, setVocabulary] = useState<VocabularyItem[]>([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const { fontPreset } = useAppSelector((state) => state.ui);
+  const selectedPreset = getFontPreset(fontPreset);
 
   useEffect(() => {
     loadVocabulary();
@@ -78,10 +82,10 @@ const VocabularyList: React.FC<VocabularyListProps> = ({
       width: 120,
       render: (text: string, record: VocabularyItem) => (
         <div className="text-center">
-          <div className="text-lg font-bold text-gray-900 dark:text-gray-100">
+          <div className="text-lg font-bold text-gray-900 dark:text-gray-100 vocab-kanji-text" style={{ fontFamily: selectedPreset.kanjiFontFamily || selectedPreset.fontFamily }}>
             {text || "-"}
           </div>
-          <div className="text-sm text-gray-600 dark:text-gray-400">
+          <div className="text-sm text-gray-600 dark:text-gray-400 jp-text">
             {record.katakana || ""}
           </div>
         </div>
@@ -94,7 +98,7 @@ const VocabularyList: React.FC<VocabularyListProps> = ({
       width: 120,
       render: (text: string) => (
         <div className="text-center">
-          <div className="text-blue-600 dark:text-blue-400 font-medium">
+          <div className="text-blue-600 dark:text-blue-400 font-medium jp-text">
             {text}
           </div>
         </div>
@@ -192,8 +196,8 @@ const VocabularyList: React.FC<VocabularyListProps> = ({
             Lỗi
           </Title>
           <Text type="secondary">{error}</Text>
-          <Button 
-            type="primary" 
+          <Button
+            type="primary"
             onClick={loadVocabulary}
             style={{ marginTop: 16 }}
           >
@@ -222,7 +226,7 @@ const VocabularyList: React.FC<VocabularyListProps> = ({
           Tổng cộng: {vocabulary.length} từ
         </Text>
       </div>
-      
+
       <Table
         columns={columns}
         dataSource={vocabulary}
@@ -231,7 +235,7 @@ const VocabularyList: React.FC<VocabularyListProps> = ({
           pageSize: 20,
           showSizeChanger: true,
           showQuickJumper: true,
-          showTotal: (total, range) => 
+          showTotal: (total, range) =>
             `${range[0]}-${range[1]} của ${total} từ`,
         }}
         scroll={{ x: 1000 }}

@@ -157,10 +157,12 @@ export interface Exercise {
 
 export interface Lesson {
   id: string;
-  lessonNumber: number;
+  lesson_number: number;
   title: string;
+  title_vi?: string;
   level?: "N5" | "N4" | "N3" | "N2" | "N1";
   description: string;
+  description_vi?: string;
   status: "not_started" | "in_progress" | "completed";
   progress?: number;
   image_url?: string;

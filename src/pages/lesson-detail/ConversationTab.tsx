@@ -64,7 +64,7 @@ const ConversationTab: React.FC<ConversationTabProps> = ({
               </div>
 
               {/* Japanese Text */}
-              <div className="text-lg font-medium text-blue-600 dark:text-blue-400 mb-1">
+              <div className="text-lg font-medium text-blue-600 dark:text-blue-400 mb-1 font-japanese">
                 {line.jpText}
               </div>
 

@@ -61,30 +61,43 @@ grammarApi.interceptors.response.use(
   }
 );
 
+export interface GrammarExample {
+  japanese: string;
+  vietnamese: string;
+}
+
 export interface GrammarItem {
   id: string;
+  title: string;
   pattern: string;
-  meaning_vi: string;
-  usage_vi: string;
+  meaning: string;
+  explanation: string;
   structure: string;
-  comparisons: string[];
-  examples: Array<{
-    japanese: string;
-    vietnamese: string;
-  }>;
+  examples: GrammarExample[];
+  notes?: string;
+  category: string;
+}
+
+export interface Lesson {
+  lessonNumber: number;
+  title: string;
+  title_jp: string;
   level: string;
-  importance: string;
-  status: string;
+  description: string;
+  grammars: GrammarItem[];
 }
 
 export interface GrammarResponse {
   success: boolean;
   data: {
-    grammar: GrammarItem[];
+    lessons: Lesson[];
+    categories: { value: string; label: string }[];
+    levels: string[];
     pagination?: {
       page: number;
       limit: number;
-      total: number;
+      totalLessons: number;
+      totalGrammars: number;
       hasMore: boolean;
     };
     query?: string;

@@ -2,6 +2,8 @@ import React from 'react';
 import { KanjiItem } from '../../../types/kanji.js';
 import { Card } from 'antd';
 import { useLocation, useNavigate } from 'react-router-dom';
+import { useAppSelector } from '../../../store/hooks';
+import { getFontPreset } from '../../../constants/fonts';
 
 interface KanjiCardProps {
     kanji: KanjiItem;
@@ -76,6 +78,8 @@ const getLevelStyles = (level?: string) => {
 const KanjiCard: React.FC<KanjiCardProps> = ({ kanji, isRadical = false, onClick, allKanji, currentIndex }) => {
     const navigate = useNavigate();
     const location = useLocation();
+    const { fontPreset } = useAppSelector((state) => state.ui);
+    const selectedPreset = getFontPreset(fontPreset);
     const colorLevel = normalizeLevel(kanji.jlpt) || normalizeLevel(kanji.color);
     const levelStyles = getLevelStyles(colorLevel);
     const onyomiText =
@@ -118,7 +122,7 @@ const KanjiCard: React.FC<KanjiCardProps> = ({ kanji, isRadical = false, onClick
         >
             <div className="h-full flex flex-col text-center">
                 <div className="flex-1 flex items-center justify-center">
-                    <div className={`text-[40px] sm:text-[44px] font-bold font-kosugi leading-none ${levelStyles.char}`}>
+                    <div className={`text-[40px] sm:text-[44px] font-bold vocab-kanji-text leading-none ${levelStyles.char}`} style={{ fontFamily: selectedPreset.kanjiFontFamily || selectedPreset.fontFamily }}>
                         {kanji.kanji}
                     </div>
                 </div>

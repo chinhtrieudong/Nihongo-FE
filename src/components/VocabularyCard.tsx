@@ -8,6 +8,8 @@ import {
 } from '@ant-design/icons';
 import type { VocabularyItem as VocabularyItemType } from '../types/lesson';
 import { speakText } from '../utils/vocabularyUtils';
+import { useAppSelector } from '../store/hooks';
+import { getFontPreset } from '../constants/fonts';
 
 interface VocabularyCardProps {
   index: number;
@@ -26,6 +28,17 @@ const VocabularyCard: React.FC<VocabularyCardProps> = ({
   onWordClick,
   femaleVoiceName
 }) => {
+  const { fontPreset } = useAppSelector((state) => state.ui);
+  const selectedPreset = getFontPreset(fontPreset);
+
+  // Debug log for font preset
+  console.log('🔤 VocabularyCard Font Debug:', {
+    fontPreset,
+    selectedPresetKey: selectedPreset.key,
+    kanjiFontFamily: selectedPreset.kanjiFontFamily,
+    fontFamily: selectedPreset.fontFamily
+  });
+
   const handlePlayAudio = useCallback((text: string, e: React.MouseEvent) => {
     e.stopPropagation();
     speakText(text, 'ja-JP', femaleVoiceName);
@@ -43,11 +56,17 @@ const VocabularyCard: React.FC<VocabularyCardProps> = ({
         <div className="flex-1 min-w-0">
           {item.kanji ? (
             <div className="flex items-baseline gap-1.5">
-              <span className="text-base font-bold text-secondary-900 dark:text-secondary-100">
-                {item.kanji}
+              <span className="text-base font-bold text-secondary-900 dark:text-secondary-100 vocab-kanji-text" style={{ fontFamily: selectedPreset.kanjiFontFamily || selectedPreset.fontFamily }}>
+                {(() => {
+                  console.log('🔤 VocabularyCard Kanji Render:', {
+                    kanji: item.kanji,
+                    fontFamily: selectedPreset.kanjiFontFamily || selectedPreset.fontFamily
+                  });
+                  return item.kanji;
+                })()}
               </span>
               <span className="text-xs text-secondary-500 dark:text-secondary-400">•</span>
-              <span className="text-xs text-secondary-700 dark:text-secondary-300">
+              <span className="text-xs text-secondary-700 dark:text-secondary-300 jp-text">
                 {item.hiragana || item.katakana || "-"}
               </span>
             </div>

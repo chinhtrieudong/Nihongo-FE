@@ -1,15 +1,13 @@
 import React, { useState, useEffect, useRef, useCallback } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { useAppSelector } from "../store/hooks";
-import { lessonAPI, vocabularyAPI, aiAPI } from "../services/api";
-import { minnaJsonApi } from "../services/api";
+import { lessonAPI, vocabularyAPI, aiAPI, minaApi as minnaJsonApi } from "../services/api";
 import { useLessonDetail } from "../hooks/useLessonDetail";
 import GrammarTab from "./lesson-detail/GrammarTab";
 import ConversationTab from "./lesson-detail/ConversationTab";
 import ExercisesTab from "./lesson-detail/ExercisesTab";
 import VocabularyTab from "./lesson-detail/VocabularyTab";
 import AiPracticeTab from "./lesson-detail/AiPracticeTab";
-import LessonSidebar from "./lesson-detail/LessonSidebar";
 import type {
   LessonDetail as LessonDetailType,
   Exercise,
@@ -24,8 +22,8 @@ import {
   Button,
   Card,
   Spin,
-  Tooltip,
   Tag,
+  Select,
 } from "antd";
 import {
   ReadOutlined,
@@ -33,7 +31,8 @@ import {
   MessageOutlined,
   RobotOutlined,
   ArrowLeftOutlined,
-  MenuFoldOutlined,
+  LeftOutlined,
+  RightOutlined,
 } from "@ant-design/icons";
 import { Grid } from "antd";
 import { getBestFemaleNaturalVoice, getNanamiNaturalVoice } from "../utils/vocabularyUtils";
@@ -76,8 +75,6 @@ const LessonDetail: React.FC = () => {
   const [activeTab, setActiveTab] = useState<TabType>("vocabulary");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
-  const [sidebarVisible, setSidebarVisible] = useState(false);
-  const [desktopSidebarCollapsed, setDesktopSidebarCollapsed] = useState(true);
   const vocabularyTableRef = useRef<VocabularyTableHandle | null>(null);
   const [femaleVoiceName, setFemaleVoiceName] = useState(() => {
     try {
@@ -258,7 +255,7 @@ const LessonDetail: React.FC = () => {
       // Get lesson metadata from bunkei API (has the most complete lesson info)
       let lessonMetadata = {
         id: `lesson_${lessonNum}`,
-        lessonNumber: lessonNumber,
+        lesson_number: lessonNumber,
         title: `Bài ${lessonNumber}`, // fallback
         level: "N5" as const,
         description: `Nội dung bài học ${lessonNumber}`,
@@ -269,12 +266,12 @@ const LessonDetail: React.FC = () => {
 
       // Try to get lesson metadata from bunkei API first (most complete)
       try {
-        const bunkeiCheckResponse = await minnaJsonApi.get(`/lesson/${lessonNumber}/bunkei`);
+        const bunkeiCheckResponse = await minnaJsonApi.get(`/lessons/${lessonNumber}/bunkei`);
         if (bunkeiCheckResponse.data.success && bunkeiCheckResponse.data.lesson) {
           const lessonData = bunkeiCheckResponse.data.lesson;
           lessonMetadata = {
             id: `lesson_${lessonNum}`,
-            lessonNumber: lessonData.lessonNumber || lessonNumber,
+            lesson_number: lessonData.lessonNumber || lessonNumber,
             title: lessonData.title_vi || lessonData.title || `Bài ${lessonNumber}`,
             level: lessonData.level || "N5",
             description: lessonData.description_vi || lessonData.description_jp || `Nội dung bài học ${lessonNumber}`,
@@ -284,16 +281,14 @@ const LessonDetail: React.FC = () => {
           };
         }
       } catch (lessonErr) {
-        console.warn('Failed to load lesson metadata:', lessonErr);
+        // Failed to load lesson metadata
       }
 
       // Get vocabulary
       let vocabularies = [];
       try {
         const vocabResponse = await vocabularyAPI.getVocabularyByLesson(lessonNumber);
-        console.log('🔍 Vocabulary API Response:', vocabResponse);
         if (vocabResponse.success && vocabResponse.data && Array.isArray(vocabResponse.data)) {
-          console.log('🔍 Raw vocabulary data:', vocabResponse.data);
           vocabularies = vocabResponse.data.map((item: any) => ({
             id: item.kanji || item.hiragana,
             kanji: item.kanji,
@@ -316,25 +311,15 @@ const LessonDetail: React.FC = () => {
             part_of_speech: item.part_of_speech || "",
             notes: item.notes || ""
           }));
-          console.log('🔍 Processed vocabularies:', vocabularies);
-        } else {
-          console.error('❌ Vocabulary API failed:', vocabResponse);
-          console.error('Response structure:', {
-            success: vocabResponse?.success,
-            hasData: !!vocabResponse?.data,
-            isDataArray: Array.isArray(vocabResponse?.data),
-            dataLength: vocabResponse?.data?.length,
-            fullResponse: vocabResponse
-          });
         }
       } catch (vocabErr) {
-        console.error('Failed to load vocabulary:', vocabErr);
+        // Failed to load vocabulary
       }
 
       // Get grammar
       let grammars = [];
       try {
-        const grammarResponse = await minnaJsonApi.get(`/lesson/${lessonNumber}/grammar`);
+        const grammarResponse = await minnaJsonApi.get(`/lessons/${lessonNumber}/grammar`);
         if (grammarResponse.data.success) {
           grammars = grammarResponse.data.data.map((item: any) => ({
             id: item.id,
@@ -352,25 +337,25 @@ const LessonDetail: React.FC = () => {
           }));
         }
       } catch (grammarErr) {
-        console.warn('Failed to load grammar:', grammarErr);
+        // Failed to load grammar
       }
 
       // Get kaiwa (conversation)
       let dialogs = [];
       try {
-        const kaiwaResponse = await minnaJsonApi.get(`/lesson/${lessonNumber}/kaiwa`);
+        const kaiwaResponse = await minnaJsonApi.get(`/lessons/${lessonNumber}/kaiwa`);
         if (kaiwaResponse.data.success && kaiwaResponse.data.data.length > 0) {
           // Treat the entire kaiwaData object as one dialog with dialogue array
           dialogs = kaiwaResponse.data.data;
         }
       } catch (dialogErr) {
-        console.warn('Failed to load dialogs:', dialogErr);
+        // Failed to load dialogs
       }
 
       // Get exercises (from mondai)
       let exercises = [];
       try {
-        const mondaiResponse = await minnaJsonApi.get(`/lesson/${lessonNumber}/mondai`);
+        const mondaiResponse = await minnaJsonApi.get(`/lessons/${lessonNumber}/mondai`);
         if (mondaiResponse.data.success) {
           // Preserve the full mondai structure
           exercises = mondaiResponse.data.data.map((mondai: any) => ({
@@ -390,19 +375,18 @@ const LessonDetail: React.FC = () => {
           }));
         }
       } catch (exerciseErr) {
-        console.warn('Failed to load exercises:', exerciseErr);
+        // Failed to load exercises
       }
 
       // Get renshuu (practice)
       let renshuuData = [];
       try {
-        const renshuuResponse = await minnaJsonApi.get(`/lesson/${lessonNumber}/renshuu`);
+        const renshuuResponse = await minnaJsonApi.get(`/lessons/${lessonNumber}/renshuu`);
         if (renshuuResponse.data.success) {
           renshuuData = renshuuResponse.data.data || [];
         }
       } catch (renshuuErr) {
-        console.warn('Failed to load renshuu:', renshuuErr);
-        // Mock data for testing UI
+        // Failed to load renshuu - Mock data for testing UI
         renshuuData = [
           {
             id: 'renshuu_1',
@@ -422,18 +406,18 @@ const LessonDetail: React.FC = () => {
       // Get reibun (example sentences)
       let reibunData = [];
       try {
-        const reibunResponse = await minnaJsonApi.get(`/lesson/${lessonNumber}/reibun`);
+        const reibunResponse = await minnaJsonApi.get(`/lessons/${lessonNumber}/reibun`);
         if (reibunResponse.data.success) {
           reibunData = reibunResponse.data.data || [];
         }
       } catch (reibunErr) {
-        console.warn('Failed to load reibun:', reibunErr);
+        // Failed to load reibun
       }
 
       // Get bunkei (sentence patterns)
       let bunkeiData = [];
       try {
-        const bunkeiResponse = await minnaJsonApi.get(`/lesson/${lessonNumber}/bunkei`);
+        const bunkeiResponse = await minnaJsonApi.get(`/lessons/${lessonNumber}/bunkei`);
         if (bunkeiResponse.data.success) {
           const sharedBunkeiAudioUrl =
             bunkeiResponse.data.audioUrl || bunkeiResponse.data.lesson?.audioUrl || "";
@@ -443,7 +427,7 @@ const LessonDetail: React.FC = () => {
           }));
         }
       } catch (bunkeiErr) {
-        console.warn('Failed to load bunkei:', bunkeiErr);
+        // Failed to load bunkei
       }
 
       // Combine all data
@@ -482,7 +466,6 @@ const LessonDetail: React.FC = () => {
       // console.log('🔍 LessonDetail set:', lessonDetailData);
       // console.log('🔍 Vocabularies in lessonDetail:', lessonDetailData.vocabularies);
     } catch (err) {
-      console.error('Error loading lesson detail:', err);
       setError("Error loading lesson");
     } finally {
       setLoading(false);
@@ -664,8 +647,7 @@ const LessonDetail: React.FC = () => {
         setTimeout(speakNextLine, 300);
       };
 
-      utterance.onerror = (event) => {
-        console.error('Conversation speech error:', event.error);
+      utterance.onerror = () => {
         currentIndex++;
         setTimeout(speakNextLine, 300);
       };
@@ -1085,6 +1067,23 @@ const LessonDetail: React.FC = () => {
     }
   };
 
+  // Navigation handlers
+  const handlePreviousLesson = () => {
+    if (lessonNum > 1) {
+      navigate(`/mina/${lessonNum - 1}`);
+    }
+  };
+
+  const handleNextLesson = () => {
+    if (lessonNum < 50) {
+      navigate(`/mina/${lessonNum + 1}`);
+    }
+  };
+
+  const handleLessonSelect = (value: number) => {
+    navigate(`/mina/${value}`);
+  };
+
   // Handler when exercises are completed
   const handleExercisesComplete = useCallback(async () => {
     if (!exercisesCompleted && exercises.length > 0) {
@@ -1203,8 +1202,7 @@ const LessonDetail: React.FC = () => {
   const getJapaneseText = (item: any): string =>
     pickFirstText(item?.pattern, item?.text, item?.japanese, item?.jpText, item?.question);
   const showTabCounts = !screens.xs;
-  const showFullTabLabels =
-    (screens.xxl || (screens.xl && desktopSidebarCollapsed)) && !screens.xs;
+  const showFullTabLabels = screens.xxl || screens.xl;
   const showCompactTabLabels = !showFullTabLabels && screens.md;
 
   const renderActiveTabContent = () => {
@@ -1216,13 +1214,10 @@ const LessonDetail: React.FC = () => {
             vocabularies={vocabularies}
             loading={loading}
             bookmarkedVocab={bookmarkedVocab}
-            onCloseSidebar={() => {
-              setSidebarVisible(false);
-              setDesktopSidebarCollapsed(true);
-            }}
+            onCloseSidebar={() => { }}
             lessonInfo={{
               title: lesson?.title,
-              lessonNumber: lesson?.lessonNumber,
+              lessonNumber: lesson?.lesson_number,
               level: lesson?.level
             }}
           />
@@ -1246,7 +1241,7 @@ const LessonDetail: React.FC = () => {
             speakEntireConversation={speakEntireConversation}
             lessonInfo={{
               title: lesson?.title,
-              lessonNumber: lesson?.lessonNumber,
+              lessonNumber: lesson?.lesson_number,
               level: lesson?.level
             }}
           />
@@ -1268,7 +1263,7 @@ const LessonDetail: React.FC = () => {
             onGoToTab={(tab) => setActiveTab(tab)}
             lessonInfo={{
               title: lesson?.title,
-              lessonNumber: lesson?.lessonNumber,
+              lessonNumber: lesson?.lesson_number,
               level: lesson?.level
             }}
           />
@@ -1276,7 +1271,7 @@ const LessonDetail: React.FC = () => {
       case "ai":
         return (
           <AiPracticeTab
-            lessonNumber={lesson?.lessonNumber}
+            lessonNumber={lesson?.lesson_number}
             aiMessages={aiMessages}
             currentMessage={currentMessage}
             setCurrentMessage={setCurrentMessage}
@@ -1666,9 +1661,6 @@ const LessonDetail: React.FC = () => {
   return (
     <Layout
       className="bg-white dark:bg-secondary-900"
-      style={{
-        paddingRight: screens.lg && !desktopSidebarCollapsed ? "280px" : "0",
-      }}
     >
       <style>{`
         .lesson-detail-page .theme-surface::-webkit-scrollbar {
@@ -1935,74 +1927,104 @@ const LessonDetail: React.FC = () => {
                 },
               ]}
             />
-            {(!screens.lg || desktopSidebarCollapsed) && (
-              <Tooltip title="Danh sách bài học" placement={screens.xs ? "bottom" : "left"}>
-                <Button
-                  shape="square"
-                  icon={<MenuFoldOutlined />}
-                  onClick={() =>
-                    screens.lg
-                      ? setDesktopSidebarCollapsed(false)
-                      : setSidebarVisible(true)
-                  }
-                  className={`border border-neutral-200 dark:border-neutral-700 shadow-sm hover:shadow-md bg-white dark:bg-secondary-800 px-2 h-9 ${screens.xs ? "w-9 !px-0" : ""}`}
-                  size={screens.xs ? "small" : "middle"}
-                >
-                  {!screens.xs && <span>50 Bài</span>}
-                </Button>
-              </Tooltip>
-            )}
           </div>
 
           <div className="px-3 lg:px-6 pt-3">
-            <div className="flex items-center gap-2 lg:gap-4">
-              <div className="flex-1">
-                <div className={`flex items-center gap-2 ${screens.xs ? "mb-2" : "mb-2"}`}>
+            {/* Row 1: Back button, title, flashcard, and navigation */}
+            <div className="flex items-center justify-between gap-4 mb-3">
+              <div className="flex items-center gap-2">
+                <Button
+                  icon={<ArrowLeftOutlined />}
+                  onClick={() => navigate("/lessons")}
+                  className="rounded-xl"
+                >
+                  Quay lại
+                </Button>
+                <Title level={2} className="!mb-0 text-base sm:text-lg lg:text-xl leading-snug">
+                  {getTabDisplayName(activeTab)}
+                </Title>
+                {activeTab === "vocabulary" && (
                   <Button
-                    icon={<ArrowLeftOutlined />}
-                    onClick={() => navigate("/lessons")}
-                    className="rounded-xl"
+                    type="text"
+                    size="middle"
+                    className={`px-3 py-1.5 h-auto text-xs font-semibold rounded-lg border transition-colors ${vocabularies.length > 0
+                      ? "bg-green-100 text-green-700 border-green-300 dark:bg-green-800 dark:text-green-200 dark:border-green-600"
+                      : "text-secondary-600 border-secondary-200 hover:text-secondary-900 hover:bg-secondary-50 hover:border-secondary-300 dark:text-secondary-400 dark:border-secondary-700 dark:hover:text-secondary-100 dark:hover:bg-secondary-800/60 dark:hover:border-secondary-500"
+                      }`}
+                    onClick={() => {
+                      setActiveTab("vocabulary");
+                      setTimeout(() => {
+                        vocabularyTableRef.current?.enterFlashcard();
+                      }, 100);
+                    }}
                   >
-                    Quay lại
-                  </Button>
-                  <Title level={2} className="!mb-0 text-base sm:text-lg lg:text-xl leading-snug">
-                    {getTabDisplayName(activeTab)}
-                  </Title>
-                  {activeTab === "vocabulary" && (
-                    <div className="flex items-center gap-1 ml-2">
-                      <Button
-                        type="text"
-                        size="middle"
-                        className={`px-3 py-1.5 h-auto text-xs font-semibold rounded-lg border transition-colors ${vocabularies.length > 0
-                          ? "bg-green-100 text-green-700 border-green-300 dark:bg-green-800 dark:text-green-200 dark:border-green-600"
-                          : "text-secondary-600 border-secondary-200 hover:text-secondary-900 hover:bg-secondary-50 hover:border-secondary-300 dark:text-secondary-400 dark:border-secondary-700 dark:hover:text-secondary-100 dark:hover:bg-secondary-800/60 dark:hover:border-secondary-500"
-                          }`}
-                        onClick={() => {
-                          setActiveTab("vocabulary");
-                          // Switch to flashcard mode after a short delay to ensure tab is active
-                          setTimeout(() => {
-                            vocabularyTableRef.current?.enterFlashcard();
-                          }, 100);
-                        }}
-                      >
-                        <div className="flex flex-row items-center">
-                          <LetterUppercaseSquareFIcon
-                            size={16}
-                            color="currentColor"
-                            strokeWidth={2}
-                          />
-                          <span className="ml-1">Flashcard</span>
-                        </div>
-                      </Button>
+                    <div className="flex flex-row items-center">
+                      <LetterUppercaseSquareFIcon
+                        size={16}
+                        color="currentColor"
+                        strokeWidth={2}
+                      />
+                      <span className="ml-1">Flashcard</span>
                     </div>
-                  )}
-                </div>
-                <Text className="text-base sm:text-lg leading-relaxed line-clamp-2 text-secondary-700 dark:text-secondary-300">
-                  {lesson?.description
-                    ? `${lesson?.lessonNumber || lessonNum}. ${lesson.description}`
-                    : ""}
-                </Text>
+                  </Button>
+                )}
               </div>
+              <div className="flex items-center gap-2">
+                <Button
+                  icon={<LeftOutlined />}
+                  onClick={handlePreviousLesson}
+                  disabled={lessonNum <= 1}
+                  className="rounded-xl"
+                >
+                  Trước
+                </Button>
+                <div className="flex items-center gap-1 flex-1 justify-center">
+                  <Select
+                    value={lessonNum}
+                    onChange={handleLessonSelect}
+                    loading={lessonsLoading}
+                    className="
+    w-14 rounded-xl
+    [&_.ant-select-content]:!flex
+    [&_.ant-select-content]:!justify-center
+    [&_.ant-select-content]:!items-center
+  "
+                    placeholder="Chọn bài"
+                    suffixIcon={null}
+                    optionLabelProp="label"
+                    options={lessons.length > 0
+                      ? lessons.map((l) => ({
+                        value: l.lesson_number,
+                        label: `${l.lesson_number}`,
+                      }))
+                      : Array.from({ length: 50 }, (_, i) => ({
+                        value: i + 1,
+                        label: `${i + 1}`,
+                      }))
+                    }
+                  />
+                  <Text className="text-xs text-secondary-300 dark:text-secondary-600">
+                    /50
+                  </Text>
+                </div>
+                <Button
+                  icon={<RightOutlined />}
+                  onClick={handleNextLesson}
+                  disabled={lessonNum >= 50}
+                  className="rounded-xl"
+                >
+                  Sau
+                </Button>
+              </div>
+            </div>
+
+            {/* Row 2: Description */}
+            <div className="mb-3">
+              <Text className="text-base sm:text-lg leading-relaxed line-clamp-2 text-secondary-700 dark:text-secondary-300">
+                {lesson?.description
+                  ? `${lesson?.lesson_number || lessonNum}. ${lesson.description}`
+                  : ""}
+              </Text>
             </div>
           </div>
 
@@ -2011,61 +2033,54 @@ const LessonDetail: React.FC = () => {
       </Layout>
 
       {/* Meaning Button */}
-      {showMeaningButton && (
-        <Button
-          className="fixed z-50"
-          style={{
-            left: `${showMeaningButton.x}px`,
-            top: `${showMeaningButton.y + 20}px`,
-            transform: "translateX(-50%)",
-            borderRadius: "9999px",
-            padding: "4px 12px",
-            fontSize: "12px",
-          }}
-          type="primary"
-          size="small"
-          onClick={(e) => handleShowMeaning(showMeaningButton.word, e)}
-        >
-          📖 Xem nghĩa
-        </Button>
-      )}
+      {
+        showMeaningButton && (
+          <Button
+            className="fixed z-50"
+            style={{
+              left: `${showMeaningButton.x}px`,
+              top: `${showMeaningButton.y + 20}px`,
+              transform: "translateX(-50%)",
+              borderRadius: "9999px",
+              padding: "4px 12px",
+              fontSize: "12px",
+            }}
+            type="primary"
+            size="small"
+            onClick={(e) => handleShowMeaning(showMeaningButton.word, e)}
+          >
+            📖 Xem nghĩa
+          </Button>
+        )
+      }
 
       {/* Word Meaning Tooltip */}
-      {clickedWord && (
-        <div
-          className="fixed z-50 meaning-tooltip bg-white dark:bg-gray-900 border border-gray-300 dark:border-gray-600 rounded-lg shadow-xl p-4 max-w-xs"
-          style={{
-            left: `${clickedWord.x}px`,
-            top: `${clickedWord.y + 20}px`,
-            transform: "translateX(-50%)",
-            minWidth: "200px",
-          }}
-        >
-          <div className="space-y-2">
-            <div className="font-bold text-lg text-gray-900 dark:text-white">
-              {clickedWord.word}
-            </div>
-            <div className="text-sm text-gray-700 dark:text-gray-300">
-              {clickedWord.meaning || "Không có nghĩa"}
-            </div>
-            {/* Debug info */}
-            <div className="text-xs text-gray-500 dark:text-gray-400 mt-2">
-              Debug: {JSON.stringify(clickedWord)}
+      {
+        clickedWord && (
+          <div
+            className="fixed z-50 meaning-tooltip bg-white dark:bg-gray-900 border border-gray-300 dark:border-gray-600 rounded-lg shadow-xl p-4 max-w-xs"
+            style={{
+              left: `${clickedWord.x}px`,
+              top: `${clickedWord.y + 20}px`,
+              transform: "translateX(-50%)",
+              minWidth: "200px",
+            }}
+          >
+            <div className="space-y-2">
+              <div className="font-bold text-lg text-gray-900 dark:text-white">
+                {clickedWord.word}
+              </div>
+              <div className="text-sm text-gray-700 dark:text-gray-300">
+                {clickedWord.meaning || "Không có nghĩa"}
+              </div>
+              {/* Debug info */}
+              <div className="text-xs text-gray-500 dark:text-gray-400 mt-2">
+                Debug: {JSON.stringify(clickedWord)}
+              </div>
             </div>
           </div>
-        </div>
-      )}
-
-      <LessonSidebar
-        lessons={lessons}
-        lessonsLoading={lessonsLoading}
-        lessonId={lessonNum.toString()}
-        sidebarVisible={sidebarVisible}
-        setSidebarVisible={setSidebarVisible}
-        desktopSidebarCollapsed={desktopSidebarCollapsed}
-        setDesktopSidebarCollapsed={setDesktopSidebarCollapsed}
-        onLessonClick={(lesson) => navigate(`/lessons/${lesson.lessonNumber}`)}
-      />
+        )
+      }
     </Layout>
   );
 };

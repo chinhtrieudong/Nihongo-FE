@@ -249,9 +249,6 @@ const DictationExerciseComponent: React.FC<DictationExerciseProps> = ({
                 </div>
             }
         >
-            {/* Progress */}
-            <Progress percent={progress} className="mb-6" />
-
             <div className="space-y-6">
                 {/* Audio Player */}
                 <div className="text-center">

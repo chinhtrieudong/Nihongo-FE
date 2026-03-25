@@ -155,9 +155,6 @@ const SentenceReorder: React.FC<SentenceReorderProps> = ({
                 </div>
             }
         >
-            {/* Progress */}
-            <Progress percent={progress} className="mb-6" />
-
             <div className="space-y-6">
                 {/* Meaning */}
                 <div className="text-center p-4 bg-blue-50 dark:bg-blue-900/20 rounded-lg">

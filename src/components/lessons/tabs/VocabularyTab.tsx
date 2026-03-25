@@ -172,8 +172,8 @@ const VocabularyTab: React.FC<VocabularyTabProps> = ({ vocabulary }) => {
                                             setShowMeaning(false);
                                         }}
                                         className={`w-1.5 h-1.5 rounded-full transition-all duration-300 ${index === currentCard
-                                                ? 'w-4 bg-primary-600'
-                                                : 'bg-gray-300 dark:bg-secondary-600'
+                                            ? 'w-4 bg-primary-600'
+                                            : 'bg-gray-300 dark:bg-secondary-600'
                                             }`}
                                     />
                                 ))}
@@ -198,10 +198,10 @@ const VocabularyTab: React.FC<VocabularyTabProps> = ({ vocabulary }) => {
                                     <div className="absolute inset-0 w-full h-full backface-hidden">
                                         <Card className="h-full bg-gradient-to-br from-primary-500 to-primary-600 dark:from-primary-700 dark:to-primary-800 border-0 shadow-xl">
                                             <div className="h-full flex flex-col justify-center items-center text-white p-4">
-                                                <div className="text-2xl sm:text-4xl font-bold mb-2 text-center">
+                                                <div className="text-2xl sm:text-4xl font-bold mb-2 text-center font-kosugi">
                                                     {card.kanji}
                                                 </div>
-                                                <div className="text-base sm:text-xl mb-2 text-center opacity-90">
+                                                <div className="text-base sm:text-xl mb-2 text-center opacity-90 font-japanese">
                                                     {card.hiragana}
                                                 </div>
                                                 <div className="text-xs sm:text-sm opacity-80 text-center">
@@ -295,8 +295,8 @@ const VocabularyTab: React.FC<VocabularyTabProps> = ({ vocabulary }) => {
                                     if (screens.xs) setViewMode('flashcard');
                                 }}
                                 className={`cursor-pointer transition-all duration-200 ${index === currentCard
-                                        ? 'border-primary-500 bg-primary-50 dark:bg-primary-900/20 shadow-lg'
-                                        : 'border-secondary-200 dark:border-secondary-700 hover:border-primary-300 hover:shadow-md'
+                                    ? 'border-primary-500 bg-primary-50 dark:bg-primary-900/20 shadow-lg'
+                                    : 'border-secondary-200 dark:border-secondary-700 hover:border-primary-300 hover:shadow-md'
                                     }`}
                                 size="small"
                             >
@@ -368,8 +368,8 @@ const VocabularyTab: React.FC<VocabularyTabProps> = ({ vocabulary }) => {
                                             setShowMeaning(false);
                                         }}
                                         className={`cursor-pointer transition-all duration-200 h-full ${index === currentCard
-                                                ? 'border-primary-500 bg-primary-50 dark:bg-primary-900/20 shadow-lg'
-                                                : 'border-secondary-200 dark:border-secondary-700 hover:border-primary-300 hover:shadow-md'
+                                            ? 'border-primary-500 bg-primary-50 dark:bg-primary-900/20 shadow-lg'
+                                            : 'border-secondary-200 dark:border-secondary-700 hover:border-primary-300 hover:shadow-md'
                                             }`}
                                     >
                                         <div className="flex items-start justify-between mb-2">

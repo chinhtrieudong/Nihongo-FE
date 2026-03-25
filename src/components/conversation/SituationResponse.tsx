@@ -175,9 +175,6 @@ const SituationResponse: React.FC<SituationResponseProps> = ({
                 </div>
             }
         >
-            {/* Progress */}
-            <Progress percent={progress} className="mb-6" />
-
             <div className="space-y-6">
                 {/* Situation */}
                 <div className="p-4 bg-blue-50 dark:bg-blue-900/20 rounded-lg">
@@ -196,7 +193,7 @@ const SituationResponse: React.FC<SituationResponseProps> = ({
                     </Text>
                     <div className="space-y-2">
                         <Text className="text-base">{currentExercise.expected_pattern}</Text>
-                        <Text className="text-sm text-gray-600">{currentExercise.example_answer_jp}</Text>
+                        {/* <Text className="text-sm text-gray-600">{currentExercise.example_answer_jp}</Text> */}
                         <Text className="text-sm text-gray-500">{currentExercise.example_answer_vi}</Text>
                     </div>
                 </div>

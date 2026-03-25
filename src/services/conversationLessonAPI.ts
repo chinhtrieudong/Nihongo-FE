@@ -2,6 +2,7 @@ import axios, { AxiosInstance, AxiosResponse } from "axios";
 
 // Types based on API documentation
 export interface ConversationLesson {
+  _id?: string; // MongoDB ObjectId
   lesson_id: number;
   lesson_title: string;
   situation_vi: string;
@@ -31,7 +32,7 @@ export interface DialogueLine {
   text_jp: string;
   romaji: string;
   meaning_vi: string;
-  audio_url: string;
+  audio_url?: string;
 }
 
 export interface Exercises {
@@ -39,7 +40,6 @@ export interface Exercises {
   comprehension_mcq: MCQExercise[];
   reorder: ReorderExercise[];
   roleplay: RoleplayExercise;
-  shadowing: ShadowingExercise[];
   reaction_speaking: ReactionSpeakingExercise[];
 }
 
@@ -65,11 +65,6 @@ export interface ReorderExercise {
 export interface RoleplayExercise {
   roles: string[];
   instruction_vi: string;
-}
-
-export interface ShadowingExercise {
-  line_id: number;
-  focus: "intonation" | "speed" | "emotion";
 }
 
 export interface ReactionSpeakingExercise {
@@ -104,7 +99,6 @@ export interface GetExercisesParams {
     | "comprehension_mcq"
     | "reorder"
     | "roleplay"
-    | "shadowing"
     | "reaction_speaking";
 }
 
@@ -242,32 +236,28 @@ class ConversationLessonAPI {
               speaker: "A",
               text_jp: "はじめまして。",
               romaji: "Hajimemashite.",
-              meaning_vi: "Rất vui được gặp bạn.",
-              audio_url: ""
+              meaning_vi: "Rất vui được gặp bạn."
             },
             {
               line_id: 2,
               speaker: "A",
               text_jp: "わたしはたなかです。",
               romaji: "Watashi wa Tanaka desu.",
-              meaning_vi: "Tôi là Tanaka.",
-              audio_url: ""
+              meaning_vi: "Tôi là Tanaka."
             },
             {
               line_id: 3,
               speaker: "B",
               text_jp: "はじめまして。",
               romaji: "Hajimemashite.",
-              meaning_vi: "Rất vui được gặp bạn.",
-              audio_url: ""
+              meaning_vi: "Rất vui được gặp bạn."
             },
             {
               line_id: 4,
               speaker: "B",
               text_jp: "わたしはスミスです。",
               romaji: "Watashi wa Smith desu.",
-              meaning_vi: "Tôi là Smith.",
-              audio_url: ""
+              meaning_vi: "Tôi là Smith."
             }
           ],
           exercises: {
@@ -278,7 +268,6 @@ class ConversationLessonAPI {
               roles: ["A", "B"],
               instruction_vi: "Hãy đóng vai và giới thiệu bản thân"
             },
-            shadowing: [],
             reaction_speaking: []
           },
           is_active: true,
@@ -298,32 +287,28 @@ class ConversationLessonAPI {
               speaker: "A",
               text_jp: "すみません。",
               romaji: "Sumimasen.",
-              meaning_vi: "Xin lỗi.",
-              audio_url: ""
+              meaning_vi: "Xin lỗi."
             },
             {
               line_id: 2,
               speaker: "A",
               text_jp: "えきはどこですか。",
               romaji: "Eki wa doko desu ka.",
-              meaning_vi: "Nhà ga ở đâu?",
-              audio_url: ""
+              meaning_vi: "Nhà ga ở đâu?"
             },
             {
               line_id: 3,
               speaker: "B",
               text_jp: "あそこです。",
               romaji: "Asoko desu.",
-              meaning_vi: "Ở đằng kia.",
-              audio_url: ""
+              meaning_vi: "Ở đằng kia."
             },
             {
               line_id: 4,
               speaker: "B",
               text_jp: "まっすぐいってください。",
               romaji: "Massugu itte kudasai.",
-              meaning_vi: "Đi thẳng.",
-              audio_url: ""
+              meaning_vi: "Đi thẳng."
             }
           ],
           exercises: {
@@ -334,7 +319,6 @@ class ConversationLessonAPI {
               roles: ["A", "B"],
               instruction_vi: "Hãy đóng vai và hỏi đường"
             },
-            shadowing: [],
             reaction_speaking: []
           },
           is_active: true,
@@ -354,32 +338,28 @@ class ConversationLessonAPI {
               speaker: "Staff",
               text_jp: "いらっしゃいませ。",
               romaji: "Irasshaimase.",
-              meaning_vi: "Xin mời vào.",
-              audio_url: ""
+              meaning_vi: "Xin mời vào."
             },
             {
               line_id: 2,
               speaker: "Customer",
               text_jp: "メニューをおねがいします。",
               romaji: "Menyuu wo onegaishimasu.",
-              meaning_vi: "Cho tôi xem thực đơn.",
-              audio_url: ""
+              meaning_vi: "Cho tôi xem thực đơn."
             },
             {
               line_id: 3,
               speaker: "Staff",
               text_jp: "はい、こちらです。",
               romaji: "Hai, kochira desu.",
-              meaning_vi: "Vâng, đây ạ.",
-              audio_url: ""
+              meaning_vi: "Vâng, đây ạ."
             },
             {
               line_id: 4,
               speaker: "Customer",
               text_jp: "ラーメンをひとつおねがいします。",
               romaji: "Raamen wo hitotsu onegaishimasu.",
-              meaning_vi: "Cho tôi một suất ramen.",
-              audio_url: ""
+              meaning_vi: "Cho tôi một suất ramen."
             }
           ],
           exercises: {
@@ -390,7 +370,6 @@ class ConversationLessonAPI {
               roles: ["Staff", "Customer"],
               instruction_vi: "Hãy đóng vai và gọi món"
             },
-            shadowing: [],
             reaction_speaking: []
           },
           is_active: true,
@@ -410,32 +389,28 @@ class ConversationLessonAPI {
               speaker: "A",
               text_jp: "おはようございます。",
               romaji: "Ohayou gozaimasu.",
-              meaning_vi: "Chào buổi sáng.",
-              audio_url: ""
+              meaning_vi: "Chào buổi sáng."
             },
             {
               line_id: 2,
               speaker: "B",
               text_jp: "おはようございます。",
               romaji: "Ohayou gozaimasu.",
-              meaning_vi: "Chào buổi sáng.",
-              audio_url: ""
+              meaning_vi: "Chào buổi sáng."
             },
             {
               line_id: 3,
               speaker: "A",
               text_jp: "おげんきですか。",
               romaji: "Ogenki desu ka.",
-              meaning_vi: "Bạn có khỏe không?",
-              audio_url: ""
+              meaning_vi: "Bạn có khỏe không?"
             },
             {
               line_id: 4,
               speaker: "B",
               text_jp: "はい、げんきです。",
               romaji: "Hai, genki desu.",
-              meaning_vi: "Vâng, tôi khỏe.",
-              audio_url: ""
+              meaning_vi: "Vâng, tôi khỏe."
             }
           ],
           exercises: {
@@ -446,7 +421,6 @@ class ConversationLessonAPI {
               roles: ["A", "B"],
               instruction_vi: "Hãy chào hỏi nhau"
             },
-            shadowing: [],
             reaction_speaking: []
           },
           is_active: true,
@@ -466,24 +440,21 @@ class ConversationLessonAPI {
               speaker: "Customer",
               text_jp: "これはいくらですか。",
               romaji: "Kore wa ikura desu ka.",
-              meaning_vi: "Cái này giá bao nhiêu?",
-              audio_url: ""
+              meaning_vi: "Cái này giá bao nhiêu?"
             },
             {
               line_id: 2,
               speaker: "Staff",
               text_jp: "せんえんです。",
               romaji: "Sen en desu.",
-              meaning_vi: "1000 yên.",
-              audio_url: ""
+              meaning_vi: "1000 yên."
             },
             {
               line_id: 3,
               speaker: "Customer",
               text_jp: "これをください。",
               romaji: "Kore wo kudasai.",
-              meaning_vi: "Cho tôi cái này.",
-              audio_url: ""
+              meaning_vi: "Cho tôi cái này."
             }
           ],
           exercises: {
@@ -494,7 +465,6 @@ class ConversationLessonAPI {
               roles: ["Customer", "Staff"],
               instruction_vi: "Hãy đóng vai và mua hàng"
             },
-            shadowing: [],
             reaction_speaking: []
           },
           is_active: true,
@@ -533,11 +503,53 @@ class ConversationLessonAPI {
     id: string | number,
   ): Promise<ApiResponse<ConversationLesson>> {
     try {
+      console.log(`Fetching lesson ${id} from API...`);
       const response: AxiosResponse<ApiResponse<ConversationLesson>> =
         await this.client.get(`/lessons/${id}`);
-      return response.data;
+      
+      console.log('API Response:', response.data);
+      
+      // Check if response has data
+      if (response.data?.success && response.data?.data) {
+        console.log('Using API data for lesson', id);
+        // Map API response to match our interface
+        const apiData = response.data.data;
+        const mappedLesson: ConversationLesson = {
+          _id: apiData._id,
+          lesson_id: apiData.lesson_id || parseInt(String(id)) || 1,
+          lesson_title: apiData.lesson_title || `Bài học hội thoại ${id}`,
+          situation_vi: apiData.situation_vi || "Hội thoại tiếng Nhật cơ bản",
+          level: apiData.level || "N5",
+          category: apiData.category || "daily_life",
+          difficulty: apiData.difficulty || 1,
+          estimated_duration: apiData.estimated_duration || 5,
+          dialogue: apiData.dialogue || [],
+          exercises: apiData.exercises || {
+            dictation: [],
+            comprehension_mcq: [],
+            reorder: [],
+            roleplay: {
+              roles: ["A", "B"],
+              instruction_vi: "Hãy đóng vai và thực hành"
+            },
+            reaction_speaking: []
+          },
+          is_active: apiData.is_active !== undefined ? apiData.is_active : true,
+          usage_count: apiData.usage_count || 0
+        };
+        
+        return {
+          success: true,
+          data: mappedLesson
+        };
+      }
+      
+      // If API returns empty data, throw error
+      console.error('API returned empty data for lesson', id);
+      throw new Error('API returned empty data');
     } catch (error) {
-      throw this.handleError(error);
+      console.error('API error for lesson', id, ':', error);
+      throw error;
     }
   }
 

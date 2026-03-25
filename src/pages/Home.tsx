@@ -33,44 +33,17 @@ const textbooks: Textbook[] = [
     nameJp: "みんなの日本語",
     description: "Giáo trình phổ biến nhất cho người mới bắt đầu",
     level: "N5 - N4",
-    totalLessons: 50,
+    totalLessons: 25,
     color: "#3B82F6"
   },
   {
-    id: "genki",
-    name: "Genki",
-    nameJp: "げんき",
-    description: "Giáo trình tiếng Nhật hiện đại, dễ hiểu",
+    id: "tango_no_nihongo",
+    name: "Tango no Nihongo",
+    nameJp: "たんごのにほんご",
+    description: "Từ vựng theo chủ đề, học qua bài hát",
     level: "N5 - N4",
-    totalLessons: 23,
+    totalLessons: 13,
     color: "#10B981"
-  },
-  {
-    id: "shin_nihongo",
-    name: "Shin Nihongo no Kiso",
-    nameJp: "新日本語の基礎",
-    description: "Giáo trình cơ bản với ngữ pháp hệ thống",
-    level: "N5 - N4",
-    totalLessons: 50,
-    color: "#F59E0B"
-  },
-  {
-    id: "irodori",
-    name: "Irodori",
-    nameJp: "いろどり",
-    description: "Giáo trình tiếng Nhật cho cuộc sống hàng ngày",
-    level: "N5 - N4",
-    totalLessons: 18,
-    color: "#EF4444"
-  },
-  {
-    id: "nihongo_sou_matome",
-    name: "Nihongo Sou Matome",
-    nameJp: "日本語総まとめ",
-    description: "Ôn tập JLPT hiệu quả",
-    level: "N3 - N1",
-    totalLessons: 42,
-    color: "#8B5CF6"
   }
 ];
 
@@ -256,11 +229,11 @@ const Home: React.FC = () => {
           </h2>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
             <div className="text-center">
-              <div className="text-3xl font-bold text-blue-600 dark:text-blue-400">5</div>
+              <div className="text-3xl font-bold text-blue-600 dark:text-blue-400">2</div>
               <div className="text-sm text-gray-600 dark:text-secondary-400 mt-1">Giáo trình</div>
             </div>
             <div className="text-center">
-              <div className="text-3xl font-bold text-green-600 dark:text-green-400">183</div>
+              <div className="text-3xl font-bold text-green-600 dark:text-green-400">38</div>
               <div className="text-sm text-gray-600 dark:text-secondary-400 mt-1">Bài học</div>
             </div>
             <div className="text-center">

@@ -33,30 +33,19 @@ interface Notification {
 
 const getInitialState = (): UiState => {
   const savedDarkMode = localStorage.getItem('darkMode');
-  const savedFontPresetRaw = localStorage.getItem("fontPreset") as
-    | FontPresetKey
-    | "noto_sans_jp"
-    | "ud_digi_kyokasho"
-    | "comfortaa"
-    | "default"
-    | null;
-  const savedFontPreset =
-    savedFontPresetRaw && savedFontPresetRaw !== "default"
-      ? (savedFontPresetRaw === "ud_digi_kyokasho"
-          ? "noto_serif_jp"
-          : savedFontPresetRaw === "comfortaa"
-            ? "rocknroll_one"
-            : savedFontPresetRaw) as FontPresetKey
-      : ("noto_serif_jp" as FontPresetKey);
+  const savedFontPreset = localStorage.getItem("fontPreset") as FontPresetKey | null;
   const savedUIFontFamily = localStorage.getItem("uiFontFamily") || "default";
   const savedJapaneseFontFamily = localStorage.getItem("japaneseFontFamily") || "default_jp";
+  
+  // Default to "itim" if no font preset is saved
+  const fontPreset = savedFontPreset || "itim";
   
   return {
     darkMode: savedDarkMode === 'true',
     sidebarOpen: false,
     drawerOpen: false,
     isMobile: false,
-    fontPreset: savedFontPreset,
+    fontPreset: fontPreset,
     uiFontFamily: savedUIFontFamily,
     japaneseFontFamily: savedJapaneseFontFamily,
     currentView: "dashboard",

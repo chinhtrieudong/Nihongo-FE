@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
-import { lessonAPI } from '../../services/api';
-import { KanjiItem } from '../../types/kanji';
-import KanjiList from '../../components/kanji/KanjiList';
-import KanjiFilter from '../../components/kanji/KanjiFilter';
+import { lessonAPI } from '@services/api';
+import { KanjiItem } from '@kanji-types';
+import KanjiList from '@components/kanji/KanjiList';
+import KanjiFilter from '@components/kanji/KanjiFilter';
 import { message } from 'antd';
-import { KanjiPageIcon } from '../../components/icons';
+import { KanjiPageIcon } from '@components/icons';
 
 const normalizeJlptLevel = (value?: string) => {
     if (!value) return '';

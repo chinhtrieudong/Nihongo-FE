@@ -12,63 +12,95 @@ import {
   Row,
   Col,
   Statistic,
-  Divider
+  Divider,
+  Collapse,
+  List
 } from 'antd';
 import type { SelectProps } from 'antd';
-import { SearchOutlined, ExperimentOutlined } from '@ant-design/icons';
-import { grammarAPI, GrammarItem } from '../services/grammarApi';
-import GrammarSectionAccordion from '../components/GrammarSectionAccordion';
+import { SearchOutlined, ExperimentOutlined, BookOutlined, CheckCircleOutlined } from '@ant-design/icons';
+import { grammarAPI } from '../services/grammarApi';
 
 const { Title, Text, Paragraph } = Typography;
+
+interface GrammarExample {
+  japanese: string;
+  vietnamese: string;
+}
+
+interface GrammarItem {
+  id: string;
+  title: string;
+  pattern: string;
+  meaning: string;
+  explanation: string;
+  structure: string;
+  examples: GrammarExample[];
+  notes?: string;
+  category: string;
+}
+
+interface Lesson {
+  lessonNumber: number;
+  title: string;
+  title_jp: string;
+  level: string;
+  description: string;
+  grammars: GrammarItem[];
+}
+
+interface GrammarData {
+  lessons: Lesson[];
+  categories: { value: string; label: string }[];
+  levels: string[];
+}
+
 const Grammar: React.FC = () => {
   const [selectedLevel, setSelectedLevel] = useState<string[]>(['N5']);
   const [selectedCategory, setSelectedCategory] = useState<string[]>([]);
   const [searchQuery, setSearchQuery] = useState<string>('');
-  const [grammarData, setGrammarData] = useState<GrammarItem[]>([]);
+  const [grammarData, setGrammarData] = useState<GrammarData | null>(null);
+  const [filteredLessons, setFilteredLessons] = useState<Lesson[]>([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
-  const [currentPage, setCurrentPage] = useState(1);
-  const [totalItems, setTotalItems] = useState(0);
-  const [hasMore, setHasMore] = useState(true);
 
-  // Load grammar data
+  // Load grammar data from API
   useEffect(() => {
     const loadGrammarData = async () => {
       setLoading(true);
       setError(null);
-
+      
       try {
-        let response;
-
         const levelParam = selectedLevel.length ? selectedLevel.join(',') : undefined;
         const categoryParam = selectedCategory.length ? selectedCategory.join(',') : undefined;
-
+        
+        let response;
+        
         if (searchQuery.trim()) {
           // Search mode
           response = await grammarAPI.searchGrammar({
             q: searchQuery,
             level: levelParam,
             category: categoryParam,
-            page: currentPage,
-            limit: 20
+            page: 1,
+            limit: 50
           });
         } else {
           // Normal mode - get all with optional multi-level/category filter
           response = await grammarAPI.getAllGrammar({
             level: levelParam,
             category: categoryParam,
-            page: currentPage,
-            limit: 20
+            page: 1,
+            limit: 50
           });
         }
-
+        
         if (response.success && response.data) {
-          setGrammarData(response.data.grammar);
-          console.log('Grammar data from API:', response.data.grammar);
-          if (response.data.pagination) {
-            setTotalItems(response.data.pagination.total);
-            setHasMore(response.data.pagination.hasMore);
-          }
+          setGrammarData({
+            lessons: response.data.lessons,
+            categories: response.data.categories,
+            levels: response.data.levels
+          });
+          setFilteredLessons(response.data.lessons);
         }
       } catch (err) {
         console.error('Error loading grammar data:', err);
@@ -79,87 +111,22 @@ const Grammar: React.FC = () => {
     };
 
     loadGrammarData();
-  }, [selectedLevel, selectedCategory, searchQuery, currentPage]);
-
-  // Transform grammar data to match expected format for GrammarSectionAccordion
-  const transformedSections = grammarData.map((item, index) => {
-    // Only include fields that actually exist in the API data
-    const section: any = {
-      id: item.id,
-      title: item.pattern,
-      subtitle: item.meaning_vi,
-    };
-
-    // Conditionally add fields only if they exist and have data
-    if (item.structure) {
-      section.structure = [item.structure];
-    }
-
-    if (item.meaning_vi) {
-      section.meaning = [item.meaning_vi];
-    }
-
-    if (item.examples && item.examples.length > 0) {
-      section.examples = item.examples;
-      section.preview = item.examples[0].japanese;
-    }
-
-    if (item.comparisons && item.comparisons.length > 0) {
-      section.comparison = item.comparisons;
-    }
-
-    if (item.structure) {
-      section.formation = item.structure;
-    }
-
-    if (item.usage_vi) {
-      section.usage = item.usage_vi;
-    }
-
-    if (item.level) {
-      section.level = item.level;
-    }
-
-    if (item.importance) {
-      section.importance = item.importance;
-    }
-
-    return section;
-  });
+  }, [selectedLevel, selectedCategory, searchQuery]);
 
   const handleSearch = (value: string) => {
     setSearchQuery(value);
-    setCurrentPage(1);
   };
 
   const handleLevelChange = (levels: string[]) => {
     setSelectedLevel(levels || []);
-    setCurrentPage(1);
   };
 
   const handleCategoryChange = (categories: string[]) => {
     setSelectedCategory(categories || []);
-    setCurrentPage(1);
   };
 
-  const loadMore = () => {
-    if (hasMore && !loading) {
-      setCurrentPage(prev => prev + 1);
-    }
-  };
-
-  const categories = [
-    { value: 'particles', label: 'Trợ từ' },
-    { value: 'verb-forms', label: 'Dạng động từ' },
-    { value: 'adjectives', label: 'Tính từ' },
-    { value: 'conjunctions', label: 'Liên từ' },
-    { value: 'expressions', label: 'Cụm từ' },
-    { value: 'time', label: 'Thời gian' },
-    { value: 'comparison', label: 'So sánh' },
-    { value: 'conditionals', label: 'Điều kiện' }
-  ];
-
-  const levels = ['N5', 'N4', 'N3', 'N2', 'N1'];
+  const categories = grammarData?.categories || [];
+  const levels = grammarData?.levels || ['N5', 'N4', 'N3', 'N2', 'N1'];
 
   const getLevelColor = (level: string) => {
     const colors: { [key: string]: string } = {
@@ -175,13 +142,29 @@ const Grammar: React.FC = () => {
   const getCategoryColor = (category: string) => {
     const colors: { [key: string]: string } = {
       particles: 'cyan',
-      'verb-forms': 'geekblue',
+      verb_forms: 'geekblue',
       adjectives: 'gold',
       conjunctions: 'lime',
       expressions: 'magenta',
       time: 'volcano',
       comparison: 'purple',
-      conditionals: 'orange'
+      conditionals: 'orange',
+      basic_sentence_structure: 'blue',
+      copula: 'green',
+      negative_form: 'red',
+      questions: 'orange',
+      possessive: 'purple',
+      honorifics: 'magenta',
+      demonstratives: 'cyan',
+      confirmation: 'lime',
+      acknowledgment: 'gold',
+      location_words: 'geekblue',
+      direction_words: 'volcano',
+      location_sentences: 'blue',
+      existence_verbs: 'green',
+      time_telling: 'orange',
+      time_words: 'purple',
+      dates: 'red'
     };
     return colors[category] || 'default';
   };
@@ -213,6 +196,8 @@ const Grammar: React.FC = () => {
       </Tag>
     );
   };
+
+  const totalGrammars = filteredLessons.reduce((sum, lesson) => sum + lesson.grammars.length, 0);
 
   return (
     <div className="grammar-page min-h-full bg-gray-50 dark:bg-secondary-900 academic-canvas">
@@ -280,14 +265,13 @@ const Grammar: React.FC = () => {
         </div>
 
         {/* Results Statistics */}
-        {totalItems > 0 && (
+        {totalGrammars > 0 && (
           <Card className="mb-6 sm:mb-8 bg-white dark:bg-secondary-800 border border-secondary-200 dark:border-secondary-700" variant="borderless">
             <Row gutter={[8, 16]}>
               <Col xs={24} sm={8}>
                 <Statistic
-                  title="Kết quả hiện tại"
-                  value={grammarData.length}
-                  suffix={`/ ${totalItems}`}
+                  title="Tổng số ngữ pháp"
+                  value={totalGrammars}
                   valueStyle={{ fontSize: '1.2rem', color: 'inherit' }}
                 />
               </Col>
@@ -301,13 +285,7 @@ const Grammar: React.FC = () => {
               <Col xs={24} sm={8}>
                 <Statistic
                   title="Danh mục"
-                  value={
-                    selectedCategory.length
-                      ? selectedCategory
-                        .map(value => categories.find(c => c.value === value)?.label || value)
-                        .join(', ')
-                      : 'Tất cả'
-                  }
+                  value={selectedCategory.length ? selectedCategory.length : 'Tất cả'}
                   valueStyle={{ fontSize: '1.2rem', color: 'inherit' }}
                 />
               </Col>
@@ -316,51 +294,111 @@ const Grammar: React.FC = () => {
         )}
 
         <Spin spinning={loading} size="large">
-          {grammarData.length > 0 ? (
-            <Card
-              title={
-                <div className="flex items-center justify-between">
-                  <span>
-                    Học theo lộ trình
-                  </span>
-                  <Space>
-                    {selectedLevel.length > 0 ? (
-                      selectedLevel.map(level => (
-                        <Tag key={level} color={getLevelColor(level)}>{level}</Tag>
-                      ))
-                    ) : (
-                      <Tag>Tất cả</Tag>
-                    )}
-                    {selectedCategory.length > 0 && (
-                      selectedCategory.map(category => (
-                        <Tag key={category} color={getCategoryColor(category)}>
-                          {categories.find(c => c.value === category)?.label || category}
-                        </Tag>
-                      ))
-                    )}
-                  </Space>
-                </div>
-              }
-              className="grammar-content-card bg-white dark:bg-secondary-800 border border-secondary-200 dark:border-secondary-700"
-            >
-              <GrammarSectionAccordion sections={transformedSections} />
-
-              {/* Load More Button */}
-              {hasMore && (
-                <>
-                  <Divider />
-                  <div className="text-center mt-4">
-                    <Button
-                      onClick={loadMore}
-                      loading={loading}
-                      className="rounded-xl"
-                    >
-                      {loading ? 'Đang tải...' : 'Xem thêm'}
-                    </Button>
-                  </div>
-                </>
-              )}
+          {error ? (
+            <Card className="bg-white dark:bg-secondary-800 border border-secondary-200 dark:border-secondary-700" variant="borderless">
+              <div className="text-center py-8">
+                <Text type="danger" className="text-lg">
+                  ⚠️ {error}
+                </Text>
+              </div>
             </Card>
+          ) : filteredLessons.length > 0 ? (
+            <div className="space-y-6">
+              {filteredLessons.map((lesson) => (
+                <Card
+                  key={lesson.lessonNumber}
+                  title={
+                    <div className="flex items-center justify-between">
+                      <div className="flex items-center gap-3">
+                        <BookOutlined className="text-blue-500" />
+                        <span>
+                          Bài {lesson.lessonNumber}: {lesson.title}
+                        </span>
+                        <Tag color={getLevelColor(lesson.level)}>{lesson.level}</Tag>
+                      </div>
+                      <Text type="secondary" className="text-sm">
+                        {lesson.grammars.length} ngữ pháp
+                      </Text>
+                    </div>
+                  }
+                  className="grammar-content-card bg-white dark:bg-secondary-800 border border-secondary-200 dark:border-secondary-700"
+                >
+                  <div className="mb-4">
+                    <Text className="text-sm text-gray-600 dark:text-gray-400">
+                      {lesson.description}
+                    </Text>
+                  </div>
+                  
+                  <Collapse
+                    items={lesson.grammars.map((grammar) => ({
+                      key: grammar.id,
+                      label: (
+                        <div className="flex items-center justify-between">
+                          <div className="flex items-center gap-2">
+                            <Text strong>{grammar.pattern}</Text>
+                            <Tag color={getCategoryColor(grammar.category)} className="text-xs">
+                              {categories.find(c => c.value === grammar.category)?.label || grammar.category}
+                            </Tag>
+                          </div>
+                          <Text type="secondary" className="text-sm">
+                            {grammar.meaning}
+                          </Text>
+                        </div>
+                      ),
+                      children: (
+                        <div className="space-y-4">
+                          <div>
+                            <Text strong className="text-base">Giải thích:</Text>
+                            <Paragraph className="mt-1 text-gray-700 dark:text-gray-300">
+                              {grammar.explanation}
+                            </Paragraph>
+                          </div>
+                          
+                          <div>
+                            <Text strong className="text-base">Cấu trúc:</Text>
+                            <div className="mt-1 p-3 bg-gray-100 dark:bg-gray-800 rounded-lg">
+                              <code className="text-lg font-mono">{grammar.structure}</code>
+                            </div>
+                          </div>
+                          
+                          <div>
+                            <Text strong className="text-base">Ví dụ:</Text>
+                            <List
+                              className="mt-2"
+                              dataSource={grammar.examples}
+                              renderItem={(example) => (
+                                <List.Item className="border-0 px-0">
+                                  <div className="w-full">
+                                    <div className="flex items-center gap-2 mb-1">
+                                      <CheckCircleOutlined className="text-green-500" />
+                                      <Text strong className="text-blue-600 dark:text-blue-400">
+                                        {example.japanese}
+                                      </Text>
+                                    </div>
+                                    <Text className="text-gray-600 dark:text-gray-400 ml-6">
+                                      {example.vietnamese}
+                                    </Text>
+                                  </div>
+                                </List.Item>
+                              )}
+                            />
+                          </div>
+                          
+                          {grammar.notes && (
+                            <div>
+                              <Text strong className="text-base">Ghi chú:</Text>
+                              <Paragraph className="mt-1 text-orange-600 dark:text-orange-400 italic">
+                                {grammar.notes}
+                              </Paragraph>
+                            </div>
+                          )}
+                        </div>
+                      )
+                    }))}
+                  />
+                </Card>
+              ))}
+            </div>
           ) : (
             !loading && (
               <Card className="bg-white dark:bg-secondary-800 border border-secondary-200 dark:border-secondary-700" variant="borderless">
@@ -382,19 +420,6 @@ const Grammar: React.FC = () => {
           )}
         </Spin>
       </div>
-
-      {/* Error Display */}
-      {error && (
-        <div className="fixed top-20 left-4 right-4 md:relative md:left-auto md:right-auto md:top-auto z-20">
-          <Card className="mb-6 border-red-200 bg-red-50 dark:bg-red-900/20">
-            <div className="text-center py-4">
-              <Text type="danger" className="text-lg">
-                ⚠️ {error}
-              </Text>
-            </div>
-          </Card>
-        </div>
-      )}
     </div>
   );
 };

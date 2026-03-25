@@ -12,6 +12,22 @@ import { getNanamiNaturalVoice } from '../../utils/vocabularyUtils';
 
 const { Text } = Typography;
 
+// Voice mapping for different speakers
+const getSpeakerVoice = (speaker: string, voices: SpeechSynthesisVoice[]) => {
+    const japaneseVoices = voices.filter(voice => 
+        voice.lang.startsWith('ja') || 
+        voice.name.toLowerCase().includes('japanese') ||
+        voice.name.toLowerCase().includes('japan')
+    );
+    
+    if (japaneseVoices.length === 0) return null;
+    
+    // Map speakers to different voices for variety
+    const voiceIndex = speaker.charCodeAt(0) % japaneseVoices.length;
+    return japaneseVoices[voiceIndex];
+};
+
+
 interface ConversationDialogueProps {
     dialogue: DialogueLine[];
     onLineChange?: (lineId: number) => void;
@@ -31,7 +47,7 @@ const ConversationDialogue: React.FC<ConversationDialogueProps> = ({
 }) => {
     const [currentLineIndex, setCurrentLineIndex] = useState(0);
     const [isPlaying, setIsPlaying] = useState(false);
-    const [playbackSpeed, setPlaybackSpeed] = useState(1.0);
+    const [playbackSpeed, setPlaybackSpeed] = useState(1.2);
     const [showTranslation, setShowTranslation] = useState(false);
     const [showRomaji, setShowRomaji] = useState(false);
     const [isPlayingAll, setIsPlayingAll] = useState(false);
@@ -103,9 +119,15 @@ const ConversationDialogue: React.FC<ConversationDialogueProps> = ({
             const currentElement = lineElements[currentLineIndex] as HTMLElement;
 
             if (currentElement) {
-                currentElement.scrollIntoView({
-                    behavior: 'smooth',
-                    block: 'center'
+                // Calculate position relative to container
+                const containerRect = containerRef.current.getBoundingClientRect();
+                const elementRect = currentElement.getBoundingClientRect();
+                const scrollTop = containerRef.current.scrollTop + (elementRect.top - containerRect.top) - (containerRect.height / 2) + (elementRect.height / 2);
+                
+                // Scroll only within the container
+                containerRef.current.scrollTo({
+                    top: scrollTop,
+                    behavior: 'smooth'
                 });
             }
         }
@@ -136,6 +158,7 @@ const ConversationDialogue: React.FC<ConversationDialogueProps> = ({
                 window.speechSynthesis.cancel();
             }
 
+
             // Try to use provided audio URL first
             if (line.audio_url) {
                 try {
@@ -159,13 +182,13 @@ const ConversationDialogue: React.FC<ConversationDialogueProps> = ({
                             currentPlayingIndex < dialogue.length - 1
                         ) {
                             const nextIndex = currentPlayingIndex + 1;
-                            console.log(`🎵 Advancing to line ${nextIndex} after 100ms delay`);
+                            console.log(`🎵 Advancing to line ${nextIndex} after 50ms delay`);
                             setTimeout(() => {
                                 if (token !== playbackTokenRef.current) return;
                                 console.log(`🎵 Setting current line index to ${nextIndex} and starting playback`);
                                 setCurrentLineIndex(nextIndex);
                                 playLineAtIndex(nextIndex);
-                            }, 100);
+                            }, 50);
                             return;
                         }
 
@@ -260,22 +283,16 @@ const ConversationDialogue: React.FC<ConversationDialogueProps> = ({
                 utterance.pitch = 1.0;
                 utterance.volume = 1.0;
 
-                const lowerSpeaker = (speaker || '').toLowerCase();
-                // Ưu tiên Microsoft Nanami Online (Natural) cho giọng nữ
-                const microsoftNanami = getNanamiNaturalVoice();
-                const femaleVoice = microsoftNanami;
-
-                // CHỈ sử dụng Microsoft Nanami Online (Natural) cho tất cả speakers
-                const maleVoice = microsoftNanami; // Dùng Nanami cho cả nam và nữ
-
-                const japaneseVoice = microsoftNanami; // Chỉ dùng Nanami
-
-                if (lowerSpeaker === 'mai') {
-                    utterance.voice = femaleVoice || japaneseVoice || null;
-                } else if (lowerSpeaker === 'john') {
-                    utterance.voice = maleVoice || japaneseVoice || null;
+                // Use different voice for each speaker
+                const speakerVoice = getSpeakerVoice(speaker || '', preferredVoices);
+                if (speakerVoice) {
+                    utterance.voice = speakerVoice;
                 } else {
-                    utterance.voice = femaleVoice || maleVoice || japaneseVoice || null;
+                    // Fallback to Microsoft Nanami if available
+                    const microsoftNanami = getNanamiNaturalVoice();
+                    if (microsoftNanami) {
+                        utterance.voice = microsoftNanami;
+                    }
                 }
 
                 // 🔥 FIX CỐT LÕI: Set playingIndexRef before speaking
@@ -303,13 +320,13 @@ const ConversationDialogue: React.FC<ConversationDialogueProps> = ({
                         currentPlayingIndex < dialogue.length - 1
                     ) {
                         const nextIndex = currentPlayingIndex + 1;
-                        console.log(`🎵 TTS advancing to line ${nextIndex} after 100ms delay`);
+                        console.log(`🎵 TTS advancing to line ${nextIndex} after 200ms delay`);
                         setTimeout(() => {
                             if (token !== playbackTokenRef.current) return;
                             console.log(`🎵 TTS setting current line index to ${nextIndex} and starting playback`);
                             setCurrentLineIndex(nextIndex);
                             playLineAtIndex(nextIndex);
-                        }, 100);
+                        }, 200); // Fast transition for smooth conversation
                         resolve();
                         return;
                     }
@@ -458,9 +475,31 @@ const ConversationDialogue: React.FC<ConversationDialogueProps> = ({
     };
 
 
+    const getSpeakerColor = (speaker: string) => {
+        const colors: { [key: string]: string } = {
+            'Tanaka': 'bg-blue-500',
+            'Smith': 'bg-green-500',
+            'Yamada': 'bg-purple-500',
+            'Satou': 'bg-orange-500',
+            'Staff': 'bg-red-500',
+            'Customer': 'bg-teal-500',
+            'Friend': 'bg-pink-500',
+            'Teacher': 'bg-indigo-500',
+            'Doctor': 'bg-cyan-500',
+            'Other': 'bg-gray-500'
+        };
+        return colors[speaker?.trim()] || 'bg-gray-500';
+    };
+
+    // Determine if speaker should be on left or right
+    const isSpeakerOnLeft = (speaker: string) => {
+        const leftSpeakers = ['Tanaka', 'Yamada', 'Staff', 'Teacher', 'Doctor'];
+        return leftSpeakers.includes(speaker?.trim());
+    };
+
     const getSpeakerAvatar = (speaker: string) => {
         const label = speaker?.trim() || '?';
-        const colorClass = label.toLowerCase() === 'mai' ? 'bg-pink-500' : 'bg-blue-500';
+        const colorClass = getSpeakerColor(speaker);
         return (
             <Avatar className={colorClass}>
                 {label.charAt(0).toUpperCase()}
@@ -479,22 +518,22 @@ const ConversationDialogue: React.FC<ConversationDialogueProps> = ({
                 <div ref={containerRef} className="space-y-3 max-h-[520px] overflow-y-auto p-2">
                     {dialogue.map((line, index) => (
                         (() => {
-                            const isMai = (line.speaker || '').toLowerCase() === 'mai';
+                            const isLeft = isSpeakerOnLeft(line.speaker);
                             const isActive = index === currentLineIndex;
                             return (
                                 <div
                                     key={line.line_id}
-                                    className={`dialogue-line flex ${isMai ? 'justify-start' : 'justify-end'} cursor-pointer`}
+                                    className={`dialogue-line flex ${isLeft ? 'justify-start' : 'justify-end'} cursor-pointer`}
                                     onClick={() => handleLineClick(index)}
                                 >
-                                    <div className={`flex items-end gap-3 max-w-[78%] ${isMai ? 'flex-row' : 'flex-row-reverse'}`}>
+                                    <div className={`flex items-end gap-3 max-w-[78%] ${isLeft ? 'flex-row' : 'flex-row-reverse'}`}>
                                         <div className="flex-shrink-0">
                                             {getSpeakerAvatar(line.speaker)}
                                         </div>
                                         <div
                                             className={[
                                                 'relative rounded-2xl px-4 py-3 border transition-all',
-                                                isMai
+                                                isLeft
                                                     ? 'bg-white dark:bg-secondary-925 border-secondary-200 dark:border-secondary-800'
                                                     : 'bg-blue-50 dark:bg-blue-900/30 border-blue-200 dark:border-blue-800',
                                                 isActive ? 'ring-2 ring-blue-400/50 dark:ring-blue-500/40' : '',
@@ -523,11 +562,6 @@ const ConversationDialogue: React.FC<ConversationDialogueProps> = ({
                                                 )}
                                             </div>
 
-                                            {!line.audio_url && (
-                                                <Tag color="orange" className="mt-2">
-                                                    🗣️ TTS
-                                                </Tag>
-                                            )}
                                         </div>
                                     </div>
                                 </div>

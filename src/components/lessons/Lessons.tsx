@@ -61,7 +61,7 @@ const Lessons: React.FC = () => {
             loadLessonDetail(selectedLesson.id);
             // Update URL if not already set
             if (lessonId !== selectedLesson.id) {
-                navigate(`/lessons/${selectedLesson.id}`);
+                navigate(`/mina/${selectedLesson.id}`);
             }
         }
     }, [selectedLesson, navigate]);

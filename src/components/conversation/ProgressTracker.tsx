@@ -20,7 +20,6 @@ const exerciseNames: { [key: string]: string } = {
     'comprehension': '🧠 Hiểu',
     'reorder': '🔀 Sắp xếp',
     'roleplay': '🎭 Đóng vai',
-    'shadowing': '🔊 Lặp lại',
     'reaction': '⚡ Phản xạ',
     'feedback': '🤖 AI Feedback'
 };

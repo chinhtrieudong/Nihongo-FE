@@ -25,6 +25,8 @@ import VocabularyFlashcard from "./VocabularyFlashcard";
 import VocabularyCard from "./VocabularyCard";
 import VocabularyDetailModal from "./VocabularyDetailModal";
 import { useResponsive } from "../hooks/useResponsive";
+import { useAppSelector } from "../store/hooks";
+import { getFontPreset } from "../constants/fonts";
 
 const { Title } = Typography;
 
@@ -60,6 +62,14 @@ const VocabularyTable = React.forwardRef<
     ref,
   ) => {
     const { screens } = useResponsive();
+    const { fontPreset } = useAppSelector((state) => state.ui);
+    const selectedPreset = getFontPreset(fontPreset);
+
+    // Force re-render when font preset changes
+    const kanjiFont = React.useMemo(() => {
+      const font = selectedPreset.kanjiFontFamily || selectedPreset.fontFamily;
+      return font;
+    }, [selectedPreset]);
 
     const [showRomaji] = useState(false);
 
@@ -249,11 +259,20 @@ const VocabularyTable = React.forwardRef<
           dataIndex: "kanji",
           key: "kanji",
           width: screens.lg ? 90 : 80,
-          render: (text: string) => (
-            <Typography.Text strong className="font-kosugi text-2xl leading-none">
-              {text || "-"}
-            </Typography.Text>
-          ),
+          render: (text: string) => {
+            return (
+              <span
+                className="text-2xl leading-none font-bold kanji-text"
+                style={{
+                  fontWeight: 700,
+                  fontSize: '1.5rem',
+                  lineHeight: '1'
+                }}
+              >
+                {text || "-"}
+              </span>
+            );
+          },
         },
         {
           title: "Hira/Kana",
@@ -261,7 +280,7 @@ const VocabularyTable = React.forwardRef<
           key: "hiragana",
           width: screens.lg ? 150 : 130,
           render: (text: string, record: any) => (
-            <Typography.Text className="!text-lg">
+            <Typography.Text className="!text-lg jp-text">
               {text || record.katakana || "-"}
             </Typography.Text>
           ),
@@ -339,7 +358,7 @@ const VocabularyTable = React.forwardRef<
           key: "kanji",
           width: 80,
           render: (text: string) => (
-            <Typography.Text strong className="font-kosugi text-2xl leading-none">
+            <Typography.Text strong className="text-2xl leading-none" style={{ fontFamily: selectedPreset.kanjiFontFamily || selectedPreset.fontFamily }}>
               {text || "-"}
             </Typography.Text>
           ),
@@ -350,7 +369,7 @@ const VocabularyTable = React.forwardRef<
           key: "hiragana",
           width: 120,
           render: (text: string, record: any) => (
-            <Typography.Text className="!text-lg">
+            <Typography.Text className="!text-lg" style={{ fontFamily: selectedPreset.fontFamily }}>
               {text || record.katakana || "-"}
             </Typography.Text>
           ),
@@ -548,7 +567,7 @@ const VocabularyTable = React.forwardRef<
                   >
                     <div className="flex items-start justify-between gap-3">
                       <div className="flex-1 min-w-0">
-                        <div className="text-2xl font-bold font-kosugi text-secondary-900 dark:text-secondary-100">
+                        <div className="text-2xl font-bold kanji-text text-secondary-900 dark:text-secondary-100">
                           {item.kanji || item.hiragana || item.katakana || "-"}
                         </div>
                         <div className="text-base text-secondary-600 dark:text-secondary-400">

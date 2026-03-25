@@ -12,6 +12,8 @@ import {
 import { SoundOutlined } from "@ant-design/icons";
 import type { VocabularyItem as VocabularyItemType } from "../types/lesson";
 import { speakText } from "../utils/vocabularyUtils";
+import { useAppSelector } from "../store/hooks";
+import { getFontPreset } from "../constants/fonts";
 
 const { Title, Text } = Typography;
 
@@ -30,6 +32,8 @@ const VocabularyDetailModal: React.FC<VocabularyDetailModalProps> = ({
   femaleVoiceName,
 }) => {
   const { message } = AntdApp.useApp();
+  const { fontPreset } = useAppSelector((state) => state.ui);
+  const selectedPreset = getFontPreset(fontPreset);
   const handlePlayAudio = useCallback((text: string, e: React.MouseEvent) => {
     e.stopPropagation();
     speakText(text, 'ja-JP');
@@ -250,7 +254,7 @@ const VocabularyDetailModal: React.FC<VocabularyDetailModalProps> = ({
                 Kanji
               </Text>
               <div className="p-3 bg-secondary-50 dark:bg-secondary-925 rounded">
-                <Text className="text-4xl font-bold font-kosugi">
+                <Text className="text-4xl font-bold vocab-kanji-text" style={{ fontFamily: selectedPreset.kanjiFontFamily || selectedPreset.fontFamily }}>
                   {selectedWord?.kanji || "-"}
                 </Text>
               </div>
@@ -264,19 +268,19 @@ const VocabularyDetailModal: React.FC<VocabularyDetailModalProps> = ({
               </Text>
               <div className="p-3 bg-secondary-50 dark:bg-secondary-925 rounded">
                 {selectedWord?.hiragana && (
-                  <Text className="text-2xl font-kosugi">
+                  <Text className="text-2xl jp-text">
                     {selectedWord.hiragana}
                   </Text>
                 )}
                 {selectedWord?.katakana && (
                   <Text
-                    className={`text-2xl font-kosugi ${selectedWord?.hiragana ? "ml-3" : ""}`}
+                    className={`text-2xl jp-text ${selectedWord?.hiragana ? "ml-3" : ""}`}
                   >
                     {selectedWord.katakana}
                   </Text>
                 )}
                 {!selectedWord?.hiragana && !selectedWord?.katakana && (
-                  <Text className="text-2xl font-kosugi">-</Text>
+                  <Text className="text-2xl jp-text">-</Text>
                 )}
               </div>
             </Col>
@@ -332,38 +336,38 @@ const VocabularyDetailModal: React.FC<VocabularyDetailModalProps> = ({
           </div>
 
           {normalizedKanjiAnalysis.length > 0 && (
-              <div>
-                <Text
-                  strong
-                  className="text-secondary-900 dark:text-secondary-600"
-                >
-                  Phân tích Kanji
-                </Text>
-                <div className="p-3 bg-orange-50 dark:bg-orange-900/20 rounded border border-orange-200 dark:border-orange-800">
-                  <Space orientation="vertical" className="w-full">
-                    {normalizedKanjiAnalysis.map((kanji: any, index: number) => (
-                      <div
-                        key={index}
-                        className="border-b border-orange-200 pb-2 last:border-b-0"
-                      >
-                        <Text className="font-semibold text-lg text-orange-800 dark:text-orange-600">
-                          {kanji.character}
-                        </Text>
-                        <div className="text-sm text-secondary-700 dark:text-secondary-800">
-                          <Text strong>Hán Việt:</Text>{" "}
-                          {kanji.hanviet ? kanji.hanviet.toUpperCase() : "N/A"}
-                        </div>
-                        <div className="text-sm text-secondary-700 dark:text-secondary-800">
-                          <Text strong>Âm ON:</Text> {formatReadings(kanji.onyomi)}
-                        </div>
-                        <div className="text-sm text-secondary-700 dark:text-secondary-800">
-                          <Text strong>Âm KUN:</Text> {formatReadings(kanji.kunyomi)}
-                        </div>
-                        {(kanji.jlpt_level ||
-                          kanji.jpt_level ||
-                          kanji.jlpt ||
-                          kanji.jpt ||
-                          displayJlpt) && (
+            <div>
+              <Text
+                strong
+                className="text-secondary-900 dark:text-secondary-600"
+              >
+                Phân tích Kanji
+              </Text>
+              <div className="p-3 bg-orange-50 dark:bg-orange-900/20 rounded border border-orange-200 dark:border-orange-800">
+                <Space orientation="vertical" className="w-full">
+                  {normalizedKanjiAnalysis.map((kanji: any, index: number) => (
+                    <div
+                      key={index}
+                      className="border-b border-orange-200 pb-2 last:border-b-0"
+                    >
+                      <Text className="font-semibold text-lg text-orange-800 dark:text-orange-600">
+                        {kanji.character}
+                      </Text>
+                      <div className="text-sm text-secondary-700 dark:text-secondary-800">
+                        <Text strong>Hán Việt:</Text>{" "}
+                        {kanji.hanviet ? kanji.hanviet.toUpperCase() : "N/A"}
+                      </div>
+                      <div className="text-sm text-secondary-700 dark:text-secondary-800">
+                        <Text strong>Âm ON:</Text> {formatReadings(kanji.onyomi)}
+                      </div>
+                      <div className="text-sm text-secondary-700 dark:text-secondary-800">
+                        <Text strong>Âm KUN:</Text> {formatReadings(kanji.kunyomi)}
+                      </div>
+                      {(kanji.jlpt_level ||
+                        kanji.jpt_level ||
+                        kanji.jlpt ||
+                        kanji.jpt ||
+                        displayJlpt) && (
                           <div className="text-sm text-secondary-700 dark:text-secondary-800">
                             {kanji.jlpt_level ||
                               kanji.jpt_level ||
@@ -372,39 +376,39 @@ const VocabularyDetailModal: React.FC<VocabularyDetailModalProps> = ({
                               displayJlpt}
                           </div>
                         )}
-                        <div className="text-sm text-secondary-700 dark:text-secondary-800">
-                          <Text strong>Bộ thủ:</Text>{" "}
-                          {kanji.radicals && kanji.radicals.length > 0 ? (
-                            <Space wrap>
-                              {kanji.radicals.map((radical: unknown, radIndex: number) => (
-                                <Tag
-                                  key={radIndex}
-                                  color="blue"
-                                  className="mb-1"
-                                >
-                                  {formatRadical(radical)}
-                                </Tag>
-                              ))}
-                            </Space>
-                          ) : (
-                            "Không có"
-                          )}
-                        </div>
-                        <div className="text-sm text-secondary-700 dark:text-secondary-800">
-                          <Text strong>Nghĩa:</Text> {kanji.meaning || "N/A"}
-                        </div>
-                        {kanji.image_explanation && (
-                          <div className="text-sm text-secondary-700 dark:text-secondary-800">
-                            <Text strong>Giải thích:</Text>{" "}
-                            {kanji.image_explanation}
-                          </div>
+                      <div className="text-sm text-secondary-700 dark:text-secondary-800">
+                        <Text strong>Bộ thủ:</Text>{" "}
+                        {kanji.radicals && kanji.radicals.length > 0 ? (
+                          <Space wrap>
+                            {kanji.radicals.map((radical: unknown, radIndex: number) => (
+                              <Tag
+                                key={radIndex}
+                                color="blue"
+                                className="mb-1"
+                              >
+                                {formatRadical(radical)}
+                              </Tag>
+                            ))}
+                          </Space>
+                        ) : (
+                          "Không có"
                         )}
                       </div>
-                    ))}
-                  </Space>
-                </div>
+                      <div className="text-sm text-secondary-700 dark:text-secondary-800">
+                        <Text strong>Nghĩa:</Text> {kanji.meaning || "N/A"}
+                      </div>
+                      {kanji.image_explanation && (
+                        <div className="text-sm text-secondary-700 dark:text-secondary-800">
+                          <Text strong>Giải thích:</Text>{" "}
+                          {kanji.image_explanation}
+                        </div>
+                      )}
+                    </div>
+                  ))}
+                </Space>
               </div>
-            )}
+            </div>
+          )}
 
           <div>
             <Text strong className="text-gray-900 dark:text-gray-100">

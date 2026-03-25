@@ -32,17 +32,17 @@ const VocabularyList: React.FC<VocabularyListProps> = ({
                         key={item.id}
                         onClick={() => onSelectCard(index)}
                         className={`p-4 rounded-lg border-2 cursor-pointer transition-all duration-200 hover:shadow-md ${index === currentIndex
-                                ? "border-primary-500 bg-primary-50 dark:bg-primary-900/20 shadow-lg"
-                                : "border-secondary-200 dark:border-secondary-700 hover:border-primary-300 hover:bg-secondary-50 dark:hover:bg-secondary-800"
+                            ? "border-primary-500 bg-primary-50 dark:bg-primary-900/20 shadow-lg"
+                            : "border-secondary-200 dark:border-secondary-700 hover:border-primary-300 hover:bg-secondary-50 dark:hover:bg-secondary-800"
                             }`}
                     >
                         <div className="flex items-start justify-between mb-2">
-                            <div className="font-bold text-lg text-primary-600 dark:text-primary-400">
+                            <div className="font-bold text-lg text-primary-600 dark:text-primary-400 font-kosugi">
                                 {item.kanji}
                             </div>
                             <Badge count={index + 1} size="small" />
                         </div>
-                        <div className="text-sm text-secondary-700 dark:text-secondary-400 mb-1">
+                        <div className="text-sm text-secondary-700 dark:text-secondary-400 mb-1 font-japanese">
                             {item.hiragana}
                         </div>
                         <div className="text-xs text-secondary-500 dark:text-secondary-500 mb-2">

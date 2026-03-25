@@ -125,11 +125,11 @@ const SummaryTab: React.FC<SummaryTabProps> = ({
                                 <div key={vocab.id} className="flex items-center justify-between p-3 bg-secondary-50 dark:bg-secondary-800 rounded-lg">
                                     <div className="flex items-center gap-3">
                                         <div className="w-8 h-8 bg-green-100 dark:bg-green-900 rounded-full flex items-center justify-center">
-                                            <span className="text-green-600 dark:text-green-400 font-bold text-sm">{vocab.kanji.charAt(0)}</span>
+                                            <span className="text-green-600 dark:text-green-400 font-bold text-sm font-kosugi">{vocab.kanji.charAt(0)}</span>
                                         </div>
                                         <div>
-                                            <div className="font-semibold text-secondary-900 dark:text-secondary-100">{vocab.kanji}</div>
-                                            <div className="text-sm text-secondary-600 dark:text-secondary-400">{vocab.hiragana}</div>
+                                            <div className="font-semibold text-secondary-900 dark:text-secondary-100 font-kosugi">{vocab.kanji}</div>
+                                            <div className="text-sm text-secondary-600 dark:text-secondary-400 font-japanese">{vocab.hiragana}</div>
                                         </div>
                                     </div>
                                     <div className="text-right">

@@ -7,7 +7,7 @@ import {
 } from "../types/lesson";
 
 const API_BASE_URL =
-  import.meta.env.VITE_API_URL || "http://localhost:5000/api/v1";
+  import.meta.env.VITE_API_URL || "http://localhost:5000/api";
 
 // Centralized API Endpoints Configuration
 export const API_ENDPOINTS = {
@@ -37,13 +37,7 @@ export const API_ENDPOINTS = {
     LIST: "/lessons",
     DETAIL: (id: string) => `/lessons/${id}`,
     BY_NUMBER: (number: number) => `/lessons/number/${number}`,
-    PROGRESS: (lessonNumber: number) => `/lesson/${lessonNumber}/progress`,
-    UPDATE_PROGRESS: (lessonId: string) => `/lessons/${lessonId}/progress`,
     COMPLETE: (lessonId: string) => `/lessons/${lessonId}/complete`,
-    EXERCISES: {
-      SUBMIT: (lessonId: string, exerciseId: string) => `/lessons/${lessonId}/exercises/${exerciseId}/submit`,
-      SUBMIT_MULTIPLE: (lessonId: string) => `/lessons/${lessonId}/exercises/submit`,
-    },
     RELATED: (lessonId: string) => `/lessons/${lessonId}/related`,
     SEARCH: "/lessons/search",
     KANJI: (lessonId: string) => `/lessons/${lessonId}/kanji`,
@@ -105,6 +99,19 @@ export const API_ENDPOINTS = {
 
 // Minna JSON API endpoints (separate service)
 export const MINNA_ENDPOINTS = {
+  LESSON: {
+    VOCABULARY: (lessonNumber: number) => `/lessons/${lessonNumber}/vocabulary`,
+    GRAMMAR: (lessonNumber: number) => `/lessons/${lessonNumber}/grammar`,
+    DIALOG: (lessonNumber: number) => `/lessons/${lessonNumber}/dialog`,
+    BUNKEI: (lessonNumber: number) => `/lessons/${lessonNumber}/bunkei`,
+    RENSHOU: (lessonNumber: number) => `/lessons/${lessonNumber}/renshuu`,
+    REIBUN: (lessonNumber: number) => `/lessons/${lessonNumber}/reibun`,
+    AI_CHAT: (lessonNumber: number) => `/lessons/${lessonNumber}/ai/chat`,
+  },
+};
+
+// Tango JSON API endpoints (separate service)
+export const TANGO_ENDPOINTS = {
   LESSON: {
     VOCABULARY: (lessonNumber: number) => `/lesson/${lessonNumber}/vocabulary`,
     GRAMMAR: (lessonNumber: number) => `/lesson/${lessonNumber}/grammar`,
@@ -175,19 +182,44 @@ api.interceptors.response.use(
   },
 );
 
-// Add minna-json API after the main api
-const MINNA_JSON_API_BASE_URL = "http://localhost:5000/api/v1";
+// Add mina API after the main api
+const MINA_API_BASE_URL = "http://localhost:5000/api/mina";
 
-// Create separate axios instance for minna-json endpoints
-const minnaJsonApi = axios.create({
-  baseURL: MINNA_JSON_API_BASE_URL,
+// Create separate axios instance for mina endpoints
+const minaApi = axios.create({
+  baseURL: MINA_API_BASE_URL,
   headers: {
     "Content-Type": "application/json",
   },
 });
 
-// Request interceptor for minna-json API
-minnaJsonApi.interceptors.request.use(
+// Add tango API after the main api
+const TANGO_API_BASE_URL = "http://localhost:5000/api/tango";
+
+// Create separate axios instance for tango endpoints
+const tangoApi = axios.create({
+  baseURL: TANGO_API_BASE_URL,
+  headers: {
+    "Content-Type": "application/json",
+  },
+});
+
+// Request interceptor for mina API
+minaApi.interceptors.request.use(
+  (config) => {
+    const token = localStorage.getItem("accessToken");
+    if (token) {
+      config.headers.Authorization = `Bearer ${token}`;
+    }
+    return config;
+  },
+  (error) => {
+    return Promise.reject(error);
+  },
+);
+
+// Request interceptor for tango API
+tangoApi.interceptors.request.use(
   (config) => {
     const token = localStorage.getItem("accessToken");
     if (token) {
@@ -297,7 +329,7 @@ export const vocabularyAPI = {
   },
 
   getVocabularyByLesson: async (lessonNumber: number): Promise<any> => {
-    const response = await minnaJsonApi.get(MINNA_ENDPOINTS.LESSON.VOCABULARY(lessonNumber));
+    const response = await minaApi.get(`/lessons/${lessonNumber}/vocabulary`);
     return response.data;
   },
 };
@@ -316,6 +348,12 @@ export const lessonAPI = {
     if (offset) params.offset = offset;
     if (textbook) params.textbook = textbook;
 
+    // Use mina endpoint for minna_no_nihongo textbook
+    if (textbook === 'minna_no_nihongo') {
+      const response = await minaApi.get("/lessons", { params });
+      return response.data;
+    }
+
     const response = await api.get("/lessons", { params });
     return response.data;
   },
@@ -330,54 +368,8 @@ export const lessonAPI = {
     return response.data;
   },
 
-  getLessonProgress: async (lessonNumber: number, userId?: string) => {
-    const params = userId ? { user_id: userId } : {};
-    const response = await api.get(`/lesson/${lessonNumber}/progress`, { params });
-    return response.data;
-  },
-
-  updateProgress: async (
-    lessonId: string,
-    data: {
-      status: "not_started" | "in_progress" | "completed" | "review";
-      progress: number;
-      vocabularyCompleted?: boolean;
-      grammarCompleted?: boolean;
-      dialogCompleted?: boolean;
-      exercisesScore?: number;
-      aiPracticeCount?: number;
-    },
-  ) => {
-    const response = await api.put(`/lessons/${lessonId}/progress`, data);
-    return response.data;
-  },
-
   completeLesson: async (lessonId: string) => {
     const response = await api.post(`/lessons/${lessonId}/complete`);
-    return response.data;
-  },
-
-  submitExercise: async (
-    lessonId: string,
-    exerciseId: string,
-    answer: string,
-  ): Promise<ExerciseSubmitResponse> => {
-    const response = await api.post(
-      `/lessons/${lessonId}/exercises/${exerciseId}/submit`,
-      {
-        answer,
-      },
-    );
-    return response.data;
-  },
-
-  submitExercises: async (
-    lessonId: string,
-    answers: Array<{ exerciseId: string; answer: string | string[] }>,
-  ): Promise<any> => {
-    const response = await api.post(`/lessons/${lessonId}/exercises/submit`, {
-      answers,
-    });
     return response.data;
   },
 
@@ -484,6 +476,11 @@ export const lessonAPI = {
     const response = await api.get(`/kanji/radicals/${encoded}`);
     return response.data;
   },
+
+  submitExercises: async (lessonId: string, answers: Array<{ exerciseId: string; answer: string }>) => {
+    const response = await api.post(`/lessons/${lessonId}/exercises/submit`, { answers });
+    return response.data;
+  },
 };
 
 // Progress API functions
@@ -566,7 +563,7 @@ export const aiAPI = {
       context: data.context
     };
 
-    const response = await api.post(`/lesson/${lessonNumber}/ai/chat`, requestBody);
+    const response = await minaApi.post(`/lessons/${lessonNumber}/ai/chat`, requestBody);
     
     // Transform the response to match the expected ChatMessage format
     const apiResponse = response.data;
@@ -588,8 +585,8 @@ export const aiAPI = {
 
   pronunciation: async (audioData: any) => {
     const aiBaseUrl =
-      import.meta.env.VITE_AI_API_URL || "http://localhost:5000/api/v1";
-    const response = await api.post(`${aiBaseUrl}/ai/pronunciation`, audioData);
+      import.meta.env.VITE_AI_API_URL || "http://localhost:5000/api";
+    const response = await api.post(`${aiBaseUrl}/v1/ai/pronunciation`, audioData);
     return response.data;
   },
 };
@@ -603,4 +600,4 @@ export const healthAPI = {
 };
 
 export default api;
-export { minnaJsonApi };
+export { minaApi };

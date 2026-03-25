@@ -27,6 +27,8 @@ import {
   type Category,
 } from '../services/pronunciationAPI';
 import { getNanamiNaturalVoice } from "../utils/vocabularyUtils";
+import { useAppSelector } from "../store/hooks";
+import { getFontPreset } from "../constants/fonts";
 
 const { Title, Text } = Typography;
 const { Option } = Select;
@@ -49,6 +51,8 @@ const Pronunciation: React.FC = () => {
   const [lastFeedback, setLastFeedback] = useState<string>("");
   const [recognitionError, setRecognitionError] = useState<string>("");
   const [manualTranscript, setManualTranscript] = useState("");
+  const { fontPreset } = useAppSelector((state) => state.ui);
+  const selectedPreset = getFontPreset(fontPreset);
   const mediaRecorderRef = useRef<MediaRecorder | null>(null);
   const audioChunksRef = useRef<Blob[]>([]);
   const recordingTimerRef = useRef<NodeJS.Timeout | null>(null);
@@ -205,20 +209,20 @@ const Pronunciation: React.FC = () => {
         recognition.continuous = true;
         recognition.interimResults = false;
         recognition.maxAlternatives = 1;
-        
+
         recognitionRef.current = recognition;
 
         recognition.onresult = (event: any) => {
           console.log('🎯 Speech recognition result received');
           const last = event.results.length - 1;
           const result = event.results[last];
-          
+
           if (result.isFinal) {
             const transcript = result[0].transcript;
             const confidence = result[0].confidence;
-            
+
             console.log('✅ Final result:', transcript, 'Confidence:', confidence);
-            
+
             recognitionResultRef.current = {
               text: transcript,
               confidence: confidence,
@@ -254,14 +258,14 @@ const Pronunciation: React.FC = () => {
       }
 
       // Request microphone access
-      const stream = await navigator.mediaDevices.getUserMedia({ 
+      const stream = await navigator.mediaDevices.getUserMedia({
         audio: {
           echoCancellation: true,
           noiseSuppression: true,
           autoGainControl: true
-        } 
+        }
       });
-      
+
       const mediaRecorder = new MediaRecorder(stream, {
         mimeType: 'audio/webm;codecs=opus'
       });
@@ -276,7 +280,7 @@ const Pronunciation: React.FC = () => {
 
       mediaRecorder.onstop = async () => {
         console.log('🛑 Recording stopped, processing audio...');
-        
+
         const audioBlob = new Blob(audioChunksRef.current, { type: 'audio/webm' });
         const audioUrl = URL.createObjectURL(audioBlob);
         setRecordedAudioUrl(audioUrl);
@@ -307,17 +311,17 @@ const Pronunciation: React.FC = () => {
         // Check if we got a speech recognition result
         if (recognitionResultRef.current && recognitionResultRef.current.text) {
           const { text, confidence } = recognitionResultRef.current;
-          
+
           // Calculate score based on text similarity and confidence
           const similarity = calculateTextSimilarity(currentExercise.japanese, text);
           const confidenceScore = confidence * 100;
           const finalScore = Math.round((similarity * 0.7) + (confidenceScore * 0.3));
-          
+
           setLastScore(finalScore);
           setLastFeedback(getImprovementSuggestions(finalScore)[0] || "Tiếp tục luyện tập!");
           setShowResults(true);
           setUserInput(`Text nhận dạng: "${text}" (Độ tin cậy: ${Math.round(confidence * 100)}%)`);
-          
+
           if (finalScore >= 70) {
             message.success(`Điểm số: ${finalScore}/100`);
           } else {
@@ -714,9 +718,9 @@ const Pronunciation: React.FC = () => {
                     </Button>
                   </div>
                 </div>
-                
+
                 <div className="text-center space-y-3">
-                  <Title level={1} className="!mb-0 font-kosugi tracking-wide">
+                  <Title level={1} className="!mb-0 vocab-kanji-text tracking-wide" style={{ fontFamily: selectedPreset.kanjiFontFamily || selectedPreset.fontFamily }}>
                     {currentExercise.japanese}
                   </Title>
                   {showRomaji && (
@@ -738,134 +742,134 @@ const Pronunciation: React.FC = () => {
                 </div>
               </div>
 
-            {/* Recording and Results Section - Side by Side */}
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-              {/* Recording Section - Left Side */}
-              <div className="rounded-xl border border-secondary-200 dark:border-secondary-700 p-4 sm:p-5 space-y-4">
-                <div className="flex items-center justify-between">
-                  <div className="font-semibold">Thu âm của bạn</div>
-                  <span className="text-xs text-secondary-500">3–5 giây</span>
-                </div>
-                <Text className="text-secondary-600 dark:text-secondary-400 text-sm">
-                  Nhấn mic và đọc to rõ ràng.
-                </Text>
-                {recognitionError && (
-                  <div className="text-xs text-red-500">{recognitionError}</div>
-                )}
-                <div className="flex items-center gap-4">
-                  <Button
-                    type={isRecording ? "default" : "primary"}
-                    danger={isRecording}
-                    icon={<AudioOutlined />}
-                    onClick={isRecording ? handleStopRecording : handleStartRecording}
-                    loading={isRecording}
-                    className="h-14 w-14 rounded-full flex items-center justify-center"
-                  />
-                  <div className="flex-1">
-                    <div className="text-sm text-secondary-700 dark:text-secondary-400 mb-2">
-                      {isRecording ? `Đang ghi... còn ${remainingSeconds}s` : "Sẵn sàng thu âm"}
-                    </div>
-                    <div className="flex items-end gap-1 h-8">
-                      {Array.from({ length: 12 }).map((_, index) => (
-                        <div
-                          key={index}
-                          className={`w-2 rounded-full bg-secondary-400 dark:bg-secondary-600 ${isRecording ? "animate-pulse" : "opacity-30"}`}
-                          style={{ height: `${6 + (index % 5) * 3}px` }}
-                        />
-                      ))}
-                    </div>
+              {/* Recording and Results Section - Side by Side */}
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                {/* Recording Section - Left Side */}
+                <div className="rounded-xl border border-secondary-200 dark:border-secondary-700 p-4 sm:p-5 space-y-4">
+                  <div className="flex items-center justify-between">
+                    <div className="font-semibold">Thu âm của bạn</div>
+                    <span className="text-xs text-secondary-500">3–5 giây</span>
                   </div>
-                </div>
-
-                {isRecording && (
-                  <div className="space-y-2">
-                    <Progress
-                      percent={recordingProgress}
-                      status="active"
-                      showInfo
+                  <Text className="text-secondary-600 dark:text-secondary-400 text-sm">
+                    Nhấn mic và đọc to rõ ràng.
+                  </Text>
+                  {recognitionError && (
+                    <div className="text-xs text-red-500">{recognitionError}</div>
+                  )}
+                  <div className="flex items-center gap-4">
+                    <Button
+                      type={isRecording ? "default" : "primary"}
+                      danger={isRecording}
+                      icon={<AudioOutlined />}
+                      onClick={isRecording ? handleStopRecording : handleStartRecording}
+                      loading={isRecording}
+                      className="h-14 w-14 rounded-full flex items-center justify-center"
                     />
-                    <Text className="text-gray-600 dark:text-secondary-400 text-sm">
-                      Đang thu âm... {Math.round(recordingProgress)}%
-                    </Text>
+                    <div className="flex-1">
+                      <div className="text-sm text-secondary-700 dark:text-secondary-400 mb-2">
+                        {isRecording ? `Đang ghi... còn ${remainingSeconds}s` : "Sẵn sàng thu âm"}
+                      </div>
+                      <div className="flex items-end gap-1 h-8">
+                        {Array.from({ length: 12 }).map((_, index) => (
+                          <div
+                            key={index}
+                            className={`w-2 rounded-full bg-secondary-400 dark:bg-secondary-600 ${isRecording ? "animate-pulse" : "opacity-30"}`}
+                            style={{ height: `${6 + (index % 5) * 3}px` }}
+                          />
+                        ))}
+                      </div>
+                    </div>
                   </div>
-                )}
 
-                {recognitionError && (
-                  <div className="space-y-2 mt-4">
-                    <Text className="text-xs text-secondary-600 dark:text-secondary-400">
-                      Nếu Speech Recognition không hoạt động, bạn có thể nhập transcript để chấm.
-                    </Text>
-                    <div className="flex flex-col sm:flex-row gap-2">
-                      <input
-                        className="flex-1 rounded-md border border-secondary-200 dark:border-secondary-800 bg-white dark:bg-secondary-950 px-3 py-2 text-sm"
-                        placeholder="Nhập transcript bạn nói..."
-                        value={manualTranscript}
-                        onChange={(e) => setManualTranscript(e.target.value)}
+                  {isRecording && (
+                    <div className="space-y-2">
+                      <Progress
+                        percent={recordingProgress}
+                        status="active"
+                        showInfo
                       />
-                      <Button
-                        type="default"
-                        onClick={() => scoreFromText(manualTranscript)}
-                      >
-                        Chấm theo transcript
-                      </Button>
+                      <Text className="text-gray-600 dark:text-secondary-400 text-sm">
+                        Đang thu âm... {Math.round(recordingProgress)}%
+                      </Text>
                     </div>
-                  </div>
-                )}
-              </div>
+                  )}
 
-              {/* Results Section - Right Side */}
-              <div className="rounded-xl border border-secondary-200 dark:border-secondary-700 p-4 sm:p-5 bg-secondary-50 dark:bg-secondary-800">
-                <Text strong className="text-lg mb-4 block">Kết quả thu âm:</Text>
-                
-                {showResults && lastScore !== null && (
-                  <div className="mb-4 text-center">
-                    <div className={`text-2xl font-bold mb-2 ${lastScore >= 80 ? 'text-green-600 dark:text-green-400' :
-                      lastScore >= 60 ? 'text-blue-600 dark:text-blue-400' :
-                        'text-orange-600 dark:text-orange-400'
-                      }`}>
-                      {lastScore}/100 điểm
+                  {recognitionError && (
+                    <div className="space-y-2 mt-4">
+                      <Text className="text-xs text-secondary-600 dark:text-secondary-400">
+                        Nếu Speech Recognition không hoạt động, bạn có thể nhập transcript để chấm.
+                      </Text>
+                      <div className="flex flex-col sm:flex-row gap-2">
+                        <input
+                          className="flex-1 rounded-md border border-secondary-200 dark:border-secondary-800 bg-white dark:bg-secondary-950 px-3 py-2 text-sm"
+                          placeholder="Nhập transcript bạn nói..."
+                          value={manualTranscript}
+                          onChange={(e) => setManualTranscript(e.target.value)}
+                        />
+                        <Button
+                          type="default"
+                          onClick={() => scoreFromText(manualTranscript)}
+                        >
+                          Chấm theo transcript
+                        </Button>
+                      </div>
                     </div>
-                    <div className="text-gray-700 dark:text-secondary-300 text-sm">
-                      {lastFeedback}
+                  )}
+                </div>
+
+                {/* Results Section - Right Side */}
+                <div className="rounded-xl border border-secondary-200 dark:border-secondary-700 p-4 sm:p-5 bg-secondary-50 dark:bg-secondary-800">
+                  <Text strong className="text-lg mb-4 block">Kết quả thu âm:</Text>
+
+                  {showResults && lastScore !== null && (
+                    <div className="mb-4 text-center">
+                      <div className={`text-2xl font-bold mb-2 ${lastScore >= 80 ? 'text-green-600 dark:text-green-400' :
+                        lastScore >= 60 ? 'text-blue-600 dark:text-blue-400' :
+                          'text-orange-600 dark:text-orange-400'
+                        }`}>
+                        {lastScore}/100 điểm
+                      </div>
+                      <div className="text-gray-700 dark:text-secondary-300 text-sm">
+                        {lastFeedback}
+                      </div>
                     </div>
-                  </div>
-                )}
-                
-                {userInput ? (
-                  <div className="space-y-4">
-                    <div className="p-4 bg-white dark:bg-secondary-800 rounded-lg border border-secondary-200 dark:border-secondary-700">
-                      {userInput}
+                  )}
+
+                  {userInput ? (
+                    <div className="space-y-4">
+                      <div className="p-4 bg-white dark:bg-secondary-800 rounded-lg border border-secondary-200 dark:border-secondary-700">
+                        {userInput}
+                      </div>
+                      <div className="flex flex-col sm:flex-row gap-3">
+                        <Button
+                          icon={<PlayCircleOutlined />}
+                          onClick={playRecordedAudio}
+                          size="middle"
+                          type="primary"
+                          className="w-full sm:w-auto"
+                        >
+                          Nghe lại
+                        </Button>
+                        <Button
+                          icon={<DownloadOutlined />}
+                          onClick={downloadRecordedAudio}
+                          size="middle"
+                          className="w-full sm:w-auto"
+                        >
+                          Tải về bản ghi âm
+                        </Button>
+                      </div>
                     </div>
-                    <div className="flex flex-col sm:flex-row gap-3">
-                      <Button
-                        icon={<PlayCircleOutlined />}
-                        onClick={playRecordedAudio}
-                        size="middle"
-                        type="primary"
-                        className="w-full sm:w-auto"
-                      >
-                        Nghe lại
-                      </Button>
-                      <Button
-                        icon={<DownloadOutlined />}
-                        onClick={downloadRecordedAudio}
-                        size="middle"
-                        className="w-full sm:w-auto"
-                      >
-                        Tải về bản ghi âm
-                      </Button>
+                  ) : (
+                    <div className="text-center text-secondary-500 dark:text-secondary-400 py-8">
+                      <AudioOutlined className="text-4xl mb-3 block opacity-50" />
+                      <Text className="text-sm">
+                        Nhấn nút mic để bắt đầu thu âm
+                      </Text>
                     </div>
-                  </div>
-                ) : (
-                  <div className="text-center text-secondary-500 dark:text-secondary-400 py-8">
-                    <AudioOutlined className="text-4xl mb-3 block opacity-50" />
-                    <Text className="text-sm">
-                      Nhấn nút mic để bắt đầu thu âm
-                    </Text>
-                  </div>
-                )}
+                  )}
+                </div>
               </div>
-            </div>
             </div>
           </Card>
         )}

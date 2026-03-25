@@ -12,7 +12,7 @@ import {
   RightOutlined,
   RobotOutlined,
 } from "@ant-design/icons";
-import ReorderExercise from "../../components/ReorderExercise";
+import ReorderExercise from "@components/ReorderExercise";
 import type { Exercise } from "../../types/lesson";
 
 const { Title, Text, Paragraph } = Typography;
@@ -240,7 +240,7 @@ const ExercisesTab: React.FC<ExercisesTabProps> = ({
                           {itemIndex + 1}.
                         </Text>
                         <div className="flex-1">
-                          <Text className="text-sm font-medium block mb-1">
+                          <Text className="text-sm font-medium block mb-1 font-japanese">
                             {questionText || "Chưa có câu hỏi"}
                           </Text>
                           {questionRomaji && (
@@ -333,19 +333,19 @@ const ExercisesTab: React.FC<ExercisesTabProps> = ({
                               const lineMeaning = getMeaning(line);
                               return (
                                 <>
-                            <Text className="text-sm block">
-                              {getJapaneseText(line)}
-                            </Text>
-                            {getRomaji(line) && (
-                              <Text className="text-xs italic block !text-secondary-700 dark:!text-secondary-400">
-                                {getRomaji(line)}
-                              </Text>
-                            )}
-                            <Text
-                              className={`text-xs block ${lineMeaning ? "text-green-600 dark:text-green-400" : "!text-secondary-700 dark:!text-secondary-400"}`}
-                            >
-                              Nghĩa: {lineMeaning || "Chưa có nghĩa"}
-                            </Text>
+                                  <Text className="text-sm block font-japanese">
+                                    {getJapaneseText(line)}
+                                  </Text>
+                                  {getRomaji(line) && (
+                                    <Text className="text-xs italic block !text-secondary-700 dark:!text-secondary-400">
+                                      {getRomaji(line)}
+                                    </Text>
+                                  )}
+                                  <Text
+                                    className={`text-xs block ${lineMeaning ? "text-green-600 dark:text-green-400" : "!text-secondary-700 dark:!text-secondary-400"}`}
+                                  >
+                                    Nghĩa: {lineMeaning || "Chưa có nghĩa"}
+                                  </Text>
                                 </>
                               );
                             })()}
@@ -362,82 +362,83 @@ const ExercisesTab: React.FC<ExercisesTabProps> = ({
                     const questionMeaning = getMeaning(question);
                     const displayQuestionMeaning = questionMeaning || "Chưa có nghĩa";
                     return (
-                    <Card key={questionIndex} size="small" className="mb-3 bg-blue-50 dark:bg-blue-900/20 border-blue-200 dark:border-blue-800">
-                      <div className="space-y-3">
-                        <Text className="text-sm font-medium block">
-                          {questionText || "Chưa có câu hỏi"}
-                        </Text>
-                        {questionRomaji && (
-                          <Text className="text-xs italic block !text-secondary-700 dark:!text-secondary-400">
-                            {questionRomaji}
+                      <Card key={questionIndex} size="small" className="mb-3 bg-blue-50 dark:bg-blue-900/20 border-blue-200 dark:border-blue-800">
+                        <div className="space-y-3">
+                          <Text className="text-sm font-medium block font-japanese">
+                            {questionText || "Chưa có câu hỏi"}
                           </Text>
-                        )}
-                        <Text
-                          className={`text-xs block ${questionMeaning ? "text-green-600 dark:text-green-400" : "!text-secondary-700 dark:!text-secondary-400"}`}
-                        >
-                          Nghĩa: {displayQuestionMeaning}
-                        </Text>
+                          {questionRomaji && (
+                            <Text className="text-xs italic block !text-secondary-700 dark:!text-secondary-400">
+                              {questionRomaji}
+                            </Text>
+                          )}
+                          <Text
+                            className={`text-xs block ${questionMeaning ? "text-green-600 dark:text-green-400" : "!text-secondary-700 dark:!text-secondary-400"}`}
+                          >
+                            Nghĩa: {displayQuestionMeaning}
+                          </Text>
 
-                        {/* Multiple choice options */}
-                        {question.type === "multiple_choice" && question.options && (
-                          <Space orientation="vertical" className="w-full">
-                            {question.options.map((option: string, optionIndex: number) => {
-                              const questionId = `${exercises[currentExerciseIndex].id}_dialogue_${dialogueIndex}_question_${questionIndex}`;
-                              const isSelected = exerciseAnswers[questionId] === option;
-                              const status = answerStatus[questionId];
+                          {/* Multiple choice options */}
+                          {question.type === "multiple_choice" && question.options && (
+                            <Space orientation="vertical" className="w-full">
+                              {question.options.map((option: string, optionIndex: number) => {
+                                const questionId = `${exercises[currentExerciseIndex].id}_dialogue_${dialogueIndex}_question_${questionIndex}`;
+                                const isSelected = exerciseAnswers[questionId] === option;
+                                const status = answerStatus[questionId];
 
-                              return (
-                                <Card
-                                  key={optionIndex}
-                                  size="small"
-                                  className={`cursor-pointer transition-colors ${isSelected && status === "correct"
-                                    ? "border-green-300 bg-green-50 dark:border-green-600 dark:bg-green-900/20"
-                                    : isSelected && status === "incorrect"
-                                      ? "border-red-300 bg-red-50 dark:border-red-600 dark:bg-red-900/20"
-                                      : "hover:bg-secondary-100 dark:hover:bg-secondary-900"
-                                    } bg-white dark:bg-secondary-800 border-secondary-200 dark:border-secondary-700`}
-                                  onClick={() => handleAnswerSelect(questionId, option)}
-                                >
-                                  <Space size={6}>
-                                    <input
-                                      type="radio"
-                                      name={`question_${questionId}`}
-                                      value={option}
-                                      checked={isSelected}
-                                      onChange={(e) => handleAnswerSelect(questionId, e.target.value)}
-                                      className="mr-2"
-                                    />
-                                    <Text
-                                      className={`text-sm ${isSelected && status === "correct"
-                                        ? "text-green-700 dark:text-green-400 font-medium"
-                                        : isSelected && status === "incorrect"
-                                          ? "text-red-700 dark:text-red-400"
-                                          : ""
-                                        }`}
-                                    >
-                                      {option}
-                                    </Text>
-                                  </Space>
-                                </Card>
-                              );
-                            })}
-                          </Space>
-                        )}
+                                return (
+                                  <Card
+                                    key={optionIndex}
+                                    size="small"
+                                    className={`cursor-pointer transition-colors ${isSelected && status === "correct"
+                                      ? "border-green-300 bg-green-50 dark:border-green-600 dark:bg-green-900/20"
+                                      : isSelected && status === "incorrect"
+                                        ? "border-red-300 bg-red-50 dark:border-red-600 dark:bg-red-900/20"
+                                        : "hover:bg-secondary-100 dark:hover:bg-secondary-900"
+                                      } bg-white dark:bg-secondary-800 border-secondary-200 dark:border-secondary-700`}
+                                    onClick={() => handleAnswerSelect(questionId, option)}
+                                  >
+                                    <Space size={6}>
+                                      <input
+                                        type="radio"
+                                        name={`question_${questionId}`}
+                                        value={option}
+                                        checked={isSelected}
+                                        onChange={(e) => handleAnswerSelect(questionId, e.target.value)}
+                                        className="mr-2"
+                                      />
+                                      <Text
+                                        className={`text-sm ${isSelected && status === "correct"
+                                          ? "text-green-700 dark:text-green-400 font-medium"
+                                          : isSelected && status === "incorrect"
+                                            ? "text-red-700 dark:text-red-400"
+                                            : ""
+                                          }`}
+                                      >
+                                        {option}
+                                      </Text>
+                                    </Space>
+                                  </Card>
+                                );
+                              })}
+                            </Space>
+                          )}
 
-                        {/* Show explanation if answered */}
-                        {(() => {
-                          const questionId = `${exercises[currentExerciseIndex].id}_dialogue_${dialogueIndex}_question_${questionIndex}`;
-                          return showExplanation[questionId] && question.explanation && (
-                            <Card size="small" className="bg-green-50 dark:bg-green-900/20 border-green-200 dark:border-green-800">
-                              <Text className="text-sm text-green-700 dark:text-green-300">
-                                💡 <strong>Giải thích:</strong> {question.explanation}
-                              </Text>
-                            </Card>
-                          );
-                        })()}
-                      </div>
-                    </Card>
-                  )})}
+                          {/* Show explanation if answered */}
+                          {(() => {
+                            const questionId = `${exercises[currentExerciseIndex].id}_dialogue_${dialogueIndex}_question_${questionIndex}`;
+                            return showExplanation[questionId] && question.explanation && (
+                              <Card size="small" className="bg-green-50 dark:bg-green-900/20 border-green-200 dark:border-green-800">
+                                <Text className="text-sm text-green-700 dark:text-green-300">
+                                  💡 <strong>Giải thích:</strong> {question.explanation}
+                                </Text>
+                              </Card>
+                            );
+                          })()}
+                        </div>
+                      </Card>
+                    )
+                  })}
                 </Card>
               ))}
             </div>
@@ -446,7 +447,7 @@ const ExercisesTab: React.FC<ExercisesTabProps> = ({
           {/* Regular Exercise Rendering (for non-mondai exercises) */}
           {!exercises[currentExerciseIndex].audioUrl && (
             <div className="mb-6">
-              <Paragraph className="text-sm mb-3">
+              <Paragraph className="text-sm mb-3 font-japanese">
                 {exercises[currentExerciseIndex].question}
               </Paragraph>
 

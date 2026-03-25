@@ -1,9 +1,26 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
+import path from 'path'
 
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [react()],
+  resolve: {
+    alias: {
+      '@components': path.resolve(__dirname, './src/components'),
+      '@pages': path.resolve(__dirname, './src/pages'),
+      '@services': path.resolve(__dirname, './src/services'),
+      '@utils': path.resolve(__dirname, './src/utils'),
+      '@hooks': path.resolve(__dirname, './src/hooks'),
+      '@contexts': path.resolve(__dirname, './src/contexts'),
+      '@store': path.resolve(__dirname, './src/store'),
+      '@types': path.resolve(__dirname, './src/types'),
+      '@constants': path.resolve(__dirname, './src/constants'),
+      '@styles': path.resolve(__dirname, './src/styles'),
+      '@kanji-types': path.resolve(__dirname, './src/types/kanji.ts'),
+      '@lesson-types': path.resolve(__dirname, './src/types/lesson.ts'),
+    },
+  },
   build: {
     rollupOptions: {
       output: {
@@ -19,7 +36,7 @@ export default defineConfig({
           'pronunciation-chunk': ['./src/pages/Pronunciation'],
           'conversation-chunk': ['./src/pages/Conversation', './src/pages/ConversationLesson'],
           'tests-chunk': ['./src/pages/Tests', './src/pages/TestDetail', './src/pages/TestResults'],
-          'admin-chunk': ['./src/pages/AdminDataManager', './src/components/AdminLayout'],
+          'admin-chunk': ['./src/components/AdminLayout'],
 
           // Utils and libraries
           'utils-chunk': ['axios', 'framer-motion', 'wanakana', 'hanzi-writer', 'kanjivg-js'],

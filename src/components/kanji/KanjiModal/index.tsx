@@ -457,7 +457,7 @@ const KanjiModal: React.FC<KanjiModalProps> = ({ kanji, visible, onClose }) => {
             title={
                 <div className="flex items-center justify-between pr-8">
                     <div>
-                        <span className="text-2xl font-bold mr-2 font-kosugi">{kanji.character}</span>
+                        <span className="text-2xl font-bold mr-2 vocab-kanji-text" style={{ fontFamily: selectedPreset.kanjiFontFamily || selectedPreset.fontFamily }}>{kanji.character}</span>
                         <Tag color={getJlptColor(kanji.jlpt_level)}>{kanji.jlpt_level}</Tag>
                     </div>
                     <Button
@@ -490,7 +490,7 @@ const KanjiModal: React.FC<KanjiModalProps> = ({ kanji, visible, onClose }) => {
                         <div className="space-y-4">
                             <Card title="Thông tin cơ bản" className="h-fit">
                                 <div className="text-center mb-4">
-                                    <div className="text-6xl font-bold text-secondary-700 dark:text-secondary-400 mb-2 font-kosugi">{kanji.character}</div>
+                                    <div className="text-6xl font-bold text-secondary-700 dark:text-secondary-400 mb-2 vocab-kanji-text" style={{ fontFamily: selectedPreset.kanjiFontFamily || selectedPreset.fontFamily }}>{kanji.character}</div>
                                     <div className="text-xl text-purple-600 dark:text-purple-400 font-medium">{kanji.hanviet}</div>
                                     <div className="text-lg text-secondary-600 dark:text-secondary-800">{kanji.meaning_vi}</div>
                                 </div>

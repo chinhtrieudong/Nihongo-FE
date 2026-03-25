@@ -26,8 +26,8 @@ const SummaryTab: React.FC<SummaryTabProps> = ({ vocabularies, grammars }) => {
                 <Card key={vocab.id} size="small" className="bg-secondary-50 dark:bg-secondary-800">
                   <div className="flex justify-between items-center">
                     <div>
-                      <Text strong>{vocab.kanji}</Text>
-                      <Text className="ml-2 !text-secondary-700 dark:!text-secondary-400">
+                      <Text strong className="font-kosugi">{vocab.kanji}</Text>
+                      <Text className="ml-2 !text-secondary-700 dark:!text-secondary-400 font-japanese">
                         ({vocab.hiragana})
                       </Text>
                     </div>

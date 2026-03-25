@@ -159,7 +159,7 @@ const Sidebar: React.FC = () => {
                 item.key === "/" &&
                 (location.pathname === "/" ||
                   location.pathname === "/lessons" ||
-                  location.pathname.startsWith("/lessons/"));
+                  location.pathname.startsWith("/mina/"));
               const isActive = isHome || location.pathname === item.key;
 
               return (
@@ -179,9 +179,9 @@ const Sidebar: React.FC = () => {
                     <span
                       className={[
                         "text-xl leading-none",
-                      isActive
-                        ? "text-blue-600 dark:text-blue-400"
-                        : "text-gray-500 dark:text-gray-400",
+                        isActive
+                          ? "text-blue-600 dark:text-blue-400"
+                          : "text-gray-500 dark:text-gray-400",
                       ].join(" ")}
                     >
                       {item.icon}
@@ -212,72 +212,37 @@ const Sidebar: React.FC = () => {
       </Sider>
 
       <Drawer
-        title="Cài đặt Font"
+        title={
+          <div className="flex items-center gap-2">
+            <FontSizeOutlined className="text-primary-600 dark:text-primary-400" />
+            <span className="text-secondary-900 dark:text-secondary-100">Cài đặt Font</span>
+          </div>
+        }
         placement="right"
         open={fontDrawerOpen}
         onClose={() => setFontDrawerOpen(false)}
-        size={400}
+        size={380}
+        className="font-settings-drawer"
+        styles={{
+          body: { padding: '16px 20px' },
+          header: {
+            borderBottom: '1px solid var(--ant-color-border-secondary)',
+            background: 'var(--ant-color-bg-container)'
+          }
+        }}
       >
-        {/* Font Giao diện */}
-        <div className="mb-6">
-          <h3 className="text-sm font-semibold text-secondary-900 dark:text-secondary-100 mb-3">
-            Font Giao diện
-          </h3>
-          <div className="text-xs text-secondary-600 dark:text-secondary-400 mb-3">
-            Đang dùng: <span className="font-semibold">{selectedUIFont.label}</span>
-          </div>
-
-          <div className="grid grid-cols-2 gap-2">
-            {UI_FONT_OPTIONS.map((font) => {
-              const selected = font.key === uiFontFamily;
-
-              return (
-                <button
-                  key={font.key}
-                  type="button"
-                  onClick={() => dispatch(setUIFontFamily(font.key))}
-                  className={[
-                    "relative text-left rounded-xl border p-3 transition-colors",
-                    "bg-white dark:bg-secondary-925",
-                    selected
-                      ? "border-primary-500 ring-2 ring-primary-200 dark:ring-primary-900/40"
-                      : "border-secondary-200 hover:border-secondary-300 dark:border-secondary-800 dark:hover:border-secondary-700",
-                  ].join(" ")}
-                >
-                  <div
-                    className="text-2xl leading-none mb-1 text-secondary-900 dark:text-secondary-100"
-                    style={{ fontFamily: font.fontFamily }}
-                  >
-                    Aa
-                  </div>
-                  <div className="text-xs font-semibold text-secondary-900 dark:text-secondary-100">
-                    {font.label}
-                  </div>
-
-                  {selected ? (
-                    <span className="absolute top-2 right-2 inline-flex h-5 w-5 items-center justify-center rounded-full bg-primary-600 text-white text-xs">
-                      <CheckOutlined />
-                    </span>
-                  ) : null}
-                </button>
-              );
-            })}
-          </div>
-        </div>
-
-        {/* Divider */}
-        <div className="h-px bg-secondary-200 dark:bg-secondary-700 my-6" />
-
         {/* Font Kanji */}
-        <div className="mb-6">
-          <h3 className="text-sm font-semibold text-secondary-900 dark:text-secondary-100 mb-3">
-            Font Kanji
-          </h3>
-          <div className="text-xs text-secondary-600 dark:text-secondary-400 mb-3">
-            Đang dùng: <span className="font-semibold">{selectedPreset.label}</span>
+        <div className="mb-8">
+          <div className="flex items-center justify-between mb-4">
+            <h3 className="text-base font-bold text-secondary-900 dark:text-secondary-100">
+              Font Kanji
+            </h3>
+            <div className="text-xs text-secondary-500 dark:text-secondary-400 bg-secondary-100 dark:bg-secondary-800 px-2 py-1 rounded-full">
+              {selectedPreset.label}
+            </div>
           </div>
 
-          <div className="grid grid-cols-2 gap-2">
+          <div className="grid grid-cols-2 gap-3">
             {FONT_PRESETS.map((preset) => {
               const selected = preset.key === fontPreset;
               const previewFontFamily = preset.previewFontFamily || preset.fontFamily;
@@ -288,28 +253,31 @@ const Sidebar: React.FC = () => {
                   type="button"
                   onClick={() => dispatch(setFontPreset(preset.key))}
                   className={[
-                    "relative text-left rounded-xl border p-3 transition-colors",
-                    "bg-white dark:bg-secondary-925",
+                    "relative text-left rounded-2xl border-2 p-4 transition-all duration-200",
+                    "group hover:shadow-lg hover:scale-[1.02]",
                     selected
-                      ? "border-primary-500 ring-2 ring-primary-200 dark:ring-primary-900/40"
-                      : "border-secondary-200 hover:border-secondary-300 dark:border-secondary-800 dark:hover:border-secondary-700",
+                      ? "border-primary-500 bg-primary-50 dark:bg-primary-900/20 shadow-md ring-2 ring-primary-200 dark:ring-primary-800"
+                      : "border-secondary-200 dark:border-secondary-700 bg-white dark:bg-secondary-900 hover:border-primary-300 dark:hover:border-primary-600 hover:bg-primary-50/50 dark:hover:bg-primary-900/10",
                   ].join(" ")}
                 >
                   <div
-                    className="text-2xl leading-none mb-1 text-secondary-900 dark:text-secondary-100"
+                    className="text-3xl leading-none mb-2 text-secondary-900 dark:text-secondary-100 group-hover:text-primary-700 dark:group-hover:text-primary-300 transition-colors"
                     style={{ fontFamily: previewFontFamily }}
                   >
                     漢字
                   </div>
-                  <div className="text-xs font-semibold text-secondary-900 dark:text-secondary-100">
+                  <div className={[
+                    "text-xs font-semibold transition-colors",
+                    selected ? "text-primary-700 dark:text-primary-300" : "text-secondary-700 dark:text-secondary-300"
+                  ].join(" ")}>
                     {preset.label}
                   </div>
 
-                  {selected ? (
-                    <span className="absolute top-2 right-2 inline-flex h-5 w-5 items-center justify-center rounded-full bg-primary-600 text-white text-xs">
+                  {selected && (
+                    <span className="absolute top-3 right-3 inline-flex h-6 w-6 items-center justify-center rounded-full bg-primary-600 text-white text-sm shadow-lg">
                       <CheckOutlined />
                     </span>
-                  ) : null}
+                  )}
                 </button>
               );
             })}
@@ -317,18 +285,20 @@ const Sidebar: React.FC = () => {
         </div>
 
         {/* Divider */}
-        <div className="h-px bg-secondary-200 dark:bg-secondary-700 my-6" />
+        <div className="h-px bg-gradient-to-r from-transparent via-secondary-300 dark:via-secondary-600 to-transparent my-8" />
 
         {/* Font Tiếng Nhật */}
-        <div>
-          <h3 className="text-sm font-semibold text-secondary-900 dark:text-secondary-100 mb-3">
-            Font Tiếng Nhật
-          </h3>
-          <div className="text-xs text-secondary-600 dark:text-secondary-400 mb-3">
-            Đang dùng: <span className="font-semibold">{selectedJapaneseFont.label}</span>
+        <div className="mb-6">
+          <div className="flex items-center justify-between mb-4">
+            <h3 className="text-base font-bold text-secondary-900 dark:text-secondary-100">
+              Font Tiếng Nhật
+            </h3>
+            <div className="text-xs text-secondary-500 dark:text-secondary-400 bg-secondary-100 dark:bg-secondary-800 px-2 py-1 rounded-full">
+              {selectedJapaneseFont.label}
+            </div>
           </div>
 
-          <div className="grid grid-cols-2 gap-2">
+          <div className="grid grid-cols-2 gap-3">
             {JAPANESE_FONT_OPTIONS.map((font) => {
               const selected = font.key === japaneseFontFamily;
 
@@ -338,36 +308,52 @@ const Sidebar: React.FC = () => {
                   type="button"
                   onClick={() => dispatch(setJapaneseFontFamily(font.key))}
                   className={[
-                    "relative text-left rounded-xl border p-3 transition-colors",
-                    "bg-white dark:bg-secondary-925",
+                    "relative text-left rounded-2xl border-2 p-4 transition-all duration-200",
+                    "group hover:shadow-lg hover:scale-[1.02]",
                     selected
-                      ? "border-primary-500 ring-2 ring-primary-200 dark:ring-primary-900/40"
-                      : "border-secondary-200 hover:border-secondary-300 dark:border-secondary-800 dark:hover:border-secondary-700",
+                      ? "border-primary-500 bg-primary-50 dark:bg-primary-900/20 shadow-md ring-2 ring-primary-200 dark:ring-primary-800"
+                      : "border-secondary-200 dark:border-secondary-700 bg-white dark:bg-secondary-900 hover:border-primary-300 dark:hover:border-primary-600 hover:bg-primary-50/50 dark:hover:bg-primary-900/10",
                   ].join(" ")}
                 >
                   <div
-                    className="text-lg leading-none mb-1 text-secondary-900 dark:text-secondary-100"
+                    className="text-xl leading-none mb-2 text-secondary-900 dark:text-secondary-100 group-hover:text-primary-700 dark:group-hover:text-primary-300 transition-colors"
                     style={{ fontFamily: font.fontFamily }}
                   >
                     こんにちは
                   </div>
-                  <div className="text-xs font-semibold text-secondary-900 dark:text-secondary-100">
+                  <div className={[
+                    "text-xs font-semibold transition-colors",
+                    selected ? "text-primary-700 dark:text-primary-300" : "text-secondary-700 dark:text-secondary-300"
+                  ].join(" ")}>
                     {font.label}
                   </div>
 
-                  {selected ? (
-                    <span className="absolute top-2 right-2 inline-flex h-5 w-5 items-center justify-center rounded-full bg-primary-600 text-white text-xs">
+                  {selected && (
+                    <span className="absolute top-3 right-3 inline-flex h-6 w-6 items-center justify-center rounded-full bg-primary-600 text-white text-sm shadow-lg">
                       <CheckOutlined />
                     </span>
-                  ) : null}
+                  )}
                 </button>
               );
             })}
           </div>
         </div>
 
-        <div className="mt-6 text-xs text-secondary-500 dark:text-secondary-400">
-          Ghi chú: Font giao diện áp dụng cho toàn bộ ứng dụng. Font Kanji áp dụng cho các ký tự Hán tự. Font Tiếng Nhật áp dụng cho văn bản tiếng Nhật.
+        {/* Footer Note */}
+        <div className="mt-8 p-4 bg-secondary-50 dark:bg-secondary-900/50 rounded-xl border border-secondary-200 dark:border-secondary-700">
+          <div className="flex items-start gap-3">
+            <div className="flex-shrink-0 w-8 h-8 bg-primary-100 dark:bg-primary-900/30 rounded-lg flex items-center justify-center">
+              <FontSizeOutlined className="text-primary-600 dark:text-primary-400 text-sm" />
+            </div>
+            <div>
+              <h4 className="text-sm font-semibold text-secondary-900 dark:text-secondary-100 mb-1">
+                Hướng dẫn
+              </h4>
+              <p className="text-xs text-secondary-600 dark:text-secondary-400 leading-relaxed">
+                Font Kanji áp dụng cho các ký tự Hán tự. Font Tiếng Nhật áp dụng cho văn bản tiếng Nhật (hiragana, katakana).
+              </p>
+            </div>
+          </div>
         </div>
       </Drawer>
     </>
