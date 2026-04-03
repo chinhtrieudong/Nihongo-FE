@@ -34,10 +34,10 @@ const KanjiList: React.FC<KanjiListProps> = ({
 
     if (kanjiList.length === 0) {
         return (
-            <div className="text-center rounded-2xl border border-[#e6e8ee] bg-white/80 dark:bg-secondary-900/60 py-12">
+            <div className="text-center rounded-2xl border border-[#e6e8ee] dark:border-[#3d4a63] bg-white/80 dark:bg-[#1c212a]/80 py-12">
                 <Empty
                     description={
-                        <span className="text-secondary-700 dark:text-secondary-800">Không tìm thấy Hán tự nào</span>
+                        <span className="text-secondary-700 dark:text-secondary-400">Không tìm thấy Hán tự nào</span>
                     }
                 />
             </div>
@@ -45,14 +45,14 @@ const KanjiList: React.FC<KanjiListProps> = ({
     }
 
     return (
-        <div className="rounded-2xl border border-[#e6e8ee] bg-white/90 dark:bg-secondary-900/70 p-3 sm:p-4">
+        <div className="rounded-2xl border border-[#e6e8ee] dark:border-[#3d4a63] bg-white/90 dark:bg-[#1c212a]/90 p-3 sm:p-4">
             <div className="mb-3 flex items-center justify-between gap-2">
                 <span className="text-xs sm:text-sm text-secondary-600 dark:text-secondary-400">
                     {selectedLevels.length === 0
                         ? 'Tất cả cấp độ'
                         : `JLPT ${selectedLevels.join(', ')}`}
                 </span>
-                <span className="rounded-full bg-[#eef2fb] px-2.5 py-1 text-xs font-medium text-[#32435f]">
+                <span className="rounded-full bg-[#eef2fb] dark:bg-[#3d4a63]/60 px-2.5 py-1 text-xs font-medium text-[#32435f] dark:text-[#e2e8f0]">
                     {kanjiList.length} ký tự
                 </span>
             </div>

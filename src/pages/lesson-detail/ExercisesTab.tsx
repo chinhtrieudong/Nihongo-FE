@@ -6,13 +6,8 @@ import {
   Typography,
   Input,
 } from "antd";
-import {
-  CheckCircleOutlined,
-  LeftOutlined,
-  RightOutlined,
-  RobotOutlined,
-} from "@ant-design/icons";
-import ReorderExercise from "@components/ReorderExercise";
+import { CheckCircle, ChevronLeft, ChevronRight, Bot } from "lucide-react";
+import ReorderExercise from "@components/exercises/ReorderExercise";
 import type { Exercise } from "../../types/lesson";
 
 const { Title, Text, Paragraph } = Typography;
@@ -115,21 +110,21 @@ const ExercisesTab: React.FC<ExercisesTabProps> = ({
             <Title level={4}>Kết quả tổng hợp</Title>
             <div className="grid grid-cols-3 gap-4">
               <div className="text-center">
-                <Title level={2} style={{ color: "#1890ff" }}>
+                <Title level={2} style={{ color: "var(--info)" }}>
                   {Object.keys(exerciseResults).length ||
                     Object.keys(exerciseAnswers).length}
                 </Title>
                 <Text className="!text-secondary-700 dark:!text-secondary-400">Đã làm</Text>
               </div>
               <div className="text-center">
-                <Title level={2} style={{ color: "#52c41a" }}>
+                <Title level={2} style={{ color: "var(--success)" }}>
                   {Object.values(answerStatus).filter((status) => status === "correct")
                     .length}
                 </Title>
                 <Text className="!text-secondary-700 dark:!text-secondary-400">Đúng</Text>
               </div>
               <div className="text-center">
-                <Title level={2} style={{ color: "#ff4d4f" }}>
+                <Title level={2} style={{ color: "var(--error)" }}>
                   {Object.values(answerStatus).filter((status) => status === "incorrect")
                     .length}
                 </Title>
@@ -149,12 +144,12 @@ const ExercisesTab: React.FC<ExercisesTabProps> = ({
                     này.
                   </Paragraph>
                   <Space className="justify-center">
-                    <Button type="primary" icon={<RobotOutlined />} onClick={() => onGoToTab("ai")}>
+                    <Button type="primary" icon={<Bot className="w-4 h-4" />} onClick={() => onGoToTab("ai")}>
                       Luyện tập với AI
                     </Button>
                     <Button
                       type="primary"
-                      icon={<CheckCircleOutlined />}
+                      icon={<CheckCircle className="w-4 h-4" />}
                       onClick={handleMarkLessonComplete}
                       style={{ backgroundColor: "#52c41a", borderColor: "#52c41a" }}
                     >
@@ -406,6 +401,7 @@ const ExercisesTab: React.FC<ExercisesTabProps> = ({
                                         checked={isSelected}
                                         onChange={(e) => handleAnswerSelect(questionId, e.target.value)}
                                         className="mr-2"
+                                        aria-label={`Option: ${option}`}
                                       />
                                       <Text
                                         className={`text-sm ${isSelected && status === "correct"
@@ -480,6 +476,7 @@ const ExercisesTab: React.FC<ExercisesTabProps> = ({
                               checked={isSelected}
                               onChange={(e) => handleAnswerSelect(exerciseId, e.target.value)}
                               className="mr-3"
+                              aria-label={`Option: ${option}`}
                             />
                             <Text
                               className={`text-sm ${isSelected && status === "correct"
@@ -531,7 +528,7 @@ const ExercisesTab: React.FC<ExercisesTabProps> = ({
               {exercises[currentExerciseIndex].type === "reorder" && (
                 <ReorderExercise
                   exercise={exercises[currentExerciseIndex]}
-                  setAnswer={(answer) =>
+                  setAnswer={(answer: string | string[]) =>
                     setExerciseAnswers((prev) => ({
                       ...prev,
                       [exercises[currentExerciseIndex].id || `exercise_${currentExerciseIndex}`]:
@@ -617,7 +614,7 @@ const ExercisesTab: React.FC<ExercisesTabProps> = ({
 
           <div className="flex justify-between">
             <Button
-              icon={<LeftOutlined />}
+              icon={<ChevronLeft className="w-4 h-4" />}
               onClick={() => setCurrentExerciseIndex((prev) => Math.max(0, prev - 1))}
               disabled={currentExerciseIndex === 0}
             >
@@ -644,7 +641,7 @@ const ExercisesTab: React.FC<ExercisesTabProps> = ({
             )}
 
             <Button
-              icon={<RightOutlined />}
+              icon={<ChevronRight className="w-4 h-4" />}
               onClick={() =>
                 setCurrentExerciseIndex((prev) => Math.min(exercises.length - 1, prev + 1))
               }

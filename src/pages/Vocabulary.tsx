@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { lessonAPI } from "../services/api";
-import { BookOutlined } from "@ant-design/icons";
-import PageTitle from "../components/PageTitle";
+import { BookOpen } from "lucide-react";
+import { PageTitle } from "../components/common";
 
 // Updated interface to match backend kanji structure
 interface KanjiItem {
@@ -85,13 +85,14 @@ const Kanji: React.FC = () => {
         <PageTitle
           title="Từ vựng"
           subtitle="Học từ vựng theo giáo trình Minna no Nihongo"
-          icon={<BookOutlined className="text-secondary-700 dark:text-secondary-400" />}
+          icon={<BookOpen className="text-secondary-700 dark:text-secondary-400" />}
           extra={
             <>
               <select
                 value={selectedLevel}
                 onChange={(e) => setSelectedLevel(e.target.value)}
                 className="px-4 py-2 border border-secondary-300 dark:border-secondary-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 bg-white dark:bg-secondary-800 text-secondary-900 dark:text-secondary-100"
+                aria-label="Chọn cấp độ JLPT"
               >
                 <option value="all">Tất cả</option>
                 <option value="N5">N5</option>

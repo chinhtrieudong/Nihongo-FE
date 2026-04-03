@@ -1,6 +1,6 @@
 import React from "react";
 import { Avatar, Button } from "antd";
-import { SoundOutlined } from "@ant-design/icons";
+import { Volume2 } from "lucide-react";
 
 interface DialogMessageProps {
     line: {
@@ -54,8 +54,8 @@ const DialogMessage: React.FC<DialogMessageProps> = ({
             {/* Message Bubble */}
             <div className={`flex-1 max-w-md ${isEven ? 'text-left' : 'text-right'}`}>
                 <div className={`inline-block p-4 rounded-2xl ${isEven
-                        ? 'bg-secondary-100 dark:bg-secondary-800 text-secondary-900 dark:text-secondary-100 rounded-tl-none'
-                        : 'bg-primary-500 text-white rounded-tr-none'
+                    ? 'bg-secondary-100 dark:bg-secondary-800 text-secondary-900 dark:text-secondary-100 rounded-tl-none'
+                    : 'bg-primary-500 text-white rounded-tr-none'
                     }`}>
                     <div className="font-medium text-lg mb-2">
                         {line.japanese}
@@ -63,8 +63,8 @@ const DialogMessage: React.FC<DialogMessageProps> = ({
 
                     {showRomaji && (
                         <div className={`text-sm mb-2 ${isEven
-                                ? 'text-secondary-600 dark:text-secondary-400 italic'
-                                : 'text-white/80 italic'
+                            ? 'text-secondary-600 dark:text-secondary-400 italic'
+                            : 'text-white/80 italic'
                             }`}>
                             {line.romaji}
                         </div>
@@ -72,8 +72,8 @@ const DialogMessage: React.FC<DialogMessageProps> = ({
 
                     {showTranslation && (
                         <div className={`text-sm ${isEven
-                                ? 'text-green-600 dark:text-green-400'
-                                : 'text-green-200'
+                            ? 'text-green-600 dark:text-green-400'
+                            : 'text-green-200'
                             }`}>
                             {line.vietnamese}
                         </div>
@@ -85,7 +85,7 @@ const DialogMessage: React.FC<DialogMessageProps> = ({
                     <Button
                         type="text"
                         size="small"
-                        icon={<SoundOutlined />}
+                        icon={<Volume2 className="w-4 h-4" />}
                         className="text-secondary-500 hover:text-primary-600"
                     >
                         Nghe

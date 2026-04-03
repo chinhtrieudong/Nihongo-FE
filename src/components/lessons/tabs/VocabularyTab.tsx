@@ -2,17 +2,17 @@ import React, { useState } from "react";
 import { Badge, Button, Typography, Avatar, Input, Switch, Card, Row, Col } from "antd";
 import { Grid } from "antd";
 import {
-    BookOutlined,
-    SoundOutlined,
-    LeftOutlined,
-    RightOutlined,
-    EyeOutlined,
-    EyeInvisibleOutlined,
-    StarOutlined,
-    BulbOutlined,
-    SearchOutlined,
-    MenuOutlined,
-} from "@ant-design/icons";
+    Book,
+    Volume2,
+    ChevronLeft,
+    ChevronRight,
+    Eye,
+    EyeOff,
+    Star,
+    Lightbulb,
+    Search,
+    Menu,
+} from "lucide-react";
 
 const { Title } = Typography;
 
@@ -34,7 +34,7 @@ const VocabularyTab: React.FC<VocabularyTabProps> = ({ vocabulary }) => {
             <div className="text-center py-12">
                 <div className="inline-flex flex-col items-center">
                     <div className="w-20 h-20 bg-secondary-100 dark:bg-secondary-800 rounded-full flex items-center justify-center mb-4">
-                        <BookOutlined className="text-3xl text-secondary-400" />
+                        <Book className="w-8 h-8 text-secondary-400" />
                     </div>
                     <p className="text-secondary-700 dark:text-secondary-400 text-lg">
                         Chưa có từ vựng cho bài học này.
@@ -92,7 +92,7 @@ const VocabularyTab: React.FC<VocabularyTabProps> = ({ vocabulary }) => {
                     <div className="flex items-center gap-2">
                         {screens.xs && (
                             <Button
-                                icon={<MenuOutlined />}
+                                icon={<Menu className="w-4 h-4" />}
                                 onClick={() => setViewMode(viewMode === 'flashcard' ? 'list' : 'flashcard')}
                                 size="small"
                             >
@@ -111,7 +111,7 @@ const VocabularyTab: React.FC<VocabularyTabProps> = ({ vocabulary }) => {
                 <div className="mt-4 space-y-3">
                     <Input
                         placeholder="Tìm từ vựng..."
-                        prefix={<SearchOutlined />}
+                        prefix={<Search className="w-4 h-4" />}
                         value={searchTerm}
                         onChange={(e) => {
                             setSearchTerm(e.target.value);
@@ -124,7 +124,7 @@ const VocabularyTab: React.FC<VocabularyTabProps> = ({ vocabulary }) => {
                     <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
                         <div className="flex items-center gap-3">
                             <Button
-                                icon={<SoundOutlined />}
+                                icon={<Volume2 className="w-4 h-4" />}
                                 size={screens.xs ? 'middle' : 'large'}
                                 className="flex-1 sm:flex-none"
                             >
@@ -133,7 +133,7 @@ const VocabularyTab: React.FC<VocabularyTabProps> = ({ vocabulary }) => {
 
                             {!screens.xs && (
                                 <Button
-                                    icon={<BookOutlined />}
+                                    icon={<Book className="w-4 h-4" />}
                                     onClick={() => setViewMode(viewMode === 'flashcard' ? 'list' : 'flashcard')}
                                     className="flex-1 sm:flex-none"
                                 >
@@ -235,7 +235,7 @@ const VocabularyTab: React.FC<VocabularyTabProps> = ({ vocabulary }) => {
                                                 {card.mnemonic && (
                                                     <div className="bg-white/20 backdrop-blur-sm rounded-lg p-3">
                                                         <div className="flex items-center gap-2 mb-2">
-                                                            <BulbOutlined className="text-yellow-300" />
+                                                            <Lightbulb className="w-4 h-4 text-yellow-300" />
                                                             <span className="text-sm font-medium">Mẹo ghi nhớ:</span>
                                                         </div>
                                                         <p className="text-xs opacity-90">{card.mnemonic}</p>
@@ -251,7 +251,7 @@ const VocabularyTab: React.FC<VocabularyTabProps> = ({ vocabulary }) => {
                             <div className="flex justify-between items-center mt-4 gap-2">
                                 <Button
                                     onClick={handlePrev}
-                                    icon={<LeftOutlined />}
+                                    icon={<ChevronLeft className="w-4 h-4" />}
                                     className="flex-1"
                                 >
                                     {screens.xs ? '←' : 'Trước'}
@@ -259,17 +259,17 @@ const VocabularyTab: React.FC<VocabularyTabProps> = ({ vocabulary }) => {
                                 <div className="flex gap-1">
                                     <Button
                                         onClick={handleCardFlip}
-                                        icon={isFlipped ? <EyeOutlined /> : <EyeInvisibleOutlined />}
+                                        icon={isFlipped ? <Eye className="w-4 h-4" /> : <EyeOff className="w-4 h-4" />}
                                         size={screens.xs ? 'small' : 'middle'}
                                     />
                                     <Button
-                                        icon={<StarOutlined />}
+                                        icon={<Star className="w-4 h-4" />}
                                         size={screens.xs ? 'small' : 'middle'}
                                     />
                                 </div>
                                 <Button
                                     onClick={handleNext}
-                                    icon={<RightOutlined />}
+                                    icon={<ChevronRight className="w-4 h-4" />}
                                     type="primary"
                                     className="flex-1"
                                 >
@@ -325,7 +325,7 @@ const VocabularyTab: React.FC<VocabularyTabProps> = ({ vocabulary }) => {
                                     </div>
                                     <div className="flex flex-col gap-1 ml-3">
                                         <Button
-                                            icon={<SoundOutlined />}
+                                            icon={<Volume2 className="w-4 h-4" />}
                                             size="small"
                                             type="text"
                                             onClick={(e) => {
@@ -334,7 +334,7 @@ const VocabularyTab: React.FC<VocabularyTabProps> = ({ vocabulary }) => {
                                             }}
                                         />
                                         <Button
-                                            icon={<StarOutlined />}
+                                            icon={<Star className="w-4 h-4" />}
                                             size="small"
                                             type="text"
                                             onClick={(e) => {
@@ -355,7 +355,7 @@ const VocabularyTab: React.FC<VocabularyTabProps> = ({ vocabulary }) => {
                 <div className="px-4 sm:px-0">
                     <div className="bg-white dark:bg-secondary-800 rounded-xl shadow-lg p-6">
                         <h3 className="text-lg font-semibold mb-4 text-secondary-900 dark:text-secondary-100 flex items-center gap-2">
-                            <BookOutlined />
+                            <Book className="w-5 h-5" />
                             Danh sách từ vựng
                         </h3>
                         <Row gutter={[16, 16]}>

@@ -13,10 +13,10 @@ import {
   Select,
 } from "antd";
 import {
-  SearchOutlined,
-  FilterOutlined,
-  ArrowLeftOutlined,
-} from "@ant-design/icons";
+  Search,
+  Filter,
+  ArrowLeft,
+} from "lucide-react";
 
 const { Title, Text } = Typography;
 const { Option } = Select;
@@ -137,13 +137,13 @@ const LessonsList: React.FC = () => {
   }
 
   return (
-    <div className="min-h-full bg-gray-50 dark:bg-secondary-900 academic-canvas">
+    <div className="min-h-full bg-bg academic-canvas">
       <div className="max-w-6xl mx-auto px-4 py-8">
         {/* Header Section */}
         <div className="mb-6">
           <div className="flex flex-col gap-4">
             <Button
-              icon={<ArrowLeftOutlined />}
+              icon={<ArrowLeft className="w-4 h-4" />}
               onClick={() => navigate('/')}
               className="rounded-xl w-fit"
             >
@@ -165,7 +165,7 @@ const LessonsList: React.FC = () => {
               placeholder="Tìm kiếm bài học..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              prefix={<SearchOutlined className="text-gray-400" />}
+              prefix={<Search className="w-4 h-4 text-gray-400" />}
               size="middle"
               className="w-full md:flex-1"
               allowClear
@@ -196,16 +196,16 @@ const LessonsList: React.FC = () => {
           />
         ) : (
           <div className="grid grid-cols-1 xs:grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 sm:gap-8">
-            {filteredAndSortedLessons.map((lesson) => {
+            {filteredAndSortedLessons.map((lesson, index) => {
               return (
                 <div
-                  key={lesson.id}
+                  key={lesson.lesson_number || lesson.id || index}
                   className="group relative w-full rounded-xl sm:rounded-2xl overflow-hidden border-2 border-gray-200 dark:border-secondary-700 bg-white dark:bg-secondary-800 shadow-sm hover:shadow-lg hover:-translate-y-1 active:scale-95 transition-all duration-200 cursor-pointer"
                 >
                   {/* Color strip */}
                   <div
                     className="h-2"
-                    style={{ backgroundColor: lesson.level === 'N5' ? '#3B82F6' : '#10B981' }}
+                    style={{ backgroundColor: lesson.level === 'N5' ? 'var(--primary)' : 'var(--secondary)' }}
                   />
                   <button
                     className="w-full text-left focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-50 rounded-xl sm:rounded-2xl"

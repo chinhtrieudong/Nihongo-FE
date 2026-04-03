@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=Itim&family=Montserrat:wght@400;500;600;700&family=Noto+Sans:wght@400;500;600;700&family=Noto+Sans+JP:wght@400;500;700&family=Noto+Serif+JP:wght@400;500;700&family=Poppins:wght@400;500;600;700&family=Roboto:wght@400;500;700&family=RocknRoll+One&family=Sawarabi+Gothic&family=Shippori+Mincho:wght@400;500;700&family=Yuji+Syuku&family=Zen+Kaku+Gothic+New:wght@400;500;700&family=Zen+Maru+Gothic:wght@400;500;700&display=swap");
+@import "./styles/theme.css";
 
 @tailwind base;
 @tailwind components;
@@ -11,7 +12,7 @@
     --jp-font-family: "Noto Sans JP", "Noto Sans", system-ui, sans-serif;
   }
 
-  * {
+  *:not(.kanji-text):not(.kanji-text *) {
     font-family: var(--app-font-family);
   }
 
@@ -20,27 +21,46 @@
   }
 
   body {
-    @apply bg-secondary-50 dark:bg-secondary-950 text-secondary-900 dark:text-secondary-100;
+    @apply bg-bg text-text-main;
     font-family: var(--app-font-family);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    /* Washi paper background texture - super subtle for Kanji learning */
     background-image:
-      radial-gradient(circle at 25% 25%, rgba(255, 248, 240, 0.15) 0%, transparent 50%),
-      radial-gradient(circle at 75% 75%, rgba(255, 248, 240, 0.1) 0%, transparent 50%),
+      radial-gradient(
+        circle at 25% 25%,
+        rgba(255, 248, 240, 0.15) 0%,
+        transparent 50%
+      ),
+      radial-gradient(
+        circle at 75% 75%,
+        rgba(255, 248, 240, 0.1) 0%,
+        transparent 50%
+      ),
       linear-gradient(45deg, rgba(245, 240, 230, 0.08) 25%, transparent 25%),
       linear-gradient(-45deg, rgba(245, 240, 230, 0.08) 25%, transparent 25%),
       linear-gradient(45deg, transparent 75%, rgba(245, 240, 230, 0.08) 75%),
       linear-gradient(-45deg, transparent 75%, rgba(245, 240, 230, 0.08) 75%);
-    background-size: 20px 20px, 30px 30px, 40px 40px, 40px 40px, 40px 40px, 40px 40px;
-    background-position: 0 0, 10px 10px, 0 0, 20px 20px, 0 0, 20px 20px;
+    background-size:
+      20px 20px,
+      30px 30px,
+      40px 40px,
+      40px 40px,
+      40px 40px,
+      40px 40px;
+    background-position:
+      0 0,
+      10px 10px,
+      0 0,
+      20px 20px,
+      0 0,
+      20px 20px;
     background-attachment: fixed;
   }
 }
 
 @layer components {
   .app-surface {
-    @apply bg-secondary-50 dark:bg-secondary-950;
+    @apply bg-bg;
   }
 
   .flashcard-open .app-sidebar,
@@ -85,7 +105,6 @@
     .ant-drawer,
     .ant-dropdown,
     .ant-popover,
-    .ant-tooltip,
     .ant-anchor,
     .ant-breadcrumb,
     .ant-divider,
@@ -101,13 +120,14 @@
     font-family: var(--app-font-family) !important;
   }
 
-  /* Override for kanji-text - must have higher specificity */
   .kanji-text,
-  .kanji-text.ant-typography {
+  .kanji-text.ant-typography,
+  .ant-typography.kanji-text,
+  td .kanji-text,
+  td .kanji-text.ant-typography {
     font-family: var(--kanji-font-family) !important;
   }
 
-  /* Override for jp-text - Japanese text (hiragana/katakana) */
   .jp-text,
   .jp-text.ant-typography {
     font-family: var(--jp-font-family) !important;
@@ -119,32 +139,27 @@
   .vocab-table .ant-table-body,
   .vocab-table .ant-table-thead > tr > th,
   .vocab-table .ant-table-tbody > tr > td {
-    @apply bg-white dark:bg-secondary-925;
+    @apply bg-bg;
   }
 
   .theme-surface .ant-card:not([class*="bg-"]) {
-    @apply bg-white dark:bg-secondary-925 border border-secondary-200 dark:border-secondary-900;
+    @apply bg-bg border border-border;
   }
 
   .theme-surface .ant-card-head {
-    @apply border-secondary-200 dark:border-secondary-900;
+    @apply border-border;
   }
 
   .theme-surface .ant-card-actions {
-    @apply bg-white dark:bg-secondary-925;
+    @apply bg-bg;
   }
 
   .theme-surface .ant-card-actions > li {
-    @apply border-secondary-200 dark:border-secondary-900;
+    @apply border-border;
   }
 
-  /* TabNav border (Ant Tabs) */
   .theme-surface .ant-tabs-nav::before {
-    border-bottom: 1px solid #e2e8f0 !important; /* secondary-200 */
-  }
-
-  .dark .theme-surface .ant-tabs-nav::before {
-    border-bottom-color: #27272a !important; /* secondary-900 */
+    border-bottom: 1px solid var(--border) !important;
   }
 
   .flashcard-settings-wrap .ant-modal,
@@ -156,23 +171,13 @@
   .flashcard-settings-wrap .ant-modal-header,
   .flashcard-settings-modal .ant-modal-header {
     background-color: transparent !important;
-    border-color: #334155 !important;
+    border-color: var(--border) !important;
   }
 
   .flashcard-settings-wrap .ant-modal-body,
   .flashcard-settings-modal .ant-modal-body {
     background-color: transparent !important;
-  }
-
-  .flashcard-settings-wrap .ant-modal-body,
-  .flashcard-settings-modal .ant-modal-body {
     border: 0 !important;
-  }
-
-  .flashcard-settings-wrap .ant-modal-content,
-  .flashcard-settings-wrap .ant-modal-body,
-  .flashcard-settings-modal .ant-modal-content,
-  .flashcard-settings-modal .ant-modal-body {
     padding: 0 !important;
   }
 
@@ -186,6 +191,7 @@
     box-shadow: none !important;
     background: transparent !important;
   }
+
   .flashcard-settings-wrap .ant-modal,
   .flashcard-settings-modal .ant-modal {
     border: 0 !important;
@@ -193,8 +199,9 @@
     box-shadow: none !important;
     background: transparent !important;
   }
+
   .flashcard-settings-wrap .ant-modal-container {
-    background: rgba(15, 23, 42, 0.6) !important;
+    background: rgba(0, 0, 0, 0.6) !important;
   }
 
   .flashcard-settings-wrap .ant-modal-header,
@@ -202,128 +209,192 @@
     padding: 0 !important;
   }
 
-  .flashcard-settings-wrap .ant-modal-body > *,
-  .flashcard-settings-modal .ant-modal-body > * {
-    padding: 0 !important;
+  .flashcard-settings-modal .ant-modal-title {
+    color: var(--text-main) !important;
   }
 
-  .flashcard-settings-modal .ant-modal-title {
-    color: #ffffff !important;
-  }
   .flashcard-settings-modal .ant-typography,
   .flashcard-settings-modal .ant-typography * {
-    color: #ffffff !important;
+    color: var(--text-main) !important;
   }
 
   .flashcard-settings-modal .ant-modal-close {
-    color: rgba(255, 255, 255, 0.7) !important;
+    color: var(--text-sub) !important;
   }
 
   .flashcard-settings-modal .ant-modal-close:hover {
-    color: #ffffff !important;
+    color: var(--text-main) !important;
   }
 
   .flashcard-settings-modal .ant-collapse-header {
-    color: #ffffff !important;
+    color: var(--text-main) !important;
     font-weight: 600;
   }
+
   .flashcard-settings-modal .ant-collapse-content {
     background: transparent !important;
   }
+
   .flashcard-settings-modal .ant-select-selector {
-    background: #1f2937 !important;
-    border-color: #334155 !important;
-    color: #e5e7eb !important;
+    background: var(--surface-1) !important;
+    border-color: var(--border) !important;
+    color: var(--text-main) !important;
   }
+
   .flashcard-settings-select-trigger {
-    color: #e5e7eb !important;
+    color: var(--text-main) !important;
     border: none;
   }
+
   .flashcard-settings-modal .ant-select-single .ant-select-selector,
   .flashcard-settings-select-trigger .ant-select-selector {
-    background: #0b1220 !important;
-    color: #e5e7eb !important;
+    background: var(--surface-1) !important;
+    color: var(--text-main) !important;
     border-color: transparent !important;
   }
+
   .flashcard-settings-modal .ant-select-selector::after {
-    background: #1f2937 !important;
+    background: var(--surface-1) !important;
   }
+
   .flashcard-settings-modal .ant-select-selector,
   .flashcard-settings-modal .ant-select-selection-item,
   .flashcard-settings-modal .ant-select-selection-placeholder {
-    background: #0b1220 !important;
-    color: #f8fafc !important;
+    background: var(--surface-1) !important;
+    color: var(--text-main) !important;
   }
+
   .flashcard-settings-select-trigger .ant-select-selector,
   .flashcard-settings-select-trigger .ant-select-selection-item,
   .flashcard-settings-select-trigger .ant-select-selection-placeholder {
-    background: #1f2937 !important;
-    color: #e5e7eb !important;
+    background: var(--surface-1) !important;
+    color: var(--text-main) !important;
   }
+
   .flashcard-settings-modal
     .ant-select-selector
     .ant-select-selection-search-input {
-    color: #e5e7eb !important;
+    color: var(--text-main) !important;
   }
-  .flashcard-settings-modal .ant-select-selector .ant-select-selection-item {
-    color: #e5e7eb !important;
-  }
+
   .flashcard-settings-modal
     .ant-select:not(.ant-select-disabled)
     .ant-select-selector {
-    background: #1f2937 !important;
-    border-color: #334155 !important;
+    background: var(--surface-1) !important;
+    border-color: var(--border) !important;
     box-shadow: none !important;
   }
+
   .flashcard-settings-modal .ant-select-focused .ant-select-selector,
   .flashcard-settings-modal .ant-select-selector:focus,
   .flashcard-settings-modal .ant-select-selector:active {
     border-color: transparent !important;
     box-shadow: none !important;
   }
+
   .flashcard-settings-modal .ant-select-selection-item {
-    color: #e5e7eb !important;
+    color: var(--text-main) !important;
   }
+
   .flashcard-settings-modal .ant-select-suffix {
-    color: #ffffff !important;
+    color: var(--text-main) !important;
   }
+
   .flashcard-settings-modal .ant-select-arrow .anticon {
-    color: #ffffff !important;
+    color: var(--text-main) !important;
   }
-  .flashcard-settings-modal .ant-select-selection-item,
-  .flashcard-settings-modal .ant-select-selection-placeholder {
-    color: #ffffff !important;
+
+  .flashcard-settings-modal .ant-select-dropdown {
+    background: var(--surface-1) !important;
+    border: 1px solid var(--border) !important;
   }
+
+  .flashcard-settings-modal .ant-select-dropdown .ant-select-item {
+    color: var(--text-main) !important;
+  }
+
+  .flashcard-settings-modal
+    .ant-select-dropdown
+    .ant-select-item-option-active {
+    background: var(--hover-bg) !important;
+  }
+
+  .flashcard-settings-modal
+    .ant-select-dropdown
+    .ant-select-item-option-selected {
+    background: var(--active-bg) !important;
+    color: var(--text-main) !important;
+  }
+
+  .flashcard-settings-modal
+    .ant-select-dropdown
+    .ant-select-item-option-disabled {
+    color: var(--text-disabled) !important;
+  }
+
+  .flashcard-settings-modal
+    .ant-select-dropdown
+    .ant-select-item-option-group-label {
+    color: var(--text-sub) !important;
+    font-weight: 600;
+    padding: 8px 12px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .flashcard-settings-modal
+    .ant-select-dropdown
+    .ant-select-item-option-group-label:last-child {
+    border-bottom: none;
+  }
+
+  .flashcard-settings-modal
+    .ant-select-dropdown
+    .ant-select-item-option-group-label:first-child {
+    border-top: none;
+    margin-top: 0;
+    padding-top: 0;
+    margin-bottom: 0;
+    padding-bottom: 0;
+  }
+
   .flashcard-settings-modal .ant-btn {
-    background: #1f2937 !important;
-    border-color: #334155 !important;
+    background: var(--surface-1) !important;
+    border-color: var(--border) !important;
+    color: var(--text-main) !important;
   }
+
   .flashcard-settings-modal .ant-btn.ant-btn-dangerous {
-    background: #1f2937 !important;
-    border-color: #ef4444 !important;
-    color: #fecaca !important;
+    background: var(--surface-1) !important;
+    border-color: var(--error) !important;
+    color: var(--error) !important;
   }
+
   .flashcard-settings-modal .ant-btn-default {
-    color: #e5e7eb !important;
+    color: var(--text-main) !important;
   }
+
   .flashcard-settings-modal .ant-btn-default:hover {
-    background: #243041 !important;
-    border-color: #475569 !important;
-    color: #ffffff !important;
+    background: var(--hover-bg) !important;
+    border-color: var(--border) !important;
+    color: var(--text-main) !important;
   }
+
   .flashcard-settings-dropdown {
-    background: #111827 !important;
-    border: 1px solid #334155 !important;
+    background: var(--surface-1) !important;
+    border: 1px solid var(--border) !important;
   }
+
   .flashcard-settings-dropdown .ant-select-item {
-    color: #e5e7eb !important;
+    color: var(--text-main) !important;
   }
+
   .flashcard-settings-dropdown .ant-select-item-option-active {
-    background: #1f2937 !important;
+    background: var(--hover-bg) !important;
   }
+
   .flashcard-settings-dropdown .ant-select-item-option-selected {
-    background: #0f172a !important;
-    color: #ffffff !important;
+    background: var(--active-bg) !important;
+    color: var(--text-main) !important;
   }
 
   .flashcard-settings-modal .ant-modal-body {
@@ -335,46 +406,25 @@
     display: none;
   }
 
-  /* Font Settings Drawer */
   .font-settings-drawer .ant-drawer-header {
-    background: var(--ant-color-bg-container) !important;
-    border-bottom: 1px solid var(--ant-color-border-secondary) !important;
+    background: var(--bg) !important;
+    border-bottom: 1px solid var(--border) !important;
   }
 
   .font-settings-drawer .ant-drawer-title {
-    color: var(--ant-color-text) !important;
+    color: var(--text-main) !important;
   }
 
   .font-settings-drawer .ant-drawer-close {
-    color: var(--ant-color-text-secondary) !important;
+    color: var(--text-sub) !important;
   }
 
   .font-settings-drawer .ant-drawer-close:hover {
-    color: var(--ant-color-text) !important;
+    color: var(--text-main) !important;
   }
 
   .font-settings-drawer .ant-drawer-body {
-    background: var(--ant-color-bg-container) !important;
-  }
-
-  /* Dark mode specific styles for font settings */
-  .dark .font-settings-drawer .ant-drawer-header {
-    background: #1a2332 !important;
-    border-bottom-color: #2d3748 !important;
-  }
-
-  .dark .font-settings-drawer .ant-drawer-body {
-    background: #1a2332 !important;
-  }
-
-  /* Light mode specific styles for font settings */
-  .font-settings-drawer .ant-drawer-header {
-    background: #ffffff !important;
-    border-bottom-color: #e5e7eb !important;
-  }
-
-  .font-settings-drawer .ant-drawer-body {
-    background: #ffffff !important;
+    background: var(--bg) !important;
   }
 
   .flashcard-complete-modal .ant-typography,
@@ -383,62 +433,65 @@
   .flashcard-complete-modal .ant-statistic-content-value,
   .flashcard-complete-modal .ant-statistic-content-prefix,
   .flashcard-complete-modal .ant-btn {
-    color: #ffffff !important;
+    color: var(--text-main) !important;
   }
+
   .flashcard-complete-modal .ant-btn-default,
   .flashcard-complete-modal .ant-btn-default:focus,
   .flashcard-complete-modal .ant-btn-default:active {
     background: transparent !important;
-    border-color: #64748b !important;
-    color: #ffffff !important;
+    border-color: var(--border) !important;
+    color: var(--text-main) !important;
   }
+
   .flashcard-complete-modal .ant-btn-default:hover {
-    background: rgba(255, 255, 255, 0.08) !important;
-    border-color: #94a3b8 !important;
-    color: #ffffff !important;
+    background: var(--hover-bg) !important;
+    border-color: var(--border) !important;
+    color: var(--text-main) !important;
   }
 
   .flashcard-action-bar .ant-btn-text,
   .flashcard-action-bar .ant-btn-text:hover,
   .flashcard-action-bar .ant-btn-text:focus,
   .flashcard-action-bar .ant-btn-text:active {
-    color: #ffffff !important;
+    color: var(--text-main) !important;
     background: transparent !important;
   }
+
   .flashcard-action-bar .ant-btn-text:hover {
-    background: rgba(255, 255, 255, 0.08) !important;
+    background: var(--hover-bg) !important;
   }
 
   .theme-surface .tests-select .ant-select-selector,
   .theme-surface .tests-select .ant-select-selection-item {
-    @apply text-secondary-900 dark:text-secondary-100;
+    @apply text-text-main;
   }
 
   .theme-surface
     .ant-typography:not(.ant-typography-danger):not(
       .ant-typography-success
     ):not(.ant-typography-warning):not(.ant-typography-secondary) {
-    @apply text-secondary-900 dark:text-secondary-100;
+    @apply text-text-main;
   }
 
   .theme-surface .ant-typography-secondary {
-    @apply text-secondary-600 dark:text-secondary-400;
+    @apply text-text-sub;
   }
 
   .btn-primary {
-    @apply bg-primary-600 hover:bg-primary-700 text-white font-medium py-2 px-4 rounded-lg transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2;
+    @apply bg-primary hover:bg-primary-hover text-white font-medium py-2 px-4 rounded-lg transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2;
   }
 
   .btn-secondary {
-    @apply bg-secondary-200 hover:bg-secondary-300 dark:bg-secondary-700 dark:hover:bg-secondary-600 text-secondary-900 dark:text-secondary-100 font-medium py-2 px-4 rounded-lg transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-secondary-500 focus:ring-offset-2;
+    @apply bg-secondary hover:bg-secondary-hover text-white font-medium py-2 px-4 rounded-lg transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-secondary focus:ring-offset-2;
   }
 
   .card {
-    @apply bg-white dark:bg-secondary-950 rounded-lg shadow-sm border border-secondary-200 dark:border-secondary-900 p-6;
+    @apply bg-bg rounded-lg shadow-sm border border-border p-6;
   }
 
   .input-field {
-    @apply w-full px-3 py-2 border border-secondary-300 dark:border-secondary-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent bg-white dark:bg-secondary-950 text-secondary-900 dark:text-secondary-100;
+    @apply w-full px-3 py-2 border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent bg-bg text-text-main;
   }
 
   .font-japanese {
@@ -455,14 +508,12 @@
     letter-spacing: 0.02em;
   }
 
-  /* Kanji text - uses dynamic font from Redux */
   .kanji-text {
     font-family: var(--kanji-font-family) !important;
     line-height: 1.8;
     letter-spacing: 0.02em;
   }
 
-  /* Ensure kanji-text overrides all other font rules */
   .kanji-text.ant-typography,
   .ant-typography.kanji-text,
   .kanji-text.font-kosugi,
@@ -472,21 +523,18 @@
     font-family: var(--kanji-font-family) !important;
   }
 
-  /* Japanese text - uses dynamic font from Redux */
   .jp-text {
     font-family: var(--jp-font-family) !important;
     line-height: 1.8;
     letter-spacing: 0.02em;
   }
 
-  /* Ensure jp-text overrides all other font rules */
   .jp-text.ant-typography,
   .ant-typography.jp-text,
   .jp-text.font-japanese {
     font-family: var(--jp-font-family) !important;
   }
 
-  /* Ensure font-kosugi overrides Ant Design Typography styles */
   .ant-typography.font-kosugi,
   .ant-typography.font-japanese,
   .ant-typography.font-kanji,
@@ -533,6 +581,25 @@
   .scrollbar-hide::-webkit-scrollbar {
     display: none;
   }
+
+  /* Lesson Button Styles */
+  .lesson-btn-current {
+    background-color: #0a4f59;
+    border-color: #7cc9d3;
+    box-shadow: 0 0 0 2px #7cc9d3;
+  }
+
+  .lesson-btn-completed {
+    background-color: #1a7f8d;
+  }
+
+  .lesson-btn-locked {
+    background-color: #5e9aa2;
+  }
+
+  .lesson-btn-default {
+    background-color: #0f6d7a;
+  }
 }
 
 code {
@@ -540,30 +607,17 @@ code {
     source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
 }
 
-/* Tooltip overrides for both light and dark modes */
 div.ant-tooltip-inner {
-  background-color: #ffffff !important;
-  color: rgba(0, 0, 0, 0.88) !important;
-  border: 1px solid #d9d9d9 !important;
-}
-
-.dark div.ant-tooltip-inner {
-  background-color: #374151 !important;
-  color: #ffffff !important;
-  border: 1px solid #4b5563 !important;
+  background-color: var(--bg) !important;
+  color: var(--text-main) !important;
+  border: 1px solid var(--border) !important;
 }
 
 div.ant-tooltip-arrow-content {
-  background-color: #ffffff !important;
-  border: 1px solid #d9d9d9 !important;
+  background-color: var(--bg) !important;
+  border: 1px solid var(--border) !important;
 }
 
-.dark div.ant-tooltip-arrow-content {
-  background-color: #374151 !important;
-  border: 1px solid #4b5563 !important;
-}
-
-/* Shake animation for error messages */
 @keyframes shake {
   0%,
   100% {
@@ -577,7 +631,6 @@ div.ant-tooltip-arrow-content {
   }
 }
 
-/* Height-based responsive design for 14-inch laptops */
 @media (max-height: 800px) {
   .login-container {
     padding: 16px;
@@ -609,7 +662,6 @@ div.ant-tooltip-arrow-content {
     padding-bottom: 8px;
   }
 
-  /* Reduce font sizes for small height */
   .login-card h2 {
     font-size: clamp(16px, 2vw, 20px);
   }
@@ -618,7 +670,6 @@ div.ant-tooltip-arrow-content {
     font-size: clamp(11px, 1.4vw, 14px);
   }
 
-  /* Reduce spacing */
   .space-y-3 > * + * {
     margin-top: 0.5rem;
   }

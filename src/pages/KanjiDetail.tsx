@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
 import { lessonAPI } from "../services/api";
-import { SoundOutlined, ArrowLeftOutlined, LeftOutlined, RightOutlined } from "@ant-design/icons";
+import { Volume2, ArrowLeft, ChevronLeft, ChevronRight } from "lucide-react";
 import { Card, Button, Row, Col } from "antd";
 import { KanjiItem, KanjiDetailResponse } from "../types/kanji";
 import { useAppSelector } from "../store/hooks";
@@ -260,7 +260,7 @@ const KanjiDetail: React.FC<KanjiDetailProps> = ({
       <div className="mb-6">
         <div className="flex items-center justify-between mb-4">
           <Button
-            icon={<ArrowLeftOutlined />}
+            icon={<ArrowLeft className="w-4 h-4" />}
             onClick={handleBack}
             className="rounded-xl"
           >
@@ -270,18 +270,18 @@ const KanjiDetail: React.FC<KanjiDetailProps> = ({
           {allKanji.length > 0 && (
             <div className="flex items-center gap-2">
               <Button
-                icon={<LeftOutlined />}
+                icon={<ChevronLeft className="w-4 h-4" />}
                 onClick={navigateToPrev}
                 disabled={currentIndex <= 0}
                 className="rounded-xl"
               >
                 Trước
               </Button>
-              <span className="text-sm text-slate-500">
+              <span className="text-sm text-text-sub">
                 {currentIndex + 1} / {allKanji.length}
               </span>
               <Button
-                icon={<RightOutlined />}
+                icon={<ChevronRight className="w-4 h-4" />}
                 onClick={navigateToNext}
                 disabled={currentIndex >= allKanji.length - 1}
                 className="rounded-xl"

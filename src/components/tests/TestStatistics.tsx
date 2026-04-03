@@ -1,9 +1,9 @@
 import React from "react";
 import { Row, Col, Card, Statistic } from "antd";
 import {
-    CheckCircleOutlined,
-    StarOutlined
-} from "@ant-design/icons";
+    CheckCircle,
+    Star
+} from "lucide-react";
 
 interface TestStatisticsProps {
     totalTestsCompleted: number;
@@ -21,7 +21,7 @@ const TestStatistics: React.FC<TestStatisticsProps> = ({
                     <Statistic
                         title={<span className="text-secondary-700 dark:text-secondary-400">Bài thi đã hoàn thành</span>}
                         value={totalTestsCompleted}
-                        prefix={<CheckCircleOutlined className="text-green-500" />}
+                        prefix={<CheckCircle className="w-4 h-4 text-green-500" />}
                         styles={{ content: { color: '#52c41a', fontSize: 18 } }}
                     />
                 </Card>
@@ -32,7 +32,7 @@ const TestStatistics: React.FC<TestStatisticsProps> = ({
                         title={<span className="text-secondary-700 dark:text-secondary-400">Điểm trung bình</span>}
                         value={averageScore}
                         suffix="%"
-                        prefix={<StarOutlined className="text-yellow-500" />}
+                        prefix={<Star className="w-4 h-4 text-yellow-500" />}
                         styles={{ content: { color: '#faad14', fontSize: 18 } }}
                     />
                 </Card>

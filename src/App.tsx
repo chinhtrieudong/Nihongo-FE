@@ -4,13 +4,12 @@ import { Provider } from "react-redux";
 import { ConfigProvider, theme, App as AntdApp } from "antd";
 import { store } from "./store";
 import { useAppSelector } from "./store/hooks";
-import ThemeProvider from "./components/ThemeProvider";
-import ErrorBoundary from "./components/ErrorBoundary";
-import Layout from "./components/Layout";
+import { ErrorBoundary, ThemeProvider } from "./components/common";
+import { Layout } from "./components/layout";
 import Home from "./pages/Home";
 import LessonsList from "./pages/LessonsList";
 import LessonDetail from "./pages/LessonDetail";
-import KanjiPage from "./pages/Kanji";
+import KanjiPage from "./pages/kanji";
 import KanjiDetail from "./pages/KanjiDetail";
 import RadicalDetail from "./pages/RadicalDetail";
 import Vocabulary from "./pages/Vocabulary";
@@ -18,14 +17,15 @@ import Grammar from "./pages/Grammar";
 import Pronunciation from "./pages/Pronunciation";
 import ConversationComponent from "./pages/Conversation";
 import ConversationLesson from "./pages/ConversationLesson";
+import Practice from "./pages/Practice";
 import Tests from "./pages/Tests";
 import TestDetail from "./pages/TestDetail";
 import TestResults from "./pages/TestResults";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
+import ComponentsDemo from "./pages/ComponentsDemo";
 import { AuthProvider, useAuth } from "./contexts/AuthContext";
-import AdminRoute from "./components/AdminRoute";
-import AdminLayout from "./components/AdminLayout";
+import { AdminRoute, AdminLayout } from "./components/admin";
 import "./App.css";
 import "./styles/academic-grid.css";
 
@@ -73,9 +73,11 @@ const AppContent: React.FC = () => {
                 path="conversation/:lessonId"
                 element={<ConversationLesson />}
               />
+              <Route path="practice" element={<Practice />} />
               <Route path="tests" element={<Tests />} />
               <Route path="test/:testId" element={<TestDetail />} />
               <Route path="test-results/:testId" element={<TestResults />} />
+              <Route path="components-demo" element={<ComponentsDemo />} />
             </Route>
 
             <Route

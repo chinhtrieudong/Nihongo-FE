@@ -2,13 +2,13 @@ import React from "react";
 import { Badge, Button, Typography, Avatar, Drawer } from "antd";
 import { Grid } from "antd";
 import {
-    BookOutlined,
-    PlayCircleOutlined,
-    ClockCircleOutlined,
-    FireOutlined,
-    ArrowLeftOutlined,
-    MenuOutlined,
-} from "@ant-design/icons";
+    Book,
+    Play,
+    Clock,
+    Flame,
+    ArrowLeft,
+    Menu,
+} from "lucide-react";
 import type { Lesson, LessonDetail } from "../../../types/lesson";
 
 const { Title, Text } = Typography;
@@ -44,7 +44,7 @@ const LessonHeader: React.FC<LessonHeaderProps> = ({
                     <div className="flex items-center justify-between gap-3">
                         {/* Left: Back Button */}
                         <Button
-                            icon={<ArrowLeftOutlined />}
+                            icon={<ArrowLeft className="w-4 h-4" />}
                             className="border-0 shadow-sm flex-shrink-0"
                             size={screens.xs ? 'small' : 'middle'}
                             onClick={() => window.history.back()}
@@ -69,7 +69,7 @@ const LessonHeader: React.FC<LessonHeaderProps> = ({
                         <div className="flex items-center gap-2 flex-shrink-0">
                             {screens.xs && (
                                 <Button
-                                    icon={<MenuOutlined />}
+                                    icon={<Menu className="w-4 h-4" />}
                                     onClick={() => setMobileMenuVisible(true)}
                                     className="border-0 shadow-sm"
                                     size="small"
@@ -78,7 +78,7 @@ const LessonHeader: React.FC<LessonHeaderProps> = ({
                             {!screens.xs && (
                                 <Button
                                     type="primary"
-                                    icon={<PlayCircleOutlined />}
+                                    icon={<Play className="w-4 h-4" />}
                                     className="shadow-lg"
                                 >
                                     Tiếp tục học
@@ -106,11 +106,11 @@ const LessonHeader: React.FC<LessonHeaderProps> = ({
                             <div className="flex-1">
                                 <div className="flex items-center gap-4 mb-4">
                                     <Badge
-                                        count={selectedLesson.lessonNumber}
+                                        count={selectedLesson.lesson_number}
                                         style={{ backgroundColor: '#1890ff' }}
                                         className="text-2xl"
                                     >
-                                        <Avatar size={48} icon={<BookOutlined />} className="bg-blue-100 dark:bg-primary-900" />
+                                        <Avatar size={48} icon={<Book className="w-4 h-4" />} className="bg-blue-100 dark:bg-primary-900" />
                                     </Badge>
                                     <div className="flex-1">
                                         <Typography.Title level={2} className="!mb-2 !text-secondary-900 dark:!text-secondary-100">
@@ -131,11 +131,11 @@ const LessonHeader: React.FC<LessonHeaderProps> = ({
                                         {selectedLesson.level}
                                     </Badge>
                                     <div className="flex items-center gap-2 text-sm text-secondary-600 dark:text-secondary-400">
-                                        <ClockCircleOutlined />
+                                        <Clock className="w-4 h-4" />
                                         <span>45 phút</span>
                                     </div>
                                     <div className="flex items-center gap-2 text-sm text-secondary-600 dark:text-secondary-400">
-                                        <FireOutlined />
+                                        <Flame className="w-4 h-4" />
                                         <span>Trung bình</span>
                                     </div>
                                 </div>
@@ -153,7 +153,7 @@ const LessonHeader: React.FC<LessonHeaderProps> = ({
                                 <Button
                                     type="primary"
                                     size="large"
-                                    icon={<PlayCircleOutlined />}
+                                    icon={<Play className="w-4 h-4" />}
                                     className="shadow-lg w-full"
                                 >
                                     Tiếp tục học
@@ -216,7 +216,7 @@ const LessonHeader: React.FC<LessonHeaderProps> = ({
                         </div>
                         <Button
                             type="primary"
-                            icon={<PlayCircleOutlined />}
+                            icon={<Play className="w-4 h-4" />}
                             className="w-full shadow-lg"
                             size="large"
                         >

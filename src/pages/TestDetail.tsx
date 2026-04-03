@@ -17,28 +17,71 @@ import {
     Drawer,
     Badge,
     Tooltip,
-    Alert
+    Alert,
+    Spin
 } from "antd";
 import {
-    ClockCircleOutlined,
-    LeftOutlined,
-    RightOutlined,
-    CheckCircleOutlined,
-    PlayCircleOutlined,
-    ArrowLeftOutlined,
-    StopOutlined,
-    BookOutlined,
-    FlagOutlined,
-    EyeOutlined,
-    QuestionCircleOutlined,
-    FullscreenOutlined,
-    CompressOutlined,
-    SoundOutlined
-} from "@ant-design/icons";
-import { jlptTests, type Test, type TestSection } from "../data/jlptTests";
-import { sampleQuestions, type Question } from "../data/sampleQuestions";
+    Clock,
+    ChevronLeft,
+    ChevronRight,
+    CheckCircle,
+    Play,
+    ArrowLeft,
+    Square,
+    Book,
+    Flag,
+    Eye,
+    HelpCircle,
+    Maximize,
+    Minimize,
+    Volume2
+} from "lucide-react";
+import { jlptTestsAPI } from "../services/api";
 
 const { Title, Text, Paragraph } = Typography;
+
+interface TestSection {
+    id: string;
+    name: string;
+    icon: React.ReactNode;
+    questions: number;
+    duration: number;
+    description: string;
+    questionTypes: string[];
+}
+
+interface Test {
+    id: string;
+    level: string;
+    title: string;
+    title_vi?: string;
+    description: string;
+    description_vi?: string;
+    duration: number;
+    questions: number;
+    difficulty: string;
+    completed: boolean;
+    score?: number;
+    date?: string;
+    sections: TestSection[];
+    passing_score?: number;
+    is_active?: boolean;
+    version?: number;
+}
+
+interface Question {
+    id: string;
+    type: "multiple-choice" | "text-input" | "listening" | "reading";
+    question: string;
+    options?: string[];
+    correctAnswer: string | number;
+    explanation?: string;
+    audioUrl?: string;
+    readingText?: string;
+    sectionId: string;
+    level: string;
+    difficulty: string;
+}
 
 interface TestAttempt {
     id: string;
@@ -72,23 +115,52 @@ const TestDetail: React.FC = () => {
     const [flaggedQuestions, setFlaggedQuestions] = useState<string[]>([]);
     const [reviewMode, setReviewMode] = useState(false);
     const [isFullscreen, setIsFullscreen] = useState(false);
+    const [loading, setLoading] = useState(true);
 
     // Load test data and attempt
     useEffect(() => {
-        if (testId) {
-            const foundTest = jlptTests.find(t => t.id === testId);
-            if (foundTest) {
-                setTest(foundTest);
-                setTimeRemaining(foundTest.duration * 60); // Convert minutes to seconds
+        const fetchTestData = async () => {
+            if (!testId) return;
 
-                // Filter questions for this test
-                const testQuestions = sampleQuestions.filter(q =>
-                    q.level === foundTest.level &&
-                    foundTest.sections.some(section => section.id === q.sectionId)
-                ).slice(0, foundTest.questions);
-                setQuestions(testQuestions);
+            try {
+                setLoading(true);
+                // Extract level from testId (format: "level_testId")
+                const parts = testId.split('_');
+                const level = parts[0];
+
+                const response = await jlptTestsAPI.getTest(level, testId);
+                if (response.success) {
+                    const testData = response.data;
+                    setTest(testData);
+                    setTimeRemaining(testData.duration * 60);
+
+                    // Generate sample questions based on test structure
+                    const sampleQuestions: Question[] = [];
+                    testData.sections.forEach((section: TestSection, sectionIndex: number) => {
+                        for (let i = 0; i < section.questions; i++) {
+                            sampleQuestions.push({
+                                id: `q_${sectionIndex}_${i}`,
+                                type: "multiple-choice",
+                                question: `Câu hỏi ${i + 1} - ${section.name}`,
+                                options: ["Lựa chọn A", "Lựa chọn B", "Lựa chọn C", "Lựa chọn D"],
+                                correctAnswer: 0,
+                                sectionId: section.id,
+                                level: testData.level,
+                                difficulty: testData.difficulty
+                            });
+                        }
+                    });
+                    setQuestions(sampleQuestions);
+                }
+            } catch (error) {
+                console.error('Error fetching test:', error);
+                message.error('Không thể tải bài thi');
+            } finally {
+                setLoading(false);
             }
-        }
+        };
+
+        fetchTestData();
 
         if (attempt) {
             const attemptData = localStorage.getItem(attempt);
@@ -228,13 +300,8 @@ const TestDetail: React.FC = () => {
 
         localStorage.setItem(attempt!, JSON.stringify(completedAttempt));
 
-        // Update test in jlptTests
-        const testIndex = jlptTests.findIndex(t => t.id === test.id);
-        if (testIndex !== -1) {
-            jlptTests[testIndex].completed = true;
-            jlptTests[testIndex].score = score;
-            jlptTests[testIndex].date = new Date().toISOString().split('T')[0];
-        }
+        // Note: Test completion is stored in localStorage only
+        // In a real app, this would be sent to the backend
 
         message.success(`Bài thi đã hoàn thành! Điểm của bạn: ${score}%`);
         navigate(`/test-results/${test.id}`);
@@ -305,9 +372,9 @@ const TestDetail: React.FC = () => {
 
     const getQuestionStatusIcon = (status: string) => {
         switch (status) {
-            case 'answered': return <CheckCircleOutlined />;
-            case 'flagged': return <FlagOutlined />;
-            default: return <QuestionCircleOutlined />;
+            case 'answered': return <CheckCircle className="w-4 h-4" />;
+            case 'flagged': return <Flag className="w-4 h-4" />;
+            default: return <HelpCircle className="w-4 h-4" />;
         }
     };
 
@@ -357,7 +424,7 @@ const TestDetail: React.FC = () => {
                             <Tooltip title={isFlagged ? "Bỏ đánh dấu" : "Đánh dấu câu hỏi"}>
                                 <Button
                                     type={isFlagged ? "primary" : "default"}
-                                    icon={<FlagOutlined />}
+                                    icon={<Flag className="w-4 h-4" />}
                                     onClick={() => handleFlagQuestion(question.id)}
                                     className={isFlagged ? "text-orange-500 border-orange-500" : ""}
                                 />
@@ -387,7 +454,7 @@ const TestDetail: React.FC = () => {
                             <Tooltip title={isFlagged ? "Bỏ đánh dấu" : "Đánh dấu câu hỏi"}>
                                 <Button
                                     type={isFlagged ? "primary" : "default"}
-                                    icon={<FlagOutlined />}
+                                    icon={<Flag className="w-4 h-4" />}
                                     onClick={() => handleFlagQuestion(question.id)}
                                     className={isFlagged ? "text-orange-500 border-orange-500" : ""}
                                 />
@@ -410,14 +477,14 @@ const TestDetail: React.FC = () => {
                             <Tooltip title={isFlagged ? "Bỏ đánh dấu" : "Đánh dấu câu hỏi"}>
                                 <Button
                                     type={isFlagged ? "primary" : "default"}
-                                    icon={<FlagOutlined />}
+                                    icon={<Flag className="w-4 h-4" />}
                                     onClick={() => handleFlagQuestion(question.id)}
                                     className={isFlagged ? "text-orange-500 border-orange-500" : ""}
                                 />
                             </Tooltip>
                         </div>
                         {question.readingText && (
-                            <div className="mb-4 p-4 bg-gray-50 rounded">
+                            <div className="mb-4 p-4 bg-card rounded">
                                 <Paragraph>{question.readingText}</Paragraph>
                             </div>
                         )}
@@ -445,7 +512,7 @@ const TestDetail: React.FC = () => {
                             <Tooltip title={isFlagged ? "Bỏ đánh dấu" : "Đánh dấu câu hỏi"}>
                                 <Button
                                     type={isFlagged ? "primary" : "default"}
-                                    icon={<FlagOutlined />}
+                                    icon={<Flag className="w-4 h-4" />}
                                     onClick={() => handleFlagQuestion(question.id)}
                                     className={isFlagged ? "text-orange-500 border-orange-500" : ""}
                                 />
@@ -454,7 +521,7 @@ const TestDetail: React.FC = () => {
                         <div className="text-center mb-4">
                             <Button
                                 type="primary"
-                                icon={<SoundOutlined />}
+                                icon={<Volume2 className="w-4 h-4" />}
                                 size="large"
                                 onClick={() => message.info("Tính năng phát audio sẽ được triển khai sau")}
                             >
@@ -485,7 +552,7 @@ const TestDetail: React.FC = () => {
                             <Tooltip title={isFlagged ? "Bỏ đánh dấu" : "Đánh dấu câu hỏi"}>
                                 <Button
                                     type={isFlagged ? "primary" : "default"}
-                                    icon={<FlagOutlined />}
+                                    icon={<Flag className="w-4 h-4" />}
                                     onClick={() => handleFlagQuestion(question.id)}
                                     className={isFlagged ? "text-orange-500 border-orange-500" : ""}
                                 />
@@ -628,15 +695,15 @@ const TestDetail: React.FC = () => {
 
                 <div className="space-y-2">
                     <div className="flex items-center">
-                        <CheckCircleOutlined className="text-green-500 mr-2" />
+                        <CheckCircle className="w-4 h-4 text-green-500 mr-2" />
                         <Text>Đã trả lời ({Object.keys(answers).length})</Text>
                     </div>
                     <div className="flex items-center">
-                        <FlagOutlined className="text-orange-500 mr-2" />
+                        <Flag className="w-4 h-4 text-orange-500 mr-2" />
                         <Text>Đã đánh dấu ({flaggedQuestions.length})</Text>
                     </div>
                     <div className="flex items-center">
-                        <QuestionCircleOutlined className="text-gray-400 mr-2" />
+                        <HelpCircle className="w-4 h-4 text-gray-400 mr-2" />
                         <Text>Chưa trả lời ({totalQuestions - Object.keys(answers).length})</Text>
                     </div>
                 </div>
@@ -650,7 +717,7 @@ const TestDetail: React.FC = () => {
                             <Tooltip title="Quay lại danh sách bài thi">
                                 <Button
                                     shape="circle"
-                                    icon={<ArrowLeftOutlined />}
+                                    icon={<ArrowLeft className="w-4 h-4" />}
                                     onClick={() => navigate('/tests')}
                                     className="border-0 shadow-sm hover:shadow-md"
                                 />
@@ -668,20 +735,20 @@ const TestDetail: React.FC = () => {
                             <Space>
                                 <Tooltip title="Toàn màn hình">
                                     <Button
-                                        icon={isFullscreen ? <CompressOutlined /> : <FullscreenOutlined />}
+                                        icon={isFullscreen ? <Minimize className="w-4 h-4" /> : <Maximize className="w-4 h-4" />}
                                         onClick={toggleFullscreen}
                                     />
                                 </Tooltip>
                                 <Tooltip title="Tổng quan câu hỏi">
                                     <Button
-                                        icon={<EyeOutlined />}
+                                        icon={<Eye className="w-4 h-4" />}
                                         onClick={() => setShowQuestionOverview(true)}
                                     />
                                 </Tooltip>
                                 {answeredQuestions > 0 && !reviewMode && (
                                     <Tooltip title="Xem lại câu trả lời">
                                         <Button
-                                            icon={<BookOutlined />}
+                                            icon={<Book className="w-4 h-4" />}
                                             onClick={handleStartReview}
                                         />
                                     </Tooltip>
@@ -700,7 +767,7 @@ const TestDetail: React.FC = () => {
                             <div>
                                 <Text type="secondary">Thời gian</Text>
                                 <div className={`flex items-center ${timeRemaining < 300 ? 'text-red-500' : ''}`}>
-                                    <ClockCircleOutlined className="mr-2" />
+                                    <Clock className="w-4 h-4 mr-2" />
                                     <Text strong>{formatTime(timeRemaining)}</Text>
                                     {timeRemaining < 300 && <Tag color="red" className="ml-2">Sắp hết thời gian!</Tag>}
                                 </div>
@@ -731,7 +798,7 @@ const TestDetail: React.FC = () => {
                                 <Button
                                     type="primary"
                                     size="large"
-                                    icon={<PlayCircleOutlined />}
+                                    icon={<Play className="w-4 h-4" />}
                                     onClick={handleStartTest}
                                 >
                                     Bắt đầu bài thi
@@ -740,7 +807,7 @@ const TestDetail: React.FC = () => {
                             {isTestActive && (
                                 <>
                                     <Button
-                                        icon={<EyeOutlined />}
+                                        icon={<Eye className="w-4 h-4" />}
                                         onClick={() => setShowQuestionOverview(true)}
                                     >
                                         Tổng quan
@@ -748,7 +815,7 @@ const TestDetail: React.FC = () => {
                                     <Button
                                         danger
                                         size="large"
-                                        icon={<StopOutlined />}
+                                        icon={<Square className="w-4 h-4" />}
                                         onClick={handleSubmitTest}
                                     >
                                         Nộp bài
@@ -758,7 +825,7 @@ const TestDetail: React.FC = () => {
                         </Space>
                     </Col>
                 </Row>
-                <Progress percent={progress} className="mt-4" strokeColor={progress > 80 ? '#52c41a' : progress > 50 ? '#fa8c16' : '#f5222d'} />
+                <Progress percent={progress} className="mt-4" strokeColor={progress > 80 ? 'var(--success)' : progress > 50 ? 'var(--warning)' : 'var(--error)'} />
             </Card>
 
             {/* Question Content */}
@@ -769,7 +836,7 @@ const TestDetail: React.FC = () => {
                             <Tag color="blue">Câu {currentQuestionIndex + 1}</Tag>
                             <Tag color="green">{currentSection?.name}</Tag>
                             {flaggedQuestions.includes(currentQuestion.id) && (
-                                <Tag color="orange" icon={<FlagOutlined />}>Đã đánh dấu</Tag>
+                                <Tag color="orange" icon={<Flag className="w-4 h-4" />}>Đã đánh dấu</Tag>
                             )}
                         </Space>
                         <Text type="secondary" className="text-sm">
@@ -785,14 +852,14 @@ const TestDetail: React.FC = () => {
                         <Col>
                             <Space>
                                 <Button
-                                    icon={<LeftOutlined />}
+                                    icon={<ChevronLeft className="w-4 h-4" />}
                                     onClick={handlePreviousQuestion}
                                     disabled={currentSectionIndex === 0 && currentQuestionIndex === 0}
                                 >
                                     Câu trước
                                 </Button>
                                 <Button
-                                    icon={<EyeOutlined />}
+                                    icon={<Eye className="w-4 h-4" />}
                                     onClick={() => setShowQuestionOverview(true)}
                                 >
                                     Tổng quan
@@ -804,7 +871,7 @@ const TestDetail: React.FC = () => {
                                 <Tooltip title={flaggedQuestions.includes(currentQuestion.id) ? "Bỏ đánh dấu" : "Đánh dấu câu hỏi"}>
                                     <Button
                                         type={flaggedQuestions.includes(currentQuestion.id) ? "primary" : "default"}
-                                        icon={<FlagOutlined />}
+                                        icon={<Flag className="w-4 h-4" />}
                                         onClick={() => handleFlagQuestion(currentQuestion.id)}
                                         className={flaggedQuestions.includes(currentQuestion.id) ? "text-orange-500 border-orange-500" : ""}
                                     >
@@ -813,7 +880,7 @@ const TestDetail: React.FC = () => {
                                 </Tooltip>
                                 <Button
                                     type="primary"
-                                    icon={<RightOutlined />}
+                                    icon={<ChevronRight className="w-4 h-4" />}
                                     onClick={handleNextQuestion}
                                 >
                                     {currentSectionIndex === test.sections.length - 1 &&
@@ -829,10 +896,10 @@ const TestDetail: React.FC = () => {
             {!isTestActive && timeRemaining !== test.duration * 60 && (
                 <Card>
                     <div className="text-center py-8">
-                        <PlayCircleOutlined className="text-6xl text-blue-500 mb-4" />
+                        <Play className="w-16 h-16 text-blue-500 mb-4" />
                         <Title level={3}>Bài thi đã tạm dừng</Title>
                         <Paragraph>Nhấn nút "Bắt đầu bài thi" để tiếp tục</Paragraph>
-                        <Button type="primary" size="large" icon={<PlayCircleOutlined />} onClick={handleStartTest}>
+                        <Button type="primary" size="large" icon={<Play className="w-4 h-4" />} onClick={handleStartTest}>
                             Tiếp tục làm bài
                         </Button>
                     </div>

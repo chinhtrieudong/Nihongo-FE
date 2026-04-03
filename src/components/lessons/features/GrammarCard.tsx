@@ -1,11 +1,11 @@
 import React from "react";
 import { Badge, Button } from "antd";
 import {
-    SoundOutlined,
-    QuestionCircleOutlined,
-    BulbOutlined,
-    EditOutlined,
-} from "@ant-design/icons";
+    Volume2,
+    HelpCircle,
+    Lightbulb,
+    Edit,
+} from "lucide-react";
 
 interface GrammarCardProps {
     grammar: {
@@ -37,7 +37,7 @@ const GrammarCard: React.FC<GrammarCardProps> = ({ grammar, index }) => {
                     <Button
                         type="text"
                         size="small"
-                        icon={<SoundOutlined />}
+                        icon={<Volume2 className="w-4 h-4" />}
                         className="text-white hover:bg-white/20"
                     />
                 </div>
@@ -55,7 +55,7 @@ const GrammarCard: React.FC<GrammarCardProps> = ({ grammar, index }) => {
                 <div>
                     <div className="flex items-center gap-2 mb-2">
                         <div className="w-6 h-6 bg-blue-100 dark:bg-blue-900 rounded-full flex items-center justify-center">
-                            <QuestionCircleOutlined className="text-blue-600 dark:text-blue-400 text-xs" />
+                            <HelpCircle className="w-3 h-3 text-blue-600 dark:text-blue-400" />
                         </div>
                         <h4 className="font-semibold text-secondary-900 dark:text-secondary-100">
                             Tình huống sử dụng
@@ -71,7 +71,7 @@ const GrammarCard: React.FC<GrammarCardProps> = ({ grammar, index }) => {
                     <div>
                         <div className="flex items-center gap-2 mb-3">
                             <div className="w-6 h-6 bg-green-100 dark:bg-green-900 rounded-full flex items-center justify-center">
-                                <BulbOutlined className="text-green-600 dark:text-green-400 text-xs" />
+                                <Lightbulb className="w-3 h-3 text-green-600 dark:text-green-400" />
                             </div>
                             <h4 className="font-semibold text-secondary-900 dark:text-secondary-100">
                                 Ví dụ
@@ -104,7 +104,7 @@ const GrammarCard: React.FC<GrammarCardProps> = ({ grammar, index }) => {
                     <Button
                         type="default"
                         size="small"
-                        icon={<SoundOutlined />}
+                        icon={<Volume2 className="w-4 h-4" />}
                         className="flex-1"
                     >
                         Nghe mẫu
@@ -112,7 +112,7 @@ const GrammarCard: React.FC<GrammarCardProps> = ({ grammar, index }) => {
                     <Button
                         type="default"
                         size="small"
-                        icon={<EditOutlined />}
+                        icon={<Edit className="w-4 h-4" />}
                         className="flex-1"
                     >
                         Luyện tập

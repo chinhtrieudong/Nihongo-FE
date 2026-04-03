@@ -32,16 +32,19 @@ interface Notification {
 }
 
 const getInitialState = (): UiState => {
-  const savedDarkMode = localStorage.getItem('darkMode');
-  const savedFontPreset = localStorage.getItem("fontPreset") as FontPresetKey | null;
+  const savedDarkMode = localStorage.getItem("darkMode");
+  const savedFontPreset = localStorage.getItem(
+    "fontPreset",
+  ) as FontPresetKey | null;
   const savedUIFontFamily = localStorage.getItem("uiFontFamily") || "default";
-  const savedJapaneseFontFamily = localStorage.getItem("japaneseFontFamily") || "default_jp";
-  
+  const savedJapaneseFontFamily =
+    localStorage.getItem("japaneseFontFamily") || "default_jp";
+
   // Default to "itim" if no font preset is saved
   const fontPreset = savedFontPreset || "itim";
-  
+
   return {
-    darkMode: savedDarkMode === 'true',
+    darkMode: savedDarkMode === null ? false : savedDarkMode === "true",
     sidebarOpen: false,
     drawerOpen: false,
     isMobile: false,
@@ -62,11 +65,11 @@ const uiSlice = createSlice({
   reducers: {
     toggleDarkMode: (state) => {
       state.darkMode = !state.darkMode;
-      localStorage.setItem('darkMode', state.darkMode.toString());
+      localStorage.setItem("darkMode", state.darkMode.toString());
     },
     setDarkMode: (state, action: PayloadAction<boolean>) => {
       state.darkMode = action.payload;
-      localStorage.setItem('darkMode', state.darkMode.toString());
+      localStorage.setItem("darkMode", state.darkMode.toString());
     },
     toggleSidebar: (state) => {
       state.sidebarOpen = !state.sidebarOpen;
@@ -103,7 +106,7 @@ const uiSlice = createSlice({
     },
     addNotification: (
       state,
-      action: PayloadAction<Omit<Notification, "id" | "timestamp" | "read">>
+      action: PayloadAction<Omit<Notification, "id" | "timestamp" | "read">>,
     ) => {
       const notification: Notification = {
         ...action.payload,
@@ -115,12 +118,12 @@ const uiSlice = createSlice({
     },
     removeNotification: (state, action: PayloadAction<string>) => {
       state.notifications = state.notifications.filter(
-        (n) => n.id !== action.payload
+        (n) => n.id !== action.payload,
       );
     },
     markNotificationRead: (state, action: PayloadAction<string>) => {
       const notification = state.notifications.find(
-        (n) => n.id === action.payload
+        (n) => n.id === action.payload,
       );
       if (notification) {
         notification.read = true;
@@ -134,7 +137,7 @@ const uiSlice = createSlice({
     },
     setLoading: (
       state,
-      action: PayloadAction<{ key: string; loading: boolean }>
+      action: PayloadAction<{ key: string; loading: boolean }>,
     ) => {
       state.loadingStates[action.payload.key] = action.payload.loading;
     },

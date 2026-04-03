@@ -1,12 +1,12 @@
 import React from "react";
 import { Card, Button, Tag, Typography } from "antd";
 import {
-    PlayCircleOutlined,
-    TrophyOutlined,
-    ClockCircleOutlined,
-    FileTextOutlined,
-    CheckCircleOutlined
-} from "@ant-design/icons";
+    Play,
+    Trophy,
+    Clock,
+    FileText,
+    CheckCircle
+} from "lucide-react";
 
 const { Title, Text, Paragraph } = Typography;
 
@@ -56,7 +56,7 @@ const TestCard: React.FC<TestCardProps> = ({
             actions={[
                 <Button
                     type="primary"
-                    icon={<PlayCircleOutlined />}
+                    icon={<Play className="w-4 h-4" />}
                     disabled={test.completed}
                     onClick={() => onStartTest(test)}
                 >
@@ -65,7 +65,7 @@ const TestCard: React.FC<TestCardProps> = ({
                 ...(test.completed ? [
                     <Button
                         type="default"
-                        icon={<TrophyOutlined />}
+                        icon={<Trophy className="w-4 h-4" />}
                         onClick={() => onViewResults(test)}
                     >
                         Xem kết quả
@@ -79,7 +79,7 @@ const TestCard: React.FC<TestCardProps> = ({
                         {test.level}
                     </Tag>
                     {test.completed && (
-                        <Tag color="success" icon={<CheckCircleOutlined />}>
+                        <Tag color="success" icon={<CheckCircle className="w-4 h-4" />}>
                             {test.score}%
                         </Tag>
                     )}
@@ -96,14 +96,14 @@ const TestCard: React.FC<TestCardProps> = ({
             <div className="space-y-3">
                 <div className="flex justify-between text-sm">
                     <span className="text-secondary-700 dark:text-secondary-400">
-                        <ClockCircleOutlined className="mr-1" />
+                        <Clock className="w-4 h-4 mr-1" />
                         Thời gian
                     </span>
                     <span className="font-medium">{test.duration} phút</span>
                 </div>
                 <div className="flex justify-between text-sm">
                     <span className="text-secondary-700 dark:text-secondary-400">
-                        <FileTextOutlined className="mr-1" />
+                        <FileText className="w-4 h-4 mr-1" />
                         Số câu
                     </span>
                     <span className="font-medium">{test.questions} câu</span>

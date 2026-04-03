@@ -7,7 +7,7 @@ import {
 } from "../types/lesson";
 
 const API_BASE_URL =
-  import.meta.env.VITE_API_URL || "http://localhost:5000/api";
+  import.meta.env.VITE_API_URL || "http://localhost:3000/api";
 
 // Centralized API Endpoints Configuration
 export const API_ENDPOINTS = {
@@ -50,13 +50,16 @@ export const API_ENDPOINTS = {
 
   // Kanji
   KANJI: {
-    CHARACTER: (kanji: string) => `/kanji/character/${encodeURIComponent(kanji)}`,
+    CHARACTER: (kanji: string) =>
+      `/kanji/character/${encodeURIComponent(kanji)}`,
     LIST: "/kanji",
     BY_LEVEL: (level: string) => `/kanji/${level.toLowerCase()}`,
     RADICALS: {
       LIST: "/kanji/radicals",
-      DETAIL: (symbol: string) => `/kanji/radicals/${encodeURIComponent(symbol)}`,
-      KANJI_BY_RADICAL: (symbol: string) => `/kanji/radicals/${encodeURIComponent(symbol)}/kanji`,
+      DETAIL: (symbol: string) =>
+        `/kanji/radicals/${encodeURIComponent(symbol)}`,
+      KANJI_BY_RADICAL: (symbol: string) =>
+        `/kanji/radicals/${encodeURIComponent(symbol)}/kanji`,
     },
   },
 
@@ -86,7 +89,8 @@ export const API_ENDPOINTS = {
     HISTORY: "/conversations",
     AUDIO: {
       TEXT_TO_SPEECH: "/audio/text-to-speech",
-      DIALOG_LINE: (dialogId: string, lineId: string) => `/audio/dialog/${dialogId}/${lineId}`,
+      DIALOG_LINE: (dialogId: string, lineId: string) =>
+        `/audio/dialog/${dialogId}/${lineId}`,
     },
   },
 
@@ -183,7 +187,7 @@ api.interceptors.response.use(
 );
 
 // Add mina API after the main api
-const MINA_API_BASE_URL = "http://localhost:5000/api/mina";
+const MINA_API_BASE_URL = "http://localhost:3000/api/mina";
 
 // Create separate axios instance for mina endpoints
 const minaApi = axios.create({
@@ -194,7 +198,7 @@ const minaApi = axios.create({
 });
 
 // Add tango API after the main api
-const TANGO_API_BASE_URL = "http://localhost:5000/api/tango";
+const TANGO_API_BASE_URL = "http://localhost:3000/api/tango";
 
 // Create separate axios instance for tango endpoints
 const tangoApi = axios.create({
@@ -277,7 +281,9 @@ export const authAPI = {
   },
 
   refreshToken: async (refreshToken: string) => {
-    const response = await api.post(API_ENDPOINTS.AUTH.REFRESH, { refreshToken });
+    const response = await api.post(API_ENDPOINTS.AUTH.REFRESH, {
+      refreshToken,
+    });
     return response.data;
   },
 
@@ -349,7 +355,7 @@ export const lessonAPI = {
     if (textbook) params.textbook = textbook;
 
     // Use mina endpoint for minna_no_nihongo textbook
-    if (textbook === 'minna_no_nihongo') {
+    if (textbook === "minna_no_nihongo") {
       const response = await minaApi.get("/lessons", { params });
       return response.data;
     }
@@ -407,7 +413,9 @@ export const lessonAPI = {
 
   // Kanji endpoints
   getKanji: async (kanji: string) => {
-    const response = await api.get(`/kanji/character/${encodeURIComponent(kanji)}`);
+    const response = await api.get(
+      `/kanji/character/${encodeURIComponent(kanji)}`,
+    );
     return response.data;
   },
 
@@ -454,11 +462,7 @@ export const lessonAPI = {
     return response.data;
   },
 
-  getKanjiByRadical: async (
-    radicalSymbol: string,
-    page = 1,
-    limit = 20,
-  ) => {
+  getKanjiByRadical: async (radicalSymbol: string, page = 1, limit = 20) => {
     const encoded = encodeURIComponent(radicalSymbol);
     const response = await api.get(
       `/kanji/radicals/${encoded}/kanji?page=${page}&limit=${limit}`,
@@ -477,8 +481,13 @@ export const lessonAPI = {
     return response.data;
   },
 
-  submitExercises: async (lessonId: string, answers: Array<{ exerciseId: string; answer: string }>) => {
-    const response = await api.post(`/lessons/${lessonId}/exercises/submit`, { answers });
+  submitExercises: async (
+    lessonId: string,
+    answers: Array<{ exerciseId: string; answer: string }>,
+  ) => {
+    const response = await api.post(`/lessons/${lessonId}/exercises/submit`, {
+      answers,
+    });
     return response.data;
   },
 };
@@ -552,19 +561,24 @@ export const aiAPI = {
   }) => {
     // Use Minna AI chat endpoint for lesson-specific chat
     // Extract the latest user message and lesson number from the data
-    const latestUserMessage = data.messages.filter(msg => msg.role === 'user').pop();
-    if (!latestUserMessage) throw new Error('No user message found');
+    const latestUserMessage = data.messages
+      .filter((msg) => msg.role === "user")
+      .pop();
+    if (!latestUserMessage) throw new Error("No user message found");
 
     // Try to extract lesson number from lessonId (assuming it's in format like "lesson-1" or just the number)
-    const lessonNumber = data.lessonId.replace('lesson-', '') || '1';
+    const lessonNumber = data.lessonId.replace("lesson-", "") || "1";
 
     const requestBody = {
       message: latestUserMessage.content,
-      context: data.context
+      context: data.context,
     };
 
-    const response = await minaApi.post(`/lessons/${lessonNumber}/ai/chat`, requestBody);
-    
+    const response = await minaApi.post(
+      `/lessons/${lessonNumber}/ai/chat`,
+      requestBody,
+    );
+
     // Transform the response to match the expected ChatMessage format
     const apiResponse = response.data;
     if (apiResponse.success && apiResponse.data) {
@@ -572,21 +586,21 @@ export const aiAPI = {
         success: true,
         data: {
           message: {
-            role: 'assistant',
+            role: "assistant",
             content: apiResponse.data.response,
-            timestamp: apiResponse.data.timestamp || new Date().toISOString()
-          }
-        }
+            timestamp: apiResponse.data.timestamp || new Date().toISOString(),
+          },
+        },
       };
     }
-    
+
     return apiResponse;
   },
 
   pronunciation: async (audioData: any) => {
     const aiBaseUrl =
-      import.meta.env.VITE_AI_API_URL || "http://localhost:5000/api";
-    const response = await api.post(`${aiBaseUrl}/v1/ai/pronunciation`, audioData);
+      import.meta.env.VITE_AI_API_URL || "http://localhost:3000/api/v1";
+    const response = await api.post(`${aiBaseUrl}/ai/pronunciation`, audioData);
     return response.data;
   },
 };
@@ -601,3 +615,24 @@ export const healthAPI = {
 
 export default api;
 export { minaApi };
+
+// JLPT Tests API functions
+export const jlptTestsAPI = {
+  // Get all JLPT tests
+  getAllTests: async () => {
+    const response = await api.get("/jlpt-tests");
+    return response.data;
+  },
+
+  // Get JLPT tests by level
+  getTestsByLevel: async (level: string) => {
+    const response = await api.get(`/jlpt-tests/${level}`);
+    return response.data;
+  },
+
+  // Get specific JLPT test
+  getTest: async (level: string, testId: string) => {
+    const response = await api.get(`/jlpt-tests/${level}/${testId}`);
+    return response.data;
+  },
+};

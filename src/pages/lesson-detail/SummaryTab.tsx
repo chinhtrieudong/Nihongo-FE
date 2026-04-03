@@ -1,7 +1,7 @@
 import React from "react";
 import { Card, Space, Typography } from "antd";
-import { ReadOutlined } from "@ant-design/icons";
-import InfinitejapaneseIcon from "../../components/icons/InfinitejapaneseIcon";
+import { BookOpen } from "lucide-react";
+import { InfinitejapaneseIcon } from "../../components/icons";
 import type { GrammarPattern, VocabularyItem } from "../../types/lesson";
 
 const { Title, Text } = Typography;
@@ -39,7 +39,7 @@ const SummaryTab: React.FC<SummaryTabProps> = ({ vocabularies, grammars }) => {
 
           <Card>
             <Title level={4} className="mb-4 flex items-center gap-2">
-              <ReadOutlined />
+              <BookOpen className="w-5 h-5" />
               <span>Ngữ pháp chính</span>
             </Title>
             <Space orientation="vertical" className="w-full">

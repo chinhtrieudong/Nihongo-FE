@@ -1,21 +1,51 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { Typography, Tabs, Row, Col, Card, message } from "antd";
+import { Typography, Tabs, Row, Col, Card, message, Spin } from "antd";
 import {
-  PlayCircleOutlined,
-  TrophyOutlined,
-  CheckCircleOutlined,
-  FireOutlined,
-  AimOutlined
-} from "@ant-design/icons";
-import { jlptTests, type Test } from "../data/jlptTests";
+  Play,
+  Trophy,
+  CheckCircle,
+  Flame,
+  Target
+} from "lucide-react";
+import { jlptTestsAPI } from "../services/api";
 import TestCard from "../components/tests/TestCard";
 import TestStatistics from "../components/tests/TestStatistics";
 import StartTestModal from "../components/tests/StartTestModal";
 import TestFilters from "../components/tests/TestFilters";
 import RecentActivity from "../components/tests/RecentActivity";
+import { useAppSelector } from "../store/hooks";
 
 const { Text } = Typography;
+
+interface TestSection {
+  id: string;
+  name: string;
+  icon: React.ReactNode;
+  questions: number;
+  duration: number;
+  description: string;
+  questionTypes: string[];
+}
+
+interface Test {
+  id: string;
+  level: string;
+  title: string;
+  title_vi?: string;
+  description: string;
+  description_vi?: string;
+  duration: number;
+  questions: number;
+  difficulty: string;
+  completed: boolean;
+  score?: number;
+  date?: string;
+  sections: TestSection[];
+  passing_score?: number;
+  is_active?: boolean;
+  version?: number;
+}
 
 interface TestAttempt {
   id: string;
@@ -32,10 +62,122 @@ const Tests: React.FC = () => {
   const [activeTab, setActiveTab] = useState<string>("available");
   const [selectedTest, setSelectedTest] = useState<Test | null>(null);
   const [showStartModal, setShowStartModal] = useState<boolean>(false);
+  const [jlptTests, setJlptTests] = useState<Test[]>([]);
+  const [loading, setLoading] = useState<boolean>(true);
+  const [recentActivities, setRecentActivities] = useState<any[]>([]);
   const navigate = useNavigate();
+  const { currentUser } = useAppSelector((state) => state.user);
 
-  const completedTests = jlptTests.filter(test => test.completed);
-  const availableTests = jlptTests.filter(test => !test.completed);
+  // Fetch JLPT tests from API
+  useEffect(() => {
+    const fetchTests = async () => {
+      try {
+        setLoading(true);
+        const response = await jlptTestsAPI.getAllTests();
+        if (response.success) {
+          // Transform API data to match our Test interface
+          const transformedTests = response.data.map((test: any, index: number) => ({
+            ...test,
+            id: test.id || `test_${index}`,
+            completed: false, // Default to not completed
+            score: undefined,
+            date: undefined,
+            difficulty: test.level === 'N5' ? 'Beginner' :
+              test.level === 'N4' ? 'Elementary' :
+                test.level === 'N3' ? 'Intermediate' :
+                  test.level === 'N2' ? 'Advanced' : 'Expert'
+          }));
+          setJlptTests(transformedTests);
+        }
+      } catch (error) {
+        console.error('Error fetching JLPT tests:', error);
+        message.error('Không thể tải danh sách bài thi');
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchTests();
+  }, []);
+
+  // Fetch recent activities from API
+  useEffect(() => {
+    const fetchRecentActivities = async () => {
+      if (!currentUser) return;
+
+      try {
+        // Fetch user stats which includes recent activity
+        const response = await fetch(`/api/users/${currentUser?.id}/stats/dashboard`, {
+          headers: {
+            'Authorization': `Bearer ${localStorage.getItem('accessToken')}`
+          }
+        });
+
+        if (response.ok) {
+          const data = await response.json();
+          if (data.success && data.data.recentActivity) {
+            // Transform API data to match RecentActivity component format
+            const activities = data.data.recentActivity.map((activity: any) => {
+              let icon = <Target className="w-4 h-4" />;
+              let action = activity.title || 'Hoàn thành bài học';
+              let score = activity.score ? `${activity.score}%` : undefined;
+
+              // Determine icon based on activity type
+              if (activity.type === 'test' || activity.type === 'jlpt') {
+                icon = <Trophy className="w-4 h-4" />;
+                action = activity.title || 'Hoàn thành bài thi JLPT';
+              } else if (activity.type === 'vocabulary') {
+                icon = <CheckCircle className="w-4 h-4" />;
+                action = activity.title || 'Hoàn thành bài tập từ vựng';
+              } else if (activity.type === 'streak') {
+                icon = <Flame className="w-4 h-4" />;
+                action = activity.title || 'Bắt đầu chuỗi học';
+              } else if (activity.type === 'lesson') {
+                icon = <Play className="w-4 h-4" />;
+                action = activity.title || 'Bắt đầu bài học';
+              }
+
+              // Format time
+              const activityDate = new Date(activity.date || activity.createdAt);
+              const now = new Date();
+              const diffMs = now.getTime() - activityDate.getTime();
+              const diffHours = Math.floor(diffMs / (1000 * 60 * 60));
+              const diffDays = Math.floor(diffMs / (1000 * 60 * 60 * 24));
+
+              let time = '';
+              if (diffHours < 1) {
+                time = 'Vừa xong';
+              } else if (diffHours < 24) {
+                time = `${diffHours} giờ trước`;
+              } else if (diffDays < 7) {
+                time = `${diffDays} ngày trước`;
+              } else {
+                time = activityDate.toLocaleDateString('vi-VN');
+              }
+
+              return {
+                action,
+                time,
+                score,
+                icon
+              };
+            });
+
+            setRecentActivities(activities.slice(0, 5)); // Limit to 5 activities
+          }
+        }
+      } catch (error) {
+        console.error('Error fetching recent activities:', error);
+        // Fallback to empty array on error
+        setRecentActivities([]);
+      }
+    };
+
+    fetchRecentActivities();
+  }, [currentUser]);
+
+  const completedTests = jlptTests.filter((test: Test) => test.completed);
+  const availableTests = jlptTests.filter((test: Test) => !test.completed);
 
   // Calculate statistics
   const totalTestsCompleted = completedTests.length;
@@ -54,11 +196,11 @@ const Tests: React.FC = () => {
 
   const getLevelColor = (level: string) => {
     switch (level) {
-      case "N5": return "#52c41a";
-      case "N4": return "#1890ff";
-      case "N3": return "#fa8c16";
-      case "N2": return "#f5222d";
-      case "N1": return "#722ed1";
+      case "N5": return "var(--success)";
+      case "N4": return "var(--info)";
+      case "N3": return "var(--warning)";
+      case "N2": return "var(--error)";
+      case "N1": return "var(--primary)";
       default: return "default";
     }
   };
@@ -101,7 +243,7 @@ const Tests: React.FC = () => {
 
 
   return (
-    <div className="min-h-full bg-gray-50 dark:bg-secondary-900 academic-canvas">
+    <div className="min-h-full bg-bg academic-canvas">
       <div className="max-w-6xl mx-auto px-4 py-8">
         {/* Header Section */}
         <div className="mb-6">
@@ -194,11 +336,8 @@ const Tests: React.FC = () => {
         </Card>
 
         {/* Recent Activity */}
-        <RecentActivity activities={[
-          { action: "Hoàn thành bài thi JLPT N5", time: "2 giờ trước", score: "85%", icon: <TrophyOutlined /> },
-          { action: "Bắt đầu bài thi JLPT N4", time: "1 ngày trước", icon: <PlayCircleOutlined /> },
-          { action: "Hoàn thành bài tập từ vựng", time: "2 ngày trước", score: "92%", icon: <CheckCircleOutlined /> },
-          { action: "Bắt đầu chuỗi học 7 ngày", time: "7 ngày trước", icon: <FireOutlined /> }
+        <RecentActivity activities={recentActivities.length > 0 ? recentActivities : [
+          { action: "Chưa có hoạt động gần đây", time: "", icon: <Target className="w-4 h-4" /> }
         ]} />
 
         {/* Start Test Modal */}

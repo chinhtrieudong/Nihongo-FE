@@ -1,6 +1,6 @@
 import React from "react";
 import { Card, Typography } from "antd";
-import VocabularyTable, { type VocabularyTableHandle } from "../../components/VocabularyTable";
+import VocabularyTable from "../../components/VocabularyTable";
 import type { VocabularyItem } from "../../types/lesson";
 
 const { Text } = Typography;
@@ -17,13 +17,13 @@ type VocabularyTabProps = {
   };
 };
 
-const VocabularyTab = React.forwardRef<VocabularyTableHandle, VocabularyTabProps>(({
+const VocabularyTab: React.FC<VocabularyTabProps> = ({
   vocabularies,
   loading,
   bookmarkedVocab,
   onCloseSidebar,
   lessonInfo,
-}, ref) => {
+}) => {
   // console.log('🔍 VocabularyTab received vocabularies:', vocabularies);
   // console.log('🔍 VocabularyTab loading:', loading);
   const data = vocabularies.map((vocab) => {
@@ -75,7 +75,6 @@ const VocabularyTab = React.forwardRef<VocabularyTableHandle, VocabularyTabProps
         </div>
 
         <VocabularyTable
-          ref={ref}
           data={data}
           loading={loading}
           onCloseSidebar={onCloseSidebar}
@@ -83,6 +82,6 @@ const VocabularyTab = React.forwardRef<VocabularyTableHandle, VocabularyTabProps
       </Card>
     </div>
   );
-});
+};
 
 export default VocabularyTab;

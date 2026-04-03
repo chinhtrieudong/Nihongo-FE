@@ -4,12 +4,12 @@ import { useRequireAuth } from "../../../hooks/useRequireAuth";
 import { lessonAPI } from "../../../services/api";
 import { Badge, Button, Input, Progress, message } from "antd";
 import {
-    EditOutlined,
-    ArrowRightOutlined,
-    BulbOutlined,
-    CheckCircleOutlined,
-    TrophyOutlined,
-} from "@ant-design/icons";
+    Pencil,
+    ArrowRight,
+    Lightbulb,
+    CheckCircle,
+    Trophy,
+} from "lucide-react";
 
 interface ExercisesTabProps {
     exercises: any[];
@@ -34,10 +34,9 @@ const ExercisesTab: React.FC<ExercisesTabProps> = ({
         if (!currentUser) return;
 
         try {
-            const response = await lessonAPI.submitExercise(
+            const response = await lessonAPI.submitExercises(
                 lessonId!,
-                exerciseId,
-                answer
+                [{ exerciseId, answer }]
             );
             if (response.success) {
                 setResults((prev) => ({
@@ -57,7 +56,7 @@ const ExercisesTab: React.FC<ExercisesTabProps> = ({
             <div className="text-center py-12">
                 <div className="inline-flex flex-col items-center">
                     <div className="w-20 h-20 bg-secondary-100 dark:bg-secondary-800 rounded-full flex items-center justify-center mb-4">
-                        <EditOutlined className="text-3xl text-secondary-400" />
+                        <Pencil className="w-8 h-8 text-secondary-400" />
                     </div>
                     <p className="text-secondary-700 dark:text-secondary-400 text-lg">
                         Chưa có bài tập cho bài học này.
@@ -89,7 +88,7 @@ const ExercisesTab: React.FC<ExercisesTabProps> = ({
                         className="text-sm"
                     />
                     <Button
-                        icon={<ArrowRightOutlined />}
+                        icon={<ArrowRight className="w-4 h-4" />}
                         type="primary"
                         size="large"
                         disabled={currentExercise === exercises.length - 1}
@@ -105,7 +104,10 @@ const ExercisesTab: React.FC<ExercisesTabProps> = ({
                 {exercises.map((_, index) => (
                     <button
                         key={index}
+                        type="button"
                         onClick={() => setCurrentExercise(index)}
+                        title={`Bài tập ${index + 1}`}
+                        aria-label={`Bài tập ${index + 1}`}
                         className={`w-3 h-3 rounded-full transition-all duration-300 ${index === currentExercise
                             ? 'w-8 bg-orange-500'
                             : results[exercises[index].id]?.isCorrect
@@ -145,7 +147,7 @@ const ExercisesTab: React.FC<ExercisesTabProps> = ({
                             <Button
                                 type="default"
                                 size="large"
-                                icon={<BulbOutlined />}
+                                icon={<Lightbulb className="w-4 h-4" />}
                                 className="bg-white/20 backdrop-blur-sm text-white border-white/30 hover:bg-white/30"
                                 onClick={() => setShowHint(!showHint)}
                             >
@@ -194,7 +196,7 @@ const ExercisesTab: React.FC<ExercisesTabProps> = ({
                                             {results[exercise.id] && answers[exercise.id] === option && (
                                                 <div className="ml-3">
                                                     {results[exercise.id].isCorrect ? (
-                                                        <CheckCircleOutlined className="text-green-500 text-xl" />
+                                                        <CheckCircle className="w-5 h-5 text-green-500" />
                                                     ) : (
                                                         <span className="text-red-500 text-xl">✗</span>
                                                     )}
@@ -249,7 +251,7 @@ const ExercisesTab: React.FC<ExercisesTabProps> = ({
                     {showHint && (
                         <div className="mt-6 p-4 bg-blue-50 dark:bg-blue-900/20 border-l-4 border-blue-500 rounded">
                             <div className="flex items-center gap-2 mb-2">
-                                <BulbOutlined className="text-blue-500" />
+                                <Lightbulb className="w-4 h-4 text-blue-500" />
                                 <span className="font-medium text-blue-700 dark:text-blue-300">Gợi ý:</span>
                             </div>
                             <p className="text-sm text-blue-600 dark:text-blue-400">
@@ -308,7 +310,7 @@ const ExercisesTab: React.FC<ExercisesTabProps> = ({
                     {results[exercise.id] && (
                         <div className="mt-6 p-6 bg-secondary-50 dark:bg-secondary-800 rounded-lg border-l-4 border-orange-500">
                             <div className="flex items-center gap-2 mb-3">
-                                <BulbOutlined className="text-orange-500" />
+                                <Lightbulb className="w-4 h-4 text-orange-500" />
                                 <span className="font-semibold text-secondary-900 dark:text-secondary-100">
                                     Giải thích:
                                 </span>
@@ -325,7 +327,7 @@ const ExercisesTab: React.FC<ExercisesTabProps> = ({
             <div className="bg-gradient-to-r from-blue-500 to-purple-500 dark:from-blue-700 dark:to-purple-700 rounded-xl shadow-lg p-6 text-white">
                 <div className="flex items-center gap-3 mb-4">
                     <div className="w-12 h-12 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center">
-                        <TrophyOutlined className="text-2xl" />
+                        <Trophy className="w-6 h-6" />
                     </div>
                     <div>
                         <h3 className="text-xl font-bold">Tiến độ bài tập</h3>

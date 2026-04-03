@@ -1,14 +1,14 @@
 import React from "react";
 import { Badge, Button, Progress } from "antd";
 import {
-    TrophyOutlined,
-    BookOutlined,
-    ReadOutlined,
-    FireOutlined,
-    BulbOutlined,
-    ReloadOutlined,
-    ArrowRightOutlined,
-} from "@ant-design/icons";
+    Trophy,
+    Book,
+    BookOpen,
+    Flame,
+    Lightbulb,
+    RefreshCw,
+    ArrowRight,
+} from "lucide-react";
 import type { LessonDetail, VocabularyItem, GrammarPattern } from "../../../types/lesson";
 
 interface SummaryTabProps {
@@ -72,7 +72,7 @@ const SummaryTab: React.FC<SummaryTabProps> = ({
             <div className="bg-gradient-to-r from-blue-500 to-purple-600 dark:from-blue-700 dark:to-purple-800 rounded-xl shadow-lg p-6 text-white">
                 <div className="flex items-center gap-3 mb-6">
                     <div className="w-12 h-12 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center">
-                        <TrophyOutlined className="text-2xl" />
+                        <Trophy className="w-6 h-6" />
                     </div>
                     <div>
                         <h3 className="text-xl font-bold">Tiến độ học tập</h3>
@@ -115,7 +115,7 @@ const SummaryTab: React.FC<SummaryTabProps> = ({
                 <div className="bg-white dark:bg-secondary-900 rounded-xl shadow-lg overflow-hidden">
                     <div className="bg-gradient-to-r from-green-500 to-teal-500 dark:from-green-700 dark:to-teal-700 p-4">
                         <div className="flex items-center gap-2">
-                            <BookOutlined className="text-white text-xl" />
+                            <Book className="w-5 h-5 text-white" />
                             <h3 className="text-lg font-bold text-white">Từ vựng trọng tâm</h3>
                         </div>
                     </div>
@@ -146,7 +146,7 @@ const SummaryTab: React.FC<SummaryTabProps> = ({
                 <div className="bg-white dark:bg-secondary-900 rounded-xl shadow-lg overflow-hidden">
                     <div className="bg-gradient-to-r from-blue-500 to-indigo-500 dark:from-blue-700 dark:to-indigo-700 p-4">
                         <div className="flex items-center gap-2">
-                            <ReadOutlined className="text-white text-xl" />
+                            <BookOpen className="w-5 h-5 text-white" />
                             <h3 className="text-lg font-bold text-white">Ngữ pháp chính</h3>
                         </div>
                     </div>
@@ -172,7 +172,7 @@ const SummaryTab: React.FC<SummaryTabProps> = ({
             <div className="bg-white dark:bg-secondary-900 rounded-xl shadow-lg overflow-hidden">
                 <div className="bg-gradient-to-r from-orange-500 to-red-500 dark:from-orange-700 dark:to-red-700 p-4">
                     <div className="flex items-center gap-2">
-                        <FireOutlined className="text-white text-xl" />
+                        <Flame className="w-5 h-5 text-white" />
                         <h3 className="text-lg font-bold text-white">Phân tích điểm yếu</h3>
                     </div>
                 </div>
@@ -217,7 +217,7 @@ const SummaryTab: React.FC<SummaryTabProps> = ({
             <div className="bg-gradient-to-r from-purple-500 to-pink-500 dark:from-purple-700 dark:to-pink-700 rounded-xl shadow-lg p-6 text-white">
                 <div className="flex items-center gap-3 mb-6">
                     <div className="w-12 h-12 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center">
-                        <BulbOutlined className="text-2xl" />
+                        <Lightbulb className="w-6 h-6" />
                     </div>
                     <div>
                         <h3 className="text-xl font-bold">Gợi ý học tập cá nhân hóa</h3>
@@ -242,14 +242,14 @@ const SummaryTab: React.FC<SummaryTabProps> = ({
                 <Button
                     type="primary"
                     size="large"
-                    icon={<ReloadOutlined />}
+                    icon={<RefreshCw className="w-4 h-4" />}
                     className="flex-1 h-14 text-lg"
                 >
                     🔄 Ôn tập thông minh
                 </Button>
                 <Button
                     size="large"
-                    icon={<ArrowRightOutlined />}
+                    icon={<ArrowRight className="w-4 h-4" />}
                     className="flex-1 h-14 text-lg"
                 >
                     ➡️ Bài tiếp theo
@@ -260,7 +260,7 @@ const SummaryTab: React.FC<SummaryTabProps> = ({
             {progress >= 80 && (
                 <div className="bg-gradient-to-r from-yellow-400 to-orange-500 dark:from-yellow-600 dark:to-orange-700 rounded-xl shadow-lg p-6 text-center">
                     <div className="w-20 h-20 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center mx-auto mb-4">
-                        <TrophyOutlined className="text-4xl text-white" />
+                        <Trophy className="w-10 h-10 text-white" />
                     </div>
                     <h3 className="text-2xl font-bold text-white mb-2">🎉 Xuất sắc!</h3>
                     <p className="text-white/90">

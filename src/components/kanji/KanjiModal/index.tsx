@@ -1,9 +1,11 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { KanjiItem } from '../../../types/kanji.js';
 import { Modal, Tabs, Tag, Button, Collapse, Typography, Card } from 'antd';
-import { SoundOutlined, ReloadOutlined } from '@ant-design/icons';
+import { Volume2, RefreshCw } from 'lucide-react';
 import HanziWriter from 'hanzi-writer';
 import { getNanamiNaturalVoice } from '../../../utils/vocabularyUtils';
+import { useAppSelector } from '../../../store/hooks';
+import { getFontPreset } from '../../../constants/fonts';
 
 const { Panel } = Collapse;
 const { Title, Text } = Typography;
@@ -15,7 +17,15 @@ interface KanjiModalProps {
 }
 
 const KanjiModal: React.FC<KanjiModalProps> = ({ kanji, visible, onClose }) => {
+    const { fontPreset } = useAppSelector((state) => state.ui);
+    const selectedPreset = getFontPreset(fontPreset);
     const [showRomaji, setShowRomaji] = useState(false);
+
+    // Set CSS variable for kanji font family based on selected preset
+    useEffect(() => {
+        const kanjiFont = selectedPreset.kanjiFontFamily || selectedPreset.fontFamily;
+        document.documentElement.style.setProperty('--kanji-font-family', kanjiFont);
+    }, [selectedPreset]);
     const [activeTab, setActiveTab] = useState('learn');
     const [isDrawing, setIsDrawing] = useState(false);
     const [currentStroke, setCurrentStroke] = useState(0);
@@ -126,7 +136,7 @@ const KanjiModal: React.FC<KanjiModalProps> = ({ kanji, visible, onClose }) => {
 
     if (!kanji) return null;
 
-    const getJlptColor = (level: string) => {
+    const getJlptColor = (level: string | undefined) => {
         switch (level) {
             case 'N5': return 'green';
             case 'N4': return 'blue';
@@ -414,7 +424,7 @@ const KanjiModal: React.FC<KanjiModalProps> = ({ kanji, visible, onClose }) => {
             }
 
             // Simple stroke animation using canvas API
-            animateKanjiStrokes(kanji.character);
+            animateKanjiStrokes(kanji.character || '');
 
             setTimeout(() => {
                 setIsAnimating(false);
@@ -457,7 +467,7 @@ const KanjiModal: React.FC<KanjiModalProps> = ({ kanji, visible, onClose }) => {
             title={
                 <div className="flex items-center justify-between pr-8">
                     <div>
-                        <span className="text-2xl font-bold mr-2 vocab-kanji-text" style={{ fontFamily: selectedPreset.kanjiFontFamily || selectedPreset.fontFamily }}>{kanji.character}</span>
+                        <span className="text-2xl font-bold mr-2 kanji-text">{kanji.character || ''}</span>
                         <Tag color={getJlptColor(kanji.jlpt_level)}>{kanji.jlpt_level}</Tag>
                     </div>
                     <Button
@@ -490,7 +500,7 @@ const KanjiModal: React.FC<KanjiModalProps> = ({ kanji, visible, onClose }) => {
                         <div className="space-y-4">
                             <Card title="Thông tin cơ bản" className="h-fit">
                                 <div className="text-center mb-4">
-                                    <div className="text-6xl font-bold text-secondary-700 dark:text-secondary-400 mb-2 vocab-kanji-text" style={{ fontFamily: selectedPreset.kanjiFontFamily || selectedPreset.fontFamily }}>{kanji.character}</div>
+                                    <div className="text-6xl font-bold text-secondary-700 dark:text-secondary-400 mb-2 kanji-text">{kanji.character || ''}</div>
                                     <div className="text-xl text-purple-600 dark:text-purple-400 font-medium">{kanji.hanviet}</div>
                                     <div className="text-lg text-secondary-600 dark:text-secondary-800">{kanji.meaning_vi}</div>
                                 </div>
@@ -518,7 +528,7 @@ const KanjiModal: React.FC<KanjiModalProps> = ({ kanji, visible, onClose }) => {
                                     )}
                                     <div className="flex justify-between">
                                         <span className="font-medium">Số nét:</span>
-                                        <span>{kanji.stroke_count}</span>
+                                        <span>{kanji.stroke_count || 0}</span>
                                     </div>
                                     <div className="flex justify-between">
                                         <span className="font-medium">Cấp độ:</span>
@@ -586,8 +596,8 @@ const KanjiModal: React.FC<KanjiModalProps> = ({ kanji, visible, onClose }) => {
                                                                 <Button
                                                                     type="text"
                                                                     size="small"
-                                                                    icon={<SoundOutlined />}
-                                                                    onClick={() => speakJapanese(word.hiragana || word.word)}
+                                                                    icon={<Volume2 className="w-4 h-4" />}
+                                                                    onClick={() => speakJapanese((word.hiragana || word.word || '') as string)}
                                                                     className="text-secondary-400 dark:text-secondary-500 hover:text-blue-500"
                                                                 />
                                                             )}
@@ -668,7 +678,7 @@ const KanjiModal: React.FC<KanjiModalProps> = ({ kanji, visible, onClose }) => {
                                                 <p className="font-medium">Gợi ý:</p>
                                                 <Button
                                                     size="small"
-                                                    icon={<ReloadOutlined />}
+                                                    icon={<RefreshCw className="w-4 h-4" />}
                                                     onClick={reloadStrokeAnimation}
                                                     title="Tải lại hoạt ảnh nét vẽ"
                                                 >

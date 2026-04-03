@@ -2,11 +2,11 @@ import React, { useState, useEffect } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../store/hooks";
 import { loginStart, loginSuccess, loginFailure } from "../store/slices/userSlice";
-import { toggleDarkMode } from "../store/slices/uiSlice";
 import { authAPI } from "../services/api";
+import { useTheme } from "../hooks/useTheme";
 import { Switch, Checkbox, Divider } from "antd";
 import type { CheckboxChangeEvent } from "antd/es/checkbox";
-import { SunOutlined, MoonOutlined, MailOutlined, LockOutlined, EyeOutlined, EyeInvisibleOutlined, UserOutlined, GoogleOutlined, FacebookOutlined } from "@ant-design/icons";
+import { Sun, Moon, Mail, Lock, Eye, EyeOff, User, Globe, Share2 } from "lucide-react";
 
 interface RegisterFormData {
   username: string;
@@ -20,6 +20,7 @@ const Register: React.FC = () => {
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
   const { darkMode } = useAppSelector((state) => state.ui);
+  const { toggleTheme } = useTheme();
   const [formData, setFormData] = useState<RegisterFormData>({
     username: "",
     email: "",
@@ -125,7 +126,7 @@ const Register: React.FC = () => {
           <div className="flex items-center space-x-2">
             <span className="text-lg sm:text-xl" style={{ fontSize: 'clamp(16px, 2vw, 20px)' }}>🎌</span>
             <h1
-              className="text-base sm:text-lg font-bold text-gray-900 dark:text-white font-japanese"
+              className="text-base sm:text-lg font-bold text-text-main font-japanese"
               style={{ fontSize: 'clamp(16px, 2vw, 20px)' }}
             >
               Nihongo
@@ -135,9 +136,9 @@ const Register: React.FC = () => {
           <div className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-full px-2 py-1 sm:px-3 sm:py-1.5 shadow-lg border border-gray-200/50 dark:border-gray-700/50">
             <Switch
               checked={darkMode}
-              onChange={() => dispatch(toggleDarkMode())}
-              checkedChildren={<MoonOutlined className="text-indigo-500" />}
-              unCheckedChildren={<SunOutlined className="text-orange-500" />}
+              onChange={() => toggleTheme()}
+              checkedChildren={<Moon className="w-4 h-4 text-indigo-500" />}
+              unCheckedChildren={<Sun className="w-4 h-4 text-orange-500" />}
               className="bg-transparent"
             />
           </div>
@@ -247,7 +248,7 @@ const Register: React.FC = () => {
                     </label>
                     <div className="relative">
                       <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                        <UserOutlined className="text-gray-400" />
+                        <User className="w-4 h-4 text-gray-400" />
                       </div>
                       <input
                         type="text"
@@ -269,7 +270,7 @@ const Register: React.FC = () => {
                     </label>
                     <div className="relative">
                       <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                        <MailOutlined className="text-gray-400" />
+                        <Mail className="w-4 h-4 text-gray-400" />
                       </div>
                       <input
                         type="email"
@@ -291,7 +292,7 @@ const Register: React.FC = () => {
                     </label>
                     <div className="relative">
                       <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                        <LockOutlined className="text-gray-400" />
+                        <Lock className="w-4 h-4 text-gray-400" />
                       </div>
                       <input
                         type={showPassword ? "text" : "password"}
@@ -311,7 +312,7 @@ const Register: React.FC = () => {
                         className="absolute inset-y-0 right-0 pr-3 flex items-center text-gray-400 hover:text-gray-600 dark:hover:text-gray-300 transition-colors"
                         aria-label={showPassword ? "Hide password" : "Show password"}
                       >
-                        {showPassword ? <EyeInvisibleOutlined /> : <EyeOutlined />}
+                        {showPassword ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
                       </button>
                     </div>
                   </div>
@@ -322,7 +323,7 @@ const Register: React.FC = () => {
                     </label>
                     <div className="relative">
                       <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                        <LockOutlined className="text-gray-400" />
+                        <Lock className="w-4 h-4 text-gray-400" />
                       </div>
                       <input
                         type={showConfirmPassword ? "text" : "password"}
@@ -342,7 +343,7 @@ const Register: React.FC = () => {
                         className="absolute inset-y-0 right-0 pr-3 flex items-center text-gray-400 hover:text-gray-600 dark:hover:text-gray-300 transition-colors"
                         aria-label={showConfirmPassword ? "Hide confirm password" : "Show confirm password"}
                       >
-                        {showConfirmPassword ? <EyeInvisibleOutlined /> : <EyeOutlined />}
+                        {showConfirmPassword ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
                       </button>
                     </div>
                   </div>
@@ -390,7 +391,7 @@ const Register: React.FC = () => {
                     onClick={() => handleSocialRegister('google')}
                     className="py-3 px-4 bg-white dark:bg-gray-700 border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 font-semibold rounded-xl hover:bg-gray-50 dark:hover:bg-gray-600 transform transition-all duration-200 hover:scale-[1.02] focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 flex items-center justify-center space-x-2"
                   >
-                    <GoogleOutlined className="text-red-500" />
+                    <Globe className="w-4 h-4 text-red-500" />
                     <span className="text-sm">Google</span>
                   </button>
 
@@ -398,7 +399,7 @@ const Register: React.FC = () => {
                     onClick={() => handleSocialRegister('facebook')}
                     className="py-3 px-4 bg-white dark:bg-gray-700 border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 font-semibold rounded-xl hover:bg-gray-50 dark:hover:bg-gray-600 transform transition-all duration-200 hover:scale-[1.02] focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 flex items-center justify-center space-x-2"
                   >
-                    <FacebookOutlined className="text-blue-600" />
+                    <Share2 className="w-4 h-4 text-blue-600" />
                     <span className="text-sm">Facebook</span>
                   </button>
                 </div>

@@ -3,24 +3,24 @@ import {
     AI_SYSTEM_PROMPTS,
     formatPrompt,
     CONVERSATION_STARTERS,
-} from "../../../services/aiService";
+} from "../../../services/ai/aiService";
 import { aiAPI } from "../../../services/api";
 import {
     Badge, Button, Input
 } from "antd";
 import {
-    MessageOutlined,
-    AudioOutlined,
-    EditOutlined,
-    ReadOutlined,
-    ReloadOutlined,
-    BookOutlined,
-    ArrowRightOutlined,
-    RobotOutlined,
-    BulbOutlined,
-    SoundOutlined,
-    TrophyOutlined,
-} from "@ant-design/icons";
+    MessageSquare,
+    Mic,
+    Pencil,
+    BookOpen,
+    RefreshCw,
+    Book,
+    ArrowRight,
+    Bot,
+    Lightbulb,
+    Volume2,
+    Trophy,
+} from "lucide-react";
 import { message } from "antd";
 import type { Lesson } from "../../../types/lesson";
 import { formatAIText } from "../../../utils/textFormatter";
@@ -178,7 +178,7 @@ const AITab: React.FC<AITabProps> = ({ lesson }) => {
             id: 'conversation',
             title: 'Hội thoại với AI',
             description: 'Thực hành giao tiếp với giáo viên AI thông minh',
-            icon: <MessageOutlined />,
+            icon: <MessageSquare className="w-6 h-6" />,
             color: 'from-blue-500 to-cyan-500',
             action: startConversation
         },
@@ -186,7 +186,7 @@ const AITab: React.FC<AITabProps> = ({ lesson }) => {
             id: 'pronunciation',
             title: 'Kiểm tra phát âm',
             description: 'Phân tích và cải thiện phát âm tiếng Nhật',
-            icon: <AudioOutlined />,
+            icon: <Mic className="w-6 h-6" />,
             color: 'from-green-500 to-teal-500',
             action: startPronunciationTest
         },
@@ -194,7 +194,7 @@ const AITab: React.FC<AITabProps> = ({ lesson }) => {
             id: 'exercise',
             title: 'Bài tập cá nhân hóa',
             description: 'Bài tập được tạo riêng cho trình độ của bạn',
-            icon: <EditOutlined />,
+            icon: <Pencil className="w-6 h-6" />,
             color: 'from-purple-500 to-pink-500',
             action: startCustomExercise
         },
@@ -202,7 +202,7 @@ const AITab: React.FC<AITabProps> = ({ lesson }) => {
             id: 'grammar',
             title: 'Giải thích ngữ pháp',
             description: 'Hiểu sâu các mẫu ngữ pháp khó',
-            icon: <ReadOutlined />,
+            icon: <BookOpen className="w-6 h-6" />,
             color: 'from-orange-500 to-red-500',
             action: () => setActiveFeature('grammar')
         },
@@ -210,7 +210,7 @@ const AITab: React.FC<AITabProps> = ({ lesson }) => {
             id: 'review',
             title: 'Ôn tập thông minh',
             description: 'Hệ thống ôn tập dựa trên trí nhớ',
-            icon: <ReloadOutlined />,
+            icon: <RefreshCw className="w-6 h-6" />,
             color: 'from-indigo-500 to-purple-500',
             action: () => setActiveFeature('review')
         },
@@ -218,7 +218,7 @@ const AITab: React.FC<AITabProps> = ({ lesson }) => {
             id: 'vocabulary',
             title: 'Luyện từ vựng',
             description: 'Học từ vựng theo phương pháp khoa học',
-            icon: <BookOutlined />,
+            icon: <Book className="w-6 h-6" />,
             color: 'from-pink-500 to-rose-500',
             action: () => setActiveFeature('vocabulary')
         }
@@ -270,7 +270,7 @@ const AITab: React.FC<AITabProps> = ({ lesson }) => {
                             <p className="text-white/80 text-sm mb-4">{feature.description}</p>
                             <div className="flex items-center gap-2 text-sm font-medium">
                                 <span>Bắt đầu</span>
-                                <ArrowRightOutlined className="group-hover:translate-x-1 transition-transform" />
+                                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                             </div>
                         </div>
                     </div>
@@ -283,7 +283,7 @@ const AITab: React.FC<AITabProps> = ({ lesson }) => {
                     <div className="bg-gradient-to-r from-green-500 to-teal-500 dark:from-green-700 dark:to-teal-700 p-6">
                         <div className="flex items-center gap-3">
                             <div className="w-12 h-12 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center">
-                                <AudioOutlined className="text-2xl" />
+                                <Mic className="w-6 h-6" />
                             </div>
                             <div>
                                 <h3 className="text-xl font-bold text-white">Kết quả phát âm</h3>
@@ -329,10 +329,10 @@ const AITab: React.FC<AITabProps> = ({ lesson }) => {
                         </div>
 
                         <div className="flex gap-4 mt-6">
-                            <Button type="primary" size="large" icon={<AudioOutlined />} className="flex-1">
+                            <Button type="primary" size="large" icon={<Mic className="w-4 h-4" />} className="flex-1">
                                 Thử lại
                             </Button>
-                            <Button size="large" icon={<SoundOutlined />} className="flex-1">
+                            <Button size="large" icon={<Volume2 className="w-4 h-4" />} className="flex-1">
                                 Nghe mẫu
                             </Button>
                         </div>
@@ -345,7 +345,7 @@ const AITab: React.FC<AITabProps> = ({ lesson }) => {
                     <div className="bg-gradient-to-r from-blue-500 to-cyan-500 dark:from-blue-700 dark:to-cyan-700 p-6">
                         <div className="flex items-center gap-3">
                             <div className="w-12 h-12 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center">
-                                <MessageOutlined className="text-2xl" />
+                                <MessageSquare className="w-6 h-6" />
                             </div>
                             <div>
                                 <h3 className="text-xl font-bold text-white">Hội thoại với AI</h3>
@@ -358,7 +358,7 @@ const AITab: React.FC<AITabProps> = ({ lesson }) => {
                         {!isChatting ? (
                             <div className="text-center py-12">
                                 <div className="w-20 h-20 bg-blue-100 dark:bg-blue-900 rounded-full flex items-center justify-center mx-auto mb-4">
-                                    <MessageOutlined className="text-3xl text-blue-600 dark:text-blue-400" />
+                                    <MessageSquare className="w-8 h-8 text-blue-600 dark:text-blue-400" />
                                 </div>
                                 <h4 className="text-lg font-semibold text-secondary-900 dark:text-secondary-100 mb-2">
                                     Bắt đầu hội thoại với AI
@@ -369,7 +369,7 @@ const AITab: React.FC<AITabProps> = ({ lesson }) => {
                                 <Button
                                     type="primary"
                                     size="large"
-                                    icon={<MessageOutlined />}
+                                    icon={<MessageSquare className="w-4 h-4" />}
                                     onClick={startConversation}
                                     className="px-8"
                                 >
@@ -433,7 +433,7 @@ const AITab: React.FC<AITabProps> = ({ lesson }) => {
                                         }}
                                         loading={isLoadingChat}
                                         disabled={!inputMessage.trim() || isLoadingChat}
-                                        icon={<ArrowRightOutlined />}
+                                        icon={<ArrowRight className="w-4 h-4" />}
                                     >
                                         Gửi
                                     </Button>
@@ -449,7 +449,7 @@ const AITab: React.FC<AITabProps> = ({ lesson }) => {
                     <div className="bg-gradient-to-r from-purple-500 to-pink-500 dark:from-purple-700 dark:to-pink-700 p-6">
                         <div className="flex items-center gap-3">
                             <div className="w-12 h-12 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center">
-                                <EditOutlined className="text-2xl" />
+                                <Pencil className="w-6 h-6" />
                             </div>
                             <div>
                                 <h3 className="text-xl font-bold text-white">Bài tập cá nhân hóa</h3>
@@ -484,7 +484,7 @@ const AITab: React.FC<AITabProps> = ({ lesson }) => {
                                 </Button>
                                 <Button
                                     size="large"
-                                    icon={<BulbOutlined />}
+                                    icon={<Lightbulb className="w-4 h-4" />}
                                     className="flex-1"
                                 >
                                     Gợi ý
@@ -506,7 +506,7 @@ const AITab: React.FC<AITabProps> = ({ lesson }) => {
             <div className="bg-gradient-to-r from-indigo-500 to-purple-600 dark:from-indigo-700 dark:to-purple-800 rounded-xl shadow-lg p-6 text-white">
                 <div className="flex items-center gap-3 mb-6">
                     <div className="w-12 h-12 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center">
-                        <RobotOutlined className="text-2xl" />
+                        <Bot className="w-6 h-6" />
                     </div>
                     <div>
                         <h3 className="text-xl font-bold">Thống kê học tập AI</h3>

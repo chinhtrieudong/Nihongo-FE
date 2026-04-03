@@ -1,13 +1,13 @@
 import React from "react";
 import { Badge, Button } from "antd";
 import {
-    ReadOutlined,
-    SoundOutlined,
-    QuestionCircleOutlined,
-    BulbOutlined,
-    EditOutlined,
-    TrophyOutlined,
-} from "@ant-design/icons";
+    BookOpen,
+    Volume2,
+    HelpCircle,
+    Lightbulb,
+    Pencil,
+    Trophy,
+} from "lucide-react";
 
 interface GrammarTabProps {
     grammar: any[];
@@ -19,7 +19,7 @@ const GrammarTab: React.FC<GrammarTabProps> = ({ grammar }) => {
             <div className="text-center py-12">
                 <div className="inline-flex flex-col items-center">
                     <div className="w-20 h-20 bg-gray-100 dark:bg-secondary-800 rounded-full flex items-center justify-center mb-4">
-                        <ReadOutlined className="text-3xl text-gray-500 dark:text-secondary-400" />
+                        <BookOpen className="w-8 h-8 text-gray-500 dark:text-secondary-400" />
                     </div>
                     <p className="text-secondary-700 dark:text-secondary-400 text-lg">
                         Chưa có ngữ pháp cho bài học này.
@@ -72,7 +72,7 @@ const GrammarTab: React.FC<GrammarTabProps> = ({ grammar }) => {
                                 <Button
                                     type="text"
                                     size="small"
-                                    icon={<SoundOutlined />}
+                                    icon={<Volume2 className="w-4 h-4" />}
                                     className="text-white hover:bg-white/20"
                                 />
                             </div>
@@ -90,7 +90,7 @@ const GrammarTab: React.FC<GrammarTabProps> = ({ grammar }) => {
                             <div>
                                 <div className="flex items-center gap-2 mb-2">
                                     <div className="w-6 h-6 bg-blue-100 dark:bg-blue-900 rounded-full flex items-center justify-center">
-                                        <QuestionCircleOutlined className="text-blue-600 dark:text-blue-400 text-xs" />
+                                        <HelpCircle className="w-3 h-3 text-blue-600 dark:text-blue-400" />
                                     </div>
                                     <h4 className="font-semibold text-secondary-900 dark:text-secondary-100">
                                         Tình huống sử dụng
@@ -106,7 +106,7 @@ const GrammarTab: React.FC<GrammarTabProps> = ({ grammar }) => {
                                 <div>
                                     <div className="flex items-center gap-2 mb-3">
                                         <div className="w-6 h-6 bg-green-100 dark:bg-green-900 rounded-full flex items-center justify-center">
-                                            <BulbOutlined className="text-green-600 dark:text-green-400 text-xs" />
+                                            <Lightbulb className="w-3 h-3 text-green-600 dark:text-green-400" />
                                         </div>
                                         <h4 className="font-semibold text-secondary-900 dark:text-secondary-100">
                                             Ví dụ
@@ -139,7 +139,7 @@ const GrammarTab: React.FC<GrammarTabProps> = ({ grammar }) => {
                                 <Button
                                     type="default"
                                     size="small"
-                                    icon={<SoundOutlined />}
+                                    icon={<Volume2 className="w-4 h-4" />}
                                     className="flex-1"
                                 >
                                     Nghe mẫu
@@ -147,7 +147,7 @@ const GrammarTab: React.FC<GrammarTabProps> = ({ grammar }) => {
                                 <Button
                                     type="default"
                                     size="small"
-                                    icon={<EditOutlined />}
+                                    icon={<Pencil className="w-4 h-4" />}
                                     className="flex-1"
                                 >
                                     Luyện tập
@@ -162,7 +162,7 @@ const GrammarTab: React.FC<GrammarTabProps> = ({ grammar }) => {
             <div className="bg-gradient-to-r from-purple-500 to-pink-500 dark:from-purple-700 dark:to-pink-700 rounded-xl shadow-lg p-6 text-white">
                 <div className="flex items-center gap-3 mb-4">
                     <div className="w-12 h-12 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center">
-                        <TrophyOutlined className="text-2xl" />
+                        <Trophy className="w-6 h-6" />
                     </div>
                     <div>
                         <h3 className="text-xl font-bold">Mẹo học ngữ pháp</h3>

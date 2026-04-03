@@ -26,19 +26,18 @@ import {
   Select,
 } from "antd";
 import {
-  ReadOutlined,
-  PlayCircleOutlined,
-  MessageOutlined,
-  RobotOutlined,
-  ArrowLeftOutlined,
-  LeftOutlined,
-  RightOutlined,
-} from "@ant-design/icons";
+  BookOpen,
+  Play,
+  MessageSquare,
+  Bot,
+  ArrowLeft,
+  ChevronLeft,
+  ChevronRight,
+} from "lucide-react";
 import { Grid } from "antd";
 import { getBestFemaleNaturalVoice, getNanamiNaturalVoice } from "../utils/vocabularyUtils";
-import InfinitejapaneseIcon from "../components/icons/InfinitejapaneseIcon";
-import LetterUppercaseSquareFIcon from "../components/icons/LetterUppercaseSquareFIcon";
-import type { VocabularyTableHandle } from "../components/VocabularyTable";
+import { InfinitejapaneseIcon, LetterUppercaseSquareFIcon } from "../components/icons";
+import type { VocabularyTableHandle } from "../components/vocabulary";
 
 const { Content } = Layout;
 const { Title, Text } = Typography;
@@ -1210,7 +1209,6 @@ const LessonDetail: React.FC = () => {
       case "vocabulary":
         return (
           <VocabularyTab
-            ref={vocabularyTableRef}
             vocabularies={vocabularies}
             loading={loading}
             bookmarkedVocab={bookmarkedVocab}
@@ -1346,7 +1344,7 @@ const LessonDetail: React.FC = () => {
                                     <div className="space-y-3">
                                       {typeof item.content.dialogue === 'object' && item.content.dialogue !== null ? (
                                         Object.entries(item.content.dialogue).map(([speaker, content]: [string, any]) => (
-                                          <div key={speaker} className="bg-white dark:bg-gray-700 p-3 rounded-lg border border-purple-200 dark:border-purple-600">
+                                          <div key={speaker} className="bg-card p-3 rounded-lg border border-purple-200 dark:border-purple-600">
                                             <div className="flex items-start gap-3">
                                               <Text strong className="text-purple-600 dark:text-purple-400 min-w-[24px]">
                                                 {speaker}:
@@ -1721,7 +1719,7 @@ const LessonDetail: React.FC = () => {
           height: 100% !important;
         }
         .lesson-tabs .ant-tabs-nav {
-          margin-bottom: 0 !important;
+          margin: 0 !important;
           height: 100% !important;
         }
         .lesson-tabs .ant-tabs-nav-wrap {
@@ -1739,7 +1737,7 @@ const LessonDetail: React.FC = () => {
           height: 100% !important;
           display: flex !important;
           align-items: center !important;
-          padding: 0 12px !important;
+          padding: 0 0 0 12px !important;
         }
         .lesson-tabs .ant-tabs-tab:hover {
           background-color: rgba(59, 130, 246, 0.05) !important;
@@ -1814,7 +1812,7 @@ const LessonDetail: React.FC = () => {
               `}
             </style>
           )}
-          <div className="sticky top-0 z-30 bg-gradient-to-r from-white via-white to-white dark:from-secondary-925 dark:via-secondary-925 dark:to-secondary-925 border-b border-secondary-200 dark:border-secondary-700 shadow-sm backdrop-blur-sm bg-opacity-95 dark:bg-opacity-95 h-[60px] flex items-center gap-2 pr-2">
+          <div className="sticky top-0 z-30 bg-gradient-to-r from-white via-white to-white dark:from-secondary-900 dark:via-secondary-900 dark:to-secondary-900 border-b border-secondary-200 dark:border-secondary-700 shadow-sm backdrop-blur-sm bg-opacity-95 dark:bg-opacity-95 h-[60px] flex items-center gap-2 m-0">
             <Tabs
               activeKey={activeTab}
               onChange={(key) => setActiveTab(key as TabType)}
@@ -1841,7 +1839,7 @@ const LessonDetail: React.FC = () => {
                   key: "grammar",
                   label: (
                     <span className="flex items-center gap-1">
-                      <ReadOutlined className="text-base" />
+                      <BookOpen className="w-4 h-4" />
                       {showFullTabLabels && <span>NGỮ PHÁP</span>}
                       {showCompactTabLabels && <span>NP</span>}
                       {showTabCounts && grammars.length > 0 && (
@@ -1854,7 +1852,7 @@ const LessonDetail: React.FC = () => {
                   key: "conversation",
                   label: (
                     <span className="flex items-center gap-1">
-                      <MessageOutlined className="text-base" />
+                      <MessageSquare className="w-4 h-4" />
                       {showFullTabLabels && <span>KAIWA</span>}
                       {showCompactTabLabels && <span>KAIWA</span>}
                       {showTabCounts && dialogs.length > 0 && (
@@ -1867,7 +1865,7 @@ const LessonDetail: React.FC = () => {
                   key: "exercises",
                   label: (
                     <span className="flex items-center gap-1">
-                      <PlayCircleOutlined className="text-base" />
+                      <Play className="w-4 h-4" />
                       {showFullTabLabels && <span>MONDAI</span>}
                       {showCompactTabLabels && <span>MONDAI</span>}
                       {showTabCounts && exercises.length > 0 && (
@@ -1880,7 +1878,7 @@ const LessonDetail: React.FC = () => {
                   key: "renshuu",
                   label: (
                     <span className="flex items-center gap-1">
-                      <PlayCircleOutlined className="text-base" />
+                      <Play className="w-4 h-4" />
                       {showFullTabLabels && <span>RENSHUU</span>}
                       {showCompactTabLabels && <span>RH</span>}
                       {showTabCounts && renshuuData.length > 0 && (
@@ -1893,7 +1891,7 @@ const LessonDetail: React.FC = () => {
                   key: "reibun",
                   label: (
                     <span className="flex items-center gap-1">
-                      <ReadOutlined className="text-base" />
+                      <BookOpen className="w-4 h-4" />
                       {showFullTabLabels && <span>REIBUN</span>}
                       {showCompactTabLabels && <span>RB</span>}
                       {showTabCounts && reibunData.length > 0 && (
@@ -1906,7 +1904,7 @@ const LessonDetail: React.FC = () => {
                   key: "bunkei",
                   label: (
                     <span className="flex items-center gap-1">
-                      <MessageOutlined className="text-base" />
+                      <MessageSquare className="w-4 h-4" />
                       {showFullTabLabels && <span>BUNKEI</span>}
                       {showCompactTabLabels && <span>BK</span>}
                       {showTabCounts && bunkeiData.length > 0 && (
@@ -1919,7 +1917,7 @@ const LessonDetail: React.FC = () => {
                   key: "ai",
                   label: (
                     <span className="flex items-center gap-1">
-                      <RobotOutlined className="text-base" />
+                      <Bot className="w-4 h-4" />
                       {showFullTabLabels && <span>LUYỆN VỚI AI</span>}
                       {showCompactTabLabels && <span>AI</span>}
                     </span>
@@ -1934,7 +1932,7 @@ const LessonDetail: React.FC = () => {
             <div className="flex items-center justify-between gap-4 mb-3">
               <div className="flex items-center gap-2">
                 <Button
-                  icon={<ArrowLeftOutlined />}
+                  icon={<ArrowLeft className="w-4 h-4" />}
                   onClick={() => navigate("/lessons")}
                   className="rounded-xl"
                 >
@@ -1971,7 +1969,7 @@ const LessonDetail: React.FC = () => {
               </div>
               <div className="flex items-center gap-2">
                 <Button
-                  icon={<LeftOutlined />}
+                  icon={<ChevronLeft className="w-4 h-4" />}
                   onClick={handlePreviousLesson}
                   disabled={lessonNum <= 1}
                   className="rounded-xl"
@@ -2008,7 +2006,7 @@ const LessonDetail: React.FC = () => {
                   </Text>
                 </div>
                 <Button
-                  icon={<RightOutlined />}
+                  icon={<ChevronRight className="w-4 h-4" />}
                   onClick={handleNextLesson}
                   disabled={lessonNum >= 50}
                   className="rounded-xl"

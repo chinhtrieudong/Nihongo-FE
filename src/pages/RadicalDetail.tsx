@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
-import { ArrowLeftOutlined, LeftOutlined, RightOutlined } from "@ant-design/icons";
+import { ArrowLeft, ChevronLeft, ChevronRight } from "lucide-react";
 import { Spin, Button } from "antd";
 import { lessonAPI } from "../services/api";
 import { useAppSelector } from "../store/hooks";
@@ -39,11 +39,11 @@ type DemoWord = {
 };
 
 const JLPT_BADGE_CLASS: Record<string, string> = {
-  N5: "bg-emerald-50 text-emerald-700 border-emerald-200",
-  N4: "bg-sky-50 text-sky-700 border-sky-200",
-  N3: "bg-amber-50 text-amber-700 border-amber-200",
-  N2: "bg-orange-50 text-orange-700 border-orange-200",
-  N1: "bg-rose-50 text-rose-700 border-rose-200",
+  N5: "bg-emerald-50 text-emerald-700 border-emerald-200 dark:bg-emerald-900/40 dark:text-emerald-300 dark:border-emerald-700",
+  N4: "bg-sky-50 text-sky-700 border-sky-200 dark:bg-sky-900/40 dark:text-sky-300 dark:border-sky-700",
+  N3: "bg-amber-50 text-amber-700 border-amber-200 dark:bg-amber-900/40 dark:text-amber-300 dark:border-amber-700",
+  N2: "bg-orange-50 text-orange-700 border-orange-200 dark:bg-orange-900/40 dark:text-orange-300 dark:border-orange-700",
+  N1: "bg-rose-50 text-rose-700 border-rose-200 dark:bg-rose-900/40 dark:text-rose-300 dark:border-rose-700",
 };
 
 const normalizeJlptLevel = (value?: string) => {
@@ -59,6 +59,12 @@ const RadicalDetail: React.FC = () => {
   const { fontPreset } = useAppSelector((state) => state.ui);
   const selectedPreset = getFontPreset(fontPreset);
   const [loading, setLoading] = useState(true);
+
+  // Set CSS variable for kanji font family based on selected preset
+  useEffect(() => {
+    const kanjiFont = selectedPreset.kanjiFontFamily || selectedPreset.fontFamily;
+    document.documentElement.style.setProperty('--kanji-font-family', kanjiFont);
+  }, [selectedPreset]);
   const [radical, setRadical] = useState<RadicalDetailData | null>(null);
   const [items, setItems] = useState<KanjiSummary[]>([]);
   const [vocabularyWords, setVocabularyWords] = useState<DemoWord[]>([]);
@@ -221,7 +227,7 @@ const RadicalDetail: React.FC = () => {
   if (!radical) {
     return (
       <div className="text-center py-10">
-        <p className="text-secondary-700">Không tìm thấy thông tin bộ thủ.</p>
+        <p className="text-secondary-700 dark:text-secondary-400">Không tìm thấy thông tin bộ thủ.</p>
       </div>
     );
   }
@@ -246,31 +252,32 @@ const RadicalDetail: React.FC = () => {
 
   return (
     <div className="min-h-full px-3 sm:px-4 md:px-6 py-4 sm:py-6">
-      <div className="mb-3 flex items-center justify-between">
+      {/* Header Navigation */}
+      <div className="mb-4 flex items-center justify-between">
         <div className="flex items-center gap-2">
           <Button
-            icon={<ArrowLeftOutlined />}
+            icon={<ArrowLeft className="w-4 h-4" />}
             onClick={handleBack}
             className="rounded-xl"
           >
-            Quay lại danh sách Hán tự
+            Quay lại danh sách bộ thủ
           </Button>
         </div>
 
         <div className="flex items-center gap-2">
           <Button
-            icon={<LeftOutlined />}
+            icon={<ChevronLeft className="w-4 h-4" />}
             onClick={navigateToPrev}
             disabled={currentIndex <= 0}
             className="rounded-xl"
           >
             Trước
           </Button>
-          <span className="text-sm text-slate-500">
+          <span className="text-sm text-text-sub dark:text-secondary-400 min-w-[60px] text-center">
             {currentIndex + 1} / {allRadicals.length}
           </span>
           <Button
-            icon={<RightOutlined />}
+            icon={<ChevronRight className="w-4 h-4" />}
             onClick={navigateToNext}
             disabled={currentIndex >= allRadicals.length - 1}
             className="rounded-xl"
@@ -280,69 +287,74 @@ const RadicalDetail: React.FC = () => {
         </div>
       </div>
 
-      <div className="mb-4 rounded-2xl border border-[#d5dfef] bg-[#d6e4f8] bg-[linear-gradient(to_right,rgba(255,255,255,0.45)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.45)_1px,transparent_1px)] [background-size:24px_24px] p-4 sm:p-5">
-        <div className="grid grid-cols-1 lg:grid-cols-[160px_minmax(0,1fr)] gap-4 sm:gap-5">
-          <div className="rounded-2xl border border-white/70 bg-white/70 p-4 flex flex-col items-center justify-center text-center">
-            <div className="text-[68px] sm:text-[80px] leading-none vocab-kanji-text text-[#1f2a44]" style={{ fontFamily: selectedPreset.kanjiFontFamily || selectedPreset.fontFamily }}>
+      {/* Main Radical Info Card */}
+      <div className="mb-6 rounded-2xl border border-teal-200 dark:border-teal-700 bg-gradient-to-br from-teal-50/50 to-white dark:from-teal-900/20 dark:to-[#1c212a] p-5 sm:p-6">
+        <div className="grid grid-cols-1 lg:grid-cols-[180px_minmax(0,1fr)] gap-5 sm:gap-6">
+          {/* Radical Symbol Display */}
+          <div className="rounded-2xl border border-teal-200 dark:border-teal-600 bg-white/80 dark:bg-[#252d3d]/80 p-5 flex flex-col items-center justify-center text-center">
+            <div className="text-[72px] sm:text-[88px] leading-none kanji-text text-teal-900 dark:text-teal-300">
               {displaySymbol}
             </div>
-            <div className="mt-1 text-sm font-medium text-[#334155]">
+            <div className="mt-2 text-sm font-semibold text-teal-700 dark:text-teal-400">
               {displayHanviet || displayNameVi || "Bộ thủ"}
             </div>
           </div>
 
+          {/* Radical Details */}
           <div className="min-w-0">
-            <h1 className="text-2xl sm:text-4xl font-semibold leading-tight text-[#2a2f3f]">
-              Bộ thủ <span className="vocab-kanji-text" style={{ fontFamily: selectedPreset.kanjiFontFamily || selectedPreset.fontFamily }}>{displaySymbol}</span>
+            <h1 className="text-2xl sm:text-3xl font-bold leading-tight text-text-main dark:text-secondary-100">
+              Bộ thủ <span className="kanji-text text-teal-700 dark:text-teal-400">{displaySymbol}</span>
             </h1>
-            <p className="mt-1 text-sm sm:text-lg text-[#2c3853]">
+            <p className="mt-2 text-sm sm:text-base text-text-secondary dark:text-secondary-400">
               {displayHanviet ? `${displayHanviet} • ${displayNameVi || ""}` : (displayNameVi || "Không rõ tên")}{" "}
               {displayMeaningVi || "Không có nghĩa"}
               {displayMeaningEn ? ` (${displayMeaningEn})` : ""}
             </p>
 
-            <div className="mt-3 grid grid-cols-2 sm:grid-cols-4 gap-2">
-              <div className="rounded-xl border border-white/70 bg-white/70 px-3 py-2">
-                <div className="text-[11px] uppercase tracking-wide text-slate-500">
+            {/* Stats Grid */}
+            <div className="mt-4 grid grid-cols-2 sm:grid-cols-4 gap-3">
+              <div className="rounded-xl border border-teal-200 dark:border-teal-600 bg-white/70 dark:bg-[#252d3d]/70 px-4 py-3">
+                <div className="text-[11px] uppercase tracking-wide text-teal-600 dark:text-teal-400 font-medium">
                   Số nét
                 </div>
-                <div className="text-lg font-semibold text-slate-800">
+                <div className="text-xl font-bold text-text-main dark:text-secondary-100">
                   {radical.stroke_count ?? "-"}
                 </div>
               </div>
-              <div className="rounded-xl border border-white/70 bg-white/70 px-3 py-2">
-                <div className="text-[11px] uppercase tracking-wide text-slate-500">
+              <div className="rounded-xl border border-teal-200 dark:border-teal-600 bg-white/70 dark:bg-[#252d3d]/70 px-4 py-3">
+                <div className="text-[11px] uppercase tracking-wide text-teal-600 dark:text-teal-400 font-medium">
                   JLPT
                 </div>
-                <div className="text-lg font-semibold text-slate-800">
+                <div className="text-xl font-bold text-text-main dark:text-secondary-100">
                   {jlptLabel || "-"}
                 </div>
               </div>
-              <div className="rounded-xl border border-white/70 bg-white/70 px-3 py-2">
-                <div className="text-[11px] uppercase tracking-wide text-slate-500">
+              <div className="rounded-xl border border-teal-200 dark:border-teal-600 bg-white/70 dark:bg-[#252d3d]/70 px-4 py-3">
+                <div className="text-[11px] uppercase tracking-wide text-teal-600 dark:text-teal-400 font-medium">
                   Số Kanji
                 </div>
-                <div className="text-lg font-semibold text-slate-800">
+                <div className="text-xl font-bold text-text-main dark:text-secondary-100">
                   {kanjiCount}
                 </div>
               </div>
-              <div className="rounded-xl border border-white/70 bg-white/70 px-3 py-2">
-                <div className="text-[11px] uppercase tracking-wide text-slate-500">
+              <div className="rounded-xl border border-teal-200 dark:border-teal-600 bg-white/70 dark:bg-[#252d3d]/70 px-4 py-3">
+                <div className="text-[11px] uppercase tracking-wide text-teal-600 dark:text-teal-400 font-medium">
                   Mã bộ thủ
                 </div>
-                <div className="text-lg font-semibold text-slate-800">
+                <div className="text-xl font-bold text-text-main dark:text-secondary-100 kanji-text">
                   {displaySymbol}
                 </div>
               </div>
             </div>
 
+            {/* Variants */}
             {Array.isArray(radical.variants) && radical.variants.length > 0 ? (
-              <div className="mt-3 flex flex-wrap items-center gap-2">
-                <span className="text-xs font-medium text-slate-600">Biến thể:</span>
+              <div className="mt-4 flex flex-wrap items-center gap-2">
+                <span className="text-xs font-semibold text-teal-700 dark:text-teal-400">Biến thể:</span>
                 {radical.variants.map((variant) => (
                   <span
                     key={variant}
-                    className="inline-flex items-center rounded-full border border-slate-200 bg-white/70 px-2.5 py-0.5 text-xs font-semibold text-slate-700"
+                    className="inline-flex items-center rounded-full border border-teal-200 dark:border-teal-600 bg-white/70 dark:bg-[#252d3d]/70 px-3 py-1 text-sm font-semibold text-teal-800 dark:text-teal-300 kanji-text"
                   >
                     {variant}
                   </span>
@@ -353,25 +365,25 @@ const RadicalDetail: React.FC = () => {
         </div>
       </div>
 
-
-      <div className="rounded-2xl border border-[#e6e8ee] bg-white/95 p-4 sm:p-5 mb-4">
-        <div className="mb-3 flex items-center justify-between gap-3">
-          <h2 className="text-lg font-semibold text-[#1f2a44]">Kanji theo bộ thủ</h2>
-          <div className="rounded-full border border-slate-200 bg-slate-50 px-2.5 py-1 text-xs font-medium text-slate-600">
+      {/* Kanji by Radical Section */}
+      <div className="rounded-2xl border border-[#e6e8ee] dark:border-[#3d4a63] bg-white/95 dark:bg-[#1c212a]/95 p-5 sm:p-6">
+        <div className="mb-4 flex items-center justify-between gap-3">
+          <h2 className="text-lg font-bold text-text-main dark:text-secondary-100">Kanji theo bộ thủ</h2>
+          <div className="rounded-full border border-teal-200 dark:border-teal-600 bg-teal-50 dark:bg-teal-900/40 px-3 py-1.5 text-xs font-semibold text-teal-700 dark:text-teal-300">
             {items.length} mục
           </div>
         </div>
 
         {items.length === 0 ? (
-          <div className="rounded-xl border border-dashed border-slate-300 bg-slate-50/70 p-6 text-center text-secondary-600">
+          <div className="rounded-xl border border-dashed border-[#d9dce5] dark:border-[#3d4a63] bg-[#f3f4f8] dark:bg-[#1f242d]/70 p-8 text-center text-secondary-600 dark:text-secondary-400">
             Chưa có Kanji nào cho bộ thủ này.
           </div>
         ) : (
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-3">
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-3 sm:gap-4">
             {items.map((item) => (
               <button
                 key={item._id}
-                className="rounded-xl border-2 border-slate-200 bg-white p-3 text-left transition-all hover:border-slate-400 hover:shadow-sm"
+                className="rounded-xl border-2 border-teal-200 dark:border-teal-600 bg-white dark:bg-[#252d3d] p-4 text-left transition-all duration-200 hover:border-teal-400 dark:hover:border-teal-500 hover:shadow-lg hover:-translate-y-1"
                 onClick={() => {
                   const kanjiList = items.map((k) => k.character);
                   const kanjiIndex = items.findIndex((k) => k._id === item._id);
@@ -385,23 +397,23 @@ const RadicalDetail: React.FC = () => {
                   });
                 }}
               >
-                <div className="text-4xl vocab-kanji-text leading-none text-center mb-2 text-[#1f2a44]" style={{ fontFamily: selectedPreset.kanjiFontFamily || selectedPreset.fontFamily }}>
+                <div className="text-4xl kanji-text leading-none text-center mb-3 text-teal-900 dark:text-teal-300">
                   {item.character}
                 </div>
-                <div className="text-sm sm:text-[15px] font-semibold leading-tight truncate text-slate-800 mb-1 text-center">
+                <div className="text-sm sm:text-base font-bold leading-tight truncate text-teal-800 dark:text-teal-400 mb-1 text-center">
                   {item.hanviet || "-"}
                 </div>
-                <div className="text-[11px] text-secondary-600 truncate">
+                <div className="text-[11px] text-secondary-600 dark:text-secondary-400 truncate text-center">
                   {item.meaning_vi || "-"}
                 </div>
-                <div className="mt-2 flex items-center justify-between">
-                  <span className="text-[11px] text-slate-500">
+                <div className="mt-3 flex items-center justify-between">
+                  <span className="text-[11px] text-teal-600 dark:text-teal-400 font-medium">
                     {item.stroke_count ?? "-"} nét
                   </span>
                   {item.jlpt_level ? (
                     <span
-                      className={`rounded-full border px-2 py-0.5 text-[10px] font-semibold ${JLPT_BADGE_CLASS[item.jlpt_level] ||
-                        "bg-slate-50 text-slate-700 border-slate-200"
+                      className={`rounded-full border px-2 py-0.5 text-[10px] font-bold ${JLPT_BADGE_CLASS[item.jlpt_level] ||
+                        "bg-slate-50 text-slate-700 border-slate-200 dark:bg-slate-800 dark:text-slate-300 dark:border-slate-600"
                         }`}
                     >
                       {item.jlpt_level}
@@ -413,7 +425,6 @@ const RadicalDetail: React.FC = () => {
           </div>
         )}
       </div>
-
     </div>
   );
 };

@@ -14,19 +14,19 @@ import {
   List,
 } from "antd";
 import {
-  TrophyOutlined,
-  CheckCircleOutlined,
-  CloseCircleOutlined,
-  LeftOutlined,
-  ReloadOutlined,
-  BookOutlined,
-  FileTextOutlined,
-  AudioOutlined,
-  TranslationOutlined,
-} from "@ant-design/icons";
+  Trophy,
+  CheckCircle,
+  XCircle,
+  ArrowLeft,
+  RefreshCw,
+  Book,
+  FileText,
+  Mic,
+  Languages,
+} from "lucide-react";
 import { jlptTests, type Test } from "../data/jlptTests";
 import { sampleQuestions, type Question } from "../data/sampleQuestions";
-import PageTitle from "../components/PageTitle";
+import { PageTitle } from "../components/common";
 
 const { Title, Text, Paragraph } = Typography;
 
@@ -151,25 +151,25 @@ const TestResults: React.FC = () => {
   }, [test, attempt, questions]);
 
   const getScoreColor = (score: number) => {
-    if (score >= 80) return "#52c41a";
-    if (score >= 60) return "#fa8c16";
-    return "#f5222d";
+    if (score >= 80) return "var(--success)";
+    if (score >= 60) return "var(--warning)";
+    return "var(--error)";
   };
 
   const getSectionIcon = (sectionId: string) => {
     switch (sectionId) {
       case "vocabulary":
-        return <BookOutlined />;
+        return <Book className="w-4 h-4" />;
       case "grammar":
-        return <FileTextOutlined />;
+        return <FileText className="w-4 h-4" />;
       case "reading":
-        return <FileTextOutlined />;
+        return <FileText className="w-4 h-4" />;
       case "listening":
-        return <AudioOutlined />;
+        return <Mic className="w-4 h-4" />;
       case "kanji":
-        return <TranslationOutlined />;
+        return <Languages className="w-4 h-4" />;
       default:
-        return <FileTextOutlined />;
+        return <FileText className="w-4 h-4" />;
     }
   };
 
@@ -213,7 +213,7 @@ const TestResults: React.FC = () => {
             extra={
               <div className="flex flex-row gap-2 w-full sm:w-auto">
                 <Button
-                  icon={<LeftOutlined />}
+                  icon={<ArrowLeft className="w-4 h-4" />}
                   onClick={() => navigate("/tests")}
                   className="flex-1 sm:w-auto"
                 >
@@ -221,7 +221,7 @@ const TestResults: React.FC = () => {
                 </Button>
                 <Button
                   type="primary"
-                  icon={<ReloadOutlined />}
+                  icon={<RefreshCw className="w-4 h-4" />}
                   onClick={() => navigate(`/test/${testId}`)}
                   className="flex-1 sm:w-auto"
                 >
@@ -234,8 +234,8 @@ const TestResults: React.FC = () => {
 
         {/* Overall Score */}
         <Card className="mb-6 text-center">
-          <TrophyOutlined
-            className="text-4xl sm:text-6xl mb-3 sm:mb-4"
+          <Trophy
+            className="w-10 h-10 sm:w-16 sm:h-16 mb-3 sm:mb-4"
             style={{ color: getScoreColor(attempt.score || 0) }}
           />
           <Title
@@ -321,18 +321,17 @@ const TestResults: React.FC = () => {
 
               return (
                 <List.Item
-                  className={`px-4 py-3 test-results-item ${roundClass} ${
-                    isCorrect
-                      ? "bg-green-50 dark:bg-green-900/20"
-                      : "bg-red-50 dark:bg-red-900/20"
-                  }`}
+                  className={`px-4 py-3 test-results-item ${roundClass} ${isCorrect
+                    ? "bg-green-50 dark:bg-green-900/20"
+                    : "bg-red-50 dark:bg-red-900/20"
+                    }`}
                 >
                   <List.Item.Meta
                     avatar={
                       isCorrect ? (
-                        <CheckCircleOutlined className="text-green-500 text-xl" />
+                        <CheckCircle className="w-5 h-5 text-green-500" />
                       ) : (
-                        <CloseCircleOutlined className="text-red-500 text-xl" />
+                        <XCircle className="w-5 h-5 text-red-500" />
                       )
                     }
                     title={
@@ -375,7 +374,7 @@ const TestResults: React.FC = () => {
                                 <Text className="text-green-600">
                                   {
                                     question.options?.[
-                                      question.correctAnswer as number
+                                    question.correctAnswer as number
                                     ]
                                   }
                                 </Text>
@@ -424,7 +423,7 @@ const TestResults: React.FC = () => {
 
             {sectionResults.every((result) => result.percentage >= 70) && (
               <div className="p-4 bg-green-50 dark:bg-green-900/20 rounded text-center">
-                <CheckCircleOutlined className="text-2xl text-green-500 mb-2" />
+                <CheckCircle className="w-6 h-6 text-green-500 mb-2" />
                 <div>
                   <Text strong>Làm tốt lắm!</Text>
                   <div className="text-sm text-gray-600 mt-1">

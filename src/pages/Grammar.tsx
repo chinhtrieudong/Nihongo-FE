@@ -17,7 +17,7 @@ import {
   List
 } from 'antd';
 import type { SelectProps } from 'antd';
-import { SearchOutlined, ExperimentOutlined, BookOutlined, CheckCircleOutlined } from '@ant-design/icons';
+import { Search, FlaskConical, Book, CheckCircle } from 'lucide-react';
 import { grammarAPI } from '../services/grammarApi';
 
 const { Title, Text, Paragraph } = Typography;
@@ -68,13 +68,13 @@ const Grammar: React.FC = () => {
     const loadGrammarData = async () => {
       setLoading(true);
       setError(null);
-      
+
       try {
         const levelParam = selectedLevel.length ? selectedLevel.join(',') : undefined;
         const categoryParam = selectedCategory.length ? selectedCategory.join(',') : undefined;
-        
+
         let response;
-        
+
         if (searchQuery.trim()) {
           // Search mode
           response = await grammarAPI.searchGrammar({
@@ -93,7 +93,7 @@ const Grammar: React.FC = () => {
             limit: 50
           });
         }
-        
+
         if (response.success && response.data) {
           setGrammarData({
             lessons: response.data.lessons,
@@ -200,7 +200,7 @@ const Grammar: React.FC = () => {
   const totalGrammars = filteredLessons.reduce((sum, lesson) => sum + lesson.grammars.length, 0);
 
   return (
-    <div className="grammar-page min-h-full bg-gray-50 dark:bg-secondary-900 academic-canvas">
+    <div className="grammar-page min-h-full bg-bg academic-canvas">
       {/* Desktop Layout */}
       <div className="max-w-6xl mx-auto px-4 py-8">
         {/* Header Section */}
@@ -223,7 +223,7 @@ const Grammar: React.FC = () => {
                 onChange={(e) => handleSearch(e.target.value)}
                 allowClear
                 size="small"
-                prefix={<SearchOutlined className="text-secondary-500" />}
+                prefix={<Search className="w-4 h-4 text-secondary-500" />}
                 className="w-full [&_.ant-input-prefix]:text-secondary-500"
               />
             </div>
@@ -310,7 +310,7 @@ const Grammar: React.FC = () => {
                   title={
                     <div className="flex items-center justify-between">
                       <div className="flex items-center gap-3">
-                        <BookOutlined className="text-blue-500" />
+                        <Book className="w-4 h-4 text-blue-500" />
                         <span>
                           Bài {lesson.lessonNumber}: {lesson.title}
                         </span>
@@ -328,7 +328,7 @@ const Grammar: React.FC = () => {
                       {lesson.description}
                     </Text>
                   </div>
-                  
+
                   <Collapse
                     items={lesson.grammars.map((grammar) => ({
                       key: grammar.id,
@@ -353,14 +353,14 @@ const Grammar: React.FC = () => {
                               {grammar.explanation}
                             </Paragraph>
                           </div>
-                          
+
                           <div>
                             <Text strong className="text-base">Cấu trúc:</Text>
                             <div className="mt-1 p-3 bg-gray-100 dark:bg-gray-800 rounded-lg">
                               <code className="text-lg font-mono">{grammar.structure}</code>
                             </div>
                           </div>
-                          
+
                           <div>
                             <Text strong className="text-base">Ví dụ:</Text>
                             <List
@@ -370,7 +370,7 @@ const Grammar: React.FC = () => {
                                 <List.Item className="border-0 px-0">
                                   <div className="w-full">
                                     <div className="flex items-center gap-2 mb-1">
-                                      <CheckCircleOutlined className="text-green-500" />
+                                      <CheckCircle className="w-4 h-4 text-green-500" />
                                       <Text strong className="text-blue-600 dark:text-blue-400">
                                         {example.japanese}
                                       </Text>
@@ -383,7 +383,7 @@ const Grammar: React.FC = () => {
                               )}
                             />
                           </div>
-                          
+
                           {grammar.notes && (
                             <div>
                               <Text strong className="text-base">Ghi chú:</Text>

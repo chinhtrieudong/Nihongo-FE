@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 import { Badge, Button, Avatar, Switch } from "antd";
 import {
-    MessageOutlined,
-    AudioOutlined,
-    SoundOutlined,
-    ReloadOutlined,
-    EditOutlined,
-} from "@ant-design/icons";
+    MessageCircle,
+    Mic,
+    Volume2,
+    RefreshCw,
+    Edit,
+} from "lucide-react";
 
 interface DialogTabProps {
     dialogs: any[];
@@ -22,7 +22,7 @@ const DialogTab: React.FC<DialogTabProps> = ({ dialogs }) => {
             <div className="text-center py-12">
                 <div className="inline-flex flex-col items-center">
                     <div className="w-20 h-20 bg-gray-100 dark:bg-secondary-800 rounded-full flex items-center justify-center mb-4">
-                        <MessageOutlined className="text-3xl text-gray-500 dark:text-secondary-400" />
+                        <MessageCircle className="w-8 h-8 text-gray-500 dark:text-secondary-400" />
                     </div>
                     <p className="text-secondary-700 dark:text-secondary-400 text-lg">
                         Chưa có hội thoại cho bài học này.
@@ -68,7 +68,7 @@ const DialogTab: React.FC<DialogTabProps> = ({ dialogs }) => {
                         className="text-sm"
                     />
                     <Button
-                        icon={<AudioOutlined />}
+                        icon={<Mic className="w-4 h-4" />}
                         type="default"
                         size="large"
                         className="flex items-center"
@@ -86,8 +86,8 @@ const DialogTab: React.FC<DialogTabProps> = ({ dialogs }) => {
                             key={index}
                             onClick={() => setCurrentDialog(index)}
                             className={`px-4 py-2 rounded-lg font-medium transition-all duration-200 ${index === currentDialog
-                                    ? 'bg-primary-600 text-white shadow-lg'
-                                    : 'bg-white dark:bg-secondary-800 text-secondary-600 dark:text-secondary-400 hover:bg-secondary-100 dark:hover:bg-secondary-700 border border-secondary-200 dark:border-secondary-700'
+                                ? 'bg-primary-600 text-white shadow-lg'
+                                : 'bg-white dark:bg-secondary-800 text-secondary-600 dark:text-secondary-400 hover:bg-secondary-100 dark:hover:bg-secondary-700 border border-secondary-200 dark:border-secondary-700'
                                 }`}
                         >
                             Hội thoại {index + 1}
@@ -125,14 +125,14 @@ const DialogTab: React.FC<DialogTabProps> = ({ dialogs }) => {
                         <Button
                             type="default"
                             size="small"
-                            icon={<SoundOutlined />}
+                            icon={<Volume2 className="w-4 h-4" />}
                         >
                             Tốc độ chậm
                         </Button>
                         <Button
                             type="default"
                             size="small"
-                            icon={<ReloadOutlined />}
+                            icon={<RefreshCw className="w-4 h-4" />}
                         >
                             Lặp lại
                         </Button>
@@ -163,7 +163,7 @@ const DialogTab: React.FC<DialogTabProps> = ({ dialogs }) => {
                                     <Button
                                         type="default"
                                         size="large"
-                                        icon={<AudioOutlined />}
+                                        icon={<Mic className="w-4 h-4" />}
                                         className="bg-white/20 backdrop-blur-sm text-white border-white/30 hover:bg-white/30"
                                     >
                                         Nghe hội thoại
@@ -200,8 +200,8 @@ const DialogTab: React.FC<DialogTabProps> = ({ dialogs }) => {
                                             <div className={`flex-1 max-w-md ${isEven ? 'text-left' : 'text-right'
                                                 }`}>
                                                 <div className={`inline-block p-4 rounded-2xl ${isEven
-                                                        ? 'bg-secondary-100 dark:bg-secondary-800 text-secondary-900 dark:text-secondary-100 rounded-tl-none'
-                                                        : 'bg-primary-500 text-white rounded-tr-none'
+                                                    ? 'bg-secondary-100 dark:bg-secondary-800 text-secondary-900 dark:text-secondary-100 rounded-tl-none'
+                                                    : 'bg-primary-500 text-white rounded-tr-none'
                                                     }`}>
                                                     <div className="font-medium text-lg mb-2">
                                                         {line.japanese}
@@ -209,8 +209,8 @@ const DialogTab: React.FC<DialogTabProps> = ({ dialogs }) => {
 
                                                     {showRomaji && (
                                                         <div className={`text-sm mb-2 ${isEven
-                                                                ? 'text-secondary-600 dark:text-secondary-400 italic'
-                                                                : 'text-white/80 italic'
+                                                            ? 'text-secondary-600 dark:text-secondary-400 italic'
+                                                            : 'text-white/80 italic'
                                                             }`}>
                                                             {line.romaji}
                                                         </div>
@@ -218,8 +218,8 @@ const DialogTab: React.FC<DialogTabProps> = ({ dialogs }) => {
 
                                                     {showTranslation && (
                                                         <div className={`text-sm ${isEven
-                                                                ? 'text-green-600 dark:text-green-400'
-                                                                : 'text-green-200'
+                                                            ? 'text-green-600 dark:text-green-400'
+                                                            : 'text-green-200'
                                                             }`}>
                                                             {line.vietnamese}
                                                         </div>
@@ -232,7 +232,7 @@ const DialogTab: React.FC<DialogTabProps> = ({ dialogs }) => {
                                                     <Button
                                                         type="text"
                                                         size="small"
-                                                        icon={<SoundOutlined />}
+                                                        icon={<Volume2 className="w-4 h-4" />}
                                                         className="text-secondary-500 hover:text-primary-600"
                                                     >
                                                         Nghe
@@ -252,7 +252,7 @@ const DialogTab: React.FC<DialogTabProps> = ({ dialogs }) => {
             <div className="bg-gradient-to-r from-green-500 to-teal-500 dark:from-green-700 dark:to-teal-700 rounded-xl shadow-lg p-6 text-white">
                 <div className="flex items-center gap-3 mb-4">
                     <div className="w-12 h-12 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center">
-                        <MessageOutlined className="text-2xl" />
+                        <MessageCircle className="w-6 h-6" />
                     </div>
                     <div>
                         <h3 className="text-xl font-bold">Luyện tập hội thoại</h3>
@@ -266,7 +266,7 @@ const DialogTab: React.FC<DialogTabProps> = ({ dialogs }) => {
                         className="bg-white/20 backdrop-blur-sm text-white border-white/30 hover:bg-white/30 h-auto py-4"
                     >
                         <div className="flex flex-col items-center gap-2">
-                            <SoundOutlined className="text-2xl" />
+                            <Volume2 className="w-6 h-6" />
                             <span>Luyện nghe</span>
                         </div>
                     </Button>
@@ -276,7 +276,7 @@ const DialogTab: React.FC<DialogTabProps> = ({ dialogs }) => {
                         className="bg-white/20 backdrop-blur-sm text-white border-white/30 hover:bg-white/30 h-auto py-4"
                     >
                         <div className="flex flex-col items-center gap-2">
-                            <AudioOutlined className="text-2xl" />
+                            <Mic className="w-6 h-6" />
                             <span>Luyện nói</span>
                         </div>
                     </Button>
@@ -286,7 +286,7 @@ const DialogTab: React.FC<DialogTabProps> = ({ dialogs }) => {
                         className="bg-white/20 backdrop-blur-sm text-white border-white/30 hover:bg-white/30 h-auto py-4"
                     >
                         <div className="flex flex-col items-center gap-2">
-                            <EditOutlined className="text-2xl" />
+                            <Edit className="w-6 h-6" />
                             <span>Vai diễn</span>
                         </div>
                     </Button>

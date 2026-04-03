@@ -1,6 +1,6 @@
 import React from "react";
 import { Badge } from "antd";
-import { BookOutlined } from "@ant-design/icons";
+import { Book } from "lucide-react";
 
 interface VocabularyListProps {
     vocabulary: Array<{
@@ -23,7 +23,7 @@ const VocabularyList: React.FC<VocabularyListProps> = ({
     return (
         <div className="bg-white dark:bg-secondary-800 rounded-xl shadow-lg p-6">
             <h3 className="text-lg font-semibold mb-4 text-secondary-900 dark:text-secondary-100 flex items-center gap-2">
-                <BookOutlined />
+                <Book className="w-5 h-5" />
                 Danh sách từ vựng
             </h3>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">

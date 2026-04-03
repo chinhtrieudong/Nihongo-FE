@@ -2,18 +2,11 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Button, Tag, Card, Row, Col } from "antd";
-import { 
-  RightOutlined, 
-  BookOutlined,
-  ExperimentOutlined,
-  SoundOutlined,
-  MessageOutlined,
-  AimOutlined,
-  ReadOutlined,
-  TranslationOutlined,
-  BulbOutlined,
-  TrophyOutlined
-} from "@ant-design/icons";
+import { Icon } from "@iconify/react";
+import {
+  ChevronRight,
+  BookOpen,
+} from "lucide-react";
 import { useAppSelector } from "../store/hooks";
 
 interface Textbook {
@@ -34,7 +27,7 @@ const textbooks: Textbook[] = [
     description: "Giáo trình phổ biến nhất cho người mới bắt đầu",
     level: "N5 - N4",
     totalLessons: 25,
-    color: "#3B82F6"
+    color: "var(--primary)"
   },
   {
     id: "tango_no_nihongo",
@@ -43,7 +36,7 @@ const textbooks: Textbook[] = [
     description: "Từ vựng theo chủ đề, học qua bài hát",
     level: "N5 - N4",
     totalLessons: 13,
-    color: "#10B981"
+    color: "var(--secondary)"
   }
 ];
 
@@ -56,14 +49,14 @@ const Home: React.FC = () => {
   };
 
   return (
-    <div className="min-h-full bg-gray-50 dark:bg-secondary-900 academic-canvas">
+    <div className="min-h-full bg-bg academic-canvas">
       <div className="max-w-6xl mx-auto px-4 py-8">
         {/* Header */}
         <div className="text-center mb-6">
-          <h1 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-secondary-100 mb-3">
+          <h1 className="text-3xl md:text-4xl font-bold text-text-main mb-3">
             Học Tiếng Nhật
           </h1>
-          <p className="text-gray-600 dark:text-secondary-400 text-lg">
+          <p className="text-text-sub text-lg">
             Chọn giáo trình phù hợp với trình độ của bạn
           </p>
         </div>
@@ -73,53 +66,53 @@ const Home: React.FC = () => {
           {textbooks.map((textbook) => (
             <div
               key={textbook.id}
-              className="bg-white dark:bg-secondary-800 rounded-xl shadow-sm hover:shadow-md transition-shadow duration-200 overflow-hidden border border-gray-200 dark:border-secondary-700"
+              className="bg-card rounded-2xl shadow-sm hover:bg-hover-bg transition-all duration-200 overflow-hidden border border-border"
             >
               {/* Header with color */}
-              <div 
+              <div
                 className="h-2"
                 style={{ backgroundColor: textbook.color }}
               />
-              
+
               <div className="p-6">
                 {/* Title */}
                 <div className="mb-4">
-                  <h3 className="text-xl font-bold text-gray-900 dark:text-secondary-100 mb-1">
+                  <h3 className="text-xl font-bold text-text-main mb-1">
                     {textbook.name}
                   </h3>
-                  <p className="text-gray-500 dark:text-secondary-400 text-sm">
+                  <p className="text-text-sub text-sm">
                     {textbook.nameJp}
                   </p>
                 </div>
-                
+
                 {/* Description */}
-                <p className="text-gray-600 dark:text-secondary-300 text-sm mb-4">
+                <p className="text-text-secondary text-sm mb-4">
                   {textbook.description}
                 </p>
-                
+
                 {/* Meta info */}
                 <div className="flex items-center justify-between mb-5">
                   <Tag color={textbook.color}>
                     {textbook.level}
                   </Tag>
-                  <span className="text-sm text-gray-500 dark:text-secondary-400">
+                  <span className="text-sm text-text-sub">
                     {textbook.totalLessons} bài học
                   </span>
                 </div>
-                
+
                 {/* Button */}
                 <Button
                   type="primary"
                   block
                   className="flex items-center justify-center gap-2"
-                  style={{ 
-                    backgroundColor: textbook.color, 
+                  style={{
+                    backgroundColor: textbook.color,
                     borderColor: textbook.color,
                     height: '44px'
                   }}
                   onClick={() => handleTextbookClick(textbook)}
                 >
-                  <BookOutlined />
+                  <BookOpen className="w-4 h-4" />
                   Bắt đầu học
                 </Button>
               </div>
@@ -129,120 +122,121 @@ const Home: React.FC = () => {
 
         {/* Learning Grid Section */}
         <div className="mt-16">
-          <h2 className="text-xl font-semibold text-gray-900 dark:text-secondary-100 mb-6 text-center">
+          <h2 className="text-xl font-semibold text-text-main mb-6 text-center">
             Học thuật
           </h2>
           <Row gutter={[16, 16]}>
             <Col xs={12} sm={8} md={6}>
-              <Card 
-                hoverable 
-                className="text-center cursor-pointer bg-white border-gray-200 dark:bg-secondary-800 dark:border-secondary-700"
+              <Card
+                hoverable
+                className="text-center cursor-pointer bg-card border-border"
                 onClick={() => navigate('/grammar')}
               >
-                <ExperimentOutlined className="text-3xl text-blue-500 mb-3" />
-                <div className="text-sm font-medium text-gray-900 dark:text-secondary-100">Ngữ pháp</div>
-                <div className="text-xs text-gray-500 dark:text-secondary-400 mt-1">Grammar</div>
+                <Icon icon="mdi:flask-outline" className="w-8 h-8 text-blue-500 mb-3" width={32} height={32} />
+                <div className="text-sm font-medium text-text-main">Ngữ pháp</div>
+                <div className="text-xs text-text-sub mt-1">Grammar</div>
               </Card>
             </Col>
             <Col xs={12} sm={8} md={6}>
-              <Card 
-                hoverable 
-                className="text-center cursor-pointer bg-white border-gray-200 dark:bg-secondary-800 dark:border-secondary-700"
+              <Card
+                hoverable
+                className="text-center cursor-pointer bg-card border-border"
                 onClick={() => navigate('/kanji')}
               >
-                <TranslationOutlined className="text-3xl text-red-500 mb-3" />
-                <div className="text-sm font-medium text-gray-900 dark:text-secondary-100">Hán tự</div>
-                <div className="text-xs text-gray-500 dark:text-secondary-400 mt-1">Kanji</div>
+                <Icon icon="mdi:kanji" className="w-8 h-8 text-red-500 mb-3" width={32} height={32} />
+                <div className="text-sm font-medium text-text-main">Hán tự</div>
+                <div className="text-xs text-text-sub mt-1">Kanji</div>
               </Card>
             </Col>
             <Col xs={12} sm={8} md={6}>
-              <Card 
-                hoverable 
-                className="text-center cursor-pointer bg-white border-gray-200 dark:bg-secondary-800 dark:border-secondary-700"
+              <Card
+                hoverable
+                className="text-center cursor-pointer bg-card border-border"
                 onClick={() => navigate('/pronunciation')}
               >
-                <SoundOutlined className="text-3xl text-green-500 mb-3" />
-                <div className="text-sm font-medium text-gray-900 dark:text-secondary-100">Phát âm</div>
-                <div className="text-xs text-gray-500 dark:text-secondary-400 mt-1">Pronunciation</div>
+                <Icon icon="mdi:volume-high" className="w-8 h-8 text-green-500 mb-3" width={32} height={32} />
+                <div className="text-sm font-medium text-text-main">Phát âm</div>
+                <div className="text-xs text-text-sub mt-1">Pronunciation</div>
               </Card>
             </Col>
             <Col xs={12} sm={8} md={6}>
-              <Card 
-                hoverable 
-                className="text-center cursor-pointer bg-white border-gray-200 dark:bg-secondary-800 dark:border-secondary-700"
+              <Card
+                hoverable
+                className="text-center cursor-pointer bg-card border-border"
                 onClick={() => navigate('/conversation')}
               >
-                <MessageOutlined className="text-3xl text-purple-500 mb-3" />
-                <div className="text-sm font-medium text-gray-900 dark:text-secondary-100">Hội thoại</div>
-                <div className="text-xs text-gray-500 dark:text-secondary-400 mt-1">Conversation</div>
+                <Icon icon="mdi:message-text-outline" className="w-8 h-8 text-purple-500 mb-3" width={32} height={32} />
+                <div className="text-sm font-medium text-text-main">Hội thoại</div>
+                <div className="text-xs text-text-sub mt-1">Conversation</div>
               </Card>
             </Col>
             <Col xs={12} sm={8} md={6}>
-              <Card 
-                hoverable 
-                className="text-center cursor-pointer bg-white border-gray-200 dark:bg-secondary-800 dark:border-secondary-700"
+              <Card
+                hoverable
+                className="text-center cursor-pointer bg-card border-border"
                 onClick={() => navigate('/vocabulary')}
               >
-                <ReadOutlined className="text-3xl text-orange-500 mb-3" />
-                <div className="text-sm font-medium text-gray-900 dark:text-secondary-100">Từ vựng</div>
-                <div className="text-xs text-gray-500 dark:text-secondary-400 mt-1">Vocabulary</div>
+                <Icon icon="mdi:book-open-variant" className="w-8 h-8 text-orange-500 mb-3" width={32} height={32} />
+                <div className="text-sm font-medium text-text-main">Từ vựng</div>
+                <div className="text-xs text-text-sub mt-1">Vocabulary</div>
               </Card>
             </Col>
             <Col xs={12} sm={8} md={6}>
-              <Card 
-                hoverable 
-                className="text-center cursor-pointer bg-white border-gray-200 dark:bg-secondary-800 dark:border-secondary-700"
+              <Card
+                hoverable
+                className="text-center cursor-pointer bg-card border-border"
                 onClick={() => navigate('/tests')}
               >
-                <AimOutlined className="text-3xl text-yellow-500 mb-3" />
-                <div className="text-sm font-medium text-gray-900 dark:text-secondary-100">Thi JLPT</div>
-                <div className="text-xs text-gray-500 dark:text-secondary-400 mt-1">JLPT Test</div>
+                <Icon icon="mdi:target" className="w-8 h-8 text-yellow-500 mb-3" width={32} height={32} />
+                <div className="text-sm font-medium text-text-main">Thi JLPT</div>
+                <div className="text-xs text-text-sub mt-1">JLPT Test</div>
               </Card>
             </Col>
             <Col xs={12} sm={8} md={6}>
-              <Card 
-                hoverable 
-                className="text-center cursor-pointer bg-white border-gray-200 dark:bg-secondary-800 dark:border-secondary-700"
+              <Card
+                hoverable
+                className="text-center cursor-pointer bg-card border-border"
+                onClick={() => navigate('/flashcard')}
               >
-                <BulbOutlined className="text-3xl text-cyan-500 mb-3" />
-                <div className="text-sm font-medium text-gray-900 dark:text-secondary-100">Mẹo học</div>
-                <div className="text-xs text-gray-500 dark:text-secondary-400 mt-1">Study Tips</div>
+                <Icon icon="solar:card-outline" className="w-8 h-8 text-cyan-500 mb-3" width={32} height={32} />
+                <div className="text-sm font-medium text-text-main">Flashcard</div>
+                <div className="text-xs text-text-sub mt-1">Flashcard</div>
               </Card>
             </Col>
             <Col xs={12} sm={8} md={6}>
-              <Card 
-                hoverable 
-                className="text-center cursor-pointer bg-white border-gray-200 dark:bg-secondary-800 dark:border-secondary-700"
+              <Card
+                hoverable
+                className="text-center cursor-pointer bg-card border-border"
               >
-                <TrophyOutlined className="text-3xl text-pink-500 mb-3" />
-                <div className="text-sm font-medium text-gray-900 dark:text-secondary-100">Thành tích</div>
-                <div className="text-xs text-gray-500 dark:text-secondary-400 mt-1">Achievements</div>
+                <Icon icon="mdi:trophy-outline" className="w-8 h-8 text-pink-500 mb-3" width={32} height={32} />
+                <div className="text-sm font-medium text-text-main">Thành tích</div>
+                <div className="text-xs text-text-sub mt-1">Achievements</div>
               </Card>
             </Col>
           </Row>
         </div>
 
         {/* Stats Section */}
-        <div className="mt-16 bg-white dark:bg-secondary-800 rounded-xl p-8 border border-gray-200 dark:border-secondary-700">
-          <h2 className="text-xl font-semibold text-gray-900 dark:text-secondary-100 mb-6 text-center">
+        <div className="mt-16 bg-card rounded-xl p-8 border border-border">
+          <h2 className="text-xl font-semibold text-text-main mb-6 text-center">
             Thống kê học tập
           </h2>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
             <div className="text-center">
-              <div className="text-3xl font-bold text-blue-600 dark:text-blue-400">2</div>
-              <div className="text-sm text-gray-600 dark:text-secondary-400 mt-1">Giáo trình</div>
+              <div className="text-3xl font-bold text-blue-600">2</div>
+              <div className="text-sm text-text-sub mt-1">Giáo trình</div>
             </div>
             <div className="text-center">
-              <div className="text-3xl font-bold text-green-600 dark:text-green-400">38</div>
-              <div className="text-sm text-gray-600 dark:text-secondary-400 mt-1">Bài học</div>
+              <div className="text-3xl font-bold text-green-600">38</div>
+              <div className="text-sm text-text-sub mt-1">Bài học</div>
             </div>
             <div className="text-center">
-              <div className="text-3xl font-bold text-yellow-600 dark:text-yellow-400">5</div>
-              <div className="text-sm text-gray-600 dark:text-secondary-400 mt-1">Cấp độ JLPT</div>
+              <div className="text-3xl font-bold text-yellow-600">5</div>
+              <div className="text-sm text-text-sub mt-1">Cấp độ JLPT</div>
             </div>
             <div className="text-center">
-              <div className="text-3xl font-bold text-purple-600 dark:text-purple-400">∞</div>
-              <div className="text-sm text-gray-600 dark:text-secondary-400 mt-1">Thời gian học</div>
+              <div className="text-3xl font-bold text-purple-600">∞</div>
+              <div className="text-sm text-text-sub mt-1">Thời gian học</div>
             </div>
           </div>
         </div>

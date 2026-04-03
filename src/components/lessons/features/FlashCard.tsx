@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 import { Button } from "antd";
 import {
-    LeftOutlined,
-    RightOutlined,
-    EyeOutlined,
-    EyeInvisibleOutlined,
-    StarOutlined,
-    BulbOutlined,
-} from "@ant-design/icons";
+    ChevronLeft,
+    ChevronRight,
+    Eye,
+    EyeOff,
+    Star,
+    Lightbulb,
+} from "lucide-react";
 
 interface FlashCardProps {
     card: {
@@ -109,7 +109,7 @@ const FlashCard: React.FC<FlashCardProps> = ({
                             {card.mnemonic && (
                                 <div className="bg-white/20 backdrop-blur-sm rounded-lg p-4">
                                     <div className="flex items-center gap-2 mb-2">
-                                        <BulbOutlined className="text-yellow-300" />
+                                        <Lightbulb className="w-4 h-4 text-yellow-300" />
                                         <span className="text-sm font-medium">Mẹo ghi nhớ:</span>
                                     </div>
                                     <p className="text-sm opacity-90">{card.mnemonic}</p>
@@ -124,7 +124,7 @@ const FlashCard: React.FC<FlashCardProps> = ({
             <div className="flex justify-between items-center mt-8">
                 <Button
                     onClick={handlePrev}
-                    icon={<LeftOutlined />}
+                    icon={<ChevronLeft className="w-4 h-4" />}
                     size="large"
                     className="flex items-center"
                 >
@@ -133,13 +133,13 @@ const FlashCard: React.FC<FlashCardProps> = ({
                 <div className="flex gap-2">
                     <Button
                         onClick={handleCardFlip}
-                        icon={isFlipped ? <EyeOutlined /> : <EyeInvisibleOutlined />}
+                        icon={isFlipped ? <Eye className="w-4 h-4" /> : <EyeOff className="w-4 h-4" />}
                         type="default"
                     >
                         {isFlipped ? 'Ẩn nghĩa' : 'Hiện nghĩa'}
                     </Button>
                     <Button
-                        icon={<StarOutlined />}
+                        icon={<Star className="w-4 h-4" />}
                         type="default"
                     >
                         Đánh dấu
@@ -147,7 +147,7 @@ const FlashCard: React.FC<FlashCardProps> = ({
                 </div>
                 <Button
                     onClick={handleNext}
-                    icon={<RightOutlined />}
+                    icon={<ChevronRight className="w-4 h-4" />}
                     size="large"
                     type="primary"
                     className="flex items-center"

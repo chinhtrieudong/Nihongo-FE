@@ -1,6 +1,6 @@
 import React, { useRef, useEffect, useState } from "react";
 import { Button, Card, Input, Space, Typography } from "antd";
-import { DownOutlined } from "@ant-design/icons";
+import { ChevronDown } from "lucide-react";
 import { formatAIText } from "../../utils/textFormatter";
 
 const { Title, Text } = Typography;
@@ -65,64 +65,64 @@ const AiPracticeTab: React.FC<AiPracticeTabProps> = ({
             className="h-80 border border-secondary-200 dark:border-secondary-700 rounded-lg p-3 overflow-y-auto mb-3"
             style={{ backgroundColor: "var(--ant-color-bg-container)" }}
           >
-          {aiMessages.length === 0 ? (
-            <div className="flex items-center justify-center h-full">
-              <Text className="text-sm !text-secondary-700 dark:!text-secondary-400">
-                Bắt đầu cuộc hội thoại với AI...
-              </Text>
-            </div>
-          ) : (
-            <Space orientation="vertical" className="w-full">
-              {aiMessages.map((message, index) => (
-                <div
-                  key={index}
-                  className={`flex ${message.role === "user" ? "justify-end" : "justify-start"}`}
-                >
-                  <Card
-                    className={`max-w-[85%] ${message.role === "user"
-                      ? "bg-blue-100 dark:bg-blue-900/30 border-blue-200 dark:border-blue-700"
-                      : "bg-secondary-100 dark:bg-secondary-900 border-secondary-200 dark:border-secondary-700"
-                      }`}
-                    size="small"
-                    styles={{ body: { padding: 10 } }}
+            {aiMessages.length === 0 ? (
+              <div className="flex items-center justify-center h-full">
+                <Text className="text-sm !text-secondary-700 dark:!text-secondary-400">
+                  Bắt đầu cuộc hội thoại với AI...
+                </Text>
+              </div>
+            ) : (
+              <Space orientation="vertical" className="w-full">
+                {aiMessages.map((message, index) => (
+                  <div
+                    key={index}
+                    className={`flex ${message.role === "user" ? "justify-end" : "justify-start"}`}
                   >
-                    <Text strong className="text-sm">
-                      {message.role === "user" ? "You" : "AI"}
-                    </Text>
-                    <div className="text-sm mt-1">
-                      {message.role === "assistant" ? formatAIText(message.content) : message.content}
-                    </div>
-                  </Card>
-                </div>
-              ))}
-              {aiLoading && (
-                <div className="flex justify-start">
-                  <Card
-                    className="max-w-[85%] bg-secondary-100 dark:bg-secondary-900 border-secondary-200 dark:border-secondary-700"
-                    size="small"
-                    styles={{ body: { padding: 10 } }}
-                  >
-                    <Text strong className="text-sm">AI</Text>
-                    <div className="flex items-center gap-2 mt-1">
-                      <div className="flex space-x-1">
-                        <div className="w-2 h-2 bg-blue-500 rounded-full animate-bounce" style={{ animationDelay: '0ms' }}></div>
-                        <div className="w-2 h-2 bg-blue-500 rounded-full animate-bounce" style={{ animationDelay: '150ms' }}></div>
-                        <div className="w-2 h-2 bg-blue-500 rounded-full animate-bounce" style={{ animationDelay: '300ms' }}></div>
+                    <Card
+                      className={`max-w-[85%] ${message.role === "user"
+                        ? "bg-blue-100 dark:bg-blue-900/30 border-blue-200 dark:border-blue-700"
+                        : "bg-secondary-100 dark:bg-secondary-900 border-secondary-200 dark:border-secondary-700"
+                        }`}
+                      size="small"
+                      styles={{ body: { padding: 10 } }}
+                    >
+                      <Text strong className="text-sm">
+                        {message.role === "user" ? "You" : "AI"}
+                      </Text>
+                      <div className="text-sm mt-1">
+                        {message.role === "assistant" ? formatAIText(message.content) : message.content}
                       </div>
-                      <span className="text-sm text-secondary-500">AI đang tạo phản hồi...</span>
-                    </div>
-                  </Card>
-                </div>
-              )}
-              <div ref={messagesEndRef} />
-            </Space>
-          )}
+                    </Card>
+                  </div>
+                ))}
+                {aiLoading && (
+                  <div className="flex justify-start">
+                    <Card
+                      className="max-w-[85%] bg-secondary-100 dark:bg-secondary-900 border-secondary-200 dark:border-secondary-700"
+                      size="small"
+                      styles={{ body: { padding: 10 } }}
+                    >
+                      <Text strong className="text-sm">AI</Text>
+                      <div className="flex items-center gap-2 mt-1">
+                        <div className="flex space-x-1">
+                          <div className="w-2 h-2 bg-blue-500 rounded-full animate-bounce" style={{ animationDelay: '0ms' }}></div>
+                          <div className="w-2 h-2 bg-blue-500 rounded-full animate-bounce" style={{ animationDelay: '150ms' }}></div>
+                          <div className="w-2 h-2 bg-blue-500 rounded-full animate-bounce" style={{ animationDelay: '300ms' }}></div>
+                        </div>
+                        <span className="text-sm text-secondary-500">AI đang tạo phản hồi...</span>
+                      </div>
+                    </Card>
+                  </div>
+                )}
+                <div ref={messagesEndRef} />
+              </Space>
+            )}
           </div>
           {showScrollButton && (
             <Button
               type="default"
               shape="round"
-              icon={<DownOutlined />}
+              icon={<ChevronDown className="w-4 h-4" />}
               onClick={scrollToBottom}
               className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
               style={{ zIndex: 10 }}

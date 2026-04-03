@@ -1,9 +1,9 @@
 import React from "react";
 import { Modal, Typography, Tag } from "antd";
 import {
-    ClockCircleOutlined,
-    FileTextOutlined
-} from "@ant-design/icons";
+    Clock,
+    FileText
+} from "lucide-react";
 
 const { Title, Text } = Typography;
 
@@ -63,14 +63,14 @@ const StartTestModal: React.FC<StartTestModalProps> = ({
                     <div className="grid grid-cols-2 gap-4">
                         <div className="bg-gray-50 p-3 rounded">
                             <div className="flex items-center text-sm text-gray-600 mb-1">
-                                <ClockCircleOutlined className="mr-2" />
+                                <Clock className="w-4 h-4 mr-2" />
                                 Thời gian
                             </div>
                             <div className="font-semibold">{test.duration} phút</div>
                         </div>
                         <div className="bg-gray-50 p-3 rounded">
                             <div className="flex items-center text-sm text-gray-600 mb-1">
-                                <FileTextOutlined className="mr-2" />
+                                <FileText className="w-4 h-4 mr-2" />
                                 Số câu
                             </div>
                             <div className="font-semibold">{test.questions} câu</div>

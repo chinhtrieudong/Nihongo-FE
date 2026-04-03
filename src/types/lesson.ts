@@ -46,7 +46,7 @@ export interface VocabularyItem {
   difficulty?: "easy" | "medium" | "hard";
   frequency?: "low" | "medium" | "high";
   tags?: string[];
-  status?: 'unknown' | 'learning' | 'known';
+  status?: "unknown" | "learning" | "known";
 }
 
 export interface Example {
@@ -64,9 +64,11 @@ export interface Comparison {
 export interface GrammarPattern {
   id: string;
   pattern: string;
+  title?: string;
   meaning?: string;
   meaning_vi?: string;
   usage_vi?: string;
+  explanation?: string;
   structure?: string;
   formation?: string;
   examples: Example[];
@@ -74,6 +76,8 @@ export interface GrammarPattern {
   level: string;
   importance: string;
   status: string;
+  notes?: string;
+  category?: string;
 }
 
 export interface DialogLine {
@@ -111,7 +115,15 @@ export interface Dialog {
 
 export interface Exercise {
   id: string;
-  type: "multiple-choice" | "fill-blank" | "fill_blank" | "reorder" | "listening" | "writing" | "listening_comprehension" | "dialogue_comprehension";
+  type:
+    | "multiple-choice"
+    | "fill-blank"
+    | "fill_blank"
+    | "reorder"
+    | "listening"
+    | "writing"
+    | "listening_comprehension"
+    | "dialogue_comprehension";
   title?: string;
   question: string;
   answer?: string | string[];

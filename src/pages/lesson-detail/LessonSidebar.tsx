@@ -1,8 +1,8 @@
 import React from "react";
 import { Button, Drawer, Layout, Spin, Tooltip, Typography } from "antd";
-import { CloseOutlined } from "@ant-design/icons";
+import { X } from "lucide-react";
 import type { Lesson } from "../../types/lesson";
-import LessonRange from "../../components/LessonRange";
+import LessonRange from "../../components/lessons/LessonRange";
 import { APP_HEADER_HEIGHT_PX } from "../../constants/layout";
 
 const { Sider } = Layout;
@@ -101,7 +101,7 @@ const LessonSidebar: React.FC<LessonSidebarProps> = ({
             <Tooltip title="Đóng danh sách bài học" placement="bottom">
               <Button
                 type="text"
-                icon={<CloseOutlined />}
+                icon={<X className="w-4 h-4" />}
                 onClick={() => setDesktopSidebarCollapsed(true)}
                 className="
                   flex-shrink-0

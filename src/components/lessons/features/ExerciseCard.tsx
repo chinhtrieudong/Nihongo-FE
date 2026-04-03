@@ -1,9 +1,9 @@
 import React from "react";
 import { Badge, Button } from "antd";
 import {
-    CheckCircleOutlined,
-    BulbOutlined,
-} from "@ant-design/icons";
+    CheckCircle,
+    Lightbulb,
+} from "lucide-react";
 
 interface ExerciseCardProps {
     exercise: {
@@ -56,7 +56,7 @@ const ExerciseCard: React.FC<ExerciseCardProps> = ({
                     <Button
                         type="default"
                         size="large"
-                        icon={<BulbOutlined />}
+                        icon={<Lightbulb className="w-4 h-4" />}
                         className="bg-white/20 backdrop-blur-sm text-white border-white/30 hover:bg-white/30"
                         onClick={onToggleHint}
                     >
@@ -99,7 +99,7 @@ const ExerciseCard: React.FC<ExerciseCardProps> = ({
                                         {result && answer === option && (
                                             <div className="ml-3">
                                                 {result.isCorrect ? (
-                                                    <CheckCircleOutlined className="text-green-500 text-xl" />
+                                                    <CheckCircle className="w-5 h-5 text-green-500" />
                                                 ) : (
                                                     <span className="text-red-500 text-xl">✗</span>
                                                 )}
@@ -116,7 +116,7 @@ const ExerciseCard: React.FC<ExerciseCardProps> = ({
                 {showHint && (
                     <div className="mt-6 p-4 bg-blue-50 dark:bg-blue-900/20 border-l-4 border-blue-500 rounded">
                         <div className="flex items-center gap-2 mb-2">
-                            <BulbOutlined className="text-blue-500" />
+                            <Lightbulb className="w-4 h-4 text-blue-500" />
                             <span className="font-medium text-blue-700 dark:text-blue-300">Gợi ý:</span>
                         </div>
                         <p className="text-sm text-blue-600 dark:text-blue-400">
@@ -142,7 +142,7 @@ const ExerciseCard: React.FC<ExerciseCardProps> = ({
                 {result && (
                     <div className="mt-6 p-6 bg-secondary-50 dark:bg-secondary-800 rounded-lg border-l-4 border-orange-500">
                         <div className="flex items-center gap-2 mb-3">
-                            <BulbOutlined className="text-orange-500" />
+                            <Lightbulb className="w-4 h-4 text-orange-500" />
                             <span className="font-semibold text-secondary-900 dark:text-secondary-100">
                                 Giải thích:
                             </span>

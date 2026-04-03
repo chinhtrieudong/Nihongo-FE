@@ -22,55 +22,66 @@ const normalizeLevel = (value?: string) => {
     return undefined;
 };
 
-const getLevelStyles = (level?: string) => {
+const getLevelStyles = (level?: string, isRadical?: boolean) => {
+    // Bộ thủ sử dụng một màu duy nhất
+    if (isRadical) {
+        return {
+            card: 'border-teal-200 bg-teal-50/35 hover:border-teal-400 dark:border-teal-700 dark:bg-teal-900/40 dark:hover:border-teal-500',
+            char: 'text-teal-900 dark:text-teal-300',
+            divider: 'border-teal-100 dark:border-teal-700',
+            hanviet: 'text-teal-700 dark:text-teal-400',
+            badge: 'bg-teal-100 text-teal-800 dark:bg-teal-800/60 dark:text-teal-200',
+        };
+    }
+
     switch (level) {
         case 'N5':
             return {
-                card: 'border-emerald-200 bg-emerald-50/35 hover:border-emerald-400',
-                char: 'text-emerald-900',
-                divider: 'border-emerald-100',
-                hanviet: 'text-emerald-700',
-                badge: 'bg-emerald-100 text-emerald-800',
+                card: 'border-emerald-200 bg-emerald-50/35 hover:border-emerald-400 dark:border-emerald-700 dark:bg-emerald-900/40 dark:hover:border-emerald-500',
+                char: 'text-emerald-900 dark:text-emerald-300',
+                divider: 'border-emerald-100 dark:border-emerald-700',
+                hanviet: 'text-emerald-700 dark:text-emerald-400',
+                badge: 'bg-emerald-100 text-emerald-800 dark:bg-emerald-800/60 dark:text-emerald-200',
             };
         case 'N4':
             return {
-                card: 'border-sky-200 bg-sky-50/35 hover:border-sky-400',
-                char: 'text-sky-900',
-                divider: 'border-sky-100',
-                hanviet: 'text-sky-700',
-                badge: 'bg-sky-100 text-sky-800',
+                card: 'border-sky-200 bg-sky-50/35 hover:border-sky-400 dark:border-sky-700 dark:bg-sky-900/40 dark:hover:border-sky-500',
+                char: 'text-sky-900 dark:text-sky-300',
+                divider: 'border-sky-100 dark:border-sky-700',
+                hanviet: 'text-sky-700 dark:text-sky-400',
+                badge: 'bg-sky-100 text-sky-800 dark:bg-sky-800/60 dark:text-sky-200',
             };
         case 'N3':
             return {
-                card: 'border-amber-200 bg-amber-50/35 hover:border-amber-400',
-                char: 'text-amber-900',
-                divider: 'border-amber-100',
-                hanviet: 'text-amber-700',
-                badge: 'bg-amber-100 text-amber-800',
+                card: 'border-amber-200 bg-amber-50/35 hover:border-amber-400 dark:border-amber-700 dark:bg-amber-900/40 dark:hover:border-amber-500',
+                char: 'text-amber-900 dark:text-amber-300',
+                divider: 'border-amber-100 dark:border-amber-700',
+                hanviet: 'text-amber-700 dark:text-amber-400',
+                badge: 'bg-amber-100 text-amber-800 dark:bg-amber-800/60 dark:text-amber-200',
             };
         case 'N2':
             return {
-                card: 'border-rose-200 bg-rose-50/35 hover:border-rose-400',
-                char: 'text-rose-900',
-                divider: 'border-rose-100',
-                hanviet: 'text-rose-700',
-                badge: 'bg-rose-100 text-rose-800',
+                card: 'border-rose-200 bg-rose-50/35 hover:border-rose-400 dark:border-rose-700 dark:bg-rose-900/40 dark:hover:border-rose-500',
+                char: 'text-rose-900 dark:text-rose-300',
+                divider: 'border-rose-100 dark:border-rose-700',
+                hanviet: 'text-rose-700 dark:text-rose-400',
+                badge: 'bg-rose-100 text-rose-800 dark:bg-rose-800/60 dark:text-rose-200',
             };
         case 'N1':
             return {
-                card: 'border-violet-200 bg-violet-50/35 hover:border-violet-400',
-                char: 'text-violet-900',
-                divider: 'border-violet-100',
-                hanviet: 'text-violet-700',
-                badge: 'bg-violet-100 text-violet-800',
+                card: 'border-violet-200 bg-violet-50/35 hover:border-violet-400 dark:border-violet-700 dark:bg-violet-900/40 dark:hover:border-violet-500',
+                char: 'text-violet-900 dark:text-violet-300',
+                divider: 'border-violet-100 dark:border-violet-700',
+                hanviet: 'text-violet-700 dark:text-violet-400',
+                badge: 'bg-violet-100 text-violet-800 dark:bg-violet-800/60 dark:text-violet-200',
             };
         default:
             return {
-                card: 'border-[#dce4f2] bg-white hover:border-[#8fa8d6]',
-                char: 'text-[#1f2a44]',
-                divider: 'border-[#edf1f7]',
-                hanviet: 'text-[#4f6285]',
-                badge: 'bg-[#eef2fb] text-[#42577c]',
+                card: 'border-[#dce4f2] bg-white hover:border-[#8fa8d6] dark:border-[#3d4a63] dark:bg-[#252d3d] dark:hover:border-[#6b8cce]',
+                char: 'text-[#1f2a44] dark:text-[#e2e8f0]',
+                divider: 'border-[#edf1f7] dark:border-[#3d4a63]',
+                hanviet: 'text-[#4f6285] dark:text-[#94a3b8]',
+                badge: 'bg-[#eef2fb] text-[#42577c] dark:bg-[#3d4a63]/60 dark:text-[#e2e8f0]',
             };
     }
 };
@@ -81,7 +92,7 @@ const KanjiCard: React.FC<KanjiCardProps> = ({ kanji, isRadical = false, onClick
     const { fontPreset } = useAppSelector((state) => state.ui);
     const selectedPreset = getFontPreset(fontPreset);
     const colorLevel = normalizeLevel(kanji.jlpt) || normalizeLevel(kanji.color);
-    const levelStyles = getLevelStyles(colorLevel);
+    const levelStyles = getLevelStyles(colorLevel, isRadical);
     const onyomiText =
         kanji.onyomi && kanji.onyomi.length > 0
             ? kanji.onyomi.join(", ")
@@ -132,13 +143,13 @@ const KanjiCard: React.FC<KanjiCardProps> = ({ kanji, isRadical = false, onClick
                             <div className={`text-[12px] font-medium truncate ${levelStyles.hanviet}`}>
                                 {kanji.hanviet || 'Không có Hán Việt'}
                             </div>
-                            <div className="mt-1 text-[11px] leading-tight text-secondary-700 truncate">
+                            <div className="mt-1 text-[11px] leading-tight text-secondary-700 dark:text-secondary-400 truncate">
                                 {bottomMetaText}
                             </div>
                         </>
                     ) : (
                         <>
-                            <div className="mt-1 text-[11px] leading-tight text-secondary-700 truncate">
+                            <div className="mt-1 text-[11px] leading-tight text-secondary-700 dark:text-secondary-400 truncate">
                                 {bottomMetaText}
                             </div>
                             <div className={`text-[12px] font-medium truncate ${levelStyles.hanviet}`}>

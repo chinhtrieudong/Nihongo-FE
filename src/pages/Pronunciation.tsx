@@ -10,17 +10,17 @@ import {
   Tag,
 } from "antd";
 import {
-  SoundOutlined,
-  PlayCircleOutlined,
-  PauseCircleOutlined,
-  AudioOutlined,
-  DownloadOutlined,
-  EyeOutlined,
-  EyeInvisibleOutlined,
-  SettingOutlined,
-  LeftOutlined,
-  RightOutlined,
-} from "@ant-design/icons";
+  Volume2,
+  Play,
+  Pause,
+  Mic,
+  Download,
+  Eye,
+  EyeOff,
+  Settings,
+  ArrowLeft,
+  ArrowRight,
+} from "lucide-react";
 import {
   pronunciationAPI,
   type Exercise,
@@ -614,7 +614,7 @@ const Pronunciation: React.FC = () => {
   };
 
   return (
-    <div className="min-h-full bg-gray-50 dark:bg-secondary-900 academic-canvas">
+    <div className="min-h-full bg-bg academic-canvas">
       <div className="max-w-6xl mx-auto px-4 py-8">
         {/* Header Section */}
         <div className="mb-6">
@@ -673,7 +673,7 @@ const Pronunciation: React.FC = () => {
               </div>
               <Space>
                 <Button
-                  icon={<LeftOutlined />}
+                  icon={<ArrowLeft className="w-4 h-4" />}
                   onClick={handlePreviousExercise}
                   disabled={exercises.length <= 1}
                   className="rounded-xl"
@@ -681,7 +681,7 @@ const Pronunciation: React.FC = () => {
                   Câu trước
                 </Button>
                 <Button
-                  icon={<RightOutlined />}
+                  icon={<ArrowRight className="w-4 h-4" />}
                   onClick={handleNextExercise}
                   disabled={exercises.length <= 1}
                   className="rounded-xl"
@@ -701,7 +701,7 @@ const Pronunciation: React.FC = () => {
                     <Button
                       type="primary"
                       size="small"
-                      icon={isPlaying ? <PauseCircleOutlined /> : <PlayCircleOutlined />}
+                      icon={isPlaying ? <Pause className="w-4 h-4" /> : <Play className="w-4 h-4" />}
                       onClick={handlePlayAudio}
                       loading={isPlaying}
                       className={`${isPlaying ? "animate-pulse" : ""}`}
@@ -711,7 +711,7 @@ const Pronunciation: React.FC = () => {
                     <Button
                       type="text"
                       size="small"
-                      icon={<DownloadOutlined />}
+                      icon={<Download className="w-4 h-4" />}
                       onClick={downloadExerciseAudio}
                     >
                       Tải
@@ -734,7 +734,7 @@ const Pronunciation: React.FC = () => {
                   <Button
                     type="text"
                     size="small"
-                    icon={showRomaji ? <EyeInvisibleOutlined /> : <EyeOutlined />}
+                    icon={showRomaji ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
                     onClick={() => setShowRomaji((prev) => !prev)}
                   >
                     {showRomaji ? "Ẩn romaji" : "Hiện romaji"}
@@ -760,7 +760,7 @@ const Pronunciation: React.FC = () => {
                     <Button
                       type={isRecording ? "default" : "primary"}
                       danger={isRecording}
-                      icon={<AudioOutlined />}
+                      icon={<Mic className="w-4 h-4" />}
                       onClick={isRecording ? handleStopRecording : handleStartRecording}
                       loading={isRecording}
                       className="h-14 w-14 rounded-full flex items-center justify-center"
@@ -842,7 +842,7 @@ const Pronunciation: React.FC = () => {
                       </div>
                       <div className="flex flex-col sm:flex-row gap-3">
                         <Button
-                          icon={<PlayCircleOutlined />}
+                          icon={<Play className="w-4 h-4" />}
                           onClick={playRecordedAudio}
                           size="middle"
                           type="primary"
@@ -851,7 +851,7 @@ const Pronunciation: React.FC = () => {
                           Nghe lại
                         </Button>
                         <Button
-                          icon={<DownloadOutlined />}
+                          icon={<Download className="w-4 h-4" />}
                           onClick={downloadRecordedAudio}
                           size="middle"
                           className="w-full sm:w-auto"
@@ -862,7 +862,7 @@ const Pronunciation: React.FC = () => {
                     </div>
                   ) : (
                     <div className="text-center text-secondary-500 dark:text-secondary-400 py-8">
-                      <AudioOutlined className="text-4xl mb-3 block opacity-50" />
+                      <Mic className="w-10 h-10 mb-3 block opacity-50" />
                       <Text className="text-sm">
                         Nhấn nút mic để bắt đầu thu âm
                       </Text>

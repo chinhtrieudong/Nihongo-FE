@@ -1,5 +1,5 @@
 import React from "react";
-import { BookOutlined, FileTextOutlined, AudioOutlined, TranslationOutlined } from "@ant-design/icons";
+import { Book, FileText, Volume2, Languages } from "lucide-react";
 
 export interface TestSection {
   id: string;
@@ -45,7 +45,7 @@ export const jlptTests: Test[] = [
         duration: 30,
         description: "Kanji, từ vựng cơ bản",
         questionTypes: ["multiple-choice", "kanji-reading"],
-        icon: React.createElement(BookOutlined)
+        icon: React.createElement(Book, { className: "w-5 h-5" }),
       },
       {
         id: "grammar",
@@ -54,7 +54,7 @@ export const jlptTests: Test[] = [
         duration: 30,
         description: "Cấu trúc câu N5",
         questionTypes: ["multiple-choice", "sentence-order"],
-        icon: React.createElement(FileTextOutlined)
+        icon: React.createElement(FileText, { className: "w-5 h-5" }),
       },
       {
         id: "reading",
@@ -63,7 +63,7 @@ export const jlptTests: Test[] = [
         duration: 40,
         description: "Đọc văn bản ngắn",
         questionTypes: ["reading-comprehension", "text-fill"],
-        icon: React.createElement(FileTextOutlined)
+        icon: React.createElement(FileText, { className: "w-5 h-5" }),
       },
       {
         id: "listening",
@@ -72,9 +72,9 @@ export const jlptTests: Test[] = [
         duration: 20,
         description: "Nghe hội thoại",
         questionTypes: ["listening-comprehension", "picture-response"],
-        icon: React.createElement(AudioOutlined)
-      }
-    ]
+        icon: React.createElement(Volume2, { className: "w-5 h-5" }),
+      },
+    ],
   },
   {
     id: "2",
@@ -93,9 +93,9 @@ export const jlptTests: Test[] = [
         duration: 45,
         description: "Từ vựng chuyên sâu",
         questionTypes: ["multiple-choice", "kanji-reading", "word-usage"],
-        icon: React.createElement(BookOutlined)
-      }
-    ]
+        icon: React.createElement(Book, { className: "w-5 h-5" }),
+      },
+    ],
   },
   {
     id: "3",
@@ -114,9 +114,9 @@ export const jlptTests: Test[] = [
         duration: 30,
         description: "Kanji N5 cơ bản",
         questionTypes: ["kanji-reading", "kanji-writing", "kanji-meaning"],
-        icon: React.createElement(TranslationOutlined)
-      }
-    ]
+        icon: React.createElement(Languages, { className: "w-5 h-5" }),
+      },
+    ],
   },
   {
     id: "4",
@@ -135,7 +135,7 @@ export const jlptTests: Test[] = [
         duration: 30,
         description: "Từ vựng N4",
         questionTypes: ["multiple-choice", "kanji-reading", "word-usage"],
-        icon: React.createElement(BookOutlined)
+        icon: React.createElement(Book, { className: "w-5 h-5" }),
       },
       {
         id: "grammar",
@@ -144,7 +144,7 @@ export const jlptTests: Test[] = [
         duration: 35,
         description: "Ngữ pháp N4",
         questionTypes: ["multiple-choice", "sentence-order", "grammar-fill"],
-        icon: React.createElement(FileTextOutlined)
+        icon: React.createElement(FileText, { className: "w-5 h-5" }),
       },
       {
         id: "reading",
@@ -152,8 +152,12 @@ export const jlptTests: Test[] = [
         questions: 30,
         duration: 45,
         description: "Đọc hiểu N4",
-        questionTypes: ["reading-comprehension", "text-fill", "information-retrieval"],
-        icon: React.createElement(FileTextOutlined)
+        questionTypes: [
+          "reading-comprehension",
+          "text-fill",
+          "information-retrieval",
+        ],
+        icon: React.createElement(FileText, { className: "w-5 h-5" }),
       },
       {
         id: "listening",
@@ -162,9 +166,9 @@ export const jlptTests: Test[] = [
         duration: 15,
         description: "Nghe hiểu N4",
         questionTypes: ["listening-comprehension", "picture-response"],
-        icon: React.createElement(AudioOutlined)
-      }
-    ]
+        icon: React.createElement(Volume2, { className: "w-5 h-5" }),
+      },
+    ],
   },
   {
     id: "5",
@@ -184,10 +188,15 @@ export const jlptTests: Test[] = [
         questions: 40,
         duration: 60,
         description: "Ngữ pháp N4 chuyên sâu",
-        questionTypes: ["multiple-choice", "sentence-order", "grammar-fill", "error-correction"],
-        icon: React.createElement(FileTextOutlined)
-      }
-    ]
+        questionTypes: [
+          "multiple-choice",
+          "sentence-order",
+          "grammar-fill",
+          "error-correction",
+        ],
+        icon: React.createElement(FileText, { className: "w-5 h-5" }),
+      },
+    ],
   },
   {
     id: "6",
@@ -205,8 +214,13 @@ export const jlptTests: Test[] = [
         questions: 35,
         duration: 35,
         description: "Từ vựng N3",
-        questionTypes: ["multiple-choice", "kanji-reading", "word-usage", "synonym-antonym"],
-        icon: React.createElement(BookOutlined)
+        questionTypes: [
+          "multiple-choice",
+          "kanji-reading",
+          "word-usage",
+          "synonym-antonym",
+        ],
+        icon: React.createElement(Book, { className: "w-5 h-5" }),
       },
       {
         id: "grammar",
@@ -214,8 +228,13 @@ export const jlptTests: Test[] = [
         questions: 35,
         duration: 40,
         description: "Ngữ pháp N3",
-        questionTypes: ["multiple-choice", "sentence-order", "grammar-fill", "error-correction"],
-        icon: React.createElement(FileTextOutlined)
+        questionTypes: [
+          "multiple-choice",
+          "sentence-order",
+          "grammar-fill",
+          "error-correction",
+        ],
+        icon: React.createElement(FileText, { className: "w-5 h-5" }),
       },
       {
         id: "reading",
@@ -223,8 +242,13 @@ export const jlptTests: Test[] = [
         questions: 30,
         duration: 50,
         description: "Đọc hiểu N3",
-        questionTypes: ["reading-comprehension", "text-fill", "information-retrieval", "main-idea"],
-        icon: React.createElement(FileTextOutlined)
+        questionTypes: [
+          "reading-comprehension",
+          "text-fill",
+          "information-retrieval",
+          "main-idea",
+        ],
+        icon: React.createElement(FileText, { className: "w-5 h-5" }),
       },
       {
         id: "listening",
@@ -232,10 +256,14 @@ export const jlptTests: Test[] = [
         questions: 20,
         duration: 15,
         description: "Nghe hiểu N3",
-        questionTypes: ["listening-comprehension", "picture-response", "conversation"],
-        icon: React.createElement(AudioOutlined)
-      }
-    ]
+        questionTypes: [
+          "listening-comprehension",
+          "picture-response",
+          "conversation",
+        ],
+        icon: React.createElement(Volume2, { className: "w-5 h-5" }),
+      },
+    ],
   },
   {
     id: "7",
@@ -253,10 +281,15 @@ export const jlptTests: Test[] = [
         questions: 40,
         duration: 60,
         description: "Ngữ pháp N3",
-        questionTypes: ["multiple-choice", "sentence-order", "grammar-fill", "error-correction"],
-        icon: React.createElement(FileTextOutlined)
-      }
-    ]
+        questionTypes: [
+          "multiple-choice",
+          "sentence-order",
+          "grammar-fill",
+          "error-correction",
+        ],
+        icon: React.createElement(FileText, { className: "w-5 h-5" }),
+      },
+    ],
   },
   {
     id: "8",
@@ -276,10 +309,16 @@ export const jlptTests: Test[] = [
         questions: 25,
         duration: 75,
         description: "Đọc hiểu văn bản dài N3",
-        questionTypes: ["reading-comprehension", "text-fill", "information-retrieval", "main-idea", "inference"],
-        icon: React.createElement(FileTextOutlined)
-      }
-    ]
+        questionTypes: [
+          "reading-comprehension",
+          "text-fill",
+          "information-retrieval",
+          "main-idea",
+          "inference",
+        ],
+        icon: React.createElement(FileText, { className: "w-5 h-5" }),
+      },
+    ],
   },
   {
     id: "9",
@@ -297,8 +336,14 @@ export const jlptTests: Test[] = [
         questions: 40,
         duration: 40,
         description: "Từ vựng N2",
-        questionTypes: ["multiple-choice", "kanji-reading", "word-usage", "synonym-antonym", "context-usage"],
-        icon: React.createElement(BookOutlined)
+        questionTypes: [
+          "multiple-choice",
+          "kanji-reading",
+          "word-usage",
+          "synonym-antonym",
+          "context-usage",
+        ],
+        icon: React.createElement(Book, { className: "w-5 h-5" }),
       },
       {
         id: "grammar",
@@ -306,8 +351,14 @@ export const jlptTests: Test[] = [
         questions: 40,
         duration: 45,
         description: "Ngữ pháp N2",
-        questionTypes: ["multiple-choice", "sentence-order", "grammar-fill", "error-correction", "text-grammar"],
-        icon: React.createElement(FileTextOutlined)
+        questionTypes: [
+          "multiple-choice",
+          "sentence-order",
+          "grammar-fill",
+          "error-correction",
+          "text-grammar",
+        ],
+        icon: React.createElement(FileText, { className: "w-5 h-5" }),
       },
       {
         id: "reading",
@@ -315,8 +366,15 @@ export const jlptTests: Test[] = [
         questions: 35,
         duration: 60,
         description: "Đọc hiểu N2",
-        questionTypes: ["reading-comprehension", "text-fill", "information-retrieval", "main-idea", "inference", "author-purpose"],
-        icon: React.createElement(FileTextOutlined)
+        questionTypes: [
+          "reading-comprehension",
+          "text-fill",
+          "information-retrieval",
+          "main-idea",
+          "inference",
+          "author-purpose",
+        ],
+        icon: React.createElement(FileText, { className: "w-5 h-5" }),
       },
       {
         id: "listening",
@@ -324,10 +382,15 @@ export const jlptTests: Test[] = [
         questions: 20,
         duration: 10,
         description: "Nghe hiểu N2",
-        questionTypes: ["listening-comprehension", "picture-response", "conversation", "news-report"],
-        icon: React.createElement(AudioOutlined)
-      }
-    ]
+        questionTypes: [
+          "listening-comprehension",
+          "picture-response",
+          "conversation",
+          "news-report",
+        ],
+        icon: React.createElement(Volume2, { className: "w-5 h-5" }),
+      },
+    ],
   },
   {
     id: "10",
@@ -346,7 +409,7 @@ export const jlptTests: Test[] = [
         duration: 25,
         description: "Từ vựng N2",
         questionTypes: ["multiple-choice", "kanji-reading", "word-usage"],
-        icon: React.createElement(BookOutlined)
+        icon: React.createElement(Book, { className: "w-5 h-5" }),
       },
       {
         id: "grammar",
@@ -355,7 +418,7 @@ export const jlptTests: Test[] = [
         duration: 30,
         description: "Ngữ pháp N2",
         questionTypes: ["multiple-choice", "sentence-order", "grammar-fill"],
-        icon: React.createElement(FileTextOutlined)
+        icon: React.createElement(FileText, { className: "w-5 h-5" }),
       },
       {
         id: "reading",
@@ -363,10 +426,14 @@ export const jlptTests: Test[] = [
         questions: 20,
         duration: 35,
         description: "Đọc hiểu N2",
-        questionTypes: ["reading-comprehension", "text-fill", "information-retrieval"],
-        icon: React.createElement(FileTextOutlined)
-      }
-    ]
+        questionTypes: [
+          "reading-comprehension",
+          "text-fill",
+          "information-retrieval",
+        ],
+        icon: React.createElement(FileText, { className: "w-5 h-5" }),
+      },
+    ],
   },
   {
     id: "11",
@@ -384,8 +451,15 @@ export const jlptTests: Test[] = [
         questions: 45,
         duration: 45,
         description: "Từ vựng N1",
-        questionTypes: ["multiple-choice", "kanji-reading", "word-usage", "synonym-antonym", "context-usage", "idioms"],
-        icon: React.createElement(BookOutlined)
+        questionTypes: [
+          "multiple-choice",
+          "kanji-reading",
+          "word-usage",
+          "synonym-antonym",
+          "context-usage",
+          "idioms",
+        ],
+        icon: React.createElement(Book, { className: "w-5 h-5" }),
       },
       {
         id: "grammar",
@@ -393,8 +467,15 @@ export const jlptTests: Test[] = [
         questions: 45,
         duration: 50,
         description: "Ngữ pháp N1",
-        questionTypes: ["multiple-choice", "sentence-order", "grammar-fill", "error-correction", "text-grammar", "formal-writing"],
-        icon: React.createElement(FileTextOutlined)
+        questionTypes: [
+          "multiple-choice",
+          "sentence-order",
+          "grammar-fill",
+          "error-correction",
+          "text-grammar",
+          "formal-writing",
+        ],
+        icon: React.createElement(FileText, { className: "w-5 h-5" }),
       },
       {
         id: "reading",
@@ -402,8 +483,16 @@ export const jlptTests: Test[] = [
         questions: 40,
         duration: 65,
         description: "Đọc hiểu N1",
-        questionTypes: ["reading-comprehension", "text-fill", "information-retrieval", "main-idea", "inference", "author-purpose", "critical-analysis"],
-        icon: React.createElement(FileTextOutlined)
+        questionTypes: [
+          "reading-comprehension",
+          "text-fill",
+          "information-retrieval",
+          "main-idea",
+          "inference",
+          "author-purpose",
+          "critical-analysis",
+        ],
+        icon: React.createElement(FileText, { className: "w-5 h-5" }),
       },
       {
         id: "listening",
@@ -411,10 +500,16 @@ export const jlptTests: Test[] = [
         questions: 15,
         duration: 10,
         description: "Nghe hiểu N1",
-        questionTypes: ["listening-comprehension", "picture-response", "conversation", "news-report", "academic-lecture"],
-        icon: React.createElement(AudioOutlined)
-      }
-    ]
+        questionTypes: [
+          "listening-comprehension",
+          "picture-response",
+          "conversation",
+          "news-report",
+          "academic-lecture",
+        ],
+        icon: React.createElement(Volume2, { className: "w-5 h-5" }),
+      },
+    ],
   },
   {
     id: "12",
@@ -434,10 +529,18 @@ export const jlptTests: Test[] = [
         questions: 50,
         duration: 80,
         description: "Từ vựng N1 chuyên sâu",
-        questionTypes: ["multiple-choice", "kanji-reading", "word-usage", "synonym-antonym", "context-usage", "idioms", "formal-expressions"],
-        icon: React.createElement(BookOutlined)
-      }
-    ]
+        questionTypes: [
+          "multiple-choice",
+          "kanji-reading",
+          "word-usage",
+          "synonym-antonym",
+          "context-usage",
+          "idioms",
+          "formal-expressions",
+        ],
+        icon: React.createElement(Book, { className: "w-5 h-5" }),
+      },
+    ],
   },
   {
     id: "13",
@@ -455,10 +558,14 @@ export const jlptTests: Test[] = [
         questions: 20,
         duration: 40,
         description: "Nghe hội thoại N5",
-        questionTypes: ["listening-comprehension", "picture-response", "daily-conversation"],
-        icon: React.createElement(AudioOutlined)
-      }
-    ]
+        questionTypes: [
+          "listening-comprehension",
+          "picture-response",
+          "daily-conversation",
+        ],
+        icon: React.createElement(Volume2, { className: "w-5 h-5" }),
+      },
+    ],
   },
   {
     id: "14",
@@ -477,7 +584,7 @@ export const jlptTests: Test[] = [
         duration: 25,
         description: "Từ vựng N4",
         questionTypes: ["multiple-choice", "kanji-reading", "word-usage"],
-        icon: React.createElement(BookOutlined)
+        icon: React.createElement(Book, { className: "w-5 h-5" }),
       },
       {
         id: "grammar",
@@ -486,7 +593,7 @@ export const jlptTests: Test[] = [
         duration: 30,
         description: "Ngữ pháp N4",
         questionTypes: ["multiple-choice", "sentence-order", "grammar-fill"],
-        icon: React.createElement(FileTextOutlined)
+        icon: React.createElement(FileText, { className: "w-5 h-5" }),
       },
       {
         id: "reading",
@@ -495,9 +602,9 @@ export const jlptTests: Test[] = [
         duration: 35,
         description: "Đọc hiểu N4",
         questionTypes: ["reading-comprehension", "text-fill"],
-        icon: React.createElement(FileTextOutlined)
-      }
-    ]
+        icon: React.createElement(FileText, { className: "w-5 h-5" }),
+      },
+    ],
   },
   {
     id: "15",
@@ -517,17 +624,28 @@ export const jlptTests: Test[] = [
         questions: 25,
         duration: 50,
         description: "Nghe hiểu N3",
-        questionTypes: ["listening-comprehension", "picture-response", "conversation", "short-dialogue"],
-        icon: React.createElement(AudioOutlined)
-      }
-    ]
-  }
+        questionTypes: [
+          "listening-comprehension",
+          "picture-response",
+          "conversation",
+          "short-dialogue",
+        ],
+        icon: React.createElement(Volume2, { className: "w-5 h-5" }),
+      },
+    ],
+  },
 ];
 
 export const jlptMetadata = {
   totalTests: jlptTests.length,
   levels: ["N5", "N4", "N3", "N2", "N1"],
-  difficulties: ["Beginner", "Elementary", "Intermediate", "Advanced", "Expert"],
+  difficulties: [
+    "Beginner",
+    "Elementary",
+    "Intermediate",
+    "Advanced",
+    "Expert",
+  ],
   sectionTypes: ["vocabulary", "grammar", "reading", "listening", "kanji"],
   questionTypes: [
     "multiple-choice",
@@ -557,7 +675,7 @@ export const jlptMetadata = {
     "news-report",
     "academic-lecture",
     "idioms",
-    "formal-expressions"
+    "formal-expressions",
   ],
-  lastUpdated: "2024-01-22"
+  lastUpdated: "2024-01-22",
 };
