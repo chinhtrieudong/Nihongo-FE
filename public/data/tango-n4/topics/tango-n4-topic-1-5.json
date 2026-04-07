@@ -1,0 +1,210 @@
+{
+  "textbookId": "tango-n4",
+  "chapterId": 1,
+  "topicId": "topic-1-5",
+  "topicName": "給料",
+  "topicNameVi": "Lương lậu",
+  "vocabCount": 20,
+  "words": [
+    {
+      "word": "給料",
+      "reading": "きゅうりょう",
+      "meaning": "Lương",
+      "type": "Danh từ",
+      "example": {
+        "jp": "給料が振り込まれました。",
+        "vn": "đã (quá khứ)."
+      }
+    },
+    {
+      "word": "給与",
+      "reading": "きゅうよ",
+      "meaning": "Tiền lương",
+      "type": "Danh từ",
+      "example": {
+        "jp": "給与明細を確認しました。",
+        "vn": "đã (quá khứ)."
+      }
+    },
+    {
+      "word": "賃金",
+      "reading": "ちんぎん",
+      "meaning": "Tiền công",
+      "type": "Danh từ",
+      "example": {
+        "jp": "賃金が上がりました。",
+        "vn": "đã (quá khứ)."
+      }
+    },
+    {
+      "word": "報酬",
+      "reading": "ほうしゅう",
+      "meaning": "Thù lao",
+      "type": "Danh từ",
+      "example": {
+        "jp": "報酬をもらいました。",
+        "vn": "đã (quá khứ)."
+      }
+    },
+    {
+      "word": "手当",
+      "reading": "てあて",
+      "meaning": "Trợ cấp",
+      "type": "Danh từ",
+      "example": {
+        "jp": "住宅手当があります。",
+        "vn": "có."
+      }
+    },
+    {
+      "word": "手取り",
+      "reading": "てどり",
+      "meaning": "Lương thực lãnh",
+      "type": "Danh từ",
+      "example": {
+        "jp": "手取りは20万円です。",
+        "vn": "là."
+      }
+    },
+    {
+      "word": "総取り",
+      "reading": "そうどり",
+      "meaning": "Tổng thu nhập",
+      "type": "Danh từ",
+      "example": {
+        "jp": "総取りを聞かれました。",
+        "vn": "đã (quá khứ)."
+      }
+    },
+    {
+      "word": "控除",
+      "reading": "こうじょ",
+      "meaning": "Khấu trừ",
+      "type": "Danh động từ",
+      "example": {
+        "jp": "税金が控除されます。",
+        "vn": "(đuôi lịch sự)"
+      }
+    },
+    {
+      "word": "所得税",
+      "reading": "しょとくぜい",
+      "meaning": "Thuế thu nhập",
+      "type": "Danh từ",
+      "example": {
+        "jp": "所得税を払います。",
+        "vn": "có (người/động vật)."
+      }
+    },
+    {
+      "word": "住民税",
+      "reading": "じゅうみんぜい",
+      "meaning": "Thuế dân cư",
+      "type": "Danh từ",
+      "example": {
+        "jp": "住民税が引かれます。",
+        "vn": "(đuôi lịch sự)"
+      }
+    },
+    {
+      "word": "保険料",
+      "reading": "ほけんりょう",
+      "meaning": "Phí bảo hiểm",
+      "type": "Danh từ",
+      "example": {
+        "jp": "保険料を払っています。",
+        "vn": "có (người/động vật)."
+      }
+    },
+    {
+      "word": "厚生年金",
+      "reading": "こうせいねんきん",
+      "meaning": "Lương hưu",
+      "type": "Danh từ",
+      "example": {
+        "jp": "厚生年金に加入しています。",
+        "vn": "có (người/động vật)."
+      }
+    },
+    {
+      "word": "雇用保険",
+      "reading": "こようほけん",
+      "meaning": "Bảo hiểm thất nghiệp",
+      "type": "Danh từ",
+      "example": {
+        "jp": "雇用保険があります。",
+        "vn": "có."
+      }
+    },
+    {
+      "word": "健康保険",
+      "reading": "けんこうほけん",
+      "meaning": "Bảo hiểm y tế",
+      "type": "Danh từ",
+      "example": {
+        "jp": "健康保険証を提示しました。",
+        "vn": "đã (quá khứ)."
+      }
+    },
+    {
+      "word": "ボーナス",
+      "reading": "ボーナス",
+      "meaning": "Thưởng",
+      "type": "Danh từ",
+      "example": {
+        "jp": "夏にボーナスが出ます。",
+        "vn": "(đuôi lịch sự)"
+      }
+    },
+    {
+      "word": "賞与",
+      "reading": "しょうよ",
+      "meaning": "Tiền thưởng",
+      "type": "Danh từ",
+      "example": {
+        "jp": "賞与をもらいました。",
+        "vn": "đã (quá khứ)."
+      }
+    },
+    {
+      "word": "退職",
+      "reading": "たいしょく",
+      "meaning": "Nghỉ việc",
+      "type": "Danh từ",
+      "example": {
+        "jp": "退職金がもらえます。",
+        "vn": "(đuôi lịch sự)"
+      }
+    },
+    {
+      "word": "退職金",
+      "reading": "たいしょくきん",
+      "meaning": "Tiền trợ cấp nghỉ việc",
+      "type": "Danh từ",
+      "example": {
+        "jp": "退職金を貯めています。",
+        "vn": "có (người/động vật)."
+      }
+    },
+    {
+      "word": "年収",
+      "reading": "ねんしゅう",
+      "meaning": "Thu nhập năm",
+      "type": "Danh từ",
+      "example": {
+        "jp": "年収はどのくらいですか。",
+        "vn": "có phải là... không?"
+      }
+    },
+    {
+      "word": "月収",
+      "reading": "げっしゅう",
+      "meaning": "Thu nhập tháng",
+      "type": "Danh từ",
+      "example": {
+        "jp": "月収が増えました。",
+        "vn": "đã (quá khứ)."
+      }
+    }
+  ]
+}

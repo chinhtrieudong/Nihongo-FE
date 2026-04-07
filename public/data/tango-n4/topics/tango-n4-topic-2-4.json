@@ -1,0 +1,210 @@
+{
+  "textbookId": "tango-n4",
+  "chapterId": 2,
+  "topicId": "topic-2-4",
+  "topicName": "服装",
+  "topicNameVi": "Trang phục",
+  "vocabCount": 20,
+  "words": [
+    {
+      "word": "服装",
+      "reading": "ふくそう",
+      "meaning": "Trang phục",
+      "type": "Danh từ",
+      "example": {
+        "jp": "服装を整えました。",
+        "vn": "đã (quá khứ)."
+      }
+    },
+    {
+      "word": "洋服",
+      "reading": "ようふく",
+      "meaning": "Quần áo Tây",
+      "type": "Danh từ",
+      "example": {
+        "jp": "洋服を買いました。",
+        "vn": "đã (quá khứ)."
+      }
+    },
+    {
+      "word": "和服",
+      "reading": "わふく",
+      "meaning": "Trang phục Nhật",
+      "type": "Danh từ",
+      "example": {
+        "jp": "和服を着ました。",
+        "vn": "đã (quá khứ)."
+      }
+    },
+    {
+      "word": "着物",
+      "reading": "きもの",
+      "meaning": "Kimono",
+      "type": "Danh từ",
+      "example": {
+        "jp": "着物が似合います。",
+        "vn": "có (người/động vật)."
+      }
+    },
+    {
+      "word": "浴衣",
+      "reading": "ゆかた",
+      "meaning": "Yukata",
+      "type": "Danh từ",
+      "example": {
+        "jp": "夏は浴衣を着ます。",
+        "vn": "(đuôi lịch sự)"
+      }
+    },
+    {
+      "word": "制服",
+      "reading": "せいふく",
+      "meaning": "Đồng phục",
+      "type": "Danh từ",
+      "example": {
+        "jp": "制服を着ます。",
+        "vn": "(đuôi lịch sự)"
+      }
+    },
+    {
+      "word": "スーツ",
+      "reading": "スーツ",
+      "meaning": "Vest",
+      "type": "Danh từ",
+      "example": {
+        "jp": "スーツを着ています。",
+        "vn": "có (người/động vật)."
+      }
+    },
+    {
+      "word": "ワンピース",
+      "reading": "ワンピース",
+      "meaning": "Váy liền",
+      "type": "Danh từ",
+      "example": {
+        "jp": "ワンピースを着ています。",
+        "vn": "có (người/động vật)."
+      }
+    },
+    {
+      "word": "ブラウス",
+      "reading": "ブラウス",
+      "meaning": "Áo blouse",
+      "type": "Danh từ",
+      "example": {
+        "jp": "ブラウスを着ています。",
+        "vn": "có (người/động vật)."
+      }
+    },
+    {
+      "word": "セーター",
+      "reading": "セーター",
+      "meaning": "Áo len",
+      "type": "Danh từ",
+      "example": {
+        "jp": "セーターを着ています。",
+        "vn": "có (người/động vật)."
+      }
+    },
+    {
+      "word": "ジャケット",
+      "reading": "ジャケット",
+      "meaning": "Áo khoác",
+      "type": "Danh từ",
+      "example": {
+        "jp": "ジャケットを着ました。",
+        "vn": "đã (quá khứ)."
+      }
+    },
+    {
+      "word": "コート",
+      "reading": "コート",
+      "meaning": "Áo măng tô",
+      "type": "Danh từ",
+      "example": {
+        "jp": "コートを着ています。",
+        "vn": "có (người/động vật)."
+      }
+    },
+    {
+      "word": "ジーンズ",
+      "reading": "ジーンズ",
+      "meaning": "Quần jean",
+      "type": "Danh từ",
+      "example": {
+        "jp": "ジーンズを履いています。",
+        "vn": "có (người/động vật)."
+      }
+    },
+    {
+      "word": "スカート",
+      "reading": "スカート",
+      "meaning": "Váy",
+      "type": "Danh từ",
+      "example": {
+        "jp": "スカートを着ています。",
+        "vn": "có (người/động vật)."
+      }
+    },
+    {
+      "word": "パンツ",
+      "reading": "パンツ",
+      "meaning": "Quần",
+      "type": "Danh từ",
+      "example": {
+        "jp": "パンツを履いています。",
+        "vn": "có (người/động vật)."
+      }
+    },
+    {
+      "word": "靴",
+      "reading": "くつ",
+      "meaning": "Giày",
+      "type": "Danh từ",
+      "example": {
+        "jp": "靴を履きました。",
+        "vn": "đã (quá khứ)."
+      }
+    },
+    {
+      "word": "革靴",
+      "reading": "かわぐつ",
+      "meaning": "Giày da",
+      "type": "Danh từ",
+      "example": {
+        "jp": "革靴を履いています。",
+        "vn": "có (người/động vật)."
+      }
+    },
+    {
+      "word": "スニーカー",
+      "reading": "スニーカー",
+      "meaning": "Giày thể thao",
+      "type": "Danh từ",
+      "example": {
+        "jp": "スニーカーを履いています。",
+        "vn": "có (người/động vật)."
+      }
+    },
+    {
+      "word": "アクセサリー",
+      "reading": "アクセサリー",
+      "meaning": "Phụ kiện",
+      "type": "Danh từ",
+      "example": {
+        "jp": "アクセサリーをつけています。",
+        "vn": "có (người/động vật)."
+      }
+    },
+    {
+      "word": "ネクタイ",
+      "reading": "ネクタイ",
+      "meaning": "Cà vạt",
+      "type": "Danh từ",
+      "example": {
+        "jp": "ネクタイを締めています。",
+        "vn": "có (người/động vật)."
+      }
+    }
+  ]
+}

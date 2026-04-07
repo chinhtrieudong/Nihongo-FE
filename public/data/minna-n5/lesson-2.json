@@ -1,0 +1,136 @@
+{
+  "lesson": 2,
+  "topic": "Đồ vật & Chỉ thị từ",
+  "vocabulary": [
+    {
+      "id": "n5_l2_001",
+      "word": "此れ",
+      "reading": "これ",
+      "hanViet": "Thử",
+      "meaning": "cái này (gần người nói)",
+      "type": "other",
+      "category": "Từ Vựng Chỉ Thị",
+      "example": {
+        "jp": "此れは本です。",
+        "vn": "Cái này là sách."
+      }
+    },
+    {
+      "id": "n5_l2_002",
+      "word": "其れ",
+      "reading": "それ",
+      "hanViet": "Kỳ",
+      "meaning": "cái đó (gần người nghe)",
+      "type": "other",
+      "category": "Từ Vựng Chỉ Thị",
+      "example": {
+        "jp": "其れはペンですか。",
+        "vn": "Cái đó là bút phải không?"
+      }
+    },
+    {
+      "id": "n5_l2_003",
+      "word": "あれ",
+      "reading": "あれ",
+      "hanViet": "",
+      "meaning": "cái kia (xa cả hai)",
+      "type": "other",
+      "category": "Từ Vựng Chỉ Thị",
+      "example": {
+        "jp": "あれは何ですか。",
+        "vn": "Cái kia là gì vậy?"
+      }
+    },
+    {
+      "id": "n5_l2_004",
+      "word": "此の",
+      "reading": "この",
+      "hanViet": "Thử",
+      "meaning": "cái này, ...này (đứng trước danh từ)",
+      "type": "other",
+      "category": "Từ Vựng Chỉ Thị",
+      "example": {
+        "jp": "此の本は面白いです。",
+        "vn": "Cuốn sách này hay."
+      }
+    },
+    {
+      "id": "n5_l2_005",
+      "word": "其の",
+      "reading": "その",
+      "hanViet": "Kỳ",
+      "meaning": "cái đó, ...đó (đứng trước danh từ)",
+      "type": "other",
+      "category": "Từ Vựng Chỉ Thị",
+      "example": {
+        "jp": "其のペンは誰のですか。",
+        "vn": "Cây bút đó là của ai?"
+      }
+    },
+    {
+      "id": "n5_l2_006",
+      "word": "あの",
+      "reading": "あの",
+      "hanViet": "",
+      "meaning": "cái kia, ...kia (đứng trước danh từ)",
+      "type": "other",
+      "category": "Từ Vựng Chỉ Thị",
+      "example": {
+        "jp": "あの人は先生です。",
+        "vn": "Người kia là giáo viên."
+      }
+    },
+    {
+      "id": "n5_l2_007",
+      "word": "本",
+      "reading": "ほん",
+      "hanViet": "Bản",
+      "meaning": "sách",
+      "type": "other",
+      "category": "Từ Vựng Đồ Vật",
+      "example": {
+        "jp": "此れは日本語の本です。",
+        "vn": "Đây là sách tiếng Nhật."
+      }
+    },
+    {
+      "id": "n5_l2_008",
+      "word": "ペン",
+      "reading": "ぺん",
+      "hanViet": "",
+      "meaning": "bút",
+      "type": "other",
+      "category": "Từ Vựng Đồ Vật",
+      "example": {
+        "jp": "其のペンは新しいです。",
+        "vn": "Cây bút đó mới."
+      }
+    },
+    {
+      "id": "n5_l2_009",
+      "word": "ノート",
+      "reading": "のーと",
+      "hanViet": "",
+      "meaning": "vở, sổ tay",
+      "type": "other",
+      "category": "Từ Vựng Đồ Vật",
+      "example": {
+        "jp": "あのノートは私のです。",
+        "vn": "Cuốn vở kia là của tôi."
+      }
+    },
+    {
+      "id": "n5_l2_010",
+      "word": "傘",
+      "reading": "かさ",
+      "hanViet": "Tản",
+      "meaning": "ô, dù",
+      "type": "other",
+      "category": "Từ Vựng Đồ Vật",
+      "example": {
+        "jp": "此れは傘ではありません。",
+        "vn": "Cái này không phải là ô."
+      }
+    }
+  ]
+}

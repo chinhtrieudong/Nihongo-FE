@@ -1,0 +1,150 @@
+{
+  "textbookId": "tango-n5",
+  "chapterId": 3,
+  "topicId": "topic-3-2",
+  "topicName": "しごと",
+  "topicNameVi": "Công việc",
+  "vocabCount": 14,
+  "words": [
+    {
+      "word": "仕事",
+      "reading": "しごと",
+      "meaning": "Công việc",
+      "type": "Danh từ",
+      "example": {
+        "jp": "仕事が忙しいです。",
+        "vn": "là."
+      }
+    },
+    {
+      "word": "会議",
+      "reading": "かいぎ",
+      "meaning": "Cuộc họp",
+      "type": "Danh từ",
+      "example": {
+        "jp": "会議があります。",
+        "vn": "có."
+      }
+    },
+    {
+      "word": "打ち合わせ",
+      "reading": "うちあわせ",
+      "meaning": "Thảo luận",
+      "type": "Danh động từ",
+      "example": {
+        "jp": "打ち合わせをします。",
+        "vn": "(đuôi lịch sự)"
+      }
+    },
+    {
+      "word": "企画",
+      "reading": "きかく",
+      "meaning": "Kế hoạch",
+      "type": "Danh động từ",
+      "example": {
+        "jp": "新しい企画を作ります。",
+        "vn": "(đuôi lịch sự)"
+      }
+    },
+    {
+      "word": "営業",
+      "reading": "えいぎょう",
+      "meaning": "Kinh doanh",
+      "type": "Danh động từ",
+      "example": {
+        "jp": "営業をしています。",
+        "vn": "có (người/động vật)."
+      }
+    },
+    {
+      "word": "販売",
+      "reading": "はんばい",
+      "meaning": "Bán hàng",
+      "type": "Danh động từ",
+      "example": {
+        "jp": "販売を担当しています。",
+        "vn": "có (người/động vật)."
+      }
+    },
+    {
+      "word": "接客",
+      "reading": "せっきゃく",
+      "meaning": "Tiếp khách",
+      "type": "Danh động từ",
+      "example": {
+        "jp": "接客の仕事です。",
+        "vn": "là."
+      }
+    },
+    {
+      "word": "残業",
+      "reading": "ざんぎょう",
+      "meaning": "Làm thêm giờ",
+      "type": "Danh động từ",
+      "example": {
+        "jp": "残業があります。",
+        "vn": "có."
+      }
+    },
+    {
+      "word": "出張",
+      "reading": "しゅっちょう",
+      "meaning": "Công tác",
+      "type": "Danh động từ",
+      "example": {
+        "jp": "出張に行きます。",
+        "vn": "(đuôi lịch sự)"
+      }
+    },
+    {
+      "word": "休暇",
+      "reading": "きゅうか",
+      "meaning": "Nghỉ phép",
+      "type": "Danh từ",
+      "example": {
+        "jp": "休暇を取ります。",
+        "vn": "(đuôi lịch sự)"
+      }
+    },
+    {
+      "word": "給料",
+      "reading": "きゅうりょう",
+      "meaning": "Lương",
+      "type": "Danh từ",
+      "example": {
+        "jp": "給料が高いです。",
+        "vn": "là."
+      }
+    },
+    {
+      "word": "ボーナス",
+      "reading": "ボーナス",
+      "meaning": "Thưởng",
+      "type": "Danh từ",
+      "example": {
+        "jp": "ボーナスが出ました。",
+        "vn": "đã (quá khứ)."
+      }
+    },
+    {
+      "word": "昇進",
+      "reading": "しょうしん",
+      "meaning": "Thăng chức",
+      "type": "Danh động từ",
+      "example": {
+        "jp": "昇進しました。",
+        "vn": "đã (quá khứ)."
+      }
+    },
+    {
+      "word": "退職",
+      "reading": "たいしょく",
+      "meaning": "Nghỉ việc",
+      "type": "Danh động từ",
+      "example": {
+        "jp": "退職しました。",
+        "vn": "đã (quá khứ)."
+      }
+    }
+  ]
+}

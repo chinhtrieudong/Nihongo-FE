@@ -1,0 +1,140 @@
+{
+  "textbookId": "tango-n5",
+  "chapterId": 3,
+  "topicId": "topic-3-3",
+  "topicName": "これは 何 (なん)ですか。",
+  "topicNameVi": "Đại từ chỉ đồ vật",
+  "vocabCount": 13,
+  "words": [
+    {
+      "word": "これ",
+      "reading": "これ",
+      "meaning": "Cái này",
+      "type": "Đại từ",
+      "example": {
+        "jp": "これは本です。",
+        "vn": "là."
+      }
+    },
+    {
+      "word": "それ",
+      "reading": "それ",
+      "meaning": "Cái đó",
+      "type": "Đại từ",
+      "example": {
+        "jp": "それはペンです。",
+        "vn": "là."
+      }
+    },
+    {
+      "word": "あれ",
+      "reading": "あれ",
+      "meaning": "Cái kia",
+      "type": "Đại từ",
+      "example": {
+        "jp": "あれは何ですか。",
+        "vn": "có phải là... không?"
+      }
+    },
+    {
+      "word": "どれ",
+      "reading": "どれ",
+      "meaning": "Cái nào",
+      "type": "Đại từ",
+      "example": {
+        "jp": "どれがいいですか。",
+        "vn": "có phải là... không?"
+      }
+    },
+    {
+      "word": "この",
+      "reading": "この",
+      "meaning": "Cái này ~",
+      "type": "Tính từ",
+      "example": {
+        "jp": "この本は面白いです。",
+        "vn": "là."
+      }
+    },
+    {
+      "word": "その",
+      "reading": "その",
+      "meaning": "Cái đó ~",
+      "type": "Tính từ",
+      "example": {
+        "jp": "そのペンは誰のですか。",
+        "vn": "có phải là... không?"
+      }
+    },
+    {
+      "word": "あの",
+      "reading": "あの",
+      "meaning": "Cái kia ~",
+      "type": "Tính từ",
+      "example": {
+        "jp": "あの人は先生です。",
+        "vn": "là."
+      }
+    },
+    {
+      "word": "どの",
+      "reading": "どの",
+      "meaning": "Cái nào ~",
+      "type": "Tính từ",
+      "example": {
+        "jp": "どの本が好きですか。",
+        "vn": "có phải là... không?"
+      }
+    },
+    {
+      "word": "何",
+      "reading": "なに / なん",
+      "meaning": "Gì, cái gì",
+      "type": "Đại từ",
+      "example": {
+        "jp": "これは何ですか。",
+        "vn": "có phải là... không?"
+      }
+    },
+    {
+      "word": "誰",
+      "reading": "だれ",
+      "meaning": "Ai",
+      "type": "Đại từ",
+      "example": {
+        "jp": "あの人は誰ですか。",
+        "vn": "có phải là... không?"
+      }
+    },
+    {
+      "word": "いつ",
+      "reading": "いつ",
+      "meaning": "Khi nào",
+      "type": "Đại từ",
+      "example": {
+        "jp": "いつ行きますか。",
+        "vn": "... không?"
+      }
+    },
+    {
+      "word": "どこ",
+      "reading": "どこ",
+      "meaning": "Ở đâu",
+      "type": "Đại từ",
+      "example": {
+        "jp": "どこで買いましたか。",
+        "vn": "đã... không?"
+      }
+    },
+    {
+      "word": "どうして",
+      "reading": "どうして",
+      "meaning": "Tại sao",
+      "type": "Đại từ",
+      "example": {
+        "jp": "どうして遅れたのですか。",
+        "vn": "có phải là... không?"
+      }
+    }
+  ]
+}

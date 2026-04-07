@@ -1,0 +1,22 @@
+{
+  "textbookId": "speed-master-n2",
+  "chapterId": 1,
+  "chapterTitle": "政治・経済",
+  "chapterTitleVi": "Chương 1: Chính trị & Kinh tế",
+  "totalVocab": 150,
+  "topics": [
+    {
+      "id": "topic-1-1",
+      "name": "政治制度",
+      "nameVi": "Chính trị",
+      "vocabCount": 30,
+      "words": [
+        { "word": "政権", "reading": "せいけん", "meaning": "Chính quyền", "type": "Danh từ", "example": "新政権が発足しました。" },
+        { "word": "政令", "reading": "せいれい", "meaning": "Nghị định chính phủ", "type": "Danh từ", "example": "政令が公布された。" },
+        { "word": "国会", "reading": "こっかい", "meaning": "Quốc hội", "type": "Danh từ", "example": "国会が開会しました。" },
+        { "word": "法案", "reading": "ほうあん", "meaning": "Dự luật", "type": "Danh từ", "example": "法案が可決されました。" },
+        { "word": "内閣", "reading": "ないかく", "meaning": "Nội các", "type": "Danh từ", "example": "内閣が総辞職した。" }
+      ]
+    }
+  ]
+}

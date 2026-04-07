@@ -1,0 +1,136 @@
+{
+  "lesson": 24,
+  "topic": "Hành động Cho - Nhận (Giúp đỡ)",
+  "vocabulary": [
+    {
+      "id": "n5_l24_001",
+      "word": "貸す",
+      "reading": "かす",
+      "hanViet": "Thứ",
+      "meaning": "cho mượn",
+      "type": "verb",
+      "category": "Động Từ",
+      "example": {
+        "jp": "本を貸す。",
+        "vn": "Cho mượn sách."
+      }
+    },
+    {
+      "id": "n5_l24_002",
+      "word": "借りる",
+      "reading": "かりる",
+      "hanViet": "Tá",
+      "meaning": "mượn",
+      "type": "verb",
+      "category": "Động Từ Nhóm 2",
+      "example": {
+        "jp": "本を借りる。",
+        "vn": "Mượn sách."
+      }
+    },
+    {
+      "id": "n5_l24_003",
+      "word": "貸して",
+      "reading": "かして",
+      "hanViet": "Thứ",
+      "meaning": "cho mượn (thể te)",
+      "type": "verb",
+      "category": "Thể Sai Khiến",
+      "example": {
+        "jp": "ペンを貸してください。",
+        "vn": "Cho tôi mượn bút."
+      }
+    },
+    {
+      "id": "n5_l24_004",
+      "word": "返す",
+      "reading": "かえす",
+      "hanViet": "Phản",
+      "meaning": "trả lại",
+      "type": "verb",
+      "category": "Động Từ",
+      "example": {
+        "jp": "本を返す。",
+        "vn": "Trả sách."
+      }
+    },
+    {
+      "id": "n5_l24_005",
+      "word": "手伝う",
+      "reading": "てつだう",
+      "hanViet": "Thủ Truyền",
+      "meaning": "giúp đỡ",
+      "type": "verb",
+      "category": "Động Từ",
+      "example": {
+        "jp": "手伝ってください。",
+        "vn": "Giúp tôi với."
+      }
+    },
+    {
+      "id": "n5_l24_006",
+      "word": "助ける",
+      "reading": "たすける",
+      "hanViet": "Trợ",
+      "meaning": "giúp, cứu",
+      "type": "verb",
+      "category": "Động Từ Nhóm 2",
+      "example": {
+        "jp": "助けて。",
+        "vn": "Cứu tôi."
+      }
+    },
+    {
+      "id": "n5_l24_007",
+      "word": "送る",
+      "reading": "おくる",
+      "hanViet": "Tống",
+      "meaning": "gửi",
+      "type": "verb",
+      "category": "Động Từ",
+      "example": {
+        "jp": "手紙を送る。",
+        "vn": "Gửi thư."
+      }
+    },
+    {
+      "id": "n5_l24_008",
+      "word": "受け取る",
+      "reading": "うけとる",
+      "hanViet": "Thụ Thủ",
+      "meaning": "nhận",
+      "type": "verb",
+      "category": "Động Từ",
+      "example": {
+        "jp": "荷物を受け取る。",
+        "vn": "Nhận hành lý."
+      }
+    },
+    {
+      "id": "n5_l24_009",
+      "word": "連絡する",
+      "reading": "れんらくする",
+      "hanViet": "Liên Lạc",
+      "meaning": "liên lạc",
+      "type": "verb",
+      "category": "Động Từ Sa Biến",
+      "example": {
+        "jp": "連絡する。",
+        "vn": "Liên lạc."
+      }
+    },
+    {
+      "id": "n5_l24_010",
+      "word": "紹介する",
+      "reading": "しょうかいする",
+      "hanViet": "Thiệu Giới",
+      "meaning": "giới thiệu",
+      "type": "verb",
+      "category": "Động Từ Sa Biến",
+      "example": {
+        "jp": "友達を紹介する。",
+        "vn": "Giới thiệu bạn."
+      }
+    }
+  ]
+}

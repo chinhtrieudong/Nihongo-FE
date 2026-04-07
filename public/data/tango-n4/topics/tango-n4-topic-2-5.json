@@ -1,0 +1,210 @@
+{
+  "textbookId": "tango-n4",
+  "chapterId": 2,
+  "topicId": "topic-2-5",
+  "topicName": "表情",
+  "topicNameVi": "Biểu cảm",
+  "vocabCount": 20,
+  "words": [
+    {
+      "word": "表情",
+      "reading": "ひょうじょう",
+      "meaning": "Biểu cảm",
+      "type": "Danh từ",
+      "example": {
+        "jp": "表情が豊かです。",
+        "vn": "là."
+      }
+    },
+    {
+      "word": "笑顔",
+      "reading": "えがお",
+      "meaning": "Nụ cười",
+      "type": "Danh từ",
+      "example": {
+        "jp": "笑顔が素敵です。",
+        "vn": "là."
+      }
+    },
+    {
+      "word": "泣き顔",
+      "reading": "なきがお",
+      "meaning": "Mặt khóc",
+      "type": "Danh từ",
+      "example": {
+        "jp": "泣き顔になりました。",
+        "vn": "đã (quá khứ)."
+      }
+    },
+    {
+      "word": "怒り",
+      "reading": "いかり",
+      "meaning": "Tức giận",
+      "type": "Danh từ",
+      "example": {
+        "jp": "怒りの表情です。",
+        "vn": "là."
+      }
+    },
+    {
+      "word": "驚き",
+      "reading": "おどろき",
+      "meaning": "Ngạc nhiên",
+      "type": "Danh từ",
+      "example": {
+        "jp": "驚きの表情です。",
+        "vn": "là."
+      }
+    },
+    {
+      "word": "悲しみ",
+      "reading": "かなしみ",
+      "meaning": "Buồn",
+      "type": "Danh từ",
+      "example": {
+        "jp": "悲しみの表情です。",
+        "vn": "là."
+      }
+    },
+    {
+      "word": "喜び",
+      "reading": "よろこび",
+      "meaning": "Vui mừng",
+      "type": "Danh từ",
+      "example": {
+        "jp": "喜びの表情です。",
+        "vn": "là."
+      }
+    },
+    {
+      "word": "困惑",
+      "reading": "こんわく",
+      "meaning": "Bối rối",
+      "type": "Danh từ",
+      "example": {
+        "jp": "困惑した表情です。",
+        "vn": "là."
+      }
+    },
+    {
+      "word": "不安",
+      "reading": "ふあん",
+      "meaning": "Lo lắng",
+      "type": "Danh từ",
+      "example": {
+        "jp": "不安な表情です。",
+        "vn": "là."
+      }
+    },
+    {
+      "word": "緊張",
+      "reading": "きんちょう",
+      "meaning": "Căng thẳng",
+      "type": "Danh động từ",
+      "example": {
+        "jp": "緊張した表情です。",
+        "vn": "là."
+      }
+    },
+    {
+      "word": "落ち着き",
+      "reading": "おちつき",
+      "meaning": "Bình tĩnh",
+      "type": "Danh từ",
+      "example": {
+        "jp": "落ち着いた表情です。",
+        "vn": "là."
+      }
+    },
+    {
+      "word": "微笑む",
+      "reading": "ほほえむ",
+      "meaning": "Mỉm cười",
+      "type": "Động từ",
+      "example": {
+        "jp": "微笑んでいます。",
+        "vn": "có (người/động vật)."
+      }
+    },
+    {
+      "word": "笑う",
+      "reading": "わらう",
+      "meaning": "Cười",
+      "type": "Động từ",
+      "example": {
+        "jp": "大声で笑いました。",
+        "vn": "đã (quá khứ)."
+      }
+    },
+    {
+      "word": "泣く",
+      "reading": "なく",
+      "meaning": "Khóc",
+      "type": "Động từ",
+      "example": {
+        "jp": "泣いています。",
+        "vn": "có (người/động vật)."
+      }
+    },
+    {
+      "word": "怒る",
+      "reading": "おこる",
+      "meaning": "Tức giận",
+      "type": "Động từ",
+      "example": {
+        "jp": "怒っています。",
+        "vn": "có (người/động vật)."
+      }
+    },
+    {
+      "word": "驚く",
+      "reading": "おどろく",
+      "meaning": "Ngạc nhiên",
+      "type": "Động từ",
+      "example": {
+        "jp": "驚いています。",
+        "vn": "có (người/động vật)."
+      }
+    },
+    {
+      "word": "困る",
+      "reading": "こまる",
+      "meaning": "Khó xử",
+      "type": "Động từ",
+      "example": {
+        "jp": "困った表情です。",
+        "vn": "là."
+      }
+    },
+    {
+      "word": "照れる",
+      "reading": "てれる",
+      "meaning": "Ngại ngùng",
+      "type": "Động từ",
+      "example": {
+        "jp": "照れています。",
+        "vn": "có (người/động vật)."
+      }
+    },
+    {
+      "word": "真剣",
+      "reading": "しんけん",
+      "meaning": "Nghiêm túc",
+      "type": "Danh từ",
+      "example": {
+        "jp": "真剣な表情です。",
+        "vn": "là."
+      }
+    },
+    {
+      "word": "無表情",
+      "reading": "むひょうじょう",
+      "meaning": "Vô cảm",
+      "type": "Danh từ",
+      "example": {
+        "jp": "無表情です。",
+        "vn": "là."
+      }
+    }
+  ]
+}

@@ -1,0 +1,141 @@
+{
+  "textbookId": "speed-master-n3",
+  "name": "Speed Master N3 語彙",
+  "description": "Giáo trình luyện từ vựng N3 nhanh và hiệu quả - 1,200 từ",
+  "level": "N3",
+  "totalLessons": 10,
+  "startLesson": 1,
+  "accentColor": "cyan",
+  "chapters": [
+    {
+      "number": 1,
+      "title": "生活・身近な話題",
+      "titleVi": "Sinh hoạt & Chủ đề gần gũi",
+      "vocab": 120,
+      "topics": [
+        {"name": "家庭", "nameVi": "Gia đình"},
+        {"name": "住居", "nameVi": "Nhà ở"},
+        {"name": "食事", "nameVi": "Ăn uống"},
+        {"name": "買い物", "nameVi": "Mua sắm"},
+        {"name": "健康", "nameVi": "Sức khỏe"}
+      ]
+    },
+    {
+      "number": 2,
+      "title": "学校・教育",
+      "titleVi": "Trường học & Giáo dục",
+      "vocab": 120,
+      "topics": [
+        {"name": "学校", "nameVi": "Trường học"},
+        {"name": "勉強", "nameVi": "Học tập"},
+        {"name": "試験", "nameVi": "Kỳ thi"},
+        {"name": "留学", "nameVi": "Du học"},
+        {"name": "研究", "nameVi": "Nghiên cứu"}
+      ]
+    },
+    {
+      "number": 3,
+      "title": "仕事・職業",
+      "titleVi": "Công việc & Nghề nghiệp",
+      "vocab": 120,
+      "topics": [
+        {"name": "職場", "nameVi": "Nơi làm việc"},
+        {"name": "面接", "nameVi": "Phỏng vấn"},
+        {"name": "会議", "nameVi": "Họp"},
+        {"name": "ビジネス", "nameVi": "Kinh doanh"},
+        {"name": "接客", "nameVi": "Phục vụ khách"}
+      ]
+    },
+    {
+      "number": 4,
+      "title": "人間関係",
+      "titleVi": "Quan hệ con người",
+      "vocab": 120,
+      "topics": [
+        {"name": "友人", "nameVi": "Bạn bè"},
+        {"name": "恋愛", "nameVi": "Tình yêu"},
+        {"name": "結婚", "nameVi": "Hôn nhân"},
+        {"name": "コミュニケーション", "nameVi": "Giao tiếp"},
+        {"name": "トラブル", "nameVi": "Rắc rối"}
+      ]
+    },
+    {
+      "number": 5,
+      "title": "気持ち・感情",
+      "titleVi": "Cảm xúc & Tâm trạng",
+      "vocab": 120,
+      "topics": [
+        {"name": "喜び", "nameVi": "Niềm vui"},
+        {"name": "怒り", "nameVi": "Cơn giận"},
+        {"name": "悲しみ", "nameVi": "Nỗi buồn"},
+        {"name": "不安", "nameVi": "Lo lắng"},
+        {"name": "驚き", "nameVi": "Ngạc nhiên"}
+      ]
+    },
+    {
+      "number": 6,
+      "title": "自然・環境",
+      "titleVi": "Thiên nhiên & Môi trường",
+      "vocab": 120,
+      "topics": [
+        {"name": "天気", "nameVi": "Thời tiết"},
+        {"name": "動物", "nameVi": "Động vật"},
+        {"name": "植物", "nameVi": "Thực vật"},
+        {"name": "環境", "nameVi": "Môi trường"},
+        {"name": "災害", "nameVi": "Thiên tai"}
+      ]
+    },
+    {
+      "number": 7,
+      "title": "社会・文化",
+      "titleVi": "Xã hội & Văn hóa",
+      "vocab": 120,
+      "topics": [
+        {"name": "政治", "nameVi": "Chính trị"},
+        {"name": "経済", "nameVi": "Kinh tế"},
+        {"name": "法律", "nameVi": "Pháp luật"},
+        {"name": "伝統", "nameVi": "Truyền thống"},
+        {"name": "芸術", "nameVi": "Nghệ thuật"}
+      ]
+    },
+    {
+      "number": 8,
+      "title": "レジャー・娯楽",
+      "titleVi": "Giải trí & Thư giãn",
+      "vocab": 120,
+      "topics": [
+        {"name": "スポーツ", "nameVi": "Thể thao"},
+        {"name": "音楽", "nameVi": "Âm nhạc"},
+        {"name": "映画", "nameVi": "Phim ảnh"},
+        {"name": "旅行", "nameVi": "Du lịch"},
+        {"name": "ゲーム", "nameVi": "Game"}
+      ]
+    },
+    {
+      "number": 9,
+      "title": "科学・技術",
+      "titleVi": "Khoa học & Công nghệ",
+      "vocab": 120,
+      "topics": [
+        {"name": "インターネット", "nameVi": "Internet"},
+        {"name": "機械", "nameVi": "Máy móc"},
+        {"name": "医療", "nameVi": "Y tế"},
+        {"name": "エネルギー", "nameVi": "Năng lượng"},
+        {"name": "発明", "nameVi": "Phát minh"}
+      ]
+    },
+    {
+      "number": 10,
+      "title": "抽象概念・その他",
+      "titleVi": "Khái niệm trừu tượng & Khác",
+      "vocab": 120,
+      "topics": [
+        {"name": "性格", "nameVi": "Tính cách"},
+        {"name": "態度", "nameVi": "Thái độ"},
+        {"name": "考え方", "nameVi": "Cách nghĩ"},
+        {"name": "価値観", "nameVi": "Giá trị quan"},
+        {"name": "表現", "nameVi": "Biểu đạt"}
+      ]
+    }
+  ]
+}

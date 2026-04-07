@@ -1,0 +1,150 @@
+{
+  "textbookId": "tango-n5",
+  "chapterId": 4,
+  "topicId": "topic-4-4",
+  "topicName": "あそぶ",
+  "topicNameVi": "Vui chơi",
+  "vocabCount": 14,
+  "words": [
+    {
+      "word": "遊ぶ",
+      "reading": "あそぶ",
+      "meaning": "Chơi",
+      "type": "Động từ",
+      "example": {
+        "jp": "友達と遊びます。",
+        "vn": "(đuôi lịch sự)"
+      }
+    },
+    {
+      "word": "公園",
+      "reading": "こうえん",
+      "meaning": "Công viên",
+      "type": "Danh từ",
+      "example": {
+        "jp": "公園で遊びます。",
+        "vn": "(đuôi lịch sự)"
+      }
+    },
+    {
+      "word": "プール",
+      "reading": "プール",
+      "meaning": "Hồ bơi",
+      "type": "Danh từ",
+      "example": {
+        "jp": "プールで泳ぎます。",
+        "vn": "(đuôi lịch sự)"
+      }
+    },
+    {
+      "word": "泳ぐ",
+      "reading": "およぐ",
+      "meaning": "Bơi",
+      "type": "Động từ",
+      "example": {
+        "jp": "夏に泳ぎます。",
+        "vn": "(đuôi lịch sự)"
+      }
+    },
+    {
+      "word": "映画館",
+      "reading": "えいがかん",
+      "meaning": "Rạp chiếu phim",
+      "type": "Danh từ",
+      "example": {
+        "jp": "映画館へ行きます。",
+        "vn": "(đuôi lịch sự)"
+      }
+    },
+    {
+      "word": "映画",
+      "reading": "えいが",
+      "meaning": "Phim",
+      "type": "Danh từ",
+      "example": {
+        "jp": "映画を見ます。",
+        "vn": "(đuôi lịch sự)"
+      }
+    },
+    {
+      "word": "見る",
+      "reading": "みる",
+      "meaning": "Xem, nhìn",
+      "type": "Động từ",
+      "example": {
+        "jp": "映画を見ました。",
+        "vn": "đã (quá khứ)."
+      }
+    },
+    {
+      "word": "カラオケ",
+      "reading": "カラオケ",
+      "meaning": "Karaoke",
+      "type": "Danh từ",
+      "example": {
+        "jp": "カラオケに行きます。",
+        "vn": "(đuôi lịch sự)"
+      }
+    },
+    {
+      "word": "歌う",
+      "reading": "うたう",
+      "meaning": "Hát",
+      "type": "Động từ",
+      "example": {
+        "jp": "歌を歌います。",
+        "vn": "có (người/động vật)."
+      }
+    },
+    {
+      "word": "ゲーム",
+      "reading": "ゲーム",
+      "meaning": "Trò chơi điện tử",
+      "type": "Danh từ",
+      "example": {
+        "jp": "ゲームをします。",
+        "vn": "(đuôi lịch sự)"
+      }
+    },
+    {
+      "word": "買い物",
+      "reading": "かいもの",
+      "meaning": "Mua sắm",
+      "type": "Danh động từ",
+      "example": {
+        "jp": "買い物に行きます。",
+        "vn": "(đuôi lịch sự)"
+      }
+    },
+    {
+      "word": "スポーツ",
+      "reading": "スポーツ",
+      "meaning": "Thể thao",
+      "type": "Danh từ",
+      "example": {
+        "jp": "スポーツをします。",
+        "vn": "(đuôi lịch sự)"
+      }
+    },
+    {
+      "word": "サッカー",
+      "reading": "サッカー",
+      "meaning": "Bóng đá",
+      "type": "Danh từ",
+      "example": {
+        "jp": "サッカーをします。",
+        "vn": "(đuôi lịch sự)"
+      }
+    },
+    {
+      "word": "野球",
+      "reading": "やきゅう",
+      "meaning": "Bóng chày",
+      "type": "Danh từ",
+      "example": {
+        "jp": "野球をします。",
+        "vn": "(đuôi lịch sự)"
+      }
+    }
+  ]
+}

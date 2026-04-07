@@ -1,0 +1,110 @@
+{
+  "textbookId": "tango-n2",
+  "chapterId": 1,
+  "topicId": "topic-1-1",
+  "topicName": "経営",
+  "topicNameVi": "Quản lý",
+  "vocabCount": 50,
+  "words": [
+    {
+      "word": "経営",
+      "reading": "けいえい",
+      "meaning": "Quản lý, điều hành",
+      "type": "Danh động từ",
+      "example": {
+        "jp": "会社を経営しています。",
+        "vn": "có (người/động vật)."
+      }
+    },
+    {
+      "word": "経営者",
+      "reading": "けいえいしゃ",
+      "meaning": "Nhà quản lý",
+      "type": "Danh từ",
+      "example": {
+        "jp": "若い経営者です。",
+        "vn": "là."
+      }
+    },
+    {
+      "word": "経営理念",
+      "reading": "けいえいりねん",
+      "meaning": "Tôn chỉ kinh doanh",
+      "type": "Danh từ",
+      "example": {
+        "jp": "経営理念を大切にしています。",
+        "vn": "có (người/động vật)."
+      }
+    },
+    {
+      "word": "経営戦略",
+      "reading": "けいえいせんりゃく",
+      "meaning": "Chiến lược kinh doanh",
+      "type": "Danh từ",
+      "example": {
+        "jp": "経営戦略を立てました。",
+        "vn": "đã (quá khứ)."
+      }
+    },
+    {
+      "word": "経営状態",
+      "reading": "けいえいじょうたい",
+      "meaning": "Tình trạng kinh doanh",
+      "type": "Danh từ",
+      "example": {
+        "jp": "経営状態が良くなりました。",
+        "vn": "đã (quá khứ)."
+      }
+    },
+    {
+      "word": "経営破綻",
+      "reading": "けいえいはたん",
+      "meaning": "Phá sản",
+      "type": "Danh từ",
+      "example": {
+        "jp": "経営破綻しました。",
+        "vn": "đã (quá khứ)."
+      }
+    },
+    {
+      "word": "経営資源",
+      "reading": "けいえいしげん",
+      "meaning": "Nguồn lực kinh doanh",
+      "type": "Danh từ",
+      "example": {
+        "jp": "経営資源を活用します。",
+        "vn": "(đuôi lịch sự)"
+      }
+    },
+    {
+      "word": "経営統合",
+      "reading": "けいえいとうごう",
+      "meaning": "Sáp nhập",
+      "type": "Danh từ",
+      "example": {
+        "jp": "経営統合をしました。",
+        "vn": "đã (quá khứ)."
+      }
+    },
+    {
+      "word": "経営再建",
+      "reading": "けいえいさいけん",
+      "meaning": "Tái cơ cấu",
+      "type": "Danh từ",
+      "example": {
+        "jp": "経営再建を進めています。",
+        "vn": "có (người/động vật)."
+      }
+    },
+    {
+      "word": "経営委譲",
+      "reading": "けいえいいじょう",
+      "meaning": "Chuyển giao quản lý",
+      "type": "Danh từ",
+      "example": {
+        "jp": "経営委譲を検討しています。",
+        "vn": "có (người/động vật)."
+      }
+    }
+  ]
+}

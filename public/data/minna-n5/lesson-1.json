@@ -1,0 +1,136 @@
+{
+  "lesson": 1,
+  "topic": "Giới thiệu bản thân & Nghề nghiệp",
+  "vocabulary": [
+    {
+      "id": "n5_l1_001",
+      "word": "私",
+      "reading": "わたし",
+      "hanViet": "Tư",
+      "meaning": "tôi",
+      "type": "other",
+      "category": "Từ Vựng Giới Thiệu",
+      "example": {
+        "jp": "私は学生です。",
+        "vn": "Tôi là học sinh."
+      }
+    },
+    {
+      "id": "n5_l1_002",
+      "word": "貴方",
+      "reading": "あなた",
+      "hanViet": "Quý Phương",
+      "meaning": "bạn, anh/chị",
+      "type": "other",
+      "category": "Từ Vựng Giới Thiệu",
+      "example": {
+        "jp": "貴方は日本人ですか。",
+        "vn": "Bạn có phải người Nhật không?"
+      }
+    },
+    {
+      "id": "n5_l1_003",
+      "word": "です",
+      "reading": "です",
+      "hanViet": "",
+      "meaning": "là (trợ động từ xác định)",
+      "type": "other",
+      "category": "Từ Vựng Giới Thiệu",
+      "example": {
+        "jp": "私は田中です。",
+        "vn": "Tôi là Tanaka."
+      }
+    },
+    {
+      "id": "n5_l1_004",
+      "word": "ではありません",
+      "reading": "ではありません",
+      "hanViet": "",
+      "meaning": "không phải là",
+      "type": "other",
+      "category": "Từ Vựng Giới Thiệu",
+      "example": {
+        "jp": "これは本ではありません。",
+        "vn": "Đây không phải là sách."
+      }
+    },
+    {
+      "id": "n5_l1_005",
+      "word": "か",
+      "reading": "か",
+      "hanViet": "",
+      "meaning": "không (câu hỏi)",
+      "type": "other",
+      "category": "Từ Vựng Giới Thiệu",
+      "example": {
+        "jp": "貴方は学生ですか。",
+        "vn": "Bạn có phải là học sinh không?"
+      }
+    },
+    {
+      "id": "n5_l1_006",
+      "word": "はい",
+      "reading": "はい",
+      "hanViet": "",
+      "meaning": "vâng, dạ, có",
+      "type": "other",
+      "category": "Từ Vựng Giới Thiệu",
+      "example": {
+        "jp": "はい、そうです。",
+        "vn": "Vâng, đúng rồi."
+      }
+    },
+    {
+      "id": "n5_l1_007",
+      "word": "いいえ",
+      "reading": "いいえ",
+      "hanViet": "",
+      "meaning": "không",
+      "type": "other",
+      "category": "Từ Vựng Giới Thiệu",
+      "example": {
+        "jp": "いいえ、違います。",
+        "vn": "Không, không phải vậy."
+      }
+    },
+    {
+      "id": "n5_l1_008",
+      "word": "さん",
+      "reading": "さん",
+      "hanViet": "",
+      "meaning": "anh, chị, ông, bà (hậu tố kính ngữ)",
+      "type": "other",
+      "category": "Từ Vựng Giới Thiệu",
+      "example": {
+        "jp": "田中さんは先生です。",
+        "vn": "Anh Tanaka là giáo viên."
+      }
+    },
+    {
+      "id": "n5_l1_009",
+      "word": "学生",
+      "reading": "がくせい",
+      "hanViet": "Học Sinh",
+      "meaning": "học sinh, sinh viên",
+      "type": "other",
+      "category": "Từ Vựng Nghề Nghiệp",
+      "example": {
+        "jp": "私は日本語の学生です。",
+        "vn": "Tôi là sinh viên tiếng Nhật."
+      }
+    },
+    {
+      "id": "n5_l1_010",
+      "word": "先生",
+      "reading": "せんせい",
+      "hanViet": "Tiên Sinh",
+      "meaning": "giáo viên, thầy cô",
+      "type": "other",
+      "category": "Từ Vựng Nghề Nghiệp",
+      "example": {
+        "jp": "先生は日本人です。",
+        "vn": "Thầy/cô là người Nhật."
+      }
+    }
+  ]
+}

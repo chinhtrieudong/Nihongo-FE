@@ -1,0 +1,210 @@
+{
+  "textbookId": "tango-n4",
+  "chapterId": 7,
+  "topicId": "topic-7-1",
+  "topicName": "お店",
+  "topicNameVi": "Cửa hàng",
+  "vocabCount": 20,
+  "words": [
+    {
+      "word": "お店",
+      "reading": "おみせ",
+      "meaning": "Cửa hàng",
+      "type": "Danh từ",
+      "example": {
+        "jp": "お店に入りました。",
+        "vn": "đã (quá khứ)."
+      }
+    },
+    {
+      "word": "店",
+      "reading": "みせ",
+      "meaning": "Cửa hàng",
+      "type": "Danh từ",
+      "example": {
+        "jp": "店を出ました。",
+        "vn": "đã (quá khứ)."
+      }
+    },
+    {
+      "word": "商店",
+      "reading": "しょうてん",
+      "meaning": "Tiệm buôn",
+      "type": "Danh từ",
+      "example": {
+        "jp": "商店街を散歩します。",
+        "vn": "(đuôi lịch sự)"
+      }
+    },
+    {
+      "word": "商店街",
+      "reading": "しょうてんがい",
+      "meaning": "Phố mua sắm",
+      "type": "Danh từ",
+      "example": {
+        "jp": "商店街で買い物します。",
+        "vn": "(đuôi lịch sự)"
+      }
+    },
+    {
+      "word": "デパート",
+      "reading": "デパート",
+      "meaning": "Trung tâm thương mại",
+      "type": "Danh từ",
+      "example": {
+        "jp": "デパートで買い物しました。",
+        "vn": "đã (quá khứ)."
+      }
+    },
+    {
+      "word": "スーパー",
+      "reading": "スーパー",
+      "meaning": "Siêu thị",
+      "type": "Danh từ",
+      "example": {
+        "jp": "スーパーで食材を買います。",
+        "vn": "có (người/động vật)."
+      }
+    },
+    {
+      "word": "コンビニ",
+      "reading": "コンビニ",
+      "meaning": "Cửa hàng tiện lợi",
+      "type": "Danh từ",
+      "example": {
+        "jp": "コンビニで弁当を買いました。",
+        "vn": "đã (quá khứ)."
+      }
+    },
+    {
+      "word": "薬局",
+      "reading": "やっきょく",
+      "meaning": "Hiệu thuốc",
+      "type": "Danh từ",
+      "example": {
+        "jp": "薬局で薬を買いました。",
+        "vn": "đã (quá khứ)."
+      }
+    },
+    {
+      "word": "本屋",
+      "reading": "ほんや",
+      "meaning": "Hiệu sách",
+      "type": "Danh từ",
+      "example": {
+        "jp": "本屋で雑誌を買いました。",
+        "vn": "đã (quá khứ)."
+      }
+    },
+    {
+      "word": "花屋",
+      "reading": "はなや",
+      "meaning": "Tiệm hoa",
+      "type": "Danh từ",
+      "example": {
+        "jp": "花屋で花を買いました。",
+        "vn": "đã (quá khứ)."
+      }
+    },
+    {
+      "word": "肉屋",
+      "reading": "にくや",
+      "meaning": "Tiệm thịt",
+      "type": "Danh từ",
+      "example": {
+        "jp": "肉屋で肉を買いました。",
+        "vn": "đã (quá khứ)."
+      }
+    },
+    {
+      "word": "魚屋",
+      "reading": "さかなや",
+      "meaning": "Tiệm cá",
+      "type": "Danh từ",
+      "example": {
+        "jp": "魚屋で鮮魚を買いました。",
+        "vn": "đã (quá khứ)."
+      }
+    },
+    {
+      "word": "八百屋",
+      "reading": "やおや",
+      "meaning": "Tiệm rau",
+      "type": "Danh từ",
+      "example": {
+        "jp": "八百屋で野菜を買いました。",
+        "vn": "đã (quá khứ)."
+      }
+    },
+    {
+      "word": "パン屋",
+      "reading": "ぱんや",
+      "meaning": "Tiệm bánh",
+      "type": "Danh từ",
+      "example": {
+        "jp": "パン屋でパンを買いました。",
+        "vn": "đã (quá khứ)."
+      }
+    },
+    {
+      "word": "電気屋",
+      "reading": "でんきや",
+      "meaning": "Tiệm điện",
+      "type": "Danh từ",
+      "example": {
+        "jp": "電気屋で洗濯機を買いました。",
+        "vn": "đã (quá khứ)."
+      }
+    },
+    {
+      "word": "開店",
+      "reading": "かいてん",
+      "meaning": "Khai trương",
+      "type": "Danh động từ",
+      "example": {
+        "jp": "新店が開店しました。",
+        "vn": "đã (quá khứ)."
+      }
+    },
+    {
+      "word": "閉店",
+      "reading": "へいてん",
+      "meaning": "Đóng cửa",
+      "type": "Danh động từ",
+      "example": {
+        "jp": "閉店セールをしています。",
+        "vn": "có (người/động vật)."
+      }
+    },
+    {
+      "word": "営業",
+      "reading": "えいぎょう",
+      "meaning": "Kinh doanh",
+      "type": "Danh động từ",
+      "example": {
+        "jp": "営業時間は10時からです。",
+        "vn": "là."
+      }
+    },
+    {
+      "word": "定休日",
+      "reading": "ていきゅうび",
+      "meaning": "Ngày nghỉ",
+      "type": "Danh từ",
+      "example": {
+        "jp": "定休日は月曜日です。",
+        "vn": "là."
+      }
+    },
+    {
+      "word": "年中無休",
+      "reading": "ねんじゅうむきゅう",
+      "meaning": "Mở quanh năm",
+      "type": "Danh từ",
+      "example": {
+        "jp": "年中無休で営業しています。",
+        "vn": "có (người/động vật)."
+      }
+    }
+  ]
+}

@@ -1,0 +1,141 @@
+{
+  "textbookId": "speed-master-n2",
+  "name": "Speed Master N2 語彙",
+  "description": "Giáo trình luyện từ vựng N2 nâng cao - 1,500 từ",
+  "level": "N2",
+  "totalLessons": 10,
+  "startLesson": 1,
+  "accentColor": "red",
+  "chapters": [
+    {
+      "number": 1,
+      "title": "政治・経済",
+      "titleVi": "Chính trị & Kinh tế",
+      "vocab": 150,
+      "topics": [
+        {"name": "政治制度", "nameVi": "Chính trị"},
+        {"name": "経済政策", "nameVi": "Chính sách kinh tế"},
+        {"name": "市場", "nameVi": "Thị trường"},
+        {"name": "金融", "nameVi": "Tài chính"},
+        {"name": "貿易", "nameVi": "Thương mại"}
+      ]
+    },
+    {
+      "number": 2,
+      "title": "法律・規則",
+      "titleVi": "Pháp luật & Quy tắc",
+      "vocab": 150,
+      "topics": [
+        {"name": "憲法", "nameVi": "Hiến pháp"},
+        {"name": "法律", "nameVi": "Luật"},
+        {"name": "犯罪", "nameVi": "Tội phạm"},
+        {"name": "裁判", "nameVi": "Xét xử"},
+        {"name": "権利義務", "nameVi": "Quyền & Nghĩa vụ"}
+      ]
+    },
+    {
+      "number": 3,
+      "title": "社会問題",
+      "titleVi": "Vấn đề xã hội",
+      "vocab": 150,
+      "topics": [
+        {"name": "環境問題", "nameVi": "Vấn đề môi trường"},
+        {"name": "高齢化", "nameVi": "Già hóa"},
+        {"name": "格差", "nameVi": "Bất bình đẳng"},
+        {"name": "貧困", "nameVi": "Nghèo đói"},
+        {"name": "教育改革", "nameVi": "Cải cách giáo dục"}
+      ]
+    },
+    {
+      "number": 4,
+      "title": "ビジネス・仕事",
+      "titleVi": "Kinh doanh & Công việc",
+      "vocab": 150,
+      "topics": [
+        {"name": "経営", "nameVi": "Quản lý"},
+        {"name": "マネジメント", "nameVi": "Quản trị"},
+        {"name": "マーケティング", "nameVi": "Marketing"},
+        {"name": "人事", "nameVi": "Nhân sự"},
+        {"name": "取引", "nameVi": "Giao dịch"}
+      ]
+    },
+    {
+      "number": 5,
+      "title": "人間性・心理",
+      "titleVi": "Tính người & Tâm lý",
+      "vocab": 150,
+      "topics": [
+        {"name": "性格特徴", "nameVi": "Đặc điểm tính cách"},
+        {"name": "感情制御", "nameVi": "Kiểm soát cảm xúc"},
+        {"name": "人間関係", "nameVi": "Quan hệ"},
+        {"name": "ストレス", "nameVi": "Căng thẳng"},
+        {"name": "モチベーション", "nameVi": "Động lực"}
+      ]
+    },
+    {
+      "number": 6,
+      "title": "文化・芸術",
+      "titleVi": "Văn hóa & Nghệ thuật",
+      "vocab": 150,
+      "topics": [
+        {"name": "文学", "nameVi": "Văn học"},
+        {"name": "美術", "nameVi": "Mỹ thuật"},
+        {"name": "伝統文化", "nameVi": "Văn hóa truyền thống"},
+        {"name": "流行", "nameVi": "Xu hướng"},
+        {"name": "創作", "nameVi": "Sáng tác"}
+      ]
+    },
+    {
+      "number": 7,
+      "title": "科学・自然",
+      "titleVi": "Khoa học & Tự nhiên",
+      "vocab": 150,
+      "topics": [
+        {"name": "生物", "nameVi": "Sinh vật"},
+        {"name": "化学", "nameVi": "Hóa học"},
+        {"name": "物理", "nameVi": "Vật lý"},
+        {"name": "天文学", "nameVi": "Thiên văn"},
+        {"name": "地理", "nameVi": "Địa lý"}
+      ]
+    },
+    {
+      "number": 8,
+      "title": "技術・IT",
+      "titleVi": "Công nghệ & IT",
+      "vocab": 150,
+      "topics": [
+        {"name": "コンピューター", "nameVi": "Máy tính"},
+        {"name": "プログラミング", "nameVi": "Lập trình"},
+        {"name": "AI", "nameVi": "Trí tuệ nhân tạo"},
+        {"name": "セキュリティ", "nameVi": "Bảo mật"},
+        {"name": "データ", "nameVi": "Dữ liệu"}
+      ]
+    },
+    {
+      "number": 9,
+      "title": "国際・外交",
+      "titleVi": "Quốc tế & Ngoại giao",
+      "vocab": 150,
+      "topics": [
+        {"name": "国際関係", "nameVi": "Quan hệ quốc tế"},
+        {"name": "外交", "nameVi": "Ngoại giao"},
+        {"name": "紛争", "nameVi": "Xung đột"},
+        {"name": "協定", "nameVi": "Hiệp định"},
+        {"name": "平和", "nameVi": "Hòa bình"}
+      ]
+    },
+    {
+      "number": 10,
+      "title": "抽象・概念",
+      "titleVi": "Trừu tượng & Khái niệm",
+      "vocab": 150,
+      "topics": [
+        {"name": "思考", "nameVi": "Tư duy"},
+        {"name": "倫理", "nameVi": "Đạo đức"},
+        {"name": "哲学", "nameVi": "Triết học"},
+        {"name": "美学", "nameVi": "Mỹ học"},
+        {"name": "論理", "nameVi": "Logic"}
+      ]
+    }
+  ]
+}

@@ -16,7 +16,7 @@ const MobileLayout: React.FC<MobileLayoutProps> = ({ children }) => {
       <MobileHeader />
 
       {/* Main Content */}
-      <Content className="mobile-main-content academic-canvas bg-slate-900">
+      <Content className="mobile-main-content academic-canvas bg-surface-1">
         <div className="">
           {children}
         </div>

@@ -3,15 +3,18 @@ import { Drawer, Layout, Tooltip } from "antd";
 import { Link, useLocation } from "react-router-dom";
 import {
   Home,
+  BookOpen,
   FlaskConical,
   Volume2,
-  MessageSquare,
   Target,
   Languages,
   Settings,
   Check,
   Type,
-  BookOpen,
+  FileText,
+  FileCheck,
+  ChessKnight,
+  ChessKing,
 } from "lucide-react";
 import { Icon } from "@iconify/react";
 import { APP_HEADER_HEIGHT_PX, APP_SIDEBAR_SIZE_PX } from "../../constants/layout";
@@ -107,17 +110,17 @@ const Sidebar: React.FC = () => {
   const menuItems = [
     {
       key: "/",
-      icon: <Home className="w-5 h-5" />,
-      label: "Trang chủ",
+      icon: <ChessKing className="w-5 h-5" />,
+      label: "Từ vựng",
     },
     {
       key: "/kanji",
-      icon: <Icon icon="material-symbols-light:kanji-alcohol" className="w-5 h-5" color="currentColor" />,
+      icon: <ChessKnight className="w-5 h-5" />,
       label: "Hán tự",
     },
     {
       key: "/grammar",
-      icon: <FlaskConical className="w-5 h-5" />,
+      icon: <FileText className="w-5 h-5" />,
       label: "Ngữ pháp",
     },
     {
@@ -126,18 +129,13 @@ const Sidebar: React.FC = () => {
       label: "Phát âm",
     },
     {
-      key: "/conversation",
-      icon: <MessageSquare className="w-5 h-5" />,
-      label: "Hội thoại",
-    },
-    {
       key: "/practice",
-      icon: <BookOpen className="w-5 h-5" />,
+      icon: <Target className="w-5 h-5" />,
       label: "Luyện tập",
     },
     {
       key: "/tests",
-      icon: <Target className="w-5 h-5" />,
+      icon: <FileCheck className="w-5 h-5" />,
       label: "Thi JLPT",
     },
   ];

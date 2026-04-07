@@ -1,0 +1,150 @@
+{
+  "textbookId": "tango-n5",
+  "chapterId": 4,
+  "topicId": "topic-4-5",
+  "topicName": "町 (まち)",
+  "topicNameVi": "Thành phố",
+  "vocabCount": 14,
+  "words": [
+    {
+      "word": "町",
+      "reading": "まち",
+      "meaning": "Thị trấn, phố",
+      "type": "Danh từ",
+      "example": {
+        "jp": "町がにぎやかです。",
+        "vn": "là."
+      }
+    },
+    {
+      "word": "市",
+      "reading": "し",
+      "meaning": "Thành phố",
+      "type": "Danh từ",
+      "example": {
+        "jp": "京都市です。",
+        "vn": "là."
+      }
+    },
+    {
+      "word": "村",
+      "reading": "むら",
+      "meaning": "Làng",
+      "type": "Danh từ",
+      "example": {
+        "jp": "村に住んでいます。",
+        "vn": "có (người/động vật)."
+      }
+    },
+    {
+      "word": "駅",
+      "reading": "えき",
+      "meaning": "Ga, nhà ga",
+      "type": "Danh từ",
+      "example": {
+        "jp": "駅まで行きます。",
+        "vn": "(đuôi lịch sự)"
+      }
+    },
+    {
+      "word": "銀行",
+      "reading": "ぎんこう",
+      "meaning": "Ngân hàng",
+      "type": "Danh từ",
+      "example": {
+        "jp": "銀行でお金を引き出します。",
+        "vn": "(đuôi lịch sự)"
+      }
+    },
+    {
+      "word": "郵便局",
+      "reading": "ゆうびんきょく",
+      "meaning": "Bưu điện",
+      "type": "Danh từ",
+      "example": {
+        "jp": "郵便局で手紙を出します。",
+        "vn": "(đuôi lịch sự)"
+      }
+    },
+    {
+      "word": "図書館",
+      "reading": "としょかん",
+      "meaning": "Thư viện",
+      "type": "Danh từ",
+      "example": {
+        "jp": "図書館で本を借ります。",
+        "vn": "(đuôi lịch sự)"
+      }
+    },
+    {
+      "word": "博物館",
+      "reading": "はくぶつかん",
+      "meaning": "Bảo tàng",
+      "type": "Danh từ",
+      "example": {
+        "jp": "博物館を見学します。",
+        "vn": "(đuôi lịch sự)"
+      }
+    },
+    {
+      "word": "美術館",
+      "reading": "びじゅつかん",
+      "meaning": "Bảo tàng mỹ thuật",
+      "type": "Danh từ",
+      "example": {
+        "jp": "美術館へ行きます。",
+        "vn": "(đuôi lịch sự)"
+      }
+    },
+    {
+      "word": "動物園",
+      "reading": "どうぶつえん",
+      "meaning": "Vườn thú",
+      "type": "Danh từ",
+      "example": {
+        "jp": "動物園で動物を見ます。",
+        "vn": "(đuôi lịch sự)"
+      }
+    },
+    {
+      "word": "植物園",
+      "reading": "しょくぶつえん",
+      "meaning": "Vườn thực vật",
+      "type": "Danh từ",
+      "example": {
+        "jp": "植物園へ行きます。",
+        "vn": "(đuôi lịch sự)"
+      }
+    },
+    {
+      "word": "遊園地",
+      "reading": "ゆうえんち",
+      "meaning": "Công viên giải trí",
+      "type": "Danh từ",
+      "example": {
+        "jp": "遊園地で遊びます。",
+        "vn": "(đuôi lịch sự)"
+      }
+    },
+    {
+      "word": "水族館",
+      "reading": "すいぞくかん",
+      "meaning": "Thủy cung",
+      "type": "Danh từ",
+      "example": {
+        "jp": "水族館で魚を見ます。",
+        "vn": "(đuôi lịch sự)"
+      }
+    },
+    {
+      "word": "商店街",
+      "reading": "しょうてんがい",
+      "meaning": "Phố mua sắm",
+      "type": "Danh từ",
+      "example": {
+        "jp": "商店街で買い物します。",
+        "vn": "(đuôi lịch sự)"
+      }
+    }
+  ]
+}

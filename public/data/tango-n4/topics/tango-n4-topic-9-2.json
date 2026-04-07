@@ -1,0 +1,210 @@
+{
+  "textbookId": "tango-n4",
+  "chapterId": 9,
+  "topicId": "topic-9-2",
+  "topicName": "病気",
+  "topicNameVi": "Bệnh tật",
+  "vocabCount": 20,
+  "words": [
+    {
+      "word": "病気",
+      "reading": "びょうき",
+      "meaning": "Bệnh",
+      "type": "Danh từ",
+      "example": {
+        "jp": "病気になりました。",
+        "vn": "đã (quá khứ)."
+      }
+    },
+    {
+      "word": "病院",
+      "reading": "びょういん",
+      "meaning": "Bệnh viện",
+      "type": "Danh từ",
+      "example": {
+        "jp": "病院に行きました。",
+        "vn": "đã (quá khứ)."
+      }
+    },
+    {
+      "word": "医者",
+      "reading": "いしゃ",
+      "meaning": "Bác sĩ",
+      "type": "Danh từ",
+      "example": {
+        "jp": "医者に診てもらいました。",
+        "vn": "đã (quá khứ)."
+      }
+    },
+    {
+      "word": "看護師",
+      "reading": "かんごし",
+      "meaning": "Y tá",
+      "type": "Danh từ",
+      "example": {
+        "jp": "看護師に注射されました。",
+        "vn": "đã (quá khứ)."
+      }
+    },
+    {
+      "word": "薬",
+      "reading": "くすり",
+      "meaning": "Thuốc",
+      "type": "Danh từ",
+      "example": {
+        "jp": "薬を飲みます。",
+        "vn": "(đuôi lịch sự)"
+      }
+    },
+    {
+      "word": "風邪",
+      "reading": "かぜ",
+      "meaning": "Cảm lạnh",
+      "type": "Danh từ",
+      "example": {
+        "jp": "風邪をひきました。",
+        "vn": "đã (quá khứ)."
+      }
+    },
+    {
+      "word": "熱",
+      "reading": "ねつ",
+      "meaning": "Sốt",
+      "type": "Danh từ",
+      "example": {
+        "jp": "熱があります。",
+        "vn": "có."
+      }
+    },
+    {
+      "word": "咳",
+      "reading": "せき",
+      "meaning": "Ho",
+      "type": "Danh từ",
+      "example": {
+        "jp": "咳が止まりません。",
+        "vn": "không."
+      }
+    },
+    {
+      "word": "鼻水",
+      "reading": "はなみず",
+      "meaning": "Nước mũi",
+      "type": "Danh từ",
+      "example": {
+        "jp": "鼻水が出ています。",
+        "vn": "có (người/động vật)."
+      }
+    },
+    {
+      "word": "頭痛",
+      "reading": "ずつう",
+      "meaning": "Đau đầu",
+      "type": "Danh từ",
+      "example": {
+        "jp": "頭痛がします。",
+        "vn": "(đuôi lịch sự)"
+      }
+    },
+    {
+      "word": "腹痛",
+      "reading": "ふくつう",
+      "meaning": "Đau bụng",
+      "type": "Danh từ",
+      "example": {
+        "jp": "腹痛がします。",
+        "vn": "(đuôi lịch sự)"
+      }
+    },
+    {
+      "word": "歯痛",
+      "reading": "しつう",
+      "meaning": "Đau răng",
+      "type": "Danh từ",
+      "example": {
+        "jp": "歯痛がします。",
+        "vn": "(đuôi lịch sự)"
+      }
+    },
+    {
+      "word": "怪我",
+      "reading": "けが",
+      "meaning": "Thương tích",
+      "type": "Danh động từ",
+      "example": {
+        "jp": "怪我をしました。",
+        "vn": "đã (quá khứ)."
+      }
+    },
+    {
+      "word": "出血",
+      "reading": "しゅっけつ",
+      "meaning": "Chảy máu",
+      "type": "Danh động từ",
+      "example": {
+        "jp": "出血しています。",
+        "vn": "có (người/động vật)."
+      }
+    },
+    {
+      "word": "骨折",
+      "reading": "こっせつ",
+      "meaning": "Gãy xương",
+      "type": "Danh động từ",
+      "example": {
+        "jp": "骨折しました。",
+        "vn": "đã (quá khứ)."
+      }
+    },
+    {
+      "word": "火傷",
+      "reading": "やけど",
+      "meaning": "Bỏng",
+      "type": "Danh động từ",
+      "example": {
+        "jp": "火傷しました。",
+        "vn": "đã (quá khứ)."
+      }
+    },
+    {
+      "word": "検査",
+      "reading": "けんさ",
+      "meaning": "Xét nghiệm",
+      "type": "Danh động từ",
+      "example": {
+        "jp": "血液検査をしました。",
+        "vn": "đã (quá khứ)."
+      }
+    },
+    {
+      "word": "診察",
+      "reading": "しんさつ",
+      "meaning": "Khám bệnh",
+      "type": "Danh động từ",
+      "example": {
+        "jp": "診察を受けました。",
+        "vn": "đã (quá khứ)."
+      }
+    },
+    {
+      "word": "入院",
+      "reading": "にゅういん",
+      "meaning": "Nhập viện",
+      "type": "Danh động từ",
+      "example": {
+        "jp": "入院しました。",
+        "vn": "đã (quá khứ)."
+      }
+    },
+    {
+      "word": "退院",
+      "reading": "たいいん",
+      "meaning": "Xuất viện",
+      "type": "Danh động từ",
+      "example": {
+        "jp": "退院しました。",
+        "vn": "đã (quá khứ)."
+      }
+    }
+  ]
+}

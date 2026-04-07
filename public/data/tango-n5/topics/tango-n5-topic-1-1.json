@@ -1,0 +1,150 @@
+{
+  "textbookId": "tango-n5",
+  "chapterId": 1,
+  "topicId": "topic-1-1",
+  "topicName": "～です",
+  "topicNameVi": "Chào hỏi",
+  "vocabCount": 14,
+  "words": [
+    {
+      "word": "わたし",
+      "reading": "わたし",
+      "meaning": "Tôi",
+      "type": "Đại từ",
+      "example": {
+        "jp": "わたしは学生です。",
+        "vn": "là."
+      }
+    },
+    {
+      "word": "わたしたち",
+      "reading": "わたしたち",
+      "meaning": "Chúng tôi",
+      "type": "Đại từ",
+      "example": {
+        "jp": "わたしたちは日本人です。",
+        "vn": "là."
+      }
+    },
+    {
+      "word": "あなた",
+      "reading": "あなた",
+      "meaning": "Bạn",
+      "type": "Đại từ",
+      "example": {
+        "jp": "あなたは先生ですか。",
+        "vn": "có phải là... không?"
+      }
+    },
+    {
+      "word": "あの人",
+      "reading": "あのひと",
+      "meaning": "Người kia, người đó",
+      "type": "Danh từ",
+      "example": {
+        "jp": "あの人は誰ですか。",
+        "vn": "có phải là... không?"
+      }
+    },
+    {
+      "word": "あの方",
+      "reading": "あのかた",
+      "meaning": "Vị kia, vị đó (lịch sự)",
+      "type": "Danh từ",
+      "example": {
+        "jp": "あの方は社長です。",
+        "vn": "là."
+      }
+    },
+    {
+      "word": "皆さん",
+      "reading": "みなさん",
+      "meaning": "Các bạn, quý vị",
+      "type": "Danh từ",
+      "example": {
+        "jp": "皆さん、こんにちは。",
+        "vn": ""
+      }
+    },
+    {
+      "word": "先生",
+      "reading": "せんせい",
+      "meaning": "Thầy/cô giáo",
+      "type": "Danh từ",
+      "example": {
+        "jp": "田中先生は日本語の先生です。",
+        "vn": "là."
+      }
+    },
+    {
+      "word": "社長",
+      "reading": "しゃちょう",
+      "meaning": "Giám đốc",
+      "type": "Danh từ",
+      "example": {
+        "jp": "社長は今いません。",
+        "vn": "không có."
+      }
+    },
+    {
+      "word": "社員",
+      "reading": "しゃいん",
+      "meaning": "Nhân viên công ty",
+      "type": "Danh từ",
+      "example": {
+        "jp": "私は日本航空の社員です。",
+        "vn": "là."
+      }
+    },
+    {
+      "word": "銀行員",
+      "reading": "ぎんこういん",
+      "meaning": "Nhân viên ngân hàng",
+      "type": "Danh từ",
+      "example": {
+        "jp": "姉は銀行員です。",
+        "vn": "là."
+      }
+    },
+    {
+      "word": "医者",
+      "reading": "いしゃ",
+      "meaning": "Bác sĩ",
+      "type": "Danh từ",
+      "example": {
+        "jp": "父は医者です。",
+        "vn": "là."
+      }
+    },
+    {
+      "word": "学生",
+      "reading": "がくせい",
+      "meaning": "Học sinh, sinh viên",
+      "type": "Danh từ",
+      "example": {
+        "jp": "学生ですか。",
+        "vn": "có phải là... không?"
+      }
+    },
+    {
+      "word": "大学",
+      "reading": "だいがく",
+      "meaning": "Đại học",
+      "type": "Danh từ",
+      "example": {
+        "jp": "東京大学の学生です。",
+        "vn": "là."
+      }
+    },
+    {
+      "word": "～歳",
+      "reading": "～さい",
+      "meaning": "Tuổi",
+      "type": "Phụ tố",
+      "example": {
+        "jp": "20歳です。",
+        "vn": "là."
+      }
+    }
+  ]
+}

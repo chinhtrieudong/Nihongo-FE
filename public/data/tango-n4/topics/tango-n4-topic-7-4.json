@@ -1,0 +1,210 @@
+{
+  "textbookId": "tango-n4",
+  "chapterId": 7,
+  "topicId": "topic-7-4",
+  "topicName": "支払い",
+  "topicNameVi": "Thanh toán",
+  "vocabCount": 20,
+  "words": [
+    {
+      "word": "支払い",
+      "reading": "しはらい",
+      "meaning": "Thanh toán",
+      "type": "Danh động từ",
+      "example": {
+        "jp": "支払いを済ませました。",
+        "vn": "đã (quá khứ)."
+      }
+    },
+    {
+      "word": "会計",
+      "reading": "かいけい",
+      "meaning": "Tính tiền",
+      "type": "Danh động từ",
+      "example": {
+        "jp": "会計をお願いします。",
+        "vn": "(đuôi lịch sự)"
+      }
+    },
+    {
+      "word": "精算",
+      "reading": "せいさん",
+      "meaning": "Thanh toán",
+      "type": "Danh động từ",
+      "example": {
+        "jp": "精算しました。",
+        "vn": "đã (quá khứ)."
+      }
+    },
+    {
+      "word": "現金",
+      "reading": "げんきん",
+      "meaning": "Tiền mặt",
+      "type": "Danh từ",
+      "example": {
+        "jp": "現金で払います。",
+        "vn": "có (người/động vật)."
+      }
+    },
+    {
+      "word": "現金払い",
+      "reading": "げんきんばらい",
+      "meaning": "Trả tiền mặt",
+      "type": "Danh động từ",
+      "example": {
+        "jp": "現金払いしました。",
+        "vn": "đã (quá khứ)."
+      }
+    },
+    {
+      "word": "カード払い",
+      "reading": "カードばらい",
+      "meaning": "Trả thẻ",
+      "type": "Danh động từ",
+      "example": {
+        "jp": "カード払いでお願いします。",
+        "vn": "(đuôi lịch sự)"
+      }
+    },
+    {
+      "word": "クレジットカード",
+      "reading": "クレジットカード",
+      "meaning": "Thẻ tín dụng",
+      "type": "Danh từ",
+      "example": {
+        "jp": "クレジットカードで払います。",
+        "vn": "có (người/động vật)."
+      }
+    },
+    {
+      "word": "デビットカード",
+      "reading": "デビットカード",
+      "meaning": "Thẻ ghi nợ",
+      "type": "Danh từ",
+      "example": {
+        "jp": "デビットカードを使います。",
+        "vn": "có (người/động vật)."
+      }
+    },
+    {
+      "word": "電子マネー",
+      "reading": "でんしマネー",
+      "meaning": "Tiền điện tử",
+      "type": "Danh từ",
+      "example": {
+        "jp": "電子マネーで払います。",
+        "vn": "có (người/động vật)."
+      }
+    },
+    {
+      "word": "キャッシュカード",
+      "reading": "キャッシュカード",
+      "meaning": "Thẻ ATM",
+      "type": "Danh từ",
+      "example": {
+        "jp": "キャッシュカードを使います。",
+        "vn": "có (người/động vật)."
+      }
+    },
+    {
+      "word": "領収書",
+      "reading": "りょうしゅうしょ",
+      "meaning": "Biên lai",
+      "type": "Danh từ",
+      "example": {
+        "jp": "領収書をください。",
+        "vn": "vui lòng..."
+      }
+    },
+    {
+      "word": "レシート",
+      "reading": "レシート",
+      "meaning": "Hóa đơn",
+      "type": "Danh từ",
+      "example": {
+        "jp": "レシートをもらいました。",
+        "vn": "đã (quá khứ)."
+      }
+    },
+    {
+      "word": "預かる",
+      "reading": "あずかる",
+      "meaning": "Nhận giữ",
+      "type": "Động từ",
+      "example": {
+        "jp": "お預かりします。",
+        "vn": "(đuôi lịch sự)"
+      }
+    },
+    {
+      "word": "お釣り",
+      "reading": "おつり",
+      "meaning": "Tiền thối",
+      "type": "Danh từ",
+      "example": {
+        "jp": "お釣りをください。",
+        "vn": "vui lòng..."
+      }
+    },
+    {
+      "word": "一括払い",
+      "reading": "いっかつばらい",
+      "meaning": "Trả một lần",
+      "type": "Danh động từ",
+      "example": {
+        "jp": "一括払いしました。",
+        "vn": "đã (quá khứ)."
+      }
+    },
+    {
+      "word": "分割払い",
+      "reading": "ぶんかつばらい",
+      "meaning": "Trả góp",
+      "type": "Danh động từ",
+      "example": {
+        "jp": "分割払いで購入しました。",
+        "vn": "đã (quá khứ)."
+      }
+    },
+    {
+      "word": "ボーナス払い",
+      "reading": "ボーナスばらい",
+      "meaning": "Trả khi có thưởng",
+      "type": "Danh động từ",
+      "example": {
+        "jp": "ボーナス払いにしました。",
+        "vn": "đã (quá khứ)."
+      }
+    },
+    {
+      "word": "リボ払い",
+      "reading": "リボばらい",
+      "meaning": "Trả theo tháng",
+      "type": "Danh động từ",
+      "example": {
+        "jp": "リボ払いで払います。",
+        "vn": "có (người/động vật)."
+      }
+    },
+    {
+      "word": "手数料",
+      "reading": "てすうりょう",
+      "meaning": "Phí dịch vụ",
+      "type": "Danh từ",
+      "example": {
+        "jp": "手数料がかかります。",
+        "vn": "(đuôi lịch sự)"
+      }
+    },
+    {
+      "word": "無料",
+      "reading": "むりょう",
+      "meaning": "Miễn phí",
+      "type": "Danh từ",
+      "example": {
+        "jp": "手数料は無料です。",
+        "vn": "là."
+      }
+    }
+  ]
+}

@@ -1,0 +1,210 @@
+{
+  "textbookId": "tango-n4",
+  "chapterId": 5,
+  "topicId": "topic-5-2",
+  "topicName": "昼間",
+  "topicNameVi": "Buổi trưa",
+  "vocabCount": 20,
+  "words": [
+    {
+      "word": "昼",
+      "reading": "ひる",
+      "meaning": "Buổi trưa",
+      "type": "Danh từ",
+      "example": {
+        "jp": "昼になりました。",
+        "vn": "đã (quá khứ)."
+      }
+    },
+    {
+      "word": "昼間",
+      "reading": "ひるま",
+      "meaning": "Ban ngày",
+      "type": "Danh từ",
+      "example": {
+        "jp": "昼間は忙しいです。",
+        "vn": "là."
+      }
+    },
+    {
+      "word": "正午",
+      "reading": "しょうご",
+      "meaning": "12 giờ trưa",
+      "type": "Danh từ",
+      "example": {
+        "jp": "正午になりました。",
+        "vn": "đã (quá khứ)."
+      }
+    },
+    {
+      "word": "昼休み",
+      "reading": "ひるやすみ",
+      "meaning": "Nghỉ trưa",
+      "type": "Danh từ",
+      "example": {
+        "jp": "昼休みに食べます。",
+        "vn": "(đuôi lịch sự)"
+      }
+    },
+    {
+      "word": "昼食",
+      "reading": "ちゅうしょく",
+      "meaning": "Bữa trưa",
+      "type": "Danh từ",
+      "example": {
+        "jp": "昼食を取りました。",
+        "vn": "đã (quá khứ)."
+      }
+    },
+    {
+      "word": "お弁当",
+      "reading": "おべんとう",
+      "meaning": "Hộp cơm",
+      "type": "Danh từ",
+      "example": {
+        "jp": "お弁当を持参しました。",
+        "vn": "đã (quá khứ)."
+      }
+    },
+    {
+      "word": "ランチ",
+      "reading": "ランチ",
+      "meaning": "Bữa trưa",
+      "type": "Danh từ",
+      "example": {
+        "jp": "ランチに行きます。",
+        "vn": "(đuôi lịch sự)"
+      }
+    },
+    {
+      "word": "定食",
+      "reading": "ていしょく",
+      "meaning": "Suất ăn",
+      "type": "Danh từ",
+      "example": {
+        "jp": "定食を注文しました。",
+        "vn": "đã (quá khứ)."
+      }
+    },
+    {
+      "word": "パン",
+      "reading": "パン",
+      "meaning": "Bánh mì",
+      "type": "Danh từ",
+      "example": {
+        "jp": "パンを食べます。",
+        "vn": "(đuôi lịch sự)"
+      }
+    },
+    {
+      "word": "サンドイッチ",
+      "reading": "サンドイッチ",
+      "meaning": "Bánh sandwich",
+      "type": "Danh từ",
+      "example": {
+        "jp": "サンドイッチを食べました。",
+        "vn": "đã (quá khứ)."
+      }
+    },
+    {
+      "word": "カレー",
+      "reading": "カレー",
+      "meaning": "Cà ri",
+      "type": "Danh từ",
+      "example": {
+        "jp": "カレーが好きです。",
+        "vn": "là."
+      }
+    },
+    {
+      "word": "うどん",
+      "reading": "うどん",
+      "meaning": "Mì udon",
+      "type": "Danh từ",
+      "example": {
+        "jp": "うどんを食べました。",
+        "vn": "đã (quá khứ)."
+      }
+    },
+    {
+      "word": "そば",
+      "reading": "そば",
+      "meaning": "Mì soba",
+      "type": "Danh từ",
+      "example": {
+        "jp": "そばを食べます。",
+        "vn": "(đuôi lịch sự)"
+      }
+    },
+    {
+      "word": "ラーメン",
+      "reading": "ラーメン",
+      "meaning": "Mì ramen",
+      "type": "Danh từ",
+      "example": {
+        "jp": "ラーメンを食べました。",
+        "vn": "đã (quá khứ)."
+      }
+    },
+    {
+      "word": "丼",
+      "reading": "どんぶり",
+      "meaning": "Cơm tô",
+      "type": "Danh từ",
+      "example": {
+        "jp": "丼を食べました。",
+        "vn": "đã (quá khứ)."
+      }
+    },
+    {
+      "word": "牛丼",
+      "reading": "ぎゅうどん",
+      "meaning": "Cơm bò",
+      "type": "Danh từ",
+      "example": {
+        "jp": "牛丼が好きです。",
+        "vn": "là."
+      }
+    },
+    {
+      "word": "カフェ",
+      "reading": "カフェ",
+      "meaning": "Quán cà phê",
+      "type": "Danh từ",
+      "example": {
+        "jp": "カフェで食べました。",
+        "vn": "đã (quá khứ)."
+      }
+    },
+    {
+      "word": "喫茶店",
+      "reading": "きっさてん",
+      "meaning": "Quán trà",
+      "type": "Danh từ",
+      "example": {
+        "jp": "喫茶店に入りました。",
+        "vn": "đã (quá khứ)."
+      }
+    },
+    {
+      "word": "ファミレス",
+      "reading": "ファミレス",
+      "meaning": "Nhà hàng gia đình",
+      "type": "Danh từ",
+      "example": {
+        "jp": "ファミレスで食べました。",
+        "vn": "đã (quá khứ)."
+      }
+    },
+    {
+      "word": "食堂",
+      "reading": "しょくどう",
+      "meaning": "Căng tin",
+      "type": "Danh từ",
+      "example": {
+        "jp": "会社の食堂で食べます。",
+        "vn": "(đuôi lịch sự)"
+      }
+    }
+  ]
+}

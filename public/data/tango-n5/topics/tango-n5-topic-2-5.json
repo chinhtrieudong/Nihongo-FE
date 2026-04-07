@@ -1,0 +1,140 @@
+{
+  "textbookId": "tango-n5",
+  "chapterId": 2,
+  "topicId": "topic-2-5",
+  "topicName": "べんきょう",
+  "topicNameVi": "Môn học",
+  "vocabCount": 13,
+  "words": [
+    {
+      "word": "勉強",
+      "reading": "べんきょう",
+      "meaning": "Học, học tập",
+      "type": "Danh động từ",
+      "example": {
+        "jp": "日本語を勉強します。",
+        "vn": "(đuôi lịch sự)"
+      }
+    },
+    {
+      "word": "学習",
+      "reading": "がくしゅう",
+      "meaning": "Học tập",
+      "type": "Danh từ",
+      "example": {
+        "jp": "学習が大切です。",
+        "vn": "là."
+      }
+    },
+    {
+      "word": "練習",
+      "reading": "れんしゅう",
+      "meaning": "Luyện tập",
+      "type": "Danh động từ",
+      "example": {
+        "jp": "練習をします。",
+        "vn": "(đuôi lịch sự)"
+      }
+    },
+    {
+      "word": "復習",
+      "reading": "ふくしゅう",
+      "meaning": "Ôn tập",
+      "type": "Danh động từ",
+      "example": {
+        "jp": "復習をします。",
+        "vn": "(đuôi lịch sự)"
+      }
+    },
+    {
+      "word": "予習",
+      "reading": "よしゅう",
+      "meaning": "Học trước",
+      "type": "Danh động từ",
+      "example": {
+        "jp": "予習をしてください。",
+        "vn": "vui lòng..."
+      }
+    },
+    {
+      "word": "宿題",
+      "reading": "しゅくだい",
+      "meaning": "Bài tập về nhà",
+      "type": "Danh từ",
+      "example": {
+        "jp": "宿題を出します。",
+        "vn": "(đuôi lịch sự)"
+      }
+    },
+    {
+      "word": "試験",
+      "reading": "しけん",
+      "meaning": "Bài kiểm tra",
+      "type": "Danh từ",
+      "example": {
+        "jp": "試験があります。",
+        "vn": "có."
+      }
+    },
+    {
+      "word": "成績",
+      "reading": "せいせき",
+      "meaning": "Thành tích, điểm số",
+      "type": "Danh từ",
+      "example": {
+        "jp": "成績がいいです。",
+        "vn": "là."
+      }
+    },
+    {
+      "word": "合格",
+      "reading": "ごうかく",
+      "meaning": "Đậu, đỗ",
+      "type": "Danh động từ",
+      "example": {
+        "jp": "試験に合格しました。",
+        "vn": "đã (quá khứ)."
+      }
+    },
+    {
+      "word": "不合格",
+      "reading": "ふごうかく",
+      "meaning": "Rớt, trượt",
+      "type": "Danh từ",
+      "example": {
+        "jp": "不合格でした。",
+        "vn": "đã là (quá khứ)."
+      }
+    },
+    {
+      "word": "問題",
+      "reading": "もんだい",
+      "meaning": "Câu hỏi, vấn đề",
+      "type": "Danh từ",
+      "example": {
+        "jp": "問題を解きます。",
+        "vn": "(đuôi lịch sự)"
+      }
+    },
+    {
+      "word": "答え",
+      "reading": "こたえ",
+      "meaning": "Câu trả lời",
+      "type": "Danh từ",
+      "example": {
+        "jp": "答えを教えてください。",
+        "vn": "vui lòng..."
+      }
+    },
+    {
+      "word": "質問",
+      "reading": "しつもん",
+      "meaning": "Câu hỏi",
+      "type": "Danh động từ",
+      "example": {
+        "jp": "質問があります。",
+        "vn": "có."
+      }
+    }
+  ]
+}

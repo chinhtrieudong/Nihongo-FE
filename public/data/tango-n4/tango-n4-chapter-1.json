@@ -1,0 +1,22 @@
+{
+  "textbookId": "tango-n4",
+  "chapterId": 1,
+  "chapterTitle": "しごと",
+  "chapterTitleVi": "Chương 1: Công việc",
+  "totalVocab": 100,
+  "topics": [
+    {
+      "id": "topic-1-1",
+      "name": "職業",
+      "nameVi": "Nghề nghiệp",
+      "vocabCount": 20,
+      "words": [
+        { "word": "会社員", "reading": "かいしゃいん", "meaning": "Nhân viên công ty", "type": "Danh từ", "example": "会社員として働いています。" },
+        { "word": "公務員", "reading": "こうむいん", "meaning": "Công chức", "type": "Danh từ", "example": "公務員の試験を受けました。" },
+        { "word": "自営業", "reading": "じえいぎょう", "meaning": "Tự doanh", "type": "Danh từ", "example": "父は自営業です。" },
+        { "word": "主婦", "reading": "しゅふ", "meaning": "Nội trợ", "type": "Danh từ", "example": "主婦の仕事は大変です。" },
+        { "word": "派遣", "reading": "はけん", "meaning": "Nhân viên công ty cung cấp", "type": "Danh từ", "example": "派遣社員として働いています。" }
+      ]
+    }
+  ]
+}

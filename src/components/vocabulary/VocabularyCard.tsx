@@ -45,50 +45,50 @@ const VocabularyCard: React.FC<VocabularyCardProps> = ({
   return (
     <Card
       key={item.id || `${item.kanji}_${item.hiragana || item.katakana}_${index}`}
-      className="cursor-pointer hover:shadow-sm transition-all duration-200 border border-gray-200 dark:border-secondary-700 rounded-md"
+      className="cursor-pointer hover:shadow-md transition-all duration-300 border-0 rounded-xl overflow-hidden bg-gradient-to-br from-white to-gray-50 dark:from-secondary-800 dark:to-secondary-900"
       onClick={() => onWordClick(item)}
-      size="small"
-      styles={{ body: { padding: "6px 8px" } }}
+      styles={{ body: { padding: "12px 16px" } }}
     >
-      <div className="flex items-start justify-between gap-2">
+      <div className="flex items-start justify-between gap-3">
         <div className="flex-1 min-w-0">
-          {item.kanji ? (
-            <div className="flex items-baseline gap-1.5">
-              <span className="text-base font-bold text-secondary-900 dark:text-secondary-100 vocab-kanji-text" style={{ fontFamily: selectedPreset.kanjiFontFamily || selectedPreset.fontFamily }}>
-                {(() => {
-                  console.log('🔤 VocabularyCard Kanji Render:', {
-                    kanji: item.kanji,
-                    fontFamily: selectedPreset.kanjiFontFamily || selectedPreset.fontFamily
-                  });
-                  return item.kanji;
-                })()}
-              </span>
-              <span className="text-xs text-secondary-500 dark:text-secondary-400">•</span>
-              <span className="text-xs text-secondary-700 dark:text-secondary-300 jp-text">
+          {/* Kanji + Reading */}
+          <div className="flex items-baseline gap-2 mb-1">
+            {item.kanji ? (
+              <>
+                <span 
+                  className="text-xl font-bold text-secondary-900 dark:text-secondary-100"
+                  style={{ fontFamily: selectedPreset.kanjiFontFamily || selectedPreset.fontFamily }}
+                >
+                  {item.kanji}
+                </span>
+                <span className="text-sm text-secondary-500 dark:text-secondary-400">
+                  {item.hiragana || item.katakana || "-"}
+                </span>
+              </>
+            ) : (
+              <span className="text-lg font-medium text-secondary-900 dark:text-secondary-100">
                 {item.hiragana || item.katakana || "-"}
               </span>
-            </div>
-          ) : (
-            <div className="text-xs text-secondary-700 dark:text-secondary-300">
-              {item.hiragana || item.katakana || "-"}
+            )}
+          </div>
+          
+          {/* Han Viet */}
+          {showHanViet && item.hanviet && (
+            <div className="text-xs uppercase tracking-wide text-primary-600 dark:text-primary-400 font-medium mb-1">
+              {item.hanviet.toUpperCase().replace(/,/g, '')}
             </div>
           )}
-          <div className="flex items-baseline gap-1.5 mt-0.5">
-            {showHanViet && item.hanviet && (
-              <span className="text-[10px] uppercase tracking-wide text-secondary-900 dark:text-secondary-100 font-semibold">
-                {item.hanviet.toUpperCase().replace(/,/g, '')}
-              </span>
-            )}
-            {showHanViet && item.hanviet && (
-              <span className="text-[10px] text-secondary-500 dark:text-secondary-400">•</span>
-            )}
-            <span className="text-xs font-normal text-secondary-900 dark:text-secondary-100 line-clamp-1">
-              {item.meaning_vi || '-'}
-            </span>
+          
+          {/* Meaning - Main focus */}
+          <div className="text-sm font-medium text-secondary-800 dark:text-secondary-200 line-clamp-2 leading-relaxed">
+            {item.meaning_vi || '-'}
           </div>
         </div>
+        
+        {/* Audio Button */}
         <Button
-          type="text"
+          type="primary"
+          shape="circle"
           icon={<Volume2 className="w-4 h-4" />}
           onClick={(e) => {
             e.stopPropagation();
@@ -99,7 +99,7 @@ const VocabularyCard: React.FC<VocabularyCardProps> = ({
           }}
           disabled={!item.hiragana && !item.katakana}
           size="small"
-          className="px-1"
+          className="flex-shrink-0 shadow-sm"
         />
       </div>
     </Card>

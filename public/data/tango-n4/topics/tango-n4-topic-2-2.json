@@ -1,0 +1,210 @@
+{
+  "textbookId": "tango-n4",
+  "chapterId": 2,
+  "topicId": "topic-2-2",
+  "topicName": "髪",
+  "topicNameVi": "Tóc",
+  "vocabCount": 20,
+  "words": [
+    {
+      "word": "髪",
+      "reading": "かみ",
+      "meaning": "Tóc",
+      "type": "Danh từ",
+      "example": {
+        "jp": "髪が長いです。",
+        "vn": "là."
+      }
+    },
+    {
+      "word": "髪の毛",
+      "reading": "かみのけ",
+      "meaning": "Sợi tóc",
+      "type": "Danh từ",
+      "example": {
+        "jp": "髪の毛が細いです。",
+        "vn": "là."
+      }
+    },
+    {
+      "word": "黒髪",
+      "reading": "くろかみ",
+      "meaning": "Tóc đen",
+      "type": "Danh từ",
+      "example": {
+        "jp": "黒髪です。",
+        "vn": "là."
+      }
+    },
+    {
+      "word": "茶髪",
+      "reading": "ちゃぱつ",
+      "meaning": "Tóc nâu",
+      "type": "Danh từ",
+      "example": {
+        "jp": "茶髪に染めました。",
+        "vn": "đã (quá khứ)."
+      }
+    },
+    {
+      "word": "金髪",
+      "reading": "きんぱつ",
+      "meaning": "Tóc vàng",
+      "type": "Danh từ",
+      "example": {
+        "jp": "金髪の人です。",
+        "vn": "là."
+      }
+    },
+    {
+      "word": "白髪",
+      "reading": "しらが",
+      "meaning": "Tóc bạc",
+      "type": "Danh từ",
+      "example": {
+        "jp": "白髪が増えました。",
+        "vn": "đã (quá khứ)."
+      }
+    },
+    {
+      "word": "短髪",
+      "reading": "たんぱつ",
+      "meaning": "Tóc ngắn",
+      "type": "Danh từ",
+      "example": {
+        "jp": "短髪にしました。",
+        "vn": "đã (quá khứ)."
+      }
+    },
+    {
+      "word": "長髪",
+      "reading": "ちょうはつ",
+      "meaning": "Tóc dài",
+      "type": "Danh từ",
+      "example": {
+        "jp": "長髪です。",
+        "vn": "là."
+      }
+    },
+    {
+      "word": "散髪",
+      "reading": "さんぱつ",
+      "meaning": "Cắt tóc",
+      "type": "Danh động từ",
+      "example": {
+        "jp": "散髪に行きます。",
+        "vn": "(đuôi lịch sự)"
+      }
+    },
+    {
+      "word": "床屋",
+      "reading": "とこや",
+      "meaning": "Tiệm cắt tóc nam",
+      "type": "Danh từ",
+      "example": {
+        "jp": "床屋で髪を切りました。",
+        "vn": "đã (quá khứ)."
+      }
+    },
+    {
+      "word": "美容院",
+      "reading": "びよういん",
+      "meaning": "Tiệm làm tóc nữ",
+      "type": "Danh từ",
+      "example": {
+        "jp": "美容院に行きました。",
+        "vn": "đã (quá khứ)."
+      }
+    },
+    {
+      "word": "美容室",
+      "reading": "びようしつ",
+      "meaning": "Salon tóc",
+      "type": "Danh từ",
+      "example": {
+        "jp": "美容室でセットしました。",
+        "vn": "đã (quá khứ)."
+      }
+    },
+    {
+      "word": "カット",
+      "reading": "カット",
+      "meaning": "Cắt tóc",
+      "type": "Danh động từ",
+      "example": {
+        "jp": "カットしてもらいました。",
+        "vn": "đã (quá khứ)."
+      }
+    },
+    {
+      "word": "パーマ",
+      "reading": "パーマ",
+      "meaning": "Uốn tóc",
+      "type": "Danh động từ",
+      "example": {
+        "jp": "パーマをかけました。",
+        "vn": "đã (quá khứ)."
+      }
+    },
+    {
+      "word": "染める",
+      "reading": "そめる",
+      "meaning": "Nhuộm tóc",
+      "type": "Động từ",
+      "example": {
+        "jp": "髪を茶色に染めました。",
+        "vn": "đã (quá khứ)."
+      }
+    },
+    {
+      "word": "整える",
+      "reading": "ととのえる",
+      "meaning": "Chỉnh sửa",
+      "type": "Động từ",
+      "example": {
+        "jp": "髪を整えました。",
+        "vn": "đã (quá khứ)."
+      }
+    },
+    {
+      "word": "セット",
+      "reading": "セット",
+      "meaning": "Tạo kiểu",
+      "type": "Danh động từ",
+      "example": {
+        "jp": "髪をセットしました。",
+        "vn": "đã (quá khứ)."
+      }
+    },
+    {
+      "word": "シャンプー",
+      "reading": "シャンプー",
+      "meaning": "Gội đầu",
+      "type": "Danh động từ",
+      "example": {
+        "jp": "シャンプーしてもらいました。",
+        "vn": "đã (quá khứ)."
+      }
+    },
+    {
+      "word": "リンス",
+      "reading": "リンス",
+      "meaning": "Xả tóc",
+      "type": "Danh từ",
+      "example": {
+        "jp": "リンスを使います。",
+        "vn": "có (người/động vật)."
+      }
+    },
+    {
+      "word": "ヘアドライヤー",
+      "reading": "ヘアドライヤー",
+      "meaning": "Máy sấy tóc",
+      "type": "Danh từ",
+      "example": {
+        "jp": "ヘアドライヤーで乾かします。",
+        "vn": "(đuôi lịch sự)"
+      }
+    }
+  ]
+}

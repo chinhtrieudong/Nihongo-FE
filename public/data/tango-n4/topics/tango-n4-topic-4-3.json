@@ -1,0 +1,210 @@
+{
+  "textbookId": "tango-n4",
+  "chapterId": 4,
+  "topicId": "topic-4-3",
+  "topicName": "怒り",
+  "topicNameVi": "Cơn giận",
+  "vocabCount": 20,
+  "words": [
+    {
+      "word": "怒り",
+      "reading": "いかり",
+      "meaning": "Cơn giận",
+      "type": "Danh từ",
+      "example": {
+        "jp": "怒りを抑えます。",
+        "vn": "(đuôi lịch sự)"
+      }
+    },
+    {
+      "word": "怒る",
+      "reading": "おこる",
+      "meaning": "Tức giận",
+      "type": "Động từ",
+      "example": {
+        "jp": "先生が怒りました。",
+        "vn": "đã (quá khứ)."
+      }
+    },
+    {
+      "word": "怒りっぽい",
+      "reading": "いかりっぽい",
+      "meaning": "Nóng tính",
+      "type": "Tính từ",
+      "example": {
+        "jp": "怒りっぽい性格です。",
+        "vn": "là."
+      }
+    },
+    {
+      "word": "怒鳴る",
+      "reading": "どなる",
+      "meaning": "Quát tháo",
+      "type": "Động từ",
+      "example": {
+        "jp": "上司に怒鳴られました。",
+        "vn": "đã (quá khứ)."
+      }
+    },
+    {
+      "word": "激昂",
+      "reading": "げっこう",
+      "meaning": "Kích động",
+      "type": "Danh động từ",
+      "example": {
+        "jp": "激昂しています。",
+        "vn": "có (người/động vật)."
+      }
+    },
+    {
+      "word": "激昂する",
+      "reading": "げっこうする",
+      "meaning": "Nổi giận",
+      "type": "Động từ",
+      "example": {
+        "jp": "激昂しました。",
+        "vn": "đã (quá khứ)."
+      }
+    },
+    {
+      "word": "腹が立つ",
+      "reading": "はらがたつ",
+      "meaning": "Bực bội",
+      "type": "Cụm động từ",
+      "example": {
+        "jp": "腹が立ちます。",
+        "vn": "(đuôi lịch sự)"
+      }
+    },
+    {
+      "word": "頭に来る",
+      "reading": "あたまにくる",
+      "meaning": "Nổi điên",
+      "type": "Cụm động từ",
+      "example": {
+        "jp": "頭に来ました。",
+        "vn": "đã (quá khứ)."
+      }
+    },
+    {
+      "word": "ぷんぷん",
+      "reading": "ぷんぷん",
+      "meaning": "Giận dữ",
+      "type": "Phó từ",
+      "example": {
+        "jp": "ぷんぷん怒っています。",
+        "vn": "có (người/động vật)."
+      }
+    },
+    {
+      "word": "かっとなる",
+      "reading": "かっとなる",
+      "meaning": "Nổi nóng",
+      "type": "Cụm động từ",
+      "example": {
+        "jp": "かっとなりました。",
+        "vn": "đã (quá khứ)."
+      }
+    },
+    {
+      "word": "癇癪",
+      "reading": "かんしゃく",
+      "meaning": "Cơn thịnh nộ",
+      "type": "Danh từ",
+      "example": {
+        "jp": "癇癪を起こしました。",
+        "vn": "đã (quá khứ)."
+      }
+    },
+    {
+      "word": "激昂",
+      "reading": "げっこう",
+      "meaning": "Phẫn nộ",
+      "type": "Danh động từ",
+      "example": {
+        "jp": "激昂しました。",
+        "vn": "đã (quá khứ)."
+      }
+    },
+    {
+      "word": "憤慨",
+      "reading": "ふんがい",
+      "meaning": "Phẫn uất",
+      "type": "Danh động từ",
+      "example": {
+        "jp": "憤慨しています。",
+        "vn": "có (người/động vật)."
+      }
+    },
+    {
+      "word": "不満",
+      "reading": "ふまん",
+      "meaning": "Bất mãn",
+      "type": "Danh từ",
+      "example": {
+        "jp": "不満を抱いています。",
+        "vn": "có (người/động vật)."
+      }
+    },
+    {
+      "word": "失望",
+      "reading": "しつぼう",
+      "meaning": "Thất vọng",
+      "type": "Danh động từ",
+      "example": {
+        "jp": "失望しています。",
+        "vn": "có (người/động vật)."
+      }
+    },
+    {
+      "word": "悔しい",
+      "reading": "くやしい",
+      "meaning": "Tiếc nuối",
+      "type": "Tính từ",
+      "example": {
+        "jp": "悔しい気持ちです。",
+        "vn": "là."
+      }
+    },
+    {
+      "word": "歯痒い",
+      "reading": "はがゆい",
+      "meaning": "Thèm thuồng",
+      "type": "Tính từ",
+      "example": {
+        "jp": "歯痒い思いです。",
+        "vn": "là."
+      }
+    },
+    {
+      "word": "ムカつく",
+      "reading": "ムカつく",
+      "meaning": "Bực mình",
+      "type": "Động từ",
+      "example": {
+        "jp": "ムカつきます。",
+        "vn": "(đuôi lịch sự)"
+      }
+    },
+    {
+      "word": "いらいら",
+      "reading": "いらいら",
+      "meaning": "Khó chịu",
+      "type": "Phó từ",
+      "example": {
+        "jp": "いらいらしています。",
+        "vn": "có (người/động vật)."
+      }
+    },
+    {
+      "word": "ぴりぴり",
+      "reading": "ぴりぴり",
+      "meaning": "Căng thẳng",
+      "type": "Phó từ",
+      "example": {
+        "jp": "ぴりぴりしています。",
+        "vn": "có (người/động vật)."
+      }
+    }
+  ]
+}

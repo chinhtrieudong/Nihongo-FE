@@ -1,0 +1,150 @@
+{
+  "textbookId": "tango-n5",
+  "chapterId": 1,
+  "topicId": "topic-1-2",
+  "topicName": "おはよう。",
+  "topicNameVi": "Tên & quốc tịch",
+  "vocabCount": 14,
+  "words": [
+    {
+      "word": "おはよう",
+      "reading": "おはよう",
+      "meaning": "Chào buổi sáng (thân mật)",
+      "type": "Lời chào",
+      "example": {
+        "jp": "おはよう！",
+        "vn": ""
+      }
+    },
+    {
+      "word": "おはようございます",
+      "reading": "おはようございます",
+      "meaning": "Chào buổi sáng (lịch sự)",
+      "type": "Lời chào",
+      "example": {
+        "jp": "おはようございます。",
+        "vn": "có (người/động vật)."
+      }
+    },
+    {
+      "word": "こんにちは",
+      "reading": "こんにちは",
+      "meaning": "Chào buổi chiều",
+      "type": "Lời chào",
+      "example": {
+        "jp": "こんにちは、佐藤さん。",
+        "vn": ""
+      }
+    },
+    {
+      "word": "こんばんは",
+      "reading": "こんばんは",
+      "meaning": "Chào buổi tối",
+      "type": "Lời chào",
+      "example": {
+        "jp": "こんばんは。",
+        "vn": ""
+      }
+    },
+    {
+      "word": "さようなら",
+      "reading": "さようなら",
+      "meaning": "Tạm biệt",
+      "type": "Lời chào",
+      "example": {
+        "jp": "さようなら。",
+        "vn": ""
+      }
+    },
+    {
+      "word": "また明日",
+      "reading": "またあした",
+      "meaning": "Hẹn gặp lại ngày mai",
+      "type": "Lời chào",
+      "example": {
+        "jp": "また明日。",
+        "vn": ""
+      }
+    },
+    {
+      "word": "おやすみなさい",
+      "reading": "おやすみなさい",
+      "meaning": "Chúc ngủ ngon",
+      "type": "Lời chào",
+      "example": {
+        "jp": "おやすみなさい。",
+        "vn": ""
+      }
+    },
+    {
+      "word": "初めまして",
+      "reading": "はじめまして",
+      "meaning": "Rất vui được gặp bạn",
+      "type": "Lời chào",
+      "example": {
+        "jp": "初めまして、田中です。",
+        "vn": "là."
+      }
+    },
+    {
+      "word": "どうぞよろしく",
+      "reading": "どうぞよろしく",
+      "meaning": "Rất mong được giúp đỡ",
+      "type": "Lời chào",
+      "example": {
+        "jp": "どうぞよろしくお願いします。",
+        "vn": "(đuôi lịch sự)"
+      }
+    },
+    {
+      "word": "お名前",
+      "reading": "おなまえ",
+      "meaning": "Tên (lịch sự)",
+      "type": "Danh từ",
+      "example": {
+        "jp": "お名前は何ですか。",
+        "vn": "có phải là... không?"
+      }
+    },
+    {
+      "word": "名前",
+      "reading": "なまえ",
+      "meaning": "Tên",
+      "type": "Danh từ",
+      "example": {
+        "jp": "名前を教えてください。",
+        "vn": "vui lòng..."
+      }
+    },
+    {
+      "word": "国",
+      "reading": "くに",
+      "meaning": "Quốc gia",
+      "type": "Danh từ",
+      "example": {
+        "jp": "国はどこですか。",
+        "vn": "có phải là... không?"
+      }
+    },
+    {
+      "word": "出身",
+      "reading": "しゅっしん",
+      "meaning": "Xuất thân, quê quán",
+      "type": "Danh từ",
+      "example": {
+        "jp": "出身はベトナムです。",
+        "vn": "là."
+      }
+    },
+    {
+      "word": "人",
+      "reading": "じん",
+      "meaning": "Người (hậu tố quốc tịch)",
+      "type": "Phụ tố",
+      "example": {
+        "jp": "日本人です。",
+        "vn": "là."
+      }
+    }
+  ]
+}

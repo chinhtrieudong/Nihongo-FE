@@ -1,0 +1,150 @@
+{
+  "textbookId": "tango-n5",
+  "chapterId": 1,
+  "topicId": "topic-1-4",
+  "topicName": "なんにんですか。",
+  "topicNameVi": "Bao nhiêu người",
+  "vocabCount": 14,
+  "words": [
+    {
+      "word": "何人",
+      "reading": "なんにん",
+      "meaning": "Mấy người",
+      "type": "Đại từ",
+      "example": {
+        "jp": "家族は何人ですか。",
+        "vn": "có phải là... không?"
+      }
+    },
+    {
+      "word": "一人",
+      "reading": "ひとり",
+      "meaning": "Một người",
+      "type": "Danh từ",
+      "example": {
+        "jp": "一人です。",
+        "vn": "là."
+      }
+    },
+    {
+      "word": "二人",
+      "reading": "ふたり",
+      "meaning": "Hai người",
+      "type": "Danh từ",
+      "example": {
+        "jp": "二人で行きます。",
+        "vn": "(đuôi lịch sự)"
+      }
+    },
+    {
+      "word": "三人",
+      "reading": "さんにん",
+      "meaning": "Ba người",
+      "type": "Danh từ",
+      "example": {
+        "jp": "家族は三人です。",
+        "vn": "là."
+      }
+    },
+    {
+      "word": "四人",
+      "reading": "よにん",
+      "meaning": "Bốn người",
+      "type": "Danh từ",
+      "example": {
+        "jp": "四人です。",
+        "vn": "là."
+      }
+    },
+    {
+      "word": "五人",
+      "reading": "ごにん",
+      "meaning": "Năm người",
+      "type": "Danh từ",
+      "example": {
+        "jp": "五人です。",
+        "vn": "là."
+      }
+    },
+    {
+      "word": "六人",
+      "reading": "ろくにん",
+      "meaning": "Sáu người",
+      "type": "Danh từ",
+      "example": {
+        "jp": "六人です。",
+        "vn": "là."
+      }
+    },
+    {
+      "word": "七人",
+      "reading": "しちにん / ななにん",
+      "meaning": "Bảy người",
+      "type": "Danh từ",
+      "example": {
+        "jp": "七人です。",
+        "vn": "là."
+      }
+    },
+    {
+      "word": "八人",
+      "reading": "はちにん",
+      "meaning": "Tám người",
+      "type": "Danh từ",
+      "example": {
+        "jp": "八人です。",
+        "vn": "là."
+      }
+    },
+    {
+      "word": "九人",
+      "reading": "きゅうにん / くにん",
+      "meaning": "Chín người",
+      "type": "Danh từ",
+      "example": {
+        "jp": "九人です。",
+        "vn": "là."
+      }
+    },
+    {
+      "word": "十人",
+      "reading": "じゅうにん",
+      "meaning": "Mười người",
+      "type": "Danh từ",
+      "example": {
+        "jp": "十人です。",
+        "vn": "là."
+      }
+    },
+    {
+      "word": "独身",
+      "reading": "どくしん",
+      "meaning": "Độc thân",
+      "type": "Danh từ",
+      "example": {
+        "jp": "まだ独身です。",
+        "vn": "là."
+      }
+    },
+    {
+      "word": "結婚",
+      "reading": "けっこん",
+      "meaning": "Kết hôn",
+      "type": "Danh động từ",
+      "example": {
+        "jp": "結婚しています。",
+        "vn": "có (người/động vật)."
+      }
+    },
+    {
+      "word": "子供",
+      "reading": "こども",
+      "meaning": "Con cái",
+      "type": "Danh từ",
+      "example": {
+        "jp": "子供が2人います。",
+        "vn": "có (người/động vật)."
+      }
+    }
+  ]
+}

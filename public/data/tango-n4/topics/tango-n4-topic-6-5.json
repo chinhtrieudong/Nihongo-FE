@@ -1,0 +1,210 @@
+{
+  "textbookId": "tango-n4",
+  "chapterId": 6,
+  "topicId": "topic-6-5",
+  "topicName": "災害",
+  "topicNameVi": "Thiên tai",
+  "vocabCount": 20,
+  "words": [
+    {
+      "word": "災害",
+      "reading": "さいがい",
+      "meaning": "Thiên tai",
+      "type": "Danh từ",
+      "example": {
+        "jp": "災害が発生しました。",
+        "vn": "đã (quá khứ)."
+      }
+    },
+    {
+      "word": "地震",
+      "reading": "じしん",
+      "meaning": "Động đất",
+      "type": "Danh từ",
+      "example": {
+        "jp": "地震がありました。",
+        "vn": "đã (quá khứ)."
+      }
+    },
+    {
+      "word": "津波",
+      "reading": "つなみ",
+      "meaning": "Sóng thần",
+      "type": "Danh từ",
+      "example": {
+        "jp": "津波警報が出ました。",
+        "vn": "đã (quá khứ)."
+      }
+    },
+    {
+      "word": "台風",
+      "reading": "たいふう",
+      "meaning": "Bão",
+      "type": "Danh từ",
+      "example": {
+        "jp": "台風が接近しています。",
+        "vn": "có (người/động vật)."
+      }
+    },
+    {
+      "word": "洪水",
+      "reading": "こうずい",
+      "meaning": "Lũ lụt",
+      "type": "Danh từ",
+      "example": {
+        "jp": "洪水が発生しました。",
+        "vn": "đã (quá khứ)."
+      }
+    },
+    {
+      "word": "土砂崩れ",
+      "reading": "どしゃくずれ",
+      "meaning": "Sạt lở",
+      "type": "Danh từ",
+      "example": {
+        "jp": "土砂崩れがありました。",
+        "vn": "đã (quá khứ)."
+      }
+    },
+    {
+      "word": "落雷",
+      "reading": "らくらい",
+      "meaning": "Sét đánh",
+      "type": "Danh từ",
+      "example": {
+        "jp": "落雷により停電しました。",
+        "vn": "đã (quá khứ)."
+      }
+    },
+    {
+      "word": "竜巻",
+      "reading": "たつまき",
+      "meaning": "Lốc xoáy",
+      "type": "Danh từ",
+      "example": {
+        "jp": "竜巻が発生しました。",
+        "vn": "đã (quá khứ)."
+      }
+    },
+    {
+      "word": "噴火",
+      "reading": "ふんか",
+      "meaning": "Phun trào",
+      "type": "Danh động từ",
+      "example": {
+        "jp": "火山が噴火しました。",
+        "vn": "đã (quá khứ)."
+      }
+    },
+    {
+      "word": "火山",
+      "reading": "かざん",
+      "meaning": "Núi lửa",
+      "type": "Danh từ",
+      "example": {
+        "jp": "火山が活発化しました。",
+        "vn": "đã (quá khứ)."
+      }
+    },
+    {
+      "word": "避難",
+      "reading": "ひなん",
+      "meaning": "Sơ tán",
+      "type": "Danh động từ",
+      "example": {
+        "jp": "避難しました。",
+        "vn": "đã (quá khứ)."
+      }
+    },
+    {
+      "word": "避難所",
+      "reading": "ひなんじょ",
+      "meaning": "Nơi trú ẩn",
+      "type": "Danh từ",
+      "example": {
+        "jp": "避難所に避難しました。",
+        "vn": "đã (quá khứ)."
+      }
+    },
+    {
+      "word": "警報",
+      "reading": "けいほう",
+      "meaning": "Cảnh báo",
+      "type": "Danh động từ",
+      "example": {
+        "jp": "警報が発令されました。",
+        "vn": "đã (quá khứ)."
+      }
+    },
+    {
+      "word": "注意報",
+      "reading": "ちゅういほう",
+      "meaning": "Cảnh báo",
+      "type": "Danh từ",
+      "example": {
+        "jp": "注意報が出ました。",
+        "vn": "đã (quá khứ)."
+      }
+    },
+    {
+      "word": "被害",
+      "reading": "ひがい",
+      "meaning": "Thiệt hại",
+      "type": "Danh từ",
+      "example": {
+        "jp": "被害が拡大しました。",
+        "vn": "đã (quá khứ)."
+      }
+    },
+    {
+      "word": "被災",
+      "reading": "ひさい",
+      "meaning": "Bị thiên tai",
+      "type": "Danh từ",
+      "example": {
+        "jp": "被災しました。",
+        "vn": "đã (quá khứ)."
+      }
+    },
+    {
+      "word": "犠牲者",
+      "reading": "ぎせいしゃ",
+      "meaning": "Nạn nhân",
+      "type": "Danh từ",
+      "example": {
+        "jp": "犠牲者が出ました。",
+        "vn": "đã (quá khứ)."
+      }
+    },
+    {
+      "word": "行方不明",
+      "reading": "ゆくえふめい",
+      "meaning": "Mất tích",
+      "type": "Danh từ",
+      "example": {
+        "jp": "行方不明者がいます。",
+        "vn": "có (người/động vật)."
+      }
+    },
+    {
+      "word": "復興",
+      "reading": "ふっこう",
+      "meaning": "Tái thiết",
+      "type": "Danh động từ",
+      "example": {
+        "jp": "復興が進んでいます。",
+        "vn": "có (người/động vật)."
+      }
+    },
+    {
+      "word": "防災",
+      "reading": "ぼうさい",
+      "meaning": "Phòng chống thiên tai",
+      "type": "Danh từ",
+      "example": {
+        "jp": "防災訓練をしました。",
+        "vn": "đã (quá khứ)."
+      }
+    }
+  ]
+}

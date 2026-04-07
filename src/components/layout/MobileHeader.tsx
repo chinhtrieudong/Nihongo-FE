@@ -19,7 +19,7 @@ const MobileHeader: React.FC = () => {
       '/kanji': 'Hán tự',
       '/grammar': 'Ngữ pháp',
       '/pronunciation': 'Phát âm',
-      '/conversation': 'Hội thoại',
+
       '/tests': 'Thi JLPT',
       '/profile': 'Hồ sơ'
     };

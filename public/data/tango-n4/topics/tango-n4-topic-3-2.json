@@ -1,0 +1,210 @@
+{
+  "textbookId": "tango-n4",
+  "chapterId": 3,
+  "topicId": "topic-3-2",
+  "topicName": "長所",
+  "topicNameVi": "Ưu điểm",
+  "vocabCount": 20,
+  "words": [
+    {
+      "word": "長所",
+      "reading": "ちょうしょ",
+      "meaning": "Ưu điểm",
+      "type": "Danh từ",
+      "example": {
+        "jp": "長所を生かしています。",
+        "vn": "có (người/động vật)."
+      }
+    },
+    {
+      "word": "強み",
+      "reading": "つよみ",
+      "meaning": "Điểm mạnh",
+      "type": "Danh từ",
+      "example": {
+        "jp": "強みを活かしています。",
+        "vn": "có (người/động vật)."
+      }
+    },
+    {
+      "word": "才能",
+      "reading": "さいのう",
+      "meaning": "Tài năng",
+      "type": "Danh từ",
+      "example": {
+        "jp": "才能があります。",
+        "vn": "có."
+      }
+    },
+    {
+      "word": "能力",
+      "reading": "のうりょく",
+      "meaning": "Năng lực",
+      "type": "Danh từ",
+      "example": {
+        "jp": "能力が高いです。",
+        "vn": "là."
+      }
+    },
+    {
+      "word": "実力",
+      "reading": "じつりょく",
+      "meaning": "Thực lực",
+      "type": "Danh từ",
+      "example": {
+        "jp": "実力を発揮しました。",
+        "vn": "đã (quá khứ)."
+      }
+    },
+    {
+      "word": "根性",
+      "reading": "こんじょう",
+      "meaning": "Bản lĩnh",
+      "type": "Danh từ",
+      "example": {
+        "jp": "根性がある人です。",
+        "vn": "là."
+      }
+    },
+    {
+      "word": "責任感",
+      "reading": "せきにんかん",
+      "meaning": "Có trách nhiệm",
+      "type": "Danh từ",
+      "example": {
+        "jp": "責任感が強いです。",
+        "vn": "là."
+      }
+    },
+    {
+      "word": "協調性",
+      "reading": "きょうちょうせい",
+      "meaning": "Tinh thần đồng đội",
+      "type": "Danh từ",
+      "example": {
+        "jp": "協調性があります。",
+        "vn": "có."
+      }
+    },
+    {
+      "word": "リーダーシップ",
+      "reading": "リーダーシップ",
+      "meaning": "Lãnh đạo",
+      "type": "Danh từ",
+      "example": {
+        "jp": "リーダーシップを発揮します。",
+        "vn": "(đuôi lịch sự)"
+      }
+    },
+    {
+      "word": "行動力",
+      "reading": "こうどうりょく",
+      "meaning": "Năng lực hành động",
+      "type": "Danh từ",
+      "example": {
+        "jp": "行動力がある人です。",
+        "vn": "là."
+      }
+    },
+    {
+      "word": "実行力",
+      "reading": "じっこうりょく",
+      "meaning": "Năng lực thực hiện",
+      "type": "Danh từ",
+      "example": {
+        "jp": "実行力があります。",
+        "vn": "có."
+      }
+    },
+    {
+      "word": "企画力",
+      "reading": "きかくりょく",
+      "meaning": "Năng lực lập kế hoạch",
+      "type": "Danh từ",
+      "example": {
+        "jp": "企画力が高いです。",
+        "vn": "là."
+      }
+    },
+    {
+      "word": "創造力",
+      "reading": "そうぞうりょく",
+      "meaning": "Sáng tạo",
+      "type": "Danh từ",
+      "example": {
+        "jp": "創造力があります。",
+        "vn": "có."
+      }
+    },
+    {
+      "word": "集中力",
+      "reading": "しゅうちゅうりょく",
+      "meaning": "Tập trung",
+      "type": "Danh từ",
+      "example": {
+        "jp": "集中力が強いです。",
+        "vn": "là."
+      }
+    },
+    {
+      "word": "忍耐力",
+      "reading": "にんたいりょく",
+      "meaning": "Kiên nhẫn",
+      "type": "Danh từ",
+      "example": {
+        "jp": "忍耐力があります。",
+        "vn": "có."
+      }
+    },
+    {
+      "word": "判断力",
+      "reading": "はんだんりょく",
+      "meaning": "Phán đoán",
+      "type": "Danh từ",
+      "example": {
+        "jp": "判断力が鋭いです。",
+        "vn": "là."
+      }
+    },
+    {
+      "word": "理解力",
+      "reading": "りかいりょく",
+      "meaning": "Hiểu biết",
+      "type": "Danh từ",
+      "example": {
+        "jp": "理解力が高いです。",
+        "vn": "là."
+      }
+    },
+    {
+      "word": "記憶力",
+      "reading": "きおくりょく",
+      "meaning": "Trí nhớ",
+      "type": "Danh từ",
+      "example": {
+        "jp": "記憶力がいいです。",
+        "vn": "là."
+      }
+    },
+    {
+      "word": "知識",
+      "reading": "ちしき",
+      "meaning": "Kiến thức",
+      "type": "Danh từ",
+      "example": {
+        "jp": "知識が豊富です。",
+        "vn": "là."
+      }
+    },
+    {
+      "word": "経験",
+      "reading": "けいけん",
+      "meaning": "Kinh nghiệm",
+      "type": "Danh từ",
+      "example": {
+        "jp": "経験が豊富です。",
+        "vn": "là."
+      }
+    }
+  ]
+}

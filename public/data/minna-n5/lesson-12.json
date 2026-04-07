@@ -1,0 +1,136 @@
+{
+  "lesson": 12,
+  "topic": "Thời tiết, Các mùa & So sánh",
+  "vocabulary": [
+    {
+      "id": "n5_l12_001",
+      "word": "天気",
+      "reading": "てんき",
+      "hanViet": "Thiên Khí",
+      "meaning": "thời tiết",
+      "type": "noun",
+      "category": "Thời Tiết",
+      "example": {
+        "jp": "今日の天気はどうですか。",
+        "vn": "Thời tiết hôm nay thế nào?"
+      }
+    },
+    {
+      "id": "n5_l12_002",
+      "word": "晴れ",
+      "reading": "はれ",
+      "hanViet": "Tình",
+      "meaning": "nắng, quang đãng",
+      "type": "noun",
+      "category": "Thời Tiết",
+      "example": {
+        "jp": "晴れですね。",
+        "vn": "Trời nắng nhỉ."
+      }
+    },
+    {
+      "id": "n5_l12_003",
+      "word": "雨",
+      "reading": "あめ",
+      "hanViet": "Vũ",
+      "meaning": "mưa",
+      "type": "noun",
+      "category": "Thời Tiết",
+      "example": {
+        "jp": "雨が降っています。",
+        "vn": "Đang mưa."
+      }
+    },
+    {
+      "id": "n5_l12_004",
+      "word": "雪",
+      "reading": "ゆき",
+      "hanViet": "Tuyết",
+      "meaning": "tuyết",
+      "type": "noun",
+      "category": "Thời Tiết",
+      "example": {
+        "jp": "雪が降ります。",
+        "vn": "Tuyết rơi."
+      }
+    },
+    {
+      "id": "n5_l12_005",
+      "word": "暑い",
+      "reading": "あつい",
+      "hanViet": "Thử",
+      "meaning": "nóng (thời tiết)",
+      "type": "adjective",
+      "category": "Tính Từ い",
+      "example": {
+        "jp": "今日は暑いです。",
+        "vn": "Hôm nay nóng."
+      }
+    },
+    {
+      "id": "n5_l12_006",
+      "word": "寒い",
+      "reading": "さむい",
+      "hanViet": "Hàn",
+      "meaning": "lạnh (thời tiết)",
+      "type": "adjective",
+      "category": "Tính Từ い",
+      "example": {
+        "jp": "冬は寒いです。",
+        "vn": "Mùa đông lạnh."
+      }
+    },
+    {
+      "id": "n5_l12_007",
+      "word": "涼しい",
+      "reading": "すずしい",
+      "hanViet": "Lương",
+      "meaning": "mát mẻ",
+      "type": "adjective",
+      "category": "Tính Từ い",
+      "example": {
+        "jp": "涼しい朝です。",
+        "vn": "Buổi sáng mát mẻ."
+      }
+    },
+    {
+      "id": "n5_l12_008",
+      "word": "春",
+      "reading": "はる",
+      "hanViet": "Xuân",
+      "meaning": "mùa xuân",
+      "type": "noun",
+      "category": "Mùa",
+      "example": {
+        "jp": "春が好きです。",
+        "vn": "Thích mùa xuân."
+      }
+    },
+    {
+      "id": "n5_l12_009",
+      "word": "夏",
+      "reading": "なつ",
+      "hanViet": "Hạ",
+      "meaning": "mùa hè",
+      "type": "noun",
+      "category": "Mùa",
+      "example": {
+        "jp": "夏は暑いです。",
+        "vn": "Mùa hè nóng."
+      }
+    },
+    {
+      "id": "n5_l12_010",
+      "word": "冬",
+      "reading": "ふゆ",
+      "hanViet": "Đông",
+      "meaning": "mùa đông",
+      "type": "noun",
+      "category": "Mùa",
+      "example": {
+        "jp": "冬は寒いです。",
+        "vn": "Mùa đông lạnh."
+      }
+    }
+  ]
+}

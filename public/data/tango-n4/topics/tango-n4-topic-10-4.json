@@ -1,0 +1,210 @@
+{
+  "textbookId": "tango-n4",
+  "chapterId": 10,
+  "topicId": "topic-10-4",
+  "topicName": "旅行",
+  "topicNameVi": "Du lịch",
+  "vocabCount": 20,
+  "words": [
+    {
+      "word": "旅行",
+      "reading": "りょこう",
+      "meaning": "Du lịch",
+      "type": "Danh động từ",
+      "example": {
+        "jp": "旅行に行きます。",
+        "vn": "(đuôi lịch sự)"
+      }
+    },
+    {
+      "word": "観光",
+      "reading": "かんこう",
+      "meaning": "Tham quan",
+      "type": "Danh động từ",
+      "example": {
+        "jp": "観光を楽しみます。",
+        "vn": "(đuôi lịch sự)"
+      }
+    },
+    {
+      "word": "ツアー",
+      "reading": "ツアー",
+      "meaning": "Tour",
+      "type": "Danh từ",
+      "example": {
+        "jp": "ツアーに参加しました。",
+        "vn": "đã (quá khứ)."
+      }
+    },
+    {
+      "word": "旅",
+      "reading": "たび",
+      "meaning": "Chuyến đi",
+      "type": "Danh từ",
+      "example": {
+        "jp": "旅に出ます。",
+        "vn": "(đuôi lịch sự)"
+      }
+    },
+    {
+      "word": "国内",
+      "reading": "こくない",
+      "meaning": "Trong nước",
+      "type": "Danh từ",
+      "example": {
+        "jp": "国内旅行です。",
+        "vn": "là."
+      }
+    },
+    {
+      "word": "海外",
+      "reading": "かいがい",
+      "meaning": "Nước ngoài",
+      "type": "Danh từ",
+      "example": {
+        "jp": "海外旅行に行きます。",
+        "vn": "(đuôi lịch sự)"
+      }
+    },
+    {
+      "word": "温泉",
+      "reading": "おんせん",
+      "meaning": "Suối nước nóng",
+      "type": "Danh từ",
+      "example": {
+        "jp": "温泉に入ります。",
+        "vn": "(đuôi lịch sự)"
+      }
+    },
+    {
+      "word": "旅館",
+      "reading": "りょかん",
+      "meaning": "Nhà trọ Nhật",
+      "type": "Danh từ",
+      "example": {
+        "jp": "旅館に泊まりました。",
+        "vn": "đã (quá khứ)."
+      }
+    },
+    {
+      "word": "ホテル",
+      "reading": "ホテル",
+      "meaning": "Khách sạn",
+      "type": "Danh từ",
+      "example": {
+        "jp": "ホテルを予約しました。",
+        "vn": "đã (quá khứ)."
+      }
+    },
+    {
+      "word": "民宿",
+      "reading": "みんしゅく",
+      "meaning": "Nhà nghỉ dân",
+      "type": "Danh từ",
+      "example": {
+        "jp": "民宿に泊まりました。",
+        "vn": "đã (quá khứ)."
+      }
+    },
+    {
+      "word": "航空券",
+      "reading": "こうくうけん",
+      "meaning": "Vé máy bay",
+      "type": "Danh từ",
+      "example": {
+        "jp": "航空券を予約しました。",
+        "vn": "đã (quá khứ)."
+      }
+    },
+    {
+      "word": "切符",
+      "reading": "きっぷ",
+      "meaning": "Vé",
+      "type": "Danh từ",
+      "example": {
+        "jp": "切符を買いました。",
+        "vn": "đã (quá khứ)."
+      }
+    },
+    {
+      "word": "パスポート",
+      "reading": "パスポート",
+      "meaning": "Hộ chiếu",
+      "type": "Danh từ",
+      "example": {
+        "jp": "パスポートを忘れました。",
+        "vn": "đã (quá khứ)."
+      }
+    },
+    {
+      "word": "ビザ",
+      "reading": "ビザ",
+      "meaning": "Visa",
+      "type": "Danh từ",
+      "example": {
+        "jp": "ビザを取得しました。",
+        "vn": "đã (quá khứ)."
+      }
+    },
+    {
+      "word": "名所",
+      "reading": "めいしょ",
+      "meaning": "Danh lam",
+      "type": "Danh từ",
+      "example": {
+        "jp": "名所を巡ります。",
+        "vn": "(đuôi lịch sự)"
+      }
+    },
+    {
+      "word": "旧跡",
+      "reading": "きゅうせき",
+      "meaning": "Di tích",
+      "type": "Danh từ",
+      "example": {
+        "jp": "旧跡を訪れました。",
+        "vn": "đã (quá khứ)."
+      }
+    },
+    {
+      "word": "お土産",
+      "reading": "おみやげ",
+      "meaning": "Quà",
+      "type": "Danh từ",
+      "example": {
+        "jp": "お土産を買いました。",
+        "vn": "đã (quá khứ)."
+      }
+    },
+    {
+      "word": "ガイドブック",
+      "reading": "ガイドブック",
+      "meaning": "Sách hướng dẫn",
+      "type": "Danh từ",
+      "example": {
+        "jp": "ガイドブックを見ます。",
+        "vn": "(đuôi lịch sự)"
+      }
+    },
+    {
+      "word": "観光客",
+      "reading": "かんこうきゃく",
+      "meaning": "Khách du lịch",
+      "type": "Danh từ",
+      "example": {
+        "jp": "観光客が多いです。",
+        "vn": "là."
+      }
+    },
+    {
+      "word": "旅行代理店",
+      "reading": "りょこうだいりてん",
+      "meaning": "Đại lý du lịch",
+      "type": "Danh từ",
+      "example": {
+        "jp": "旅行代理店で予約しました。",
+        "vn": "đã (quá khứ)."
+      }
+    }
+  ]
+}

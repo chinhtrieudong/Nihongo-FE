@@ -6,24 +6,27 @@ import { store } from "./store";
 import { useAppSelector } from "./store/hooks";
 import { ErrorBoundary, ThemeProvider } from "./components/common";
 import { Layout } from "./components/layout";
-import Home from "./pages/Home";
-import LessonsList from "./pages/LessonsList";
-import LessonDetail from "./pages/LessonDetail";
-import KanjiPage from "./pages/kanji";
-import KanjiDetail from "./pages/KanjiDetail";
-import RadicalDetail from "./pages/RadicalDetail";
-import Vocabulary from "./pages/Vocabulary";
-import Grammar from "./pages/Grammar";
-import Pronunciation from "./pages/Pronunciation";
-import ConversationComponent from "./pages/Conversation";
-import ConversationLesson from "./pages/ConversationLesson";
-import Practice from "./pages/Practice";
-import Tests from "./pages/Tests";
-import TestDetail from "./pages/TestDetail";
-import TestResults from "./pages/TestResults";
-import Login from "./pages/Login";
-import Register from "./pages/Register";
-import ComponentsDemo from "./pages/ComponentsDemo";
+import Home from "./pages/home/Home";
+import KanjiPage from "./pages/kanji/KanjiPage";
+import KanjiDetail from "./pages/kanji/KanjiDetail";
+import RadicalDetail from "./pages/kanji/RadicalDetail";
+import Grammar from "./pages/grammar/Grammar";
+import Pronunciation from "./pages/pronunciation/Pronunciation";
+import Practice from "./pages/practice/Practice";
+import KaiwaDetail from "./pages/practice/KaiwaDetail";
+import MondaiDetail from "./pages/practice/MondaiDetail";
+import BunkeiDetail from "./pages/practice/BunkeiDetail";
+import ReibunDetail from "./pages/practice/ReibunDetail";
+import RenshuuDetail from "./pages/practice/RenshuuDetail";
+import Tests from "./pages/tests/Tests";
+import TestDetail from "./pages/tests/TestDetail";
+import TestResults from "./pages/tests/TestResults";
+import Login from "./pages/auth/Login";
+import Register from "./pages/auth/Register";
+import ComponentsDemo from "./pages/demo/ComponentsDemo";
+import TextbookDetail from "./pages/textbook/TextbookDetail";
+import VocabularyDetail from "./pages/vocabulary/VocabularyDetail";
+import { Lessons } from "./components/lessons";
 import { AuthProvider, useAuth } from "./contexts/AuthContext";
 import { AdminRoute, AdminLayout } from "./components/admin";
 import "./App.css";
@@ -59,21 +62,23 @@ const AppContent: React.FC = () => {
             {/* Public routes */}
             <Route path="/" element={<Layout />}>
               <Route index element={<Home />} />
-              <Route path="lessons" element={<LessonsList />} />
-              <Route path="mina/:lessonNumber" element={<ErrorBoundary><LessonDetail /></ErrorBoundary>} />
               <Route path="lessons/:lessonNumber/kanji" element={<KanjiDetail />} />
+              <Route path="textbook/:textbookId" element={<TextbookDetail />} />
+              <Route path="textbook/:textbookId/vocabulary/:lessonNumber" element={<VocabularyDetail />} />
+              <Route path="mina/:lessonId" element={<Lessons />} />
+              <Route path="tango/:lessonId" element={<Lessons />} />
+              <Route path="jlpt/:level/:lessonId" element={<Lessons />} />
               <Route path="kanji" element={<KanjiPage />} />
               <Route path="kanji/radicals/:symbol" element={<RadicalDetail />} />
               <Route path="kanji/:kanji" element={<KanjiDetail />} />
-              <Route path="vocabulary" element={<Vocabulary />} />
               <Route path="grammar" element={<Grammar />} />
               <Route path="pronunciation" element={<Pronunciation />} />
-              <Route path="conversation" element={<ConversationComponent />} />
-              <Route
-                path="conversation/:lessonId"
-                element={<ConversationLesson />}
-              />
               <Route path="practice" element={<Practice />} />
+              <Route path="practice/kaiwa/:lessonNumber" element={<KaiwaDetail />} />
+              <Route path="practice/mondai/:lessonNumber" element={<MondaiDetail />} />
+              <Route path="practice/bunkei/:lessonNumber" element={<BunkeiDetail />} />
+              <Route path="practice/reibun/:lessonNumber" element={<ReibunDetail />} />
+              <Route path="practice/renshuu/:lessonNumber" element={<RenshuuDetail />} />
               <Route path="tests" element={<Tests />} />
               <Route path="test/:testId" element={<TestDetail />} />
               <Route path="test-results/:testId" element={<TestResults />} />

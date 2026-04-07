@@ -1,0 +1,136 @@
+{
+  "lesson": 4,
+  "topic": "Thời gian, Ngày tháng & Lịch trình",
+  "vocabulary": [
+    {
+      "id": "n5_l4_001",
+      "word": "何時",
+      "reading": "いつ",
+      "hanViet": "Hà Thì",
+      "meaning": "khi nào, lúc nào",
+      "type": "other",
+      "category": "Từ Vựng Thời Gian",
+      "example": {
+        "jp": "会議は何時ですか。",
+        "vn": "Cuộc họp khi nào vậy?"
+      }
+    },
+    {
+      "id": "n5_l4_002",
+      "word": "今日",
+      "reading": "きょう",
+      "hanViet": "Kim Nhật",
+      "meaning": "hôm nay",
+      "type": "other",
+      "category": "Từ Vựng Thời Gian",
+      "example": {
+        "jp": "今日は火曜日です。",
+        "vn": "Hôm nay là thứ Ba."
+      }
+    },
+    {
+      "id": "n5_l4_003",
+      "word": "明日",
+      "reading": "あした",
+      "hanViet": "Minh Nhật",
+      "meaning": "ngày mai",
+      "type": "other",
+      "category": "Từ Vựng Thời Gian",
+      "example": {
+        "jp": "明日は水曜日です。",
+        "vn": "Ngày mai là thứ Tư."
+      }
+    },
+    {
+      "id": "n5_l4_004",
+      "word": "昨日",
+      "reading": "きのう",
+      "hanViet": "Tác Nhật",
+      "meaning": "hôm qua",
+      "type": "other",
+      "category": "Từ Vựng Thời Gian",
+      "example": {
+        "jp": "昨日は日曜日でした。",
+        "vn": "Hôm qua là Chủ nhật."
+      }
+    },
+    {
+      "id": "n5_l4_005",
+      "word": "月曜日",
+      "reading": "げつようび",
+      "hanViet": "Nguyệt Diệu Nhật",
+      "meaning": "thứ Hai",
+      "type": "other",
+      "category": "Từ Vựng Thứ Trong Tuần",
+      "example": {
+        "jp": "月曜日から働きます。",
+        "vn": "Từ thứ Hai làm việc."
+      }
+    },
+    {
+      "id": "n5_l4_006",
+      "word": "火曜日",
+      "reading": "かようび",
+      "hanViet": "Hỏa Diệu Nhật",
+      "meaning": "thứ Ba",
+      "type": "other",
+      "category": "Từ Vựng Thứ Trong Tuần",
+      "example": {
+        "jp": "火曜日は忙しいです。",
+        "vn": "Thứ Ba thì bận."
+      }
+    },
+    {
+      "id": "n5_l4_007",
+      "word": "水曜日",
+      "reading": "すいようび",
+      "hanViet": "Thuỷ Diệu Nhật",
+      "meaning": "thứ Tư",
+      "type": "other",
+      "category": "Từ Vựng Thứ Trong Tuần",
+      "example": {
+        "jp": "水曜日に会いましょう。",
+        "vn": "Gặp nhau vào thứ Tư nhé."
+      }
+    },
+    {
+      "id": "n5_l4_008",
+      "word": "木曜日",
+      "reading": "もくようび",
+      "hanViet": "Mộc Diệu Nhật",
+      "meaning": "thứ Năm",
+      "type": "other",
+      "category": "Từ Vựng Thứ Trong Tuần",
+      "example": {
+        "jp": "木曜日は休みです。",
+        "vn": "Thứ Năm được nghỉ."
+      }
+    },
+    {
+      "id": "n5_l4_009",
+      "word": "金曜日",
+      "reading": "きんようび",
+      "hanViet": "Kim Diệu Nhật",
+      "meaning": "thứ Sáu",
+      "type": "other",
+      "category": "Từ Vựng Thứ Trong Tuần",
+      "example": {
+        "jp": "金曜日は楽しいです。",
+        "vn": "Thứ Sáu vui quá."
+      }
+    },
+    {
+      "id": "n5_l4_010",
+      "word": "土曜日",
+      "reading": "どようび",
+      "hanViet": "Thổ Diệu Nhật",
+      "meaning": "thứ Bảy",
+      "type": "other",
+      "category": "Từ Vựng Thứ Trong Tuần",
+      "example": {
+        "jp": "土曜日に買い物に行きます。",
+        "vn": "Thứ Bảy đi mua sắm."
+      }
+    }
+  ]
+}

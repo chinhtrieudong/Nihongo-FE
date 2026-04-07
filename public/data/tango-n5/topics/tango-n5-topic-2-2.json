@@ -1,0 +1,140 @@
+{
+  "textbookId": "tango-n5",
+  "chapterId": 2,
+  "topicId": "topic-2-2",
+  "topicName": "かず",
+  "topicNameVi": "Số đếm",
+  "vocabCount": 13,
+  "words": [
+    {
+      "word": "一",
+      "reading": "いち",
+      "meaning": "Một",
+      "type": "Số",
+      "example": {
+        "jp": "一つください。",
+        "vn": "vui lòng..."
+      }
+    },
+    {
+      "word": "二",
+      "reading": "に",
+      "meaning": "Hai",
+      "type": "Số",
+      "example": {
+        "jp": "二番です。",
+        "vn": "là."
+      }
+    },
+    {
+      "word": "三",
+      "reading": "さん",
+      "meaning": "Ba",
+      "type": "Số",
+      "example": {
+        "jp": "三時です。",
+        "vn": "là."
+      }
+    },
+    {
+      "word": "四",
+      "reading": "し / よん",
+      "meaning": "Bốn",
+      "type": "Số",
+      "example": {
+        "jp": "四月です。",
+        "vn": "là."
+      }
+    },
+    {
+      "word": "五",
+      "reading": "ご",
+      "meaning": "Năm",
+      "type": "Số",
+      "example": {
+        "jp": "五日です。",
+        "vn": "là."
+      }
+    },
+    {
+      "word": "六",
+      "reading": "ろく",
+      "meaning": "Sáu",
+      "type": "Số",
+      "example": {
+        "jp": "六歳です。",
+        "vn": "là."
+      }
+    },
+    {
+      "word": "七",
+      "reading": "しち / なな",
+      "meaning": "Bảy",
+      "type": "Số",
+      "example": {
+        "jp": "七月です。",
+        "vn": "là."
+      }
+    },
+    {
+      "word": "八",
+      "reading": "はち",
+      "meaning": "Tám",
+      "type": "Số",
+      "example": {
+        "jp": "八時です。",
+        "vn": "là."
+      }
+    },
+    {
+      "word": "九",
+      "reading": "きゅう / く",
+      "meaning": "Chín",
+      "type": "Số",
+      "example": {
+        "jp": "九番です。",
+        "vn": "là."
+      }
+    },
+    {
+      "word": "十",
+      "reading": "じゅう",
+      "meaning": "Mười",
+      "type": "Số",
+      "example": {
+        "jp": "十個です。",
+        "vn": "là."
+      }
+    },
+    {
+      "word": "百",
+      "reading": "ひゃく",
+      "meaning": "Trăm",
+      "type": "Số",
+      "example": {
+        "jp": "百円です。",
+        "vn": "là."
+      }
+    },
+    {
+      "word": "千",
+      "reading": "せん",
+      "meaning": "Nghìn",
+      "type": "Số",
+      "example": {
+        "jp": "千人です。",
+        "vn": "là."
+      }
+    },
+    {
+      "word": "万",
+      "reading": "まん",
+      "meaning": "Vạn",
+      "type": "Số",
+      "example": {
+        "jp": "一万円です。",
+        "vn": "là."
+      }
+    }
+  ]
+}

@@ -1,0 +1,150 @@
+{
+  "textbookId": "tango-n5",
+  "chapterId": 3,
+  "topicId": "topic-3-4",
+  "topicName": "何こ (なんこ) ありますか。",
+  "topicNameVi": "Lượng từ đếm",
+  "vocabCount": 14,
+  "words": [
+    {
+      "word": "個",
+      "reading": "こ",
+      "meaning": "Cái, chiếc (đếm)",
+      "type": "Lượng từ",
+      "example": {
+        "jp": "りんごが3個あります。",
+        "vn": "có."
+      }
+    },
+    {
+      "word": "つ",
+      "reading": "つ",
+      "meaning": "Cái (đếm chung)",
+      "type": "Lượng từ",
+      "example": {
+        "jp": "一つください。",
+        "vn": "vui lòng..."
+      }
+    },
+    {
+      "word": "枚",
+      "reading": "まい",
+      "meaning": "Tờ, tấm (giấy, vải)",
+      "type": "Lượng từ",
+      "example": {
+        "jp": "紙を2枚ください。",
+        "vn": "vui lòng..."
+      }
+    },
+    {
+      "word": "冊",
+      "reading": "さつ",
+      "meaning": "Cuốn (sách)",
+      "type": "Lượng từ",
+      "example": {
+        "jp": "本を3冊買いました。",
+        "vn": "đã (quá khứ)."
+      }
+    },
+    {
+      "word": "台",
+      "reading": "だい",
+      "meaning": "Chiếc (máy móc)",
+      "type": "Lượng từ",
+      "example": {
+        "jp": "車が1台あります。",
+        "vn": "có."
+      }
+    },
+    {
+      "word": "匹",
+      "reading": "ひき",
+      "meaning": "Con (động vật nhỏ)",
+      "type": "Lượng từ",
+      "example": {
+        "jp": "猫が2匹います。",
+        "vn": "có (người/động vật)."
+      }
+    },
+    {
+      "word": "頭",
+      "reading": "とう",
+      "meaning": "Con (động vật lớn)",
+      "type": "Lượng từ",
+      "example": {
+        "jp": "牛が3頭います。",
+        "vn": "có (người/động vật)."
+      }
+    },
+    {
+      "word": "本",
+      "reading": "ほん",
+      "meaning": "Cái (dài)",
+      "type": "Lượng từ",
+      "example": {
+        "jp": "鉛筆を5本ください。",
+        "vn": "vui lòng..."
+      }
+    },
+    {
+      "word": "杯",
+      "reading": "はい",
+      "meaning": "Ly, chén (đồ uống)",
+      "type": "Lượng từ",
+      "example": {
+        "jp": "コーヒーを一杯飲みます。",
+        "vn": "(đuôi lịch sự)"
+      }
+    },
+    {
+      "word": "人",
+      "reading": "にん",
+      "meaning": "Người",
+      "type": "Lượng từ",
+      "example": {
+        "jp": "3人で行きます。",
+        "vn": "(đuôi lịch sự)"
+      }
+    },
+    {
+      "word": "名",
+      "reading": "めい",
+      "meaning": "Danh (lịch sự)",
+      "type": "Lượng từ",
+      "example": {
+        "jp": "3名様ですね。",
+        "vn": ""
+      }
+    },
+    {
+      "word": "歳",
+      "reading": "さい",
+      "meaning": "Tuổi",
+      "type": "Lượng từ",
+      "example": {
+        "jp": "20歳です。",
+        "vn": "là."
+      }
+    },
+    {
+      "word": "才",
+      "reading": "さい",
+      "meaning": "Tuổi (viết tắt)",
+      "type": "Lượng từ",
+      "example": {
+        "jp": "5才です。",
+        "vn": "là."
+      }
+    },
+    {
+      "word": "円",
+      "reading": "えん",
+      "meaning": "Yên",
+      "type": "Lượng từ",
+      "example": {
+        "jp": "100円です。",
+        "vn": "là."
+      }
+    }
+  ]
+}

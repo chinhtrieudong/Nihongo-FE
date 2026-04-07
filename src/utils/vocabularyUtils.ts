@@ -1,8 +1,31 @@
 import type { VocabularyItem } from "../types/lesson";
+import type { VocabularyItem as NewVocabularyItem } from "../types/vocabulary";
 import {
   speakWithVoicevox,
   stopVoicevox,
 } from "../services/voicevoxService";
+
+/**
+ * Convert new normalized vocabulary item to legacy format
+ * for compatibility with existing components
+ */
+export const toLegacyVocabularyItem = (item: NewVocabularyItem): VocabularyItem => ({
+  id: item.id,
+  kanji: item.kanji,
+  hiragana: item.hiragana,
+  hanviet: item.hanViet,
+  meaningVi: item.meaning,
+  meaning_vi: item.meaning,
+  exampleSentence: item.example,
+  example_jp: item.example,
+  example_vi: item.exampleMeaning,  // Map exampleMeaning to example_vi
+  // Optional fields with defaults
+  romaji: '',
+  katakana: '',
+  meaningEn: '',
+  jlpt: item.level,
+  jlpt_level: item.level,
+});
 
 // Helper function to generate unique ID for vocabulary items
 export const generateVocabularyId = (

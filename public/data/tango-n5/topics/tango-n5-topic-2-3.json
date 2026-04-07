@@ -1,0 +1,140 @@
+{
+  "textbookId": "tango-n5",
+  "chapterId": 2,
+  "topicId": "topic-2-3",
+  "topicName": "よう日 (ようび)",
+  "topicNameVi": "Thứ trong tuần",
+  "vocabCount": 13,
+  "words": [
+    {
+      "word": "日曜日",
+      "reading": "にちようび",
+      "meaning": "Chủ nhật",
+      "type": "Danh từ",
+      "example": {
+        "jp": "日曜日に休みます。",
+        "vn": "(đuôi lịch sự)"
+      }
+    },
+    {
+      "word": "月曜日",
+      "reading": "げつようび",
+      "meaning": "Thứ hai",
+      "type": "Danh từ",
+      "example": {
+        "jp": "月曜日から始まります。",
+        "vn": "(đuôi lịch sự)"
+      }
+    },
+    {
+      "word": "火曜日",
+      "reading": "かようび",
+      "meaning": "Thứ ba",
+      "type": "Danh từ",
+      "example": {
+        "jp": "火曜日に会いましょう。",
+        "vn": ""
+      }
+    },
+    {
+      "word": "水曜日",
+      "reading": "すいようび",
+      "meaning": "Thứ tư",
+      "type": "Danh từ",
+      "example": {
+        "jp": "水曜日は忙しいです。",
+        "vn": "là."
+      }
+    },
+    {
+      "word": "木曜日",
+      "reading": "もくようび",
+      "meaning": "Thứ năm",
+      "type": "Danh từ",
+      "example": {
+        "jp": "木曜日に映画を見ます。",
+        "vn": "(đuôi lịch sự)"
+      }
+    },
+    {
+      "word": "金曜日",
+      "reading": "きんようび",
+      "meaning": "Thứ sáu",
+      "type": "Danh từ",
+      "example": {
+        "jp": "金曜日は楽しみです。",
+        "vn": "là."
+      }
+    },
+    {
+      "word": "土曜日",
+      "reading": "どようび",
+      "meaning": "Thứ bảy",
+      "type": "Danh từ",
+      "example": {
+        "jp": "土曜日に買い物します。",
+        "vn": "(đuôi lịch sự)"
+      }
+    },
+    {
+      "word": "週末",
+      "reading": "しゅうまつ",
+      "meaning": "Cuối tuần",
+      "type": "Danh từ",
+      "example": {
+        "jp": "週末に旅行します。",
+        "vn": "(đuôi lịch sự)"
+      }
+    },
+    {
+      "word": "平日",
+      "reading": "へいじつ",
+      "meaning": "Ngày trong tuần",
+      "type": "Danh từ",
+      "example": {
+        "jp": "平日は働きます。",
+        "vn": "(đuôi lịch sự)"
+      }
+    },
+    {
+      "word": "休日",
+      "reading": "きゅうじつ",
+      "meaning": "Ngày nghỉ",
+      "type": "Danh từ",
+      "example": {
+        "jp": "休日はどこへ行きますか。",
+        "vn": "... không?"
+      }
+    },
+    {
+      "word": "祝日",
+      "reading": "しゅくじつ",
+      "meaning": "Ngày lễ",
+      "type": "Danh từ",
+      "example": {
+        "jp": "祝日は学校が休みです。",
+        "vn": "là."
+      }
+    },
+    {
+      "word": "今朝",
+      "reading": "けさ",
+      "meaning": "Sáng nay",
+      "type": "Danh từ",
+      "example": {
+        "jp": "今朝は寒かったです。",
+        "vn": "là."
+      }
+    },
+    {
+      "word": "今夜",
+      "reading": "こんや",
+      "meaning": "Tối nay",
+      "type": "Danh từ",
+      "example": {
+        "jp": "今夜は暇です。",
+        "vn": "là."
+      }
+    }
+  ]
+}

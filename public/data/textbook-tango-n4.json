@@ -1,0 +1,141 @@
+{
+  "textbookId": "tango-n4",
+  "name": "Tango N4 - 1000 Essential Words",
+  "description": "Sách 1000 từ vựng thiết yếu cho JLPT N4",
+  "level": "N4",
+  "totalLessons": 10,
+  "startLesson": 1,
+  "accentColor": "blue",
+  "chapters": [
+    {
+      "number": 1,
+      "title": "しごと",
+      "titleVi": "Công việc",
+      "vocab": 100,
+      "topics": [
+        {"name": "職業", "nameVi": "Nghề nghiệp"},
+        {"name": "会社", "nameVi": "Công ty"},
+        {"name": "働く", "nameVi": "Làm việc"},
+        {"name": "面接", "nameVi": "Phỏng vấn"},
+        {"name": "給料", "nameVi": "Lương lậu"}
+      ]
+    },
+    {
+      "number": 2,
+      "title": "人の外見",
+      "titleVi": "Ngoại hình",
+      "vocab": 100,
+      "topics": [
+        {"name": "顔", "nameVi": "Khuôn mặt"},
+        {"name": "髪", "nameVi": "Tóc"},
+        {"name": "体型", "nameVi": "Vóc dáng"},
+        {"name": "服装", "nameVi": "Trang phục"},
+        {"name": "表情", "nameVi": "Biểu cảm"}
+      ]
+    },
+    {
+      "number": 3,
+      "title": "性格",
+      "titleVi": "Tính cách",
+      "vocab": 100,
+      "topics": [
+        {"name": "性格の特徴", "nameVi": "Đặc điểm tính cách"},
+        {"name": "長所", "nameVi": "Ưu điểm"},
+        {"name": "短所", "nameVi": "Nhược điểm"},
+        {"name": "感情", "nameVi": "Cảm xúc"},
+        {"name": "態度", "nameVi": "Thái độ"}
+      ]
+    },
+    {
+      "number": 4,
+      "title": "感情",
+      "titleVi": "Cảm xúc",
+      "vocab": 100,
+      "topics": [
+        {"name": "喜び", "nameVi": "Niềm vui"},
+        {"name": "悲しみ", "nameVi": "Nỗi buồn"},
+        {"name": "怒り", "nameVi": "Cơn giận"},
+        {"name": "恐ろしさ", "nameVi": "Sợ hãi"},
+        {"name": "驚き", "nameVi": "Ngạc nhiên"}
+      ]
+    },
+    {
+      "number": 5,
+      "title": "日常生活",
+      "titleVi": "Sinh hoạt",
+      "vocab": 100,
+      "topics": [
+        {"name": "朝の活動", "nameVi": "Buổi sáng"},
+        {"name": "昼間", "nameVi": "Buổi trưa"},
+        {"name": "夜", "nameVi": "Buổi tối"},
+        {"name": "休日", "nameVi": "Ngày nghỉ"},
+        {"name": "家事", "nameVi": "Việc nhà"}
+      ]
+    },
+    {
+      "number": 6,
+      "title": "天気",
+      "titleVi": "Thời tiết",
+      "vocab": 100,
+      "topics": [
+        {"name": "季節", "nameVi": "Mùa"},
+        {"name": "気温", "nameVi": "Nhiệt độ"},
+        {"name": "天候", "nameVi": "Thời tiết"},
+        {"name": "自然現象", "nameVi": "Hiện tượng tự nhiên"},
+        {"name": "災害", "nameVi": "Thiên tai"}
+      ]
+    },
+    {
+      "number": 7,
+      "title": "買い物",
+      "titleVi": "Mua sắm",
+      "vocab": 100,
+      "topics": [
+        {"name": "お店", "nameVi": "Cửa hàng"},
+        {"name": "商品", "nameVi": "Sản phẩm"},
+        {"name": "値段", "nameVi": "Giá cả"},
+        {"name": "支払い", "nameVi": "Thanh toán"},
+        {"name": "サービス", "nameVi": "Dịch vụ"}
+      ]
+    },
+    {
+      "number": 8,
+      "title": "食べ物",
+      "titleVi": "Ẩm thực",
+      "vocab": 100,
+      "topics": [
+        {"name": "材料", "nameVi": "Nguyên liệu"},
+        {"name": "調理", "nameVi": "Chế biến"},
+        {"name": "味", "nameVi": "Hương vị"},
+        {"name": "レストラン", "nameVi": "Nhà hàng"},
+        {"name": "飲み物", "nameVi": "Đồ uống"}
+      ]
+    },
+    {
+      "number": 9,
+      "title": "健康",
+      "titleVi": "Sức khỏe",
+      "vocab": 100,
+      "topics": [
+        {"name": "体", "nameVi": "Cơ thể"},
+        {"name": "病気", "nameVi": "Bệnh tật"},
+        {"name": "症状", "nameVi": "Triệu chứng"},
+        {"name": "治療", "nameVi": "Điều trị"},
+        {"name": "健康習慣", "nameVi": "Thói quen lành mạnh"}
+      ]
+    },
+    {
+      "number": 10,
+      "title": "趣味",
+      "titleVi": "Sở thích",
+      "vocab": 100,
+      "topics": [
+        {"name": "スポーツ", "nameVi": "Thể thao"},
+        {"name": "音楽", "nameVi": "Âm nhạc"},
+        {"name": "読書", "nameVi": "Đọc sách"},
+        {"name": "旅行", "nameVi": "Du lịch"},
+        {"name": "コレクション", "nameVi": "Sưu tầm"}
+      ]
+    }
+  ]
+}

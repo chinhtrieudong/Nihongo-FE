@@ -20,7 +20,7 @@ const KanjiFilter: React.FC<KanjiFilterProps> = ({
     onStrokeFilterChange,
 }) => {
     return (
-        <div className="mb-4 rounded-2xl border border-[#e6e8ee] dark:border-[#3d4a63] bg-[#f3f4f8] dark:bg-[#1f242d] shadow-none p-2.5 sm:p-3">
+        <div className="rounded-2xl border border-border bg-surface-1 shadow-none p-2.5 sm:p-3">
             <div className="flex flex-col md:flex-row md:items-center gap-1.5">
                 <div className="flex-1 min-w-0">
                     <Input
@@ -28,7 +28,7 @@ const KanjiFilter: React.FC<KanjiFilterProps> = ({
                         prefix={<Search className="w-4 h-4 text-secondary-500" />}
                         value={searchTerm}
                         onChange={(e) => onSearch(e.target.value)}
-                        className="w-full [&_.ant-input-prefix]:text-secondary-500 dark:[&_.ant-input-prefix]:text-secondary-400"
+                        className="w-full [&_.ant-input-prefix]:text-secondary-500"
                         size="small"
                         allowClear
                     />
@@ -40,7 +40,7 @@ const KanjiFilter: React.FC<KanjiFilterProps> = ({
                         onChange={onLevelChange}
                         placeholder="Chọn cấp độ"
                         maxTagCount="responsive"
-                        className="w-full [&_.ant-select-selector]:!rounded-xl [&_.ant-select-selector]:!border-[#d9dce5] dark:[&_.ant-select-selector]:!border-[#3d4a63] [&_.ant-select-selector]:!bg-white dark:[&_.ant-select-selector]:!bg-[#252d3d]"
+                        className="w-full [&_.ant-select-selector]:!rounded-xl [&_.ant-select-selector]:!border-[#d9dce5] [&_.ant-select-selector]:!bg-white"
                         size="small"
                         options={[
                             { value: 'all', label: <span className="font-medium text-gray-700 dark:text-gray-300">Tất cả</span> },
@@ -58,7 +58,7 @@ const KanjiFilter: React.FC<KanjiFilterProps> = ({
                         value={strokeFilters[0]}
                         onChange={onStrokeFilterChange}
                         placeholder="Lọc số nét"
-                        className="w-full [&_.ant-select-selector]:!rounded-xl [&_.ant-select-selector]:!border-[#d9dce5] dark:[&_.ant-select-selector]:!border-[#3d4a63] [&_.ant-select-selector]:!bg-white dark:[&_.ant-select-selector]:!bg-[#252d3d]"
+                        className="w-full [&_.ant-select-selector]:!rounded-xl [&_.ant-select-selector]:!border-[#d9dce5] [&_.ant-select-selector]:!bg-white"
                         size="small"
                         options={[
                             { value: 'hantu', label: 'Hán tự' },

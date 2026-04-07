@@ -1,0 +1,210 @@
+{
+  "textbookId": "tango-n4",
+  "chapterId": 8,
+  "topicId": "topic-8-3",
+  "topicName": "味",
+  "topicNameVi": "Hương vị",
+  "vocabCount": 20,
+  "words": [
+    {
+      "word": "味",
+      "reading": "あじ",
+      "meaning": "Vị",
+      "type": "Danh từ",
+      "example": {
+        "jp": "味が濃いです。",
+        "vn": "là."
+      }
+    },
+    {
+      "word": "甘い",
+      "reading": "あまい",
+      "meaning": "Ngọt",
+      "type": "Tính từ",
+      "example": {
+        "jp": "甘いケーキです。",
+        "vn": "là."
+      }
+    },
+    {
+      "word": "辛い",
+      "reading": "からい",
+      "meaning": "Cay",
+      "type": "Tính từ",
+      "example": {
+        "jp": "辛いカレーです。",
+        "vn": "là."
+      }
+    },
+    {
+      "word": "酸っぱい",
+      "reading": "すっぱい",
+      "meaning": "Chua",
+      "type": "Tính từ",
+      "example": {
+        "jp": "酸っぱいレモンです。",
+        "vn": "là."
+      }
+    },
+    {
+      "word": "苦い",
+      "reading": "にがい",
+      "meaning": "Đắng",
+      "type": "Tính từ",
+      "example": {
+        "jp": "苦い薬です。",
+        "vn": "là."
+      }
+    },
+    {
+      "word": "塩辛い",
+      "reading": "しおからい",
+      "meaning": "Mặn",
+      "type": "Tính từ",
+      "example": {
+        "jp": "塩辛い味噌汁です。",
+        "vn": "là."
+      }
+    },
+    {
+      "word": "渋い",
+      "reading": "しぶい",
+      "meaning": "Chát",
+      "type": "Tính từ",
+      "example": {
+        "jp": "渋い柿です。",
+        "vn": "là."
+      }
+    },
+    {
+      "word": "淡白",
+      "reading": "たんぱく",
+      "meaning": "Nhạt",
+      "type": "Danh từ",
+      "example": {
+        "jp": "淡白な味です。",
+        "vn": "là."
+      }
+    },
+    {
+      "word": "濃い",
+      "reading": "こい",
+      "meaning": "Đậm",
+      "type": "Tính từ",
+      "example": {
+        "jp": "味が濃いです。",
+        "vn": "là."
+      }
+    },
+    {
+      "word": "薄い",
+      "reading": "うすい",
+      "meaning": "Lỏng",
+      "type": "Tính từ",
+      "example": {
+        "jp": "味が薄いです。",
+        "vn": "là."
+      }
+    },
+    {
+      "word": "旨い",
+      "reading": "うまい",
+      "meaning": "Ngon",
+      "type": "Tính từ",
+      "example": {
+        "jp": "旨い料理です。",
+        "vn": "là."
+      }
+    },
+    {
+      "word": "美味しい",
+      "reading": "おいしい",
+      "meaning": "Ngon",
+      "type": "Tính từ",
+      "example": {
+        "jp": "美味しいご飯です。",
+        "vn": "là."
+      }
+    },
+    {
+      "word": "不味い",
+      "reading": "まずい",
+      "meaning": "Dở",
+      "type": "Tính từ",
+      "example": {
+        "jp": "不味い料理です。",
+        "vn": "là."
+      }
+    },
+    {
+      "word": "香り",
+      "reading": "かおり",
+      "meaning": "Hương thơm",
+      "type": "Danh từ",
+      "example": {
+        "jp": "いい香りがします。",
+        "vn": "(đuôi lịch sự)"
+      }
+    },
+    {
+      "word": "臭い",
+      "reading": "くさい",
+      "meaning": "Hôi",
+      "type": "Tính từ",
+      "example": {
+        "jp": "臭いチーズです。",
+        "vn": "là."
+      }
+    },
+    {
+      "word": "新鮮",
+      "reading": "しんせん",
+      "meaning": "Tươi",
+      "type": "Danh từ",
+      "example": {
+        "jp": "新鮮な魚です。",
+        "vn": "là."
+      }
+    },
+    {
+      "word": "淡泊",
+      "reading": "たんぱく",
+      "meaning": "Nhạt",
+      "type": "Danh từ",
+      "example": {
+        "jp": "淡泊な味付けです。",
+        "vn": "là."
+      }
+    },
+    {
+      "word": "濃厚",
+      "reading": "のうこう",
+      "meaning": "Đậm đà",
+      "type": "Danh từ",
+      "example": {
+        "jp": "濃厚な味です。",
+        "vn": "là."
+      }
+    },
+    {
+      "word": "口当たり",
+      "reading": "くちあたり",
+      "meaning": "Cảm giác miệng",
+      "type": "Danh từ",
+      "example": {
+        "jp": "口当たりが良いです。",
+        "vn": "là."
+      }
+    },
+    {
+      "word": "食感",
+      "reading": "しょっかん",
+      "meaning": "Độ giòn/mềm",
+      "type": "Danh từ",
+      "example": {
+        "jp": "食感がいいです。",
+        "vn": "là."
+      }
+    }
+  ]
+}

@@ -1,0 +1,210 @@
+{
+  "textbookId": "tango-n4",
+  "chapterId": 3,
+  "topicId": "topic-3-3",
+  "topicName": "短所",
+  "topicNameVi": "Nhược điểm",
+  "vocabCount": 20,
+  "words": [
+    {
+      "word": "短所",
+      "reading": "たんしょ",
+      "meaning": "Nhược điểm",
+      "type": "Danh từ",
+      "example": {
+        "jp": "短所を改善しています。",
+        "vn": "có (người/động vật)."
+      }
+    },
+    {
+      "word": "欠点",
+      "reading": "けってん",
+      "meaning": "Khuyết điểm",
+      "type": "Danh từ",
+      "example": {
+        "jp": "欠点があります。",
+        "vn": "có."
+      }
+    },
+    {
+      "word": "弱点",
+      "reading": "じゃくてん",
+      "meaning": "Điểm yếu",
+      "type": "Danh từ",
+      "example": {
+        "jp": "弱点を克服したいです。",
+        "vn": "là."
+      }
+    },
+    {
+      "word": "苦手",
+      "reading": "にがて",
+      "meaning": "Không giỏi",
+      "type": "Danh từ",
+      "example": {
+        "jp": "数学が苦手です。",
+        "vn": "là."
+      }
+    },
+    {
+      "word": "不得意",
+      "reading": "ふとくい",
+      "meaning": "Không thành thạo",
+      "type": "Danh từ",
+      "example": {
+        "jp": "不得意な分野です。",
+        "vn": "là."
+      }
+    },
+    {
+      "word": "不利",
+      "reading": "ふり",
+      "meaning": "Bất lợi",
+      "type": "Danh từ",
+      "example": {
+        "jp": "不利な状況です。",
+        "vn": "là."
+      }
+    },
+    {
+      "word": "不利な",
+      "reading": "ふりな",
+      "meaning": "Không có lợi",
+      "type": "Tính từ",
+      "example": {
+        "jp": "不利な条件です。",
+        "vn": "là."
+      }
+    },
+    {
+      "word": "心配性",
+      "reading": "しんぱいしょう",
+      "meaning": "Lo lắng",
+      "type": "Danh từ",
+      "example": {
+        "jp": "心配性です。",
+        "vn": "là."
+      }
+    },
+    {
+      "word": "嫉妬深い",
+      "reading": "しっとぶかい",
+      "meaning": "Ghen tị",
+      "type": "Tính từ",
+      "example": {
+        "jp": "嫉妬深い性格です。",
+        "vn": "là."
+      }
+    },
+    {
+      "word": "頑固",
+      "reading": "がんこ",
+      "meaning": "Cứng đầu",
+      "type": "Danh từ",
+      "example": {
+        "jp": "頑固な人です。",
+        "vn": "là."
+      }
+    },
+    {
+      "word": "怠け者",
+      "reading": "なまけもの",
+      "meaning": "Lười biếng",
+      "type": "Danh từ",
+      "example": {
+        "jp": "怠け者です。",
+        "vn": "là."
+      }
+    },
+    {
+      "word": "忘れっぽい",
+      "reading": "わすれっぽい",
+      "meaning": "Hay quên",
+      "type": "Tính từ",
+      "example": {
+        "jp": "忘れっぽい性格です。",
+        "vn": "là."
+      }
+    },
+    {
+      "word": "怒りっぽい",
+      "reading": "いかりっぽい",
+      "meaning": "Nóng tính",
+      "type": "Tính từ",
+      "example": {
+        "jp": "怒りっぽいです。",
+        "vn": "là."
+      }
+    },
+    {
+      "word": "心配性",
+      "reading": "しんぱいしょう",
+      "meaning": "Hay lo",
+      "type": "Danh từ",
+      "example": {
+        "jp": "心配性です。",
+        "vn": "là."
+      }
+    },
+    {
+      "word": "気が短い",
+      "reading": "きがみじかい",
+      "meaning": "Nóng vội",
+      "type": "Tính từ",
+      "example": {
+        "jp": "気が短いです。",
+        "vn": "là."
+      }
+    },
+    {
+      "word": "気が長い",
+      "reading": "きがながい",
+      "meaning": "Kiên nhẫn",
+      "type": "Tính từ",
+      "example": {
+        "jp": "気が長いです。",
+        "vn": "là."
+      }
+    },
+    {
+      "word": "無口",
+      "reading": "むくち",
+      "meaning": "Ít nói",
+      "type": "Danh từ",
+      "example": {
+        "jp": "無口な性格です。",
+        "vn": "là."
+      }
+    },
+    {
+      "word": "多弁",
+      "reading": "たべん",
+      "meaning": "Nhiều lời",
+      "type": "Danh từ",
+      "example": {
+        "jp": "多弁な人です。",
+        "vn": "là."
+      }
+    },
+    {
+      "word": "甘い",
+      "reading": "あまい",
+      "meaning": "Mềm yếu",
+      "type": "Tính từ",
+      "example": {
+        "jp": "自分に甘いです。",
+        "vn": "là."
+      }
+    },
+    {
+      "word": "厳しい",
+      "reading": "きびしい",
+      "meaning": "Khắt khe",
+      "type": "Tính từ",
+      "example": {
+        "jp": "自分に厳しいです。",
+        "vn": "là."
+      }
+    }
+  ]
+}

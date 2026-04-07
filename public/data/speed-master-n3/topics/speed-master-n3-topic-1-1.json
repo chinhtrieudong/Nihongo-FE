@@ -1,0 +1,110 @@
+{
+  "textbookId": "speed-master-n3",
+  "chapterId": 1,
+  "topicId": "topic-1-1",
+  "topicName": "家庭",
+  "topicNameVi": "Gia đình",
+  "vocabCount": 24,
+  "words": [
+    {
+      "word": "親類",
+      "reading": "しんるい",
+      "meaning": "Bà con, họ hàng",
+      "type": "Danh từ",
+      "example": {
+        "jp": "親類一同集まりました。",
+        "vn": "đã (quá khứ)."
+      }
+    },
+    {
+      "word": "同棲",
+      "reading": "どうせい",
+      "meaning": "Sống chung (chưa kết hôn)",
+      "type": "Danh động từ",
+      "example": {
+        "jp": "彼と同棲しています。",
+        "vn": "có (người/động vật)."
+      }
+    },
+    {
+      "word": "世帯",
+      "reading": "せたい",
+      "meaning": "Hộ gia đình",
+      "type": "Danh từ",
+      "example": {
+        "jp": "この地域の世帯数は増えた。",
+        "vn": ""
+      }
+    },
+    {
+      "word": "生計",
+      "reading": "せいけい",
+      "meaning": "Kế sinh nhai",
+      "type": "Danh từ",
+      "example": {
+        "jp": "生計を立てるのが大変だ。",
+        "vn": ""
+      }
+    },
+    {
+      "word": "扶養",
+      "reading": "ふよう",
+      "meaning": "Nuôi dưỡng (người phụ thuộc)",
+      "type": "Danh động từ",
+      "example": {
+        "jp": "家族を扶養している。",
+        "vn": ""
+      }
+    },
+    {
+      "word": "同居",
+      "reading": "どうきょ",
+      "meaning": "Sống chung",
+      "type": "Danh động từ",
+      "example": {
+        "jp": "両親と同居しています。",
+        "vn": "có (người/động vật)."
+      }
+    },
+    {
+      "word": "別居",
+      "reading": "べっきょ",
+      "meaning": "Sống riêng",
+      "type": "Danh động từ",
+      "example": {
+        "jp": "夫と別居しています。",
+        "vn": "có (người/động vật)."
+      }
+    },
+    {
+      "word": "遺産",
+      "reading": "いさん",
+      "meaning": "Di sản",
+      "type": "Danh từ",
+      "example": {
+        "jp": "祖父の遺産を相続した。",
+        "vn": ""
+      }
+    },
+    {
+      "word": "相続",
+      "reading": "そうぞく",
+      "meaning": "Thừa kế",
+      "type": "Danh động từ",
+      "example": {
+        "jp": "財産を相続しました。",
+        "vn": "đã (quá khứ)."
+      }
+    },
+    {
+      "word": "遺言",
+      "reading": "ゆいごん",
+      "meaning": "Di chúc",
+      "type": "Danh từ",
+      "example": {
+        "jp": "遺言書を残しました。",
+        "vn": "đã (quá khứ)."
+      }
+    }
+  ]
+}

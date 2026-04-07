@@ -43,7 +43,7 @@ const Layout: React.FC = () => {
         }}
       >
         <Content
-          className="bg-bg text-text-main"
+          className="bg-surface-1 text-text-main"
           style={{ minHeight: `calc(100vh - ${APP_HEADER_HEIGHT_PX}px)` }}
         >
           <Outlet />

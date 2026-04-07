@@ -1,0 +1,716 @@
+import React, { useState, useEffect, useMemo, useCallback } from "react";
+import { useParams, useNavigate } from "react-router-dom";
+import { Card, Button, Tag, Typography, Empty, Spin, Badge, Tabs, Statistic, Row, Col, Space } from "antd";
+import { ArrowLeft, Volume2, BookOpen, Layers, Star, CheckCircle, XCircle, RotateCcw, Play, ChevronLeft, ChevronRight } from "lucide-react";
+import VocabularyFlashcard from "../../components/vocabulary/VocabularyFlashcard";
+import { useResponsive } from "../../hooks/useResponsive";
+import { useVocabulary, useLessons } from "../../hooks/useVocabulary";
+import type { VocabularyItem } from "../../types/vocabulary";
+import { typeToLegacy } from "../../types/vocabulary";
+
+const { Title, Text } = Typography;
+
+// Part of speech color mapping (uses legacy Vietnamese names for UI)
+const partOfSpeechColors: Record<string, string> = {
+  noun: "blue",
+  verb: "green",
+  adjective: "orange",
+  pronoun: "cyan",
+  suffix: "purple",
+  particle: "pink",
+  other: "default",
+  // Legacy mappings for compatibility
+  "Danh từ": "blue",
+  "Động từ": "green",
+  "Tính từ": "orange",
+  "Phó từ": "purple",
+  "Đại từ": "cyan",
+  "Trợ từ": "pink",
+  "Liên từ": "red",
+  "Kính ngữ": "gold",
+  "Tân ngữ": "lime",
+  "Số từ": "geekblue",
+  "Khác": "default",
+};
+// Legacy interface for component state
+interface LessonVocabulary {
+  lessonNumber: number;
+  lessonTitle: string;
+  textbookId: string;
+  items: VocabularyItem[];
+  chapterTitle?: string;
+  chapterTitleVi?: string;
+}
+
+const minnaN5Vocabulary: Record<number, VocabularyItem[]> = {};
+
+// Fetch vocabulary from JSON file
+const fetchVocabularyData = async (textbookId: string, lessonNumber: number): Promise<VocabularyItem[]> => {
+  try {
+    // For Minna textbooks (N5, N4), fetch from lesson files
+    if (textbookId?.startsWith('minna')) {
+      const level = textbookId === 'minna-n5' ? 'n5' : 'n4';
+      const url = `/data/minna-${level}/lesson-${lessonNumber}.json`;
+      console.log('Fetching Minna vocabulary from:', url, 'textbookId:', textbookId);
+      try {
+        const response = await fetch(url);
+        console.log('Response status:', response.status, response.ok);
+        if (!response.ok) {
+          console.error(`Failed to fetch ${url}: ${response.status} ${response.statusText}`);
+          throw new Error(`Failed to fetch lesson ${lessonNumber} data`);
+        }
+        const data = await response.json();
+        console.log('Fetched data:', data);
+        console.log('Vocabulary array:', data.vocabulary);
+        // Convert new format to VocabularyItem format
+        const mapped = data.vocabulary?.map((word: any, index: number) => ({
+          id: word.id || `${lessonNumber}-${index + 1}`,
+          kanji: word.word,
+          hiragana: word.reading,
+          romaji: '',
+          hanviet: word.hanViet,
+          meaning: word.meaning,
+          meaning_vi: word.meaning,
+          partOfSpeech: word.category,
+          example: word.example?.jp,
+          exampleMeaning: word.example?.vn,
+          example_jp: word.example?.jp,
+          example_vi: word.example?.vn,
+        })) || [];
+        console.log('Mapped vocabulary:', mapped.length, 'items');
+        return mapped;
+      } catch (err) {
+        console.error('Error fetching Minna data:', err);
+        throw err;
+      }
+    }
+    
+    // For Tango textbooks (N5, N4, N3, N2, N1), fetch from topic files
+    if (textbookId?.startsWith('tango')) {
+      const chapterNum = Math.ceil(lessonNumber / 5); // 1-5 -> ch1, 6-10 -> ch2, etc.
+      const topicNum = ((lessonNumber - 1) % 5) + 1; // 1,2,3,4,5 within chapter
+      const url = `/data/${textbookId}/topics/${textbookId}-topic-${chapterNum}-${topicNum}.json`;
+      console.log('Fetching vocabulary from:', url);
+      const response = await fetch(url);
+      if (!response.ok) {
+        console.error(`Failed to fetch ${url}: ${response.status} ${response.statusText}`);
+        throw new Error(`Failed to fetch topic ${chapterNum}-${topicNum} data`);
+      }
+      const data = await response.json();
+      // Convert topic words to VocabularyItem format
+      return data.words.map((word: any, index: number) => ({
+        id: `${lessonNumber}-${index + 1}`,
+        kanji: word.word,
+        hiragana: word.reading,
+        romaji: '', // Could add romaji conversion if needed
+        hanViet: '', // Could add if available
+        meaning: word.meaning,
+        meaning_vi: word.meaning,
+        partOfSpeech: word.type,
+        example: word.example,
+        exampleMeaning: '', // Could add Vietnamese translation if available
+      }));
+    }
+    
+    // For other textbooks, try the old format
+    const response = await fetch(`/data/${textbookId}.json`);
+    if (!response.ok) {
+      throw new Error(`Failed to fetch ${textbookId} data`);
+    }
+    const data = await response.json();
+    return data.lessons?.[lessonNumber] || [];
+  } catch (error) {
+    console.error("Error fetching vocabulary:", error);
+    return [];
+  }
+};
+
+// Fetch chapter info for Tango textbooks (N5, N4, N3, N2, N1)
+const fetchChapterInfo = async (textbookId: string, chapterId: number): Promise<ChapterInfo | null> => {
+  if (!textbookId?.startsWith('tango')) return null;
+  try {
+    // For Tango N5, use the merged chapters file
+    if (textbookId === 'tango-n5') {
+      const response = await fetch(`/data/${textbookId}-chapters.json`);
+      if (!response.ok) {
+        throw new Error(`Failed to fetch chapters data`);
+      }
+      const data = await response.json();
+      const chapter = data.chapters?.find((c: any) => c.chapterId === chapterId);
+      if (!chapter) {
+        throw new Error(`Chapter ${chapterId} not found`);
+      }
+      return {
+        chapterId: chapter.chapterId,
+        chapterTitle: chapter.chapterTitle,
+        chapterTitleVi: chapter.chapterTitleVi,
+      };
+    }
+    
+    // For other Tango levels (N4, N3, N2, N1), use individual chapter files
+    const response = await fetch(`/data/${textbookId}/${textbookId}-chapter-${chapterId}.json`);
+    if (!response.ok) {
+      throw new Error(`Failed to fetch chapter ${chapterId} data`);
+    }
+    const data = await response.json();
+    return {
+      chapterId: data.chapterId,
+      chapterTitle: data.chapterTitle,
+      chapterTitleVi: data.chapterTitleVi,
+    };
+  } catch (error) {
+    console.error("Error fetching chapter info:", error);
+    return null;
+  }
+};
+const highlightKeyword = (sentence: string, keyword: string): React.ReactNode => {
+  const parts = sentence.split(new RegExp(`(${keyword})`, 'gi'));
+  return parts.map((part, i) => 
+    part.toLowerCase() === keyword.toLowerCase() ? 
+      <span key={i} className="text-blue-600 font-bold bg-blue-50 px-1 rounded">{part}</span> : part
+  );
+};
+
+// Generate vocabulary for lessons
+const generateVocabulary = async (textbookId: string, lessonNumber: number): Promise<{ items: VocabularyItem[]; chapterInfo?: ChapterInfo }> => {
+  // Try to fetch from JSON first
+  const items = await fetchVocabularyData(textbookId, lessonNumber);
+  if (items.length > 0) {
+    // For Tango textbooks, fetch chapter info
+    const chapterNum = textbookId?.startsWith('tango') ? Math.ceil(lessonNumber / 5) : lessonNumber;
+    const chapterInfo = await fetchChapterInfo(textbookId, chapterNum);
+    return { items, chapterInfo: chapterInfo || undefined };
+  }
+  
+  // Fallback: generate fake data if lesson not found
+  const topics = [
+    "Gia đình", "Thời gian", "Số đếm", "Địa điểm", "Động tác",
+    "Cảm xúc", "Thời tiết", "Màu sắc", "Đồ ăn", "Công việc"
+  ];
+  const topic = topics[(lessonNumber - 1) % topics.length];
+  
+  return { 
+    items: Array.from({ length: 10 }, (_, i) => ({
+      id: `${lessonNumber}-${i + 1}`,
+      kanji: i % 3 === 0 ? "単語" : "",
+      hiragana: `たんご${lessonNumber}-${i + 1}`,
+      romaji: `tango${lessonNumber}-${i + 1}`,
+      hanViet: "ĐƠN NGỮ",
+      meaning: `Từ vựng ${topic} ${i + 1}`,
+      partOfSpeech: "Danh từ",
+      example: `これは${topic}のたんごです。`,
+      exampleMeaning: `Đây là từ vựng về ${topic.toLowerCase()}.`,
+      example2: `わたしは${topic}がすきです。`,
+      exampleMeaning2: `Tôi thích ${topic.toLowerCase()}.`,
+    })),
+  };
+};
+
+const VocabularyDetail: React.FC = () => {
+  const { textbookId, lessonNumber } = useParams<{ textbookId: string; lessonNumber: string }>();
+  const navigate = useNavigate();
+  const { screens } = useResponsive();
+  const [loading, setLoading] = useState(true);
+  const [vocabulary, setVocabulary] = useState<LessonVocabulary | null>(null);
+  const [activeTab, setActiveTab] = useState<string>("list");
+
+  // Flashcard states
+  const [showFlashcard, setShowFlashcard] = useState(false);
+  const [currentCardIndex, setCurrentCardIndex] = useState(0);
+  const [isFlipped, setIsFlipped] = useState(false);
+  const [isStudyComplete, setIsStudyComplete] = useState(false);
+  const [shuffledCards, setShuffledCards] = useState<VocabularyItem[]>([]);
+  type SessionStatus = "unanswered" | "known" | "unknown";
+  const [cardStatus, setCardStatus] = useState<Record<string, SessionStatus>>({});
+
+  useEffect(() => {
+    const fetchVocabulary = async () => {
+      if (!textbookId || !lessonNumber) return;
+
+      setLoading(true);
+      await new Promise((resolve) => setTimeout(resolve, 300));
+
+      const lessonNum = parseInt(lessonNumber, 10);
+      const { items, chapterInfo } = await generateVocabulary(textbookId, lessonNum);
+
+      setVocabulary({
+        lessonNumber: lessonNum,
+        lessonTitle: chapterInfo ? `${chapterInfo.chapterTitle} - ${chapterInfo.chapterTitleVi}` : `Bài ${lessonNum}`,
+        textbookId,
+        items,
+        chapterTitle: chapterInfo?.chapterTitle,
+        chapterTitleVi: chapterInfo?.chapterTitleVi,
+      });
+      setLoading(false);
+    };
+
+    fetchVocabulary();
+  }, [textbookId, lessonNumber]);
+
+  const handleBack = () => {
+    navigate(`/textbook/${textbookId}`);
+  };
+
+  const handlePrevLesson = () => {
+    if (!lessonNumber) return;
+    const prevLesson = parseInt(lessonNumber, 10) - 1;
+    if (prevLesson >= 1) {
+      navigate(`/textbook/${textbookId}/vocabulary/${prevLesson}`);
+    }
+  };
+
+  const handleNextLesson = () => {
+    if (!lessonNumber) return;
+    const nextLesson = parseInt(lessonNumber, 10) + 1;
+    // Assuming max 10 lessons for tango-n5
+    const maxLessons = textbookId?.startsWith('tango') ? 10 : 25;
+    if (nextLesson <= maxLessons) {
+      navigate(`/textbook/${textbookId}/vocabulary/${nextLesson}`);
+    }
+  };
+
+  const speakText = (text: string) => {
+    if ("speechSynthesis" in window) {
+      const utterance = new SpeechSynthesisUtterance(text);
+      utterance.lang = "ja-JP";
+      window.speechSynthesis.speak(utterance);
+    }
+  };
+
+  // Flashcard logic
+  const cardsToStudy = useMemo(() => {
+    if (shuffledCards.length > 0) return shuffledCards;
+    return vocabulary?.items || [];
+  }, [shuffledCards, vocabulary]);
+
+  const currentCard = cardsToStudy[currentCardIndex];
+
+  const sessionKnownCount = useMemo(() => {
+    const currentCardIds = new Set(cardsToStudy.map((c) => c.id));
+    return Object.entries(cardStatus).filter(
+      ([id, status]) => currentCardIds.has(id) && status === "known",
+    ).length;
+  }, [cardStatus, cardsToStudy]);
+
+  const sessionUnknownCount = useMemo(() => {
+    const currentCardIds = new Set(cardsToStudy.map((c) => c.id));
+    return Object.entries(cardStatus).filter(
+      ([id, status]) => currentCardIds.has(id) && status === "unknown",
+    ).length;
+  }, [cardStatus, cardsToStudy]);
+
+  const totalCount = cardsToStudy.length;
+  const knownCount = sessionKnownCount;
+  const unknownCount = sessionUnknownCount;
+
+  const flipCard = useCallback(() => {
+    setIsFlipped((prev) => !prev);
+  }, []);
+
+  const handleMemoryEvaluation = useCallback((status: "unknown" | "known") => {
+    if (!currentCard) return;
+    setCardStatus((prev) => ({ ...prev, [currentCard.id]: status }));
+    if (currentCardIndex < cardsToStudy.length - 1) {
+      setCurrentCardIndex((prev) => prev + 1);
+      setIsFlipped(false);
+    } else {
+      setIsStudyComplete(true);
+    }
+  }, [currentCard, currentCardIndex, cardsToStudy.length]);
+
+  const shuffleCards = useCallback(() => {
+    const shuffled = [...cardsToStudy].sort(() => Math.random() - 0.5);
+    setShuffledCards(shuffled);
+    setCurrentCardIndex(0);
+    setIsFlipped(false);
+  }, [cardsToStudy]);
+
+  const resetStudySession = useCallback((mode: "all" | "unremembered" = "all") => {
+    const items = vocabulary?.items || [];
+    const cardsToUse = mode === "unremembered"
+      ? items.filter((card) => cardStatus[card.id] === "unknown")
+      : items;
+    const shuffled = [...cardsToUse].sort(() => Math.random() - 0.5);
+    const resetStatus: Record<string, SessionStatus> = {};
+    cardsToUse.forEach((c) => (resetStatus[c.id] = "unanswered"));
+    setCardStatus((prev) => ({ ...prev, ...resetStatus }));
+    setShuffledCards(shuffled);
+    setCurrentCardIndex(0);
+    setIsFlipped(false);
+    setIsStudyComplete(false);
+  }, [vocabulary?.items, cardStatus]);
+
+  const startFlashcard = useCallback(() => {
+    const items = vocabulary?.items || [];
+    const shuffled = [...items].sort(() => Math.random() - 0.5);
+    setShuffledCards(shuffled);
+    const initialStatus: Record<string, SessionStatus> = {};
+    items.forEach((item) => (initialStatus[item.id] = "unanswered"));
+    setCardStatus(initialStatus);
+    setCurrentCardIndex(0);
+    setIsFlipped(false);
+    setIsStudyComplete(false);
+    setShowFlashcard(true);
+  }, [vocabulary?.items]);
+
+  const closeFlashcard = useCallback(() => {
+    setShowFlashcard(false);
+    setCurrentCardIndex(0);
+    setIsFlipped(false);
+    setIsStudyComplete(false);
+  }, []);
+
+  if (loading) {
+    return (
+      <div className="min-h-full bg-bg flex items-center justify-center">
+        <div className="text-center">
+          <Spin size="large" />
+          <p className="mt-4 text-text-sub">Đang tải từ vựng...</p>
+        </div>
+      </div>
+    );
+  }
+
+  if (!vocabulary || vocabulary.items.length === 0) {
+    return (
+      <div className="min-h-full bg-bg p-8">
+        <Empty description="Không có dữ liệu từ vựng" />
+        <div className="text-center mt-4">
+          <Button onClick={handleBack} icon={<ArrowLeft className="w-4 h-4" />}>
+            Quay lại
+          </Button>
+        </div>
+      </div>
+    );
+  }
+
+  const tabItems = [
+    {
+      key: "list",
+      label: (
+        <span className="flex items-center gap-2">
+          <BookOpen className="w-4 h-4" />
+          Danh sách
+        </span>
+      ),
+      children: (
+        <div className="grid gap-3">
+          {vocabulary.items.map((item, index) => (
+            <div
+              key={item.id}
+              className="bg-surface-1 rounded-xl border border-border p-4 hover:shadow-lg hover:border-blue-400/30 transition-all duration-300 group"
+            >
+              {/* Main Word Section */}
+              <div className="flex items-start gap-3">
+                {/* Left Content: Kanji + HanViet */}
+                <div className="flex-[0.3] text-center">
+                  {/* Kanji */}
+                  <Text className="text-2xl font-bold text-text-main block">
+                    {item.kanji || item.hiragana}
+                  </Text>
+                  {/* Han Viet */}
+                  <Text className="text-sm font-medium text-amber-600 uppercase tracking-wide block mt-1">
+                    {item.hanViet}
+                  </Text>
+                </div>
+                
+                {/* Vertical Divider */}
+                <div className="w-px h-16" style={{ borderLeft: '1px solid rgba(148, 163, 184, 0.25)' }} />
+                
+                {/* Right Content: Hiragana + Meaning */}
+                <div className="flex-[0.7]">
+                  {/* Hiragana */}
+                  <Text className="text-lg text-blue-500 font-medium block">
+                    {item.hiragana}
+                  </Text>
+                  {/* Meaning */}
+                  <Text className="text-lg text-text-main block mt-1">
+                    {item.meaning}
+                  </Text>
+                </div>
+                
+                {/* Actions */}
+                <div className="flex items-center gap-1 flex-shrink-0">
+                  <button
+                    onClick={() => speakText(item.hiragana)}
+                    className="p-2 rounded-lg text-text-sub hover:text-blue-500 hover:bg-blue-500/10 transition-colors"
+                  >
+                    <Volume2 className="w-4 h-4" />
+                  </button>
+                  <button className="p-2 rounded-lg text-text-sub hover:text-yellow-500 hover:bg-yellow-500/10 transition-colors">
+                    <Star className="w-4 h-4" />
+                  </button>
+                </div>
+              </div>
+              
+              {/* Examples Section */}
+              <div className="mt-3 pt-3" style={{ borderTop: '1px solid rgba(148, 163, 184, 0.25)' }}>
+                <div className="flex items-start justify-between gap-2">
+                  <div className="flex-1">
+                    <Text className="text-text-main text-base block leading-relaxed tracking-wide">
+                      {item.example}
+                    </Text>
+                    <Text className="text-text-sub text-sm mt-1 tracking-wide">
+                      {item.exampleMeaning}
+                    </Text>
+                  </div>
+                  <Button
+                    type="text"
+                    size="small"
+                    icon={<Volume2 className="w-3.5 h-3.5" />}
+                    onClick={() => speakText(item.example)}
+                    className="text-text-sub hover:text-blue-500 flex-shrink-0"
+                  />
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      ),
+    },
+  ];
+
+  return (
+    <div className="min-h-full bg-bg academic-canvas">
+      <div className="max-w-4xl mx-auto px-4 py-6">
+        {/* Header with Navigation */}
+        <div className="flex items-center justify-between mb-6">
+          <Button
+            onClick={handleBack}
+            icon={<ArrowLeft className="w-4 h-4" />}
+          >
+            Quay lại
+          </Button>
+
+          <Space>
+            <Button
+              onClick={handlePrevLesson}
+              disabled={!lessonNumber || parseInt(lessonNumber, 10) <= 1}
+            >
+              <span className="flex items-center gap-1">
+                <ChevronLeft className="w-4 h-4" /> Bài trước
+              </span>
+            </Button>
+            <Button
+              onClick={handleNextLesson}
+              disabled={!lessonNumber || parseInt(lessonNumber, 10) >= (textbookId?.startsWith('tango') ? 10 : 25)}
+            >
+              <span className="flex items-center gap-1">
+                Bài sau <ChevronRight className="w-4 h-4" />
+              </span>
+            </Button>
+          </Space>
+        </div>
+
+        {/* Title Section */}
+        <div className="flex items-center gap-4 mb-8">
+          <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-blue-500 to-blue-600 flex items-center justify-center shadow-lg shadow-blue-500/20">
+            <BookOpen className="w-7 h-7 text-white" />
+          </div>
+          <div>
+            {vocabulary.chapterTitle ? (
+              <>
+                <h1 className="text-2xl font-bold text-text-main">
+                  {vocabulary.chapterTitle}
+                </h1>
+                <p className="text-lg text-text-sub">
+                  {vocabulary.chapterTitleVi}
+                </p>
+              </>
+            ) : (
+              <h1 className="text-2xl font-bold text-text-main">
+                Từ vựng Bài {vocabulary.lessonNumber}
+              </h1>
+            )}
+            <p className="text-sm text-text-sub mt-1">
+              {vocabulary.items.length} từ vựng • {textbookId === "minna-n5" ? "Minna no Nihongo N5" : textbookId?.replace('tango-', 'Tango ').replace('-', ' ').toUpperCase()}
+              {vocabulary.chapterTitle && ` • Bài ${vocabulary.lessonNumber}`}
+            </p>
+          </div>
+        </div>
+
+        {/* Tabs */}
+        <style>{`
+          .vocabulary-tabs .ant-tabs-nav {
+            background: #f1f5f9;
+            border-radius: 12px;
+            padding: 4px;
+            margin-bottom: 16px;
+          }
+          .vocabulary-tabs .ant-tabs-nav::before {
+            border-bottom: none;
+          }
+          .vocabulary-tabs .ant-tabs-tab {
+            border-radius: 8px;
+            padding: 8px 16px;
+            color: #64748b;
+            transition: all 0.2s;
+          }
+          .vocabulary-tabs .ant-tabs-tab:hover {
+            color: #475569;
+            background: rgba(255,255,255,0.5);
+          }
+          .vocabulary-tabs .ant-tabs-tab-active {
+            background: #ffffff;
+            color: #3b82f6 !important;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+          }
+          .vocabulary-tabs .ant-tabs-ink-bar {
+            display: none;
+          }
+          .dark .vocabulary-tabs .ant-tabs-nav {
+            background: #1e293b;
+          }
+          .dark .vocabulary-tabs .ant-tabs-tab:hover {
+            background: rgba(255,255,255,0.1);
+          }
+          .dark .vocabulary-tabs .ant-tabs-tab-active {
+            background: #334155;
+            color: #60a5fa !important;
+          }
+        `}</style>
+        <Tabs
+          activeKey={activeTab}
+          onChange={setActiveTab}
+          items={tabItems}
+          className="vocabulary-tabs"
+          tabBarExtraContent={
+            <Button
+              type="primary"
+              icon={<Layers className="w-4 h-4" />}
+              onClick={startFlashcard}
+              className="flex items-center gap-2 ml-2"
+            >
+              Flashcard
+            </Button>
+          }
+        />
+
+        {/* Flashcard Modal */}
+        {showFlashcard && !isStudyComplete && (
+          <VocabularyFlashcard
+            currentCard={currentCard}
+            currentCardIndex={currentCardIndex}
+            cardsToStudy={cardsToStudy}
+            isFlipped={isFlipped}
+            isFullscreen={false}
+            screens={screens}
+            onFlipCard={flipCard}
+            onMemoryEvaluation={handleMemoryEvaluation}
+            onSetIsFullscreen={() => {}}
+            onBackToTable={closeFlashcard}
+            onResetCards={() => resetStudySession("all")}
+            onShuffleCards={shuffleCards}
+          />
+        )}
+
+        {/* Completion Modal */}
+        {showFlashcard && isStudyComplete && (
+          <div
+            className="fixed inset-0 z-[1100] flex items-center justify-center bg-black/55 backdrop-blur-sm p-4"
+            onClick={closeFlashcard}
+          >
+            <div
+              className="w-full max-w-xl text-white"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <div className="rounded-xl border border-slate-600 bg-slate-900 p-8 text-white min-h-[300px] flex flex-col justify-between relative overflow-hidden">
+                <div className="pointer-events-none absolute -top-24 -right-24 h-64 w-64 rounded-full bg-blue-500/10 blur-3xl" />
+                <div className="pointer-events-none absolute -bottom-24 -left-24 h-64 w-64 rounded-full bg-emerald-500/10 blur-3xl" />
+                <button
+                  type="button"
+                  aria-label="Đóng"
+                  onClick={closeFlashcard}
+                  className="absolute top-3 right-3 h-9 w-9 rounded-full text-white/80 hover:text-white transition-colors flex items-center justify-center"
+                >
+                  ✕
+                </button>
+                <div className="text-center">
+                  <Title level={1} className="!mb-2 text-white">
+                    🎉 Hoàn thành!
+                  </Title>
+                  <div className="text-sm text-white/70 mb-4">
+                    Bạn đã hoàn thành phiên học hôm nay
+                  </div>
+
+                  <Row gutter={16} className="mb-2">
+                    <Col span={8}>
+                      <div className="rounded-lg border border-slate-600/60 bg-white/5 px-3 py-2">
+                        <div className="text-xs uppercase tracking-wide text-white/60 mb-1">
+                          Tổng
+                        </div>
+                        <Statistic
+                          value={totalCount}
+                          valueStyle={{ color: "#93c5fd" }}
+                          className="text-white"
+                        />
+                      </div>
+                    </Col>
+
+                    <Col span={8}>
+                      <div className="rounded-lg border border-slate-600/60 bg-white/5 px-3 py-2">
+                        <div className="text-xs uppercase tracking-wide text-white/60 mb-1">
+                          Đã nhớ
+                        </div>
+                        <Statistic
+                          value={knownCount}
+                          valueStyle={{ color: "#86efac" }}
+                          prefix={
+                            <CheckCircle className="w-4 h-4" style={{ color: "#86efac" }} />
+                          }
+                          className="text-white"
+                        />
+                      </div>
+                    </Col>
+
+                    <Col span={8}>
+                      <div className="rounded-lg border border-slate-600/60 bg-white/5 px-3 py-2">
+                        <div className="text-xs uppercase tracking-wide text-white/60 mb-1">
+                          Chưa nhớ
+                        </div>
+                        <Statistic
+                          value={unknownCount}
+                          valueStyle={{ color: "#fca5a5" }}
+                          prefix={
+                            <XCircle className="w-4 h-4" style={{ color: "#fca5a5" }} />
+                          }
+                          className="text-white"
+                        />
+                      </div>
+                    </Col>
+                  </Row>
+                </div>
+
+                <div className="flex items-center justify-center pt-0">
+                  <Space size="large">
+                    <Button
+                      type="primary"
+                      size="large"
+                      icon={<RotateCcw className="w-4 h-4" />}
+                      onClick={() => resetStudySession("all")}
+                    >
+                      Học lại toàn bộ
+                    </Button>
+
+                    {unknownCount > 0 && (
+                      <Button
+                        type="default"
+                        size="large"
+                        className="bg-transparent text-neutral-200 border-neutral-500 hover:text-white hover:border-neutral-300 hover:bg-white/10"
+                        onClick={() => resetStudySession("unremembered")}
+                      >
+                        Chỉ học {unknownCount} thẻ chưa nhớ
+                      </Button>
+                    )}
+                  </Space>
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
+      </div>
+    </div>
+  );
+};
+
+export default VocabularyDetail;

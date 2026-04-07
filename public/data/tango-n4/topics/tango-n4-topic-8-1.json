@@ -1,0 +1,210 @@
+{
+  "textbookId": "tango-n4",
+  "chapterId": 8,
+  "topicId": "topic-8-1",
+  "topicName": "材料",
+  "topicNameVi": "Nguyên liệu",
+  "vocabCount": 20,
+  "words": [
+    {
+      "word": "材料",
+      "reading": "ざいりょう",
+      "meaning": "Nguyên liệu",
+      "type": "Danh từ",
+      "example": {
+        "jp": "材料を買いました。",
+        "vn": "đã (quá khứ)."
+      }
+    },
+    {
+      "word": "食材",
+      "reading": "しょくざい",
+      "meaning": "Nguyên liệu thực phẩm",
+      "type": "Danh từ",
+      "example": {
+        "jp": "食材を準備しました。",
+        "vn": "đã (quá khứ)."
+      }
+    },
+    {
+      "word": "米",
+      "reading": "こめ",
+      "meaning": "Gạo",
+      "type": "Danh từ",
+      "example": {
+        "jp": "米を研ぎます。",
+        "vn": "(đuôi lịch sự)"
+      }
+    },
+    {
+      "word": "小麦粉",
+      "reading": "こむぎこ",
+      "meaning": "Bột mì",
+      "type": "Danh từ",
+      "example": {
+        "jp": "小麦粉を使います。",
+        "vn": "có (người/động vật)."
+      }
+    },
+    {
+      "word": "肉",
+      "reading": "にく",
+      "meaning": "Thịt",
+      "type": "Danh từ",
+      "example": {
+        "jp": "肉を切ります。",
+        "vn": "(đuôi lịch sự)"
+      }
+    },
+    {
+      "word": "牛肉",
+      "reading": "ぎゅうにく",
+      "meaning": "Thịt bò",
+      "type": "Danh từ",
+      "example": {
+        "jp": "牛肉を焼きます。",
+        "vn": "(đuôi lịch sự)"
+      }
+    },
+    {
+      "word": "豚肉",
+      "reading": "ぶたにく",
+      "meaning": "Thịt heo",
+      "type": "Danh từ",
+      "example": {
+        "jp": "豚肉を煮ます。",
+        "vn": "(đuôi lịch sự)"
+      }
+    },
+    {
+      "word": "鶏肉",
+      "reading": "とりにく",
+      "meaning": "Thịt gà",
+      "type": "Danh từ",
+      "example": {
+        "jp": "鶏肉を揚げます。",
+        "vn": "(đuôi lịch sự)"
+      }
+    },
+    {
+      "word": "魚",
+      "reading": "さかな",
+      "meaning": "Cá",
+      "type": "Danh từ",
+      "example": {
+        "jp": "魚を焼きます。",
+        "vn": "(đuôi lịch sự)"
+      }
+    },
+    {
+      "word": "野菜",
+      "reading": "やさい",
+      "meaning": "Rau củ",
+      "type": "Danh từ",
+      "example": {
+        "jp": "野菜を炒めます。",
+        "vn": "(đuôi lịch sự)"
+      }
+    },
+    {
+      "word": "豆",
+      "reading": "まめ",
+      "meaning": "Đậu",
+      "type": "Danh từ",
+      "example": {
+        "jp": "豆を煮ます。",
+        "vn": "(đuôi lịch sự)"
+      }
+    },
+    {
+      "word": "大豆",
+      "reading": "だいず",
+      "meaning": "Đậu nành",
+      "type": "Danh từ",
+      "example": {
+        "jp": "大豆を使います。",
+        "vn": "có (người/động vật)."
+      }
+    },
+    {
+      "word": "卵",
+      "reading": "たまご",
+      "meaning": "Trứng",
+      "type": "Danh từ",
+      "example": {
+        "jp": "卵を割ります。",
+        "vn": "(đuôi lịch sự)"
+      }
+    },
+    {
+      "word": "乳製品",
+      "reading": "にゅうせいひん",
+      "meaning": "Sản phẩm từ sữa",
+      "type": "Danh từ",
+      "example": {
+        "jp": "乳製品を使います。",
+        "vn": "có (người/động vật)."
+      }
+    },
+    {
+      "word": "豆腐",
+      "reading": "とうふ",
+      "meaning": "Đậu phụ",
+      "type": "Danh từ",
+      "example": {
+        "jp": "豆腐を切ります。",
+        "vn": "(đuôi lịch sự)"
+      }
+    },
+    {
+      "word": "油",
+      "reading": "あぶら",
+      "meaning": "Dầu",
+      "type": "Danh từ",
+      "example": {
+        "jp": "油を熱します。",
+        "vn": "(đuôi lịch sự)"
+      }
+    },
+    {
+      "word": "醤油",
+      "reading": "しょうゆ",
+      "meaning": "Xì dầu",
+      "type": "Danh từ",
+      "example": {
+        "jp": "醤油を入れます。",
+        "vn": "(đuôi lịch sự)"
+      }
+    },
+    {
+      "word": "味噌",
+      "reading": "みそ",
+      "meaning": "Miso",
+      "type": "Danh từ",
+      "example": {
+        "jp": "味噌を溶きます。",
+        "vn": "(đuôi lịch sự)"
+      }
+    },
+    {
+      "word": "砂糖",
+      "reading": "さとう",
+      "meaning": "Đường",
+      "type": "Danh từ",
+      "example": {
+        "jp": "砂糖を入れます。",
+        "vn": "(đuôi lịch sự)"
+      }
+    },
+    {
+      "word": "塩",
+      "reading": "しお",
+      "meaning": "Muối",
+      "type": "Danh từ",
+      "example": {
+        "jp": "塩で味を調えます。",
+        "vn": "(đuôi lịch sự)"
+      }
+    }
+  ]
+}

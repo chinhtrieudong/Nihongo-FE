@@ -1,0 +1,210 @@
+{
+  "textbookId": "tango-n4",
+  "chapterId": 10,
+  "topicId": "topic-10-3",
+  "topicName": "読書",
+  "topicNameVi": "Đọc sách",
+  "vocabCount": 20,
+  "words": [
+    {
+      "word": "読書",
+      "reading": "どくしょ",
+      "meaning": "Đọc sách",
+      "type": "Danh động từ",
+      "example": {
+        "jp": "読書が趣味です。",
+        "vn": "là."
+      }
+    },
+    {
+      "word": "本",
+      "reading": "ほん",
+      "meaning": "Sách",
+      "type": "Danh từ",
+      "example": {
+        "jp": "本を読みます。",
+        "vn": "(đuôi lịch sự)"
+      }
+    },
+    {
+      "word": "小説",
+      "reading": "しょうせつ",
+      "meaning": "Tiểu thuyết",
+      "type": "Danh từ",
+      "example": {
+        "jp": "小説を書いています。",
+        "vn": "có (người/động vật)."
+      }
+    },
+    {
+      "word": "文庫本",
+      "reading": "ぶんこぼん",
+      "meaning": "Sách bỏ túi",
+      "type": "Danh từ",
+      "example": {
+        "jp": "文庫本を買いました。",
+        "vn": "đã (quá khứ)."
+      }
+    },
+    {
+      "word": "漫画",
+      "reading": "まんが",
+      "meaning": "Truyện tranh",
+      "type": "Danh từ",
+      "example": {
+        "jp": "漫画が好きです。",
+        "vn": "là."
+      }
+    },
+    {
+      "word": "雑誌",
+      "reading": "ざっし",
+      "meaning": "Tạp chí",
+      "type": "Danh từ",
+      "example": {
+        "jp": "雑誌を買いました。",
+        "vn": "đã (quá khứ)."
+      }
+    },
+    {
+      "word": "新聞",
+      "reading": "しんぶん",
+      "meaning": "Báo",
+      "type": "Danh từ",
+      "example": {
+        "jp": "新聞を読みます。",
+        "vn": "(đuôi lịch sự)"
+      }
+    },
+    {
+      "word": "辞書",
+      "reading": "じしょ",
+      "meaning": "Từ điển",
+      "type": "Danh từ",
+      "example": {
+        "jp": "辞書を引きます。",
+        "vn": "(đuôi lịch sự)"
+      }
+    },
+    {
+      "word": "図書館",
+      "reading": "としょかん",
+      "meaning": "Thư viện",
+      "type": "Danh từ",
+      "example": {
+        "jp": "図書館で勉強します。",
+        "vn": "(đuôi lịch sự)"
+      }
+    },
+    {
+      "word": "書店",
+      "reading": "しょてん",
+      "meaning": "Hiệu sách",
+      "type": "Danh từ",
+      "example": {
+        "jp": "書店で本を買いました。",
+        "vn": "đã (quá khứ)."
+      }
+    },
+    {
+      "word": "電子書籍",
+      "reading": "でんししょせき",
+      "meaning": "Sách điện tử",
+      "type": "Danh từ",
+      "example": {
+        "jp": "電子書籍を読みます。",
+        "vn": "(đuôi lịch sự)"
+      }
+    },
+    {
+      "word": "著者",
+      "reading": "ちょしゃ",
+      "meaning": "Tác giả",
+      "type": "Danh từ",
+      "example": {
+        "jp": "著者のサイン会に行きました。",
+        "vn": "đã (quá khứ)."
+      }
+    },
+    {
+      "word": "作家",
+      "reading": "さっか",
+      "meaning": "Nhà văn",
+      "type": "Danh từ",
+      "example": {
+        "jp": "作家になりたいです。",
+        "vn": "là."
+      }
+    },
+    {
+      "word": "主人公",
+      "reading": "しゅじんこう",
+      "meaning": "Nhân vật chính",
+      "type": "Danh từ",
+      "example": {
+        "jp": "主人公が好きです。",
+        "vn": "là."
+      }
+    },
+    {
+      "word": "ストーリー",
+      "reading": "ストーリー",
+      "meaning": "Cốt truyện",
+      "type": "Danh từ",
+      "example": {
+        "jp": "ストーリーが面白いです。",
+        "vn": "là."
+      }
+    },
+    {
+      "word": "結末",
+      "reading": "けつまつ",
+      "meaning": "Kết thúc",
+      "type": "Danh từ",
+      "example": {
+        "jp": "結末が意外でした。",
+        "vn": "đã là (quá khứ)."
+      }
+    },
+    {
+      "word": "感想",
+      "reading": "かんそう",
+      "meaning": "Cảm nghĩ",
+      "type": "Danh từ",
+      "example": {
+        "jp": "感想を書きました。",
+        "vn": "đã (quá khứ)."
+      }
+    },
+    {
+      "word": "書評",
+      "reading": "しょひょう",
+      "meaning": "Bài đánh giá sách",
+      "type": "Danh từ",
+      "example": {
+        "jp": "書評を読みました。",
+        "vn": "đã (quá khứ)."
+      }
+    },
+    {
+      "word": "ブックカフェ",
+      "reading": "ブックカフェ",
+      "meaning": "Quán cà phê sách",
+      "type": "Danh từ",
+      "example": {
+        "jp": "ブックカフェで読書します。",
+        "vn": "(đuôi lịch sự)"
+      }
+    },
+    {
+      "word": "読み放題",
+      "reading": "よみほうだい",
+      "meaning": "Đọc thoải mái",
+      "type": "Danh từ",
+      "example": {
+        "jp": "読み放題サービスです。",
+        "vn": "là."
+      }
+    }
+  ]
+}

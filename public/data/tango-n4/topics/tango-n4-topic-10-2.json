@@ -1,0 +1,210 @@
+{
+  "textbookId": "tango-n4",
+  "chapterId": 10,
+  "topicId": "topic-10-2",
+  "topicName": "音楽",
+  "topicNameVi": "Âm nhạc",
+  "vocabCount": 20,
+  "words": [
+    {
+      "word": "音楽",
+      "reading": "おんがく",
+      "meaning": "Âm nhạc",
+      "type": "Danh từ",
+      "example": {
+        "jp": "音楽を聴きます。",
+        "vn": "(đuôi lịch sự)"
+      }
+    },
+    {
+      "word": "曲",
+      "reading": "きょく",
+      "meaning": "Bài hát",
+      "type": "Danh từ",
+      "example": {
+        "jp": "曲をダウンロードしました。",
+        "vn": "đã (quá khứ)."
+      }
+    },
+    {
+      "word": "歌",
+      "reading": "うた",
+      "meaning": "Bài hát",
+      "type": "Danh từ",
+      "example": {
+        "jp": "歌を歌います。",
+        "vn": "có (người/động vật)."
+      }
+    },
+    {
+      "word": "歌手",
+      "reading": "かしゅ",
+      "meaning": "Ca sĩ",
+      "type": "Danh từ",
+      "example": {
+        "jp": "歌手になりたいです。",
+        "vn": "là."
+      }
+    },
+    {
+      "word": "アイドル",
+      "reading": "アイドル",
+      "meaning": "Thần tượng",
+      "type": "Danh từ",
+      "example": {
+        "jp": "アイドルが好きです。",
+        "vn": "là."
+      }
+    },
+    {
+      "word": "バンド",
+      "reading": "バンド",
+      "meaning": "Ban nhạc",
+      "type": "Danh từ",
+      "example": {
+        "jp": "バンドを組んでいます。",
+        "vn": "có (người/động vật)."
+      }
+    },
+    {
+      "word": "楽器",
+      "reading": "がっき",
+      "meaning": "Nhạc cụ",
+      "type": "Danh từ",
+      "example": {
+        "jp": "楽器を練習します。",
+        "vn": "(đuôi lịch sự)"
+      }
+    },
+    {
+      "word": "ピアノ",
+      "reading": "ピアノ",
+      "meaning": "Piano",
+      "type": "Danh từ",
+      "example": {
+        "jp": "ピアノを弾きます。",
+        "vn": "(đuôi lịch sự)"
+      }
+    },
+    {
+      "word": "ギター",
+      "reading": "ギター",
+      "meaning": "Guitar",
+      "type": "Danh từ",
+      "example": {
+        "jp": "ギターを弾きます。",
+        "vn": "(đuôi lịch sự)"
+      }
+    },
+    {
+      "word": "ドラム",
+      "reading": "ドラム",
+      "meaning": "Trống",
+      "type": "Danh từ",
+      "example": {
+        "jp": "ドラムを叩きます。",
+        "vn": "(đuôi lịch sự)"
+      }
+    },
+    {
+      "word": "バイオリン",
+      "reading": "バイオリン",
+      "meaning": "Violin",
+      "type": "Danh từ",
+      "example": {
+        "jp": "バイオリンを弾きます。",
+        "vn": "(đuôi lịch sự)"
+      }
+    },
+    {
+      "word": "コンサート",
+      "reading": "コンサート",
+      "meaning": "Buổi hòa nhạc",
+      "type": "Danh từ",
+      "example": {
+        "jp": "コンサートに行きます。",
+        "vn": "(đuôi lịch sự)"
+      }
+    },
+    {
+      "word": "ライブ",
+      "reading": "ライブ",
+      "meaning": "Live show",
+      "type": "Danh từ",
+      "example": {
+        "jp": "ライブに参加しました。",
+        "vn": "đã (quá khứ)."
+      }
+    },
+    {
+      "word": "フェス",
+      "reading": "フェス",
+      "meaning": "Lễ hội âm nhạc",
+      "type": "Danh từ",
+      "example": {
+        "jp": "フェスに行きます。",
+        "vn": "(đuôi lịch sự)"
+      }
+    },
+    {
+      "word": "カラオケ",
+      "reading": "カラオケ",
+      "meaning": "Karaoke",
+      "type": "Danh từ",
+      "example": {
+        "jp": "カラオケに行きます。",
+        "vn": "(đuôi lịch sự)"
+      }
+    },
+    {
+      "word": "音楽鑑賞",
+      "reading": "おんがくかんしょう",
+      "meaning": "Nghe nhạc",
+      "type": "Danh động từ",
+      "example": {
+        "jp": "音楽鑑賞を楽しみます。",
+        "vn": "(đuôi lịch sự)"
+      }
+    },
+    {
+      "word": "耳コピ",
+      "reading": "みみコピ",
+      "meaning": "Nghe và chơi",
+      "type": "Danh động từ",
+      "example": {
+        "jp": "耳コピで練習します。",
+        "vn": "(đuôi lịch sự)"
+      }
+    },
+    {
+      "word": "スコア",
+      "reading": "スコア",
+      "meaning": "Bản nhạc",
+      "type": "Danh từ",
+      "example": {
+        "jp": "スコアを買いました。",
+        "vn": "đã (quá khứ)."
+      }
+    },
+    {
+      "word": "練習",
+      "reading": "れんしゅう",
+      "meaning": "Luyện tập",
+      "type": "Danh động từ",
+      "example": {
+        "jp": "毎日練習します。",
+        "vn": "(đuôi lịch sự)"
+      }
+    },
+    {
+      "word": "リズム",
+      "reading": "リズム",
+      "meaning": "Nhịp điệu",
+      "type": "Danh từ",
+      "example": {
+        "jp": "リズムに合わせます。",
+        "vn": "(đuôi lịch sự)"
+      }
+    }
+  ]
+}

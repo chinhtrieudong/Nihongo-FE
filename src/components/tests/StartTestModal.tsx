@@ -61,38 +61,38 @@ const StartTestModal: React.FC<StartTestModalProps> = ({
                     </div>
 
                     <div className="grid grid-cols-2 gap-4">
-                        <div className="bg-gray-50 p-3 rounded">
-                            <div className="flex items-center text-sm text-gray-600 mb-1">
+                        <div className="bg-surface-2 p-3 rounded border border-border">
+                            <div className="flex items-center text-sm text-text-sub mb-1">
                                 <Clock className="w-4 h-4 mr-2" />
                                 Thời gian
                             </div>
-                            <div className="font-semibold">{test.duration} phút</div>
+                            <div className="font-semibold text-text-main">{test.duration} phút</div>
                         </div>
-                        <div className="bg-gray-50 p-3 rounded">
-                            <div className="flex items-center text-sm text-gray-600 mb-1">
+                        <div className="bg-surface-2 p-3 rounded border border-border">
+                            <div className="flex items-center text-sm text-text-sub mb-1">
                                 <FileText className="w-4 h-4 mr-2" />
                                 Số câu
                             </div>
-                            <div className="font-semibold">{test.questions} câu</div>
+                            <div className="font-semibold text-text-main">{test.questions} câu</div>
                         </div>
                     </div>
 
                     <div>
-                        <Text strong>Các phần thi:</Text>
+                        <Text strong className="text-text-main">Các phần thi:</Text>
                         <div className="flex flex-wrap gap-2 mt-2">
                             {test.sections.map(section => (
-                                <Tag key={section.id} icon={section.icon}>
+                                <Tag key={section.id} icon={section.icon} className="bg-surface-1 border-border text-text-main">
                                     {section.name} ({section.questions} câu)
                                 </Tag>
                             ))}
                         </div>
                     </div>
 
-                    <div className="bg-yellow-50 border border-yellow-200 p-3 rounded">
+                    <div className="bg-warning/10 border border-warning/30 p-3 rounded">
                         <Text type="warning" strong>
                             ⚠️ Lưu ý:
                         </Text>
-                        <ul className="text-sm text-gray-600 mt-2 ml-4">
+                        <ul className="text-sm text-text-sub mt-2 ml-4">
                             <li>Bài thi sẽ bắt đầu ngay khi bạn nhấn "Bắt đầu"</li>
                             <li>Thời gian sẽ được đếm ngược tự động</li>
                             <li>Bạn không thể tạm dừng bài thi</li>

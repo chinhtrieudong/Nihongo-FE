@@ -1,0 +1,140 @@
+{
+  "textbookId": "tango-n5",
+  "chapterId": 2,
+  "topicId": "topic-2-4",
+  "topicName": "ことば",
+  "topicNameVi": "Ngôn ngữ",
+  "vocabCount": 13,
+  "words": [
+    {
+      "word": "言葉",
+      "reading": "ことば",
+      "meaning": "Từ ngữ",
+      "type": "Danh từ",
+      "example": {
+        "jp": "新しい言葉を覚えます。",
+        "vn": "(đuôi lịch sự)"
+      }
+    },
+    {
+      "word": "漢字",
+      "reading": "かんじ",
+      "meaning": "Hán tự",
+      "type": "Danh từ",
+      "example": {
+        "jp": "漢字を書きます。",
+        "vn": "(đuôi lịch sự)"
+      }
+    },
+    {
+      "word": "ひらがな",
+      "reading": "ひらがな",
+      "meaning": "Chữ Hiragana",
+      "type": "Danh từ",
+      "example": {
+        "jp": "ひらがなで書いてください。",
+        "vn": "vui lòng..."
+      }
+    },
+    {
+      "word": "カタカナ",
+      "reading": "カタカナ",
+      "meaning": "Chữ Katakana",
+      "type": "Danh từ",
+      "example": {
+        "jp": "カタカナで書きます。",
+        "vn": "(đuôi lịch sự)"
+      }
+    },
+    {
+      "word": "ローマ字",
+      "reading": "ローマじ",
+      "meaning": "Chữ La tinh",
+      "type": "Danh từ",
+      "example": {
+        "jp": "ローマ字で書いてください。",
+        "vn": "vui lòng..."
+      }
+    },
+    {
+      "word": "意味",
+      "reading": "いみ",
+      "meaning": "Nghĩa",
+      "type": "Danh từ",
+      "example": {
+        "jp": "この言葉の意味は何ですか。",
+        "vn": "có phải là... không?"
+      }
+    },
+    {
+      "word": "読み方",
+      "reading": "よみかた",
+      "meaning": "Cách đọc",
+      "type": "Danh từ",
+      "example": {
+        "jp": "読み方を教えてください。",
+        "vn": "vui lòng..."
+      }
+    },
+    {
+      "word": "書き方",
+      "reading": "かきかた",
+      "meaning": "Cách viết",
+      "type": "Danh từ",
+      "example": {
+        "jp": "書き方を見せてください。",
+        "vn": "vui lòng..."
+      }
+    },
+    {
+      "word": "使い方",
+      "reading": "つかいかた",
+      "meaning": "Cách sử dụng",
+      "type": "Danh từ",
+      "example": {
+        "jp": "使い方が分かりません。",
+        "vn": "không."
+      }
+    },
+    {
+      "word": "辞書",
+      "reading": "じしょ",
+      "meaning": "Từ điển",
+      "type": "Danh từ",
+      "example": {
+        "jp": "辞書で調べます。",
+        "vn": "(đuôi lịch sự)"
+      }
+    },
+    {
+      "word": "教科書",
+      "reading": "きょうかしょ",
+      "meaning": "Sách giáo khoa",
+      "type": "Danh từ",
+      "example": {
+        "jp": "教科書を開いてください。",
+        "vn": "vui lòng..."
+      }
+    },
+    {
+      "word": "単語",
+      "reading": "たんご",
+      "meaning": "Từ vựng",
+      "type": "Danh từ",
+      "example": {
+        "jp": "単語を覚えます。",
+        "vn": "(đuôi lịch sự)"
+      }
+    },
+    {
+      "word": "文",
+      "reading": "ぶん",
+      "meaning": "Câu",
+      "type": "Danh từ",
+      "example": {
+        "jp": "文を作ります。",
+        "vn": "(đuôi lịch sự)"
+      }
+    }
+  ]
+}

@@ -1,0 +1,210 @@
+{
+  "textbookId": "tango-n4",
+  "chapterId": 4,
+  "topicId": "topic-4-1",
+  "topicName": "喜び",
+  "topicNameVi": "Niềm vui",
+  "vocabCount": 20,
+  "words": [
+    {
+      "word": "喜び",
+      "reading": "よろこび",
+      "meaning": "Niềm vui",
+      "type": "Danh từ",
+      "example": {
+        "jp": "喜びを分かち合います。",
+        "vn": "có (người/động vật)."
+      }
+    },
+    {
+      "word": "嬉しい",
+      "reading": "うれしい",
+      "meaning": "Vui mừng",
+      "type": "Tính từ",
+      "example": {
+        "jp": "嬉しい知らせです。",
+        "vn": "là."
+      }
+    },
+    {
+      "word": "楽しい",
+      "reading": "たのしい",
+      "meaning": "Vui vẻ",
+      "type": "Tính từ",
+      "example": {
+        "jp": "楽しい時間を過ごしました。",
+        "vn": "đã (quá khứ)."
+      }
+    },
+    {
+      "word": "幸せ",
+      "reading": "しあわせ",
+      "meaning": "Hạnh phúc",
+      "type": "Danh từ",
+      "example": {
+        "jp": "幸せを感じています。",
+        "vn": "có (người/động vật)."
+      }
+    },
+    {
+      "word": "満足",
+      "reading": "まんぞく",
+      "meaning": "Hài lòng",
+      "type": "Danh động từ",
+      "example": {
+        "jp": "満足しています。",
+        "vn": "có (người/động vật)."
+      }
+    },
+    {
+      "word": "感激",
+      "reading": "かんげき",
+      "meaning": "Cảm kích",
+      "type": "Danh động từ",
+      "example": {
+        "jp": "感激しています。",
+        "vn": "có (người/động vật)."
+      }
+    },
+    {
+      "word": "感動",
+      "reading": "かんどう",
+      "meaning": "Xúc động",
+      "type": "Danh động từ",
+      "example": {
+        "jp": "感動しました。",
+        "vn": "đã (quá khứ)."
+      }
+    },
+    {
+      "word": "興奮",
+      "reading": "こうふん",
+      "meaning": "Phấn khích",
+      "type": "Danh động từ",
+      "example": {
+        "jp": "興奮しています。",
+        "vn": "có (người/động vật)."
+      }
+    },
+    {
+      "word": "愉快",
+      "reading": "ゆかい",
+      "meaning": "Vui nhộn",
+      "type": "Danh từ",
+      "example": {
+        "jp": "愉快な雰囲気です。",
+        "vn": "là."
+      }
+    },
+    {
+      "word": "歓喜",
+      "reading": "かんき",
+      "meaning": "Hoan hỉ",
+      "type": "Danh từ",
+      "example": {
+        "jp": "歓喜に沸いています。",
+        "vn": "có (người/động vật)."
+      }
+    },
+    {
+      "word": "勝利",
+      "reading": "しょうり",
+      "meaning": "Chiến thắng",
+      "type": "Danh từ",
+      "example": {
+        "jp": "勝利の喜びです。",
+        "vn": "là."
+      }
+    },
+    {
+      "word": "成功",
+      "reading": "せいこう",
+      "meaning": "Thành công",
+      "type": "Danh động từ",
+      "example": {
+        "jp": "成功の喜びです。",
+        "vn": "là."
+      }
+    },
+    {
+      "word": "達成",
+      "reading": "たっせい",
+      "meaning": "Đạt được",
+      "type": "Danh động từ",
+      "example": {
+        "jp": "目標を達成しました。",
+        "vn": "đã (quá khứ)."
+      }
+    },
+    {
+      "word": "褒める",
+      "reading": "ほめる",
+      "meaning": "Khen ngợi",
+      "type": "Động từ",
+      "example": {
+        "jp": "先生に褒められました。",
+        "vn": "đã (quá khứ)."
+      }
+    },
+    {
+      "word": "称賛",
+      "reading": "しょうさん",
+      "meaning": "Ca ngợi",
+      "type": "Danh động từ",
+      "example": {
+        "jp": "称賛されました。",
+        "vn": "đã (quá khứ)."
+      }
+    },
+    {
+      "word": "祝福",
+      "reading": "しゅくふく",
+      "meaning": "Chúc mừng",
+      "type": "Danh động từ",
+      "example": {
+        "jp": "祝福されています。",
+        "vn": "có (người/động vật)."
+      }
+    },
+    {
+      "word": "歓迎",
+      "reading": "かんげい",
+      "meaning": "Hoan nghênh",
+      "type": "Danh động từ",
+      "example": {
+        "jp": "歓迎されます。",
+        "vn": "(đuôi lịch sự)"
+      }
+    },
+    {
+      "word": "盛り上がる",
+      "reading": "もりあがる",
+      "meaning": "Sôi động",
+      "type": "Động từ",
+      "example": {
+        "jp": "会が盛り上がりました。",
+        "vn": "đã (quá khứ)."
+      }
+    },
+    {
+      "word": "盛況",
+      "reading": "せいきょう",
+      "meaning": "Thịnh vượng",
+      "type": "Danh từ",
+      "example": {
+        "jp": "盛況でした。",
+        "vn": "đã là (quá khứ)."
+      }
+    },
+    {
+      "word": "大盛況",
+      "reading": "だいせいきょう",
+      "meaning": "Rất thịnh vượng",
+      "type": "Danh từ",
+      "example": {
+        "jp": "大盛況で終わりました。",
+        "vn": "đã (quá khứ)."
+      }
+    }
+  ]
+}

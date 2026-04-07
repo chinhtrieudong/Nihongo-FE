@@ -1,0 +1,210 @@
+{
+  "textbookId": "tango-n4",
+  "chapterId": 7,
+  "topicId": "topic-7-3",
+  "topicName": "値段",
+  "topicNameVi": "Giá cả",
+  "vocabCount": 20,
+  "words": [
+    {
+      "word": "値段",
+      "reading": "ねだん",
+      "meaning": "Giá cả",
+      "type": "Danh từ",
+      "example": {
+        "jp": "値段を見ました。",
+        "vn": "đã (quá khứ)."
+      }
+    },
+    {
+      "word": "価格",
+      "reading": "かかく",
+      "meaning": "Giá cả",
+      "type": "Danh từ",
+      "example": {
+        "jp": "価格が高いです。",
+        "vn": "là."
+      }
+    },
+    {
+      "word": "定価",
+      "reading": "ていか",
+      "meaning": "Giá niêm yết",
+      "type": "Danh từ",
+      "example": {
+        "jp": "定価で販売しています。",
+        "vn": "có (người/động vật)."
+      }
+    },
+    {
+      "word": "原価",
+      "reading": "げんか",
+      "meaning": "Giá gốc",
+      "type": "Danh từ",
+      "example": {
+        "jp": "原価で販売しています。",
+        "vn": "có (người/động vật)."
+      }
+    },
+    {
+      "word": "売価",
+      "reading": "ばいか",
+      "meaning": "Giá bán",
+      "type": "Danh từ",
+      "example": {
+        "jp": "売価が安いです。",
+        "vn": "là."
+      }
+    },
+    {
+      "word": "高い",
+      "reading": "たかい",
+      "meaning": "Cao/Đắt",
+      "type": "Tính từ",
+      "example": {
+        "jp": "値段が高いです。",
+        "vn": "là."
+      }
+    },
+    {
+      "word": "低い",
+      "reading": "ひくい",
+      "meaning": "Thấp/Rẻ",
+      "type": "Tính từ",
+      "example": {
+        "jp": "値段が低いです。",
+        "vn": "là."
+      }
+    },
+    {
+      "word": "安い",
+      "reading": "やすい",
+      "meaning": "Rẻ",
+      "type": "Tính từ",
+      "example": {
+        "jp": "安い値段です。",
+        "vn": "là."
+      }
+    },
+    {
+      "word": "高級",
+      "reading": "こうきゅう",
+      "meaning": "Cao cấp",
+      "type": "Danh từ",
+      "example": {
+        "jp": "高級な商品です。",
+        "vn": "là."
+      }
+    },
+    {
+      "word": "高価",
+      "reading": "こうか",
+      "meaning": "Giá cao",
+      "type": "Danh từ",
+      "example": {
+        "jp": "高価な品物です。",
+        "vn": "là."
+      }
+    },
+    {
+      "word": "特価",
+      "reading": "とっか",
+      "meaning": "Giá đặc biệt",
+      "type": "Danh từ",
+      "example": {
+        "jp": "特価で販売しています。",
+        "vn": "có (người/động vật)."
+      }
+    },
+    {
+      "word": "激安",
+      "reading": "げきやす",
+      "meaning": "Rẻ bất ngờ",
+      "type": "Danh từ",
+      "example": {
+        "jp": "激安セールです。",
+        "vn": "là."
+      }
+    },
+    {
+      "word": "割引",
+      "reading": "わりびき",
+      "meaning": "Giảm giá",
+      "type": "Danh động từ",
+      "example": {
+        "jp": "割引してもらいました。",
+        "vn": "đã (quá khứ)."
+      }
+    },
+    {
+      "word": "値引き",
+      "reading": "ねびき",
+      "meaning": "Chiết khấu",
+      "type": "Danh động từ",
+      "example": {
+        "jp": "値引きしました。",
+        "vn": "đã (quá khứ)."
+      }
+    },
+    {
+      "word": "半額",
+      "reading": "はんがく",
+      "meaning": "Nửa giá",
+      "type": "Danh từ",
+      "example": {
+        "jp": "半額セールです。",
+        "vn": "là."
+      }
+    },
+    {
+      "word": "タイムセール",
+      "reading": "タイムセール",
+      "meaning": "Khuyến mãi có thời hạn",
+      "type": "Danh từ",
+      "example": {
+        "jp": "タイムセール中です。",
+        "vn": "là."
+      }
+    },
+    {
+      "word": "送料",
+      "reading": "そうりょう",
+      "meaning": "Phí giao hàng",
+      "type": "Danh từ",
+      "example": {
+        "jp": "送料がかかります。",
+        "vn": "(đuôi lịch sự)"
+      }
+    },
+    {
+      "word": "手数料",
+      "reading": "てすうりょう",
+      "meaning": "Phí dịch vụ",
+      "type": "Danh từ",
+      "example": {
+        "jp": "手数料が必要です。",
+        "vn": "là."
+      }
+    },
+    {
+      "word": "消費税",
+      "reading": "しょうひぜい",
+      "meaning": "Thuế tiêu dùng",
+      "type": "Danh từ",
+      "example": {
+        "jp": "消費税が10%です。",
+        "vn": "là."
+      }
+    },
+    {
+      "word": "総額",
+      "reading": "そうがく",
+      "meaning": "Tổng số tiền",
+      "type": "Danh từ",
+      "example": {
+        "jp": "総額は5000円です。",
+        "vn": "là."
+      }
+    }
+  ]
+}

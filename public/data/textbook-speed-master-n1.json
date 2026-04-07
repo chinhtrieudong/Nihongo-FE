@@ -1,0 +1,141 @@
+{
+  "textbookId": "speed-master-n1",
+  "name": "Speed Master N1 語彙",
+  "description": "Giáo trình luyện từ vựng N1 chuyên sâu - 2,000+ từ nâng cao",
+  "level": "N1",
+  "totalLessons": 10,
+  "startLesson": 1,
+  "accentColor": "purple",
+  "chapters": [
+    {
+      "number": 1,
+      "title": "政治・国際関係",
+      "titleVi": "Chính trị & Quan hệ quốc tế",
+      "vocab": 200,
+      "topics": [
+        {"name": "政治体制", "nameVi": "Thể chế chính trị"},
+        {"name": "外交政策", "nameVi": "Chính sách ngoại giao"},
+        {"name": "安全保障", "nameVi": "An ninh"},
+        {"name": "国際機構", "nameVi": "Tổ chức quốc tế"},
+        {"name": "地政学", "nameVi": "Địa chính trị"}
+      ]
+    },
+    {
+      "number": 2,
+      "title": "経済・金融上級",
+      "titleVi": "Kinh tế & Tài chính nâng cao",
+      "vocab": 200,
+      "topics": [
+        {"name": "資本主義", "nameVi": "Chủ nghĩa tư bản"},
+        {"name": "株価", "nameVi": "Giá cổ phiếu"},
+        {"name": "為替相場", "nameVi": "Tỷ giá hối đoái"},
+        {"name": "経済成長", "nameVi": "Tăng trưởng kinh tế"},
+        {"name": "財政赤字", "nameVi": "Thâm hụt tài khóa"}
+      ]
+    },
+    {
+      "number": 3,
+      "title": "法学・法律",
+      "titleVi": "Pháp học & Luật",
+      "vocab": 200,
+      "topics": [
+        {"name": "国際法", "nameVi": "Luật quốc tế"},
+        {"name": "民法", "nameVi": "Dân luật"},
+        {"name": "刑法", "nameVi": "Hình luật"},
+        {"name": "商法", "nameVi": "Luật thương mại"},
+        {"name": "憲法学", "nameVi": "Hiến pháp"}
+      ]
+    },
+    {
+      "number": 4,
+      "title": "社会・現代問題",
+      "titleVi": "Xã hội & Vấn đề đương đại",
+      "vocab": 200,
+      "topics": [
+        {"name": "情報化社会", "nameVi": "Xã hội thông tin"},
+        {"name": "グローバル化", "nameVi": "Toàn cầu hóa"},
+        {"name": "少子化", "nameVi": "Giảm sinh"},
+        {"name": "ジェンダー", "nameVi": "Giới tính"},
+        {"name": "人権", "nameVi": "Nhân quyền"}
+      ]
+    },
+    {
+      "number": 5,
+      "title": "文学・言語",
+      "titleVi": "Văn học & Ngôn ngữ",
+      "vocab": 200,
+      "topics": [
+        {"name": "古典文学", "nameVi": "Văn học cổ điển"},
+        {"name": "現代文学", "nameVi": "Văn học hiện đại"},
+        {"name": "修辞法", "nameVi": "Tu từ"},
+        {"name": "言語学", "nameVi": "Ngôn ngữ học"},
+        {"name": "文体", "nameVi": "Văn thể"}
+      ]
+    },
+    {
+      "number": 6,
+      "title": "歴史・文化史",
+      "titleVi": "Lịch sử & Văn hóa sử",
+      "vocab": 200,
+      "topics": [
+        {"name": "古代史", "nameVi": "Cổ đại"},
+        {"name": "中世", "nameVi": "Trung đại"},
+        {"name": "近現代史", "nameVi": "Cận hiện đại"},
+        {"name": "文化史", "nameVi": "Lịch sử văn hóa"},
+        {"name": "思想史", "nameVi": "Lịch sử tư tưởng"}
+      ]
+    },
+    {
+      "number": 7,
+      "title": "哲学・思想",
+      "titleVi": "Triết học & Tư tưởng",
+      "vocab": 200,
+      "topics": [
+        {"name": "西洋哲学", "nameVi": "Triết học phương Tây"},
+        {"name": "東洋思想", "nameVi": "Tư tưởng phương Đông"},
+        {"name": "倫理学", "nameVi": "Đạo đức học"},
+        {"name": "認識論", "nameVi": "Nhận thức luận"},
+        {"name": "存在論", "nameVi": "Hiện sinh luận"}
+      ]
+    },
+    {
+      "number": 8,
+      "title": "自然科学上級",
+      "titleVi": "Khoa học tự nhiên nâng cao",
+      "vocab": 200,
+      "topics": [
+        {"name": "生命科学", "nameVi": "Khoa học sự sống"},
+        {"name": "量子力学", "nameVi": "Cơ học lượng tử"},
+        {"name": "相対性理論", "nameVi": "Thuyết tương đối"},
+        {"name": "進化論", "nameVi": "Thuyết tiến hóa"},
+        {"name": "宇宙論", "nameVi": "Vũ trụ luận"}
+      ]
+    },
+    {
+      "number": 9,
+      "title": "芸術・美学",
+      "titleVi": "Nghệ thuật & Mỹ học",
+      "vocab": 200,
+      "topics": [
+        {"name": "音楽理論", "nameVi": "Âm nhạc lý luận"},
+        {"name": "絵画", "nameVi": "Hội họa"},
+        {"name": "建築", "nameVi": "Kiến trúc"},
+        {"name": "演劇", "nameVi": "Kịch nghệ"},
+        {"name": "映画史", "nameVi": "Lịch sử điện ảnh"}
+      ]
+    },
+    {
+      "number": 10,
+      "title": "高度抽象概念",
+      "titleVi": "Khái niệm trừu tượng cao cấp",
+      "vocab": 200,
+      "topics": [
+        {"name": "意識", "nameVi": "Ý thức"},
+        {"name": "無意識", "nameVi": "Vô thức"},
+        {"name": "超越", "nameVi": "Siêu việt"},
+        {"name": "現象学", "nameVi": "Hiện tượng học"},
+        {"name": "解構", "nameVi": "Giải cấu trúc"}
+      ]
+    }
+  ]
+}

@@ -1,0 +1,136 @@
+{
+  "lesson": 19,
+  "topic": "Kinh nghiệm & Quá khứ (Thể Ta)",
+  "vocabulary": [
+    {
+      "id": "n5_l19_001",
+      "word": "食べた",
+      "reading": "たべた",
+      "hanViet": "Thực",
+      "meaning": "đã ăn",
+      "type": "verb",
+      "category": "Thể Quá Khứ",
+      "example": {
+        "jp": "朝ご飯を食べた。",
+        "vn": "Đã ăn sáng."
+      }
+    },
+    {
+      "id": "n5_l19_002",
+      "word": "行った",
+      "reading": "いった",
+      "hanViet": "Hành",
+      "meaning": "đã đi",
+      "type": "verb",
+      "category": "Thể Quá Khứ",
+      "example": {
+        "jp": "日本に行った。",
+        "vn": "Đã đi Nhật Bản."
+      }
+    },
+    {
+      "id": "n5_l19_003",
+      "word": "見た",
+      "reading": "みた",
+      "hanViet": "Kiến",
+      "meaning": "đã xem",
+      "type": "verb",
+      "category": "Thể Quá Khứ",
+      "example": {
+        "jp": "映画を見た。",
+        "vn": "Đã xem phim."
+      }
+    },
+    {
+      "id": "n5_l19_004",
+      "word": "来た",
+      "reading": "きた",
+      "hanViet": "Lai",
+      "meaning": "đã đến",
+      "type": "verb",
+      "category": "Thể Quá Khứ",
+      "example": {
+        "jp": "友達が来た。",
+        "vn": "Bạn đã đến."
+      }
+    },
+    {
+      "id": "n5_l19_005",
+      "word": "買った",
+      "reading": "かった",
+      "hanViet": "Mãi",
+      "meaning": "đã mua",
+      "type": "verb",
+      "category": "Thể Quá Khứ",
+      "example": {
+        "jp": "本を買った。",
+        "vn": "Đã mua sách."
+      }
+    },
+    {
+      "id": "n5_l19_006",
+      "word": "大変",
+      "reading": "たいへん",
+      "hanViet": "Đại Biến",
+      "meaning": "khó khăn, cực",
+      "type": "adjective",
+      "category": "Tính Từ な",
+      "example": {
+        "jp": "大変でした。",
+        "vn": "Rất khó khăn."
+      }
+    },
+    {
+      "id": "n5_l19_007",
+      "word": "楽しかった",
+      "reading": "たのしかった",
+      "hanViet": "Lạc",
+      "meaning": "đã vui",
+      "type": "verb",
+      "category": "Thể Quá Khứ",
+      "example": {
+        "jp": "楽しかったです。",
+        "vn": "Rất vui."
+      }
+    },
+    {
+      "id": "n5_l19_008",
+      "word": "難しかった",
+      "reading": "むずかしかった",
+      "hanViet": "Nan",
+      "meaning": "đã khó",
+      "type": "verb",
+      "category": "Thể Quá Khứ",
+      "example": {
+        "jp": "試験は難しかった。",
+        "vn": "Kỳ thi đã khó."
+      }
+    },
+    {
+      "id": "n5_l19_009",
+      "word": "簡単",
+      "reading": "かんたん",
+      "hanViet": "Giản Đơn",
+      "meaning": "đơn giản",
+      "type": "adjective",
+      "category": "Tính Từ な",
+      "example": {
+        "jp": "簡単でした。",
+        "vn": "Đã đơn giản."
+      }
+    },
+    {
+      "id": "n5_l19_010",
+      "word": "面白かった",
+      "reading": "おもしろかった",
+      "hanViet": "Diện Bạch",
+      "meaning": "đã thú vị",
+      "type": "verb",
+      "category": "Thể Quá Khứ",
+      "example": {
+        "jp": "面白かったです。",
+        "vn": "Rất thú vị."
+      }
+    }
+  ]
+}

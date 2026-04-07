@@ -1,0 +1,136 @@
+{
+  "lesson": 7,
+  "topic": "Công cụ, Ngôn ngữ & Cho - Nhận",
+  "vocabulary": [
+    {
+      "id": "n5_l7_001",
+      "word": "あげる",
+      "reading": "あげる",
+      "hanViet": "",
+      "meaning": "cho (tôi cho người khác)",
+      "type": "other",
+      "category": "Từ Vựng Cho Nhận",
+      "example": {
+        "jp": "友達に本をあげます。",
+        "vn": "Tôi cho bạn quyển sách."
+      }
+    },
+    {
+      "id": "n5_l7_002",
+      "word": "くれる",
+      "reading": "くれる",
+      "hanViet": "",
+      "meaning": "cho (người khác cho tôi)",
+      "type": "other",
+      "category": "Từ Vựng Cho Nhận",
+      "example": {
+        "jp": "先生が本をくれました。",
+        "vn": "Thầy đã cho tôi quyển sách."
+      }
+    },
+    {
+      "id": "n5_l7_003",
+      "word": "もらう",
+      "reading": "もらう",
+      "hanViet": "",
+      "meaning": "nhận, được cho",
+      "type": "other",
+      "category": "Từ Vựng Cho Nhận",
+      "example": {
+        "jp": "友達から本をもらいました。",
+        "vn": "Tôi đã nhận được sách từ bạn."
+      }
+    },
+    {
+      "id": "n5_l7_004",
+      "word": "教える",
+      "reading": "おしえる",
+      "hanViet": "Giáo",
+      "meaning": "dạy, chỉ",
+      "type": "other",
+      "category": "Từ Vựng Học Tập",
+      "example": {
+        "jp": "日本語を教えます。",
+        "vn": "Dạy tiếng Nhật."
+      }
+    },
+    {
+      "id": "n5_l7_005",
+      "word": "習う",
+      "reading": "ならう",
+      "hanViet": "Tập",
+      "meaning": "học (từ ai đó)",
+      "type": "other",
+      "category": "Từ Vựng Học Tập",
+      "example": {
+        "jp": "先生に習います。",
+        "vn": "Học từ thầy."
+      }
+    },
+    {
+      "id": "n5_l7_006",
+      "word": "英語",
+      "reading": "えいご",
+      "hanViet": "Anh Ngữ",
+      "meaning": "tiếng Anh",
+      "type": "other",
+      "category": "Từ Vựng Ngôn Ngữ",
+      "example": {
+        "jp": "英語を話せますか。",
+        "vn": "Bạn có nói được tiếng Anh không?"
+      }
+    },
+    {
+      "id": "n5_l7_007",
+      "word": "日本語",
+      "reading": "にほんご",
+      "hanViet": "Nhật Bản Ngữ",
+      "meaning": "tiếng Nhật",
+      "type": "other",
+      "category": "Từ Vựng Ngôn Ngữ",
+      "example": {
+        "jp": "日本語を勉強します。",
+        "vn": "Học tiếng Nhật."
+      }
+    },
+    {
+      "id": "n5_l7_008",
+      "word": "ペン",
+      "reading": "ぺん",
+      "hanViet": "",
+      "meaning": "bút",
+      "type": "other",
+      "category": "Từ Vựng Công Cụ",
+      "example": {
+        "jp": "ペンで書きます。",
+        "vn": "Viết bằng bút."
+      }
+    },
+    {
+      "id": "n5_l7_009",
+      "word": "はさみ",
+      "reading": "はさみ",
+      "hanViet": "",
+      "meaning": "kéo",
+      "type": "other",
+      "category": "Từ Vựng Công Cụ",
+      "example": {
+        "jp": "はさみを貸してください。",
+        "vn": "Cho mượn kéo với."
+      }
+    },
+    {
+      "id": "n5_l7_010",
+      "word": "辞書",
+      "reading": "じしょ",
+      "hanViet": "Từ Thư",
+      "meaning": "từ điển",
+      "type": "other",
+      "category": "Từ Vựng Công Cụ",
+      "example": {
+        "jp": "辞書を使います。",
+        "vn": "Sử dụng từ điển."
+      }
+    }
+  ]
+}

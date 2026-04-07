@@ -1,0 +1,210 @@
+{
+  "textbookId": "tango-n4",
+  "chapterId": 1,
+  "topicId": "topic-1-2",
+  "topicName": "会社",
+  "topicNameVi": "Công ty",
+  "vocabCount": 20,
+  "words": [
+    {
+      "word": "入社",
+      "reading": "にゅうしゃ",
+      "meaning": "Vào công ty",
+      "type": "Danh động từ",
+      "example": {
+        "jp": "来月、入社します。",
+        "vn": "(đuôi lịch sự)"
+      }
+    },
+    {
+      "word": "退社",
+      "reading": "たいしゃ",
+      "meaning": "Rời công ty",
+      "type": "Danh động từ",
+      "example": {
+        "jp": "6時に退社しました。",
+        "vn": "đã (quá khứ)."
+      }
+    },
+    {
+      "word": "転職",
+      "reading": "てんしょく",
+      "meaning": "Chuyển việc",
+      "type": "Danh động từ",
+      "example": {
+        "jp": "転職を考えています。",
+        "vn": "có (người/động vật)."
+      }
+    },
+    {
+      "word": "就職",
+      "reading": "しゅうしょく",
+      "meaning": "Tìm việc làm",
+      "type": "Danh động từ",
+      "example": {
+        "jp": "就職活動をしています。",
+        "vn": "có (người/động vật)."
+      }
+    },
+    {
+      "word": "退職",
+      "reading": "たいしょく",
+      "meaning": "Nghỉ việc",
+      "type": "Danh động từ",
+      "example": {
+        "jp": "年末で退職します。",
+        "vn": "(đuôi lịch sự)"
+      }
+    },
+    {
+      "word": "部署",
+      "reading": "ぶしょ",
+      "meaning": "Bộ phận",
+      "type": "Danh từ",
+      "example": {
+        "jp": "新しい部署に移動しました。",
+        "vn": "đã (quá khứ)."
+      }
+    },
+    {
+      "word": "上司",
+      "reading": "じょうし",
+      "meaning": "Cấp trên",
+      "type": "Danh từ",
+      "example": {
+        "jp": "上司に相談しました。",
+        "vn": "đã (quá khứ)."
+      }
+    },
+    {
+      "word": "部下",
+      "reading": "ぶか",
+      "meaning": "Cấp dưới",
+      "type": "Danh từ",
+      "example": {
+        "jp": "部下を指導しています。",
+        "vn": "có (người/động vật)."
+      }
+    },
+    {
+      "word": "同僚",
+      "reading": "どうりょう",
+      "meaning": "Đồng nghiệp",
+      "type": "Danh từ",
+      "example": {
+        "jp": "同僚と食事に行きました。",
+        "vn": "đã (quá khứ)."
+      }
+    },
+    {
+      "word": "取引先",
+      "reading": "とりひきさき",
+      "meaning": "Đối tác",
+      "type": "Danh từ",
+      "example": {
+        "jp": "取引先と会議しました。",
+        "vn": "đã (quá khứ)."
+      }
+    },
+    {
+      "word": "人事",
+      "reading": "じんじ",
+      "meaning": "Nhân sự",
+      "type": "Danh từ",
+      "example": {
+        "jp": "人事部に届け出ました。",
+        "vn": "đã (quá khứ)."
+      }
+    },
+    {
+      "word": "総務",
+      "reading": "そうむ",
+      "meaning": "Tổng vụ",
+      "type": "Danh từ",
+      "example": {
+        "jp": "総務部で働いています。",
+        "vn": "có (người/động vật)."
+      }
+    },
+    {
+      "word": "経理",
+      "reading": "けいり",
+      "meaning": "Kế toán",
+      "type": "Danh từ",
+      "example": {
+        "jp": "経理部に所属しています。",
+        "vn": "có (người/động vật)."
+      }
+    },
+    {
+      "word": "営業",
+      "reading": "えいぎょう",
+      "meaning": "Kinh doanh",
+      "type": "Danh từ",
+      "example": {
+        "jp": "営業部で働いています。",
+        "vn": "có (người/động vật)."
+      }
+    },
+    {
+      "word": "開発",
+      "reading": "かいはつ",
+      "meaning": "Phát triển",
+      "type": "Danh động từ",
+      "example": {
+        "jp": "新商品を開発しています。",
+        "vn": "có (người/động vật)."
+      }
+    },
+    {
+      "word": "製造",
+      "reading": "せいぞう",
+      "meaning": "Sản xuất",
+      "type": "Danh động từ",
+      "example": {
+        "jp": "工場で製造しています。",
+        "vn": "có (người/động vật)."
+      }
+    },
+    {
+      "word": "販売",
+      "reading": "はんばい",
+      "meaning": "Bán hàng",
+      "type": "Danh động từ",
+      "example": {
+        "jp": "全国で販売しています。",
+        "vn": "có (người/động vật)."
+      }
+    },
+    {
+      "word": "輸入",
+      "reading": "ゆにゅう",
+      "meaning": "Nhập khẩu",
+      "type": "Danh động từ",
+      "example": {
+        "jp": "海外から輸入しています。",
+        "vn": "có (người/động vật)."
+      }
+    },
+    {
+      "word": "輸出",
+      "reading": "ゆしゅつ",
+      "meaning": "Xuất khẩu",
+      "type": "Danh động từ",
+      "example": {
+        "jp": "世界各国に輸出しています。",
+        "vn": "có (người/động vật)."
+      }
+    },
+    {
+      "word": "売上",
+      "reading": "うりあげ",
+      "meaning": "Doanh thu",
+      "type": "Danh từ",
+      "example": {
+        "jp": "売上が伸びました。",
+        "vn": "đã (quá khứ)."
+      }
+    }
+  ]
+}

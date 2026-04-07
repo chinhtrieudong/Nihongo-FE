@@ -1,0 +1,160 @@
+{
+  "textbookId": "tango-n5",
+  "chapterId": 5,
+  "topicId": "topic-5-3",
+  "topicName": "りょうり",
+  "topicNameVi": "Thực phẩm",
+  "vocabCount": 15,
+  "words": [
+    {
+      "word": "米",
+      "reading": "こめ",
+      "meaning": "Gạo",
+      "type": "Danh từ",
+      "example": {
+        "jp": "米を買いました。",
+        "vn": "đã (quá khứ)."
+      }
+    },
+    {
+      "word": "ご飯",
+      "reading": "ごはん",
+      "meaning": "Cơm, bữa ăn",
+      "type": "Danh từ",
+      "example": {
+        "jp": "ご飯を食べます。",
+        "vn": "(đuôi lịch sự)"
+      }
+    },
+    {
+      "word": "パン",
+      "reading": "パン",
+      "meaning": "Bánh mì",
+      "type": "Danh từ",
+      "example": {
+        "jp": "パンを食べます。",
+        "vn": "(đuôi lịch sự)"
+      }
+    },
+    {
+      "word": "麺",
+      "reading": "めん",
+      "meaning": "Mì, sợi",
+      "type": "Danh từ",
+      "example": {
+        "jp": "麺類が好きです。",
+        "vn": "là."
+      }
+    },
+    {
+      "word": "うどん",
+      "reading": "うどん",
+      "meaning": "Mì udon",
+      "type": "Danh từ",
+      "example": {
+        "jp": "うどんを食べます。",
+        "vn": "(đuôi lịch sự)"
+      }
+    },
+    {
+      "word": "そば",
+      "reading": "そば",
+      "meaning": "Mì soba",
+      "type": "Danh từ",
+      "example": {
+        "jp": "そばが好きです。",
+        "vn": "là."
+      }
+    },
+    {
+      "word": "ラーメン",
+      "reading": "ラーメン",
+      "meaning": "Mì ramen",
+      "type": "Danh từ",
+      "example": {
+        "jp": "ラーメンを食べます。",
+        "vn": "(đuôi lịch sự)"
+      }
+    },
+    {
+      "word": "肉",
+      "reading": "にく",
+      "meaning": "Thịt",
+      "type": "Danh từ",
+      "example": {
+        "jp": "肉を焼きます。",
+        "vn": "(đuôi lịch sự)"
+      }
+    },
+    {
+      "word": "牛肉",
+      "reading": "ぎゅうにく",
+      "meaning": "Thịt bò",
+      "type": "Danh từ",
+      "example": {
+        "jp": "牛肉が好きです。",
+        "vn": "là."
+      }
+    },
+    {
+      "word": "豚肉",
+      "reading": "ぶたにく",
+      "meaning": "Thịt heo",
+      "type": "Danh từ",
+      "example": {
+        "jp": "豚肉を買いました。",
+        "vn": "đã (quá khứ)."
+      }
+    },
+    {
+      "word": "鶏肉",
+      "reading": "とりにく",
+      "meaning": "Thịt gà",
+      "type": "Danh từ",
+      "example": {
+        "jp": "鶏肉を煮ます。",
+        "vn": "(đuôi lịch sự)"
+      }
+    },
+    {
+      "word": "魚",
+      "reading": "さかな",
+      "meaning": "Cá",
+      "type": "Danh từ",
+      "example": {
+        "jp": "魚を焼きます。",
+        "vn": "(đuôi lịch sự)"
+      }
+    },
+    {
+      "word": "野菜",
+      "reading": "やさい",
+      "meaning": "Rau",
+      "type": "Danh từ",
+      "example": {
+        "jp": "野菜を食べます。",
+        "vn": "(đuôi lịch sự)"
+      }
+    },
+    {
+      "word": "果物",
+      "reading": "くだもの",
+      "meaning": "Hoa quả",
+      "type": "Danh từ",
+      "example": {
+        "jp": "果物が好きです。",
+        "vn": "là."
+      }
+    },
+    {
+      "word": "豆腐",
+      "reading": "とうふ",
+      "meaning": "Đậu phụ",
+      "type": "Danh từ",
+      "example": {
+        "jp": "豆腐を食べます。",
+        "vn": "(đuôi lịch sự)"
+      }
+    }
+  ]
+}

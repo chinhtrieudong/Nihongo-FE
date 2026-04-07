@@ -1,0 +1,141 @@
+{
+  "textbookId": "tango-n3",
+  "name": "Tango N3 - 2000 Essential Words",
+  "description": "Sách 2000 từ vựng thiết yếu cho JLPT N3",
+  "level": "N3",
+  "totalLessons": 10,
+  "startLesson": 1,
+  "accentColor": "orange",
+  "chapters": [
+    {
+      "number": 1,
+      "title": "ビジネス",
+      "titleVi": "Kinh doanh",
+      "vocab": 200,
+      "topics": [
+        {"name": "職場", "nameVi": "Nơi làm việc"},
+        {"name": "会議", "nameVi": "Họp"},
+        {"name": "取引", "nameVi": "Giao dịch"},
+        {"name": "マーケティング", "nameVi": "Marketing"},
+        {"name": "財務", "nameVi": "Tài chính"}
+      ]
+    },
+    {
+      "number": 2,
+      "title": "社会",
+      "titleVi": "Xã hội",
+      "vocab": 200,
+      "topics": [
+        {"name": "政治", "nameVi": "Chính trị"},
+        {"name": "法律", "nameVi": "Pháp luật"},
+        {"name": "経済", "nameVi": "Kinh tế"},
+        {"name": "教育", "nameVi": "Giáo dục"},
+        {"name": "環境", "nameVi": "Môi trường"}
+      ]
+    },
+    {
+      "number": 3,
+      "title": "文化",
+      "titleVi": "Văn hóa",
+      "vocab": 200,
+      "topics": [
+        {"name": "伝統", "nameVi": "Truyền thống"},
+        {"name": "芸術", "nameVi": "Nghệ thuật"},
+        {"name": "歴史", "nameVi": "Lịch sử"},
+        {"name": "宗教", "nameVi": "Tôn giáo"},
+        {"name": "風習", "nameVi": "Phong tục"}
+      ]
+    },
+    {
+      "number": 4,
+      "title": "科学",
+      "titleVi": "Khoa học",
+      "vocab": 200,
+      "topics": [
+        {"name": "技術", "nameVi": "Công nghệ"},
+        {"name": "研究", "nameVi": "Nghiên cứu"},
+        {"name": "自然", "nameVi": "Tự nhiên"},
+        {"name": "宇宙", "nameVi": "Vũ trụ"},
+        {"name": "医学", "nameVi": "Y học"}
+      ]
+    },
+    {
+      "number": 5,
+      "title": "コミュニケーション",
+      "titleVi": "Giao tiếp",
+      "vocab": 200,
+      "topics": [
+        {"name": "人間関係", "nameVi": "Quan hệ"},
+        {"name": "話し方", "nameVi": "Cách nói chuyện"},
+        {"name": "マナー", "nameVi": "Lễ phép"},
+        {"name": "交渉", "nameVi": "Đàm phán"},
+        {"name": "プレゼン", "nameVi": "Thuyết trình"}
+      ]
+    },
+    {
+      "number": 6,
+      "title": "生活",
+      "titleVi": "Cuộc sống",
+      "vocab": 200,
+      "topics": [
+        {"name": "住居", "nameVi": "Nhà ở"},
+        {"name": "料理", "nameVi": "Nấu nướng"},
+        {"name": "健康", "nameVi": "Sức khỏe"},
+        {"name": "ファッション", "nameVi": "Thời trang"},
+        {"name": "交通", "nameVi": "Giao thông"}
+      ]
+    },
+    {
+      "number": 7,
+      "title": "エンターテイメント",
+      "titleVi": "Giải trí",
+      "vocab": 200,
+      "topics": [
+        {"name": "映画", "nameVi": "Phim ảnh"},
+        {"name": "音楽", "nameVi": "Âm nhạc"},
+        {"name": "スポーツ", "nameVi": "Thể thao"},
+        {"name": "ゲーム", "nameVi": "Game"},
+        {"name": "イベント", "nameVi": "Sự kiện"}
+      ]
+    },
+    {
+      "number": 8,
+      "title": "旅行",
+      "titleVi": "Du lịch",
+      "vocab": 200,
+      "topics": [
+        {"name": "計画", "nameVi": "Kế hoạch"},
+        {"name": "交通", "nameVi": "Phương tiện"},
+        {"name": "宿泊", "nameVi": "Lưu trú"},
+        {"name": "観光", "nameVi": "Tham quan"},
+        {"name": "食事", "nameVi": "Ẩm thực"}
+      ]
+    },
+    {
+      "number": 9,
+      "title": "心理",
+      "titleVi": "Tâm lý",
+      "vocab": 200,
+      "topics": [
+        {"name": "感情", "nameVi": "Cảm xúc"},
+        {"name": "思考", "nameVi": "Suy nghĩ"},
+        {"name": "行動", "nameVi": "Hành vi"},
+        {"name": "性格", "nameVi": "Tính cách"},
+        {"name": "人間性", "nameVi": "Bản chất con người"}
+      ]
+    },
+    {
+      "number": 10,
+      "title": "ニュース",
+      "titleVi": "Tin tức",
+      "vocab": 200,
+      "topics": [
+        {"name": "国際", "nameVi": "Quốc tế"},
+        {"name": "国内", "nameVi": "Trong nước"},
+        {"name": "事故", "nameVi": "Tai nạn"},
+        {"name": "スキャンダル", "nameVi": "Bê bối"},
+        {"name": "トレンド", "nameVi": "Xu hướng"}
+      ]
+    }
+  ]
+}

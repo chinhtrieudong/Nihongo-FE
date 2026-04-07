@@ -1,0 +1,210 @@
+{
+  "textbookId": "tango-n4",
+  "chapterId": 2,
+  "topicId": "topic-2-3",
+  "topicName": "体型",
+  "topicNameVi": "Vóc dáng",
+  "vocabCount": 20,
+  "words": [
+    {
+      "word": "体型",
+      "reading": "たいけい",
+      "meaning": "Vóc dáng",
+      "type": "Danh từ",
+      "example": {
+        "jp": "体型がいいです。",
+        "vn": "là."
+      }
+    },
+    {
+      "word": "背",
+      "reading": "せ",
+      "meaning": "Chiều cao",
+      "type": "Danh từ",
+      "example": {
+        "jp": "背が高いです。",
+        "vn": "là."
+      }
+    },
+    {
+      "word": "身長",
+      "reading": "しんちょう",
+      "meaning": "Chiều cao",
+      "type": "Danh từ",
+      "example": {
+        "jp": "身長は170センチです。",
+        "vn": "là."
+      }
+    },
+    {
+      "word": "体重",
+      "reading": "たいじゅう",
+      "meaning": "Cân nặng",
+      "type": "Danh từ",
+      "example": {
+        "jp": "体重を測りました。",
+        "vn": "đã (quá khứ)."
+      }
+    },
+    {
+      "word": "痩せている",
+      "reading": "やせている",
+      "meaning": "Gầy",
+      "type": "Tính từ",
+      "example": {
+        "jp": "痩せています。",
+        "vn": "có (người/động vật)."
+      }
+    },
+    {
+      "word": "太っている",
+      "reading": "ふとっている",
+      "meaning": "Béo",
+      "type": "Tính từ",
+      "example": {
+        "jp": "太っています。",
+        "vn": "có (người/động vật)."
+      }
+    },
+    {
+      "word": "ふくよか",
+      "reading": "ふくよか",
+      "meaning": "Mập mạp",
+      "type": "Tính từ",
+      "example": {
+        "jp": "ふくよかです。",
+        "vn": "là."
+      }
+    },
+    {
+      "word": "筋肉",
+      "reading": "きんにく",
+      "meaning": "Cơ bắp",
+      "type": "Danh từ",
+      "example": {
+        "jp": "筋肉がつきました。",
+        "vn": "đã (quá khứ)."
+      }
+    },
+    {
+      "word": "筋肉質",
+      "reading": "きんにくしつ",
+      "meaning": "Cơ bắp",
+      "type": "Danh từ",
+      "example": {
+        "jp": "筋肉質です。",
+        "vn": "là."
+      }
+    },
+    {
+      "word": "引き締まる",
+      "reading": "ひきしまる",
+      "meaning": "Săn chắc",
+      "type": "Động từ",
+      "example": {
+        "jp": "体が引き締まりました。",
+        "vn": "đã (quá khứ)."
+      }
+    },
+    {
+      "word": "ダイエット",
+      "reading": "ダイエット",
+      "meaning": "Giảm cân",
+      "type": "Danh động từ",
+      "example": {
+        "jp": "ダイエットしています。",
+        "vn": "có (người/động vật)."
+      }
+    },
+    {
+      "word": "運動",
+      "reading": "うんどう",
+      "meaning": "Vận động",
+      "type": "Danh động từ",
+      "example": {
+        "jp": "運動をしています。",
+        "vn": "có (người/động vật)."
+      }
+    },
+    {
+      "word": "筋トレ",
+      "reading": "きんトレ",
+      "meaning": "Tập gym",
+      "type": "Danh động từ",
+      "example": {
+        "jp": "筋トレをしています。",
+        "vn": "có (người/động vật)."
+      }
+    },
+    {
+      "word": "ヨガ",
+      "reading": "ヨガ",
+      "meaning": "Yoga",
+      "type": "Danh từ",
+      "example": {
+        "jp": "ヨガをしています。",
+        "vn": "có (người/động vật)."
+      }
+    },
+    {
+      "word": "ジョギング",
+      "reading": "ジョギング",
+      "meaning": "Chạy bộ",
+      "type": "Danh động từ",
+      "example": {
+        "jp": "朝、ジョギングします。",
+        "vn": "(đuôi lịch sự)"
+      }
+    },
+    {
+      "word": "スリム",
+      "reading": "スリム",
+      "meaning": "Thon gọn",
+      "type": "Tính từ",
+      "example": {
+        "jp": "スリムな体型です。",
+        "vn": "là."
+      }
+    },
+    {
+      "word": "スタイル",
+      "reading": "スタイル",
+      "meaning": "Dáng người",
+      "type": "Danh từ",
+      "example": {
+        "jp": "スタイルがいいです。",
+        "vn": "là."
+      }
+    },
+    {
+      "word": "プロポーション",
+      "reading": "プロポーション",
+      "meaning": "Tỷ lệ cơ thể",
+      "type": "Danh từ",
+      "example": {
+        "jp": "プロポーションがいいです。",
+        "vn": "là."
+      }
+    },
+    {
+      "word": "健康",
+      "reading": "けんこう",
+      "meaning": "Sức khỏe",
+      "type": "Danh từ",
+      "example": {
+        "jp": "健康に気をつけています。",
+        "vn": "có (người/động vật)."
+      }
+    },
+    {
+      "word": "美容",
+      "reading": "びよう",
+      "meaning": "Làm đẹp",
+      "type": "Danh từ",
+      "example": {
+        "jp": "美容に気をつけています。",
+        "vn": "có (người/động vật)."
+      }
+    }
+  ]
+}

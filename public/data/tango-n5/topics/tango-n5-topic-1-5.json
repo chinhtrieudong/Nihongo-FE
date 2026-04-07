@@ -1,0 +1,150 @@
+{
+  "textbookId": "tango-n5",
+  "chapterId": 1,
+  "topicId": "topic-1-5",
+  "topicName": "～から きました",
+  "topicNameVi": "Câu hỏi cơ bản",
+  "vocabCount": 14,
+  "words": [
+    {
+      "word": "～から",
+      "reading": "～から",
+      "meaning": "Từ ~",
+      "type": "Trợ từ",
+      "example": {
+        "jp": "ベトナムから来ました。",
+        "vn": "đã (quá khứ)."
+      }
+    },
+    {
+      "word": "日本",
+      "reading": "にほん / にっぽん",
+      "meaning": "Nhật Bản",
+      "type": "Danh từ",
+      "example": {
+        "jp": "日本から来ました。",
+        "vn": "đã (quá khứ)."
+      }
+    },
+    {
+      "word": "ベトナム",
+      "reading": "ベトナム",
+      "meaning": "Việt Nam",
+      "type": "Danh từ",
+      "example": {
+        "jp": "ベトナム人です。",
+        "vn": "là."
+      }
+    },
+    {
+      "word": "中国",
+      "reading": "ちゅうごく",
+      "meaning": "Trung Quốc",
+      "type": "Danh từ",
+      "example": {
+        "jp": "中国語を勉強しています。",
+        "vn": "có (người/động vật)."
+      }
+    },
+    {
+      "word": "韓国",
+      "reading": "かんこく",
+      "meaning": "Hàn Quốc",
+      "type": "Danh từ",
+      "example": {
+        "jp": "韓国へ行きます。",
+        "vn": "(đuôi lịch sự)"
+      }
+    },
+    {
+      "word": "アメリカ",
+      "reading": "アメリカ",
+      "meaning": "Mỹ",
+      "type": "Danh từ",
+      "example": {
+        "jp": "アメリカ人です。",
+        "vn": "là."
+      }
+    },
+    {
+      "word": "イギリス",
+      "reading": "イギリス",
+      "meaning": "Anh",
+      "type": "Danh từ",
+      "example": {
+        "jp": "イギリスから来ました。",
+        "vn": "đã (quá khứ)."
+      }
+    },
+    {
+      "word": "オーストラリア",
+      "reading": "オーストラリア",
+      "meaning": "Úc",
+      "type": "Danh từ",
+      "example": {
+        "jp": "オーストラリアに住んでいます。",
+        "vn": "có (người/động vật)."
+      }
+    },
+    {
+      "word": "フランス",
+      "reading": "フランス",
+      "meaning": "Pháp",
+      "type": "Danh từ",
+      "example": {
+        "jp": "フランス語が話せます。",
+        "vn": "(đuôi lịch sự)"
+      }
+    },
+    {
+      "word": "ドイツ",
+      "reading": "ドイツ",
+      "meaning": "Đức",
+      "type": "Danh từ",
+      "example": {
+        "jp": "ドイツへ行ったことがあります。",
+        "vn": "có."
+      }
+    },
+    {
+      "word": "タイ",
+      "reading": "タイ",
+      "meaning": "Thái Lan",
+      "type": "Danh từ",
+      "example": {
+        "jp": "タイ料理が好きです。",
+        "vn": "là."
+      }
+    },
+    {
+      "word": "シンガポール",
+      "reading": "シンガポール",
+      "meaning": "Singapore",
+      "type": "Danh từ",
+      "example": {
+        "jp": "シンガポールから来ました。",
+        "vn": "đã (quá khứ)."
+      }
+    },
+    {
+      "word": "マレーシア",
+      "reading": "マレーシア",
+      "meaning": "Malaysia",
+      "type": "Danh từ",
+      "example": {
+        "jp": "マレーシアへ行きます。",
+        "vn": "(đuôi lịch sự)"
+      }
+    },
+    {
+      "word": "フィリピン",
+      "reading": "フィリピン",
+      "meaning": "Philippines",
+      "type": "Danh từ",
+      "example": {
+        "jp": "フィリピン人の友達がいます。",
+        "vn": "có (người/động vật)."
+      }
+    }
+  ]
+}

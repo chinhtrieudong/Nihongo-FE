@@ -4,7 +4,6 @@ import {
   Table,
   Button,
   Typography,
-  Empty,
   Statistic,
   Row,
   Col,
@@ -12,6 +11,7 @@ import {
 } from "antd";
 
 import { Volume2, CheckCircle, XCircle, RotateCcw } from "lucide-react";
+import { EmptyState } from "../common";
 
 import type { VocabularyItem as VocabularyItemType } from "../../types/lesson";
 import { generateVocabularyId, speakText } from "../../utils/vocabularyUtils";
@@ -531,7 +531,7 @@ const VocabularyTable = React.forwardRef<
                 />
               ))}
               {filteredData.length === 0 && (
-                <Empty
+                <EmptyState
                   description="Không tìm thấy từ vựng nào"
                   className="py-8"
                 />
@@ -595,7 +595,7 @@ const VocabularyTable = React.forwardRef<
                   </div>
                 ))}
                 {filteredData.length === 0 && (
-                  <Empty
+                  <EmptyState
                     description="Không tìm thấy từ vựng nào"
                     className="py-8"
                   />

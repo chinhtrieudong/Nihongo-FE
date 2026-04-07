@@ -1,0 +1,136 @@
+{
+  "lesson": 10,
+  "topic": "Sự hiện diện của người và vật",
+  "vocabulary": [
+    {
+      "id": "n5_l10_001",
+      "word": "有る",
+      "reading": "ある",
+      "hanViet": "Hữu",
+      "meaning": "có (vật vô sinh)",
+      "type": "verb",
+      "category": "Động Từ Tồn Tại",
+      "example": {
+        "jp": "机の上に本があります。",
+        "vn": "Có sách trên bàn."
+      }
+    },
+    {
+      "id": "n5_l10_002",
+      "word": "居る",
+      "reading": "いる",
+      "hanViet": "Cư",
+      "meaning": "có (người/động vật)",
+      "type": "verb",
+      "category": "Động Từ Tồn Tại",
+      "example": {
+        "jp": "教室に学生がいます。",
+        "vn": "Có học sinh trong lớp."
+      }
+    },
+    {
+      "id": "n5_l10_003",
+      "word": "幾つ",
+      "reading": "いくつ",
+      "hanViet": "Kỷ",
+      "meaning": "bao nhiêu (cái)",
+      "type": "pronoun",
+      "category": "Từ Hỏi",
+      "example": {
+        "jp": "りんごが幾つありますか。",
+        "vn": "Có bao nhiêu quả táo?"
+      }
+    },
+    {
+      "id": "n5_l10_004",
+      "word": "何人",
+      "reading": "なんにん",
+      "hanViet": "Hà Nhân",
+      "meaning": "mấy người, bao nhiêu người",
+      "type": "pronoun",
+      "category": "Từ Hỏi",
+      "example": {
+        "jp": "家族は何人ですか。",
+        "vn": "Gia đình có mấy người?"
+      }
+    },
+    {
+      "id": "n5_l10_005",
+      "word": "一人",
+      "reading": "ひとり",
+      "hanViet": "Nhất Nhân",
+      "meaning": "một người",
+      "type": "other",
+      "category": "Số Đếm Người",
+      "example": {
+        "jp": "一人で行きます。",
+        "vn": "Một mình đi."
+      }
+    },
+    {
+      "id": "n5_l10_006",
+      "word": "二人",
+      "reading": "ふたり",
+      "hanViet": "Nhị Nhân",
+      "meaning": "hai người",
+      "type": "other",
+      "category": "Số Đếm Người",
+      "example": {
+        "jp": "二人で食事します。",
+        "vn": "Hai người ăn cơm."
+      }
+    },
+    {
+      "id": "n5_l10_007",
+      "word": "子供",
+      "reading": "こども",
+      "hanViet": "Tử Cung",
+      "meaning": "trẻ con, con cái",
+      "type": "noun",
+      "category": "Người",
+      "example": {
+        "jp": "子供がいます。",
+        "vn": "Có con."
+      }
+    },
+    {
+      "id": "n5_l10_008",
+      "word": "動物",
+      "reading": "どうぶつ",
+      "hanViet": "Động Vật",
+      "meaning": "động vật",
+      "type": "noun",
+      "category": "Động Vật",
+      "example": {
+        "jp": "動物が好きです。",
+        "vn": "Thích động vật."
+      }
+    },
+    {
+      "id": "n5_l10_009",
+      "word": "鳥",
+      "reading": "とり",
+      "hanViet": "Điểu",
+      "meaning": "chim",
+      "type": "noun",
+      "category": "Động Vật",
+      "example": {
+        "jp": "空に鳥がいます。",
+        "vn": "Có chim trên trời."
+      }
+    },
+    {
+      "id": "n5_l10_010",
+      "word": "猫",
+      "reading": "ねこ",
+      "hanViet": "Miêu",
+      "meaning": "mèo",
+      "type": "noun",
+      "category": "Động Vật",
+      "example": {
+        "jp": "猫がいます。",
+        "vn": "Có mèo."
+      }
+    }
+  ]
+}

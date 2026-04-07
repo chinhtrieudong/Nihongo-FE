@@ -1,0 +1,160 @@
+{
+  "textbookId": "tango-n5",
+  "chapterId": 5,
+  "topicId": "topic-5-2",
+  "topicName": "食べる (たべる) ・飲む (のむ)",
+  "topicNameVi": "Động từ ăn uống",
+  "vocabCount": 15,
+  "words": [
+    {
+      "word": "食べる",
+      "reading": "たべる",
+      "meaning": "Ăn",
+      "type": "Động từ",
+      "example": {
+        "jp": "りんごを食べます。",
+        "vn": "(đuôi lịch sự)"
+      }
+    },
+    {
+      "word": "飲む",
+      "reading": "のむ",
+      "meaning": "Uống",
+      "type": "Động từ",
+      "example": {
+        "jp": "水を飲みます。",
+        "vn": "(đuôi lịch sự)"
+      }
+    },
+    {
+      "word": "料理",
+      "reading": "りょうり",
+      "meaning": "Món ăn, nấu ăn",
+      "type": "Danh động từ",
+      "example": {
+        "jp": "料理を作ります。",
+        "vn": "(đuôi lịch sự)"
+      }
+    },
+    {
+      "word": "作る",
+      "reading": "つくる",
+      "meaning": "Làm, nấu",
+      "type": "Động từ",
+      "example": {
+        "jp": "朝ご飯を作ります。",
+        "vn": "(đuôi lịch sự)"
+      }
+    },
+    {
+      "word": "包む",
+      "reading": "つつむ",
+      "meaning": "Gói, bọc",
+      "type": "Động từ",
+      "example": {
+        "jp": "おにぎりを包みます。",
+        "vn": "(đuôi lịch sự)"
+      }
+    },
+    {
+      "word": "混ぜる",
+      "reading": "まぜる",
+      "meaning": "Trộn",
+      "type": "Động từ",
+      "example": {
+        "jp": "サラダを混ぜます。",
+        "vn": "(đuôi lịch sự)"
+      }
+    },
+    {
+      "word": "切る",
+      "reading": "きる",
+      "meaning": "Cắt",
+      "type": "Động từ",
+      "example": {
+        "jp": "野菜を切ります。",
+        "vn": "(đuôi lịch sự)"
+      }
+    },
+    {
+      "word": "煮る",
+      "reading": "にる",
+      "meaning": "Nấu, luộc",
+      "type": "Động từ",
+      "example": {
+        "jp": "魚を煮ます。",
+        "vn": "(đuôi lịch sự)"
+      }
+    },
+    {
+      "word": "焼く",
+      "reading": "やく",
+      "meaning": "Nướng",
+      "type": "Động từ",
+      "example": {
+        "jp": "肉を焼きます。",
+        "vn": "(đuôi lịch sự)"
+      }
+    },
+    {
+      "word": "揚げる",
+      "reading": "あげる",
+      "meaning": "Chiên",
+      "type": "Động từ",
+      "example": {
+        "jp": "天ぷらを揚げます。",
+        "vn": "(đuôi lịch sự)"
+      }
+    },
+    {
+      "word": "炒める",
+      "reading": "いためる",
+      "meaning": "Xào",
+      "type": "Động từ",
+      "example": {
+        "jp": "野菜を炒めます。",
+        "vn": "(đuôi lịch sự)"
+      }
+    },
+    {
+      "word": "蒸す",
+      "reading": "むす",
+      "meaning": "Hấp",
+      "type": "Động từ",
+      "example": {
+        "jp": "饅頭を蒸します。",
+        "vn": "(đuôi lịch sự)"
+      }
+    },
+    {
+      "word": "味",
+      "reading": "あじ",
+      "meaning": "Vị",
+      "type": "Danh từ",
+      "example": {
+        "jp": "味がいいです。",
+        "vn": "là."
+      }
+    },
+    {
+      "word": "甘い",
+      "reading": "あまい",
+      "meaning": "Ngọt",
+      "type": "Tính từ",
+      "example": {
+        "jp": "ケーキは甘いです。",
+        "vn": "là."
+      }
+    },
+    {
+      "word": "辛い",
+      "reading": "からい",
+      "meaning": "Cay",
+      "type": "Tính từ",
+      "example": {
+        "jp": "カレーは辛いです。",
+        "vn": "là."
+      }
+    }
+  ]
+}

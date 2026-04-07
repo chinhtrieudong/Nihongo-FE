@@ -1,0 +1,210 @@
+{
+  "textbookId": "tango-n4",
+  "chapterId": 6,
+  "topicId": "topic-6-2",
+  "topicName": "気温",
+  "topicNameVi": "Nhiệt độ",
+  "vocabCount": 20,
+  "words": [
+    {
+      "word": "気温",
+      "reading": "きおん",
+      "meaning": "Nhiệt độ",
+      "type": "Danh từ",
+      "example": {
+        "jp": "気温が上がりました。",
+        "vn": "đã (quá khứ)."
+      }
+    },
+    {
+      "word": "温度",
+      "reading": "おんど",
+      "meaning": "Nhiệt độ",
+      "type": "Danh từ",
+      "example": {
+        "jp": "温度を測定します。",
+        "vn": "(đuôi lịch sự)"
+      }
+    },
+    {
+      "word": "体温",
+      "reading": "たいおん",
+      "meaning": "Nhiệt độ cơ thể",
+      "type": "Danh từ",
+      "example": {
+        "jp": "体温を測りました。",
+        "vn": "đã (quá khứ)."
+      }
+    },
+    {
+      "word": "寒暖",
+      "reading": "かんだん",
+      "meaning": "Lạnh ấm",
+      "type": "Danh từ",
+      "example": {
+        "jp": "寒暖計を見ます。",
+        "vn": "(đuôi lịch sự)"
+      }
+    },
+    {
+      "word": "最高気温",
+      "reading": "さいこうきおん",
+      "meaning": "Nhiệt độ cao nhất",
+      "type": "Danh từ",
+      "example": {
+        "jp": "最高気温は30度です。",
+        "vn": "là."
+      }
+    },
+    {
+      "word": "最低気温",
+      "reading": "さいていきおん",
+      "meaning": "Nhiệt độ thấp nhất",
+      "type": "Danh từ",
+      "example": {
+        "jp": "最低気温は5度です。",
+        "vn": "là."
+      }
+    },
+    {
+      "word": "平均気温",
+      "reading": "へいきんきおん",
+      "meaning": "Nhiệt độ trung bình",
+      "type": "Danh từ",
+      "example": {
+        "jp": "平均気温が上昇しました。",
+        "vn": "đã (quá khứ)."
+      }
+    },
+    {
+      "word": "氷点下",
+      "reading": "ひょうてんか",
+      "meaning": "Dưới điểm đóng băng",
+      "type": "Danh từ",
+      "example": {
+        "jp": "氷点下10度です。",
+        "vn": "là."
+      }
+    },
+    {
+      "word": "暑さ",
+      "reading": "あつさ",
+      "meaning": "Sự nóng",
+      "type": "Danh từ",
+      "example": {
+        "jp": "暑さが厳しいです。",
+        "vn": "là."
+      }
+    },
+    {
+      "word": "寒さ",
+      "reading": "さむさ",
+      "meaning": "Sự lạnh",
+      "type": "Danh từ",
+      "example": {
+        "jp": "寒さが厳しいです。",
+        "vn": "là."
+      }
+    },
+    {
+      "word": "冷え込む",
+      "reading": "ひえこむ",
+      "meaning": "Lạnh sâu",
+      "type": "Động từ",
+      "example": {
+        "jp": "夜は冷え込みます。",
+        "vn": "(đuôi lịch sự)"
+      }
+    },
+    {
+      "word": "冷える",
+      "reading": "ひえる",
+      "meaning": "Lạnh đi",
+      "type": "Động từ",
+      "example": {
+        "jp": "体が冷えました。",
+        "vn": "đã (quá khứ)."
+      }
+    },
+    {
+      "word": "温まる",
+      "reading": "あたたまる",
+      "meaning": "Ấm lên",
+      "type": "Động từ",
+      "example": {
+        "jp": "体が温まりました。",
+        "vn": "đã (quá khứ)."
+      }
+    },
+    {
+      "word": "上昇",
+      "reading": "じょうしょう",
+      "meaning": "Tăng lên",
+      "type": "Danh động từ",
+      "example": {
+        "jp": "気温が上昇しました。",
+        "vn": "đã (quá khứ)."
+      }
+    },
+    {
+      "word": "下降",
+      "reading": "かこう",
+      "meaning": "Giảm xuống",
+      "type": "Danh động từ",
+      "example": {
+        "jp": "気温が下降しました。",
+        "vn": "đã (quá khứ)."
+      }
+    },
+    {
+      "word": "変化",
+      "reading": "へんか",
+      "meaning": "Thay đổi",
+      "type": "Danh động từ",
+      "example": {
+        "jp": "気温の変化が激しいです。",
+        "vn": "là."
+      }
+    },
+    {
+      "word": "差",
+      "reading": "さ",
+      "meaning": "Chênh lệch",
+      "type": "Danh từ",
+      "example": {
+        "jp": "寒暖差が大きいです。",
+        "vn": "là."
+      }
+    },
+    {
+      "word": "湿度",
+      "reading": "しつど",
+      "meaning": "Độ ẩm",
+      "type": "Danh từ",
+      "example": {
+        "jp": "湿度が高いです。",
+        "vn": "là."
+      }
+    },
+    {
+      "word": "乾燥",
+      "reading": "かんそう",
+      "meaning": "Khô ráo",
+      "type": "Danh động từ",
+      "example": {
+        "jp": "乾燥しています。",
+        "vn": "có (người/động vật)."
+      }
+    },
+    {
+      "word": "蒸し暑い",
+      "reading": "むしあつい",
+      "meaning": "Nóng ẩm",
+      "type": "Tính từ",
+      "example": {
+        "jp": "蒸し暑い日が続きます。",
+        "vn": "(đuôi lịch sự)"
+      }
+    }
+  ]
+}

@@ -1,0 +1,210 @@
+{
+  "textbookId": "tango-n4",
+  "chapterId": 8,
+  "topicId": "topic-8-5",
+  "topicName": "飲み物",
+  "topicNameVi": "Đồ uống",
+  "vocabCount": 20,
+  "words": [
+    {
+      "word": "飲み物",
+      "reading": "のみもの",
+      "meaning": "Đồ uống",
+      "type": "Danh từ",
+      "example": {
+        "jp": "飲み物を注文しました。",
+        "vn": "đã (quá khứ)."
+      }
+    },
+    {
+      "word": "水",
+      "reading": "みず",
+      "meaning": "Nước",
+      "type": "Danh từ",
+      "example": {
+        "jp": "水を飲みます。",
+        "vn": "(đuôi lịch sự)"
+      }
+    },
+    {
+      "word": "お茶",
+      "reading": "おちゃ",
+      "meaning": "Trà",
+      "type": "Danh từ",
+      "example": {
+        "jp": "お茶を飲みます。",
+        "vn": "(đuôi lịch sự)"
+      }
+    },
+    {
+      "word": "緑茶",
+      "reading": "りょくちゃ",
+      "meaning": "Trà xanh",
+      "type": "Danh từ",
+      "example": {
+        "jp": "緑茶が好きです。",
+        "vn": "là."
+      }
+    },
+    {
+      "word": "紅茶",
+      "reading": "こうちゃ",
+      "meaning": "Trà đen",
+      "type": "Danh từ",
+      "example": {
+        "jp": "紅茶を飲みます。",
+        "vn": "(đuôi lịch sự)"
+      }
+    },
+    {
+      "word": "コーヒー",
+      "reading": "コーヒー",
+      "meaning": "Cà phê",
+      "type": "Danh từ",
+      "example": {
+        "jp": "コーヒーを飲みます。",
+        "vn": "(đuôi lịch sự)"
+      }
+    },
+    {
+      "word": "ジュース",
+      "reading": "ジュース",
+      "meaning": "Nước ép",
+      "type": "Danh từ",
+      "example": {
+        "jp": "ジュースを飲みました。",
+        "vn": "đã (quá khứ)."
+      }
+    },
+    {
+      "word": "牛乳",
+      "reading": "ぎゅうにゅう",
+      "meaning": "Sữa bò",
+      "type": "Danh từ",
+      "example": {
+        "jp": "牛乳を飲みます。",
+        "vn": "(đuôi lịch sự)"
+      }
+    },
+    {
+      "word": "豆乳",
+      "reading": "とうにゅう",
+      "meaning": "Sữa đậu",
+      "type": "Danh từ",
+      "example": {
+        "jp": "豆乳が好きです。",
+        "vn": "là."
+      }
+    },
+    {
+      "word": "炭酸",
+      "reading": "たんさん",
+      "meaning": "Nước có ga",
+      "type": "Danh từ",
+      "example": {
+        "jp": "炭酸飲料です。",
+        "vn": "là."
+      }
+    },
+    {
+      "word": "アルコール",
+      "reading": "アルコール",
+      "meaning": "Rượu",
+      "type": "Danh từ",
+      "example": {
+        "jp": "アルコールを飲みます。",
+        "vn": "(đuôi lịch sự)"
+      }
+    },
+    {
+      "word": "ビール",
+      "reading": "ビール",
+      "meaning": "Bia",
+      "type": "Danh từ",
+      "example": {
+        "jp": "ビールを飲みました。",
+        "vn": "đã (quá khứ)."
+      }
+    },
+    {
+      "word": "日本酒",
+      "reading": "にほんしゅ",
+      "meaning": "Rượu sake",
+      "type": "Danh từ",
+      "example": {
+        "jp": "日本酒を飲みました。",
+        "vn": "đã (quá khứ)."
+      }
+    },
+    {
+      "word": "焼酎",
+      "reading": "しょうちゅう",
+      "meaning": "Rượu shochu",
+      "type": "Danh từ",
+      "example": {
+        "jp": "焼酎を飲みました。",
+        "vn": "đã (quá khứ)."
+      }
+    },
+    {
+      "word": "ワイン",
+      "reading": "ワイン",
+      "meaning": "Rượu vang",
+      "type": "Danh từ",
+      "example": {
+        "jp": "ワインを飲みました。",
+        "vn": "đã (quá khứ)."
+      }
+    },
+    {
+      "word": "ウイスキー",
+      "reading": "ウイスキー",
+      "meaning": "Whisky",
+      "type": "Danh từ",
+      "example": {
+        "jp": "ウイスキーを飲みました。",
+        "vn": "đã (quá khứ)."
+      }
+    },
+    {
+      "word": "カクテル",
+      "reading": "カクテル",
+      "meaning": "Cocktail",
+      "type": "Danh từ",
+      "example": {
+        "jp": "カクテルを注文しました。",
+        "vn": "đã (quá khứ)."
+      }
+    },
+    {
+      "word": "スムージー",
+      "reading": "スムージー",
+      "meaning": "Sinh tố",
+      "type": "Danh từ",
+      "example": {
+        "jp": "スムージーを飲みました。",
+        "vn": "đã (quá khứ)."
+      }
+    },
+    {
+      "word": "アイス",
+      "reading": "アイス",
+      "meaning": "Đá",
+      "type": "Danh từ",
+      "example": {
+        "jp": "アイスを入れてください。",
+        "vn": "vui lòng..."
+      }
+    },
+    {
+      "word": "ホット",
+      "reading": "ホット",
+      "meaning": "Nóng",
+      "type": "Danh từ",
+      "example": {
+        "jp": "ホットでお願いします。",
+        "vn": "(đuôi lịch sự)"
+      }
+    }
+  ]
+}

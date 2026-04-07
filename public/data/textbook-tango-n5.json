@@ -1,0 +1,141 @@
+{
+  "textbookId": "tango-n5",
+  "name": "Tango N5 - 1000 Essential Words",
+  "description": "Sách 1000 từ vựng thiết yếu cho JLPT N5",
+  "level": "N5",
+  "totalLessons": 10,
+  "startLesson": 1,
+  "accentColor": "orange",
+  "chapters": [
+    {
+      "number": 1,
+      "title": "じこしょうかい",
+      "titleVi": "Tự giới thiệu",
+      "vocab": 70,
+      "topics": [
+        {"name": "～です", "nameVi": "Là"},
+        {"name": "おはよう。", "nameVi": "Tên & quốc tịch"},
+        {"name": "かぞく", "nameVi": "Gia đình"},
+        {"name": "なんにんですか。", "nameVi": "Bao nhiêu người"},
+        {"name": "～から きました", "nameVi": "Câu hỏi cơ bản"}
+      ]
+    },
+    {
+      "number": 2,
+      "title": "べんきょう",
+      "titleVi": "Học tập",
+      "vocab": 65,
+      "topics": [
+        {"name": "学校 (がっこう)", "nameVi": "Trường học"},
+        {"name": "かず", "nameVi": "Lớp học"},
+        {"name": "よう日 (ようび)", "nameVi": "Số đếm"},
+        {"name": "ことば", "nameVi": "Thời gian"},
+        {"name": "べんきょう", "nameVi": "Môn học"}
+      ]
+    },
+    {
+      "number": 3,
+      "title": "しごと",
+      "titleVi": "Công việc",
+      "vocab": 68,
+      "topics": [
+        {"name": "はたらく", "nameVi": "Nghề nghiệp"},
+        {"name": "しごと", "nameVi": "Đây là cái gì"},
+        {"name": "これは 何 (なん)ですか。", "nameVi": "Có bao nhiêu"},
+        {"name": "何こ (なんこ) ありますか。", "nameVi": "Văn phòng"},
+        {"name": "時間 (じかん)", "nameVi": "Đồ vật"}
+      ]
+    },
+    {
+      "number": 4,
+      "title": "友だち (ともだち)",
+      "titleVi": "Bạn bè",
+      "vocab": 72,
+      "topics": [
+        {"name": "どんな 人 (ひと)？", "nameVi": "Người như thế nào"},
+        {"name": "シャツを きています。", "nameVi": "Tính cách"},
+        {"name": "スカートを はきます。", "nameVi": "Trang phục"},
+        {"name": "あそぶ", "nameVi": "Mô tả người"},
+        {"name": "町 (まち)", "nameVi": "Quan hệ"}
+      ]
+    },
+    {
+      "number": 5,
+      "title": "ごはん",
+      "titleVi": "Ăn uống",
+      "vocab": 75,
+      "topics": [
+        {"name": "あさ・よる", "nameVi": "Bữa sáng/trưa/tối"},
+        {"name": "食べる (たべる) ・飲む (のむ)", "nameVi": "Đồ ăn"},
+        {"name": "りょうり", "nameVi": "Nhà hàng"},
+        {"name": "レストラン", "nameVi": "Gọi món"},
+        {"name": "どうですか。", "nameVi": "Hương vị"}
+      ]
+    },
+    {
+      "number": 6,
+      "title": "しゅみ",
+      "titleVi": "Sở thích",
+      "vocab": 70,
+      "topics": [
+        {"name": "しゅみ", "nameVi": "Sở thích"},
+        {"name": "おんがく", "nameVi": "Âm nhạc"},
+        {"name": "スポーツ", "nameVi": "Thể thao"},
+        {"name": "てんき", "nameVi": "Thời tiết"},
+        {"name": "きせつ", "nameVi": "Hoạt động"}
+      ]
+    },
+    {
+      "number": 7,
+      "title": "買い物 (かいもの)",
+      "titleVi": "Mua sắm",
+      "vocab": 73,
+      "topics": [
+        {"name": "買い物 (かいもの)", "nameVi": "Cửa hàng"},
+        {"name": "みせ", "nameVi": "Giá tiền"},
+        {"name": "ATM (エーティーエム)", "nameVi": "Thanh toán"},
+        {"name": "おくる", "nameVi": "ATM"},
+        {"name": "プレゼント", "nameVi": "Hỏi mua"}
+      ]
+    },
+    {
+      "number": 8,
+      "title": "休みの日 (やすみのひ)",
+      "titleVi": "Ngày nghỉ",
+      "vocab": 68,
+      "topics": [
+        {"name": "のりもの", "nameVi": "Cuối tuần"},
+        {"name": "どのくらい？", "nameVi": "Du lịch"},
+        {"name": "みち", "nameVi": "Kế hoạch"},
+        {"name": "どこ？", "nameVi": "Đi đâu"},
+        {"name": "出かける (でかける)", "nameVi": "Phương tiện"}
+      ]
+    },
+    {
+      "number": 9,
+      "title": "せいかつ",
+      "titleVi": "Cuộc sống",
+      "vocab": 70,
+      "topics": [
+        {"name": "いえ", "nameVi": "Nhà cửa"},
+        {"name": "アパートの 2かい", "nameVi": "Gia đình (mở rộng)"},
+        {"name": "ひっこし", "nameVi": "Lịch trình"},
+        {"name": "先生 (せんせい)の いえ", "nameVi": "Nhà giáo viên"},
+        {"name": "電気 (でんき)", "nameVi": "Thời gian (tuần/tháng)"}
+      ]
+    },
+    {
+      "number": 10,
+      "title": "けんこう",
+      "titleVi": "Sức khỏe",
+      "vocab": 75,
+      "topics": [
+        {"name": "びょうき", "nameVi": "Cơ thể"},
+        {"name": "(お)元気 (げんき)ですか。", "nameVi": "Bệnh"},
+        {"name": "たいせつな もの・こと", "nameVi": "Bệnh viện"},
+        {"name": "しょうらい", "nameVi": "Thuốc"},
+        {"name": "これも おぼえよう！", "nameVi": "Lời khuyên"}
+      ]
+    }
+  ]
+}

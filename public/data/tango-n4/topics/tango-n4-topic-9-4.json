@@ -1,0 +1,210 @@
+{
+  "textbookId": "tango-n4",
+  "chapterId": 9,
+  "topicId": "topic-9-4",
+  "topicName": "治療",
+  "topicNameVi": "Điều trị",
+  "vocabCount": 20,
+  "words": [
+    {
+      "word": "治療",
+      "reading": "ちりょう",
+      "meaning": "Điều trị",
+      "type": "Danh động từ",
+      "example": {
+        "jp": "治療を受けています。",
+        "vn": "có (người/động vật)."
+      }
+    },
+    {
+      "word": "治す",
+      "reading": "なおす",
+      "meaning": "Chữa",
+      "type": "Động từ",
+      "example": {
+        "jp": "病気を治します。",
+        "vn": "(đuôi lịch sự)"
+      }
+    },
+    {
+      "word": "治る",
+      "reading": "なおる",
+      "meaning": "Khỏi",
+      "type": "Động từ",
+      "example": {
+        "jp": "病気が治りました。",
+        "vn": "đã (quá khứ)."
+      }
+    },
+    {
+      "word": "手術",
+      "reading": "しゅじゅつ",
+      "meaning": "Phẫu thuật",
+      "type": "Danh động từ",
+      "example": {
+        "jp": "手術をしました。",
+        "vn": "đã (quá khứ)."
+      }
+    },
+    {
+      "word": "注射",
+      "reading": "ちゅうしゃ",
+      "meaning": "Tiêm",
+      "type": "Danh động từ",
+      "example": {
+        "jp": "注射をしました。",
+        "vn": "đã (quá khứ)."
+      }
+    },
+    {
+      "word": "点滴",
+      "reading": "てんてき",
+      "meaning": "Truyền dịch",
+      "type": "Danh động từ",
+      "example": {
+        "jp": "点滴をしています。",
+        "vn": "có (người/động vật)."
+      }
+    },
+    {
+      "word": "内服",
+      "reading": "ないふく",
+      "meaning": "Uống thuốc",
+      "type": "Danh động từ",
+      "example": {
+        "jp": "内服薬です。",
+        "vn": "là."
+      }
+    },
+    {
+      "word": "外用",
+      "reading": "がいよう",
+      "meaning": "Bôi ngoài",
+      "type": "Danh động từ",
+      "example": {
+        "jp": "外用薬です。",
+        "vn": "là."
+      }
+    },
+    {
+      "word": "処方",
+      "reading": "しょほう",
+      "meaning": "Kê đơn",
+      "type": "Danh động từ",
+      "example": {
+        "jp": "処方してもらいました。",
+        "vn": "đã (quá khứ)."
+      }
+    },
+    {
+      "word": "処方箋",
+      "reading": "しょほうせん",
+      "meaning": "Đơn thuốc",
+      "type": "Danh từ",
+      "example": {
+        "jp": "処方箋をもらいました。",
+        "vn": "đã (quá khứ)."
+      }
+    },
+    {
+      "word": "安静",
+      "reading": "あんせい",
+      "meaning": "Nghỉ ngơi",
+      "type": "Danh từ",
+      "example": {
+        "jp": "安静にしています。",
+        "vn": "có (người/động vật)."
+      }
+    },
+    {
+      "word": "休養",
+      "reading": "きゅうよう",
+      "meaning": "Dưỡng sức",
+      "type": "Danh động từ",
+      "example": {
+        "jp": "十分休養しました。",
+        "vn": "đã (quá khứ)."
+      }
+    },
+    {
+      "word": "湿布",
+      "reading": "しっぷ",
+      "meaning": "Dán thuốc",
+      "type": "Danh động từ",
+      "example": {
+        "jp": "湿布をしています。",
+        "vn": "có (người/động vật)."
+      }
+    },
+    {
+      "word": "包帯",
+      "reading": "ほうたい",
+      "meaning": "Băng bó",
+      "type": "Danh động từ",
+      "example": {
+        "jp": "包帯を巻きました。",
+        "vn": "đã (quá khứ)."
+      }
+    },
+    {
+      "word": "ギプス",
+      "reading": "ギプス",
+      "meaning": "Bó bột",
+      "type": "Danh từ",
+      "example": {
+        "jp": "ギプスをはめました。",
+        "vn": "đã (quá khứ)."
+      }
+    },
+    {
+      "word": "縫合",
+      "reading": "ほうごう",
+      "meaning": "Khâu",
+      "type": "Danh động từ",
+      "example": {
+        "jp": "傷口を縫合しました。",
+        "vn": "đã (quá khứ)."
+      }
+    },
+    {
+      "word": "開腹",
+      "reading": "かいふく",
+      "meaning": "Mổ bụng",
+      "type": "Danh động từ",
+      "example": {
+        "jp": "開腹手術をしました。",
+        "vn": "đã (quá khứ)."
+      }
+    },
+    {
+      "word": "麻酔",
+      "reading": "ますい",
+      "meaning": "Gây mê",
+      "type": "Danh động từ",
+      "example": {
+        "jp": "全身麻酔をしました。",
+        "vn": "đã (quá khứ)."
+      }
+    },
+    {
+      "word": "通院",
+      "reading": "つういん",
+      "meaning": "Đến bệnh viện",
+      "type": "Danh động từ",
+      "example": {
+        "jp": "通院しています。",
+        "vn": "có (người/động vật)."
+      }
+    },
+    {
+      "word": "完治",
+      "reading": "かんち",
+      "meaning": "Khỏi hẳn",
+      "type": "Danh động từ",
+      "example": {
+        "jp": "完治しました。",
+        "vn": "đã (quá khứ)."
+      }
+    }
+  ]
+}

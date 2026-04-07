@@ -1,0 +1,210 @@
+{
+  "textbookId": "tango-n4",
+  "chapterId": 3,
+  "topicId": "topic-3-4",
+  "topicName": "感情",
+  "topicNameVi": "Cảm xúc",
+  "vocabCount": 20,
+  "words": [
+    {
+      "word": "感情",
+      "reading": "かんじょう",
+      "meaning": "Cảm xúc",
+      "type": "Danh từ",
+      "example": {
+        "jp": "感情が豊かです。",
+        "vn": "là."
+      }
+    },
+    {
+      "word": "気持ち",
+      "reading": "きもち",
+      "meaning": "Tâm trạng",
+      "type": "Danh từ",
+      "example": {
+        "jp": "気持ちがいいです。",
+        "vn": "là."
+      }
+    },
+    {
+      "word": "心",
+      "reading": "こころ",
+      "meaning": "Trái tim",
+      "type": "Danh từ",
+      "example": {
+        "jp": "心が温かいです。",
+        "vn": "là."
+      }
+    },
+    {
+      "word": "気分",
+      "reading": "きぶん",
+      "meaning": "Cảm giác",
+      "type": "Danh từ",
+      "example": {
+        "jp": "気分が落ち込んでいます。",
+        "vn": "có (người/động vật)."
+      }
+    },
+    {
+      "word": "思い",
+      "reading": "おもい",
+      "meaning": "Suy nghĩ",
+      "type": "Danh từ",
+      "example": {
+        "jp": "思いが込み上げてきました。",
+        "vn": "đã (quá khứ)."
+      }
+    },
+    {
+      "word": "感じ",
+      "reading": "かんじ",
+      "meaning": "Cảm nhận",
+      "type": "Danh từ",
+      "example": {
+        "jp": "いい感じです。",
+        "vn": "là."
+      }
+    },
+    {
+      "word": "情熱",
+      "reading": "じょうねつ",
+      "meaning": "Đam mê",
+      "type": "Danh từ",
+      "example": {
+        "jp": "情熱を持って仕事をします。",
+        "vn": "(đuôi lịch sự)"
+      }
+    },
+    {
+      "word": "愛情",
+      "reading": "あいじょう",
+      "meaning": "Tình yêu thương",
+      "type": "Danh từ",
+      "example": {
+        "jp": "愛情を注いで育てます。",
+        "vn": "(đuôi lịch sự)"
+      }
+    },
+    {
+      "word": "友情",
+      "reading": "ゆうじょう",
+      "meaning": "Tình bạn",
+      "type": "Danh từ",
+      "example": {
+        "jp": "友情が深まりました。",
+        "vn": "đã (quá khứ)."
+      }
+    },
+    {
+      "word": "同情",
+      "reading": "どうじょう",
+      "meaning": "Thông cảm",
+      "type": "Danh từ",
+      "example": {
+        "jp": "同情の念を抱きました。",
+        "vn": "đã (quá khứ)."
+      }
+    },
+    {
+      "word": "感動",
+      "reading": "かんどう",
+      "meaning": "Xúc động",
+      "type": "Danh động từ",
+      "example": {
+        "jp": "感動しました。",
+        "vn": "đã (quá khứ)."
+      }
+    },
+    {
+      "word": "感激",
+      "reading": "かんげき",
+      "meaning": "Cảm kích",
+      "type": "Danh động từ",
+      "example": {
+        "jp": "感激しています。",
+        "vn": "có (người/động vật)."
+      }
+    },
+    {
+      "word": "興奮",
+      "reading": "こうふん",
+      "meaning": "Phấn khích",
+      "type": "Danh động từ",
+      "example": {
+        "jp": "興奮しています。",
+        "vn": "có (người/động vật)."
+      }
+    },
+    {
+      "word": "満足",
+      "reading": "まんぞく",
+      "meaning": "Hài lòng",
+      "type": "Danh động từ",
+      "example": {
+        "jp": "満足しています。",
+        "vn": "có (người/động vật)."
+      }
+    },
+    {
+      "word": "不満",
+      "reading": "ふまん",
+      "meaning": "Không hài lòng",
+      "type": "Danh từ",
+      "example": {
+        "jp": "不満があります。",
+        "vn": "có."
+      }
+    },
+    {
+      "word": "安心",
+      "reading": "あんしん",
+      "meaning": "An tâm",
+      "type": "Danh động từ",
+      "example": {
+        "jp": "安心しました。",
+        "vn": "đã (quá khứ)."
+      }
+    },
+    {
+      "word": "不安",
+      "reading": "ふあん",
+      "meaning": "Lo lắng",
+      "type": "Danh từ",
+      "example": {
+        "jp": "不安になりました。",
+        "vn": "đã (quá khứ)."
+      }
+    },
+    {
+      "word": "心配",
+      "reading": "しんぱい",
+      "meaning": "Lo âu",
+      "type": "Danh động từ",
+      "example": {
+        "jp": "心配しています。",
+        "vn": "có (người/động vật)."
+      }
+    },
+    {
+      "word": "緊張",
+      "reading": "きんちょう",
+      "meaning": "Căng thẳng",
+      "type": "Danh động từ",
+      "example": {
+        "jp": "緊張しています。",
+        "vn": "có (người/động vật)."
+      }
+    },
+    {
+      "word": "落ち着き",
+      "reading": "おちつき",
+      "meaning": "Bình tĩnh",
+      "type": "Danh từ",
+      "example": {
+        "jp": "落ち着きがありません。",
+        "vn": "không có."
+      }
+    }
+  ]
+}

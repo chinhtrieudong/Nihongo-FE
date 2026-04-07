@@ -1,0 +1,210 @@
+{
+  "textbookId": "tango-n4",
+  "chapterId": 4,
+  "topicId": "topic-4-4",
+  "topicName": "恐ろしさ",
+  "topicNameVi": "Sợ hãi",
+  "vocabCount": 20,
+  "words": [
+    {
+      "word": "恐ろしい",
+      "reading": "おそろしい",
+      "meaning": "Đáng sợ",
+      "type": "Tính từ",
+      "example": {
+        "jp": "恐ろしい経験でした。",
+        "vn": "đã là (quá khứ)."
+      }
+    },
+    {
+      "word": "怖い",
+      "reading": "こわい",
+      "meaning": "Sợ",
+      "type": "Tính từ",
+      "example": {
+        "jp": "怖い話です。",
+        "vn": "là."
+      }
+    },
+    {
+      "word": "恐れ",
+      "reading": "おそれ",
+      "meaning": "Nỗi sợ",
+      "type": "Danh từ",
+      "example": {
+        "jp": "恐れを知りません。",
+        "vn": "không."
+      }
+    },
+    {
+      "word": "恐怖",
+      "reading": "きょうふ",
+      "meaning": "Kinh hoàng",
+      "type": "Danh từ",
+      "example": {
+        "jp": "恐怖を感じました。",
+        "vn": "đã (quá khứ)."
+      }
+    },
+    {
+      "word": "戦慄",
+      "reading": "せんりつ",
+      "meaning": "Rùng mình",
+      "type": "Danh động từ",
+      "example": {
+        "jp": "戦慄しました。",
+        "vn": "đã (quá khứ)."
+      }
+    },
+    {
+      "word": "震える",
+      "reading": "ふるえる",
+      "meaning": "Run rẩy",
+      "type": "Động từ",
+      "example": {
+        "jp": "震えています。",
+        "vn": "có (người/động vật)."
+      }
+    },
+    {
+      "word": "怯える",
+      "reading": "おびえる",
+      "meaning": "Sợ hãi",
+      "type": "Động từ",
+      "example": {
+        "jp": "怯えています。",
+        "vn": "có (người/động vật)."
+      }
+    },
+    {
+      "word": "驚く",
+      "reading": "おどろく",
+      "meaning": "Ngạc nhiên",
+      "type": "Động từ",
+      "example": {
+        "jp": "驚きました。",
+        "vn": "đã (quá khứ)."
+      }
+    },
+    {
+      "word": "驚き",
+      "reading": "おどろき",
+      "meaning": "Sự ngạc nhiên",
+      "type": "Danh từ",
+      "example": {
+        "jp": "驚きの声を上げました。",
+        "vn": "đã (quá khứ)."
+      }
+    },
+    {
+      "word": "不安",
+      "reading": "ふあん",
+      "meaning": "Lo lắng",
+      "type": "Danh từ",
+      "example": {
+        "jp": "不安な気持ちです。",
+        "vn": "là."
+      }
+    },
+    {
+      "word": "心配",
+      "reading": "しんぱい",
+      "meaning": "Lo âu",
+      "type": "Danh động từ",
+      "example": {
+        "jp": "心配しています。",
+        "vn": "có (người/động vật)."
+      }
+    },
+    {
+      "word": "緊張",
+      "reading": "きんちょう",
+      "meaning": "Căng thẳng",
+      "type": "Danh động từ",
+      "example": {
+        "jp": "緊張しています。",
+        "vn": "có (người/động vật)."
+      }
+    },
+    {
+      "word": "動揺",
+      "reading": "どうよう",
+      "meaning": "Dao động",
+      "type": "Danh động từ",
+      "example": {
+        "jp": "動揺しています。",
+        "vn": "có (người/động vật)."
+      }
+    },
+    {
+      "word": "慌てる",
+      "reading": "あわてる",
+      "meaning": "Hoảng loạn",
+      "type": "Động từ",
+      "example": {
+        "jp": "慌てています。",
+        "vn": "có (người/động vật)."
+      }
+    },
+    {
+      "word": "落ち着く",
+      "reading": "おちつく",
+      "meaning": "Bình tĩnh",
+      "type": "Động từ",
+      "example": {
+        "jp": "落ち着いてください。",
+        "vn": "vui lòng..."
+      }
+    },
+    {
+      "word": "恐怖症",
+      "reading": "きょうふしょう",
+      "meaning": "Chứng sợ",
+      "type": "Danh từ",
+      "example": {
+        "jp": "恐怖症があります。",
+        "vn": "có."
+      }
+    },
+    {
+      "word": "パニック",
+      "reading": "パニック",
+      "meaning": "Hoảng loạn",
+      "type": "Danh từ",
+      "example": {
+        "jp": "パニックになりました。",
+        "vn": "đã (quá khứ)."
+      }
+    },
+    {
+      "word": "トラウマ",
+      "reading": "トラウマ",
+      "meaning": "Sang chấn tâm lý",
+      "type": "Danh từ",
+      "example": {
+        "jp": "トラウマがあります。",
+        "vn": "có."
+      }
+    },
+    {
+      "word": "臆する",
+      "reading": "おくする",
+      "meaning": "Nhát gan",
+      "type": "Động từ",
+      "example": {
+        "jp": "臆しています。",
+        "vn": "có (người/động vật)."
+      }
+    },
+    {
+      "word": "気が弱い",
+      "reading": "きがよわい",
+      "meaning": "Nhút nhát",
+      "type": "Tính từ",
+      "example": {
+        "jp": "気が弱いです。",
+        "vn": "là."
+      }
+    }
+  ]
+}

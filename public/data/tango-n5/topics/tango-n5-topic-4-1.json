@@ -1,0 +1,160 @@
+{
+  "textbookId": "tango-n5",
+  "chapterId": 4,
+  "topicId": "topic-4-1",
+  "topicName": "どんな 人 (ひと)？",
+  "topicNameVi": "Con người",
+  "vocabCount": 15,
+  "words": [
+    {
+      "word": "人",
+      "reading": "ひと",
+      "meaning": "Người",
+      "type": "Danh từ",
+      "example": {
+        "jp": "人が多いです。",
+        "vn": "là."
+      }
+    },
+    {
+      "word": "男",
+      "reading": "おとこ",
+      "meaning": "Nam, đàn ông",
+      "type": "Danh từ",
+      "example": {
+        "jp": "男の人です。",
+        "vn": "là."
+      }
+    },
+    {
+      "word": "女",
+      "reading": "おんな",
+      "meaning": "Nữ, phụ nữ",
+      "type": "Danh từ",
+      "example": {
+        "jp": "女の人です。",
+        "vn": "là."
+      }
+    },
+    {
+      "word": "男の子",
+      "reading": "おとこのこ",
+      "meaning": "Con trai",
+      "type": "Danh từ",
+      "example": {
+        "jp": "男の子が遊んでいます。",
+        "vn": "có (người/động vật)."
+      }
+    },
+    {
+      "word": "女の子",
+      "reading": "おんなのこ",
+      "meaning": "Con gái",
+      "type": "Danh từ",
+      "example": {
+        "jp": "女の子がかわいいです。",
+        "vn": "là."
+      }
+    },
+    {
+      "word": "大人",
+      "reading": "おとな",
+      "meaning": "Người lớn",
+      "type": "Danh từ",
+      "example": {
+        "jp": "大人の映画です。",
+        "vn": "là."
+      }
+    },
+    {
+      "word": "子供",
+      "reading": "こども",
+      "meaning": "Trẻ con",
+      "type": "Danh từ",
+      "example": {
+        "jp": "子供が3人います。",
+        "vn": "có (người/động vật)."
+      }
+    },
+    {
+      "word": "友達",
+      "reading": "ともだち",
+      "meaning": "Bạn bè",
+      "type": "Danh từ",
+      "example": {
+        "jp": "友達と遊びます。",
+        "vn": "(đuôi lịch sự)"
+      }
+    },
+    {
+      "word": "彼",
+      "reading": "かれ",
+      "meaning": "Anh ấy, bạn trai",
+      "type": "Đại từ",
+      "example": {
+        "jp": "彼は大学生です。",
+        "vn": "là."
+      }
+    },
+    {
+      "word": "彼女",
+      "reading": "かのじょ",
+      "meaning": "Cô ấy, bạn gái",
+      "type": "Đại từ",
+      "example": {
+        "jp": "彼女は先生です。",
+        "vn": "là."
+      }
+    },
+    {
+      "word": "彼ら",
+      "reading": "かれら",
+      "meaning": "Họ (nam)",
+      "type": "Đại từ",
+      "example": {
+        "jp": "彼らは会社員です。",
+        "vn": "là."
+      }
+    },
+    {
+      "word": "親",
+      "reading": "おや",
+      "meaning": "Bố mẹ",
+      "type": "Danh từ",
+      "example": {
+        "jp": "親に相談します。",
+        "vn": "(đuôi lịch sự)"
+      }
+    },
+    {
+      "word": "親友",
+      "reading": "しんゆう",
+      "meaning": "Bạn thân",
+      "type": "Danh từ",
+      "example": {
+        "jp": "親友と話します。",
+        "vn": "(đuôi lịch sự)"
+      }
+    },
+    {
+      "word": "仲間",
+      "reading": "なかま",
+      "meaning": "Đồng đội",
+      "type": "Danh từ",
+      "example": {
+        "jp": "仲間と働きます。",
+        "vn": "(đuôi lịch sự)"
+      }
+    },
+    {
+      "word": "知り合い",
+      "reading": "しりあい",
+      "meaning": "Người quen",
+      "type": "Danh từ",
+      "example": {
+        "jp": "知り合いです。",
+        "vn": "là."
+      }
+    }
+  ]
+}

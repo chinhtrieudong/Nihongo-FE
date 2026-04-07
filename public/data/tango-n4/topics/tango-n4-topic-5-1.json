@@ -1,0 +1,210 @@
+{
+  "textbookId": "tango-n4",
+  "chapterId": 5,
+  "topicId": "topic-5-1",
+  "topicName": "朝の活動",
+  "topicNameVi": "Buổi sáng",
+  "vocabCount": 20,
+  "words": [
+    {
+      "word": "朝",
+      "reading": "あさ",
+      "meaning": "Buổi sáng",
+      "type": "Danh từ",
+      "example": {
+        "jp": "朝が来ました。",
+        "vn": "đã (quá khứ)."
+      }
+    },
+    {
+      "word": "早起き",
+      "reading": "はやおき",
+      "meaning": "Dậy sớm",
+      "type": "Danh động từ",
+      "example": {
+        "jp": "早起きは三文の徳。",
+        "vn": ""
+      }
+    },
+    {
+      "word": "目覚める",
+      "reading": "めざめる",
+      "meaning": "Tỉnh giấc",
+      "type": "Động từ",
+      "example": {
+        "jp": "朝、目覚めました。",
+        "vn": "đã (quá khứ)."
+      }
+    },
+    {
+      "word": "目覚まし",
+      "reading": "めざまし",
+      "meaning": "Báo thức",
+      "type": "Danh từ",
+      "example": {
+        "jp": "目覚ましが鳴りました。",
+        "vn": "đã (quá khứ)."
+      }
+    },
+    {
+      "word": "布団",
+      "reading": "ふとん",
+      "meaning": "Chăn nệm",
+      "type": "Danh từ",
+      "example": {
+        "jp": "布団から出ました。",
+        "vn": "đã (quá khứ)."
+      }
+    },
+    {
+      "word": "寝起き",
+      "reading": "ねおき",
+      "meaning": "Lúc mới ngủ dậy",
+      "type": "Danh từ",
+      "example": {
+        "jp": "寝起きが悪いです。",
+        "vn": "là."
+      }
+    },
+    {
+      "word": "寝癖",
+      "reading": "ねぐせ",
+      "meaning": "Tóc rối",
+      "type": "Danh từ",
+      "example": {
+        "jp": "寝癖がついています。",
+        "vn": "có (người/động vật)."
+      }
+    },
+    {
+      "word": "歯磨き",
+      "reading": "はみがき",
+      "meaning": "Đánh răng",
+      "type": "Danh động từ",
+      "example": {
+        "jp": "歯磨きをします。",
+        "vn": "(đuôi lịch sự)"
+      }
+    },
+    {
+      "word": "洗顔",
+      "reading": "せんがん",
+      "meaning": "Rửa mặt",
+      "type": "Danh động từ",
+      "example": {
+        "jp": "洗顔をしました。",
+        "vn": "đã (quá khứ)."
+      }
+    },
+    {
+      "word": "朝ご飯",
+      "reading": "あさごはん",
+      "meaning": "Bữa sáng",
+      "type": "Danh từ",
+      "example": {
+        "jp": "朝ご飯を食べました。",
+        "vn": "đã (quá khứ)."
+      }
+    },
+    {
+      "word": "朝食",
+      "reading": "ちょうしょく",
+      "meaning": "Bữa sáng",
+      "type": "Danh từ",
+      "example": {
+        "jp": "朝食を取りました。",
+        "vn": "đã (quá khứ)."
+      }
+    },
+    {
+      "word": "トースト",
+      "reading": "トースト",
+      "meaning": "Bánh mì nướng",
+      "type": "Danh từ",
+      "example": {
+        "jp": "トーストを食べます。",
+        "vn": "(đuôi lịch sự)"
+      }
+    },
+    {
+      "word": "目玉焼き",
+      "reading": "めだまやき",
+      "meaning": "Trứng ốp la",
+      "type": "Danh từ",
+      "example": {
+        "jp": "目玉焼きが好きです。",
+        "vn": "là."
+      }
+    },
+    {
+      "word": "納豆",
+      "reading": "なっとう",
+      "meaning": "Natto",
+      "type": "Danh từ",
+      "example": {
+        "jp": "納豆を食べます。",
+        "vn": "(đuôi lịch sự)"
+      }
+    },
+    {
+      "word": "味噌汁",
+      "reading": "みそしる",
+      "meaning": "Canh miso",
+      "type": "Danh từ",
+      "example": {
+        "jp": "味噌汁を飲みます。",
+        "vn": "(đuôi lịch sự)"
+      }
+    },
+    {
+      "word": "着替える",
+      "reading": "きがえる",
+      "meaning": "Thay quần áo",
+      "type": "Động từ",
+      "example": {
+        "jp": "着替えました。",
+        "vn": "đã (quá khứ)."
+      }
+    },
+    {
+      "word": "身支度",
+      "reading": "みじたく",
+      "meaning": "Chuẩn bị",
+      "type": "Danh động từ",
+      "example": {
+        "jp": "身支度を整えました。",
+        "vn": "đã (quá khứ)."
+      }
+    },
+    {
+      "word": "支度",
+      "reading": "したく",
+      "meaning": "Chuẩn bị",
+      "type": "Danh động từ",
+      "example": {
+        "jp": "朝の支度をしました。",
+        "vn": "đã (quá khứ)."
+      }
+    },
+    {
+      "word": "準備",
+      "reading": "じゅんび",
+      "meaning": "Chuẩn bị",
+      "type": "Danh động từ",
+      "example": {
+        "jp": "準備ができました。",
+        "vn": "đã (quá khứ)."
+      }
+    },
+    {
+      "word": "出かける",
+      "reading": "でかける",
+      "meaning": "Ra ngoài",
+      "type": "Động từ",
+      "example": {
+        "jp": "出かけます。",
+        "vn": "(đuôi lịch sự)"
+      }
+    }
+  ]
+}

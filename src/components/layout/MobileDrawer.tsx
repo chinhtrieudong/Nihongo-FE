@@ -1,6 +1,6 @@
 import React from "react";
 import { Drawer, Button } from "antd";
-import { X, Check, Book, BookOpen, FlaskConical, Volume2, MessageSquare, Target, BookOpen as PracticeIcon } from "lucide-react";
+import { X, Check, Book, BookOpen, FlaskConical, Volume2, Target, BookOpen as PracticeIcon, Type } from "lucide-react";
 import { useNavigate, useLocation } from "react-router-dom";
 import { useAppSelector, useAppDispatch } from "../../store/hooks";
 import { closeDrawer } from "../../store/slices/uiSlice";
@@ -16,7 +16,6 @@ const MobileDrawer: React.FC = () => {
     { key: '/kanji', icon: <BookOpen className="w-5 h-5" />, label: 'Hán tự' },
     { key: '/grammar', icon: <FlaskConical className="w-5 h-5" />, label: 'Ngữ pháp' },
     { key: '/pronunciation', icon: <Volume2 className="w-5 h-5" />, label: 'Phát âm' },
-    { key: '/conversation', icon: <MessageSquare className="w-5 h-5" />, label: 'Hội thoại' },
     { key: '/practice', icon: <PracticeIcon className="w-5 h-5" />, label: 'Luyện tập' },
     { key: '/tests', icon: <Target className="w-5 h-5" />, label: 'Thi JLPT' },
   ];

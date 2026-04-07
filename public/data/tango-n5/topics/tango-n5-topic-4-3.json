@@ -1,0 +1,150 @@
+{
+  "textbookId": "tango-n5",
+  "chapterId": 4,
+  "topicId": "topic-4-3",
+  "topicName": "スカートを はきます。",
+  "topicNameVi": "Trang phục (phần 2)",
+  "vocabCount": 14,
+  "words": [
+    {
+      "word": "靴",
+      "reading": "くつ",
+      "meaning": "Giày",
+      "type": "Danh từ",
+      "example": {
+        "jp": "靴を買いました。",
+        "vn": "đã (quá khứ)."
+      }
+    },
+    {
+      "word": "靴下",
+      "reading": "くつした",
+      "meaning": "Tất",
+      "type": "Danh từ",
+      "example": {
+        "jp": "靴下を履きます。",
+        "vn": "(đuôi lịch sự)"
+      }
+    },
+    {
+      "word": "帽子",
+      "reading": "ぼうし",
+      "meaning": "Mũ",
+      "type": "Danh từ",
+      "example": {
+        "jp": "帽子をかぶっています。",
+        "vn": "có (người/động vật)."
+      }
+    },
+    {
+      "word": "かぶる",
+      "reading": "かぶる",
+      "meaning": "Đội (mũ)",
+      "type": "Động từ",
+      "example": {
+        "jp": "帽子をかぶります。",
+        "vn": "(đuôi lịch sự)"
+      }
+    },
+    {
+      "word": "手袋",
+      "reading": "てぶくろ",
+      "meaning": "Găng tay",
+      "type": "Danh từ",
+      "example": {
+        "jp": "手袋をはめます。",
+        "vn": "(đuôi lịch sự)"
+      }
+    },
+    {
+      "word": "はめる",
+      "reading": "はめる",
+      "meaning": "Đeo (găng, nhẫn)",
+      "type": "Động từ",
+      "example": {
+        "jp": "指輪をはめています。",
+        "vn": "có (người/động vật)."
+      }
+    },
+    {
+      "word": "時計",
+      "reading": "とけい",
+      "meaning": "Đồng hồ",
+      "type": "Danh từ",
+      "example": {
+        "jp": "時計をつけています。",
+        "vn": "có (người/động vật)."
+      }
+    },
+    {
+      "word": "つける",
+      "reading": "つける",
+      "meaning": "Đeo (đồng hồ)",
+      "type": "Động từ",
+      "example": {
+        "jp": "時計をつけます。",
+        "vn": "(đuôi lịch sự)"
+      }
+    },
+    {
+      "word": "眼鏡",
+      "reading": "めがね",
+      "meaning": "Kính",
+      "type": "Danh từ",
+      "example": {
+        "jp": "眼鏡をかけています。",
+        "vn": "có (người/động vật)."
+      }
+    },
+    {
+      "word": "かける",
+      "reading": "かける",
+      "meaning": "Đeo (kính)",
+      "type": "Động từ",
+      "example": {
+        "jp": "眼鏡をかけます。",
+        "vn": "(đuôi lịch sự)"
+      }
+    },
+    {
+      "word": "マフラー",
+      "reading": "マフラー",
+      "meaning": "Khăn quàng cổ",
+      "type": "Danh từ",
+      "example": {
+        "jp": "マフラーを巻いています。",
+        "vn": "có (người/động vật)."
+      }
+    },
+    {
+      "word": "巻く",
+      "reading": "まく",
+      "meaning": "Quấn, cuốn",
+      "type": "Động từ",
+      "example": {
+        "jp": "マフラーを巻きます。",
+        "vn": "(đuôi lịch sự)"
+      }
+    },
+    {
+      "word": "ベルト",
+      "reading": "ベルト",
+      "meaning": "Thắt lưng",
+      "type": "Danh từ",
+      "example": {
+        "jp": "ベルトを締めます。",
+        "vn": "(đuôi lịch sự)"
+      }
+    },
+    {
+      "word": "締める",
+      "reading": "しめる",
+      "meaning": "Siết, thắt",
+      "type": "Động từ",
+      "example": {
+        "jp": "ネクタイを締めます。",
+        "vn": "(đuôi lịch sự)"
+      }
+    }
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "textbookId": "speed-master-n3",
+  "chapterId": 1,
+  "chapterTitle": "生活・身近な話題",
+  "chapterTitleVi": "Chương 1: Sinh hoạt & Chủ đề gần gũi",
+  "totalVocab": 120,
+  "topics": [
+    {
+      "id": "topic-1-1",
+      "name": "家庭",
+      "nameVi": "Gia đình",
+      "vocabCount": 24,
+      "words": [
+        { "word": "親類", "reading": "しんるい", "meaning": "Bà con, họ hàng", "type": "Danh từ", "example": "親類一同集まりました。" },
+        { "word": "同棲", "reading": "どうせい", "meaning": "Sống chung (chưa kết hôn)", "type": "Danh động từ", "example": "彼と同棲しています。" },
+        { "word": "世帯", "reading": "せたい", "meaning": "Hộ gia đình", "type": "Danh từ", "example": "この地域の世帯数は増えた。" },
+        { "word": "生計", "reading": "せいけい", "meaning": "Kế sinh nhai", "type": "Danh từ", "example": "生計を立てるのが大変だ。" },
+        { "word": "扶養", "reading": "ふよう", "meaning": "Nuôi dưỡng (người phụ thuộc)", "type": "Danh động từ", "example": "家族を扶養している。" }
+      ]
+    }
+  ]
+}

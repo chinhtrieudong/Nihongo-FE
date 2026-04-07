@@ -1,0 +1,110 @@
+{
+  "textbookId": "tango-n1",
+  "chapterId": 1,
+  "topicId": "topic-1-1",
+  "topicName": "グローバル",
+  "topicNameVi": "Toàn cầu hóa",
+  "vocabCount": 60,
+  "words": [
+    {
+      "word": "グローバル化",
+      "reading": "グローバルか",
+      "meaning": "Toàn cầu hóa",
+      "type": "Danh từ",
+      "example": {
+        "jp": "グローバル化が進んでいます。",
+        "vn": "có (người/động vật)."
+      }
+    },
+    {
+      "word": "グローバル企業",
+      "reading": "グローバルきぎょう",
+      "meaning": "Doanh nghiệp toàn cầu",
+      "type": "Danh từ",
+      "example": {
+        "jp": "グローバル企業で働いています。",
+        "vn": "có (người/động vật)."
+      }
+    },
+    {
+      "word": "グローバル戦略",
+      "reading": "グローバルせんりゃく",
+      "meaning": "Chiến lược toàn cầu",
+      "type": "Danh từ",
+      "example": {
+        "jp": "グローバル戦略を展開しています。",
+        "vn": "có (người/động vật)."
+      }
+    },
+    {
+      "word": "グローバル標準",
+      "reading": "グローバルひょうじゅん",
+      "meaning": "Tiêu chuẩn toàn cầu",
+      "type": "Danh từ",
+      "example": {
+        "jp": "グローバル標準に準拠しています。",
+        "vn": "có (người/động vật)."
+      }
+    },
+    {
+      "word": "グローバル競争",
+      "reading": "グローバルきょうそう",
+      "meaning": "Cạnh tranh toàn cầu",
+      "type": "Danh từ",
+      "example": {
+        "jp": "グローバル競争に勝つためです。",
+        "vn": "là."
+      }
+    },
+    {
+      "word": "多国籍",
+      "reading": "たこくせき",
+      "meaning": "Đa quốc gia",
+      "type": "Danh từ",
+      "example": {
+        "jp": "多国籍企業です。",
+        "vn": "là."
+      }
+    },
+    {
+      "word": "多国籍企業",
+      "reading": "たこくせききぎょう",
+      "meaning": "Tập đoàn đa quốc gia",
+      "type": "Danh từ",
+      "example": {
+        "jp": "多国籍企業で働きたいです。",
+        "vn": "là."
+      }
+    },
+    {
+      "word": "海外展開",
+      "reading": "かいがいてんかい",
+      "meaning": "Mở rộng ra nước ngoài",
+      "type": "Danh từ",
+      "example": {
+        "jp": "海外展開を加速しています。",
+        "vn": "có (người/động vật)."
+      }
+    },
+    {
+      "word": "海外進出",
+      "reading": "かいがいしんしゅつ",
+      "meaning": "Xuất khẩu đầu tư",
+      "type": "Danh từ",
+      "example": {
+        "jp": "海外進出を検討しています。",
+        "vn": "có (người/động vật)."
+      }
+    },
+    {
+      "word": "国際化",
+      "reading": "こくさいか",
+      "meaning": "Quốc tế hóa",
+      "type": "Danh từ",
+      "example": {
+        "jp": "国際化が進んでいます。",
+        "vn": "có (người/động vật)."
+      }
+    }
+  ]
+}

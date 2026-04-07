@@ -25,6 +25,8 @@ interface VocabularyFlashcardProps {
   onBackToTable: () => void;
   onResetCards?: () => void;
   onShuffleCards?: () => void;
+  onPrevCard?: () => void;
+  onNextCard?: () => void;
   // Voice settings for TTS
   femaleVoiceName?: string;
 }
@@ -42,6 +44,8 @@ const VocabularyFlashcard: React.FC<VocabularyFlashcardProps> = ({
   onBackToTable,
   onResetCards,
   onShuffleCards,
+  onPrevCard,
+  onNextCard,
   femaleVoiceName,
 }) => {
   const [settingsVisible, setSettingsVisible] = useState(false);
@@ -114,10 +118,30 @@ const VocabularyFlashcard: React.FC<VocabularyFlashcardProps> = ({
     }
   }, [autoSpeak, frontFace, isFlipped, getJapaneseText, speakJapaneseNow]);
 
-  // Warm up TTS once to reduce first-play delay
+  // Keyboard event handler for spacebar and arrow keys
   useEffect(() => {
-    warmUpTTS();
-  }, [warmUpTTS]);
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (settingsVisible) return; // Don't handle keys when settings modal is open
+      
+      switch (e.code) {
+        case 'Space':
+          e.preventDefault();
+          onFlipCard();
+          break;
+        case 'ArrowLeft':
+          e.preventDefault();
+          if (onPrevCard) onPrevCard();
+          break;
+        case 'ArrowRight':
+          e.preventDefault();
+          if (onNextCard) onNextCard();
+          break;
+      }
+    };
+    
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [onFlipCard, onPrevCard, onNextCard, settingsVisible]);
 
   // Prevent body scroll while fullscreen flashcard is open
   useEffect(() => {
@@ -273,7 +297,7 @@ const VocabularyFlashcard: React.FC<VocabularyFlashcardProps> = ({
       }}
     >
       <div
-        className="w-full max-w-[700px] sm:max-w-[720px] md:max-w-[760px] bg-slate-700 rounded-xl shadow-2xl flex flex-col overflow-hidden"
+        className="w-full max-w-[700px] sm:max-w-[720px] md:max-w-[760px] bg-white dark:bg-slate-700 rounded-xl shadow-2xl flex flex-col overflow-hidden border border-gray-200 dark:border-slate-600"
         style={{ transform: "scale(1)" }}
         onClick={(e) => e.stopPropagation()}
       >
@@ -288,9 +312,9 @@ const VocabularyFlashcard: React.FC<VocabularyFlashcardProps> = ({
               sm:h-[60vh]
               md:h-[65vh]
               rounded-t-3xl rounded-b-none
-              bg-slate-700
+              bg-white dark:bg-slate-700
               border-b
-              border-slate-500
+              border-gray-200 dark:border-slate-500
               shadow-lg
               transition-all
               cursor-pointer
@@ -306,16 +330,74 @@ const VocabularyFlashcard: React.FC<VocabularyFlashcardProps> = ({
               right-4
               p-3
               rounded-full
-              text-neutral-400
-              hover:text-neutral-700
-              dark:hover:text-neutral-200
+              text-gray-400 dark:text-neutral-400
+              hover:text-gray-700 dark:hover:text-neutral-200
               transition
-              hover:bg-neutral-100
-              dark:hover:bg-neutral-700
+              hover:bg-gray-100 dark:hover:bg-neutral-700
             "
             >
               <Volume2 className="w-5 h-5" />
             </button>
+
+            {/* NAVIGATION - PREVIOUS */}
+            {currentCardIndex > 0 && (
+              <button
+                onClick={(e) => {
+                  e.stopPropagation();
+                  if (onPrevCard) onPrevCard();
+                }}
+                className="
+                absolute
+                left-4
+                top-1/2
+                -translate-y-1/2
+                p-3
+                rounded-full
+                bg-white/80 dark:bg-slate-600/80
+                text-gray-600 dark:text-neutral-300
+                hover:text-gray-900 dark:hover:text-white
+                hover:bg-white dark:hover:bg-slate-500
+                transition
+                shadow-md
+                z-10
+              "
+                title="Thẻ trước (←)"
+              >
+                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                </svg>
+              </button>
+            )}
+
+            {/* NAVIGATION - NEXT */}
+            {currentCardIndex < cardsToStudy.length - 1 && (
+              <button
+                onClick={(e) => {
+                  e.stopPropagation();
+                  if (onNextCard) onNextCard();
+                }}
+                className="
+                absolute
+                right-4
+                top-1/2
+                -translate-y-1/2
+                p-3
+                rounded-full
+                bg-white/80 dark:bg-slate-600/80
+                text-gray-600 dark:text-neutral-300
+                hover:text-gray-900 dark:hover:text-white
+                hover:bg-white dark:hover:bg-slate-500
+                transition
+                shadow-md
+                z-10
+              "
+                title="Thẻ sau (→)"
+              >
+                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                </svg>
+              </button>
+            )}
 
             {/* FRONT */}
             {!isFlipped && (
@@ -324,7 +406,7 @@ const VocabularyFlashcard: React.FC<VocabularyFlashcardProps> = ({
                   className={`${getFrontContent().isVietnamese
                     ? "text-[26px] sm:text-[32px]"
                     : "text-[34px]"
-                    } font-semibold tracking-wide text-neutral-100 flex flex-col items-center`}
+                    } font-semibold tracking-wide text-gray-900 dark:text-neutral-100 flex flex-col items-center`}
                   style={
                     getFrontContent().isVietnamese
                       ? undefined
@@ -339,7 +421,7 @@ const VocabularyFlashcard: React.FC<VocabularyFlashcardProps> = ({
                     className={`mt-2 ${getFrontContent().isVietnamese
                       ? "text-[26px] sm:text-[32px]"
                       : "text-[34px]"
-                      } text-neutral-300`}
+                      } text-gray-500 dark:text-neutral-300`}
                     style={
                       getFrontContent().isVietnamese
                         ? undefined
@@ -357,7 +439,7 @@ const VocabularyFlashcard: React.FC<VocabularyFlashcardProps> = ({
                 )}
 
                 <div
-                  className="absolute bottom-4 text-[11px] text-neutral-400"
+                  className="absolute bottom-4 text-[11px] text-gray-400 dark:text-neutral-400"
                 >
                   {screens?.xs ? "Chạm để lật" : "Phím cách để lật"}
                 </div>
@@ -371,7 +453,7 @@ const VocabularyFlashcard: React.FC<VocabularyFlashcardProps> = ({
                   className={`${getBackContent().isVietnamese
                     ? "text-[26px] sm:text-[32px]"
                     : "text-[34px]"
-                    } font-semibold tracking-wide text-neutral-100 flex flex-col items-center`}
+                    } font-semibold tracking-wide text-gray-900 dark:text-neutral-100 flex flex-col items-center`}
                   style={
                     getBackContent().isVietnamese
                       ? undefined
@@ -386,7 +468,7 @@ const VocabularyFlashcard: React.FC<VocabularyFlashcardProps> = ({
                     className={`mt-2 ${getBackContent().isVietnamese
                       ? "text-[26px] sm:text-[32px]"
                       : "text-[34px]"
-                      } text-neutral-300`}
+                      } text-gray-500 dark:text-neutral-300`}
                     style={
                       getBackContent().isVietnamese
                         ? undefined
@@ -404,7 +486,7 @@ const VocabularyFlashcard: React.FC<VocabularyFlashcardProps> = ({
                 )}
 
                 <div
-                  className="absolute bottom-4 text-[11px] text-neutral-400 tracking-wide"
+                  className="absolute bottom-4 text-[11px] text-gray-400 dark:text-neutral-400 tracking-wide"
                 >
                   ← Chưa nhớ · Đã nhớ →
                 </div>
@@ -414,13 +496,13 @@ const VocabularyFlashcard: React.FC<VocabularyFlashcardProps> = ({
         </div>
 
         {/* ACTION BAR */}
-        <div className="flashcard-action-bar relative bg-slate-900 px-4 sm:px-8 pb-7 pt-4">
+        <div className="flashcard-action-bar relative bg-gray-100 dark:bg-slate-900 px-4 sm:px-8 pb-7 pt-4 border-t border-gray-200 dark:border-slate-700">
           <div className="flex items-center justify-between gap-4">
             <div className="flex items-center gap-2 w-[120px] justify-start">
               <Button
                 type="text"
                 size="large"
-                className="text-neutral-200 hover:text-white font-semibold hover:bg-white/10"
+                className="text-gray-600 dark:text-neutral-200 hover:text-gray-900 dark:hover:text-white font-semibold hover:bg-gray-200 dark:hover:bg-white/10"
                 icon={<Settings className="w-4 h-4" />}
                 onClick={() => setSettingsVisible(true)}
               />
@@ -436,10 +518,10 @@ const VocabularyFlashcard: React.FC<VocabularyFlashcardProps> = ({
                 rounded-2xl
                 border-2
                 border-red-400/70
-                bg-red-500/20
-                text-red-200
-                hover:border-red-300
-                hover:bg-red-500/30
+                bg-red-500/10 dark:bg-red-500/20
+                text-red-600 dark:text-red-200
+                hover:border-red-500
+                hover:bg-red-500/20 dark:hover:bg-red-500/30
                 hover:scale-105
                 active:scale-95
                 transition-all
@@ -450,15 +532,15 @@ const VocabularyFlashcard: React.FC<VocabularyFlashcardProps> = ({
               "
                 title="Chưa nhớ"
               >
-                <X className="w-5 h-5 text-red-100" />
+                <X className="w-5 h-5 text-red-500 dark:text-red-100" />
               </button>
 
               {/* Progress Counter */}
               <div className="min-w-[4.5rem] text-center">
-                <span className="inline-flex items-center rounded-full px-3 py-1 text-base font-semibold text-neutral-100">
+                <span className="inline-flex items-center rounded-full px-3 py-1 text-base font-semibold text-gray-800 dark:text-neutral-100">
                   {currentCardIndex + 1}
-                  <span className="mx-1 text-neutral-400">/</span>
-                  <span className="text-neutral-300">
+                  <span className="mx-1 text-gray-400 dark:text-neutral-400">/</span>
+                  <span className="text-gray-600 dark:text-neutral-300">
                     {cardsToStudy.length}
                   </span>
                 </span>
@@ -474,10 +556,10 @@ const VocabularyFlashcard: React.FC<VocabularyFlashcardProps> = ({
                 rounded-2xl
                 border-2
                 border-green-400/70
-                bg-green-500/20
-                text-green-200
-                hover:border-green-300
-                hover:bg-green-500/30
+                bg-green-500/10 dark:bg-green-500/20
+                text-green-600 dark:text-green-200
+                hover:border-green-500
+                hover:bg-green-500/20 dark:hover:bg-green-500/30
                 hover:scale-105
                 active:scale-95
                 transition-all
@@ -488,7 +570,7 @@ const VocabularyFlashcard: React.FC<VocabularyFlashcardProps> = ({
               "
                 title="Đã nhớ"
               >
-                <Check className="w-5 h-5 text-green-100" />
+                <Check className="w-5 h-5 text-green-500 dark:text-green-100" />
               </button>
             </div>
             <div className="flex items-center gap-2 justify-end w-[120px]">
@@ -496,7 +578,7 @@ const VocabularyFlashcard: React.FC<VocabularyFlashcardProps> = ({
                 <Button
                   type="text"
                   size="large"
-                  className="text-neutral-200 hover:text-white font-semibold hover:bg-white/10"
+                  className="text-gray-600 dark:text-neutral-200 hover:text-gray-900 dark:hover:text-white font-semibold hover:bg-gray-200 dark:hover:bg-white/10"
                   icon={<RotateCcw className="w-4 h-4" />}
                   onClick={onResetCards}
                 />
@@ -505,7 +587,7 @@ const VocabularyFlashcard: React.FC<VocabularyFlashcardProps> = ({
                 <Button
                   type="text"
                   size="large"
-                  className="text-neutral-200 hover:text-white font-semibold hover:bg-white/10"
+                  className="text-gray-600 dark:text-neutral-200 hover:text-gray-900 dark:hover:text-white font-semibold hover:bg-gray-200 dark:hover:bg-white/10"
                   icon={<Shuffle className="w-4 h-4" />}
                   onClick={onShuffleCards}
                 />
@@ -513,7 +595,7 @@ const VocabularyFlashcard: React.FC<VocabularyFlashcardProps> = ({
             </div>
           </div>
           <div className="absolute bottom-0 left-0 right-0">
-            <div className="h-1.5 w-full bg-neutral-200 dark:bg-neutral-700 rounded-full overflow-hidden">
+            <div className="h-1.5 w-full bg-gray-200 dark:bg-neutral-700 rounded-full overflow-hidden">
               <div
                 className="h-full bg-blue-500 transition-all duration-300 ease-out"
                 style={{
@@ -528,36 +610,40 @@ const VocabularyFlashcard: React.FC<VocabularyFlashcardProps> = ({
 
       {/* Settings Modal */}
       <Modal
-        title="Cài đặt Flashcard"
+        title={<span className="text-gray-900 dark:text-white">Cài đặt Flashcard</span>}
         open={settingsVisible}
         onCancel={() => setSettingsVisible(false)}
         footer={null}
         width={480}
-        style={{ top: 50 }}
         className="flashcard-settings-modal"
-        wrapClassName="flashcard-settings-wrap"
-        getContainer={false}
         styles={{
+          mask: {
+            backgroundColor: "rgba(30, 58, 138, 0.25)",
+            backdropFilter: "blur(4px)",
+          },
           body: {
-            background: "rgba(15, 23, 42, 0.6)",
+            background: "transparent",
             padding: 0,
             maxHeight: "none",
             overflowY: "visible",
           },
+          header: {
+            background: "transparent",
+            borderBottom: "1px solid rgba(148, 163, 184, 0.2)",
+          },
         }}
       >
-        <div className="rounded-xl  border-slate-700 bg-slate-1000 p-6 space-y-5 text-white shadow-2xl">
+        <div className="rounded-xl border border-gray-200 dark:border-slate-700 bg-white dark:bg-slate-900 p-6 space-y-5 text-gray-900 dark:text-white shadow-2xl">
           {/* Front Face Setting */}
-          <div className="rounded-xl border border-slate-700 bg-slate-800/80 p-4">
+          <div className="rounded-xl border border-gray-200 dark:border-slate-700 bg-gray-50 dark:bg-slate-800/80 p-4">
             <div className="flex items-center justify-between gap-3">
               <div>
                 <Text
-                  className="font-semibold text-white"
-                  style={{ textShadow: "0 1px 6px rgba(0,0,0,0.45)" }}
+                  className="font-semibold text-gray-900 dark:text-white"
                 >
                   Mặt trước
                 </Text>
-                <div className="text-xs text-white/80">
+                <div className="text-xs text-gray-500 dark:text-white/80">
                   Chọn nội dung hiển thị khi mở thẻ
                 </div>
               </div>
@@ -565,7 +651,7 @@ const VocabularyFlashcard: React.FC<VocabularyFlashcardProps> = ({
                 value={frontFace}
                 onChange={setFrontFace}
                 style={{ width: 140 }}
-                className="flashcard-settings-select-trigger bg-slate-900"
+                className="flashcard-settings-select-trigger bg-white dark:bg-slate-900"
                 getPopupContainer={(trigger) =>
                   trigger.parentElement || document.body
                 }
@@ -580,16 +666,15 @@ const VocabularyFlashcard: React.FC<VocabularyFlashcardProps> = ({
           </div>
 
           {/* Example Visibility */}
-          <div className="rounded-xl border border-slate-700 bg-slate-800/80 p-4">
+          <div className="rounded-xl border border-gray-200 dark:border-slate-700 bg-gray-50 dark:bg-slate-800/80 p-4">
             <div className="flex items-center justify-between gap-4">
               <div>
                 <Text
-                  className="font-semibold text-white"
-                  style={{ textShadow: "0 1px 6px rgba(0,0,0,0.45)" }}
+                  className="font-semibold text-gray-900 dark:text-white"
                 >
                   Hiển thị ví dụ
                 </Text>
-                <div className="text-sm text-white/80">
+                <div className="text-sm text-gray-500 dark:text-white/80">
                   Áp dụng cho cả mặt tiếng Nhật và tiếng Việt
                 </div>
               </div>
@@ -604,16 +689,15 @@ const VocabularyFlashcard: React.FC<VocabularyFlashcardProps> = ({
           </div>
 
           {/* Auto Speak Setting */}
-          <div className="rounded-xl border border-slate-700 bg-slate-800/80 p-4">
+          <div className="rounded-xl border border-gray-200 dark:border-slate-700 bg-gray-50 dark:bg-slate-800/80 p-4">
             <div className="flex items-center justify-between gap-4">
               <div>
                 <Text
-                  className="font-semibold text-white"
-                  style={{ textShadow: "0 1px 6px rgba(0,0,0,0.45)" }}
+                  className="font-semibold text-gray-900 dark:text-white"
                 >
                   Chuyển văn bản thành lời nói
                 </Text>
-                <div className="text-sm text-white/80">
+                <div className="text-sm text-gray-500 dark:text-white/80">
                   Tự động phát âm khi lật sang mặt tiếng Nhật
                 </div>
               </div>
@@ -622,7 +706,7 @@ const VocabularyFlashcard: React.FC<VocabularyFlashcardProps> = ({
           </div>
 
           {/* Action Buttons */}
-          <div className="rounded-xl border border-slate-700 bg-slate-800/60 p-4 space-y-3">
+          <div className="rounded-xl border border-gray-200 dark:border-slate-700 bg-gray-50 dark:bg-slate-800/60 p-4 space-y-3">
             <Button
               type="default"
               block

@@ -1,7 +1,8 @@
 import React from 'react';
 import { KanjiItem } from '../../../types/kanji';
 import KanjiCard from '../KanjiCard';
-import { Button, Empty, Spin } from 'antd';
+import { Button, Spin } from 'antd';
+import { EmptyState } from '../../common';
 
 interface KanjiListProps {
     kanjiList: KanjiItem[];
@@ -34,8 +35,8 @@ const KanjiList: React.FC<KanjiListProps> = ({
 
     if (kanjiList.length === 0) {
         return (
-            <div className="text-center rounded-2xl border border-[#e6e8ee] dark:border-[#3d4a63] bg-white/80 dark:bg-[#1c212a]/80 py-12">
-                <Empty
+            <div className="text-center rounded-2xl border border-border bg-surface-1 py-12">
+                <EmptyState
                     description={
                         <span className="text-secondary-700 dark:text-secondary-400">Không tìm thấy Hán tự nào</span>
                     }
@@ -45,7 +46,7 @@ const KanjiList: React.FC<KanjiListProps> = ({
     }
 
     return (
-        <div className="rounded-2xl border border-[#e6e8ee] dark:border-[#3d4a63] bg-white/90 dark:bg-[#1c212a]/90 p-3 sm:p-4">
+        <div className="rounded-2xl border border-border bg-surface-1 p-3 sm:p-4">
             <div className="mb-3 flex items-center justify-between gap-2">
                 <span className="text-xs sm:text-sm text-secondary-600 dark:text-secondary-400">
                     {selectedLevels.length === 0

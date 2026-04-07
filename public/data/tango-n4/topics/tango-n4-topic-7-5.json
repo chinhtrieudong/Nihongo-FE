@@ -1,0 +1,210 @@
+{
+  "textbookId": "tango-n4",
+  "chapterId": 7,
+  "topicId": "topic-7-5",
+  "topicName": "サービス",
+  "topicNameVi": "Dịch vụ",
+  "vocabCount": 20,
+  "words": [
+    {
+      "word": "サービス",
+      "reading": "サービス",
+      "meaning": "Dịch vụ",
+      "type": "Danh từ",
+      "example": {
+        "jp": "サービスが良いです。",
+        "vn": "là."
+      }
+    },
+    {
+      "word": "接客",
+      "reading": "せっきゃく",
+      "meaning": "Phục vụ khách",
+      "type": "Danh động từ",
+      "example": {
+        "jp": "接客が丁寧です。",
+        "vn": "là."
+      }
+    },
+    {
+      "word": "対応",
+      "reading": "たいおう",
+      "meaning": "Đối ứng",
+      "type": "Danh động từ",
+      "example": {
+        "jp": "対応が素早いです。",
+        "vn": "là."
+      }
+    },
+    {
+      "word": "アフターサービス",
+      "reading": "アフターサービス",
+      "meaning": "Dịch vụ sau bán",
+      "type": "Danh từ",
+      "example": {
+        "jp": "アフターサービスが充実しています。",
+        "vn": "có (người/động vật)."
+      }
+    },
+    {
+      "word": "保証",
+      "reading": "ほしょう",
+      "meaning": "Bảo hành",
+      "type": "Danh động từ",
+      "example": {
+        "jp": "保証が付いています。",
+        "vn": "có (người/động vật)."
+      }
+    },
+    {
+      "word": "保証期間",
+      "reading": "ほしょうきかん",
+      "meaning": "Thời hạn bảo hành",
+      "type": "Danh từ",
+      "example": {
+        "jp": "保証期間は1年です。",
+        "vn": "là."
+      }
+    },
+    {
+      "word": "修理",
+      "reading": "しゅうり",
+      "meaning": "Sửa chữa",
+      "type": "Danh động từ",
+      "example": {
+        "jp": "修理に出しました。",
+        "vn": "đã (quá khứ)."
+      }
+    },
+    {
+      "word": "交換",
+      "reading": "こうかん",
+      "meaning": "Đổi",
+      "type": "Danh động từ",
+      "example": {
+        "jp": "交換してもらいました。",
+        "vn": "đã (quá khứ)."
+      }
+    },
+    {
+      "word": "返品",
+      "reading": "へんぴん",
+      "meaning": "Trả hàng",
+      "type": "Danh động từ",
+      "example": {
+        "jp": "返品しました。",
+        "vn": "đã (quá khứ)."
+      }
+    },
+    {
+      "word": "返金",
+      "reading": "へんきん",
+      "meaning": "Hoàn tiền",
+      "type": "Danh động từ",
+      "example": {
+        "jp": "返金してもらいました。",
+        "vn": "đã (quá khứ)."
+      }
+    },
+    {
+      "word": "クレーム",
+      "reading": "クレーム",
+      "meaning": "Khiếu nại",
+      "type": "Danh từ",
+      "example": {
+        "jp": "クレームを付けました。",
+        "vn": "đã (quá khứ)."
+      }
+    },
+    {
+      "word": "苦情",
+      "reading": "くじょう",
+      "meaning": "Phàn nàn",
+      "type": "Danh từ",
+      "example": {
+        "jp": "苦情を言いました。",
+        "vn": "đã (quá khứ)."
+      }
+    },
+    {
+      "word": "相談",
+      "reading": "そうだん",
+      "meaning": "Tư vấn",
+      "type": "Danh động từ",
+      "example": {
+        "jp": "相談に乗ってもらいました。",
+        "vn": "đã (quá khứ)."
+      }
+    },
+    {
+      "word": "案内",
+      "reading": "あんない",
+      "meaning": "Hướng dẫn",
+      "type": "Danh động từ",
+      "example": {
+        "jp": "親切に案内してくれました。",
+        "vn": "đã (quá khứ)."
+      }
+    },
+    {
+      "word": "説明",
+      "reading": "せつめい",
+      "meaning": "Giải thích",
+      "type": "Danh động từ",
+      "example": {
+        "jp": "詳しく説明してくれました。",
+        "vn": "đã (quá khứ)."
+      }
+    },
+    {
+      "word": "配達",
+      "reading": "はいたつ",
+      "meaning": "Giao hàng",
+      "type": "Danh động từ",
+      "example": {
+        "jp": "配達してもらいました。",
+        "vn": "đã (quá khứ)."
+      }
+    },
+    {
+      "word": "宅配",
+      "reading": "たくはい",
+      "meaning": "Chuyển phát",
+      "type": "Danh động từ",
+      "example": {
+        "jp": "宅配で届きました。",
+        "vn": "đã (quá khứ)."
+      }
+    },
+    {
+      "word": "送料無料",
+      "reading": "そうりょうむりょう",
+      "meaning": "Miễn phí ship",
+      "type": "Danh từ",
+      "example": {
+        "jp": "送料無料です。",
+        "vn": "là."
+      }
+    },
+    {
+      "word": "ラッピング",
+      "reading": "ラッピング",
+      "meaning": "Gói quà",
+      "type": "Danh động từ",
+      "example": {
+        "jp": "ラッピングしてもらいました。",
+        "vn": "đã (quá khứ)."
+      }
+    },
+    {
+      "word": "ポイント",
+      "reading": "ポイント",
+      "meaning": "Điểm thưởng",
+      "type": "Danh từ",
+      "example": {
+        "jp": "ポイントが貯まりました。",
+        "vn": "đã (quá khứ)."
+      }
+    }
+  ]
+}

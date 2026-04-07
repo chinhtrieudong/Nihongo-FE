@@ -1,0 +1,210 @@
+{
+  "textbookId": "tango-n4",
+  "chapterId": 4,
+  "topicId": "topic-4-5",
+  "topicName": "驚き",
+  "topicNameVi": "Ngạc nhiên",
+  "vocabCount": 20,
+  "words": [
+    {
+      "word": "驚き",
+      "reading": "おどろき",
+      "meaning": "Sự ngạc nhiên",
+      "type": "Danh từ",
+      "example": {
+        "jp": "驚きの表情です。",
+        "vn": "là."
+      }
+    },
+    {
+      "word": "驚く",
+      "reading": "おどろく",
+      "meaning": "Ngạc nhiên",
+      "type": "Động từ",
+      "example": {
+        "jp": "驚きました。",
+        "vn": "đã (quá khứ)."
+      }
+    },
+    {
+      "word": "びっくり",
+      "reading": "びっくり",
+      "meaning": "Giật mình",
+      "type": "Phó từ",
+      "example": {
+        "jp": "びっくりしました。",
+        "vn": "đã (quá khứ)."
+      }
+    },
+    {
+      "word": "吃驚",
+      "reading": "びっくり",
+      "meaning": "Ngạc nhiên",
+      "type": "Danh động từ",
+      "example": {
+        "jp": "吃驚しました。",
+        "vn": "đã (quá khứ)."
+      }
+    },
+    {
+      "word": "驚愕",
+      "reading": "きょうがく",
+      "meaning": "Kinh ngạc",
+      "type": "Danh động từ",
+      "example": {
+        "jp": "驚愕しました。",
+        "vn": "đã (quá khứ)."
+      }
+    },
+    {
+      "word": "唖然",
+      "reading": "あぜん",
+      "meaning": "Sửng sốt",
+      "type": "Danh từ",
+      "example": {
+        "jp": "唖然としました。",
+        "vn": "đã (quá khứ)."
+      }
+    },
+    {
+      "word": "呆然",
+      "reading": "ぼうぜん",
+      "meaning": "Ngơ ngác",
+      "type": "Danh từ",
+      "example": {
+        "jp": "呆然としています。",
+        "vn": "có (người/động vật)."
+      }
+    },
+    {
+      "word": "愕然",
+      "reading": "がくぜん",
+      "meaning": "Sửng sốt",
+      "type": "Danh từ",
+      "example": {
+        "jp": "愕然としました。",
+        "vn": "đã (quá khứ)."
+      }
+    },
+    {
+      "word": "信じられない",
+      "reading": "しんじられない",
+      "meaning": "Không thể tin",
+      "type": "Cụm động từ",
+      "example": {
+        "jp": "信じられない。",
+        "vn": ""
+      }
+    },
+    {
+      "word": "意外",
+      "reading": "いがい",
+      "meaning": "Bất ngờ",
+      "type": "Danh từ",
+      "example": {
+        "jp": "意外な結果です。",
+        "vn": "là."
+      }
+    },
+    {
+      "word": "予想外",
+      "reading": "よそうがい",
+      "meaning": "Ngoài dự kiến",
+      "type": "Danh từ",
+      "example": {
+        "jp": "予想外でした。",
+        "vn": "đã là (quá khứ)."
+      }
+    },
+    {
+      "word": "想定外",
+      "reading": "そうていがい",
+      "meaning": "Ngoài tầm dự đoán",
+      "type": "Danh từ",
+      "example": {
+        "jp": "想定外の事態です。",
+        "vn": "là."
+      }
+    },
+    {
+      "word": "予期せぬ",
+      "reading": "よきせぬ",
+      "meaning": "Không lường trước",
+      "type": "Tính từ",
+      "example": {
+        "jp": "予期せぬ展開です。",
+        "vn": "là."
+      }
+    },
+    {
+      "word": "突然",
+      "reading": "とつぜん",
+      "meaning": "Đột ngột",
+      "type": "Phó từ",
+      "example": {
+        "jp": "突然でした。",
+        "vn": "đã là (quá khứ)."
+      }
+    },
+    {
+      "word": "急に",
+      "reading": "きゅうに",
+      "meaning": "Đột nhiên",
+      "type": "Phó từ",
+      "example": {
+        "jp": "急に変わりました。",
+        "vn": "đã (quá khứ)."
+      }
+    },
+    {
+      "word": "あっと言う間",
+      "reading": "あっというま",
+      "meaning": "Chớp mắt",
+      "type": "Cụm danh từ",
+      "example": {
+        "jp": "あっと言う間でした。",
+        "vn": "đã là (quá khứ)."
+      }
+    },
+    {
+      "word": "目を見張る",
+      "reading": "めをみはる",
+      "meaning": "Tròn mắt",
+      "type": "Cụm động từ",
+      "example": {
+        "jp": "目を見張りました。",
+        "vn": "đã (quá khứ)."
+      }
+    },
+    {
+      "word": "驚きの声",
+      "reading": "おどろきのこえ",
+      "meaning": "Tiếng la ngạc nhiên",
+      "type": "Cụm danh từ",
+      "example": {
+        "jp": "驚きの声を上げました。",
+        "vn": "đã (quá khứ)."
+      }
+    },
+    {
+      "word": "目が丸くなる",
+      "reading": "めがまるくなる",
+      "meaning": "Mắt tròn xoe",
+      "type": "Cụm động từ",
+      "example": {
+        "jp": "目が丸くなりました。",
+        "vn": "đã (quá khứ)."
+      }
+    },
+    {
+      "word": "口が開く",
+      "reading": "くちがあく",
+      "meaning": "Mồm há mỏ",
+      "type": "Cụm động từ",
+      "example": {
+        "jp": "口が開きました。",
+        "vn": "đã (quá khứ)."
+      }
+    }
+  ]
+}

@@ -60,7 +60,6 @@ export default defineConfig({
             "axios",
             "framer-motion",
             "wanakana",
-            "hanzi-writer",
             "kanjivg-js",
           ],
         },

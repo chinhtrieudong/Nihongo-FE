@@ -1,0 +1,210 @@
+{
+  "textbookId": "tango-n4",
+  "chapterId": 2,
+  "topicId": "topic-2-1",
+  "topicName": "顔",
+  "topicNameVi": "Khuôn mặt",
+  "vocabCount": 20,
+  "words": [
+    {
+      "word": "顔",
+      "reading": "かお",
+      "meaning": "Khuôn mặt",
+      "type": "Danh từ",
+      "example": {
+        "jp": "顔が大きいです。",
+        "vn": "là."
+      }
+    },
+    {
+      "word": "目",
+      "reading": "め",
+      "meaning": "Mắt",
+      "type": "Danh từ",
+      "example": {
+        "jp": "目が大きいです。",
+        "vn": "là."
+      }
+    },
+    {
+      "word": "鼻",
+      "reading": "はな",
+      "meaning": "Mũi",
+      "type": "Danh từ",
+      "example": {
+        "jp": "鼻が高いです。",
+        "vn": "là."
+      }
+    },
+    {
+      "word": "口",
+      "reading": "くち",
+      "meaning": "Miệng",
+      "type": "Danh từ",
+      "example": {
+        "jp": "口が小さいです。",
+        "vn": "là."
+      }
+    },
+    {
+      "word": "耳",
+      "reading": "みみ",
+      "meaning": "Tai",
+      "type": "Danh từ",
+      "example": {
+        "jp": "耳が大きいです。",
+        "vn": "là."
+      }
+    },
+    {
+      "word": "額",
+      "reading": "ひたい",
+      "meaning": "Trán",
+      "type": "Danh từ",
+      "example": {
+        "jp": "額が広いです。",
+        "vn": "là."
+      }
+    },
+    {
+      "word": "頬",
+      "reading": "ほお",
+      "meaning": "Má",
+      "type": "Danh từ",
+      "example": {
+        "jp": "頬が赤いです。",
+        "vn": "là."
+      }
+    },
+    {
+      "word": "顎",
+      "reading": "あご",
+      "meaning": "Cằm",
+      "type": "Danh từ",
+      "example": {
+        "jp": "顎が尖っています。",
+        "vn": "có (người/động vật)."
+      }
+    },
+    {
+      "word": "眉",
+      "reading": "まゆ",
+      "meaning": "Lông mày",
+      "type": "Danh từ",
+      "example": {
+        "jp": "眉が太いです。",
+        "vn": "là."
+      }
+    },
+    {
+      "word": "睫毛",
+      "reading": "まつげ",
+      "meaning": "Lông mi",
+      "type": "Danh từ",
+      "example": {
+        "jp": "睫毛が長いです。",
+        "vn": "là."
+      }
+    },
+    {
+      "word": "丸顔",
+      "reading": "まるがお",
+      "meaning": "Mặt tròn",
+      "type": "Danh từ",
+      "example": {
+        "jp": "丸顔です。",
+        "vn": "là."
+      }
+    },
+    {
+      "word": "四角顔",
+      "reading": "しかくがお",
+      "meaning": "Mặt vuông",
+      "type": "Danh từ",
+      "example": {
+        "jp": "四角顔です。",
+        "vn": "là."
+      }
+    },
+    {
+      "word": "卵型",
+      "reading": "らんけい",
+      "meaning": "Mặt trái xoan",
+      "type": "Danh từ",
+      "example": {
+        "jp": "卵型の顔です。",
+        "vn": "là."
+      }
+    },
+    {
+      "word": "シミ",
+      "reading": "シミ",
+      "meaning": "Vết tàn nhang",
+      "type": "Danh từ",
+      "example": {
+        "jp": "シミがあります。",
+        "vn": "có."
+      }
+    },
+    {
+      "word": "しわ",
+      "reading": "しわ",
+      "meaning": "Nếp nhăn",
+      "type": "Danh từ",
+      "example": {
+        "jp": "しわが増えました。",
+        "vn": "đã (quá khứ)."
+      }
+    },
+    {
+      "word": "ほくろ",
+      "reading": "ほくろ",
+      "meaning": "Nốt ruồi",
+      "type": "Danh từ",
+      "example": {
+        "jp": "ほくろがあります。",
+        "vn": "có."
+      }
+    },
+    {
+      "word": "日焼け",
+      "reading": "ひやけ",
+      "meaning": "Rám nắng",
+      "type": "Danh động từ",
+      "example": {
+        "jp": "日焼けしました。",
+        "vn": "đã (quá khứ)."
+      }
+    },
+    {
+      "word": "化粧",
+      "reading": "けしょう",
+      "meaning": "Trang điểm",
+      "type": "Danh động từ",
+      "example": {
+        "jp": "化粧をしています。",
+        "vn": "có (người/động vật)."
+      }
+    },
+    {
+      "word": "化粧品",
+      "reading": "けしょうひん",
+      "meaning": "Mỹ phẩm",
+      "type": "Danh từ",
+      "example": {
+        "jp": "化粧品を買いました。",
+        "vn": "đã (quá khứ)."
+      }
+    },
+    {
+      "word": "化粧水",
+      "reading": "けしょうすい",
+      "meaning": "Nước hoa hồng",
+      "type": "Danh từ",
+      "example": {
+        "jp": "化粧水をつけます。",
+        "vn": "(đuôi lịch sự)"
+      }
+    }
+  ]
+}

@@ -1,0 +1,110 @@
+{
+  "textbookId": "speed-master-n2",
+  "chapterId": 1,
+  "topicId": "topic-1-1",
+  "topicName": "政治制度",
+  "topicNameVi": "Chính trị",
+  "vocabCount": 30,
+  "words": [
+    {
+      "word": "政権",
+      "reading": "せいけん",
+      "meaning": "Chính quyền",
+      "type": "Danh từ",
+      "example": {
+        "jp": "新政権が発足しました。",
+        "vn": "đã (quá khứ)."
+      }
+    },
+    {
+      "word": "政令",
+      "reading": "せいれい",
+      "meaning": "Nghị định chính phủ",
+      "type": "Danh từ",
+      "example": {
+        "jp": "政令が公布された。",
+        "vn": ""
+      }
+    },
+    {
+      "word": "国会",
+      "reading": "こっかい",
+      "meaning": "Quốc hội",
+      "type": "Danh từ",
+      "example": {
+        "jp": "国会が開会しました。",
+        "vn": "đã (quá khứ)."
+      }
+    },
+    {
+      "word": "法案",
+      "reading": "ほうあん",
+      "meaning": "Dự luật",
+      "type": "Danh từ",
+      "example": {
+        "jp": "法案が可決されました。",
+        "vn": "đã (quá khứ)."
+      }
+    },
+    {
+      "word": "内閣",
+      "reading": "ないかく",
+      "meaning": "Nội các",
+      "type": "Danh từ",
+      "example": {
+        "jp": "内閣が総辞職した。",
+        "vn": ""
+      }
+    },
+    {
+      "word": "官僚",
+      "reading": "かんりょう",
+      "meaning": "Quan lại",
+      "type": "Danh từ",
+      "example": {
+        "jp": "官僚主義が問題だ。",
+        "vn": ""
+      }
+    },
+    {
+      "word": "議員",
+      "reading": "ぎいん",
+      "meaning": "Nghị viên",
+      "type": "Danh từ",
+      "example": {
+        "jp": "国会議員です。",
+        "vn": "là."
+      }
+    },
+    {
+      "word": "選挙",
+      "reading": "せんきょ",
+      "meaning": "Bầu cử",
+      "type": "Danh động từ",
+      "example": {
+        "jp": "選挙に出馬します。",
+        "vn": "(đuôi lịch sự)"
+      }
+    },
+    {
+      "word": "投票",
+      "reading": "とうひょう",
+      "meaning": "Bỏ phiếu",
+      "type": "Danh động từ",
+      "example": {
+        "jp": "投票に行きました。",
+        "vn": "đã (quá khứ)."
+      }
+    },
+    {
+      "word": "与党",
+      "reading": "よとう",
+      "meaning": "Đảng cầm quyền",
+      "type": "Danh từ",
+      "example": {
+        "jp": "与党が法案を通した。",
+        "vn": ""
+      }
+    }
+  ]
+}

@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
-import { Card, Table, Typography, Button, Spin, Empty, Tag, Tooltip, Space } from "antd";
+import { Card, Table, Typography, Button, Spin, Tag, Tooltip, Space } from "antd";
 import { Volume2, Book } from "lucide-react";
 import { vocabularyAPI } from "../../services/api";
+import { EmptyState } from "../common";
 import type { VocabularyItem } from "../../types/lesson";
 import { speakText } from "../../utils/vocabularyUtils";
 import { useAppSelector } from "../../store/hooks";
@@ -217,7 +218,7 @@ const VocabularyList: React.FC<VocabularyListProps> = ({
   if (vocabulary.length === 0) {
     return (
       <div className="flex justify-center items-center p-8">
-        <Empty description="Không có từ vựng cho bài học này" />
+        <EmptyState description="Không có từ vựng cho bài học này" />
       </div>
     );
   }

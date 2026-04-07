@@ -1,0 +1,210 @@
+{
+  "textbookId": "tango-n4",
+  "chapterId": 9,
+  "topicId": "topic-9-1",
+  "topicName": "体",
+  "topicNameVi": "Cơ thể",
+  "vocabCount": 20,
+  "words": [
+    {
+      "word": "体",
+      "reading": "からだ",
+      "meaning": "Cơ thể",
+      "type": "Danh từ",
+      "example": {
+        "jp": "体を動かします。",
+        "vn": "(đuôi lịch sự)"
+      }
+    },
+    {
+      "word": "健康",
+      "reading": "けんこう",
+      "meaning": "Sức khỏe",
+      "type": "Danh từ",
+      "example": {
+        "jp": "健康に気をつけます。",
+        "vn": "(đuôi lịch sự)"
+      }
+    },
+    {
+      "word": "頭",
+      "reading": "あたま",
+      "meaning": "Đầu",
+      "type": "Danh từ",
+      "example": {
+        "jp": "頭が痛いです。",
+        "vn": "là."
+      }
+    },
+    {
+      "word": "顔",
+      "reading": "かお",
+      "meaning": "Mặt",
+      "type": "Danh từ",
+      "example": {
+        "jp": "顔を洗います。",
+        "vn": "có (người/động vật)."
+      }
+    },
+    {
+      "word": "目",
+      "reading": "め",
+      "meaning": "Mắt",
+      "type": "Danh từ",
+      "example": {
+        "jp": "目が疲れました。",
+        "vn": "đã (quá khứ)."
+      }
+    },
+    {
+      "word": "耳",
+      "reading": "みみ",
+      "meaning": "Tai",
+      "type": "Danh từ",
+      "example": {
+        "jp": "耳が遠いです。",
+        "vn": "là."
+      }
+    },
+    {
+      "word": "鼻",
+      "reading": "はな",
+      "meaning": "Mũi",
+      "type": "Danh từ",
+      "example": {
+        "jp": "鼻が詰まっています。",
+        "vn": "có (người/động vật)."
+      }
+    },
+    {
+      "word": "口",
+      "reading": "くち",
+      "meaning": "Miệng",
+      "type": "Danh từ",
+      "example": {
+        "jp": "口が渇きました。",
+        "vn": "đã (quá khứ)."
+      }
+    },
+    {
+      "word": "歯",
+      "reading": "は",
+      "meaning": "Răng",
+      "type": "Danh từ",
+      "example": {
+        "jp": "歯が痛いです。",
+        "vn": "là."
+      }
+    },
+    {
+      "word": "首",
+      "reading": "くび",
+      "meaning": "Cổ",
+      "type": "Danh từ",
+      "example": {
+        "jp": "首が凝っています。",
+        "vn": "có (người/động vật)."
+      }
+    },
+    {
+      "word": "肩",
+      "reading": "かた",
+      "meaning": "Vai",
+      "type": "Danh từ",
+      "example": {
+        "jp": "肩がこりました。",
+        "vn": "đã (quá khứ)."
+      }
+    },
+    {
+      "word": "腕",
+      "reading": "うで",
+      "meaning": "Tay",
+      "type": "Danh từ",
+      "example": {
+        "jp": "腕を上げます。",
+        "vn": "(đuôi lịch sự)"
+      }
+    },
+    {
+      "word": "手",
+      "reading": "て",
+      "meaning": "Bàn tay",
+      "type": "Danh từ",
+      "example": {
+        "jp": "手を洗います。",
+        "vn": "có (người/động vật)."
+      }
+    },
+    {
+      "word": "指",
+      "reading": "ゆび",
+      "meaning": "Ngón tay",
+      "type": "Danh từ",
+      "example": {
+        "jp": "指をけがしました。",
+        "vn": "đã (quá khứ)."
+      }
+    },
+    {
+      "word": "胸",
+      "reading": "むね",
+      "meaning": "Ngực",
+      "type": "Danh từ",
+      "example": {
+        "jp": "胸が苦しいです。",
+        "vn": "là."
+      }
+    },
+    {
+      "word": "腹",
+      "reading": "はら",
+      "meaning": "Bụng",
+      "type": "Danh từ",
+      "example": {
+        "jp": "腹が減りました。",
+        "vn": "đã (quá khứ)."
+      }
+    },
+    {
+      "word": "背中",
+      "reading": "せなか",
+      "meaning": "Lưng",
+      "type": "Danh từ",
+      "example": {
+        "jp": "背中が痛いです。",
+        "vn": "là."
+      }
+    },
+    {
+      "word": "腰",
+      "reading": "こし",
+      "meaning": "Eo",
+      "type": "Danh từ",
+      "example": {
+        "jp": "腰が痛いです。",
+        "vn": "là."
+      }
+    },
+    {
+      "word": "足",
+      "reading": "あし",
+      "meaning": "Chân",
+      "type": "Danh từ",
+      "example": {
+        "jp": "足が疲れました。",
+        "vn": "đã (quá khứ)."
+      }
+    },
+    {
+      "word": "脚",
+      "reading": "きゃく",
+      "meaning": "Bàn chân",
+      "type": "Danh từ",
+      "example": {
+        "jp": "脚を怪我しました。",
+        "vn": "đã (quá khứ)."
+      }
+    }
+  ]
+}

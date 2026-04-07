@@ -1,0 +1,136 @@
+{
+  "lesson": 11,
+  "topic": "Số lượng & Cách đếm vật",
+  "vocabulary": [
+    {
+      "id": "n5_l11_001",
+      "word": "一つ",
+      "reading": "ひとつ",
+      "hanViet": "Nhất",
+      "meaning": "một cái",
+      "type": "other",
+      "category": "Số Đếm Vật",
+      "example": {
+        "jp": "りんごを一つください。",
+        "vn": "Cho tôi một quả táo."
+      }
+    },
+    {
+      "id": "n5_l11_002",
+      "word": "二つ",
+      "reading": "ふたつ",
+      "hanViet": "Nhị",
+      "meaning": "hai cái",
+      "type": "other",
+      "category": "Số Đếm Vật",
+      "example": {
+        "jp": "ペンが二つあります。",
+        "vn": "Có hai cây bút."
+      }
+    },
+    {
+      "id": "n5_l11_003",
+      "word": "三つ",
+      "reading": "みっつ",
+      "hanViet": "Tam",
+      "meaning": "ba cái",
+      "type": "other",
+      "category": "Số Đếm Vật",
+      "example": {
+        "jp": "本が三つあります。",
+        "vn": "Có ba cuốn sách."
+      }
+    },
+    {
+      "id": "n5_l11_004",
+      "word": "四つ",
+      "reading": "よっつ",
+      "hanViet": "Tứ",
+      "meaning": "bốn cái",
+      "type": "other",
+      "category": "Số Đếm Vật",
+      "example": {
+        "jp": "ボールが四つあります。",
+        "vn": "Có bốn quả bóng."
+      }
+    },
+    {
+      "id": "n5_l11_005",
+      "word": "五つ",
+      "reading": "いつつ",
+      "hanViet": "Ngũ",
+      "meaning": "năm cái",
+      "type": "other",
+      "category": "Số Đếm Vật",
+      "example": {
+        "jp": "お菓子が五つあります。",
+        "vn": "Có năm cái bánh."
+      }
+    },
+    {
+      "id": "n5_l11_006",
+      "word": "六つ",
+      "reading": "むっつ",
+      "hanViet": "Lục",
+      "meaning": "sáu cái",
+      "type": "other",
+      "category": "Số Đếm Vật",
+      "example": {
+        "jp": "コップが六つあります。",
+        "vn": "Có sáu cái ly."
+      }
+    },
+    {
+      "id": "n5_l11_007",
+      "word": "七つ",
+      "reading": "ななつ",
+      "hanViet": "Thất",
+      "meaning": "bảy cái",
+      "type": "other",
+      "category": "Số Đếm Vật",
+      "example": {
+        "jp": "七つください。",
+        "vn": "Cho tôi bảy cái."
+      }
+    },
+    {
+      "id": "n5_l11_008",
+      "word": "八つ",
+      "reading": "やっつ",
+      "hanViet": "Bát",
+      "meaning": "tám cái",
+      "type": "other",
+      "category": "Số Đếm Vật",
+      "example": {
+        "jp": "八つあります。",
+        "vn": "Có tám cái."
+      }
+    },
+    {
+      "id": "n5_l11_009",
+      "word": "九つ",
+      "reading": "ここのつ",
+      "hanViet": "Cửu",
+      "meaning": "chín cái",
+      "type": "other",
+      "category": "Số Đếm Vật",
+      "example": {
+        "jp": "九つください。",
+        "vn": "Cho tôi chín cái."
+      }
+    },
+    {
+      "id": "n5_l11_010",
+      "word": "十",
+      "reading": "とお",
+      "hanViet": "Thập",
+      "meaning": "mười cái",
+      "type": "other",
+      "category": "Số Đếm Vật",
+      "example": {
+        "jp": "十あります。",
+        "vn": "Có mười cái."
+      }
+    }
+  ]
+}

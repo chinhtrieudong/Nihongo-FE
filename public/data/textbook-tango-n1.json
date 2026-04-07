@@ -1,0 +1,141 @@
+{
+  "textbookId": "tango-n1",
+  "name": "Tango N1 - 3000 Essential Words",
+  "description": "Sách 3000 từ vựng thiết yếu cho JLPT N1",
+  "level": "N1",
+  "totalLessons": 10,
+  "startLesson": 1,
+  "accentColor": "purple",
+  "chapters": [
+    {
+      "number": 1,
+      "title": "高度ビジネス",
+      "titleVi": "Kinh doanh cao cấp",
+      "vocab": 300,
+      "topics": [
+        {"name": "グローバル", "nameVi": "Toàn cầu hóa"},
+        {"name": "M&A", "nameVi": "M&A"},
+        {"name": "コーポレート", "nameVi": "Doanh nghiệp"},
+        {"name": "ガバナンス", "nameVi": "Quản trị"},
+        {"name": "コンプライアンス", "nameVi": "Tuân thủ"}
+      ]
+    },
+    {
+      "number": 2,
+      "title": "国際政治",
+      "titleVi": "Chính trị quốc tế",
+      "vocab": 300,
+      "topics": [
+        {"name": "安全保障", "nameVi": "An ninh"},
+        {"name": "地縁学", "nameVi": "Địa chính trị"},
+        {"name": "国際機関", "nameVi": "Tổ chức quốc tế"},
+        {"name": "制裁", "nameVi": "Trừng phạt"},
+        {"name": "平和維持", "nameVi": "Gìn giữ hòa bình"}
+      ]
+    },
+    {
+      "number": 3,
+      "title": "高度経済",
+      "titleVi": "Kinh tế cao cấp",
+      "vocab": 300,
+      "topics": [
+        {"name": "マクロ", "nameVi": "Vĩ mô"},
+        {"name": "ミクロ", "nameVi": "Vi mô"},
+        {"name": "金融政策", "nameVi": "Chính sách tài chính"},
+        {"name": "財政", "nameVi": "Tài khóa"},
+        {"name": "中央銀行", "nameVi": "Ngân hàng trung ương"}
+      ]
+    },
+    {
+      "number": 4,
+      "title": "法学",
+      "titleVi": "Pháp học",
+      "vocab": 300,
+      "topics": [
+        {"name": "国際法", "nameVi": "Luật quốc tế"},
+        {"name": "商法", "nameVi": "Luật thương mại"},
+        {"name": "労働法", "nameVi": "Luật lao động"},
+        {"name": "知的財産", "nameVi": "Sở hữu trí tuệ"},
+        {"name": "仲裁", "nameVi": "Trọng tài"}
+      ]
+    },
+    {
+      "number": 5,
+      "title": "先端技術",
+      "titleVi": "Công nghệ tiên tiến",
+      "vocab": 300,
+      "topics": [
+        {"name": "量子", "nameVi": "Lượng tử"},
+        {"name": "ブロックチェーン", "nameVi": "Blockchain"},
+        {"name": "ブイテック", "nameVi": "Công nghệ sinh học"},
+        {"name": "ナノ", "nameVi": "Nano"},
+        {"name": "革新", "nameVi": "Đổi mới"}
+      ]
+    },
+    {
+      "number": 6,
+      "title": "人類学",
+      "titleVi": "Nhân loại học",
+      "vocab": 300,
+      "topics": [
+        {"name": "進化", "nameVi": "Tiến hóa"},
+        {"name": "文明", "nameVi": "Văn minh"},
+        {"name": "民俗", "nameVi": "Dân tục"},
+        {"name": "言語", "nameVi": "Ngôn ngữ học"},
+        {"name": "考古", "nameVi": "Khảo cổ"}
+      ]
+    },
+    {
+      "number": 7,
+      "title": "精神分析",
+      "titleVi": "Phân tích tâm lý",
+      "vocab": 300,
+      "topics": [
+        {"name": "無意識", "nameVi": "Vô thức"},
+        {"name": "抑圧", "nameVi": "Áp chế"},
+        {"name": "コンプレックス", "nameVi": "Phức cảm"},
+        {"name": "防衛", "nameVi": "Phòng thủ"},
+        {"name": "自己実現", "nameVi": "Tự thực hiện"}
+      ]
+    },
+    {
+      "number": 8,
+      "title": "美学",
+      "titleVi": "Mỹ học",
+      "vocab": 300,
+      "topics": [
+        {"name": "美意識", "nameVi": "Thẩm mỹ"},
+        {"name": "表現", "nameVi": "Biểu hiện"},
+        {"name": "様式", "nameVi": "Phong cách"},
+        {"name": "鑑賞", "nameVi": "Thưởng thức"},
+        {"name": "批評", "nameVi": "Phê bình"}
+      ]
+    },
+    {
+      "number": 9,
+      "title": "認識論",
+      "titleVi": "Nhận thức luận",
+      "vocab": 300,
+      "topics": [
+        {"name": "知識", "nameVi": "Tri thức"},
+        {"name": "真理", "nameVi": "Chân lý"},
+        {"name": "推論", "nameVi": "Suy luận"},
+        {"name": "経験", "nameVi": "Kinh nghiệm"},
+        {"name": "理性", "nameVi": "Lý tính"}
+      ]
+    },
+    {
+      "number": 10,
+      "title": "宇宙と生命",
+      "titleVi": "Vũ trụ & Sinh mệnh",
+      "vocab": 300,
+      "topics": [
+        {"name": "銀河", "nameVi": "Ngân hà"},
+        {"name": "生命起源", "nameVi": "Nguồn gốc sự sống"},
+        {"name": "遺伝子", "nameVi": "Gen"},
+        {"name": "意識の科学", "nameVi": "Khoa học ý thức"},
+        {"name": "未来", "nameVi": "Tương lai"}
+      ]
+    }
+  ]
+}

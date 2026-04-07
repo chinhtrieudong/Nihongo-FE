@@ -1,0 +1,210 @@
+{
+  "textbookId": "tango-n4",
+  "chapterId": 9,
+  "topicId": "topic-9-5",
+  "topicName": "健康習慣",
+  "topicNameVi": "Thói quen lành mạnh",
+  "vocabCount": 20,
+  "words": [
+    {
+      "word": "健康習慣",
+      "reading": "けんこうしゅうかん",
+      "meaning": "Thói quen lành mạnh",
+      "type": "Danh từ",
+      "example": {
+        "jp": "健康習慣を身につけます。",
+        "vn": "(đuôi lịch sự)"
+      }
+    },
+    {
+      "word": "規則正しい",
+      "reading": "きそくただしい",
+      "meaning": "Điều độ",
+      "type": "Tính từ",
+      "example": {
+        "jp": "規則正しい生活です。",
+        "vn": "là."
+      }
+    },
+    {
+      "word": "生活",
+      "reading": "せいかつ",
+      "meaning": "Sinh hoạt",
+      "type": "Danh động từ",
+      "example": {
+        "jp": "健康生活を送ります。",
+        "vn": "(đuôi lịch sự)"
+      }
+    },
+    {
+      "word": "睡眠",
+      "reading": "すいみん",
+      "meaning": "Giấc ngủ",
+      "type": "Danh từ",
+      "example": {
+        "jp": "睡眠をとります。",
+        "vn": "(đuôi lịch sự)"
+      }
+    },
+    {
+      "word": "運動",
+      "reading": "うんどう",
+      "meaning": "Vận động",
+      "type": "Danh động từ",
+      "example": {
+        "jp": "運動をします。",
+        "vn": "(đuôi lịch sự)"
+      }
+    },
+    {
+      "word": "食事",
+      "reading": "しょくじ",
+      "meaning": "Ăn uống",
+      "type": "Danh động từ",
+      "example": {
+        "jp": "食事に気をつけます。",
+        "vn": "(đuôi lịch sự)"
+      }
+    },
+    {
+      "word": "栄養",
+      "reading": "えいよう",
+      "meaning": "Dinh dưỡng",
+      "type": "Danh từ",
+      "example": {
+        "jp": "栄養バランスが重要です。",
+        "vn": "là."
+      }
+    },
+    {
+      "word": "バランス",
+      "reading": "バランス",
+      "meaning": "Cân bằng",
+      "type": "Danh từ",
+      "example": {
+        "jp": "栄養バランスを考えます。",
+        "vn": "(đuôi lịch sự)"
+      }
+    },
+    {
+      "word": "適度",
+      "reading": "てきど",
+      "meaning": "Vừa phải",
+      "type": "Danh từ",
+      "example": {
+        "jp": "適度な運動が大切です。",
+        "vn": "là."
+      }
+    },
+    {
+      "word": "早寝早起き",
+      "reading": "はやねはやおき",
+      "meaning": "Ngủ sớm dậy sớm",
+      "type": "Danh từ",
+      "example": {
+        "jp": "早寝早起きは健康に良いです。",
+        "vn": "là."
+      }
+    },
+    {
+      "word": "朝食",
+      "reading": "ちょうしょく",
+      "meaning": "Ăn sáng",
+      "type": "Danh từ",
+      "example": {
+        "jp": "朝食を必ず食べます。",
+        "vn": "(đuôi lịch sự)"
+      }
+    },
+    {
+      "word": "間食",
+      "reading": "かんしょく",
+      "meaning": "Ăn vặt",
+      "type": "Danh từ",
+      "example": {
+        "jp": "間食は控えます。",
+        "vn": "(đuôi lịch sự)"
+      }
+    },
+    {
+      "word": "水分",
+      "reading": "すいぶん",
+      "meaning": "Nước",
+      "type": "Danh từ",
+      "example": {
+        "jp": "水分を補給します。",
+        "vn": "(đuôi lịch sự)"
+      }
+    },
+    {
+      "word": "補給",
+      "reading": "ほきゅう",
+      "meaning": "Bổ sung",
+      "type": "Danh động từ",
+      "example": {
+        "jp": "栄養を補給します。",
+        "vn": "(đuôi lịch sự)"
+      }
+    },
+    {
+      "word": "ストレス解消",
+      "reading": "ストレスかいしょう",
+      "meaning": "Giải tỏa căng thẳng",
+      "type": "Danh động từ",
+      "example": {
+        "jp": "ストレス解消が必要です。",
+        "vn": "là."
+      }
+    },
+    {
+      "word": "リフレッシュ",
+      "reading": "リフレッシュ",
+      "meaning": "Làm mới",
+      "type": "Danh động từ",
+      "example": {
+        "jp": "リフレッシュします。",
+        "vn": "(đuôi lịch sự)"
+      }
+    },
+    {
+      "word": "休養",
+      "reading": "きゅうよう",
+      "meaning": "Nghỉ ngơi",
+      "type": "Danh động từ",
+      "example": {
+        "jp": "十分休養します。",
+        "vn": "(đuôi lịch sự)"
+      }
+    },
+    {
+      "word": "禁煙",
+      "reading": "きんえん",
+      "meaning": "Cấm hút thuốc",
+      "type": "Danh động từ",
+      "example": {
+        "jp": "禁煙しています。",
+        "vn": "có (người/động vật)."
+      }
+    },
+    {
+      "word": "節酒",
+      "reading": "せっしゅ",
+      "meaning": "Hạn chế rượu",
+      "type": "Danh động từ",
+      "example": {
+        "jp": "節酒に努めます。",
+        "vn": "(đuôi lịch sự)"
+      }
+    },
+    {
+      "word": "健康診断",
+      "reading": "けんこうしんだん",
+      "meaning": "Khám sức khỏe",
+      "type": "Danh động từ",
+      "example": {
+        "jp": "健康診断を受けました。",
+        "vn": "đã (quá khứ)."
+      }
+    }
+  ]
+}

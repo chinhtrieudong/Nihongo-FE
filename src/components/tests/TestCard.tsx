@@ -1,7 +1,6 @@
 import React from "react";
 import { Card, Button, Tag, Typography } from "antd";
 import {
-    Play,
     Trophy,
     Clock,
     FileText,
@@ -49,24 +48,28 @@ const TestCard: React.FC<TestCardProps> = ({
     getLevelColor,
     getDifficultyColor
 }) => {
+    const handleCardClick = () => {
+        if (test.completed) {
+            onViewResults(test);
+        } else {
+            onStartTest(test);
+        }
+    };
+
     return (
         <Card
             hoverable
-            className={`${test.completed ? 'border-green-200' : ''}`}
+            onClick={handleCardClick}
+            className={`${test.completed ? 'border-green-200' : ''} bg-surface-1 border-border cursor-pointer`}
             actions={[
-                <Button
-                    type="primary"
-                    icon={<Play className="w-4 h-4" />}
-                    disabled={test.completed}
-                    onClick={() => onStartTest(test)}
-                >
-                    {test.completed ? "Hoàn thành" : "Bắt đầu"}
-                </Button>,
                 ...(test.completed ? [
                     <Button
                         type="default"
                         icon={<Trophy className="w-4 h-4" />}
-                        onClick={() => onViewResults(test)}
+                        onClick={(e) => {
+                            e.stopPropagation();
+                            onViewResults(test);
+                        }}
                     >
                         Xem kết quả
                     </Button>

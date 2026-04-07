@@ -1,0 +1,210 @@
+{
+  "textbookId": "tango-n4",
+  "chapterId": 1,
+  "topicId": "topic-1-3",
+  "topicName": "働く",
+  "topicNameVi": "Làm việc",
+  "vocabCount": 20,
+  "words": [
+    {
+      "word": "勤める",
+      "reading": "つとめる",
+      "meaning": "Làm việc",
+      "type": "Động từ",
+      "example": {
+        "jp": "銀行に勤めています。",
+        "vn": "có (người/động vật)."
+      }
+    },
+    {
+      "word": "務める",
+      "reading": "つとめる",
+      "meaning": "Đảm nhiệm",
+      "type": "Động từ",
+      "example": {
+        "jp": "係長を務めています。",
+        "vn": "có (người/động vật)."
+      }
+    },
+    {
+      "word": "就く",
+      "reading": "つく",
+      "meaning": "Nhận chức",
+      "type": "Động từ",
+      "example": {
+        "jp": "新しい職に就きました。",
+        "vn": "đã (quá khứ)."
+      }
+    },
+    {
+      "word": "従事する",
+      "reading": "じゅうじする",
+      "meaning": "Tham gia",
+      "type": "Động từ",
+      "example": {
+        "jp": "研究に従事しています。",
+        "vn": "có (người/động vật)."
+      }
+    },
+    {
+      "word": "従事",
+      "reading": "じゅうじ",
+      "meaning": "Công việc",
+      "type": "Danh từ",
+      "example": {
+        "jp": "介護の従事者です。",
+        "vn": "là."
+      }
+    },
+    {
+      "word": "担当",
+      "reading": "たんとう",
+      "meaning": "Phụ trách",
+      "type": "Danh động từ",
+      "example": {
+        "jp": "営業を担当しています。",
+        "vn": "có (người/động vật)."
+      }
+    },
+    {
+      "word": "管理",
+      "reading": "かんり",
+      "meaning": "Quản lý",
+      "type": "Danh động từ",
+      "example": {
+        "jp": "在庫を管理しています。",
+        "vn": "có (người/động vật)."
+      }
+    },
+    {
+      "word": "経営",
+      "reading": "けいえい",
+      "meaning": "Kinh doanh",
+      "type": "Danh động từ",
+      "example": {
+        "jp": "レストランを経営しています。",
+        "vn": "có (người/động vật)."
+      }
+    },
+    {
+      "word": "出勤",
+      "reading": "しゅっきん",
+      "meaning": "Đi làm",
+      "type": "Danh động từ",
+      "example": {
+        "jp": "9時に出勤します。",
+        "vn": "(đuôi lịch sự)"
+      }
+    },
+    {
+      "word": "退勤",
+      "reading": "たいきん",
+      "meaning": "Tan làm",
+      "type": "Danh động từ",
+      "example": {
+        "jp": "6時に退勤しました。",
+        "vn": "đã (quá khứ)."
+      }
+    },
+    {
+      "word": "残業",
+      "reading": "ざんぎょう",
+      "meaning": "Làm thêm giờ",
+      "type": "Danh động từ",
+      "example": {
+        "jp": "残業が多いです。",
+        "vn": "là."
+      }
+    },
+    {
+      "word": "出張",
+      "reading": "しゅっちょう",
+      "meaning": "Công tác",
+      "type": "Danh động từ",
+      "example": {
+        "jp": "大阪に出張します。",
+        "vn": "(đuôi lịch sự)"
+      }
+    },
+    {
+      "word": "休業",
+      "reading": "きゅうぎょう",
+      "meaning": "Nghỉ làm",
+      "type": "Danh động từ",
+      "example": {
+        "jp": "祝日は休業です。",
+        "vn": "là."
+      }
+    },
+    {
+      "word": "始業",
+      "reading": "しぎょう",
+      "meaning": "Bắt đầu làm",
+      "type": "Danh động từ",
+      "example": {
+        "jp": "始業時間は9時です。",
+        "vn": "là."
+      }
+    },
+    {
+      "word": "終業",
+      "reading": "しゅうぎょう",
+      "meaning": "Kết thúc làm",
+      "type": "Danh động từ",
+      "example": {
+        "jp": "終業後に飲みに行きます。",
+        "vn": "(đuôi lịch sự)"
+      }
+    },
+    {
+      "word": "業務",
+      "reading": "ぎょうむ",
+      "meaning": "Công việc",
+      "type": "Danh từ",
+      "example": {
+        "jp": "業務を遂行しています。",
+        "vn": "có (người/động vật)."
+      }
+    },
+    {
+      "word": "職務",
+      "reading": "しょくむ",
+      "meaning": "Nhiệm vụ",
+      "type": "Danh từ",
+      "example": {
+        "jp": "職務を全うしています。",
+        "vn": "có (người/động vật)."
+      }
+    },
+    {
+      "word": "能率",
+      "reading": "のうりつ",
+      "meaning": "Hiệu suất",
+      "type": "Danh từ",
+      "example": {
+        "jp": "能率を上げたいです。",
+        "vn": "là."
+      }
+    },
+    {
+      "word": "効率",
+      "reading": "こうりつ",
+      "meaning": "Hiệu quả",
+      "type": "Danh từ",
+      "example": {
+        "jp": "効率良く働きます。",
+        "vn": "(đuôi lịch sự)"
+      }
+    },
+    {
+      "word": "勤務",
+      "reading": "きんむ",
+      "meaning": "Làm việc",
+      "type": "Danh động từ",
+      "example": {
+        "jp": "夜勤務しています。",
+        "vn": "có (người/động vật)."
+      }
+    }
+  ]
+}

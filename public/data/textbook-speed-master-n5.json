@@ -1,0 +1,158 @@
+{
+  "textbookId": "speed-master-n5",
+  "name": "Speed Master N5",
+  "description": "Luyện từ vựng N5 nhanh và hiệu quả - 1,000+ từ",
+  "level": "N5",
+  "totalLessons": 14,
+  "startLesson": 1,
+  "accentColor": "orange",
+  "chapters": [
+    {
+      "number": 1,
+      "title": "人・物",
+      "titleVi": "Người & đồ vật",
+      "vocab": 80,
+      "topics": [
+        {"name": "Nghề nghiệp", "nameVi": "先生, 学生, 医者…"},
+        {"name": "Đồ vật cơ bản", "nameVi": "本, ペン, かばん…"},
+        {"name": "Đại từ", "nameVi": "私, あなた…"}
+      ]
+    },
+    {
+      "number": 2,
+      "title": "場所・位置",
+      "titleVi": "Địa điểm & vị trí",
+      "vocab": 75,
+      "topics": [
+        {"name": "Địa điểm", "nameVi": "学校, 家, 駅…"},
+        {"name": "Vị trí", "nameVi": "上, 下, 中, 外…"},
+        {"name": "Cách chỉ vị trí", "nameVi": "ここ, そこ, あそこ…"}
+      ]
+    },
+    {
+      "number": 3,
+      "title": "時間",
+      "titleVi": "Thời gian",
+      "vocab": 70,
+      "topics": [
+        {"name": "Giờ", "nameVi": "時, 分, 半…"},
+        {"name": "Ngày tháng", "nameVi": "今日, 明日, 毎日…"},
+        {"name": "Thứ", "nameVi": "月曜日〜日曜日"}
+      ]
+    },
+    {
+      "number": 4,
+      "title": "動詞①",
+      "titleVi": "Động từ cơ bản",
+      "vocab": 85,
+      "topics": [
+        {"name": "Động từ nhóm 1", "nameVi": "行く, 書く…"},
+        {"name": "Động từ nhóm 2", "nameVi": "食べる, 見る…"},
+        {"name": "Động từ nhóm 3", "nameVi": "する, 来る"}
+      ]
+    },
+    {
+      "number": 5,
+      "title": "形容詞",
+      "titleVi": "Tính từ",
+      "vocab": 65,
+      "topics": [
+        {"name": "Tính từ い", "nameVi": "大きい, 小さい…"},
+        {"name": "Tính từ な", "nameVi": "きれい, 便利…"}
+      ]
+    },
+    {
+      "number": 6,
+      "title": "動詞②",
+      "titleVi": "Động từ mở rộng",
+      "vocab": 80,
+      "topics": [
+        {"name": "日常動作", "nameVi": "起きる, 寝る, 洗う, 着る…"},
+        {"name": "移動動詞", "nameVi": "行く, 来る, 帰る, 歩く, 走る…"},
+        {"name": "生活動詞", "nameVi": "食べる, 飲む, 買う, 作る…"}
+      ]
+    },
+    {
+      "number": 7,
+      "title": "数・量",
+      "titleVi": "Số & lượng",
+      "vocab": 70,
+      "topics": [
+        {"name": "Số đếm", "nameVi": "一, 二, 三…"},
+        {"name": "Đếm người", "nameVi": "一人, 二人…"},
+        {"name": "Đếm đồ vật", "nameVi": "つ, 本, 枚…"}
+      ]
+    },
+    {
+      "number": 8,
+      "title": "家族・生活",
+      "titleVi": "Gia đình & cuộc sống",
+      "vocab": 75,
+      "topics": [
+        {"name": "家族", "nameVi": "父, 母, 兄, 姉, 弟, 妹, 家族…"},
+        {"name": "住居", "nameVi": "家, アパート, 部屋, 台所, 風呂…"},
+        {"name": "生活", "nameVi": "仕事, 学校, 買い物, 料理…"}
+      ]
+    },
+    {
+      "number": 9,
+      "title": "自然・天気",
+      "titleVi": "Tự nhiên & thời tiết",
+      "vocab": 65,
+      "topics": [
+        {"name": "Thời tiết", "nameVi": "雨, 晴れ, 雪…"},
+        {"name": "Mùa", "nameVi": "春, 夏, 秋, 冬"}
+      ]
+    },
+    {
+      "number": 10,
+      "title": "食べ物",
+      "titleVi": "Đồ ăn & thức uống",
+      "vocab": 70,
+      "topics": [
+        {"name": "Món ăn", "nameVi": "ご飯, パン…"},
+        {"name": "Đồ uống", "nameVi": "水, お茶…"}
+      ]
+    },
+    {
+      "number": 11,
+      "title": "交通・移動",
+      "titleVi": "Giao thông & di chuyển",
+      "vocab": 75,
+      "topics": [
+        {"name": "交通手段", "nameVi": "電車, バス, 車, 自転車, 飛行機…"},
+        {"name": "移動動作", "nameVi": "乗る, 降りる, 歩く, 走る, 渡る…"}
+      ]
+    },
+    {
+      "number": 12,
+      "title": "買い物",
+      "titleVi": "Mua sắm",
+      "vocab": 70,
+      "topics": [
+        {"name": "Giá tiền", "nameVi": "円"},
+        {"name": "Mua bán", "nameVi": "買う, 売る"}
+      ]
+    },
+    {
+      "number": 13,
+      "title": "学校・仕事",
+      "titleVi": "Trường học & công việc",
+      "vocab": 80,
+      "topics": [
+        {"name": "Hoạt động học tập", "nameVi": "勉強"},
+        {"name": "Công việc", "nameVi": "仕事"}
+      ]
+    },
+    {
+      "number": 14,
+      "title": "気持ち・状態",
+      "titleVi": "Cảm xúc & trạng thái",
+      "vocab": 75,
+      "topics": [
+        {"name": "Vui, buồn, mệt", "nameVi": "感情"},
+        {"name": "Trạng thái cơ thể", "nameVi": "体の状態"}
+      ]
+    }
+  ]
+}

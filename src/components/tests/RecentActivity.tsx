@@ -14,7 +14,7 @@ interface RecentActivityProps {
 
 const RecentActivity: React.FC<RecentActivityProps> = ({ activities }) => {
     return (
-        <Card title="Hoạt động gần đây">
+        <Card title="Hoạt động gần đây" className="bg-surface-1 border border-border">
             <div className="divide-y divide-black/10 dark:divide-white/10">
                 {activities.map((item, index) => (
                     <div

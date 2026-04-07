@@ -1,0 +1,150 @@
+{
+  "textbookId": "tango-n5",
+  "chapterId": 1,
+  "topicId": "topic-1-3",
+  "topicName": "かぞく",
+  "topicNameVi": "Gia đình",
+  "vocabCount": 14,
+  "words": [
+    {
+      "word": "家族",
+      "reading": "かぞく",
+      "meaning": "Gia đình",
+      "type": "Danh từ",
+      "example": {
+        "jp": "家族は5人です。",
+        "vn": "là."
+      }
+    },
+    {
+      "word": "父",
+      "reading": "ちち",
+      "meaning": "Bố (khiêm nhường)",
+      "type": "Danh từ",
+      "example": {
+        "jp": "父は会社員です。",
+        "vn": "là."
+      }
+    },
+    {
+      "word": "母",
+      "reading": "はは",
+      "meaning": "Mẹ (khiêm nhường)",
+      "type": "Danh từ",
+      "example": {
+        "jp": "母は主婦です。",
+        "vn": "là."
+      }
+    },
+    {
+      "word": "お父さん",
+      "reading": "おとうさん",
+      "meaning": "Bố (của người khác)",
+      "type": "Danh từ",
+      "example": {
+        "jp": "お父さんは元気ですか。",
+        "vn": "có phải là... không?"
+      }
+    },
+    {
+      "word": "お母さん",
+      "reading": "おかあさん",
+      "meaning": "Mẹ (của người khác)",
+      "type": "Danh từ",
+      "example": {
+        "jp": "お母さんは何歳ですか。",
+        "vn": "có phải là... không?"
+      }
+    },
+    {
+      "word": "両親",
+      "reading": "りょうしん",
+      "meaning": "Bố mẹ",
+      "type": "Danh từ",
+      "example": {
+        "jp": "両親は東京に住んでいます。",
+        "vn": "có (người/động vật)."
+      }
+    },
+    {
+      "word": "兄",
+      "reading": "あに",
+      "meaning": "Anh trai (khiêm nhường)",
+      "type": "Danh từ",
+      "example": {
+        "jp": "兄は大学生です。",
+        "vn": "là."
+      }
+    },
+    {
+      "word": "お兄さん",
+      "reading": "おにいさん",
+      "meaning": "Anh trai (của người khác)",
+      "type": "Danh từ",
+      "example": {
+        "jp": "お兄さんは高いですね。",
+        "vn": ""
+      }
+    },
+    {
+      "word": "姉",
+      "reading": "あね",
+      "meaning": "Chị gái (khiêm nhường)",
+      "type": "Danh từ",
+      "example": {
+        "jp": "姉は会社員です。",
+        "vn": "là."
+      }
+    },
+    {
+      "word": "お姉さん",
+      "reading": "おねえさん",
+      "meaning": "Chị gái (của người khác)",
+      "type": "Danh từ",
+      "example": {
+        "jp": "お姉さんはきれいですね。",
+        "vn": ""
+      }
+    },
+    {
+      "word": "弟",
+      "reading": "おとうと",
+      "meaning": "Em trai",
+      "type": "Danh từ",
+      "example": {
+        "jp": "弟は小学生です。",
+        "vn": "là."
+      }
+    },
+    {
+      "word": "妹",
+      "reading": "いもうと",
+      "meaning": "Em gái",
+      "type": "Danh từ",
+      "example": {
+        "jp": "妹は7歳です。",
+        "vn": "là."
+      }
+    },
+    {
+      "word": "兄弟",
+      "reading": "きょうだい",
+      "meaning": "Anh chị em",
+      "type": "Danh từ",
+      "example": {
+        "jp": "兄弟が3人います。",
+        "vn": "có (người/động vật)."
+      }
+    },
+    {
+      "word": "姉妹",
+      "reading": "しまい",
+      "meaning": "Chị em",
+      "type": "Danh từ",
+      "example": {
+        "jp": "姉妹で買い物に行きます。",
+        "vn": "(đuôi lịch sự)"
+      }
+    }
+  ]
+}

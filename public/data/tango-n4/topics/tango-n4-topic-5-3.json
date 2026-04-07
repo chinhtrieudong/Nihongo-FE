@@ -1,0 +1,210 @@
+{
+  "textbookId": "tango-n4",
+  "chapterId": 5,
+  "topicId": "topic-5-3",
+  "topicName": "夜",
+  "topicNameVi": "Buổi tối",
+  "vocabCount": 20,
+  "words": [
+    {
+      "word": "夜",
+      "reading": "よる",
+      "meaning": "Buổi tối",
+      "type": "Danh từ",
+      "example": {
+        "jp": "夜になりました。",
+        "vn": "đã (quá khứ)."
+      }
+    },
+    {
+      "word": "夕方",
+      "reading": "ゆうがた",
+      "meaning": "Chiều tối",
+      "type": "Danh từ",
+      "example": {
+        "jp": "夕方から夜にかけて。",
+        "vn": ""
+      }
+    },
+    {
+      "word": "夕食",
+      "reading": "ゆうしょく",
+      "meaning": "Bữa tối",
+      "type": "Danh từ",
+      "example": {
+        "jp": "夕食を食べました。",
+        "vn": "đã (quá khứ)."
+      }
+    },
+    {
+      "word": "晩御飯",
+      "reading": "ばんごはん",
+      "meaning": "Cơm tối",
+      "type": "Danh từ",
+      "example": {
+        "jp": "晩御飯の準備をします。",
+        "vn": "(đuôi lịch sự)"
+      }
+    },
+    {
+      "word": "ディナー",
+      "reading": "ディナー",
+      "meaning": "Bữa tối",
+      "type": "Danh từ",
+      "example": {
+        "jp": "ディナーに行きます。",
+        "vn": "(đuôi lịch sự)"
+      }
+    },
+    {
+      "word": "帰宅",
+      "reading": "きたく",
+      "meaning": "Về nhà",
+      "type": "Danh động từ",
+      "example": {
+        "jp": "帰宅しました。",
+        "vn": "đã (quá khứ)."
+      }
+    },
+    {
+      "word": "夕飯",
+      "reading": "ゆうはん",
+      "meaning": "Cơm chiều",
+      "type": "Danh từ",
+      "example": {
+        "jp": "夕飯を作ります。",
+        "vn": "(đuôi lịch sự)"
+      }
+    },
+    {
+      "word": "風呂",
+      "reading": "ふろ",
+      "meaning": "Tắm",
+      "type": "Danh từ",
+      "example": {
+        "jp": "風呂に入ります。",
+        "vn": "(đuôi lịch sự)"
+      }
+    },
+    {
+      "word": "入浴",
+      "reading": "にゅうよく",
+      "meaning": "Đi tắm",
+      "type": "Danh động từ",
+      "example": {
+        "jp": "入浴しました。",
+        "vn": "đã (quá khứ)."
+      }
+    },
+    {
+      "word": "シャワー",
+      "reading": "シャワー",
+      "meaning": "Vòi sen",
+      "type": "Danh từ",
+      "example": {
+        "jp": "シャワーを浴びます。",
+        "vn": "(đuôi lịch sự)"
+      }
+    },
+    {
+      "word": "お風呂上がり",
+      "reading": "おふろあがり",
+      "meaning": "Sau khi tắm",
+      "type": "Danh từ",
+      "example": {
+        "jp": "お風呂上がりにビールを飲みます。",
+        "vn": "(đuôi lịch sự)"
+      }
+    },
+    {
+      "word": "リラックス",
+      "reading": "リラックス",
+      "meaning": "Thư giãn",
+      "type": "Danh động từ",
+      "example": {
+        "jp": "リラックスします。",
+        "vn": "(đuôi lịch sự)"
+      }
+    },
+    {
+      "word": "くつろぐ",
+      "reading": "くつろぐ",
+      "meaning": "Thư giãn",
+      "type": "Động từ",
+      "example": {
+        "jp": "家でくつろぎます。",
+        "vn": "(đuôi lịch sự)"
+      }
+    },
+    {
+      "word": "寝る",
+      "reading": "ねる",
+      "meaning": "Ngủ",
+      "type": "Động từ",
+      "example": {
+        "jp": "もう寝ます。",
+        "vn": "(đuôi lịch sự)"
+      }
+    },
+    {
+      "word": "眠る",
+      "reading": "ねむる",
+      "meaning": "Ngủ",
+      "type": "Động từ",
+      "example": {
+        "jp": "ぐっすり眠りました。",
+        "vn": "đã (quá khứ)."
+      }
+    },
+    {
+      "word": "就寝",
+      "reading": "しゅうしん",
+      "meaning": "Đi ngủ",
+      "type": "Danh động từ",
+      "example": {
+        "jp": "就寝の時間です。",
+        "vn": "là."
+      }
+    },
+    {
+      "word": "寝室",
+      "reading": "しんしつ",
+      "meaning": "Phòng ngủ",
+      "type": "Danh từ",
+      "example": {
+        "jp": "寝室に入ります。",
+        "vn": "(đuôi lịch sự)"
+      }
+    },
+    {
+      "word": "布団",
+      "reading": "ふとん",
+      "meaning": "Chăn nệm",
+      "type": "Danh từ",
+      "example": {
+        "jp": "布団に入ります。",
+        "vn": "(đuôi lịch sự)"
+      }
+    },
+    {
+      "word": "枕",
+      "reading": "まくら",
+      "meaning": "Gối",
+      "type": "Danh từ",
+      "example": {
+        "jp": "枕が高いです。",
+        "vn": "là."
+      }
+    },
+    {
+      "word": "夜更かし",
+      "reading": "よふかし",
+      "meaning": "Thức khuya",
+      "type": "Danh động từ",
+      "example": {
+        "jp": "夜更かししてしまいました。",
+        "vn": "đã (quá khứ)."
+      }
+    }
+  ]
+}

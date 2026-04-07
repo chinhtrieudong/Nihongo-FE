@@ -1,0 +1,140 @@
+{
+  "textbookId": "tango-n5",
+  "chapterId": 3,
+  "topicId": "topic-3-5",
+  "topicName": "時間 (じかん)",
+  "topicNameVi": "Thời gian",
+  "vocabCount": 13,
+  "words": [
+    {
+      "word": "時間",
+      "reading": "じかん",
+      "meaning": "Thời gian",
+      "type": "Danh từ",
+      "example": {
+        "jp": "時間がありますか。",
+        "vn": "có... không?"
+      }
+    },
+    {
+      "word": "時",
+      "reading": "じ",
+      "meaning": "Giờ",
+      "type": "Danh từ",
+      "example": {
+        "jp": "3時です。",
+        "vn": "là."
+      }
+    },
+    {
+      "word": "分",
+      "reading": "ふん / ぷん",
+      "meaning": "Phút",
+      "type": "Danh từ",
+      "example": {
+        "jp": "10分です。",
+        "vn": "là."
+      }
+    },
+    {
+      "word": "秒",
+      "reading": "びょう",
+      "meaning": "Giây",
+      "type": "Danh từ",
+      "example": {
+        "jp": "30秒待ってください。",
+        "vn": "vui lòng..."
+      }
+    },
+    {
+      "word": "半",
+      "reading": "はん",
+      "meaning": "Rưỡi",
+      "type": "Danh từ",
+      "example": {
+        "jp": "3時半です。",
+        "vn": "là."
+      }
+    },
+    {
+      "word": "前",
+      "reading": "まえ",
+      "meaning": "Trước",
+      "type": "Danh từ",
+      "example": {
+        "jp": "3時前です。",
+        "vn": "là."
+      }
+    },
+    {
+      "word": "後",
+      "reading": "あと / ご",
+      "meaning": "Sau",
+      "type": "Danh từ",
+      "example": {
+        "jp": "3時後に来てください。",
+        "vn": "vui lòng..."
+      }
+    },
+    {
+      "word": "毎日",
+      "reading": "まいにち",
+      "meaning": "Hàng ngày",
+      "type": "Danh từ",
+      "example": {
+        "jp": "毎日学校へ行きます。",
+        "vn": "(đuôi lịch sự)"
+      }
+    },
+    {
+      "word": "毎週",
+      "reading": "まいしゅう",
+      "meaning": "Hàng tuần",
+      "type": "Danh từ",
+      "example": {
+        "jp": "毎週買い物します。",
+        "vn": "(đuôi lịch sự)"
+      }
+    },
+    {
+      "word": "毎月",
+      "reading": "まいつき / まいげつ",
+      "meaning": "Hàng tháng",
+      "type": "Danh từ",
+      "example": {
+        "jp": "毎月給料をもらいます。",
+        "vn": "có (người/động vật)."
+      }
+    },
+    {
+      "word": "毎年",
+      "reading": "まいとし / まいねん",
+      "meaning": "Hàng năm",
+      "type": "Danh từ",
+      "example": {
+        "jp": "毎年旅行します。",
+        "vn": "(đuôi lịch sự)"
+      }
+    },
+    {
+      "word": "朝",
+      "reading": "あさ",
+      "meaning": "Buổi sáng",
+      "type": "Danh từ",
+      "example": {
+        "jp": "朝ご飯を食べます。",
+        "vn": "(đuôi lịch sự)"
+      }
+    },
+    {
+      "word": "昼",
+      "reading": "ひる",
+      "meaning": "Buổi trưa",
+      "type": "Danh từ",
+      "example": {
+        "jp": "昼ご飯を食べます。",
+        "vn": "(đuôi lịch sự)"
+      }
+    }
+  ]
+}

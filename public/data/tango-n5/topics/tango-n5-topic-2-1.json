@@ -1,0 +1,140 @@
+{
+  "textbookId": "tango-n5",
+  "chapterId": 2,
+  "topicId": "topic-2-1",
+  "topicName": "学校 (がっこう)",
+  "topicNameVi": "Trường học",
+  "vocabCount": 13,
+  "words": [
+    {
+      "word": "学校",
+      "reading": "がっこう",
+      "meaning": "Trường học",
+      "type": "Danh từ",
+      "example": {
+        "jp": "学校へ行きます。",
+        "vn": "(đuôi lịch sự)"
+      }
+    },
+    {
+      "word": "大学",
+      "reading": "だいがく",
+      "meaning": "Đại học",
+      "type": "Danh từ",
+      "example": {
+        "jp": "大学に入学しました。",
+        "vn": "đã (quá khứ)."
+      }
+    },
+    {
+      "word": "高校",
+      "reading": "こうこう",
+      "meaning": "Trường cấp 3",
+      "type": "Danh từ",
+      "example": {
+        "jp": "高校を卒業しました。",
+        "vn": "đã (quá khứ)."
+      }
+    },
+    {
+      "word": "中学校",
+      "reading": "ちゅうがっこう",
+      "meaning": "Trường cấp 2",
+      "type": "Danh từ",
+      "example": {
+        "jp": "中学校は近いです。",
+        "vn": "là."
+      }
+    },
+    {
+      "word": "小学校",
+      "reading": "しょうがっこう",
+      "meaning": "Trường cấp 1",
+      "type": "Danh từ",
+      "example": {
+        "jp": "弟は小学校に通っています。",
+        "vn": "có (người/động vật)."
+      }
+    },
+    {
+      "word": "幼稚園",
+      "reading": "ようちえん",
+      "meaning": "Trường mầm non",
+      "type": "Danh từ",
+      "example": {
+        "jp": "幼稚園の先生です。",
+        "vn": "là."
+      }
+    },
+    {
+      "word": "教室",
+      "reading": "きょうしつ",
+      "meaning": "Phòng học",
+      "type": "Danh từ",
+      "example": {
+        "jp": "教室で勉強します。",
+        "vn": "(đuôi lịch sự)"
+      }
+    },
+    {
+      "word": "図書館",
+      "reading": "としょかん",
+      "meaning": "Thư viện",
+      "type": "Danh từ",
+      "example": {
+        "jp": "図書館で本を読みます。",
+        "vn": "(đuôi lịch sự)"
+      }
+    },
+    {
+      "word": "体育館",
+      "reading": "たいいくかん",
+      "meaning": "Nhà thi đấu",
+      "type": "Danh từ",
+      "example": {
+        "jp": "体育館で運動します。",
+        "vn": "(đuôi lịch sự)"
+      }
+    },
+    {
+      "word": "理科室",
+      "reading": "りかしつ",
+      "meaning": "Phòng thí nghiệm",
+      "type": "Danh từ",
+      "example": {
+        "jp": "理科室で実験します。",
+        "vn": "(đuôi lịch sự)"
+      }
+    },
+    {
+      "word": "食堂",
+      "reading": "しょくどう",
+      "meaning": "Nhà ăn",
+      "type": "Danh từ",
+      "example": {
+        "jp": "食堂で昼ご飯を食べます。",
+        "vn": "(đuôi lịch sự)"
+      }
+    },
+    {
+      "word": "校長",
+      "reading": "こうちょう",
+      "meaning": "Hiệu trưởng",
+      "type": "Danh từ",
+      "example": {
+        "jp": "校長先生にお会いしました。",
+        "vn": "đã (quá khứ)."
+      }
+    },
+    {
+      "word": "入学",
+      "reading": "にゅうがく",
+      "meaning": "Nhập học",
+      "type": "Danh từ",
+      "example": {
+        "jp": "入学式は4月です。",
+        "vn": "là."
+      }
+    }
+  ]
+}

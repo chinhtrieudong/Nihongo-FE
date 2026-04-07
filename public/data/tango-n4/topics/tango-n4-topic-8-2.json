@@ -1,0 +1,210 @@
+{
+  "textbookId": "tango-n4",
+  "chapterId": 8,
+  "topicId": "topic-8-2",
+  "topicName": "調理",
+  "topicNameVi": "Chế biến",
+  "vocabCount": 20,
+  "words": [
+    {
+      "word": "調理",
+      "reading": "ちょうり",
+      "meaning": "Chế biến",
+      "type": "Danh động từ",
+      "example": {
+        "jp": "調理を始めます。",
+        "vn": "(đuôi lịch sự)"
+      }
+    },
+    {
+      "word": "料理",
+      "reading": "りょうり",
+      "meaning": "Nấu ăn",
+      "type": "Danh động từ",
+      "example": {
+        "jp": "料理をします。",
+        "vn": "(đuôi lịch sự)"
+      }
+    },
+    {
+      "word": "切る",
+      "reading": "きる",
+      "meaning": "Cắt",
+      "type": "Động từ",
+      "example": {
+        "jp": "野菜を切ります。",
+        "vn": "(đuôi lịch sự)"
+      }
+    },
+    {
+      "word": "煮る",
+      "reading": "にる",
+      "meaning": "Luộc/nấu",
+      "type": "Động từ",
+      "example": {
+        "jp": "肉を煮ます。",
+        "vn": "(đuôi lịch sự)"
+      }
+    },
+    {
+      "word": "焼く",
+      "reading": "やく",
+      "meaning": "Nướng",
+      "type": "Động từ",
+      "example": {
+        "jp": "魚を焼きます。",
+        "vn": "(đuôi lịch sự)"
+      }
+    },
+    {
+      "word": "揚げる",
+      "reading": "あげる",
+      "meaning": "Chiên",
+      "type": "Động từ",
+      "example": {
+        "jp": "天ぷらを揚げます。",
+        "vn": "(đuôi lịch sự)"
+      }
+    },
+    {
+      "word": "蒸す",
+      "reading": "むす",
+      "meaning": "Hấp",
+      "type": "Động từ",
+      "example": {
+        "jp": "かにを蒸します。",
+        "vn": "(đuôi lịch sự)"
+      }
+    },
+    {
+      "word": "炒める",
+      "reading": "いためる",
+      "meaning": "Xào",
+      "type": "Động từ",
+      "example": {
+        "jp": "野菜を炒めます。",
+        "vn": "(đuôi lịch sự)"
+      }
+    },
+    {
+      "word": "炊く",
+      "reading": "たく",
+      "meaning": "Nấu (cơm)",
+      "type": "Động từ",
+      "example": {
+        "jp": "ご飯を炊きます。",
+        "vn": "(đuôi lịch sự)"
+      }
+    },
+    {
+      "word": "混ぜる",
+      "reading": "まぜる",
+      "meaning": "Trộn",
+      "type": "Động từ",
+      "example": {
+        "jp": "材料を混ぜます。",
+        "vn": "(đuôi lịch sự)"
+      }
+    },
+    {
+      "word": "和える",
+      "reading": "あえる",
+      "meaning": "Trộn (món Nhật)",
+      "type": "Động từ",
+      "example": {
+        "jp": "酢の物を和えます。",
+        "vn": "(đuôi lịch sự)"
+      }
+    },
+    {
+      "word": "漬ける",
+      "reading": "つける",
+      "meaning": "Ướp/ngâm",
+      "type": "Động từ",
+      "example": {
+        "jp": "漬物を漬けます。",
+        "vn": "(đuôi lịch sự)"
+      }
+    },
+    {
+      "word": "包む",
+      "reading": "つつむ",
+      "meaning": "Gói",
+      "type": "Động từ",
+      "example": {
+        "jp": "春巻きを包みます。",
+        "vn": "(đuôi lịch sự)"
+      }
+    },
+    {
+      "word": "握る",
+      "reading": "にぎる",
+      "meaning": "Nắm",
+      "type": "Động từ",
+      "example": {
+        "jp": "おにぎりを握ります。",
+        "vn": "(đuôi lịch sự)"
+      }
+    },
+    {
+      "word": "盛り付ける",
+      "reading": "もりつける",
+      "meaning": "Trang trí đĩa",
+      "type": "Động từ",
+      "example": {
+        "jp": "料理を盛り付けます。",
+        "vn": "(đuôi lịch sự)"
+      }
+    },
+    {
+      "word": "味付け",
+      "reading": "あじつけ",
+      "meaning": "Nêm gia vị",
+      "type": "Danh động từ",
+      "example": {
+        "jp": "味付けをします。",
+        "vn": "(đuôi lịch sự)"
+      }
+    },
+    {
+      "word": "下味",
+      "reading": "したあじ",
+      "meaning": "Ướp trước",
+      "type": "Danh từ",
+      "example": {
+        "jp": "下味をつけます。",
+        "vn": "(đuôi lịch sự)"
+      }
+    },
+    {
+      "word": "煮込む",
+      "reading": "にこむ",
+      "meaning": "Hầm",
+      "type": "Động từ",
+      "example": {
+        "jp": "カレーを煮込みます。",
+        "vn": "(đuôi lịch sự)"
+      }
+    },
+    {
+      "word": "焼き上がる",
+      "reading": "やきあがる",
+      "meaning": "Chín (nướng)",
+      "type": "Động từ",
+      "example": {
+        "jp": "ケーキが焼き上がりました。",
+        "vn": "đã (quá khứ)."
+      }
+    },
+    {
+      "word": "仕上げ",
+      "reading": "しあげ",
+      "meaning": "Hoàn thiện",
+      "type": "Danh động từ",
+      "example": {
+        "jp": "仕上げにパセリを添えます。",
+        "vn": "(đuôi lịch sự)"
+      }
+    }
+  ]
+}

@@ -1,0 +1,210 @@
+{
+  "textbookId": "tango-n4",
+  "chapterId": 5,
+  "topicId": "topic-5-4",
+  "topicName": "休日",
+  "topicNameVi": "Ngày nghỉ",
+  "vocabCount": 20,
+  "words": [
+    {
+      "word": "休日",
+      "reading": "きゅうじつ",
+      "meaning": "Ngày nghỉ",
+      "type": "Danh từ",
+      "example": {
+        "jp": "休日は家で過ごします。",
+        "vn": "(đuôi lịch sự)"
+      }
+    },
+    {
+      "word": "休み",
+      "reading": "やすみ",
+      "meaning": "Nghỉ",
+      "type": "Danh từ",
+      "example": {
+        "jp": "休みが取れました。",
+        "vn": "đã (quá khứ)."
+      }
+    },
+    {
+      "word": "日曜日",
+      "reading": "にちようび",
+      "meaning": "Chủ nhật",
+      "type": "Danh từ",
+      "example": {
+        "jp": "日曜日は休みです。",
+        "vn": "là."
+      }
+    },
+    {
+      "word": "週末",
+      "reading": "しゅうまつ",
+      "meaning": "Cuối tuần",
+      "type": "Danh từ",
+      "example": {
+        "jp": "週末に出かけます。",
+        "vn": "(đuôi lịch sự)"
+      }
+    },
+    {
+      "word": "祝日",
+      "reading": "しゅくじつ",
+      "meaning": "Ngày lễ",
+      "type": "Danh từ",
+      "example": {
+        "jp": "祝日は会社が休みです。",
+        "vn": "là."
+      }
+    },
+    {
+      "word": "連休",
+      "reading": "れんきゅう",
+      "meaning": "Nghỉ liền",
+      "type": "Danh từ",
+      "example": {
+        "jp": "連休が取れました。",
+        "vn": "đã (quá khứ)."
+      }
+    },
+    {
+      "word": "有給",
+      "reading": "ゆうきゅう",
+      "meaning": "Nghỉ có lương",
+      "type": "Danh từ",
+      "example": {
+        "jp": "有給を取得しました。",
+        "vn": "đã (quá khứ)."
+      }
+    },
+    {
+      "word": "有給休暇",
+      "reading": "ゆうきゅうきゅうか",
+      "meaning": "Nghỉ phép có lương",
+      "type": "Danh từ",
+      "example": {
+        "jp": "有給休暇を使います。",
+        "vn": "có (người/động vật)."
+      }
+    },
+    {
+      "word": "寝坊",
+      "reading": "ねぼう",
+      "meaning": "Ngủ nướng",
+      "type": "Danh động từ",
+      "example": {
+        "jp": "休日は寝坊します。",
+        "vn": "(đuôi lịch sự)"
+      }
+    },
+    {
+      "word": "昼寝",
+      "reading": "ひるね",
+      "meaning": "Ngủ trưa",
+      "type": "Danh động từ",
+      "example": {
+        "jp": "昼寝をしました。",
+        "vn": "đã (quá khứ)."
+      }
+    },
+    {
+      "word": "ゴロゴロ",
+      "reading": "ゴロゴロ",
+      "meaning": "Nằm lười",
+      "type": "Phó từ",
+      "example": {
+        "jp": "家でゴロゴロします。",
+        "vn": "(đuôi lịch sự)"
+      }
+    },
+    {
+      "word": "散歩",
+      "reading": "さんぽ",
+      "meaning": "Đi dạo",
+      "type": "Danh động từ",
+      "example": {
+        "jp": "公園を散歩します。",
+        "vn": "(đuôi lịch sự)"
+      }
+    },
+    {
+      "word": "買い物",
+      "reading": "かいもの",
+      "meaning": "Mua sắm",
+      "type": "Danh động từ",
+      "example": {
+        "jp": "買い物に行きます。",
+        "vn": "(đuôi lịch sự)"
+      }
+    },
+    {
+      "word": "映画",
+      "reading": "えいが",
+      "meaning": "Phim",
+      "type": "Danh từ",
+      "example": {
+        "jp": "映画を見に行きます。",
+        "vn": "(đuôi lịch sự)"
+      }
+    },
+    {
+      "word": "趣味",
+      "reading": "しゅみ",
+      "meaning": "Sở thích",
+      "type": "Danh từ",
+      "example": {
+        "jp": "趣味の時間です。",
+        "vn": "là."
+      }
+    },
+    {
+      "word": "読書",
+      "reading": "どくしょ",
+      "meaning": "Đọc sách",
+      "type": "Danh động từ",
+      "example": {
+        "jp": "読書を楽しみます。",
+        "vn": "(đuôi lịch sự)"
+      }
+    },
+    {
+      "word": "スポーツ",
+      "reading": "スポーツ",
+      "meaning": "Thể thao",
+      "type": "Danh từ",
+      "example": {
+        "jp": "スポーツをします。",
+        "vn": "(đuôi lịch sự)"
+      }
+    },
+    {
+      "word": "運動",
+      "reading": "うんどう",
+      "meaning": "Vận động",
+      "type": "Danh động từ",
+      "example": {
+        "jp": "運動をします。",
+        "vn": "(đuôi lịch sự)"
+      }
+    },
+    {
+      "word": "ドライブ",
+      "reading": "ドライブ",
+      "meaning": "Lái xe dạo",
+      "type": "Danh động từ",
+      "example": {
+        "jp": "ドライブに行きます。",
+        "vn": "(đuôi lịch sự)"
+      }
+    },
+    {
+      "word": "旅行",
+      "reading": "りょこう",
+      "meaning": "Du lịch",
+      "type": "Danh động từ",
+      "example": {
+        "jp": "近場で旅行します。",
+        "vn": "(đuôi lịch sự)"
+      }
+    }
+  ]
+}

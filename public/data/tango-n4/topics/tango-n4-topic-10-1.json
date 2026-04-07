@@ -1,0 +1,210 @@
+{
+  "textbookId": "tango-n4",
+  "chapterId": 10,
+  "topicId": "topic-10-1",
+  "topicName": "スポーツ",
+  "topicNameVi": "Thể thao",
+  "vocabCount": 20,
+  "words": [
+    {
+      "word": "スポーツ",
+      "reading": "スポーツ",
+      "meaning": "Thể thao",
+      "type": "Danh từ",
+      "example": {
+        "jp": "スポーツが好きです。",
+        "vn": "là."
+      }
+    },
+    {
+      "word": "運動",
+      "reading": "うんどう",
+      "meaning": "Vận động",
+      "type": "Danh động từ",
+      "example": {
+        "jp": "運動をします。",
+        "vn": "(đuôi lịch sự)"
+      }
+    },
+    {
+      "word": "野球",
+      "reading": "やきゅう",
+      "meaning": "Bóng chày",
+      "type": "Danh từ",
+      "example": {
+        "jp": "野球をします。",
+        "vn": "(đuôi lịch sự)"
+      }
+    },
+    {
+      "word": "サッカー",
+      "reading": "サッカー",
+      "meaning": "Bóng đá",
+      "type": "Danh từ",
+      "example": {
+        "jp": "サッカーが人気です。",
+        "vn": "là."
+      }
+    },
+    {
+      "word": "バスケットボール",
+      "reading": "バスケットボール",
+      "meaning": "Bóng rổ",
+      "type": "Danh từ",
+      "example": {
+        "jp": "バスケットボールをします。",
+        "vn": "(đuôi lịch sự)"
+      }
+    },
+    {
+      "word": "バレーボール",
+      "reading": "バレーボール",
+      "meaning": "Bóng chuyền",
+      "type": "Danh từ",
+      "example": {
+        "jp": "バレーボールをします。",
+        "vn": "(đuôi lịch sự)"
+      }
+    },
+    {
+      "word": "テニス",
+      "reading": "テニス",
+      "meaning": "Quần vợt",
+      "type": "Danh từ",
+      "example": {
+        "jp": "テニスをします。",
+        "vn": "(đuôi lịch sự)"
+      }
+    },
+    {
+      "word": "バドミントン",
+      "reading": "バドミントン",
+      "meaning": "Cầu lông",
+      "type": "Danh từ",
+      "example": {
+        "jp": "バドミントンをします。",
+        "vn": "(đuôi lịch sự)"
+      }
+    },
+    {
+      "word": "卓球",
+      "reading": "たっきゅう",
+      "meaning": "Bóng bàn",
+      "type": "Danh từ",
+      "example": {
+        "jp": "卓球をします。",
+        "vn": "(đuôi lịch sự)"
+      }
+    },
+    {
+      "word": "水泳",
+      "reading": "すいえい",
+      "meaning": "Bơi lội",
+      "type": "Danh động từ",
+      "example": {
+        "jp": "水泳をします。",
+        "vn": "(đuôi lịch sự)"
+      }
+    },
+    {
+      "word": "マラソン",
+      "reading": "マラソン",
+      "meaning": "Marathon",
+      "type": "Danh từ",
+      "example": {
+        "jp": "マラソン大会に出場しました。",
+        "vn": "đã (quá khứ)."
+      }
+    },
+    {
+      "word": "ジョギング",
+      "reading": "ジョギング",
+      "meaning": "Chạy bộ",
+      "type": "Danh động từ",
+      "example": {
+        "jp": "朝ジョギングをします。",
+        "vn": "(đuôi lịch sự)"
+      }
+    },
+    {
+      "word": "サイクリング",
+      "reading": "サイクリング",
+      "meaning": "Đạp xe",
+      "type": "Danh động từ",
+      "example": {
+        "jp": "サイクリングを楽しみます。",
+        "vn": "(đuôi lịch sự)"
+      }
+    },
+    {
+      "word": "ゴルフ",
+      "reading": "ゴルフ",
+      "meaning": "Golf",
+      "type": "Danh từ",
+      "example": {
+        "jp": "ゴルフをします。",
+        "vn": "(đuôi lịch sự)"
+      }
+    },
+    {
+      "word": "スキー",
+      "reading": "スキー",
+      "meaning": "Trượt tuyết",
+      "type": "Danh từ",
+      "example": {
+        "jp": "スキーに行きます。",
+        "vn": "(đuôi lịch sự)"
+      }
+    },
+    {
+      "word": "スノーボード",
+      "reading": "スノーボード",
+      "meaning": "Ván trượt tuyết",
+      "type": "Danh từ",
+      "example": {
+        "jp": "スノーボードをします。",
+        "vn": "(đuôi lịch sự)"
+      }
+    },
+    {
+      "word": "山登り",
+      "reading": "やまのぼり",
+      "meaning": "Leo núi",
+      "type": "Danh động từ",
+      "example": {
+        "jp": "山登りをします。",
+        "vn": "(đuôi lịch sự)"
+      }
+    },
+    {
+      "word": "ジム",
+      "reading": "ジム",
+      "meaning": "Phòng tập",
+      "type": "Danh từ",
+      "example": {
+        "jp": "ジムに通っています。",
+        "vn": "có (người/động vật)."
+      }
+    },
+    {
+      "word": "トレーニング",
+      "reading": "トレーニング",
+      "meaning": "Tập luyện",
+      "type": "Danh động từ",
+      "example": {
+        "jp": "トレーニングをします。",
+        "vn": "(đuôi lịch sự)"
+      }
+    },
+    {
+      "word": "筋トレ",
+      "reading": "きんトレ",
+      "meaning": "Tập cơ bắp",
+      "type": "Danh động từ",
+      "example": {
+        "jp": "筋トレをしています。",
+        "vn": "có (người/động vật)."
+      }
+    }
+  ]
+}

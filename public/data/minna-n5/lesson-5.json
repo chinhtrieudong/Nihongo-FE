@@ -1,0 +1,136 @@
+{
+  "lesson": 5,
+  "topic": "Di chuyển & Phương tiện giao thông",
+  "vocabulary": [
+    {
+      "id": "n5_l5_001",
+      "word": "行く",
+      "reading": "いく",
+      "hanViet": "Hành",
+      "meaning": "đi",
+      "type": "verb",
+      "category": "Từ Vựng Động Từ Di Chuyển",
+      "example": {
+        "jp": "学校へ行きます。",
+        "vn": "Đi đến trường học."
+      }
+    },
+    {
+      "id": "n5_l5_002",
+      "word": "来る",
+      "reading": "くる",
+      "hanViet": "Lai",
+      "meaning": "đến",
+      "type": "verb",
+      "category": "Từ Vựng Động Từ Di Chuyển",
+      "example": {
+        "jp": "友達が来ます。",
+        "vn": "Bạn bè đến."
+      }
+    },
+    {
+      "id": "n5_l5_003",
+      "word": "帰る",
+      "reading": "かえる",
+      "hanViet": "Quy",
+      "meaning": "về, trở về",
+      "type": "verb",
+      "category": "Từ Vựng Động Từ Di Chuyển",
+      "example": {
+        "jp": "家へ帰ります。",
+        "vn": "Về nhà."
+      }
+    },
+    {
+      "id": "n5_l5_004",
+      "word": "電車",
+      "reading": "でんしゃ",
+      "hanViet": "Điện Xa",
+      "meaning": "tàu điện",
+      "type": "other",
+      "category": "Từ Vựng Phương Tiện",
+      "example": {
+        "jp": "電車で行きます。",
+        "vn": "Đi bằng tàu điện."
+      }
+    },
+    {
+      "id": "n5_l5_005",
+      "word": "バス",
+      "reading": "ばす",
+      "hanViet": "",
+      "meaning": "xe buýt",
+      "type": "other",
+      "category": "Từ Vựng Phương Tiện",
+      "example": {
+        "jp": "バスで学校へ行きます。",
+        "vn": "Đi đến trường bằng xe buýt."
+      }
+    },
+    {
+      "id": "n5_l5_006",
+      "word": "自転車",
+      "reading": "じてんしゃ",
+      "hanViet": "Tự Chuyển Xa",
+      "meaning": "xe đạp",
+      "type": "other",
+      "category": "Từ Vựng Phương Tiện",
+      "example": {
+        "jp": "自転車で帰ります。",
+        "vn": "Về bằng xe đạp."
+      }
+    },
+    {
+      "id": "n5_l5_007",
+      "word": "車",
+      "reading": "くるま",
+      "hanViet": "Xa",
+      "meaning": "xe hơi, ô tô",
+      "type": "other",
+      "category": "Từ Vựng Phương Tiện",
+      "example": {
+        "jp": "車で来ました。",
+        "vn": "Đã đến bằng xe hơi."
+      }
+    },
+    {
+      "id": "n5_l5_008",
+      "word": "歩く",
+      "reading": "あるく",
+      "hanViet": "Bộ",
+      "meaning": "đi bộ",
+      "type": "verb",
+      "category": "Từ Vựng Động Từ Di Chuyển",
+      "example": {
+        "jp": "駅まで歩きます。",
+        "vn": "Đi bộ đến ga."
+      }
+    },
+    {
+      "id": "n5_l5_009",
+      "word": "駅",
+      "reading": "えき",
+      "hanViet": "Dịch",
+      "meaning": "ga, trạm",
+      "type": "other",
+      "category": "Từ Vựng Nơi Chốn",
+      "example": {
+        "jp": "駅で電車を降ります。",
+        "vn": "Xuống tàu ở ga."
+      }
+    },
+    {
+      "id": "n5_l5_010",
+      "word": "空港",
+      "reading": "くうこう",
+      "hanViet": "Không Cảng",
+      "meaning": "sân bay",
+      "type": "other",
+      "category": "Từ Vựng Nơi Chốn",
+      "example": {
+        "jp": "空港へバスで行きます。",
+        "vn": "Đi đến sân bay bằng xe buýt."
+      }
+    }
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "textbookId": "tango-n1",
+  "chapterId": 1,
+  "chapterTitle": "高度ビジネス",
+  "chapterTitleVi": "Chương 1: Kinh doanh cao cấp",
+  "totalVocab": 300,
+  "topics": [
+    {
+      "id": "topic-1-1",
+      "name": "グローバル",
+      "nameVi": "Toàn cầu hóa",
+      "vocabCount": 60,
+      "words": [
+        { "word": "グローバル化", "reading": "グローバルか", "meaning": "Toàn cầu hóa", "type": "Danh từ", "example": "グローバル化が進んでいます。" },
+        { "word": "グローバル企業", "reading": "グローバルきぎょう", "meaning": "Doanh nghiệp toàn cầu", "type": "Danh từ", "example": "グローバル企業で働いています。" },
+        { "word": "グローバル戦略", "reading": "グローバルせんりゃく", "meaning": "Chiến lược toàn cầu", "type": "Danh từ", "example": "グローバル戦略を展開しています。" },
+        { "word": "多国籍", "reading": "たこくせき", "meaning": "Đa quốc gia", "type": "Danh từ", "example": "多国籍企業です。" },
+        { "word": "海外展開", "reading": "かいがいてんかい", "meaning": "Mở rộng ra nước ngoài", "type": "Danh từ", "example": "海外展開を加速しています。" }
+      ]
+    }
+  ]
+}

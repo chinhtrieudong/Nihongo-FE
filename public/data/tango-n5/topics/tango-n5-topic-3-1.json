@@ -1,0 +1,150 @@
+{
+  "textbookId": "tango-n5",
+  "chapterId": 3,
+  "topicId": "topic-3-1",
+  "topicName": "はたらく",
+  "topicNameVi": "Nghề nghiệp",
+  "vocabCount": 14,
+  "words": [
+    {
+      "word": "働く",
+      "reading": "はたらく",
+      "meaning": "Làm việc",
+      "type": "Động từ",
+      "example": {
+        "jp": "会社で働きます。",
+        "vn": "(đuôi lịch sự)"
+      }
+    },
+    {
+      "word": "勤める",
+      "reading": "つとめる",
+      "meaning": "Làm việc (cho công ty)",
+      "type": "Động từ",
+      "example": {
+        "jp": "銀行に勤めています。",
+        "vn": "có (người/động vật)."
+      }
+    },
+    {
+      "word": "働き",
+      "reading": "はたらき",
+      "meaning": "Công việc",
+      "type": "Danh từ",
+      "example": {
+        "jp": "働きが多いです。",
+        "vn": "là."
+      }
+    },
+    {
+      "word": "会社",
+      "reading": "かいしゃ",
+      "meaning": "Công ty",
+      "type": "Danh từ",
+      "example": {
+        "jp": "会社員です。",
+        "vn": "là."
+      }
+    },
+    {
+      "word": "事務所",
+      "reading": "じむしょ",
+      "meaning": "Văn phòng",
+      "type": "Danh từ",
+      "example": {
+        "jp": "事務所で働きます。",
+        "vn": "(đuôi lịch sự)"
+      }
+    },
+    {
+      "word": "工場",
+      "reading": "こうじょう",
+      "meaning": "Nhà máy, xưởng",
+      "type": "Danh từ",
+      "example": {
+        "jp": "工場で働いています。",
+        "vn": "có (người/động vật)."
+      }
+    },
+    {
+      "word": "店",
+      "reading": "みせ",
+      "meaning": "Cửa hàng",
+      "type": "Danh từ",
+      "example": {
+        "jp": "店で働きます。",
+        "vn": "(đuôi lịch sự)"
+      }
+    },
+    {
+      "word": "スーパー",
+      "reading": "スーパー",
+      "meaning": "Siêu thị",
+      "type": "Danh từ",
+      "example": {
+        "jp": "スーパーで買い物します。",
+        "vn": "(đuôi lịch sự)"
+      }
+    },
+    {
+      "word": "コンビニ",
+      "reading": "コンビニ",
+      "meaning": "Cửa hàng tiện lợi",
+      "type": "Danh từ",
+      "example": {
+        "jp": "コンビニで働いています。",
+        "vn": "có (người/động vật)."
+      }
+    },
+    {
+      "word": "レストラン",
+      "reading": "レストラン",
+      "meaning": "Nhà hàng",
+      "type": "Danh từ",
+      "example": {
+        "jp": "レストランで食事します。",
+        "vn": "(đuôi lịch sự)"
+      }
+    },
+    {
+      "word": "カフェ",
+      "reading": "カフェ",
+      "meaning": "Quán cà phê",
+      "type": "Danh từ",
+      "example": {
+        "jp": "カフェで働いています。",
+        "vn": "có (người/động vật)."
+      }
+    },
+    {
+      "word": "ホテル",
+      "reading": "ホテル",
+      "meaning": "Khách sạn",
+      "type": "Danh từ",
+      "example": {
+        "jp": "ホテルで働きます。",
+        "vn": "(đuôi lịch sự)"
+      }
+    },
+    {
+      "word": "病院",
+      "reading": "びょういん",
+      "meaning": "Bệnh viện",
+      "type": "Danh từ",
+      "example": {
+        "jp": "病院で働いています。",
+        "vn": "có (người/động vật)."
+      }
+    },
+    {
+      "word": "学校",
+      "reading": "がっこう",
+      "meaning": "Trường học",
+      "type": "Danh từ",
+      "example": {
+        "jp": "学校で働きます。",
+        "vn": "(đuôi lịch sự)"
+      }
+    }
+  ]
+}

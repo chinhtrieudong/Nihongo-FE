@@ -1,0 +1,210 @@
+{
+  "textbookId": "tango-n4",
+  "chapterId": 3,
+  "topicId": "topic-3-1",
+  "topicName": "性格の特徴",
+  "topicNameVi": "Đặc điểm tính cách",
+  "vocabCount": 20,
+  "words": [
+    {
+      "word": "性格",
+      "reading": "せいかく",
+      "meaning": "Tính cách",
+      "type": "Danh từ",
+      "example": {
+        "jp": "性格が明るいです。",
+        "vn": "là."
+      }
+    },
+    {
+      "word": "明るい",
+      "reading": "あかるい",
+      "meaning": "Vui vẻ",
+      "type": "Tính từ",
+      "example": {
+        "jp": "明るい性格です。",
+        "vn": "là."
+      }
+    },
+    {
+      "word": "暗い",
+      "reading": "くらい",
+      "meaning": "Buồn bã",
+      "type": "Tính từ",
+      "example": {
+        "jp": "少し暗い性格です。",
+        "vn": "là."
+      }
+    },
+    {
+      "word": "活発",
+      "reading": "かっぱつ",
+      "meaning": "Năng động",
+      "type": "Tính từ",
+      "example": {
+        "jp": "活発な性格です。",
+        "vn": "là."
+      }
+    },
+    {
+      "word": "積極的",
+      "reading": "せっきょくてき",
+      "meaning": "Tích cực",
+      "type": "Tính từ",
+      "example": {
+        "jp": "積極的な人です。",
+        "vn": "là."
+      }
+    },
+    {
+      "word": "消極的",
+      "reading": "しょうきょくてき",
+      "meaning": "Tiêu cực",
+      "type": "Tính từ",
+      "example": {
+        "jp": "消極的な性格です。",
+        "vn": "là."
+      }
+    },
+    {
+      "word": "外向的",
+      "reading": "がいこうてき",
+      "meaning": "Hướng ngoại",
+      "type": "Tính từ",
+      "example": {
+        "jp": "外向的です。",
+        "vn": "là."
+      }
+    },
+    {
+      "word": "内向的",
+      "reading": "ないこうてき",
+      "meaning": "Hướng nội",
+      "type": "Tính từ",
+      "example": {
+        "jp": "内向的な性格です。",
+        "vn": "là."
+      }
+    },
+    {
+      "word": "社交的",
+      "reading": "しゃこうてき",
+      "meaning": "Thích giao tiếp",
+      "type": "Tính từ",
+      "example": {
+        "jp": "社交的な人です。",
+        "vn": "là."
+      }
+    },
+    {
+      "word": "現実的",
+      "reading": "げんじつてき",
+      "meaning": "Thực tế",
+      "type": "Tính từ",
+      "example": {
+        "jp": "現実的な性格です。",
+        "vn": "là."
+      }
+    },
+    {
+      "word": "理想的",
+      "reading": "りそうてき",
+      "meaning": "Lý tưởng",
+      "type": "Tính từ",
+      "example": {
+        "jp": "理想的な考え方です。",
+        "vn": "là."
+      }
+    },
+    {
+      "word": "楽観的",
+      "reading": "らっかんてき",
+      "meaning": "Lạc quan",
+      "type": "Tính từ",
+      "example": {
+        "jp": "楽観的な性格です。",
+        "vn": "là."
+      }
+    },
+    {
+      "word": "悲観的",
+      "reading": "ひかんてき",
+      "meaning": "Bi quan",
+      "type": "Tính từ",
+      "example": {
+        "jp": "悲観的な考え方です。",
+        "vn": "là."
+      }
+    },
+    {
+      "word": "真面目",
+      "reading": "まじめ",
+      "meaning": "Nghiêm túc",
+      "type": "Danh từ",
+      "example": {
+        "jp": "真面目な性格です。",
+        "vn": "là."
+      }
+    },
+    {
+      "word": "誠実",
+      "reading": "せいじつ",
+      "meaning": "Thành thật",
+      "type": "Danh từ",
+      "example": {
+        "jp": "誠実な人です。",
+        "vn": "là."
+      }
+    },
+    {
+      "word": "正直",
+      "reading": "しょうじき",
+      "meaning": "Thẳng thắn",
+      "type": "Danh từ",
+      "example": {
+        "jp": "正直な性格です。",
+        "vn": "là."
+      }
+    },
+    {
+      "word": "親切",
+      "reading": "しんせつ",
+      "meaning": "Tốt bụng",
+      "type": "Danh từ",
+      "example": {
+        "jp": "親切な人です。",
+        "vn": "là."
+      }
+    },
+    {
+      "word": "勇敢",
+      "reading": "ゆうかん",
+      "meaning": "Can đảm",
+      "type": "Danh từ",
+      "example": {
+        "jp": "勇敢な性格です。",
+        "vn": "là."
+      }
+    },
+    {
+      "word": "慎重",
+      "reading": "しんちょう",
+      "meaning": "Thận trọng",
+      "type": "Danh từ",
+      "example": {
+        "jp": "慎重な性格です。",
+        "vn": "là."
+      }
+    },
+    {
+      "word": "好奇心",
+      "reading": "こうきしん",
+      "meaning": "Tò mò",
+      "type": "Danh từ",
+      "example": {
+        "jp": "好奇心が強いです。",
+        "vn": "là."
+      }
+    }
+  ]
+}

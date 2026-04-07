@@ -1,0 +1,210 @@
+{
+  "textbookId": "tango-n4",
+  "chapterId": 7,
+  "topicId": "topic-7-2",
+  "topicName": "商品",
+  "topicNameVi": "Sản phẩm",
+  "vocabCount": 20,
+  "words": [
+    {
+      "word": "商品",
+      "reading": "しょうひん",
+      "meaning": "Sản phẩm",
+      "type": "Danh từ",
+      "example": {
+        "jp": "商品を見ています。",
+        "vn": "có (người/động vật)."
+      }
+    },
+    {
+      "word": "製品",
+      "reading": "せいひん",
+      "meaning": "Sản phẩm",
+      "type": "Danh từ",
+      "example": {
+        "jp": "国産の製品です。",
+        "vn": "là."
+      }
+    },
+    {
+      "word": "食品",
+      "reading": "しょくひん",
+      "meaning": "Thực phẩm",
+      "type": "Danh từ",
+      "example": {
+        "jp": "食品を買いました。",
+        "vn": "đã (quá khứ)."
+      }
+    },
+    {
+      "word": "衣料品",
+      "reading": "いりょうひん",
+      "meaning": "Hàng may mặc",
+      "type": "Danh từ",
+      "example": {
+        "jp": "衣料品を買いました。",
+        "vn": "đã (quá khứ)."
+      }
+    },
+    {
+      "word": "雑貨",
+      "reading": "ざっか",
+      "meaning": "Hàng tạp hóa",
+      "type": "Danh từ",
+      "example": {
+        "jp": "雑貨を買いました。",
+        "vn": "đã (quá khứ)."
+      }
+    },
+    {
+      "word": "日用品",
+      "reading": "にちようひん",
+      "meaning": "Hàng dùng hàng ngày",
+      "type": "Danh từ",
+      "example": {
+        "jp": "日用品を買いました。",
+        "vn": "đã (quá khứ)."
+      }
+    },
+    {
+      "word": "化粧品",
+      "reading": "けしょうひん",
+      "meaning": "Mỹ phẩm",
+      "type": "Danh từ",
+      "example": {
+        "jp": "化粧品を買いました。",
+        "vn": "đã (quá khứ)."
+      }
+    },
+    {
+      "word": "洗剤",
+      "reading": "せんざい",
+      "meaning": "Chất tẩy",
+      "type": "Danh từ",
+      "example": {
+        "jp": "洗剤を買いました。",
+        "vn": "đã (quá khứ)."
+      }
+    },
+    {
+      "word": "ブランド",
+      "reading": "ブランド",
+      "meaning": "Thương hiệu",
+      "type": "Danh từ",
+      "example": {
+        "jp": "有名ブランドです。",
+        "vn": "là."
+      }
+    },
+    {
+      "word": "国産",
+      "reading": "こくさん",
+      "meaning": "Nội địa",
+      "type": "Danh từ",
+      "example": {
+        "jp": "国産の野菜です。",
+        "vn": "là."
+      }
+    },
+    {
+      "word": "輸入品",
+      "reading": "ゆにゅうひん",
+      "meaning": "Hàng nhập khẩu",
+      "type": "Danh từ",
+      "example": {
+        "jp": "輸入品を販売しています。",
+        "vn": "có (người/động vật)."
+      }
+    },
+    {
+      "word": "新作",
+      "reading": "しんさく",
+      "meaning": "Sản phẩm mới",
+      "type": "Danh từ",
+      "example": {
+        "jp": "新作が入荷しました。",
+        "vn": "đã (quá khứ)."
+      }
+    },
+    {
+      "word": "人気商品",
+      "reading": "にんきしょうひん",
+      "meaning": "Sản phẩm bán chạy",
+      "type": "Danh từ",
+      "example": {
+        "jp": "人気商品です。",
+        "vn": "là."
+      }
+    },
+    {
+      "word": "限定商品",
+      "reading": "げんていしょうひん",
+      "meaning": "Sản phẩm giới hạn",
+      "type": "Danh từ",
+      "example": {
+        "jp": "限定商品を買いました。",
+        "vn": "đã (quá khứ)."
+      }
+    },
+    {
+      "word": "特価品",
+      "reading": "とっかひん",
+      "meaning": "Hàng giá đặc biệt",
+      "type": "Danh từ",
+      "example": {
+        "jp": "特価品を見つけました。",
+        "vn": "đã (quá khứ)."
+      }
+    },
+    {
+      "word": "試供品",
+      "reading": "しきょうひん",
+      "meaning": "Hàng mẫu thử",
+      "type": "Danh từ",
+      "example": {
+        "jp": "試供品をもらいました。",
+        "vn": "đã (quá khứ)."
+      }
+    },
+    {
+      "word": "見本",
+      "reading": "みほん",
+      "meaning": "Mẫu",
+      "type": "Danh từ",
+      "example": {
+        "jp": "見本を見せてください。",
+        "vn": "vui lòng..."
+      }
+    },
+    {
+      "word": "在庫",
+      "reading": "ざいこ",
+      "meaning": "Hàng tồn kho",
+      "type": "Danh từ",
+      "example": {
+        "jp": "在庫があります。",
+        "vn": "có."
+      }
+    },
+    {
+      "word": "品切れ",
+      "reading": "しなぎれ",
+      "meaning": "Hết hàng",
+      "type": "Danh từ",
+      "example": {
+        "jp": "品切れです。",
+        "vn": "là."
+      }
+    },
+    {
+      "word": "売り切れ",
+      "reading": "うりきれ",
+      "meaning": "Bán hết",
+      "type": "Danh từ",
+      "example": {
+        "jp": "売り切れました。",
+        "vn": "đã (quá khứ)."
+      }
+    }
+  ]
+}

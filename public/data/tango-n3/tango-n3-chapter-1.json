@@ -1,0 +1,22 @@
+{
+  "textbookId": "tango-n3",
+  "chapterId": 1,
+  "chapterTitle": "ビジネス",
+  "chapterTitleVi": "Chương 1: Kinh doanh",
+  "totalVocab": 200,
+  "topics": [
+    {
+      "id": "topic-1-1",
+      "name": "職場",
+      "nameVi": "Nơi làm việc",
+      "vocabCount": 40,
+      "words": [
+        { "word": "職場", "reading": "しょくば", "meaning": "Nơi làm việc", "type": "Danh từ", "example": "職場の環境が良いです。" },
+        { "word": "上司", "reading": "じょうし", "meaning": "Cấp trên", "type": "Danh từ", "example": "上司に相談しました。" },
+        { "word": "部下", "reading": "ぶか", "meaning": "Cấp dưới", "type": "Danh từ", "example": "部下を指導しています。" },
+        { "word": "同僚", "reading": "どうりょう", "meaning": "Đồng nghiệp", "type": "Danh từ", "example": "同僚と仲良くしています。" },
+        { "word": "後輩", "reading": "こうはい", "meaning": "Khoá dưới", "type": "Danh từ", "example": "後輩に教えています。" }
+      ]
+    }
+  ]
+}

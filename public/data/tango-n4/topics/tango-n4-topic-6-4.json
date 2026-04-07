@@ -1,0 +1,210 @@
+{
+  "textbookId": "tango-n4",
+  "chapterId": 6,
+  "topicId": "topic-6-4",
+  "topicName": "自然現象",
+  "topicNameVi": "Hiện tượng tự nhiên",
+  "vocabCount": 20,
+  "words": [
+    {
+      "word": "自然",
+      "reading": "しぜん",
+      "meaning": "Tự nhiên",
+      "type": "Danh từ",
+      "example": {
+        "jp": "自然を大切にします。",
+        "vn": "(đuôi lịch sự)"
+      }
+    },
+    {
+      "word": "現象",
+      "reading": "げんしょう",
+      "meaning": "Hiện tượng",
+      "type": "Danh từ",
+      "example": {
+        "jp": "不思議な現象です。",
+        "vn": "là."
+      }
+    },
+    {
+      "word": "虹",
+      "reading": "にじ",
+      "meaning": "Cầu vồng",
+      "type": "Danh từ",
+      "example": {
+        "jp": "虹が出ました。",
+        "vn": "đã (quá khứ)."
+      }
+    },
+    {
+      "word": "霜",
+      "reading": "しも",
+      "meaning": "Sương giá",
+      "type": "Danh từ",
+      "example": {
+        "jp": "霜が降りました。",
+        "vn": "đã (quá khứ)."
+      }
+    },
+    {
+      "word": "露",
+      "reading": "つゆ",
+      "meaning": "Sương sớm",
+      "type": "Danh từ",
+      "example": {
+        "jp": "草に露がついています。",
+        "vn": "có (người/động vật)."
+      }
+    },
+    {
+      "word": "氷",
+      "reading": "こおり",
+      "meaning": "Băng",
+      "type": "Danh từ",
+      "example": {
+        "jp": "氷が張っています。",
+        "vn": "có (người/động vật)."
+      }
+    },
+    {
+      "word": "凍る",
+      "reading": "こおる",
+      "meaning": "Đóng băng",
+      "type": "Động từ",
+      "example": {
+        "jp": "水道管が凍りました。",
+        "vn": "đã (quá khứ)."
+      }
+    },
+    {
+      "word": "溶ける",
+      "reading": "とける",
+      "meaning": "Tan chảy",
+      "type": "Động từ",
+      "example": {
+        "jp": "雪が溶けています。",
+        "vn": "có (người/động vật)."
+      }
+    },
+    {
+      "word": "蒸発",
+      "reading": "じょうはつ",
+      "meaning": "Bốc hơi",
+      "type": "Danh động từ",
+      "example": {
+        "jp": "水が蒸発しました。",
+        "vn": "đã (quá khứ)."
+      }
+    },
+    {
+      "word": "川",
+      "reading": "かわ",
+      "meaning": "Sông",
+      "type": "Danh từ",
+      "example": {
+        "jp": "川が氾濫しました。",
+        "vn": "đã (quá khứ)."
+      }
+    },
+    {
+      "word": "山",
+      "reading": "やま",
+      "meaning": "Núi",
+      "type": "Danh từ",
+      "example": {
+        "jp": "山が見えます。",
+        "vn": "(đuôi lịch sự)"
+      }
+    },
+    {
+      "word": "湖",
+      "reading": "みずうみ",
+      "meaning": "Hồ",
+      "type": "Danh từ",
+      "example": {
+        "jp": "湖が凍結しました。",
+        "vn": "đã (quá khứ)."
+      }
+    },
+    {
+      "word": "海",
+      "reading": "うみ",
+      "meaning": "Biển",
+      "type": "Danh từ",
+      "example": {
+        "jp": "海が荒れています。",
+        "vn": "có (người/động vật)."
+      }
+    },
+    {
+      "word": "波",
+      "reading": "なみ",
+      "meaning": "Sóng",
+      "type": "Danh từ",
+      "example": {
+        "jp": "波が高いです。",
+        "vn": "là."
+      }
+    },
+    {
+      "word": "潮",
+      "reading": "しお",
+      "meaning": "Thủy triều",
+      "type": "Danh từ",
+      "example": {
+        "jp": "潮が満ちています。",
+        "vn": "có (người/động vật)."
+      }
+    },
+    {
+      "word": "満潮",
+      "reading": "まんちょう",
+      "meaning": "Triều lên",
+      "type": "Danh từ",
+      "example": {
+        "jp": "満潮の時間です。",
+        "vn": "là."
+      }
+    },
+    {
+      "word": "干潮",
+      "reading": "かんちょう",
+      "meaning": "Triều xuống",
+      "type": "Danh từ",
+      "example": {
+        "jp": "干潮になりました。",
+        "vn": "đã (quá khứ)."
+      }
+    },
+    {
+      "word": "月",
+      "reading": "つき",
+      "meaning": "Mặt trăng",
+      "type": "Danh từ",
+      "example": {
+        "jp": "月が出ています。",
+        "vn": "có (người/động vật)."
+      }
+    },
+    {
+      "word": "満月",
+      "reading": "まんげつ",
+      "meaning": "Trăng rằm",
+      "type": "Danh từ",
+      "example": {
+        "jp": "満月の夜です。",
+        "vn": "là."
+      }
+    },
+    {
+      "word": "新月",
+      "reading": "しんげつ",
+      "meaning": "Trăng non",
+      "type": "Danh từ",
+      "example": {
+        "jp": "新月の日です。",
+        "vn": "là."
+      }
+    }
+  ]
+}

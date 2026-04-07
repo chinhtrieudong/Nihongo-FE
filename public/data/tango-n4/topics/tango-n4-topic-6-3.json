@@ -1,0 +1,210 @@
+{
+  "textbookId": "tango-n4",
+  "chapterId": 6,
+  "topicId": "topic-6-3",
+  "topicName": "天候",
+  "topicNameVi": "Thời tiết",
+  "vocabCount": 20,
+  "words": [
+    {
+      "word": "天候",
+      "reading": "てんこう",
+      "meaning": "Thời tiết",
+      "type": "Danh từ",
+      "example": {
+        "jp": "天候が安定しています。",
+        "vn": "có (người/động vật)."
+      }
+    },
+    {
+      "word": "天気",
+      "reading": "てんき",
+      "meaning": "Thời tiết",
+      "type": "Danh từ",
+      "example": {
+        "jp": "天気がいいです。",
+        "vn": "là."
+      }
+    },
+    {
+      "word": "晴れ",
+      "reading": "はれ",
+      "meaning": "Nắng",
+      "type": "Danh từ",
+      "example": {
+        "jp": "晴れています。",
+        "vn": "có (người/động vật)."
+      }
+    },
+    {
+      "word": "曇り",
+      "reading": "くもり",
+      "meaning": "Nhiều mây",
+      "type": "Danh từ",
+      "example": {
+        "jp": "曇りです。",
+        "vn": "là."
+      }
+    },
+    {
+      "word": "雨",
+      "reading": "あめ",
+      "meaning": "Mưa",
+      "type": "Danh từ",
+      "example": {
+        "jp": "雨が降っています。",
+        "vn": "có (người/động vật)."
+      }
+    },
+    {
+      "word": "雪",
+      "reading": "ゆき",
+      "meaning": "Tuyết",
+      "type": "Danh từ",
+      "example": {
+        "jp": "雪が降っています。",
+        "vn": "có (người/động vật)."
+      }
+    },
+    {
+      "word": "風",
+      "reading": "かぜ",
+      "meaning": "Gió",
+      "type": "Danh từ",
+      "example": {
+        "jp": "風が強いです。",
+        "vn": "là."
+      }
+    },
+    {
+      "word": "雷",
+      "reading": "かみなり",
+      "meaning": "Sấm",
+      "type": "Danh từ",
+      "example": {
+        "jp": "雷が鳴っています。",
+        "vn": "có (người/động vật)."
+      }
+    },
+    {
+      "word": "嵐",
+      "reading": "あらし",
+      "meaning": "Bão",
+      "type": "Danh từ",
+      "example": {
+        "jp": "嵐が来そうです。",
+        "vn": "là."
+      }
+    },
+    {
+      "word": "霧",
+      "reading": "きり",
+      "meaning": "Sương mù",
+      "type": "Danh từ",
+      "example": {
+        "jp": "霧が深いです。",
+        "vn": "là."
+      }
+    },
+    {
+      "word": "雹",
+      "reading": "ひょう",
+      "meaning": "Mưa đá",
+      "type": "Danh từ",
+      "example": {
+        "jp": "雹が降りました。",
+        "vn": "đã (quá khứ)."
+      }
+    },
+    {
+      "word": "快晴",
+      "reading": "かいせい",
+      "meaning": "Trời quang",
+      "type": "Danh từ",
+      "example": {
+        "jp": "快晴です。",
+        "vn": "là."
+      }
+    },
+    {
+      "word": "暴雨",
+      "reading": "ばくう",
+      "meaning": "Mưa to",
+      "type": "Danh từ",
+      "example": {
+        "jp": "暴雨に見舞われました。",
+        "vn": "đã (quá khứ)."
+      }
+    },
+    {
+      "word": "大雨",
+      "reading": "おおあめ",
+      "meaning": "Mưa lớn",
+      "type": "Danh từ",
+      "example": {
+        "jp": "大雨警報が出ました。",
+        "vn": "đã (quá khứ)."
+      }
+    },
+    {
+      "word": "小雨",
+      "reading": "こさめ",
+      "meaning": "Mưa nhỏ",
+      "type": "Danh từ",
+      "example": {
+        "jp": "小雨が降っています。",
+        "vn": "có (người/động vật)."
+      }
+    },
+    {
+      "word": "にわか雨",
+      "reading": "にわかあめ",
+      "meaning": "Mưa rào",
+      "type": "Danh từ",
+      "example": {
+        "jp": "にわか雨に遭いました。",
+        "vn": "đã (quá khứ)."
+      }
+    },
+    {
+      "word": "雷雨",
+      "reading": "らいう",
+      "meaning": "Dông",
+      "type": "Danh từ",
+      "example": {
+        "jp": "雷雨が発生しました。",
+        "vn": "đã (quá khứ)."
+      }
+    },
+    {
+      "word": "天気予報",
+      "reading": "てんきよほう",
+      "meaning": "Dự báo thời tiết",
+      "type": "Danh từ",
+      "example": {
+        "jp": "天気予報を見ました。",
+        "vn": "đã (quá khứ)."
+      }
+    },
+    {
+      "word": "予報",
+      "reading": "よほう",
+      "meaning": "Dự báo",
+      "type": "Danh động từ",
+      "example": {
+        "jp": "雨が予報されています。",
+        "vn": "có (người/động vật)."
+      }
+    },
+    {
+      "word": "気象",
+      "reading": "きしょう",
+      "meaning": "Khí tượng",
+      "type": "Danh từ",
+      "example": {
+        "jp": "気象情報を確認します。",
+        "vn": "(đuôi lịch sự)"
+      }
+    }
+  ]
+}

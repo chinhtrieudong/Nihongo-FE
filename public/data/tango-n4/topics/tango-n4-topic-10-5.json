@@ -1,0 +1,210 @@
+{
+  "textbookId": "tango-n4",
+  "chapterId": 10,
+  "topicId": "topic-10-5",
+  "topicName": "コレクション",
+  "topicNameVi": "Sưu tầm",
+  "vocabCount": 20,
+  "words": [
+    {
+      "word": "コレクション",
+      "reading": "コレクション",
+      "meaning": "Sưu tầm",
+      "type": "Danh từ",
+      "example": {
+        "jp": "コレクションが趣味です。",
+        "vn": "là."
+      }
+    },
+    {
+      "word": "収集",
+      "reading": "しゅうしゅう",
+      "meaning": "Thu thập",
+      "type": "Danh động từ",
+      "example": {
+        "jp": "切手を収集しています。",
+        "vn": "có (người/động vật)."
+      }
+    },
+    {
+      "word": "集める",
+      "reading": "あつめる",
+      "meaning": "Thu thập",
+      "type": "Động từ",
+      "example": {
+        "jp": "フィギュアを集めています。",
+        "vn": "có (người/động vật)."
+      }
+    },
+    {
+      "word": "趣味",
+      "reading": "しゅみ",
+      "meaning": "Sở thích",
+      "type": "Danh từ",
+      "example": {
+        "jp": "趣味として楽しんでいます。",
+        "vn": "có (người/động vật)."
+      }
+    },
+    {
+      "word": "切手",
+      "reading": "きって",
+      "meaning": "Tem",
+      "type": "Danh từ",
+      "example": {
+        "jp": "切手を集めています。",
+        "vn": "có (người/động vật)."
+      }
+    },
+    {
+      "word": "ハガキ",
+      "reading": "ハガキ",
+      "meaning": "Bưu thiếp",
+      "type": "Danh từ",
+      "example": {
+        "jp": "ハガキを集めています。",
+        "vn": "có (người/động vật)."
+      }
+    },
+    {
+      "word": "写真",
+      "reading": "しゃしん",
+      "meaning": "Ảnh",
+      "type": "Danh từ",
+      "example": {
+        "jp": "写真を撮ります。",
+        "vn": "(đuôi lịch sự)"
+      }
+    },
+    {
+      "word": "絵葉書",
+      "reading": "えはがき",
+      "meaning": "Thiếp hình",
+      "type": "Danh từ",
+      "example": {
+        "jp": "絵葉書を集めています。",
+        "vn": "có (người/động vật)."
+      }
+    },
+    {
+      "word": "ポストカード",
+      "reading": "ポストカード",
+      "meaning": "Thiệp bưu điện",
+      "type": "Danh từ",
+      "example": {
+        "jp": "ポストカードを集めています。",
+        "vn": "có (người/động vật)."
+      }
+    },
+    {
+      "word": "フィギュア",
+      "reading": "フィギュア",
+      "meaning": "Mô hình",
+      "type": "Danh từ",
+      "example": {
+        "jp": "フィギュアを飾っています。",
+        "vn": "có (người/động vật)."
+      }
+    },
+    {
+      "word": "ぬいぐるみ",
+      "reading": "ぬいぐるみ",
+      "meaning": "Thú bông",
+      "type": "Danh từ",
+      "example": {
+        "jp": "ぬいぐるみを集めています。",
+        "vn": "có (người/động vật)."
+      }
+    },
+    {
+      "word": "缶バッチ",
+      "reading": "かんバッチ",
+      "meaning": "Huy hiệu",
+      "type": "Danh từ",
+      "example": {
+        "jp": "缶バッチを集めています。",
+        "vn": "có (người/động vật)."
+      }
+    },
+    {
+      "word": "アクキー",
+      "reading": "アクキー",
+      "meaning": "Móc khóa",
+      "type": "Danh từ",
+      "example": {
+        "jp": "アクキーを集めています。",
+        "vn": "có (người/động vật)."
+      }
+    },
+    {
+      "word": "トレカ",
+      "reading": "トレカ",
+      "meaning": "Thẻ giao dịch",
+      "type": "Danh từ",
+      "example": {
+        "jp": "トレカを集めています。",
+        "vn": "có (người/động vật)."
+      }
+    },
+    {
+      "word": "レア",
+      "reading": "レア",
+      "meaning": "Hiếm",
+      "type": "Danh từ",
+      "example": {
+        "jp": "レアカードを手に入れました。",
+        "vn": "đã (quá khứ)."
+      }
+    },
+    {
+      "word": "限定",
+      "reading": "げんてい",
+      "meaning": "Giới hạn",
+      "type": "Danh từ",
+      "example": {
+        "jp": "限定グッズです。",
+        "vn": "là."
+      }
+    },
+    {
+      "word": "グッズ",
+      "reading": "グッズ",
+      "meaning": "Hàng hóa",
+      "type": "Danh từ",
+      "example": {
+        "jp": "グッズを買いました。",
+        "vn": "đã (quá khứ)."
+      }
+    },
+    {
+      "word": "展示",
+      "reading": "てんじ",
+      "meaning": "Trưng bày",
+      "type": "Danh động từ",
+      "example": {
+        "jp": "フィギュアを展示しています。",
+        "vn": "có (người/động vật)."
+      }
+    },
+    {
+      "word": "整理",
+      "reading": "せいり",
+      "meaning": "Sắp xếp",
+      "type": "Danh động từ",
+      "example": {
+        "jp": "コレクションを整理しました。",
+        "vn": "đã (quá khứ)."
+      }
+    },
+    {
+      "word": "自慢",
+      "reading": "じまん",
+      "meaning": "Khoe",
+      "type": "Danh động từ",
+      "example": {
+        "jp": "コレクションを自慢します。",
+        "vn": "(đuôi lịch sự)"
+      }
+    }
+  ]
+}

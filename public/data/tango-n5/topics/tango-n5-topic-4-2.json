@@ -1,0 +1,160 @@
+{
+  "textbookId": "tango-n5",
+  "chapterId": 4,
+  "topicId": "topic-4-2",
+  "topicName": "シャツを きています。",
+  "topicNameVi": "Trang phục (phần 1)",
+  "vocabCount": 15,
+  "words": [
+    {
+      "word": "シャツ",
+      "reading": "シャツ",
+      "meaning": "Áo sơ mi",
+      "type": "Danh từ",
+      "example": {
+        "jp": "シャツを着ます。",
+        "vn": "(đuôi lịch sự)"
+      }
+    },
+    {
+      "word": "着る",
+      "reading": "きる",
+      "meaning": "Mặc (áo, váy)",
+      "type": "Động từ",
+      "example": {
+        "jp": "シャツを着ています。",
+        "vn": "có (người/động vật)."
+      }
+    },
+    {
+      "word": "脱ぐ",
+      "reading": "ぬぐ",
+      "meaning": "Cởi (quần áo)",
+      "type": "Động từ",
+      "example": {
+        "jp": "ジャケットを脱ぎます。",
+        "vn": "(đuôi lịch sự)"
+      }
+    },
+    {
+      "word": "ズボン",
+      "reading": "ズボン",
+      "meaning": "Quần",
+      "type": "Danh từ",
+      "example": {
+        "jp": "ズボンを買いました。",
+        "vn": "đã (quá khứ)."
+      }
+    },
+    {
+      "word": "はく",
+      "reading": "はく",
+      "meaning": "Mặc (quần, váy, giày)",
+      "type": "Động từ",
+      "example": {
+        "jp": "ズボンをはいています。",
+        "vn": "có (người/động vật)."
+      }
+    },
+    {
+      "word": "スカート",
+      "reading": "スカート",
+      "meaning": "Váy",
+      "type": "Danh từ",
+      "example": {
+        "jp": "スカートをはきます。",
+        "vn": "(đuôi lịch sự)"
+      }
+    },
+    {
+      "word": "ジャケット",
+      "reading": "ジャケット",
+      "meaning": "Áo khoác",
+      "type": "Danh từ",
+      "example": {
+        "jp": "ジャケットを着ます。",
+        "vn": "(đuôi lịch sự)"
+      }
+    },
+    {
+      "word": "コート",
+      "reading": "コート",
+      "meaning": "Áo dài",
+      "type": "Danh từ",
+      "example": {
+        "jp": "コートが欲しいです。",
+        "vn": "là."
+      }
+    },
+    {
+      "word": "セーター",
+      "reading": "セーター",
+      "meaning": "Áo len",
+      "type": "Danh từ",
+      "example": {
+        "jp": "セーターを着ています。",
+        "vn": "có (người/động vật)."
+      }
+    },
+    {
+      "word": "Tシャツ",
+      "reading": "Tシャツ",
+      "meaning": "Áo thun",
+      "type": "Danh từ",
+      "example": {
+        "jp": "Tシャツが好きです。",
+        "vn": "là."
+      }
+    },
+    {
+      "word": "ブラウス",
+      "reading": "ブラウス",
+      "meaning": "Áo kiểu nữ",
+      "type": "Danh từ",
+      "example": {
+        "jp": "ブラウスを着ます。",
+        "vn": "(đuôi lịch sự)"
+      }
+    },
+    {
+      "word": "ネクタイ",
+      "reading": "ネクタイ",
+      "meaning": "Cà vạt",
+      "type": "Danh từ",
+      "example": {
+        "jp": "ネクタイをします。",
+        "vn": "(đuôi lịch sự)"
+      }
+    },
+    {
+      "word": "する",
+      "reading": "する",
+      "meaning": "Động từ chung",
+      "type": "Động từ",
+      "example": {
+        "jp": "ネクタイをします。",
+        "vn": "(đuôi lịch sự)"
+      }
+    },
+    {
+      "word": "ドレス",
+      "reading": "ドレス",
+      "meaning": "Váy dạ hội",
+      "type": "Danh từ",
+      "example": {
+        "jp": "ドレスを着ます。",
+        "vn": "(đuôi lịch sự)"
+      }
+    },
+    {
+      "word": "制服",
+      "reading": "せいふく",
+      "meaning": "Đồng phục",
+      "type": "Danh từ",
+      "example": {
+        "jp": "制服を着ます。",
+        "vn": "(đuôi lịch sự)"
+      }
+    }
+  ]
+}

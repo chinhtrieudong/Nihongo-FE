@@ -1,0 +1,210 @@
+{
+  "textbookId": "tango-n4",
+  "chapterId": 9,
+  "topicId": "topic-9-3",
+  "topicName": "症状",
+  "topicNameVi": "Triệu chứng",
+  "vocabCount": 20,
+  "words": [
+    {
+      "word": "症状",
+      "reading": "しょうじょう",
+      "meaning": "Triệu chứng",
+      "type": "Danh từ",
+      "example": {
+        "jp": "症状が出ました。",
+        "vn": "đã (quá khứ)."
+      }
+    },
+    {
+      "word": "具合",
+      "reading": "ぐあい",
+      "meaning": "Tình trạng",
+      "type": "Danh từ",
+      "example": {
+        "jp": "具合が悪いです。",
+        "vn": "là."
+      }
+    },
+    {
+      "word": "調子",
+      "reading": "ちょうし",
+      "meaning": "Tình trạng",
+      "type": "Danh từ",
+      "example": {
+        "jp": "調子が悪いです。",
+        "vn": "là."
+      }
+    },
+    {
+      "word": "疲労",
+      "reading": "ひろう",
+      "meaning": "Mệt mỏi",
+      "type": "Danh từ",
+      "example": {
+        "jp": "疲労がたまっています。",
+        "vn": "có (người/động vật)."
+      }
+    },
+    {
+      "word": "倦怠",
+      "reading": "けんたい",
+      "meaning": "Mệt lả",
+      "type": "Danh từ",
+      "example": {
+        "jp": "倦怠感があります。",
+        "vn": "có."
+      }
+    },
+    {
+      "word": "目眩",
+      "reading": "めまい",
+      "meaning": "Chóng mặt",
+      "type": "Danh từ",
+      "example": {
+        "jp": "目眩がします。",
+        "vn": "(đuôi lịch sự)"
+      }
+    },
+    {
+      "word": "耳鳴り",
+      "reading": "みみなり",
+      "meaning": "Ù tai",
+      "type": "Danh từ",
+      "example": {
+        "jp": "耳鳴りがします。",
+        "vn": "(đuôi lịch sự)"
+      }
+    },
+    {
+      "word": "吐き気",
+      "reading": "はきけ",
+      "meaning": "Buồn nôn",
+      "type": "Danh từ",
+      "example": {
+        "jp": "吐き気がします。",
+        "vn": "(đuôi lịch sự)"
+      }
+    },
+    {
+      "word": "嘔吐",
+      "reading": "おうと",
+      "meaning": "Nôn",
+      "type": "Danh động từ",
+      "example": {
+        "jp": "嘔吐しました。",
+        "vn": "đã (quá khứ)."
+      }
+    },
+    {
+      "word": "下痢",
+      "reading": "げり",
+      "meaning": "Tiêu chảy",
+      "type": "Danh từ",
+      "example": {
+        "jp": "下痢をしました。",
+        "vn": "đã (quá khứ)."
+      }
+    },
+    {
+      "word": "便秘",
+      "reading": "べんぴ",
+      "meaning": "Táo bón",
+      "type": "Danh từ",
+      "example": {
+        "jp": "便秘気味です。",
+        "vn": "là."
+      }
+    },
+    {
+      "word": "食欲不振",
+      "reading": "しょくよくふしん",
+      "meaning": "Mất ngon miệng",
+      "type": "Danh từ",
+      "example": {
+        "jp": "食欲不振です。",
+        "vn": "là."
+      }
+    },
+    {
+      "word": "寝不足",
+      "reading": "ねぶそく",
+      "meaning": "Thiếu ngủ",
+      "type": "Danh từ",
+      "example": {
+        "jp": "寝不足です。",
+        "vn": "là."
+      }
+    },
+    {
+      "word": "貧血",
+      "reading": "ひんけつ",
+      "meaning": "Thiếu máu",
+      "type": "Danh từ",
+      "example": {
+        "jp": "貧血気味です。",
+        "vn": "là."
+      }
+    },
+    {
+      "word": "低血圧",
+      "reading": "ていけつあつ",
+      "meaning": "Huyết áp thấp",
+      "type": "Danh từ",
+      "example": {
+        "jp": "低血圧です。",
+        "vn": "là."
+      }
+    },
+    {
+      "word": "高血圧",
+      "reading": "こうけつあつ",
+      "meaning": "Huyết áp cao",
+      "type": "Danh từ",
+      "example": {
+        "jp": "高血圧です。",
+        "vn": "là."
+      }
+    },
+    {
+      "word": "発熱",
+      "reading": "はつねつ",
+      "meaning": "Sốt",
+      "type": "Danh động từ",
+      "example": {
+        "jp": "発熱しました。",
+        "vn": "đã (quá khứ)."
+      }
+    },
+    {
+      "word": "悪寒",
+      "reading": "おかん",
+      "meaning": "Rét run",
+      "type": "Danh từ",
+      "example": {
+        "jp": "悪寒がします。",
+        "vn": "(đuôi lịch sự)"
+      }
+    },
+    {
+      "word": "震え",
+      "reading": "ふるえ",
+      "meaning": "Run",
+      "type": "Danh từ",
+      "example": {
+        "jp": "震えが止まりません。",
+        "vn": "không."
+      }
+    },
+    {
+      "word": "失神",
+      "reading": "しっしん",
+      "meaning": "Ngất",
+      "type": "Danh động từ",
+      "example": {
+        "jp": "失神しました。",
+        "vn": "đã (quá khứ)."
+      }
+    }
+  ]
+}

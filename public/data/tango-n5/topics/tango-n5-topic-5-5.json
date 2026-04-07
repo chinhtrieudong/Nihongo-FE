@@ -1,0 +1,160 @@
+{
+  "textbookId": "tango-n5",
+  "chapterId": 5,
+  "topicId": "topic-5-5",
+  "topicName": "どうですか。",
+  "topicNameVi": "Hương vị",
+  "vocabCount": 15,
+  "words": [
+    {
+      "word": "どう",
+      "reading": "どう",
+      "meaning": "Thế nào",
+      "type": "Đại từ",
+      "example": {
+        "jp": "どうですか。",
+        "vn": "có phải là... không?"
+      }
+    },
+    {
+      "word": "おいしい",
+      "reading": "おいしい",
+      "meaning": "Ngon",
+      "type": "Tính từ",
+      "example": {
+        "jp": "おいしいです。",
+        "vn": "là."
+      }
+    },
+    {
+      "word": "まずい",
+      "reading": "まずい",
+      "meaning": "Dở",
+      "type": "Tính từ",
+      "example": {
+        "jp": "まずいです。",
+        "vn": "là."
+      }
+    },
+    {
+      "word": "熱い",
+      "reading": "あつい",
+      "meaning": "Nóng",
+      "type": "Tính từ",
+      "example": {
+        "jp": "コーヒーは熱いです。",
+        "vn": "là."
+      }
+    },
+    {
+      "word": "冷たい",
+      "reading": "つめたい",
+      "meaning": "Lạnh",
+      "type": "Tính từ",
+      "example": {
+        "jp": "ビールは冷たいです。",
+        "vn": "là."
+      }
+    },
+    {
+      "word": "温かい",
+      "reading": "あたたかい",
+      "meaning": "Ấm",
+      "type": "Tính từ",
+      "example": {
+        "jp": "スープは温かいです。",
+        "vn": "là."
+      }
+    },
+    {
+      "word": "硬い",
+      "reading": "かたい",
+      "meaning": "Cứng",
+      "type": "Tính từ",
+      "example": {
+        "jp": "パンが硬いです。",
+        "vn": "là."
+      }
+    },
+    {
+      "word": "柔らかい",
+      "reading": "やわらかい",
+      "meaning": "Mềm",
+      "type": "Tính từ",
+      "example": {
+        "jp": "肉が柔らかいです。",
+        "vn": "là."
+      }
+    },
+    {
+      "word": "塩辛い",
+      "reading": "しおからい",
+      "meaning": "Mặn",
+      "type": "Tính từ",
+      "example": {
+        "jp": "味噌汁が塩辛いです。",
+        "vn": "là."
+      }
+    },
+    {
+      "word": "酸っぱい",
+      "reading": "すっぱい",
+      "meaning": "Chua",
+      "type": "Tính từ",
+      "example": {
+        "jp": "レモンは酸っぱいです。",
+        "vn": "là."
+      }
+    },
+    {
+      "word": "苦い",
+      "reading": "にがい",
+      "meaning": "Đắng",
+      "type": "Tính từ",
+      "example": {
+        "jp": "コーヒーは苦いです。",
+        "vn": "là."
+      }
+    },
+    {
+      "word": "淡い",
+      "reading": "あわい",
+      "meaning": "Nhạt",
+      "type": "Tính từ",
+      "example": {
+        "jp": "味が淡いです。",
+        "vn": "là."
+      }
+    },
+    {
+      "word": "濃い",
+      "reading": "こい",
+      "meaning": "Đậm",
+      "type": "Tính từ",
+      "example": {
+        "jp": "味が濃いです。",
+        "vn": "là."
+      }
+    },
+    {
+      "word": "たっぷり",
+      "reading": "たっぷり",
+      "meaning": "Nhiều",
+      "type": "Phó từ",
+      "example": {
+        "jp": "たっぷり盛り付けてください。",
+        "vn": "vui lòng..."
+      }
+    },
+    {
+      "word": "少なめ",
+      "reading": "すくなめ",
+      "meaning": "Ít hơn",
+      "type": "Tính từ",
+      "example": {
+        "jp": "少なめでお願いします。",
+        "vn": "(đuôi lịch sự)"
+      }
+    }
+  ]
+}

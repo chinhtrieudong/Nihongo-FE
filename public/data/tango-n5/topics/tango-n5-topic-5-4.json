@@ -1,0 +1,160 @@
+{
+  "textbookId": "tango-n5",
+  "chapterId": 5,
+  "topicId": "topic-5-4",
+  "topicName": "レストラン",
+  "topicNameVi": "Nhà hàng",
+  "vocabCount": 15,
+  "words": [
+    {
+      "word": "レストラン",
+      "reading": "レストラン",
+      "meaning": "Nhà hàng",
+      "type": "Danh từ",
+      "example": {
+        "jp": "レストランで食事します。",
+        "vn": "(đuôi lịch sự)"
+      }
+    },
+    {
+      "word": "喫茶店",
+      "reading": "きっさてん",
+      "meaning": "Quán cà phê",
+      "type": "Danh từ",
+      "example": {
+        "jp": "喫茶店でコーヒーを飲みます。",
+        "vn": "(đuôi lịch sự)"
+      }
+    },
+    {
+      "word": "ファミレス",
+      "reading": "ファミレス",
+      "meaning": "Nhà hàng gia đình",
+      "type": "Danh từ",
+      "example": {
+        "jp": "ファミレスで食べます。",
+        "vn": "(đuôi lịch sự)"
+      }
+    },
+    {
+      "word": "居酒屋",
+      "reading": "いざかや",
+      "meaning": "Quán rượu",
+      "type": "Danh từ",
+      "example": {
+        "jp": "居酒屋で飲みます。",
+        "vn": "(đuôi lịch sự)"
+      }
+    },
+    {
+      "word": "メニュー",
+      "reading": "メニュー",
+      "meaning": "Thực đơn",
+      "type": "Danh từ",
+      "example": {
+        "jp": "メニューを見ます。",
+        "vn": "(đuôi lịch sự)"
+      }
+    },
+    {
+      "word": "注文",
+      "reading": "ちゅうもん",
+      "meaning": "Gọi món",
+      "type": "Danh động từ",
+      "example": {
+        "jp": "注文をします。",
+        "vn": "(đuôi lịch sự)"
+      }
+    },
+    {
+      "word": "おすすめ",
+      "reading": "おすすめ",
+      "meaning": "Món được giới thiệu",
+      "type": "Danh từ",
+      "example": {
+        "jp": "おすすめは何ですか。",
+        "vn": "có phải là... không?"
+      }
+    },
+    {
+      "word": "会計",
+      "reading": "かいけい",
+      "meaning": "Thanh toán",
+      "type": "Danh động từ",
+      "example": {
+        "jp": "会計をお願いします。",
+        "vn": "(đuôi lịch sự)"
+      }
+    },
+    {
+      "word": "お会計",
+      "reading": "おかいけい",
+      "meaning": "Thanh toán (lịch sự)",
+      "type": "Danh từ",
+      "example": {
+        "jp": "お会計をお願いします。",
+        "vn": "(đuôi lịch sự)"
+      }
+    },
+    {
+      "word": "お勘定",
+      "reading": "おかんじょう",
+      "meaning": "Tính tiền",
+      "type": "Danh từ",
+      "example": {
+        "jp": "お勘定お願いします。",
+        "vn": "(đuôi lịch sự)"
+      }
+    },
+    {
+      "word": "別々に",
+      "reading": "べつべつに",
+      "meaning": "Tách riêng",
+      "type": "Phó từ",
+      "example": {
+        "jp": "別々にお願いします。",
+        "vn": "(đuôi lịch sự)"
+      }
+    },
+    {
+      "word": "お持ち帰り",
+      "reading": "おもちかえり",
+      "meaning": "Mang về",
+      "type": "Danh từ",
+      "example": {
+        "jp": "お持ち帰りでお願いします。",
+        "vn": "(đuôi lịch sự)"
+      }
+    },
+    {
+      "word": "テイクアウト",
+      "reading": "テイクアウト",
+      "meaning": "Takeaway",
+      "type": "Danh từ",
+      "example": {
+        "jp": "テイクアウトできますか。",
+        "vn": "... không?"
+      }
+    },
+    {
+      "word": "ワンセット",
+      "reading": "ワンセット",
+      "meaning": "Một suất",
+      "type": "Danh từ",
+      "example": {
+        "jp": "ワンセットください。",
+        "vn": "vui lòng..."
+      }
+    },
+    {
+      "word": "お皿",
+      "reading": "おさら",
+      "meaning": "Đĩa",
+      "type": "Danh từ",
+      "example": {
+        "jp": "お皿をください。",
+        "vn": "vui lòng..."
+      }
+    }
+  ]
+}

@@ -1,0 +1,176 @@
+{
+  "textbookId": "speed-master-n4",
+  "name": "Speed Master N4",
+  "description": "Luyện từ vựng N4 nhanh và hiệu quả - 1,500+ từ",
+  "level": "N4",
+  "totalLessons": 15,
+  "startLesson": 1,
+  "accentColor": "blue",
+  "chapters": [
+    {
+      "number": 1,
+      "title": "日常の動作",
+      "titleVi": "Hành động hàng ngày",
+      "vocab": 100,
+      "topics": [
+        {"name": "朝の支度", "nameVi": "おきる、あらう、よういする…"},
+        {"name": "外出", "nameVi": "でかける、でる、かえる…"},
+        {"name": "家事", "nameVi": "そうじ、せんたく、りょうり…"}
+      ]
+    },
+    {
+      "number": 2,
+      "title": "感情・心理",
+      "titleVi": "Cảm xúc & tâm lý",
+      "vocab": 100,
+      "topics": [
+        {"name": "気持ち", "nameVi": "うれしい、かなしい、おこる…"},
+        {"name": "状態", "nameVi": "たのしい、つかれる、こわい…"},
+        {"name": "性格", "nameVi": "しんせつ、せっきょくてき、しょうじき…"}
+      ]
+    },
+    {
+      "number": 3,
+      "title": "人間関係",
+      "titleVi": "Quan hệ con người",
+      "vocab": 100,
+      "topics": [
+        {"name": "付き合い", "nameVi": "ともだち、しりあう、つきあう…"},
+        {"name": "コミュニケーション", "nameVi": "はなす、きく、わかる…"},
+        {"name": "礼儀", "nameVi": "あいさつ、れいぎ、ていねい…"}
+      ]
+    },
+    {
+      "number": 4,
+      "title": "仕事・職場",
+      "titleVi": "Công việc & nơi làm việc",
+      "vocab": 100,
+      "topics": [
+        {"name": "職業", "nameVi": "しごと、かいしゃいん、ぎし…"},
+        {"name": "業務", "nameVi": "しごと、ぎょうむ、たんとう…"},
+        {"name": "就活", "nameVi": "しゅうかつ、めんせつ、おぼえる…"}
+      ]
+    },
+    {
+      "number": 5,
+      "title": "学校・教育",
+      "titleVi": "Trường học & giáo dục",
+      "vocab": 100,
+      "topics": [
+        {"name": "勉強", "nameVi": "べんきょう、じゅぎょう、しけん…"},
+        {"name": "学校生活", "nameVi": "がっこう、クラブ、ぶかつ…"},
+        {"name": "進学", "nameVi": "だいがく、にゅうがく、しんがく…"}
+      ]
+    },
+    {
+      "number": 6,
+      "title": "町・施設",
+      "titleVi": "Thị trấn & cơ sở",
+      "vocab": 100,
+      "topics": [
+        {"name": "公共施設", "nameVi": "としょかん、びょういん、ゆうびんきょく…"},
+        {"name": "店", "nameVi": "スーパー、コンビニ、デパート…"},
+        {"name": "町", "nameVi": "まち、みせ、どうろ…"}
+      ]
+    },
+    {
+      "number": 7,
+      "title": "食事・料理",
+      "titleVi": "Ăn uống & nấu ăn",
+      "vocab": 100,
+      "topics": [
+        {"name": "食材", "nameVi": "やさい、にく、さかな…"},
+        {"name": "調理", "nameVi": "りょうり、たく、にる…"},
+        {"name": "味", "nameVi": "あまい、からい、しおからい…"}
+      ]
+    },
+    {
+      "number": 8,
+      "title": "買い物",
+      "titleVi": "Mua sắm",
+      "vocab": 100,
+      "topics": [
+        {"name": "商品", "nameVi": "しなもの、せいひん、しろもの…"},
+        {"name": "値段", "nameVi": "ねだん、やすい、たかい…"},
+        {"name": "支払い", "nameVi": "しはらい、かう、クレジットカード…"}
+      ]
+    },
+    {
+      "number": 9,
+      "title": "健康・病気",
+      "titleVi": "Sức khỏe & bệnh tật",
+      "vocab": 100,
+      "topics": [
+        {"name": "体", "nameVi": "からだ、あたま、おなか…"},
+        {"name": "症状", "nameVi": "びょうき、くすり、きず…"},
+        {"name": "医療", "nameVi": "いしゃ、ちょうしゃ、しんさつ…"}
+      ]
+    },
+    {
+      "number": 10,
+      "title": "交通・移動",
+      "titleVi": "Giao thông & di chuyển",
+      "vocab": 100,
+      "topics": [
+        {"name": "乗り物", "nameVi": "でんしゃ、バス、じてんしゃ…"},
+        {"name": "道路", "nameVi": "みち、どうろ、こうそくどうろ…"},
+        {"name": "運転", "nameVi": "うんてん、ハンドル、ブレーキ…"}
+      ]
+    },
+    {
+      "number": 11,
+      "title": "旅行・観光",
+      "titleVi": "Du lịch & tham quan",
+      "vocab": 100,
+      "topics": [
+        {"name": "計画", "nameVi": "よてい、スケジュール、じかん…"},
+        {"name": "宿泊", "nameVi": "ホテル、りょかん、とまる…"},
+        {"name": "観光", "nameVi": "めいしょ、みもの、おみやげ…"}
+      ]
+    },
+    {
+      "number": 12,
+      "title": "自然・環境",
+      "titleVi": "Thiên nhiên & môi trường",
+      "vocab": 100,
+      "topics": [
+        {"name": "天気", "nameVi": "てんき、くもり、かぜ…"},
+        {"name": "動物", "nameVi": "どうぶつ、とり、さかな…"},
+        {"name": "植物", "nameVi": "しょくぶつ、くさ、き、はな…"}
+      ]
+    },
+    {
+      "number": 13,
+      "title": "住まい",
+      "titleVi": "Nhà ở",
+      "vocab": 100,
+      "topics": [
+        {"name": "部屋", "nameVi": "へや、いま、しんしつ…"},
+        {"name": "家具", "nameVi": "かぐ、つくえ、いす、ベッド…"},
+        {"name": "設備", "nameVi": "セッタイ、エアコン、れいぞうこ…"}
+      ]
+    },
+    {
+      "number": 14,
+      "title": "趣味・娯楽",
+      "titleVi": "Sở thích & giải trí",
+      "vocab": 100,
+      "topics": [
+        {"name": "スポーツ", "nameVi": "サッカー、テニス、すいえい…"},
+        {"name": "音楽", "nameVi": "おんがく、うたう、かしょく…"},
+        {"name": "読書", "nameVi": "ほん、しんぶん、ざっし…"}
+      ]
+    },
+    {
+      "number": 15,
+      "title": "ニュース・社会問題",
+      "titleVi": "Tin tức & vấn đề xã hội",
+      "vocab": 100,
+      "topics": [
+        {"name": "ニュース", "nameVi": "じこ、じけん、じこしょうかい…"},
+        {"name": "環境問題", "nameVi": "かんきょう、おせん、リサイクル…"},
+        {"name": "社会", "nameVi": "しゃかい、せいさく、ふあん…"}
+      ]
+    }
+  ]
+}

@@ -1,0 +1,136 @@
+{
+  "lesson": 15,
+  "topic": "Cho phép & Cấm đoán",
+  "vocabulary": [
+    {
+      "id": "n5_l15_001",
+      "word": "居てもいい",
+      "reading": "いてもいい",
+      "hanViet": "Cư",
+      "meaning": "được phép ở lại",
+      "type": "other",
+      "category": "Cho Phép",
+      "example": {
+        "jp": "ここに居てもいいです。",
+        "vn": "Được phép ở lại đây."
+      }
+    },
+    {
+      "id": "n5_l15_002",
+      "word": "食べてもいい",
+      "reading": "たべてもいい",
+      "hanViet": "Thực",
+      "meaning": "được phép ăn",
+      "type": "other",
+      "category": "Cho Phép",
+      "example": {
+        "jp": "これを食べてもいいですか。",
+        "vn": "Tôi ăn cái này được không?"
+      }
+    },
+    {
+      "id": "n5_l15_003",
+      "word": "見てもいい",
+      "reading": "みてもいい",
+      "hanViet": "Kiến",
+      "meaning": "được phép xem",
+      "type": "other",
+      "category": "Cho Phép",
+      "example": {
+        "jp": "写真を見てもいいですか。",
+        "vn": "Tôi xem ảnh được không?"
+      }
+    },
+    {
+      "id": "n5_l15_004",
+      "word": "使ってもいい",
+      "reading": "つかってもいい",
+      "hanViet": "Sử",
+      "meaning": "được phép dùng",
+      "type": "other",
+      "category": "Cho Phép",
+      "example": {
+        "jp": "ペンを使ってもいいですか。",
+        "vn": "Tôi dùng bút được không?"
+      }
+    },
+    {
+      "id": "n5_l15_005",
+      "word": "居てはいけない",
+      "reading": "いてはいけない",
+      "hanViet": "Cư",
+      "meaning": "không được ở lại",
+      "type": "other",
+      "category": "Cấm Đoán",
+      "example": {
+        "jp": "ここに居てはいけません。",
+        "vn": "Không được ở lại đây."
+      }
+    },
+    {
+      "id": "n5_l15_006",
+      "word": "触ってはいけない",
+      "reading": "さわってはいけない",
+      "hanViet": "Xúc",
+      "meaning": "không được chạm vào",
+      "type": "other",
+      "category": "Cấm Đoán",
+      "example": {
+        "jp": "触ってはいけません。",
+        "vn": "Không được chạm vào."
+      }
+    },
+    {
+      "id": "n5_l15_007",
+      "word": "入ってはいけない",
+      "reading": "はいってはいけない",
+      "hanViet": "Nhập",
+      "meaning": "không được vào",
+      "type": "other",
+      "category": "Cấm Đoán",
+      "example": {
+        "jp": "中に入ってはいけません。",
+        "vn": "Không được vào bên trong."
+      }
+    },
+    {
+      "id": "n5_l15_008",
+      "word": "止めてはいけない",
+      "reading": "とめてはいけない",
+      "hanViet": "Chỉ",
+      "meaning": "không được dừng lại",
+      "type": "other",
+      "category": "Cấm Đoán",
+      "example": {
+        "jp": "車を止めてはいけません。",
+        "vn": "Không được dừng xe ở đây."
+      }
+    },
+    {
+      "id": "n5_l15_009",
+      "word": "大丈夫",
+      "reading": "だいじょうぶ",
+      "hanViet": "Đại Trượng Phu",
+      "meaning": "không sao, được",
+      "type": "adjective",
+      "category": "Tính Từ な",
+      "example": {
+        "jp": "大丈夫ですか。",
+        "vn": "Bạn có ổn không?"
+      }
+    },
+    {
+      "id": "n5_l15_010",
+      "word": "駄目",
+      "reading": "だめ",
+      "hanViet": "Đát Mục",
+      "meaning": "không được, cấm",
+      "type": "adjective",
+      "category": "Tính Từ な",
+      "example": {
+        "jp": "それは駄目です。",
+        "vn": "Cái đó không được."
+      }
+    }
+  ]
+}

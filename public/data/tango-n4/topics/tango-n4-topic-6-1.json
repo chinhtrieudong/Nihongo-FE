@@ -1,0 +1,210 @@
+{
+  "textbookId": "tango-n4",
+  "chapterId": 6,
+  "topicId": "topic-6-1",
+  "topicName": "季節",
+  "topicNameVi": "Mùa",
+  "vocabCount": 20,
+  "words": [
+    {
+      "word": "季節",
+      "reading": "きせつ",
+      "meaning": "Mùa",
+      "type": "Danh từ",
+      "example": {
+        "jp": "季節の変わり目です。",
+        "vn": "là."
+      }
+    },
+    {
+      "word": "春",
+      "reading": "はる",
+      "meaning": "Xuân",
+      "type": "Danh từ",
+      "example": {
+        "jp": "春が来ました。",
+        "vn": "đã (quá khứ)."
+      }
+    },
+    {
+      "word": "夏",
+      "reading": "なつ",
+      "meaning": "Hè",
+      "type": "Danh từ",
+      "example": {
+        "jp": "夏が好きです。",
+        "vn": "là."
+      }
+    },
+    {
+      "word": "秋",
+      "reading": "あき",
+      "meaning": "Thu",
+      "type": "Danh từ",
+      "example": {
+        "jp": "秋は紅葉が美しいです。",
+        "vn": "là."
+      }
+    },
+    {
+      "word": "冬",
+      "reading": "ふゆ",
+      "meaning": "Đông",
+      "type": "Danh từ",
+      "example": {
+        "jp": "冬は寒いです。",
+        "vn": "là."
+      }
+    },
+    {
+      "word": "四季",
+      "reading": "しき",
+      "meaning": "Bốn mùa",
+      "type": "Danh từ",
+      "example": {
+        "jp": "日本には四季があります。",
+        "vn": "có."
+      }
+    },
+    {
+      "word": "梅雨",
+      "reading": "つゆ",
+      "meaning": "Mùa mưa",
+      "type": "Danh từ",
+      "example": {
+        "jp": "梅雨が明けました。",
+        "vn": "đã (quá khứ)."
+      }
+    },
+    {
+      "word": "桜",
+      "reading": "さくら",
+      "meaning": "Hoa anh đào",
+      "type": "Danh từ",
+      "example": {
+        "jp": "桜が咲きました。",
+        "vn": "đã (quá khứ)."
+      }
+    },
+    {
+      "word": "紅葉",
+      "reading": "こうよう",
+      "meaning": "Lá đỏ",
+      "type": "Danh từ",
+      "example": {
+        "jp": "紅葉を見に行きます。",
+        "vn": "(đuôi lịch sự)"
+      }
+    },
+    {
+      "word": "雪",
+      "reading": "ゆき",
+      "meaning": "Tuyết",
+      "type": "Danh từ",
+      "example": {
+        "jp": "雪が降っています。",
+        "vn": "có (người/động vật)."
+      }
+    },
+    {
+      "word": "花見",
+      "reading": "はなみ",
+      "meaning": "Ngắm hoa",
+      "type": "Danh động từ",
+      "example": {
+        "jp": "花見に行きます。",
+        "vn": "(đuôi lịch sự)"
+      }
+    },
+    {
+      "word": "暑い",
+      "reading": "あつい",
+      "meaning": "Nóng",
+      "type": "Tính từ",
+      "example": {
+        "jp": "夏は暑いです。",
+        "vn": "là."
+      }
+    },
+    {
+      "word": "寒い",
+      "reading": "さむい",
+      "meaning": "Lạnh",
+      "type": "Tính từ",
+      "example": {
+        "jp": "冬は寒いです。",
+        "vn": "là."
+      }
+    },
+    {
+      "word": "涼しい",
+      "reading": "すずしい",
+      "meaning": "Mát mẻ",
+      "type": "Tính từ",
+      "example": {
+        "jp": "涼しい風が吹きます。",
+        "vn": "(đuôi lịch sự)"
+      }
+    },
+    {
+      "word": "暖かい",
+      "reading": "あたたかい",
+      "meaning": "Ấm áp",
+      "type": "Tính từ",
+      "example": {
+        "jp": "春は暖かいです。",
+        "vn": "là."
+      }
+    },
+    {
+      "word": "快適",
+      "reading": "かいてき",
+      "meaning": "Thoải mái",
+      "type": "Danh từ",
+      "example": {
+        "jp": "快適な季節です。",
+        "vn": "là."
+      }
+    },
+    {
+      "word": "過ごしやすい",
+      "reading": "すごしやすい",
+      "meaning": "Dễ chịu",
+      "type": "Tính từ",
+      "example": {
+        "jp": "過ごしやすい季節です。",
+        "vn": "là."
+      }
+    },
+    {
+      "word": "厳しい",
+      "reading": "きびしい",
+      "meaning": "Khắc nghiệt",
+      "type": "Tính từ",
+      "example": {
+        "jp": "厳しい冬です。",
+        "vn": "là."
+      }
+    },
+    {
+      "word": "朝夕",
+      "reading": "あさゆう",
+      "meaning": "Sáng tối",
+      "type": "Danh từ",
+      "example": {
+        "jp": "朝夕は涼しいです。",
+        "vn": "là."
+      }
+    },
+    {
+      "word": "昼間",
+      "reading": "ひるま",
+      "meaning": "Ban ngày",
+      "type": "Danh từ",
+      "example": {
+        "jp": "昼間は暑いです。",
+        "vn": "là."
+      }
+    }
+  ]
+}
