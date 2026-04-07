@@ -9,8 +9,10 @@
     {
       "word": "旅行",
       "reading": "りょこう",
+      "han_viet": "",
       "meaning": "Du lịch",
-      "type": "Danh động từ",
+      "type": "Verb",
+      "level": "N4",
       "example": {
         "jp": "旅行に行きます。",
         "vn": "(đuôi lịch sự)"
@@ -19,8 +21,10 @@
     {
       "word": "観光",
       "reading": "かんこう",
+      "han_viet": "",
       "meaning": "Tham quan",
-      "type": "Danh động từ",
+      "type": "Verb",
+      "level": "N4",
       "example": {
         "jp": "観光を楽しみます。",
         "vn": "(đuôi lịch sự)"
@@ -29,8 +33,10 @@
     {
       "word": "ツアー",
       "reading": "ツアー",
+      "han_viet": "",
       "meaning": "Tour",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "ツアーに参加しました。",
         "vn": "đã (quá khứ)."
@@ -39,8 +45,10 @@
     {
       "word": "旅",
       "reading": "たび",
+      "han_viet": "",
       "meaning": "Chuyến đi",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "旅に出ます。",
         "vn": "(đuôi lịch sự)"
@@ -49,8 +57,10 @@
     {
       "word": "国内",
       "reading": "こくない",
+      "han_viet": "",
       "meaning": "Trong nước",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "国内旅行です。",
         "vn": "là."
@@ -59,8 +69,10 @@
     {
       "word": "海外",
       "reading": "かいがい",
+      "han_viet": "",
       "meaning": "Nước ngoài",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "海外旅行に行きます。",
         "vn": "(đuôi lịch sự)"
@@ -69,8 +81,10 @@
     {
       "word": "温泉",
       "reading": "おんせん",
+      "han_viet": "",
       "meaning": "Suối nước nóng",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "温泉に入ります。",
         "vn": "(đuôi lịch sự)"
@@ -79,8 +93,10 @@
     {
       "word": "旅館",
       "reading": "りょかん",
+      "han_viet": "",
       "meaning": "Nhà trọ Nhật",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "旅館に泊まりました。",
         "vn": "đã (quá khứ)."
@@ -89,8 +105,10 @@
     {
       "word": "ホテル",
       "reading": "ホテル",
+      "han_viet": "",
       "meaning": "Khách sạn",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "ホテルを予約しました。",
         "vn": "đã (quá khứ)."
@@ -99,8 +117,10 @@
     {
       "word": "民宿",
       "reading": "みんしゅく",
+      "han_viet": "",
       "meaning": "Nhà nghỉ dân",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "民宿に泊まりました。",
         "vn": "đã (quá khứ)."
@@ -109,8 +129,10 @@
     {
       "word": "航空券",
       "reading": "こうくうけん",
+      "han_viet": "",
       "meaning": "Vé máy bay",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "航空券を予約しました。",
         "vn": "đã (quá khứ)."
@@ -119,8 +141,10 @@
     {
       "word": "切符",
       "reading": "きっぷ",
+      "han_viet": "",
       "meaning": "Vé",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "切符を買いました。",
         "vn": "đã (quá khứ)."
@@ -129,8 +153,10 @@
     {
       "word": "パスポート",
       "reading": "パスポート",
+      "han_viet": "",
       "meaning": "Hộ chiếu",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "パスポートを忘れました。",
         "vn": "đã (quá khứ)."
@@ -139,8 +165,10 @@
     {
       "word": "ビザ",
       "reading": "ビザ",
+      "han_viet": "",
       "meaning": "Visa",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "ビザを取得しました。",
         "vn": "đã (quá khứ)."
@@ -149,8 +177,10 @@
     {
       "word": "名所",
       "reading": "めいしょ",
+      "han_viet": "",
       "meaning": "Danh lam",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "名所を巡ります。",
         "vn": "(đuôi lịch sự)"
@@ -159,8 +189,10 @@
     {
       "word": "旧跡",
       "reading": "きゅうせき",
+      "han_viet": "",
       "meaning": "Di tích",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "旧跡を訪れました。",
         "vn": "đã (quá khứ)."
@@ -169,8 +201,10 @@
     {
       "word": "お土産",
       "reading": "おみやげ",
+      "han_viet": "",
       "meaning": "Quà",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "お土産を買いました。",
         "vn": "đã (quá khứ)."
@@ -179,8 +213,10 @@
     {
       "word": "ガイドブック",
       "reading": "ガイドブック",
+      "han_viet": "",
       "meaning": "Sách hướng dẫn",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "ガイドブックを見ます。",
         "vn": "(đuôi lịch sự)"
@@ -189,8 +225,10 @@
     {
       "word": "観光客",
       "reading": "かんこうきゃく",
+      "han_viet": "",
       "meaning": "Khách du lịch",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "観光客が多いです。",
         "vn": "là."
@@ -199,8 +237,10 @@
     {
       "word": "旅行代理店",
       "reading": "りょこうだいりてん",
+      "han_viet": "",
       "meaning": "Đại lý du lịch",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "旅行代理店で予約しました。",
         "vn": "đã (quá khứ)."

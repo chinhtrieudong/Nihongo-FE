@@ -9,8 +9,10 @@
     {
       "word": "レストラン",
       "reading": "レストラン",
+      "han_viet": "",
       "meaning": "Nhà hàng",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N5",
       "example": {
         "jp": "レストランで食事します。",
         "vn": "(đuôi lịch sự)"
@@ -19,8 +21,10 @@
     {
       "word": "喫茶店",
       "reading": "きっさてん",
+      "han_viet": "",
       "meaning": "Quán cà phê",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N5",
       "example": {
         "jp": "喫茶店でコーヒーを飲みます。",
         "vn": "(đuôi lịch sự)"
@@ -29,8 +33,10 @@
     {
       "word": "ファミレス",
       "reading": "ファミレス",
+      "han_viet": "",
       "meaning": "Nhà hàng gia đình",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N5",
       "example": {
         "jp": "ファミレスで食べます。",
         "vn": "(đuôi lịch sự)"
@@ -39,8 +45,10 @@
     {
       "word": "居酒屋",
       "reading": "いざかや",
+      "han_viet": "",
       "meaning": "Quán rượu",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N5",
       "example": {
         "jp": "居酒屋で飲みます。",
         "vn": "(đuôi lịch sự)"
@@ -49,8 +57,10 @@
     {
       "word": "メニュー",
       "reading": "メニュー",
+      "han_viet": "",
       "meaning": "Thực đơn",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N5",
       "example": {
         "jp": "メニューを見ます。",
         "vn": "(đuôi lịch sự)"
@@ -59,8 +69,10 @@
     {
       "word": "注文",
       "reading": "ちゅうもん",
+      "han_viet": "",
       "meaning": "Gọi món",
-      "type": "Danh động từ",
+      "type": "Verb",
+      "level": "N5",
       "example": {
         "jp": "注文をします。",
         "vn": "(đuôi lịch sự)"
@@ -69,8 +81,10 @@
     {
       "word": "おすすめ",
       "reading": "おすすめ",
+      "han_viet": "",
       "meaning": "Món được giới thiệu",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N5",
       "example": {
         "jp": "おすすめは何ですか。",
         "vn": "có phải là... không?"
@@ -79,8 +93,10 @@
     {
       "word": "会計",
       "reading": "かいけい",
+      "han_viet": "",
       "meaning": "Thanh toán",
-      "type": "Danh động từ",
+      "type": "Verb",
+      "level": "N5",
       "example": {
         "jp": "会計をお願いします。",
         "vn": "(đuôi lịch sự)"
@@ -89,8 +105,10 @@
     {
       "word": "お会計",
       "reading": "おかいけい",
+      "han_viet": "",
       "meaning": "Thanh toán (lịch sự)",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N5",
       "example": {
         "jp": "お会計をお願いします。",
         "vn": "(đuôi lịch sự)"
@@ -99,8 +117,10 @@
     {
       "word": "お勘定",
       "reading": "おかんじょう",
+      "han_viet": "",
       "meaning": "Tính tiền",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N5",
       "example": {
         "jp": "お勘定お願いします。",
         "vn": "(đuôi lịch sự)"
@@ -109,8 +129,10 @@
     {
       "word": "別々に",
       "reading": "べつべつに",
+      "han_viet": "",
       "meaning": "Tách riêng",
-      "type": "Phó từ",
+      "type": "Noun",
+      "level": "N5",
       "example": {
         "jp": "別々にお願いします。",
         "vn": "(đuôi lịch sự)"
@@ -119,8 +141,10 @@
     {
       "word": "お持ち帰り",
       "reading": "おもちかえり",
+      "han_viet": "",
       "meaning": "Mang về",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N5",
       "example": {
         "jp": "お持ち帰りでお願いします。",
         "vn": "(đuôi lịch sự)"
@@ -129,8 +153,10 @@
     {
       "word": "テイクアウト",
       "reading": "テイクアウト",
+      "han_viet": "",
       "meaning": "Takeaway",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N5",
       "example": {
         "jp": "テイクアウトできますか。",
         "vn": "... không?"
@@ -139,8 +165,10 @@
     {
       "word": "ワンセット",
       "reading": "ワンセット",
+      "han_viet": "",
       "meaning": "Một suất",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N5",
       "example": {
         "jp": "ワンセットください。",
         "vn": "vui lòng..."
@@ -149,8 +177,10 @@
     {
       "word": "お皿",
       "reading": "おさら",
+      "han_viet": "",
       "meaning": "Đĩa",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N5",
       "example": {
         "jp": "お皿をください。",
         "vn": "vui lòng..."

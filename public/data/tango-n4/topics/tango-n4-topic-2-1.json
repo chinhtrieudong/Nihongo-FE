@@ -9,8 +9,10 @@
     {
       "word": "顔",
       "reading": "かお",
+      "han_viet": "",
       "meaning": "Khuôn mặt",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "顔が大きいです。",
         "vn": "là."
@@ -19,8 +21,10 @@
     {
       "word": "目",
       "reading": "め",
+      "han_viet": "",
       "meaning": "Mắt",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "目が大きいです。",
         "vn": "là."
@@ -29,8 +33,10 @@
     {
       "word": "鼻",
       "reading": "はな",
+      "han_viet": "",
       "meaning": "Mũi",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "鼻が高いです。",
         "vn": "là."
@@ -39,8 +45,10 @@
     {
       "word": "口",
       "reading": "くち",
+      "han_viet": "",
       "meaning": "Miệng",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "口が小さいです。",
         "vn": "là."
@@ -49,8 +57,10 @@
     {
       "word": "耳",
       "reading": "みみ",
+      "han_viet": "",
       "meaning": "Tai",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "耳が大きいです。",
         "vn": "là."
@@ -59,8 +69,10 @@
     {
       "word": "額",
       "reading": "ひたい",
+      "han_viet": "",
       "meaning": "Trán",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "額が広いです。",
         "vn": "là."
@@ -69,8 +81,10 @@
     {
       "word": "頬",
       "reading": "ほお",
+      "han_viet": "",
       "meaning": "Má",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "頬が赤いです。",
         "vn": "là."
@@ -79,8 +93,10 @@
     {
       "word": "顎",
       "reading": "あご",
+      "han_viet": "",
       "meaning": "Cằm",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "顎が尖っています。",
         "vn": "có (người/động vật)."
@@ -89,8 +105,10 @@
     {
       "word": "眉",
       "reading": "まゆ",
+      "han_viet": "",
       "meaning": "Lông mày",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "眉が太いです。",
         "vn": "là."
@@ -99,8 +117,10 @@
     {
       "word": "睫毛",
       "reading": "まつげ",
+      "han_viet": "",
       "meaning": "Lông mi",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "睫毛が長いです。",
         "vn": "là."
@@ -109,8 +129,10 @@
     {
       "word": "丸顔",
       "reading": "まるがお",
+      "han_viet": "",
       "meaning": "Mặt tròn",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "丸顔です。",
         "vn": "là."
@@ -119,8 +141,10 @@
     {
       "word": "四角顔",
       "reading": "しかくがお",
+      "han_viet": "",
       "meaning": "Mặt vuông",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "四角顔です。",
         "vn": "là."
@@ -129,8 +153,10 @@
     {
       "word": "卵型",
       "reading": "らんけい",
+      "han_viet": "",
       "meaning": "Mặt trái xoan",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "卵型の顔です。",
         "vn": "là."
@@ -139,8 +165,10 @@
     {
       "word": "シミ",
       "reading": "シミ",
+      "han_viet": "",
       "meaning": "Vết tàn nhang",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "シミがあります。",
         "vn": "có."
@@ -149,8 +177,10 @@
     {
       "word": "しわ",
       "reading": "しわ",
+      "han_viet": "",
       "meaning": "Nếp nhăn",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "しわが増えました。",
         "vn": "đã (quá khứ)."
@@ -159,8 +189,10 @@
     {
       "word": "ほくろ",
       "reading": "ほくろ",
+      "han_viet": "",
       "meaning": "Nốt ruồi",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "ほくろがあります。",
         "vn": "có."
@@ -169,8 +201,10 @@
     {
       "word": "日焼け",
       "reading": "ひやけ",
+      "han_viet": "",
       "meaning": "Rám nắng",
-      "type": "Danh động từ",
+      "type": "Verb",
+      "level": "N4",
       "example": {
         "jp": "日焼けしました。",
         "vn": "đã (quá khứ)."
@@ -179,8 +213,10 @@
     {
       "word": "化粧",
       "reading": "けしょう",
+      "han_viet": "",
       "meaning": "Trang điểm",
-      "type": "Danh động từ",
+      "type": "Verb",
+      "level": "N4",
       "example": {
         "jp": "化粧をしています。",
         "vn": "có (người/động vật)."
@@ -189,8 +225,10 @@
     {
       "word": "化粧品",
       "reading": "けしょうひん",
+      "han_viet": "",
       "meaning": "Mỹ phẩm",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "化粧品を買いました。",
         "vn": "đã (quá khứ)."
@@ -199,8 +237,10 @@
     {
       "word": "化粧水",
       "reading": "けしょうすい",
+      "han_viet": "",
       "meaning": "Nước hoa hồng",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "化粧水をつけます。",
         "vn": "(đuôi lịch sự)"

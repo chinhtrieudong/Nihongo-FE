@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams, useNavigate, useLocation } from "react-router-dom";
 import {
     Card,
     Button,
@@ -9,7 +9,6 @@ import {
     Divider,
     Radio,
     Input,
-    message,
     Modal,
     Row,
     Col,
@@ -18,7 +17,8 @@ import {
     Badge,
     Tooltip,
     Alert,
-    Spin
+    Spin,
+    App as AntdApp
 } from "antd";
 import {
     Clock,
@@ -29,21 +29,24 @@ import {
     ArrowLeft,
     Square,
     Book,
+    FileText,
     Flag,
     Eye,
     HelpCircle,
     Maximize,
     Minimize,
-    Volume2
+    Volume2,
+    Languages
 } from "lucide-react";
 import { jlptTestsAPI } from "../../services/api";
+import { jlptTests as localJlptTests } from "../../data/jlptTests";
 
 const { Title, Text, Paragraph } = Typography;
 
 interface TestSection {
     id: string;
     name: string;
-    icon: React.ReactNode;
+    icon?: React.ReactNode;
     questions: number;
     duration: number;
     description: string;
@@ -100,6 +103,8 @@ interface TestAttempt {
 const TestDetail: React.FC = () => {
     const { testId, attempt } = useParams<{ testId: string; attempt: string }>();
     const navigate = useNavigate();
+    const location = useLocation();
+    const { message } = AntdApp.useApp();
 
     const [test, setTest] = useState<Test | null>(null);
     const [questions, setQuestions] = useState<Question[]>([]);
@@ -117,6 +122,16 @@ const TestDetail: React.FC = () => {
     const [isFullscreen, setIsFullscreen] = useState(false);
     const [loading, setLoading] = useState(true);
 
+    const getSectionIcon = (section: Pick<TestSection, "id" | "name">) => {
+        const key = String(section.id || section.name || "").toLowerCase();
+        if (key.includes("vocab") || key.includes("từ vựng")) return <Book className="w-4 h-4" />;
+        if (key.includes("grammar") || key.includes("ngữ pháp")) return <FileText className="w-4 h-4" />;
+        if (key.includes("reading") || key.includes("đọc")) return <FileText className="w-4 h-4" />;
+        if (key.includes("listen") || key.includes("nghe")) return <Volume2 className="w-4 h-4" />;
+        if (key.includes("kanji")) return <Languages className="w-4 h-4" />;
+        return <Book className="w-4 h-4" />;
+    };
+
     // Load test data and attempt
     useEffect(() => {
         const fetchTestData = async () => {
@@ -124,13 +139,15 @@ const TestDetail: React.FC = () => {
 
             try {
                 setLoading(true);
-                // Extract level from testId (format: "level_testId")
-                const parts = testId.split('_');
-                const level = parts[0];
+                // Prefer level from query param (?level=N5)
+                const params = new URLSearchParams(location.search);
+                const level = (params.get("level") || "").toUpperCase();
+                if (!level) {
+                    message.error("Thiếu level của bài thi (vd: ?level=N5).");
+                    return;
+                }
 
-                const response = await jlptTestsAPI.getTest(level, testId);
-                if (response.success) {
-                    const testData = response.data;
+                const applyTestData = (testData: any) => {
                     setTest(testData);
                     setTimeRemaining(testData.duration * 60);
 
@@ -151,6 +168,31 @@ const TestDetail: React.FC = () => {
                         }
                     });
                     setQuestions(sampleQuestions);
+                };
+
+                try {
+                    const response = await jlptTestsAPI.getTest(level, testId);
+                    if (response?.success && response?.data) {
+                        applyTestData(response.data);
+                        return;
+                    }
+                    // If backend returns a non-success payload, fall back to local JSON
+                    const local = localJlptTests.find((t) => String(t.id) === String(testId) && String(t.level).toUpperCase() === level);
+                    if (local) {
+                        applyTestData(local);
+                        message.warning("Đang dùng dữ liệu JLPT local (backend chưa có endpoint).");
+                        return;
+                    }
+                    message.error("Không tìm thấy bài thi (backend & local đều không có).");
+                } catch (apiError) {
+                    // Backend endpoint missing/404 → use local JSON
+                    const local = localJlptTests.find((t) => String(t.id) === String(testId) && String(t.level).toUpperCase() === level);
+                    if (local) {
+                        applyTestData(local);
+                        message.warning("Đang dùng dữ liệu JLPT local (backend chưa có endpoint).");
+                        return;
+                    }
+                    throw apiError;
                 }
             } catch (error) {
                 console.error('Error fetching test:', error);
@@ -176,7 +218,7 @@ const TestDetail: React.FC = () => {
                 }
             }
         }
-    }, [testId, attempt]);
+    }, [testId, attempt, location.search, message]);
 
     // Timer effect
     useEffect(() => {
@@ -633,7 +675,7 @@ const TestDetail: React.FC = () => {
                     </div>
                 </div>
                 <Alert
-                    message="Lưu ý quan trọng"
+                    title="Lưu ý quan trọng"
                     description="Bài thi sẽ tự động nộp khi hết thời gian. Đảm bảo kết nối internet ổn định."
                     type="warning"
                     showIcon
@@ -661,7 +703,7 @@ const TestDetail: React.FC = () => {
                         return (
                             <div key={section.id}>
                                 <div className="flex items-center mb-2">
-                                    {React.createElement(section.icon as any)}
+                                    {section.icon ? section.icon : getSectionIcon(section)}
                                     <Text strong className="ml-2">{section.name}</Text>
                                     <Badge count={sectionQuestions.length} className="ml-auto" />
                                 </div>

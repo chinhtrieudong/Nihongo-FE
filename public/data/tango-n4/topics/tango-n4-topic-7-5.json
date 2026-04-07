@@ -9,8 +9,10 @@
     {
       "word": "サービス",
       "reading": "サービス",
+      "han_viet": "",
       "meaning": "Dịch vụ",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "サービスが良いです。",
         "vn": "là."
@@ -19,8 +21,10 @@
     {
       "word": "接客",
       "reading": "せっきゃく",
+      "han_viet": "",
       "meaning": "Phục vụ khách",
-      "type": "Danh động từ",
+      "type": "Verb",
+      "level": "N4",
       "example": {
         "jp": "接客が丁寧です。",
         "vn": "là."
@@ -29,8 +33,10 @@
     {
       "word": "対応",
       "reading": "たいおう",
+      "han_viet": "",
       "meaning": "Đối ứng",
-      "type": "Danh động từ",
+      "type": "Verb",
+      "level": "N4",
       "example": {
         "jp": "対応が素早いです。",
         "vn": "là."
@@ -39,8 +45,10 @@
     {
       "word": "アフターサービス",
       "reading": "アフターサービス",
+      "han_viet": "",
       "meaning": "Dịch vụ sau bán",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "アフターサービスが充実しています。",
         "vn": "có (người/động vật)."
@@ -49,8 +57,10 @@
     {
       "word": "保証",
       "reading": "ほしょう",
+      "han_viet": "",
       "meaning": "Bảo hành",
-      "type": "Danh động từ",
+      "type": "Verb",
+      "level": "N4",
       "example": {
         "jp": "保証が付いています。",
         "vn": "có (người/động vật)."
@@ -59,8 +69,10 @@
     {
       "word": "保証期間",
       "reading": "ほしょうきかん",
+      "han_viet": "",
       "meaning": "Thời hạn bảo hành",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "保証期間は1年です。",
         "vn": "là."
@@ -69,8 +81,10 @@
     {
       "word": "修理",
       "reading": "しゅうり",
+      "han_viet": "",
       "meaning": "Sửa chữa",
-      "type": "Danh động từ",
+      "type": "Verb",
+      "level": "N4",
       "example": {
         "jp": "修理に出しました。",
         "vn": "đã (quá khứ)."
@@ -79,8 +93,10 @@
     {
       "word": "交換",
       "reading": "こうかん",
+      "han_viet": "",
       "meaning": "Đổi",
-      "type": "Danh động từ",
+      "type": "Verb",
+      "level": "N4",
       "example": {
         "jp": "交換してもらいました。",
         "vn": "đã (quá khứ)."
@@ -89,8 +105,10 @@
     {
       "word": "返品",
       "reading": "へんぴん",
+      "han_viet": "",
       "meaning": "Trả hàng",
-      "type": "Danh động từ",
+      "type": "Verb",
+      "level": "N4",
       "example": {
         "jp": "返品しました。",
         "vn": "đã (quá khứ)."
@@ -99,8 +117,10 @@
     {
       "word": "返金",
       "reading": "へんきん",
+      "han_viet": "",
       "meaning": "Hoàn tiền",
-      "type": "Danh động từ",
+      "type": "Verb",
+      "level": "N4",
       "example": {
         "jp": "返金してもらいました。",
         "vn": "đã (quá khứ)."
@@ -109,8 +129,10 @@
     {
       "word": "クレーム",
       "reading": "クレーム",
+      "han_viet": "",
       "meaning": "Khiếu nại",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "クレームを付けました。",
         "vn": "đã (quá khứ)."
@@ -119,8 +141,10 @@
     {
       "word": "苦情",
       "reading": "くじょう",
+      "han_viet": "",
       "meaning": "Phàn nàn",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "苦情を言いました。",
         "vn": "đã (quá khứ)."
@@ -129,8 +153,10 @@
     {
       "word": "相談",
       "reading": "そうだん",
+      "han_viet": "",
       "meaning": "Tư vấn",
-      "type": "Danh động từ",
+      "type": "Verb",
+      "level": "N4",
       "example": {
         "jp": "相談に乗ってもらいました。",
         "vn": "đã (quá khứ)."
@@ -139,8 +165,10 @@
     {
       "word": "案内",
       "reading": "あんない",
+      "han_viet": "",
       "meaning": "Hướng dẫn",
-      "type": "Danh động từ",
+      "type": "Verb",
+      "level": "N4",
       "example": {
         "jp": "親切に案内してくれました。",
         "vn": "đã (quá khứ)."
@@ -149,8 +177,10 @@
     {
       "word": "説明",
       "reading": "せつめい",
+      "han_viet": "",
       "meaning": "Giải thích",
-      "type": "Danh động từ",
+      "type": "Verb",
+      "level": "N4",
       "example": {
         "jp": "詳しく説明してくれました。",
         "vn": "đã (quá khứ)."
@@ -159,8 +189,10 @@
     {
       "word": "配達",
       "reading": "はいたつ",
+      "han_viet": "",
       "meaning": "Giao hàng",
-      "type": "Danh động từ",
+      "type": "Verb",
+      "level": "N4",
       "example": {
         "jp": "配達してもらいました。",
         "vn": "đã (quá khứ)."
@@ -169,8 +201,10 @@
     {
       "word": "宅配",
       "reading": "たくはい",
+      "han_viet": "",
       "meaning": "Chuyển phát",
-      "type": "Danh động từ",
+      "type": "Verb",
+      "level": "N4",
       "example": {
         "jp": "宅配で届きました。",
         "vn": "đã (quá khứ)."
@@ -179,8 +213,10 @@
     {
       "word": "送料無料",
       "reading": "そうりょうむりょう",
+      "han_viet": "",
       "meaning": "Miễn phí ship",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "送料無料です。",
         "vn": "là."
@@ -189,8 +225,10 @@
     {
       "word": "ラッピング",
       "reading": "ラッピング",
+      "han_viet": "",
       "meaning": "Gói quà",
-      "type": "Danh động từ",
+      "type": "Verb",
+      "level": "N4",
       "example": {
         "jp": "ラッピングしてもらいました。",
         "vn": "đã (quá khứ)."
@@ -199,8 +237,10 @@
     {
       "word": "ポイント",
       "reading": "ポイント",
+      "han_viet": "",
       "meaning": "Điểm thưởng",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "ポイントが貯まりました。",
         "vn": "đã (quá khứ)."

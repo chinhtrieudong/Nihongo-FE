@@ -9,8 +9,10 @@
     {
       "word": "休日",
       "reading": "きゅうじつ",
+      "han_viet": "",
       "meaning": "Ngày nghỉ",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "休日は家で過ごします。",
         "vn": "(đuôi lịch sự)"
@@ -19,8 +21,10 @@
     {
       "word": "休み",
       "reading": "やすみ",
+      "han_viet": "",
       "meaning": "Nghỉ",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "休みが取れました。",
         "vn": "đã (quá khứ)."
@@ -29,8 +33,10 @@
     {
       "word": "日曜日",
       "reading": "にちようび",
+      "han_viet": "",
       "meaning": "Chủ nhật",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "日曜日は休みです。",
         "vn": "là."
@@ -39,8 +45,10 @@
     {
       "word": "週末",
       "reading": "しゅうまつ",
+      "han_viet": "",
       "meaning": "Cuối tuần",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "週末に出かけます。",
         "vn": "(đuôi lịch sự)"
@@ -49,8 +57,10 @@
     {
       "word": "祝日",
       "reading": "しゅくじつ",
+      "han_viet": "",
       "meaning": "Ngày lễ",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "祝日は会社が休みです。",
         "vn": "là."
@@ -59,8 +69,10 @@
     {
       "word": "連休",
       "reading": "れんきゅう",
+      "han_viet": "",
       "meaning": "Nghỉ liền",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "連休が取れました。",
         "vn": "đã (quá khứ)."
@@ -69,8 +81,10 @@
     {
       "word": "有給",
       "reading": "ゆうきゅう",
+      "han_viet": "",
       "meaning": "Nghỉ có lương",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "有給を取得しました。",
         "vn": "đã (quá khứ)."
@@ -79,8 +93,10 @@
     {
       "word": "有給休暇",
       "reading": "ゆうきゅうきゅうか",
+      "han_viet": "",
       "meaning": "Nghỉ phép có lương",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "有給休暇を使います。",
         "vn": "có (người/động vật)."
@@ -89,8 +105,10 @@
     {
       "word": "寝坊",
       "reading": "ねぼう",
+      "han_viet": "",
       "meaning": "Ngủ nướng",
-      "type": "Danh động từ",
+      "type": "Verb",
+      "level": "N4",
       "example": {
         "jp": "休日は寝坊します。",
         "vn": "(đuôi lịch sự)"
@@ -99,8 +117,10 @@
     {
       "word": "昼寝",
       "reading": "ひるね",
+      "han_viet": "",
       "meaning": "Ngủ trưa",
-      "type": "Danh động từ",
+      "type": "Verb",
+      "level": "N4",
       "example": {
         "jp": "昼寝をしました。",
         "vn": "đã (quá khứ)."
@@ -109,8 +129,10 @@
     {
       "word": "ゴロゴロ",
       "reading": "ゴロゴロ",
+      "han_viet": "",
       "meaning": "Nằm lười",
-      "type": "Phó từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "家でゴロゴロします。",
         "vn": "(đuôi lịch sự)"
@@ -119,8 +141,10 @@
     {
       "word": "散歩",
       "reading": "さんぽ",
+      "han_viet": "",
       "meaning": "Đi dạo",
-      "type": "Danh động từ",
+      "type": "Verb",
+      "level": "N4",
       "example": {
         "jp": "公園を散歩します。",
         "vn": "(đuôi lịch sự)"
@@ -129,8 +153,10 @@
     {
       "word": "買い物",
       "reading": "かいもの",
+      "han_viet": "",
       "meaning": "Mua sắm",
-      "type": "Danh động từ",
+      "type": "Verb",
+      "level": "N4",
       "example": {
         "jp": "買い物に行きます。",
         "vn": "(đuôi lịch sự)"
@@ -139,8 +165,10 @@
     {
       "word": "映画",
       "reading": "えいが",
+      "han_viet": "",
       "meaning": "Phim",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "映画を見に行きます。",
         "vn": "(đuôi lịch sự)"
@@ -149,8 +177,10 @@
     {
       "word": "趣味",
       "reading": "しゅみ",
+      "han_viet": "THÚ VỊ",
       "meaning": "Sở thích",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "趣味の時間です。",
         "vn": "là."
@@ -159,8 +189,10 @@
     {
       "word": "読書",
       "reading": "どくしょ",
+      "han_viet": "",
       "meaning": "Đọc sách",
-      "type": "Danh động từ",
+      "type": "Verb",
+      "level": "N4",
       "example": {
         "jp": "読書を楽しみます。",
         "vn": "(đuôi lịch sự)"
@@ -169,8 +201,10 @@
     {
       "word": "スポーツ",
       "reading": "スポーツ",
+      "han_viet": "",
       "meaning": "Thể thao",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "スポーツをします。",
         "vn": "(đuôi lịch sự)"
@@ -179,8 +213,10 @@
     {
       "word": "運動",
       "reading": "うんどう",
+      "han_viet": "",
       "meaning": "Vận động",
-      "type": "Danh động từ",
+      "type": "Verb",
+      "level": "N4",
       "example": {
         "jp": "運動をします。",
         "vn": "(đuôi lịch sự)"
@@ -189,8 +225,10 @@
     {
       "word": "ドライブ",
       "reading": "ドライブ",
+      "han_viet": "",
       "meaning": "Lái xe dạo",
-      "type": "Danh động từ",
+      "type": "Verb",
+      "level": "N4",
       "example": {
         "jp": "ドライブに行きます。",
         "vn": "(đuôi lịch sự)"
@@ -199,8 +237,10 @@
     {
       "word": "旅行",
       "reading": "りょこう",
+      "han_viet": "",
       "meaning": "Du lịch",
-      "type": "Danh động từ",
+      "type": "Verb",
+      "level": "N4",
       "example": {
         "jp": "近場で旅行します。",
         "vn": "(đuôi lịch sự)"

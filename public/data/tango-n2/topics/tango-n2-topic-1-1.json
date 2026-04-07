@@ -9,8 +9,10 @@
     {
       "word": "経営",
       "reading": "けいえい",
+      "han_viet": "",
       "meaning": "Quản lý, điều hành",
-      "type": "Danh động từ",
+      "type": "Verb",
+      "level": "N2",
       "example": {
         "jp": "会社を経営しています。",
         "vn": "có (người/động vật)."
@@ -19,8 +21,10 @@
     {
       "word": "経営者",
       "reading": "けいえいしゃ",
+      "han_viet": "",
       "meaning": "Nhà quản lý",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N2",
       "example": {
         "jp": "若い経営者です。",
         "vn": "là."
@@ -29,8 +33,10 @@
     {
       "word": "経営理念",
       "reading": "けいえいりねん",
+      "han_viet": "",
       "meaning": "Tôn chỉ kinh doanh",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N2",
       "example": {
         "jp": "経営理念を大切にしています。",
         "vn": "có (người/động vật)."
@@ -39,8 +45,10 @@
     {
       "word": "経営戦略",
       "reading": "けいえいせんりゃく",
+      "han_viet": "",
       "meaning": "Chiến lược kinh doanh",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N2",
       "example": {
         "jp": "経営戦略を立てました。",
         "vn": "đã (quá khứ)."
@@ -49,8 +57,10 @@
     {
       "word": "経営状態",
       "reading": "けいえいじょうたい",
+      "han_viet": "",
       "meaning": "Tình trạng kinh doanh",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N2",
       "example": {
         "jp": "経営状態が良くなりました。",
         "vn": "đã (quá khứ)."
@@ -59,8 +69,10 @@
     {
       "word": "経営破綻",
       "reading": "けいえいはたん",
+      "han_viet": "",
       "meaning": "Phá sản",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N2",
       "example": {
         "jp": "経営破綻しました。",
         "vn": "đã (quá khứ)."
@@ -69,8 +81,10 @@
     {
       "word": "経営資源",
       "reading": "けいえいしげん",
+      "han_viet": "",
       "meaning": "Nguồn lực kinh doanh",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N2",
       "example": {
         "jp": "経営資源を活用します。",
         "vn": "(đuôi lịch sự)"
@@ -79,8 +93,10 @@
     {
       "word": "経営統合",
       "reading": "けいえいとうごう",
+      "han_viet": "",
       "meaning": "Sáp nhập",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N2",
       "example": {
         "jp": "経営統合をしました。",
         "vn": "đã (quá khứ)."
@@ -89,8 +105,10 @@
     {
       "word": "経営再建",
       "reading": "けいえいさいけん",
+      "han_viet": "",
       "meaning": "Tái cơ cấu",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N2",
       "example": {
         "jp": "経営再建を進めています。",
         "vn": "có (người/động vật)."
@@ -99,8 +117,10 @@
     {
       "word": "経営委譲",
       "reading": "けいえいいじょう",
+      "han_viet": "",
       "meaning": "Chuyển giao quản lý",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N2",
       "example": {
         "jp": "経営委譲を検討しています。",
         "vn": "có (người/động vật)."

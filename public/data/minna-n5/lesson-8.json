@@ -3,130 +3,120 @@
   "topic": "Tính chất & Trạng thái (Tính từ)",
   "vocabulary": [
     {
-      "id": "n5_l8_001",
       "word": "大きい",
       "reading": "おおきい",
-      "hanViet": "Đại",
+      "han_viet": "ĐẠI",
       "meaning": "to, lớn",
-      "type": "adjective",
-      "category": "Tính Từ い",
+      "type": "Adjective",
+      "level": "N5",
       "example": {
         "jp": "大きい家です。",
         "vn": "Ngôi nhà to."
       }
     },
     {
-      "id": "n5_l8_002",
       "word": "小さい",
       "reading": "ちいさい",
-      "hanViet": "Tiểu",
+      "han_viet": "TIỂU",
       "meaning": "nhỏ, bé",
-      "type": "adjective",
-      "category": "Tính Từ い",
+      "type": "Adjective",
+      "level": "N5",
       "example": {
         "jp": "小さい猫です。",
         "vn": "Con mèo nhỏ."
       }
     },
     {
-      "id": "n5_l8_003",
       "word": "新しい",
       "reading": "あたらしい",
-      "hanViet": "Tân",
+      "han_viet": "TÂN",
       "meaning": "mới",
-      "type": "adjective",
-      "category": "Tính Từ い",
+      "type": "Adjective",
+      "level": "N5",
       "example": {
         "jp": "新しい車です。",
         "vn": "Xe mới."
       }
     },
     {
-      "id": "n5_l8_004",
       "word": "古い",
       "reading": "ふるい",
-      "hanViet": "Cổ",
+      "han_viet": "CỔ",
       "meaning": "cũ, cổ",
-      "type": "adjective",
-      "category": "Tính Từ い",
+      "type": "Adjective",
+      "level": "N5",
       "example": {
         "jp": "古い本です。",
         "vn": "Sách cũ."
       }
     },
     {
-      "id": "n5_l8_005",
       "word": "高い",
       "reading": "たかい",
-      "hanViet": "Cao",
+      "han_viet": "CAO",
       "meaning": "cao, đắt",
-      "type": "adjective",
-      "category": "Tính Từ い",
+      "type": "Adjective",
+      "level": "N5",
       "example": {
         "jp": "高いビルです。",
         "vn": "Tòa nhà cao."
       }
     },
     {
-      "id": "n5_l8_006",
       "word": "安い",
       "reading": "やすい",
-      "hanViet": "An",
+      "han_viet": "AN",
       "meaning": "rẻ, bình yên",
-      "type": "adjective",
-      "category": "Tính Từ い",
+      "type": "Adjective",
+      "level": "N5",
       "example": {
         "jp": "安いレストランです。",
         "vn": "Nhà hàng rẻ."
       }
     },
     {
-      "id": "n5_l8_007",
       "word": "長い",
       "reading": "ながい",
-      "hanViet": "Trường",
+      "han_viet": "TRƯỜNG",
       "meaning": "dài",
-      "type": "adjective",
-      "category": "Tính Từ い",
+      "type": "Adjective",
+      "level": "N5",
       "example": {
         "jp": "長い髪です。",
         "vn": "Tóc dài."
       }
     },
     {
-      "id": "n5_l8_008",
       "word": "短い",
       "reading": "みじかい",
-      "hanViet": "Đoản",
+      "han_viet": "ĐOẢN",
       "meaning": "ngắn",
-      "type": "adjective",
-      "category": "Tính Từ い",
+      "type": "Adjective",
+      "level": "N5",
       "example": {
         "jp": "短いスカートです。",
         "vn": "Váy ngắn."
       }
     },
     {
-      "id": "n5_l8_009",
       "word": "忙しい",
       "reading": "いそがしい",
-      "hanViet": "Mang",
+      "han_viet": "MANG",
       "meaning": "bận rộn",
-      "type": "adjective",
-      "category": "Tính Từ い",
+      "type": "Adjective",
+      "level": "N5",
       "example": {
         "jp": "今日は忙しいです。",
         "vn": "Hôm nay bận."
       }
     },
     {
-      "id": "n5_l8_010",
       "word": "楽しい",
       "reading": "たのしい",
-      "hanViet": "Lạc",
+      "han_viet": "LẠC",
       "meaning": "vui vẻ",
-      "type": "adjective",
-      "category": "Tính Từ い",
+      "type": "Adjective",
+      "level": "N5",
       "example": {
         "jp": "楽しい旅行でした。",
         "vn": "Chuyến đi vui vẻ."

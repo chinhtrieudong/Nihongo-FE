@@ -4,7 +4,6 @@ import { Card, Button, Tag, Typography, Empty, Badge, Progress, Spin, Collapse }
 import { ArrowLeft, BookOpen, ChevronRight, PlayCircle, FileQuestion, CheckCircle2, Clock, BookText } from "lucide-react";
 
 const { Title, Text } = Typography;
-const { Panel } = Collapse;
 
 type LessonStatus = "not-started" | "in-progress" | "completed";
 
@@ -343,8 +342,8 @@ const TextbookDetail: React.FC = () => {
   };
 
   const handleQuickTest = () => {
-    // Navigate to practice page for this textbook level
-    navigate(`/practice`);
+    // Quick test page for this textbook
+    navigate(`/textbook/${textbookId}/quick-test`);
   };
 
   return (
@@ -418,8 +417,8 @@ const TextbookDetail: React.FC = () => {
           <Progress
             percent={progress.percentage}
             strokeColor={colorMap[textbook.accentColor].colorValue}
-            trailColor="#e5e7eb"
-            strokeWidth={12}
+            railColor="#e5e7eb"
+            size={12}
             showInfo={false}
           />
         </Card>
@@ -435,30 +434,28 @@ const TextbookDetail: React.FC = () => {
             
             <Collapse
               ghost
-              expandIconPosition="end"
+              expandIconPlacement="end"
               className="tango-chapters-collapse"
-            >
-              {chapters.map((chapter) => (
-                <Panel
-                  key={chapter.number}
-                  header={
-                    <div className="flex items-center gap-3 py-1">
-                      <div
-                        className={`w-10 h-10 rounded-lg flex items-center justify-center text-sm font-bold ${colorMap[textbook.accentColor].bgLight} ${colorMap[textbook.accentColor].text} flex-shrink-0`}
-                      >
-                        C{chapter.number}
-                      </div>
-                      <div className="flex-1 min-w-0">
-                        <Text className="text-lg font-semibold text-text-main block truncate">
-                          Chương {chapter.number}: {chapter.titleVi}
-                        </Text>
-                        <Text className="text-sm text-text-sub block">
-                          {chapter.title} · {chapter.vocab} từ vựng
-                        </Text>
-                      </div>
+              items={chapters.map((chapter) => ({
+                key: `chapter-${chapter.number}`,
+                label: (
+                  <div className="flex items-center gap-3 py-1">
+                    <div
+                      className={`w-10 h-10 rounded-lg flex items-center justify-center text-sm font-bold ${colorMap[textbook.accentColor].bgLight} ${colorMap[textbook.accentColor].text} flex-shrink-0`}
+                    >
+                      C{chapter.number}
                     </div>
-                  }
-                >
+                    <div className="flex-1 min-w-0">
+                      <Text className="text-lg font-semibold text-text-main block truncate">
+                        Chương {chapter.number}: {chapter.titleVi}
+                      </Text>
+                      <Text className="text-sm text-text-sub block">
+                        {chapter.title} · {chapter.vocab} từ vựng
+                      </Text>
+                    </div>
+                  </div>
+                ),
+                children: (
                   <div className="pl-13 space-y-2">
                     {chapter.topics.map((topic, idx) => {
                       const lessonNum = (chapter.number - 1) * 5 + idx + 1;
@@ -466,7 +463,7 @@ const TextbookDetail: React.FC = () => {
                       const statusConfig = getStatusConfig(lesson?.status || "not-started");
                       return (
                         <Card
-                          key={idx}
+                          key={`lesson-${lessonNum}`}
                           hoverable
                           size="small"
                           onClick={() => handleLessonClick(lessonNum)}
@@ -502,9 +499,9 @@ const TextbookDetail: React.FC = () => {
                       );
                     })}
                   </div>
-                </Panel>
-              ))}
-            </Collapse>
+                ),
+              }))}
+            />
           </div>
         ) : (
           /* Lesson Groups for Minna */

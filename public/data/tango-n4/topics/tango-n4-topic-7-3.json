@@ -9,8 +9,10 @@
     {
       "word": "値段",
       "reading": "ねだん",
+      "han_viet": "",
       "meaning": "Giá cả",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "値段を見ました。",
         "vn": "đã (quá khứ)."
@@ -19,8 +21,10 @@
     {
       "word": "価格",
       "reading": "かかく",
+      "han_viet": "",
       "meaning": "Giá cả",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "価格が高いです。",
         "vn": "là."
@@ -29,8 +33,10 @@
     {
       "word": "定価",
       "reading": "ていか",
+      "han_viet": "",
       "meaning": "Giá niêm yết",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "定価で販売しています。",
         "vn": "có (người/động vật)."
@@ -39,8 +45,10 @@
     {
       "word": "原価",
       "reading": "げんか",
+      "han_viet": "",
       "meaning": "Giá gốc",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "原価で販売しています。",
         "vn": "có (người/động vật)."
@@ -49,8 +57,10 @@
     {
       "word": "売価",
       "reading": "ばいか",
+      "han_viet": "",
       "meaning": "Giá bán",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "売価が安いです。",
         "vn": "là."
@@ -59,8 +69,10 @@
     {
       "word": "高い",
       "reading": "たかい",
+      "han_viet": "CAO",
       "meaning": "Cao/Đắt",
-      "type": "Tính từ",
+      "type": "Adjective",
+      "level": "N4",
       "example": {
         "jp": "値段が高いです。",
         "vn": "là."
@@ -69,8 +81,10 @@
     {
       "word": "低い",
       "reading": "ひくい",
+      "han_viet": "",
       "meaning": "Thấp/Rẻ",
-      "type": "Tính từ",
+      "type": "Adjective",
+      "level": "N4",
       "example": {
         "jp": "値段が低いです。",
         "vn": "là."
@@ -79,8 +93,10 @@
     {
       "word": "安い",
       "reading": "やすい",
+      "han_viet": "AN",
       "meaning": "Rẻ",
-      "type": "Tính từ",
+      "type": "Adjective",
+      "level": "N4",
       "example": {
         "jp": "安い値段です。",
         "vn": "là."
@@ -89,8 +105,10 @@
     {
       "word": "高級",
       "reading": "こうきゅう",
+      "han_viet": "",
       "meaning": "Cao cấp",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "高級な商品です。",
         "vn": "là."
@@ -99,8 +117,10 @@
     {
       "word": "高価",
       "reading": "こうか",
+      "han_viet": "",
       "meaning": "Giá cao",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "高価な品物です。",
         "vn": "là."
@@ -109,8 +129,10 @@
     {
       "word": "特価",
       "reading": "とっか",
+      "han_viet": "",
       "meaning": "Giá đặc biệt",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "特価で販売しています。",
         "vn": "có (người/động vật)."
@@ -119,8 +141,10 @@
     {
       "word": "激安",
       "reading": "げきやす",
+      "han_viet": "",
       "meaning": "Rẻ bất ngờ",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "激安セールです。",
         "vn": "là."
@@ -129,8 +153,10 @@
     {
       "word": "割引",
       "reading": "わりびき",
+      "han_viet": "",
       "meaning": "Giảm giá",
-      "type": "Danh động từ",
+      "type": "Verb",
+      "level": "N4",
       "example": {
         "jp": "割引してもらいました。",
         "vn": "đã (quá khứ)."
@@ -139,8 +165,10 @@
     {
       "word": "値引き",
       "reading": "ねびき",
+      "han_viet": "",
       "meaning": "Chiết khấu",
-      "type": "Danh động từ",
+      "type": "Verb",
+      "level": "N4",
       "example": {
         "jp": "値引きしました。",
         "vn": "đã (quá khứ)."
@@ -149,8 +177,10 @@
     {
       "word": "半額",
       "reading": "はんがく",
+      "han_viet": "",
       "meaning": "Nửa giá",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "半額セールです。",
         "vn": "là."
@@ -159,8 +189,10 @@
     {
       "word": "タイムセール",
       "reading": "タイムセール",
+      "han_viet": "",
       "meaning": "Khuyến mãi có thời hạn",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "タイムセール中です。",
         "vn": "là."
@@ -169,8 +201,10 @@
     {
       "word": "送料",
       "reading": "そうりょう",
+      "han_viet": "",
       "meaning": "Phí giao hàng",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "送料がかかります。",
         "vn": "(đuôi lịch sự)"
@@ -179,8 +213,10 @@
     {
       "word": "手数料",
       "reading": "てすうりょう",
+      "han_viet": "",
       "meaning": "Phí dịch vụ",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "手数料が必要です。",
         "vn": "là."
@@ -189,8 +225,10 @@
     {
       "word": "消費税",
       "reading": "しょうひぜい",
+      "han_viet": "",
       "meaning": "Thuế tiêu dùng",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "消費税が10%です。",
         "vn": "là."
@@ -199,8 +237,10 @@
     {
       "word": "総額",
       "reading": "そうがく",
+      "han_viet": "",
       "meaning": "Tổng số tiền",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "総額は5000円です。",
         "vn": "là."

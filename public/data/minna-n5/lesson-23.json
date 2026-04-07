@@ -3,130 +3,120 @@
   "topic": "Thời điểm & Cách sử dụng máy móc",
   "vocabulary": [
     {
-      "id": "n5_l23_001",
       "word": "時",
       "reading": "とき",
-      "hanViet": "Thì",
+      "han_viet": "THÌ",
       "meaning": "khi, lúc",
-      "type": "noun",
-      "category": "thời_gian",
+      "type": "Noun",
+      "level": "N5",
       "example": {
         "jp": "子供の時。",
         "vn": "Lúc còn nhỏ."
       }
     },
     {
-      "id": "n5_l23_002",
       "word": "前",
       "reading": "まえ",
-      "hanViet": "Tiền",
+      "han_viet": "TIỀN",
       "meaning": "trước",
-      "type": "noun",
-      "category": "thời_gian",
+      "type": "Noun",
+      "level": "N5",
       "example": {
         "jp": "食べる前に。",
         "vn": "Trước khi ăn."
       }
     },
     {
-      "id": "n5_l23_003",
       "word": "後",
       "reading": "あと",
-      "hanViet": "Hậu",
+      "han_viet": "HẬU",
       "meaning": "sau",
-      "type": "noun",
-      "category": "thời_gian",
+      "type": "Noun",
+      "level": "N5",
       "example": {
         "jp": "食べた後で。",
         "vn": "Sau khi ăn."
       }
     },
     {
-      "id": "n5_l23_004",
       "word": "使い方",
       "reading": "つかいかた",
-      "hanViet": "Sử Phương",
+      "han_viet": "SỬ PHƯƠNG",
       "meaning": "cách dùng",
-      "type": "noun",
-      "category": "thời_gian",
+      "type": "Noun",
+      "level": "N5",
       "example": {
         "jp": "使い方を教えて。",
         "vn": "Chỉ cách dùng."
       }
     },
     {
-      "id": "n5_l23_005",
       "word": "作り方",
       "reading": "つくりかた",
-      "hanViet": "Tác Phương",
+      "han_viet": "TÁC PHƯƠNG",
       "meaning": "cách làm",
-      "type": "noun",
-      "category": "thời_gian",
+      "type": "Noun",
+      "level": "N5",
       "example": {
         "jp": "作り方を知らない。",
         "vn": "Không biết cách làm."
       }
     },
     {
-      "id": "n5_l23_006",
       "word": "コンピューター",
       "reading": "こんぴゅーたー",
-      "hanViet": "",
+      "han_viet": "",
       "meaning": "máy tính",
-      "type": "other",
-      "category": "máy_móc",
+      "type": "Noun",
+      "level": "N5",
       "example": {
         "jp": "コンピューターを使う。",
         "vn": "Sử dụng máy tính."
       }
     },
     {
-      "id": "n5_l23_007",
       "word": "スマホ",
       "reading": "すまほ",
-      "hanViet": "",
+      "han_viet": "",
       "meaning": "điện thoại thông minh",
-      "type": "other",
-      "category": "máy_móc",
+      "type": "Noun",
+      "level": "N5",
       "example": {
         "jp": "スマホで撮る。",
         "vn": "Chụp bằng điện thoại."
       }
     },
     {
-      "id": "n5_l23_008",
       "word": "アプリ",
       "reading": "あぷり",
-      "hanViet": "",
+      "han_viet": "",
       "meaning": "ứng dụng",
-      "type": "noun",
-      "category": "thời_gian",
+      "type": "Noun",
+      "level": "N5",
       "example": {
         "jp": "アプリを入れる。",
         "vn": "Cài ứng dụng."
       }
     },
     {
-      "id": "n5_l23_009",
       "word": "インターネット",
       "reading": "いんたーねっと",
-      "hanViet": "",
+      "han_viet": "",
       "meaning": "internet",
-      "type": "noun",
-      "category": "thời_gian",
+      "type": "Noun",
+      "level": "N5",
       "example": {
         "jp": "インターネットで調べる。",
         "vn": "Tìm trên internet."
       }
     },
     {
-      "id": "n5_l23_010",
       "word": "コピーする",
       "reading": "こぴーする",
-      "hanViet": "",
+      "han_viet": "",
       "meaning": "photoCopy",
-      "type": "verb",
-      "category": "Động Từ Sa Biến",
+      "type": "Verb",
+      "level": "N5",
       "example": {
         "jp": "コピーする。",
         "vn": "Photocopy."

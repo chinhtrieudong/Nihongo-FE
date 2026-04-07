@@ -9,8 +9,10 @@
     {
       "word": "面接",
       "reading": "めんせつ",
+      "han_viet": "",
       "meaning": "Phỏng vấn",
-      "type": "Danh động từ",
+      "type": "Verb",
+      "level": "N4",
       "example": {
         "jp": "面接を受けました。",
         "vn": "đã (quá khứ)."
@@ -19,8 +21,10 @@
     {
       "word": "履歴書",
       "reading": "りれきしょ",
+      "han_viet": "",
       "meaning": "Sơ yếu lý lịch",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "履歴書を書きました。",
         "vn": "đã (quá khứ)."
@@ -29,8 +33,10 @@
     {
       "word": "職務経歴書",
       "reading": "しょくむけいれきしょ",
+      "han_viet": "",
       "meaning": "Lý lịch công việc",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "職務経歴書を提出しました。",
         "vn": "đã (quá khứ)."
@@ -39,8 +45,10 @@
     {
       "word": "応募",
       "reading": "おうぼ",
+      "han_viet": "",
       "meaning": "Ứng tuyển",
-      "type": "Danh động từ",
+      "type": "Verb",
+      "level": "N4",
       "example": {
         "jp": "この会社に応募しました。",
         "vn": "đã (quá khứ)."
@@ -49,8 +57,10 @@
     {
       "word": "採用",
       "reading": "さいよう",
+      "han_viet": "",
       "meaning": "Tuyển dụng",
-      "type": "Danh động từ",
+      "type": "Verb",
+      "level": "N4",
       "example": {
         "jp": "採用が決まりました。",
         "vn": "đã (quá khứ)."
@@ -59,8 +69,10 @@
     {
       "word": "不採用",
       "reading": "ふさいよう",
+      "han_viet": "",
       "meaning": "Không tuyển",
-      "type": "Danh động từ",
+      "type": "Verb",
+      "level": "N4",
       "example": {
         "jp": "残念ながら不採用でした。",
         "vn": "đã là (quá khứ)."
@@ -69,8 +81,10 @@
     {
       "word": "合格",
       "reading": "ごうかく",
+      "han_viet": "",
       "meaning": "Đậu",
-      "type": "Danh động từ",
+      "type": "Verb",
+      "level": "N4",
       "example": {
         "jp": "試験に合格しました。",
         "vn": "đã (quá khứ)."
@@ -79,8 +93,10 @@
     {
       "word": "不合格",
       "reading": "ふごうかく",
+      "han_viet": "",
       "meaning": "Rớt",
-      "type": "Danh động từ",
+      "type": "Verb",
+      "level": "N4",
       "example": {
         "jp": "不合格だったので再挑戦します。",
         "vn": "(đuôi lịch sự)"
@@ -89,8 +105,10 @@
     {
       "word": "志望",
       "reading": "しぼう",
+      "han_viet": "",
       "meaning": "Nguyện vọng",
-      "type": "Danh động từ",
+      "type": "Verb",
+      "level": "N4",
       "example": {
         "jp": "志望動機を聞かれました。",
         "vn": "đã (quá khứ)."
@@ -99,8 +117,10 @@
     {
       "word": "志望動機",
       "reading": "しぼうどうき",
+      "han_viet": "",
       "meaning": "Lý do ứng tuyển",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "志望動機を説明しました。",
         "vn": "đã (quá khứ)."
@@ -109,8 +129,10 @@
     {
       "word": "自己紹介",
       "reading": "じこしょうかい",
+      "han_viet": "",
       "meaning": "Giới thiệu bản thân",
-      "type": "Danh động từ",
+      "type": "Verb",
+      "level": "N4",
       "example": {
         "jp": "自己紹介をお願いします。",
         "vn": "(đuôi lịch sự)"
@@ -119,8 +141,10 @@
     {
       "word": "長所",
       "reading": "ちょうしょ",
+      "han_viet": "",
       "meaning": "Ưu điểm",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "長所を述べてください。",
         "vn": "vui lòng..."
@@ -129,8 +153,10 @@
     {
       "word": "短所",
       "reading": "たんしょ",
+      "han_viet": "",
       "meaning": "Nhược điểm",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "短所も正直に話しました。",
         "vn": "đã (quá khứ)."
@@ -139,8 +165,10 @@
     {
       "word": "特技",
       "reading": "とくぎ",
+      "han_viet": "",
       "meaning": "Sở trường",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "特技は料理です。",
         "vn": "là."
@@ -149,8 +177,10 @@
     {
       "word": "資格",
       "reading": "しかく",
+      "han_viet": "",
       "meaning": "Bằng cấp",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "資格を持っています。",
         "vn": "có (người/động vật)."
@@ -159,8 +189,10 @@
     {
       "word": "経験",
       "reading": "けいけん",
+      "han_viet": "",
       "meaning": "Kinh nghiệm",
-      "type": "Danh động từ",
+      "type": "Verb",
+      "level": "N4",
       "example": {
         "jp": "経験を生かしたいです。",
         "vn": "là."
@@ -169,8 +201,10 @@
     {
       "word": "未経験",
       "reading": "みけいけん",
+      "han_viet": "",
       "meaning": "Chưa có kinh nghiệm",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "未経験でも応募できます。",
         "vn": "(đuôi lịch sự)"
@@ -179,8 +213,10 @@
     {
       "word": "説明",
       "reading": "せつめい",
+      "han_viet": "",
       "meaning": "Giải thích",
-      "type": "Danh động từ",
+      "type": "Verb",
+      "level": "N4",
       "example": {
         "jp": "仕事内容を説明しました。",
         "vn": "đã (quá khứ)."
@@ -189,8 +225,10 @@
     {
       "word": "質問",
       "reading": "しつもん",
+      "han_viet": "",
       "meaning": "Câu hỏi",
-      "type": "Danh động từ",
+      "type": "Verb",
+      "level": "N4",
       "example": {
         "jp": "質問を受けました。",
         "vn": "đã (quá khứ)."
@@ -199,8 +237,10 @@
     {
       "word": "回答",
       "reading": "かいとう",
+      "han_viet": "",
       "meaning": "Trả lời",
-      "type": "Danh động từ",
+      "type": "Verb",
+      "level": "N4",
       "example": {
         "jp": "回答をまとめました。",
         "vn": "đã (quá khứ)."

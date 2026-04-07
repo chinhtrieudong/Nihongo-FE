@@ -122,8 +122,8 @@ const TestCard: React.FC<TestCardProps> = ({
             <div className="mt-4 pt-3 border-t">
                 <Text className="text-xs !text-secondary-700 dark:!text-secondary-300">Phần thi:</Text>
                 <div className="flex flex-wrap gap-1 mt-1">
-                    {test.sections.map(section => (
-                        <Tag key={section.id} className="text-xs">
+                    {test.sections.map((section, idx) => (
+                        <Tag key={`${section.id || "section"}-${section.name}-${idx}`} className="text-xs">
                             {section.icon} {section.name}
                         </Tag>
                     ))}

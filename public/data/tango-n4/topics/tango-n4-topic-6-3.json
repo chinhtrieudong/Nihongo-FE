@@ -9,8 +9,10 @@
     {
       "word": "天候",
       "reading": "てんこう",
+      "han_viet": "",
       "meaning": "Thời tiết",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "天候が安定しています。",
         "vn": "có (người/động vật)."
@@ -19,8 +21,10 @@
     {
       "word": "天気",
       "reading": "てんき",
+      "han_viet": "THIÊN KHÍ",
       "meaning": "Thời tiết",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "天気がいいです。",
         "vn": "là."
@@ -29,8 +33,10 @@
     {
       "word": "晴れ",
       "reading": "はれ",
+      "han_viet": "TÌNH",
       "meaning": "Nắng",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "晴れています。",
         "vn": "có (người/động vật)."
@@ -39,8 +45,10 @@
     {
       "word": "曇り",
       "reading": "くもり",
+      "han_viet": "",
       "meaning": "Nhiều mây",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "曇りです。",
         "vn": "là."
@@ -49,8 +57,10 @@
     {
       "word": "雨",
       "reading": "あめ",
+      "han_viet": "VŨ",
       "meaning": "Mưa",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "雨が降っています。",
         "vn": "có (người/động vật)."
@@ -59,8 +69,10 @@
     {
       "word": "雪",
       "reading": "ゆき",
+      "han_viet": "TUYẾT",
       "meaning": "Tuyết",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "雪が降っています。",
         "vn": "có (người/động vật)."
@@ -69,8 +81,10 @@
     {
       "word": "風",
       "reading": "かぜ",
+      "han_viet": "",
       "meaning": "Gió",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "風が強いです。",
         "vn": "là."
@@ -79,8 +93,10 @@
     {
       "word": "雷",
       "reading": "かみなり",
+      "han_viet": "",
       "meaning": "Sấm",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "雷が鳴っています。",
         "vn": "có (người/động vật)."
@@ -89,8 +105,10 @@
     {
       "word": "嵐",
       "reading": "あらし",
+      "han_viet": "",
       "meaning": "Bão",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "嵐が来そうです。",
         "vn": "là."
@@ -99,8 +117,10 @@
     {
       "word": "霧",
       "reading": "きり",
+      "han_viet": "",
       "meaning": "Sương mù",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "霧が深いです。",
         "vn": "là."
@@ -109,8 +129,10 @@
     {
       "word": "雹",
       "reading": "ひょう",
+      "han_viet": "",
       "meaning": "Mưa đá",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "雹が降りました。",
         "vn": "đã (quá khứ)."
@@ -119,8 +141,10 @@
     {
       "word": "快晴",
       "reading": "かいせい",
+      "han_viet": "",
       "meaning": "Trời quang",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "快晴です。",
         "vn": "là."
@@ -129,8 +153,10 @@
     {
       "word": "暴雨",
       "reading": "ばくう",
+      "han_viet": "",
       "meaning": "Mưa to",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "暴雨に見舞われました。",
         "vn": "đã (quá khứ)."
@@ -139,8 +165,10 @@
     {
       "word": "大雨",
       "reading": "おおあめ",
+      "han_viet": "",
       "meaning": "Mưa lớn",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "大雨警報が出ました。",
         "vn": "đã (quá khứ)."
@@ -149,8 +177,10 @@
     {
       "word": "小雨",
       "reading": "こさめ",
+      "han_viet": "",
       "meaning": "Mưa nhỏ",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "小雨が降っています。",
         "vn": "có (người/động vật)."
@@ -159,8 +189,10 @@
     {
       "word": "にわか雨",
       "reading": "にわかあめ",
+      "han_viet": "",
       "meaning": "Mưa rào",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "にわか雨に遭いました。",
         "vn": "đã (quá khứ)."
@@ -169,8 +201,10 @@
     {
       "word": "雷雨",
       "reading": "らいう",
+      "han_viet": "",
       "meaning": "Dông",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "雷雨が発生しました。",
         "vn": "đã (quá khứ)."
@@ -179,8 +213,10 @@
     {
       "word": "天気予報",
       "reading": "てんきよほう",
+      "han_viet": "",
       "meaning": "Dự báo thời tiết",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "天気予報を見ました。",
         "vn": "đã (quá khứ)."
@@ -189,8 +225,10 @@
     {
       "word": "予報",
       "reading": "よほう",
+      "han_viet": "",
       "meaning": "Dự báo",
-      "type": "Danh động từ",
+      "type": "Verb",
+      "level": "N4",
       "example": {
         "jp": "雨が予報されています。",
         "vn": "có (người/động vật)."
@@ -199,8 +237,10 @@
     {
       "word": "気象",
       "reading": "きしょう",
+      "han_viet": "",
       "meaning": "Khí tượng",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "気象情報を確認します。",
         "vn": "(đuôi lịch sự)"

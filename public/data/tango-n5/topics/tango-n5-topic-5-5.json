@@ -9,8 +9,10 @@
     {
       "word": "どう",
       "reading": "どう",
+      "han_viet": "",
       "meaning": "Thế nào",
-      "type": "Đại từ",
+      "type": "Pronoun",
+      "level": "N5",
       "example": {
         "jp": "どうですか。",
         "vn": "có phải là... không?"
@@ -19,8 +21,10 @@
     {
       "word": "おいしい",
       "reading": "おいしい",
+      "han_viet": "",
       "meaning": "Ngon",
-      "type": "Tính từ",
+      "type": "Adjective",
+      "level": "N5",
       "example": {
         "jp": "おいしいです。",
         "vn": "là."
@@ -29,8 +33,10 @@
     {
       "word": "まずい",
       "reading": "まずい",
+      "han_viet": "",
       "meaning": "Dở",
-      "type": "Tính từ",
+      "type": "Adjective",
+      "level": "N5",
       "example": {
         "jp": "まずいです。",
         "vn": "là."
@@ -39,8 +45,10 @@
     {
       "word": "熱い",
       "reading": "あつい",
+      "han_viet": "",
       "meaning": "Nóng",
-      "type": "Tính từ",
+      "type": "Adjective",
+      "level": "N5",
       "example": {
         "jp": "コーヒーは熱いです。",
         "vn": "là."
@@ -49,8 +57,10 @@
     {
       "word": "冷たい",
       "reading": "つめたい",
+      "han_viet": "",
       "meaning": "Lạnh",
-      "type": "Tính từ",
+      "type": "Adjective",
+      "level": "N5",
       "example": {
         "jp": "ビールは冷たいです。",
         "vn": "là."
@@ -59,8 +69,10 @@
     {
       "word": "温かい",
       "reading": "あたたかい",
+      "han_viet": "",
       "meaning": "Ấm",
-      "type": "Tính từ",
+      "type": "Adjective",
+      "level": "N5",
       "example": {
         "jp": "スープは温かいです。",
         "vn": "là."
@@ -69,8 +81,10 @@
     {
       "word": "硬い",
       "reading": "かたい",
+      "han_viet": "",
       "meaning": "Cứng",
-      "type": "Tính từ",
+      "type": "Adjective",
+      "level": "N5",
       "example": {
         "jp": "パンが硬いです。",
         "vn": "là."
@@ -79,8 +93,10 @@
     {
       "word": "柔らかい",
       "reading": "やわらかい",
+      "han_viet": "",
       "meaning": "Mềm",
-      "type": "Tính từ",
+      "type": "Adjective",
+      "level": "N5",
       "example": {
         "jp": "肉が柔らかいです。",
         "vn": "là."
@@ -89,8 +105,10 @@
     {
       "word": "塩辛い",
       "reading": "しおからい",
+      "han_viet": "",
       "meaning": "Mặn",
-      "type": "Tính từ",
+      "type": "Adjective",
+      "level": "N5",
       "example": {
         "jp": "味噌汁が塩辛いです。",
         "vn": "là."
@@ -99,8 +117,10 @@
     {
       "word": "酸っぱい",
       "reading": "すっぱい",
+      "han_viet": "",
       "meaning": "Chua",
-      "type": "Tính từ",
+      "type": "Adjective",
+      "level": "N5",
       "example": {
         "jp": "レモンは酸っぱいです。",
         "vn": "là."
@@ -109,8 +129,10 @@
     {
       "word": "苦い",
       "reading": "にがい",
+      "han_viet": "",
       "meaning": "Đắng",
-      "type": "Tính từ",
+      "type": "Adjective",
+      "level": "N5",
       "example": {
         "jp": "コーヒーは苦いです。",
         "vn": "là."
@@ -119,8 +141,10 @@
     {
       "word": "淡い",
       "reading": "あわい",
+      "han_viet": "",
       "meaning": "Nhạt",
-      "type": "Tính từ",
+      "type": "Adjective",
+      "level": "N5",
       "example": {
         "jp": "味が淡いです。",
         "vn": "là."
@@ -129,8 +153,10 @@
     {
       "word": "濃い",
       "reading": "こい",
+      "han_viet": "",
       "meaning": "Đậm",
-      "type": "Tính từ",
+      "type": "Adjective",
+      "level": "N5",
       "example": {
         "jp": "味が濃いです。",
         "vn": "là."
@@ -139,8 +165,10 @@
     {
       "word": "たっぷり",
       "reading": "たっぷり",
+      "han_viet": "",
       "meaning": "Nhiều",
-      "type": "Phó từ",
+      "type": "Noun",
+      "level": "N5",
       "example": {
         "jp": "たっぷり盛り付けてください。",
         "vn": "vui lòng..."
@@ -149,8 +177,10 @@
     {
       "word": "少なめ",
       "reading": "すくなめ",
+      "han_viet": "",
       "meaning": "Ít hơn",
-      "type": "Tính từ",
+      "type": "Adjective",
+      "level": "N5",
       "example": {
         "jp": "少なめでお願いします。",
         "vn": "(đuôi lịch sự)"

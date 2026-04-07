@@ -9,8 +9,10 @@
     {
       "word": "時間",
       "reading": "じかん",
+      "han_viet": "",
       "meaning": "Thời gian",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N5",
       "example": {
         "jp": "時間がありますか。",
         "vn": "có... không?"
@@ -19,8 +21,10 @@
     {
       "word": "時",
       "reading": "じ",
+      "han_viet": "THÌ",
       "meaning": "Giờ",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N5",
       "example": {
         "jp": "3時です。",
         "vn": "là."
@@ -29,8 +33,10 @@
     {
       "word": "分",
       "reading": "ふん / ぷん",
+      "han_viet": "",
       "meaning": "Phút",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N5",
       "example": {
         "jp": "10分です。",
         "vn": "là."
@@ -39,8 +45,10 @@
     {
       "word": "秒",
       "reading": "びょう",
+      "han_viet": "",
       "meaning": "Giây",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N5",
       "example": {
         "jp": "30秒待ってください。",
         "vn": "vui lòng..."
@@ -49,8 +57,10 @@
     {
       "word": "半",
       "reading": "はん",
+      "han_viet": "",
       "meaning": "Rưỡi",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N5",
       "example": {
         "jp": "3時半です。",
         "vn": "là."
@@ -59,8 +69,10 @@
     {
       "word": "前",
       "reading": "まえ",
+      "han_viet": "TIỀN",
       "meaning": "Trước",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N5",
       "example": {
         "jp": "3時前です。",
         "vn": "là."
@@ -69,8 +81,10 @@
     {
       "word": "後",
       "reading": "あと / ご",
+      "han_viet": "",
       "meaning": "Sau",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N5",
       "example": {
         "jp": "3時後に来てください。",
         "vn": "vui lòng..."
@@ -79,8 +93,10 @@
     {
       "word": "毎日",
       "reading": "まいにち",
+      "han_viet": "",
       "meaning": "Hàng ngày",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N5",
       "example": {
         "jp": "毎日学校へ行きます。",
         "vn": "(đuôi lịch sự)"
@@ -89,8 +105,10 @@
     {
       "word": "毎週",
       "reading": "まいしゅう",
+      "han_viet": "",
       "meaning": "Hàng tuần",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N5",
       "example": {
         "jp": "毎週買い物します。",
         "vn": "(đuôi lịch sự)"
@@ -99,8 +117,10 @@
     {
       "word": "毎月",
       "reading": "まいつき / まいげつ",
+      "han_viet": "",
       "meaning": "Hàng tháng",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N5",
       "example": {
         "jp": "毎月給料をもらいます。",
         "vn": "có (người/động vật)."
@@ -109,8 +129,10 @@
     {
       "word": "毎年",
       "reading": "まいとし / まいねん",
+      "han_viet": "",
       "meaning": "Hàng năm",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N5",
       "example": {
         "jp": "毎年旅行します。",
         "vn": "(đuôi lịch sự)"
@@ -119,18 +141,22 @@
     {
       "word": "朝",
       "reading": "あさ",
+      "han_viet": "",
       "meaning": "Buổi sáng",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N5",
       "example": {
         "jp": "朝ご飯を食べます。",
-        "vn": "(đuôi lịch sự)"
+        "vn": "Ăn sáng."
       }
     },
     {
       "word": "昼",
       "reading": "ひる",
+      "han_viet": "",
       "meaning": "Buổi trưa",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N5",
       "example": {
         "jp": "昼ご飯を食べます。",
         "vn": "(đuôi lịch sự)"

@@ -2527,7 +2527,7 @@
     "lesson": 1,
     "topic": "Gia đình",
     "example": "この地域の世帯数は増えた。",
-    "exampleMeaning": ""
+    "exampleMeaning": "Số hộ gia đình ở khu vực này đã tăng."
   },
   {
     "id": "map_001634",
@@ -2537,7 +2537,7 @@
     "lesson": 1,
     "topic": "Gia đình",
     "example": "生計を立てるのが大変だ。",
-    "exampleMeaning": ""
+    "exampleMeaning": "Kiếm sống thật vất vả."
   },
   {
     "id": "map_001635",
@@ -2547,7 +2547,7 @@
     "lesson": 1,
     "topic": "Gia đình",
     "example": "家族を扶養している。",
-    "exampleMeaning": ""
+    "exampleMeaning": "Tôi đang nuôi gia đình."
   },
   {
     "id": "map_001636",
@@ -2577,7 +2577,7 @@
     "lesson": 1,
     "topic": "Gia đình",
     "example": "祖父の遺産を相続した。",
-    "exampleMeaning": ""
+    "exampleMeaning": "Tôi đã thừa kế di sản của ông."
   },
   {
     "id": "map_001639",
@@ -2617,7 +2617,7 @@
     "lesson": 1,
     "topic": "Chính trị",
     "example": "政令が公布された。",
-    "exampleMeaning": ""
+    "exampleMeaning": "Sắc lệnh đã được công bố."
   },
   {
     "id": "map_001643",
@@ -2647,7 +2647,7 @@
     "lesson": 1,
     "topic": "Chính trị",
     "example": "内閣が総辞職した。",
-    "exampleMeaning": ""
+    "exampleMeaning": "Nội các đã từ chức tập thể."
   },
   {
     "id": "map_001646",
@@ -2657,7 +2657,7 @@
     "lesson": 1,
     "topic": "Chính trị",
     "example": "官僚主義が問題だ。",
-    "exampleMeaning": ""
+    "exampleMeaning": "Chủ nghĩa quan liêu là vấn đề."
   },
   {
     "id": "map_001647",
@@ -2697,7 +2697,7 @@
     "lesson": 1,
     "topic": "Chính trị",
     "example": "与党が法案を通した。",
-    "exampleMeaning": ""
+    "exampleMeaning": "Đảng cầm quyền đã thông qua dự luật."
   },
   {
     "id": "map_001651",
@@ -2707,7 +2707,7 @@
     "lesson": 1,
     "topic": "Thể chế chính trị",
     "example": "国家の主権を守る。",
-    "exampleMeaning": ""
+    "exampleMeaning": "Bảo vệ chủ quyền quốc gia."
   },
   {
     "id": "map_001652",
@@ -2717,7 +2717,7 @@
     "lesson": 1,
     "topic": "Thể chế chính trị",
     "example": "領土問題が複雑だ。",
-    "exampleMeaning": ""
+    "exampleMeaning": "Vấn đề lãnh thổ rất phức tạp."
   },
   {
     "id": "map_001653",
@@ -2727,7 +2727,7 @@
     "lesson": 1,
     "topic": "Thể chế chính trị",
     "example": "地域を統治している。",
-    "exampleMeaning": ""
+    "exampleMeaning": "Đang quản lý/cai trị khu vực."
   },
   {
     "id": "map_001654",
@@ -2737,7 +2737,7 @@
     "lesson": 1,
     "topic": "Thể chế chính trị",
     "example": "植民地支配の歴史。",
-    "exampleMeaning": ""
+    "exampleMeaning": "Lịch sử sự thống trị thuộc địa."
   },
   {
     "id": "map_001655",
@@ -2757,7 +2757,7 @@
     "lesson": 1,
     "topic": "Thể chế chính trị",
     "example": "地方自治が進んでいる。",
-    "exampleMeaning": ""
+    "exampleMeaning": "Tự quản địa phương đang tiến triển."
   },
   {
     "id": "map_001657",
@@ -2767,7 +2767,7 @@
     "lesson": 1,
     "topic": "Thể chế chính trị",
     "example": "分権化が進められている。",
-    "exampleMeaning": ""
+    "exampleMeaning": "Việc phân quyền đang được tiến hành."
   },
   {
     "id": "map_001658",
@@ -2777,7 +2777,7 @@
     "lesson": 1,
     "topic": "Thể chế chính trị",
     "example": "連邦政府の政策。",
-    "exampleMeaning": ""
+    "exampleMeaning": "Chính sách của chính phủ liên bang."
   },
   {
     "id": "map_001659",
@@ -2787,7 +2787,7 @@
     "lesson": 1,
     "topic": "Thể chế chính trị",
     "example": "共和国を宣言した。",
-    "exampleMeaning": ""
+    "exampleMeaning": "Đã tuyên bố thành lập nước cộng hòa."
   },
   {
     "id": "map_001660",
@@ -2797,7 +2797,7 @@
     "lesson": 1,
     "topic": "Thể chế chính trị",
     "example": "君主制を廃止した。",
-    "exampleMeaning": ""
+    "exampleMeaning": "Đã bãi bỏ chế độ quân chủ."
   },
   {
     "id": "map_000262",
@@ -2917,7 +2917,7 @@
     "lesson": 1,
     "topic": "Chào hỏi",
     "example": "皆さん、こんにちは。",
-    "exampleMeaning": ""
+    "exampleMeaning": "Chào mọi người."
   },
   {
     "id": "map_000258",
@@ -2987,7 +2987,7 @@
     "lesson": 1,
     "topic": "Tên & quốc tịch",
     "example": "おはよう！",
-    "exampleMeaning": ""
+    "exampleMeaning": "Chào buổi sáng!"
   },
   {
     "id": "map_000266",
@@ -3007,7 +3007,7 @@
     "lesson": 1,
     "topic": "Tên & quốc tịch",
     "example": "こんにちは、佐藤さん。",
-    "exampleMeaning": ""
+    "exampleMeaning": "Chào anh/chị Sato."
   },
   {
     "id": "map_000268",
@@ -3017,7 +3017,7 @@
     "lesson": 1,
     "topic": "Tên & quốc tịch",
     "example": "こんばんは。",
-    "exampleMeaning": ""
+    "exampleMeaning": "Chào buổi tối."
   },
   {
     "id": "map_000269",
@@ -3027,7 +3027,7 @@
     "lesson": 1,
     "topic": "Tên & quốc tịch",
     "example": "さようなら。",
-    "exampleMeaning": ""
+    "exampleMeaning": "Tạm biệt."
   },
   {
     "id": "map_000270",
@@ -3037,7 +3037,7 @@
     "lesson": 1,
     "topic": "Tên & quốc tịch",
     "example": "また明日。",
-    "exampleMeaning": ""
+    "exampleMeaning": "Hẹn gặp lại ngày mai."
   },
   {
     "id": "map_000271",
@@ -3047,7 +3047,7 @@
     "lesson": 1,
     "topic": "Tên & quốc tịch",
     "example": "おやすみなさい。",
-    "exampleMeaning": ""
+    "exampleMeaning": "Chúc ngủ ngon."
   },
   {
     "id": "map_000272",
@@ -3196,8 +3196,8 @@
     "level": "N5",
     "lesson": 1,
     "topic": "Gia đình",
-    "example": "お兄さんは高いですね。",
-    "exampleMeaning": ""
+    "example": "お兄さんは背が高いですね。",
+    "exampleMeaning": "Anh trai bạn cao nhỉ."
   },
   {
     "id": "map_000287",
@@ -3217,7 +3217,7 @@
     "lesson": 1,
     "topic": "Gia đình",
     "example": "お姉さんはきれいですね。",
-    "exampleMeaning": ""
+    "exampleMeaning": "Chị bạn đẹp nhỉ."
   },
   {
     "id": "map_000289",
@@ -3547,7 +3547,7 @@
     "lesson": 2,
     "topic": "Thứ trong tuần",
     "example": "火曜日に会いましょう。",
-    "exampleMeaning": ""
+    "exampleMeaning": "Hãy gặp nhau vào thứ Ba."
   },
   {
     "id": "map_000350",
@@ -4677,7 +4677,7 @@
     "lesson": 3,
     "topic": "Lượng từ đếm",
     "example": "3名様ですね。",
-    "exampleMeaning": ""
+    "exampleMeaning": "3 vị khách đúng không ạ."
   },
   {
     "id": "map_000438",
@@ -10187,7 +10187,7 @@
     "lesson": 4,
     "topic": "Ngạc nhiên",
     "example": "信じられない。",
-    "exampleMeaning": ""
+    "exampleMeaning": "Không thể tin được."
   },
   {
     "id": "map_001090",
@@ -10587,7 +10587,7 @@
     "lesson": 5,
     "topic": "Buổi sáng",
     "example": "早起きは三文の徳。",
-    "exampleMeaning": ""
+    "exampleMeaning": "Dậy sớm có lợi."
   },
   {
     "id": "map_001103",
@@ -10877,7 +10877,7 @@
     "lesson": 5,
     "topic": "Buổi tối",
     "example": "夕方から夜にかけて。",
-    "exampleMeaning": ""
+    "exampleMeaning": "Từ chiều tối đến đêm."
   },
   {
     "id": "map_001143",

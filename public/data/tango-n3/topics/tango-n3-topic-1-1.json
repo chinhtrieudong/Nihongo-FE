@@ -9,8 +9,10 @@
     {
       "word": "職場",
       "reading": "しょくば",
+      "han_viet": "",
       "meaning": "Nơi làm việc",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N3",
       "example": {
         "jp": "職場の環境が良いです。",
         "vn": "là."
@@ -19,8 +21,10 @@
     {
       "word": "上司",
       "reading": "じょうし",
+      "han_viet": "",
       "meaning": "Cấp trên",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N3",
       "example": {
         "jp": "上司に相談しました。",
         "vn": "đã (quá khứ)."
@@ -29,8 +33,10 @@
     {
       "word": "部下",
       "reading": "ぶか",
+      "han_viet": "",
       "meaning": "Cấp dưới",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N3",
       "example": {
         "jp": "部下を指導しています。",
         "vn": "có (người/động vật)."
@@ -39,8 +45,10 @@
     {
       "word": "同僚",
       "reading": "どうりょう",
+      "han_viet": "",
       "meaning": "Đồng nghiệp",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N3",
       "example": {
         "jp": "同僚と仲良くしています。",
         "vn": "có (người/động vật)."
@@ -49,8 +57,10 @@
     {
       "word": "後輩",
       "reading": "こうはい",
+      "han_viet": "",
       "meaning": "Khoá dưới",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N3",
       "example": {
         "jp": "後輩に教えています。",
         "vn": "có (người/động vật)."
@@ -59,8 +69,10 @@
     {
       "word": "先輩",
       "reading": "せんぱい",
+      "han_viet": "",
       "meaning": "Khoá trên",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N3",
       "example": {
         "jp": "先輩に習っています。",
         "vn": "có (người/động vật)."
@@ -69,8 +81,10 @@
     {
       "word": "人事",
       "reading": "じんじ",
+      "han_viet": "",
       "meaning": "Nhân sự",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N3",
       "example": {
         "jp": "人事部に相談しました。",
         "vn": "đã (quá khứ)."
@@ -79,8 +93,10 @@
     {
       "word": "総務",
       "reading": "そうむ",
+      "han_viet": "",
       "meaning": "Tổng vụ",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N3",
       "example": {
         "jp": "総務の仕事をしています。",
         "vn": "có (người/động vật)."
@@ -89,8 +105,10 @@
     {
       "word": "営業",
       "reading": "えいぎょう",
+      "han_viet": "",
       "meaning": "Kinh doanh",
-      "type": "Danh động từ",
+      "type": "Verb",
+      "level": "N3",
       "example": {
         "jp": "営業を担当しています。",
         "vn": "có (người/động vật)."
@@ -99,8 +117,10 @@
     {
       "word": "開発",
       "reading": "かいはつ",
+      "han_viet": "",
       "meaning": "Phát triển",
-      "type": "Danh động từ",
+      "type": "Verb",
+      "level": "N3",
       "example": {
         "jp": "新製品を開発しています。",
         "vn": "có (người/động vật)."

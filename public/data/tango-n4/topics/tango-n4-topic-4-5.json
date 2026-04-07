@@ -9,8 +9,10 @@
     {
       "word": "驚き",
       "reading": "おどろき",
+      "han_viet": "",
       "meaning": "Sự ngạc nhiên",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "驚きの表情です。",
         "vn": "là."
@@ -19,8 +21,10 @@
     {
       "word": "驚く",
       "reading": "おどろく",
+      "han_viet": "",
       "meaning": "Ngạc nhiên",
-      "type": "Động từ",
+      "type": "Verb",
+      "level": "N4",
       "example": {
         "jp": "驚きました。",
         "vn": "đã (quá khứ)."
@@ -29,8 +33,10 @@
     {
       "word": "びっくり",
       "reading": "びっくり",
+      "han_viet": "",
       "meaning": "Giật mình",
-      "type": "Phó từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "びっくりしました。",
         "vn": "đã (quá khứ)."
@@ -39,8 +45,10 @@
     {
       "word": "吃驚",
       "reading": "びっくり",
+      "han_viet": "",
       "meaning": "Ngạc nhiên",
-      "type": "Danh động từ",
+      "type": "Verb",
+      "level": "N4",
       "example": {
         "jp": "吃驚しました。",
         "vn": "đã (quá khứ)."
@@ -49,8 +57,10 @@
     {
       "word": "驚愕",
       "reading": "きょうがく",
+      "han_viet": "",
       "meaning": "Kinh ngạc",
-      "type": "Danh động từ",
+      "type": "Verb",
+      "level": "N4",
       "example": {
         "jp": "驚愕しました。",
         "vn": "đã (quá khứ)."
@@ -59,8 +69,10 @@
     {
       "word": "唖然",
       "reading": "あぜん",
+      "han_viet": "",
       "meaning": "Sửng sốt",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "唖然としました。",
         "vn": "đã (quá khứ)."
@@ -69,8 +81,10 @@
     {
       "word": "呆然",
       "reading": "ぼうぜん",
+      "han_viet": "",
       "meaning": "Ngơ ngác",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "呆然としています。",
         "vn": "có (người/động vật)."
@@ -79,8 +93,10 @@
     {
       "word": "愕然",
       "reading": "がくぜん",
+      "han_viet": "",
       "meaning": "Sửng sốt",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "愕然としました。",
         "vn": "đã (quá khứ)."
@@ -89,8 +105,10 @@
     {
       "word": "信じられない",
       "reading": "しんじられない",
+      "han_viet": "",
       "meaning": "Không thể tin",
-      "type": "Cụm động từ",
+      "type": "Verb",
+      "level": "N4",
       "example": {
         "jp": "信じられない。",
         "vn": ""
@@ -99,8 +117,10 @@
     {
       "word": "意外",
       "reading": "いがい",
+      "han_viet": "",
       "meaning": "Bất ngờ",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "意外な結果です。",
         "vn": "là."
@@ -109,8 +129,10 @@
     {
       "word": "予想外",
       "reading": "よそうがい",
+      "han_viet": "",
       "meaning": "Ngoài dự kiến",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "予想外でした。",
         "vn": "đã là (quá khứ)."
@@ -119,8 +141,10 @@
     {
       "word": "想定外",
       "reading": "そうていがい",
+      "han_viet": "",
       "meaning": "Ngoài tầm dự đoán",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "想定外の事態です。",
         "vn": "là."
@@ -129,8 +153,10 @@
     {
       "word": "予期せぬ",
       "reading": "よきせぬ",
+      "han_viet": "",
       "meaning": "Không lường trước",
-      "type": "Tính từ",
+      "type": "Adjective",
+      "level": "N4",
       "example": {
         "jp": "予期せぬ展開です。",
         "vn": "là."
@@ -139,8 +165,10 @@
     {
       "word": "突然",
       "reading": "とつぜん",
+      "han_viet": "",
       "meaning": "Đột ngột",
-      "type": "Phó từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "突然でした。",
         "vn": "đã là (quá khứ)."
@@ -149,8 +177,10 @@
     {
       "word": "急に",
       "reading": "きゅうに",
+      "han_viet": "",
       "meaning": "Đột nhiên",
-      "type": "Phó từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "急に変わりました。",
         "vn": "đã (quá khứ)."
@@ -159,8 +189,10 @@
     {
       "word": "あっと言う間",
       "reading": "あっというま",
+      "han_viet": "",
       "meaning": "Chớp mắt",
-      "type": "Cụm danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "あっと言う間でした。",
         "vn": "đã là (quá khứ)."
@@ -169,8 +201,10 @@
     {
       "word": "目を見張る",
       "reading": "めをみはる",
+      "han_viet": "",
       "meaning": "Tròn mắt",
-      "type": "Cụm động từ",
+      "type": "Verb",
+      "level": "N4",
       "example": {
         "jp": "目を見張りました。",
         "vn": "đã (quá khứ)."
@@ -179,8 +213,10 @@
     {
       "word": "驚きの声",
       "reading": "おどろきのこえ",
+      "han_viet": "",
       "meaning": "Tiếng la ngạc nhiên",
-      "type": "Cụm danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "驚きの声を上げました。",
         "vn": "đã (quá khứ)."
@@ -189,8 +225,10 @@
     {
       "word": "目が丸くなる",
       "reading": "めがまるくなる",
+      "han_viet": "",
       "meaning": "Mắt tròn xoe",
-      "type": "Cụm động từ",
+      "type": "Verb",
+      "level": "N4",
       "example": {
         "jp": "目が丸くなりました。",
         "vn": "đã (quá khứ)."
@@ -199,8 +237,10 @@
     {
       "word": "口が開く",
       "reading": "くちがあく",
+      "han_viet": "",
       "meaning": "Mồm há mỏ",
-      "type": "Cụm động từ",
+      "type": "Verb",
+      "level": "N4",
       "example": {
         "jp": "口が開きました。",
         "vn": "đã (quá khứ)."

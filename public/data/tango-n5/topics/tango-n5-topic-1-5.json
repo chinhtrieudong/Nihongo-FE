@@ -9,8 +9,10 @@
     {
       "word": "～から",
       "reading": "～から",
+      "han_viet": "",
       "meaning": "Từ ~",
-      "type": "Trợ từ",
+      "type": "Particle",
+      "level": "N5",
       "example": {
         "jp": "ベトナムから来ました。",
         "vn": "đã (quá khứ)."
@@ -19,8 +21,10 @@
     {
       "word": "日本",
       "reading": "にほん / にっぽん",
+      "han_viet": "",
       "meaning": "Nhật Bản",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N5",
       "example": {
         "jp": "日本から来ました。",
         "vn": "đã (quá khứ)."
@@ -29,8 +33,10 @@
     {
       "word": "ベトナム",
       "reading": "ベトナム",
+      "han_viet": "",
       "meaning": "Việt Nam",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N5",
       "example": {
         "jp": "ベトナム人です。",
         "vn": "là."
@@ -39,8 +45,10 @@
     {
       "word": "中国",
       "reading": "ちゅうごく",
+      "han_viet": "",
       "meaning": "Trung Quốc",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N5",
       "example": {
         "jp": "中国語を勉強しています。",
         "vn": "có (người/động vật)."
@@ -49,8 +57,10 @@
     {
       "word": "韓国",
       "reading": "かんこく",
+      "han_viet": "",
       "meaning": "Hàn Quốc",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N5",
       "example": {
         "jp": "韓国へ行きます。",
         "vn": "(đuôi lịch sự)"
@@ -59,8 +69,10 @@
     {
       "word": "アメリカ",
       "reading": "アメリカ",
+      "han_viet": "",
       "meaning": "Mỹ",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N5",
       "example": {
         "jp": "アメリカ人です。",
         "vn": "là."
@@ -69,8 +81,10 @@
     {
       "word": "イギリス",
       "reading": "イギリス",
+      "han_viet": "",
       "meaning": "Anh",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N5",
       "example": {
         "jp": "イギリスから来ました。",
         "vn": "đã (quá khứ)."
@@ -79,8 +93,10 @@
     {
       "word": "オーストラリア",
       "reading": "オーストラリア",
+      "han_viet": "",
       "meaning": "Úc",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N5",
       "example": {
         "jp": "オーストラリアに住んでいます。",
         "vn": "có (người/động vật)."
@@ -89,8 +105,10 @@
     {
       "word": "フランス",
       "reading": "フランス",
+      "han_viet": "",
       "meaning": "Pháp",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N5",
       "example": {
         "jp": "フランス語が話せます。",
         "vn": "(đuôi lịch sự)"
@@ -99,8 +117,10 @@
     {
       "word": "ドイツ",
       "reading": "ドイツ",
+      "han_viet": "",
       "meaning": "Đức",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N5",
       "example": {
         "jp": "ドイツへ行ったことがあります。",
         "vn": "có."
@@ -109,8 +129,10 @@
     {
       "word": "タイ",
       "reading": "タイ",
+      "han_viet": "",
       "meaning": "Thái Lan",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N5",
       "example": {
         "jp": "タイ料理が好きです。",
         "vn": "là."
@@ -119,8 +141,10 @@
     {
       "word": "シンガポール",
       "reading": "シンガポール",
+      "han_viet": "",
       "meaning": "Singapore",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N5",
       "example": {
         "jp": "シンガポールから来ました。",
         "vn": "đã (quá khứ)."
@@ -129,8 +153,10 @@
     {
       "word": "マレーシア",
       "reading": "マレーシア",
+      "han_viet": "",
       "meaning": "Malaysia",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N5",
       "example": {
         "jp": "マレーシアへ行きます。",
         "vn": "(đuôi lịch sự)"
@@ -139,8 +165,10 @@
     {
       "word": "フィリピン",
       "reading": "フィリピン",
+      "han_viet": "",
       "meaning": "Philippines",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N5",
       "example": {
         "jp": "フィリピン人の友達がいます。",
         "vn": "có (người/động vật)."

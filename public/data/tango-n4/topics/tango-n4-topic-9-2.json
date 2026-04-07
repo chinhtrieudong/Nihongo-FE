@@ -9,8 +9,10 @@
     {
       "word": "病気",
       "reading": "びょうき",
+      "han_viet": "BỆNH KHÍ",
       "meaning": "Bệnh",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "病気になりました。",
         "vn": "đã (quá khứ)."
@@ -19,8 +21,10 @@
     {
       "word": "病院",
       "reading": "びょういん",
+      "han_viet": "BỆNH VIỆN",
       "meaning": "Bệnh viện",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "病院に行きました。",
         "vn": "đã (quá khứ)."
@@ -29,8 +33,10 @@
     {
       "word": "医者",
       "reading": "いしゃ",
+      "han_viet": "",
       "meaning": "Bác sĩ",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "医者に診てもらいました。",
         "vn": "đã (quá khứ)."
@@ -39,8 +45,10 @@
     {
       "word": "看護師",
       "reading": "かんごし",
+      "han_viet": "",
       "meaning": "Y tá",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "看護師に注射されました。",
         "vn": "đã (quá khứ)."
@@ -49,8 +57,10 @@
     {
       "word": "薬",
       "reading": "くすり",
+      "han_viet": "DƯỢC",
       "meaning": "Thuốc",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "薬を飲みます。",
         "vn": "(đuôi lịch sự)"
@@ -59,8 +69,10 @@
     {
       "word": "風邪",
       "reading": "かぜ",
+      "han_viet": "PHONG TÀ",
       "meaning": "Cảm lạnh",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "風邪をひきました。",
         "vn": "đã (quá khứ)."
@@ -69,8 +81,10 @@
     {
       "word": "熱",
       "reading": "ねつ",
+      "han_viet": "NHIỆT",
       "meaning": "Sốt",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "熱があります。",
         "vn": "có."
@@ -79,8 +93,10 @@
     {
       "word": "咳",
       "reading": "せき",
+      "han_viet": "",
       "meaning": "Ho",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "咳が止まりません。",
         "vn": "không."
@@ -89,8 +105,10 @@
     {
       "word": "鼻水",
       "reading": "はなみず",
+      "han_viet": "",
       "meaning": "Nước mũi",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "鼻水が出ています。",
         "vn": "có (người/động vật)."
@@ -99,8 +117,10 @@
     {
       "word": "頭痛",
       "reading": "ずつう",
+      "han_viet": "ĐẦU THỐNG",
       "meaning": "Đau đầu",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "頭痛がします。",
         "vn": "(đuôi lịch sự)"
@@ -109,8 +129,10 @@
     {
       "word": "腹痛",
       "reading": "ふくつう",
+      "han_viet": "PHÚC THỐNG",
       "meaning": "Đau bụng",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "腹痛がします。",
         "vn": "(đuôi lịch sự)"
@@ -119,8 +141,10 @@
     {
       "word": "歯痛",
       "reading": "しつう",
+      "han_viet": "",
       "meaning": "Đau răng",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "歯痛がします。",
         "vn": "(đuôi lịch sự)"
@@ -129,8 +153,10 @@
     {
       "word": "怪我",
       "reading": "けが",
+      "han_viet": "",
       "meaning": "Thương tích",
-      "type": "Danh động từ",
+      "type": "Verb",
+      "level": "N4",
       "example": {
         "jp": "怪我をしました。",
         "vn": "đã (quá khứ)."
@@ -139,8 +165,10 @@
     {
       "word": "出血",
       "reading": "しゅっけつ",
+      "han_viet": "",
       "meaning": "Chảy máu",
-      "type": "Danh động từ",
+      "type": "Verb",
+      "level": "N4",
       "example": {
         "jp": "出血しています。",
         "vn": "có (người/động vật)."
@@ -149,8 +177,10 @@
     {
       "word": "骨折",
       "reading": "こっせつ",
+      "han_viet": "",
       "meaning": "Gãy xương",
-      "type": "Danh động từ",
+      "type": "Verb",
+      "level": "N4",
       "example": {
         "jp": "骨折しました。",
         "vn": "đã (quá khứ)."
@@ -159,8 +189,10 @@
     {
       "word": "火傷",
       "reading": "やけど",
+      "han_viet": "",
       "meaning": "Bỏng",
-      "type": "Danh động từ",
+      "type": "Verb",
+      "level": "N4",
       "example": {
         "jp": "火傷しました。",
         "vn": "đã (quá khứ)."
@@ -169,8 +201,10 @@
     {
       "word": "検査",
       "reading": "けんさ",
+      "han_viet": "",
       "meaning": "Xét nghiệm",
-      "type": "Danh động từ",
+      "type": "Verb",
+      "level": "N4",
       "example": {
         "jp": "血液検査をしました。",
         "vn": "đã (quá khứ)."
@@ -179,8 +213,10 @@
     {
       "word": "診察",
       "reading": "しんさつ",
+      "han_viet": "",
       "meaning": "Khám bệnh",
-      "type": "Danh động từ",
+      "type": "Verb",
+      "level": "N4",
       "example": {
         "jp": "診察を受けました。",
         "vn": "đã (quá khứ)."
@@ -189,8 +225,10 @@
     {
       "word": "入院",
       "reading": "にゅういん",
+      "han_viet": "",
       "meaning": "Nhập viện",
-      "type": "Danh động từ",
+      "type": "Verb",
+      "level": "N4",
       "example": {
         "jp": "入院しました。",
         "vn": "đã (quá khứ)."
@@ -199,8 +237,10 @@
     {
       "word": "退院",
       "reading": "たいいん",
+      "han_viet": "",
       "meaning": "Xuất viện",
-      "type": "Danh động từ",
+      "type": "Verb",
+      "level": "N4",
       "example": {
         "jp": "退院しました。",
         "vn": "đã (quá khứ)."

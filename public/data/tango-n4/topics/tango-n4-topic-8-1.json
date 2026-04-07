@@ -9,8 +9,10 @@
     {
       "word": "材料",
       "reading": "ざいりょう",
+      "han_viet": "",
       "meaning": "Nguyên liệu",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "材料を買いました。",
         "vn": "đã (quá khứ)."
@@ -19,8 +21,10 @@
     {
       "word": "食材",
       "reading": "しょくざい",
+      "han_viet": "",
       "meaning": "Nguyên liệu thực phẩm",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "食材を準備しました。",
         "vn": "đã (quá khứ)."
@@ -29,8 +33,10 @@
     {
       "word": "米",
       "reading": "こめ",
+      "han_viet": "",
       "meaning": "Gạo",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "米を研ぎます。",
         "vn": "(đuôi lịch sự)"
@@ -39,8 +45,10 @@
     {
       "word": "小麦粉",
       "reading": "こむぎこ",
+      "han_viet": "",
       "meaning": "Bột mì",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "小麦粉を使います。",
         "vn": "có (người/động vật)."
@@ -49,8 +57,10 @@
     {
       "word": "肉",
       "reading": "にく",
+      "han_viet": "",
       "meaning": "Thịt",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "肉を切ります。",
         "vn": "(đuôi lịch sự)"
@@ -59,8 +69,10 @@
     {
       "word": "牛肉",
       "reading": "ぎゅうにく",
+      "han_viet": "",
       "meaning": "Thịt bò",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "牛肉を焼きます。",
         "vn": "(đuôi lịch sự)"
@@ -69,8 +81,10 @@
     {
       "word": "豚肉",
       "reading": "ぶたにく",
+      "han_viet": "",
       "meaning": "Thịt heo",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "豚肉を煮ます。",
         "vn": "(đuôi lịch sự)"
@@ -79,8 +93,10 @@
     {
       "word": "鶏肉",
       "reading": "とりにく",
+      "han_viet": "",
       "meaning": "Thịt gà",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "鶏肉を揚げます。",
         "vn": "(đuôi lịch sự)"
@@ -89,8 +105,10 @@
     {
       "word": "魚",
       "reading": "さかな",
+      "han_viet": "",
       "meaning": "Cá",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "魚を焼きます。",
         "vn": "(đuôi lịch sự)"
@@ -99,8 +117,10 @@
     {
       "word": "野菜",
       "reading": "やさい",
+      "han_viet": "",
       "meaning": "Rau củ",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "野菜を炒めます。",
         "vn": "(đuôi lịch sự)"
@@ -109,8 +129,10 @@
     {
       "word": "豆",
       "reading": "まめ",
+      "han_viet": "",
       "meaning": "Đậu",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "豆を煮ます。",
         "vn": "(đuôi lịch sự)"
@@ -119,8 +141,10 @@
     {
       "word": "大豆",
       "reading": "だいず",
+      "han_viet": "",
       "meaning": "Đậu nành",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "大豆を使います。",
         "vn": "có (người/động vật)."
@@ -129,8 +153,10 @@
     {
       "word": "卵",
       "reading": "たまご",
+      "han_viet": "",
       "meaning": "Trứng",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "卵を割ります。",
         "vn": "(đuôi lịch sự)"
@@ -139,8 +165,10 @@
     {
       "word": "乳製品",
       "reading": "にゅうせいひん",
+      "han_viet": "",
       "meaning": "Sản phẩm từ sữa",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "乳製品を使います。",
         "vn": "có (người/động vật)."
@@ -149,8 +177,10 @@
     {
       "word": "豆腐",
       "reading": "とうふ",
+      "han_viet": "",
       "meaning": "Đậu phụ",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "豆腐を切ります。",
         "vn": "(đuôi lịch sự)"
@@ -159,8 +189,10 @@
     {
       "word": "油",
       "reading": "あぶら",
+      "han_viet": "",
       "meaning": "Dầu",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "油を熱します。",
         "vn": "(đuôi lịch sự)"
@@ -169,8 +201,10 @@
     {
       "word": "醤油",
       "reading": "しょうゆ",
+      "han_viet": "",
       "meaning": "Xì dầu",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "醤油を入れます。",
         "vn": "(đuôi lịch sự)"
@@ -179,8 +213,10 @@
     {
       "word": "味噌",
       "reading": "みそ",
+      "han_viet": "",
       "meaning": "Miso",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "味噌を溶きます。",
         "vn": "(đuôi lịch sự)"
@@ -189,8 +225,10 @@
     {
       "word": "砂糖",
       "reading": "さとう",
+      "han_viet": "",
       "meaning": "Đường",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "砂糖を入れます。",
         "vn": "(đuôi lịch sự)"
@@ -199,8 +237,10 @@
     {
       "word": "塩",
       "reading": "しお",
+      "han_viet": "",
       "meaning": "Muối",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "塩で味を調えます。",
         "vn": "(đuôi lịch sự)"

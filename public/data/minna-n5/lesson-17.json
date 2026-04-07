@@ -3,130 +3,120 @@
   "topic": "Sức khỏe & Thể phủ định (Thể Nai)",
   "vocabulary": [
     {
-      "id": "n5_l17_001",
       "word": "分からない",
       "reading": "わからない",
-      "hanViet": "Phân",
+      "han_viet": "PHÂN",
       "meaning": "không hiểu",
-      "type": "verb",
-      "category": "Thể Phủ Định",
+      "type": "Verb",
+      "level": "N5",
       "example": {
         "jp": "日本語が分からない。",
         "vn": "Không hiểu tiếng Nhật."
       }
     },
     {
-      "id": "n5_l17_002",
       "word": "知らない",
       "reading": "しらない",
-      "hanViet": "Tri",
+      "han_viet": "TRI",
       "meaning": "không biết",
-      "type": "verb",
-      "category": "Thể Phủ Định",
+      "type": "Verb",
+      "level": "N5",
       "example": {
         "jp": "彼を知らない。",
         "vn": "Không biết anh ấy."
       }
     },
     {
-      "id": "n5_l17_003",
       "word": "居ない",
       "reading": "いない",
-      "hanViet": "Cư",
+      "han_viet": "CƯ",
       "meaning": "không có (người)",
-      "type": "verb",
-      "category": "Thể Phủ Định",
+      "type": "Verb",
+      "level": "N5",
       "example": {
         "jp": "家に居ない。",
         "vn": "Không có ở nhà."
       }
     },
     {
-      "id": "n5_l17_004",
       "word": "持っていない",
       "reading": "もっていない",
-      "hanViet": "Trì",
+      "han_viet": "TRÌ",
       "meaning": "không có",
-      "type": "verb",
-      "category": "Thể Phủ Định",
+      "type": "Verb",
+      "level": "N5",
       "example": {
         "jp": "お金を持っていない。",
         "vn": "Không có tiền."
       }
     },
     {
-      "id": "n5_l17_005",
       "word": "病気",
       "reading": "びょうき",
-      "hanViet": "Bệnh Khí",
+      "han_viet": "BỆNH KHÍ",
       "meaning": "bệnh",
-      "type": "noun",
-      "category": "Sức Khỏe",
+      "type": "Noun",
+      "level": "N5",
       "example": {
         "jp": "病気です。",
         "vn": "Bị bệnh."
       }
     },
     {
-      "id": "n5_l17_006",
       "word": "風邪",
       "reading": "かぜ",
-      "hanViet": "Phong Tà",
+      "han_viet": "PHONG TÀ",
       "meaning": "cảm, cúm",
-      "type": "noun",
-      "category": "Sức Khỏe",
+      "type": "Noun",
+      "level": "N5",
       "example": {
         "jp": "風邪を引きました。",
         "vn": "Bị cảm."
       }
     },
     {
-      "id": "n5_l17_007",
       "word": "熱",
       "reading": "ねつ",
-      "hanViet": "Nhiệt",
+      "han_viet": "NHIỆT",
       "meaning": "sốt",
-      "type": "noun",
-      "category": "Sức Khỏe",
+      "type": "Noun",
+      "level": "N5",
       "example": {
         "jp": "熱があります。",
         "vn": "Bị sốt."
       }
     },
     {
-      "id": "n5_l17_008",
       "word": "頭痛",
       "reading": "ずつう",
-      "hanViet": "Đầu Thống",
+      "han_viet": "ĐẦU THỐNG",
       "meaning": "đau đầu",
-      "type": "noun",
-      "category": "Sức Khỏe",
+      "type": "Noun",
+      "level": "N5",
       "example": {
         "jp": "頭痛がします。",
         "vn": "Đau đầu."
       }
     },
     {
-      "id": "n5_l17_009",
       "word": "腹痛",
       "reading": "ふくつう",
-      "hanViet": "Phúc Thống",
+      "han_viet": "PHÚC THỐNG",
       "meaning": "đau bụng",
-      "type": "noun",
-      "category": "Sức Khỏe",
+      "type": "Noun",
+      "level": "N5",
       "example": {
         "jp": "腹痛がします。",
         "vn": "Đau bụng."
       }
     },
     {
-      "id": "n5_l17_010",
       "word": "薬",
       "reading": "くすり",
-      "hanViet": "Dược",
+      "han_viet": "DƯỢC",
       "meaning": "thuốc",
-      "type": "noun",
-      "category": "Sức Khỏe",
+      "type": "Noun",
+      "level": "N5",
       "example": {
         "jp": "薬を飲んでください。",
         "vn": "Xin uống thuốc."

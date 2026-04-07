@@ -24,11 +24,7 @@ const VocabularyTable: React.FC<VocabularyTableProps> = ({
     const { fontPreset, japaneseFontFamily } = useAppSelector((state) => state.ui);
     const selectedPreset = getFontPreset(fontPreset);
 
-    // Set CSS variable for japanese font family based on selected preset
-    useEffect(() => {
-        const jpFont = japaneseFontFamily || selectedPreset.fontFamily;
-        document.documentElement.style.setProperty('--jp-font-family', jpFont);
-    }, [japaneseFontFamily, selectedPreset]);
+    // Font CSS variables are owned by the app-level FontProvider/ThemeProvider.
 
     if (!data || data.length === 0) {
         return (
@@ -81,9 +77,11 @@ const VocabularyTable: React.FC<VocabularyTableProps> = ({
             dataIndex: "hanviet",
             key: "hanviet",
             width: "20%",
-            render: (text: string) => (
+            render: (_: string, record: VocabularyItem) => (
                 <Text className="text-lg text-purple-600 dark:text-purple-400">
-                    {text ? text.toUpperCase().replace(/,/g, "") : "-"}
+                    {(record.hanviet || record.han_viet)
+                        ? String(record.hanviet || record.han_viet).toUpperCase().replace(/,/g, "")
+                        : "-"}
                 </Text>
             ),
         },
@@ -92,7 +90,11 @@ const VocabularyTable: React.FC<VocabularyTableProps> = ({
             dataIndex: "meaning_vi",
             key: "meaning_vi",
             width: "30%",
-            render: (text: string) => <Text className="text-lg">{text || "-"}</Text>,
+            render: (_: string, record: VocabularyItem) => (
+                <Text className="text-lg">
+                    {record.meaning_vi || record.meaningVi || record.meaning || "-"}
+                </Text>
+            ),
         },
         {
             title: "Phát",

@@ -60,11 +60,7 @@ const RadicalDetail: React.FC = () => {
   const selectedPreset = getFontPreset(fontPreset);
   const [loading, setLoading] = useState(true);
 
-  // Set CSS variable for kanji font family based on selected preset
-  useEffect(() => {
-    const kanjiFont = selectedPreset.kanjiFontFamily || selectedPreset.fontFamily;
-    document.documentElement.style.setProperty('--kanji-font-family', kanjiFont);
-  }, [selectedPreset]);
+  // Font CSS variables are owned by the app-level FontProvider/ThemeProvider.
   const [radical, setRadical] = useState<RadicalDetailData | null>(null);
   const [items, setItems] = useState<KanjiSummary[]>([]);
   const [vocabularyWords, setVocabularyWords] = useState<DemoWord[]>([]);

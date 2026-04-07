@@ -3,130 +3,120 @@
   "topic": "Mong muốn & Mục đích hành động",
   "vocabulary": [
     {
-      "id": "n5_l13_001",
       "word": "欲しい",
       "reading": "ほしい",
-      "hanViet": "Dục",
+      "han_viet": "DỤC",
       "meaning": "muốn có",
-      "type": "adjective",
-      "category": "Tính Từ い",
+      "type": "Adjective",
+      "level": "N5",
       "example": {
         "jp": "新しいパソコンが欲しいです。",
         "vn": "Muốn có máy tính mới."
       }
     },
     {
-      "id": "n5_l13_002",
       "word": "行きたい",
       "reading": "いきたい",
-      "hanViet": "Hành",
+      "han_viet": "HÀNH",
       "meaning": "muốn đi",
-      "type": "verb",
-      "category": "Động Từ たい",
+      "type": "Verb",
+      "level": "N5",
       "example": {
         "jp": "京都へ行きたいです。",
         "vn": "Muốn đi Kyoto."
       }
     },
     {
-      "id": "n5_l13_003",
       "word": "食べたい",
       "reading": "たべたい",
-      "hanViet": "Thực",
+      "han_viet": "THỰC",
       "meaning": "muốn ăn",
-      "type": "verb",
-      "category": "Động Từ たい",
+      "type": "Verb",
+      "level": "N5",
       "example": {
         "jp": "寿司を食べたいです。",
         "vn": "Muốn ăn sushi."
       }
     },
     {
-      "id": "n5_l13_004",
       "word": "見たい",
       "reading": "みたい",
-      "hanViet": "Kiến",
+      "han_viet": "KIẾN",
       "meaning": "muốn xem",
-      "type": "verb",
-      "category": "Động Từ たい",
+      "type": "Verb",
+      "level": "N5",
       "example": {
         "jp": "映画を見たいです。",
         "vn": "Muốn xem phim."
       }
     },
     {
-      "id": "n5_l13_005",
       "word": "買いたい",
       "reading": "かいたい",
-      "hanViet": "Mãi",
+      "han_viet": "MÃI",
       "meaning": "muốn mua",
-      "type": "verb",
-      "category": "Động Từ たい",
+      "type": "Verb",
+      "level": "N5",
       "example": {
         "jp": "新しい車を買いたいです。",
         "vn": "Muốn mua xe mới."
       }
     },
     {
-      "id": "n5_l13_006",
       "word": "勉強したい",
       "reading": "べんきょうしたい",
-      "hanViet": "Miễn Cường",
+      "han_viet": "MIỄN CƯỜNG",
       "meaning": "muốn học",
-      "type": "verb",
-      "category": "Động Từ たい",
+      "type": "Verb",
+      "level": "N5",
       "example": {
         "jp": "日本語を勉強したいです。",
         "vn": "Muốn học tiếng Nhật."
       }
     },
     {
-      "id": "n5_l13_007",
       "word": "何が",
       "reading": "なにが",
-      "hanViet": "Hà",
+      "han_viet": "HÀ",
       "meaning": "cái gì",
-      "type": "pronoun",
-      "category": "Từ Hỏi",
+      "type": "Pronoun",
+      "level": "N5",
       "example": {
         "jp": "何が欲しいですか。",
         "vn": "Bạn muốn cái gì?"
       }
     },
     {
-      "id": "n5_l13_008",
       "word": "何処へ",
       "reading": "どこへ",
-      "hanViet": "Hà Xứ",
+      "han_viet": "HÀ XỨ",
       "meaning": "đến đâu",
-      "type": "pronoun",
-      "category": "Từ Hỏi",
+      "type": "Pronoun",
+      "level": "N5",
       "example": {
         "jp": "何処へ行きたいですか。",
         "vn": "Bạn muốn đi đâu?"
       }
     },
     {
-      "id": "n5_l13_009",
       "word": "誰と",
       "reading": "だれと",
-      "hanViet": "Thùy",
+      "han_viet": "THÙY",
       "meaning": "với ai",
-      "type": "pronoun",
-      "category": "Từ Hỏi",
+      "type": "Pronoun",
+      "level": "N5",
       "example": {
         "jp": "誰と行きたいですか。",
         "vn": "Bạn muốn đi với ai?"
       }
     },
     {
-      "id": "n5_l13_010",
       "word": "泳ぎたい",
       "reading": "およぎたい",
-      "hanViet": "Vịnh",
+      "han_viet": "VỊNH",
       "meaning": "muốn bơi",
-      "type": "verb",
-      "category": "Động Từ たい",
+      "type": "Verb",
+      "level": "N5",
       "example": {
         "jp": "海で泳ぎたいです。",
         "vn": "Muốn bơi ở biển."

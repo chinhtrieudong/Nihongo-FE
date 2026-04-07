@@ -9,8 +9,10 @@
     {
       "word": "日曜日",
       "reading": "にちようび",
+      "han_viet": "",
       "meaning": "Chủ nhật",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N5",
       "example": {
         "jp": "日曜日に休みます。",
         "vn": "(đuôi lịch sự)"
@@ -19,8 +21,10 @@
     {
       "word": "月曜日",
       "reading": "げつようび",
+      "han_viet": "NGUYỆT DIỆU NHẬT",
       "meaning": "Thứ hai",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N5",
       "example": {
         "jp": "月曜日から始まります。",
         "vn": "(đuôi lịch sự)"
@@ -29,18 +33,22 @@
     {
       "word": "火曜日",
       "reading": "かようび",
+      "han_viet": "HỎA DIỆU NHẬT",
       "meaning": "Thứ ba",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N5",
       "example": {
         "jp": "火曜日に会いましょう。",
-        "vn": ""
+        "vn": "Hãy gặp nhau vào thứ Ba."
       }
     },
     {
       "word": "水曜日",
       "reading": "すいようび",
+      "han_viet": "THUỶ DIỆU NHẬT",
       "meaning": "Thứ tư",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N5",
       "example": {
         "jp": "水曜日は忙しいです。",
         "vn": "là."
@@ -49,8 +57,10 @@
     {
       "word": "木曜日",
       "reading": "もくようび",
+      "han_viet": "MỘC DIỆU NHẬT",
       "meaning": "Thứ năm",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N5",
       "example": {
         "jp": "木曜日に映画を見ます。",
         "vn": "(đuôi lịch sự)"
@@ -59,8 +69,10 @@
     {
       "word": "金曜日",
       "reading": "きんようび",
+      "han_viet": "KIM DIỆU NHẬT",
       "meaning": "Thứ sáu",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N5",
       "example": {
         "jp": "金曜日は楽しみです。",
         "vn": "là."
@@ -69,8 +81,10 @@
     {
       "word": "土曜日",
       "reading": "どようび",
+      "han_viet": "THỔ DIỆU NHẬT",
       "meaning": "Thứ bảy",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N5",
       "example": {
         "jp": "土曜日に買い物します。",
         "vn": "(đuôi lịch sự)"
@@ -79,8 +93,10 @@
     {
       "word": "週末",
       "reading": "しゅうまつ",
+      "han_viet": "",
       "meaning": "Cuối tuần",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N5",
       "example": {
         "jp": "週末に旅行します。",
         "vn": "(đuôi lịch sự)"
@@ -89,8 +105,10 @@
     {
       "word": "平日",
       "reading": "へいじつ",
+      "han_viet": "",
       "meaning": "Ngày trong tuần",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N5",
       "example": {
         "jp": "平日は働きます。",
         "vn": "(đuôi lịch sự)"
@@ -99,8 +117,10 @@
     {
       "word": "休日",
       "reading": "きゅうじつ",
+      "han_viet": "",
       "meaning": "Ngày nghỉ",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N5",
       "example": {
         "jp": "休日はどこへ行きますか。",
         "vn": "... không?"
@@ -109,8 +129,10 @@
     {
       "word": "祝日",
       "reading": "しゅくじつ",
+      "han_viet": "",
       "meaning": "Ngày lễ",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N5",
       "example": {
         "jp": "祝日は学校が休みです。",
         "vn": "là."
@@ -119,8 +141,10 @@
     {
       "word": "今朝",
       "reading": "けさ",
+      "han_viet": "",
       "meaning": "Sáng nay",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N5",
       "example": {
         "jp": "今朝は寒かったです。",
         "vn": "là."
@@ -129,8 +153,10 @@
     {
       "word": "今夜",
       "reading": "こんや",
+      "han_viet": "",
       "meaning": "Tối nay",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N5",
       "example": {
         "jp": "今夜は暇です。",
         "vn": "là."

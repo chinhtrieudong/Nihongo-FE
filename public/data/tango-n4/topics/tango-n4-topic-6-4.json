@@ -9,8 +9,10 @@
     {
       "word": "自然",
       "reading": "しぜん",
+      "han_viet": "",
       "meaning": "Tự nhiên",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "自然を大切にします。",
         "vn": "(đuôi lịch sự)"
@@ -19,8 +21,10 @@
     {
       "word": "現象",
       "reading": "げんしょう",
+      "han_viet": "",
       "meaning": "Hiện tượng",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "不思議な現象です。",
         "vn": "là."
@@ -29,8 +33,10 @@
     {
       "word": "虹",
       "reading": "にじ",
+      "han_viet": "",
       "meaning": "Cầu vồng",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "虹が出ました。",
         "vn": "đã (quá khứ)."
@@ -39,8 +45,10 @@
     {
       "word": "霜",
       "reading": "しも",
+      "han_viet": "",
       "meaning": "Sương giá",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "霜が降りました。",
         "vn": "đã (quá khứ)."
@@ -49,8 +57,10 @@
     {
       "word": "露",
       "reading": "つゆ",
+      "han_viet": "",
       "meaning": "Sương sớm",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "草に露がついています。",
         "vn": "có (người/động vật)."
@@ -59,8 +69,10 @@
     {
       "word": "氷",
       "reading": "こおり",
+      "han_viet": "",
       "meaning": "Băng",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "氷が張っています。",
         "vn": "có (người/động vật)."
@@ -69,8 +81,10 @@
     {
       "word": "凍る",
       "reading": "こおる",
+      "han_viet": "",
       "meaning": "Đóng băng",
-      "type": "Động từ",
+      "type": "Verb",
+      "level": "N4",
       "example": {
         "jp": "水道管が凍りました。",
         "vn": "đã (quá khứ)."
@@ -79,8 +93,10 @@
     {
       "word": "溶ける",
       "reading": "とける",
+      "han_viet": "",
       "meaning": "Tan chảy",
-      "type": "Động từ",
+      "type": "Verb",
+      "level": "N4",
       "example": {
         "jp": "雪が溶けています。",
         "vn": "có (người/động vật)."
@@ -89,8 +105,10 @@
     {
       "word": "蒸発",
       "reading": "じょうはつ",
+      "han_viet": "",
       "meaning": "Bốc hơi",
-      "type": "Danh động từ",
+      "type": "Verb",
+      "level": "N4",
       "example": {
         "jp": "水が蒸発しました。",
         "vn": "đã (quá khứ)."
@@ -99,8 +117,10 @@
     {
       "word": "川",
       "reading": "かわ",
+      "han_viet": "",
       "meaning": "Sông",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "川が氾濫しました。",
         "vn": "đã (quá khứ)."
@@ -109,8 +129,10 @@
     {
       "word": "山",
       "reading": "やま",
+      "han_viet": "",
       "meaning": "Núi",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "山が見えます。",
         "vn": "(đuôi lịch sự)"
@@ -119,8 +141,10 @@
     {
       "word": "湖",
       "reading": "みずうみ",
+      "han_viet": "",
       "meaning": "Hồ",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "湖が凍結しました。",
         "vn": "đã (quá khứ)."
@@ -129,8 +153,10 @@
     {
       "word": "海",
       "reading": "うみ",
+      "han_viet": "",
       "meaning": "Biển",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "海が荒れています。",
         "vn": "có (người/động vật)."
@@ -139,8 +165,10 @@
     {
       "word": "波",
       "reading": "なみ",
+      "han_viet": "",
       "meaning": "Sóng",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "波が高いです。",
         "vn": "là."
@@ -149,8 +177,10 @@
     {
       "word": "潮",
       "reading": "しお",
+      "han_viet": "",
       "meaning": "Thủy triều",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "潮が満ちています。",
         "vn": "có (người/động vật)."
@@ -159,8 +189,10 @@
     {
       "word": "満潮",
       "reading": "まんちょう",
+      "han_viet": "",
       "meaning": "Triều lên",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "満潮の時間です。",
         "vn": "là."
@@ -169,8 +201,10 @@
     {
       "word": "干潮",
       "reading": "かんちょう",
+      "han_viet": "",
       "meaning": "Triều xuống",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "干潮になりました。",
         "vn": "đã (quá khứ)."
@@ -179,8 +213,10 @@
     {
       "word": "月",
       "reading": "つき",
+      "han_viet": "",
       "meaning": "Mặt trăng",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "月が出ています。",
         "vn": "có (người/động vật)."
@@ -189,8 +225,10 @@
     {
       "word": "満月",
       "reading": "まんげつ",
+      "han_viet": "",
       "meaning": "Trăng rằm",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "満月の夜です。",
         "vn": "là."
@@ -199,8 +237,10 @@
     {
       "word": "新月",
       "reading": "しんげつ",
+      "han_viet": "",
       "meaning": "Trăng non",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "新月の日です。",
         "vn": "là."

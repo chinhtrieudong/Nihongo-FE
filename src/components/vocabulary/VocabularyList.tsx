@@ -25,11 +25,7 @@ const VocabularyList: React.FC<VocabularyListProps> = ({
   const { fontPreset } = useAppSelector((state) => state.ui);
   const selectedPreset = getFontPreset(fontPreset);
 
-  // Set CSS variable for kanji font family based on selected preset
-  useEffect(() => {
-    const kanjiFont = selectedPreset.kanjiFontFamily || selectedPreset.fontFamily;
-    document.documentElement.style.setProperty('--kanji-font-family', kanjiFont);
-  }, [selectedPreset]);
+  // Font CSS variables are owned by the app-level FontProvider/ThemeProvider.
 
   useEffect(() => {
     loadVocabulary();

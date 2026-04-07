@@ -9,8 +9,10 @@
     {
       "word": "災害",
       "reading": "さいがい",
+      "han_viet": "",
       "meaning": "Thiên tai",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "災害が発生しました。",
         "vn": "đã (quá khứ)."
@@ -19,8 +21,10 @@
     {
       "word": "地震",
       "reading": "じしん",
+      "han_viet": "",
       "meaning": "Động đất",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "地震がありました。",
         "vn": "đã (quá khứ)."
@@ -29,8 +33,10 @@
     {
       "word": "津波",
       "reading": "つなみ",
+      "han_viet": "",
       "meaning": "Sóng thần",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "津波警報が出ました。",
         "vn": "đã (quá khứ)."
@@ -39,8 +45,10 @@
     {
       "word": "台風",
       "reading": "たいふう",
+      "han_viet": "",
       "meaning": "Bão",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "台風が接近しています。",
         "vn": "có (người/động vật)."
@@ -49,8 +57,10 @@
     {
       "word": "洪水",
       "reading": "こうずい",
+      "han_viet": "",
       "meaning": "Lũ lụt",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "洪水が発生しました。",
         "vn": "đã (quá khứ)."
@@ -59,8 +69,10 @@
     {
       "word": "土砂崩れ",
       "reading": "どしゃくずれ",
+      "han_viet": "",
       "meaning": "Sạt lở",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "土砂崩れがありました。",
         "vn": "đã (quá khứ)."
@@ -69,8 +81,10 @@
     {
       "word": "落雷",
       "reading": "らくらい",
+      "han_viet": "",
       "meaning": "Sét đánh",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "落雷により停電しました。",
         "vn": "đã (quá khứ)."
@@ -79,8 +93,10 @@
     {
       "word": "竜巻",
       "reading": "たつまき",
+      "han_viet": "",
       "meaning": "Lốc xoáy",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "竜巻が発生しました。",
         "vn": "đã (quá khứ)."
@@ -89,8 +105,10 @@
     {
       "word": "噴火",
       "reading": "ふんか",
+      "han_viet": "",
       "meaning": "Phun trào",
-      "type": "Danh động từ",
+      "type": "Verb",
+      "level": "N4",
       "example": {
         "jp": "火山が噴火しました。",
         "vn": "đã (quá khứ)."
@@ -99,8 +117,10 @@
     {
       "word": "火山",
       "reading": "かざん",
+      "han_viet": "",
       "meaning": "Núi lửa",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "火山が活発化しました。",
         "vn": "đã (quá khứ)."
@@ -109,8 +129,10 @@
     {
       "word": "避難",
       "reading": "ひなん",
+      "han_viet": "",
       "meaning": "Sơ tán",
-      "type": "Danh động từ",
+      "type": "Verb",
+      "level": "N4",
       "example": {
         "jp": "避難しました。",
         "vn": "đã (quá khứ)."
@@ -119,8 +141,10 @@
     {
       "word": "避難所",
       "reading": "ひなんじょ",
+      "han_viet": "",
       "meaning": "Nơi trú ẩn",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "避難所に避難しました。",
         "vn": "đã (quá khứ)."
@@ -129,8 +153,10 @@
     {
       "word": "警報",
       "reading": "けいほう",
+      "han_viet": "",
       "meaning": "Cảnh báo",
-      "type": "Danh động từ",
+      "type": "Verb",
+      "level": "N4",
       "example": {
         "jp": "警報が発令されました。",
         "vn": "đã (quá khứ)."
@@ -139,8 +165,10 @@
     {
       "word": "注意報",
       "reading": "ちゅういほう",
+      "han_viet": "",
       "meaning": "Cảnh báo",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "注意報が出ました。",
         "vn": "đã (quá khứ)."
@@ -149,8 +177,10 @@
     {
       "word": "被害",
       "reading": "ひがい",
+      "han_viet": "",
       "meaning": "Thiệt hại",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "被害が拡大しました。",
         "vn": "đã (quá khứ)."
@@ -159,8 +189,10 @@
     {
       "word": "被災",
       "reading": "ひさい",
+      "han_viet": "",
       "meaning": "Bị thiên tai",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "被災しました。",
         "vn": "đã (quá khứ)."
@@ -169,8 +201,10 @@
     {
       "word": "犠牲者",
       "reading": "ぎせいしゃ",
+      "han_viet": "",
       "meaning": "Nạn nhân",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "犠牲者が出ました。",
         "vn": "đã (quá khứ)."
@@ -179,8 +213,10 @@
     {
       "word": "行方不明",
       "reading": "ゆくえふめい",
+      "han_viet": "",
       "meaning": "Mất tích",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "行方不明者がいます。",
         "vn": "có (người/động vật)."
@@ -189,8 +225,10 @@
     {
       "word": "復興",
       "reading": "ふっこう",
+      "han_viet": "",
       "meaning": "Tái thiết",
-      "type": "Danh động từ",
+      "type": "Verb",
+      "level": "N4",
       "example": {
         "jp": "復興が進んでいます。",
         "vn": "có (người/động vật)."
@@ -199,8 +237,10 @@
     {
       "word": "防災",
       "reading": "ぼうさい",
+      "han_viet": "",
       "meaning": "Phòng chống thiên tai",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "防災訓練をしました。",
         "vn": "đã (quá khứ)."

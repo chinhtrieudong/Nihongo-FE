@@ -9,8 +9,10 @@
     {
       "word": "コレクション",
       "reading": "コレクション",
+      "han_viet": "",
       "meaning": "Sưu tầm",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "コレクションが趣味です。",
         "vn": "là."
@@ -19,8 +21,10 @@
     {
       "word": "収集",
       "reading": "しゅうしゅう",
+      "han_viet": "",
       "meaning": "Thu thập",
-      "type": "Danh động từ",
+      "type": "Verb",
+      "level": "N4",
       "example": {
         "jp": "切手を収集しています。",
         "vn": "có (người/động vật)."
@@ -29,8 +33,10 @@
     {
       "word": "集める",
       "reading": "あつめる",
+      "han_viet": "",
       "meaning": "Thu thập",
-      "type": "Động từ",
+      "type": "Verb",
+      "level": "N4",
       "example": {
         "jp": "フィギュアを集めています。",
         "vn": "có (người/động vật)."
@@ -39,8 +45,10 @@
     {
       "word": "趣味",
       "reading": "しゅみ",
+      "han_viet": "THÚ VỊ",
       "meaning": "Sở thích",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "趣味として楽しんでいます。",
         "vn": "có (người/động vật)."
@@ -49,8 +57,10 @@
     {
       "word": "切手",
       "reading": "きって",
+      "han_viet": "",
       "meaning": "Tem",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "切手を集めています。",
         "vn": "có (người/động vật)."
@@ -59,8 +69,10 @@
     {
       "word": "ハガキ",
       "reading": "ハガキ",
+      "han_viet": "",
       "meaning": "Bưu thiếp",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "ハガキを集めています。",
         "vn": "có (người/động vật)."
@@ -69,8 +81,10 @@
     {
       "word": "写真",
       "reading": "しゃしん",
+      "han_viet": "TẢ CHÂN",
       "meaning": "Ảnh",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "写真を撮ります。",
         "vn": "(đuôi lịch sự)"
@@ -79,8 +93,10 @@
     {
       "word": "絵葉書",
       "reading": "えはがき",
+      "han_viet": "",
       "meaning": "Thiếp hình",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "絵葉書を集めています。",
         "vn": "có (người/động vật)."
@@ -89,8 +105,10 @@
     {
       "word": "ポストカード",
       "reading": "ポストカード",
+      "han_viet": "",
       "meaning": "Thiệp bưu điện",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "ポストカードを集めています。",
         "vn": "có (người/động vật)."
@@ -99,8 +117,10 @@
     {
       "word": "フィギュア",
       "reading": "フィギュア",
+      "han_viet": "",
       "meaning": "Mô hình",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "フィギュアを飾っています。",
         "vn": "có (người/động vật)."
@@ -109,8 +129,10 @@
     {
       "word": "ぬいぐるみ",
       "reading": "ぬいぐるみ",
+      "han_viet": "",
       "meaning": "Thú bông",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "ぬいぐるみを集めています。",
         "vn": "có (người/động vật)."
@@ -119,8 +141,10 @@
     {
       "word": "缶バッチ",
       "reading": "かんバッチ",
+      "han_viet": "",
       "meaning": "Huy hiệu",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "缶バッチを集めています。",
         "vn": "có (người/động vật)."
@@ -129,8 +153,10 @@
     {
       "word": "アクキー",
       "reading": "アクキー",
+      "han_viet": "",
       "meaning": "Móc khóa",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "アクキーを集めています。",
         "vn": "có (người/động vật)."
@@ -139,8 +165,10 @@
     {
       "word": "トレカ",
       "reading": "トレカ",
+      "han_viet": "",
       "meaning": "Thẻ giao dịch",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "トレカを集めています。",
         "vn": "có (người/động vật)."
@@ -149,8 +177,10 @@
     {
       "word": "レア",
       "reading": "レア",
+      "han_viet": "",
       "meaning": "Hiếm",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "レアカードを手に入れました。",
         "vn": "đã (quá khứ)."
@@ -159,8 +189,10 @@
     {
       "word": "限定",
       "reading": "げんてい",
+      "han_viet": "",
       "meaning": "Giới hạn",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "限定グッズです。",
         "vn": "là."
@@ -169,8 +201,10 @@
     {
       "word": "グッズ",
       "reading": "グッズ",
+      "han_viet": "",
       "meaning": "Hàng hóa",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "グッズを買いました。",
         "vn": "đã (quá khứ)."
@@ -179,8 +213,10 @@
     {
       "word": "展示",
       "reading": "てんじ",
+      "han_viet": "",
       "meaning": "Trưng bày",
-      "type": "Danh động từ",
+      "type": "Verb",
+      "level": "N4",
       "example": {
         "jp": "フィギュアを展示しています。",
         "vn": "có (người/động vật)."
@@ -189,8 +225,10 @@
     {
       "word": "整理",
       "reading": "せいり",
+      "han_viet": "",
       "meaning": "Sắp xếp",
-      "type": "Danh động từ",
+      "type": "Verb",
+      "level": "N4",
       "example": {
         "jp": "コレクションを整理しました。",
         "vn": "đã (quá khứ)."
@@ -199,8 +237,10 @@
     {
       "word": "自慢",
       "reading": "じまん",
+      "han_viet": "",
       "meaning": "Khoe",
-      "type": "Danh động từ",
+      "type": "Verb",
+      "level": "N4",
       "example": {
         "jp": "コレクションを自慢します。",
         "vn": "(đuôi lịch sự)"

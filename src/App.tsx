@@ -25,6 +25,7 @@ import Login from "./pages/auth/Login";
 import Register from "./pages/auth/Register";
 import ComponentsDemo from "./pages/demo/ComponentsDemo";
 import TextbookDetail from "./pages/textbook/TextbookDetail";
+import QuickTest from "./pages/textbook/QuickTest";
 import VocabularyDetail from "./pages/vocabulary/VocabularyDetail";
 import { Lessons } from "./components/lessons";
 import { AuthProvider, useAuth } from "./contexts/AuthContext";
@@ -64,6 +65,7 @@ const AppContent: React.FC = () => {
               <Route index element={<Home />} />
               <Route path="lessons/:lessonNumber/kanji" element={<KanjiDetail />} />
               <Route path="textbook/:textbookId" element={<TextbookDetail />} />
+              <Route path="textbook/:textbookId/quick-test" element={<QuickTest />} />
               <Route path="textbook/:textbookId/vocabulary/:lessonNumber" element={<VocabularyDetail />} />
               <Route path="mina/:lessonId" element={<Lessons />} />
               <Route path="tango/:lessonId" element={<Lessons />} />

@@ -9,8 +9,10 @@
     {
       "word": "昼",
       "reading": "ひる",
+      "han_viet": "",
       "meaning": "Buổi trưa",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "昼になりました。",
         "vn": "đã (quá khứ)."
@@ -19,8 +21,10 @@
     {
       "word": "昼間",
       "reading": "ひるま",
+      "han_viet": "",
       "meaning": "Ban ngày",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "昼間は忙しいです。",
         "vn": "là."
@@ -29,8 +33,10 @@
     {
       "word": "正午",
       "reading": "しょうご",
+      "han_viet": "",
       "meaning": "12 giờ trưa",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "正午になりました。",
         "vn": "đã (quá khứ)."
@@ -39,8 +45,10 @@
     {
       "word": "昼休み",
       "reading": "ひるやすみ",
+      "han_viet": "",
       "meaning": "Nghỉ trưa",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "昼休みに食べます。",
         "vn": "(đuôi lịch sự)"
@@ -49,8 +57,10 @@
     {
       "word": "昼食",
       "reading": "ちゅうしょく",
+      "han_viet": "",
       "meaning": "Bữa trưa",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "昼食を取りました。",
         "vn": "đã (quá khứ)."
@@ -59,8 +69,10 @@
     {
       "word": "お弁当",
       "reading": "おべんとう",
+      "han_viet": "",
       "meaning": "Hộp cơm",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "お弁当を持参しました。",
         "vn": "đã (quá khứ)."
@@ -69,8 +81,10 @@
     {
       "word": "ランチ",
       "reading": "ランチ",
+      "han_viet": "",
       "meaning": "Bữa trưa",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "ランチに行きます。",
         "vn": "(đuôi lịch sự)"
@@ -79,8 +93,10 @@
     {
       "word": "定食",
       "reading": "ていしょく",
+      "han_viet": "",
       "meaning": "Suất ăn",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "定食を注文しました。",
         "vn": "đã (quá khứ)."
@@ -89,8 +105,10 @@
     {
       "word": "パン",
       "reading": "パン",
+      "han_viet": "",
       "meaning": "Bánh mì",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "パンを食べます。",
         "vn": "(đuôi lịch sự)"
@@ -99,8 +117,10 @@
     {
       "word": "サンドイッチ",
       "reading": "サンドイッチ",
+      "han_viet": "",
       "meaning": "Bánh sandwich",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "サンドイッチを食べました。",
         "vn": "đã (quá khứ)."
@@ -109,8 +129,10 @@
     {
       "word": "カレー",
       "reading": "カレー",
+      "han_viet": "",
       "meaning": "Cà ri",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "カレーが好きです。",
         "vn": "là."
@@ -119,8 +141,10 @@
     {
       "word": "うどん",
       "reading": "うどん",
+      "han_viet": "",
       "meaning": "Mì udon",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "うどんを食べました。",
         "vn": "đã (quá khứ)."
@@ -129,8 +153,10 @@
     {
       "word": "そば",
       "reading": "そば",
+      "han_viet": "",
       "meaning": "Mì soba",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "そばを食べます。",
         "vn": "(đuôi lịch sự)"
@@ -139,8 +165,10 @@
     {
       "word": "ラーメン",
       "reading": "ラーメン",
+      "han_viet": "",
       "meaning": "Mì ramen",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "ラーメンを食べました。",
         "vn": "đã (quá khứ)."
@@ -149,8 +177,10 @@
     {
       "word": "丼",
       "reading": "どんぶり",
+      "han_viet": "",
       "meaning": "Cơm tô",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "丼を食べました。",
         "vn": "đã (quá khứ)."
@@ -159,8 +189,10 @@
     {
       "word": "牛丼",
       "reading": "ぎゅうどん",
+      "han_viet": "",
       "meaning": "Cơm bò",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "牛丼が好きです。",
         "vn": "là."
@@ -169,8 +201,10 @@
     {
       "word": "カフェ",
       "reading": "カフェ",
+      "han_viet": "",
       "meaning": "Quán cà phê",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "カフェで食べました。",
         "vn": "đã (quá khứ)."
@@ -179,8 +213,10 @@
     {
       "word": "喫茶店",
       "reading": "きっさてん",
+      "han_viet": "",
       "meaning": "Quán trà",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "喫茶店に入りました。",
         "vn": "đã (quá khứ)."
@@ -189,8 +225,10 @@
     {
       "word": "ファミレス",
       "reading": "ファミレス",
+      "han_viet": "",
       "meaning": "Nhà hàng gia đình",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "ファミレスで食べました。",
         "vn": "đã (quá khứ)."
@@ -199,8 +237,10 @@
     {
       "word": "食堂",
       "reading": "しょくどう",
+      "han_viet": "",
       "meaning": "Căng tin",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "会社の食堂で食べます。",
         "vn": "(đuôi lịch sự)"

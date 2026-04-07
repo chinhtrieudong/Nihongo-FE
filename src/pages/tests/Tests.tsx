@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { Typography, Tabs, Row, Col, Card, message, Spin } from "antd";
+import { Typography, Tabs, Row, Col, Card, Spin, App as AntdApp } from "antd";
 import {
   Play,
   Trophy,
@@ -67,6 +67,7 @@ const Tests: React.FC = () => {
   const [recentActivities, setRecentActivities] = useState<any[]>([]);
   const navigate = useNavigate();
   const { currentUser } = useAppSelector((state) => state.user);
+  const { message } = AntdApp.useApp();
 
   // Fetch JLPT tests from API
   useEffect(() => {
@@ -78,7 +79,7 @@ const Tests: React.FC = () => {
           // Transform API data to match our Test interface
           const transformedTests = response.data.map((test: any, index: number) => ({
             ...test,
-            id: test.id || `test_${index}`,
+            id: test.id || test._id || test.testId || test.slug || "",
             completed: false, // Default to not completed
             score: undefined,
             date: undefined,
@@ -212,6 +213,11 @@ const Tests: React.FC = () => {
 
   const confirmStartTest = () => {
     if (selectedTest) {
+      if (!selectedTest.id) {
+        message.error("Bài thi này không có id hợp lệ để mở chi tiết.");
+        setShowStartModal(false);
+        return;
+      }
       // Create a new test attempt
       const attemptId = `attempt_${Date.now()}`;
       const startTime = new Date();
@@ -228,7 +234,7 @@ const Tests: React.FC = () => {
       localStorage.setItem(attemptId, JSON.stringify(attempt));
 
       // Navigate to test page
-      navigate(`/test/${selectedTest.id}?attempt=${attemptId}`);
+      navigate(`/test/${selectedTest.id}?attempt=${attemptId}&level=${encodeURIComponent(selectedTest.level)}`);
 
       message.success(`Bắt đầu bài thi: ${selectedTest.title}`);
       setShowStartModal(false);
@@ -285,8 +291,16 @@ const Tests: React.FC = () => {
                 children: (
                   <>
                     <Row gutter={[16, 16]}>
-                      {availableTests.map(test => (
-                        <Col xs={24} md={12} lg={8} key={test.id}>
+                      {availableTests.map((test, idx) => (
+                        <Col
+                          xs={24}
+                          md={12}
+                          lg={8}
+                          key={
+                            test.id ||
+                            `${test.level || "UNK"}-${test.title || "test"}-${idx}`
+                          }
+                        >
                           <TestCard
                             test={test}
                             onStartTest={handleStartTest}
@@ -311,8 +325,16 @@ const Tests: React.FC = () => {
                 children: (
                   <>
                     <Row gutter={[16, 16]}>
-                      {completedTests.map(test => (
-                        <Col xs={24} md={12} lg={8} key={test.id}>
+                      {completedTests.map((test, idx) => (
+                        <Col
+                          xs={24}
+                          md={12}
+                          lg={8}
+                          key={
+                            test.id ||
+                            `${test.level || "UNK"}-${test.title || "test"}-${idx}`
+                          }
+                        >
                           <TestCard
                             test={test}
                             onStartTest={handleStartTest}

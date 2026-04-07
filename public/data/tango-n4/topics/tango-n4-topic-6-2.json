@@ -9,8 +9,10 @@
     {
       "word": "気温",
       "reading": "きおん",
+      "han_viet": "",
       "meaning": "Nhiệt độ",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "気温が上がりました。",
         "vn": "đã (quá khứ)."
@@ -19,8 +21,10 @@
     {
       "word": "温度",
       "reading": "おんど",
+      "han_viet": "",
       "meaning": "Nhiệt độ",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "温度を測定します。",
         "vn": "(đuôi lịch sự)"
@@ -29,8 +33,10 @@
     {
       "word": "体温",
       "reading": "たいおん",
+      "han_viet": "",
       "meaning": "Nhiệt độ cơ thể",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "体温を測りました。",
         "vn": "đã (quá khứ)."
@@ -39,8 +45,10 @@
     {
       "word": "寒暖",
       "reading": "かんだん",
+      "han_viet": "",
       "meaning": "Lạnh ấm",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "寒暖計を見ます。",
         "vn": "(đuôi lịch sự)"
@@ -49,8 +57,10 @@
     {
       "word": "最高気温",
       "reading": "さいこうきおん",
+      "han_viet": "",
       "meaning": "Nhiệt độ cao nhất",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "最高気温は30度です。",
         "vn": "là."
@@ -59,8 +69,10 @@
     {
       "word": "最低気温",
       "reading": "さいていきおん",
+      "han_viet": "",
       "meaning": "Nhiệt độ thấp nhất",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "最低気温は5度です。",
         "vn": "là."
@@ -69,8 +81,10 @@
     {
       "word": "平均気温",
       "reading": "へいきんきおん",
+      "han_viet": "",
       "meaning": "Nhiệt độ trung bình",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "平均気温が上昇しました。",
         "vn": "đã (quá khứ)."
@@ -79,8 +93,10 @@
     {
       "word": "氷点下",
       "reading": "ひょうてんか",
+      "han_viet": "",
       "meaning": "Dưới điểm đóng băng",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "氷点下10度です。",
         "vn": "là."
@@ -89,8 +105,10 @@
     {
       "word": "暑さ",
       "reading": "あつさ",
+      "han_viet": "",
       "meaning": "Sự nóng",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "暑さが厳しいです。",
         "vn": "là."
@@ -99,8 +117,10 @@
     {
       "word": "寒さ",
       "reading": "さむさ",
+      "han_viet": "",
       "meaning": "Sự lạnh",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "寒さが厳しいです。",
         "vn": "là."
@@ -109,8 +129,10 @@
     {
       "word": "冷え込む",
       "reading": "ひえこむ",
+      "han_viet": "",
       "meaning": "Lạnh sâu",
-      "type": "Động từ",
+      "type": "Verb",
+      "level": "N4",
       "example": {
         "jp": "夜は冷え込みます。",
         "vn": "(đuôi lịch sự)"
@@ -119,8 +141,10 @@
     {
       "word": "冷える",
       "reading": "ひえる",
+      "han_viet": "",
       "meaning": "Lạnh đi",
-      "type": "Động từ",
+      "type": "Verb",
+      "level": "N4",
       "example": {
         "jp": "体が冷えました。",
         "vn": "đã (quá khứ)."
@@ -129,8 +153,10 @@
     {
       "word": "温まる",
       "reading": "あたたまる",
+      "han_viet": "",
       "meaning": "Ấm lên",
-      "type": "Động từ",
+      "type": "Verb",
+      "level": "N4",
       "example": {
         "jp": "体が温まりました。",
         "vn": "đã (quá khứ)."
@@ -139,8 +165,10 @@
     {
       "word": "上昇",
       "reading": "じょうしょう",
+      "han_viet": "",
       "meaning": "Tăng lên",
-      "type": "Danh động từ",
+      "type": "Verb",
+      "level": "N4",
       "example": {
         "jp": "気温が上昇しました。",
         "vn": "đã (quá khứ)."
@@ -149,8 +177,10 @@
     {
       "word": "下降",
       "reading": "かこう",
+      "han_viet": "",
       "meaning": "Giảm xuống",
-      "type": "Danh động từ",
+      "type": "Verb",
+      "level": "N4",
       "example": {
         "jp": "気温が下降しました。",
         "vn": "đã (quá khứ)."
@@ -159,8 +189,10 @@
     {
       "word": "変化",
       "reading": "へんか",
+      "han_viet": "",
       "meaning": "Thay đổi",
-      "type": "Danh động từ",
+      "type": "Verb",
+      "level": "N4",
       "example": {
         "jp": "気温の変化が激しいです。",
         "vn": "là."
@@ -169,8 +201,10 @@
     {
       "word": "差",
       "reading": "さ",
+      "han_viet": "",
       "meaning": "Chênh lệch",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "寒暖差が大きいです。",
         "vn": "là."
@@ -179,8 +213,10 @@
     {
       "word": "湿度",
       "reading": "しつど",
+      "han_viet": "",
       "meaning": "Độ ẩm",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "湿度が高いです。",
         "vn": "là."
@@ -189,8 +225,10 @@
     {
       "word": "乾燥",
       "reading": "かんそう",
+      "han_viet": "",
       "meaning": "Khô ráo",
-      "type": "Danh động từ",
+      "type": "Verb",
+      "level": "N4",
       "example": {
         "jp": "乾燥しています。",
         "vn": "có (người/động vật)."
@@ -199,8 +237,10 @@
     {
       "word": "蒸し暑い",
       "reading": "むしあつい",
+      "han_viet": "",
       "meaning": "Nóng ẩm",
-      "type": "Tính từ",
+      "type": "Adjective",
+      "level": "N4",
       "example": {
         "jp": "蒸し暑い日が続きます。",
         "vn": "(đuôi lịch sự)"

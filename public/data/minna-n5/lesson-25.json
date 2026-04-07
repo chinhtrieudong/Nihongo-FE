@@ -3,130 +3,120 @@
   "topic": "Giả định & Điều kiện (Nếu... thì)",
   "vocabulary": [
     {
-      "id": "n5_l25_001",
       "word": "良ければ",
       "reading": "よければ",
-      "hanViet": "Lương",
+      "han_viet": "LƯƠNG",
       "meaning": "nếu được, nếu tốt",
-      "type": "verb",
-      "category": "Thể Điều Kiện",
+      "type": "Verb",
+      "level": "N5",
       "example": {
         "jp": "よければ、どうぞ。",
         "vn": "Nếu được, xin mời."
       }
     },
     {
-      "id": "n5_l25_002",
       "word": "行けば",
       "reading": "いけば",
-      "hanViet": "Hành",
+      "han_viet": "HÀNH",
       "meaning": "nếu đi",
-      "type": "verb",
-      "category": "Thể Điều Kiện",
+      "type": "Verb",
+      "level": "N5",
       "example": {
         "jp": "行けば、分かる。",
         "vn": "Nếu đi, sẽ hiểu."
       }
     },
     {
-      "id": "n5_l25_003",
       "word": "食べれば",
       "reading": "たべれば",
-      "hanViet": "Thực",
+      "han_viet": "THỰC",
       "meaning": "nếu ăn",
-      "type": "verb",
-      "category": "Thể Điều Kiện",
+      "type": "Verb",
+      "level": "N5",
       "example": {
         "jp": "食べれば、元気になる。",
         "vn": "Nếu ăn, sẽ khỏe."
       }
     },
     {
-      "id": "n5_l25_004",
       "word": "買えば",
       "reading": "かえば",
-      "hanViet": "Mãi",
+      "han_viet": "MÃI",
       "meaning": "nếu mua",
-      "type": "verb",
-      "category": "Thể Điều Kiện",
+      "type": "Verb",
+      "level": "N5",
       "example": {
         "jp": "安ければ、買う。",
         "vn": "Nếu rẻ, sẽ mua."
       }
     },
     {
-      "id": "n5_l25_005",
       "word": "見れば",
       "reading": "みれば",
-      "hanViet": "Kiến",
+      "han_viet": "KIẾN",
       "meaning": "nếu xem",
-      "type": "verb",
-      "category": "Thể Điều Kiện",
+      "type": "Verb",
+      "level": "N5",
       "example": {
         "jp": "見れば、分かる。",
         "vn": "Nếu xem, sẽ hiểu."
       }
     },
     {
-      "id": "n5_l25_006",
       "word": "好きなら",
       "reading": "すきなら",
-      "hanViet": "Hảo",
+      "han_viet": "HẢO",
       "meaning": "nếu thích",
-      "type": "verb",
-      "category": "Thể Điều Kiện",
+      "type": "Verb",
+      "level": "N5",
       "example": {
         "jp": "好きなら、食べて。",
         "vn": "Nếu thích, hãy ăn."
       }
     },
     {
-      "id": "n5_l25_007",
       "word": "分からなければ",
       "reading": "わからなければ",
-      "hanViet": "Phân",
+      "han_viet": "PHÂN",
       "meaning": "nếu không hiểu",
-      "type": "verb",
-      "category": "Thể Điều Kiện",
+      "type": "Verb",
+      "level": "N5",
       "example": {
         "jp": "分からなければ、聞いて。",
         "vn": "Nếu không hiểu, hãy hỏi."
       }
     },
     {
-      "id": "n5_l25_008",
       "word": "忙しければ",
       "reading": "いそがしければ",
-      "hanViet": "Mang",
+      "han_viet": "MANG",
       "meaning": "nếu bận",
-      "type": "verb",
-      "category": "Thể Điều Kiện",
+      "type": "Verb",
+      "level": "N5",
       "example": {
         "jp": "忙しければ、行かなくてもいい。",
         "vn": "Nếu bận, không đi cũng được."
       }
     },
     {
-      "id": "n5_l25_009",
       "word": "行かなければ",
       "reading": "いかなければ",
-      "hanViet": "Hành",
+      "han_viet": "HÀNH",
       "meaning": "nếu không đi",
-      "type": "verb",
-      "category": "Thể Điều Kiện",
+      "type": "Verb",
+      "level": "N5",
       "example": {
         "jp": "行かなければ、ならない。",
         "vn": "Nếu không đi, không được."
       }
     },
     {
-      "id": "n5_l25_010",
       "word": "なければ",
       "reading": "なければ",
-      "hanViet": "",
+      "han_viet": "",
       "meaning": "nếu không có",
-      "type": "verb",
-      "category": "Thể Điều Kiện",
+      "type": "Verb",
+      "level": "N5",
       "example": {
         "jp": "お金がなければ、買えない。",
         "vn": "Nếu không có tiền, không mua được."

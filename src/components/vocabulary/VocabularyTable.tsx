@@ -65,12 +65,7 @@ const VocabularyTable = React.forwardRef<
       return font;
     }, [selectedPreset]);
 
-    // Set CSS variables for font families based on selected preset
-    useEffect(() => {
-      const kanjiFontFamily = selectedPreset.kanjiFontFamily || selectedPreset.fontFamily;
-      document.documentElement.style.setProperty('--kanji-font-family', kanjiFontFamily);
-      document.documentElement.style.setProperty('--jp-font-family', selectedPreset.fontFamily);
-    }, [selectedPreset]);
+    // Font CSS variables are owned by the app-level FontProvider/ThemeProvider.
 
     const [showRomaji] = useState(false);
 
@@ -155,6 +150,16 @@ const VocabularyTable = React.forwardRef<
     const globalUnknownCount = Object.values(cardStatus).filter(
       (s) => s === "unknown",
     ).length;
+    const accuracyPercent = totalCount ? Math.round((knownCount / totalCount) * 100) : 0;
+
+    const unknownItems = useMemo(() => {
+      const ids = new Set(
+        Object.entries(cardStatus)
+          .filter(([, status]) => status === "unknown")
+          .map(([id]) => id),
+      );
+      return cardsToStudy.filter((c) => ids.has(c.id)).slice(0, 12);
+    }, [cardStatus, cardsToStudy]);
     const currentCard = cardsToStudy[currentCardIndex];
 
     const filteredData = data;
@@ -308,9 +313,11 @@ const VocabularyTable = React.forwardRef<
               dataIndex: "hanviet",
               key: "hanviet",
               width: screens.lg ? 110 : 90,
-              render: (text: string) => (
+              render: (_: string, record: VocabularyItemType) => (
                 <span className="text-lg font-medium text-secondary-800 dark:text-secondary-300">
-                  {text ? text.toUpperCase().replace(/,/g, "") : "-"}
+                  {(record.hanviet || record.han_viet)
+                    ? String(record.hanviet || record.han_viet).toUpperCase().replace(/,/g, "")
+                    : "-"}
                 </span>
               ),
             },
@@ -321,8 +328,10 @@ const VocabularyTable = React.forwardRef<
           dataIndex: "meaning_vi",
           key: "meaning_vi",
           width: screens.lg ? 150 : 130,
-          render: (text: string) => (
-            <Typography.Text className="!text-lg">{text || "-"}</Typography.Text>
+          render: (_: string, record: VocabularyItemType) => (
+            <Typography.Text className="!text-lg">
+              {record.meaning_vi || record.meaningVi || record.meaning || "-"}
+            </Typography.Text>
           ),
         },
         {
@@ -380,8 +389,10 @@ const VocabularyTable = React.forwardRef<
           dataIndex: "meaning_vi",
           key: "meaning_vi",
           width: 150,
-          render: (text: string) => (
-            <Typography.Text className="!text-lg">{text || "-"}</Typography.Text>
+          render: (_: string, record: VocabularyItemType) => (
+            <Typography.Text className="!text-lg">
+              {record.meaning_vi || record.meaningVi || record.meaning || "-"}
+            </Typography.Text>
           ),
         },
         {
@@ -695,7 +706,7 @@ const VocabularyTable = React.forwardRef<
                         </div>
                         <Statistic
                           value={totalCount}
-                          valueStyle={{ color: "#93c5fd" }}
+                          styles={{ content: { color: "#93c5fd" } }}
                           className="text-white"
                         />
                       </div>
@@ -708,7 +719,7 @@ const VocabularyTable = React.forwardRef<
                         </div>
                         <Statistic
                           value={knownCount}
-                          valueStyle={{ color: "#86efac" }}
+                          styles={{ content: { color: "#86efac" } }}
                           prefix={
                             <CheckCircle className="w-4 h-4" style={{ color: "#86efac" }} />
                           }
@@ -724,7 +735,7 @@ const VocabularyTable = React.forwardRef<
                         </div>
                         <Statistic
                           value={unknownCount}
-                          valueStyle={{ color: "#fca5a5" }}
+                          styles={{ content: { color: "#fca5a5" } }}
                           prefix={
                             <XCircle className="w-4 h-4" style={{ color: "#fca5a5" }} />
                           }
@@ -733,6 +744,62 @@ const VocabularyTable = React.forwardRef<
                       </div>
                     </Col>
                   </Row>
+
+                  <div className="mt-4">
+                    <div className="inline-flex items-center gap-2 rounded-full border border-slate-600/60 bg-white/5 px-4 py-2 text-sm text-white/90">
+                      <span className="font-semibold">Độ nhớ</span>
+                      <span className="text-white/50">•</span>
+                      <span
+                        className="font-bold"
+                        style={{
+                          color:
+                            accuracyPercent >= 80
+                              ? "#86efac"
+                              : accuracyPercent >= 50
+                                ? "#93c5fd"
+                                : "#fca5a5",
+                        }}
+                      >
+                        {accuracyPercent}%
+                      </span>
+                    </div>
+                  </div>
+
+                  {unknownItems.length > 0 && (
+                    <div className="mt-5 text-left">
+                      <div className="text-xs uppercase tracking-wide text-white/60 mb-2">
+                        Từ chưa nhớ ({globalUnknownCount})
+                      </div>
+                      <div className="max-h-44 overflow-auto rounded-xl border border-slate-600/60 bg-white/5">
+                        {unknownItems.map((it) => (
+                          <div
+                            key={it.id}
+                            className="flex items-center justify-between gap-3 px-4 py-3 border-b border-slate-600/40 last:border-b-0"
+                          >
+                            <div className="min-w-0">
+                              <div className="text-base font-semibold text-white kanji-text truncate">
+                                {it.kanji || it.hiragana || it.katakana || "-"}
+                              </div>
+                              <div className="text-sm text-white/70 jp-text truncate">
+                                {it.hiragana || it.katakana || "-"}
+                              </div>
+                              <div className="text-sm text-white/80 truncate">
+                                {it.meaning_vi || it.meaningVi || "-"}
+                              </div>
+                            </div>
+                            <button
+                              type="button"
+                              onClick={() => speakText(it.hiragana || it.katakana || "")}
+                              className="p-2 rounded-lg text-white/70 hover:text-white hover:bg-white/10 transition-colors flex-shrink-0"
+                              aria-label="Phát âm"
+                            >
+                              <Volume2 className="w-4 h-4" />
+                            </button>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  )}
                 </div>
 
                 <div className="flex items-center justify-center pt-0">

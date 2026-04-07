@@ -22,6 +22,7 @@ export interface KanjiAnalysis {
 
 export interface VocabularyItem {
   id: string;
+  // Legacy fields (used across existing UI)
   kanji: string;
   hiragana: string;
   katakana?: string;
@@ -39,6 +40,13 @@ export interface VocabularyItem {
   exampleSentenceVi?: string;
   example_jp?: string;
   example_vi?: string;
+  // New normalized JSON fields (frontend/public/data/**)
+  word?: string;          // written form (kanji or kana)
+  reading?: string;       // kana reading
+  han_viet?: string;      // normalized han viet
+  meaning?: string;       // vietnamese meaning
+  type?: string;          // e.g. Noun/Verb/Adjective/Particle/Pronoun/Suffix/Other
+  example?: { jp?: string; vn?: string };
   jlpt?: string;
   jlpt_level?: string;
   jpt?: string;

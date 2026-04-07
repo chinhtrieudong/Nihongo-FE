@@ -58,6 +58,36 @@ const VocabularyFlashcard: React.FC<VocabularyFlashcardProps> = ({
   const [showHanViet] = useState(true);
   const [showVietnameseExample, setShowVietnameseExample] = useState(false);
 
+  const getReading = useCallback(() => {
+    return currentCard?.hiragana || currentCard?.katakana || currentCard?.reading || currentCard?.word || "";
+  }, [currentCard]);
+
+  const getMeaningVi = useCallback(() => {
+    return currentCard?.meaning_vi || currentCard?.meaningVi || currentCard?.meaning || "";
+  }, [currentCard]);
+
+  const getHanViet = useCallback(() => {
+    return currentCard?.hanviet || currentCard?.han_viet || "";
+  }, [currentCard]);
+
+  const getExampleJp = useCallback(() => {
+    return (
+      currentCard?.example_jp ||
+      currentCard?.exampleSentence ||
+      currentCard?.example?.jp ||
+      ""
+    );
+  }, [currentCard]);
+
+  const getExampleVi = useCallback(() => {
+    return (
+      currentCard?.example_vi ||
+      currentCard?.exampleSentenceVi ||
+      currentCard?.example?.vn ||
+      ""
+    );
+  }, [currentCard]);
+
   const warmUpTTS = useCallback(() => {
     if (!("speechSynthesis" in window)) return;
     try {
@@ -73,17 +103,17 @@ const VocabularyFlashcard: React.FC<VocabularyFlashcardProps> = ({
   const handlePlayAudio = useCallback(
     (e: React.MouseEvent) => {
       e.stopPropagation();
-      const text = currentCard?.hiragana || currentCard?.katakana || "";
+      const text = getReading();
       if (text) speakText(text, 'ja-JP', femaleVoiceName);
     },
-    [currentCard, femaleVoiceName],
+    [getReading, femaleVoiceName],
   );
 
   // Note: keep sidebar open while viewing flashcards
 
   const getJapaneseText = useCallback(() => {
-    return currentCard?.hiragana || currentCard?.katakana || "";
-  }, [currentCard]);
+    return getReading();
+  }, [getReading]);
 
   const speakJapaneseNow = useCallback((text: string) => {
     if (!text) return;
@@ -162,16 +192,18 @@ const VocabularyFlashcard: React.FC<VocabularyFlashcardProps> = ({
       const contentParts = [];
 
       // Add Han-Viet if enabled and available (as main content)
-      if (showHanViet && currentCard?.hanviet) {
-        contentParts.push(currentCard.hanviet.toUpperCase());
+      const hv = getHanViet();
+      if (showHanViet && hv) {
+        contentParts.push(hv.toUpperCase());
       }
 
       // Add Vietnamese meaning
-      contentParts.push(currentCard?.meaning_vi || "Đang cập nhật");
+      contentParts.push(getMeaningVi() || "Đang cập nhật");
 
       // Add Vietnamese example if enabled
-      if (showVietnameseExample && currentCard?.example_vi) {
-        contentParts.push(`Ví dụ: ${currentCard.example_vi}`);
+      const exVi = getExampleVi();
+      if (showVietnameseExample && exVi) {
+        contentParts.push(`Ví dụ: ${exVi}`);
       }
 
       // First item is main content, rest are subtitles
@@ -194,19 +226,19 @@ const VocabularyFlashcard: React.FC<VocabularyFlashcardProps> = ({
       if (showKanji && currentCard?.kanji) {
         mainContent = currentCard.kanji;
         // Add hiragana/katakana as first subtitle part
-        if (currentCard?.hiragana || currentCard?.katakana) {
-          subtitleParts.push(
-            currentCard?.hiragana || currentCard?.katakana || "",
-          );
+        const r = getReading();
+        if (r) {
+          subtitleParts.push(r);
         }
       } else {
         // Use hiragana/katakana as main if kanji is disabled or not available
-        mainContent = currentCard?.hiragana || currentCard?.katakana || "";
+        mainContent = getReading();
       }
 
       // Add Japanese example if enabled
-      if (showJapaneseExample && currentCard?.example_jp) {
-        subtitleParts.push(`例: ${currentCard.example_jp}`);
+      const exJp = getExampleJp();
+      if (showJapaneseExample && exJp) {
+        subtitleParts.push(`例: ${exJp}`);
       }
 
       subContent = subtitleParts.join("\n");
@@ -231,19 +263,19 @@ const VocabularyFlashcard: React.FC<VocabularyFlashcardProps> = ({
       if (showKanji && currentCard?.kanji) {
         mainContent = currentCard.kanji;
         // Add hiragana/katakana as first subtitle part
-        if (currentCard?.hiragana || currentCard?.katakana) {
-          subtitleParts.push(
-            currentCard?.hiragana || currentCard?.katakana || "",
-          );
+        const r = getReading();
+        if (r) {
+          subtitleParts.push(r);
         }
       } else {
         // Use hiragana/katakana as main if kanji is disabled or not available
-        mainContent = currentCard?.hiragana || currentCard?.katakana || "";
+        mainContent = getReading();
       }
 
       // Add Japanese example if enabled
-      if (showJapaneseExample && currentCard?.example_jp) {
-        subtitleParts.push(`例: ${currentCard.example_jp}`);
+      const exJp = getExampleJp();
+      if (showJapaneseExample && exJp) {
+        subtitleParts.push(`例: ${exJp}`);
       }
 
       subContent = subtitleParts.join("\n");
@@ -261,16 +293,18 @@ const VocabularyFlashcard: React.FC<VocabularyFlashcardProps> = ({
       const contentParts = [];
 
       // Add Han-Viet if enabled and available (as main content)
-      if (showHanViet && currentCard?.hanviet) {
-        contentParts.push(currentCard.hanviet.toUpperCase());
+      const hv = getHanViet();
+      if (showHanViet && hv) {
+        contentParts.push(hv.toUpperCase());
       }
 
       // Add Vietnamese meaning
-      contentParts.push(currentCard?.meaning_vi || "Đang cập nhật");
+      contentParts.push(getMeaningVi() || "Đang cập nhật");
 
       // Add Vietnamese example if enabled
-      if (showVietnameseExample && currentCard?.example_vi) {
-        contentParts.push(`Ví dụ: ${currentCard.example_vi}`);
+      const exVi = getExampleVi();
+      if (showVietnameseExample && exVi) {
+        contentParts.push(`Ví dụ: ${exVi}`);
       }
 
       // First item is main content, rest are subtitles

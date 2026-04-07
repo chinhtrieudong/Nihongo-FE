@@ -9,8 +9,10 @@
     {
       "word": "体",
       "reading": "からだ",
+      "han_viet": "",
       "meaning": "Cơ thể",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "体を動かします。",
         "vn": "(đuôi lịch sự)"
@@ -19,8 +21,10 @@
     {
       "word": "健康",
       "reading": "けんこう",
+      "han_viet": "",
       "meaning": "Sức khỏe",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "健康に気をつけます。",
         "vn": "(đuôi lịch sự)"
@@ -29,8 +33,10 @@
     {
       "word": "頭",
       "reading": "あたま",
+      "han_viet": "",
       "meaning": "Đầu",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "頭が痛いです。",
         "vn": "là."
@@ -39,8 +45,10 @@
     {
       "word": "顔",
       "reading": "かお",
+      "han_viet": "",
       "meaning": "Mặt",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "顔を洗います。",
         "vn": "có (người/động vật)."
@@ -49,8 +57,10 @@
     {
       "word": "目",
       "reading": "め",
+      "han_viet": "",
       "meaning": "Mắt",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "目が疲れました。",
         "vn": "đã (quá khứ)."
@@ -59,8 +69,10 @@
     {
       "word": "耳",
       "reading": "みみ",
+      "han_viet": "",
       "meaning": "Tai",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "耳が遠いです。",
         "vn": "là."
@@ -69,8 +81,10 @@
     {
       "word": "鼻",
       "reading": "はな",
+      "han_viet": "",
       "meaning": "Mũi",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "鼻が詰まっています。",
         "vn": "có (người/động vật)."
@@ -79,8 +93,10 @@
     {
       "word": "口",
       "reading": "くち",
+      "han_viet": "",
       "meaning": "Miệng",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "口が渇きました。",
         "vn": "đã (quá khứ)."
@@ -89,8 +105,10 @@
     {
       "word": "歯",
       "reading": "は",
+      "han_viet": "",
       "meaning": "Răng",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "歯が痛いです。",
         "vn": "là."
@@ -99,8 +117,10 @@
     {
       "word": "首",
       "reading": "くび",
+      "han_viet": "",
       "meaning": "Cổ",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "首が凝っています。",
         "vn": "có (người/động vật)."
@@ -109,8 +129,10 @@
     {
       "word": "肩",
       "reading": "かた",
+      "han_viet": "",
       "meaning": "Vai",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "肩がこりました。",
         "vn": "đã (quá khứ)."
@@ -119,8 +141,10 @@
     {
       "word": "腕",
       "reading": "うで",
+      "han_viet": "",
       "meaning": "Tay",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "腕を上げます。",
         "vn": "(đuôi lịch sự)"
@@ -129,8 +153,10 @@
     {
       "word": "手",
       "reading": "て",
+      "han_viet": "",
       "meaning": "Bàn tay",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "手を洗います。",
         "vn": "có (người/động vật)."
@@ -139,8 +165,10 @@
     {
       "word": "指",
       "reading": "ゆび",
+      "han_viet": "",
       "meaning": "Ngón tay",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "指をけがしました。",
         "vn": "đã (quá khứ)."
@@ -149,8 +177,10 @@
     {
       "word": "胸",
       "reading": "むね",
+      "han_viet": "",
       "meaning": "Ngực",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "胸が苦しいです。",
         "vn": "là."
@@ -159,8 +189,10 @@
     {
       "word": "腹",
       "reading": "はら",
+      "han_viet": "",
       "meaning": "Bụng",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "腹が減りました。",
         "vn": "đã (quá khứ)."
@@ -169,8 +201,10 @@
     {
       "word": "背中",
       "reading": "せなか",
+      "han_viet": "",
       "meaning": "Lưng",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "背中が痛いです。",
         "vn": "là."
@@ -179,8 +213,10 @@
     {
       "word": "腰",
       "reading": "こし",
+      "han_viet": "",
       "meaning": "Eo",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "腰が痛いです。",
         "vn": "là."
@@ -189,8 +225,10 @@
     {
       "word": "足",
       "reading": "あし",
+      "han_viet": "",
       "meaning": "Chân",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "足が疲れました。",
         "vn": "đã (quá khứ)."
@@ -199,8 +237,10 @@
     {
       "word": "脚",
       "reading": "きゃく",
+      "han_viet": "",
       "meaning": "Bàn chân",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "脚を怪我しました。",
         "vn": "đã (quá khứ)."

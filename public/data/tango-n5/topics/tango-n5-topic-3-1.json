@@ -9,8 +9,10 @@
     {
       "word": "働く",
       "reading": "はたらく",
+      "han_viet": "",
       "meaning": "Làm việc",
-      "type": "Động từ",
+      "type": "Verb",
+      "level": "N5",
       "example": {
         "jp": "会社で働きます。",
         "vn": "(đuôi lịch sự)"
@@ -19,8 +21,10 @@
     {
       "word": "勤める",
       "reading": "つとめる",
+      "han_viet": "",
       "meaning": "Làm việc (cho công ty)",
-      "type": "Động từ",
+      "type": "Verb",
+      "level": "N5",
       "example": {
         "jp": "銀行に勤めています。",
         "vn": "có (người/động vật)."
@@ -29,8 +33,10 @@
     {
       "word": "働き",
       "reading": "はたらき",
+      "han_viet": "",
       "meaning": "Công việc",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N5",
       "example": {
         "jp": "働きが多いです。",
         "vn": "là."
@@ -39,8 +45,10 @@
     {
       "word": "会社",
       "reading": "かいしゃ",
+      "han_viet": "",
       "meaning": "Công ty",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N5",
       "example": {
         "jp": "会社員です。",
         "vn": "là."
@@ -49,8 +57,10 @@
     {
       "word": "事務所",
       "reading": "じむしょ",
+      "han_viet": "",
       "meaning": "Văn phòng",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N5",
       "example": {
         "jp": "事務所で働きます。",
         "vn": "(đuôi lịch sự)"
@@ -59,8 +69,10 @@
     {
       "word": "工場",
       "reading": "こうじょう",
+      "han_viet": "",
       "meaning": "Nhà máy, xưởng",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N5",
       "example": {
         "jp": "工場で働いています。",
         "vn": "có (người/động vật)."
@@ -69,8 +81,10 @@
     {
       "word": "店",
       "reading": "みせ",
+      "han_viet": "",
       "meaning": "Cửa hàng",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N5",
       "example": {
         "jp": "店で働きます。",
         "vn": "(đuôi lịch sự)"
@@ -79,8 +93,10 @@
     {
       "word": "スーパー",
       "reading": "スーパー",
+      "han_viet": "",
       "meaning": "Siêu thị",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N5",
       "example": {
         "jp": "スーパーで買い物します。",
         "vn": "(đuôi lịch sự)"
@@ -89,8 +105,10 @@
     {
       "word": "コンビニ",
       "reading": "コンビニ",
+      "han_viet": "",
       "meaning": "Cửa hàng tiện lợi",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N5",
       "example": {
         "jp": "コンビニで働いています。",
         "vn": "có (người/động vật)."
@@ -99,8 +117,10 @@
     {
       "word": "レストラン",
       "reading": "レストラン",
+      "han_viet": "",
       "meaning": "Nhà hàng",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N5",
       "example": {
         "jp": "レストランで食事します。",
         "vn": "(đuôi lịch sự)"
@@ -109,8 +129,10 @@
     {
       "word": "カフェ",
       "reading": "カフェ",
+      "han_viet": "",
       "meaning": "Quán cà phê",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N5",
       "example": {
         "jp": "カフェで働いています。",
         "vn": "có (người/động vật)."
@@ -119,8 +141,10 @@
     {
       "word": "ホテル",
       "reading": "ホテル",
+      "han_viet": "",
       "meaning": "Khách sạn",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N5",
       "example": {
         "jp": "ホテルで働きます。",
         "vn": "(đuôi lịch sự)"
@@ -129,8 +153,10 @@
     {
       "word": "病院",
       "reading": "びょういん",
+      "han_viet": "BỆNH VIỆN",
       "meaning": "Bệnh viện",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N5",
       "example": {
         "jp": "病院で働いています。",
         "vn": "có (người/động vật)."
@@ -139,8 +165,10 @@
     {
       "word": "学校",
       "reading": "がっこう",
+      "han_viet": "HỌC HIỆU",
       "meaning": "Trường học",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N5",
       "example": {
         "jp": "学校で働きます。",
         "vn": "(đuôi lịch sự)"

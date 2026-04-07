@@ -9,8 +9,10 @@
     {
       "word": "スポーツ",
       "reading": "スポーツ",
+      "han_viet": "",
       "meaning": "Thể thao",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "スポーツが好きです。",
         "vn": "là."
@@ -19,8 +21,10 @@
     {
       "word": "運動",
       "reading": "うんどう",
+      "han_viet": "",
       "meaning": "Vận động",
-      "type": "Danh động từ",
+      "type": "Verb",
+      "level": "N4",
       "example": {
         "jp": "運動をします。",
         "vn": "(đuôi lịch sự)"
@@ -29,8 +33,10 @@
     {
       "word": "野球",
       "reading": "やきゅう",
+      "han_viet": "",
       "meaning": "Bóng chày",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "野球をします。",
         "vn": "(đuôi lịch sự)"
@@ -39,8 +45,10 @@
     {
       "word": "サッカー",
       "reading": "サッカー",
+      "han_viet": "",
       "meaning": "Bóng đá",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "サッカーが人気です。",
         "vn": "là."
@@ -49,8 +57,10 @@
     {
       "word": "バスケットボール",
       "reading": "バスケットボール",
+      "han_viet": "",
       "meaning": "Bóng rổ",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "バスケットボールをします。",
         "vn": "(đuôi lịch sự)"
@@ -59,8 +69,10 @@
     {
       "word": "バレーボール",
       "reading": "バレーボール",
+      "han_viet": "",
       "meaning": "Bóng chuyền",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "バレーボールをします。",
         "vn": "(đuôi lịch sự)"
@@ -69,8 +81,10 @@
     {
       "word": "テニス",
       "reading": "テニス",
+      "han_viet": "",
       "meaning": "Quần vợt",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "テニスをします。",
         "vn": "(đuôi lịch sự)"
@@ -79,8 +93,10 @@
     {
       "word": "バドミントン",
       "reading": "バドミントン",
+      "han_viet": "",
       "meaning": "Cầu lông",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "バドミントンをします。",
         "vn": "(đuôi lịch sự)"
@@ -89,8 +105,10 @@
     {
       "word": "卓球",
       "reading": "たっきゅう",
+      "han_viet": "",
       "meaning": "Bóng bàn",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "卓球をします。",
         "vn": "(đuôi lịch sự)"
@@ -99,8 +117,10 @@
     {
       "word": "水泳",
       "reading": "すいえい",
+      "han_viet": "",
       "meaning": "Bơi lội",
-      "type": "Danh động từ",
+      "type": "Verb",
+      "level": "N4",
       "example": {
         "jp": "水泳をします。",
         "vn": "(đuôi lịch sự)"
@@ -109,8 +129,10 @@
     {
       "word": "マラソン",
       "reading": "マラソン",
+      "han_viet": "",
       "meaning": "Marathon",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "マラソン大会に出場しました。",
         "vn": "đã (quá khứ)."
@@ -119,8 +141,10 @@
     {
       "word": "ジョギング",
       "reading": "ジョギング",
+      "han_viet": "",
       "meaning": "Chạy bộ",
-      "type": "Danh động từ",
+      "type": "Verb",
+      "level": "N4",
       "example": {
         "jp": "朝ジョギングをします。",
         "vn": "(đuôi lịch sự)"
@@ -129,8 +153,10 @@
     {
       "word": "サイクリング",
       "reading": "サイクリング",
+      "han_viet": "",
       "meaning": "Đạp xe",
-      "type": "Danh động từ",
+      "type": "Verb",
+      "level": "N4",
       "example": {
         "jp": "サイクリングを楽しみます。",
         "vn": "(đuôi lịch sự)"
@@ -139,8 +165,10 @@
     {
       "word": "ゴルフ",
       "reading": "ゴルフ",
+      "han_viet": "",
       "meaning": "Golf",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "ゴルフをします。",
         "vn": "(đuôi lịch sự)"
@@ -149,8 +177,10 @@
     {
       "word": "スキー",
       "reading": "スキー",
+      "han_viet": "",
       "meaning": "Trượt tuyết",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "スキーに行きます。",
         "vn": "(đuôi lịch sự)"
@@ -159,8 +189,10 @@
     {
       "word": "スノーボード",
       "reading": "スノーボード",
+      "han_viet": "",
       "meaning": "Ván trượt tuyết",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "スノーボードをします。",
         "vn": "(đuôi lịch sự)"
@@ -169,8 +201,10 @@
     {
       "word": "山登り",
       "reading": "やまのぼり",
+      "han_viet": "",
       "meaning": "Leo núi",
-      "type": "Danh động từ",
+      "type": "Verb",
+      "level": "N4",
       "example": {
         "jp": "山登りをします。",
         "vn": "(đuôi lịch sự)"
@@ -179,8 +213,10 @@
     {
       "word": "ジム",
       "reading": "ジム",
+      "han_viet": "",
       "meaning": "Phòng tập",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "ジムに通っています。",
         "vn": "có (người/động vật)."
@@ -189,8 +225,10 @@
     {
       "word": "トレーニング",
       "reading": "トレーニング",
+      "han_viet": "",
       "meaning": "Tập luyện",
-      "type": "Danh động từ",
+      "type": "Verb",
+      "level": "N4",
       "example": {
         "jp": "トレーニングをします。",
         "vn": "(đuôi lịch sự)"
@@ -199,8 +237,10 @@
     {
       "word": "筋トレ",
       "reading": "きんトレ",
+      "han_viet": "",
       "meaning": "Tập cơ bắp",
-      "type": "Danh động từ",
+      "type": "Verb",
+      "level": "N4",
       "example": {
         "jp": "筋トレをしています。",
         "vn": "có (người/động vật)."

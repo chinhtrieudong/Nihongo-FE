@@ -9,18 +9,22 @@
     {
       "word": "学校",
       "reading": "がっこう",
+      "han_viet": "HỌC HIỆU",
       "meaning": "Trường học",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N5",
       "example": {
         "jp": "学校へ行きます。",
-        "vn": "(đuôi lịch sự)"
+        "vn": "Đi đến trường học."
       }
     },
     {
       "word": "大学",
       "reading": "だいがく",
+      "han_viet": "",
       "meaning": "Đại học",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N5",
       "example": {
         "jp": "大学に入学しました。",
         "vn": "đã (quá khứ)."
@@ -29,8 +33,10 @@
     {
       "word": "高校",
       "reading": "こうこう",
+      "han_viet": "",
       "meaning": "Trường cấp 3",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N5",
       "example": {
         "jp": "高校を卒業しました。",
         "vn": "đã (quá khứ)."
@@ -39,8 +45,10 @@
     {
       "word": "中学校",
       "reading": "ちゅうがっこう",
+      "han_viet": "",
       "meaning": "Trường cấp 2",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N5",
       "example": {
         "jp": "中学校は近いです。",
         "vn": "là."
@@ -49,8 +57,10 @@
     {
       "word": "小学校",
       "reading": "しょうがっこう",
+      "han_viet": "",
       "meaning": "Trường cấp 1",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N5",
       "example": {
         "jp": "弟は小学校に通っています。",
         "vn": "có (người/động vật)."
@@ -59,8 +69,10 @@
     {
       "word": "幼稚園",
       "reading": "ようちえん",
+      "han_viet": "",
       "meaning": "Trường mầm non",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N5",
       "example": {
         "jp": "幼稚園の先生です。",
         "vn": "là."
@@ -69,8 +81,10 @@
     {
       "word": "教室",
       "reading": "きょうしつ",
+      "han_viet": "",
       "meaning": "Phòng học",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N5",
       "example": {
         "jp": "教室で勉強します。",
         "vn": "(đuôi lịch sự)"
@@ -79,8 +93,10 @@
     {
       "word": "図書館",
       "reading": "としょかん",
+      "han_viet": "ĐỒ THƯ QUÁN",
       "meaning": "Thư viện",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N5",
       "example": {
         "jp": "図書館で本を読みます。",
         "vn": "(đuôi lịch sự)"
@@ -89,8 +105,10 @@
     {
       "word": "体育館",
       "reading": "たいいくかん",
+      "han_viet": "",
       "meaning": "Nhà thi đấu",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N5",
       "example": {
         "jp": "体育館で運動します。",
         "vn": "(đuôi lịch sự)"
@@ -99,8 +117,10 @@
     {
       "word": "理科室",
       "reading": "りかしつ",
+      "han_viet": "",
       "meaning": "Phòng thí nghiệm",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N5",
       "example": {
         "jp": "理科室で実験します。",
         "vn": "(đuôi lịch sự)"
@@ -109,8 +129,10 @@
     {
       "word": "食堂",
       "reading": "しょくどう",
+      "han_viet": "",
       "meaning": "Nhà ăn",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N5",
       "example": {
         "jp": "食堂で昼ご飯を食べます。",
         "vn": "(đuôi lịch sự)"
@@ -119,8 +141,10 @@
     {
       "word": "校長",
       "reading": "こうちょう",
+      "han_viet": "",
       "meaning": "Hiệu trưởng",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N5",
       "example": {
         "jp": "校長先生にお会いしました。",
         "vn": "đã (quá khứ)."
@@ -129,8 +153,10 @@
     {
       "word": "入学",
       "reading": "にゅうがく",
+      "han_viet": "",
       "meaning": "Nhập học",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N5",
       "example": {
         "jp": "入学式は4月です。",
         "vn": "là."

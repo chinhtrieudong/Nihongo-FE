@@ -9,8 +9,10 @@
     {
       "word": "勤める",
       "reading": "つとめる",
+      "han_viet": "",
       "meaning": "Làm việc",
-      "type": "Động từ",
+      "type": "Verb",
+      "level": "N4",
       "example": {
         "jp": "銀行に勤めています。",
         "vn": "có (người/động vật)."
@@ -19,8 +21,10 @@
     {
       "word": "務める",
       "reading": "つとめる",
+      "han_viet": "",
       "meaning": "Đảm nhiệm",
-      "type": "Động từ",
+      "type": "Verb",
+      "level": "N4",
       "example": {
         "jp": "係長を務めています。",
         "vn": "có (người/động vật)."
@@ -29,8 +33,10 @@
     {
       "word": "就く",
       "reading": "つく",
+      "han_viet": "",
       "meaning": "Nhận chức",
-      "type": "Động từ",
+      "type": "Verb",
+      "level": "N4",
       "example": {
         "jp": "新しい職に就きました。",
         "vn": "đã (quá khứ)."
@@ -39,8 +45,10 @@
     {
       "word": "従事する",
       "reading": "じゅうじする",
+      "han_viet": "",
       "meaning": "Tham gia",
-      "type": "Động từ",
+      "type": "Verb",
+      "level": "N4",
       "example": {
         "jp": "研究に従事しています。",
         "vn": "có (người/động vật)."
@@ -49,8 +57,10 @@
     {
       "word": "従事",
       "reading": "じゅうじ",
+      "han_viet": "",
       "meaning": "Công việc",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "介護の従事者です。",
         "vn": "là."
@@ -59,8 +69,10 @@
     {
       "word": "担当",
       "reading": "たんとう",
+      "han_viet": "",
       "meaning": "Phụ trách",
-      "type": "Danh động từ",
+      "type": "Verb",
+      "level": "N4",
       "example": {
         "jp": "営業を担当しています。",
         "vn": "có (người/động vật)."
@@ -69,8 +81,10 @@
     {
       "word": "管理",
       "reading": "かんり",
+      "han_viet": "",
       "meaning": "Quản lý",
-      "type": "Danh động từ",
+      "type": "Verb",
+      "level": "N4",
       "example": {
         "jp": "在庫を管理しています。",
         "vn": "có (người/động vật)."
@@ -79,8 +93,10 @@
     {
       "word": "経営",
       "reading": "けいえい",
+      "han_viet": "",
       "meaning": "Kinh doanh",
-      "type": "Danh động từ",
+      "type": "Verb",
+      "level": "N4",
       "example": {
         "jp": "レストランを経営しています。",
         "vn": "có (người/động vật)."
@@ -89,8 +105,10 @@
     {
       "word": "出勤",
       "reading": "しゅっきん",
+      "han_viet": "",
       "meaning": "Đi làm",
-      "type": "Danh động từ",
+      "type": "Verb",
+      "level": "N4",
       "example": {
         "jp": "9時に出勤します。",
         "vn": "(đuôi lịch sự)"
@@ -99,8 +117,10 @@
     {
       "word": "退勤",
       "reading": "たいきん",
+      "han_viet": "",
       "meaning": "Tan làm",
-      "type": "Danh động từ",
+      "type": "Verb",
+      "level": "N4",
       "example": {
         "jp": "6時に退勤しました。",
         "vn": "đã (quá khứ)."
@@ -109,8 +129,10 @@
     {
       "word": "残業",
       "reading": "ざんぎょう",
+      "han_viet": "",
       "meaning": "Làm thêm giờ",
-      "type": "Danh động từ",
+      "type": "Verb",
+      "level": "N4",
       "example": {
         "jp": "残業が多いです。",
         "vn": "là."
@@ -119,8 +141,10 @@
     {
       "word": "出張",
       "reading": "しゅっちょう",
+      "han_viet": "",
       "meaning": "Công tác",
-      "type": "Danh động từ",
+      "type": "Verb",
+      "level": "N4",
       "example": {
         "jp": "大阪に出張します。",
         "vn": "(đuôi lịch sự)"
@@ -129,8 +153,10 @@
     {
       "word": "休業",
       "reading": "きゅうぎょう",
+      "han_viet": "",
       "meaning": "Nghỉ làm",
-      "type": "Danh động từ",
+      "type": "Verb",
+      "level": "N4",
       "example": {
         "jp": "祝日は休業です。",
         "vn": "là."
@@ -139,8 +165,10 @@
     {
       "word": "始業",
       "reading": "しぎょう",
+      "han_viet": "",
       "meaning": "Bắt đầu làm",
-      "type": "Danh động từ",
+      "type": "Verb",
+      "level": "N4",
       "example": {
         "jp": "始業時間は9時です。",
         "vn": "là."
@@ -149,8 +177,10 @@
     {
       "word": "終業",
       "reading": "しゅうぎょう",
+      "han_viet": "",
       "meaning": "Kết thúc làm",
-      "type": "Danh động từ",
+      "type": "Verb",
+      "level": "N4",
       "example": {
         "jp": "終業後に飲みに行きます。",
         "vn": "(đuôi lịch sự)"
@@ -159,8 +189,10 @@
     {
       "word": "業務",
       "reading": "ぎょうむ",
+      "han_viet": "",
       "meaning": "Công việc",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "業務を遂行しています。",
         "vn": "có (người/động vật)."
@@ -169,8 +201,10 @@
     {
       "word": "職務",
       "reading": "しょくむ",
+      "han_viet": "",
       "meaning": "Nhiệm vụ",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "職務を全うしています。",
         "vn": "có (người/động vật)."
@@ -179,8 +213,10 @@
     {
       "word": "能率",
       "reading": "のうりつ",
+      "han_viet": "",
       "meaning": "Hiệu suất",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "能率を上げたいです。",
         "vn": "là."
@@ -189,8 +225,10 @@
     {
       "word": "効率",
       "reading": "こうりつ",
+      "han_viet": "",
       "meaning": "Hiệu quả",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "効率良く働きます。",
         "vn": "(đuôi lịch sự)"
@@ -199,8 +237,10 @@
     {
       "word": "勤務",
       "reading": "きんむ",
+      "han_viet": "",
       "meaning": "Làm việc",
-      "type": "Danh động từ",
+      "type": "Verb",
+      "level": "N4",
       "example": {
         "jp": "夜勤務しています。",
         "vn": "có (người/động vật)."

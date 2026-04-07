@@ -9,8 +9,10 @@
     {
       "word": "入社",
       "reading": "にゅうしゃ",
+      "han_viet": "",
       "meaning": "Vào công ty",
-      "type": "Danh động từ",
+      "type": "Verb",
+      "level": "N4",
       "example": {
         "jp": "来月、入社します。",
         "vn": "(đuôi lịch sự)"
@@ -19,8 +21,10 @@
     {
       "word": "退社",
       "reading": "たいしゃ",
+      "han_viet": "",
       "meaning": "Rời công ty",
-      "type": "Danh động từ",
+      "type": "Verb",
+      "level": "N4",
       "example": {
         "jp": "6時に退社しました。",
         "vn": "đã (quá khứ)."
@@ -29,8 +33,10 @@
     {
       "word": "転職",
       "reading": "てんしょく",
+      "han_viet": "",
       "meaning": "Chuyển việc",
-      "type": "Danh động từ",
+      "type": "Verb",
+      "level": "N4",
       "example": {
         "jp": "転職を考えています。",
         "vn": "có (người/động vật)."
@@ -39,8 +45,10 @@
     {
       "word": "就職",
       "reading": "しゅうしょく",
+      "han_viet": "",
       "meaning": "Tìm việc làm",
-      "type": "Danh động từ",
+      "type": "Verb",
+      "level": "N4",
       "example": {
         "jp": "就職活動をしています。",
         "vn": "có (người/động vật)."
@@ -49,8 +57,10 @@
     {
       "word": "退職",
       "reading": "たいしょく",
+      "han_viet": "",
       "meaning": "Nghỉ việc",
-      "type": "Danh động từ",
+      "type": "Verb",
+      "level": "N4",
       "example": {
         "jp": "年末で退職します。",
         "vn": "(đuôi lịch sự)"
@@ -59,8 +69,10 @@
     {
       "word": "部署",
       "reading": "ぶしょ",
+      "han_viet": "",
       "meaning": "Bộ phận",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "新しい部署に移動しました。",
         "vn": "đã (quá khứ)."
@@ -69,8 +81,10 @@
     {
       "word": "上司",
       "reading": "じょうし",
+      "han_viet": "",
       "meaning": "Cấp trên",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "上司に相談しました。",
         "vn": "đã (quá khứ)."
@@ -79,8 +93,10 @@
     {
       "word": "部下",
       "reading": "ぶか",
+      "han_viet": "",
       "meaning": "Cấp dưới",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "部下を指導しています。",
         "vn": "có (người/động vật)."
@@ -89,8 +105,10 @@
     {
       "word": "同僚",
       "reading": "どうりょう",
+      "han_viet": "",
       "meaning": "Đồng nghiệp",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "同僚と食事に行きました。",
         "vn": "đã (quá khứ)."
@@ -99,8 +117,10 @@
     {
       "word": "取引先",
       "reading": "とりひきさき",
+      "han_viet": "",
       "meaning": "Đối tác",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "取引先と会議しました。",
         "vn": "đã (quá khứ)."
@@ -109,8 +129,10 @@
     {
       "word": "人事",
       "reading": "じんじ",
+      "han_viet": "",
       "meaning": "Nhân sự",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "人事部に届け出ました。",
         "vn": "đã (quá khứ)."
@@ -119,8 +141,10 @@
     {
       "word": "総務",
       "reading": "そうむ",
+      "han_viet": "",
       "meaning": "Tổng vụ",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "総務部で働いています。",
         "vn": "có (người/động vật)."
@@ -129,8 +153,10 @@
     {
       "word": "経理",
       "reading": "けいり",
+      "han_viet": "",
       "meaning": "Kế toán",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "経理部に所属しています。",
         "vn": "có (người/động vật)."
@@ -139,8 +165,10 @@
     {
       "word": "営業",
       "reading": "えいぎょう",
+      "han_viet": "",
       "meaning": "Kinh doanh",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "営業部で働いています。",
         "vn": "có (người/động vật)."
@@ -149,8 +177,10 @@
     {
       "word": "開発",
       "reading": "かいはつ",
+      "han_viet": "",
       "meaning": "Phát triển",
-      "type": "Danh động từ",
+      "type": "Verb",
+      "level": "N4",
       "example": {
         "jp": "新商品を開発しています。",
         "vn": "có (người/động vật)."
@@ -159,8 +189,10 @@
     {
       "word": "製造",
       "reading": "せいぞう",
+      "han_viet": "",
       "meaning": "Sản xuất",
-      "type": "Danh động từ",
+      "type": "Verb",
+      "level": "N4",
       "example": {
         "jp": "工場で製造しています。",
         "vn": "có (người/động vật)."
@@ -169,8 +201,10 @@
     {
       "word": "販売",
       "reading": "はんばい",
+      "han_viet": "",
       "meaning": "Bán hàng",
-      "type": "Danh động từ",
+      "type": "Verb",
+      "level": "N4",
       "example": {
         "jp": "全国で販売しています。",
         "vn": "có (người/động vật)."
@@ -179,8 +213,10 @@
     {
       "word": "輸入",
       "reading": "ゆにゅう",
+      "han_viet": "",
       "meaning": "Nhập khẩu",
-      "type": "Danh động từ",
+      "type": "Verb",
+      "level": "N4",
       "example": {
         "jp": "海外から輸入しています。",
         "vn": "có (người/động vật)."
@@ -189,8 +225,10 @@
     {
       "word": "輸出",
       "reading": "ゆしゅつ",
+      "han_viet": "",
       "meaning": "Xuất khẩu",
-      "type": "Danh động từ",
+      "type": "Verb",
+      "level": "N4",
       "example": {
         "jp": "世界各国に輸出しています。",
         "vn": "có (người/động vật)."
@@ -199,8 +237,10 @@
     {
       "word": "売上",
       "reading": "うりあげ",
+      "han_viet": "",
       "meaning": "Doanh thu",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "売上が伸びました。",
         "vn": "đã (quá khứ)."

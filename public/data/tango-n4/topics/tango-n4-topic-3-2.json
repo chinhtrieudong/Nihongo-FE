@@ -9,8 +9,10 @@
     {
       "word": "長所",
       "reading": "ちょうしょ",
+      "han_viet": "",
       "meaning": "Ưu điểm",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "長所を生かしています。",
         "vn": "có (người/động vật)."
@@ -19,8 +21,10 @@
     {
       "word": "強み",
       "reading": "つよみ",
+      "han_viet": "",
       "meaning": "Điểm mạnh",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "強みを活かしています。",
         "vn": "có (người/động vật)."
@@ -29,8 +33,10 @@
     {
       "word": "才能",
       "reading": "さいのう",
+      "han_viet": "",
       "meaning": "Tài năng",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "才能があります。",
         "vn": "có."
@@ -39,8 +45,10 @@
     {
       "word": "能力",
       "reading": "のうりょく",
+      "han_viet": "",
       "meaning": "Năng lực",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "能力が高いです。",
         "vn": "là."
@@ -49,8 +57,10 @@
     {
       "word": "実力",
       "reading": "じつりょく",
+      "han_viet": "",
       "meaning": "Thực lực",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "実力を発揮しました。",
         "vn": "đã (quá khứ)."
@@ -59,8 +69,10 @@
     {
       "word": "根性",
       "reading": "こんじょう",
+      "han_viet": "",
       "meaning": "Bản lĩnh",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "根性がある人です。",
         "vn": "là."
@@ -69,8 +81,10 @@
     {
       "word": "責任感",
       "reading": "せきにんかん",
+      "han_viet": "",
       "meaning": "Có trách nhiệm",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "責任感が強いです。",
         "vn": "là."
@@ -79,8 +93,10 @@
     {
       "word": "協調性",
       "reading": "きょうちょうせい",
+      "han_viet": "",
       "meaning": "Tinh thần đồng đội",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "協調性があります。",
         "vn": "có."
@@ -89,8 +105,10 @@
     {
       "word": "リーダーシップ",
       "reading": "リーダーシップ",
+      "han_viet": "",
       "meaning": "Lãnh đạo",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "リーダーシップを発揮します。",
         "vn": "(đuôi lịch sự)"
@@ -99,8 +117,10 @@
     {
       "word": "行動力",
       "reading": "こうどうりょく",
+      "han_viet": "",
       "meaning": "Năng lực hành động",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "行動力がある人です。",
         "vn": "là."
@@ -109,8 +129,10 @@
     {
       "word": "実行力",
       "reading": "じっこうりょく",
+      "han_viet": "",
       "meaning": "Năng lực thực hiện",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "実行力があります。",
         "vn": "có."
@@ -119,8 +141,10 @@
     {
       "word": "企画力",
       "reading": "きかくりょく",
+      "han_viet": "",
       "meaning": "Năng lực lập kế hoạch",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "企画力が高いです。",
         "vn": "là."
@@ -129,8 +153,10 @@
     {
       "word": "創造力",
       "reading": "そうぞうりょく",
+      "han_viet": "",
       "meaning": "Sáng tạo",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "創造力があります。",
         "vn": "có."
@@ -139,8 +165,10 @@
     {
       "word": "集中力",
       "reading": "しゅうちゅうりょく",
+      "han_viet": "",
       "meaning": "Tập trung",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "集中力が強いです。",
         "vn": "là."
@@ -149,8 +177,10 @@
     {
       "word": "忍耐力",
       "reading": "にんたいりょく",
+      "han_viet": "",
       "meaning": "Kiên nhẫn",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "忍耐力があります。",
         "vn": "có."
@@ -159,8 +189,10 @@
     {
       "word": "判断力",
       "reading": "はんだんりょく",
+      "han_viet": "",
       "meaning": "Phán đoán",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "判断力が鋭いです。",
         "vn": "là."
@@ -169,8 +201,10 @@
     {
       "word": "理解力",
       "reading": "りかいりょく",
+      "han_viet": "",
       "meaning": "Hiểu biết",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "理解力が高いです。",
         "vn": "là."
@@ -179,8 +213,10 @@
     {
       "word": "記憶力",
       "reading": "きおくりょく",
+      "han_viet": "",
       "meaning": "Trí nhớ",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "記憶力がいいです。",
         "vn": "là."
@@ -189,8 +225,10 @@
     {
       "word": "知識",
       "reading": "ちしき",
+      "han_viet": "",
       "meaning": "Kiến thức",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "知識が豊富です。",
         "vn": "là."
@@ -199,8 +237,10 @@
     {
       "word": "経験",
       "reading": "けいけん",
+      "han_viet": "",
       "meaning": "Kinh nghiệm",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "経験が豊富です。",
         "vn": "là."

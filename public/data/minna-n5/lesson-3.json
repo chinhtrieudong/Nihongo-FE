@@ -3,130 +3,120 @@
   "topic": "Địa điểm & Mua sắm",
   "vocabulary": [
     {
-      "id": "n5_l3_001",
       "word": "此処",
       "reading": "ここ",
-      "hanViet": "Thử Xứ",
+      "han_viet": "THỬ XỨ",
       "meaning": "đây, chỗ này",
-      "type": "other",
-      "category": "Từ Vựng Địa Điểm",
+      "type": "Noun",
+      "level": "N5",
       "example": {
         "jp": "此処は学校です。",
         "vn": "Đây là trường học."
       }
     },
     {
-      "id": "n5_l3_002",
       "word": "其処",
       "reading": "そこ",
-      "hanViet": "Kỳ Xứ",
+      "han_viet": "KỲ XỨ",
       "meaning": "đó, chỗ đó",
-      "type": "other",
-      "category": "Từ Vựng Địa Điểm",
+      "type": "Noun",
+      "level": "N5",
       "example": {
         "jp": "其処は郵便局です。",
         "vn": "Đó là bưu điện."
       }
     },
     {
-      "id": "n5_l3_003",
       "word": "彼処",
       "reading": "あそこ",
-      "hanViet": "Bỉ Xứ",
+      "han_viet": "BỈ XỨ",
       "meaning": "kia, chỗ kia",
-      "type": "other",
-      "category": "Từ Vựng Địa Điểm",
+      "type": "Noun",
+      "level": "N5",
       "example": {
         "jp": "彼処は銀行です。",
         "vn": "Kia là ngân hàng."
       }
     },
     {
-      "id": "n5_l3_004",
       "word": "何処",
       "reading": "どこ",
-      "hanViet": "Hà Xứ",
+      "han_viet": "HÀ XỨ",
       "meaning": "đâu, ở đâu",
-      "type": "other",
-      "category": "Từ Vựng Địa Điểm",
+      "type": "Noun",
+      "level": "N5",
       "example": {
         "jp": "郵便局は何処ですか。",
         "vn": "Bưu điện ở đâu?"
       }
     },
     {
-      "id": "n5_l3_005",
       "word": "学校",
       "reading": "がっこう",
-      "hanViet": "Học Hiệu",
+      "han_viet": "HỌC HIỆU",
       "meaning": "trường học",
-      "type": "other",
-      "category": "Từ Vựng Nơi Chốn",
+      "type": "Noun",
+      "level": "N5",
       "example": {
         "jp": "学校は彼処です。",
         "vn": "Trường học ở kia."
       }
     },
     {
-      "id": "n5_l3_006",
       "word": "郵便局",
       "reading": "ゆうびんきょく",
-      "hanViet": "Bưu Tiện Cục",
+      "han_viet": "BƯU TIỆN CỤC",
       "meaning": "bưu điện",
-      "type": "other",
-      "category": "Từ Vựng Nơi Chốn",
+      "type": "Noun",
+      "level": "N5",
       "example": {
         "jp": "郵便局は何処ですか。",
         "vn": "Bưu điện ở đâu ạ?"
       }
     },
     {
-      "id": "n5_l3_007",
       "word": "銀行",
       "reading": "ぎんこう",
-      "hanViet": "Ngân Hành",
+      "han_viet": "NGÂN HÀNH",
       "meaning": "ngân hàng",
-      "type": "other",
-      "category": "Từ Vựng Nơi Chốn",
+      "type": "Noun",
+      "level": "N5",
       "example": {
         "jp": "銀行は其処です。",
         "vn": "Ngân hàng ở đó."
       }
     },
     {
-      "id": "n5_l3_008",
       "word": "図書館",
       "reading": "としょかん",
-      "hanViet": "Đồ Thư Quán",
+      "han_viet": "ĐỒ THƯ QUÁN",
       "meaning": "thư viện",
-      "type": "other",
-      "category": "Từ Vựng Nơi Chốn",
+      "type": "Noun",
+      "level": "N5",
       "example": {
         "jp": "図書館は此処ではありません。",
         "vn": "Đây không phải là thư viện."
       }
     },
     {
-      "id": "n5_l3_009",
       "word": "病院",
       "reading": "びょういん",
-      "hanViet": "Bệnh Viện",
+      "han_viet": "BỆNH VIỆN",
       "meaning": "bệnh viện",
-      "type": "other",
-      "category": "Từ Vựng Nơi Chốn",
+      "type": "Noun",
+      "level": "N5",
       "example": {
         "jp": "病院は彼処です。",
         "vn": "Bệnh viện ở kia."
       }
     },
     {
-      "id": "n5_l3_010",
       "word": "トイレ",
       "reading": "といれ",
-      "hanViet": "",
+      "han_viet": "",
       "meaning": "nhà vệ sinh",
-      "type": "other",
-      "category": "Từ Vựng Nơi Chốn",
+      "type": "Noun",
+      "level": "N5",
       "example": {
         "jp": "トイレは何処ですか。",
         "vn": "Nhà vệ sinh ở đâu ạ?"

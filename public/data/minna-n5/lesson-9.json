@@ -3,130 +3,120 @@
   "topic": "Sở thích, Khả năng & Năng lực",
   "vocabulary": [
     {
-      "id": "n5_l9_001",
       "word": "好き",
       "reading": "すき",
-      "hanViet": "Hảo",
+      "han_viet": "HẢO",
       "meaning": "thích",
-      "type": "adjective",
-      "category": "Tính Từ な",
+      "type": "Adjective",
+      "level": "N5",
       "example": {
         "jp": "日本料理が好きです。",
         "vn": "Thích món Nhật."
       }
     },
     {
-      "id": "n5_l9_002",
       "word": "嫌い",
       "reading": "きらい",
-      "hanViet": "Hiềm",
+      "han_viet": "HIỀM",
       "meaning": "ghét, không thích",
-      "type": "adjective",
-      "category": "Tính Từ な",
+      "type": "Adjective",
+      "level": "N5",
       "example": {
         "jp": "雨が嫌いです。",
         "vn": "Ghét mưa."
       }
     },
     {
-      "id": "n5_l9_003",
       "word": "上手",
       "reading": "じょうず",
-      "hanViet": "Thượng Thủ",
+      "han_viet": "THƯỢNG THỦ",
       "meaning": "giỏi, khéo",
-      "type": "adjective",
-      "category": "Tính Từ な",
+      "type": "Adjective",
+      "level": "N5",
       "example": {
         "jp": "日本語が上手です。",
         "vn": "Giỏi tiếng Nhật."
       }
     },
     {
-      "id": "n5_l9_004",
       "word": "下手",
       "reading": "へた",
-      "hanViet": "Hạ Thủ",
+      "han_viet": "HẠ THỦ",
       "meaning": "kém, vụng",
-      "type": "adjective",
-      "category": "Tính Từ な",
+      "type": "Adjective",
+      "level": "N5",
       "example": {
         "jp": "料理が下手です。",
         "vn": "Nấu ăn kém."
       }
     },
     {
-      "id": "n5_l9_005",
       "word": "分かる",
       "reading": "わかる",
-      "hanViet": "Phân",
+      "han_viet": "PHÂN",
       "meaning": "hiểu",
-      "type": "verb",
-      "category": "Động Từ",
+      "type": "Verb",
+      "level": "N5",
       "example": {
         "jp": "日本語が分かります。",
         "vn": "Hiểu tiếng Nhật."
       }
     },
     {
-      "id": "n5_l9_006",
       "word": "出来る",
       "reading": "できる",
-      "hanViet": "Xuất Lai",
+      "han_viet": "XUẤT LAI",
       "meaning": "có thể, làm được",
-      "type": "verb",
-      "category": "Động Từ",
+      "type": "Verb",
+      "level": "N5",
       "example": {
         "jp": "漢字が書けます。",
         "vn": "Viết được chữ Hán."
       }
     },
     {
-      "id": "n5_l9_007",
       "word": "趣味",
       "reading": "しゅみ",
-      "hanViet": "Thú Vị",
+      "han_viet": "THÚ VỊ",
       "meaning": "sở thích",
-      "type": "noun",
-      "category": "Sở Thích",
+      "type": "Noun",
+      "level": "N5",
       "example": {
         "jp": "趣味は音楽です。",
         "vn": "Sở thích là âm nhạc."
       }
     },
     {
-      "id": "n5_l9_008",
       "word": "音楽",
       "reading": "おんがく",
-      "hanViet": "Âm Nhạc",
+      "han_viet": "ÂM NHẠC",
       "meaning": "âm nhạc",
-      "type": "noun",
-      "category": "Sở Thích",
+      "type": "Noun",
+      "level": "N5",
       "example": {
         "jp": "音楽を聞くのが好きです。",
         "vn": "Thích nghe nhạc."
       }
     },
     {
-      "id": "n5_l9_009",
       "word": "スポーツ",
       "reading": "すぽーつ",
-      "hanViet": "",
+      "han_viet": "",
       "meaning": "thể thao",
-      "type": "noun",
-      "category": "Sở Thích",
+      "type": "Noun",
+      "level": "N5",
       "example": {
         "jp": "スポーツが上手です。",
         "vn": "Giỏi thể thao."
       }
     },
     {
-      "id": "n5_l9_010",
       "word": "料理",
       "reading": "りょうり",
-      "hanViet": "Liêu Lý",
+      "han_viet": "LIÊU LÝ",
       "meaning": "nấu ăn",
-      "type": "noun",
-      "category": "Sở Thích",
+      "type": "Noun",
+      "level": "N5",
       "example": {
         "jp": "料理ができます。",
         "vn": "Nấu ăn được."

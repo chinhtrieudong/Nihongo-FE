@@ -3,130 +3,120 @@
   "topic": "Ngôn ngữ đời thường (Thể thông thường)",
   "vocabulary": [
     {
-      "id": "n5_l20_001",
       "word": "する",
       "reading": "する",
-      "hanViet": "",
+      "han_viet": "",
       "meaning": "làm",
-      "type": "verb",
-      "category": "Động Từ Sa Biến",
+      "type": "Verb",
+      "level": "N5",
       "example": {
         "jp": "宿題をする。",
         "vn": "Làm bài tập."
       }
     },
     {
-      "id": "n5_l20_002",
       "word": "来る",
       "reading": "くる",
-      "hanViet": "Lai",
+      "han_viet": "LAI",
       "meaning": "đến",
-      "type": "verb",
-      "category": "Động Từ Nhóm 3",
+      "type": "Verb",
+      "level": "N5",
       "example": {
         "jp": "学校に来る。",
         "vn": "Đến trường."
       }
     },
     {
-      "id": "n5_l20_003",
       "word": "勉強する",
       "reading": "べんきょうする",
-      "hanViet": "Miễn Cường",
+      "han_viet": "MIỄN CƯỜNG",
       "meaning": "học",
-      "type": "verb",
-      "category": "Động Từ Sa Biến",
+      "type": "Verb",
+      "level": "N5",
       "example": {
         "jp": "日本語を勉強する。",
         "vn": "Học tiếng Nhật."
       }
     },
     {
-      "id": "n5_l20_004",
       "word": "料理する",
       "reading": "りょうりする",
-      "hanViet": "Liêu Lý",
+      "han_viet": "LIÊU LÝ",
       "meaning": "nấu ăn",
-      "type": "verb",
-      "category": "Động Từ Sa Biến",
+      "type": "Verb",
+      "level": "N5",
       "example": {
         "jp": "料理をする。",
         "vn": "Nấu ăn."
       }
     },
     {
-      "id": "n5_l20_005",
       "word": "運動する",
       "reading": "うんどうする",
-      "hanViet": "Vận Động",
+      "han_viet": "VẬN ĐỘNG",
       "meaning": "tập thể dục",
-      "type": "verb",
-      "category": "Động Từ Sa Biến",
+      "type": "Verb",
+      "level": "N5",
       "example": {
         "jp": "運動をする。",
         "vn": "Tập thể dục."
       }
     },
     {
-      "id": "n5_l20_006",
       "word": "旅行する",
       "reading": "りょこうする",
-      "hanViet": "Lữ Hành",
+      "han_viet": "LỮ HÀNH",
       "meaning": "du lịch",
-      "type": "verb",
-      "category": "Động Từ Sa Biến",
+      "type": "Verb",
+      "level": "N5",
       "example": {
         "jp": "旅行をする。",
         "vn": "Đi du lịch."
       }
     },
     {
-      "id": "n5_l20_007",
       "word": "掃除する",
       "reading": "そうじする",
-      "hanViet": "Tảo Trừ",
+      "han_viet": "TẢO TRỪ",
       "meaning": "dọn dẹp",
-      "type": "verb",
-      "category": "Động Từ Sa Biến",
+      "type": "Verb",
+      "level": "N5",
       "example": {
         "jp": "掃除をする。",
         "vn": "Dọn dẹp."
       }
     },
     {
-      "id": "n5_l20_008",
       "word": "洗濯する",
       "reading": "せんたくする",
-      "hanViet": "Tẩy Trạc",
+      "han_viet": "TẨY TRẠC",
       "meaning": "giặt giũ",
-      "type": "verb",
-      "category": "Động Từ Sa Biến",
+      "type": "Verb",
+      "level": "N5",
       "example": {
         "jp": "洗濯をする。",
         "vn": "Giặt giũ."
       }
     },
     {
-      "id": "n5_l20_009",
       "word": "電話する",
       "reading": "でんわする",
-      "hanViet": "Điện Thoại",
+      "han_viet": "ĐIỆN THOẠI",
       "meaning": "gọi điện",
-      "type": "verb",
-      "category": "Động Từ Sa Biến",
+      "type": "Verb",
+      "level": "N5",
       "example": {
         "jp": "電話をする。",
         "vn": "Gọi điện."
       }
     },
     {
-      "id": "n5_l20_010",
       "word": "約束する",
       "reading": "やくそくする",
-      "hanViet": "Ước Thúc",
+      "han_viet": "ƯỚC THÚC",
       "meaning": "hẹn, hứa",
-      "type": "verb",
-      "category": "Động Từ Sa Biến",
+      "type": "Verb",
+      "level": "N5",
       "example": {
         "jp": "約束をする。",
         "vn": "Hẹn, hứa."

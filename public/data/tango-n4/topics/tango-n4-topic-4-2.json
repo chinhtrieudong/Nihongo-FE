@@ -9,8 +9,10 @@
     {
       "word": "悲しみ",
       "reading": "かなしみ",
+      "han_viet": "",
       "meaning": "Nỗi buồn",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "悲しみに暮れています。",
         "vn": "có (người/động vật)."
@@ -19,8 +21,10 @@
     {
       "word": "悲しい",
       "reading": "かなしい",
+      "han_viet": "",
       "meaning": "Buồn",
-      "type": "Tính từ",
+      "type": "Adjective",
+      "level": "N4",
       "example": {
         "jp": "悲しい知らせです。",
         "vn": "là."
@@ -29,8 +33,10 @@
     {
       "word": "哀しい",
       "reading": "あわれ",
+      "han_viet": "",
       "meaning": "Thương hại",
-      "type": "Tính từ",
+      "type": "Adjective",
+      "level": "N4",
       "example": {
         "jp": "哀しい物語です。",
         "vn": "là."
@@ -39,8 +45,10 @@
     {
       "word": "寂しい",
       "reading": "さびしい",
+      "han_viet": "",
       "meaning": "Cô đơn",
-      "type": "Tính từ",
+      "type": "Adjective",
+      "level": "N4",
       "example": {
         "jp": "寂しい気持ちです。",
         "vn": "là."
@@ -49,8 +57,10 @@
     {
       "word": "孤独",
       "reading": "こどく",
+      "han_viet": "",
       "meaning": "Cô độc",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "孤独を感じています。",
         "vn": "có (người/động vật)."
@@ -59,8 +69,10 @@
     {
       "word": "孤独感",
       "reading": "こどくかん",
+      "han_viet": "",
       "meaning": "Cảm giác cô đơn",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "孤独感があります。",
         "vn": "có."
@@ -69,8 +81,10 @@
     {
       "word": "不幸",
       "reading": "ふこう",
+      "han_viet": "",
       "meaning": "Bất hạnh",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "不幸な出来事でした。",
         "vn": "đã là (quá khứ)."
@@ -79,8 +93,10 @@
     {
       "word": "失望",
       "reading": "しつぼう",
+      "han_viet": "",
       "meaning": "Thất vọng",
-      "type": "Danh động từ",
+      "type": "Verb",
+      "level": "N4",
       "example": {
         "jp": "失望しました。",
         "vn": "đã (quá khứ)."
@@ -89,8 +105,10 @@
     {
       "word": "絶望",
       "reading": "ぜつぼう",
+      "han_viet": "",
       "meaning": "Tuyệt vọng",
-      "type": "Danh động từ",
+      "type": "Verb",
+      "level": "N4",
       "example": {
         "jp": "絶望しています。",
         "vn": "có (người/động vật)."
@@ -99,8 +117,10 @@
     {
       "word": "落ち込む",
       "reading": "おちこむ",
+      "han_viet": "",
       "meaning": "Chán nản",
-      "type": "Động từ",
+      "type": "Verb",
+      "level": "N4",
       "example": {
         "jp": "落ち込んでいます。",
         "vn": "có (người/động vật)."
@@ -109,8 +129,10 @@
     {
       "word": "憂鬱",
       "reading": "ゆううつ",
+      "han_viet": "",
       "meaning": "Ưu phiền",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "憂鬱な気分です。",
         "vn": "là."
@@ -119,8 +141,10 @@
     {
       "word": "苦しい",
       "reading": "くるしい",
+      "han_viet": "",
       "meaning": "Khổ sở",
-      "type": "Tính từ",
+      "type": "Adjective",
+      "level": "N4",
       "example": {
         "jp": "苦しい思いをしています。",
         "vn": "có (người/động vật)."
@@ -129,8 +153,10 @@
     {
       "word": "辛い",
       "reading": "つらい",
+      "han_viet": "",
       "meaning": "Đau khổ",
-      "type": "Tính từ",
+      "type": "Adjective",
+      "level": "N4",
       "example": {
         "jp": "辛い経験でした。",
         "vn": "đã là (quá khứ)."
@@ -139,8 +165,10 @@
     {
       "word": "悩み",
       "reading": "なやみ",
+      "han_viet": "",
       "meaning": "Phiền muộn",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "悩みがあります。",
         "vn": "có."
@@ -149,8 +177,10 @@
     {
       "word": "悩む",
       "reading": "なやむ",
+      "han_viet": "",
       "meaning": "Lo lắng",
-      "type": "Động từ",
+      "type": "Verb",
+      "level": "N4",
       "example": {
         "jp": "将来に悩んでいます。",
         "vn": "có (người/động vật)."
@@ -159,8 +189,10 @@
     {
       "word": "心配",
       "reading": "しんぱい",
+      "han_viet": "",
       "meaning": "Lo âu",
-      "type": "Danh động từ",
+      "type": "Verb",
+      "level": "N4",
       "example": {
         "jp": "心配しています。",
         "vn": "có (người/động vật)."
@@ -169,8 +201,10 @@
     {
       "word": "不安",
       "reading": "ふあん",
+      "han_viet": "",
       "meaning": "Bất an",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "不安な気持ちです。",
         "vn": "là."
@@ -179,8 +213,10 @@
     {
       "word": "後悔",
       "reading": "こうかい",
+      "han_viet": "",
       "meaning": "Hối hận",
-      "type": "Danh động từ",
+      "type": "Verb",
+      "level": "N4",
       "example": {
         "jp": "後悔しています。",
         "vn": "có (người/động vật)."
@@ -189,8 +225,10 @@
     {
       "word": "寂しがる",
       "reading": "さびしがる",
+      "han_viet": "",
       "meaning": "Cảm thấy cô đơn",
-      "type": "Động từ",
+      "type": "Verb",
+      "level": "N4",
       "example": {
         "jp": "寂しがっています。",
         "vn": "có (người/động vật)."
@@ -199,8 +237,10 @@
     {
       "word": "慰める",
       "reading": "なぐさめる",
+      "han_viet": "",
       "meaning": "An ủi",
-      "type": "Động từ",
+      "type": "Verb",
+      "level": "N4",
       "example": {
         "jp": "友達を慰めました。",
         "vn": "đã (quá khứ)."

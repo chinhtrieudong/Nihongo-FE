@@ -29,6 +29,11 @@ const VocabularyCard: React.FC<VocabularyCardProps> = ({
   const { fontPreset } = useAppSelector((state) => state.ui);
   const selectedPreset = getFontPreset(fontPreset);
 
+  const displayKanji = item.kanji || item.word || "";
+  const displayReading = item.hiragana || item.katakana || item.reading || item.word || "";
+  const displayHanViet = item.hanviet || item.han_viet || "";
+  const displayMeaning = item.meaning_vi || item.meaningVi || item.meaning || "-";
+
   // Debug log for font preset
   console.log('🔤 VocabularyCard Font Debug:', {
     fontPreset,
@@ -44,7 +49,7 @@ const VocabularyCard: React.FC<VocabularyCardProps> = ({
 
   return (
     <Card
-      key={item.id || `${item.kanji}_${item.hiragana || item.katakana}_${index}`}
+      key={item.id || `${displayKanji}_${displayReading}_${index}`}
       className="cursor-pointer hover:shadow-md transition-all duration-300 border-0 rounded-xl overflow-hidden bg-gradient-to-br from-white to-gray-50 dark:from-secondary-800 dark:to-secondary-900"
       onClick={() => onWordClick(item)}
       styles={{ body: { padding: "12px 16px" } }}
@@ -53,35 +58,32 @@ const VocabularyCard: React.FC<VocabularyCardProps> = ({
         <div className="flex-1 min-w-0">
           {/* Kanji + Reading */}
           <div className="flex items-baseline gap-2 mb-1">
-            {item.kanji ? (
+            {displayKanji ? (
               <>
-                <span 
-                  className="text-xl font-bold text-secondary-900 dark:text-secondary-100"
-                  style={{ fontFamily: selectedPreset.kanjiFontFamily || selectedPreset.fontFamily }}
-                >
-                  {item.kanji}
+                <span className="text-xl font-bold text-secondary-900 dark:text-secondary-100 kanji-text">
+                  {displayKanji}
                 </span>
-                <span className="text-sm text-secondary-500 dark:text-secondary-400">
-                  {item.hiragana || item.katakana || "-"}
+                <span className="text-sm text-secondary-500 dark:text-secondary-400 jp-text">
+                  {displayReading || "-"}
                 </span>
               </>
             ) : (
-              <span className="text-lg font-medium text-secondary-900 dark:text-secondary-100">
-                {item.hiragana || item.katakana || "-"}
+              <span className="text-lg font-medium text-secondary-900 dark:text-secondary-100 jp-text">
+                {displayReading || "-"}
               </span>
             )}
           </div>
           
           {/* Han Viet */}
-          {showHanViet && item.hanviet && (
+          {showHanViet && displayHanViet && (
             <div className="text-xs uppercase tracking-wide text-primary-600 dark:text-primary-400 font-medium mb-1">
-              {item.hanviet.toUpperCase().replace(/,/g, '')}
+              {displayHanViet.toUpperCase().replace(/,/g, '')}
             </div>
           )}
           
           {/* Meaning - Main focus */}
           <div className="text-sm font-medium text-secondary-800 dark:text-secondary-200 line-clamp-2 leading-relaxed">
-            {item.meaning_vi || '-'}
+            {displayMeaning}
           </div>
         </div>
         
@@ -92,12 +94,11 @@ const VocabularyCard: React.FC<VocabularyCardProps> = ({
           icon={<Volume2 className="w-4 h-4" />}
           onClick={(e) => {
             e.stopPropagation();
-            const hiraKanaText = item.hiragana || item.katakana || '';
-            if (hiraKanaText) {
-              handlePlayAudio(hiraKanaText, e);
+            if (displayReading) {
+              handlePlayAudio(displayReading, e);
             }
           }}
-          disabled={!item.hiragana && !item.katakana}
+          disabled={!displayReading}
           size="small"
           className="flex-shrink-0 shadow-sm"
         />

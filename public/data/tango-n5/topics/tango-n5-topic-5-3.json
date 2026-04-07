@@ -9,8 +9,10 @@
     {
       "word": "米",
       "reading": "こめ",
+      "han_viet": "",
       "meaning": "Gạo",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N5",
       "example": {
         "jp": "米を買いました。",
         "vn": "đã (quá khứ)."
@@ -19,8 +21,10 @@
     {
       "word": "ご飯",
       "reading": "ごはん",
+      "han_viet": "",
       "meaning": "Cơm, bữa ăn",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N5",
       "example": {
         "jp": "ご飯を食べます。",
         "vn": "(đuôi lịch sự)"
@@ -29,8 +33,10 @@
     {
       "word": "パン",
       "reading": "パン",
+      "han_viet": "",
       "meaning": "Bánh mì",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N5",
       "example": {
         "jp": "パンを食べます。",
         "vn": "(đuôi lịch sự)"
@@ -39,8 +45,10 @@
     {
       "word": "麺",
       "reading": "めん",
+      "han_viet": "",
       "meaning": "Mì, sợi",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N5",
       "example": {
         "jp": "麺類が好きです。",
         "vn": "là."
@@ -49,8 +57,10 @@
     {
       "word": "うどん",
       "reading": "うどん",
+      "han_viet": "",
       "meaning": "Mì udon",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N5",
       "example": {
         "jp": "うどんを食べます。",
         "vn": "(đuôi lịch sự)"
@@ -59,8 +69,10 @@
     {
       "word": "そば",
       "reading": "そば",
+      "han_viet": "",
       "meaning": "Mì soba",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N5",
       "example": {
         "jp": "そばが好きです。",
         "vn": "là."
@@ -69,8 +81,10 @@
     {
       "word": "ラーメン",
       "reading": "ラーメン",
+      "han_viet": "",
       "meaning": "Mì ramen",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N5",
       "example": {
         "jp": "ラーメンを食べます。",
         "vn": "(đuôi lịch sự)"
@@ -79,8 +93,10 @@
     {
       "word": "肉",
       "reading": "にく",
+      "han_viet": "",
       "meaning": "Thịt",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N5",
       "example": {
         "jp": "肉を焼きます。",
         "vn": "(đuôi lịch sự)"
@@ -89,8 +105,10 @@
     {
       "word": "牛肉",
       "reading": "ぎゅうにく",
+      "han_viet": "",
       "meaning": "Thịt bò",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N5",
       "example": {
         "jp": "牛肉が好きです。",
         "vn": "là."
@@ -99,8 +117,10 @@
     {
       "word": "豚肉",
       "reading": "ぶたにく",
+      "han_viet": "",
       "meaning": "Thịt heo",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N5",
       "example": {
         "jp": "豚肉を買いました。",
         "vn": "đã (quá khứ)."
@@ -109,8 +129,10 @@
     {
       "word": "鶏肉",
       "reading": "とりにく",
+      "han_viet": "",
       "meaning": "Thịt gà",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N5",
       "example": {
         "jp": "鶏肉を煮ます。",
         "vn": "(đuôi lịch sự)"
@@ -119,8 +141,10 @@
     {
       "word": "魚",
       "reading": "さかな",
+      "han_viet": "",
       "meaning": "Cá",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N5",
       "example": {
         "jp": "魚を焼きます。",
         "vn": "(đuôi lịch sự)"
@@ -129,8 +153,10 @@
     {
       "word": "野菜",
       "reading": "やさい",
+      "han_viet": "",
       "meaning": "Rau",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N5",
       "example": {
         "jp": "野菜を食べます。",
         "vn": "(đuôi lịch sự)"
@@ -139,8 +165,10 @@
     {
       "word": "果物",
       "reading": "くだもの",
+      "han_viet": "",
       "meaning": "Hoa quả",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N5",
       "example": {
         "jp": "果物が好きです。",
         "vn": "là."
@@ -149,8 +177,10 @@
     {
       "word": "豆腐",
       "reading": "とうふ",
+      "han_viet": "",
       "meaning": "Đậu phụ",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N5",
       "example": {
         "jp": "豆腐を食べます。",
         "vn": "(đuôi lịch sự)"

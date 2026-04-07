@@ -9,8 +9,10 @@
     {
       "word": "町",
       "reading": "まち",
+      "han_viet": "",
       "meaning": "Thị trấn, phố",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N5",
       "example": {
         "jp": "町がにぎやかです。",
         "vn": "là."
@@ -19,8 +21,10 @@
     {
       "word": "市",
       "reading": "し",
+      "han_viet": "",
       "meaning": "Thành phố",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N5",
       "example": {
         "jp": "京都市です。",
         "vn": "là."
@@ -29,8 +33,10 @@
     {
       "word": "村",
       "reading": "むら",
+      "han_viet": "",
       "meaning": "Làng",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N5",
       "example": {
         "jp": "村に住んでいます。",
         "vn": "có (người/động vật)."
@@ -39,8 +45,10 @@
     {
       "word": "駅",
       "reading": "えき",
+      "han_viet": "DỊCH",
       "meaning": "Ga, nhà ga",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N5",
       "example": {
         "jp": "駅まで行きます。",
         "vn": "(đuôi lịch sự)"
@@ -49,8 +57,10 @@
     {
       "word": "銀行",
       "reading": "ぎんこう",
+      "han_viet": "NGÂN HÀNH",
       "meaning": "Ngân hàng",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N5",
       "example": {
         "jp": "銀行でお金を引き出します。",
         "vn": "(đuôi lịch sự)"
@@ -59,8 +69,10 @@
     {
       "word": "郵便局",
       "reading": "ゆうびんきょく",
+      "han_viet": "BƯU TIỆN CỤC",
       "meaning": "Bưu điện",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N5",
       "example": {
         "jp": "郵便局で手紙を出します。",
         "vn": "(đuôi lịch sự)"
@@ -69,8 +81,10 @@
     {
       "word": "図書館",
       "reading": "としょかん",
+      "han_viet": "ĐỒ THƯ QUÁN",
       "meaning": "Thư viện",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N5",
       "example": {
         "jp": "図書館で本を借ります。",
         "vn": "(đuôi lịch sự)"
@@ -79,8 +93,10 @@
     {
       "word": "博物館",
       "reading": "はくぶつかん",
+      "han_viet": "",
       "meaning": "Bảo tàng",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N5",
       "example": {
         "jp": "博物館を見学します。",
         "vn": "(đuôi lịch sự)"
@@ -89,8 +105,10 @@
     {
       "word": "美術館",
       "reading": "びじゅつかん",
+      "han_viet": "",
       "meaning": "Bảo tàng mỹ thuật",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N5",
       "example": {
         "jp": "美術館へ行きます。",
         "vn": "(đuôi lịch sự)"
@@ -99,8 +117,10 @@
     {
       "word": "動物園",
       "reading": "どうぶつえん",
+      "han_viet": "",
       "meaning": "Vườn thú",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N5",
       "example": {
         "jp": "動物園で動物を見ます。",
         "vn": "(đuôi lịch sự)"
@@ -109,8 +129,10 @@
     {
       "word": "植物園",
       "reading": "しょくぶつえん",
+      "han_viet": "",
       "meaning": "Vườn thực vật",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N5",
       "example": {
         "jp": "植物園へ行きます。",
         "vn": "(đuôi lịch sự)"
@@ -119,8 +141,10 @@
     {
       "word": "遊園地",
       "reading": "ゆうえんち",
+      "han_viet": "",
       "meaning": "Công viên giải trí",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N5",
       "example": {
         "jp": "遊園地で遊びます。",
         "vn": "(đuôi lịch sự)"
@@ -129,8 +153,10 @@
     {
       "word": "水族館",
       "reading": "すいぞくかん",
+      "han_viet": "",
       "meaning": "Thủy cung",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N5",
       "example": {
         "jp": "水族館で魚を見ます。",
         "vn": "(đuôi lịch sự)"
@@ -139,8 +165,10 @@
     {
       "word": "商店街",
       "reading": "しょうてんがい",
+      "han_viet": "",
       "meaning": "Phố mua sắm",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N5",
       "example": {
         "jp": "商店街で買い物します。",
         "vn": "(đuôi lịch sự)"

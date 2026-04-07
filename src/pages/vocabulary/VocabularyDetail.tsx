@@ -16,6 +16,35 @@ import type { VocabularyItem as LegacyVocabularyItem } from "../../types/lesson"
 
 const { Title, Text } = Typography;
 
+const escapeRegExp = (value: string) => value.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+
+const highlightExample = (example: string, item: Pick<VocabularyItem, "kanji" | "hiragana">): React.ReactNode => {
+  const query = (item.kanji || "").trim() || (item.hiragana || "").trim();
+  if (!query) return example;
+
+  const re = new RegExp(escapeRegExp(query), "g");
+  if (!re.test(example)) return example;
+
+  const parts = example.split(re);
+  const matches = example.match(re) || [];
+
+  const highlighted = [];
+  for (let i = 0; i < parts.length; i++) {
+    highlighted.push(parts[i]);
+    if (i < matches.length) {
+      highlighted.push(
+        <mark
+          key={`${i}-${matches[i]}`}
+          className="rounded px-1 font-semibold bg-yellow-200/80 text-text-main dark:bg-yellow-500/20"
+        >
+          {matches[i]}
+        </mark>,
+      );
+    }
+  }
+  return <>{highlighted}</>;
+};
+
 // Convert new items to legacy format for flashcard compatibility
 const toLegacyItems = (items: VocabularyItem[]): LegacyVocabularyItem[] => {
   return items.map(toLegacyVocabularyItem);
@@ -47,15 +76,32 @@ const VocabularyDetail: React.FC = () => {
   const [isFlipped, setIsFlipped] = useState(false);
   const [isStudyComplete, setIsStudyComplete] = useState(false);
   const [shuffledCards, setShuffledCards] = useState<VocabularyItem[]>([]);
+  const [flashcardBaseCards, setFlashcardBaseCards] = useState<VocabularyItem[]>([]);
+  const lessonKey = `${textbookId || ""}::${lessonNum}`;
+  const [flashcardLessonKey, setFlashcardLessonKey] = useState<string>("");
   type SessionStatus = "unanswered" | "known" | "unknown";
   const [cardStatus, setCardStatus] = useState<Record<string, SessionStatus>>({});
+
+  // Reset flashcard state when navigating between lessons/textbooks
+  useEffect(() => {
+    setShowFlashcard(false);
+    setFlashcardBaseCards([]);
+    setShuffledCards([]);
+    setFlashcardLessonKey("");
+    setCardStatus({});
+    setCurrentCardIndex(0);
+    setIsFlipped(false);
+    setIsStudyComplete(false);
+  }, [textbookId, lessonNum]);
 
   // Convert to legacy format for flashcard component
   const legacyItems = useMemo(() => toLegacyItems(vocabularyItems), [vocabularyItems]);
   const cardsToStudy = useMemo(() => {
-    if (shuffledCards.length > 0) return toLegacyItems(shuffledCards);
-    return legacyItems;
-  }, [shuffledCards, legacyItems]);
+    const inScope = flashcardLessonKey === "" || flashcardLessonKey === lessonKey;
+    const base = inScope && flashcardBaseCards.length > 0 ? flashcardBaseCards : vocabularyItems;
+    const active = inScope && shuffledCards.length > 0 ? shuffledCards : base;
+    return toLegacyItems(active);
+  }, [flashcardBaseCards, shuffledCards, vocabularyItems, flashcardLessonKey, lessonKey]);
 
   const currentCard = cardsToStudy[currentCardIndex];
 
@@ -76,6 +122,16 @@ const VocabularyDetail: React.FC = () => {
   const totalCount = cardsToStudy.length;
   const knownCount = sessionKnownCount;
   const unknownCount = sessionUnknownCount;
+  const accuracyPercent = useMemo(() => {
+    if (!totalCount) return 0;
+    return Math.round((knownCount / totalCount) * 100);
+  }, [knownCount, totalCount]);
+
+  const unknownItems = useMemo(() => {
+    const source = flashcardBaseCards.length > 0 ? flashcardBaseCards : vocabularyItems;
+    const ids = new Set(Object.entries(cardStatus).filter(([, s]) => s === "unknown").map(([id]) => id));
+    return source.filter((i) => ids.has(i.id));
+  }, [cardStatus, flashcardBaseCards, vocabularyItems]);
 
   const flipCard = useCallback(() => {
     setIsFlipped((prev) => !prev);
@@ -93,16 +149,21 @@ const VocabularyDetail: React.FC = () => {
   }, [currentCard, currentCardIndex, cardsToStudy.length]);
 
   const shuffleCards = useCallback(() => {
-    const shuffled = [...vocabularyItems].sort(() => Math.random() - 0.5);
+    // Always shuffle within the current lesson scope
+    setFlashcardLessonKey(lessonKey);
+    const base = flashcardBaseCards.length > 0 ? flashcardBaseCards : vocabularyItems;
+    const shuffled = [...base].sort(() => Math.random() - 0.5);
     setShuffledCards(shuffled);
     setCurrentCardIndex(0);
     setIsFlipped(false);
-  }, [vocabularyItems]);
+  }, [flashcardBaseCards, vocabularyItems, lessonKey]);
 
   const resetStudySession = useCallback((mode: "all" | "unremembered" = "all") => {
+    setFlashcardLessonKey(lessonKey);
+    const base = flashcardBaseCards.length > 0 ? flashcardBaseCards : vocabularyItems;
     const cardsToUse = mode === "unremembered"
-      ? vocabularyItems.filter((card: VocabularyItem) => cardStatus[card.id] === "unknown")
-      : vocabularyItems;
+      ? base.filter((card: VocabularyItem) => cardStatus[card.id] === "unknown")
+      : base;
     const shuffled = [...cardsToUse].sort(() => Math.random() - 0.5);
     const resetStatus: Record<string, SessionStatus> = {};
     cardsToUse.forEach((c: VocabularyItem) => (resetStatus[c.id] = "unanswered"));
@@ -111,12 +172,25 @@ const VocabularyDetail: React.FC = () => {
     setCurrentCardIndex(0);
     setIsFlipped(false);
     setIsStudyComplete(false);
-  }, [vocabularyItems, cardStatus]);
+  }, [flashcardBaseCards, vocabularyItems, cardStatus, lessonKey]);
 
   const startFlashcard = useCallback(() => {
     const items = vocabularyItems;
-    const shuffled = [...items].sort(() => Math.random() - 0.5);
-    setShuffledCards(shuffled);
+    // Snapshot the exact list shown for this lesson
+    setFlashcardBaseCards(items);
+    setFlashcardLessonKey(lessonKey);
+
+    // Don't reshuffle every time user opens flashcard.
+    // Only shuffle if we don't already have a valid shuffled list for this lesson's items.
+    const hasSameSet =
+      shuffledCards.length === items.length &&
+      shuffledCards.every((c) => items.some((i) => i.id === c.id));
+
+    if (!hasSameSet) {
+      const shuffled = [...items].sort(() => Math.random() - 0.5);
+      setShuffledCards(shuffled);
+    }
+
     const initialStatus: Record<string, SessionStatus> = {};
     items.forEach((item: VocabularyItem) => (initialStatus[item.id] = "unanswered"));
     setCardStatus(initialStatus);
@@ -124,7 +198,7 @@ const VocabularyDetail: React.FC = () => {
     setIsFlipped(false);
     setIsStudyComplete(false);
     setShowFlashcard(true);
-  }, [vocabularyItems]);
+  }, [vocabularyItems, shuffledCards, lessonKey]);
 
   const closeFlashcard = useCallback(() => {
     setShowFlashcard(false);
@@ -211,8 +285,12 @@ const VocabularyDetail: React.FC = () => {
               {/* Main Word Section */}
               <div className="flex items-start gap-3">
                 {/* Left Content: Kanji + HanViet */}
-                <div className="flex-[0.3] text-center">
-                  <Text className="text-2xl font-bold text-text-main block">
+                <div
+                  className={`flex-[0.3] text-center flex flex-col items-center h-16 ${
+                    item.hanViet ? "justify-start" : "justify-center"
+                  }`}
+                >
+                  <Text className="text-2xl font-bold text-text-main block kanji-text">
                     {item.kanji || item.hiragana}
                   </Text>
                   {item.hanViet && (
@@ -227,7 +305,7 @@ const VocabularyDetail: React.FC = () => {
 
                 {/* Right Content: Hiragana + Meaning */}
                 <div className="flex-[0.7]">
-                  <Text className="text-lg text-blue-500 font-medium block">
+                  <Text className="text-lg text-blue-500 font-medium block jp-text">
                     {item.hiragana}
                   </Text>
                   <Text className="text-lg text-text-main block mt-1">
@@ -237,14 +315,14 @@ const VocabularyDetail: React.FC = () => {
 
                 {/* Actions */}
                 <div className="flex items-center gap-1 flex-shrink-0">
+                  <button className="p-2 rounded-lg text-text-sub hover:text-yellow-500 hover:bg-yellow-500/10 transition-colors">
+                    <Star className="w-4 h-4" />
+                  </button>
                   <button
                     onClick={() => speakText(item.hiragana)}
                     className="p-2 rounded-lg text-text-sub hover:text-blue-500 hover:bg-blue-500/10 transition-colors"
                   >
                     <Volume2 className="w-4 h-4" />
-                  </button>
-                  <button className="p-2 rounded-lg text-text-sub hover:text-yellow-500 hover:bg-yellow-500/10 transition-colors">
-                    <Star className="w-4 h-4" />
                   </button>
                 </div>
               </div>
@@ -254,11 +332,11 @@ const VocabularyDetail: React.FC = () => {
                 <div className="mt-3 pt-3" style={{ borderTop: '1px solid rgba(148, 163, 184, 0.25)' }}>
                   <div className="flex items-start justify-between gap-2">
                     <div className="flex-1">
-                      <Text className="text-text-main text-base block leading-relaxed tracking-wide">
-                        {item.example}
+                      <Text className="text-text-main text-base block leading-relaxed tracking-wide jp-text">
+                        {highlightExample(item.example, item)}
                       </Text>
                       {item.exampleMeaning && (
-                        <Text className="text-text-sub text-sm mt-1 block">
+                        <Text className="text-text-sub text-base mt-1 block">
                           {item.exampleMeaning}
                         </Text>
                       )}
@@ -345,6 +423,7 @@ const VocabularyDetail: React.FC = () => {
             border-radius: 12px;
             padding: 4px;
             margin-bottom: 16px;
+            box-shadow: 0 10px 24px rgba(15, 23, 42, 0.10);
           }
           .vocabulary-tabs .ant-tabs-nav::before {
             border-bottom: none;
@@ -369,6 +448,7 @@ const VocabularyDetail: React.FC = () => {
           }
           .dark .vocabulary-tabs .ant-tabs-nav {
             background: #1e293b;
+            box-shadow: 0 12px 28px rgba(0, 0, 0, 0.45);
           }
           .dark .vocabulary-tabs .ant-tabs-tab:hover {
             background: rgba(255,255,255,0.1);
@@ -451,7 +531,7 @@ const VocabularyDetail: React.FC = () => {
                         </div>
                         <Statistic
                           value={totalCount}
-                          valueStyle={{ color: "#93c5fd" }}
+                          styles={{ content: { color: "#93c5fd" } }}
                           className="text-white"
                         />
                       </div>
@@ -464,7 +544,7 @@ const VocabularyDetail: React.FC = () => {
                         </div>
                         <Statistic
                           value={knownCount}
-                          valueStyle={{ color: "#86efac" }}
+                          styles={{ content: { color: "#86efac" } }}
                           prefix={
                             <CheckCircle className="w-4 h-4" style={{ color: "#86efac" }} />
                           }
@@ -480,7 +560,7 @@ const VocabularyDetail: React.FC = () => {
                         </div>
                         <Statistic
                           value={unknownCount}
-                          valueStyle={{ color: "#fca5a5" }}
+                          styles={{ content: { color: "#fca5a5" } }}
                           prefix={
                             <XCircle className="w-4 h-4" style={{ color: "#fca5a5" }} />
                           }
@@ -489,6 +569,57 @@ const VocabularyDetail: React.FC = () => {
                       </div>
                     </Col>
                   </Row>
+
+                  <div className="mt-4">
+                    <div className="inline-flex items-center gap-2 rounded-full border border-slate-600/60 bg-white/5 px-4 py-2 text-sm text-white/90">
+                      <span className="font-semibold">Độ nhớ</span>
+                      <span className="text-white/50">•</span>
+                      <span className="font-bold" style={{ color: accuracyPercent >= 80 ? "#86efac" : accuracyPercent >= 50 ? "#93c5fd" : "#fca5a5" }}>
+                        {accuracyPercent}%
+                      </span>
+                    </div>
+                  </div>
+
+                  {unknownItems.length > 0 && (
+                    <div className="mt-5 text-left">
+                      <div className="text-xs uppercase tracking-wide text-white/60 mb-2">
+                        Từ chưa nhớ ({unknownItems.length})
+                      </div>
+                      <div className="max-h-44 overflow-auto rounded-xl border border-slate-600/60 bg-white/5">
+                        {unknownItems.slice(0, 12).map((it) => (
+                          <div
+                            key={it.id}
+                            className="flex items-center justify-between gap-3 px-4 py-3 border-b border-slate-600/40 last:border-b-0"
+                          >
+                            <div className="min-w-0">
+                              <div className="text-base font-semibold text-white kanji-text truncate">
+                                {it.kanji || it.hiragana}
+                              </div>
+                              <div className="text-sm text-white/70 jp-text truncate">
+                                {it.hiragana}
+                              </div>
+                              <div className="text-sm text-white/80 truncate">
+                                {it.meaning}
+                              </div>
+                            </div>
+                            <button
+                              type="button"
+                              onClick={() => speakText(it.hiragana)}
+                              className="p-2 rounded-lg text-white/70 hover:text-white hover:bg-white/10 transition-colors flex-shrink-0"
+                              aria-label="Phát âm"
+                            >
+                              <Volume2 className="w-4 h-4" />
+                            </button>
+                          </div>
+                        ))}
+                        {unknownItems.length > 12 && (
+                          <div className="px-4 py-2 text-xs text-white/60">
+                            Và {unknownItems.length - 12} từ nữa…
+                          </div>
+                        )}
+                      </div>
+                    </div>
+                  )}
                 </div>
 
                 <div className="flex items-center justify-center pt-0">

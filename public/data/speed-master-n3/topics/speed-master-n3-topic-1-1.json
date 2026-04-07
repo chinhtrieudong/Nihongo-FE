@@ -9,8 +9,10 @@
     {
       "word": "親類",
       "reading": "しんるい",
+      "han_viet": "",
       "meaning": "Bà con, họ hàng",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N3",
       "example": {
         "jp": "親類一同集まりました。",
         "vn": "đã (quá khứ)."
@@ -19,8 +21,10 @@
     {
       "word": "同棲",
       "reading": "どうせい",
+      "han_viet": "",
       "meaning": "Sống chung (chưa kết hôn)",
-      "type": "Danh động từ",
+      "type": "Verb",
+      "level": "N3",
       "example": {
         "jp": "彼と同棲しています。",
         "vn": "có (người/động vật)."
@@ -29,8 +33,10 @@
     {
       "word": "世帯",
       "reading": "せたい",
+      "han_viet": "",
       "meaning": "Hộ gia đình",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N3",
       "example": {
         "jp": "この地域の世帯数は増えた。",
         "vn": ""
@@ -39,8 +45,10 @@
     {
       "word": "生計",
       "reading": "せいけい",
+      "han_viet": "",
       "meaning": "Kế sinh nhai",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N3",
       "example": {
         "jp": "生計を立てるのが大変だ。",
         "vn": ""
@@ -49,8 +57,10 @@
     {
       "word": "扶養",
       "reading": "ふよう",
+      "han_viet": "",
       "meaning": "Nuôi dưỡng (người phụ thuộc)",
-      "type": "Danh động từ",
+      "type": "Verb",
+      "level": "N3",
       "example": {
         "jp": "家族を扶養している。",
         "vn": ""
@@ -59,8 +69,10 @@
     {
       "word": "同居",
       "reading": "どうきょ",
+      "han_viet": "",
       "meaning": "Sống chung",
-      "type": "Danh động từ",
+      "type": "Verb",
+      "level": "N3",
       "example": {
         "jp": "両親と同居しています。",
         "vn": "có (người/động vật)."
@@ -69,8 +81,10 @@
     {
       "word": "別居",
       "reading": "べっきょ",
+      "han_viet": "",
       "meaning": "Sống riêng",
-      "type": "Danh động từ",
+      "type": "Verb",
+      "level": "N3",
       "example": {
         "jp": "夫と別居しています。",
         "vn": "có (người/động vật)."
@@ -79,8 +93,10 @@
     {
       "word": "遺産",
       "reading": "いさん",
+      "han_viet": "",
       "meaning": "Di sản",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N3",
       "example": {
         "jp": "祖父の遺産を相続した。",
         "vn": ""
@@ -89,8 +105,10 @@
     {
       "word": "相続",
       "reading": "そうぞく",
+      "han_viet": "",
       "meaning": "Thừa kế",
-      "type": "Danh động từ",
+      "type": "Verb",
+      "level": "N3",
       "example": {
         "jp": "財産を相続しました。",
         "vn": "đã (quá khứ)."
@@ -99,8 +117,10 @@
     {
       "word": "遺言",
       "reading": "ゆいごん",
+      "han_viet": "",
       "meaning": "Di chúc",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N3",
       "example": {
         "jp": "遺言書を残しました。",
         "vn": "đã (quá khứ)."

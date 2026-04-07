@@ -203,7 +203,7 @@ const Home: React.FC = () => {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 {levelSections.map((section) => (
                   <CourseCard
-                    key={section.id}
+                    key={section.id || `${section.textbook}-${section.level}-${section.label}`}
                     title={section.label}
                     description={section.description}
                     lessonCount={section.lessons.length}
@@ -220,7 +220,7 @@ const Home: React.FC = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {sections.map((section) => (
               <CourseCard
-                key={section.id}
+                key={section.id || `${section.textbook}-${section.level}-${section.label}`}
                 title={section.label}
                 description={section.description}
                 lessonCount={section.lessons.length}

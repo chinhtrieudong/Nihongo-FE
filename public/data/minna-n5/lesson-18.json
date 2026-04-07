@@ -3,130 +3,120 @@
   "topic": "Khả năng & Sở thích (Thể từ điển)",
   "vocabulary": [
     {
-      "id": "n5_l18_001",
       "word": "話せる",
       "reading": "はなせる",
-      "hanViet": "Thoại",
+      "han_viet": "THOẠI",
       "meaning": "có thể nói",
-      "type": "verb",
-      "category": "Thể Tiềm Năng",
+      "type": "Verb",
+      "level": "N5",
       "example": {
         "jp": "日本語が話せる。",
         "vn": "Có thể nói tiếng Nhật."
       }
     },
     {
-      "id": "n5_l18_002",
       "word": "読める",
       "reading": "よめる",
-      "hanViet": "Độc",
+      "han_viet": "ĐỘC",
       "meaning": "có thể đọc",
-      "type": "verb",
-      "category": "Thể Tiềm Năng",
+      "type": "Verb",
+      "level": "N5",
       "example": {
         "jp": "漢字が読める。",
         "vn": "Có thể đọc chữ Hán."
       }
     },
     {
-      "id": "n5_l18_003",
       "word": "書ける",
       "reading": "かける",
-      "hanViet": "Thư",
+      "han_viet": "THƯ",
       "meaning": "có thể viết",
-      "type": "verb",
-      "category": "Thể Tiềm Năng",
+      "type": "Verb",
+      "level": "N5",
       "example": {
         "jp": "漢字が書ける。",
         "vn": "Có thể viết chữ Hán."
       }
     },
     {
-      "id": "n5_l18_004",
       "word": "泳げる",
       "reading": "およげる",
-      "hanViet": "Vịnh",
+      "han_viet": "VỊNH",
       "meaning": "có thể bơi",
-      "type": "verb",
-      "category": "Thể Tiềm Năng",
+      "type": "Verb",
+      "level": "N5",
       "example": {
         "jp": "泳げる。",
         "vn": "Có thể bơi."
       }
     },
     {
-      "id": "n5_l18_005",
       "word": "来れる",
       "reading": "こられる",
-      "hanViet": "Lai",
+      "han_viet": "LAI",
       "meaning": "có thể đến",
-      "type": "verb",
-      "category": "Thể Tiềm Năng",
+      "type": "Verb",
+      "level": "N5",
       "example": {
         "jp": "明日来れる。",
         "vn": "Ngày mai có thể đến."
       }
     },
     {
-      "id": "n5_l18_006",
       "word": "起きる",
       "reading": "おきる",
-      "hanViet": "Khởi",
+      "han_viet": "KHỞI",
       "meaning": "thức dậy",
-      "type": "verb",
-      "category": "Động Từ Nhóm 2",
+      "type": "Verb",
+      "level": "N5",
       "example": {
         "jp": "六時に起きる。",
         "vn": "Thức dậy lúc 6 giờ."
       }
     },
     {
-      "id": "n5_l18_007",
       "word": "寝る",
       "reading": "ねる",
-      "hanViet": "Thẩm",
+      "han_viet": "THẨM",
       "meaning": "ngủ",
-      "type": "verb",
-      "category": "Động Từ Nhóm 2",
+      "type": "Verb",
+      "level": "N5",
       "example": {
         "jp": "十一時に寝る。",
         "vn": "Ngủ lúc 11 giờ."
       }
     },
     {
-      "id": "n5_l18_008",
       "word": "見える",
       "reading": "みえる",
-      "hanViet": "Kiến",
+      "han_viet": "KIẾN",
       "meaning": "nhìn thấy",
-      "type": "verb",
-      "category": "Động Từ Nhóm 2",
+      "type": "Verb",
+      "level": "N5",
       "example": {
         "jp": "山が見える。",
         "vn": "Nhìn thấy núi."
       }
     },
     {
-      "id": "n5_l18_009",
       "word": "開ける",
       "reading": "あける",
-      "hanViet": "Khai",
+      "han_viet": "KHAI",
       "meaning": "mở",
-      "type": "verb",
-      "category": "Động Từ Nhóm 2",
+      "type": "Verb",
+      "level": "N5",
       "example": {
         "jp": "ドアを開ける。",
         "vn": "Mở cửa."
       }
     },
     {
-      "id": "n5_l18_010",
       "word": "閉める",
       "reading": "しめる",
-      "hanViet": "Bế",
+      "han_viet": "BẾ",
       "meaning": "đóng",
-      "type": "verb",
-      "category": "Động Từ Nhóm 2",
+      "type": "Verb",
+      "level": "N5",
       "example": {
         "jp": "ドアを閉める。",
         "vn": "Đóng cửa."

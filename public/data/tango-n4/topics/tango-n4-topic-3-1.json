@@ -9,8 +9,10 @@
     {
       "word": "性格",
       "reading": "せいかく",
+      "han_viet": "",
       "meaning": "Tính cách",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "性格が明るいです。",
         "vn": "là."
@@ -19,8 +21,10 @@
     {
       "word": "明るい",
       "reading": "あかるい",
+      "han_viet": "",
       "meaning": "Vui vẻ",
-      "type": "Tính từ",
+      "type": "Adjective",
+      "level": "N4",
       "example": {
         "jp": "明るい性格です。",
         "vn": "là."
@@ -29,8 +33,10 @@
     {
       "word": "暗い",
       "reading": "くらい",
+      "han_viet": "",
       "meaning": "Buồn bã",
-      "type": "Tính từ",
+      "type": "Adjective",
+      "level": "N4",
       "example": {
         "jp": "少し暗い性格です。",
         "vn": "là."
@@ -39,8 +45,10 @@
     {
       "word": "活発",
       "reading": "かっぱつ",
+      "han_viet": "",
       "meaning": "Năng động",
-      "type": "Tính từ",
+      "type": "Adjective",
+      "level": "N4",
       "example": {
         "jp": "活発な性格です。",
         "vn": "là."
@@ -49,8 +57,10 @@
     {
       "word": "積極的",
       "reading": "せっきょくてき",
+      "han_viet": "",
       "meaning": "Tích cực",
-      "type": "Tính từ",
+      "type": "Adjective",
+      "level": "N4",
       "example": {
         "jp": "積極的な人です。",
         "vn": "là."
@@ -59,8 +69,10 @@
     {
       "word": "消極的",
       "reading": "しょうきょくてき",
+      "han_viet": "",
       "meaning": "Tiêu cực",
-      "type": "Tính từ",
+      "type": "Adjective",
+      "level": "N4",
       "example": {
         "jp": "消極的な性格です。",
         "vn": "là."
@@ -69,8 +81,10 @@
     {
       "word": "外向的",
       "reading": "がいこうてき",
+      "han_viet": "",
       "meaning": "Hướng ngoại",
-      "type": "Tính từ",
+      "type": "Adjective",
+      "level": "N4",
       "example": {
         "jp": "外向的です。",
         "vn": "là."
@@ -79,8 +93,10 @@
     {
       "word": "内向的",
       "reading": "ないこうてき",
+      "han_viet": "",
       "meaning": "Hướng nội",
-      "type": "Tính từ",
+      "type": "Adjective",
+      "level": "N4",
       "example": {
         "jp": "内向的な性格です。",
         "vn": "là."
@@ -89,8 +105,10 @@
     {
       "word": "社交的",
       "reading": "しゃこうてき",
+      "han_viet": "",
       "meaning": "Thích giao tiếp",
-      "type": "Tính từ",
+      "type": "Adjective",
+      "level": "N4",
       "example": {
         "jp": "社交的な人です。",
         "vn": "là."
@@ -99,8 +117,10 @@
     {
       "word": "現実的",
       "reading": "げんじつてき",
+      "han_viet": "",
       "meaning": "Thực tế",
-      "type": "Tính từ",
+      "type": "Adjective",
+      "level": "N4",
       "example": {
         "jp": "現実的な性格です。",
         "vn": "là."
@@ -109,8 +129,10 @@
     {
       "word": "理想的",
       "reading": "りそうてき",
+      "han_viet": "",
       "meaning": "Lý tưởng",
-      "type": "Tính từ",
+      "type": "Adjective",
+      "level": "N4",
       "example": {
         "jp": "理想的な考え方です。",
         "vn": "là."
@@ -119,8 +141,10 @@
     {
       "word": "楽観的",
       "reading": "らっかんてき",
+      "han_viet": "",
       "meaning": "Lạc quan",
-      "type": "Tính từ",
+      "type": "Adjective",
+      "level": "N4",
       "example": {
         "jp": "楽観的な性格です。",
         "vn": "là."
@@ -129,8 +153,10 @@
     {
       "word": "悲観的",
       "reading": "ひかんてき",
+      "han_viet": "",
       "meaning": "Bi quan",
-      "type": "Tính từ",
+      "type": "Adjective",
+      "level": "N4",
       "example": {
         "jp": "悲観的な考え方です。",
         "vn": "là."
@@ -139,8 +165,10 @@
     {
       "word": "真面目",
       "reading": "まじめ",
+      "han_viet": "",
       "meaning": "Nghiêm túc",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "真面目な性格です。",
         "vn": "là."
@@ -149,8 +177,10 @@
     {
       "word": "誠実",
       "reading": "せいじつ",
+      "han_viet": "",
       "meaning": "Thành thật",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "誠実な人です。",
         "vn": "là."
@@ -159,8 +189,10 @@
     {
       "word": "正直",
       "reading": "しょうじき",
+      "han_viet": "",
       "meaning": "Thẳng thắn",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "正直な性格です。",
         "vn": "là."
@@ -169,8 +201,10 @@
     {
       "word": "親切",
       "reading": "しんせつ",
+      "han_viet": "",
       "meaning": "Tốt bụng",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "親切な人です。",
         "vn": "là."
@@ -179,8 +213,10 @@
     {
       "word": "勇敢",
       "reading": "ゆうかん",
+      "han_viet": "",
       "meaning": "Can đảm",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "勇敢な性格です。",
         "vn": "là."
@@ -189,8 +225,10 @@
     {
       "word": "慎重",
       "reading": "しんちょう",
+      "han_viet": "",
       "meaning": "Thận trọng",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "慎重な性格です。",
         "vn": "là."
@@ -199,8 +237,10 @@
     {
       "word": "好奇心",
       "reading": "こうきしん",
+      "han_viet": "",
       "meaning": "Tò mò",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "好奇心が強いです。",
         "vn": "là."

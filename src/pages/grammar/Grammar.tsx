@@ -272,21 +272,21 @@ const Grammar: React.FC = () => {
                 <Statistic
                   title="Tổng số ngữ pháp"
                   value={totalGrammars}
-                  valueStyle={{ fontSize: '1.2rem', color: 'inherit' }}
+                  styles={{ content: { fontSize: '1.2rem', color: 'inherit' } }}
                 />
               </Col>
               <Col xs={24} sm={8}>
                 <Statistic
                   title="Trình độ"
                   value={selectedLevel.length ? selectedLevel.join(', ') : 'Tất cả'}
-                  valueStyle={{ fontSize: '1.2rem', color: 'inherit' }}
+                  styles={{ content: { fontSize: '1.2rem', color: 'inherit' } }}
                 />
               </Col>
               <Col xs={24} sm={8}>
                 <Statistic
                   title="Danh mục"
                   value={selectedCategory.length ? selectedCategory.length : 'Tất cả'}
-                  valueStyle={{ fontSize: '1.2rem', color: 'inherit' }}
+                  styles={{ content: { fontSize: '1.2rem', color: 'inherit' } }}
                 />
               </Col>
             </Row>

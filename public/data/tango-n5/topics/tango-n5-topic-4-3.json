@@ -9,8 +9,10 @@
     {
       "word": "靴",
       "reading": "くつ",
+      "han_viet": "",
       "meaning": "Giày",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N5",
       "example": {
         "jp": "靴を買いました。",
         "vn": "đã (quá khứ)."
@@ -19,8 +21,10 @@
     {
       "word": "靴下",
       "reading": "くつした",
+      "han_viet": "",
       "meaning": "Tất",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N5",
       "example": {
         "jp": "靴下を履きます。",
         "vn": "(đuôi lịch sự)"
@@ -29,8 +33,10 @@
     {
       "word": "帽子",
       "reading": "ぼうし",
+      "han_viet": "",
       "meaning": "Mũ",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N5",
       "example": {
         "jp": "帽子をかぶっています。",
         "vn": "có (người/động vật)."
@@ -39,8 +45,10 @@
     {
       "word": "かぶる",
       "reading": "かぶる",
+      "han_viet": "",
       "meaning": "Đội (mũ)",
-      "type": "Động từ",
+      "type": "Verb",
+      "level": "N5",
       "example": {
         "jp": "帽子をかぶります。",
         "vn": "(đuôi lịch sự)"
@@ -49,8 +57,10 @@
     {
       "word": "手袋",
       "reading": "てぶくろ",
+      "han_viet": "",
       "meaning": "Găng tay",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N5",
       "example": {
         "jp": "手袋をはめます。",
         "vn": "(đuôi lịch sự)"
@@ -59,8 +69,10 @@
     {
       "word": "はめる",
       "reading": "はめる",
+      "han_viet": "",
       "meaning": "Đeo (găng, nhẫn)",
-      "type": "Động từ",
+      "type": "Verb",
+      "level": "N5",
       "example": {
         "jp": "指輪をはめています。",
         "vn": "có (người/động vật)."
@@ -69,8 +81,10 @@
     {
       "word": "時計",
       "reading": "とけい",
+      "han_viet": "",
       "meaning": "Đồng hồ",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N5",
       "example": {
         "jp": "時計をつけています。",
         "vn": "có (người/động vật)."
@@ -79,8 +93,10 @@
     {
       "word": "つける",
       "reading": "つける",
+      "han_viet": "",
       "meaning": "Đeo (đồng hồ)",
-      "type": "Động từ",
+      "type": "Verb",
+      "level": "N5",
       "example": {
         "jp": "時計をつけます。",
         "vn": "(đuôi lịch sự)"
@@ -89,8 +105,10 @@
     {
       "word": "眼鏡",
       "reading": "めがね",
+      "han_viet": "",
       "meaning": "Kính",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N5",
       "example": {
         "jp": "眼鏡をかけています。",
         "vn": "có (người/động vật)."
@@ -99,8 +117,10 @@
     {
       "word": "かける",
       "reading": "かける",
+      "han_viet": "",
       "meaning": "Đeo (kính)",
-      "type": "Động từ",
+      "type": "Verb",
+      "level": "N5",
       "example": {
         "jp": "眼鏡をかけます。",
         "vn": "(đuôi lịch sự)"
@@ -109,8 +129,10 @@
     {
       "word": "マフラー",
       "reading": "マフラー",
+      "han_viet": "",
       "meaning": "Khăn quàng cổ",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N5",
       "example": {
         "jp": "マフラーを巻いています。",
         "vn": "có (người/động vật)."
@@ -119,8 +141,10 @@
     {
       "word": "巻く",
       "reading": "まく",
+      "han_viet": "",
       "meaning": "Quấn, cuốn",
-      "type": "Động từ",
+      "type": "Verb",
+      "level": "N5",
       "example": {
         "jp": "マフラーを巻きます。",
         "vn": "(đuôi lịch sự)"
@@ -129,8 +153,10 @@
     {
       "word": "ベルト",
       "reading": "ベルト",
+      "han_viet": "",
       "meaning": "Thắt lưng",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N5",
       "example": {
         "jp": "ベルトを締めます。",
         "vn": "(đuôi lịch sự)"
@@ -139,8 +165,10 @@
     {
       "word": "締める",
       "reading": "しめる",
+      "han_viet": "",
       "meaning": "Siết, thắt",
-      "type": "Động từ",
+      "type": "Verb",
+      "level": "N5",
       "example": {
         "jp": "ネクタイを締めます。",
         "vn": "(đuôi lịch sự)"

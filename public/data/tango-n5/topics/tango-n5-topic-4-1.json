@@ -9,8 +9,10 @@
     {
       "word": "人",
       "reading": "ひと",
+      "han_viet": "",
       "meaning": "Người",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N5",
       "example": {
         "jp": "人が多いです。",
         "vn": "là."
@@ -19,8 +21,10 @@
     {
       "word": "男",
       "reading": "おとこ",
+      "han_viet": "",
       "meaning": "Nam, đàn ông",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N5",
       "example": {
         "jp": "男の人です。",
         "vn": "là."
@@ -29,8 +33,10 @@
     {
       "word": "女",
       "reading": "おんな",
+      "han_viet": "",
       "meaning": "Nữ, phụ nữ",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N5",
       "example": {
         "jp": "女の人です。",
         "vn": "là."
@@ -39,8 +45,10 @@
     {
       "word": "男の子",
       "reading": "おとこのこ",
+      "han_viet": "",
       "meaning": "Con trai",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N5",
       "example": {
         "jp": "男の子が遊んでいます。",
         "vn": "có (người/động vật)."
@@ -49,8 +57,10 @@
     {
       "word": "女の子",
       "reading": "おんなのこ",
+      "han_viet": "",
       "meaning": "Con gái",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N5",
       "example": {
         "jp": "女の子がかわいいです。",
         "vn": "là."
@@ -59,8 +69,10 @@
     {
       "word": "大人",
       "reading": "おとな",
+      "han_viet": "",
       "meaning": "Người lớn",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N5",
       "example": {
         "jp": "大人の映画です。",
         "vn": "là."
@@ -69,8 +81,10 @@
     {
       "word": "子供",
       "reading": "こども",
+      "han_viet": "TỬ CUNG",
       "meaning": "Trẻ con",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N5",
       "example": {
         "jp": "子供が3人います。",
         "vn": "có (người/động vật)."
@@ -79,8 +93,10 @@
     {
       "word": "友達",
       "reading": "ともだち",
+      "han_viet": "",
       "meaning": "Bạn bè",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N5",
       "example": {
         "jp": "友達と遊びます。",
         "vn": "(đuôi lịch sự)"
@@ -89,8 +105,10 @@
     {
       "word": "彼",
       "reading": "かれ",
+      "han_viet": "",
       "meaning": "Anh ấy, bạn trai",
-      "type": "Đại từ",
+      "type": "Pronoun",
+      "level": "N5",
       "example": {
         "jp": "彼は大学生です。",
         "vn": "là."
@@ -99,8 +117,10 @@
     {
       "word": "彼女",
       "reading": "かのじょ",
+      "han_viet": "",
       "meaning": "Cô ấy, bạn gái",
-      "type": "Đại từ",
+      "type": "Pronoun",
+      "level": "N5",
       "example": {
         "jp": "彼女は先生です。",
         "vn": "là."
@@ -109,8 +129,10 @@
     {
       "word": "彼ら",
       "reading": "かれら",
+      "han_viet": "",
       "meaning": "Họ (nam)",
-      "type": "Đại từ",
+      "type": "Pronoun",
+      "level": "N5",
       "example": {
         "jp": "彼らは会社員です。",
         "vn": "là."
@@ -119,8 +141,10 @@
     {
       "word": "親",
       "reading": "おや",
+      "han_viet": "",
       "meaning": "Bố mẹ",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N5",
       "example": {
         "jp": "親に相談します。",
         "vn": "(đuôi lịch sự)"
@@ -129,8 +153,10 @@
     {
       "word": "親友",
       "reading": "しんゆう",
+      "han_viet": "",
       "meaning": "Bạn thân",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N5",
       "example": {
         "jp": "親友と話します。",
         "vn": "(đuôi lịch sự)"
@@ -139,8 +165,10 @@
     {
       "word": "仲間",
       "reading": "なかま",
+      "han_viet": "",
       "meaning": "Đồng đội",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N5",
       "example": {
         "jp": "仲間と働きます。",
         "vn": "(đuôi lịch sự)"
@@ -149,8 +177,10 @@
     {
       "word": "知り合い",
       "reading": "しりあい",
+      "han_viet": "",
       "meaning": "Người quen",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N5",
       "example": {
         "jp": "知り合いです。",
         "vn": "là."

@@ -9,8 +9,10 @@
     {
       "word": "食べる",
       "reading": "たべる",
+      "han_viet": "THỰC",
       "meaning": "Ăn",
-      "type": "Động từ",
+      "type": "Verb",
+      "level": "N5",
       "example": {
         "jp": "りんごを食べます。",
         "vn": "(đuôi lịch sự)"
@@ -19,28 +21,34 @@
     {
       "word": "飲む",
       "reading": "のむ",
+      "han_viet": "ẨM",
       "meaning": "Uống",
-      "type": "Động từ",
+      "type": "Verb",
+      "level": "N5",
       "example": {
         "jp": "水を飲みます。",
-        "vn": "(đuôi lịch sự)"
+        "vn": "Uống nước."
       }
     },
     {
       "word": "料理",
       "reading": "りょうり",
+      "han_viet": "LIÊU LÝ",
       "meaning": "Món ăn, nấu ăn",
-      "type": "Danh động từ",
+      "type": "Verb",
+      "level": "N5",
       "example": {
         "jp": "料理を作ります。",
-        "vn": "(đuôi lịch sự)"
+        "vn": "Nấu ăn."
       }
     },
     {
       "word": "作る",
       "reading": "つくる",
+      "han_viet": "",
       "meaning": "Làm, nấu",
-      "type": "Động từ",
+      "type": "Verb",
+      "level": "N5",
       "example": {
         "jp": "朝ご飯を作ります。",
         "vn": "(đuôi lịch sự)"
@@ -49,8 +57,10 @@
     {
       "word": "包む",
       "reading": "つつむ",
+      "han_viet": "",
       "meaning": "Gói, bọc",
-      "type": "Động từ",
+      "type": "Verb",
+      "level": "N5",
       "example": {
         "jp": "おにぎりを包みます。",
         "vn": "(đuôi lịch sự)"
@@ -59,8 +69,10 @@
     {
       "word": "混ぜる",
       "reading": "まぜる",
+      "han_viet": "",
       "meaning": "Trộn",
-      "type": "Động từ",
+      "type": "Verb",
+      "level": "N5",
       "example": {
         "jp": "サラダを混ぜます。",
         "vn": "(đuôi lịch sự)"
@@ -69,8 +81,10 @@
     {
       "word": "切る",
       "reading": "きる",
+      "han_viet": "",
       "meaning": "Cắt",
-      "type": "Động từ",
+      "type": "Verb",
+      "level": "N5",
       "example": {
         "jp": "野菜を切ります。",
         "vn": "(đuôi lịch sự)"
@@ -79,8 +93,10 @@
     {
       "word": "煮る",
       "reading": "にる",
+      "han_viet": "",
       "meaning": "Nấu, luộc",
-      "type": "Động từ",
+      "type": "Verb",
+      "level": "N5",
       "example": {
         "jp": "魚を煮ます。",
         "vn": "(đuôi lịch sự)"
@@ -89,8 +105,10 @@
     {
       "word": "焼く",
       "reading": "やく",
+      "han_viet": "",
       "meaning": "Nướng",
-      "type": "Động từ",
+      "type": "Verb",
+      "level": "N5",
       "example": {
         "jp": "肉を焼きます。",
         "vn": "(đuôi lịch sự)"
@@ -99,8 +117,10 @@
     {
       "word": "揚げる",
       "reading": "あげる",
+      "han_viet": "",
       "meaning": "Chiên",
-      "type": "Động từ",
+      "type": "Verb",
+      "level": "N5",
       "example": {
         "jp": "天ぷらを揚げます。",
         "vn": "(đuôi lịch sự)"
@@ -109,8 +129,10 @@
     {
       "word": "炒める",
       "reading": "いためる",
+      "han_viet": "",
       "meaning": "Xào",
-      "type": "Động từ",
+      "type": "Verb",
+      "level": "N5",
       "example": {
         "jp": "野菜を炒めます。",
         "vn": "(đuôi lịch sự)"
@@ -119,8 +141,10 @@
     {
       "word": "蒸す",
       "reading": "むす",
+      "han_viet": "",
       "meaning": "Hấp",
-      "type": "Động từ",
+      "type": "Verb",
+      "level": "N5",
       "example": {
         "jp": "饅頭を蒸します。",
         "vn": "(đuôi lịch sự)"
@@ -129,8 +153,10 @@
     {
       "word": "味",
       "reading": "あじ",
+      "han_viet": "",
       "meaning": "Vị",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N5",
       "example": {
         "jp": "味がいいです。",
         "vn": "là."
@@ -139,8 +165,10 @@
     {
       "word": "甘い",
       "reading": "あまい",
+      "han_viet": "",
       "meaning": "Ngọt",
-      "type": "Tính từ",
+      "type": "Adjective",
+      "level": "N5",
       "example": {
         "jp": "ケーキは甘いです。",
         "vn": "là."
@@ -149,8 +177,10 @@
     {
       "word": "辛い",
       "reading": "からい",
+      "han_viet": "",
       "meaning": "Cay",
-      "type": "Tính từ",
+      "type": "Adjective",
+      "level": "N5",
       "example": {
         "jp": "カレーは辛いです。",
         "vn": "là."

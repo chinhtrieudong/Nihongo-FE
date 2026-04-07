@@ -9,8 +9,10 @@
     {
       "word": "読書",
       "reading": "どくしょ",
+      "han_viet": "",
       "meaning": "Đọc sách",
-      "type": "Danh động từ",
+      "type": "Verb",
+      "level": "N4",
       "example": {
         "jp": "読書が趣味です。",
         "vn": "là."
@@ -19,8 +21,10 @@
     {
       "word": "本",
       "reading": "ほん",
+      "han_viet": "BẢN",
       "meaning": "Sách",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "本を読みます。",
         "vn": "(đuôi lịch sự)"
@@ -29,8 +33,10 @@
     {
       "word": "小説",
       "reading": "しょうせつ",
+      "han_viet": "",
       "meaning": "Tiểu thuyết",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "小説を書いています。",
         "vn": "có (người/động vật)."
@@ -39,8 +45,10 @@
     {
       "word": "文庫本",
       "reading": "ぶんこぼん",
+      "han_viet": "",
       "meaning": "Sách bỏ túi",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "文庫本を買いました。",
         "vn": "đã (quá khứ)."
@@ -49,8 +57,10 @@
     {
       "word": "漫画",
       "reading": "まんが",
+      "han_viet": "",
       "meaning": "Truyện tranh",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "漫画が好きです。",
         "vn": "là."
@@ -59,8 +69,10 @@
     {
       "word": "雑誌",
       "reading": "ざっし",
+      "han_viet": "",
       "meaning": "Tạp chí",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "雑誌を買いました。",
         "vn": "đã (quá khứ)."
@@ -69,8 +81,10 @@
     {
       "word": "新聞",
       "reading": "しんぶん",
+      "han_viet": "",
       "meaning": "Báo",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "新聞を読みます。",
         "vn": "(đuôi lịch sự)"
@@ -79,8 +93,10 @@
     {
       "word": "辞書",
       "reading": "じしょ",
+      "han_viet": "TỪ THƯ",
       "meaning": "Từ điển",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "辞書を引きます。",
         "vn": "(đuôi lịch sự)"
@@ -89,8 +105,10 @@
     {
       "word": "図書館",
       "reading": "としょかん",
+      "han_viet": "ĐỒ THƯ QUÁN",
       "meaning": "Thư viện",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "図書館で勉強します。",
         "vn": "(đuôi lịch sự)"
@@ -99,8 +117,10 @@
     {
       "word": "書店",
       "reading": "しょてん",
+      "han_viet": "",
       "meaning": "Hiệu sách",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "書店で本を買いました。",
         "vn": "đã (quá khứ)."
@@ -109,8 +129,10 @@
     {
       "word": "電子書籍",
       "reading": "でんししょせき",
+      "han_viet": "",
       "meaning": "Sách điện tử",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "電子書籍を読みます。",
         "vn": "(đuôi lịch sự)"
@@ -119,8 +141,10 @@
     {
       "word": "著者",
       "reading": "ちょしゃ",
+      "han_viet": "",
       "meaning": "Tác giả",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "著者のサイン会に行きました。",
         "vn": "đã (quá khứ)."
@@ -129,8 +153,10 @@
     {
       "word": "作家",
       "reading": "さっか",
+      "han_viet": "",
       "meaning": "Nhà văn",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "作家になりたいです。",
         "vn": "là."
@@ -139,8 +165,10 @@
     {
       "word": "主人公",
       "reading": "しゅじんこう",
+      "han_viet": "",
       "meaning": "Nhân vật chính",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "主人公が好きです。",
         "vn": "là."
@@ -149,8 +177,10 @@
     {
       "word": "ストーリー",
       "reading": "ストーリー",
+      "han_viet": "",
       "meaning": "Cốt truyện",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "ストーリーが面白いです。",
         "vn": "là."
@@ -159,8 +189,10 @@
     {
       "word": "結末",
       "reading": "けつまつ",
+      "han_viet": "",
       "meaning": "Kết thúc",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "結末が意外でした。",
         "vn": "đã là (quá khứ)."
@@ -169,8 +201,10 @@
     {
       "word": "感想",
       "reading": "かんそう",
+      "han_viet": "CẢM TƯỞNG",
       "meaning": "Cảm nghĩ",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "感想を書きました。",
         "vn": "đã (quá khứ)."
@@ -179,8 +213,10 @@
     {
       "word": "書評",
       "reading": "しょひょう",
+      "han_viet": "",
       "meaning": "Bài đánh giá sách",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "書評を読みました。",
         "vn": "đã (quá khứ)."
@@ -189,8 +225,10 @@
     {
       "word": "ブックカフェ",
       "reading": "ブックカフェ",
+      "han_viet": "",
       "meaning": "Quán cà phê sách",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "ブックカフェで読書します。",
         "vn": "(đuôi lịch sự)"
@@ -199,8 +237,10 @@
     {
       "word": "読み放題",
       "reading": "よみほうだい",
+      "han_viet": "",
       "meaning": "Đọc thoải mái",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "読み放題サービスです。",
         "vn": "là."

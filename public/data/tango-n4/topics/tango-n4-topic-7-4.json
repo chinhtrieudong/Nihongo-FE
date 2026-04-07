@@ -9,8 +9,10 @@
     {
       "word": "支払い",
       "reading": "しはらい",
+      "han_viet": "",
       "meaning": "Thanh toán",
-      "type": "Danh động từ",
+      "type": "Verb",
+      "level": "N4",
       "example": {
         "jp": "支払いを済ませました。",
         "vn": "đã (quá khứ)."
@@ -19,8 +21,10 @@
     {
       "word": "会計",
       "reading": "かいけい",
+      "han_viet": "",
       "meaning": "Tính tiền",
-      "type": "Danh động từ",
+      "type": "Verb",
+      "level": "N4",
       "example": {
         "jp": "会計をお願いします。",
         "vn": "(đuôi lịch sự)"
@@ -29,8 +33,10 @@
     {
       "word": "精算",
       "reading": "せいさん",
+      "han_viet": "",
       "meaning": "Thanh toán",
-      "type": "Danh động từ",
+      "type": "Verb",
+      "level": "N4",
       "example": {
         "jp": "精算しました。",
         "vn": "đã (quá khứ)."
@@ -39,8 +45,10 @@
     {
       "word": "現金",
       "reading": "げんきん",
+      "han_viet": "",
       "meaning": "Tiền mặt",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "現金で払います。",
         "vn": "có (người/động vật)."
@@ -49,8 +57,10 @@
     {
       "word": "現金払い",
       "reading": "げんきんばらい",
+      "han_viet": "",
       "meaning": "Trả tiền mặt",
-      "type": "Danh động từ",
+      "type": "Verb",
+      "level": "N4",
       "example": {
         "jp": "現金払いしました。",
         "vn": "đã (quá khứ)."
@@ -59,8 +69,10 @@
     {
       "word": "カード払い",
       "reading": "カードばらい",
+      "han_viet": "",
       "meaning": "Trả thẻ",
-      "type": "Danh động từ",
+      "type": "Verb",
+      "level": "N4",
       "example": {
         "jp": "カード払いでお願いします。",
         "vn": "(đuôi lịch sự)"
@@ -69,8 +81,10 @@
     {
       "word": "クレジットカード",
       "reading": "クレジットカード",
+      "han_viet": "",
       "meaning": "Thẻ tín dụng",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "クレジットカードで払います。",
         "vn": "có (người/động vật)."
@@ -79,8 +93,10 @@
     {
       "word": "デビットカード",
       "reading": "デビットカード",
+      "han_viet": "",
       "meaning": "Thẻ ghi nợ",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "デビットカードを使います。",
         "vn": "có (người/động vật)."
@@ -89,8 +105,10 @@
     {
       "word": "電子マネー",
       "reading": "でんしマネー",
+      "han_viet": "",
       "meaning": "Tiền điện tử",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "電子マネーで払います。",
         "vn": "có (người/động vật)."
@@ -99,8 +117,10 @@
     {
       "word": "キャッシュカード",
       "reading": "キャッシュカード",
+      "han_viet": "",
       "meaning": "Thẻ ATM",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "キャッシュカードを使います。",
         "vn": "có (người/động vật)."
@@ -109,8 +129,10 @@
     {
       "word": "領収書",
       "reading": "りょうしゅうしょ",
+      "han_viet": "",
       "meaning": "Biên lai",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "領収書をください。",
         "vn": "vui lòng..."
@@ -119,8 +141,10 @@
     {
       "word": "レシート",
       "reading": "レシート",
+      "han_viet": "",
       "meaning": "Hóa đơn",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "レシートをもらいました。",
         "vn": "đã (quá khứ)."
@@ -129,8 +153,10 @@
     {
       "word": "預かる",
       "reading": "あずかる",
+      "han_viet": "",
       "meaning": "Nhận giữ",
-      "type": "Động từ",
+      "type": "Verb",
+      "level": "N4",
       "example": {
         "jp": "お預かりします。",
         "vn": "(đuôi lịch sự)"
@@ -139,8 +165,10 @@
     {
       "word": "お釣り",
       "reading": "おつり",
+      "han_viet": "",
       "meaning": "Tiền thối",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "お釣りをください。",
         "vn": "vui lòng..."
@@ -149,8 +177,10 @@
     {
       "word": "一括払い",
       "reading": "いっかつばらい",
+      "han_viet": "",
       "meaning": "Trả một lần",
-      "type": "Danh động từ",
+      "type": "Verb",
+      "level": "N4",
       "example": {
         "jp": "一括払いしました。",
         "vn": "đã (quá khứ)."
@@ -159,8 +189,10 @@
     {
       "word": "分割払い",
       "reading": "ぶんかつばらい",
+      "han_viet": "",
       "meaning": "Trả góp",
-      "type": "Danh động từ",
+      "type": "Verb",
+      "level": "N4",
       "example": {
         "jp": "分割払いで購入しました。",
         "vn": "đã (quá khứ)."
@@ -169,8 +201,10 @@
     {
       "word": "ボーナス払い",
       "reading": "ボーナスばらい",
+      "han_viet": "",
       "meaning": "Trả khi có thưởng",
-      "type": "Danh động từ",
+      "type": "Verb",
+      "level": "N4",
       "example": {
         "jp": "ボーナス払いにしました。",
         "vn": "đã (quá khứ)."
@@ -179,8 +213,10 @@
     {
       "word": "リボ払い",
       "reading": "リボばらい",
+      "han_viet": "",
       "meaning": "Trả theo tháng",
-      "type": "Danh động từ",
+      "type": "Verb",
+      "level": "N4",
       "example": {
         "jp": "リボ払いで払います。",
         "vn": "có (người/động vật)."
@@ -189,8 +225,10 @@
     {
       "word": "手数料",
       "reading": "てすうりょう",
+      "han_viet": "",
       "meaning": "Phí dịch vụ",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "手数料がかかります。",
         "vn": "(đuôi lịch sự)"
@@ -199,8 +237,10 @@
     {
       "word": "無料",
       "reading": "むりょう",
+      "han_viet": "",
       "meaning": "Miễn phí",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "手数料は無料です。",
         "vn": "là."

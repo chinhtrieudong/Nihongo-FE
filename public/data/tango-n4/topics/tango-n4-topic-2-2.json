@@ -9,8 +9,10 @@
     {
       "word": "髪",
       "reading": "かみ",
+      "han_viet": "",
       "meaning": "Tóc",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "髪が長いです。",
         "vn": "là."
@@ -19,8 +21,10 @@
     {
       "word": "髪の毛",
       "reading": "かみのけ",
+      "han_viet": "",
       "meaning": "Sợi tóc",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "髪の毛が細いです。",
         "vn": "là."
@@ -29,8 +33,10 @@
     {
       "word": "黒髪",
       "reading": "くろかみ",
+      "han_viet": "",
       "meaning": "Tóc đen",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "黒髪です。",
         "vn": "là."
@@ -39,8 +45,10 @@
     {
       "word": "茶髪",
       "reading": "ちゃぱつ",
+      "han_viet": "",
       "meaning": "Tóc nâu",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "茶髪に染めました。",
         "vn": "đã (quá khứ)."
@@ -49,8 +57,10 @@
     {
       "word": "金髪",
       "reading": "きんぱつ",
+      "han_viet": "",
       "meaning": "Tóc vàng",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "金髪の人です。",
         "vn": "là."
@@ -59,8 +69,10 @@
     {
       "word": "白髪",
       "reading": "しらが",
+      "han_viet": "",
       "meaning": "Tóc bạc",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "白髪が増えました。",
         "vn": "đã (quá khứ)."
@@ -69,8 +81,10 @@
     {
       "word": "短髪",
       "reading": "たんぱつ",
+      "han_viet": "",
       "meaning": "Tóc ngắn",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "短髪にしました。",
         "vn": "đã (quá khứ)."
@@ -79,8 +93,10 @@
     {
       "word": "長髪",
       "reading": "ちょうはつ",
+      "han_viet": "",
       "meaning": "Tóc dài",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "長髪です。",
         "vn": "là."
@@ -89,8 +105,10 @@
     {
       "word": "散髪",
       "reading": "さんぱつ",
+      "han_viet": "",
       "meaning": "Cắt tóc",
-      "type": "Danh động từ",
+      "type": "Verb",
+      "level": "N4",
       "example": {
         "jp": "散髪に行きます。",
         "vn": "(đuôi lịch sự)"
@@ -99,8 +117,10 @@
     {
       "word": "床屋",
       "reading": "とこや",
+      "han_viet": "",
       "meaning": "Tiệm cắt tóc nam",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "床屋で髪を切りました。",
         "vn": "đã (quá khứ)."
@@ -109,8 +129,10 @@
     {
       "word": "美容院",
       "reading": "びよういん",
+      "han_viet": "",
       "meaning": "Tiệm làm tóc nữ",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "美容院に行きました。",
         "vn": "đã (quá khứ)."
@@ -119,8 +141,10 @@
     {
       "word": "美容室",
       "reading": "びようしつ",
+      "han_viet": "",
       "meaning": "Salon tóc",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "美容室でセットしました。",
         "vn": "đã (quá khứ)."
@@ -129,8 +153,10 @@
     {
       "word": "カット",
       "reading": "カット",
+      "han_viet": "",
       "meaning": "Cắt tóc",
-      "type": "Danh động từ",
+      "type": "Verb",
+      "level": "N4",
       "example": {
         "jp": "カットしてもらいました。",
         "vn": "đã (quá khứ)."
@@ -139,8 +165,10 @@
     {
       "word": "パーマ",
       "reading": "パーマ",
+      "han_viet": "",
       "meaning": "Uốn tóc",
-      "type": "Danh động từ",
+      "type": "Verb",
+      "level": "N4",
       "example": {
         "jp": "パーマをかけました。",
         "vn": "đã (quá khứ)."
@@ -149,8 +177,10 @@
     {
       "word": "染める",
       "reading": "そめる",
+      "han_viet": "",
       "meaning": "Nhuộm tóc",
-      "type": "Động từ",
+      "type": "Verb",
+      "level": "N4",
       "example": {
         "jp": "髪を茶色に染めました。",
         "vn": "đã (quá khứ)."
@@ -159,8 +189,10 @@
     {
       "word": "整える",
       "reading": "ととのえる",
+      "han_viet": "",
       "meaning": "Chỉnh sửa",
-      "type": "Động từ",
+      "type": "Verb",
+      "level": "N4",
       "example": {
         "jp": "髪を整えました。",
         "vn": "đã (quá khứ)."
@@ -169,8 +201,10 @@
     {
       "word": "セット",
       "reading": "セット",
+      "han_viet": "",
       "meaning": "Tạo kiểu",
-      "type": "Danh động từ",
+      "type": "Verb",
+      "level": "N4",
       "example": {
         "jp": "髪をセットしました。",
         "vn": "đã (quá khứ)."
@@ -179,8 +213,10 @@
     {
       "word": "シャンプー",
       "reading": "シャンプー",
+      "han_viet": "",
       "meaning": "Gội đầu",
-      "type": "Danh động từ",
+      "type": "Verb",
+      "level": "N4",
       "example": {
         "jp": "シャンプーしてもらいました。",
         "vn": "đã (quá khứ)."
@@ -189,8 +225,10 @@
     {
       "word": "リンス",
       "reading": "リンス",
+      "han_viet": "",
       "meaning": "Xả tóc",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "リンスを使います。",
         "vn": "có (người/động vật)."
@@ -199,8 +237,10 @@
     {
       "word": "ヘアドライヤー",
       "reading": "ヘアドライヤー",
+      "han_viet": "",
       "meaning": "Máy sấy tóc",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "ヘアドライヤーで乾かします。",
         "vn": "(đuôi lịch sự)"

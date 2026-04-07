@@ -9,8 +9,10 @@
     {
       "word": "服装",
       "reading": "ふくそう",
+      "han_viet": "",
       "meaning": "Trang phục",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "服装を整えました。",
         "vn": "đã (quá khứ)."
@@ -19,8 +21,10 @@
     {
       "word": "洋服",
       "reading": "ようふく",
+      "han_viet": "",
       "meaning": "Quần áo Tây",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "洋服を買いました。",
         "vn": "đã (quá khứ)."
@@ -29,8 +33,10 @@
     {
       "word": "和服",
       "reading": "わふく",
+      "han_viet": "",
       "meaning": "Trang phục Nhật",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "和服を着ました。",
         "vn": "đã (quá khứ)."
@@ -39,8 +45,10 @@
     {
       "word": "着物",
       "reading": "きもの",
+      "han_viet": "",
       "meaning": "Kimono",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "着物が似合います。",
         "vn": "có (người/động vật)."
@@ -49,8 +57,10 @@
     {
       "word": "浴衣",
       "reading": "ゆかた",
+      "han_viet": "",
       "meaning": "Yukata",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "夏は浴衣を着ます。",
         "vn": "(đuôi lịch sự)"
@@ -59,8 +69,10 @@
     {
       "word": "制服",
       "reading": "せいふく",
+      "han_viet": "",
       "meaning": "Đồng phục",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "制服を着ます。",
         "vn": "(đuôi lịch sự)"
@@ -69,8 +81,10 @@
     {
       "word": "スーツ",
       "reading": "スーツ",
+      "han_viet": "",
       "meaning": "Vest",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "スーツを着ています。",
         "vn": "có (người/động vật)."
@@ -79,8 +93,10 @@
     {
       "word": "ワンピース",
       "reading": "ワンピース",
+      "han_viet": "",
       "meaning": "Váy liền",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "ワンピースを着ています。",
         "vn": "có (người/động vật)."
@@ -89,8 +105,10 @@
     {
       "word": "ブラウス",
       "reading": "ブラウス",
+      "han_viet": "",
       "meaning": "Áo blouse",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "ブラウスを着ています。",
         "vn": "có (người/động vật)."
@@ -99,8 +117,10 @@
     {
       "word": "セーター",
       "reading": "セーター",
+      "han_viet": "",
       "meaning": "Áo len",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "セーターを着ています。",
         "vn": "có (người/động vật)."
@@ -109,8 +129,10 @@
     {
       "word": "ジャケット",
       "reading": "ジャケット",
+      "han_viet": "",
       "meaning": "Áo khoác",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "ジャケットを着ました。",
         "vn": "đã (quá khứ)."
@@ -119,8 +141,10 @@
     {
       "word": "コート",
       "reading": "コート",
+      "han_viet": "",
       "meaning": "Áo măng tô",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "コートを着ています。",
         "vn": "có (người/động vật)."
@@ -129,8 +153,10 @@
     {
       "word": "ジーンズ",
       "reading": "ジーンズ",
+      "han_viet": "",
       "meaning": "Quần jean",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "ジーンズを履いています。",
         "vn": "có (người/động vật)."
@@ -139,8 +165,10 @@
     {
       "word": "スカート",
       "reading": "スカート",
+      "han_viet": "",
       "meaning": "Váy",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "スカートを着ています。",
         "vn": "có (người/động vật)."
@@ -149,8 +177,10 @@
     {
       "word": "パンツ",
       "reading": "パンツ",
+      "han_viet": "",
       "meaning": "Quần",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "パンツを履いています。",
         "vn": "có (người/động vật)."
@@ -159,8 +189,10 @@
     {
       "word": "靴",
       "reading": "くつ",
+      "han_viet": "",
       "meaning": "Giày",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "靴を履きました。",
         "vn": "đã (quá khứ)."
@@ -169,8 +201,10 @@
     {
       "word": "革靴",
       "reading": "かわぐつ",
+      "han_viet": "",
       "meaning": "Giày da",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "革靴を履いています。",
         "vn": "có (người/động vật)."
@@ -179,8 +213,10 @@
     {
       "word": "スニーカー",
       "reading": "スニーカー",
+      "han_viet": "",
       "meaning": "Giày thể thao",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "スニーカーを履いています。",
         "vn": "có (người/động vật)."
@@ -189,8 +225,10 @@
     {
       "word": "アクセサリー",
       "reading": "アクセサリー",
+      "han_viet": "",
       "meaning": "Phụ kiện",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "アクセサリーをつけています。",
         "vn": "có (người/động vật)."
@@ -199,8 +237,10 @@
     {
       "word": "ネクタイ",
       "reading": "ネクタイ",
+      "han_viet": "",
       "meaning": "Cà vạt",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "ネクタイを締めています。",
         "vn": "có (người/động vật)."

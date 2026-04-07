@@ -9,8 +9,10 @@
     {
       "word": "主権",
       "reading": "しゅけん",
+      "han_viet": "",
       "meaning": "Chủ quyền",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N1",
       "example": {
         "jp": "国家の主権を守る。",
         "vn": ""
@@ -19,8 +21,10 @@
     {
       "word": "領土",
       "reading": "りょうど",
+      "han_viet": "",
       "meaning": "Lãnh thổ",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N1",
       "example": {
         "jp": "領土問題が複雑だ。",
         "vn": ""
@@ -29,8 +33,10 @@
     {
       "word": "統治",
       "reading": "とうち",
+      "han_viet": "",
       "meaning": "Cai trị",
-      "type": "Danh động từ",
+      "type": "Verb",
+      "level": "N1",
       "example": {
         "jp": "地域を統治している。",
         "vn": ""
@@ -39,8 +45,10 @@
     {
       "word": "植民地",
       "reading": "しょくみんち",
+      "han_viet": "",
       "meaning": "Thuộc địa",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N1",
       "example": {
         "jp": "植民地支配の歴史。",
         "vn": ""
@@ -49,8 +57,10 @@
     {
       "word": "独立",
       "reading": "どくりつ",
+      "han_viet": "",
       "meaning": "Độc lập",
-      "type": "Danh động từ",
+      "type": "Verb",
+      "level": "N1",
       "example": {
         "jp": "国が独立しました。",
         "vn": "đã (quá khứ)."
@@ -59,8 +69,10 @@
     {
       "word": "自治",
       "reading": "じち",
+      "han_viet": "",
       "meaning": "Tự trị",
-      "type": "Danh động từ",
+      "type": "Verb",
+      "level": "N1",
       "example": {
         "jp": "地方自治が進んでいる。",
         "vn": ""
@@ -69,8 +81,10 @@
     {
       "word": "分権",
       "reading": "ぶんけん",
+      "han_viet": "",
       "meaning": "Phân quyền",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N1",
       "example": {
         "jp": "分権化が進められている。",
         "vn": ""
@@ -79,8 +93,10 @@
     {
       "word": "連邦",
       "reading": "れんぽう",
+      "han_viet": "",
       "meaning": "Liên bang",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N1",
       "example": {
         "jp": "連邦政府の政策。",
         "vn": ""
@@ -89,8 +105,10 @@
     {
       "word": "共和国",
       "reading": "きょうわこく",
+      "han_viet": "",
       "meaning": "Cộng hòa",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N1",
       "example": {
         "jp": "共和国を宣言した。",
         "vn": ""
@@ -99,8 +117,10 @@
     {
       "word": "君主制",
       "reading": "くんしゅせい",
+      "han_viet": "",
       "meaning": "Chế độ quân chủ",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N1",
       "example": {
         "jp": "君主制を廃止した。",
         "vn": ""

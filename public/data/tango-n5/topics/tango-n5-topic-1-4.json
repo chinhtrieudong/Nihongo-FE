@@ -9,141 +9,169 @@
     {
       "word": "何人",
       "reading": "なんにん",
+      "han_viet": "HÀ NHÂN",
       "meaning": "Mấy người",
-      "type": "Đại từ",
+      "type": "Pronoun",
+      "level": "N5",
       "example": {
         "jp": "家族は何人ですか。",
-        "vn": "có phải là... không?"
+        "vn": "Gia đình có mấy người?"
       }
     },
     {
       "word": "一人",
       "reading": "ひとり",
+      "han_viet": "NHẤT NHÂN",
       "meaning": "Một người",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N5",
       "example": {
         "jp": "一人です。",
-        "vn": "là."
+        "vn": "Một người."
       }
     },
     {
       "word": "二人",
       "reading": "ふたり",
+      "han_viet": "NHỊ NHÂN",
       "meaning": "Hai người",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N5",
       "example": {
         "jp": "二人で行きます。",
-        "vn": "(đuôi lịch sự)"
+        "vn": "Chúng tôi đi hai người."
       }
     },
     {
       "word": "三人",
       "reading": "さんにん",
+      "han_viet": "",
       "meaning": "Ba người",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N5",
       "example": {
         "jp": "家族は三人です。",
-        "vn": "là."
+        "vn": "Gia đình tôi có ba người."
       }
     },
     {
       "word": "四人",
       "reading": "よにん",
+      "han_viet": "",
       "meaning": "Bốn người",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N5",
       "example": {
         "jp": "四人です。",
-        "vn": "là."
+        "vn": "Bốn người."
       }
     },
     {
       "word": "五人",
       "reading": "ごにん",
+      "han_viet": "",
       "meaning": "Năm người",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N5",
       "example": {
         "jp": "五人です。",
-        "vn": "là."
+        "vn": "Năm người."
       }
     },
     {
       "word": "六人",
       "reading": "ろくにん",
+      "han_viet": "",
       "meaning": "Sáu người",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N5",
       "example": {
         "jp": "六人です。",
-        "vn": "là."
+        "vn": "Sáu người."
       }
     },
     {
       "word": "七人",
       "reading": "しちにん / ななにん",
+      "han_viet": "",
       "meaning": "Bảy người",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N5",
       "example": {
         "jp": "七人です。",
-        "vn": "là."
+        "vn": "Bảy người."
       }
     },
     {
       "word": "八人",
       "reading": "はちにん",
+      "han_viet": "",
       "meaning": "Tám người",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N5",
       "example": {
         "jp": "八人です。",
-        "vn": "là."
+        "vn": "Tám người."
       }
     },
     {
       "word": "九人",
       "reading": "きゅうにん / くにん",
+      "han_viet": "",
       "meaning": "Chín người",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N5",
       "example": {
         "jp": "九人です。",
-        "vn": "là."
+        "vn": "Chín người."
       }
     },
     {
       "word": "十人",
       "reading": "じゅうにん",
+      "han_viet": "",
       "meaning": "Mười người",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N5",
       "example": {
         "jp": "十人です。",
-        "vn": "là."
+        "vn": "Mười người."
       }
     },
     {
       "word": "独身",
       "reading": "どくしん",
+      "han_viet": "",
       "meaning": "Độc thân",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N5",
       "example": {
         "jp": "まだ独身です。",
-        "vn": "là."
+        "vn": "Tôi vẫn còn độc thân."
       }
     },
     {
       "word": "結婚",
       "reading": "けっこん",
+      "han_viet": "",
       "meaning": "Kết hôn",
-      "type": "Danh động từ",
+      "type": "Verb",
+      "level": "N5",
       "example": {
         "jp": "結婚しています。",
-        "vn": "có (người/động vật)."
+        "vn": "Tôi đã kết hôn."
       }
     },
     {
       "word": "子供",
       "reading": "こども",
+      "han_viet": "TỬ CUNG",
       "meaning": "Con cái",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N5",
       "example": {
         "jp": "子供が2人います。",
-        "vn": "có (người/động vật)."
+        "vn": "Tôi có 2 con."
       }
     }
   ]

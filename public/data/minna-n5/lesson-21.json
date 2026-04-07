@@ -3,130 +3,120 @@
   "topic": "Ý kiến, Suy nghĩ & Trích dẫn",
   "vocabulary": [
     {
-      "id": "n5_l21_001",
       "word": "思う",
       "reading": "おもう",
-      "hanViet": "Tư",
+      "han_viet": "TƯ",
       "meaning": "nghĩ",
-      "type": "verb",
-      "category": "Động Từ",
+      "type": "Verb",
+      "level": "N5",
       "example": {
         "jp": "そう思う。",
         "vn": "Tôi nghĩ vậy."
       }
     },
     {
-      "id": "n5_l21_002",
       "word": "言う",
       "reading": "いう",
-      "hanViet": "Ngôn",
+      "han_viet": "NGÔN",
       "meaning": "nói",
-      "type": "verb",
-      "category": "Động Từ",
+      "type": "Verb",
+      "level": "N5",
       "example": {
         "jp": "彼は行かないと言った。",
         "vn": "Anh ấy nói không đi."
       }
     },
     {
-      "id": "n5_l21_003",
       "word": "知っている",
       "reading": "しっている",
-      "hanViet": "Tri",
+      "han_viet": "TRI",
       "meaning": "biết",
-      "type": "verb",
-      "category": "Động Từ Tiếp Diễn",
+      "type": "Verb",
+      "level": "N5",
       "example": {
         "jp": "知っている。",
         "vn": "Tôi biết."
       }
     },
     {
-      "id": "n5_l21_004",
       "word": "知らない",
       "reading": "しらない",
-      "hanViet": "Tri",
+      "han_viet": "TRI",
       "meaning": "không biết",
-      "type": "verb",
-      "category": "Thể Phủ Định",
+      "type": "Verb",
+      "level": "N5",
       "example": {
         "jp": "知らない。",
         "vn": "Tôi không biết."
       }
     },
     {
-      "id": "n5_l21_005",
       "word": "忘れた",
       "reading": "わすれた",
-      "hanViet": "Vong",
+      "han_viet": "VONG",
       "meaning": "đã quên",
-      "type": "verb",
-      "category": "Thể Quá Khứ",
+      "type": "Verb",
+      "level": "N5",
       "example": {
         "jp": "名前を忘れた。",
         "vn": "Đã quên tên."
       }
     },
     {
-      "id": "n5_l21_006",
       "word": "覚える",
       "reading": "おぼえる",
-      "hanViet": "Giác",
+      "han_viet": "GIÁC",
       "meaning": "nhớ",
-      "type": "verb",
-      "category": "Động Từ Nhóm 2",
+      "type": "Verb",
+      "level": "N5",
       "example": {
         "jp": "覚えた。",
         "vn": "Đã nhớ."
       }
     },
     {
-      "id": "n5_l21_007",
       "word": "考える",
       "reading": "かんがえる",
-      "hanViet": "Khảo",
+      "han_viet": "KHẢO",
       "meaning": "suy nghĩ, cân nhắc",
-      "type": "verb",
-      "category": "Động Từ Nhóm 2",
+      "type": "Verb",
+      "level": "N5",
       "example": {
         "jp": "考えている。",
         "vn": "Đang suy nghĩ."
       }
     },
     {
-      "id": "n5_l21_008",
       "word": "気持ち",
       "reading": "きもち",
-      "hanViet": "Khí Trì",
+      "han_viet": "KHÍ TRÌ",
       "meaning": "cảm giác",
-      "type": "noun",
-      "category": "Ý Kiến",
+      "type": "Noun",
+      "level": "N5",
       "example": {
         "jp": "気持ちがいい。",
         "vn": "Cảm giác tốt."
       }
     },
     {
-      "id": "n5_l21_009",
       "word": "意見",
       "reading": "いけん",
-      "hanViet": "Ý Kiến",
+      "han_viet": "Ý KIẾN",
       "meaning": "ý kiến",
-      "type": "noun",
-      "category": "Ý Kiến",
+      "type": "Noun",
+      "level": "N5",
       "example": {
         "jp": "意見を言う。",
         "vn": "Nói ý kiến."
       }
     },
     {
-      "id": "n5_l21_010",
       "word": "感想",
       "reading": "かんそう",
-      "hanViet": "Cảm Tưởng",
+      "han_viet": "CẢM TƯỞNG",
       "meaning": "cảm nghĩ",
-      "type": "noun",
-      "category": "Ý Kiến",
+      "type": "Noun",
+      "level": "N5",
       "example": {
         "jp": "感想を言う。",
         "vn": "Nói cảm nghĩ."

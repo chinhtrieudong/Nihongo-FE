@@ -9,8 +9,10 @@
     {
       "word": "家事",
       "reading": "かじ",
+      "han_viet": "",
       "meaning": "Việc nhà",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "家事を分担します。",
         "vn": "(đuôi lịch sự)"
@@ -19,8 +21,10 @@
     {
       "word": "掃除",
       "reading": "そうじ",
+      "han_viet": "",
       "meaning": "Dọn dẹp",
-      "type": "Danh động từ",
+      "type": "Verb",
+      "level": "N4",
       "example": {
         "jp": "掃除をしました。",
         "vn": "đã (quá khứ)."
@@ -29,8 +33,10 @@
     {
       "word": "洗濯",
       "reading": "せんたく",
+      "han_viet": "",
       "meaning": "Giặt giũ",
-      "type": "Danh động từ",
+      "type": "Verb",
+      "level": "N4",
       "example": {
         "jp": "洗濯をします。",
         "vn": "(đuôi lịch sự)"
@@ -39,8 +45,10 @@
     {
       "word": "洗濯物",
       "reading": "せんたくもの",
+      "han_viet": "",
       "meaning": "Đồ giặt",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "洗濯物を干します。",
         "vn": "(đuôi lịch sự)"
@@ -49,8 +57,10 @@
     {
       "word": "アイロン",
       "reading": "アイロン",
+      "han_viet": "",
       "meaning": "Ủi",
-      "type": "Danh động từ",
+      "type": "Verb",
+      "level": "N4",
       "example": {
         "jp": "アイロンをかけます。",
         "vn": "(đuôi lịch sự)"
@@ -59,8 +69,10 @@
     {
       "word": "食器洗い",
       "reading": "しょっきあらい",
+      "han_viet": "",
       "meaning": "Rửa bát",
-      "type": "Danh động từ",
+      "type": "Verb",
+      "level": "N4",
       "example": {
         "jp": "食器洗いをします。",
         "vn": "(đuôi lịch sự)"
@@ -69,8 +81,10 @@
     {
       "word": "料理",
       "reading": "りょうり",
+      "han_viet": "LIÊU LÝ",
       "meaning": "Nấu ăn",
-      "type": "Danh động từ",
+      "type": "Verb",
+      "level": "N4",
       "example": {
         "jp": "料理を作ります。",
         "vn": "(đuôi lịch sự)"
@@ -79,8 +93,10 @@
     {
       "word": "炊事",
       "reading": "すいじ",
+      "han_viet": "",
       "meaning": "Nấu cơm",
-      "type": "Danh động từ",
+      "type": "Verb",
+      "level": "N4",
       "example": {
         "jp": "炊事をします。",
         "vn": "(đuôi lịch sự)"
@@ -89,8 +105,10 @@
     {
       "word": "買い物",
       "reading": "かいもの",
+      "han_viet": "",
       "meaning": "Mua sắm",
-      "type": "Danh động từ",
+      "type": "Verb",
+      "level": "N4",
       "example": {
         "jp": "食材の買い物をします。",
         "vn": "(đuôi lịch sự)"
@@ -99,8 +117,10 @@
     {
       "word": "買い出し",
       "reading": "かいだし",
+      "han_viet": "",
       "meaning": "Đi chợ",
-      "type": "Danh động từ",
+      "type": "Verb",
+      "level": "N4",
       "example": {
         "jp": "買い出しに行きます。",
         "vn": "(đuôi lịch sự)"
@@ -109,8 +129,10 @@
     {
       "word": "片付け",
       "reading": "かたづけ",
+      "han_viet": "",
       "meaning": "Dọn dẹp",
-      "type": "Danh động từ",
+      "type": "Verb",
+      "level": "N4",
       "example": {
         "jp": "片付けをします。",
         "vn": "(đuôi lịch sự)"
@@ -119,8 +141,10 @@
     {
       "word": "整理整頓",
       "reading": "せいりせいとん",
+      "han_viet": "",
       "meaning": "Sắp xếp",
-      "type": "Danh động từ",
+      "type": "Verb",
+      "level": "N4",
       "example": {
         "jp": "整理整頓を心がけます。",
         "vn": "(đuôi lịch sự)"
@@ -129,8 +153,10 @@
     {
       "word": "掃除機",
       "reading": "そうじき",
+      "han_viet": "",
       "meaning": "Máy hút bụi",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "掃除機をかけます。",
         "vn": "(đuôi lịch sự)"
@@ -139,8 +165,10 @@
     {
       "word": "台所",
       "reading": "だいどころ",
+      "han_viet": "",
       "meaning": "Nhà bếp",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "台所を掃除します。",
         "vn": "(đuôi lịch sự)"
@@ -149,8 +177,10 @@
     {
       "word": "風呂掃除",
       "reading": "ふろそうじ",
+      "han_viet": "",
       "meaning": "Cọc nhà tắm",
-      "type": "Danh động từ",
+      "type": "Verb",
+      "level": "N4",
       "example": {
         "jp": "風呂掃除をしました。",
         "vn": "đã (quá khứ)."
@@ -159,8 +189,10 @@
     {
       "word": "トイレ掃除",
       "reading": "トイレそうじ",
+      "han_viet": "",
       "meaning": "Cọc toilet",
-      "type": "Danh động từ",
+      "type": "Verb",
+      "level": "N4",
       "example": {
         "jp": "トイレ掃除をします。",
         "vn": "(đuôi lịch sự)"
@@ -169,8 +201,10 @@
     {
       "word": "生ゴミ",
       "reading": "なまごみ",
+      "han_viet": "",
       "meaning": "Rác hữu cơ",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "生ゴミを出します。",
         "vn": "(đuôi lịch sự)"
@@ -179,8 +213,10 @@
     {
       "word": "分別",
       "reading": "ぶんべつ",
+      "han_viet": "",
       "meaning": "Phân loại",
-      "type": "Danh động từ",
+      "type": "Verb",
+      "level": "N4",
       "example": {
         "jp": "ゴミの分別をします。",
         "vn": "(đuôi lịch sự)"
@@ -189,8 +225,10 @@
     {
       "word": "掃除用具",
       "reading": "そうじようぐ",
+      "han_viet": "",
       "meaning": "Dụng cụ vệ sinh",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "掃除用具を揃えます。",
         "vn": "(đuôi lịch sự)"
@@ -199,8 +237,10 @@
     {
       "word": "主婦",
       "reading": "しゅふ",
+      "han_viet": "",
       "meaning": "Nội trợ",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "主婦として家事をします。",
         "vn": "(đuôi lịch sự)"

@@ -9,8 +9,10 @@
     {
       "word": "症状",
       "reading": "しょうじょう",
+      "han_viet": "",
       "meaning": "Triệu chứng",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "症状が出ました。",
         "vn": "đã (quá khứ)."
@@ -19,8 +21,10 @@
     {
       "word": "具合",
       "reading": "ぐあい",
+      "han_viet": "",
       "meaning": "Tình trạng",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "具合が悪いです。",
         "vn": "là."
@@ -29,8 +33,10 @@
     {
       "word": "調子",
       "reading": "ちょうし",
+      "han_viet": "",
       "meaning": "Tình trạng",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "調子が悪いです。",
         "vn": "là."
@@ -39,8 +45,10 @@
     {
       "word": "疲労",
       "reading": "ひろう",
+      "han_viet": "",
       "meaning": "Mệt mỏi",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "疲労がたまっています。",
         "vn": "có (người/động vật)."
@@ -49,8 +57,10 @@
     {
       "word": "倦怠",
       "reading": "けんたい",
+      "han_viet": "",
       "meaning": "Mệt lả",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "倦怠感があります。",
         "vn": "có."
@@ -59,8 +69,10 @@
     {
       "word": "目眩",
       "reading": "めまい",
+      "han_viet": "",
       "meaning": "Chóng mặt",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "目眩がします。",
         "vn": "(đuôi lịch sự)"
@@ -69,8 +81,10 @@
     {
       "word": "耳鳴り",
       "reading": "みみなり",
+      "han_viet": "",
       "meaning": "Ù tai",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "耳鳴りがします。",
         "vn": "(đuôi lịch sự)"
@@ -79,8 +93,10 @@
     {
       "word": "吐き気",
       "reading": "はきけ",
+      "han_viet": "",
       "meaning": "Buồn nôn",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "吐き気がします。",
         "vn": "(đuôi lịch sự)"
@@ -89,8 +105,10 @@
     {
       "word": "嘔吐",
       "reading": "おうと",
+      "han_viet": "",
       "meaning": "Nôn",
-      "type": "Danh động từ",
+      "type": "Verb",
+      "level": "N4",
       "example": {
         "jp": "嘔吐しました。",
         "vn": "đã (quá khứ)."
@@ -99,8 +117,10 @@
     {
       "word": "下痢",
       "reading": "げり",
+      "han_viet": "",
       "meaning": "Tiêu chảy",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "下痢をしました。",
         "vn": "đã (quá khứ)."
@@ -109,8 +129,10 @@
     {
       "word": "便秘",
       "reading": "べんぴ",
+      "han_viet": "",
       "meaning": "Táo bón",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "便秘気味です。",
         "vn": "là."
@@ -119,8 +141,10 @@
     {
       "word": "食欲不振",
       "reading": "しょくよくふしん",
+      "han_viet": "",
       "meaning": "Mất ngon miệng",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "食欲不振です。",
         "vn": "là."
@@ -129,8 +153,10 @@
     {
       "word": "寝不足",
       "reading": "ねぶそく",
+      "han_viet": "",
       "meaning": "Thiếu ngủ",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "寝不足です。",
         "vn": "là."
@@ -139,8 +165,10 @@
     {
       "word": "貧血",
       "reading": "ひんけつ",
+      "han_viet": "",
       "meaning": "Thiếu máu",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "貧血気味です。",
         "vn": "là."
@@ -149,8 +177,10 @@
     {
       "word": "低血圧",
       "reading": "ていけつあつ",
+      "han_viet": "",
       "meaning": "Huyết áp thấp",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "低血圧です。",
         "vn": "là."
@@ -159,8 +189,10 @@
     {
       "word": "高血圧",
       "reading": "こうけつあつ",
+      "han_viet": "",
       "meaning": "Huyết áp cao",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "高血圧です。",
         "vn": "là."
@@ -169,8 +201,10 @@
     {
       "word": "発熱",
       "reading": "はつねつ",
+      "han_viet": "",
       "meaning": "Sốt",
-      "type": "Danh động từ",
+      "type": "Verb",
+      "level": "N4",
       "example": {
         "jp": "発熱しました。",
         "vn": "đã (quá khứ)."
@@ -179,8 +213,10 @@
     {
       "word": "悪寒",
       "reading": "おかん",
+      "han_viet": "",
       "meaning": "Rét run",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "悪寒がします。",
         "vn": "(đuôi lịch sự)"
@@ -189,8 +225,10 @@
     {
       "word": "震え",
       "reading": "ふるえ",
+      "han_viet": "",
       "meaning": "Run",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "震えが止まりません。",
         "vn": "không."
@@ -199,8 +237,10 @@
     {
       "word": "失神",
       "reading": "しっしん",
+      "han_viet": "",
       "meaning": "Ngất",
-      "type": "Danh động từ",
+      "type": "Verb",
+      "level": "N4",
       "example": {
         "jp": "失神しました。",
         "vn": "đã (quá khứ)."

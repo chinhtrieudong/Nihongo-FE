@@ -9,141 +9,169 @@
     {
       "word": "家族",
       "reading": "かぞく",
+      "han_viet": "",
       "meaning": "Gia đình",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N5",
       "example": {
         "jp": "家族は5人です。",
-        "vn": "là."
+        "vn": "Gia đình tôi có 5 người."
       }
     },
     {
       "word": "父",
       "reading": "ちち",
+      "han_viet": "",
       "meaning": "Bố (khiêm nhường)",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N5",
       "example": {
         "jp": "父は会社員です。",
-        "vn": "là."
+        "vn": "Bố tôi là nhân viên công ty."
       }
     },
     {
       "word": "母",
       "reading": "はは",
+      "han_viet": "",
       "meaning": "Mẹ (khiêm nhường)",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N5",
       "example": {
         "jp": "母は主婦です。",
-        "vn": "là."
+        "vn": "Mẹ tôi là nội trợ."
       }
     },
     {
       "word": "お父さん",
       "reading": "おとうさん",
+      "han_viet": "",
       "meaning": "Bố (của người khác)",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N5",
       "example": {
         "jp": "お父さんは元気ですか。",
-        "vn": "có phải là... không?"
+        "vn": "Bố anh/chị có khỏe không?"
       }
     },
     {
       "word": "お母さん",
       "reading": "おかあさん",
+      "han_viet": "",
       "meaning": "Mẹ (của người khác)",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N5",
       "example": {
         "jp": "お母さんは何歳ですか。",
-        "vn": "có phải là... không?"
+        "vn": "Mẹ anh/chị bao nhiêu tuổi?"
       }
     },
     {
       "word": "両親",
       "reading": "りょうしん",
+      "han_viet": "",
       "meaning": "Bố mẹ",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N5",
       "example": {
         "jp": "両親は東京に住んでいます。",
-        "vn": "có (người/động vật)."
+        "vn": "Bố mẹ tôi sống ở Tokyo."
       }
     },
     {
       "word": "兄",
       "reading": "あに",
+      "han_viet": "",
       "meaning": "Anh trai (khiêm nhường)",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N5",
       "example": {
         "jp": "兄は大学生です。",
-        "vn": "là."
+        "vn": "Anh trai tôi là sinh viên đại học."
       }
     },
     {
       "word": "お兄さん",
       "reading": "おにいさん",
+      "han_viet": "",
       "meaning": "Anh trai (của người khác)",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N5",
       "example": {
-        "jp": "お兄さんは高いですね。",
-        "vn": ""
+        "jp": "お兄さんは背が高いですね。",
+        "vn": "Anh trai bạn cao nhỉ."
       }
     },
     {
       "word": "姉",
       "reading": "あね",
+      "han_viet": "",
       "meaning": "Chị gái (khiêm nhường)",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N5",
       "example": {
         "jp": "姉は会社員です。",
-        "vn": "là."
+        "vn": "Chị gái tôi là nhân viên công ty."
       }
     },
     {
       "word": "お姉さん",
       "reading": "おねえさん",
+      "han_viet": "",
       "meaning": "Chị gái (của người khác)",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N5",
       "example": {
         "jp": "お姉さんはきれいですね。",
-        "vn": ""
+        "vn": "Chị bạn đẹp nhỉ."
       }
     },
     {
       "word": "弟",
       "reading": "おとうと",
+      "han_viet": "",
       "meaning": "Em trai",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N5",
       "example": {
         "jp": "弟は小学生です。",
-        "vn": "là."
+        "vn": "Em trai tôi là học sinh tiểu học."
       }
     },
     {
       "word": "妹",
       "reading": "いもうと",
+      "han_viet": "",
       "meaning": "Em gái",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N5",
       "example": {
         "jp": "妹は7歳です。",
-        "vn": "là."
+        "vn": "Em gái tôi 7 tuổi."
       }
     },
     {
       "word": "兄弟",
       "reading": "きょうだい",
+      "han_viet": "",
       "meaning": "Anh chị em",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N5",
       "example": {
         "jp": "兄弟が3人います。",
-        "vn": "có (người/động vật)."
+        "vn": "Tôi có 3 anh chị em."
       }
     },
     {
       "word": "姉妹",
       "reading": "しまい",
+      "han_viet": "",
       "meaning": "Chị em",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N5",
       "example": {
         "jp": "姉妹で買い物に行きます。",
-        "vn": "(đuôi lịch sự)"
+        "vn": "Chị em chúng tôi đi mua sắm cùng nhau."
       }
     }
   ]

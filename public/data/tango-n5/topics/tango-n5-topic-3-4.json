@@ -9,8 +9,10 @@
     {
       "word": "個",
       "reading": "こ",
+      "han_viet": "",
       "meaning": "Cái, chiếc (đếm)",
-      "type": "Lượng từ",
+      "type": "Noun",
+      "level": "N5",
       "example": {
         "jp": "りんごが3個あります。",
         "vn": "có."
@@ -19,8 +21,10 @@
     {
       "word": "つ",
       "reading": "つ",
+      "han_viet": "",
       "meaning": "Cái (đếm chung)",
-      "type": "Lượng từ",
+      "type": "Noun",
+      "level": "N5",
       "example": {
         "jp": "一つください。",
         "vn": "vui lòng..."
@@ -29,8 +33,10 @@
     {
       "word": "枚",
       "reading": "まい",
+      "han_viet": "",
       "meaning": "Tờ, tấm (giấy, vải)",
-      "type": "Lượng từ",
+      "type": "Adjective",
+      "level": "N5",
       "example": {
         "jp": "紙を2枚ください。",
         "vn": "vui lòng..."
@@ -39,8 +45,10 @@
     {
       "word": "冊",
       "reading": "さつ",
+      "han_viet": "",
       "meaning": "Cuốn (sách)",
-      "type": "Lượng từ",
+      "type": "Noun",
+      "level": "N5",
       "example": {
         "jp": "本を3冊買いました。",
         "vn": "đã (quá khứ)."
@@ -49,8 +57,10 @@
     {
       "word": "台",
       "reading": "だい",
+      "han_viet": "",
       "meaning": "Chiếc (máy móc)",
-      "type": "Lượng từ",
+      "type": "Adjective",
+      "level": "N5",
       "example": {
         "jp": "車が1台あります。",
         "vn": "có."
@@ -59,8 +69,10 @@
     {
       "word": "匹",
       "reading": "ひき",
+      "han_viet": "",
       "meaning": "Con (động vật nhỏ)",
-      "type": "Lượng từ",
+      "type": "Noun",
+      "level": "N5",
       "example": {
         "jp": "猫が2匹います。",
         "vn": "có (người/động vật)."
@@ -69,8 +81,10 @@
     {
       "word": "頭",
       "reading": "とう",
+      "han_viet": "",
       "meaning": "Con (động vật lớn)",
-      "type": "Lượng từ",
+      "type": "Noun",
+      "level": "N5",
       "example": {
         "jp": "牛が3頭います。",
         "vn": "có (người/động vật)."
@@ -79,8 +93,10 @@
     {
       "word": "本",
       "reading": "ほん",
+      "han_viet": "BẢN",
       "meaning": "Cái (dài)",
-      "type": "Lượng từ",
+      "type": "Noun",
+      "level": "N5",
       "example": {
         "jp": "鉛筆を5本ください。",
         "vn": "vui lòng..."
@@ -89,8 +105,10 @@
     {
       "word": "杯",
       "reading": "はい",
+      "han_viet": "",
       "meaning": "Ly, chén (đồ uống)",
-      "type": "Lượng từ",
+      "type": "Other",
+      "level": "N5",
       "example": {
         "jp": "コーヒーを一杯飲みます。",
         "vn": "(đuôi lịch sự)"
@@ -99,8 +117,10 @@
     {
       "word": "人",
       "reading": "にん",
+      "han_viet": "",
       "meaning": "Người",
-      "type": "Lượng từ",
+      "type": "Noun",
+      "level": "N5",
       "example": {
         "jp": "3人で行きます。",
         "vn": "(đuôi lịch sự)"
@@ -109,18 +129,22 @@
     {
       "word": "名",
       "reading": "めい",
+      "han_viet": "",
       "meaning": "Danh (lịch sự)",
-      "type": "Lượng từ",
+      "type": "Adjective",
+      "level": "N5",
       "example": {
         "jp": "3名様ですね。",
-        "vn": ""
+        "vn": "3 vị khách đúng không ạ."
       }
     },
     {
       "word": "歳",
       "reading": "さい",
+      "han_viet": "",
       "meaning": "Tuổi",
-      "type": "Lượng từ",
+      "type": "Adjective",
+      "level": "N5",
       "example": {
         "jp": "20歳です。",
         "vn": "là."
@@ -129,8 +153,10 @@
     {
       "word": "才",
       "reading": "さい",
+      "han_viet": "",
       "meaning": "Tuổi (viết tắt)",
-      "type": "Lượng từ",
+      "type": "Adjective",
+      "level": "N5",
       "example": {
         "jp": "5才です。",
         "vn": "là."
@@ -139,8 +165,10 @@
     {
       "word": "円",
       "reading": "えん",
+      "han_viet": "",
       "meaning": "Yên",
-      "type": "Lượng từ",
+      "type": "Noun",
+      "level": "N5",
       "example": {
         "jp": "100円です。",
         "vn": "là."

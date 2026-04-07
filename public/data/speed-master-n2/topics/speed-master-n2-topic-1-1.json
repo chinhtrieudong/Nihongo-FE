@@ -9,8 +9,10 @@
     {
       "word": "政権",
       "reading": "せいけん",
+      "han_viet": "",
       "meaning": "Chính quyền",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N2",
       "example": {
         "jp": "新政権が発足しました。",
         "vn": "đã (quá khứ)."
@@ -19,8 +21,10 @@
     {
       "word": "政令",
       "reading": "せいれい",
+      "han_viet": "",
       "meaning": "Nghị định chính phủ",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N2",
       "example": {
         "jp": "政令が公布された。",
         "vn": ""
@@ -29,8 +33,10 @@
     {
       "word": "国会",
       "reading": "こっかい",
+      "han_viet": "",
       "meaning": "Quốc hội",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N2",
       "example": {
         "jp": "国会が開会しました。",
         "vn": "đã (quá khứ)."
@@ -39,8 +45,10 @@
     {
       "word": "法案",
       "reading": "ほうあん",
+      "han_viet": "",
       "meaning": "Dự luật",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N2",
       "example": {
         "jp": "法案が可決されました。",
         "vn": "đã (quá khứ)."
@@ -49,8 +57,10 @@
     {
       "word": "内閣",
       "reading": "ないかく",
+      "han_viet": "",
       "meaning": "Nội các",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N2",
       "example": {
         "jp": "内閣が総辞職した。",
         "vn": ""
@@ -59,8 +69,10 @@
     {
       "word": "官僚",
       "reading": "かんりょう",
+      "han_viet": "",
       "meaning": "Quan lại",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N2",
       "example": {
         "jp": "官僚主義が問題だ。",
         "vn": ""
@@ -69,8 +81,10 @@
     {
       "word": "議員",
       "reading": "ぎいん",
+      "han_viet": "",
       "meaning": "Nghị viên",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N2",
       "example": {
         "jp": "国会議員です。",
         "vn": "là."
@@ -79,8 +93,10 @@
     {
       "word": "選挙",
       "reading": "せんきょ",
+      "han_viet": "",
       "meaning": "Bầu cử",
-      "type": "Danh động từ",
+      "type": "Verb",
+      "level": "N2",
       "example": {
         "jp": "選挙に出馬します。",
         "vn": "(đuôi lịch sự)"
@@ -89,8 +105,10 @@
     {
       "word": "投票",
       "reading": "とうひょう",
+      "han_viet": "",
       "meaning": "Bỏ phiếu",
-      "type": "Danh động từ",
+      "type": "Verb",
+      "level": "N2",
       "example": {
         "jp": "投票に行きました。",
         "vn": "đã (quá khứ)."
@@ -99,8 +117,10 @@
     {
       "word": "与党",
       "reading": "よとう",
+      "han_viet": "",
       "meaning": "Đảng cầm quyền",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N2",
       "example": {
         "jp": "与党が法案を通した。",
         "vn": ""

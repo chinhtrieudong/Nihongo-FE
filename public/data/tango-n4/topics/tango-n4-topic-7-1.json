@@ -9,8 +9,10 @@
     {
       "word": "お店",
       "reading": "おみせ",
+      "han_viet": "",
       "meaning": "Cửa hàng",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "お店に入りました。",
         "vn": "đã (quá khứ)."
@@ -19,8 +21,10 @@
     {
       "word": "店",
       "reading": "みせ",
+      "han_viet": "",
       "meaning": "Cửa hàng",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "店を出ました。",
         "vn": "đã (quá khứ)."
@@ -29,8 +33,10 @@
     {
       "word": "商店",
       "reading": "しょうてん",
+      "han_viet": "",
       "meaning": "Tiệm buôn",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "商店街を散歩します。",
         "vn": "(đuôi lịch sự)"
@@ -39,8 +45,10 @@
     {
       "word": "商店街",
       "reading": "しょうてんがい",
+      "han_viet": "",
       "meaning": "Phố mua sắm",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "商店街で買い物します。",
         "vn": "(đuôi lịch sự)"
@@ -49,8 +57,10 @@
     {
       "word": "デパート",
       "reading": "デパート",
+      "han_viet": "",
       "meaning": "Trung tâm thương mại",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "デパートで買い物しました。",
         "vn": "đã (quá khứ)."
@@ -59,8 +69,10 @@
     {
       "word": "スーパー",
       "reading": "スーパー",
+      "han_viet": "",
       "meaning": "Siêu thị",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "スーパーで食材を買います。",
         "vn": "có (người/động vật)."
@@ -69,8 +81,10 @@
     {
       "word": "コンビニ",
       "reading": "コンビニ",
+      "han_viet": "",
       "meaning": "Cửa hàng tiện lợi",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "コンビニで弁当を買いました。",
         "vn": "đã (quá khứ)."
@@ -79,8 +93,10 @@
     {
       "word": "薬局",
       "reading": "やっきょく",
+      "han_viet": "",
       "meaning": "Hiệu thuốc",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "薬局で薬を買いました。",
         "vn": "đã (quá khứ)."
@@ -89,8 +105,10 @@
     {
       "word": "本屋",
       "reading": "ほんや",
+      "han_viet": "",
       "meaning": "Hiệu sách",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "本屋で雑誌を買いました。",
         "vn": "đã (quá khứ)."
@@ -99,8 +117,10 @@
     {
       "word": "花屋",
       "reading": "はなや",
+      "han_viet": "",
       "meaning": "Tiệm hoa",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "花屋で花を買いました。",
         "vn": "đã (quá khứ)."
@@ -109,8 +129,10 @@
     {
       "word": "肉屋",
       "reading": "にくや",
+      "han_viet": "",
       "meaning": "Tiệm thịt",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "肉屋で肉を買いました。",
         "vn": "đã (quá khứ)."
@@ -119,8 +141,10 @@
     {
       "word": "魚屋",
       "reading": "さかなや",
+      "han_viet": "",
       "meaning": "Tiệm cá",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "魚屋で鮮魚を買いました。",
         "vn": "đã (quá khứ)."
@@ -129,8 +153,10 @@
     {
       "word": "八百屋",
       "reading": "やおや",
+      "han_viet": "",
       "meaning": "Tiệm rau",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "八百屋で野菜を買いました。",
         "vn": "đã (quá khứ)."
@@ -139,8 +165,10 @@
     {
       "word": "パン屋",
       "reading": "ぱんや",
+      "han_viet": "",
       "meaning": "Tiệm bánh",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "パン屋でパンを買いました。",
         "vn": "đã (quá khứ)."
@@ -149,8 +177,10 @@
     {
       "word": "電気屋",
       "reading": "でんきや",
+      "han_viet": "",
       "meaning": "Tiệm điện",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "電気屋で洗濯機を買いました。",
         "vn": "đã (quá khứ)."
@@ -159,8 +189,10 @@
     {
       "word": "開店",
       "reading": "かいてん",
+      "han_viet": "",
       "meaning": "Khai trương",
-      "type": "Danh động từ",
+      "type": "Verb",
+      "level": "N4",
       "example": {
         "jp": "新店が開店しました。",
         "vn": "đã (quá khứ)."
@@ -169,8 +201,10 @@
     {
       "word": "閉店",
       "reading": "へいてん",
+      "han_viet": "",
       "meaning": "Đóng cửa",
-      "type": "Danh động từ",
+      "type": "Verb",
+      "level": "N4",
       "example": {
         "jp": "閉店セールをしています。",
         "vn": "có (người/động vật)."
@@ -179,8 +213,10 @@
     {
       "word": "営業",
       "reading": "えいぎょう",
+      "han_viet": "",
       "meaning": "Kinh doanh",
-      "type": "Danh động từ",
+      "type": "Verb",
+      "level": "N4",
       "example": {
         "jp": "営業時間は10時からです。",
         "vn": "là."
@@ -189,8 +225,10 @@
     {
       "word": "定休日",
       "reading": "ていきゅうび",
+      "han_viet": "",
       "meaning": "Ngày nghỉ",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "定休日は月曜日です。",
         "vn": "là."
@@ -199,8 +237,10 @@
     {
       "word": "年中無休",
       "reading": "ねんじゅうむきゅう",
+      "han_viet": "",
       "meaning": "Mở quanh năm",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "年中無休で営業しています。",
         "vn": "có (người/động vật)."

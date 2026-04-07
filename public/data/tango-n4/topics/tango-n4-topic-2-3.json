@@ -9,8 +9,10 @@
     {
       "word": "体型",
       "reading": "たいけい",
+      "han_viet": "",
       "meaning": "Vóc dáng",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "体型がいいです。",
         "vn": "là."
@@ -19,8 +21,10 @@
     {
       "word": "背",
       "reading": "せ",
+      "han_viet": "",
       "meaning": "Chiều cao",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "背が高いです。",
         "vn": "là."
@@ -29,8 +33,10 @@
     {
       "word": "身長",
       "reading": "しんちょう",
+      "han_viet": "",
       "meaning": "Chiều cao",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "身長は170センチです。",
         "vn": "là."
@@ -39,8 +45,10 @@
     {
       "word": "体重",
       "reading": "たいじゅう",
+      "han_viet": "",
       "meaning": "Cân nặng",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "体重を測りました。",
         "vn": "đã (quá khứ)."
@@ -49,8 +57,10 @@
     {
       "word": "痩せている",
       "reading": "やせている",
+      "han_viet": "",
       "meaning": "Gầy",
-      "type": "Tính từ",
+      "type": "Adjective",
+      "level": "N4",
       "example": {
         "jp": "痩せています。",
         "vn": "có (người/động vật)."
@@ -59,8 +69,10 @@
     {
       "word": "太っている",
       "reading": "ふとっている",
+      "han_viet": "",
       "meaning": "Béo",
-      "type": "Tính từ",
+      "type": "Adjective",
+      "level": "N4",
       "example": {
         "jp": "太っています。",
         "vn": "có (người/động vật)."
@@ -69,8 +81,10 @@
     {
       "word": "ふくよか",
       "reading": "ふくよか",
+      "han_viet": "",
       "meaning": "Mập mạp",
-      "type": "Tính từ",
+      "type": "Adjective",
+      "level": "N4",
       "example": {
         "jp": "ふくよかです。",
         "vn": "là."
@@ -79,8 +93,10 @@
     {
       "word": "筋肉",
       "reading": "きんにく",
+      "han_viet": "",
       "meaning": "Cơ bắp",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "筋肉がつきました。",
         "vn": "đã (quá khứ)."
@@ -89,8 +105,10 @@
     {
       "word": "筋肉質",
       "reading": "きんにくしつ",
+      "han_viet": "",
       "meaning": "Cơ bắp",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "筋肉質です。",
         "vn": "là."
@@ -99,8 +117,10 @@
     {
       "word": "引き締まる",
       "reading": "ひきしまる",
+      "han_viet": "",
       "meaning": "Săn chắc",
-      "type": "Động từ",
+      "type": "Verb",
+      "level": "N4",
       "example": {
         "jp": "体が引き締まりました。",
         "vn": "đã (quá khứ)."
@@ -109,8 +129,10 @@
     {
       "word": "ダイエット",
       "reading": "ダイエット",
+      "han_viet": "",
       "meaning": "Giảm cân",
-      "type": "Danh động từ",
+      "type": "Verb",
+      "level": "N4",
       "example": {
         "jp": "ダイエットしています。",
         "vn": "có (người/động vật)."
@@ -119,8 +141,10 @@
     {
       "word": "運動",
       "reading": "うんどう",
+      "han_viet": "",
       "meaning": "Vận động",
-      "type": "Danh động từ",
+      "type": "Verb",
+      "level": "N4",
       "example": {
         "jp": "運動をしています。",
         "vn": "có (người/động vật)."
@@ -129,8 +153,10 @@
     {
       "word": "筋トレ",
       "reading": "きんトレ",
+      "han_viet": "",
       "meaning": "Tập gym",
-      "type": "Danh động từ",
+      "type": "Verb",
+      "level": "N4",
       "example": {
         "jp": "筋トレをしています。",
         "vn": "có (người/động vật)."
@@ -139,8 +165,10 @@
     {
       "word": "ヨガ",
       "reading": "ヨガ",
+      "han_viet": "",
       "meaning": "Yoga",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "ヨガをしています。",
         "vn": "có (người/động vật)."
@@ -149,8 +177,10 @@
     {
       "word": "ジョギング",
       "reading": "ジョギング",
+      "han_viet": "",
       "meaning": "Chạy bộ",
-      "type": "Danh động từ",
+      "type": "Verb",
+      "level": "N4",
       "example": {
         "jp": "朝、ジョギングします。",
         "vn": "(đuôi lịch sự)"
@@ -159,8 +189,10 @@
     {
       "word": "スリム",
       "reading": "スリム",
+      "han_viet": "",
       "meaning": "Thon gọn",
-      "type": "Tính từ",
+      "type": "Adjective",
+      "level": "N4",
       "example": {
         "jp": "スリムな体型です。",
         "vn": "là."
@@ -169,8 +201,10 @@
     {
       "word": "スタイル",
       "reading": "スタイル",
+      "han_viet": "",
       "meaning": "Dáng người",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "スタイルがいいです。",
         "vn": "là."
@@ -179,8 +213,10 @@
     {
       "word": "プロポーション",
       "reading": "プロポーション",
+      "han_viet": "",
       "meaning": "Tỷ lệ cơ thể",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "プロポーションがいいです。",
         "vn": "là."
@@ -189,8 +225,10 @@
     {
       "word": "健康",
       "reading": "けんこう",
+      "han_viet": "",
       "meaning": "Sức khỏe",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "健康に気をつけています。",
         "vn": "có (người/động vật)."
@@ -199,8 +237,10 @@
     {
       "word": "美容",
       "reading": "びよう",
+      "han_viet": "",
       "meaning": "Làm đẹp",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "美容に気をつけています。",
         "vn": "có (người/động vật)."

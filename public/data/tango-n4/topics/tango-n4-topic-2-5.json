@@ -9,8 +9,10 @@
     {
       "word": "表情",
       "reading": "ひょうじょう",
+      "han_viet": "",
       "meaning": "Biểu cảm",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "表情が豊かです。",
         "vn": "là."
@@ -19,8 +21,10 @@
     {
       "word": "笑顔",
       "reading": "えがお",
+      "han_viet": "",
       "meaning": "Nụ cười",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "笑顔が素敵です。",
         "vn": "là."
@@ -29,8 +33,10 @@
     {
       "word": "泣き顔",
       "reading": "なきがお",
+      "han_viet": "",
       "meaning": "Mặt khóc",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "泣き顔になりました。",
         "vn": "đã (quá khứ)."
@@ -39,8 +45,10 @@
     {
       "word": "怒り",
       "reading": "いかり",
+      "han_viet": "",
       "meaning": "Tức giận",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "怒りの表情です。",
         "vn": "là."
@@ -49,8 +57,10 @@
     {
       "word": "驚き",
       "reading": "おどろき",
+      "han_viet": "",
       "meaning": "Ngạc nhiên",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "驚きの表情です。",
         "vn": "là."
@@ -59,8 +69,10 @@
     {
       "word": "悲しみ",
       "reading": "かなしみ",
+      "han_viet": "",
       "meaning": "Buồn",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "悲しみの表情です。",
         "vn": "là."
@@ -69,8 +81,10 @@
     {
       "word": "喜び",
       "reading": "よろこび",
+      "han_viet": "",
       "meaning": "Vui mừng",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "喜びの表情です。",
         "vn": "là."
@@ -79,8 +93,10 @@
     {
       "word": "困惑",
       "reading": "こんわく",
+      "han_viet": "",
       "meaning": "Bối rối",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "困惑した表情です。",
         "vn": "là."
@@ -89,8 +105,10 @@
     {
       "word": "不安",
       "reading": "ふあん",
+      "han_viet": "",
       "meaning": "Lo lắng",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "不安な表情です。",
         "vn": "là."
@@ -99,8 +117,10 @@
     {
       "word": "緊張",
       "reading": "きんちょう",
+      "han_viet": "",
       "meaning": "Căng thẳng",
-      "type": "Danh động từ",
+      "type": "Verb",
+      "level": "N4",
       "example": {
         "jp": "緊張した表情です。",
         "vn": "là."
@@ -109,8 +129,10 @@
     {
       "word": "落ち着き",
       "reading": "おちつき",
+      "han_viet": "",
       "meaning": "Bình tĩnh",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "落ち着いた表情です。",
         "vn": "là."
@@ -119,8 +141,10 @@
     {
       "word": "微笑む",
       "reading": "ほほえむ",
+      "han_viet": "",
       "meaning": "Mỉm cười",
-      "type": "Động từ",
+      "type": "Verb",
+      "level": "N4",
       "example": {
         "jp": "微笑んでいます。",
         "vn": "có (người/động vật)."
@@ -129,8 +153,10 @@
     {
       "word": "笑う",
       "reading": "わらう",
+      "han_viet": "",
       "meaning": "Cười",
-      "type": "Động từ",
+      "type": "Verb",
+      "level": "N4",
       "example": {
         "jp": "大声で笑いました。",
         "vn": "đã (quá khứ)."
@@ -139,8 +165,10 @@
     {
       "word": "泣く",
       "reading": "なく",
+      "han_viet": "",
       "meaning": "Khóc",
-      "type": "Động từ",
+      "type": "Verb",
+      "level": "N4",
       "example": {
         "jp": "泣いています。",
         "vn": "có (người/động vật)."
@@ -149,8 +177,10 @@
     {
       "word": "怒る",
       "reading": "おこる",
+      "han_viet": "",
       "meaning": "Tức giận",
-      "type": "Động từ",
+      "type": "Verb",
+      "level": "N4",
       "example": {
         "jp": "怒っています。",
         "vn": "có (người/động vật)."
@@ -159,8 +189,10 @@
     {
       "word": "驚く",
       "reading": "おどろく",
+      "han_viet": "",
       "meaning": "Ngạc nhiên",
-      "type": "Động từ",
+      "type": "Verb",
+      "level": "N4",
       "example": {
         "jp": "驚いています。",
         "vn": "có (người/động vật)."
@@ -169,8 +201,10 @@
     {
       "word": "困る",
       "reading": "こまる",
+      "han_viet": "",
       "meaning": "Khó xử",
-      "type": "Động từ",
+      "type": "Verb",
+      "level": "N4",
       "example": {
         "jp": "困った表情です。",
         "vn": "là."
@@ -179,8 +213,10 @@
     {
       "word": "照れる",
       "reading": "てれる",
+      "han_viet": "",
       "meaning": "Ngại ngùng",
-      "type": "Động từ",
+      "type": "Verb",
+      "level": "N4",
       "example": {
         "jp": "照れています。",
         "vn": "có (người/động vật)."
@@ -189,8 +225,10 @@
     {
       "word": "真剣",
       "reading": "しんけん",
+      "han_viet": "",
       "meaning": "Nghiêm túc",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "真剣な表情です。",
         "vn": "là."
@@ -199,8 +237,10 @@
     {
       "word": "無表情",
       "reading": "むひょうじょう",
+      "han_viet": "",
       "meaning": "Vô cảm",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "無表情です。",
         "vn": "là."

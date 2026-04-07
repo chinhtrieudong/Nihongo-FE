@@ -36,7 +36,9 @@ export interface WordSource {
 }
 
 // Textbook types
-export type TextbookType = 'minna' | 'tango' | 'speed_master';
+// Note: the core data uses "speed-master" (kebab-case). Keep "speed_master"
+// for backward compatibility with older code paths.
+export type TextbookType = 'minna' | 'tango' | 'speed-master' | 'speed_master';
 
 // JLPT levels
 export type JLPTLevel = 'N1' | 'N2' | 'N3' | 'N4' | 'N5';

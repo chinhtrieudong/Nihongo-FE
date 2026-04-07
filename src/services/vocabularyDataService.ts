@@ -12,10 +12,75 @@ import type {
   JLPTLevel,
   LessonInfo,
 } from '../types/vocabulary';
+import { legacyToType } from '../types/vocabulary';
 
 // Cache for loaded data
 let wordsCache: CoreWord[] | null = null;
 let sourcesCache: WordSource[] | null = null;
+let textbookMetaCache: Record<string, any> = {};
+
+const loadTextbookMeta = async (textbookId: string): Promise<any | null> => {
+  if (textbookMetaCache[textbookId]) return textbookMetaCache[textbookId];
+  try {
+    const response = await fetch(`/data/textbook-${textbookId}.json`);
+    if (!response.ok) return null;
+    const data = await response.json();
+    textbookMetaCache[textbookId] = data;
+    return data;
+  } catch {
+    return null;
+  }
+};
+
+const loadTopicFile = async (
+  textbookId: string,
+  chapterNum: number,
+  topicNum: number
+): Promise<any | null> => {
+  try {
+    const url = `/data/${textbookId}/topics/${textbookId}-topic-${chapterNum}-${topicNum}.json`;
+    const response = await fetch(url);
+    if (!response.ok) return null;
+    return await response.json();
+  } catch {
+    return null;
+  }
+};
+
+const mapTopicWordsToVocabularyItems = (args: {
+  textbook: TextbookType;
+  level: JLPTLevel;
+  textbookId: string;
+  lessonNumber: number;
+  topicNameVi: string;
+  topicWords: Array<{
+    word: string;
+    reading: string;
+    meaning: string;
+    type?: string;
+    example?: { jp?: string; vn?: string };
+  }>;
+  hanVietByWordOrReading?: (word: string, reading: string) => string;
+}): VocabularyItem[] => {
+  const { textbook, level, textbookId, lessonNumber, topicNameVi, topicWords, hanVietByWordOrReading } = args;
+  return topicWords.map((w, idx) => ({
+    id: `${textbookId}-${lessonNumber}-${idx}-${w.word}`,
+    wordId: "",
+    sourceId: `${textbookId}-${lessonNumber}-${idx}`,
+    // In Tango topic JSON, "word" is the kanji/main written form (or JP form when no kanji).
+    kanji: w.word,
+    hiragana: w.reading || w.word,
+    hanViet: hanVietByWordOrReading ? (hanVietByWordOrReading(w.word, w.reading) || "") : "",
+    meaning: w.meaning,
+    type: legacyToType(w.type || ""),
+    example: w.example?.jp || "",
+    exampleMeaning: w.example?.vn || "",
+    textbook,
+    level,
+    lesson: lessonNumber,
+    topic: topicNameVi,
+  }));
+};
 
 /**
  * Load core words data
@@ -156,11 +221,20 @@ export const getLessonVocabulary = async (
     return [];
   }
 
-  const textbook = parts[0] as TextbookType;
-  const level = parts[1].toUpperCase() as JLPTLevel;
+  let textbook: TextbookType;
+  let level: JLPTLevel;
+
+  // Handle kebab-case textbook names like "speed-master-n1"
+  if (parts[0] === 'speed' && parts[1] === 'master') {
+    textbook = 'speed-master';
+    level = (parts[2] || '').toUpperCase() as JLPTLevel;
+  } else {
+    textbook = parts[0] as TextbookType;
+    level = parts[1].toUpperCase() as JLPTLevel;
+  }
 
   // Validate
-  if (!['minna', 'tango', 'speed_master'].includes(textbook)) {
+  if (!['minna', 'tango', 'speed-master', 'speed_master'].includes(textbook)) {
     console.error('Unknown textbook:', textbook);
     return [];
   }
@@ -170,14 +244,49 @@ export const getLessonVocabulary = async (
     return [];
   }
 
-  // Special handling for Tango: lessonNumber maps to topic within chapter
-  if (textbook === 'tango') {
-    // For Tango: 1-5 -> chapter 1, 6-10 -> chapter 2, etc.
+  // Chapter-based textbooks: lessonNumber maps to (chapter, topicIndex)
+  if (textbook === 'tango' || textbook === 'speed-master') {
     const chapterNum = Math.ceil(lessonNumber / 5);
+    const topicIndex = (lessonNumber - 1) % 5;
+    const topicNum = topicIndex + 1;
+
+    // Try to narrow down by topic name from textbook metadata
+    const meta = await loadTextbookMeta(textbookId);
+    const topicNameVi =
+      meta?.chapters?.find((c: any) => c.number === chapterNum)?.topics?.[topicIndex]?.nameVi;
+
+    // Prefer topic JSON (authoritative for Tango/Speed Master pages)
+    const topicJson = await loadTopicFile(textbookId, chapterNum, topicNum);
+    if (topicJson?.words && Array.isArray(topicJson.words)) {
+      // Best-effort Han-Viet lookup from core words data
+      const coreWords = await loadWords();
+      const byWord = new Map<string, CoreWord>();
+      const byReading = new Map<string, CoreWord>();
+      for (const cw of coreWords) {
+        if (cw.word) byWord.set(cw.word, cw);
+        if (cw.reading) byReading.set(cw.reading, cw);
+      }
+
+      return mapTopicWordsToVocabularyItems({
+        textbook,
+        level,
+        textbookId,
+        lessonNumber,
+        topicNameVi: topicJson.topicNameVi || topicNameVi || `Bài ${lessonNumber}`,
+        topicWords: topicJson.words,
+        hanVietByWordOrReading: (word: string, reading: string) => {
+          const cw = byWord.get(word) || byReading.get(reading) || byReading.get(word);
+          return cw?.hanViet || "";
+        },
+      });
+    }
+
+    // Fallback: derive from normalized core sources if available
     return getVocabulary({
       textbook,
       level,
       lesson: chapterNum,
+      ...(topicNameVi ? { topic: topicNameVi } : {}),
     });
   }
 

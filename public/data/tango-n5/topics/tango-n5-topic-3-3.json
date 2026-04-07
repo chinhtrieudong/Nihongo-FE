@@ -9,8 +9,10 @@
     {
       "word": "これ",
       "reading": "これ",
+      "han_viet": "",
       "meaning": "Cái này",
-      "type": "Đại từ",
+      "type": "Pronoun",
+      "level": "N5",
       "example": {
         "jp": "これは本です。",
         "vn": "là."
@@ -19,8 +21,10 @@
     {
       "word": "それ",
       "reading": "それ",
+      "han_viet": "",
       "meaning": "Cái đó",
-      "type": "Đại từ",
+      "type": "Pronoun",
+      "level": "N5",
       "example": {
         "jp": "それはペンです。",
         "vn": "là."
@@ -29,18 +33,22 @@
     {
       "word": "あれ",
       "reading": "あれ",
+      "han_viet": "",
       "meaning": "Cái kia",
-      "type": "Đại từ",
+      "type": "Pronoun",
+      "level": "N5",
       "example": {
         "jp": "あれは何ですか。",
-        "vn": "có phải là... không?"
+        "vn": "Cái kia là gì vậy?"
       }
     },
     {
       "word": "どれ",
       "reading": "どれ",
+      "han_viet": "",
       "meaning": "Cái nào",
-      "type": "Đại từ",
+      "type": "Pronoun",
+      "level": "N5",
       "example": {
         "jp": "どれがいいですか。",
         "vn": "có phải là... không?"
@@ -49,8 +57,10 @@
     {
       "word": "この",
       "reading": "この",
+      "han_viet": "",
       "meaning": "Cái này ~",
-      "type": "Tính từ",
+      "type": "Adjective",
+      "level": "N5",
       "example": {
         "jp": "この本は面白いです。",
         "vn": "là."
@@ -59,8 +69,10 @@
     {
       "word": "その",
       "reading": "その",
+      "han_viet": "",
       "meaning": "Cái đó ~",
-      "type": "Tính từ",
+      "type": "Adjective",
+      "level": "N5",
       "example": {
         "jp": "そのペンは誰のですか。",
         "vn": "có phải là... không?"
@@ -69,18 +81,22 @@
     {
       "word": "あの",
       "reading": "あの",
+      "han_viet": "",
       "meaning": "Cái kia ~",
-      "type": "Tính từ",
+      "type": "Adjective",
+      "level": "N5",
       "example": {
         "jp": "あの人は先生です。",
-        "vn": "là."
+        "vn": "Người kia là giáo viên."
       }
     },
     {
       "word": "どの",
       "reading": "どの",
+      "han_viet": "",
       "meaning": "Cái nào ~",
-      "type": "Tính từ",
+      "type": "Adjective",
+      "level": "N5",
       "example": {
         "jp": "どの本が好きですか。",
         "vn": "có phải là... không?"
@@ -89,8 +105,10 @@
     {
       "word": "何",
       "reading": "なに / なん",
+      "han_viet": "",
       "meaning": "Gì, cái gì",
-      "type": "Đại từ",
+      "type": "Pronoun",
+      "level": "N5",
       "example": {
         "jp": "これは何ですか。",
         "vn": "có phải là... không?"
@@ -99,8 +117,10 @@
     {
       "word": "誰",
       "reading": "だれ",
+      "han_viet": "",
       "meaning": "Ai",
-      "type": "Đại từ",
+      "type": "Pronoun",
+      "level": "N5",
       "example": {
         "jp": "あの人は誰ですか。",
         "vn": "có phải là... không?"
@@ -109,8 +129,10 @@
     {
       "word": "いつ",
       "reading": "いつ",
+      "han_viet": "",
       "meaning": "Khi nào",
-      "type": "Đại từ",
+      "type": "Pronoun",
+      "level": "N5",
       "example": {
         "jp": "いつ行きますか。",
         "vn": "... không?"
@@ -119,8 +141,10 @@
     {
       "word": "どこ",
       "reading": "どこ",
+      "han_viet": "",
       "meaning": "Ở đâu",
-      "type": "Đại từ",
+      "type": "Pronoun",
+      "level": "N5",
       "example": {
         "jp": "どこで買いましたか。",
         "vn": "đã... không?"
@@ -129,8 +153,10 @@
     {
       "word": "どうして",
       "reading": "どうして",
+      "han_viet": "",
       "meaning": "Tại sao",
-      "type": "Đại từ",
+      "type": "Pronoun",
+      "level": "N5",
       "example": {
         "jp": "どうして遅れたのですか。",
         "vn": "có phải là... không?"

@@ -9,8 +9,10 @@
     {
       "word": "給料",
       "reading": "きゅうりょう",
+      "han_viet": "",
       "meaning": "Lương",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "給料が振り込まれました。",
         "vn": "đã (quá khứ)."
@@ -19,8 +21,10 @@
     {
       "word": "給与",
       "reading": "きゅうよ",
+      "han_viet": "",
       "meaning": "Tiền lương",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "給与明細を確認しました。",
         "vn": "đã (quá khứ)."
@@ -29,8 +33,10 @@
     {
       "word": "賃金",
       "reading": "ちんぎん",
+      "han_viet": "",
       "meaning": "Tiền công",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "賃金が上がりました。",
         "vn": "đã (quá khứ)."
@@ -39,8 +45,10 @@
     {
       "word": "報酬",
       "reading": "ほうしゅう",
+      "han_viet": "",
       "meaning": "Thù lao",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "報酬をもらいました。",
         "vn": "đã (quá khứ)."
@@ -49,8 +57,10 @@
     {
       "word": "手当",
       "reading": "てあて",
+      "han_viet": "",
       "meaning": "Trợ cấp",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "住宅手当があります。",
         "vn": "có."
@@ -59,8 +69,10 @@
     {
       "word": "手取り",
       "reading": "てどり",
+      "han_viet": "",
       "meaning": "Lương thực lãnh",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "手取りは20万円です。",
         "vn": "là."
@@ -69,8 +81,10 @@
     {
       "word": "総取り",
       "reading": "そうどり",
+      "han_viet": "",
       "meaning": "Tổng thu nhập",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "総取りを聞かれました。",
         "vn": "đã (quá khứ)."
@@ -79,8 +93,10 @@
     {
       "word": "控除",
       "reading": "こうじょ",
+      "han_viet": "",
       "meaning": "Khấu trừ",
-      "type": "Danh động từ",
+      "type": "Verb",
+      "level": "N4",
       "example": {
         "jp": "税金が控除されます。",
         "vn": "(đuôi lịch sự)"
@@ -89,8 +105,10 @@
     {
       "word": "所得税",
       "reading": "しょとくぜい",
+      "han_viet": "",
       "meaning": "Thuế thu nhập",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "所得税を払います。",
         "vn": "có (người/động vật)."
@@ -99,8 +117,10 @@
     {
       "word": "住民税",
       "reading": "じゅうみんぜい",
+      "han_viet": "",
       "meaning": "Thuế dân cư",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "住民税が引かれます。",
         "vn": "(đuôi lịch sự)"
@@ -109,8 +129,10 @@
     {
       "word": "保険料",
       "reading": "ほけんりょう",
+      "han_viet": "",
       "meaning": "Phí bảo hiểm",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "保険料を払っています。",
         "vn": "có (người/động vật)."
@@ -119,8 +141,10 @@
     {
       "word": "厚生年金",
       "reading": "こうせいねんきん",
+      "han_viet": "",
       "meaning": "Lương hưu",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "厚生年金に加入しています。",
         "vn": "có (người/động vật)."
@@ -129,8 +153,10 @@
     {
       "word": "雇用保険",
       "reading": "こようほけん",
+      "han_viet": "",
       "meaning": "Bảo hiểm thất nghiệp",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "雇用保険があります。",
         "vn": "có."
@@ -139,8 +165,10 @@
     {
       "word": "健康保険",
       "reading": "けんこうほけん",
+      "han_viet": "",
       "meaning": "Bảo hiểm y tế",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "健康保険証を提示しました。",
         "vn": "đã (quá khứ)."
@@ -149,8 +177,10 @@
     {
       "word": "ボーナス",
       "reading": "ボーナス",
+      "han_viet": "",
       "meaning": "Thưởng",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "夏にボーナスが出ます。",
         "vn": "(đuôi lịch sự)"
@@ -159,8 +189,10 @@
     {
       "word": "賞与",
       "reading": "しょうよ",
+      "han_viet": "",
       "meaning": "Tiền thưởng",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "賞与をもらいました。",
         "vn": "đã (quá khứ)."
@@ -169,8 +201,10 @@
     {
       "word": "退職",
       "reading": "たいしょく",
+      "han_viet": "",
       "meaning": "Nghỉ việc",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "退職金がもらえます。",
         "vn": "(đuôi lịch sự)"
@@ -179,8 +213,10 @@
     {
       "word": "退職金",
       "reading": "たいしょくきん",
+      "han_viet": "",
       "meaning": "Tiền trợ cấp nghỉ việc",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "退職金を貯めています。",
         "vn": "có (người/động vật)."
@@ -189,8 +225,10 @@
     {
       "word": "年収",
       "reading": "ねんしゅう",
+      "han_viet": "",
       "meaning": "Thu nhập năm",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "年収はどのくらいですか。",
         "vn": "có phải là... không?"
@@ -199,8 +237,10 @@
     {
       "word": "月収",
       "reading": "げっしゅう",
+      "han_viet": "",
       "meaning": "Thu nhập tháng",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "月収が増えました。",
         "vn": "đã (quá khứ)."

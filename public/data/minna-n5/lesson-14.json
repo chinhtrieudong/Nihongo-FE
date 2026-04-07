@@ -3,130 +3,120 @@
   "topic": "Yêu cầu & Sai khiến (Thể Te)",
   "vocabulary": [
     {
-      "id": "n5_l14_001",
       "word": "居てください",
       "reading": "いてください",
-      "hanViet": "Cư",
+      "han_viet": "CƯ",
       "meaning": "xin hãy ở lại",
-      "type": "verb",
-      "category": "Thể Sai Khiến",
+      "type": "Verb",
+      "level": "N5",
       "example": {
         "jp": "ここに居てください。",
         "vn": "Xin hãy ở lại đây."
       }
     },
     {
-      "id": "n5_l14_002",
       "word": "座って",
       "reading": "すわって",
-      "hanViet": "Tọa",
+      "han_viet": "TỌA",
       "meaning": "ngồi xuống (thể te)",
-      "type": "verb",
-      "category": "Thể Sai Khiến",
+      "type": "Verb",
+      "level": "N5",
       "example": {
         "jp": "ここに座ってください。",
         "vn": "Xin hãy ngồi đây."
       }
     },
     {
-      "id": "n5_l14_003",
       "word": "待って",
       "reading": "まって",
-      "hanViet": "Đãi",
+      "han_viet": "ĐÃI",
       "meaning": "chờ (thể te)",
-      "type": "verb",
-      "category": "Thể Sai Khiến",
+      "type": "Verb",
+      "level": "N5",
       "example": {
         "jp": "ちょっと待ってください。",
         "vn": "Xin hãy đợi một chút."
       }
     },
     {
-      "id": "n5_l14_004",
       "word": "見せて",
       "reading": "みせて",
-      "hanViet": "Kiến",
+      "han_viet": "KIẾN",
       "meaning": "cho xem (thể te)",
-      "type": "verb",
-      "category": "Thể Sai Khiến",
+      "type": "Verb",
+      "level": "N5",
       "example": {
         "jp": "写真を見せてください。",
         "vn": "Xin hãy cho xem ảnh."
       }
     },
     {
-      "id": "n5_l14_005",
       "word": "教えて",
       "reading": "おしえて",
-      "hanViet": "Giáo",
+      "han_viet": "GIÁO",
       "meaning": "dạy, chỉ (thể te)",
-      "type": "verb",
-      "category": "Thể Sai Khiến",
+      "type": "Verb",
+      "level": "N5",
       "example": {
         "jp": "名前を教えてください。",
         "vn": "Xin hãy cho biết tên."
       }
     },
     {
-      "id": "n5_l14_006",
       "word": "言って",
       "reading": "いって",
-      "hanViet": "Ngôn",
+      "han_viet": "NGÔN",
       "meaning": "nói (thể te)",
-      "type": "verb",
-      "category": "Thể Sai Khiến",
+      "type": "Verb",
+      "level": "N5",
       "example": {
         "jp": "もう一度言ってください。",
         "vn": "Xin hãy nói lại lần nữa."
       }
     },
     {
-      "id": "n5_l14_007",
       "word": "帰って",
       "reading": "かえって",
-      "hanViet": "Quy",
+      "han_viet": "QUY",
       "meaning": "về (thể te)",
-      "type": "verb",
-      "category": "Thể Sai Khiến",
+      "type": "Verb",
+      "level": "N5",
       "example": {
         "jp": "早く帰ってください。",
         "vn": "Xin hãy về sớm."
       }
     },
     {
-      "id": "n5_l14_008",
       "word": "取って",
       "reading": "とって",
-      "hanViet": "Thủ",
+      "han_viet": "THỦ",
       "meaning": "lấy (thể te)",
-      "type": "verb",
-      "category": "Thể Sai Khiến",
+      "type": "Verb",
+      "level": "N5",
       "example": {
         "jp": "ペンを取ってください。",
         "vn": "Xin hãy lấy bút."
       }
     },
     {
-      "id": "n5_l14_009",
       "word": "開けて",
       "reading": "あけて",
-      "hanViet": "Khai",
+      "han_viet": "KHAI",
       "meaning": "mở (thể te)",
-      "type": "verb",
-      "category": "Thể Sai Khiến",
+      "type": "Verb",
+      "level": "N5",
       "example": {
         "jp": "窓を開けてください。",
         "vn": "Xin hãy mở cửa sổ."
       }
     },
     {
-      "id": "n5_l14_010",
       "word": "閉めて",
       "reading": "しめて",
-      "hanViet": "Bế",
+      "han_viet": "BẾ",
       "meaning": "đóng (thể te)",
-      "type": "verb",
-      "category": "Thể Sai Khiến",
+      "type": "Verb",
+      "level": "N5",
       "example": {
         "jp": "ドアを閉めてください。",
         "vn": "Xin hãy đóng cửa."

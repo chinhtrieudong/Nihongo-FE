@@ -9,8 +9,10 @@
     {
       "word": "味",
       "reading": "あじ",
+      "han_viet": "",
       "meaning": "Vị",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "味が濃いです。",
         "vn": "là."
@@ -19,8 +21,10 @@
     {
       "word": "甘い",
       "reading": "あまい",
+      "han_viet": "",
       "meaning": "Ngọt",
-      "type": "Tính từ",
+      "type": "Adjective",
+      "level": "N4",
       "example": {
         "jp": "甘いケーキです。",
         "vn": "là."
@@ -29,8 +33,10 @@
     {
       "word": "辛い",
       "reading": "からい",
+      "han_viet": "",
       "meaning": "Cay",
-      "type": "Tính từ",
+      "type": "Adjective",
+      "level": "N4",
       "example": {
         "jp": "辛いカレーです。",
         "vn": "là."
@@ -39,8 +45,10 @@
     {
       "word": "酸っぱい",
       "reading": "すっぱい",
+      "han_viet": "",
       "meaning": "Chua",
-      "type": "Tính từ",
+      "type": "Adjective",
+      "level": "N4",
       "example": {
         "jp": "酸っぱいレモンです。",
         "vn": "là."
@@ -49,8 +57,10 @@
     {
       "word": "苦い",
       "reading": "にがい",
+      "han_viet": "",
       "meaning": "Đắng",
-      "type": "Tính từ",
+      "type": "Adjective",
+      "level": "N4",
       "example": {
         "jp": "苦い薬です。",
         "vn": "là."
@@ -59,8 +69,10 @@
     {
       "word": "塩辛い",
       "reading": "しおからい",
+      "han_viet": "",
       "meaning": "Mặn",
-      "type": "Tính từ",
+      "type": "Adjective",
+      "level": "N4",
       "example": {
         "jp": "塩辛い味噌汁です。",
         "vn": "là."
@@ -69,8 +81,10 @@
     {
       "word": "渋い",
       "reading": "しぶい",
+      "han_viet": "",
       "meaning": "Chát",
-      "type": "Tính từ",
+      "type": "Adjective",
+      "level": "N4",
       "example": {
         "jp": "渋い柿です。",
         "vn": "là."
@@ -79,8 +93,10 @@
     {
       "word": "淡白",
       "reading": "たんぱく",
+      "han_viet": "",
       "meaning": "Nhạt",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "淡白な味です。",
         "vn": "là."
@@ -89,8 +105,10 @@
     {
       "word": "濃い",
       "reading": "こい",
+      "han_viet": "",
       "meaning": "Đậm",
-      "type": "Tính từ",
+      "type": "Adjective",
+      "level": "N4",
       "example": {
         "jp": "味が濃いです。",
         "vn": "là."
@@ -99,8 +117,10 @@
     {
       "word": "薄い",
       "reading": "うすい",
+      "han_viet": "",
       "meaning": "Lỏng",
-      "type": "Tính từ",
+      "type": "Adjective",
+      "level": "N4",
       "example": {
         "jp": "味が薄いです。",
         "vn": "là."
@@ -109,8 +129,10 @@
     {
       "word": "旨い",
       "reading": "うまい",
+      "han_viet": "",
       "meaning": "Ngon",
-      "type": "Tính từ",
+      "type": "Adjective",
+      "level": "N4",
       "example": {
         "jp": "旨い料理です。",
         "vn": "là."
@@ -119,8 +141,10 @@
     {
       "word": "美味しい",
       "reading": "おいしい",
+      "han_viet": "",
       "meaning": "Ngon",
-      "type": "Tính từ",
+      "type": "Adjective",
+      "level": "N4",
       "example": {
         "jp": "美味しいご飯です。",
         "vn": "là."
@@ -129,8 +153,10 @@
     {
       "word": "不味い",
       "reading": "まずい",
+      "han_viet": "",
       "meaning": "Dở",
-      "type": "Tính từ",
+      "type": "Adjective",
+      "level": "N4",
       "example": {
         "jp": "不味い料理です。",
         "vn": "là."
@@ -139,8 +165,10 @@
     {
       "word": "香り",
       "reading": "かおり",
+      "han_viet": "",
       "meaning": "Hương thơm",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "いい香りがします。",
         "vn": "(đuôi lịch sự)"
@@ -149,8 +177,10 @@
     {
       "word": "臭い",
       "reading": "くさい",
+      "han_viet": "",
       "meaning": "Hôi",
-      "type": "Tính từ",
+      "type": "Adjective",
+      "level": "N4",
       "example": {
         "jp": "臭いチーズです。",
         "vn": "là."
@@ -159,8 +189,10 @@
     {
       "word": "新鮮",
       "reading": "しんせん",
+      "han_viet": "",
       "meaning": "Tươi",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "新鮮な魚です。",
         "vn": "là."
@@ -169,8 +201,10 @@
     {
       "word": "淡泊",
       "reading": "たんぱく",
+      "han_viet": "",
       "meaning": "Nhạt",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "淡泊な味付けです。",
         "vn": "là."
@@ -179,8 +213,10 @@
     {
       "word": "濃厚",
       "reading": "のうこう",
+      "han_viet": "",
       "meaning": "Đậm đà",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "濃厚な味です。",
         "vn": "là."
@@ -189,8 +225,10 @@
     {
       "word": "口当たり",
       "reading": "くちあたり",
+      "han_viet": "",
       "meaning": "Cảm giác miệng",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "口当たりが良いです。",
         "vn": "là."
@@ -199,8 +237,10 @@
     {
       "word": "食感",
       "reading": "しょっかん",
+      "han_viet": "",
       "meaning": "Độ giòn/mềm",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "食感がいいです。",
         "vn": "là."

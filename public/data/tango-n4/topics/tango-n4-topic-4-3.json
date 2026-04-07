@@ -9,8 +9,10 @@
     {
       "word": "怒り",
       "reading": "いかり",
+      "han_viet": "",
       "meaning": "Cơn giận",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "怒りを抑えます。",
         "vn": "(đuôi lịch sự)"
@@ -19,8 +21,10 @@
     {
       "word": "怒る",
       "reading": "おこる",
+      "han_viet": "",
       "meaning": "Tức giận",
-      "type": "Động từ",
+      "type": "Verb",
+      "level": "N4",
       "example": {
         "jp": "先生が怒りました。",
         "vn": "đã (quá khứ)."
@@ -29,8 +33,10 @@
     {
       "word": "怒りっぽい",
       "reading": "いかりっぽい",
+      "han_viet": "",
       "meaning": "Nóng tính",
-      "type": "Tính từ",
+      "type": "Adjective",
+      "level": "N4",
       "example": {
         "jp": "怒りっぽい性格です。",
         "vn": "là."
@@ -39,8 +45,10 @@
     {
       "word": "怒鳴る",
       "reading": "どなる",
+      "han_viet": "",
       "meaning": "Quát tháo",
-      "type": "Động từ",
+      "type": "Verb",
+      "level": "N4",
       "example": {
         "jp": "上司に怒鳴られました。",
         "vn": "đã (quá khứ)."
@@ -49,8 +57,10 @@
     {
       "word": "激昂",
       "reading": "げっこう",
+      "han_viet": "",
       "meaning": "Kích động",
-      "type": "Danh động từ",
+      "type": "Verb",
+      "level": "N4",
       "example": {
         "jp": "激昂しています。",
         "vn": "có (người/động vật)."
@@ -59,8 +69,10 @@
     {
       "word": "激昂する",
       "reading": "げっこうする",
+      "han_viet": "",
       "meaning": "Nổi giận",
-      "type": "Động từ",
+      "type": "Verb",
+      "level": "N4",
       "example": {
         "jp": "激昂しました。",
         "vn": "đã (quá khứ)."
@@ -69,8 +81,10 @@
     {
       "word": "腹が立つ",
       "reading": "はらがたつ",
+      "han_viet": "",
       "meaning": "Bực bội",
-      "type": "Cụm động từ",
+      "type": "Verb",
+      "level": "N4",
       "example": {
         "jp": "腹が立ちます。",
         "vn": "(đuôi lịch sự)"
@@ -79,8 +93,10 @@
     {
       "word": "頭に来る",
       "reading": "あたまにくる",
+      "han_viet": "",
       "meaning": "Nổi điên",
-      "type": "Cụm động từ",
+      "type": "Verb",
+      "level": "N4",
       "example": {
         "jp": "頭に来ました。",
         "vn": "đã (quá khứ)."
@@ -89,8 +105,10 @@
     {
       "word": "ぷんぷん",
       "reading": "ぷんぷん",
+      "han_viet": "",
       "meaning": "Giận dữ",
-      "type": "Phó từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "ぷんぷん怒っています。",
         "vn": "có (người/động vật)."
@@ -99,8 +117,10 @@
     {
       "word": "かっとなる",
       "reading": "かっとなる",
+      "han_viet": "",
       "meaning": "Nổi nóng",
-      "type": "Cụm động từ",
+      "type": "Verb",
+      "level": "N4",
       "example": {
         "jp": "かっとなりました。",
         "vn": "đã (quá khứ)."
@@ -109,8 +129,10 @@
     {
       "word": "癇癪",
       "reading": "かんしゃく",
+      "han_viet": "",
       "meaning": "Cơn thịnh nộ",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "癇癪を起こしました。",
         "vn": "đã (quá khứ)."
@@ -119,8 +141,10 @@
     {
       "word": "激昂",
       "reading": "げっこう",
+      "han_viet": "",
       "meaning": "Phẫn nộ",
-      "type": "Danh động từ",
+      "type": "Verb",
+      "level": "N4",
       "example": {
         "jp": "激昂しました。",
         "vn": "đã (quá khứ)."
@@ -129,8 +153,10 @@
     {
       "word": "憤慨",
       "reading": "ふんがい",
+      "han_viet": "",
       "meaning": "Phẫn uất",
-      "type": "Danh động từ",
+      "type": "Verb",
+      "level": "N4",
       "example": {
         "jp": "憤慨しています。",
         "vn": "có (người/động vật)."
@@ -139,8 +165,10 @@
     {
       "word": "不満",
       "reading": "ふまん",
+      "han_viet": "",
       "meaning": "Bất mãn",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "不満を抱いています。",
         "vn": "có (người/động vật)."
@@ -149,8 +177,10 @@
     {
       "word": "失望",
       "reading": "しつぼう",
+      "han_viet": "",
       "meaning": "Thất vọng",
-      "type": "Danh động từ",
+      "type": "Verb",
+      "level": "N4",
       "example": {
         "jp": "失望しています。",
         "vn": "có (người/động vật)."
@@ -159,8 +189,10 @@
     {
       "word": "悔しい",
       "reading": "くやしい",
+      "han_viet": "",
       "meaning": "Tiếc nuối",
-      "type": "Tính từ",
+      "type": "Adjective",
+      "level": "N4",
       "example": {
         "jp": "悔しい気持ちです。",
         "vn": "là."
@@ -169,8 +201,10 @@
     {
       "word": "歯痒い",
       "reading": "はがゆい",
+      "han_viet": "",
       "meaning": "Thèm thuồng",
-      "type": "Tính từ",
+      "type": "Adjective",
+      "level": "N4",
       "example": {
         "jp": "歯痒い思いです。",
         "vn": "là."
@@ -179,8 +213,10 @@
     {
       "word": "ムカつく",
       "reading": "ムカつく",
+      "han_viet": "",
       "meaning": "Bực mình",
-      "type": "Động từ",
+      "type": "Verb",
+      "level": "N4",
       "example": {
         "jp": "ムカつきます。",
         "vn": "(đuôi lịch sự)"
@@ -189,8 +225,10 @@
     {
       "word": "いらいら",
       "reading": "いらいら",
+      "han_viet": "",
       "meaning": "Khó chịu",
-      "type": "Phó từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "いらいらしています。",
         "vn": "có (người/động vật)."
@@ -199,8 +237,10 @@
     {
       "word": "ぴりぴり",
       "reading": "ぴりぴり",
+      "han_viet": "",
       "meaning": "Căng thẳng",
-      "type": "Phó từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "ぴりぴりしています。",
         "vn": "có (người/động vật)."

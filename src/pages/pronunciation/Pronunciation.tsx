@@ -238,6 +238,10 @@ const Pronunciation: React.FC = () => {
             setRecognitionError('Không tìm thấy microphone. Vui lòng kiểm tra thiết bị.');
           } else if (event.error === 'not-allowed') {
             setRecognitionError('Quyền truy cập micro bị từ chối.');
+          } else if (event.error === 'network') {
+            setRecognitionError(
+              'Lỗi network khi nhận diện giọng nói. Tính năng này của trình duyệt có thể cần Internet/Google Speech hoặc bị chặn (VPN/proxy/HTTPS). Bạn có thể nhập transcript thủ công ở ô bên dưới để chấm điểm.',
+            );
           } else {
             setRecognitionError(`Lỗi nhận diện: ${event.error}`);
           }
@@ -688,8 +692,7 @@ const Pronunciation: React.FC = () => {
               <div className="text-center mb-6">
                 <Title
                   level={1}
-                  className="!mb-2 !text-4xl sm:!text-5xl"
-                  style={{ fontFamily: selectedPreset.kanjiFontFamily || selectedPreset.fontFamily }}
+                  className="!mb-2 !text-4xl sm:!text-5xl kanji-text"
                 >
                   {currentExercise.japanese}
                 </Title>

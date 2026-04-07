@@ -9,8 +9,10 @@
     {
       "word": "言葉",
       "reading": "ことば",
+      "han_viet": "",
       "meaning": "Từ ngữ",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N5",
       "example": {
         "jp": "新しい言葉を覚えます。",
         "vn": "(đuôi lịch sự)"
@@ -19,8 +21,10 @@
     {
       "word": "漢字",
       "reading": "かんじ",
+      "han_viet": "",
       "meaning": "Hán tự",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N5",
       "example": {
         "jp": "漢字を書きます。",
         "vn": "(đuôi lịch sự)"
@@ -29,8 +33,10 @@
     {
       "word": "ひらがな",
       "reading": "ひらがな",
+      "han_viet": "",
       "meaning": "Chữ Hiragana",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N5",
       "example": {
         "jp": "ひらがなで書いてください。",
         "vn": "vui lòng..."
@@ -39,8 +45,10 @@
     {
       "word": "カタカナ",
       "reading": "カタカナ",
+      "han_viet": "",
       "meaning": "Chữ Katakana",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N5",
       "example": {
         "jp": "カタカナで書きます。",
         "vn": "(đuôi lịch sự)"
@@ -49,8 +57,10 @@
     {
       "word": "ローマ字",
       "reading": "ローマじ",
+      "han_viet": "",
       "meaning": "Chữ La tinh",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N5",
       "example": {
         "jp": "ローマ字で書いてください。",
         "vn": "vui lòng..."
@@ -59,8 +69,10 @@
     {
       "word": "意味",
       "reading": "いみ",
+      "han_viet": "",
       "meaning": "Nghĩa",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N5",
       "example": {
         "jp": "この言葉の意味は何ですか。",
         "vn": "có phải là... không?"
@@ -69,8 +81,10 @@
     {
       "word": "読み方",
       "reading": "よみかた",
+      "han_viet": "",
       "meaning": "Cách đọc",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N5",
       "example": {
         "jp": "読み方を教えてください。",
         "vn": "vui lòng..."
@@ -79,8 +93,10 @@
     {
       "word": "書き方",
       "reading": "かきかた",
+      "han_viet": "",
       "meaning": "Cách viết",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N5",
       "example": {
         "jp": "書き方を見せてください。",
         "vn": "vui lòng..."
@@ -89,8 +105,10 @@
     {
       "word": "使い方",
       "reading": "つかいかた",
+      "han_viet": "SỬ PHƯƠNG",
       "meaning": "Cách sử dụng",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N5",
       "example": {
         "jp": "使い方が分かりません。",
         "vn": "không."
@@ -99,8 +117,10 @@
     {
       "word": "辞書",
       "reading": "じしょ",
+      "han_viet": "TỪ THƯ",
       "meaning": "Từ điển",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N5",
       "example": {
         "jp": "辞書で調べます。",
         "vn": "(đuôi lịch sự)"
@@ -109,8 +129,10 @@
     {
       "word": "教科書",
       "reading": "きょうかしょ",
+      "han_viet": "",
       "meaning": "Sách giáo khoa",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N5",
       "example": {
         "jp": "教科書を開いてください。",
         "vn": "vui lòng..."
@@ -119,8 +141,10 @@
     {
       "word": "単語",
       "reading": "たんご",
+      "han_viet": "",
       "meaning": "Từ vựng",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N5",
       "example": {
         "jp": "単語を覚えます。",
         "vn": "(đuôi lịch sự)"
@@ -129,8 +153,10 @@
     {
       "word": "文",
       "reading": "ぶん",
+      "han_viet": "",
       "meaning": "Câu",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N5",
       "example": {
         "jp": "文を作ります。",
         "vn": "(đuôi lịch sự)"

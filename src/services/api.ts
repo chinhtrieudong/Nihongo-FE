@@ -5,6 +5,7 @@ import {
   AIRoleplayResponse,
   WeakPointsResponse,
 } from "../types/lesson";
+import { jlptTests as localJlptTests } from "../data/jlptTests";
 
 const API_BASE_URL =
   import.meta.env.VITE_API_URL || "http://localhost:5000/api";
@@ -617,22 +618,183 @@ export default api;
 export { minaApi };
 
 // JLPT Tests API functions
+type BackendJlptTest = {
+  level: string;
+  title: string;
+  title_vi?: string;
+  description: string;
+  description_vi?: string;
+  duration: number;
+  total_questions?: number;
+  questions?: number;
+  passing_score?: number;
+  sections?: Array<{
+    name: string;
+    name_vi?: string;
+    questions: number;
+    time: number;
+  }>;
+  is_active?: boolean;
+  version?: number;
+  id?: string;
+  _id?: string;
+  testId?: string;
+  slug?: string;
+};
+
+const normalizeJlptTest = (raw: BackendJlptTest) => {
+  const level = String(raw.level || "").toUpperCase();
+  const version = typeof raw.version === "number" ? raw.version : 1;
+  const id =
+    raw.id ||
+    raw._id ||
+    raw.testId ||
+    raw.slug ||
+    `${level.toLowerCase()}-practice-v${version}`;
+
+  const totalQuestions =
+    typeof raw.questions === "number"
+      ? raw.questions
+      : typeof raw.total_questions === "number"
+        ? raw.total_questions
+        : raw.sections?.reduce((sum, s) => sum + (s.questions || 0), 0) || 0;
+
+  return {
+    id,
+    level,
+    title: raw.title || `${level} Practice Test`,
+    title_vi: raw.title_vi,
+    description: raw.description || "",
+    description_vi: raw.description_vi,
+    duration: typeof raw.duration === "number" ? raw.duration : 0,
+    questions: totalQuestions,
+    total_questions: raw.total_questions,
+    passing_score: raw.passing_score,
+    is_active: raw.is_active,
+    version: raw.version,
+    // UI expects sections with ids and durations
+    sections: (raw.sections || []).map((s) => ({
+      id: (s.name_vi || s.name || "section").toLowerCase().replace(/\s+/g, "-"),
+      name: s.name_vi || s.name,
+      questions: s.questions,
+      duration: s.time,
+      description: "",
+      questionTypes: ["multiple-choice"],
+    })),
+    // extra fields used in UI
+    difficulty:
+      level === "N5"
+        ? "Beginner"
+        : level === "N4"
+          ? "Elementary"
+          : level === "N3"
+            ? "Intermediate"
+            : level === "N2"
+              ? "Advanced"
+              : "Expert",
+    completed: false,
+  };
+};
+
+// API_BASE_URL can be either ".../api" or ".../api/v1" depending on VITE_API_URL.
+// Build JLPT path to avoid "/v1/v1/..." double prefix.
+const hasV1InBaseUrl = /\/v1\/?$/.test(API_BASE_URL) || API_BASE_URL.includes("/api/v1");
+const jlptBasePath = hasV1InBaseUrl ? "/jlpt-tests" : "/v1/jlpt-tests";
+
 export const jlptTestsAPI = {
   // Get all JLPT tests
   getAllTests: async () => {
-    const response = await api.get("/jlpt-tests");
-    return response.data;
+    try {
+      // Backend is under /api/v1/jlpt-tests while API_BASE_URL defaults to /api
+      const response = await api.get(jlptBasePath);
+      const payload = response.data;
+      const rawTests: BackendJlptTest[] = Array.isArray(payload?.data) ? payload.data : [];
+      return {
+        ...payload,
+        data: rawTests.map(normalizeJlptTest),
+        source: "backend",
+      };
+    } catch (error) {
+      // Fallback to local JSON when backend endpoint is missing
+      return {
+        success: true,
+        data: localJlptTests,
+        source: "local",
+      };
+    }
   },
 
   // Get JLPT tests by level
   getTestsByLevel: async (level: string) => {
-    const response = await api.get(`/jlpt-tests/${level}`);
-    return response.data;
+    try {
+      // Not all backends expose /:level; use list endpoint and filter.
+      const response = await api.get(jlptBasePath);
+      const payload = response.data;
+      const rawTests: BackendJlptTest[] = Array.isArray(payload?.data) ? payload.data : [];
+      const upper = String(level || "").toUpperCase();
+      return {
+        ...payload,
+        data: rawTests.map(normalizeJlptTest).filter((t) => t.level === upper),
+        source: "backend",
+      };
+    } catch (error) {
+      const upper = String(level || "").toUpperCase();
+      const filtered = localJlptTests.filter(
+        (t) => String(t.level).toUpperCase() === upper,
+      );
+      return {
+        success: true,
+        data: filtered,
+        source: "local",
+      };
+    }
   },
 
   // Get specific JLPT test
   getTest: async (level: string, testId: string) => {
-    const response = await api.get(`/jlpt-tests/${level}/${testId}`);
-    return response.data;
+    try {
+      // Backend currently exposes list endpoint; avoid hitting a non-existent detail endpoint (404 noise).
+      const response = await api.get(jlptBasePath);
+      const payload = response.data;
+      const rawTests: BackendJlptTest[] = Array.isArray(payload?.data) ? payload.data : [];
+      const normalized = rawTests.map(normalizeJlptTest);
+      const upper = String(level || "").toUpperCase();
+      const found =
+        normalized.find((t) => String(t.id) === String(testId) && t.level === upper) ||
+        // If caller passes old/empty ids, pick the first active test of that level
+        normalized.find((t) => t.level === upper);
+      if (!found) {
+        return {
+          success: false,
+          message: "Test not found (backend & local).",
+          data: null,
+          source: "backend",
+        };
+      }
+      return {
+        success: true,
+        data: found,
+        source: "backend",
+      };
+    } catch (error) {
+      const upper = String(level || "").toUpperCase();
+      const found = localJlptTests.find(
+        (t) => String(t.id) === String(testId) && String(t.level).toUpperCase() === upper,
+      );
+      if (!found) {
+        // Preserve a consistent shape for callers
+        return {
+          success: false,
+          message: "Test not found (backend & local).",
+          data: null,
+          source: "local",
+        };
+      }
+      return {
+        success: true,
+        data: found,
+        source: "local",
+      };
+    }
   },
 };

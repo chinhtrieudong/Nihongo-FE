@@ -9,8 +9,10 @@
     {
       "word": "遊ぶ",
       "reading": "あそぶ",
+      "han_viet": "",
       "meaning": "Chơi",
-      "type": "Động từ",
+      "type": "Verb",
+      "level": "N5",
       "example": {
         "jp": "友達と遊びます。",
         "vn": "(đuôi lịch sự)"
@@ -19,8 +21,10 @@
     {
       "word": "公園",
       "reading": "こうえん",
+      "han_viet": "",
       "meaning": "Công viên",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N5",
       "example": {
         "jp": "公園で遊びます。",
         "vn": "(đuôi lịch sự)"
@@ -29,8 +33,10 @@
     {
       "word": "プール",
       "reading": "プール",
+      "han_viet": "",
       "meaning": "Hồ bơi",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N5",
       "example": {
         "jp": "プールで泳ぎます。",
         "vn": "(đuôi lịch sự)"
@@ -39,8 +45,10 @@
     {
       "word": "泳ぐ",
       "reading": "およぐ",
+      "han_viet": "",
       "meaning": "Bơi",
-      "type": "Động từ",
+      "type": "Verb",
+      "level": "N5",
       "example": {
         "jp": "夏に泳ぎます。",
         "vn": "(đuôi lịch sự)"
@@ -49,8 +57,10 @@
     {
       "word": "映画館",
       "reading": "えいがかん",
+      "han_viet": "",
       "meaning": "Rạp chiếu phim",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N5",
       "example": {
         "jp": "映画館へ行きます。",
         "vn": "(đuôi lịch sự)"
@@ -59,8 +69,10 @@
     {
       "word": "映画",
       "reading": "えいが",
+      "han_viet": "",
       "meaning": "Phim",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N5",
       "example": {
         "jp": "映画を見ます。",
         "vn": "(đuôi lịch sự)"
@@ -69,8 +81,10 @@
     {
       "word": "見る",
       "reading": "みる",
+      "han_viet": "KIẾN",
       "meaning": "Xem, nhìn",
-      "type": "Động từ",
+      "type": "Verb",
+      "level": "N5",
       "example": {
         "jp": "映画を見ました。",
         "vn": "đã (quá khứ)."
@@ -79,8 +93,10 @@
     {
       "word": "カラオケ",
       "reading": "カラオケ",
+      "han_viet": "",
       "meaning": "Karaoke",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N5",
       "example": {
         "jp": "カラオケに行きます。",
         "vn": "(đuôi lịch sự)"
@@ -89,8 +105,10 @@
     {
       "word": "歌う",
       "reading": "うたう",
+      "han_viet": "",
       "meaning": "Hát",
-      "type": "Động từ",
+      "type": "Verb",
+      "level": "N5",
       "example": {
         "jp": "歌を歌います。",
         "vn": "có (người/động vật)."
@@ -99,8 +117,10 @@
     {
       "word": "ゲーム",
       "reading": "ゲーム",
+      "han_viet": "",
       "meaning": "Trò chơi điện tử",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N5",
       "example": {
         "jp": "ゲームをします。",
         "vn": "(đuôi lịch sự)"
@@ -109,8 +129,10 @@
     {
       "word": "買い物",
       "reading": "かいもの",
+      "han_viet": "",
       "meaning": "Mua sắm",
-      "type": "Danh động từ",
+      "type": "Verb",
+      "level": "N5",
       "example": {
         "jp": "買い物に行きます。",
         "vn": "(đuôi lịch sự)"
@@ -119,8 +141,10 @@
     {
       "word": "スポーツ",
       "reading": "スポーツ",
+      "han_viet": "",
       "meaning": "Thể thao",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N5",
       "example": {
         "jp": "スポーツをします。",
         "vn": "(đuôi lịch sự)"
@@ -129,8 +153,10 @@
     {
       "word": "サッカー",
       "reading": "サッカー",
+      "han_viet": "",
       "meaning": "Bóng đá",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N5",
       "example": {
         "jp": "サッカーをします。",
         "vn": "(đuôi lịch sự)"
@@ -139,8 +165,10 @@
     {
       "word": "野球",
       "reading": "やきゅう",
+      "han_viet": "",
       "meaning": "Bóng chày",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N5",
       "example": {
         "jp": "野球をします。",
         "vn": "(đuôi lịch sự)"

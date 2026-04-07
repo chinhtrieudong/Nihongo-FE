@@ -80,8 +80,12 @@ const StartTestModal: React.FC<StartTestModalProps> = ({
                     <div>
                         <Text strong className="text-text-main">Các phần thi:</Text>
                         <div className="flex flex-wrap gap-2 mt-2">
-                            {test.sections.map(section => (
-                                <Tag key={section.id} icon={section.icon} className="bg-surface-1 border-border text-text-main">
+                            {test.sections.map((section, idx) => (
+                                <Tag
+                                    key={`${section.id || "section"}-${section.name}-${idx}`}
+                                    icon={section.icon}
+                                    className="bg-surface-1 border-border text-text-main"
+                                >
                                     {section.name} ({section.questions} câu)
                                 </Tag>
                             ))}

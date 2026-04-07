@@ -9,8 +9,10 @@
     {
       "word": "恐ろしい",
       "reading": "おそろしい",
+      "han_viet": "",
       "meaning": "Đáng sợ",
-      "type": "Tính từ",
+      "type": "Adjective",
+      "level": "N4",
       "example": {
         "jp": "恐ろしい経験でした。",
         "vn": "đã là (quá khứ)."
@@ -19,8 +21,10 @@
     {
       "word": "怖い",
       "reading": "こわい",
+      "han_viet": "",
       "meaning": "Sợ",
-      "type": "Tính từ",
+      "type": "Adjective",
+      "level": "N4",
       "example": {
         "jp": "怖い話です。",
         "vn": "là."
@@ -29,8 +33,10 @@
     {
       "word": "恐れ",
       "reading": "おそれ",
+      "han_viet": "",
       "meaning": "Nỗi sợ",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "恐れを知りません。",
         "vn": "không."
@@ -39,8 +45,10 @@
     {
       "word": "恐怖",
       "reading": "きょうふ",
+      "han_viet": "",
       "meaning": "Kinh hoàng",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "恐怖を感じました。",
         "vn": "đã (quá khứ)."
@@ -49,8 +57,10 @@
     {
       "word": "戦慄",
       "reading": "せんりつ",
+      "han_viet": "",
       "meaning": "Rùng mình",
-      "type": "Danh động từ",
+      "type": "Verb",
+      "level": "N4",
       "example": {
         "jp": "戦慄しました。",
         "vn": "đã (quá khứ)."
@@ -59,8 +69,10 @@
     {
       "word": "震える",
       "reading": "ふるえる",
+      "han_viet": "",
       "meaning": "Run rẩy",
-      "type": "Động từ",
+      "type": "Verb",
+      "level": "N4",
       "example": {
         "jp": "震えています。",
         "vn": "có (người/động vật)."
@@ -69,8 +81,10 @@
     {
       "word": "怯える",
       "reading": "おびえる",
+      "han_viet": "",
       "meaning": "Sợ hãi",
-      "type": "Động từ",
+      "type": "Verb",
+      "level": "N4",
       "example": {
         "jp": "怯えています。",
         "vn": "có (người/động vật)."
@@ -79,8 +93,10 @@
     {
       "word": "驚く",
       "reading": "おどろく",
+      "han_viet": "",
       "meaning": "Ngạc nhiên",
-      "type": "Động từ",
+      "type": "Verb",
+      "level": "N4",
       "example": {
         "jp": "驚きました。",
         "vn": "đã (quá khứ)."
@@ -89,8 +105,10 @@
     {
       "word": "驚き",
       "reading": "おどろき",
+      "han_viet": "",
       "meaning": "Sự ngạc nhiên",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "驚きの声を上げました。",
         "vn": "đã (quá khứ)."
@@ -99,8 +117,10 @@
     {
       "word": "不安",
       "reading": "ふあん",
+      "han_viet": "",
       "meaning": "Lo lắng",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "不安な気持ちです。",
         "vn": "là."
@@ -109,8 +129,10 @@
     {
       "word": "心配",
       "reading": "しんぱい",
+      "han_viet": "",
       "meaning": "Lo âu",
-      "type": "Danh động từ",
+      "type": "Verb",
+      "level": "N4",
       "example": {
         "jp": "心配しています。",
         "vn": "có (người/động vật)."
@@ -119,8 +141,10 @@
     {
       "word": "緊張",
       "reading": "きんちょう",
+      "han_viet": "",
       "meaning": "Căng thẳng",
-      "type": "Danh động từ",
+      "type": "Verb",
+      "level": "N4",
       "example": {
         "jp": "緊張しています。",
         "vn": "có (người/động vật)."
@@ -129,8 +153,10 @@
     {
       "word": "動揺",
       "reading": "どうよう",
+      "han_viet": "",
       "meaning": "Dao động",
-      "type": "Danh động từ",
+      "type": "Verb",
+      "level": "N4",
       "example": {
         "jp": "動揺しています。",
         "vn": "có (người/động vật)."
@@ -139,8 +165,10 @@
     {
       "word": "慌てる",
       "reading": "あわてる",
+      "han_viet": "",
       "meaning": "Hoảng loạn",
-      "type": "Động từ",
+      "type": "Verb",
+      "level": "N4",
       "example": {
         "jp": "慌てています。",
         "vn": "có (người/động vật)."
@@ -149,8 +177,10 @@
     {
       "word": "落ち着く",
       "reading": "おちつく",
+      "han_viet": "",
       "meaning": "Bình tĩnh",
-      "type": "Động từ",
+      "type": "Verb",
+      "level": "N4",
       "example": {
         "jp": "落ち着いてください。",
         "vn": "vui lòng..."
@@ -159,8 +189,10 @@
     {
       "word": "恐怖症",
       "reading": "きょうふしょう",
+      "han_viet": "",
       "meaning": "Chứng sợ",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "恐怖症があります。",
         "vn": "có."
@@ -169,8 +201,10 @@
     {
       "word": "パニック",
       "reading": "パニック",
+      "han_viet": "",
       "meaning": "Hoảng loạn",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "パニックになりました。",
         "vn": "đã (quá khứ)."
@@ -179,8 +213,10 @@
     {
       "word": "トラウマ",
       "reading": "トラウマ",
+      "han_viet": "",
       "meaning": "Sang chấn tâm lý",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "トラウマがあります。",
         "vn": "có."
@@ -189,8 +225,10 @@
     {
       "word": "臆する",
       "reading": "おくする",
+      "han_viet": "",
       "meaning": "Nhát gan",
-      "type": "Động từ",
+      "type": "Verb",
+      "level": "N4",
       "example": {
         "jp": "臆しています。",
         "vn": "có (người/động vật)."
@@ -199,8 +237,10 @@
     {
       "word": "気が弱い",
       "reading": "きがよわい",
+      "han_viet": "",
       "meaning": "Nhút nhát",
-      "type": "Tính từ",
+      "type": "Adjective",
+      "level": "N4",
       "example": {
         "jp": "気が弱いです。",
         "vn": "là."

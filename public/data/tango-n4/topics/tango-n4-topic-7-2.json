@@ -9,8 +9,10 @@
     {
       "word": "商品",
       "reading": "しょうひん",
+      "han_viet": "",
       "meaning": "Sản phẩm",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "商品を見ています。",
         "vn": "có (người/động vật)."
@@ -19,8 +21,10 @@
     {
       "word": "製品",
       "reading": "せいひん",
+      "han_viet": "",
       "meaning": "Sản phẩm",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "国産の製品です。",
         "vn": "là."
@@ -29,8 +33,10 @@
     {
       "word": "食品",
       "reading": "しょくひん",
+      "han_viet": "",
       "meaning": "Thực phẩm",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "食品を買いました。",
         "vn": "đã (quá khứ)."
@@ -39,8 +45,10 @@
     {
       "word": "衣料品",
       "reading": "いりょうひん",
+      "han_viet": "",
       "meaning": "Hàng may mặc",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "衣料品を買いました。",
         "vn": "đã (quá khứ)."
@@ -49,8 +57,10 @@
     {
       "word": "雑貨",
       "reading": "ざっか",
+      "han_viet": "",
       "meaning": "Hàng tạp hóa",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "雑貨を買いました。",
         "vn": "đã (quá khứ)."
@@ -59,8 +69,10 @@
     {
       "word": "日用品",
       "reading": "にちようひん",
+      "han_viet": "",
       "meaning": "Hàng dùng hàng ngày",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "日用品を買いました。",
         "vn": "đã (quá khứ)."
@@ -69,8 +81,10 @@
     {
       "word": "化粧品",
       "reading": "けしょうひん",
+      "han_viet": "",
       "meaning": "Mỹ phẩm",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "化粧品を買いました。",
         "vn": "đã (quá khứ)."
@@ -79,8 +93,10 @@
     {
       "word": "洗剤",
       "reading": "せんざい",
+      "han_viet": "",
       "meaning": "Chất tẩy",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "洗剤を買いました。",
         "vn": "đã (quá khứ)."
@@ -89,8 +105,10 @@
     {
       "word": "ブランド",
       "reading": "ブランド",
+      "han_viet": "",
       "meaning": "Thương hiệu",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "有名ブランドです。",
         "vn": "là."
@@ -99,8 +117,10 @@
     {
       "word": "国産",
       "reading": "こくさん",
+      "han_viet": "",
       "meaning": "Nội địa",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "国産の野菜です。",
         "vn": "là."
@@ -109,8 +129,10 @@
     {
       "word": "輸入品",
       "reading": "ゆにゅうひん",
+      "han_viet": "",
       "meaning": "Hàng nhập khẩu",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "輸入品を販売しています。",
         "vn": "có (người/động vật)."
@@ -119,8 +141,10 @@
     {
       "word": "新作",
       "reading": "しんさく",
+      "han_viet": "",
       "meaning": "Sản phẩm mới",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "新作が入荷しました。",
         "vn": "đã (quá khứ)."
@@ -129,8 +153,10 @@
     {
       "word": "人気商品",
       "reading": "にんきしょうひん",
+      "han_viet": "",
       "meaning": "Sản phẩm bán chạy",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "人気商品です。",
         "vn": "là."
@@ -139,8 +165,10 @@
     {
       "word": "限定商品",
       "reading": "げんていしょうひん",
+      "han_viet": "",
       "meaning": "Sản phẩm giới hạn",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "限定商品を買いました。",
         "vn": "đã (quá khứ)."
@@ -149,8 +177,10 @@
     {
       "word": "特価品",
       "reading": "とっかひん",
+      "han_viet": "",
       "meaning": "Hàng giá đặc biệt",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "特価品を見つけました。",
         "vn": "đã (quá khứ)."
@@ -159,8 +189,10 @@
     {
       "word": "試供品",
       "reading": "しきょうひん",
+      "han_viet": "",
       "meaning": "Hàng mẫu thử",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "試供品をもらいました。",
         "vn": "đã (quá khứ)."
@@ -169,8 +201,10 @@
     {
       "word": "見本",
       "reading": "みほん",
+      "han_viet": "",
       "meaning": "Mẫu",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "見本を見せてください。",
         "vn": "vui lòng..."
@@ -179,8 +213,10 @@
     {
       "word": "在庫",
       "reading": "ざいこ",
+      "han_viet": "",
       "meaning": "Hàng tồn kho",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "在庫があります。",
         "vn": "có."
@@ -189,8 +225,10 @@
     {
       "word": "品切れ",
       "reading": "しなぎれ",
+      "han_viet": "",
       "meaning": "Hết hàng",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "品切れです。",
         "vn": "là."
@@ -199,8 +237,10 @@
     {
       "word": "売り切れ",
       "reading": "うりきれ",
+      "han_viet": "",
       "meaning": "Bán hết",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "売り切れました。",
         "vn": "đã (quá khứ)."

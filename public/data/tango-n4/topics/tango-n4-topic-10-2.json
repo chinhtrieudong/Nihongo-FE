@@ -9,8 +9,10 @@
     {
       "word": "音楽",
       "reading": "おんがく",
+      "han_viet": "ÂM NHẠC",
       "meaning": "Âm nhạc",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "音楽を聴きます。",
         "vn": "(đuôi lịch sự)"
@@ -19,8 +21,10 @@
     {
       "word": "曲",
       "reading": "きょく",
+      "han_viet": "",
       "meaning": "Bài hát",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "曲をダウンロードしました。",
         "vn": "đã (quá khứ)."
@@ -29,8 +33,10 @@
     {
       "word": "歌",
       "reading": "うた",
+      "han_viet": "",
       "meaning": "Bài hát",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "歌を歌います。",
         "vn": "có (người/động vật)."
@@ -39,8 +45,10 @@
     {
       "word": "歌手",
       "reading": "かしゅ",
+      "han_viet": "",
       "meaning": "Ca sĩ",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "歌手になりたいです。",
         "vn": "là."
@@ -49,8 +57,10 @@
     {
       "word": "アイドル",
       "reading": "アイドル",
+      "han_viet": "",
       "meaning": "Thần tượng",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "アイドルが好きです。",
         "vn": "là."
@@ -59,8 +69,10 @@
     {
       "word": "バンド",
       "reading": "バンド",
+      "han_viet": "",
       "meaning": "Ban nhạc",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "バンドを組んでいます。",
         "vn": "có (người/động vật)."
@@ -69,8 +81,10 @@
     {
       "word": "楽器",
       "reading": "がっき",
+      "han_viet": "",
       "meaning": "Nhạc cụ",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "楽器を練習します。",
         "vn": "(đuôi lịch sự)"
@@ -79,8 +93,10 @@
     {
       "word": "ピアノ",
       "reading": "ピアノ",
+      "han_viet": "",
       "meaning": "Piano",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "ピアノを弾きます。",
         "vn": "(đuôi lịch sự)"
@@ -89,8 +105,10 @@
     {
       "word": "ギター",
       "reading": "ギター",
+      "han_viet": "",
       "meaning": "Guitar",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "ギターを弾きます。",
         "vn": "(đuôi lịch sự)"
@@ -99,8 +117,10 @@
     {
       "word": "ドラム",
       "reading": "ドラム",
+      "han_viet": "",
       "meaning": "Trống",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "ドラムを叩きます。",
         "vn": "(đuôi lịch sự)"
@@ -109,8 +129,10 @@
     {
       "word": "バイオリン",
       "reading": "バイオリン",
+      "han_viet": "",
       "meaning": "Violin",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "バイオリンを弾きます。",
         "vn": "(đuôi lịch sự)"
@@ -119,8 +141,10 @@
     {
       "word": "コンサート",
       "reading": "コンサート",
+      "han_viet": "",
       "meaning": "Buổi hòa nhạc",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "コンサートに行きます。",
         "vn": "(đuôi lịch sự)"
@@ -129,8 +153,10 @@
     {
       "word": "ライブ",
       "reading": "ライブ",
+      "han_viet": "",
       "meaning": "Live show",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "ライブに参加しました。",
         "vn": "đã (quá khứ)."
@@ -139,8 +165,10 @@
     {
       "word": "フェス",
       "reading": "フェス",
+      "han_viet": "",
       "meaning": "Lễ hội âm nhạc",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "フェスに行きます。",
         "vn": "(đuôi lịch sự)"
@@ -149,8 +177,10 @@
     {
       "word": "カラオケ",
       "reading": "カラオケ",
+      "han_viet": "",
       "meaning": "Karaoke",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "カラオケに行きます。",
         "vn": "(đuôi lịch sự)"
@@ -159,8 +189,10 @@
     {
       "word": "音楽鑑賞",
       "reading": "おんがくかんしょう",
+      "han_viet": "",
       "meaning": "Nghe nhạc",
-      "type": "Danh động từ",
+      "type": "Verb",
+      "level": "N4",
       "example": {
         "jp": "音楽鑑賞を楽しみます。",
         "vn": "(đuôi lịch sự)"
@@ -169,8 +201,10 @@
     {
       "word": "耳コピ",
       "reading": "みみコピ",
+      "han_viet": "",
       "meaning": "Nghe và chơi",
-      "type": "Danh động từ",
+      "type": "Verb",
+      "level": "N4",
       "example": {
         "jp": "耳コピで練習します。",
         "vn": "(đuôi lịch sự)"
@@ -179,8 +213,10 @@
     {
       "word": "スコア",
       "reading": "スコア",
+      "han_viet": "",
       "meaning": "Bản nhạc",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "スコアを買いました。",
         "vn": "đã (quá khứ)."
@@ -189,8 +225,10 @@
     {
       "word": "練習",
       "reading": "れんしゅう",
+      "han_viet": "",
       "meaning": "Luyện tập",
-      "type": "Danh động từ",
+      "type": "Verb",
+      "level": "N4",
       "example": {
         "jp": "毎日練習します。",
         "vn": "(đuôi lịch sự)"
@@ -199,8 +237,10 @@
     {
       "word": "リズム",
       "reading": "リズム",
+      "han_viet": "",
       "meaning": "Nhịp điệu",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "リズムに合わせます。",
         "vn": "(đuôi lịch sự)"

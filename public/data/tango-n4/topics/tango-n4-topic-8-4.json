@@ -9,8 +9,10 @@
     {
       "word": "レストラン",
       "reading": "レストラン",
+      "han_viet": "",
       "meaning": "Nhà hàng",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "レストランで食事します。",
         "vn": "(đuôi lịch sự)"
@@ -19,8 +21,10 @@
     {
       "word": "飲食店",
       "reading": "いんしょくてん",
+      "han_viet": "",
       "meaning": "Quán ăn",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "飲食店で働いています。",
         "vn": "có (người/động vật)."
@@ -29,8 +33,10 @@
     {
       "word": "食堂",
       "reading": "しょくどう",
+      "han_viet": "",
       "meaning": "Căng tin",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "食堂で食べました。",
         "vn": "đã (quá khứ)."
@@ -39,8 +45,10 @@
     {
       "word": "料理店",
       "reading": "りょうりてん",
+      "han_viet": "",
       "meaning": "Nhà hàng",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "日本料理店です。",
         "vn": "là."
@@ -49,8 +57,10 @@
     {
       "word": "和食",
       "reading": "わしょく",
+      "han_viet": "",
       "meaning": "Món Nhật",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "和食を食べました。",
         "vn": "đã (quá khứ)."
@@ -59,8 +69,10 @@
     {
       "word": "洋食",
       "reading": "ようしょく",
+      "han_viet": "",
       "meaning": "Món Tây",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "洋食が好きです。",
         "vn": "là."
@@ -69,8 +81,10 @@
     {
       "word": "中華",
       "reading": "ちゅうか",
+      "han_viet": "",
       "meaning": "Món Trung",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "中華料理を食べました。",
         "vn": "đã (quá khứ)."
@@ -79,8 +93,10 @@
     {
       "word": "イタリアン",
       "reading": "イタリアン",
+      "han_viet": "",
       "meaning": "Món Ý",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "イタリアンが好きです。",
         "vn": "là."
@@ -89,8 +105,10 @@
     {
       "word": "フレンチ",
       "reading": "フレンチ",
+      "han_viet": "",
       "meaning": "Món Pháp",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "フレンチレストランに行きました。",
         "vn": "đã (quá khứ)."
@@ -99,8 +117,10 @@
     {
       "word": "ファミレス",
       "reading": "ファミレス",
+      "han_viet": "",
       "meaning": "Nhà hàng gia đình",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "ファミレスで食べました。",
         "vn": "đã (quá khứ)."
@@ -109,8 +129,10 @@
     {
       "word": "居酒屋",
       "reading": "いざかや",
+      "han_viet": "",
       "meaning": "Quán rượu Nhật",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "居酒屋で飲みました。",
         "vn": "đã (quá khứ)."
@@ -119,8 +141,10 @@
     {
       "word": "寿司屋",
       "reading": "すしや",
+      "han_viet": "",
       "meaning": "Tiệm sushi",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "寿司屋で食べました。",
         "vn": "đã (quá khứ)."
@@ -129,8 +153,10 @@
     {
       "word": "ラーメン屋",
       "reading": "ラーメンや",
+      "han_viet": "",
       "meaning": "Tiệm ramen",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "ラーメン屋に行きました。",
         "vn": "đã (quá khứ)."
@@ -139,8 +165,10 @@
     {
       "word": "カフェ",
       "reading": "カフェ",
+      "han_viet": "",
       "meaning": "Quán cà phê",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "カフェで勉強しました。",
         "vn": "đã (quá khứ)."
@@ -149,8 +177,10 @@
     {
       "word": "喫茶店",
       "reading": "きっさてん",
+      "han_viet": "",
       "meaning": "Tiệm trà",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "喫茶店で休憩しました。",
         "vn": "đã (quá khứ)."
@@ -159,8 +189,10 @@
     {
       "word": "バー",
       "reading": "バー",
+      "han_viet": "",
       "meaning": "Quầy bar",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "バーで飲みました。",
         "vn": "đã (quá khứ)."
@@ -169,8 +201,10 @@
     {
       "word": "テイクアウト",
       "reading": "テイクアウト",
+      "han_viet": "",
       "meaning": "Mang đi",
-      "type": "Danh động từ",
+      "type": "Verb",
+      "level": "N4",
       "example": {
         "jp": "テイクアウトしました。",
         "vn": "đã (quá khứ)."
@@ -179,8 +213,10 @@
     {
       "word": "デリバリー",
       "reading": "デリバリー",
+      "han_viet": "",
       "meaning": "Giao hàng",
-      "type": "Danh động từ",
+      "type": "Verb",
+      "level": "N4",
       "example": {
         "jp": "デリバリーを頼みました。",
         "vn": "đã (quá khứ)."
@@ -189,8 +225,10 @@
     {
       "word": "予約",
       "reading": "よやく",
+      "han_viet": "",
       "meaning": "Đặt chỗ",
-      "type": "Danh động từ",
+      "type": "Verb",
+      "level": "N4",
       "example": {
         "jp": "予約しました。",
         "vn": "đã (quá khứ)."
@@ -199,8 +237,10 @@
     {
       "word": "満席",
       "reading": "まんせき",
+      "han_viet": "",
       "meaning": "Hết chỗ",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "満席です。",
         "vn": "là."

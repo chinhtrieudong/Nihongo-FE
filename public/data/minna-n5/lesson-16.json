@@ -3,130 +3,120 @@
   "topic": "Kết hợp hành động & Cách thức",
   "vocabulary": [
     {
-      "id": "n5_l16_001",
       "word": "歩いて",
       "reading": "あるいて",
-      "hanViet": "Bộ",
+      "han_viet": "BỘ",
       "meaning": "đi bộ (thể te)",
-      "type": "verb",
-      "category": "Thể Cách Thức",
+      "type": "Verb",
+      "level": "N5",
       "example": {
         "jp": "歩いて行きます。",
         "vn": "Đi bộ."
       }
     },
     {
-      "id": "n5_l16_002",
       "word": "乗って",
       "reading": "のって",
-      "hanViet": "Thừa",
+      "han_viet": "THỪA",
       "meaning": "đi, lên xe (thể te)",
-      "type": "verb",
-      "category": "Thể Cách Thức",
+      "type": "Verb",
+      "level": "N5",
       "example": {
         "jp": "バスに乗って行きます。",
         "vn": "Đi bằng xe buýt."
       }
     },
     {
-      "id": "n5_l16_003",
       "word": "降りて",
       "reading": "おりて",
-      "hanViet": "Hàng",
+      "han_viet": "HÀNG",
       "meaning": "xuống xe (thể te)",
-      "type": "verb",
-      "category": "Thể Cách Thức",
+      "type": "Verb",
+      "level": "N5",
       "example": {
         "jp": "駅で降りてください。",
         "vn": "Xuống ở ga."
       }
     },
     {
-      "id": "n5_l16_004",
       "word": "持って",
       "reading": "もって",
-      "hanViet": "Trì",
+      "han_viet": "TRÌ",
       "meaning": "cầm, mang (thể te)",
-      "type": "verb",
-      "category": "Thể Cách Thức",
+      "type": "Verb",
+      "level": "N5",
       "example": {
         "jp": "傘を持って行きます。",
         "vn": "Mang theo ô."
       }
     },
     {
-      "id": "n5_l16_005",
       "word": "着て",
       "reading": "きて",
-      "hanViet": "Trước",
+      "han_viet": "TRƯỚC",
       "meaning": "mặc (thể te)",
-      "type": "verb",
-      "category": "Thể Cách Thức",
+      "type": "Verb",
+      "level": "N5",
       "example": {
         "jp": "コートを着て出かけます。",
         "vn": "Mặc áo khoác ra ngoài."
       }
     },
     {
-      "id": "n5_l16_006",
       "word": "履いて",
       "reading": "はいて",
-      "hanViet": "Lý",
+      "han_viet": "LÝ",
       "meaning": "đi giày (thể te)",
-      "type": "verb",
-      "category": "Thể Cách Thức",
+      "type": "Verb",
+      "level": "N5",
       "example": {
         "jp": "靴を履いてください。",
         "vn": "Xin hãy đi giày."
       }
     },
     {
-      "id": "n5_l16_007",
       "word": "被って",
       "reading": "かぶって",
-      "hanViet": "Bị",
+      "han_viet": "BỊ",
       "meaning": "đội mũ (thể te)",
-      "type": "verb",
-      "category": "Thể Cách Thức",
+      "type": "Verb",
+      "level": "N5",
       "example": {
         "jp": "帽子を被って出かけます。",
         "vn": "Đội mũ ra ngoài."
       }
     },
     {
-      "id": "n5_l16_008",
       "word": "掛けて",
       "reading": "かけて",
-      "hanViet": "Quải",
+      "han_viet": "QUẢI",
       "meaning": "đeo kính (thể te)",
-      "type": "verb",
-      "category": "Thể Cách Thức",
+      "type": "Verb",
+      "level": "N5",
       "example": {
         "jp": "眼鏡を掛けています。",
         "vn": "Đeo kính."
       }
     },
     {
-      "id": "n5_l16_009",
       "word": "知って",
       "reading": "しって",
-      "hanViet": "Tri",
+      "han_viet": "TRI",
       "meaning": "biết (thể te)",
-      "type": "verb",
-      "category": "Thể Cách Thức",
+      "type": "Verb",
+      "level": "N5",
       "example": {
         "jp": "知っています。",
         "vn": "Tôi biết."
       }
     },
     {
-      "id": "n5_l16_010",
       "word": "思って",
       "reading": "おもって",
-      "hanViet": "Tư",
+      "han_viet": "TƯ",
       "meaning": "nghĩ (thể te)",
-      "type": "verb",
-      "category": "Thể Cách Thức",
+      "type": "Verb",
+      "level": "N5",
       "example": {
         "jp": "そう思っています。",
         "vn": "Tôi nghĩ vậy."

@@ -9,8 +9,10 @@
     {
       "word": "短所",
       "reading": "たんしょ",
+      "han_viet": "",
       "meaning": "Nhược điểm",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "短所を改善しています。",
         "vn": "có (người/động vật)."
@@ -19,8 +21,10 @@
     {
       "word": "欠点",
       "reading": "けってん",
+      "han_viet": "",
       "meaning": "Khuyết điểm",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "欠点があります。",
         "vn": "có."
@@ -29,8 +33,10 @@
     {
       "word": "弱点",
       "reading": "じゃくてん",
+      "han_viet": "",
       "meaning": "Điểm yếu",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "弱点を克服したいです。",
         "vn": "là."
@@ -39,8 +45,10 @@
     {
       "word": "苦手",
       "reading": "にがて",
+      "han_viet": "",
       "meaning": "Không giỏi",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "数学が苦手です。",
         "vn": "là."
@@ -49,8 +57,10 @@
     {
       "word": "不得意",
       "reading": "ふとくい",
+      "han_viet": "",
       "meaning": "Không thành thạo",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "不得意な分野です。",
         "vn": "là."
@@ -59,8 +69,10 @@
     {
       "word": "不利",
       "reading": "ふり",
+      "han_viet": "",
       "meaning": "Bất lợi",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "不利な状況です。",
         "vn": "là."
@@ -69,8 +81,10 @@
     {
       "word": "不利な",
       "reading": "ふりな",
+      "han_viet": "",
       "meaning": "Không có lợi",
-      "type": "Tính từ",
+      "type": "Adjective",
+      "level": "N4",
       "example": {
         "jp": "不利な条件です。",
         "vn": "là."
@@ -79,8 +93,10 @@
     {
       "word": "心配性",
       "reading": "しんぱいしょう",
+      "han_viet": "",
       "meaning": "Lo lắng",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "心配性です。",
         "vn": "là."
@@ -89,8 +105,10 @@
     {
       "word": "嫉妬深い",
       "reading": "しっとぶかい",
+      "han_viet": "",
       "meaning": "Ghen tị",
-      "type": "Tính từ",
+      "type": "Adjective",
+      "level": "N4",
       "example": {
         "jp": "嫉妬深い性格です。",
         "vn": "là."
@@ -99,8 +117,10 @@
     {
       "word": "頑固",
       "reading": "がんこ",
+      "han_viet": "",
       "meaning": "Cứng đầu",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "頑固な人です。",
         "vn": "là."
@@ -109,8 +129,10 @@
     {
       "word": "怠け者",
       "reading": "なまけもの",
+      "han_viet": "",
       "meaning": "Lười biếng",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "怠け者です。",
         "vn": "là."
@@ -119,8 +141,10 @@
     {
       "word": "忘れっぽい",
       "reading": "わすれっぽい",
+      "han_viet": "",
       "meaning": "Hay quên",
-      "type": "Tính từ",
+      "type": "Adjective",
+      "level": "N4",
       "example": {
         "jp": "忘れっぽい性格です。",
         "vn": "là."
@@ -129,8 +153,10 @@
     {
       "word": "怒りっぽい",
       "reading": "いかりっぽい",
+      "han_viet": "",
       "meaning": "Nóng tính",
-      "type": "Tính từ",
+      "type": "Adjective",
+      "level": "N4",
       "example": {
         "jp": "怒りっぽいです。",
         "vn": "là."
@@ -139,8 +165,10 @@
     {
       "word": "心配性",
       "reading": "しんぱいしょう",
+      "han_viet": "",
       "meaning": "Hay lo",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "心配性です。",
         "vn": "là."
@@ -149,8 +177,10 @@
     {
       "word": "気が短い",
       "reading": "きがみじかい",
+      "han_viet": "",
       "meaning": "Nóng vội",
-      "type": "Tính từ",
+      "type": "Adjective",
+      "level": "N4",
       "example": {
         "jp": "気が短いです。",
         "vn": "là."
@@ -159,8 +189,10 @@
     {
       "word": "気が長い",
       "reading": "きがながい",
+      "han_viet": "",
       "meaning": "Kiên nhẫn",
-      "type": "Tính từ",
+      "type": "Adjective",
+      "level": "N4",
       "example": {
         "jp": "気が長いです。",
         "vn": "là."
@@ -169,8 +201,10 @@
     {
       "word": "無口",
       "reading": "むくち",
+      "han_viet": "",
       "meaning": "Ít nói",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "無口な性格です。",
         "vn": "là."
@@ -179,8 +213,10 @@
     {
       "word": "多弁",
       "reading": "たべん",
+      "han_viet": "",
       "meaning": "Nhiều lời",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "多弁な人です。",
         "vn": "là."
@@ -189,8 +225,10 @@
     {
       "word": "甘い",
       "reading": "あまい",
+      "han_viet": "",
       "meaning": "Mềm yếu",
-      "type": "Tính từ",
+      "type": "Adjective",
+      "level": "N4",
       "example": {
         "jp": "自分に甘いです。",
         "vn": "là."
@@ -199,8 +237,10 @@
     {
       "word": "厳しい",
       "reading": "きびしい",
+      "han_viet": "",
       "meaning": "Khắt khe",
-      "type": "Tính từ",
+      "type": "Adjective",
+      "level": "N4",
       "example": {
         "jp": "自分に厳しいです。",
         "vn": "là."

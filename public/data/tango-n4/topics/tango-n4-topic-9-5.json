@@ -9,8 +9,10 @@
     {
       "word": "健康習慣",
       "reading": "けんこうしゅうかん",
+      "han_viet": "",
       "meaning": "Thói quen lành mạnh",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "健康習慣を身につけます。",
         "vn": "(đuôi lịch sự)"
@@ -19,8 +21,10 @@
     {
       "word": "規則正しい",
       "reading": "きそくただしい",
+      "han_viet": "",
       "meaning": "Điều độ",
-      "type": "Tính từ",
+      "type": "Adjective",
+      "level": "N4",
       "example": {
         "jp": "規則正しい生活です。",
         "vn": "là."
@@ -29,8 +33,10 @@
     {
       "word": "生活",
       "reading": "せいかつ",
+      "han_viet": "",
       "meaning": "Sinh hoạt",
-      "type": "Danh động từ",
+      "type": "Verb",
+      "level": "N4",
       "example": {
         "jp": "健康生活を送ります。",
         "vn": "(đuôi lịch sự)"
@@ -39,8 +45,10 @@
     {
       "word": "睡眠",
       "reading": "すいみん",
+      "han_viet": "",
       "meaning": "Giấc ngủ",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "睡眠をとります。",
         "vn": "(đuôi lịch sự)"
@@ -49,8 +57,10 @@
     {
       "word": "運動",
       "reading": "うんどう",
+      "han_viet": "",
       "meaning": "Vận động",
-      "type": "Danh động từ",
+      "type": "Verb",
+      "level": "N4",
       "example": {
         "jp": "運動をします。",
         "vn": "(đuôi lịch sự)"
@@ -59,8 +69,10 @@
     {
       "word": "食事",
       "reading": "しょくじ",
+      "han_viet": "",
       "meaning": "Ăn uống",
-      "type": "Danh động từ",
+      "type": "Verb",
+      "level": "N4",
       "example": {
         "jp": "食事に気をつけます。",
         "vn": "(đuôi lịch sự)"
@@ -69,8 +81,10 @@
     {
       "word": "栄養",
       "reading": "えいよう",
+      "han_viet": "",
       "meaning": "Dinh dưỡng",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "栄養バランスが重要です。",
         "vn": "là."
@@ -79,8 +93,10 @@
     {
       "word": "バランス",
       "reading": "バランス",
+      "han_viet": "",
       "meaning": "Cân bằng",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "栄養バランスを考えます。",
         "vn": "(đuôi lịch sự)"
@@ -89,8 +105,10 @@
     {
       "word": "適度",
       "reading": "てきど",
+      "han_viet": "",
       "meaning": "Vừa phải",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "適度な運動が大切です。",
         "vn": "là."
@@ -99,8 +117,10 @@
     {
       "word": "早寝早起き",
       "reading": "はやねはやおき",
+      "han_viet": "",
       "meaning": "Ngủ sớm dậy sớm",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "早寝早起きは健康に良いです。",
         "vn": "là."
@@ -109,8 +129,10 @@
     {
       "word": "朝食",
       "reading": "ちょうしょく",
+      "han_viet": "",
       "meaning": "Ăn sáng",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "朝食を必ず食べます。",
         "vn": "(đuôi lịch sự)"
@@ -119,8 +141,10 @@
     {
       "word": "間食",
       "reading": "かんしょく",
+      "han_viet": "",
       "meaning": "Ăn vặt",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "間食は控えます。",
         "vn": "(đuôi lịch sự)"
@@ -129,8 +153,10 @@
     {
       "word": "水分",
       "reading": "すいぶん",
+      "han_viet": "",
       "meaning": "Nước",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "水分を補給します。",
         "vn": "(đuôi lịch sự)"
@@ -139,8 +165,10 @@
     {
       "word": "補給",
       "reading": "ほきゅう",
+      "han_viet": "",
       "meaning": "Bổ sung",
-      "type": "Danh động từ",
+      "type": "Verb",
+      "level": "N4",
       "example": {
         "jp": "栄養を補給します。",
         "vn": "(đuôi lịch sự)"
@@ -149,8 +177,10 @@
     {
       "word": "ストレス解消",
       "reading": "ストレスかいしょう",
+      "han_viet": "",
       "meaning": "Giải tỏa căng thẳng",
-      "type": "Danh động từ",
+      "type": "Verb",
+      "level": "N4",
       "example": {
         "jp": "ストレス解消が必要です。",
         "vn": "là."
@@ -159,8 +189,10 @@
     {
       "word": "リフレッシュ",
       "reading": "リフレッシュ",
+      "han_viet": "",
       "meaning": "Làm mới",
-      "type": "Danh động từ",
+      "type": "Verb",
+      "level": "N4",
       "example": {
         "jp": "リフレッシュします。",
         "vn": "(đuôi lịch sự)"
@@ -169,8 +201,10 @@
     {
       "word": "休養",
       "reading": "きゅうよう",
+      "han_viet": "",
       "meaning": "Nghỉ ngơi",
-      "type": "Danh động từ",
+      "type": "Verb",
+      "level": "N4",
       "example": {
         "jp": "十分休養します。",
         "vn": "(đuôi lịch sự)"
@@ -179,8 +213,10 @@
     {
       "word": "禁煙",
       "reading": "きんえん",
+      "han_viet": "",
       "meaning": "Cấm hút thuốc",
-      "type": "Danh động từ",
+      "type": "Verb",
+      "level": "N4",
       "example": {
         "jp": "禁煙しています。",
         "vn": "có (người/động vật)."
@@ -189,8 +225,10 @@
     {
       "word": "節酒",
       "reading": "せっしゅ",
+      "han_viet": "",
       "meaning": "Hạn chế rượu",
-      "type": "Danh động từ",
+      "type": "Verb",
+      "level": "N4",
       "example": {
         "jp": "節酒に努めます。",
         "vn": "(đuôi lịch sự)"
@@ -199,8 +237,10 @@
     {
       "word": "健康診断",
       "reading": "けんこうしんだん",
+      "han_viet": "",
       "meaning": "Khám sức khỏe",
-      "type": "Danh động từ",
+      "type": "Verb",
+      "level": "N4",
       "example": {
         "jp": "健康診断を受けました。",
         "vn": "đã (quá khứ)."

@@ -9,8 +9,10 @@
     {
       "word": "治療",
       "reading": "ちりょう",
+      "han_viet": "",
       "meaning": "Điều trị",
-      "type": "Danh động từ",
+      "type": "Verb",
+      "level": "N4",
       "example": {
         "jp": "治療を受けています。",
         "vn": "có (người/động vật)."
@@ -19,8 +21,10 @@
     {
       "word": "治す",
       "reading": "なおす",
+      "han_viet": "",
       "meaning": "Chữa",
-      "type": "Động từ",
+      "type": "Verb",
+      "level": "N4",
       "example": {
         "jp": "病気を治します。",
         "vn": "(đuôi lịch sự)"
@@ -29,8 +33,10 @@
     {
       "word": "治る",
       "reading": "なおる",
+      "han_viet": "",
       "meaning": "Khỏi",
-      "type": "Động từ",
+      "type": "Verb",
+      "level": "N4",
       "example": {
         "jp": "病気が治りました。",
         "vn": "đã (quá khứ)."
@@ -39,8 +45,10 @@
     {
       "word": "手術",
       "reading": "しゅじゅつ",
+      "han_viet": "",
       "meaning": "Phẫu thuật",
-      "type": "Danh động từ",
+      "type": "Verb",
+      "level": "N4",
       "example": {
         "jp": "手術をしました。",
         "vn": "đã (quá khứ)."
@@ -49,8 +57,10 @@
     {
       "word": "注射",
       "reading": "ちゅうしゃ",
+      "han_viet": "",
       "meaning": "Tiêm",
-      "type": "Danh động từ",
+      "type": "Verb",
+      "level": "N4",
       "example": {
         "jp": "注射をしました。",
         "vn": "đã (quá khứ)."
@@ -59,8 +69,10 @@
     {
       "word": "点滴",
       "reading": "てんてき",
+      "han_viet": "",
       "meaning": "Truyền dịch",
-      "type": "Danh động từ",
+      "type": "Verb",
+      "level": "N4",
       "example": {
         "jp": "点滴をしています。",
         "vn": "có (người/động vật)."
@@ -69,8 +81,10 @@
     {
       "word": "内服",
       "reading": "ないふく",
+      "han_viet": "",
       "meaning": "Uống thuốc",
-      "type": "Danh động từ",
+      "type": "Verb",
+      "level": "N4",
       "example": {
         "jp": "内服薬です。",
         "vn": "là."
@@ -79,8 +93,10 @@
     {
       "word": "外用",
       "reading": "がいよう",
+      "han_viet": "",
       "meaning": "Bôi ngoài",
-      "type": "Danh động từ",
+      "type": "Verb",
+      "level": "N4",
       "example": {
         "jp": "外用薬です。",
         "vn": "là."
@@ -89,8 +105,10 @@
     {
       "word": "処方",
       "reading": "しょほう",
+      "han_viet": "",
       "meaning": "Kê đơn",
-      "type": "Danh động từ",
+      "type": "Verb",
+      "level": "N4",
       "example": {
         "jp": "処方してもらいました。",
         "vn": "đã (quá khứ)."
@@ -99,8 +117,10 @@
     {
       "word": "処方箋",
       "reading": "しょほうせん",
+      "han_viet": "",
       "meaning": "Đơn thuốc",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "処方箋をもらいました。",
         "vn": "đã (quá khứ)."
@@ -109,8 +129,10 @@
     {
       "word": "安静",
       "reading": "あんせい",
+      "han_viet": "",
       "meaning": "Nghỉ ngơi",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "安静にしています。",
         "vn": "có (người/động vật)."
@@ -119,8 +141,10 @@
     {
       "word": "休養",
       "reading": "きゅうよう",
+      "han_viet": "",
       "meaning": "Dưỡng sức",
-      "type": "Danh động từ",
+      "type": "Verb",
+      "level": "N4",
       "example": {
         "jp": "十分休養しました。",
         "vn": "đã (quá khứ)."
@@ -129,8 +153,10 @@
     {
       "word": "湿布",
       "reading": "しっぷ",
+      "han_viet": "",
       "meaning": "Dán thuốc",
-      "type": "Danh động từ",
+      "type": "Verb",
+      "level": "N4",
       "example": {
         "jp": "湿布をしています。",
         "vn": "có (người/động vật)."
@@ -139,8 +165,10 @@
     {
       "word": "包帯",
       "reading": "ほうたい",
+      "han_viet": "",
       "meaning": "Băng bó",
-      "type": "Danh động từ",
+      "type": "Verb",
+      "level": "N4",
       "example": {
         "jp": "包帯を巻きました。",
         "vn": "đã (quá khứ)."
@@ -149,8 +177,10 @@
     {
       "word": "ギプス",
       "reading": "ギプス",
+      "han_viet": "",
       "meaning": "Bó bột",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "ギプスをはめました。",
         "vn": "đã (quá khứ)."
@@ -159,8 +189,10 @@
     {
       "word": "縫合",
       "reading": "ほうごう",
+      "han_viet": "",
       "meaning": "Khâu",
-      "type": "Danh động từ",
+      "type": "Verb",
+      "level": "N4",
       "example": {
         "jp": "傷口を縫合しました。",
         "vn": "đã (quá khứ)."
@@ -169,8 +201,10 @@
     {
       "word": "開腹",
       "reading": "かいふく",
+      "han_viet": "",
       "meaning": "Mổ bụng",
-      "type": "Danh động từ",
+      "type": "Verb",
+      "level": "N4",
       "example": {
         "jp": "開腹手術をしました。",
         "vn": "đã (quá khứ)."
@@ -179,8 +213,10 @@
     {
       "word": "麻酔",
       "reading": "ますい",
+      "han_viet": "",
       "meaning": "Gây mê",
-      "type": "Danh động từ",
+      "type": "Verb",
+      "level": "N4",
       "example": {
         "jp": "全身麻酔をしました。",
         "vn": "đã (quá khứ)."
@@ -189,8 +225,10 @@
     {
       "word": "通院",
       "reading": "つういん",
+      "han_viet": "",
       "meaning": "Đến bệnh viện",
-      "type": "Danh động từ",
+      "type": "Verb",
+      "level": "N4",
       "example": {
         "jp": "通院しています。",
         "vn": "có (người/động vật)."
@@ -199,8 +237,10 @@
     {
       "word": "完治",
       "reading": "かんち",
+      "han_viet": "",
       "meaning": "Khỏi hẳn",
-      "type": "Danh động từ",
+      "type": "Verb",
+      "level": "N4",
       "example": {
         "jp": "完治しました。",
         "vn": "đã (quá khứ)."

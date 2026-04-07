@@ -9,141 +9,169 @@
     {
       "word": "おはよう",
       "reading": "おはよう",
+      "han_viet": "",
       "meaning": "Chào buổi sáng (thân mật)",
-      "type": "Lời chào",
+      "type": "Other",
+      "level": "N5",
       "example": {
         "jp": "おはよう！",
-        "vn": ""
+        "vn": "Chào buổi sáng!"
       }
     },
     {
       "word": "おはようございます",
       "reading": "おはようございます",
+      "han_viet": "",
       "meaning": "Chào buổi sáng (lịch sự)",
-      "type": "Lời chào",
+      "type": "Verb",
+      "level": "N5",
       "example": {
         "jp": "おはようございます。",
-        "vn": "có (người/động vật)."
+        "vn": "Chào buổi sáng ạ."
       }
     },
     {
       "word": "こんにちは",
       "reading": "こんにちは",
+      "han_viet": "",
       "meaning": "Chào buổi chiều",
-      "type": "Lời chào",
+      "type": "Other",
+      "level": "N5",
       "example": {
         "jp": "こんにちは、佐藤さん。",
-        "vn": ""
+        "vn": "Chào anh/chị Sato."
       }
     },
     {
       "word": "こんばんは",
       "reading": "こんばんは",
+      "han_viet": "",
       "meaning": "Chào buổi tối",
-      "type": "Lời chào",
+      "type": "Other",
+      "level": "N5",
       "example": {
         "jp": "こんばんは。",
-        "vn": ""
+        "vn": "Chào buổi tối."
       }
     },
     {
       "word": "さようなら",
       "reading": "さようなら",
+      "han_viet": "",
       "meaning": "Tạm biệt",
-      "type": "Lời chào",
+      "type": "Noun",
+      "level": "N5",
       "example": {
         "jp": "さようなら。",
-        "vn": ""
+        "vn": "Tạm biệt."
       }
     },
     {
       "word": "また明日",
       "reading": "またあした",
+      "han_viet": "",
       "meaning": "Hẹn gặp lại ngày mai",
-      "type": "Lời chào",
+      "type": "Noun",
+      "level": "N5",
       "example": {
         "jp": "また明日。",
-        "vn": ""
+        "vn": "Hẹn gặp lại ngày mai."
       }
     },
     {
       "word": "おやすみなさい",
       "reading": "おやすみなさい",
+      "han_viet": "",
       "meaning": "Chúc ngủ ngon",
-      "type": "Lời chào",
+      "type": "Adjective",
+      "level": "N5",
       "example": {
         "jp": "おやすみなさい。",
-        "vn": ""
+        "vn": "Chúc ngủ ngon."
       }
     },
     {
       "word": "初めまして",
       "reading": "はじめまして",
+      "han_viet": "",
       "meaning": "Rất vui được gặp bạn",
-      "type": "Lời chào",
+      "type": "Noun",
+      "level": "N5",
       "example": {
         "jp": "初めまして、田中です。",
-        "vn": "là."
+        "vn": "Rất vui được gặp bạn, tôi là Tanaka."
       }
     },
     {
       "word": "どうぞよろしく",
       "reading": "どうぞよろしく",
+      "han_viet": "",
       "meaning": "Rất mong được giúp đỡ",
-      "type": "Lời chào",
+      "type": "Noun",
+      "level": "N5",
       "example": {
         "jp": "どうぞよろしくお願いします。",
-        "vn": "(đuôi lịch sự)"
+        "vn": "Rất mong được giúp đỡ."
       }
     },
     {
       "word": "お名前",
       "reading": "おなまえ",
+      "han_viet": "",
       "meaning": "Tên (lịch sự)",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N5",
       "example": {
         "jp": "お名前は何ですか。",
-        "vn": "có phải là... không?"
+        "vn": "Bạn tên là gì ạ?"
       }
     },
     {
       "word": "名前",
       "reading": "なまえ",
+      "han_viet": "",
       "meaning": "Tên",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N5",
       "example": {
         "jp": "名前を教えてください。",
-        "vn": "vui lòng..."
+        "vn": "Vui lòng cho tôi biết tên bạn."
       }
     },
     {
       "word": "国",
       "reading": "くに",
+      "han_viet": "",
       "meaning": "Quốc gia",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N5",
       "example": {
         "jp": "国はどこですか。",
-        "vn": "có phải là... không?"
+        "vn": "Bạn đến từ nước nào?"
       }
     },
     {
       "word": "出身",
       "reading": "しゅっしん",
+      "han_viet": "",
       "meaning": "Xuất thân, quê quán",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N5",
       "example": {
         "jp": "出身はベトナムです。",
-        "vn": "là."
+        "vn": "Tôi đến từ Việt Nam."
       }
     },
     {
       "word": "人",
       "reading": "じん",
+      "han_viet": "",
       "meaning": "Người (hậu tố quốc tịch)",
-      "type": "Phụ tố",
+      "type": "Suffix",
+      "level": "N5",
       "example": {
         "jp": "日本人です。",
-        "vn": "là."
+        "vn": "Tôi là người Nhật."
       }
     }
   ]

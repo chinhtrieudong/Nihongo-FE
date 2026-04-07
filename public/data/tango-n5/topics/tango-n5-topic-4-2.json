@@ -9,8 +9,10 @@
     {
       "word": "シャツ",
       "reading": "シャツ",
+      "han_viet": "",
       "meaning": "Áo sơ mi",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N5",
       "example": {
         "jp": "シャツを着ます。",
         "vn": "(đuôi lịch sự)"
@@ -19,8 +21,10 @@
     {
       "word": "着る",
       "reading": "きる",
+      "han_viet": "",
       "meaning": "Mặc (áo, váy)",
-      "type": "Động từ",
+      "type": "Verb",
+      "level": "N5",
       "example": {
         "jp": "シャツを着ています。",
         "vn": "có (người/động vật)."
@@ -29,8 +33,10 @@
     {
       "word": "脱ぐ",
       "reading": "ぬぐ",
+      "han_viet": "",
       "meaning": "Cởi (quần áo)",
-      "type": "Động từ",
+      "type": "Verb",
+      "level": "N5",
       "example": {
         "jp": "ジャケットを脱ぎます。",
         "vn": "(đuôi lịch sự)"
@@ -39,8 +45,10 @@
     {
       "word": "ズボン",
       "reading": "ズボン",
+      "han_viet": "",
       "meaning": "Quần",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N5",
       "example": {
         "jp": "ズボンを買いました。",
         "vn": "đã (quá khứ)."
@@ -49,8 +57,10 @@
     {
       "word": "はく",
       "reading": "はく",
+      "han_viet": "",
       "meaning": "Mặc (quần, váy, giày)",
-      "type": "Động từ",
+      "type": "Verb",
+      "level": "N5",
       "example": {
         "jp": "ズボンをはいています。",
         "vn": "có (người/động vật)."
@@ -59,8 +69,10 @@
     {
       "word": "スカート",
       "reading": "スカート",
+      "han_viet": "",
       "meaning": "Váy",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N5",
       "example": {
         "jp": "スカートをはきます。",
         "vn": "(đuôi lịch sự)"
@@ -69,8 +81,10 @@
     {
       "word": "ジャケット",
       "reading": "ジャケット",
+      "han_viet": "",
       "meaning": "Áo khoác",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N5",
       "example": {
         "jp": "ジャケットを着ます。",
         "vn": "(đuôi lịch sự)"
@@ -79,8 +93,10 @@
     {
       "word": "コート",
       "reading": "コート",
+      "han_viet": "",
       "meaning": "Áo dài",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N5",
       "example": {
         "jp": "コートが欲しいです。",
         "vn": "là."
@@ -89,8 +105,10 @@
     {
       "word": "セーター",
       "reading": "セーター",
+      "han_viet": "",
       "meaning": "Áo len",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N5",
       "example": {
         "jp": "セーターを着ています。",
         "vn": "có (người/động vật)."
@@ -99,8 +117,10 @@
     {
       "word": "Tシャツ",
       "reading": "Tシャツ",
+      "han_viet": "",
       "meaning": "Áo thun",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N5",
       "example": {
         "jp": "Tシャツが好きです。",
         "vn": "là."
@@ -109,8 +129,10 @@
     {
       "word": "ブラウス",
       "reading": "ブラウス",
+      "han_viet": "",
       "meaning": "Áo kiểu nữ",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N5",
       "example": {
         "jp": "ブラウスを着ます。",
         "vn": "(đuôi lịch sự)"
@@ -119,8 +141,10 @@
     {
       "word": "ネクタイ",
       "reading": "ネクタイ",
+      "han_viet": "",
       "meaning": "Cà vạt",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N5",
       "example": {
         "jp": "ネクタイをします。",
         "vn": "(đuôi lịch sự)"
@@ -129,8 +153,10 @@
     {
       "word": "する",
       "reading": "する",
+      "han_viet": "",
       "meaning": "Động từ chung",
-      "type": "Động từ",
+      "type": "Verb",
+      "level": "N5",
       "example": {
         "jp": "ネクタイをします。",
         "vn": "(đuôi lịch sự)"
@@ -139,8 +165,10 @@
     {
       "word": "ドレス",
       "reading": "ドレス",
+      "han_viet": "",
       "meaning": "Váy dạ hội",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N5",
       "example": {
         "jp": "ドレスを着ます。",
         "vn": "(đuôi lịch sự)"
@@ -149,8 +177,10 @@
     {
       "word": "制服",
       "reading": "せいふく",
+      "han_viet": "",
       "meaning": "Đồng phục",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N5",
       "example": {
         "jp": "制服を着ます。",
         "vn": "(đuôi lịch sự)"

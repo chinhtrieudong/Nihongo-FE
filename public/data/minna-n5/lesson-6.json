@@ -3,130 +3,120 @@
   "topic": "Hành động hàng ngày & Ăn uống",
   "vocabulary": [
     {
-      "id": "n5_l6_001",
       "word": "食べる",
       "reading": "たべる",
-      "hanViet": "Thực",
+      "han_viet": "THỰC",
       "meaning": "ăn",
-      "type": "other",
-      "category": "Từ Vựng Động Từ Ăn Uống",
+      "type": "Noun",
+      "level": "N5",
       "example": {
         "jp": "朝ご飯を食べます。",
         "vn": "Ăn sáng."
       }
     },
     {
-      "id": "n5_l6_002",
       "word": "飲む",
       "reading": "のむ",
-      "hanViet": "Ẩm",
+      "han_viet": "ẨM",
       "meaning": "uống",
-      "type": "other",
-      "category": "Từ Vựng Động Từ Ăn Uống",
+      "type": "Noun",
+      "level": "N5",
       "example": {
         "jp": "水を飲みます。",
         "vn": "Uống nước."
       }
     },
     {
-      "id": "n5_l6_003",
       "word": "見る",
       "reading": "みる",
-      "hanViet": "Kiến",
+      "han_viet": "KIẾN",
       "meaning": "xem, nhìn",
-      "type": "other",
-      "category": "Từ Vựng Động Từ Cảm Quan",
+      "type": "Noun",
+      "level": "N5",
       "example": {
         "jp": "テレビを見ます。",
         "vn": "Xem TV."
       }
     },
     {
-      "id": "n5_l6_004",
       "word": "聞く",
       "reading": "きく",
-      "hanViet": "Văn",
+      "han_viet": "VĂN",
       "meaning": "nghe, hỏi",
-      "type": "other",
-      "category": "Từ Vựng Động Từ Cảm Quan",
+      "type": "Noun",
+      "level": "N5",
       "example": {
         "jp": "音楽を聞きます。",
         "vn": "Nghe nhạc."
       }
     },
     {
-      "id": "n5_l6_005",
       "word": "読む",
       "reading": "よむ",
-      "hanViet": "Độc",
+      "han_viet": "ĐỘC",
       "meaning": "đọc",
-      "type": "other",
-      "category": "Từ Vựng Động Từ Học Tập",
+      "type": "Noun",
+      "level": "N5",
       "example": {
         "jp": "新聞を読みます。",
         "vn": "Đọc báo."
       }
     },
     {
-      "id": "n5_l6_006",
       "word": "書く",
       "reading": "かく",
-      "hanViet": "Thư",
+      "han_viet": "THƯ",
       "meaning": "viết",
-      "type": "other",
-      "category": "Từ Vựng Động Từ Học Tập",
+      "type": "Noun",
+      "level": "N5",
       "example": {
         "jp": "手紙を書きます。",
         "vn": "Viết thư."
       }
     },
     {
-      "id": "n5_l6_007",
       "word": "話す",
       "reading": "はなす",
-      "hanViet": "Thoại",
+      "han_viet": "THOẠI",
       "meaning": "nói, nói chuyện",
-      "type": "other",
-      "category": "Từ Vựng Động Từ Giao Tiếp",
+      "type": "Noun",
+      "level": "N5",
       "example": {
         "jp": "日本語で話します。",
         "vn": "Nói tiếng Nhật."
       }
     },
     {
-      "id": "n5_l6_008",
       "word": "買う",
       "reading": "かう",
-      "hanViet": "Mãi",
+      "han_viet": "MÃI",
       "meaning": "mua",
-      "type": "other",
-      "category": "Từ Vựng Động Từ Mua Bán",
+      "type": "Noun",
+      "level": "N5",
       "example": {
         "jp": "本を買います。",
         "vn": "Mua sách."
       }
     },
     {
-      "id": "n5_l6_009",
       "word": "写真",
       "reading": "しゃしん",
-      "hanViet": "Tả Chân",
+      "han_viet": "TẢ CHÂN",
       "meaning": "ảnh, hình",
-      "type": "other",
-      "category": "Từ Vựng Đồ Vật",
+      "type": "Noun",
+      "level": "N5",
       "example": {
         "jp": "写真を撮ります。",
         "vn": "Chụp ảnh."
       }
     },
     {
-      "id": "n5_l6_010",
       "word": "料理",
       "reading": "りょうり",
-      "hanViet": "Liêu Lý",
+      "han_viet": "LIÊU LÝ",
       "meaning": "nấu ăn, món ăn",
-      "type": "other",
-      "category": "Từ Vựng Đồ Vật",
+      "type": "Noun",
+      "level": "N5",
       "example": {
         "jp": "料理を作ります。",
         "vn": "Nấu ăn."

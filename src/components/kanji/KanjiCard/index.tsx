@@ -133,7 +133,7 @@ const KanjiCard: React.FC<KanjiCardProps> = ({ kanji, isRadical = false, onClick
         >
             <div className="h-full flex flex-col text-center">
                 <div className="flex-1 flex items-center justify-center">
-                    <div className={`text-[40px] sm:text-[44px] font-bold vocab-kanji-text leading-none ${levelStyles.char}`} style={{ fontFamily: selectedPreset.kanjiFontFamily || selectedPreset.fontFamily }}>
+                    <div className={`text-[40px] sm:text-[44px] font-bold kanji-text leading-none ${levelStyles.char}`}>
                         {kanji.kanji}
                     </div>
                 </div>

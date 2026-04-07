@@ -9,8 +9,10 @@
     {
       "word": "感情",
       "reading": "かんじょう",
+      "han_viet": "",
       "meaning": "Cảm xúc",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "感情が豊かです。",
         "vn": "là."
@@ -19,8 +21,10 @@
     {
       "word": "気持ち",
       "reading": "きもち",
+      "han_viet": "KHÍ TRÌ",
       "meaning": "Tâm trạng",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "気持ちがいいです。",
         "vn": "là."
@@ -29,8 +33,10 @@
     {
       "word": "心",
       "reading": "こころ",
+      "han_viet": "",
       "meaning": "Trái tim",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "心が温かいです。",
         "vn": "là."
@@ -39,8 +45,10 @@
     {
       "word": "気分",
       "reading": "きぶん",
+      "han_viet": "",
       "meaning": "Cảm giác",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "気分が落ち込んでいます。",
         "vn": "có (người/động vật)."
@@ -49,8 +57,10 @@
     {
       "word": "思い",
       "reading": "おもい",
+      "han_viet": "",
       "meaning": "Suy nghĩ",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "思いが込み上げてきました。",
         "vn": "đã (quá khứ)."
@@ -59,8 +69,10 @@
     {
       "word": "感じ",
       "reading": "かんじ",
+      "han_viet": "",
       "meaning": "Cảm nhận",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "いい感じです。",
         "vn": "là."
@@ -69,8 +81,10 @@
     {
       "word": "情熱",
       "reading": "じょうねつ",
+      "han_viet": "",
       "meaning": "Đam mê",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "情熱を持って仕事をします。",
         "vn": "(đuôi lịch sự)"
@@ -79,8 +93,10 @@
     {
       "word": "愛情",
       "reading": "あいじょう",
+      "han_viet": "",
       "meaning": "Tình yêu thương",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "愛情を注いで育てます。",
         "vn": "(đuôi lịch sự)"
@@ -89,8 +105,10 @@
     {
       "word": "友情",
       "reading": "ゆうじょう",
+      "han_viet": "",
       "meaning": "Tình bạn",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "友情が深まりました。",
         "vn": "đã (quá khứ)."
@@ -99,8 +117,10 @@
     {
       "word": "同情",
       "reading": "どうじょう",
+      "han_viet": "",
       "meaning": "Thông cảm",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "同情の念を抱きました。",
         "vn": "đã (quá khứ)."
@@ -109,8 +129,10 @@
     {
       "word": "感動",
       "reading": "かんどう",
+      "han_viet": "",
       "meaning": "Xúc động",
-      "type": "Danh động từ",
+      "type": "Verb",
+      "level": "N4",
       "example": {
         "jp": "感動しました。",
         "vn": "đã (quá khứ)."
@@ -119,8 +141,10 @@
     {
       "word": "感激",
       "reading": "かんげき",
+      "han_viet": "",
       "meaning": "Cảm kích",
-      "type": "Danh động từ",
+      "type": "Verb",
+      "level": "N4",
       "example": {
         "jp": "感激しています。",
         "vn": "có (người/động vật)."
@@ -129,8 +153,10 @@
     {
       "word": "興奮",
       "reading": "こうふん",
+      "han_viet": "",
       "meaning": "Phấn khích",
-      "type": "Danh động từ",
+      "type": "Verb",
+      "level": "N4",
       "example": {
         "jp": "興奮しています。",
         "vn": "có (người/động vật)."
@@ -139,8 +165,10 @@
     {
       "word": "満足",
       "reading": "まんぞく",
+      "han_viet": "",
       "meaning": "Hài lòng",
-      "type": "Danh động từ",
+      "type": "Verb",
+      "level": "N4",
       "example": {
         "jp": "満足しています。",
         "vn": "có (người/động vật)."
@@ -149,8 +177,10 @@
     {
       "word": "不満",
       "reading": "ふまん",
+      "han_viet": "",
       "meaning": "Không hài lòng",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "不満があります。",
         "vn": "có."
@@ -159,8 +189,10 @@
     {
       "word": "安心",
       "reading": "あんしん",
+      "han_viet": "",
       "meaning": "An tâm",
-      "type": "Danh động từ",
+      "type": "Verb",
+      "level": "N4",
       "example": {
         "jp": "安心しました。",
         "vn": "đã (quá khứ)."
@@ -169,8 +201,10 @@
     {
       "word": "不安",
       "reading": "ふあん",
+      "han_viet": "",
       "meaning": "Lo lắng",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "不安になりました。",
         "vn": "đã (quá khứ)."
@@ -179,8 +213,10 @@
     {
       "word": "心配",
       "reading": "しんぱい",
+      "han_viet": "",
       "meaning": "Lo âu",
-      "type": "Danh động từ",
+      "type": "Verb",
+      "level": "N4",
       "example": {
         "jp": "心配しています。",
         "vn": "có (người/động vật)."
@@ -189,8 +225,10 @@
     {
       "word": "緊張",
       "reading": "きんちょう",
+      "han_viet": "",
       "meaning": "Căng thẳng",
-      "type": "Danh động từ",
+      "type": "Verb",
+      "level": "N4",
       "example": {
         "jp": "緊張しています。",
         "vn": "có (người/động vật)."
@@ -199,8 +237,10 @@
     {
       "word": "落ち着き",
       "reading": "おちつき",
+      "han_viet": "",
       "meaning": "Bình tĩnh",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "落ち着きがありません。",
         "vn": "không có."

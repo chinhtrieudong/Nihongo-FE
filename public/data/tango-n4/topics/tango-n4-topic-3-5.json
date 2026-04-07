@@ -9,8 +9,10 @@
     {
       "word": "態度",
       "reading": "たいど",
+      "han_viet": "",
       "meaning": "Thái độ",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "態度が良くなりました。",
         "vn": "đã (quá khứ)."
@@ -19,8 +21,10 @@
     {
       "word": "姿勢",
       "reading": "しせい",
+      "han_viet": "",
       "meaning": "Tư thế",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "姿勢が正しいです。",
         "vn": "là."
@@ -29,8 +33,10 @@
     {
       "word": "振る舞い",
       "reading": "ふるまい",
+      "han_viet": "",
       "meaning": "Cách cư xử",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "振る舞いが堂々としています。",
         "vn": "có (người/động vật)."
@@ -39,8 +45,10 @@
     {
       "word": "言動",
       "reading": "げんどう",
+      "han_viet": "",
       "meaning": "Lời nói hành động",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "言動に気をつけます。",
         "vn": "(đuôi lịch sự)"
@@ -49,8 +57,10 @@
     {
       "word": "行動",
       "reading": "こうどう",
+      "han_viet": "",
       "meaning": "Hành động",
-      "type": "Danh động từ",
+      "type": "Verb",
+      "level": "N4",
       "example": {
         "jp": "行動を起こします。",
         "vn": "(đuôi lịch sự)"
@@ -59,8 +69,10 @@
     {
       "word": "動作",
       "reading": "どうさ",
+      "han_viet": "",
       "meaning": "Động tác",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "動作が素早いです。",
         "vn": "là."
@@ -69,8 +81,10 @@
     {
       "word": "態度",
       "reading": "たいど",
+      "han_viet": "",
       "meaning": "Thái độ",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "前向きな態度です。",
         "vn": "là."
@@ -79,8 +93,10 @@
     {
       "word": "姿",
       "reading": "すがた",
+      "han_viet": "",
       "meaning": "Dáng vẻ",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "姿が美しいです。",
         "vn": "là."
@@ -89,8 +105,10 @@
     {
       "word": "様子",
       "reading": "ようす",
+      "han_viet": "",
       "meaning": "Vẻ bề ngoài",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "様子を見ています。",
         "vn": "có (người/động vật)."
@@ -99,8 +117,10 @@
     {
       "word": "表情",
       "reading": "ひょうじょう",
+      "han_viet": "",
       "meaning": "Biểu cảm",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "表情が明るいです。",
         "vn": "là."
@@ -109,8 +129,10 @@
     {
       "word": "受け答え",
       "reading": "うけこたえ",
+      "han_viet": "",
       "meaning": "Trả lời",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "受け答えが丁寧です。",
         "vn": "là."
@@ -119,8 +141,10 @@
     {
       "word": "礼儀",
       "reading": "れいぎ",
+      "han_viet": "",
       "meaning": "Lễ nghĩa",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "礼儀正しいです。",
         "vn": "là."
@@ -129,8 +153,10 @@
     {
       "word": "礼節",
       "reading": "れいせつ",
+      "han_viet": "",
       "meaning": "Nghi thức",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "礼節を守ります。",
         "vn": "(đuôi lịch sự)"
@@ -139,8 +165,10 @@
     {
       "word": "敬意",
       "reading": "けいい",
+      "han_viet": "",
       "meaning": "Kính trọng",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "敬意を表します。",
         "vn": "(đuôi lịch sự)"
@@ -149,8 +177,10 @@
     {
       "word": "謙虚",
       "reading": "けんきょ",
+      "han_viet": "",
       "meaning": "Khiêm tốn",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "謙虚な態度です。",
         "vn": "là."
@@ -159,8 +189,10 @@
     {
       "word": "傲慢",
       "reading": "ごうまん",
+      "han_viet": "",
       "meaning": "Kiêu ngạo",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "傲慢な態度は嫌です。",
         "vn": "là."
@@ -169,8 +201,10 @@
     {
       "word": "素直",
       "reading": "すなお",
+      "han_viet": "",
       "meaning": "Thành thật",
-      "type": "Tính từ",
+      "type": "Adjective",
+      "level": "N4",
       "example": {
         "jp": "素直な気持ちです。",
         "vn": "là."
@@ -179,8 +213,10 @@
     {
       "word": "堂々",
       "reading": "どうどう",
+      "han_viet": "",
       "meaning": "Hùng dũng",
-      "type": "Phó từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "堂々としています。",
         "vn": "có (người/động vật)."
@@ -189,8 +225,10 @@
     {
       "word": "落ち着き",
       "reading": "おちつき",
+      "han_viet": "",
       "meaning": "Điềm đạm",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "落ち着きがあります。",
         "vn": "có."
@@ -199,8 +237,10 @@
     {
       "word": "活気",
       "reading": "かっき",
+      "han_viet": "",
       "meaning": "Sôi nổi",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "活気があります。",
         "vn": "có."

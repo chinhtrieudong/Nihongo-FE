@@ -9,8 +9,10 @@
     {
       "word": "喜び",
       "reading": "よろこび",
+      "han_viet": "",
       "meaning": "Niềm vui",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "喜びを分かち合います。",
         "vn": "có (người/động vật)."
@@ -19,8 +21,10 @@
     {
       "word": "嬉しい",
       "reading": "うれしい",
+      "han_viet": "",
       "meaning": "Vui mừng",
-      "type": "Tính từ",
+      "type": "Adjective",
+      "level": "N4",
       "example": {
         "jp": "嬉しい知らせです。",
         "vn": "là."
@@ -29,8 +33,10 @@
     {
       "word": "楽しい",
       "reading": "たのしい",
+      "han_viet": "LẠC",
       "meaning": "Vui vẻ",
-      "type": "Tính từ",
+      "type": "Adjective",
+      "level": "N4",
       "example": {
         "jp": "楽しい時間を過ごしました。",
         "vn": "đã (quá khứ)."
@@ -39,8 +45,10 @@
     {
       "word": "幸せ",
       "reading": "しあわせ",
+      "han_viet": "",
       "meaning": "Hạnh phúc",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "幸せを感じています。",
         "vn": "có (người/động vật)."
@@ -49,8 +57,10 @@
     {
       "word": "満足",
       "reading": "まんぞく",
+      "han_viet": "",
       "meaning": "Hài lòng",
-      "type": "Danh động từ",
+      "type": "Verb",
+      "level": "N4",
       "example": {
         "jp": "満足しています。",
         "vn": "có (người/động vật)."
@@ -59,8 +69,10 @@
     {
       "word": "感激",
       "reading": "かんげき",
+      "han_viet": "",
       "meaning": "Cảm kích",
-      "type": "Danh động từ",
+      "type": "Verb",
+      "level": "N4",
       "example": {
         "jp": "感激しています。",
         "vn": "có (người/động vật)."
@@ -69,8 +81,10 @@
     {
       "word": "感動",
       "reading": "かんどう",
+      "han_viet": "",
       "meaning": "Xúc động",
-      "type": "Danh động từ",
+      "type": "Verb",
+      "level": "N4",
       "example": {
         "jp": "感動しました。",
         "vn": "đã (quá khứ)."
@@ -79,8 +93,10 @@
     {
       "word": "興奮",
       "reading": "こうふん",
+      "han_viet": "",
       "meaning": "Phấn khích",
-      "type": "Danh động từ",
+      "type": "Verb",
+      "level": "N4",
       "example": {
         "jp": "興奮しています。",
         "vn": "có (người/động vật)."
@@ -89,8 +105,10 @@
     {
       "word": "愉快",
       "reading": "ゆかい",
+      "han_viet": "",
       "meaning": "Vui nhộn",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "愉快な雰囲気です。",
         "vn": "là."
@@ -99,8 +117,10 @@
     {
       "word": "歓喜",
       "reading": "かんき",
+      "han_viet": "",
       "meaning": "Hoan hỉ",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "歓喜に沸いています。",
         "vn": "có (người/động vật)."
@@ -109,8 +129,10 @@
     {
       "word": "勝利",
       "reading": "しょうり",
+      "han_viet": "",
       "meaning": "Chiến thắng",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "勝利の喜びです。",
         "vn": "là."
@@ -119,8 +141,10 @@
     {
       "word": "成功",
       "reading": "せいこう",
+      "han_viet": "",
       "meaning": "Thành công",
-      "type": "Danh động từ",
+      "type": "Verb",
+      "level": "N4",
       "example": {
         "jp": "成功の喜びです。",
         "vn": "là."
@@ -129,8 +153,10 @@
     {
       "word": "達成",
       "reading": "たっせい",
+      "han_viet": "",
       "meaning": "Đạt được",
-      "type": "Danh động từ",
+      "type": "Verb",
+      "level": "N4",
       "example": {
         "jp": "目標を達成しました。",
         "vn": "đã (quá khứ)."
@@ -139,8 +165,10 @@
     {
       "word": "褒める",
       "reading": "ほめる",
+      "han_viet": "",
       "meaning": "Khen ngợi",
-      "type": "Động từ",
+      "type": "Verb",
+      "level": "N4",
       "example": {
         "jp": "先生に褒められました。",
         "vn": "đã (quá khứ)."
@@ -149,8 +177,10 @@
     {
       "word": "称賛",
       "reading": "しょうさん",
+      "han_viet": "",
       "meaning": "Ca ngợi",
-      "type": "Danh động từ",
+      "type": "Verb",
+      "level": "N4",
       "example": {
         "jp": "称賛されました。",
         "vn": "đã (quá khứ)."
@@ -159,8 +189,10 @@
     {
       "word": "祝福",
       "reading": "しゅくふく",
+      "han_viet": "",
       "meaning": "Chúc mừng",
-      "type": "Danh động từ",
+      "type": "Verb",
+      "level": "N4",
       "example": {
         "jp": "祝福されています。",
         "vn": "có (người/động vật)."
@@ -169,8 +201,10 @@
     {
       "word": "歓迎",
       "reading": "かんげい",
+      "han_viet": "",
       "meaning": "Hoan nghênh",
-      "type": "Danh động từ",
+      "type": "Verb",
+      "level": "N4",
       "example": {
         "jp": "歓迎されます。",
         "vn": "(đuôi lịch sự)"
@@ -179,8 +213,10 @@
     {
       "word": "盛り上がる",
       "reading": "もりあがる",
+      "han_viet": "",
       "meaning": "Sôi động",
-      "type": "Động từ",
+      "type": "Verb",
+      "level": "N4",
       "example": {
         "jp": "会が盛り上がりました。",
         "vn": "đã (quá khứ)."
@@ -189,8 +225,10 @@
     {
       "word": "盛況",
       "reading": "せいきょう",
+      "han_viet": "",
       "meaning": "Thịnh vượng",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "盛況でした。",
         "vn": "đã là (quá khứ)."
@@ -199,8 +237,10 @@
     {
       "word": "大盛況",
       "reading": "だいせいきょう",
+      "han_viet": "",
       "meaning": "Rất thịnh vượng",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "大盛況で終わりました。",
         "vn": "đã (quá khứ)."

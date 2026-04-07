@@ -9,8 +9,10 @@
     {
       "word": "夜",
       "reading": "よる",
+      "han_viet": "",
       "meaning": "Buổi tối",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "夜になりました。",
         "vn": "đã (quá khứ)."
@@ -19,8 +21,10 @@
     {
       "word": "夕方",
       "reading": "ゆうがた",
+      "han_viet": "",
       "meaning": "Chiều tối",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "夕方から夜にかけて。",
         "vn": ""
@@ -29,8 +33,10 @@
     {
       "word": "夕食",
       "reading": "ゆうしょく",
+      "han_viet": "",
       "meaning": "Bữa tối",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "夕食を食べました。",
         "vn": "đã (quá khứ)."
@@ -39,8 +45,10 @@
     {
       "word": "晩御飯",
       "reading": "ばんごはん",
+      "han_viet": "",
       "meaning": "Cơm tối",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "晩御飯の準備をします。",
         "vn": "(đuôi lịch sự)"
@@ -49,8 +57,10 @@
     {
       "word": "ディナー",
       "reading": "ディナー",
+      "han_viet": "",
       "meaning": "Bữa tối",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "ディナーに行きます。",
         "vn": "(đuôi lịch sự)"
@@ -59,8 +69,10 @@
     {
       "word": "帰宅",
       "reading": "きたく",
+      "han_viet": "",
       "meaning": "Về nhà",
-      "type": "Danh động từ",
+      "type": "Verb",
+      "level": "N4",
       "example": {
         "jp": "帰宅しました。",
         "vn": "đã (quá khứ)."
@@ -69,8 +81,10 @@
     {
       "word": "夕飯",
       "reading": "ゆうはん",
+      "han_viet": "",
       "meaning": "Cơm chiều",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "夕飯を作ります。",
         "vn": "(đuôi lịch sự)"
@@ -79,8 +93,10 @@
     {
       "word": "風呂",
       "reading": "ふろ",
+      "han_viet": "",
       "meaning": "Tắm",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "風呂に入ります。",
         "vn": "(đuôi lịch sự)"
@@ -89,8 +105,10 @@
     {
       "word": "入浴",
       "reading": "にゅうよく",
+      "han_viet": "",
       "meaning": "Đi tắm",
-      "type": "Danh động từ",
+      "type": "Verb",
+      "level": "N4",
       "example": {
         "jp": "入浴しました。",
         "vn": "đã (quá khứ)."
@@ -99,8 +117,10 @@
     {
       "word": "シャワー",
       "reading": "シャワー",
+      "han_viet": "",
       "meaning": "Vòi sen",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "シャワーを浴びます。",
         "vn": "(đuôi lịch sự)"
@@ -109,8 +129,10 @@
     {
       "word": "お風呂上がり",
       "reading": "おふろあがり",
+      "han_viet": "",
       "meaning": "Sau khi tắm",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "お風呂上がりにビールを飲みます。",
         "vn": "(đuôi lịch sự)"
@@ -119,8 +141,10 @@
     {
       "word": "リラックス",
       "reading": "リラックス",
+      "han_viet": "",
       "meaning": "Thư giãn",
-      "type": "Danh động từ",
+      "type": "Verb",
+      "level": "N4",
       "example": {
         "jp": "リラックスします。",
         "vn": "(đuôi lịch sự)"
@@ -129,8 +153,10 @@
     {
       "word": "くつろぐ",
       "reading": "くつろぐ",
+      "han_viet": "",
       "meaning": "Thư giãn",
-      "type": "Động từ",
+      "type": "Verb",
+      "level": "N4",
       "example": {
         "jp": "家でくつろぎます。",
         "vn": "(đuôi lịch sự)"
@@ -139,8 +165,10 @@
     {
       "word": "寝る",
       "reading": "ねる",
+      "han_viet": "THẨM",
       "meaning": "Ngủ",
-      "type": "Động từ",
+      "type": "Verb",
+      "level": "N4",
       "example": {
         "jp": "もう寝ます。",
         "vn": "(đuôi lịch sự)"
@@ -149,8 +177,10 @@
     {
       "word": "眠る",
       "reading": "ねむる",
+      "han_viet": "",
       "meaning": "Ngủ",
-      "type": "Động từ",
+      "type": "Verb",
+      "level": "N4",
       "example": {
         "jp": "ぐっすり眠りました。",
         "vn": "đã (quá khứ)."
@@ -159,8 +189,10 @@
     {
       "word": "就寝",
       "reading": "しゅうしん",
+      "han_viet": "",
       "meaning": "Đi ngủ",
-      "type": "Danh động từ",
+      "type": "Verb",
+      "level": "N4",
       "example": {
         "jp": "就寝の時間です。",
         "vn": "là."
@@ -169,8 +201,10 @@
     {
       "word": "寝室",
       "reading": "しんしつ",
+      "han_viet": "",
       "meaning": "Phòng ngủ",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "寝室に入ります。",
         "vn": "(đuôi lịch sự)"
@@ -179,8 +213,10 @@
     {
       "word": "布団",
       "reading": "ふとん",
+      "han_viet": "",
       "meaning": "Chăn nệm",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "布団に入ります。",
         "vn": "(đuôi lịch sự)"
@@ -189,8 +225,10 @@
     {
       "word": "枕",
       "reading": "まくら",
+      "han_viet": "",
       "meaning": "Gối",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "枕が高いです。",
         "vn": "là."
@@ -199,8 +237,10 @@
     {
       "word": "夜更かし",
       "reading": "よふかし",
+      "han_viet": "",
       "meaning": "Thức khuya",
-      "type": "Danh động từ",
+      "type": "Verb",
+      "level": "N4",
       "example": {
         "jp": "夜更かししてしまいました。",
         "vn": "đã (quá khứ)."

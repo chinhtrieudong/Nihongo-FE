@@ -3,130 +3,120 @@
   "topic": "Mệnh đề bổ nghĩa cho danh từ",
   "vocabulary": [
     {
-      "id": "n5_l22_001",
       "word": "着る人",
       "reading": "きるひと",
-      "hanViet": "Trước Nhân",
+      "han_viet": "TRƯỚC NHÂN",
       "meaning": "người mặc",
-      "type": "other",
-      "category": "Mệnh Đề Bổ Nghĩa",
+      "type": "Noun",
+      "level": "N5",
       "example": {
         "jp": "赤いコートを着る人。",
         "vn": "Người mặc áo khoác đỏ."
       }
     },
     {
-      "id": "n5_l22_002",
       "word": "持っている人",
       "reading": "もっているひと",
-      "hanViet": "Trì Nhân",
+      "han_viet": "TRÌ NHÂN",
       "meaning": "người có",
-      "type": "other",
-      "category": "Mệnh Đề Bổ Nghĩa",
+      "type": "Noun",
+      "level": "N5",
       "example": {
         "jp": "カメラを持っている人。",
         "vn": "Người có máy ảnh."
       }
     },
     {
-      "id": "n5_l22_003",
       "word": "書いた人",
       "reading": "かいたひと",
-      "hanViet": "Thư Nhân",
+      "han_viet": "THƯ NHÂN",
       "meaning": "người đã viết",
-      "type": "other",
-      "category": "Mệnh Đề Bổ Nghĩa",
+      "type": "Noun",
+      "level": "N5",
       "example": {
         "jp": "この本を書いた人。",
         "vn": "Người đã viết quyển sách này."
       }
     },
     {
-      "id": "n5_l22_004",
       "word": "買った店",
       "reading": "かったみせ",
-      "hanViet": "Mãi Điếm",
+      "han_viet": "MÃI ĐIẾM",
       "meaning": "cửa hàng đã mua",
-      "type": "other",
-      "category": "Mệnh Đề Bổ Nghĩa",
+      "type": "Noun",
+      "level": "N5",
       "example": {
         "jp": "この靴を買った店。",
         "vn": "Cửa hàng đã mua đôi giày này."
       }
     },
     {
-      "id": "n5_l22_005",
       "word": "行きたい所",
       "reading": "いきたいところ",
-      "hanViet": "Hành Sở",
+      "han_viet": "HÀNH SỞ",
       "meaning": "nơi muốn đi",
-      "type": "other",
-      "category": "Mệnh Đề Bổ Nghĩa",
+      "type": "Noun",
+      "level": "N5",
       "example": {
         "jp": "行きたい所。",
         "vn": "Nơi muốn đi."
       }
     },
     {
-      "id": "n5_l22_006",
       "word": "読んでいる本",
       "reading": "よんでいるほん",
-      "hanViet": "Độc Bản",
+      "han_viet": "ĐỘC BẢN",
       "meaning": "sách đang đọc",
-      "type": "other",
-      "category": "Mệnh Đề Bổ Nghĩa",
+      "type": "Noun",
+      "level": "N5",
       "example": {
         "jp": "今読んでいる本。",
         "vn": "Sách đang đọc bây giờ."
       }
     },
     {
-      "id": "n5_l22_007",
       "word": "分からない所",
       "reading": "わからないところ",
-      "hanViet": "Phân Sở",
+      "han_viet": "PHÂN SỞ",
       "meaning": "chỗ không hiểu",
-      "type": "other",
-      "category": "Mệnh Đề Bổ Nghĩa",
+      "type": "Noun",
+      "level": "N5",
       "example": {
         "jp": "分からない所がある。",
         "vn": "Có chỗ không hiểu."
       }
     },
     {
-      "id": "n5_l22_008",
       "word": "有名な人",
       "reading": "ゆうめいなひと",
-      "hanViet": "Hữu Danh Nhân",
+      "han_viet": "HỮU DANH NHÂN",
       "meaning": "người nổi tiếng",
-      "type": "other",
-      "category": "Mệnh Đề Bổ Nghĩa",
+      "type": "Noun",
+      "level": "N5",
       "example": {
         "jp": "有名な人。",
         "vn": "Người nổi tiếng."
       }
     },
     {
-      "id": "n5_l22_009",
       "word": "綺麗な所",
       "reading": "きれいなところ",
-      "hanViet": "Sở",
+      "han_viet": "SỞ",
       "meaning": "nơi đẹp",
-      "type": "other",
-      "category": "Mệnh Đề Bổ Nghĩa",
+      "type": "Noun",
+      "level": "N5",
       "example": {
         "jp": "綺麗な所。",
         "vn": "Nơi đẹp."
       }
     },
     {
-      "id": "n5_l22_010",
       "word": "便利な物",
       "reading": "べんりなもの",
-      "hanViet": "Tiện Lợi Vật",
+      "han_viet": "TIỆN LỢI VẬT",
       "meaning": "đồ tiện lợi",
-      "type": "other",
-      "category": "Mệnh Đề Bổ Nghĩa",
+      "type": "Noun",
+      "level": "N5",
       "example": {
         "jp": "便利な物。",
         "vn": "Đồ tiện lợi."

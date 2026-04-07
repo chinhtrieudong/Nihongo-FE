@@ -9,8 +9,10 @@
     {
       "word": "会社員",
       "reading": "かいしゃいん",
+      "han_viet": "",
       "meaning": "Nhân viên công ty",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "会社員として働いています。",
         "vn": "có (người/động vật)."
@@ -19,8 +21,10 @@
     {
       "word": "公務員",
       "reading": "こうむいん",
+      "han_viet": "",
       "meaning": "Công chức",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "公務員の試験を受けました。",
         "vn": "đã (quá khứ)."
@@ -29,8 +33,10 @@
     {
       "word": "自営業",
       "reading": "じえいぎょう",
+      "han_viet": "",
       "meaning": "Tự doanh",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "父は自営業です。",
         "vn": "là."
@@ -39,8 +45,10 @@
     {
       "word": "主婦",
       "reading": "しゅふ",
+      "han_viet": "",
       "meaning": "Nội trợ",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "主婦の仕事は大変です。",
         "vn": "là."
@@ -49,8 +57,10 @@
     {
       "word": "派遣",
       "reading": "はけん",
+      "han_viet": "",
       "meaning": "Nhân viên công ty cung cấp",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "派遣社員として働いています。",
         "vn": "có (người/động vật)."
@@ -59,8 +69,10 @@
     {
       "word": "契約社員",
       "reading": "けいやくしゃいん",
+      "han_viet": "",
       "meaning": "Nhân viên hợp đồng",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "契約社員で働いています。",
         "vn": "có (người/động vật)."
@@ -69,8 +81,10 @@
     {
       "word": "正社員",
       "reading": "せいしゃいん",
+      "han_viet": "",
       "meaning": "Nhân viên chính thức",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "正社員になりたいです。",
         "vn": "là."
@@ -79,8 +93,10 @@
     {
       "word": "アルバイト",
       "reading": "アルバイト",
+      "han_viet": "",
       "meaning": "Làm thêm",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "アルバイトを探しています。",
         "vn": "có (người/động vật)."
@@ -89,8 +105,10 @@
     {
       "word": "パート",
       "reading": "パート",
+      "han_viet": "",
       "meaning": "Công việc bán thời gian",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "パートで働いています。",
         "vn": "có (người/động vật)."
@@ -99,8 +117,10 @@
     {
       "word": "技術者",
       "reading": "ぎじゅつしゃ",
+      "han_viet": "",
       "meaning": "Kỹ sư",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "技術者として働いています。",
         "vn": "có (người/động vật)."
@@ -109,8 +129,10 @@
     {
       "word": "研究者",
       "reading": "けんきゅうしゃ",
+      "han_viet": "",
       "meaning": "Nhà nghiên cứu",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "研究者の仕事がしたいです。",
         "vn": "là."
@@ -119,8 +141,10 @@
     {
       "word": "弁護士",
       "reading": "べんごし",
+      "han_viet": "",
       "meaning": "Luật sư",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "弁護士に相談しました。",
         "vn": "đã (quá khứ)."
@@ -129,8 +153,10 @@
     {
       "word": "会計士",
       "reading": "かいけいし",
+      "han_viet": "",
       "meaning": "Kế toán",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "会計士の資格を持っています。",
         "vn": "có (người/động vật)."
@@ -139,8 +165,10 @@
     {
       "word": "税理士",
       "reading": "ぜいりし",
+      "han_viet": "",
       "meaning": "Chuyên viên thuế",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "税理士に依頼しました。",
         "vn": "đã (quá khứ)."
@@ -149,8 +177,10 @@
     {
       "word": "司法書士",
       "reading": "しほうしょし",
+      "han_viet": "",
       "meaning": "Chuyên viên tư pháp",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "司法書士に相談しました。",
         "vn": "đã (quá khứ)."
@@ -159,8 +189,10 @@
     {
       "word": "行政書士",
       "reading": "ぎょうせいしょし",
+      "han_viet": "",
       "meaning": "Chuyên viên hành chính",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "行政書士に依頼しました。",
         "vn": "đã (quá khứ)."
@@ -169,8 +201,10 @@
     {
       "word": "不動産屋",
       "reading": "ふどうさんや",
+      "han_viet": "",
       "meaning": "Môi giới bất động sản",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "不動産屋で働いています。",
         "vn": "có (người/động vật)."
@@ -179,8 +213,10 @@
     {
       "word": "保険外交員",
       "reading": "ほけんがいこういん",
+      "han_viet": "",
       "meaning": "Nhân viên bảo hiểm",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "保険外交員をしています。",
         "vn": "có (người/động vật)."
@@ -189,8 +225,10 @@
     {
       "word": "営業マン",
       "reading": "えいぎょうマン",
+      "han_viet": "",
       "meaning": "Nhân viên kinh doanh",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "営業マンとして働いています。",
         "vn": "có (người/động vật)."
@@ -199,8 +237,10 @@
     {
       "word": "コンサルタント",
       "reading": "コンサルタント",
+      "han_viet": "",
       "meaning": "Tư vấn viên",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "コンサルタントをしています。",
         "vn": "có (người/động vật)."

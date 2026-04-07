@@ -9,141 +9,169 @@
     {
       "word": "わたし",
       "reading": "わたし",
+      "han_viet": "",
       "meaning": "Tôi",
-      "type": "Đại từ",
+      "type": "Pronoun",
+      "level": "N5",
       "example": {
         "jp": "わたしは学生です。",
-        "vn": "là."
+        "vn": "Tôi là học sinh/sinh viên."
       }
     },
     {
       "word": "わたしたち",
       "reading": "わたしたち",
+      "han_viet": "",
       "meaning": "Chúng tôi",
-      "type": "Đại từ",
+      "type": "Pronoun",
+      "level": "N5",
       "example": {
         "jp": "わたしたちは日本人です。",
-        "vn": "là."
+        "vn": "Chúng tôi là người Nhật."
       }
     },
     {
       "word": "あなた",
       "reading": "あなた",
+      "han_viet": "",
       "meaning": "Bạn",
-      "type": "Đại từ",
+      "type": "Pronoun",
+      "level": "N5",
       "example": {
         "jp": "あなたは先生ですか。",
-        "vn": "có phải là... không?"
+        "vn": "Bạn có phải là thầy/cô giáo không?"
       }
     },
     {
       "word": "あの人",
       "reading": "あのひと",
+      "han_viet": "",
       "meaning": "Người kia, người đó",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N5",
       "example": {
         "jp": "あの人は誰ですか。",
-        "vn": "có phải là... không?"
+        "vn": "Người kia là ai vậy?"
       }
     },
     {
       "word": "あの方",
       "reading": "あのかた",
+      "han_viet": "",
       "meaning": "Vị kia, vị đó (lịch sự)",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N5",
       "example": {
         "jp": "あの方は社長です。",
-        "vn": "là."
+        "vn": "Vị kia là giám đốc."
       }
     },
     {
       "word": "皆さん",
       "reading": "みなさん",
+      "han_viet": "",
       "meaning": "Các bạn, quý vị",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N5",
       "example": {
         "jp": "皆さん、こんにちは。",
-        "vn": ""
+        "vn": "Chào mọi người."
       }
     },
     {
       "word": "先生",
       "reading": "せんせい",
+      "han_viet": "TIÊN SINH",
       "meaning": "Thầy/cô giáo",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N5",
       "example": {
         "jp": "田中先生は日本語の先生です。",
-        "vn": "là."
+        "vn": "Thầy/cô Tanaka là giáo viên tiếng Nhật."
       }
     },
     {
       "word": "社長",
       "reading": "しゃちょう",
+      "han_viet": "",
       "meaning": "Giám đốc",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N5",
       "example": {
         "jp": "社長は今いません。",
-        "vn": "không có."
+        "vn": "Giám đốc hiện không có ở đây."
       }
     },
     {
       "word": "社員",
       "reading": "しゃいん",
+      "han_viet": "",
       "meaning": "Nhân viên công ty",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N5",
       "example": {
         "jp": "私は日本航空の社員です。",
-        "vn": "là."
+        "vn": "Tôi là nhân viên của Japan Airlines."
       }
     },
     {
       "word": "銀行員",
       "reading": "ぎんこういん",
+      "han_viet": "",
       "meaning": "Nhân viên ngân hàng",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N5",
       "example": {
         "jp": "姉は銀行員です。",
-        "vn": "là."
+        "vn": "Chị tôi là nhân viên ngân hàng."
       }
     },
     {
       "word": "医者",
       "reading": "いしゃ",
+      "han_viet": "",
       "meaning": "Bác sĩ",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N5",
       "example": {
         "jp": "父は医者です。",
-        "vn": "là."
+        "vn": "Bố tôi là bác sĩ."
       }
     },
     {
       "word": "学生",
       "reading": "がくせい",
+      "han_viet": "HỌC SINH",
       "meaning": "Học sinh, sinh viên",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N5",
       "example": {
         "jp": "学生ですか。",
-        "vn": "có phải là... không?"
+        "vn": "Bạn có phải là học sinh/sinh viên không?"
       }
     },
     {
       "word": "大学",
       "reading": "だいがく",
+      "han_viet": "",
       "meaning": "Đại học",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N5",
       "example": {
         "jp": "東京大学の学生です。",
-        "vn": "là."
+        "vn": "Tôi là sinh viên của Đại học Tokyo."
       }
     },
     {
       "word": "～歳",
       "reading": "～さい",
+      "han_viet": "",
       "meaning": "Tuổi",
-      "type": "Phụ tố",
+      "type": "Suffix",
+      "level": "N5",
       "example": {
         "jp": "20歳です。",
-        "vn": "là."
+        "vn": "Tôi 20 tuổi."
       }
     }
   ]

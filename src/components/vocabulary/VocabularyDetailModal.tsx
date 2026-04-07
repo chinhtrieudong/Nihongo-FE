@@ -40,10 +40,12 @@ const VocabularyDetailModal: React.FC<VocabularyDetailModalProps> = ({
   }, []);
 
   const handleCopy = useCallback(() => {
+    const reading = selectedWord?.hiragana || selectedWord?.katakana || selectedWord?.reading || selectedWord?.word;
+    const meaning = selectedWord?.meaning_vi || selectedWord?.meaningVi || selectedWord?.meaning;
     const text = [
-      selectedWord?.kanji,
-      selectedWord?.hiragana || selectedWord?.katakana,
-      selectedWord?.meaning_vi,
+      selectedWord?.kanji || selectedWord?.word,
+      reading,
+      meaning,
     ]
       .filter(Boolean)
       .join(" - ");
@@ -196,14 +198,16 @@ const VocabularyDetailModal: React.FC<VocabularyDetailModalProps> = ({
     return [];
   }, [selectedWord?.kanji_analysis]);
 
-  const displayMeaning = selectedWord?.meaning_vi || selectedWord?.meaningVi;
+  const displayMeaning = selectedWord?.meaning_vi || selectedWord?.meaningVi || selectedWord?.meaning;
   const displayJlpt =
     selectedWord?.jlpt ||
     selectedWord?.jpt ||
     selectedWord?.jlpt_level ||
     selectedWord?.jpt_level;
-  const displayExampleJp = selectedWord?.example_jp || selectedWord?.exampleSentence;
-  const displayExampleVi = selectedWord?.example_vi || selectedWord?.exampleSentenceVi;
+  const displayExampleJp =
+    selectedWord?.example_jp || selectedWord?.exampleSentence || selectedWord?.example?.jp;
+  const displayExampleVi =
+    selectedWord?.example_vi || selectedWord?.exampleSentenceVi || selectedWord?.example?.vn;
 
   return (
     <>
@@ -224,12 +228,14 @@ const VocabularyDetailModal: React.FC<VocabularyDetailModalProps> = ({
                 icon={<Volume2 className="w-4 h-4" />}
                 onClick={(e) => {
                   const hiraKanaText =
-                    selectedWord?.hiragana || selectedWord?.katakana || "";
+                    selectedWord?.hiragana || selectedWord?.katakana || selectedWord?.reading || selectedWord?.word || "";
                   if (hiraKanaText) {
                     handlePlayAudio(hiraKanaText, e);
                   }
                 }}
-                disabled={!selectedWord?.hiragana && !selectedWord?.katakana}
+                disabled={
+                  !(selectedWord?.hiragana || selectedWord?.katakana || selectedWord?.reading || selectedWord?.word)
+                }
               />
               <Button type="text" onClick={handleCopy}>
                 Copy
@@ -254,7 +260,7 @@ const VocabularyDetailModal: React.FC<VocabularyDetailModalProps> = ({
                 Kanji
               </Text>
               <div className="p-3 bg-secondary-50 dark:bg-secondary-925 rounded">
-                <Text className="text-4xl font-bold vocab-kanji-text" style={{ fontFamily: selectedPreset.kanjiFontFamily || selectedPreset.fontFamily }}>
+                <Text className="text-4xl font-bold kanji-text">
                   {selectedWord?.kanji || "-"}
                 </Text>
               </div>
@@ -296,8 +302,8 @@ const VocabularyDetailModal: React.FC<VocabularyDetailModalProps> = ({
               </Text>
               <div className="p-3 bg-purple-50 dark:bg-purple-900/20 rounded">
                 <Text className="text-lg text-purple-600 dark:text-purple-400 font-medium">
-                  {selectedWord?.hanviet
-                    ? selectedWord.hanviet.toUpperCase().replace(/,/g, "")
+                  {(selectedWord?.hanviet || selectedWord?.han_viet)
+                    ? String(selectedWord?.hanviet || selectedWord?.han_viet).toUpperCase().replace(/,/g, "")
                     : "-"}
                 </Text>
               </div>

@@ -9,8 +9,10 @@
     {
       "word": "朝",
       "reading": "あさ",
+      "han_viet": "",
       "meaning": "Buổi sáng",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "朝が来ました。",
         "vn": "đã (quá khứ)."
@@ -19,8 +21,10 @@
     {
       "word": "早起き",
       "reading": "はやおき",
+      "han_viet": "",
       "meaning": "Dậy sớm",
-      "type": "Danh động từ",
+      "type": "Verb",
+      "level": "N4",
       "example": {
         "jp": "早起きは三文の徳。",
         "vn": ""
@@ -29,8 +33,10 @@
     {
       "word": "目覚める",
       "reading": "めざめる",
+      "han_viet": "",
       "meaning": "Tỉnh giấc",
-      "type": "Động từ",
+      "type": "Verb",
+      "level": "N4",
       "example": {
         "jp": "朝、目覚めました。",
         "vn": "đã (quá khứ)."
@@ -39,8 +45,10 @@
     {
       "word": "目覚まし",
       "reading": "めざまし",
+      "han_viet": "",
       "meaning": "Báo thức",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "目覚ましが鳴りました。",
         "vn": "đã (quá khứ)."
@@ -49,8 +57,10 @@
     {
       "word": "布団",
       "reading": "ふとん",
+      "han_viet": "",
       "meaning": "Chăn nệm",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "布団から出ました。",
         "vn": "đã (quá khứ)."
@@ -59,8 +69,10 @@
     {
       "word": "寝起き",
       "reading": "ねおき",
+      "han_viet": "",
       "meaning": "Lúc mới ngủ dậy",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "寝起きが悪いです。",
         "vn": "là."
@@ -69,8 +81,10 @@
     {
       "word": "寝癖",
       "reading": "ねぐせ",
+      "han_viet": "",
       "meaning": "Tóc rối",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "寝癖がついています。",
         "vn": "có (người/động vật)."
@@ -79,8 +93,10 @@
     {
       "word": "歯磨き",
       "reading": "はみがき",
+      "han_viet": "",
       "meaning": "Đánh răng",
-      "type": "Danh động từ",
+      "type": "Verb",
+      "level": "N4",
       "example": {
         "jp": "歯磨きをします。",
         "vn": "(đuôi lịch sự)"
@@ -89,8 +105,10 @@
     {
       "word": "洗顔",
       "reading": "せんがん",
+      "han_viet": "",
       "meaning": "Rửa mặt",
-      "type": "Danh động từ",
+      "type": "Verb",
+      "level": "N4",
       "example": {
         "jp": "洗顔をしました。",
         "vn": "đã (quá khứ)."
@@ -99,8 +117,10 @@
     {
       "word": "朝ご飯",
       "reading": "あさごはん",
+      "han_viet": "",
       "meaning": "Bữa sáng",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "朝ご飯を食べました。",
         "vn": "đã (quá khứ)."
@@ -109,8 +129,10 @@
     {
       "word": "朝食",
       "reading": "ちょうしょく",
+      "han_viet": "",
       "meaning": "Bữa sáng",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "朝食を取りました。",
         "vn": "đã (quá khứ)."
@@ -119,8 +141,10 @@
     {
       "word": "トースト",
       "reading": "トースト",
+      "han_viet": "",
       "meaning": "Bánh mì nướng",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "トーストを食べます。",
         "vn": "(đuôi lịch sự)"
@@ -129,8 +153,10 @@
     {
       "word": "目玉焼き",
       "reading": "めだまやき",
+      "han_viet": "",
       "meaning": "Trứng ốp la",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "目玉焼きが好きです。",
         "vn": "là."
@@ -139,8 +165,10 @@
     {
       "word": "納豆",
       "reading": "なっとう",
+      "han_viet": "",
       "meaning": "Natto",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "納豆を食べます。",
         "vn": "(đuôi lịch sự)"
@@ -149,8 +177,10 @@
     {
       "word": "味噌汁",
       "reading": "みそしる",
+      "han_viet": "",
       "meaning": "Canh miso",
-      "type": "Danh từ",
+      "type": "Noun",
+      "level": "N4",
       "example": {
         "jp": "味噌汁を飲みます。",
         "vn": "(đuôi lịch sự)"
@@ -159,8 +189,10 @@
     {
       "word": "着替える",
       "reading": "きがえる",
+      "han_viet": "",
       "meaning": "Thay quần áo",
-      "type": "Động từ",
+      "type": "Verb",
+      "level": "N4",
       "example": {
         "jp": "着替えました。",
         "vn": "đã (quá khứ)."
@@ -169,8 +201,10 @@
     {
       "word": "身支度",
       "reading": "みじたく",
+      "han_viet": "",
       "meaning": "Chuẩn bị",
-      "type": "Danh động từ",
+      "type": "Verb",
+      "level": "N4",
       "example": {
         "jp": "身支度を整えました。",
         "vn": "đã (quá khứ)."
@@ -179,8 +213,10 @@
     {
       "word": "支度",
       "reading": "したく",
+      "han_viet": "",
       "meaning": "Chuẩn bị",
-      "type": "Danh động từ",
+      "type": "Verb",
+      "level": "N4",
       "example": {
         "jp": "朝の支度をしました。",
         "vn": "đã (quá khứ)."
@@ -189,8 +225,10 @@
     {
       "word": "準備",
       "reading": "じゅんび",
+      "han_viet": "",
       "meaning": "Chuẩn bị",
-      "type": "Danh động từ",
+      "type": "Verb",
+      "level": "N4",
       "example": {
         "jp": "準備ができました。",
         "vn": "đã (quá khứ)."
@@ -199,8 +237,10 @@
     {
       "word": "出かける",
       "reading": "でかける",
+      "han_viet": "",
       "meaning": "Ra ngoài",
-      "type": "Động từ",
+      "type": "Verb",
+      "level": "N4",
       "example": {
         "jp": "出かけます。",
         "vn": "(đuôi lịch sự)"
