@@ -118,27 +118,71 @@ const QuickTest: React.FC = () => {
                 const topicTitle = topics[i]?.nameVi || topics[i]?.name || `Topic ${i + 1}`;
                 opts.push({
                   value: lesson,
-                  label: `Bài ${lesson}: ${topicTitle} (Chương ${chNum})`,
+                  label: `${topicTitle} — Bài ${lesson} (Chương ${chNum})`,
                 });
               }
             }
           } else {
-            // Fallback: assume 50 lessons (10 chapters * 5 topics)
-            for (let i = 1; i <= 50; i++) {
-              const chapterNum = Math.ceil(i / 5);
-              const topicNum = ((i - 1) % 5) + 1;
+            // Fallback: build from vocabulary data - group by lesson and get topic names
+            const lessonData = new Map<number, { chapter: number; topic: string }>();
+            
+            data.forEach((item) => {
+              if (item.lesson) {
+                const chapterNum = Math.ceil(item.lesson / 5);
+                const topicNum = ((item.lesson - 1) % 5) + 1;
+                // Use topic field or meaning as topic name
+                const topicName = item.topic || item.meaning || `Topic ${topicNum}`;
+                
+                if (!lessonData.has(item.lesson)) {
+                  lessonData.set(item.lesson, { chapter: chapterNum, topic: topicName });
+                }
+              }
+            });
+            
+            // Sort lessons and build options
+            const sortedLessons = Array.from(lessonData.keys()).sort((a, b) => a - b);
+            for (const lesson of sortedLessons) {
+              const info = lessonData.get(lesson)!;
               opts.push({
-                value: i,
-                label: `Bài ${i}: Topic ${topicNum} (Chương ${chapterNum})`,
+                value: lesson,
+                label: `${info.topic} — Bài ${lesson} (Chương ${info.chapter})`,
               });
+            }
+            
+            // If no lesson data found, use default 50 lessons
+            if (opts.length === 0) {
+              for (let i = 1; i <= 50; i++) {
+                const chapterNum = Math.ceil(i / 5);
+                const topicNum = ((i - 1) % 5) + 1;
+                opts.push({
+                  value: i,
+                  label: `Topic ${topicNum} — Bài ${i} (Chương ${chapterNum})`,
+                });
+              }
             }
           }
 
           setLessonOptions(opts);
         } else {
-          // Minna: infer available lessons from data (lesson field)
-          const lessons = Array.from(new Set(data.map((d) => d.lesson))).sort((a, b) => a - b);
-          const opts = lessons.map((l) => ({ value: l, label: `Bài ${l}` }));
+          // Minna: infer available lessons from data (lesson field) with titles
+          const lessonData = new Map<number, string>();
+          
+          data.forEach((item) => {
+            if (item.lesson && !lessonData.has(item.lesson)) {
+              // Use topic or first word's meaning as lesson title
+              const title = item.topic || item.meaning || "";
+              lessonData.set(item.lesson, title);
+            }
+          });
+          
+          const lessons = Array.from(lessonData.keys()).sort((a, b) => a - b);
+          const opts = lessons.map((l) => {
+            const title = lessonData.get(l);
+            return {
+              value: l,
+              label: title ? `${title} — Bài ${l}` : `Bài ${l}`,
+            };
+          });
           setLessonOptions(opts);
         }
       } catch (e) {
@@ -312,15 +356,23 @@ const QuickTest: React.FC = () => {
 
         {started && total > 0 && (
           <Card className="mt-4 bg-surface-1 border-border">
-            <div className="flex items-center justify-between mb-3">
-              <Text className="text-text-sub">
-                Câu {index + 1}/{total}
-              </Text>
-              <Text className="text-text-sub">
-                Tiến độ: {Math.round(((index + 1) / total) * 100)}%
-              </Text>
-            </div>
-            <Progress percent={Math.round(((index + 1) / total) * 100)} showInfo={false} />
+            {(() => {
+              const answeredCount = Object.keys(answers).length;
+              const progressPercent = Math.round((answeredCount / total) * 100);
+              return (
+                <>
+                  <div className="flex items-center justify-between mb-3">
+                    <Text className="text-text-sub">
+                      Câu {index + 1}/{total}
+                    </Text>
+                    <Text className="text-text-sub">
+                      Đã làm: {answeredCount}/{total} · {progressPercent}%
+                    </Text>
+                  </div>
+                  <Progress percent={progressPercent} showInfo={false} />
+                </>
+              );
+            })()}
 
             <div className="mt-5">
               <div className="text-center mb-4">
@@ -386,25 +438,66 @@ const QuickTest: React.FC = () => {
         )}
 
         {showResult && (
-          <Card className="mt-4 bg-surface-1 border-border">
-            <div className="flex items-center justify-between">
-              <div>
-                <Title level={4} className="!mb-1 !text-text-main">
-                  Kết quả
-                </Title>
-                <Text className="text-text-sub">
-                  Đúng {correctCount}/{total} · {total ? Math.round((correctCount / total) * 100) : 0}%
-                </Text>
+          <>
+            <Card className="mt-4 bg-surface-1 border-border">
+              <div className="flex items-center justify-between">
+                <div>
+                  <Title level={4} className="!mb-1 !text-text-main">
+                    Kết quả
+                  </Title>
+                  <Text className="text-text-sub">
+                    Đúng {correctCount}/{total} · {total ? Math.round((correctCount / total) * 100) : 0}%
+                  </Text>
+                </div>
+                <div className="flex items-center gap-2">
+                  {correctCount / Math.max(1, total) >= 0.8 ? (
+                    <CheckCircle2 className="w-6 h-6 text-emerald-400" />
+                  ) : (
+                    <XCircle className="w-6 h-6 text-red-400" />
+                  )}
+                </div>
               </div>
-              <div className="flex items-center gap-2">
-                {correctCount / Math.max(1, total) >= 0.8 ? (
-                  <CheckCircle2 className="w-6 h-6 text-emerald-400" />
-                ) : (
-                  <XCircle className="w-6 h-6 text-red-400" />
-                )}
-              </div>
-            </div>
-          </Card>
+            </Card>
+
+            {/* Wrong Answers Review */}
+            {(() => {
+              const wrongQuestions = questions.filter(q => answers[q.id] !== q.answer);
+              if (wrongQuestions.length === 0) return null;
+              
+              return (
+                <Card className="mt-4 bg-surface-1 border-border">
+                  <Title level={5} className="!mb-3 !text-text-main">
+                    Câu sai ({wrongQuestions.length})
+                  </Title>
+                  <div className="space-y-3">
+                    {wrongQuestions.map((q, idx) => (
+                      <div key={q.id} className="p-3 rounded-lg bg-red-500/10 border border-red-500/30">
+                        <div className="flex items-start gap-3">
+                          <span className="text-red-400 font-bold">{idx + 1}</span>
+                          <div className="flex-1">
+                            <div className="flex items-center gap-2 mb-1">
+                              <span className="text-2xl font-bold kanji-text">{q.prompt}</span>
+                              <span className="text-text-sub jp-text">{q.meta.hiragana}</span>
+                            </div>
+                            <div className="space-y-1 text-sm">
+                              <div className="flex items-center gap-2">
+                                <span className="text-red-400">✗</span>
+                                <span className="text-text-main">{answers[q.id] || "Chưa trả lời"}</span>
+                              </div>
+                              <div className="flex items-center gap-2">
+                                <span className="text-emerald-400">✓</span>
+                                <span className="text-emerald-400 font-medium">{q.answer}</span>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </Card>
+              );
+            })()}
+          </>
         )}
       </div>
     </div>

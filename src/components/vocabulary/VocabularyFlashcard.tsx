@@ -187,30 +187,33 @@ const VocabularyFlashcard: React.FC<VocabularyFlashcardProps> = ({
     }
   }, [autoSpeak, frontFace, isFlipped, getJapaneseText, speakJapaneseNow]);
 
-  // Keyboard event handler for spacebar and arrow keys
+  // Keyboard event handler - handle all flashcard shortcuts
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (settingsVisible) return; // Don't handle keys when settings modal is open
       
-      switch (e.code) {
+      switch (e.key) {
+        case ' ':
         case 'Space':
           e.preventDefault();
           onFlipCard();
           break;
         case 'ArrowLeft':
           e.preventDefault();
-          if (onPrevCard) onPrevCard();
+          console.log('[Flashcard] ArrowLeft - marking UNKNOWN');
+          onMemoryEvaluation('unknown');
           break;
         case 'ArrowRight':
           e.preventDefault();
-          if (onNextCard) onNextCard();
+          console.log('[Flashcard] ArrowRight - marking KNOWN');
+          onMemoryEvaluation('known');
           break;
       }
     };
     
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [onFlipCard, onPrevCard, onNextCard, settingsVisible]);
+  }, [onFlipCard, onMemoryEvaluation, settingsVisible]);
 
   // Prevent body scroll while fullscreen flashcard is open
   useEffect(() => {
@@ -245,19 +248,15 @@ const VocabularyFlashcard: React.FC<VocabularyFlashcardProps> = ({
       mainContent = hv ? hv.toUpperCase() : (getMeaningVi() || "Đang cập nhật");
       subContent = subtitleParts.join("\n");
 
-      // If first subtitle part equals main, remove it (keep only examples)
+      // If first subtitle part equals main (hanViet), remove it to avoid duplication
       const firstPart = subtitleParts[0];
-      if (firstPart === mainContent || firstPart === mainContent.toLowerCase() || firstPart === getMeaningVi()) {
-        // Remove the first part (meaning) if it equals main
+      if (firstPart === mainContent || firstPart === mainContent.toLowerCase()) {
+        // Remove the first part (meaning) if it equals hanViet
         const filteredParts = subtitleParts.slice(1);
         subContent = filteredParts.join("\n");
       }
 
-      return {
-        main: mainContent,
-        sub: subContent,
-        isVietnamese: true,
-      };
+      return { main: mainContent, sub: subContent, isVietnamese: true };
     } else {
       let mainContent = "";
       let subContent = "";
@@ -296,11 +295,7 @@ const VocabularyFlashcard: React.FC<VocabularyFlashcardProps> = ({
         subContent = filteredParts.join("\n");
       }
 
-      return {
-        main: mainContent,
-        sub: subContent,
-        isVietnamese: false,
-      };
+      return { main: mainContent, sub: subContent, isVietnamese: false };
     }
   };
 
@@ -327,19 +322,15 @@ const VocabularyFlashcard: React.FC<VocabularyFlashcardProps> = ({
       const main = hv ? hv.toUpperCase() : (meaning || "Đang cập nhật");
       const subJoined = subtitleParts.join("\n");
 
-      // If first subtitle part equals main, remove it (keep only examples)
+      // If first subtitle part equals main (hanViet), remove it to avoid duplication
       const firstPart = subtitleParts[0];
-      if (firstPart === main || firstPart === main.toLowerCase() || firstPart === meaning) {
-        // Remove the first part (meaning) if it equals main
+      if (firstPart === main || firstPart === main.toLowerCase()) {
+        // Remove the first part (meaning) if it equals hanViet
         const filteredParts = subtitleParts.slice(1);
         return { main, sub: filteredParts.join("\n"), isVietnamese: true };
       }
 
-      return {
-        main,
-        sub: subJoined,
-        isVietnamese: true,
-      };
+      return { main, sub: subJoined, isVietnamese: true };
     }
 
     // frontFace === "vietnamese" → back is Japanese (kanji → reading → example JP)
@@ -372,12 +363,31 @@ const VocabularyFlashcard: React.FC<VocabularyFlashcardProps> = ({
       subContent = filteredParts.join("\n");
     }
 
-    return {
-      main: mainContent,
-      sub: subContent,
-      isVietnamese: false,
-    };
+    return { main: mainContent, sub: subContent, isVietnamese: false };
   };
+
+  // Cache content to prevent re-computation and log spam
+  const frontContent = React.useMemo(() => getFrontContent(), [currentCard, frontFace, isFlipped, showJapaneseExample, showVietnameseExample]);
+  const backContent = React.useMemo(() => getBackContent(), [currentCard, frontFace, isFlipped, showJapaneseExample, showVietnameseExample]);
+
+  // Log only when card changes (not on every render)
+  React.useEffect(() => {
+    if (currentCard) {
+      console.log("[Flashcard Debug] currentCard:", {
+        kanji: currentCard?.kanji,
+        hiragana: currentCard?.hiragana,
+        katakana: currentCard?.katakana,
+        hanViet: currentCard?.hanviet || currentCard?.han_viet,
+        meaning: currentCard?.meaning || currentCard?.meaningVi || currentCard?.meaning_vi,
+        exampleJp: currentCard?.example_jp || currentCard?.example?.jp,
+        exampleVi: currentCard?.example_vi || currentCard?.example?.vn,
+        reading: currentCard?.reading,
+        word: currentCard?.word,
+      });
+      console.log("[Flashcard Debug] frontContent:", frontContent);
+      console.log("[Flashcard Debug] backContent:", backContent);
+    }
+  }, [currentCard?.id, frontFace]);
 
   if (!currentCard) return null;
 
@@ -514,25 +524,25 @@ const VocabularyFlashcard: React.FC<VocabularyFlashcardProps> = ({
                 <div
                   className={`text-[40px] sm:text-[52px] font-semibold tracking-wide text-gray-900 dark:text-neutral-100 flex flex-col items-center`}
                   style={
-                    getFrontContent().isVietnamese
+                    frontContent.isVietnamese
                       ? undefined
                       : { fontFamily: "var(--kanji-font-family)" }
                   }
                 >
-                  {getFrontContent().main}
+                  {frontContent.main}
                 </div>
 
-                {getFrontContent().sub && (
+                {frontContent.sub && (
                   <div
                     className={`mt-2 text-[28px] sm:text-[36px] text-gray-500 dark:text-neutral-300`}
                     style={
-                      getFrontContent().isVietnamese
+                      frontContent.isVietnamese
                         ? undefined
                         : { fontFamily: "var(--kanji-font-family)" }
                     }
                   >
-                    {getFrontContent()
-                      .sub.split("\n")
+                    {frontContent.sub
+                      .split("\n")
                       .map((line, index) => (
                         <div key={index} className="flex flex-col items-center">
                           {line.includes('<span') ? (
@@ -555,29 +565,29 @@ const VocabularyFlashcard: React.FC<VocabularyFlashcardProps> = ({
 
             {/* BACK */}
             {isFlipped && (
-              <div className="h-full flex flex-col items-center justify-center text-center px-8">
+              <div className="h-full flex flex-col items-center justify-center text-center px-6">
                 <div
                   className={`text-[40px] sm:text-[52px] font-semibold tracking-wide text-gray-900 dark:text-neutral-100 flex flex-col items-center`}
                   style={
-                    getBackContent().isVietnamese
+                    backContent.isVietnamese
                       ? undefined
                       : { fontFamily: "var(--kanji-font-family)" }
                   }
                 >
-                  {getBackContent().main}
+                  {backContent.main}
                 </div>
 
-                {getBackContent().sub && (
+                {backContent.sub && (
                   <div
                     className={`mt-2 text-[28px] sm:text-[36px] text-gray-500 dark:text-neutral-300`}
                     style={
-                      getBackContent().isVietnamese
+                      backContent.isVietnamese
                         ? undefined
                         : { fontFamily: "var(--kanji-font-family)" }
                     }
                   >
-                    {getBackContent()
-                      .sub.split("\n")
+                    {backContent.sub
+                      .split("\n")
                       .map((line, index) => (
                         <div key={index} className="flex flex-col items-center">
                           {line.includes('<span') ? (

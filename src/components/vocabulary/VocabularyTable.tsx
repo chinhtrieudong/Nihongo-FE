@@ -387,6 +387,8 @@ const VocabularyTable = React.forwardRef<
     const [viewMode, setViewMode] = useState<"table" | "study" | "flashcard">(
       "table",
     );
+    
+    console.log("[VocabularyTable] RENDER - viewMode:", viewMode);
 
     type SessionStatus = "unanswered" | "known" | "unknown";
 
@@ -490,7 +492,11 @@ const VocabularyTable = React.forwardRef<
     // Memoized handlers
     const handleMemoryEvaluation = useCallback(
       (status: "unknown" | "known") => {
-        if (!currentCard) return;
+        console.log("[MemoryEval] Called with status:", status, "currentCard:", currentCard?.kanji || currentCard?.word);
+        if (!currentCard) {
+          console.log("[MemoryEval] No currentCard, returning");
+          return;
+        }
 
         setCardStatus((prev) => ({
           ...prev,
@@ -736,41 +742,52 @@ const VocabularyTable = React.forwardRef<
 
     // Removed duplicate currentCard declaration
 
+    // Keyboard shortcuts - log whenever effect runs
     useEffect(() => {
+      console.log("[Keyboard] Effect RUNNING - viewMode:", viewMode, "isStudyComplete:", isStudyComplete);
+      
       const handleKeyDown = (e: KeyboardEvent) => {
+        console.log("[Keyboard] Key pressed:", e.key, "in viewMode:", viewMode);
+        
         switch (e.key) {
           case " ":
             e.preventDefault();
-
             flipCard();
-
             break;
 
           case "ArrowLeft":
+            e.preventDefault();
+            console.log("[Keyboard] ArrowLeft - marking UNKNOWN");
             handleMemoryEvaluation("unknown");
-
             break;
 
           case "ArrowRight":
+            e.preventDefault();
+            console.log("[Keyboard] ArrowRight - marking KNOWN");
             handleMemoryEvaluation("known");
-
             break;
 
           case "s":
-
           case "S":
             shuffleCards();
-
             break;
         }
       };
 
       // ✅ Chỉ kích hoạt phím tắt khi chưa hoàn thành
+      const shouldAttach = viewMode === "flashcard" && !isStudyComplete;
+      console.log("[Keyboard] Should attach?", shouldAttach);
+      
+      if (shouldAttach) {
+        console.log("[Keyboard] ✅ ATTACHING event listener");
+        window.addEventListener("keydown", handleKeyDown, true); // capture phase
 
-      if (viewMode === "flashcard" && !isStudyComplete) {
-        window.addEventListener("keydown", handleKeyDown);
-
-        return () => window.removeEventListener("keydown", handleKeyDown);
+        return () => {
+          console.log("[Keyboard] ❌ DETACHING event listener");
+          window.removeEventListener("keydown", handleKeyDown, true);
+        };
+      } else {
+        console.log("[Keyboard] ⏭️ NOT attaching - condition not met");
       }
     }, [
       viewMode,
