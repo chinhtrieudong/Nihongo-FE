@@ -3,7 +3,7 @@ import { Badge } from "antd";
 import { Grid } from "antd";
 import type { LessonDetail } from "../../../types/lesson";
 
-type TabType = "vocabulary" | "grammar" | "dialog" | "exercises" | "ai" | "summary";
+type TabType = "vocabulary" | "grammar" | "dialog" | "exercises" | "ai";
 
 interface LessonNavigationProps {
     tabs: Array<{ id: TabType; label: string; icon: string }>;

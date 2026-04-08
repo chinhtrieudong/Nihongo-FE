@@ -55,7 +55,6 @@ const VocabularyFlashcard: React.FC<VocabularyFlashcardProps> = ({
   const [autoSpeak, setAutoSpeak] = useState(false);
   const [showKanji] = useState(true);
   const [showJapaneseExample, setShowJapaneseExample] = useState(false);
-  const [showHanViet] = useState(true);
   const [showVietnameseExample, setShowVietnameseExample] = useState(false);
 
   const getReading = useCallback(() => {
@@ -87,6 +86,46 @@ const VocabularyFlashcard: React.FC<VocabularyFlashcardProps> = ({
       ""
     );
   }, [currentCard]);
+
+  const containsJapaneseChars = useCallback((value: string) => {
+    // Hiragana, Katakana, CJK Unified Ideographs
+    return /[\u3040-\u30FF\u3400-\u9FFF]/.test(value);
+  }, []);
+
+  // Highlight vocabulary word in example sentence
+  const highlightWordInExample = useCallback((example: string, word: string, reading: string) => {
+    if (!example || (!word && !reading)) return example;
+
+    // Words to highlight: kanji/word and its reading
+    const wordsToHighlight = [word, reading].filter(Boolean);
+    if (wordsToHighlight.length === 0) return example;
+
+    // Sort by length (longest first) to avoid partial replacements
+    wordsToHighlight.sort((a, b) => b.length - a.length);
+
+    let result = example;
+    const highlights: Array<{ before: string; after: string }> = [];
+
+    for (const targetWord of wordsToHighlight) {
+      if (!targetWord || targetWord.length < 1) continue;
+
+      // Escape special regex characters
+      const escaped = targetWord.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+      const regex = new RegExp(`(${escaped})`, 'g');
+
+      // Replace with placeholder to avoid double-highlighting
+      const placeholder = `__HIGHLIGHT_${highlights.length}__`;
+      result = result.replace(regex, placeholder);
+      highlights.push({ before: targetWord, after: `<span class="text-blue-600 dark:text-blue-400 font-bold">${targetWord}</span>` });
+    }
+
+    // Replace placeholders with actual HTML
+    for (let i = 0; i < highlights.length; i++) {
+      result = result.replace(new RegExp(`__HIGHLIGHT_${i}__`, 'g'), highlights[i].after);
+    }
+
+    return result;
+  }, []);
 
   const warmUpTTS = useCallback(() => {
     if (!("speechSynthesis" in window)) return;
@@ -188,27 +227,31 @@ const VocabularyFlashcard: React.FC<VocabularyFlashcardProps> = ({
       let mainContent = "";
       let subContent = "";
 
-      // Build content in correct order: Hán Việt → Nghĩa → Ví dụ
-      const contentParts = [];
+      // Vietnamese face: Han-Viet as main (corresponds to kanji position),
+      // meaning as subtitle
+      const subtitleParts: string[] = [];
 
-      // Add Han-Viet if enabled and available (as main content)
-      const hv = getHanViet();
-      if (showHanViet && hv) {
-        contentParts.push(hv.toUpperCase());
-      }
+      // Sub: Vietnamese meaning
+      subtitleParts.push(getMeaningVi() || "Đang cập nhật");
 
-      // Add Vietnamese meaning
-      contentParts.push(getMeaningVi() || "Đang cập nhật");
-
-      // Add Vietnamese example if enabled
+      // Sub: Vietnamese example (if enabled)
       const exVi = getExampleVi();
-      if (showVietnameseExample && exVi) {
-        contentParts.push(`Ví dụ: ${exVi}`);
+      if (showVietnameseExample && exVi && !containsJapaneseChars(exVi)) {
+        subtitleParts.push(`Ví dụ: ${exVi}`);
       }
 
-      // First item is main content, rest are subtitles
-      mainContent = contentParts[0] || "";
-      subContent = contentParts.slice(1).join("\n");
+      // Main: Han-Viet (uppercase, like kanji)
+      const hv = getHanViet();
+      mainContent = hv ? hv.toUpperCase() : (getMeaningVi() || "Đang cập nhật");
+      subContent = subtitleParts.join("\n");
+
+      // If first subtitle part equals main, remove it (keep only examples)
+      const firstPart = subtitleParts[0];
+      if (firstPart === mainContent || firstPart === mainContent.toLowerCase() || firstPart === getMeaningVi()) {
+        // Remove the first part (meaning) if it equals main
+        const filteredParts = subtitleParts.slice(1);
+        subContent = filteredParts.join("\n");
+      }
 
       return {
         main: mainContent,
@@ -235,13 +278,23 @@ const VocabularyFlashcard: React.FC<VocabularyFlashcardProps> = ({
         mainContent = getReading();
       }
 
-      // Add Japanese example if enabled
+      // Add Japanese example if enabled (with highlighted vocabulary)
       const exJp = getExampleJp();
       if (showJapaneseExample && exJp) {
-        subtitleParts.push(`例: ${exJp}`);
+        const word = currentCard?.kanji || currentCard?.word || "";
+        const reading = getReading();
+        const highlightedExample = highlightWordInExample(exJp, word, reading);
+        subtitleParts.push(`例: ${highlightedExample}`);
       }
 
       subContent = subtitleParts.join("\n");
+
+      // If first subtitle part (reading) equals main (kanji or reading), remove it
+      const firstPart = subtitleParts[0];
+      if (firstPart === mainContent || firstPart === currentCard?.kanji) {
+        const filteredParts = subtitleParts.slice(1);
+        subContent = filteredParts.join("\n");
+      }
 
       return {
         main: mainContent,
@@ -252,74 +305,89 @@ const VocabularyFlashcard: React.FC<VocabularyFlashcardProps> = ({
   };
 
   const getBackContent = () => {
-    if (frontFace === "vietnamese") {
-      let mainContent = "";
-      let subContent = "";
-
-      // Build content in correct order: Kanji → Hira/kata → Ví dụ
-      const subtitleParts = [];
-
-      // Show kanji if enabled and available
-      if (showKanji && currentCard?.kanji) {
-        mainContent = currentCard.kanji;
-        // Add hiragana/katakana as first subtitle part
-        const r = getReading();
-        if (r) {
-          subtitleParts.push(r);
-        }
-      } else {
-        // Use hiragana/katakana as main if kanji is disabled or not available
-        mainContent = getReading();
-      }
-
-      // Add Japanese example if enabled
-      const exJp = getExampleJp();
-      if (showJapaneseExample && exJp) {
-        subtitleParts.push(`例: ${exJp}`);
-      }
-
-      subContent = subtitleParts.join("\n");
-
-      return {
-        main: mainContent,
-        sub: subContent,
-        isVietnamese: false,
-      };
-    } else {
-      let mainContent = "";
-      let subContent = "";
-
-      // Build content in correct order: Hán Việt → Nghĩa → Ví dụ
-      const contentParts = [];
-
-      // Add Han-Viet if enabled and available (as main content)
-      const hv = getHanViet();
-      if (showHanViet && hv) {
-        contentParts.push(hv.toUpperCase());
-      }
-
-      // Add Vietnamese meaning
-      contentParts.push(getMeaningVi() || "Đang cập nhật");
-
-      // Add Vietnamese example if enabled
+    // If front is Japanese, back should show Vietnamese meaning.
+    // If front is Japanese, back is Vietnamese face: Han-Viet as main, meaning as subtitle
+    if (frontFace === "japanese") {
+      const meaning = getMeaningVi();
       const exVi = getExampleVi();
-      if (showVietnameseExample && exVi) {
-        contentParts.push(`Ví dụ: ${exVi}`);
+      const hv = getHanViet();
+
+      const subtitleParts: string[] = [];
+
+      // Sub: Vietnamese meaning
+      subtitleParts.push(meaning || "Đang cập nhật");
+
+      // Sub: Vietnamese example if enabled and available (with highlighted meaning)
+      if (showVietnameseExample && exVi && !containsJapaneseChars(exVi)) {
+        const highlightedExample = highlightWordInExample(exVi, meaning, "");
+        subtitleParts.push(`Ví dụ: ${highlightedExample}`);
       }
 
-      // First item is main content, rest are subtitles
-      mainContent = contentParts[0] || "";
-      subContent = contentParts.slice(1).join("\n");
+      // Main: Han-Viet (uppercase, like kanji position)
+      const main = hv ? hv.toUpperCase() : (meaning || "Đang cập nhật");
+      const subJoined = subtitleParts.join("\n");
+
+      // If first subtitle part equals main, remove it (keep only examples)
+      const firstPart = subtitleParts[0];
+      if (firstPart === main || firstPart === main.toLowerCase() || firstPart === meaning) {
+        // Remove the first part (meaning) if it equals main
+        const filteredParts = subtitleParts.slice(1);
+        return { main, sub: filteredParts.join("\n"), isVietnamese: true };
+      }
 
       return {
-        main: mainContent,
-        sub: subContent,
+        main,
+        sub: subJoined,
         isVietnamese: true,
       };
     }
+
+    // frontFace === "vietnamese" → back is Japanese (kanji → reading → example JP)
+    let mainContent = "";
+    const subtitleParts: string[] = [];
+
+    if (showKanji && currentCard?.kanji) {
+      mainContent = currentCard.kanji;
+      const r = getReading();
+      if (r) subtitleParts.push(r);
+    } else {
+      mainContent = getReading();
+    }
+
+    // Add Japanese example if enabled (with highlighted vocabulary)
+    const exJp = getExampleJp();
+    if (showJapaneseExample && exJp) {
+      const word = currentCard?.kanji || currentCard?.word || "";
+      const reading = getReading();
+      const highlightedExample = highlightWordInExample(exJp, word, reading);
+      subtitleParts.push(`例: ${highlightedExample}`);
+    }
+
+    let subContent = subtitleParts.join("\n");
+
+    // If first subtitle part (reading) equals main (kanji), remove it
+    const firstPart = subtitleParts[0];
+    if (firstPart === mainContent || firstPart === currentCard?.kanji) {
+      const filteredParts = subtitleParts.slice(1);
+      subContent = filteredParts.join("\n");
+    }
+
+    return {
+      main: mainContent,
+      sub: subContent,
+      isVietnamese: false,
+    };
   };
 
   if (!currentCard) return null;
+
+  const visibleFaceLabel = (() => {
+    const isVietnameseFaceVisible =
+      (frontFace === "vietnamese" && !isFlipped) ||
+      (frontFace === "japanese" && isFlipped);
+    return isVietnameseFaceVisible ? "VI" : "JP";
+  })();
+
   // Render fullscreen-only view
   return (
     <div
@@ -355,6 +423,13 @@ const VocabularyFlashcard: React.FC<VocabularyFlashcardProps> = ({
               select-none
             "
           >
+            {/* Face indicator */}
+            <div className="absolute top-4 left-4 z-10 pointer-events-none">
+              <span className="inline-flex items-center rounded-full border border-gray-200/70 dark:border-slate-500/70 bg-white/70 dark:bg-slate-800/70 px-2.5 py-1 text-[11px] font-semibold text-gray-700 dark:text-neutral-100 backdrop-blur">
+                {visibleFaceLabel}
+              </span>
+            </div>
+
             {/* AUDIO */}
             <button
               onClick={handlePlayAudio}
@@ -437,10 +512,7 @@ const VocabularyFlashcard: React.FC<VocabularyFlashcardProps> = ({
             {!isFlipped && (
               <div className="h-full flex flex-col items-center justify-center text-center px-6">
                 <div
-                  className={`${getFrontContent().isVietnamese
-                    ? "text-[26px] sm:text-[32px]"
-                    : "text-[34px]"
-                    } font-semibold tracking-wide text-gray-900 dark:text-neutral-100 flex flex-col items-center`}
+                  className={`text-[40px] sm:text-[52px] font-semibold tracking-wide text-gray-900 dark:text-neutral-100 flex flex-col items-center`}
                   style={
                     getFrontContent().isVietnamese
                       ? undefined
@@ -452,10 +524,7 @@ const VocabularyFlashcard: React.FC<VocabularyFlashcardProps> = ({
 
                 {getFrontContent().sub && (
                   <div
-                    className={`mt-2 ${getFrontContent().isVietnamese
-                      ? "text-[26px] sm:text-[32px]"
-                      : "text-[34px]"
-                      } text-gray-500 dark:text-neutral-300`}
+                    className={`mt-2 text-[28px] sm:text-[36px] text-gray-500 dark:text-neutral-300`}
                     style={
                       getFrontContent().isVietnamese
                         ? undefined
@@ -466,7 +535,11 @@ const VocabularyFlashcard: React.FC<VocabularyFlashcardProps> = ({
                       .sub.split("\n")
                       .map((line, index) => (
                         <div key={index} className="flex flex-col items-center">
-                          {line}
+                          {line.includes('<span') ? (
+                            <span dangerouslySetInnerHTML={{ __html: line }} />
+                          ) : (
+                            line
+                          )}
                         </div>
                       ))}
                   </div>
@@ -484,10 +557,7 @@ const VocabularyFlashcard: React.FC<VocabularyFlashcardProps> = ({
             {isFlipped && (
               <div className="h-full flex flex-col items-center justify-center text-center px-8">
                 <div
-                  className={`${getBackContent().isVietnamese
-                    ? "text-[26px] sm:text-[32px]"
-                    : "text-[34px]"
-                    } font-semibold tracking-wide text-gray-900 dark:text-neutral-100 flex flex-col items-center`}
+                  className={`text-[40px] sm:text-[52px] font-semibold tracking-wide text-gray-900 dark:text-neutral-100 flex flex-col items-center`}
                   style={
                     getBackContent().isVietnamese
                       ? undefined
@@ -499,10 +569,7 @@ const VocabularyFlashcard: React.FC<VocabularyFlashcardProps> = ({
 
                 {getBackContent().sub && (
                   <div
-                    className={`mt-2 ${getBackContent().isVietnamese
-                      ? "text-[26px] sm:text-[32px]"
-                      : "text-[34px]"
-                      } text-gray-500 dark:text-neutral-300`}
+                    className={`mt-2 text-[28px] sm:text-[36px] text-gray-500 dark:text-neutral-300`}
                     style={
                       getBackContent().isVietnamese
                         ? undefined
@@ -513,7 +580,11 @@ const VocabularyFlashcard: React.FC<VocabularyFlashcardProps> = ({
                       .sub.split("\n")
                       .map((line, index) => (
                         <div key={index} className="flex flex-col items-center">
-                          {line}
+                          {line.includes('<span') ? (
+                            <span dangerouslySetInnerHTML={{ __html: line }} />
+                          ) : (
+                            line
+                          )}
                         </div>
                       ))}
                   </div>

@@ -22,7 +22,7 @@ let textbookMetaCache: Record<string, any> = {};
 const loadTextbookMeta = async (textbookId: string): Promise<any | null> => {
   if (textbookMetaCache[textbookId]) return textbookMetaCache[textbookId];
   try {
-    const response = await fetch(`/data/textbook-${textbookId}.json`);
+    const response = await fetch(`/data/textbook/textbook-${textbookId}.json`);
     if (!response.ok) return null;
     const data = await response.json();
     textbookMetaCache[textbookId] = data;

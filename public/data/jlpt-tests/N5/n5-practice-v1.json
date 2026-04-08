@@ -1,0 +1,221 @@
+{
+  "test": {
+    "id": "n5-practice-v1",
+    "level": "N5",
+    "title": "JLPT N5 Practice Test",
+    "title_vi": "Đề thi thử JLPT N5",
+    "description": "Đề thi thử JLPT cấp độ N5 - Cơ bản",
+    "description_vi": "Đề thi thử dành cho người mới bắt đầu học tiếng Nhật",
+    "duration": 30,
+    "difficulty": "Beginner",
+    "completed": false,
+    "passing_score": 80,
+    "sections": [
+      {
+        "id": "vocabulary",
+        "name": "Từ vựng",
+        "questions": 0,
+        "duration": 8,
+        "description": "Từ vựng cơ bản N5",
+        "questionTypes": ["multiple-choice"]
+      },
+      {
+        "id": "grammar",
+        "name": "Ngữ pháp",
+        "questions": 0,
+        "duration": 8,
+        "description": "Ngữ pháp N5",
+        "questionTypes": ["multiple-choice"]
+      },
+      {
+        "id": "reading",
+        "name": "Đọc hiểu",
+        "questions": 0,
+        "duration": 8,
+        "description": "Đọc hiểu ngắn N5",
+        "questionTypes": ["reading", "multiple-choice"]
+      },
+      {
+        "id": "listening",
+        "name": "Nghe hiểu",
+        "questions": 0,
+        "duration": 6,
+        "description": "Nghe hiểu N5 (chưa có audio trong bản JSON demo)",
+        "questionTypes": ["listening", "multiple-choice"]
+      }
+    ]
+  },
+  "questions": [
+    {
+      "id": "n5-v-01",
+      "type": "multiple-choice",
+      "question": "「学生」の読み方はどれですか。",
+      "options": ["がくせい", "がっこう", "せんせい", "だいがく"],
+      "correctAnswer": 0,
+      "explanation": "学生（がくせい）= học sinh/sinh viên.",
+      "sectionId": "vocabulary",
+      "level": "N5",
+      "difficulty": "Beginner"
+    },
+    {
+      "id": "n5-v-02",
+      "type": "multiple-choice",
+      "question": "「先生」の意味はどれですか。",
+      "options": ["học sinh", "thầy/cô giáo", "nhân viên", "bác sĩ"],
+      "correctAnswer": 1,
+      "sectionId": "vocabulary",
+      "level": "N5",
+      "difficulty": "Beginner"
+    },
+    {
+      "id": "n5-v-03",
+      "type": "multiple-choice",
+      "question": "「会社員」の意味はどれですか。",
+      "options": ["nhân viên công ty", "giám đốc", "bạn bè", "gia đình"],
+      "correctAnswer": 0,
+      "sectionId": "vocabulary",
+      "level": "N5",
+      "difficulty": "Beginner"
+    },
+    {
+      "id": "n5-v-04",
+      "type": "multiple-choice",
+      "question": "「わたしは学生です。」の意味はどれですか。",
+      "options": ["Tôi là học sinh/sinh viên.", "Tôi là giáo viên.", "Bạn là học sinh.", "Chúng tôi là người Nhật."],
+      "correctAnswer": 0,
+      "sectionId": "vocabulary",
+      "level": "N5",
+      "difficulty": "Beginner"
+    },
+
+    {
+      "id": "n5-g-01",
+      "type": "multiple-choice",
+      "question": "（　）に何を入れますか。わたし（　）学生です。",
+      "options": ["は", "を", "が", "で"],
+      "correctAnswer": 0,
+      "explanation": "Chủ đề dùng trợ từ は.",
+      "sectionId": "grammar",
+      "level": "N5",
+      "difficulty": "Beginner"
+    },
+    {
+      "id": "n5-g-02",
+      "type": "multiple-choice",
+      "question": "質問文を選んでください。",
+      "options": ["あなたは先生ですか。", "わたしは学生です。", "これは本です。", "ここは学校です。"],
+      "correctAnswer": 0,
+      "sectionId": "grammar",
+      "level": "N5",
+      "difficulty": "Beginner"
+    },
+    {
+      "id": "n5-g-03",
+      "type": "multiple-choice",
+      "question": "「ではありません」は何の意味ですか。",
+      "options": ["là", "không phải là", "có", "không có"],
+      "correctAnswer": 1,
+      "sectionId": "grammar",
+      "level": "N5",
+      "difficulty": "Beginner"
+    },
+    {
+      "id": "n5-g-04",
+      "type": "multiple-choice",
+      "question": "（　）に何を入れますか。これは本（　）ありません。",
+      "options": ["は", "が", "では", "を"],
+      "correctAnswer": 2,
+      "explanation": "Mẫu phủ định lịch sự: ～ではありません.",
+      "sectionId": "grammar",
+      "level": "N5",
+      "difficulty": "Beginner"
+    },
+
+    {
+      "id": "n5-r-01",
+      "type": "reading",
+      "question": "文章を読んで、正しい答えを選んでください。田中さんは学生です。",
+      "readingText": "田中さんは学生です。",
+      "options": ["Tanaka là học sinh/sinh viên.", "Tanaka là giáo viên.", "Tanaka là bác sĩ.", "Tanaka là giám đốc."],
+      "correctAnswer": 0,
+      "sectionId": "reading",
+      "level": "N5",
+      "difficulty": "Beginner"
+    },
+    {
+      "id": "n5-r-02",
+      "type": "reading",
+      "question": "文章を読んで、答えてください。社長は今いません。",
+      "readingText": "社長は今いません。",
+      "options": ["Giám đốc đang ở đây.", "Giám đốc hiện không có ở đây.", "Giám đốc đang ngủ.", "Giám đốc là giáo viên."],
+      "correctAnswer": 1,
+      "sectionId": "reading",
+      "level": "N5",
+      "difficulty": "Beginner"
+    },
+    {
+      "id": "n5-r-03",
+      "type": "reading",
+      "question": "文章を読んで、正しい答えを選んでください。家族は五人です。",
+      "readingText": "家族は五人です。",
+      "options": ["Gia đình có 3 người.", "Gia đình có 4 người.", "Gia đình có 5 người.", "Gia đình có 6 người."],
+      "correctAnswer": 2,
+      "sectionId": "reading",
+      "level": "N5",
+      "difficulty": "Beginner"
+    },
+    {
+      "id": "n5-r-04",
+      "type": "reading",
+      "question": "文章を読んで、答えてください。お名前は何ですか。",
+      "readingText": "お名前は何ですか。",
+      "options": ["Bạn tên là gì?", "Bạn đến từ đâu?", "Bạn bao nhiêu tuổi?", "Bạn có khỏe không?"],
+      "correctAnswer": 0,
+      "sectionId": "reading",
+      "level": "N5",
+      "difficulty": "Beginner"
+    },
+
+    {
+      "id": "n5-l-01",
+      "type": "listening",
+      "question": "（Nghe hiểu - demo không có audio）「こんにちは」の意味はどれですか。",
+      "options": ["Chào buổi sáng", "Chào buổi chiều", "Chào buổi tối", "Tạm biệt"],
+      "correctAnswer": 1,
+      "sectionId": "listening",
+      "level": "N5",
+      "difficulty": "Beginner"
+    },
+    {
+      "id": "n5-l-02",
+      "type": "listening",
+      "question": "（Nghe hiểu - demo không có audio）「さようなら」の意味はどれですか。",
+      "options": ["Tạm biệt", "Cảm ơn", "Xin lỗi", "Chúc ngủ ngon"],
+      "correctAnswer": 0,
+      "sectionId": "listening",
+      "level": "N5",
+      "difficulty": "Beginner"
+    },
+    {
+      "id": "n5-l-03",
+      "type": "listening",
+      "question": "（Nghe hiểu - demo không có audio）「おやすみなさい」の意味はどれですか。",
+      "options": ["Chúc ngủ ngon", "Chào buổi sáng", "Hẹn gặp lại", "Tôi là..."],
+      "correctAnswer": 0,
+      "sectionId": "listening",
+      "level": "N5",
+      "difficulty": "Beginner"
+    },
+    {
+      "id": "n5-l-04",
+      "type": "listening",
+      "question": "（Nghe hiểu - demo không có audio）「また明日」の意味はどれですか。",
+      "options": ["Hẹn gặp lại ngày mai", "Chúc ngủ ngon", "Chào buổi tối", "Không phải là"],
+      "correctAnswer": 0,
+      "sectionId": "listening",
+      "level": "N5",
+      "difficulty": "Beginner"
+    }
+  ]
+}
+

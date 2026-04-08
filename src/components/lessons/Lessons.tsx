@@ -19,15 +19,13 @@ import GrammarTab from "./tabs/GrammarTab.js";
 import DialogTab from "./tabs/DialogTab.js";
 import ExercisesTab from "./tabs/ExercisesTab.js";
 import AITab from "./tabs/AITab.js";
-import SummaryTab from "./tabs/SummaryTab.js";
 
 type TabType =
     | "vocabulary"
     | "grammar"
     | "dialog"
     | "exercises"
-    | "ai"
-    | "summary";
+    | "ai";
 
 const Lessons: React.FC = () => {
     const { currentUser } = useAppSelector((state) => state.user);
@@ -112,7 +110,6 @@ const Lessons: React.FC = () => {
         { id: "dialog" as TabType, label: "💬 Hội thoại", icon: "💬" },
         { id: "exercises" as TabType, label: "✍ Bài tập", icon: "✍" },
         { id: "ai" as TabType, label: "🤖 Luyện AI", icon: "🤖" },
-        { id: "summary" as TabType, label: "📝 Tổng kết", icon: "📝" },
     ];
 
     const tabComponents = {
@@ -126,7 +123,6 @@ const Lessons: React.FC = () => {
             />
         ),
         ai: <AITab lesson={lessonDetail?.lesson!} />,
-        summary: <SummaryTab lessonDetail={lessonDetail!} />,
     };
 
     return (

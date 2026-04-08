@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useMemo } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { Card, Button, Tag, Typography, Empty, Badge, Progress, Spin, Collapse } from "antd";
-import { ArrowLeft, BookOpen, ChevronRight, PlayCircle, FileQuestion, CheckCircle2, Clock, BookText } from "lucide-react";
+import { ArrowLeft, BookOpen, ChevronRight, PlayCircle, FileQuestion, CheckCircle2, Clock, BookText, Circle } from "lucide-react";
 
 const { Title, Text } = Typography;
 
@@ -174,17 +174,14 @@ const fetchTextbookData = async (textbookId: string): Promise<{
 } | null> => {
   try {
     // Try root data folder first (where most textbook JSON files are located)
-    const url = `/data/textbook-${textbookId}.json`;
-    console.log(`[fetchTextbookData] Fetching from: ${url}`);
+    const url = `/data/textbook/textbook-${textbookId}.json`;
     const response = await fetch(url);
-    console.log(`[fetchTextbookData] Response status: ${response.status}`);
     
     if (!response.ok) {
       throw new Error(`Failed to fetch ${url}: ${response.status}`);
     }
     
     const data = await response.json();
-    console.log(`[fetchTextbookData] Successfully fetched data with ${data.lessons?.length || 0} lessons, ${data.chapters?.length || 0} chapters`);
     return data;
   } catch (error) {
     console.error("[fetchTextbookData] Error:", error);
@@ -210,7 +207,8 @@ const getStatusConfig = (status: LessonStatus) => {
     case "in-progress":
       return { color: "blue", text: "Đang học", icon: <Clock className="w-3 h-3" />, bgColor: "#3b82f620", borderColor: "#3b82f6" };
     default:
-      return { color: "default", text: "Chưa học", icon: null, bgColor: "#6b728020", borderColor: "#6b7280" };
+      // Show icon-only for "not started" to reduce visual noise
+      return { color: "default", text: "", icon: <Circle className="w-3 h-3" />, bgColor: "#6b728020", borderColor: "#6b7280" };
   }
 };
 
@@ -247,10 +245,7 @@ const TextbookDetail: React.FC = () => {
     const fetchData = async () => {
       if (!textbookId) return;
       setLoading(true);
-      console.log(`[TextbookDetail] Fetching data for textbookId: ${textbookId}`);
       const data = await fetchTextbookData(textbookId);
-      console.log(`[TextbookDetail] Received data:`, data);
-      console.log(`[TextbookDetail] Lessons in data:`, data?.lessons);
       setTextbookData(data);
       setLoading(false);
     };
@@ -302,15 +297,6 @@ const TextbookDetail: React.FC = () => {
   const lessons: LessonInfo[] = Array.from({ length: textbook.totalLessons }, (_, i) => {
     const lessonNumber = textbook.startLesson + i;
     const lessonFromJson = textbookData?.lessons?.find(l => l.number === lessonNumber);
-    
-    if (i < 3) { // Log first 3 lessons for debugging
-      console.log(`[TextbookDetail] Lesson ${lessonNumber}:`, {
-        lessonFromJson,
-        vocab: lessonFromJson?.vocab,
-        topic: lessonFromJson?.topic,
-        allLessons: textbookData?.lessons?.map(l => ({ number: l.number, topic: l.topic, vocab: l.vocab }))
-      });
-    }
     
     let status: LessonStatus = "not-started";
     if (completedLessons.includes(lessonNumber)) status = "completed";
@@ -417,8 +403,10 @@ const TextbookDetail: React.FC = () => {
           <Progress
             percent={progress.percentage}
             strokeColor={colorMap[textbook.accentColor].colorValue}
+            // Antd v6: prefer railColor/size, but keep legacy props so it renders correctly in all themes.
             railColor="#e5e7eb"
-            size={12}
+            trailColor="#e5e7eb"
+            strokeWidth={12}
             showInfo={false}
           />
         </Card>
@@ -456,7 +444,7 @@ const TextbookDetail: React.FC = () => {
                   </div>
                 ),
                 children: (
-                  <div className="pl-13 space-y-2">
+                  <div className="pl-4 space-y-2">
                     {chapter.topics.map((topic, idx) => {
                       const lessonNum = (chapter.number - 1) * 5 + idx + 1;
                       const lesson = lessons.find(l => l.number === lessonNum);
@@ -467,33 +455,51 @@ const TextbookDetail: React.FC = () => {
                           hoverable
                           size="small"
                           onClick={() => handleLessonClick(lessonNum)}
-                          className="bg-surface-2 border-border hover:border-orange-400 transition-all cursor-pointer"
+                          className={`bg-surface-1 border border-border cursor-pointer group hover:shadow-md transition-all duration-200 hover:scale-[1.01] ${colorMap[textbook.accentColor].hoverBorder} ${
+                            lesson?.status === "completed" ? "opacity-75" : ""
+                          }`}
                           styles={{ body: { padding: "12px 16px" } }}
                         >
                           <div className="flex items-center justify-between">
-                            <div className="flex-1 min-w-0">
-                              <div className="flex items-center gap-2">
-                                <span className="text-xs text-text-sub bg-surface-1 px-2 py-0.5 rounded">
-                                  Bài {lessonNum}
-                                </span>
-                                <Text className="text-text-main font-medium">{topic.name}</Text>
+                            <div className="flex items-center gap-4 flex-1 min-w-0">
+                              {/* Number */}
+                              <div
+                                className={`w-9 h-9 rounded-lg flex items-center justify-center text-sm font-bold ${colorMap[textbook.accentColor].bgLight} ${colorMap[textbook.accentColor].text} flex-shrink-0`}
+                              >
+                                {lessonNum}
                               </div>
-                              <div className="flex items-center justify-between mt-1">
-                                <Text className="text-text-sub text-sm">{topic.nameVi}</Text>
-                                <div
-                                  className="inline-flex items-center gap-1 px-2 py-0.5 rounded text-xs font-medium border"
-                                  style={{
-                                    backgroundColor: statusConfig.bgColor,
-                                    borderColor: statusConfig.borderColor,
-                                    color: statusConfig.borderColor
-                                  }}
-                                >
-                                  {statusConfig.icon}
-                                  {statusConfig.text}
-                                </div>
+                              
+                              {/* Topic */}
+                              <div className="flex-1 min-w-0">
+                                <Text className="text-text-main text-base font-medium block truncate">
+                                  {topic.name}
+                                </Text>
+                                <Text className="text-text-sub text-sm block truncate">
+                                  {topic.nameVi}
+                                </Text>
                               </div>
                             </div>
-                            <ChevronRight className="w-4 h-4 text-text-sub flex-shrink-0 ml-2" />
+                            
+                            {/* Right side: Status + Arrow */}
+                            <div className="flex items-center gap-3 flex-shrink-0">
+                              {/* Status icon-only */}
+                              <div
+                                className="inline-flex items-center justify-center h-7 w-7 rounded-md border"
+                                style={{
+                                  backgroundColor: statusConfig.bgColor,
+                                  borderColor: statusConfig.borderColor,
+                                  color: statusConfig.borderColor,
+                                }}
+                                aria-label={lesson?.status === "not-started" ? "Chưa học" : statusConfig.text}
+                                title={lesson?.status === "not-started" ? "Chưa học" : statusConfig.text}
+                              >
+                                {statusConfig.icon}
+                              </div>
+                              
+                              <ChevronRight
+                                className={`w-5 h-5 text-text-sub opacity-60 group-hover:opacity-100 transition-opacity ${colorMap[textbook.accentColor].text}`}
+                              />
+                            </div>
                           </div>
                         </Card>
                       );
@@ -536,6 +542,19 @@ const TextbookDetail: React.FC = () => {
                     
                     {/* Right side: Vocab count + Arrow */}
                     <div className="flex items-center gap-3 flex-shrink-0">
+                      {/* Status icon (icon-only for "not started") */}
+                      <div
+                        className="inline-flex items-center justify-center h-7 w-7 rounded-md border"
+                        style={{
+                          backgroundColor: statusConfig.bgColor,
+                          borderColor: statusConfig.borderColor,
+                          color: statusConfig.borderColor,
+                        }}
+                        aria-label={lesson.status === "not-started" ? "Chưa học" : statusConfig.text}
+                        title={lesson.status === "not-started" ? "Chưa học" : statusConfig.text}
+                      >
+                        {statusConfig.icon}
+                      </div>
                       <span className="flex items-center gap-1 text-sm text-text-sub">
                         <BookText className="w-4 h-4" />
                         {lesson.vocabCount} từ

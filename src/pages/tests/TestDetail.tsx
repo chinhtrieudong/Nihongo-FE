@@ -86,6 +86,11 @@ interface Question {
     difficulty: string;
 }
 
+type TestQuestionsBundle = {
+    test?: Partial<Test>;
+    questions: Question[];
+};
+
 interface TestAttempt {
     id: string;
     testId: string;
@@ -150,8 +155,46 @@ const TestDetail: React.FC = () => {
                 const applyTestData = (testData: any) => {
                     setTest(testData);
                     setTimeRemaining(testData.duration * 60);
+                };
 
-                    // Generate sample questions based on test structure
+                const tryLoadLocalQuestions = async (level: string, testId: string, baseTest: any) => {
+                    try {
+                        const res = await fetch(`/data/jlpt-tests/${encodeURIComponent(level)}/${encodeURIComponent(testId)}.json`);
+                        if (!res.ok) return false;
+                        const bundle = (await res.json()) as TestQuestionsBundle;
+                        const qs = Array.isArray(bundle?.questions) ? bundle.questions : [];
+                        if (qs.length === 0) return false;
+
+                        const mergedTest = {
+                            ...baseTest,
+                            ...(bundle.test || {}),
+                        };
+
+                        // Keep metadata consistent with loaded question count
+                        const countsBySection = new Map<string, number>();
+                        qs.forEach((q) => countsBySection.set(q.sectionId, (countsBySection.get(q.sectionId) || 0) + 1));
+                        const patchedSections = (mergedTest.sections || []).map((s: any) => ({
+                            ...s,
+                            questions: countsBySection.get(s.id) ?? s.questions,
+                        }));
+
+                        const patchedTest = {
+                            ...mergedTest,
+                            sections: patchedSections,
+                            questions: qs.length,
+                        };
+
+                        setTest(patchedTest);
+                        setTimeRemaining((patchedTest.duration || 0) * 60);
+                        setQuestions(qs);
+                        message.info("Đang dùng câu hỏi từ JSON local.");
+                        return true;
+                    } catch {
+                        return false;
+                    }
+                };
+
+                const generateMockQuestionsFromTest = (testData: any) => {
                     const sampleQuestions: Question[] = [];
                     testData.sections.forEach((section: TestSection, sectionIndex: number) => {
                         for (let i = 0; i < section.questions; i++) {
@@ -174,12 +217,20 @@ const TestDetail: React.FC = () => {
                     const response = await jlptTestsAPI.getTest(level, testId);
                     if (response?.success && response?.data) {
                         applyTestData(response.data);
+                        const loaded = await tryLoadLocalQuestions(level, testId, response.data);
+                        if (!loaded) {
+                            generateMockQuestionsFromTest(response.data);
+                        }
                         return;
                     }
                     // If backend returns a non-success payload, fall back to local JSON
                     const local = localJlptTests.find((t) => String(t.id) === String(testId) && String(t.level).toUpperCase() === level);
                     if (local) {
                         applyTestData(local);
+                        const loaded = await tryLoadLocalQuestions(level, testId, local);
+                        if (!loaded) {
+                            generateMockQuestionsFromTest(local);
+                        }
                         message.warning("Đang dùng dữ liệu JLPT local (backend chưa có endpoint).");
                         return;
                     }
@@ -189,6 +240,10 @@ const TestDetail: React.FC = () => {
                     const local = localJlptTests.find((t) => String(t.id) === String(testId) && String(t.level).toUpperCase() === level);
                     if (local) {
                         applyTestData(local);
+                        const loaded = await tryLoadLocalQuestions(level, testId, local);
+                        if (!loaded) {
+                            generateMockQuestionsFromTest(local);
+                        }
                         message.warning("Đang dùng dữ liệu JLPT local (backend chưa có endpoint).");
                         return;
                     }

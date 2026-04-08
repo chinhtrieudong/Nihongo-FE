@@ -10,7 +10,6 @@ export { default as GrammarTab } from "./tabs/GrammarTab.js";
 export { default as DialogTab } from "./tabs/DialogTab.js";
 export { default as ExercisesTab } from "./tabs/ExercisesTab.js";
 export { default as AITab } from "./tabs/AITab.js";
-export { default as SummaryTab } from "./tabs/SummaryTab.js";
 
 // Feature components
 export { default as FlashCard } from "./features/FlashCard.js";

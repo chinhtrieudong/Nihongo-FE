@@ -6,7 +6,7 @@
 import React, { useState, useEffect, useMemo, useCallback } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { Button, Typography, Empty, Spin, Tabs, Statistic, Row, Col, Space } from "antd";
-import { ArrowLeft, Volume2, BookOpen, Layers, Star, CheckCircle, XCircle, RotateCcw, ChevronLeft, ChevronRight } from "lucide-react";
+import { ArrowLeft, Volume2, BookOpen, Layers, Star, CheckCircle, XCircle, RotateCcw, ChevronLeft, ChevronRight, Target } from "lucide-react";
 import VocabularyFlashcard from "../../components/vocabulary/VocabularyFlashcard";
 import { useResponsive } from "../../hooks/useResponsive";
 import { useVocabulary, useLessons } from "../../hooks/useVocabulary";
@@ -164,11 +164,11 @@ const VocabularyDetail: React.FC = () => {
     const cardsToUse = mode === "unremembered"
       ? base.filter((card: VocabularyItem) => cardStatus[card.id] === "unknown")
       : base;
-    const shuffled = [...cardsToUse].sort(() => Math.random() - 0.5);
     const resetStatus: Record<string, SessionStatus> = {};
     cardsToUse.forEach((c: VocabularyItem) => (resetStatus[c.id] = "unanswered"));
     setCardStatus((prev) => ({ ...prev, ...resetStatus }));
-    setShuffledCards(shuffled);
+    // Keep the natural order by default; user can manually shuffle.
+    setShuffledCards([...cardsToUse]);
     setCurrentCardIndex(0);
     setIsFlipped(false);
     setIsStudyComplete(false);
@@ -187,8 +187,8 @@ const VocabularyDetail: React.FC = () => {
       shuffledCards.every((c) => items.some((i) => i.id === c.id));
 
     if (!hasSameSet) {
-      const shuffled = [...items].sort(() => Math.random() - 0.5);
-      setShuffledCards(shuffled);
+      // Keep the natural order by default; user can manually shuffle.
+      setShuffledCards([...items]);
     }
 
     const initialStatus: Record<string, SessionStatus> = {};
@@ -501,119 +501,155 @@ const VocabularyDetail: React.FC = () => {
             onClick={closeFlashcard}
           >
             <div
-              className="w-full max-w-xl text-white"
+              className="w-full max-w-xl"
               onClick={(e) => e.stopPropagation()}
             >
-              <div className="rounded-xl border border-slate-600 bg-slate-900 p-8 text-white min-h-[300px] flex flex-col justify-between relative overflow-hidden">
-                <div className="pointer-events-none absolute -top-24 -right-24 h-64 w-64 rounded-full bg-blue-500/10 blur-3xl" />
-                <div className="pointer-events-none absolute -bottom-24 -left-24 h-64 w-64 rounded-full bg-emerald-500/10 blur-3xl" />
+              <div className="rounded-2xl border border-border bg-surface-1 p-6 sm:p-8 text-text-main min-h-[300px] flex flex-col justify-between relative overflow-hidden shadow-xl">
+                <div className="pointer-events-none absolute -top-24 -right-24 h-64 w-64 rounded-full bg-blue-500/15 blur-3xl" />
+                <div className="pointer-events-none absolute -bottom-24 -left-24 h-64 w-64 rounded-full bg-emerald-500/15 blur-3xl" />
                 <button
                   type="button"
                   aria-label="Đóng"
                   onClick={closeFlashcard}
-                  className="absolute top-3 right-3 h-9 w-9 rounded-full text-white/80 hover:text-white transition-colors flex items-center justify-center"
+                  className="absolute top-3 right-3 h-9 w-9 rounded-full text-text-sub hover:text-text-main hover:bg-surface-2 transition-colors flex items-center justify-center"
                 >
                   ✕
                 </button>
                 <div className="text-center">
-                  <Title level={1} className="!mb-2 text-white">
-                    🎉 Hoàn thành!
+                  <Title level={2} className="!mb-1 !text-text-main">
+                    Hoàn thành
                   </Title>
-                  <div className="text-sm text-white/70 mb-4">
+                  <div className="text-sm text-text-sub mb-4">
                     Bạn đã hoàn thành phiên học hôm nay
                   </div>
 
                   <Row gutter={16} className="mb-2">
                     <Col span={8}>
-                      <div className="rounded-lg border border-slate-600/60 bg-white/5 px-3 py-2">
-                        <div className="text-xs uppercase tracking-wide text-white/60 mb-1">
+                      <div className="rounded-xl border border-border bg-surface-2 px-3 py-2">
+                        <div className="text-xs uppercase tracking-wide text-text-sub mb-1">
                           Tổng
                         </div>
                         <Statistic
                           value={totalCount}
-                          styles={{ content: { color: "#93c5fd" } }}
-                          className="text-white"
+                          styles={{ content: { color: "var(--primary)" } }}
+                          className="text-text-main"
                         />
                       </div>
                     </Col>
 
                     <Col span={8}>
-                      <div className="rounded-lg border border-slate-600/60 bg-white/5 px-3 py-2">
-                        <div className="text-xs uppercase tracking-wide text-white/60 mb-1">
+                      <div className="rounded-xl border border-border bg-surface-2 px-3 py-2">
+                        <div className="text-xs uppercase tracking-wide text-text-sub mb-1">
                           Đã nhớ
                         </div>
                         <Statistic
                           value={knownCount}
-                          styles={{ content: { color: "#86efac" } }}
+                          styles={{ content: { color: "var(--success)" } }}
                           prefix={
-                            <CheckCircle className="w-4 h-4" style={{ color: "#86efac" }} />
+                            <CheckCircle className="w-4 h-4" style={{ color: "var(--success)" }} />
                           }
-                          className="text-white"
+                          className="text-text-main"
                         />
                       </div>
                     </Col>
 
                     <Col span={8}>
-                      <div className="rounded-lg border border-slate-600/60 bg-white/5 px-3 py-2">
-                        <div className="text-xs uppercase tracking-wide text-white/60 mb-1">
+                      <div className="rounded-xl border border-border bg-surface-2 px-3 py-2">
+                        <div className="text-xs uppercase tracking-wide text-text-sub mb-1">
                           Chưa nhớ
                         </div>
                         <Statistic
                           value={unknownCount}
-                          styles={{ content: { color: "#fca5a5" } }}
+                          styles={{ content: { color: "var(--error)" } }}
                           prefix={
-                            <XCircle className="w-4 h-4" style={{ color: "#fca5a5" }} />
+                            <XCircle className="w-4 h-4" style={{ color: "var(--error)" }} />
                           }
-                          className="text-white"
+                          className="text-text-main"
                         />
                       </div>
                     </Col>
                   </Row>
 
                   <div className="mt-4">
-                    <div className="inline-flex items-center gap-2 rounded-full border border-slate-600/60 bg-white/5 px-4 py-2 text-sm text-white/90">
+                    <div className="inline-flex items-center gap-2 rounded-full border border-border bg-surface-2 px-4 py-2 text-sm text-text-main">
                       <span className="font-semibold">Độ nhớ</span>
-                      <span className="text-white/50">•</span>
-                      <span className="font-bold" style={{ color: accuracyPercent >= 80 ? "#86efac" : accuracyPercent >= 50 ? "#93c5fd" : "#fca5a5" }}>
+                      <span className="text-text-sub">•</span>
+                      <span
+                        className="font-bold"
+                        style={{
+                          color:
+                            accuracyPercent >= 80
+                              ? "var(--success)"
+                              : accuracyPercent >= 50
+                                ? "var(--primary)"
+                                : "var(--error)",
+                        }}
+                      >
                         {accuracyPercent}%
                       </span>
                     </div>
                   </div>
 
                   {unknownItems.length > 0 && (
-                    <div className="mt-5 text-left">
-                      <div className="text-xs uppercase tracking-wide text-white/60 mb-2">
+                    <div className="mt-2 text-left">
+                      <div className="text-xs uppercase tracking-wide text-text-sub mb-2">
                         Từ chưa nhớ ({unknownItems.length})
                       </div>
-                      <div className="max-h-44 overflow-auto rounded-xl border border-slate-600/60 bg-white/5">
-                        {unknownItems.slice(0, 12).map((it) => (
-                          <div
-                            key={it.id}
-                            className="flex items-center justify-between gap-3 px-4 py-3 border-b border-slate-600/40 last:border-b-0"
-                          >
-                            <div className="min-w-0">
-                              <div className="text-base font-semibold text-white kanji-text truncate">
-                                {it.kanji || it.hiragana}
-                              </div>
-                              <div className="text-sm text-white/70 jp-text truncate">
-                                {it.hiragana}
-                              </div>
-                              <div className="text-sm text-white/80 truncate">
-                                {it.meaning}
-                              </div>
-                            </div>
-                            <button
-                              type="button"
-                              onClick={() => speakText(it.hiragana)}
-                              className="p-2 rounded-lg text-white/70 hover:text-white hover:bg-white/10 transition-colors flex-shrink-0"
-                              aria-label="Phát âm"
+                      <div className="max-h-44 overflow-auto rounded-xl border border-border bg-surface-2">
+                        {unknownItems.slice(0, 12).map((it) => {
+                          const hasKanji = it.kanji && it.kanji.trim();
+                          const hasHira = it.hiragana && it.hiragana.trim();
+                          const isSame = hasKanji && hasHira && it.kanji === it.hiragana;
+                          const hanViet = it.hanViet;
+                          
+                          return (
+                            <div
+                              key={it.id}
+                              className="flex items-center justify-between gap-3 px-4 py-3 border-b border-border last:border-b-0"
                             >
-                              <Volume2 className="w-4 h-4" />
-                            </button>
-                          </div>
-                        ))}
+                              <div className="min-w-0 flex-1">
+                                {/* Row 1: Kanji + Hiragana (dedupe if same) */}
+                                <div className="flex items-center gap-2">
+                                  {hasKanji && (
+                                    <span className="text-base font-semibold text-text-main kanji-text truncate">
+                                      {it.kanji}
+                                    </span>
+                                  )}
+                                  {hasHira && !isSame && (
+                                    <span className="text-sm text-text-sub jp-text truncate">
+                                      {it.hiragana}
+                                    </span>
+                                  )}
+                                </div>
+                                
+                                {/* Row 2: HanViet + Meaning */}
+                                <div className="text-sm truncate">
+                                  {hanViet && (
+                                    <span className="text-amber-500/80 font-medium">
+                                      {hanViet}
+                                    </span>
+                                  )}
+                                  {hanViet && it.meaning && (
+                                    <span className="text-text-sub mx-1">·</span>
+                                  )}
+                                  <span className="text-text-main/80">
+                                    {it.meaning}
+                                  </span>
+                                </div>
+                              </div>
+                              <button
+                                type="button"
+                                onClick={() => speakText(it.hiragana)}
+                                className="p-2 rounded-lg text-text-sub hover:text-text-main hover:bg-surface-1 transition-colors flex-shrink-0"
+                                aria-label="Phát âm"
+                              >
+                                <Volume2 className="w-4 h-4" />
+                              </button>
+                            </div>
+                          );
+                        })}
                         {unknownItems.length > 12 && (
-                          <div className="px-4 py-2 text-xs text-white/60">
+                          <div className="px-4 py-2 text-xs text-text-sub">
                             Và {unknownItems.length - 12} từ nữa…
                           </div>
                         )}
@@ -622,25 +658,40 @@ const VocabularyDetail: React.FC = () => {
                   )}
                 </div>
 
-                <div className="flex items-center justify-center pt-0">
-                  <Space size="large">
-                    <Button
-                      type="primary"
-                      size="large"
-                      icon={<RotateCcw className="w-4 h-4" />}
-                      onClick={() => resetStudySession("all")}
-                    >
-                      Học lại toàn bộ
-                    </Button>
-
-                    {unknownCount > 0 && (
+                <div className="flex items-center justify-center pt-0 mt-4">
+                  <Space size="middle">
+                    {unknownCount > 0 ? (
+                      <>
+                        {/* Primary: Review unknown */}
+                        <Button
+                          type="primary"
+                          size="large"
+                          className="h-11 min-w-[160px] rounded-xl bg-amber-500 hover:bg-amber-600 border-amber-500 font-medium shadow-lg shadow-amber-500/25 inline-flex items-center gap-1.5"
+                          onClick={() => resetStudySession("unremembered")}
+                        >
+                          <Target className="w-4 h-4" />
+                          <span>Ôn lại {unknownCount} từ</span>
+                        </Button>
+                        {/* Secondary: Study all */}
+                        <Button
+                          size="large"
+                          className="h-11 min-w-[160px] rounded-xl bg-transparent text-text-main border border-border hover:border-white/30 hover:bg-surface-2 transition-all inline-flex items-center gap-1.5"
+                          onClick={() => resetStudySession("all")}
+                        >
+                          <RotateCcw className="w-4 h-4" />
+                          <span>Học lại toàn bộ</span>
+                        </Button>
+                      </>
+                    ) : (
+                      /* Primary: Study all when perfect */
                       <Button
-                        type="default"
+                        type="primary"
                         size="large"
-                        className="bg-transparent text-neutral-200 border-neutral-500 hover:text-white hover:border-neutral-300 hover:bg-white/10"
-                        onClick={() => resetStudySession("unremembered")}
+                        className="h-11 min-w-[200px] rounded-xl bg-emerald-500 hover:bg-emerald-600 border-emerald-500 font-medium shadow-lg shadow-emerald-500/25 inline-flex items-center gap-1.5"
+                        onClick={() => resetStudySession("all")}
                       >
-                        Chỉ học {unknownCount} thẻ chưa nhớ
+                        <RotateCcw className="w-4 h-4" />
+                        <span>Học lại toàn bộ</span>
                       </Button>
                     )}
                   </Space>
