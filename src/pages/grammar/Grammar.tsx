@@ -1,9 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import {
   Card,
-  Input,
-  Select,
-  Button,
   Typography,
   Space,
   Tag,
@@ -16,8 +13,8 @@ import {
   List
 } from 'antd';
 import type { SelectProps } from 'antd';
-import { Search, FlaskConical, Book, CheckCircle } from 'lucide-react';
-import { EmptyState } from "../../components/common";
+import { FlaskConical, Book, CheckCircle } from 'lucide-react';
+import { EmptyState, SearchFilter } from "../../components/common";
 import { grammarAPI } from "../../services/grammarApi";
 
 const { Title, Text, Paragraph } = Typography;
@@ -176,7 +173,7 @@ const Grammar: React.FC = () => {
         color={getLevelColor(String(value))}
         closable={closable}
         onClose={onClose}
-        className="mr-1"
+        className="m-0.5 !px-1 !py-0 text-xs"
       >
         {label}
       </Tag>
@@ -190,7 +187,7 @@ const Grammar: React.FC = () => {
         color={getCategoryColor(String(value))}
         closable={closable}
         onClose={onClose}
-        className="mr-1"
+        className="m-0.5 !px-1 !py-0 text-xs"
       >
         {label}
       </Tag>
@@ -206,63 +203,46 @@ const Grammar: React.FC = () => {
         {/* Header Section */}
         <div className="mb-6">
           <h1 className="text-3xl md:text-4xl font-bold text-text-main mb-3">
-            Học Ngữ pháp
+            Ngữ pháp tiếng Nhật
           </h1>
           <p className="text-text-sub text-lg">
-            Học theo lộ trình JLPT • Có ví dụ • Có luyện tập
+            Hệ thống ngữ pháp theo trình độ JLPT • Học qua ví dụ thực tế
           </p>
         </div>
 
         {/* Filters and Search */}
-        <div className="mb-6 rounded-2xl border border-border bg-surface-1 shadow-none p-2.5 sm:p-3">
-          <div className="flex flex-col md:flex-row md:items-center gap-1.5">
-            <div className="flex-1 min-w-0">
-              <Input
-                placeholder="Tìm ngữ pháp: ～ですか / 何～ / この～"
-                value={searchQuery}
-                onChange={(e) => handleSearch(e.target.value)}
-                allowClear
-                size="small"
-                prefix={<Search className="w-4 h-4 text-secondary-500" />}
-                className="w-full [&_.ant-input-prefix]:text-secondary-500"
-              />
-            </div>
-            <div className="w-full md:w-[180px]">
-              <Select
-                value={selectedLevel}
-                onChange={handleLevelChange}
-                mode="multiple"
-                maxTagCount="responsive"
-                tagRender={renderLevelTag}
-                allowClear
-                placeholder="Chọn cấp độ"
-                size="small"
-                className="w-full [&_.ant-select-selector]:!rounded-xl [&_.ant-select-selector]:!border-[#d9dce5] [&_.ant-select-selector]:!bg-white"
-                options={levels.map((level) => ({
-                  value: level,
-                  label: <Tag color={getLevelColor(level)} className="m-0">{level}</Tag>,
-                }))}
-              />
-            </div>
-            <div className="w-full md:w-[180px]">
-              <Select
-                value={selectedCategory}
-                onChange={handleCategoryChange}
-                mode="multiple"
-                maxTagCount="responsive"
-                tagRender={renderCategoryTag}
-                allowClear
-                placeholder="Chọn danh mục"
-                size="small"
-                className="w-full [&_.ant-select-selector]:!rounded-xl [&_.ant-select-selector]:!border-[#d9dce5] [&_.ant-select-selector]:!bg-white"
-                options={categories.map((cat) => ({
-                  value: cat.value,
-                  label: <Tag color={getCategoryColor(cat.value)} className="m-0">{cat.label}</Tag>,
-                }))}
-              />
-            </div>
-          </div>
-        </div>
+        <SearchFilter
+          searchValue={searchQuery}
+          searchPlaceholder="Tìm ngữ pháp: ～ですか / 何～ / この～"
+          onSearchChange={handleSearch}
+          className="mb-6"
+          filters={[
+            {
+              key: 'level',
+              value: selectedLevel,
+              placeholder: 'Chọn cấp độ',
+              mode: 'multiple',
+              tagRender: renderLevelTag,
+              onChange: handleLevelChange,
+              options: levels.map((level) => ({
+                value: level,
+                label: <Tag color={getLevelColor(level)} className="m-0">{level}</Tag>,
+              })),
+            },
+            {
+              key: 'category',
+              value: selectedCategory,
+              placeholder: 'Chọn danh mục',
+              mode: 'multiple',
+              tagRender: renderCategoryTag,
+              onChange: handleCategoryChange,
+              options: categories.map((cat) => ({
+                value: cat.value,
+                label: <Tag color={getCategoryColor(cat.value)} className="m-0">{cat.label}</Tag>,
+              })),
+            },
+          ]}
+        />
 
         {/* Results Statistics */}
         {totalGrammars > 0 && (
@@ -295,13 +275,11 @@ const Grammar: React.FC = () => {
 
         <Spin spinning={loading} size="large">
           {error ? (
-            <Card className="bg-surface-1 border border-border" variant="borderless">
-              <div className="text-center py-8">
-                <Text type="danger" className="text-lg">
-                  ⚠️ {error}
-                </Text>
-              </div>
-            </Card>
+            <EmptyState
+              type="error"
+              title="Không thể tải dữ liệu"
+              description={error}
+            />
           ) : filteredLessons.length > 0 ? (
             <div className="space-y-6">
               {filteredLessons.map((lesson) => (
@@ -403,16 +381,9 @@ const Grammar: React.FC = () => {
             !loading && (
               <Card className="bg-surface-1 border border-border" variant="borderless">
                 <EmptyState
-                  description={
-                    <div className="text-center">
-                      <Title level={4} type="secondary" className="!text-secondary-700 dark:!text-secondary-300">
-                        Không tìm thấy dữ liệu ngữ pháp
-                      </Title>
-                      <Paragraph type="secondary" className="!text-secondary-600 dark:!text-secondary-400">
-                        Vui lòng thử lại với bộ lọc khác hoặc từ khóa tìm kiếm mới.
-                      </Paragraph>
-                    </div>
-                  }
+                  type="search"
+                  title="Không tìm thấy dữ liệu ngữ pháp"
+                  description="Vui lòng thử lại với bộ lọc khác hoặc từ khóa tìm kiếm mới."
                 />
               </Card>
             )

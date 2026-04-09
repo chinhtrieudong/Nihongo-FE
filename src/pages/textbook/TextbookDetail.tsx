@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useMemo } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import { Card, Button, Tag, Typography, Empty, Badge, Progress, Spin, Collapse } from "antd";
+import { Card, Button, Tag, Typography, Badge, Progress, Spin, Collapse } from "antd";
+import { EmptyState } from "../../components/common";
 import { ArrowLeft, BookOpen, ChevronRight, PlayCircle, FileQuestion, CheckCircle2, Clock, BookText, Circle } from "lucide-react";
 
 const { Title, Text } = Typography;
@@ -275,12 +276,15 @@ const TextbookDetail: React.FC = () => {
   if (!textbook) {
     return (
       <div className="min-h-full bg-bg p-8">
-        <Empty description="Không tìm thấy giáo trình" />
-        <div className="text-center mt-4">
-          <Button onClick={() => navigate("/")} icon={<ArrowLeft className="w-4 h-4" />}>
-            Quay lại trang chủ
-          </Button>
-        </div>
+        <EmptyState
+          type="error"
+          title="Không tìm thấy giáo trình"
+          description="Giáo trình bạn đang tìm kiếm không tồn tại."
+          action={{
+            label: "Quay lại trang chủ",
+            onClick: () => navigate("/"),
+          }}
+        />
       </div>
     );
   }

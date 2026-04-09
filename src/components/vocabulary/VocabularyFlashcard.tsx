@@ -731,10 +731,11 @@ const VocabularyFlashcard: React.FC<VocabularyFlashcardProps> = ({
         footer={null}
         width={480}
         className="flashcard-settings-modal"
+        rootClassName="fix-modal-bg"
         styles={{
           mask: {
-            backgroundColor: "rgba(30, 58, 138, 0.25)",
-            backdropFilter: "blur(4px)",
+            backgroundColor: "rgba(15, 23, 42, 0.35)",
+            backdropFilter: "blur(6px)",
           },
           body: {
             background: "transparent",

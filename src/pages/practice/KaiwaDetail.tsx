@@ -6,11 +6,11 @@ import {
   Button,
   Tag,
   Spin,
-  Empty,
   Badge,
   Collapse,
   List,
 } from "antd";
+import { EmptyState } from "../../components/common";
 import {
   ArrowLeft,
   MessageSquare,
@@ -137,15 +137,15 @@ const KaiwaDetail: React.FC = () => {
   if (error || !kaiwaData || !activeKaiwa) {
     return (
       <div className="min-h-full bg-bg p-8">
-        <Empty
-          description={error || "Không có dữ liệu kaiwa"}
-          className="mt-20"
+        <EmptyState
+          type={error ? "error" : "data"}
+          title={error ? "Không thể tải dữ liệu" : "Không có dữ liệu"}
+          description={error || "Không có dữ liệu kaiwa cho bài học này."}
+          action={{
+            label: "Quay lại Practice",
+            onClick: () => navigate("/practice"),
+          }}
         />
-        <div className="text-center mt-4">
-          <Button onClick={() => navigate("/practice")} icon={<ArrowLeft className="w-4 h-4" />}>
-            Quay lại Practice
-          </Button>
-        </div>
       </div>
     );
   }

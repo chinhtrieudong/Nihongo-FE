@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { Typography, Tabs, Row, Col, Card, Spin, App as AntdApp } from "antd";
+import { EmptyState } from "../../components/common";
 import {
   Play,
   Trophy,
@@ -312,9 +313,12 @@ const Tests: React.FC = () => {
                       ))}
                     </Row>
                     {availableTests.length === 0 && (
-                      <div className="text-center py-8">
-                        <Text type="secondary">Không có bài thi nào phù hợp với bộ lọc</Text>
-                      </div>
+                      <EmptyState
+                        type="search"
+                        title="Không có bài thi"
+                        description="Không có bài thi nào phù hợp với bộ lọc hiện tại. Hãy thử thay đổi bộ lọc!"
+                        size="small"
+                      />
                     )}
                   </>
                 )
@@ -346,9 +350,12 @@ const Tests: React.FC = () => {
                       ))}
                     </Row>
                     {completedTests.length === 0 && (
-                      <div className="text-center py-8">
-                        <Text type="secondary">Bạn chưa hoàn thành bài thi nào</Text>
-                      </div>
+                      <EmptyState
+                        type="data"
+                        title="Chưa có bài thi hoàn thành"
+                        description="Bạn chưa hoàn thành bài thi nào. Hãy bắt đầu làm bài thi ngay!"
+                        size="small"
+                      />
                     )}
                   </>
                 )

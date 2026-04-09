@@ -38,6 +38,7 @@ import {
     Volume2,
     Languages
 } from "lucide-react";
+import { EmptyState } from "../../components/common";
 import { jlptTestsAPI } from "../../services/api";
 import { jlptTests as localJlptTests } from "../../data/jlptTests";
 
@@ -663,8 +664,16 @@ const TestDetail: React.FC = () => {
 
     if (!test) {
         return (
-            <div className="p-6">
-                <Text>Không tìm thấy bài thi</Text>
+            <div className="min-h-full bg-bg p-8">
+                <EmptyState
+                    type="error"
+                    title="Không tìm thấy bài thi"
+                    description="Không tìm thấy bài thi bạn đang tìm kiếm."
+                    action={{
+                        label: "Quay lại danh sách",
+                        onClick: () => navigate("/tests"),
+                    }}
+                />
             </div>
         );
     }

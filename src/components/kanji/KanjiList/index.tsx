@@ -35,13 +35,12 @@ const KanjiList: React.FC<KanjiListProps> = ({
 
     if (kanjiList.length === 0) {
         return (
-            <div className="text-center rounded-2xl border border-border bg-surface-1 py-12">
-                <EmptyState
-                    description={
-                        <span className="text-secondary-700 dark:text-secondary-400">Không tìm thấy Hán tự nào</span>
-                    }
-                />
-            </div>
+            <EmptyState
+                type="search"
+                title="Không tìm thấy Hán tự"
+                description="Không có Hán tự nào phù hợp với bộ lọc hiện tại."
+                size="small"
+            />
         );
     }
 

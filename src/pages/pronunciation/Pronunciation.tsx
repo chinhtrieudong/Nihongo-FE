@@ -28,6 +28,7 @@ import { pronunciationAPI, type Exercise, type Category } from '../../services/p
 import { getNanamiNaturalVoice } from "../../utils/vocabularyUtils";
 import { useAppSelector } from "../../store/hooks";
 import { getFontPreset } from "../../constants/fonts";
+import { EmptyState } from "../../components/common";
 
 const { Title, Text } = Typography;
 const { Option } = Select;
@@ -623,7 +624,7 @@ const Pronunciation: React.FC = () => {
         <div className="mb-6">
           <div className="flex items-center gap-2 mb-2">
             <Headphones className="w-6 h-6 text-primary" />
-            <h1 className="text-2xl font-bold text-text-main">Luyện phát âm</h1>
+            <h1 className="text-3xl md:text-4xl font-bold text-text-main">Luyện phát âm</h1>
           </div>
           <p className="text-text-sub">Nghe mẫu, thu âm và nhận đánh giá phát âm của bạn</p>
         </div>
@@ -887,9 +888,12 @@ const Pronunciation: React.FC = () => {
             )}
           </div>
         ) : (
-          <Card className="bg-surface-1 border-border p-8 text-center">
-            <Text type="secondary">Chưa có bài luyện phát âm. Vui lòng chọn cấp độ khác.</Text>
-          </Card>
+          <EmptyState
+            type="data"
+            title="Chưa có bài luyện phát âm"
+            description="Vui lòng chọn cấp độ khác để luyện tập."
+            size="small"
+          />
         )}
       </div>
     </div>

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
 import { ArrowLeft, ChevronLeft, ChevronRight } from "lucide-react";
 import { Spin, Button } from "antd";
+import { EmptyState } from "../../components/common";
 import { lessonAPI } from "../../services/api";
 import { useAppSelector } from "../../store/hooks";
 import { getFontPreset } from "../../constants/fonts";
@@ -222,8 +223,16 @@ const RadicalDetail: React.FC = () => {
 
   if (!radical) {
     return (
-      <div className="text-center py-10">
-        <p className="text-secondary-700 dark:text-secondary-400">Không tìm thấy thông tin bộ thủ.</p>
+      <div className="min-h-full bg-bg p-8">
+        <EmptyState
+          type="error"
+          title="Không tìm thấy bộ thủ"
+          description="Không tìm thấy thông tin bộ thủ bạn đang tìm kiếm."
+          action={{
+            label: "Quay lại danh sách bộ thủ",
+            onClick: handleBack,
+          }}
+        />
       </div>
     );
   }
@@ -371,9 +380,12 @@ const RadicalDetail: React.FC = () => {
         </div>
 
         {items.length === 0 ? (
-          <div className="rounded-xl border border-dashed border-border bg-surface-1 p-8 text-center text-secondary-600 dark:text-secondary-400">
-            Chưa có Kanji nào cho bộ thủ này.
-          </div>
+          <EmptyState
+            type="data"
+            title="Chưa có Kanji"
+            description="Bộ thủ này chưa có Kanji nào."
+            size="small"
+          />
         ) : (
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-3 sm:gap-4">
             {items.map((item) => (

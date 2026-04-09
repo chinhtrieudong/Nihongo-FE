@@ -2,6 +2,7 @@ import React, { useEffect, useMemo, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { Button, Card, Divider, Progress, Radio, Select, Space, Spin, Typography, message } from "antd";
 import { ArrowLeft, RefreshCcw, Play, CheckCircle2, XCircle } from "lucide-react";
+import { EmptyState } from "../../components/common";
 import { getLessonVocabulary, getVocabulary } from "../../services/vocabularyDataService";
 import type { JLPTLevel, TextbookType, VocabularyItem } from "../../types/vocabulary";
 
@@ -272,17 +273,15 @@ const QuickTest: React.FC = () => {
   if (!textbookId || !parsed) {
     return (
       <div className="min-h-full bg-bg p-8">
-        <Card className="max-w-xl mx-auto bg-surface-1 border-border">
-          <Title level={4} className="!mb-2">
-            Không tìm thấy giáo trình
-          </Title>
-          <Text className="text-text-sub">Đường dẫn không hợp lệ.</Text>
-          <div className="mt-4">
-            <Button icon={<ArrowLeft className="w-4 h-4" />} onClick={() => navigate(-1)}>
-              Quay lại
-            </Button>
-          </div>
-        </Card>
+        <EmptyState
+          type="error"
+          title="Không tìm thấy giáo trình"
+          description="Đường dẫn không hợp lệ."
+          action={{
+            label: "Quay lại",
+            onClick: () => navigate(-1),
+          }}
+        />
       </div>
     );
   }

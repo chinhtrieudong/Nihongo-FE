@@ -3,9 +3,10 @@ import { useSearchParams } from 'react-router-dom';
 import { lessonAPI } from '@services/api';
 import { KanjiItem } from '@kanji-types';
 import KanjiList from '@components/kanji/KanjiList';
-import KanjiFilter from '@components/kanji/KanjiFilter';
-import { message } from 'antd';
+import { message, Tag } from 'antd';
+import type { SelectProps } from 'antd';
 import { KanjiPageIcon } from '@components/icons';
+import { SearchFilter } from '@components/common';
 
 const normalizeJlptLevel = (value?: string) => {
     if (!value) return '';
@@ -265,6 +266,31 @@ const KanjiPage: React.FC = () => {
         setStrokeFilters(ALLOWED_STROKE_FILTERS.includes(value) ? [value] : []);
     };
 
+    const getLevelColor = (level: string) => {
+        const colors: { [key: string]: string } = {
+            N5: 'green',
+            N4: 'blue',
+            N3: 'orange',
+            N2: 'red',
+            N1: 'purple'
+        };
+        return colors[level] || 'default';
+    };
+
+    const renderLevelTag: SelectProps<string[]>['tagRender'] = (props) => {
+        const { label, value, closable, onClose } = props;
+        return (
+            <Tag
+                color={getLevelColor(String(value))}
+                closable={closable}
+                onClose={onClose}
+                className="m-0.5 !px-1 !py-0 text-xs"
+            >
+                {label}
+            </Tag>
+        );
+    };
+
     const handleLoadMore = () => {
         if (!hasMore || loadingMore || isRadicalMode) return;
         fetchKanji(page + 1, true);
@@ -284,23 +310,47 @@ const KanjiPage: React.FC = () => {
                 {/* Header Section */}
                 <div className="mb-6">
                     <h1 className="text-3xl md:text-4xl font-bold text-text-main mb-3">
-                        Học Hán tự
+                        Hán tự tiếng Nhật
                     </h1>
                     <p className="text-text-sub text-lg">
-                        Học theo lộ trình JLPT • Bộ thủ • Cách đọc
+                        Hệ thống Hán tự theo trình độ JLPT • 214 bộ thủ • Cách đọc và ý nghĩa
                     </p>
                 </div>
 
-                <div className="mb-8">
-                    <KanjiFilter
-                        selectedLevels={selectedLevels}
-                        searchTerm={searchTerm}
-                        strokeFilters={strokeFilters}
-                        onLevelChange={handleLevelChange}
-                        onSearch={handleSearch}
-                        onStrokeFilterChange={handleStrokeFilterChange}
-                    />
-                </div>
+                <SearchFilter
+                    searchValue={searchTerm}
+                    searchPlaceholder="Tìm kiếm Hán tự, âm Hán Việt hoặc nghĩa..."
+                    onSearchChange={handleSearch}
+                    className="mb-6"
+                    filters={[
+                        {
+                            key: 'level',
+                            value: selectedLevels,
+                            placeholder: 'Chọn cấp độ',
+                            mode: 'multiple',
+                            tagRender: renderLevelTag,
+                            onChange: handleLevelChange,
+                            options: [
+                                { value: 'all', label: <span className="font-medium text-gray-700 dark:text-gray-300">Tất cả</span> },
+                                { value: 'N5', label: <Tag color={getLevelColor('N5')} className="m-0">N5</Tag> },
+                                { value: 'N4', label: <Tag color={getLevelColor('N4')} className="m-0">N4</Tag> },
+                                { value: 'N3', label: <Tag color={getLevelColor('N3')} className="m-0">N3</Tag> },
+                                { value: 'N2', label: <Tag color={getLevelColor('N2')} className="m-0">N2</Tag> },
+                                { value: 'N1', label: <Tag color={getLevelColor('N1')} className="m-0">N1</Tag> },
+                            ],
+                        },
+                        {
+                            key: 'stroke',
+                            value: strokeFilters[0],
+                            placeholder: 'Lọc theo',
+                            onChange: handleStrokeFilterChange,
+                            options: [
+                                { value: 'hantu', label: 'Hán tự' },
+                                { value: 'radical214', label: '214 bộ thủ' },
+                            ],
+                        },
+                    ]}
+                />
 
                 <KanjiList
                     kanjiList={filteredKanji}

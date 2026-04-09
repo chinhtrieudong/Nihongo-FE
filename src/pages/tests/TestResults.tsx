@@ -26,7 +26,7 @@ import {
 } from "lucide-react";
 import { jlptTests, type Test } from "../../data/jlptTests";
 import { sampleQuestions, type Question } from "../../data/sampleQuestions";
-import { PageTitle } from "../../components/common";
+import { PageTitle, EmptyState } from "../../components/common";
 
 const { Title, Text, Paragraph } = Typography;
 
@@ -189,8 +189,16 @@ const TestResults: React.FC = () => {
 
   if (!test || !attempt) {
     return (
-      <div className="p-6">
-        <Text>Không tìm thấy kết quả bài thi</Text>
+      <div className="min-h-full bg-bg p-8">
+        <EmptyState
+          type="error"
+          title="Không tìm thấy kết quả"
+          description="Không tìm thấy kết quả bài thi bạn đang tìm kiếm."
+          action={{
+            label: "Quay lại danh sách",
+            onClick: () => navigate("/tests"),
+          }}
+        />
       </div>
     );
   }

@@ -213,9 +213,11 @@ const VocabularyList: React.FC<VocabularyListProps> = ({
 
   if (vocabulary.length === 0) {
     return (
-      <div className="flex justify-center items-center p-8">
-        <EmptyState description="Không có từ vựng cho bài học này" />
-      </div>
+      <EmptyState
+        type="data"
+        title="Chưa có từ vựng"
+        description="Bài học này chưa có từ vựng nào. Hãy thử bài học khác nhé!"
+      />
     );
   }
 

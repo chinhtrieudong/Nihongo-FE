@@ -97,6 +97,14 @@ module.exports = {
         osaka: ["var(--kanji-font-family)", "system-ui", "sans-serif"],
         kosugi: ["var(--kanji-font-family)", "system-ui", "sans-serif"],
       },
+      fontSize: {
+        xs: ["0.8125rem", { lineHeight: "1.125rem" }],
+        sm: ["0.9375rem", { lineHeight: "1.375rem" }],
+        base: ["1.0625rem", { lineHeight: "1.625rem" }],
+        lg: ["1.25rem", { lineHeight: "1.75rem" }],
+        xl: ["1.375rem", { lineHeight: "1.75rem" }],
+        "2xl": ["1.625rem", { lineHeight: "2rem" }],
+      },
       animation: {
         "fade-in": "fadeIn 0.5s ease-in-out",
         "slide-up": "slideUp 0.3s ease-out",

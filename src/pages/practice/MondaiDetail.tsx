@@ -6,12 +6,12 @@ import {
   Button,
   Tag,
   Spin,
-  Empty,
   Badge,
   Radio,
   Space,
   Input,
 } from "antd";
+import { EmptyState } from "../../components/common";
 import {
   ArrowLeft,
   PenTool,
@@ -176,12 +176,15 @@ const MondaiDetail: React.FC = () => {
   if (error || !mondaiData || !mondaiData.data.length) {
     return (
       <div className="min-h-full bg-bg p-8">
-        <Empty description={error || "Không có dữ liệu"} />
-        <div className="text-center mt-4">
-          <Button onClick={() => navigate("/practice")} icon={<ArrowLeft className="w-4 h-4" />}>
-            Quay lại
-          </Button>
-        </div>
+        <EmptyState
+          type={error ? "error" : "data"}
+          title={error ? "Không thể tải dữ liệu" : "Không có dữ liệu"}
+          description={error || "Không có dữ liệu bài tập cho bài học này."}
+          action={{
+            label: "Quay lại Practice",
+            onClick: () => navigate("/practice"),
+          }}
+        />
       </div>
     );
   }

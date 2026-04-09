@@ -3,6 +3,7 @@ import { useLocation, useNavigate, useParams } from "react-router-dom";
 import { lessonAPI } from "../../services/api";
 import { Volume2, ArrowLeft, ChevronLeft, ChevronRight } from "lucide-react";
 import { Card, Button, Row, Col } from "antd";
+import { EmptyState } from "../../components/common";
 import { KanjiItem, KanjiDetailResponse } from "../../types/kanji";
 import { useAppSelector } from "../../store/hooks";
 import { getFontPreset } from "../../constants/fonts";
@@ -128,14 +129,16 @@ const KanjiDetail: React.FC<KanjiDetailProps> = ({
 
   if (!kanjiData) {
     return (
-      <div className="text-center py-12">
-        <div className="text-6xl mb-4 kanji-text">漢</div>
-        <h3 className="text-lg font-semibold text-secondary-900 dark:text-secondary-600 mb-2 font-sans">
-          Không tìm thấy Hán tự
-        </h3>
-        <p className="text-secondary-600 dark:text-secondary-800 font-sans">
-          Vui lòng kiểm tra lại đường dẫn hoặc thử tìm kiếm Hán tự khác.
-        </p>
+      <div className="min-h-full bg-bg p-8">
+        <EmptyState
+          type="error"
+          title="Không tìm thấy Hán tự"
+          description="Vui lòng kiểm tra lại đường dẫn hoặc thử tìm kiếm Hán tự khác."
+          action={{
+            label: backLabel,
+            onClick: handleBack,
+          }}
+        />
       </div>
     );
   }

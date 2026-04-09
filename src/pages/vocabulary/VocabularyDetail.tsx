@@ -5,7 +5,8 @@
 
 import React, { useState, useEffect, useMemo, useCallback } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import { Button, Typography, Empty, Spin, Tabs, Statistic, Row, Col, Space } from "antd";
+import { Button, Typography, Spin, Tabs, Statistic, Row, Col, Space } from "antd";
+import { EmptyState } from "../../components/common";
 import { ArrowLeft, Volume2, BookOpen, Layers, Star, CheckCircle, XCircle, RotateCcw, ChevronLeft, ChevronRight, Target } from "lucide-react";
 import VocabularyFlashcard from "../../components/vocabulary/VocabularyFlashcard";
 import { useResponsive } from "../../hooks/useResponsive";
@@ -256,12 +257,15 @@ const VocabularyDetail: React.FC = () => {
   if (error || vocabularyItems.length === 0) {
     return (
       <div className="min-h-full bg-bg p-8">
-        <Empty description={error || "Không có dữ liệu từ vựng"} />
-        <div className="text-center mt-4">
-          <Button onClick={handleBack} icon={<ArrowLeft className="w-4 h-4" />}>
-            Quay lại
-          </Button>
-        </div>
+        <EmptyState
+          type={error ? "error" : "data"}
+          title={error ? "Không thể tải dữ liệu" : "Chưa có từ vựng"}
+          description={error || "Bài học này chưa có từ vựng nào."}
+          action={{
+            label: "Quay lại",
+            onClick: handleBack,
+          }}
+        />
       </div>
     );
   }

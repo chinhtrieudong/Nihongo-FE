@@ -108,13 +108,16 @@
   --focus-ring: #3b82f6;
 }
 
-/* Smooth transitions for theme switching */
-* {
-  transition:
-    background-color 0.2s ease,
-    color 0.2s ease,
-    border-color 0.2s ease,
-    box-shadow 0.2s ease;
+/* Smooth transitions for theme switching - applied selectively for performance */
+html {
+  transition: background-color 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+              color 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+body,
+#root {
+  transition: background-color 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+              color 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 /* Enhanced transitions for specific components */
@@ -123,37 +126,40 @@
 .bg-surface-1,
 .bg-surface-2,
 .bg-surface-3 {
-  transition: background-color 0.2s ease;
+  transition: background-color 0.35s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .text-text-main,
 .text-text-sub,
 .text-text-secondary,
 .text-text-primary {
-  transition: color 0.2s ease;
+  transition: color 0.35s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .border-border,
 .border-border-light,
 .border-border-default,
 .border-border-dark {
-  transition: border-color 0.2s ease;
+  transition: border-color 0.35s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* Button transitions */
+/* Button transitions - keep interactive feedback fast, theme transition smooth */
 button,
 .btn-primary,
 .btn-secondary {
-  transition: all 0.2s ease;
+  transition: background-color 0.35s cubic-bezier(0.4, 0, 0.2, 1),
+              border-color 0.35s cubic-bezier(0.4, 0, 0.2, 1),
+              color 0.35s cubic-bezier(0.4, 0, 0.2, 1),
+              transform 0.15s ease;
 }
 
 /* Card transitions */
 .card,
 .ant-card {
   transition:
-    background-color 0.2s ease,
-    border-color 0.2s ease,
-    box-shadow 0.2s ease;
+    background-color 0.35s cubic-bezier(0.4, 0, 0.2, 1),
+    border-color 0.35s cubic-bezier(0.4, 0, 0.2, 1),
+    box-shadow 0.35s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 /* Input transitions */
@@ -161,17 +167,64 @@ input,
 .input-field,
 .ant-input {
   transition:
-    background-color 0.2s ease,
-    border-color 0.2s ease,
-    color 0.2s ease;
+    background-color 0.35s cubic-bezier(0.4, 0, 0.2, 1),
+    border-color 0.35s cubic-bezier(0.4, 0, 0.2, 1),
+    color 0.35s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 /* Select transitions */
 .ant-select-selector {
   transition:
-    background-color 0.2s ease,
-    border-color 0.2s ease,
-    color 0.2s ease !important;
+    background-color 0.35s cubic-bezier(0.4, 0, 0.2, 1),
+    border-color 0.35s cubic-bezier(0.4, 0, 0.2, 1),
+    color 0.35s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+/* Ant Design Menu transitions */
+.ant-menu,
+.ant-menu-item,
+.ant-menu-submenu-title {
+  transition: background-color 0.35s cubic-bezier(0.4, 0, 0.2, 1),
+              color 0.35s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+/* Ant Design Table transitions */
+.ant-table,
+.ant-table-thead > tr > th,
+.ant-table-tbody > tr > td {
+  transition: background-color 0.35s cubic-bezier(0.4, 0, 0.2, 1),
+              color 0.35s cubic-bezier(0.4, 0, 0.2, 1),
+              border-color 0.35s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+/* Ant Design Layout transitions */
+.ant-layout,
+.ant-layout-header,
+.ant-layout-sider,
+.ant-layout-content {
+  transition: background-color 0.35s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+/* Ant Design Switch transitions */
+.ant-switch {
+  transition: background-color 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+/* Ant Design Modal/Drawer transitions */
+.ant-modal-content,
+.ant-drawer-content {
+  transition: background-color 0.35s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+/* Ant Design Tabs transitions */
+.ant-tabs-nav::before {
+  transition: border-bottom-color 0.35s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+/* Ant Design Dropdown/Popover transitions */
+.ant-dropdown-menu,
+.ant-popover-inner {
+  transition: background-color 0.35s cubic-bezier(0.4, 0, 0.2, 1) !important;
 }
 
 /* Disable transitions for specific elements that shouldn't animate */

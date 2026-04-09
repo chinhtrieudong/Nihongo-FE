@@ -40,8 +40,8 @@ export default defineConfig({
 
           // Feature chunks
           "kanji-chunk": [
-            "./src/pages/KanjiDetail",
-            "./src/pages/RadicalDetail",
+            "./src/pages/kanji/KanjiDetail",
+            "./src/pages/kanji/RadicalDetail",
           ],
           "pronunciation-chunk": ["./src/pages/Pronunciation"],
           "conversation-chunk": [
