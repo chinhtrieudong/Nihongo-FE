@@ -6,8 +6,8 @@
 import React, { useState, useEffect, useMemo, useCallback } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { Button, Typography, Spin, Tabs, Statistic, Row, Col, Space } from "antd";
-import { EmptyState } from "../../components/common";
-import { ArrowLeft, Volume2, BookOpen, Layers, Star, CheckCircle, XCircle, RotateCcw, ChevronLeft, ChevronRight, Target } from "lucide-react";
+import { EmptyState, LessonNavigation } from "../../components/common";
+import { ArrowLeft, Volume2, BookOpen, Layers, Star, CheckCircle, XCircle, RotateCcw, Target } from "lucide-react";
 import VocabularyFlashcard from "../../components/vocabulary/VocabularyFlashcard";
 import { useResponsive } from "../../hooks/useResponsive";
 import { useVocabulary, useLessons } from "../../hooks/useVocabulary";
@@ -82,6 +82,77 @@ const VocabularyDetail: React.FC = () => {
   const [flashcardLessonKey, setFlashcardLessonKey] = useState<string>("");
   type SessionStatus = "unanswered" | "known" | "unknown";
   const [cardStatus, setCardStatus] = useState<Record<string, SessionStatus>>({});
+
+  // Favorites state
+  const [favorites, setFavorites] = useState<Set<string>>(() => {
+    const saved = localStorage.getItem('vocabulary-favorites');
+    return saved ? new Set(JSON.parse(saved)) : new Set();
+  });
+
+  // Save favorites to localStorage
+  useEffect(() => {
+    localStorage.setItem('vocabulary-favorites', JSON.stringify(Array.from(favorites)));
+  }, [favorites]);
+
+  const toggleFavorite = useCallback((itemId: string) => {
+    setFavorites(prev => {
+      const newFavorites = new Set(prev);
+      if (newFavorites.has(itemId)) {
+        newFavorites.delete(itemId);
+      } else {
+        newFavorites.add(itemId);
+      }
+      return newFavorites;
+    });
+  }, []);
+
+  // Quiz mode state
+  const [showQuiz, setShowQuiz] = useState(false);
+  const [quizQuestionIndex, setQuizQuestionIndex] = useState(0);
+  const [quizQuestions, setQuizQuestions] = useState<VocabularyItem[]>([]);
+  const [quizScore, setQuizScore] = useState(0);
+  const [quizMode, setQuizMode] = useState<'jp-to-vi' | 'vi-to-jp'>('jp-to-vi');
+  const [selectedAnswer, setSelectedAnswer] = useState<string | null>(null);
+  const [showAnswerResult, setShowAnswerResult] = useState(false);
+  const [isAnswerCorrect, setIsAnswerCorrect] = useState(false);
+
+  const startQuiz = useCallback((mode: 'jp-to-vi' | 'vi-to-jp') => {
+    setQuizMode(mode);
+    setQuizQuestions([...vocabularyItems].sort(() => Math.random() - 0.5));
+    setQuizQuestionIndex(0);
+    setQuizScore(0);
+    setSelectedAnswer(null);
+    setShowAnswerResult(false);
+    setIsAnswerCorrect(false);
+    setShowQuiz(true);
+  }, [vocabularyItems]);
+
+  const handleQuizAnswer = useCallback((answer: string, isCorrect: boolean) => {
+    setSelectedAnswer(answer);
+    setIsAnswerCorrect(isCorrect);
+    setShowAnswerResult(true);
+    if (isCorrect) {
+      setQuizScore(prev => prev + 1);
+    }
+  }, []);
+
+  const nextQuizQuestion = useCallback(() => {
+    if (quizQuestionIndex < quizQuestions.length - 1) {
+      setQuizQuestionIndex(prev => prev + 1);
+      setSelectedAnswer(null);
+      setShowAnswerResult(false);
+      setIsAnswerCorrect(false);
+    } else {
+      setShowQuiz(false);
+    }
+  }, [quizQuestionIndex, quizQuestions.length]);
+
+  const endQuiz = useCallback(() => {
+    setShowQuiz(false);
+  }, []);
+
+  const currentQuizQuestion = quizQuestions[quizQuestionIndex];
+  const quizProgress = quizQuestions.length > 0 ? ((quizQuestionIndex + 1) / quizQuestions.length) * 100 : 0;
 
   // Reset flashcard state when navigating between lessons/textbooks
   useEffect(() => {
@@ -319,8 +390,15 @@ const VocabularyDetail: React.FC = () => {
 
                 {/* Actions */}
                 <div className="flex items-center gap-1 flex-shrink-0">
-                  <button className="p-2 rounded-lg text-text-sub hover:text-yellow-500 hover:bg-yellow-500/10 transition-colors">
-                    <Star className="w-4 h-4" />
+                  <button
+                    onClick={() => toggleFavorite(item.id)}
+                    className={`p-2 rounded-lg transition-colors ${
+                      favorites.has(item.id)
+                        ? "text-yellow-500 hover:text-yellow-600 hover:bg-yellow-500/10"
+                        : "text-text-sub hover:text-yellow-500 hover:bg-yellow-500/10"
+                    }`}
+                  >
+                    <Star className={`w-4 h-4 ${favorites.has(item.id) ? "fill-current" : ""}`} />
                   </button>
                   <button
                     onClick={() => speakText(item.hiragana)}
@@ -360,6 +438,182 @@ const VocabularyDetail: React.FC = () => {
         </div>
       ),
     },
+    {
+      key: "quiz",
+      label: (
+        <span className="flex items-center gap-2">
+          <Target className="w-4 h-4" />
+          Quiz
+        </span>
+      ),
+      children: (
+        <div className="py-8">
+          {!showQuiz ? (
+            <div className="text-center">
+              <div className="mb-6">
+                <h3 className="text-xl font-semibold text-text-main mb-2">Chọn chế độ quiz</h3>
+                <p className="text-text-sub">Kiểm tra kiến thức từ vựng của bạn</p>
+              </div>
+              <div className="flex justify-center gap-4">
+                <Button
+                  type="primary"
+                  size="large"
+                  onClick={() => startQuiz('jp-to-vi')}
+                  className="h-12 px-8 rounded-xl"
+                >
+                  Tiếng Nhật → Tiếng Việt
+                </Button>
+                <Button
+                  type="default"
+                  size="large"
+                  onClick={() => startQuiz('vi-to-jp')}
+                  className="h-12 px-8 rounded-xl"
+                >
+                  Tiếng Việt → Tiếng Nhật
+                </Button>
+              </div>
+            </div>
+          ) : (
+            <div className="max-w-2xl mx-auto">
+              {/* Quiz Progress */}
+              <div className="mb-6">
+                <div className="flex items-center justify-between mb-2">
+                  <Text className="text-text-sub">
+                    Câu {quizQuestionIndex + 1} / {quizQuestions.length}
+                  </Text>
+                  <Text className="text-text-sub">
+                    Điểm: {quizScore}
+                  </Text>
+                </div>
+                <div className="h-2 bg-surface-2 rounded-full overflow-hidden">
+                  <div
+                    className="h-full bg-blue-500 transition-all duration-300"
+                    style={{ width: `${quizProgress}%` }}
+                  />
+                </div>
+              </div>
+
+              {/* Quiz Question */}
+              {currentQuizQuestion && (
+                <div className="bg-surface-1 rounded-xl border border-border p-6 mb-6">
+                  <div className="text-center mb-6">
+                    {quizMode === 'jp-to-vi' ? (
+                      <>
+                        <div className="text-4xl font-bold text-text-main kanji-text mb-2">
+                          {currentQuizQuestion.kanji || currentQuizQuestion.hiragana}
+                        </div>
+                        {currentQuizQuestion.kanji && currentQuizQuestion.hiragana !== currentQuizQuestion.kanji && (
+                          <div className="text-xl text-blue-500 jp-text">
+                            {currentQuizQuestion.hiragana}
+                          </div>
+                        )}
+                      </>
+                    ) : (
+                      <div className="text-3xl font-semibold text-text-main">
+                        {currentQuizQuestion.meaning}
+                      </div>
+                    )}
+                  </div>
+
+                  {/* Answer Options */}
+                  {!showAnswerResult ? (
+                    <div className="grid gap-3">
+                      {(() => {
+                        const options = quizMode === 'jp-to-vi'
+                          ? (() => {
+                              const allMeanings = vocabularyItems.map(v => v.meaning);
+                              const wrongAnswers = allMeanings
+                                .filter(m => m !== currentQuizQuestion.meaning)
+                                .sort(() => Math.random() - 0.5)
+                                .slice(0, 3);
+                              return [...wrongAnswers, currentQuizQuestion.meaning].sort(() => Math.random() - 0.5);
+                            })()
+                          : (() => {
+                              const allWords = vocabularyItems.map(v => ({ word: v.kanji || v.hiragana, hiragana: v.hiragana }));
+                              const wrongAnswers = allWords
+                                .filter(w => w.word !== (currentQuizQuestion.kanji || currentQuizQuestion.hiragana))
+                                .sort(() => Math.random() - 0.5)
+                                .slice(0, 3);
+                              return [...wrongAnswers, { word: currentQuizQuestion.kanji || currentQuizQuestion.hiragana, hiragana: currentQuizQuestion.hiragana }].sort(() => Math.random() - 0.5);
+                            })();
+
+                        return options.map((option, idx) => (
+                          <button
+                            key={idx}
+                            onClick={() => {
+                              const isCorrect = quizMode === 'jp-to-vi'
+                                ? option === currentQuizQuestion.meaning
+                                : typeof option === 'object' && option.word === (currentQuizQuestion.kanji || currentQuizQuestion.hiragana);
+                              handleQuizAnswer(quizMode === 'jp-to-vi' ? option as string : (option as any).word, isCorrect);
+                            }}
+                            className="w-full p-4 text-left rounded-lg border border-border hover:border-blue-400 hover:bg-surface-2 transition-all"
+                          >
+                            <span className="text-lg">
+                              {quizMode === 'jp-to-vi'
+                                ? option as string
+                                : typeof option === 'object'
+                                  ? `${(option as any).word}${(option as any).hiragana !== (option as any).word ? ` (${(option as any).hiragana})` : ''}`
+                                  : option
+                              }
+                            </span>
+                          </button>
+                        ));
+                      })()}
+                    </div>
+                  ) : (
+                    <div className="text-center">
+                      <div className={`text-2xl font-bold mb-4 ${isAnswerCorrect ? 'text-green-500' : 'text-red-500'}`}>
+                        {isAnswerCorrect ? '✓ Chính xác!' : '✗ Sai rồi!'}
+                      </div>
+                      {!isAnswerCorrect && (
+                        <div className="mb-4">
+                          <Text className="text-text-sub">Đáp án đúng: </Text>
+                          <Text className="text-text-main font-semibold">
+                            {quizMode === 'jp-to-vi'
+                              ? currentQuizQuestion.meaning
+                              : `${currentQuizQuestion.kanji || currentQuizQuestion.hiragana} (${currentQuizQuestion.hiragana})`
+                            }
+                          </Text>
+                        </div>
+                      )}
+                      <Button
+                        type="primary"
+                        size="large"
+                        onClick={nextQuizQuestion}
+                        className="h-12 px-8 rounded-xl"
+                      >
+                        {quizQuestionIndex < quizQuestions.length - 1 ? 'Câu tiếp theo' : 'Kết thúc'}
+                      </Button>
+                    </div>
+                  )}
+                </div>
+              )}
+
+              {/* Quiz Complete */}
+              {quizQuestionIndex >= quizQuestions.length - 1 && showAnswerResult && (
+                <div className="mt-6 bg-surface-1 rounded-xl border border-border p-6 text-center">
+                  <h3 className="text-2xl font-bold text-text-main mb-2">Hoàn thành!</h3>
+                  <div className="text-4xl font-bold text-blue-500 mb-4">
+                    {quizScore} / {quizQuestions.length}
+                  </div>
+                  <Text className="text-text-sub mb-4">
+                    {Math.round((quizScore / quizQuestions.length) * 100)}% chính xác
+                  </Text>
+                  <Button
+                    type="primary"
+                    size="large"
+                    onClick={endQuiz}
+                    className="h-12 px-8 rounded-xl"
+                  >
+                    Đóng
+                  </Button>
+                </div>
+              )}
+            </div>
+          )}
+        </div>
+      ),
+    },
   ];
 
   return (
@@ -374,24 +628,13 @@ const VocabularyDetail: React.FC = () => {
             Quay lại
           </Button>
 
-          <Space>
-            <Button
-              onClick={handlePrevLesson}
-              disabled={lessonNum <= 1}
-            >
-              <span className="flex items-center gap-1">
-                <ChevronLeft className="w-4 h-4" /> Bài trước
-              </span>
-            </Button>
-            <Button
-              onClick={handleNextLesson}
-              disabled={lessonNum >= (lessons.length || 25)}
-            >
-              <span className="flex items-center gap-1">
-                Bài sau <ChevronRight className="w-4 h-4" />
-              </span>
-            </Button>
-          </Space>
+          <LessonNavigation
+            currentLesson={lessonNum}
+            totalLessons={lessons.length || 25}
+            onPrev={handlePrevLesson}
+            onNext={handleNextLesson}
+            showSelect={false}
+          />
         </div>
 
         {/* Title Section */}
