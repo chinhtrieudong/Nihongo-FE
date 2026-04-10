@@ -240,4 +240,19 @@ export const pronunciationAPI = {
     const response = await api.delete(`/pronunciation/practice/${practiceId}`);
     return response.data;
   },
+
+  // Speech-to-text using OpenAI Whisper API (fallback for Web Speech API)
+  speechToText: async (
+    audioData: string,
+    language: string = "ja",
+  ): Promise<{
+    text: string;
+    language: string;
+  }> => {
+    const response = await api.post("/pronunciation/speech-to-text", {
+      audioData,
+      language,
+    });
+    return response.data.data;
+  },
 };

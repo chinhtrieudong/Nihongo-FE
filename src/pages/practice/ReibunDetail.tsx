@@ -9,7 +9,7 @@ import {
   Badge,
   List,
 } from "antd";
-import { EmptyState } from "../../components/common";
+import { EmptyState, LessonNavigation } from "../../components/common";
 import {
   ArrowLeft,
   Languages,
@@ -130,13 +130,22 @@ const ReibunDetail: React.FC = () => {
     <div className="min-h-full bg-bg academic-canvas">
       <div className="max-w-4xl mx-auto px-4 py-4">
         {/* Header */}
-        <Button
-          onClick={() => navigate("/practice")}
-          icon={<ArrowLeft className="w-4 h-4" />}
-          className="mb-2"
-        >
-          Quay lại
-        </Button>
+        <div className="flex items-center justify-between mb-2">
+          <Button
+            onClick={() => navigate("/practice")}
+            icon={<ArrowLeft className="w-4 h-4" />}
+          >
+            Quay lại
+          </Button>
+          
+          <LessonNavigation
+            currentLesson={Number(lessonNumber)}
+            totalLessons={50}
+            onPrev={() => navigate(`/practice/reibun/${Number(lessonNumber) - 1}`)}
+            onNext={() => navigate(`/practice/reibun/${Number(lessonNumber) + 1}`)}
+            onSelectLesson={(value) => navigate(`/practice/reibun/${value}`)}
+          />
+        </div>
 
         {/* Title */}
         <div className="flex items-center gap-3 mb-3">
@@ -192,9 +201,7 @@ const ReibunDetail: React.FC = () => {
                     </Tag>
                     <div className="bg-white dark:bg-secondary-800 border border-border rounded-xl px-3 py-2 rounded-tl-none">
                       <Text strong className="text-text-main block">{line.text}</Text>
-                      <Text className="text-text-sub text-sm block">{line.romaji}</Text>
-                      <Text className="text-primary-600 dark:text-primary-400 text-sm italic">{line.translation}</Text>
-                      <Text className="text-text-sub text-xs block mt-1"> {line.context}</Text>
+                      <Text className="text-text-sub text-xs block mt-1">{line.context}</Text>
                     </div>
                   </div>
                 </div>

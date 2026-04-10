@@ -4,4 +4,5 @@ export { default as PageTitle } from "./PageTitle";
 export { default as ProtectedRoute } from "./ProtectedRoute";
 export { default as ThemeProvider } from "./ThemeProvider";
 export { default as SearchFilter } from "./SearchFilter";
+export { default as LessonNavigation } from "./LessonNavigation";
 export type { SearchFilterProps, FilterOption } from "./SearchFilter";

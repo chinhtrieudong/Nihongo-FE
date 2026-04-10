@@ -11,7 +11,7 @@ import {
   Space,
   Input,
 } from "antd";
-import { EmptyState } from "../../components/common";
+import { EmptyState, LessonNavigation } from "../../components/common";
 import {
   ArrowLeft,
   PenTool,
@@ -197,13 +197,22 @@ const MondaiDetail: React.FC = () => {
     <div className="min-h-full bg-bg academic-canvas">
       <div className="max-w-4xl mx-auto px-4 py-4">
         {/* Header */}
-        <Button
-          onClick={() => navigate("/practice")}
-          icon={<ArrowLeft className="w-4 h-4" />}
-          className="mb-2"
-        >
-          Quay lại
-        </Button>
+        <div className="flex items-center justify-between mb-2">
+          <Button
+            onClick={() => navigate("/practice")}
+            icon={<ArrowLeft className="w-4 h-4" />}
+          >
+            Quay lại
+          </Button>
+          
+          <LessonNavigation
+            currentLesson={Number(lessonNumber)}
+            totalLessons={50}
+            onPrev={() => navigate(`/practice/mondai/${Number(lessonNumber) - 1}`)}
+            onNext={() => navigate(`/practice/mondai/${Number(lessonNumber) + 1}`)}
+            onSelectLesson={(value) => navigate(`/practice/mondai/${value}`)}
+          />
+        </div>
 
         {/* Title */}
         <div className="flex items-center gap-3 mb-3">
@@ -311,7 +320,6 @@ const MondaiDetail: React.FC = () => {
                     <div className="mb-3">
                       <Tag color="blue" className="mb-2">Câu {idx + 1}</Tag>
                       <Text strong className="text-text-main block text-base">{item.question}</Text>
-                      <Text className="text-text-sub text-sm block">{item.question_translation}</Text>
                     </div>
 
                     {!showResults ? (
@@ -331,7 +339,6 @@ const MondaiDetail: React.FC = () => {
                         {!isCorrect && (
                           <div className="p-2 bg-info/10 rounded">
                             <Text strong className="text-info">Đáp án: {item.correct_answer}</Text>
-                            <Text className="text-text-sub text-sm block">{item.correct_answer_translation}</Text>
                           </div>
                         )}
                         <div className="p-2 bg-secondary-50 dark:bg-secondary-800 rounded text-sm">
@@ -374,7 +381,6 @@ const MondaiDetail: React.FC = () => {
                           <Text strong className="text-text-sub w-12 flex-shrink-0">{line.speaker}</Text>
                           <div>
                             <Text className="text-text-main block">{line.japanese}</Text>
-                            <Text className="text-text-sub text-sm">{line.translation}</Text>
                           </div>
                         </div>
                       ))}

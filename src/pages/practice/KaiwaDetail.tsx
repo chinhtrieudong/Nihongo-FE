@@ -10,7 +10,7 @@ import {
   Collapse,
   List,
 } from "antd";
-import { EmptyState } from "../../components/common";
+import { EmptyState, LessonNavigation } from "../../components/common";
 import {
   ArrowLeft,
   MessageSquare,
@@ -158,13 +158,22 @@ const KaiwaDetail: React.FC = () => {
       <div className="max-w-4xl mx-auto px-4 py-4">
         {/* Header */}
         <div className="mb-4">
-          <Button
-            onClick={() => navigate("/practice")}
-            icon={<ArrowLeft className="w-4 h-4" />}
-            className="mb-2"
-          >
-            Quay lại
-          </Button>
+          <div className="flex items-center justify-between mb-2">
+            <Button
+              onClick={() => navigate("/practice")}
+              icon={<ArrowLeft className="w-4 h-4" />}
+            >
+              Quay lại
+            </Button>
+            
+            <LessonNavigation
+              currentLesson={Number(lessonNumber)}
+              totalLessons={50}
+              onPrev={() => navigate(`/practice/kaiwa/${Number(lessonNumber) - 1}`)}
+              onNext={() => navigate(`/practice/kaiwa/${Number(lessonNumber) + 1}`)}
+              onSelectLesson={(value) => navigate(`/practice/kaiwa/${value}`)}
+            />
+          </div>
 
           {/* Compact Title */}
           <div className="flex items-center gap-3 mb-3">
@@ -247,12 +256,8 @@ const KaiwaDetail: React.FC = () => {
                             : "bg-primary-50 dark:bg-primary-900/20 border border-primary-200 dark:border-primary-800 rounded-tr-none"
                         }`}
                       >
-                        <p className="text-lg font-medium text-text-main mb-1 leading-relaxed">
+                        <p className="text-lg font-medium text-text-main leading-relaxed">
                           {line.jpText}
-                        </p>
-                        <p className="text-sm text-text-sub mb-1">{line.romaji}</p>
-                        <p className="text-sm text-primary-600 dark:text-primary-400 italic">
-                          {line.viTranslation}
                         </p>
                       </div>
                     </div>

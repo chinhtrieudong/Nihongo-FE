@@ -10,7 +10,7 @@ import {
   Collapse,
   List,
 } from "antd";
-import { EmptyState } from "../../components/common";
+import { EmptyState, LessonNavigation } from "../../components/common";
 import {
   ArrowLeft,
   Scroll,
@@ -113,13 +113,22 @@ const BunkeiDetail: React.FC = () => {
     <div className="min-h-full bg-bg academic-canvas">
       <div className="max-w-4xl mx-auto px-4 py-4">
         {/* Header */}
-        <Button
-          onClick={() => navigate("/practice")}
-          icon={<ArrowLeft className="w-4 h-4" />}
-          className="mb-2"
-        >
-          Quay lại
-        </Button>
+        <div className="flex items-center justify-between mb-2">
+          <Button
+            onClick={() => navigate("/practice")}
+            icon={<ArrowLeft className="w-4 h-4" />}
+          >
+            Quay lại
+          </Button>
+          
+          <LessonNavigation
+            currentLesson={Number(lessonNumber)}
+            totalLessons={50}
+            onPrev={() => navigate(`/practice/bunkei/${Number(lessonNumber) - 1}`)}
+            onNext={() => navigate(`/practice/bunkei/${Number(lessonNumber) + 1}`)}
+            onSelectLesson={(value) => navigate(`/practice/bunkei/${value}`)}
+          />
+        </div>
 
         {/* Title */}
         <div className="flex items-center gap-3 mb-3">
@@ -171,17 +180,10 @@ const BunkeiDetail: React.FC = () => {
                     <Text className="text-text-main font-mono">{item.structure}</Text>
                   </div>
 
-                  {/* Meaning */}
-                  <div className="mb-2">
-                    <Text className="text-text-sub text-xs block mb-1">Ý nghĩa</Text>
-                    <Text className="text-text-main">{item.meaning}</Text>
-                  </div>
-
                   {/* Example */}
                   <div className="border-t border-border pt-2 mt-2">
                     <Text className="text-text-sub text-xs block mb-1">Ví dụ</Text>
                     <Text strong className="text-text-main block">{item.example_jp}</Text>
-                    <Text className="text-text-sub text-sm">{item.example_vi}</Text>
                   </div>
 
                   {/* Explanation if available */}

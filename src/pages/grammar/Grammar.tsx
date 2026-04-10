@@ -10,7 +10,8 @@ import {
   Statistic,
   Divider,
   Collapse,
-  List
+  List,
+  Select
 } from 'antd';
 import type { SelectProps } from 'antd';
 import { FlaskConical, Book, CheckCircle } from 'lucide-react';
@@ -54,6 +55,7 @@ interface GrammarData {
 const Grammar: React.FC = () => {
   const [selectedLevel, setSelectedLevel] = useState<string[]>(['N5']);
   const [selectedCategory, setSelectedCategory] = useState<string[]>([]);
+  const [selectedLesson, setSelectedLesson] = useState<number | null>(null);
   const [searchQuery, setSearchQuery] = useState<string>('');
   const [grammarData, setGrammarData] = useState<GrammarData | null>(null);
   const [filteredLessons, setFilteredLessons] = useState<Lesson[]>([]);
@@ -194,7 +196,12 @@ const Grammar: React.FC = () => {
     );
   };
 
-  const totalGrammars = filteredLessons.reduce((sum, lesson) => sum + lesson.grammars.length, 0);
+  // Filter lessons by selected lesson number
+  const displayLessons = selectedLesson
+    ? filteredLessons.filter(lesson => lesson.lessonNumber === selectedLesson)
+    : filteredLessons;
+
+  const totalGrammars = displayLessons.reduce((sum, lesson) => sum + lesson.grammars.length, 0);
 
   return (
     <div className="grammar-page min-h-full bg-bg academic-canvas">
@@ -217,6 +224,16 @@ const Grammar: React.FC = () => {
           onSearchChange={handleSearch}
           className="mb-6"
           filters={[
+            {
+              key: 'lesson',
+              value: selectedLesson ? String(selectedLesson) : '',
+              placeholder: 'Chọn bài',
+              onChange: (val) => setSelectedLesson(val ? Number(val) : null),
+              options: (grammarData?.lessons || []).map((lesson) => ({
+                value: String(lesson.lessonNumber),
+                label: `Bài ${lesson.lessonNumber}: ${lesson.title}`,
+              })),
+            },
             {
               key: 'level',
               value: selectedLevel,
@@ -280,9 +297,9 @@ const Grammar: React.FC = () => {
               title="Không thể tải dữ liệu"
               description={error}
             />
-          ) : filteredLessons.length > 0 ? (
+          ) : displayLessons.length > 0 ? (
             <div className="space-y-6">
-              {filteredLessons.map((lesson) => (
+              {displayLessons.map((lesson) => (
                 <Card
                   key={lesson.lessonNumber}
                   title={

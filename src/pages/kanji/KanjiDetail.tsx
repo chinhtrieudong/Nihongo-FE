@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
 import { lessonAPI } from "../../services/api";
-import { Volume2, ArrowLeft, ChevronLeft, ChevronRight } from "lucide-react";
+import { Volume2, ArrowLeft } from "lucide-react";
 import { Card, Button, Row, Col } from "antd";
-import { EmptyState } from "../../components/common";
+import { EmptyState, LessonNavigation } from "../../components/common";
 import { KanjiItem, KanjiDetailResponse } from "../../types/kanji";
 import { useAppSelector } from "../../store/hooks";
 import { getFontPreset } from "../../constants/fonts";
@@ -271,27 +271,14 @@ const KanjiDetail: React.FC<KanjiDetailProps> = ({
           </Button>
 
           {allKanji.length > 0 && (
-            <div className="flex items-center gap-2">
-              <Button
-                icon={<ChevronLeft className="w-4 h-4" />}
-                onClick={navigateToPrev}
-                disabled={currentIndex <= 0}
-                className="rounded-xl"
-              >
-                Trước
-              </Button>
-              <span className="text-sm text-text-sub">
-                {currentIndex + 1} / {allKanji.length}
-              </span>
-              <Button
-                icon={<ChevronRight className="w-4 h-4" />}
-                onClick={navigateToNext}
-                disabled={currentIndex >= allKanji.length - 1}
-                className="rounded-xl"
-              >
-                Sau
-              </Button>
-            </div>
+            <LessonNavigation
+              currentLesson={currentIndex + 1}
+              totalLessons={allKanji.length}
+              onPrev={navigateToPrev}
+              onNext={navigateToNext}
+              showSelect={false}
+              showCounter={true}
+            />
           )}
         </div>
       </div>

@@ -28,7 +28,7 @@
   background-image:
     linear-gradient(var(--academic-grid-line) 1px, transparent 1px),
     linear-gradient(90deg, var(--academic-grid-line) 1px, transparent 1px);
-  background-size: 16px 16px;
+  background-size: 24px 24px;
   background-attachment: fixed;
   pointer-events: none;
   z-index: 0;

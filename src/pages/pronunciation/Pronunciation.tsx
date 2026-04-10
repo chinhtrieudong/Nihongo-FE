@@ -50,7 +50,7 @@ const Pronunciation: React.FC = () => {
   const [lastScore, setLastScore] = useState<number | null>(null);
   const [lastFeedback, setLastFeedback] = useState("");
   const [recognitionError, setRecognitionError] = useState("");
-  const [manualTranscript, setManualTranscript] = useState("");
+  const [networkRetryCount, setNetworkRetryCount] = useState(0);
   const { fontPreset } = useAppSelector((state) => state.ui);
   const selectedPreset = getFontPreset(fontPreset);
   const mediaRecorderRef = useRef<MediaRecorder | null>(null);
@@ -60,8 +60,12 @@ const Pronunciation: React.FC = () => {
   const recognitionResultRef = useRef<{ text: string; confidence: number; score: number } | null>(null);
   const isRecordingRef = useRef(false);
   const recognitionRestartRef = useRef(0);
+  const recordedAudioBlobRef = useRef<Blob | null>(null);
   const speechSupported =
     'webkitSpeechRecognition' in window || 'SpeechRecognition' in window;
+  
+  // Check if using HTTPS (required for speech recognition in some browsers)
+  const isSecureContext = window.isSecureContext || location.protocol === 'https:';
   const { message } = AntdApp.useApp();
 
   useEffect(() => {
@@ -133,24 +137,52 @@ const Pronunciation: React.FC = () => {
         // Cancel any ongoing speech
         window.speechSynthesis.cancel();
 
-        // Get available voices and find Japanese voice (prefer Natural if available)
-        const voices = window.speechSynthesis.getVoices();
-        // CHỈ sử dụng Microsoft Nanami Online (Natural)
-        const nanamiNatural = getNanamiNaturalVoice();
-        const preferredJapanese = nanamiNatural;
+        // Helper to get Japanese voice with fallback
+        const getJapaneseVoice = () => {
+          const voices = window.speechSynthesis.getVoices();
+          // Try Microsoft Nanami Natural first
+          const nanamiNatural = getNanamiNaturalVoice();
+          if (nanamiNatural) return nanamiNatural;
+          
+          // Fallback: any Japanese voice
+          const jaVoice = voices.find(v => v.lang?.startsWith('ja'));
+          if (jaVoice) {
+            console.log('Using fallback Japanese voice:', jaVoice.name);
+            return jaVoice;
+          }
+          return null;
+        };
+
+        let preferredJapanese = getJapaneseVoice();
+
+        // If no voices loaded yet, wait for them
+        if (!preferredJapanese && window.speechSynthesis.getVoices().length === 0) {
+          console.log('Voices not loaded yet, waiting...');
+          await new Promise<void>((resolve) => {
+            const checkVoices = () => {
+              preferredJapanese = getJapaneseVoice();
+              if (preferredJapanese || window.speechSynthesis.getVoices().length > 0) {
+                resolve();
+              } else {
+                setTimeout(checkVoices, 100);
+              }
+            };
+            // Timeout after 2 seconds
+            setTimeout(resolve, 2000);
+            checkVoices();
+          });
+        }
 
         const utterance = new SpeechSynthesisUtterance(currentExercise.japanese);
 
-        // Set voice if found, otherwise use default
+        // Set voice if found, otherwise use default with Japanese lang
         if (preferredJapanese) {
           utterance.voice = preferredJapanese;
           utterance.lang = preferredJapanese.lang;
         } else {
-          // Nếu không có Microsoft Nanami, không phát âm
-          console.warn('Microsoft Nanami Online (Natural) not available. Please install the voice.');
-          message.warning('Microsoft Nanami Online (Natural) not available. Please install the voice.');
-          setIsPlaying(false);
-          return;
+          // Fallback: use default voice but set lang to Japanese
+          utterance.lang = 'ja-JP';
+          console.warn('No Japanese voice found, using default voice with ja-JP lang');
         }
 
         utterance.rate = 0.8;
@@ -162,12 +194,18 @@ const Pronunciation: React.FC = () => {
         };
 
         utterance.onerror = (event) => {
-          console.error('Speech synthesis error:', event);
-          message.error('Lỗi phát âm thanh. Trình duyệt có thể không hỗ trợ tiếng Nhật. Vui lòng thử lại.');
+          console.error('Speech synthesis error:', event.error);
+          // Don't show error for cancellation
+          if (event.error !== 'canceled') {
+            message.error(`Lỗi phát âm: ${event.error}. Thử dùng giọng khác hoặc kiểm tra cài đặt.`);
+          }
           setIsPlaying(false);
         };
 
-        window.speechSynthesis.speak(utterance);
+        // Some browsers need a small delay after cancel()
+        setTimeout(() => {
+          window.speechSynthesis.speak(utterance);
+        }, 50);
       } else {
         message.warning('Trình duyệt không hỗ trợ phát âm');
         setIsPlaying(false);
@@ -189,6 +227,82 @@ const Pronunciation: React.FC = () => {
     }
   };
 
+  // Helper to create and start speech recognition
+  const startSpeechRecognition = (retryCount: number = 0) => {
+    if (!speechSupported) return;
+
+    const SpeechRecognition = (window as any).SpeechRecognition || (window as any).webkitSpeechRecognition;
+    const recognition = new SpeechRecognition();
+    recognition.lang = 'ja-JP';
+    recognition.continuous = false;
+    recognition.interimResults = false;
+    recognition.maxAlternatives = 1;
+
+    recognitionRef.current = recognition;
+
+    recognition.onresult = (event: any) => {
+      console.log('🎯 Speech recognition result received');
+      const last = event.results.length - 1;
+      const result = event.results[last];
+
+      if (result.isFinal) {
+        const transcript = result[0].transcript;
+        const confidence = result[0].confidence;
+
+        console.log('✅ Final result:', transcript, 'Confidence:', confidence);
+
+        recognitionResultRef.current = {
+          text: transcript,
+          confidence: confidence,
+          score: 0
+        };
+        // Reset retry count on success
+        setNetworkRetryCount(0);
+      }
+    };
+
+    recognition.onerror = (event: any) => {
+      console.error('❌ Speech recognition error:', event.error);
+      
+      if (event.error === 'no-speech') {
+        setRecognitionError('Không phát hiện giọng nói. Vui lòng nói rõ ràng hơn hoặc nhập thủ công.');
+      } else if (event.error === 'audio-capture') {
+        setRecognitionError('Không tìm thấy microphone. Vui lòng kiểm tra thiết bị.');
+      } else if (event.error === 'not-allowed') {
+        setRecognitionError('Quyền truy cập micro bị từ chối.');
+      } else if (event.error === 'network') {
+        // Retry twice with increasing delay - network errors are usually environmental
+        if (retryCount < 2) {
+          const delay = (retryCount + 1) * 1000;
+          console.log(`🔄 Retrying speech recognition (${retryCount + 1}/2) in ${delay}ms...`);
+          setTimeout(() => {
+            startSpeechRecognition(retryCount + 1);
+          }, delay);
+          return;
+        }
+        setRecognitionError(
+          'Nhận diện giọng nói không khả dụng (cần HTTPS hoặc kết nối Internet). Vui lòng nhập câu tiếng Nhật vào ô bên dưới để chấm điểm.',
+        );
+      } else if (event.error === 'aborted') {
+        console.log('Speech recognition aborted by user');
+      } else {
+        setRecognitionError(`Lỗi nhận diện: ${event.error}. Bạn có thể nhập thủ công.`);
+      }
+    };
+
+    recognition.onend = () => {
+      console.log('🔚 Speech recognition ended');
+    };
+
+    try {
+      recognition.start();
+      console.log('🎤 Speech recognition started' + (retryCount > 0 ? ` (retry ${retryCount})` : ''));
+    } catch (err) {
+      console.error('Failed to start speech recognition:', err);
+      setRecognitionError('Không thể khởi động nhận diện giọng nói. Bạn vẫn có thể thu âm và nhập thủ công.');
+    }
+  };
+
   const handleStartRecording = async () => {
     if (!currentExercise) return;
 
@@ -198,68 +312,12 @@ const Pronunciation: React.FC = () => {
       setShowResults(false);
       setRecordingProgress(0);
       setRecognitionError("");
-      setManualTranscript("");
+      setNetworkRetryCount(0);
       recognitionResultRef.current = null;
+      recordedAudioBlobRef.current = null;
 
-      // Initialize Web Speech API for Japanese recognition
-      if (speechSupported) {
-        const SpeechRecognition = (window as any).SpeechRecognition || (window as any).webkitSpeechRecognition;
-        const recognition = new SpeechRecognition();
-        recognition.lang = 'ja-JP'; // Japanese language
-        recognition.continuous = true;
-        recognition.interimResults = false;
-        recognition.maxAlternatives = 1;
-
-        recognitionRef.current = recognition;
-
-        recognition.onresult = (event: any) => {
-          console.log('🎯 Speech recognition result received');
-          const last = event.results.length - 1;
-          const result = event.results[last];
-
-          if (result.isFinal) {
-            const transcript = result[0].transcript;
-            const confidence = result[0].confidence;
-
-            console.log('✅ Final result:', transcript, 'Confidence:', confidence);
-
-            recognitionResultRef.current = {
-              text: transcript,
-              confidence: confidence,
-              score: 0
-            };
-          }
-        };
-
-        recognition.onerror = (event: any) => {
-          console.error('❌ Speech recognition error:', event.error);
-          if (event.error === 'no-speech') {
-            setRecognitionError('Không phát hiện giọng nói. Vui lòng nói rõ ràng hơn.');
-          } else if (event.error === 'audio-capture') {
-            setRecognitionError('Không tìm thấy microphone. Vui lòng kiểm tra thiết bị.');
-          } else if (event.error === 'not-allowed') {
-            setRecognitionError('Quyền truy cập micro bị từ chối.');
-          } else if (event.error === 'network') {
-            setRecognitionError(
-              'Lỗi network khi nhận diện giọng nói. Tính năng này của trình duyệt có thể cần Internet/Google Speech hoặc bị chặn (VPN/proxy/HTTPS). Bạn có thể nhập transcript thủ công ở ô bên dưới để chấm điểm.',
-            );
-          } else {
-            setRecognitionError(`Lỗi nhận diện: ${event.error}`);
-          }
-        };
-
-        recognition.onend = () => {
-          console.log('🔚 Speech recognition ended');
-        };
-
-        // Start speech recognition
-        try {
-          recognition.start();
-          console.log('🎤 Speech recognition started');
-        } catch (err) {
-          console.error('Failed to start speech recognition:', err);
-        }
-      }
+      // Start speech recognition
+      startSpeechRecognition(0);
 
       // Request microphone access
       const stream = await navigator.mediaDevices.getUserMedia({
@@ -286,6 +344,7 @@ const Pronunciation: React.FC = () => {
         console.log('🛑 Recording stopped, processing audio...');
 
         const audioBlob = new Blob(audioChunksRef.current, { type: 'audio/webm' });
+        recordedAudioBlobRef.current = audioBlob; // Store for fallback STT
         const audioUrl = URL.createObjectURL(audioBlob);
         setRecordedAudioUrl(audioUrl);
 
@@ -332,9 +391,46 @@ const Pronunciation: React.FC = () => {
             message.warning(`Điểm số: ${finalScore}/100`);
           }
         } else {
-          // No speech recognition result - show error
-          setRecognitionError("Không nhận diện được giọng nói. Vui lòng thử lại hoặc nói rõ ràng hơn.");
-          setUserInput("Không có kết quả nhận diện");
+          // No speech recognition result - try backend fallback with Whisper API
+          console.log('No speech recognition result, trying backend fallback...');
+          
+          if (recordedAudioBlobRef.current) {
+            try {
+              // Convert blob to base64
+              const reader = new FileReader();
+              reader.onload = async () => {
+                const base64 = (reader.result as string).split(',')[1];
+                
+                try {
+                  const result = await pronunciationAPI.speechToText(base64, 'ja');
+                  const text = result.text;
+                  
+                  if (text) {
+                    // Calculate score based on text similarity
+                    const similarity = calculateTextSimilarity(currentExercise.japanese, text);
+                    const finalScore = Math.round(similarity * 100);
+                    
+                    setLastScore(finalScore);
+                    setLastFeedback(getImprovementSuggestions(finalScore)[0] || "Ti\u1ebfp t\u1ee5c luy\u1ec7n tá\u0323p!");
+                    setShowResults(true);
+                    setUserInput(`Text nh\u1eadn di\u1ec7n: "${text}" (S\u1eed d\u1ee5ng API d\u1ef1 ph\u00f2ng)`);
+                    
+                    if (finalScore >= 70) {
+                      message.success(`\u0110i\u1ec3m s\u1ed1: ${finalScore}/100`);
+                    } else {
+                      message.warning(`\u0110i\u1ec3m s\u1ed1: ${finalScore}/100`);
+                    }
+                  }
+                } catch (sttError: any) {
+                  console.log('Backend STT failed:', sttError.message);
+                  // Fall back to manual input
+                }
+              };
+              reader.readAsDataURL(recordedAudioBlobRef.current);
+            } catch (error) {
+              console.log('Failed to process audio for backend STT:', error);
+            }
+          }
         }
 
         // Clean up
@@ -790,33 +886,22 @@ const Pronunciation: React.FC = () => {
                   />
                 )}
 
-                {/* Recognition Error & Manual Input */}
-                {recognitionError && (
-                  <div className="w-full max-w-md mt-4">
-                    <Text className="text-error text-sm block mb-2">{recognitionError}</Text>
-                    <div className="flex gap-2 items-center">
-                      <input
-                        className="flex-1 rounded-lg border border-border bg-surface-1 px-3 py-2 text-sm h-10 focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all"
-                        placeholder="Nhập transcript bạn nói..."
-                        value={manualTranscript}
-                        onChange={(e) => setManualTranscript(e.target.value)}
-                        onKeyDown={(e) => {
-                          if (e.key === 'Enter' && manualTranscript.trim()) {
-                            scoreFromText(manualTranscript);
-                          }
-                        }}
-                      />
-                      <Button
-                        type="primary"
-                        onClick={() => scoreFromText(manualTranscript)}
-                        disabled={!manualTranscript.trim()}
-                        className="h-10 px-6"
-                      >
-                        Chấm
-                      </Button>
-                    </div>
+                {/* Speech Toggle & HTTPS Warning */}
+                {speechSupported && (
+                  <div className="w-full max-w-md mt-4 flex flex-wrap items-center gap-2">
+                    {!isSecureContext && (
+                      <Tag color="warning" className="text-xs">Cần HTTPS để nhận diện giọng nói hoạt động tốt</Tag>
+                    )}
                   </div>
                 )}
+
+                {/* Recognition Error Message */}
+                {recognitionError && (
+                  <div className="w-full max-w-md mt-2">
+                    <Text className="text-warning text-sm block">⚠️ {recognitionError}</Text>
+                  </div>
+                )}
+
               </div>
             </Card>
 
