@@ -15,9 +15,9 @@ const TestStatistics: React.FC<TestStatisticsProps> = ({
     averageScore
 }) => {
     return (
-        <Row gutter={[12, 12]} wrap={false}>
+        <Row gutter={[16, 16]} wrap={false}>
             <Col flex="1 1 0">
-                <Card size="small" className="h-full bg-surface-1 border border-border">
+                <Card size="small" className="h-full bg-surface-1 border border-border shadow-sm transition-all duration-300 hover:shadow-md hover:-translate-y-0.5 hover:border-primary/20">
                     <Statistic
                         title={<span className="text-secondary-700 dark:text-secondary-400">Bài thi đã hoàn thành</span>}
                         value={totalTestsCompleted}
@@ -27,7 +27,7 @@ const TestStatistics: React.FC<TestStatisticsProps> = ({
                 </Card>
             </Col>
             <Col flex="1 1 0">
-                <Card size="small" className="h-full bg-surface-1 border border-border">
+                <Card size="small" className="h-full bg-surface-1 border border-border shadow-sm transition-all duration-300 hover:shadow-md hover:-translate-y-0.5 hover:border-primary/20">
                     <Statistic
                         title={<span className="text-secondary-700 dark:text-secondary-400">Điểm trung bình</span>}
                         value={averageScore}

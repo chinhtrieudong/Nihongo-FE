@@ -152,7 +152,7 @@ const BunkeiDetail: React.FC = () => {
             <Card
               key={item.id}
               className="bg-surface-1 border-border"
-              bodyStyle={{ padding: '12px 16px' }}
+              styles={{ body: { padding: '12px 16px' } }}
             >
               <div className="flex items-start gap-3">
                 <div className="w-8 h-8 rounded-full bg-primary-100 flex items-center justify-center flex-shrink-0">

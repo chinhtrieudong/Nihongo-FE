@@ -1,5 +1,5 @@
 import React from "react";
-import { Layout, Button, Switch, Dropdown, Avatar } from "antd";
+import { Layout, Button, Dropdown, Avatar } from "antd";
 import { LogOut, Sun, Moon } from "lucide-react";
 import { useAppSelector, useAppDispatch } from "../../store/hooks";
 import { toggleDarkMode } from "../../store/slices/uiSlice";
@@ -57,12 +57,44 @@ const Header: React.FC = () => {
         </div>
 
         <div className="flex items-center space-x-4">
-          <Switch
-            checked={darkMode}
-            onChange={handleThemeToggle}
-            checkedChildren={<Moon className="w-4 h-4" />}
-            unCheckedChildren={<Sun className="w-4 h-4" />}
-          />
+          <button
+            onClick={handleThemeToggle}
+            className="theme-toggle relative w-12 h-7 rounded-full p-1 transition-all duration-500 ease-spring focus:outline-none focus:ring-2 focus:ring-primary/50"
+            style={{
+              background: darkMode 
+                ? 'linear-gradient(135deg, #1e293b 0%, #0f172a 100%)' 
+                : 'linear-gradient(135deg, #60a5fa 0%, #fbbf24 100%)'
+            }}
+            aria-label={darkMode ? "Switch to light mode" : "Switch to dark mode"}
+          >
+            <div 
+              className={`absolute top-1 w-5 h-5 rounded-full shadow-lg transform transition-all duration-500 ease-spring flex items-center justify-center ${
+                darkMode 
+                  ? 'translate-x-5 bg-slate-800' 
+                  : 'translate-x-0 bg-white'
+              }`}
+            >
+              {darkMode ? (
+                <Moon className="w-3 h-3 text-blue-300" />
+              ) : (
+                <Sun className="w-3 h-3 text-amber-500" />
+              )}
+            </div>
+            <div className="absolute inset-0 rounded-full overflow-hidden">
+              {darkMode ? (
+                <>
+                  <div className="absolute top-1 left-2 w-0.5 h-0.5 bg-white/30 rounded-full animate-pulse" />
+                  <div className="absolute top-2 left-4 w-0.5 h-0.5 bg-white/20 rounded-full animate-pulse delay-75" />
+                  <div className="absolute bottom-2 left-3 w-0.5 h-0.5 bg-white/25 rounded-full animate-pulse delay-150" />
+                </>
+              ) : (
+                <>
+                  <div className="absolute -top-1 -right-1 w-4 h-4 bg-white/30 rounded-full blur-sm" />
+                  <div className="absolute top-0 right-2 w-2 h-2 bg-yellow-300/40 rounded-full blur-sm" />
+                </>
+              )}
+            </div>
+          </button>
 
           <Dropdown
             placement="bottomRight"

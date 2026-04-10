@@ -194,7 +194,7 @@ const KaiwaDetail: React.FC = () => {
           )}
 
           {/* Characters */}
-          <Card className="bg-surface-1 border-border mb-3" bodyStyle={{ padding: '12px 16px' }}>
+          <Card className="bg-surface-1 border-border mb-3" styles={{ body: { padding: '12px 16px' } }}>
             <div className="flex items-center gap-2 mb-3">
               <Users className="w-5 h-5 text-text-sub" />
               <Text strong className="text-text-main">Nhân vật</Text>
@@ -215,7 +215,7 @@ const KaiwaDetail: React.FC = () => {
           </Card>
 
           {/* Dialogue */}
-          <Card className="bg-surface-1 border-border mb-3" bodyStyle={{ padding: '12px 16px' }}>
+          <Card className="bg-surface-1 border-border mb-3" styles={{ body: { padding: '12px 16px' } }}>
             <div className="flex items-center gap-2 mb-4">
               <MessageSquare className="w-5 h-5 text-text-sub" />
               <Text strong className="text-text-main">Hội thoại</Text>
@@ -263,7 +263,7 @@ const KaiwaDetail: React.FC = () => {
           </Card>
 
           {/* Vocabulary Focus */}
-          <Card className="bg-surface-1 border-border mb-3" bodyStyle={{ padding: '12px 16px' }}>
+          <Card className="bg-surface-1 border-border mb-3" styles={{ body: { padding: '12px 16px' } }}>
             <div className="flex items-center gap-2 mb-4">
               <BookOpen className="w-5 h-5 text-text-sub" />
               <Text strong className="text-text-main">Từ vựng cần chú ý</Text>
@@ -282,7 +282,7 @@ const KaiwaDetail: React.FC = () => {
           </Card>
 
           {/* Grammar Focus */}
-          <Card className="bg-surface-1 border-border mb-3" bodyStyle={{ padding: '12px 16px' }}>
+          <Card className="bg-surface-1 border-border mb-3" styles={{ body: { padding: '12px 16px' } }}>
             <div className="flex items-center gap-2 mb-4">
               <Volume2 className="w-5 h-5 text-text-sub" />
               <Text strong className="text-text-main">Ngữ pháp cần chú ý</Text>

@@ -157,7 +157,7 @@ const ReibunDetail: React.FC = () => {
         </div>
 
         {/* Reibun Title & Description */}
-        <Card className="bg-surface-1 border-border mb-3" bodyStyle={{ padding: '12px 16px' }}>
+        <Card className="bg-surface-1 border-border mb-3" styles={{ body: { padding: '12px 16px' } }}>
           <Text strong className="text-text-main block">{activeReibun.title}</Text>
           <Text className="text-text-sub text-sm">{activeReibun.description}</Text>
         </Card>
@@ -170,7 +170,7 @@ const ReibunDetail: React.FC = () => {
         )}
 
         {/* Dialogue */}
-        <Card className="bg-surface-1 border-border mb-3" bodyStyle={{ padding: '12px 16px' }}>
+        <Card className="bg-surface-1 border-border mb-3" styles={{ body: { padding: '12px 16px' } }}>
           <div className="flex items-center gap-2 mb-3">
             <MessageSquare className="w-5 h-5 text-text-sub" />
             <Text strong className="text-text-main">Hội thoại ví dụ</Text>
@@ -204,7 +204,7 @@ const ReibunDetail: React.FC = () => {
         </Card>
 
         {/* Grammar Focus */}
-        <Card className="bg-surface-1 border-border mb-3" bodyStyle={{ padding: '12px 16px' }}>
+        <Card className="bg-surface-1 border-border mb-3" styles={{ body: { padding: '12px 16px' } }}>
           <div className="flex items-center gap-2 mb-3">
             <BookOpen className="w-5 h-5 text-text-sub" />
             <Text strong className="text-text-main">Ngữ pháp cần chú ý</Text>
@@ -220,7 +220,7 @@ const ReibunDetail: React.FC = () => {
         </Card>
 
         {/* Vocabulary Focus */}
-        <Card className="bg-surface-1 border-border mb-3" bodyStyle={{ padding: '12px 16px' }}>
+        <Card className="bg-surface-1 border-border mb-3" styles={{ body: { padding: '12px 16px' } }}>
           <div className="flex items-center gap-2 mb-3">
             <Languages className="w-5 h-5 text-text-sub" />
             <Text strong className="text-text-main">Từ vựng cần chú ý</Text>

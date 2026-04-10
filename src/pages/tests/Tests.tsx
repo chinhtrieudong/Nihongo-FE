@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { Typography, Tabs, Row, Col, Card, Spin, App as AntdApp } from "antd";
-import { EmptyState } from "../../components/common";
+import { EmptyState } from "@components/common";
 import {
   Play,
   Trophy,
@@ -9,54 +9,19 @@ import {
   Flame,
   Target
 } from "lucide-react";
-import { jlptTestsAPI } from "../../services/api";
-import TestCard from "../../components/tests/TestCard";
-import TestStatistics from "../../components/tests/TestStatistics";
-import StartTestModal from "../../components/tests/StartTestModal";
-import TestFilters from "../../components/tests/TestFilters";
-import RecentActivity from "../../components/tests/RecentActivity";
-import { useAppSelector } from "../../store/hooks";
+import { jlptTestsAPI, testAttemptsAPI, TestAttempt as ApiTestAttempt } from "@services/api";
+import TestCard from "@components/tests/TestCard";
+import TestStatistics from "@components/tests/TestStatistics";
+import StartTestModal from "@components/tests/StartTestModal";
+import TestFilters from "@components/tests/TestFilters";
+import RecentActivity from "@components/tests/RecentActivity";
+import { useAppSelector } from "@store/hooks";
+import type { Test, TestSection, TestAttempt } from "../../types/tests";
+import { getLevelColor, getDifficultyColor, getLevelFromDifficulty } from "../../types/tests";
 
 const { Text } = Typography;
 
-interface TestSection {
-  id: string;
-  name: string;
-  icon: React.ReactNode;
-  questions: number;
-  duration: number;
-  description: string;
-  questionTypes: string[];
-}
-
-interface Test {
-  id: string;
-  level: string;
-  title: string;
-  title_vi?: string;
-  description: string;
-  description_vi?: string;
-  duration: number;
-  questions: number;
-  difficulty: string;
-  completed: boolean;
-  score?: number;
-  date?: string;
-  sections: TestSection[];
-  passing_score?: number;
-  is_active?: boolean;
-  version?: number;
-}
-
-interface TestAttempt {
-  id: string;
-  testId: string;
-  startTime: Date;
-  endTime?: Date;
-  answers: Record<string, string | number>;
-  score?: number;
-  completed: boolean;
-}
+// Types imported from @types/tests
 
 const Tests: React.FC = () => {
   const [selectedLevel, setSelectedLevel] = useState<string>("all");
@@ -66,30 +31,59 @@ const Tests: React.FC = () => {
   const [jlptTests, setJlptTests] = useState<Test[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
   const [recentActivities, setRecentActivities] = useState<any[]>([]);
+  const [testStats, setTestStats] = useState<{ totalCompleted: number; averageScore: number }>({
+    totalCompleted: 0,
+    averageScore: 0,
+  });
   const navigate = useNavigate();
   const { currentUser } = useAppSelector((state) => state.user);
   const { message } = AntdApp.useApp();
 
-  // Fetch JLPT tests from API
+  // Fetch JLPT tests and user's test attempts from API
   useEffect(() => {
     const fetchTests = async () => {
       try {
         setLoading(true);
-        const response = await jlptTestsAPI.getAllTests();
-        if (response.success) {
+        const [testsResponse, attemptsResponse, statsResponse] = await Promise.all([
+          jlptTestsAPI.getAllTests(),
+          currentUser ? testAttemptsAPI.getUserAttempts() : Promise.resolve({ data: [] }),
+          currentUser ? testAttemptsAPI.getStats() : Promise.resolve({ data: { totalCompleted: 0, averageScore: 0 } }),
+        ]);
+
+        if (testsResponse.success) {
+          // Get completed test IDs from user attempts
+          const completedAttempts: ApiTestAttempt[] = attemptsResponse.data || [];
+          const completedTestMap = new Map(
+            completedAttempts
+              .filter((attempt: ApiTestAttempt) => attempt.status === "completed")
+              .map((attempt: ApiTestAttempt) => [
+                attempt.testId,
+                { score: attempt.score, date: attempt.endTime || attempt.createdAt }
+              ])
+          );
+
           // Transform API data to match our Test interface
-          const transformedTests = response.data.map((test: any, index: number) => ({
-            ...test,
-            id: test.id || test._id || test.testId || test.slug || "",
-            completed: false, // Default to not completed
-            score: undefined,
-            date: undefined,
-            difficulty: test.level === 'N5' ? 'Beginner' :
-              test.level === 'N4' ? 'Elementary' :
-                test.level === 'N3' ? 'Intermediate' :
-                  test.level === 'N2' ? 'Advanced' : 'Expert'
-          }));
+          const transformedTests = testsResponse.data.map((test: any, index: number) => {
+            const completedInfo = completedTestMap.get(test.id || test._id || test.testId || test.slug || "");
+            return {
+              ...test,
+              id: test.id || test._id || test.testId || test.slug || "",
+              completed: !!completedInfo,
+              score: completedInfo?.score,
+              date: completedInfo?.date,
+              difficulty: getLevelFromDifficulty(test.level)
+            };
+          });
+
           setJlptTests(transformedTests);
+
+          // Update statistics
+          if (statsResponse.data) {
+            setTestStats({
+              totalCompleted: statsResponse.data.totalCompleted || 0,
+              averageScore: statsResponse.data.averageScore || 0,
+            });
+          }
         }
       } catch (error) {
         console.error('Error fetching JLPT tests:', error);
@@ -100,7 +94,7 @@ const Tests: React.FC = () => {
     };
 
     fetchTests();
-  }, []);
+  }, [currentUser]);
 
   // Fetch recent activities from API
   useEffect(() => {
@@ -181,65 +175,60 @@ const Tests: React.FC = () => {
   const completedTests = jlptTests.filter((test: Test) => test.completed);
   const availableTests = jlptTests.filter((test: Test) => !test.completed);
 
-  // Calculate statistics
-  const totalTestsCompleted = completedTests.length;
-  const averageScore = totalTestsCompleted > 0
-    ? Math.round(completedTests.reduce((acc, test) => acc + (test.score || 0), 0) / totalTestsCompleted)
-    : 0;
-  const getDifficultyColor = (difficulty: string) => {
-    switch (difficulty) {
-      case "Beginner": return "green";
-      case "Elementary": return "blue";
-      case "Intermediate": return "orange";
-      case "Advanced": return "red";
-      default: return "default";
-    }
-  };
-
-  const getLevelColor = (level: string) => {
-    switch (level) {
-      case "N5": return "var(--success)";
-      case "N4": return "var(--info)";
-      case "N3": return "var(--warning)";
-      case "N2": return "var(--error)";
-      case "N1": return "var(--primary)";
-      default: return "default";
-    }
-  };
+  // Use API statistics
+  const totalTestsCompleted = testStats.totalCompleted;
+  const averageScore = testStats.averageScore;
 
   const handleStartTest = (test: Test) => {
     setSelectedTest(test);
     setShowStartModal(true);
   };
 
-  const confirmStartTest = () => {
+  const confirmStartTest = async () => {
     if (selectedTest) {
       if (!selectedTest.id) {
         message.error("Bài thi này không có id hợp lệ để mở chi tiết.");
         setShowStartModal(false);
         return;
       }
-      // Create a new test attempt
-      const attemptId = `attempt_${Date.now()}`;
-      const startTime = new Date();
 
-      // Store test attempt in localStorage (in real app, this would be in backend)
-      const attempt: TestAttempt = {
-        id: attemptId,
-        testId: selectedTest.id,
-        startTime,
-        answers: {},
-        completed: false
-      };
+      if (!currentUser) {
+        message.error("Vui lòng đăng nhập để bắt đầu bài thi.");
+        navigate("/login");
+        return;
+      }
 
-      localStorage.setItem(attemptId, JSON.stringify(attempt));
+      try {
+        // Create test attempt via API
+        const response = await testAttemptsAPI.createAttempt({
+          testId: selectedTest.id,
+          testLevel: selectedTest.level,
+          testTitle: selectedTest.title,
+          duration: selectedTest.duration,
+          totalQuestions: selectedTest.questions,
+          sections: selectedTest.sections?.map((s: TestSection) => ({
+            sectionId: s.id,
+            name: s.name,
+            questions: s.questions,
+          })),
+        });
 
-      // Navigate to test page
-      navigate(`/test/${selectedTest.id}?attempt=${attemptId}&level=${encodeURIComponent(selectedTest.level)}`);
+        if (response.success && response.data) {
+          const attemptId = response.data._id;
 
-      message.success(`Bắt đầu bài thi: ${selectedTest.title}`);
-      setShowStartModal(false);
-      setSelectedTest(null);
+          // Navigate to test page
+          navigate(`/test/${selectedTest.id}?attempt=${attemptId}&level=${encodeURIComponent(selectedTest.level)}`);
+          message.success(`Bắt đầu bài thi: ${selectedTest.title}`);
+        } else {
+          message.error("Không thể bắt đầu bài thi. Vui lòng thử lại.");
+        }
+      } catch (error) {
+        console.error("Error creating test attempt:", error);
+        message.error("Có lỗi xảy ra khi bắt đầu bài thi.");
+      } finally {
+        setShowStartModal(false);
+        setSelectedTest(null);
+      }
     }
   };
 
@@ -271,7 +260,7 @@ const Tests: React.FC = () => {
         </div>
 
         {/* Filter Tabs */}
-        <Card className="overflow-hidden bg-surface-1 border-border">
+        <Card className="overflow-hidden bg-surface-1 border-border mb-8">
           <Tabs
             activeKey={activeTab}
             onChange={setActiveTab}
@@ -297,10 +286,7 @@ const Tests: React.FC = () => {
                           xs={24}
                           md={12}
                           lg={8}
-                          key={
-                            test.id ||
-                            `${test.level || "UNK"}-${test.title || "test"}-${idx}`
-                          }
+                          key={test.id || `available-${test.level || "UNK"}-${idx}-${Math.random().toString(36).substr(2, 5)}`}
                         >
                           <TestCard
                             test={test}
@@ -334,10 +320,7 @@ const Tests: React.FC = () => {
                           xs={24}
                           md={12}
                           lg={8}
-                          key={
-                            test.id ||
-                            `${test.level || "UNK"}-${test.title || "test"}-${idx}`
-                          }
+                          key={test.id || `completed-${test.level || "UNK"}-${idx}-${Math.random().toString(36).substr(2, 5)}`}
                         >
                           <TestCard
                             test={test}
@@ -365,9 +348,11 @@ const Tests: React.FC = () => {
         </Card>
 
         {/* Recent Activity */}
-        <RecentActivity activities={recentActivities.length > 0 ? recentActivities : [
-          { action: "Chưa có hoạt động gần đây", time: "", icon: <Target className="w-4 h-4" /> }
-        ]} />
+        <div className="mb-8">
+          <RecentActivity activities={recentActivities.length > 0 ? recentActivities : [
+            { action: "Chưa có hoạt động gần đây", time: "", icon: <Target className="w-4 h-4" /> }
+          ]} />
+        </div>
 
         {/* Start Test Modal */}
         <StartTestModal

@@ -6,32 +6,9 @@ import {
     FileText,
     CheckCircle
 } from "lucide-react";
+import type { Test } from "../../types/tests";
 
 const { Title, Text, Paragraph } = Typography;
-
-interface TestSection {
-    id: string;
-    name: string;
-    icon: React.ReactNode;
-    questions: number;
-    duration: number;
-    description: string;
-    questionTypes: string[];
-}
-
-interface Test {
-    id: string;
-    level: string;
-    title: string;
-    description: string;
-    duration: number;
-    questions: number;
-    difficulty: string;
-    completed: boolean;
-    score?: number;
-    date?: string;
-    sections: TestSection[];
-}
 
 interface TestCardProps {
     test: Test;
@@ -60,7 +37,7 @@ const TestCard: React.FC<TestCardProps> = ({
         <Card
             hoverable
             onClick={handleCardClick}
-            className={`${test.completed ? 'border-green-200' : ''} bg-surface-1 border-border cursor-pointer`}
+            className={`${test.completed ? 'border-green-200 dark:border-green-800' : 'border-border'} bg-surface-1 cursor-pointer transition-all duration-300 ease-out hover:shadow-lg hover:shadow-primary/10 hover:-translate-y-1 hover:border-primary/30 dark:hover:border-primary/40`}
             actions={[
                 ...(test.completed ? [
                     <Button
@@ -97,31 +74,31 @@ const TestCard: React.FC<TestCardProps> = ({
             </div>
 
             <div className="space-y-3">
-                <div className="flex justify-between text-sm">
-                    <span className="text-secondary-700 dark:text-secondary-400">
-                        <Clock className="w-4 h-4 mr-1" />
+                <div className="flex justify-between items-center text-sm">
+                    <span className="text-secondary-700 dark:text-secondary-400 inline-flex items-center gap-1.5">
+                        <Clock className="w-4 h-4" />
                         Thời gian
                     </span>
                     <span className="font-medium">{test.duration} phút</span>
                 </div>
-                <div className="flex justify-between text-sm">
-                    <span className="text-secondary-700 dark:text-secondary-400">
-                        <FileText className="w-4 h-4 mr-1" />
+                <div className="flex justify-between items-center text-sm">
+                    <span className="text-secondary-700 dark:text-secondary-400 inline-flex items-center gap-1.5">
+                        <FileText className="w-4 h-4" />
                         Số câu
                     </span>
                     <span className="font-medium">{test.questions} câu</span>
                 </div>
                 {test.completed && test.date && (
-                    <div className="flex justify-between text-sm">
+                    <div className="flex justify-between items-center text-sm">
                         <span className="text-secondary-700 dark:text-secondary-400">Ngày làm</span>
                         <span className="font-medium">{new Date(test.date).toLocaleDateString('vi-VN')}</span>
                     </div>
                 )}
             </div>
 
-            <div className="mt-4 pt-3 border-t">
-                <Text className="text-xs !text-secondary-700 dark:!text-secondary-300">Phần thi:</Text>
-                <div className="flex flex-wrap gap-1 mt-1">
+            <div className="mt-4 pt-3 border-t border-border">
+                <Text className="text-xs !text-secondary-700 dark:!text-secondary-300 mb-2 block">Phần thi:</Text>
+                <div className="flex flex-wrap gap-1.5">
                     {test.sections.map((section, idx) => (
                         <Tag key={`${section.id || "section"}-${section.name}-${idx}`} className="text-xs">
                             {section.icon} {section.name}

@@ -255,7 +255,7 @@ const MondaiDetail: React.FC = () => {
         )}
 
         {/* Active Mondai */}
-        <Card className="bg-surface-1 border-border mb-3" bodyStyle={{ padding: '12px 16px' }}>
+        <Card className="bg-surface-1 border-border mb-3" styles={{ body: { padding: '12px 16px' } }}>
           {/* Mondai Header */}
           <div className="mb-4">
             <div className="flex items-center gap-2 mb-2">
@@ -306,7 +306,7 @@ const MondaiDetail: React.FC = () => {
                   <Card
                     key={idx}
                     className={`border-border ${showResults ? (isCorrect ? "border-success" : "border-error") : ""}`}
-                    bodyStyle={{ padding: '12px 16px' }}
+                    styles={{ body: { padding: '12px 16px' } }}
                   >
                     <div className="mb-3">
                       <Tag color="blue" className="mb-2">Câu {idx + 1}</Tag>
@@ -349,7 +349,7 @@ const MondaiDetail: React.FC = () => {
           {activeMondai.type === "dialogue_comprehension" && activeMondai.dialogues && (
             <div className="space-y-4">
               {activeMondai.dialogues.map((dialogue, dIdx) => (
-                <Card key={dIdx} className="border-border" bodyStyle={{ padding: '12px 16px' }}>
+                <Card key={dIdx} className="border-border" styles={{ body: { padding: '12px 16px' } }}>
                   {/* Dialogue Header */}
                   <div 
                     className="flex items-center justify-between cursor-pointer mb-3"

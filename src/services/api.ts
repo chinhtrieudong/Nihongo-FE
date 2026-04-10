@@ -100,6 +100,13 @@ export const API_ENDPOINTS = {
 
   // Health Check
   HEALTH: "/health",
+
+  // Test Attempts
+  TEST_ATTEMPTS: {
+    BASE: "/test-attempts",
+    STATS: "/test-attempts/stats/summary",
+    BY_ID: (id: string) => `/test-attempts/${id}`,
+  },
 } as const;
 
 // Minna JSON API endpoints (separate service)
@@ -796,5 +803,89 @@ export const jlptTestsAPI = {
         source: "local",
       };
     }
+  },
+};
+
+// Test Attempts API
+export interface CreateTestAttemptData {
+  testId: string;
+  testLevel: string;
+  testTitle: string;
+  duration: number;
+  totalQuestions: number;
+  sections?: Array<{
+    sectionId: string;
+    name: string;
+    questions: number;
+  }>;
+}
+
+export interface UpdateTestAttemptData {
+  status?: "in_progress" | "completed" | "abandoned";
+  endTime?: string;
+  correctAnswers?: number;
+  score?: number;
+  timeSpent?: number;
+  sections?: any[];
+  answers?: Record<string, Record<string, string | number>>;
+}
+
+export interface TestAttempt {
+  _id: string;
+  userId: string;
+  testId: string;
+  testLevel: string;
+  testTitle: string;
+  status: "in_progress" | "completed" | "abandoned";
+  startTime: string;
+  endTime?: string;
+  duration: number;
+  totalQuestions: number;
+  correctAnswers: number;
+  score: number;
+  sections: any[];
+  timeSpent: number;
+  createdAt: string;
+  updatedAt: string;
+}
+
+export const testAttemptsAPI = {
+  // Create a new test attempt
+  createAttempt: async (data: CreateTestAttemptData) => {
+    const response = await api.post("/test-attempts", data);
+    return response.data;
+  },
+
+  // Get all user's test attempts
+  getUserAttempts: async (status?: string, limit?: number) => {
+    const params: any = {};
+    if (status) params.status = status;
+    if (limit) params.limit = limit;
+    const response = await api.get("/test-attempts", { params });
+    return response.data;
+  },
+
+  // Get test attempt statistics
+  getStats: async () => {
+    const response = await api.get("/test-attempts/stats/summary");
+    return response.data;
+  },
+
+  // Get specific test attempt
+  getAttempt: async (id: string) => {
+    const response = await api.get(`/test-attempts/${id}`);
+    return response.data;
+  },
+
+  // Update test attempt
+  updateAttempt: async (id: string, data: UpdateTestAttemptData) => {
+    const response = await api.put(`/test-attempts/${id}`, data);
+    return response.data;
+  },
+
+  // Delete test attempt
+  deleteAttempt: async (id: string) => {
+    const response = await api.delete(`/test-attempts/${id}`);
+    return response.data;
   },
 };

@@ -4,31 +4,9 @@ import {
     Clock,
     FileText
 } from "lucide-react";
+import type { Test } from "../../types/tests";
 
 const { Title, Text } = Typography;
-
-interface TestSection {
-    id: string;
-    name: string;
-    icon: React.ReactNode;
-    questions: number;
-    duration: number;
-    description: string;
-}
-
-interface Test {
-    id: string;
-    level: string;
-    title: string;
-    description: string;
-    duration: number;
-    questions: number;
-    difficulty: string;
-    completed: boolean;
-    score?: number;
-    date?: string;
-    sections: TestSection[];
-}
 
 interface StartTestModalProps {
     visible: boolean;

@@ -1,5 +1,5 @@
 import React from "react";
-import { Button, Avatar, Switch } from "antd";
+import { Button, Avatar } from "antd";
 import { Menu, Sun, Moon } from "lucide-react";
 import { useLocation } from "react-router-dom";
 import { useAppSelector, useAppDispatch } from "../../store/hooks";
@@ -45,13 +45,30 @@ const MobileHeader: React.FC = () => {
 
         {/* Right: User Actions */}
         <div className="mobile-user-actions">
-          <Switch
-            size="small"
-            checked={darkMode}
-            onChange={() => toggleTheme()}
-            checkedChildren={<Moon className="w-4 h-4" />}
-            unCheckedChildren={<Sun className="w-4 h-4" />}
-          />
+          <button
+            onClick={() => toggleTheme()}
+            className="relative w-10 h-6 rounded-full p-1 transition-all duration-500 ease-out focus:outline-none focus:ring-2 focus:ring-primary/50"
+            style={{
+              background: darkMode 
+                ? 'linear-gradient(135deg, #1e293b 0%, #0f172a 100%)' 
+                : 'linear-gradient(135deg, #60a5fa 0%, #fbbf24 100%)'
+            }}
+            aria-label={darkMode ? "Switch to light mode" : "Switch to dark mode"}
+          >
+            <div 
+              className={`absolute top-0.5 w-5 h-5 rounded-full shadow-md transform transition-all duration-500 ease-out flex items-center justify-center ${
+                darkMode 
+                  ? 'translate-x-4 bg-slate-700' 
+                  : 'translate-x-0 bg-white'
+              }`}
+            >
+              {darkMode ? (
+                <Moon className="w-2.5 h-2.5 text-blue-300" />
+              ) : (
+                <Sun className="w-2.5 h-2.5 text-amber-500" />
+              )}
+            </div>
+          </button>
           <Avatar
             size="small"
             style={{ backgroundColor: '#1890ff' }}

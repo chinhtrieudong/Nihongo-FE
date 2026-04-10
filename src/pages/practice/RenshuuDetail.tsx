@@ -226,7 +226,7 @@ const RenshuuDetail: React.FC = () => {
         )}
 
         {/* Active Renshuu Item */}
-        <Card className="bg-surface-1 border-border mb-3" bodyStyle={{ padding: '12px 16px' }}>
+        <Card className="bg-surface-1 border-border mb-3" styles={{ body: { padding: '12px 16px' } }}>
           <div className="mb-3">
             <Text strong className="text-text-main block">{activeItem.title}</Text>
             <Text className="text-text-sub text-sm">{activeItem.title_jp} - {activeItem.description}</Text>
