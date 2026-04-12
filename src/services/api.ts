@@ -8,7 +8,7 @@ import {
 import { jlptTests as localJlptTests } from "../data/jlptTests";
 
 const API_BASE_URL =
-  import.meta.env.VITE_API_URL || "http://localhost:5000/api";
+  import.meta.env.VITE_API_URL || "/api";
 
 // Centralized API Endpoints Configuration
 export const API_ENDPOINTS = {
@@ -195,7 +195,7 @@ api.interceptors.response.use(
 );
 
 // Add mina API after the main api
-const MINA_API_BASE_URL = "http://localhost:5000/api/v1/mina";
+const MINA_API_BASE_URL = "/api/v1/mina";
 
 // Create separate axios instance for mina endpoints
 const minaApi = axios.create({
@@ -206,7 +206,7 @@ const minaApi = axios.create({
 });
 
 // Add tango API after the main api
-const TANGO_API_BASE_URL = "http://localhost:5000/api/tango";
+const TANGO_API_BASE_URL = "/api/tango";
 
 // Create separate axios instance for tango endpoints
 const tangoApi = axios.create({

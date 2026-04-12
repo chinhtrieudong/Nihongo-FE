@@ -10,7 +10,6 @@ import {
   Statistic,
   Divider,
   Collapse,
-  List,
   Select
 } from 'antd';
 import type { SelectProps } from 'antd';
@@ -204,7 +203,7 @@ const Grammar: React.FC = () => {
   const totalGrammars = displayLessons.reduce((sum, lesson) => sum + lesson.grammars.length, 0);
 
   return (
-    <div className="grammar-page min-h-full bg-bg academic-canvas">
+    <div className="grammar-page min-h-full bg-bg academic-canvas" style={{ fontSize: '18px' }}>
       {/* Desktop Layout */}
       <div className="max-w-6xl mx-auto px-4 py-8">
         {/* Header Section */}
@@ -311,7 +310,7 @@ const Grammar: React.FC = () => {
                         </span>
                         <Tag color={getLevelColor(lesson.level)}>{lesson.level}</Tag>
                       </div>
-                      <Text type="secondary" className="text-sm">
+                      <Text type="secondary" className="text-base">
                         {lesson.grammars.length} ngữ pháp
                       </Text>
                     </div>
@@ -319,7 +318,7 @@ const Grammar: React.FC = () => {
                   className="grammar-content-card bg-surface-1 border border-border"
                 >
                   <div className="mb-4">
-                    <Text className="text-sm text-gray-600 dark:text-gray-400">
+                    <Text className="text-base text-gray-600 dark:text-gray-400">
                       {lesson.description}
                     </Text>
                   </div>
@@ -335,7 +334,7 @@ const Grammar: React.FC = () => {
                               {categories.find(c => c.value === grammar.category)?.label || grammar.category}
                             </Tag>
                           </div>
-                          <Text type="secondary" className="text-sm">
+                          <Text type="secondary" className="text-base">
                             {grammar.meaning}
                           </Text>
                         </div>
@@ -358,11 +357,9 @@ const Grammar: React.FC = () => {
 
                           <div>
                             <Text strong className="text-base">Ví dụ:</Text>
-                            <List
-                              className="mt-2"
-                              dataSource={grammar.examples}
-                              renderItem={(example) => (
-                                <List.Item className="border-0 px-0">
+                            <div className="mt-2">
+                              {grammar.examples.map((example, index) => (
+                                <div key={index} className="py-2">
                                   <div className="w-full">
                                     <div className="flex items-center gap-2 mb-1">
                                       <CheckCircle className="w-4 h-4 text-green-500" />
@@ -374,9 +371,9 @@ const Grammar: React.FC = () => {
                                       {example.vietnamese}
                                     </Text>
                                   </div>
-                                </List.Item>
-                              )}
-                            />
+                                </div>
+                              ))}
+                            </div>
                           </div>
 
                           {grammar.notes && (

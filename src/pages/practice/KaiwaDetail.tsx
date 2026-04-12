@@ -6,9 +6,9 @@ import {
   Button,
   Tag,
   Spin,
-  Badge,
   Collapse,
   List,
+  Select,
 } from "antd";
 import { EmptyState, LessonNavigation } from "../../components/common";
 import {
@@ -93,6 +93,8 @@ const KaiwaDetail: React.FC = () => {
   const [error, setError] = useState<string | null>(null);
   const [kaiwaData, setKaiwaData] = useState<KaiwaResponse | null>(null);
   const [activeKaiwa, setActiveKaiwa] = useState<KaiwaItem | null>(null);
+  const [selectedLineIndex, setSelectedLineIndex] = useState<number | null>(null);
+  const [visibleTranslations, setVisibleTranslations] = useState<Set<number>>(new Set());
 
   useEffect(() => {
     const fetchKaiwaData = async () => {
@@ -122,6 +124,18 @@ const KaiwaDetail: React.FC = () => {
 
     fetchKaiwaData();
   }, [lessonNumber]);
+
+  const toggleTranslation = (index: number) => {
+    setVisibleTranslations(prev => {
+      const newSet = new Set(prev);
+      if (newSet.has(index)) {
+        newSet.delete(index);
+      } else {
+        newSet.add(index);
+      }
+      return newSet;
+    });
+  };
 
   if (loading) {
     return (
@@ -177,7 +191,9 @@ const KaiwaDetail: React.FC = () => {
 
           {/* Compact Title */}
           <div className="flex items-center gap-3 mb-3">
-            <Badge count={`Bài ${lesson.lessonNumber}`} style={{ backgroundColor: "#1890ff" }} />
+            <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-blue-500 to-blue-600 flex items-center justify-center text-white font-bold text-xl shadow-lg">
+              {lesson.lessonNumber}
+            </div>
             <div className="flex-1 min-w-0">
               <Title level={4} className="!mb-0 !text-text-main truncate">
                 {lesson.title}
@@ -223,42 +239,72 @@ const KaiwaDetail: React.FC = () => {
             </div>
           </Card>
 
-          {/* Dialogue */}
-          <Card className="bg-surface-1 border-border mb-3" styles={{ body: { padding: '12px 16px' } }}>
-            <div className="flex items-center gap-2 mb-4">
+          {/* Dialogue - Improved UX */}
+          <Card className="bg-surface-1 border-border mb-3" styles={{ body: { padding: '20px' } }}>
+            <div className="flex items-center gap-2 mb-5">
               <MessageSquare className="w-5 h-5 text-text-sub" />
               <Text strong className="text-text-main">Hội thoại</Text>
+              <Text type="secondary" className="text-xs ml-auto">💡 Click để xem nghĩa</Text>
             </div>
-            
-            <div className="space-y-4">
+
+            <div className="space-y-3 max-w-2xl mx-auto">
               {activeKaiwa.dialogue.map((line, index) => {
                 const lineColors = getSpeakerColor(line.speaker);
+                const isSelected = selectedLineIndex === index;
+                const showTranslation = visibleTranslations.has(index);
+
                 return (
                   <div
                     key={index}
-                    className={`flex gap-3 ${
-                      index % 2 === 0 ? "flex-row" : "flex-row-reverse"
-                    }`}
+                    onClick={() => {
+                      setSelectedLineIndex(index);
+                      toggleTranslation(index);
+                    }}
+                    className={`
+                      relative rounded-xl p-4 cursor-pointer transition-all duration-300 border
+                      ${isSelected
+                        ? 'bg-blue-100 dark:bg-blue-900/30 ring-2 ring-blue-400 shadow-md scale-[1.02] border-blue-200 dark:border-blue-700'
+                        : 'bg-white dark:bg-secondary-800 border-gray-200 dark:border-secondary-700 hover:bg-gray-50 dark:hover:bg-secondary-700'
+                      }
+                    `}
                   >
-                    <div className={`max-w-[80%] ${index % 2 === 0 ? "" : "text-right"}`}>
-                      {/* Speaker Badge */}
-                      <Tag
-                        className={`${lineColors.bg} ${lineColors.text} ${lineColors.border} !border !mb-2 !font-medium`}
-                      >
-                        {line.speaker}
-                      </Tag>
-                      
-                      {/* Message Bubble */}
-                      <div
-                        className={`rounded-2xl px-4 py-3 ${
-                          index % 2 === 0
-                            ? "bg-white dark:bg-secondary-800 border border-border rounded-tl-none"
-                            : "bg-primary-50 dark:bg-primary-900/20 border border-primary-200 dark:border-primary-800 rounded-tr-none"
-                        }`}
-                      >
-                        <p className="text-lg font-medium text-text-main leading-relaxed">
+                    {/* Current indicator */}
+                    {isSelected && (
+                      <div className="absolute -left-2 top-1/2 -translate-y-1/2 w-1.5 h-8 bg-primary-500 rounded-full" />
+                    )}
+
+                    <div className="flex gap-3">
+                      {/* Speaker Avatar */}
+                      <div className="flex-shrink-0">
+                        <div className={`
+                          w-10 h-10 rounded-full flex items-center justify-center text-sm font-bold
+                          ${lineColors.bg} ${lineColors.text} border-2 ${lineColors.border}
+                        `}>
+                          {line.speaker.charAt(0)}
+                        </div>
+                      </div>
+
+                      {/* Content */}
+                      <div className="flex-1 min-w-0">
+                        <p className={`
+                          text-lg font-medium leading-relaxed mb-2 text-gray-900 dark:text-gray-100
+                          ${isSelected ? 'text-blue-900 dark:text-blue-200' : ''}
+                        `}>
                           {line.jpText}
                         </p>
+
+                        {/* Translation - Toggleable */}
+                        <div className={`
+                          overflow-hidden transition-all duration-300
+                          ${showTranslation ? 'max-h-24 opacity-100' : 'max-h-0 opacity-0'}
+                        `}>
+                          <div className="pt-2 border-t border-primary-200 dark:border-primary-800">
+                            <p className="text-base text-text-sub">
+                              {line.viTranslation}
+                            </p>
+                          </div>
+                        </div>
+
                       </div>
                     </div>
                   </div>
@@ -294,7 +340,7 @@ const KaiwaDetail: React.FC = () => {
             </div>
             <List
               dataSource={activeKaiwa.grammar_focus}
-              renderItem={(grammar) => (
+              renderItem={(grammar: string) => (
                 <List.Item className="!py-2 !border-b !border-border last:!border-b-0">
                   <Tag color="green" className="!px-3 !py-1 !text-sm">
                     {grammar}

@@ -6,7 +6,6 @@ import {
   Button,
   Tag,
   Spin,
-  Badge,
   Collapse,
   List,
 } from "antd";
@@ -24,10 +23,9 @@ const { Panel } = Collapse;
 interface BunkeiItem {
   id: string;
   pattern: string;
+  romaji: string;
   meaning: string;
-  structure: string;
-  example_jp: string;
-  example_vi: string;
+  type: string;
   explanation?: string;
 }
 
@@ -132,7 +130,9 @@ const BunkeiDetail: React.FC = () => {
 
         {/* Title */}
         <div className="flex items-center gap-3 mb-3">
-          <Badge count={`Bài ${lesson.lessonNumber}`} style={{ backgroundColor: "#13c2c2" }} />
+          <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-cyan-500 to-cyan-600 flex items-center justify-center text-white font-bold text-xl shadow-lg">
+            {lesson.lessonNumber}
+          </div>
           <div className="flex-1 min-w-0">
             <Title level={4} className="!mb-0 !text-text-main truncate">
               {lesson.title}
@@ -168,28 +168,28 @@ const BunkeiDetail: React.FC = () => {
                   <Text strong className="text-primary-600 text-sm">{index + 1}</Text>
                 </div>
                 <div className="flex-1 min-w-0">
-                  {/* Pattern */}
+                  {/* Pattern - Japanese */}
                   <div className="mb-2">
                     <Text className="text-text-sub text-xs block mb-1">Mẫu câu</Text>
                     <Text strong className="text-lg text-text-main block">{item.pattern}</Text>
                   </div>
 
-                  {/* Structure */}
+                  {/* Romaji */}
                   <div className="mb-2 p-2 bg-secondary-50 dark:bg-secondary-800 rounded">
-                    <Text className="text-text-sub text-xs block mb-1">Cấu trúc</Text>
-                    <Text className="text-text-main font-mono">{item.structure}</Text>
+                    <Text className="text-text-sub text-xs block mb-1">Phiên âm</Text>
+                    <Text className="text-text-main font-mono italic">{item.romaji}</Text>
                   </div>
 
-                  {/* Example */}
+                  {/* Meaning - Vietnamese */}
                   <div className="border-t border-border pt-2 mt-2">
-                    <Text className="text-text-sub text-xs block mb-1">Ví dụ</Text>
-                    <Text strong className="text-text-main block">{item.example_jp}</Text>
+                    <Text className="text-text-sub text-xs block mb-1">Ý nghĩa</Text>
+                    <Text strong className="text-text-main block text-blue-600 dark:text-blue-400">{item.meaning}</Text>
                   </div>
 
                   {/* Explanation if available */}
                   {item.explanation && (
-                    <div className="mt-2 p-2 bg-info/10 rounded">
-                      <Text className="text-text-sub text-xs block mb-1">Giải thích thêm</Text>
+                    <div className="mt-2 p-2 bg-blue-50 dark:bg-blue-900/20 rounded border border-blue-100 dark:border-blue-800">
+                      <Text className="text-text-sub text-xs block mb-1">Giải thích</Text>
                       <Text className="text-sm text-text-main">{item.explanation}</Text>
                     </div>
                   )}

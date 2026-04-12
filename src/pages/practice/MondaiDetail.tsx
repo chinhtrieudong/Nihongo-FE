@@ -6,7 +6,6 @@ import {
   Button,
   Tag,
   Spin,
-  Badge,
   Radio,
   Space,
   Input,
@@ -21,6 +20,7 @@ import {
   Trophy,
   ChevronDown,
   ChevronUp,
+  Users,
 } from "lucide-react";
 import AudioPlayer from "../../components/AudioPlayer";
 import { minaApi } from "../../services/api";
@@ -68,6 +68,7 @@ interface MondaiItem {
   audioUrl: string;
   items?: ListeningItem[];
   dialogues?: DialogueItem[];
+  characters?: string[];
 }
 
 interface LessonInfo {
@@ -97,6 +98,8 @@ const MondaiDetail: React.FC = () => {
   const [userAnswers, setUserAnswers] = useState<Record<string, string>>({});
   const [showResults, setShowResults] = useState(false);
   const [expandedDialogues, setExpandedDialogues] = useState<number[]>([]);
+  const [selectedLineKey, setSelectedLineKey] = useState<string | null>(null);
+  const [visibleTranslations, setVisibleTranslations] = useState<Set<string>>(new Set());
 
   useEffect(() => {
     const fetchMondaiData = async () => {
@@ -162,6 +165,18 @@ const MondaiDetail: React.FC = () => {
     );
   };
 
+  const toggleTranslation = (key: string) => {
+    setVisibleTranslations(prev => {
+      const newSet = new Set(prev);
+      if (newSet.has(key)) {
+        newSet.delete(key);
+      } else {
+        newSet.add(key);
+      }
+      return newSet;
+    });
+  };
+
   if (loading) {
     return (
       <div className="min-h-full bg-bg flex items-center justify-center">
@@ -216,7 +231,9 @@ const MondaiDetail: React.FC = () => {
 
         {/* Title */}
         <div className="flex items-center gap-3 mb-3">
-          <Badge count={`Bài ${lesson.lessonNumber}`} style={{ backgroundColor: "#52c41a" }} />
+          <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-green-500 to-green-600 flex items-center justify-center text-white font-bold text-xl shadow-lg">
+            {lesson.lessonNumber}
+          </div>
           <div className="flex-1 min-w-0">
             <Title level={4} className="!mb-0 !text-text-main truncate">
               {lesson.title}
@@ -355,6 +372,32 @@ const MondaiDetail: React.FC = () => {
           {/* Dialogue Comprehension */}
           {activeMondai.type === "dialogue_comprehension" && activeMondai.dialogues && (
             <div className="space-y-4">
+              {/* Characters */}
+              <Card className="bg-surface-1 border-border mb-3" styles={{ body: { padding: '12px 16px' } }}>
+                <div className="flex items-center gap-2 mb-3">
+                  <Users className="w-5 h-5 text-text-sub" />
+                  <Text strong className="text-text-main">Nhân vật</Text>
+                </div>
+                <div className="flex flex-wrap gap-2">
+                  {(activeMondai.characters || Array.from(new Set(activeMondai.dialogues.flatMap(d => d.content.map(c => c.speaker))))).map((char) => {
+                    const speakerColors: Record<string, { bg: string; text: string; border: string }> = {
+                      A: { bg: "bg-blue-100", text: "text-blue-700", border: "border-blue-300" },
+                      B: { bg: "bg-green-100", text: "text-green-700", border: "border-green-300" },
+                      C: { bg: "bg-orange-100", text: "text-orange-700", border: "border-orange-300" },
+                    };
+                    const colors = speakerColors[char] || { bg: "bg-gray-100", text: "text-gray-700", border: "border-gray-300" };
+                    return (
+                      <Tag
+                        key={char}
+                        className={`${colors.bg} ${colors.text} ${colors.border} !border !px-3 !py-1 !text-sm !font-medium`}
+                      >
+                        {char}
+                      </Tag>
+                    );
+                  })}
+                </div>
+              </Card>
+
               {activeMondai.dialogues.map((dialogue, dIdx) => (
                 <Card key={dIdx} className="border-border" styles={{ body: { padding: '12px 16px' } }}>
                   {/* Dialogue Header */}
@@ -373,17 +416,63 @@ const MondaiDetail: React.FC = () => {
                     )}
                   </div>
 
-                  {/* Dialogue Content */}
+                  {/* Dialogue Content - Improved UX */}
                   {expandedDialogues.includes(dIdx) && (
-                    <div className="mb-4 p-3 bg-secondary-50 dark:bg-secondary-800 rounded-lg space-y-2">
-                      {dialogue.content.map((line, lIdx) => (
-                        <div key={lIdx} className="flex gap-2">
-                          <Text strong className="text-text-sub w-12 flex-shrink-0">{line.speaker}</Text>
-                          <div>
-                            <Text className="text-text-main block">{line.japanese}</Text>
-                          </div>
-                        </div>
-                      ))}
+                    <div className="mb-4 p-4 bg-secondary-50 dark:bg-secondary-800 rounded-lg">
+                      <div className="text-xs text-text-sub/60 mb-3 italic">💡 Click vào câu để xem nghĩa</div>
+                      <div className="space-y-2 max-w-2xl">
+                        {dialogue.content.map((line, lIdx) => {
+                          const lineKey = `${dIdx}_${lIdx}`;
+                          const isSelected = selectedLineKey === lineKey;
+                          const showTranslation = visibleTranslations.has(lineKey);
+
+                          return (
+                            <div
+                              key={lIdx}
+                              onClick={() => {
+                                setSelectedLineKey(lineKey);
+                                toggleTranslation(lineKey);
+                              }}
+                              className={`
+                                flex gap-3 p-3 rounded-lg cursor-pointer transition-all duration-300 border
+                                ${isSelected
+                                  ? 'bg-green-100 dark:bg-green-900/30 ring-2 ring-green-400 border-green-200 dark:border-green-700'
+                                  : 'bg-white dark:bg-secondary-800 border-gray-200 dark:border-secondary-700 hover:bg-gray-50 dark:hover:bg-secondary-700'
+                                }
+                              `}
+                            >
+                              {/* Speaker Avatar */}
+                              <div className="flex-shrink-0">
+                                <div className="w-8 h-8 rounded-full bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center text-xs font-bold text-blue-700 dark:text-blue-300 border border-blue-300">
+                                  {line.speaker}
+                                </div>
+                              </div>
+
+                              {/* Content */}
+                              <div className="flex-1 min-w-0">
+                                <p className={`
+                                  text-base font-medium leading-relaxed text-gray-900 dark:text-gray-100
+                                  ${isSelected ? 'text-green-900 dark:text-green-200' : ''}
+                                `}>
+                                  {line.japanese}
+                                </p>
+
+                                {/* Translation - Toggleable */}
+                                <div className={`
+                                  overflow-hidden transition-all duration-300
+                                  ${showTranslation ? 'max-h-20 opacity-100 mt-2' : 'max-h-0 opacity-0'}
+                                `}>
+                                  <div className="pt-2 border-t border-primary-200 dark:border-primary-800">
+                                    <p className="text-sm text-text-sub">
+                                      {line.translation}
+                                    </p>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          );
+                        })}
+                      </div>
                     </div>
                   )}
 

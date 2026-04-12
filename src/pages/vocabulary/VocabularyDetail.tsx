@@ -5,9 +5,9 @@
 
 import React, { useState, useEffect, useMemo, useCallback } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import { Button, Typography, Spin, Tabs, Statistic, Row, Col, Space } from "antd";
+import { Button, Typography, Spin, Tabs, Statistic, Row, Col, Space, Dropdown, MenuProps } from "antd";
 import { EmptyState, LessonNavigation } from "../../components/common";
-import { ArrowLeft, Volume2, BookOpen, Layers, Star, CheckCircle, XCircle, RotateCcw, Target } from "lucide-react";
+import { ArrowLeft, Volume2, BookOpen, Layers, Star, CheckCircle, XCircle, RotateCcw, Target, Download, Clock } from "lucide-react";
 import VocabularyFlashcard from "../../components/vocabulary/VocabularyFlashcard";
 import { useResponsive } from "../../hooks/useResponsive";
 import { useVocabulary, useLessons } from "../../hooks/useVocabulary";
@@ -18,6 +18,78 @@ import type { VocabularyItem as LegacyVocabularyItem } from "../../types/lesson"
 const { Title, Text } = Typography;
 
 const escapeRegExp = (value: string) => value.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+
+// Export functions
+const exportToCSV = (items: VocabularyItem[], lessonNumber: number) => {
+  const headers = ['Kanji', 'Hiragana', 'Hán Việt', 'Nghĩa', 'Ví dụ JP', 'Ví dụ VN'];
+  const rows = items.map(item => [
+    item.kanji || '',
+    item.hiragana || '',
+    item.hanViet || '',
+    item.meaning || '',
+    item.example || '',
+    item.exampleMeaning || ''
+  ]);
+
+  const csvContent = [
+    headers.join(','),
+    ...rows.map(row => row.map(cell => `"${cell.replace(/"/g, '""')}"`).join(','))
+  ].join('\n');
+
+  const blob = new Blob(['\uFEFF' + csvContent], { type: 'text/csv;charset=utf-8;' });
+  const link = document.createElement('a');
+  link.href = URL.createObjectURL(blob);
+  link.download = `vocabulary-lesson-${lessonNumber}.csv`;
+  link.click();
+  URL.revokeObjectURL(link.href);
+};
+
+const exportToJSON = (items: VocabularyItem[], lessonNumber: number) => {
+  const data = items.map(item => ({
+    kanji: item.kanji,
+    hiragana: item.hiragana,
+    hanViet: item.hanViet,
+    meaning: item.meaning,
+    example: item.example,
+    exampleMeaning: item.exampleMeaning,
+    textbook: item.textbook,
+    level: item.level,
+    lesson: item.lesson,
+    topic: item.topic
+  }));
+
+  const jsonContent = JSON.stringify(data, null, 2);
+  const blob = new Blob([jsonContent], { type: 'application/json;charset=utf-8;' });
+  const link = document.createElement('a');
+  link.href = URL.createObjectURL(blob);
+  link.download = `vocabulary-lesson-${lessonNumber}.json`;
+  link.click();
+  URL.revokeObjectURL(link.href);
+};
+
+const exportToTXT = (items: VocabularyItem[], lessonNumber: number) => {
+  const content = items.map(item => {
+    let text = `【${item.kanji || item.hiragana}】\n`;
+    text += `  Hiragana: ${item.hiragana}\n`;
+    text += `  Hán Việt: ${item.hanViet}\n`;
+    text += `  Nghĩa: ${item.meaning}\n`;
+    if (item.example) {
+      text += `  Ví dụ: ${item.example}\n`;
+      if (item.exampleMeaning) {
+        text += `  Nghĩa ví dụ: ${item.exampleMeaning}\n`;
+      }
+    }
+    text += '\n';
+    return text;
+  }).join('');
+
+  const blob = new Blob([content], { type: 'text/plain;charset=utf-8;' });
+  const link = document.createElement('a');
+  link.href = URL.createObjectURL(blob);
+  link.download = `vocabulary-lesson-${lessonNumber}.txt`;
+  link.click();
+  URL.revokeObjectURL(link.href);
+};
 
 const highlightExample = (example: string, item: Pick<VocabularyItem, "kanji" | "hiragana">): React.ReactNode => {
   const query = (item.kanji || "").trim() || (item.hiragana || "").trim();
@@ -106,6 +178,72 @@ const VocabularyDetail: React.FC = () => {
     });
   }, []);
 
+  // SRS (Spaced Repetition System) state
+  const [srsData, setSrsData] = useState<Record<string, {
+    interval: number;      // days until next review
+    easeFactor: number;     // ease factor (starts at 2.5)
+    nextReview: number;    // timestamp
+    reviewCount: number;    // number of reviews
+    correctCount: number;   // number of correct answers
+  }>>(() => {
+    const saved = localStorage.getItem('vocabulary-srs');
+    return saved ? JSON.parse(saved) : {};
+  });
+
+  // Save SRS data to localStorage
+  useEffect(() => {
+    localStorage.setItem('vocabulary-srs', JSON.stringify(srsData));
+  }, [srsData]);
+
+  // Simple SRS algorithm (simplified SM-2)
+  const updateSRS = useCallback((wordId: string, isCorrect: boolean) => {
+    setSrsData(prev => {
+      const now = Date.now();
+      const existing = prev[wordId] || {
+        interval: 1,
+        easeFactor: 2.5,
+        nextReview: now,
+        reviewCount: 0,
+        correctCount: 0,
+      };
+
+      let newInterval = existing.interval;
+      let newEaseFactor = existing.easeFactor;
+
+      if (isCorrect) {
+        // Correct answer: increase interval
+        newEaseFactor = Math.max(1.3, existing.easeFactor + 0.1);
+        newInterval = Math.round(existing.interval * newEaseFactor);
+      } else {
+        // Wrong answer: reset interval
+        newEaseFactor = Math.max(1.3, existing.easeFactor - 0.2);
+        newInterval = 1;
+      }
+
+      return {
+        ...prev,
+        [wordId]: {
+          interval: newInterval,
+          easeFactor: newEaseFactor,
+          nextReview: now + (newInterval * 24 * 60 * 60 * 1000), // convert days to ms
+          reviewCount: existing.reviewCount + 1,
+          correctCount: existing.correctCount + (isCorrect ? 1 : 0),
+        },
+      };
+    });
+  }, []);
+
+  // Get words due for review
+  const getDueWords = useCallback(() => {
+    const now = Date.now();
+    return vocabularyItems.filter(item => {
+      const data = srsData[item.id];
+      return !data || data.nextReview <= now;
+    });
+  }, [vocabularyItems, srsData]);
+
+  const dueWords = getDueWords();
+
   // Quiz mode state
   const [showQuiz, setShowQuiz] = useState(false);
   const [quizQuestionIndex, setQuizQuestionIndex] = useState(0);
@@ -127,6 +265,9 @@ const VocabularyDetail: React.FC = () => {
     setShowQuiz(true);
   }, [vocabularyItems]);
 
+  const currentQuizQuestion = quizQuestions[quizQuestionIndex];
+  const quizProgress = quizQuestions.length > 0 ? ((quizQuestionIndex + 1) / quizQuestions.length) * 100 : 0;
+
   const handleQuizAnswer = useCallback((answer: string, isCorrect: boolean) => {
     setSelectedAnswer(answer);
     setIsAnswerCorrect(isCorrect);
@@ -134,7 +275,11 @@ const VocabularyDetail: React.FC = () => {
     if (isCorrect) {
       setQuizScore(prev => prev + 1);
     }
-  }, []);
+    // Update SRS for the current quiz question
+    if (currentQuizQuestion) {
+      updateSRS(currentQuizQuestion.id, isCorrect);
+    }
+  }, [currentQuizQuestion, updateSRS]);
 
   const nextQuizQuestion = useCallback(() => {
     if (quizQuestionIndex < quizQuestions.length - 1) {
@@ -150,9 +295,6 @@ const VocabularyDetail: React.FC = () => {
   const endQuiz = useCallback(() => {
     setShowQuiz(false);
   }, []);
-
-  const currentQuizQuestion = quizQuestions[quizQuestionIndex];
-  const quizProgress = quizQuestions.length > 0 ? ((quizQuestionIndex + 1) / quizQuestions.length) * 100 : 0;
 
   // Reset flashcard state when navigating between lessons/textbooks
   useEffect(() => {
@@ -212,13 +354,15 @@ const VocabularyDetail: React.FC = () => {
   const handleMemoryEvaluation = useCallback((status: "unknown" | "known") => {
     if (!currentCard) return;
     setCardStatus((prev) => ({ ...prev, [currentCard.id]: status }));
+    // Update SRS for the current card
+    updateSRS(currentCard.id, status === "known");
     if (currentCardIndex < cardsToStudy.length - 1) {
       setCurrentCardIndex((prev) => prev + 1);
       setIsFlipped(false);
     } else {
       setIsStudyComplete(true);
     }
-  }, [currentCard, currentCardIndex, cardsToStudy.length]);
+  }, [currentCard, currentCardIndex, cardsToStudy.length, updateSRS]);
 
   const shuffleCards = useCallback(() => {
     // Always shuffle within the current lesson scope
@@ -435,6 +579,119 @@ const VocabularyDetail: React.FC = () => {
               )}
             </div>
           ))}
+        </div>
+      ),
+    },
+    {
+      key: "review",
+      label: (
+        <span className="flex items-center gap-2">
+          <Clock className="w-4 h-4" />
+          Review
+          {dueWords.length > 0 && (
+            <span className="ml-1 px-2 py-0.5 bg-blue-500 text-white text-xs rounded-full">
+              {dueWords.length}
+            </span>
+          )}
+        </span>
+      ),
+      children: (
+        <div className="py-6">
+          {dueWords.length === 0 ? (
+            <EmptyState
+              type="data"
+              title="Không có từ cần ôn tập"
+              description="Tuyệt vời! Bạn đã hoàn thành tất cả các bài ôn tập."
+            />
+          ) : (
+            <>
+              <div className="mb-6 text-center">
+                <h3 className="text-xl font-semibold text-text-main mb-2">
+                  {dueWords.length} từ cần ôn tập
+                </h3>
+                <Text className="text-text-sub">
+                  Dựa trên thuật toán Spaced Repetition (SRS)
+                </Text>
+              </div>
+              <div className="grid gap-3">
+                {dueWords.map((item) => {
+                  const srsItem = srsData[item.id];
+                  const nextReviewDate = srsItem?.nextReview
+                    ? new Date(srsItem.nextReview).toLocaleDateString('vi-VN')
+                    : 'Ngay bây giờ';
+                  const accuracy = srsItem?.reviewCount > 0
+                    ? Math.round((srsItem.correctCount / srsItem.reviewCount) * 100)
+                    : 0;
+
+                  return (
+                    <div
+                      key={item.id}
+                      className="bg-surface-1 rounded-xl border border-border p-4"
+                    >
+                      <div className="flex items-start gap-4">
+                        {/* Kanji */}
+                        <div className="flex-[0.3] text-center">
+                          <div className="text-2xl font-bold text-text-main kanji-text">
+                            {item.kanji || item.hiragana}
+                          </div>
+                          {item.kanji && item.hiragana !== item.kanji && (
+                            <div className="text-sm text-blue-500 jp-text mt-1">
+                              {item.hiragana}
+                            </div>
+                          )}
+                        </div>
+
+                        {/* Content */}
+                        <div className="flex-[0.7]">
+                          <Text className="text-lg text-blue-500 font-medium block jp-text">
+                            {item.hiragana}
+                          </Text>
+                          <Text className="text-lg text-text-main block mt-1">
+                            {item.meaning}
+                          </Text>
+                          {item.hanViet && (
+                            <Text className="text-sm text-purple-500 block mt-1">
+                              Hán Việt: {item.hanViet}
+                            </Text>
+                          )}
+                        </div>
+
+                        {/* Stats */}
+                        <div className="flex-shrink-0 text-right">
+                          <div className="text-xs text-text-sub">
+                            Độ chính xác: <span className="font-semibold">{accuracy}%</span>
+                          </div>
+                          <div className="text-xs text-text-sub mt-1">
+                            Ôn tập: <span className="font-semibold">{srsItem?.reviewCount || 0}</span> lần
+                          </div>
+                        </div>
+
+                        {/* Actions */}
+                        <div className="flex items-center gap-1 flex-shrink-0">
+                          <button
+                            onClick={() => toggleFavorite(item.id)}
+                            className={`p-2 rounded-lg transition-colors ${
+                              favorites.has(item.id)
+                                ? "text-yellow-500 hover:text-yellow-600 hover:bg-yellow-500/10"
+                                : "text-text-sub hover:text-yellow-500 hover:bg-yellow-500/10"
+                            }`}
+                          >
+                            <Star className={`w-4 h-4 ${favorites.has(item.id) ? "fill-current" : ""}`} />
+                          </button>
+                          <button
+                            onClick={() => speakText(item.hiragana)}
+                            className="p-2 rounded-lg text-text-sub hover:text-blue-500 hover:bg-blue-500/10 transition-colors"
+                          >
+                            <Volume2 className="w-4 h-4" />
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+            </>
+          )}
         </div>
       ),
     },
@@ -661,6 +918,36 @@ const VocabularyDetail: React.FC = () => {
               {vocabularyItems.length} từ vựng
             </p>
           </div>
+          <Dropdown
+            menu={{
+              items: [
+                {
+                  key: 'csv',
+                  label: 'Export CSV',
+                  onClick: () => exportToCSV(vocabularyItems, lessonNum),
+                },
+                {
+                  key: 'json',
+                  label: 'Export JSON',
+                  onClick: () => exportToJSON(vocabularyItems, lessonNum),
+                },
+                {
+                  key: 'txt',
+                  label: 'Export TXT',
+                  onClick: () => exportToTXT(vocabularyItems, lessonNum),
+                },
+              ],
+            }}
+            trigger={['click']}
+          >
+            <Button
+              type="default"
+              icon={<Download className="w-4 h-4" />}
+              className="ml-auto"
+            >
+              Export
+            </Button>
+          </Dropdown>
         </div>
 
         {/* Tabs */}

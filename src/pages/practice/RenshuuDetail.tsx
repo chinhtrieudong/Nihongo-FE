@@ -6,7 +6,6 @@ import {
   Button,
   Tag,
   Spin,
-  Badge,
   Space,
 } from "antd";
 import { EmptyState, LessonNavigation } from "../../components/common";
@@ -14,6 +13,7 @@ import {
   ArrowLeft,
   GraduationCap,
   MessageSquare,
+  Users,
 } from "lucide-react";
 import AudioPlayer from "../../components/AudioPlayer";
 import { minaApi } from "../../services/api";
@@ -46,6 +46,7 @@ interface RenshuuItem {
     dialogue: Dialogue;
     practice: PracticeItem[];
   };
+  characters?: string[];
 }
 
 interface LessonInfo {
@@ -80,6 +81,8 @@ const RenshuuDetail: React.FC = () => {
   const [renshuuData, setRenshuuData] = useState<RenshuuResponse | null>(null);
   const [activeIndex, setActiveIndex] = useState(0);
   const [selectedSubstitution, setSelectedSubstitution] = useState<Record<string, string>>({});
+  const [selectedSpeaker, setSelectedSpeaker] = useState<string | null>(null);
+  const [visibleTranslations, setVisibleTranslations] = useState<Set<string>>(new Set());
 
   useEffect(() => {
     const fetchRenshuuData = async () => {
@@ -109,6 +112,18 @@ const RenshuuDetail: React.FC = () => {
 
     fetchRenshuuData();
   }, [lessonNumber]);
+
+  const toggleTranslation = (speaker: string) => {
+    setVisibleTranslations(prev => {
+      const newSet = new Set(prev);
+      if (newSet.has(speaker)) {
+        newSet.delete(speaker);
+      } else {
+        newSet.add(speaker);
+      }
+      return newSet;
+    });
+  };
 
   const substituteText = (text: string, substitutions: Record<string, string>) => {
     if (!text || !substitutions) return text;
@@ -195,7 +210,9 @@ const RenshuuDetail: React.FC = () => {
 
         {/* Title */}
         <div className="flex items-center gap-3 mb-3">
-          <Badge count={`Bài ${lesson.lessonNumber}`} style={{ backgroundColor: "#fa8c16" }} />
+          <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-orange-500 to-orange-600 flex items-center justify-center text-white font-bold text-xl shadow-lg">
+            {lesson.lessonNumber}
+          </div>
           <div className="flex-1 min-w-0">
             <Title level={4} className="!mb-0 !text-text-main truncate">
               {lesson.title}
@@ -267,28 +284,96 @@ const RenshuuDetail: React.FC = () => {
             </div>
           )}
 
-          {/* Dialogue Display with Substitutions */}
-          <Card className="bg-white dark:bg-secondary-900 border-border mb-3">
+          {/* Characters */}
+          <Card className="bg-surface-1 border-border mb-3" styles={{ body: { padding: '12px 16px' } }}>
             <div className="flex items-center gap-2 mb-3">
+              <Users className="w-5 h-5 text-text-sub" />
+              <Text strong className="text-text-main">Nhân vật</Text>
+            </div>
+            <div className="flex flex-wrap gap-2">
+              {(activeItem.characters || speakers).map((char) => {
+                const colors = speakerColors[char] || { bg: "bg-gray-100", text: "text-gray-700", border: "border-gray-300" };
+                return (
+                  <Tag
+                    key={char}
+                    className={`${colors.bg} ${colors.text} ${colors.border} !border !px-3 !py-1 !text-sm !font-medium`}
+                  >
+                    {char}
+                  </Tag>
+                );
+              })}
+            </div>
+          </Card>
+
+          {/* Dialogue Display with Substitutions - Improved UX */}
+          <Card className="bg-white dark:bg-secondary-900 border-border mb-3" styles={{ body: { padding: '20px' } }}>
+            <div className="flex items-center gap-2 mb-5">
               <MessageSquare className="w-5 h-5 text-text-sub" />
               <Text strong className="text-text-main">Hội thoại luyện tập</Text>
+              <Text type="secondary" className="text-xs ml-auto">💡 Click để xem nghĩa</Text>
             </div>
 
-            <div className="space-y-3">
+            <div className="space-y-3 max-w-2xl mx-auto">
               {speakers.map((speaker) => {
                 const line = activeItem.content.dialogue[speaker as keyof Dialogue];
                 if (!line) return null;
                 const colors = speakerColors[speaker];
                 const substitutedText = substituteText(line.text, selectedSubstitution);
+                const isSelected = selectedSpeaker === speaker;
+                const showTranslation = visibleTranslations.has(speaker);
 
                 return (
-                  <div key={speaker} className="flex gap-3">
-                    <div className="flex-1 min-w-0">
-                      <Tag className={`${colors.bg} ${colors.text} ${colors.border} !border !mb-1 !font-medium`}>
-                        {speaker}
-                      </Tag>
-                      <div className="bg-secondary-50 dark:bg-secondary-800 border border-border rounded-xl px-3 py-2 rounded-tl-none">
-                        <Text strong className="text-text-main block">{substitutedText}</Text>
+                  <div
+                    key={speaker}
+                    onClick={() => {
+                      setSelectedSpeaker(speaker);
+                      toggleTranslation(speaker);
+                    }}
+                    className={`
+                      relative rounded-xl p-4 cursor-pointer transition-all duration-300 border
+                      ${isSelected
+                        ? 'bg-orange-100 dark:bg-orange-900/30 ring-2 ring-orange-400 shadow-md scale-[1.02] border-orange-200 dark:border-orange-700'
+                        : 'bg-white dark:bg-secondary-800 border-gray-200 dark:border-secondary-700 hover:bg-gray-50 dark:hover:bg-secondary-700'
+                      }
+                    `}
+                  >
+                    {/* Current indicator */}
+                    {isSelected && (
+                      <div className="absolute -left-2 top-1/2 -translate-y-1/2 w-1.5 h-8 bg-primary-500 rounded-full" />
+                    )}
+
+                    <div className="flex gap-3">
+                      {/* Speaker Avatar */}
+                      <div className="flex-shrink-0">
+                        <div className={`
+                          w-10 h-10 rounded-full flex items-center justify-center text-sm font-bold
+                          ${colors.bg} ${colors.text} border-2 ${colors.border}
+                        `}>
+                          {speaker}
+                        </div>
+                      </div>
+
+                      {/* Content */}
+                      <div className="flex-1 min-w-0">
+                        <p className={`
+                          text-lg font-medium leading-relaxed mb-2 text-gray-900 dark:text-gray-100
+                          ${isSelected ? 'text-orange-900 dark:text-orange-200' : ''}
+                        `}>
+                          {substitutedText}
+                        </p>
+
+                        {/* Translation - Toggleable */}
+                        <div className={`
+                          overflow-hidden transition-all duration-300
+                          ${showTranslation ? 'max-h-24 opacity-100' : 'max-h-0 opacity-0'}
+                        `}>
+                          <div className="pt-2 border-t border-primary-200 dark:border-primary-800">
+                            <p className="text-base text-text-sub">
+                              {line.translation}
+                            </p>
+                          </div>
+                        </div>
+
                       </div>
                     </div>
                   </div>
