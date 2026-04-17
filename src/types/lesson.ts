@@ -29,17 +29,13 @@ export interface VocabularyItem {
   romaji: string;
   hanviet?: string;
   meaningVi?: string;
-  meaning_vi?: string; // For backward compatibility
   meaningEn?: string;
   audioUrl?: string;
-  audio_url?: string;
   imageUrl?: string;
   mnemonic?: string;
-  kanji_analysis?: string | KanjiAnalysis[];
+  kanjiAnalysis?: string | KanjiAnalysis[];
   exampleSentence?: string;
   exampleSentenceVi?: string;
-  example_jp?: string;
-  example_vi?: string;
   // New normalized JSON fields (frontend/public/data/**)
   word?: string;          // written form (kanji or kana)
   reading?: string;       // kana reading
@@ -74,8 +70,10 @@ export interface GrammarPattern {
   pattern: string;
   title?: string;
   meaning?: string;
-  meaning_vi?: string;
-  usage_vi?: string;
+  /** Vietnamese meaning */
+  meaningVi?: string;
+  /** Usage explanation in Vietnamese */
+  usageVi?: string;
   explanation?: string;
   structure?: string;
   formation?: string;
@@ -106,7 +104,8 @@ export interface Dialog {
   viTranslation?: string;
   audioUrl?: string;
   // New kaiwa properties
-  title_jp?: string;
+  /** Japanese title */
+  titleJp?: string;
   setting?: string;
   characters?: string[];
   dialogue?: Array<{
@@ -114,7 +113,8 @@ export interface Dialog {
     jpText: string;
     romaji: string;
     viTranslation: string;
-    speaker_role: string;
+    /** Speaker role */
+    speakerRole?: string;
   }>;
   total_lines?: number;
   vocabulary_focus?: string[];
@@ -152,14 +152,18 @@ export interface Exercise {
   instructions?: string;
   items?: Array<{
     question: string;
-    question_translation?: string;
+    /** Question translation */
+    questionTranslation?: string;
     type: string;
-    correct_answer?: string;
-    correct_answer_translation?: string;
+    /** Correct answer */
+    correctAnswer?: string;
+    /** Correct answer translation */
+    correctAnswerTranslation?: string;
     explanation?: string;
   }>;
   dialogues?: Array<{
-    dialogue_number: number;
+    /** Dialogue number */
+    dialogueNumber?: number;
     content: Array<{
       speaker: string;
       japanese: string;
@@ -169,7 +173,8 @@ export interface Exercise {
       question: string;
       type: string;
       options?: string[];
-      correct_answer?: string;
+      /** Correct answer */
+      correctAnswer?: string;
       explanation?: string;
     }>;
   }>;
@@ -177,15 +182,18 @@ export interface Exercise {
 
 export interface Lesson {
   id: string;
-  lesson_number: number;
+  lessonNumber?: number;
   title: string;
-  title_vi?: string;
+  /** Vietnamese title */
+  titleVi?: string;
   level?: "N5" | "N4" | "N3" | "N2" | "N1";
   description: string;
-  description_vi?: string;
+  /** Vietnamese description */
+  descriptionVi?: string;
   status: "not_started" | "in_progress" | "completed";
   progress?: number;
-  image_url?: string;
+  /** Image URL */
+  imageUrl?: string;
   estimatedTime?: number;
   prerequisites?: string[];
   relatedLessons?: string[];

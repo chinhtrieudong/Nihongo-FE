@@ -16,9 +16,11 @@ export interface Test {
   id: string;
   level: string;
   title: string;
-  title_vi?: string;
+  /** Vietnamese title */
+  titleVi?: string;
   description: string;
-  description_vi?: string;
+  /** Vietnamese description */
+  descriptionVi?: string;
   duration: number;
   questions: number;
   difficulty: string;
@@ -26,8 +28,10 @@ export interface Test {
   score?: number;
   date?: string;
   sections: TestSection[];
-  passing_score?: number;
-  is_active?: boolean;
+  /** Passing score threshold */
+  passingScore?: number;
+  /** Whether the test is active */
+  isActive?: boolean;
   version?: number;
 }
 
