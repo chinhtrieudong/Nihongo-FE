@@ -91,7 +91,7 @@ const KanjiCard: React.FC<KanjiCardProps> = ({ kanji, isRadical = false, onClick
     const location = useLocation();
     const { fontPreset } = useAppSelector((state) => state.ui);
     const selectedPreset = getFontPreset(fontPreset);
-    const colorLevel = normalizeLevel(kanji.jlpt) || normalizeLevel(kanji.color);
+    const colorLevel = normalizeLevel(kanji.level) || normalizeLevel(kanji.color);
     const levelStyles = getLevelStyles(colorLevel, isRadical);
     const onyomiText =
         kanji.onyomi && kanji.onyomi.length > 0
@@ -102,7 +102,7 @@ const KanjiCard: React.FC<KanjiCardProps> = ({ kanji, isRadical = false, onClick
             ? kanji.kunyomi.join(", ")
             : "Không có";
     const bottomMetaText = isRadical
-        ? `${kanji.meaningVi || 'Bộ thủ'} • ${kanji.stroke_count ?? "-"} nét`
+        ? `${kanji.meaningVi || 'Bộ thủ'} • ${kanji.strokeCount ?? "-"} nét`
         : `${onyomiText} • ${kunyomiText}`;
 
     const handleCardClick = () => {

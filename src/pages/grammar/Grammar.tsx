@@ -227,11 +227,14 @@ const Grammar: React.FC = () => {
               key: 'lesson',
               value: selectedLesson ? String(selectedLesson) : '',
               placeholder: 'Chọn bài',
-              onChange: (val) => setSelectedLesson(val ? Number(val) : null),
-              options: (grammarData?.lessons || []).map((lesson) => ({
-                value: String(lesson.lessonNumber),
-                label: `Bài ${lesson.lessonNumber}: ${lesson.title}`,
-              })),
+              onChange: (val) => setSelectedLesson(val && val !== '' ? Number(val) : null),
+              options: [
+                { value: '', label: 'Tất cả các bài' },
+                ...(grammarData?.lessons || []).map((lesson) => ({
+                  value: String(lesson.lessonNumber),
+                  label: `Bài ${lesson.lessonNumber}: ${lesson.title}`,
+                })),
+              ],
             },
             {
               key: 'level',

@@ -308,13 +308,13 @@ const KanjiDetail: React.FC<KanjiDetailProps> = ({
               <div className="flex items-baseline gap-2">
                 <h3 className="font-medium text-secondary-700 dark:text-secondary-300">Ý nghĩa:</h3>
                 <p className="text-lg font-semibold text-blue-600 dark:text-blue-400">
-                  {(kanjiData as any).meaning_vi || kanjiData.meaningVi}
+                  {kanjiData.meaningVi}
                 </p>
               </div>
               <div className="flex items-baseline gap-2">
                 <h3 className="font-medium text-secondary-700 dark:text-secondary-300">Trình độ JLPT:</h3>
                 <p className="text-lg font-semibold text-blue-600 dark:text-blue-400">
-                  {(kanjiData as any).jlpt_level || kanjiData.jlpt}
+                  {kanjiData.level}
                 </p>
               </div>
               <div className="flex items-baseline gap-2">
@@ -332,14 +332,14 @@ const KanjiDetail: React.FC<KanjiDetailProps> = ({
               <div className="flex items-baseline gap-2">
                 <h3 className="font-medium text-secondary-700 dark:text-secondary-300">Số nét:</h3>
                 <p className="text-lg font-semibold text-blue-600 dark:text-blue-400">
-                  {(kanjiData as any).stroke_count || kanjiData.strokeCount}
+                  {kanjiData.strokeCount}
                 </p>
               </div>
               <div className="flex items-start gap-2">
                 <h3 className="font-medium text-secondary-700 dark:text-secondary-300 whitespace-nowrap">Cách nhớ:</h3>
                 <div className="flex-1 flex flex-col text-left">
                   <div className="font-semibold text-blue-600 dark:text-blue-400 leading-relaxed whitespace-pre-line">
-                    {((kanjiData as any).memory_tip || kanjiData.memoryTip || '').replace(/\. /g, '.\n').replace(/: /g, ':\n')}
+                    {(kanjiData.memoryTip || '').replace(/\. /g, '.\n').replace(/: /g, ':\n')}
                   </div>
                 </div>
               </div>
@@ -351,18 +351,18 @@ const KanjiDetail: React.FC<KanjiDetailProps> = ({
         <Col xs={24} md={9}>
           <Card title="Từ vựng liên quan" className="h-full bg-surface-1 border border-border">
             <div className="space-y-3">
-              {(kanjiData.related_vocabulary || []).slice(0, 5).map((word, index) => (
+              {(kanjiData.relatedVocabulary || []).slice(0, 5).map((word, index) => (
                 <div
                   key={index}
                   className="flex items-center gap-2 p-3 border border-border rounded-lg hover:bg-surface-2 dark:hover:bg-secondary-800 transition-colors"
                 >
                   <span className="text-xl font-bold text-blue-600 dark:text-blue-400 kanji-text">
-                    {word.vocab_kanji}
+                    {word.word}
                   </span>
-                  {word.vocab_kanji !== word.vocab_reading && (
+                  {word.word !== word.kana && (
                     <>
                       <span className="text-base text-blue-600 dark:text-blue-400 jp-text">
-                        ({word.vocab_reading})
+                        ({word.kana})
                       </span>
                       <span className="text-secondary-300 dark:text-secondary-600 text-xs">|</span>
                     </>
@@ -372,12 +372,12 @@ const KanjiDetail: React.FC<KanjiDetailProps> = ({
                   </span>
                   <span className="text-secondary-300 dark:text-secondary-600 text-xs">|</span>
                   <span className="text-base font-medium text-secondary-800 dark:text-secondary-200">
-                    {word.meaning_vi ? word.meaning_vi.charAt(0).toUpperCase() + word.meaning_vi.slice(1) : ''}
+                    {word.meaningVi ? word.meaningVi.charAt(0).toUpperCase() + word.meaningVi.slice(1) : ''}
                   </span>
                 </div>
               ))}
 
-              {(!kanjiData.related_vocabulary || kanjiData.related_vocabulary.length === 0) && (
+              {(!kanjiData.relatedVocabulary || kanjiData.relatedVocabulary.length === 0) && (
                 <div className="text-center py-6 text-secondary-500 dark:text-secondary-400">
                   Chưa có từ vựng liên quan
                 </div>

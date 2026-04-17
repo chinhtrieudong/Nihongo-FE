@@ -26,7 +26,7 @@ const parseListParam = (value: string | null) =>
 const mapRadicalToKanjiItem = (radical: any): KanjiItem => ({
     kanji: radical.symbol,
     hanviet: radical.hanviet || radical.name_vi || radical.symbol,
-    jlpt: normalizeJlptLevel(radical.jlpt) || '',
+    level: normalizeJlptLevel(radical.jlpt) || '',
     color: '',
     onyomi: [],
     kunyomi: [],
@@ -36,24 +36,31 @@ const mapRadicalToKanjiItem = (radical: any): KanjiItem => ({
         radical.meaning ||
         radical.name_vi ||
         'Bộ thủ',
-    stroke_count: Number(radical.stroke_count || 1),
+    strokeCount: Number(radical.stroke_count || 1),
     radicals: Array.isArray(radical.variants) ? radical.variants : [],
-    memory_tip: '',
-    related_vocabulary: [],
+    memoryTip: '',
+    relatedVocabulary: [],
 });
 
 const mapKanjiListItemToKanjiItem = (item: any): KanjiItem => ({
+    id: item.id || item._id,
     kanji: item.kanji || item.character || '',
     hanviet: item.hanviet || '',
-    jlpt: normalizeJlptLevel(item.jlpt || item.jlpt_level || item.level || ''),
+    level: normalizeJlptLevel(item.level || item.jlpt || item.jlpt_level || ''),
     color: item.color || '',
     onyomi: Array.isArray(item.onyomi) ? item.onyomi : [],
     kunyomi: Array.isArray(item.kunyomi) ? item.kunyomi : [],
+    nanori: Array.isArray(item.nanori) ? item.nanori : [],
+    meaning: item.meaning || '',
     meaningVi: item.meaningVi || item.meaning_vi || '',
-    stroke_count: Number(item.stroke_count || 0),
+    strokeCount: Number(item.strokeCount || item.stroke_count || 0),
     radicals: Array.isArray(item.radicals) ? item.radicals : [],
-    memory_tip: item.memory_tip || '',
-    related_vocabulary: Array.isArray(item.related_vocabulary) ? item.related_vocabulary : [],
+    memoryTip: item.memoryTip || item.memory_tip || '',
+    relatedVocabulary: Array.isArray(item.relatedVocabulary) 
+        ? item.relatedVocabulary 
+        : Array.isArray(item.related_vocabulary) 
+            ? item.related_vocabulary 
+            : [],
 });
 
 const isRadicalItem = (item: KanjiItem) =>
@@ -61,7 +68,7 @@ const isRadicalItem = (item: KanjiItem) =>
     (
         (item.onyomi?.length || 0) === 0 &&
         (item.kunyomi?.length || 0) === 0 &&
-        !item.jlpt
+        !item.level
     );
 
 const KanjiPage: React.FC = () => {
