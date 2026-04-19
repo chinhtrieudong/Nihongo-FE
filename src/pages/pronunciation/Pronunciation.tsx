@@ -977,7 +977,7 @@ const Pronunciation: React.FC = () => {
             type="data"
             title="Chưa có bài luyện phát âm"
             description="Vui lòng chọn cấp độ khác để luyện tập."
-            size="small"
+            size="default"
           />
         )}
       </div>

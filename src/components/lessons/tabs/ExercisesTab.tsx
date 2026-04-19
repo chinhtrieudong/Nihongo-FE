@@ -339,7 +339,7 @@ const ExercisesTab: React.FC<ExercisesTabProps> = ({
                 <Progress
                     percent={(Object.keys(results).length / exercises.length) * 100}
                     strokeColor="#ffffff"
-                    trailColor="rgba(255,255,255,0.3)"
+                    railColor="rgba(255,255,255,0.3)"
                     size={8}
                     showInfo={false}
                 />

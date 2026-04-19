@@ -228,6 +228,7 @@ const RadicalDetail: React.FC = () => {
           type="error"
           title="Không tìm thấy bộ thủ"
           description="Không tìm thấy thông tin bộ thủ bạn đang tìm kiếm."
+          size="default"
           action={{
             label: "Quay lại danh sách bộ thủ",
             onClick: handleBack,
@@ -384,7 +385,7 @@ const RadicalDetail: React.FC = () => {
             type="data"
             title="Chưa có Kanji"
             description="Bộ thủ này chưa có Kanji nào."
-            size="small"
+            size="default"
           />
         ) : (
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-3 sm:gap-4">

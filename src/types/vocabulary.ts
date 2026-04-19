@@ -53,13 +53,25 @@ export interface VocabularyItem {
   hiragana: string;     // Same as CoreWord.reading
   hanViet: string;      // Same as CoreWord.hanViet
   meaning: string;      // Same as CoreWord.meaning
+  meaningVi?: string;   // Vietnamese meaning (alias)
   type: WordType;       // Same as CoreWord.type
   example: string;      // From WordSource.example (Japanese)
   exampleMeaning?: string; // From WordSource.exampleMeaning (Vietnamese)
+  exampleSentence?: string; // Legacy alias
+  exampleSentenceVi?: string; // Legacy alias
   textbook: TextbookType;
   level: JLPTLevel;
   lesson: number;
   topic: string;
+  // Legacy snake_case properties for backward compatibility
+  meaning_vi?: string;
+  example_jp?: string;
+  example_vi?: string;
+  kanji_analysis?: any;
+  jlpt?: string;
+  jpt?: string;
+  jlpt_level?: string;
+  jpt_level?: string;
 }
 
 // Legacy type mapping for backward compatibility

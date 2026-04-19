@@ -87,12 +87,12 @@ const VocabularyTable: React.FC<VocabularyTableProps> = ({
         },
         {
             title: "Nghĩa tiếng Việt",
-            dataIndex: "meaning_vi",
-            key: "meaning_vi",
+            dataIndex: "meaningVi",
+            key: "meaningVi",
             width: "30%",
             render: (_: string, record: VocabularyItem) => (
                 <Text className="text-lg">
-                    {record.meaning_vi || record.meaningVi || record.meaning || "-"}
+                    {record.meaningVi || record.meaning || "-"}
                 </Text>
             ),
         },

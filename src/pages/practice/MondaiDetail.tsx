@@ -23,7 +23,7 @@ import {
   Users,
 } from "lucide-react";
 import AudioPlayer from "../../components/AudioPlayer";
-import { minaApi } from "../../services/api";
+import { minnaAPI } from "../../services/api";
 
 const { Title, Text } = Typography;
 
@@ -107,7 +107,7 @@ const MondaiDetail: React.FC = () => {
 
       try {
         setLoading(true);
-        const response = await minaApi.get<MondaiResponse>(`/${lessonNumber}/mondai`);
+        const response = await minnaAPI.getMondai(parseInt(lessonNumber));
         
         if (response.data.success) {
           setMondaiData(response.data);
@@ -195,6 +195,7 @@ const MondaiDetail: React.FC = () => {
           type={error ? "error" : "data"}
           title={error ? "Không thể tải dữ liệu" : "Không có dữ liệu"}
           description={error || "Không có dữ liệu bài tập cho bài học này."}
+          size="default"
           action={{
             label: "Quay lại Practice",
             onClick: () => navigate("/practice"),

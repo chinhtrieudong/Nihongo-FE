@@ -86,6 +86,10 @@ export interface KanjiItem {
 
   /** Kanji component analysis */
   kanjiAnalysis?: KanjiAnalysis[];
+
+  // Legacy snake_case properties for backward compatibility
+  jlpt?: string;
+  stroke_count?: number;
 }
 
 // API Response types

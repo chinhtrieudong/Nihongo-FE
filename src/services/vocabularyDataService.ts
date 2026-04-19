@@ -428,3 +428,17 @@ export const getVocabularyStats = async () => {
 
   return stats;
 };
+
+// Default export as vocabularyAPI object
+const vocabularyAPI = {
+  getVocabulary,
+  getLessonVocabulary,
+  getLessons,
+  getTopics,
+  searchVocabulary,
+  getWordById,
+  getWordSources,
+  getVocabularyStats,
+};
+
+export default vocabularyAPI;

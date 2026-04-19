@@ -17,7 +17,7 @@ import {
   Users,
 } from "lucide-react";
 import AudioPlayer from "../../components/AudioPlayer";
-import { minaApi } from "../../services/api";
+import { minnaAPI } from "../../services/api";
 
 const { Title, Text } = Typography;
 
@@ -74,7 +74,8 @@ const ReibunDetail: React.FC = () => {
 
       try {
         setLoading(true);
-        const response = await minaApi.get<ReibunResponse>(`/${lessonNumber}/reibun`);
+        // Note: Reibun endpoint deprecated, use lesson content
+        const response = await minnaAPI.getLessonContent(parseInt(lessonNumber));
         
         if (response.data.success) {
           setReibunData(response.data);
@@ -122,6 +123,7 @@ const ReibunDetail: React.FC = () => {
           type={error ? "error" : "data"}
           title={error ? "Không thể tải dữ liệu" : "Không có dữ liệu"}
           description={error || "Không có dữ liệu câu ví dụ cho bài học này."}
+          size="default"
           action={{
             label: "Quay lại Practice",
             onClick: () => navigate("/practice"),

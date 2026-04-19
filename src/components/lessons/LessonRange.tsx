@@ -17,10 +17,10 @@ const LessonRange: React.FC<LessonRangeProps> = ({
       <div className="grid grid-cols-4 gap-x-4 gap-y-4 justify-items-stretch w-full">
         {Array.from({ length: 50 }, (_, i) => {
           const lessonNumber = i + 1;
-          const realLesson = lessons.find((item) => item.lesson_number === lessonNumber);
+          const realLesson = lessons.find((item) => item.lessonNumber === lessonNumber);
           const lesson = realLesson || {
             id: `fake-${lessonNumber}`,
-            lesson_number: lessonNumber,
+            lessonNumber: lessonNumber,
             title: `Bài ${lessonNumber}`,
             description: "",
             status: "not_started",
@@ -28,8 +28,8 @@ const LessonRange: React.FC<LessonRangeProps> = ({
           };
           const isFake = !realLesson;
           const isCurrentLesson =
-            lesson.lesson_number.toString() === currentLessonId ||
-            lesson.id === currentLessonId;
+            lesson?.lessonNumber?.toString() === currentLessonId ||
+            lesson?.id === currentLessonId;
           const isCompleted = lesson.status === 'completed';
           const isInProgress = lesson.status === 'in_progress';
           const isLocked = lesson.status === 'not_started';
@@ -62,7 +62,7 @@ const LessonRange: React.FC<LessonRangeProps> = ({
               `}
               aria-current={isCurrentLesson ? 'step' : undefined}
             >
-              {lesson.lesson_number}
+              {lesson.lessonNumber}
             </button>
           );
         })}

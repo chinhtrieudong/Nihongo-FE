@@ -1,7 +1,9 @@
 import React, { useMemo, useState } from "react";
-import { Button, Tag } from "antd";
+import { Button, Spin, Tag } from "antd";
 import { useNavigate } from "react-router-dom";
 import { CourseCard } from "../../components/course";
+import { EmptyState } from "../../components/common";
+import { useTextbooks } from "../../hooks/useTextbooks";
 
 interface TextbookSection {
   id: string;
@@ -12,93 +14,13 @@ interface TextbookSection {
   textbook: string;
 }
 
-const curriculumSections: TextbookSection[] = [
-  {
-    id: "minna-n5",
-    label: "Minna no Nihongo N5",
-    description: "Giáo trình Minna no Nihongo cấp độ N5",
-    level: "N5",
-    lessons: ["Bài 1", "Bài 2", "Bài 3", "Bài 4"],
-    textbook: "minna",
-  },
-  {
-    id: "minna-n4",
-    label: "Minna no Nihongo N4",
-    description: "Giáo trình Minna no Nihongo cấp độ N4",
-    level: "N4",
-    lessons: ["Bài 21", "Bài 22", "Bài 23"],
-    textbook: "minna",
-  },
-  {
-    id: "tango-n5",
-    label: "Tango N5",
-    description: "Từ vựng theo giáo trình Tango cấp độ N5",
-    level: "N5",
-    lessons: ["Bài 1", "Bài 2", "Bài 3"],
-    textbook: "tango",
-  },
-  {
-    id: "tango-n4",
-    label: "Tango N4",
-    description: "Từ vựng theo giáo trình Tango cấp độ N4",
-    level: "N4",
-    lessons: ["Bài 11", "Bài 12", "Bài 13"],
-    textbook: "tango",
-  },
-  {
-    id: "tango-n3",
-    label: "Tango N3",
-    description: "Từ vựng theo giáo trình Tango cấp độ N3",
-    level: "N3",
-    lessons: ["Bài 1", "Bài 2", "Bài 3"],
-    textbook: "tango",
-  },
-  {
-    id: "tango-n2",
-    label: "Tango N2",
-    description: "Từ vựng theo giáo trình Tango cấp độ N2",
-    level: "N2",
-    lessons: ["Bài 1", "Bài 2", "Bài 3"],
-    textbook: "tango",
-  },
-  {
-    id: "tango-n1",
-    label: "Tango N1",
-    description: "Từ vựng theo giáo trình Tango cấp độ N1",
-    level: "N1",
-    lessons: ["Bài 1", "Bài 2", "Bài 3"],
-    textbook: "tango",
-  },
-  {
-    id: "speed-master-n3",
-    label: "Speed Master N3",
-    description: "Luyện từ vựng N3 nhanh và hiệu quả",
-    level: "N3",
-    lessons: ["Chương 1", "Chương 2", "Chương 3"],
-    textbook: "speed-master",
-  },
-  {
-    id: "speed-master-n2",
-    label: "Speed Master N2",
-    description: "Luyện từ vựng N2 nâng cao",
-    level: "N2",
-    lessons: ["Chương 1", "Chương 2", "Chương 3"],
-    textbook: "speed-master",
-  },
-  {
-    id: "speed-master-n1",
-    label: "Speed Master N1",
-    description: "Luyện từ vựng N1 chuyên sâu",
-    level: "N1",
-    lessons: ["Chương 1", "Chương 2", "Chương 3"],
-    textbook: "speed-master",
-  },
-];
-
 const textbookToAccent: Record<string, "blue" | "pink" | "orange" | "green" | "purple"> = {
   minna: "blue",
   tango: "pink",
   "speed-master": "orange",
+  "jlpt-n3": "orange",
+  "jlpt-n2": "green",
+  "jlpt-n1": "purple",
 };
 
 
@@ -116,18 +38,35 @@ const Home: React.FC = () => {
   const navigate = useNavigate();
   const [activeLevel, setActiveLevel] = useState<"all" | "N5" | "N4" | "N3" | "N2" | "N1">("all");
 
-  const sections = useMemo(
-    () =>
-      curriculumSections.filter(
-        (section) => activeLevel === "all" || section.level === activeLevel,
-      ),
-    [activeLevel],
-  );
+  // Fetch textbooks from API
+  const { textbooks, loading, error } = useTextbooks({
+    level: activeLevel === "all" ? undefined : activeLevel,
+    limit: 100,
+  });
+
+  // Transform API data to component format
+  const sections: TextbookSection[] = useMemo(() => {
+    return textbooks.map(book => {
+      // Derive textbook type from slug
+      const textbookType = book.slug.startsWith('minna') ? 'minna' :
+                          book.slug.startsWith('tango') ? 'tango' :
+                          book.slug.startsWith('speed-master') ? 'speed-master' :
+                          book.slug.startsWith('jlpt') ? book.slug : 'minna';
+      return {
+        id: book.slug,
+        label: book.name,
+        description: book.description,
+        level: book.level,
+        lessons: book.lessons?.map((l: any, idx: number) => `Bài ${idx + 1}`) || [],
+        textbook: textbookType,
+      };
+    });
+  }, [textbooks]);
 
   const groupedSections = useMemo(() => {
     if (activeLevel !== "all") return { [activeLevel]: sections };
 
-    const groups: Record<string, typeof sections> = {};
+    const groups: Record<string, TextbookSection[]> = {};
     sections.forEach((section) => {
       if (!groups[section.level]) {
         groups[section.level] = [];
@@ -137,7 +76,7 @@ const Home: React.FC = () => {
 
     // Sort levels in order: N5, N4, N3, N2, N1
     const levelOrder = ["N5", "N4", "N3", "N2", "N1"];
-    const sortedGroups: Record<string, typeof sections> = {};
+    const sortedGroups: Record<string, TextbookSection[]> = {};
     levelOrder.forEach(level => {
       if (groups[level]) {
         sortedGroups[level] = groups[level];
@@ -153,9 +92,29 @@ const Home: React.FC = () => {
   );
 
   const handleViewLessons = (section: TextbookSection) => {
-    // Navigate to textbook detail page showing list of lessons
     navigate(`/textbook/${section.id}`);
   };
+
+  if (loading) {
+    return (
+      <div className="min-h-full bg-bg flex items-center justify-center">
+        <Spin size="large" description="Đang tải..." />
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="min-h-full bg-bg p-8">
+        <div className="text-center">
+          <p className="text-red-500">Lỗi khi tải dữ liệu: {error}</p>
+          <Button onClick={() => window.location.reload()} className="mt-4">
+            Thử lại
+          </Button>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-full bg-bg academic-canvas">
@@ -188,7 +147,18 @@ const Home: React.FC = () => {
           </span>
         </div>
 
-        {activeLevel === "all" ? (
+        {sections.length === 0 ? (
+          <EmptyState
+            type="data"
+            title="Chưa có giáo trình"
+            description={`Không tìm thấy giáo trình nào cho cấp độ ${activeLevel === "all" ? "này" : activeLevel}. Vui lòng thử lại sau hoặc chọn cấp độ khác.`}
+            size="large"
+            action={{
+              label: "Tải lại",
+              onClick: () => window.location.reload(),
+            }}
+          />
+        ) : activeLevel === "all" ? (
           Object.entries(groupedSections).map(([level, levelSections]) => (
             <div key={level} className="mb-12">
               <div className="flex items-center gap-3 mb-6">

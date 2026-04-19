@@ -194,6 +194,7 @@ const TestResults: React.FC = () => {
           type="error"
           title="Không tìm thấy kết quả"
           description="Không tìm thấy kết quả bài thi bạn đang tìm kiếm."
+          size="default"
           action={{
             label: "Quay lại danh sách",
             onClick: () => navigate("/tests"),

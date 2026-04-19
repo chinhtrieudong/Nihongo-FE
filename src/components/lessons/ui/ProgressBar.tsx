@@ -4,7 +4,7 @@ import { Progress } from "antd";
 interface ProgressBarProps {
     percent: number;
     strokeColor?: string | { [key: string]: string };
-    trailColor?: string;
+    railColor?: string;
     size?: number;
     showInfo?: boolean;
     className?: string;
@@ -17,7 +17,7 @@ const ProgressBar: React.FC<ProgressBarProps> = ({
         '0%': '#108ee9',
         '100%': '#52c41a',
     },
-    trailColor = "#f0f0f0",
+    railColor = "#f0f0f0",
     size = 8,
     showInfo = false,
     className = "",
@@ -28,7 +28,7 @@ const ProgressBar: React.FC<ProgressBarProps> = ({
             <Progress
                 percent={percent}
                 strokeColor={strokeColor}
-                trailColor={trailColor}
+                railColor={railColor}
                 size={size}
                 showInfo={showInfo}
             />

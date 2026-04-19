@@ -277,6 +277,7 @@ const QuickTest: React.FC = () => {
           type="error"
           title="Không tìm thấy giáo trình"
           description="Đường dẫn không hợp lệ."
+          size="default"
           action={{
             label: "Quay lại",
             onClick: () => navigate(-1),

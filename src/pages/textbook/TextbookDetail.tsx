@@ -280,6 +280,7 @@ const TextbookDetail: React.FC = () => {
           type="error"
           title="Không tìm thấy giáo trình"
           description="Giáo trình bạn đang tìm kiếm không tồn tại."
+          size="default"
           action={{
             label: "Quay lại trang chủ",
             onClick: () => navigate("/"),

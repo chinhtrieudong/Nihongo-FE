@@ -1,6 +1,6 @@
 import React from "react";
 import { Button } from "antd";
-import { BookOpen, ArrowRight, BookText } from "lucide-react";
+import { ArrowRight, BookText } from "lucide-react";
 
 interface CourseCardProps {
   title: string;
@@ -10,7 +10,6 @@ interface CourseCardProps {
   accentColor: "blue" | "pink" | "orange" | "green" | "purple";
   onAction?: () => void;
   actionLabel?: string;
-  icon?: React.ReactNode;
 }
 
 const accentConfig = {
@@ -20,14 +19,14 @@ const accentConfig = {
       iconText: "text-blue-600",
       button: "bg-blue-600 hover:bg-blue-700",
       border: "border-gray-200",
-      borderAccent: "border-t-blue-500",
+      borderColor: "#3b82f6",
     },
     dark: {
       iconBg: "bg-blue-500/20",
       iconText: "text-blue-300",
       button: "bg-blue-600 hover:bg-blue-500",
-      border: "border-slate-700",
-      borderAccent: "border-t-blue-400",
+      border: "border-[#2d3748]",
+      borderColor: "#60a5fa",
     },
   },
   pink: {
@@ -36,14 +35,14 @@ const accentConfig = {
       iconText: "text-pink-600",
       button: "bg-pink-600 hover:bg-pink-700",
       border: "border-gray-200",
-      borderAccent: "border-t-pink-500",
+      borderColor: "#ec4899",
     },
     dark: {
       iconBg: "bg-pink-500/20",
       iconText: "text-pink-300",
       button: "bg-pink-600 hover:bg-pink-500",
-      border: "border-slate-700",
-      borderAccent: "border-t-pink-400",
+      border: "border-[#2d3748]",
+      borderColor: "#f472b6",
     },
   },
   orange: {
@@ -52,14 +51,14 @@ const accentConfig = {
       iconText: "text-orange-600",
       button: "bg-orange-600 hover:bg-orange-700",
       border: "border-gray-200",
-      borderAccent: "border-t-orange-500",
+      borderColor: "#f97316",
     },
     dark: {
       iconBg: "bg-orange-500/20",
       iconText: "text-orange-300",
       button: "bg-orange-600 hover:bg-orange-500",
-      border: "border-slate-700",
-      borderAccent: "border-t-orange-400",
+      border: "border-[#2d3748]",
+      borderColor: "#fb923c",
     },
   },
   green: {
@@ -68,14 +67,14 @@ const accentConfig = {
       iconText: "text-emerald-600",
       button: "bg-emerald-600 hover:bg-emerald-700",
       border: "border-gray-200",
-      borderAccent: "border-t-emerald-500",
+      borderColor: "#10b981",
     },
     dark: {
       iconBg: "bg-emerald-500/20",
       iconText: "text-emerald-300",
       button: "bg-emerald-600 hover:bg-emerald-500",
-      border: "border-slate-700",
-      borderAccent: "border-t-emerald-400",
+      border: "border-[#2d3748]",
+      borderColor: "#34d399",
     },
   },
   purple: {
@@ -84,14 +83,14 @@ const accentConfig = {
       iconText: "text-violet-600",
       button: "bg-violet-600 hover:bg-violet-700",
       border: "border-gray-200",
-      borderAccent: "border-t-violet-500",
+      borderColor: "#8b5cf6",
     },
     dark: {
       iconBg: "bg-violet-500/20",
       iconText: "text-violet-300",
       button: "bg-violet-600 hover:bg-violet-500",
-      border: "border-slate-700",
-      borderAccent: "border-t-violet-400",
+      border: "border-[#2d3748]",
+      borderColor: "#a78bfa",
     },
   },
 };
@@ -112,31 +111,36 @@ const CourseCard: React.FC<CourseCardProps> = ({
   accentColor,
   onAction,
   actionLabel = "Bắt đầu học",
-  icon = <BookOpen className="w-5 h-5" />,
 }) => {
   const accent = accentConfig[accentColor];
   const levelBadge = levelBadgeConfig[level] || levelBadgeConfig.N5;
+
+  const firstLetter = title.charAt(0).toUpperCase();
 
   return (
     <div
       className={`
         group relative flex flex-col
-        bg-white dark:bg-slate-900
+        bg-white dark:bg-[#1c212a]
         rounded-2xl
         border ${accent.light.border} dark:${accent.dark.border}
-        border-t-4 ${accent.light.borderAccent} dark:${accent.dark.borderAccent}
+        border-t-4
         overflow-hidden
         transition-all duration-300 ease-out
         hover:-translate-y-1 hover:shadow-lg dark:hover:shadow-slate-900/50
         cursor-pointer
       `}
+      style={{
+        borderTopColor: accent.light.borderColor,
+      }}
+      data-accent-color={accentColor}
       onClick={onAction}
     >
       {/* Content */}
       <div className="p-5 flex flex-col flex-1">
         {/* Top: Icon + Title + Level Badge */}
         <div className="flex items-start gap-3 mb-3">
-          {/* Icon */}
+          {/* Icon - Ký tự đầu của tên giáo trình */}
           <div
             className={`
               flex-shrink-0 w-12 h-12 rounded-xl
@@ -144,15 +148,16 @@ const CourseCard: React.FC<CourseCardProps> = ({
               ${accent.light.iconText} dark:${accent.dark.iconText}
               flex items-center justify-center
               transition-transform duration-300 group-hover:scale-105
+              text-lg font-bold
             `}
           >
-            {icon}
+            {firstLetter}
           </div>
 
           {/* Title + Level */}
           <div className="flex-1 min-w-0">
             <div className="flex items-center gap-2 flex-wrap">
-              <h3 className="text-lg font-bold text-gray-900 dark:text-gray-100 leading-tight">
+              <h3 className="text-lg font-bold text-gray-900 dark:text-[#e2e8f0] leading-tight">
                 {title}
               </h3>
               <span
@@ -169,13 +174,13 @@ const CourseCard: React.FC<CourseCardProps> = ({
         </div>
 
         {/* Middle: Description */}
-        <p className="text-sm text-gray-600 dark:text-slate-400 leading-relaxed mb-4 line-clamp-2">
+        <p className="text-sm text-gray-600 dark:text-[#94a3b8] leading-relaxed mb-4 line-clamp-2">
           {description}
         </p>
 
         {/* Bottom: Lesson Count + CTA */}
-        <div className="mt-auto pt-4 border-t border-gray-100 dark:border-slate-800 flex items-center justify-between gap-3">
-          <span className="text-sm text-gray-500 dark:text-slate-500 flex items-center gap-1.5">
+        <div className="mt-auto pt-4 border-t border-gray-100 dark:border-[#1e293b] flex items-center justify-between gap-3">
+          <span className="text-sm text-gray-500 dark:text-[#64748b] flex items-center gap-1.5">
             <BookText className="w-4 h-4" />
             {lessonCount} bài học
           </span>

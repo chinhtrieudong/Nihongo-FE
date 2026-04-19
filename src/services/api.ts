@@ -46,9 +46,6 @@ export const API_ENDPOINTS = {
     WEAK_POINTS: (lessonId: string) => `/lessons/${lessonId}/weak-points`,
   },
 
-  // Vocabulary
-  VOCABULARY: "/vocabulary",
-
   // Kanji
   KANJI: {
     CHARACTER: (kanji: string) =>
@@ -70,31 +67,6 @@ export const API_ENDPOINTS = {
     PRONUNCIATION: "/ai/pronunciation",
   },
 
-  // Conversation
-  CONVERSATION: {
-    LESSONS: "/lessons",
-    EXERCISES: (id: string) => `/lessons/${id}/exercises`,
-    SUBMIT: (id: string) => `/lessons/${id}/submit`,
-    SCENARIOS: "/scenarios",
-    DIALOGS: "/dialogs",
-    AI: {
-      START: "/ai/start",
-      CHAT: "/ai/chat",
-      END: (conversationId: string) => `/ai/end/${conversationId}`,
-    },
-    VOICE: {
-      START: "/voice/start",
-      UPLOAD: "/voice/upload",
-    },
-    STATS: "/stats",
-    HISTORY: "/conversations",
-    AUDIO: {
-      TEXT_TO_SPEECH: "/audio/text-to-speech",
-      DIALOG_LINE: (dialogId: string, lineId: string) =>
-        `/audio/dialog/${dialogId}/${lineId}`,
-    },
-  },
-
   // Progress
   PROGRESS: "/progress",
 
@@ -109,31 +81,6 @@ export const API_ENDPOINTS = {
   },
 } as const;
 
-// Minna JSON API endpoints (separate service)
-export const MINNA_ENDPOINTS = {
-  LESSON: {
-    VOCABULARY: (lessonNumber: number) => `/lessons/${lessonNumber}/vocabulary`,
-    GRAMMAR: (lessonNumber: number) => `/lessons/${lessonNumber}/grammar`,
-    DIALOG: (lessonNumber: number) => `/lessons/${lessonNumber}/dialog`,
-    BUNKEI: (lessonNumber: number) => `/lessons/${lessonNumber}/bunkei`,
-    RENSHOU: (lessonNumber: number) => `/lessons/${lessonNumber}/renshuu`,
-    REIBUN: (lessonNumber: number) => `/lessons/${lessonNumber}/reibun`,
-    AI_CHAT: (lessonNumber: number) => `/lessons/${lessonNumber}/ai/chat`,
-  },
-};
-
-// Tango JSON API endpoints (separate service)
-export const TANGO_ENDPOINTS = {
-  LESSON: {
-    VOCABULARY: (lessonNumber: number) => `/lesson/${lessonNumber}/vocabulary`,
-    GRAMMAR: (lessonNumber: number) => `/lesson/${lessonNumber}/grammar`,
-    DIALOG: (lessonNumber: number) => `/lesson/${lessonNumber}/dialog`,
-    BUNKEI: (lessonNumber: number) => `/lesson/${lessonNumber}/bunkei`,
-    RENSHOU: (lessonNumber: number) => `/lesson/${lessonNumber}/renshou`,
-    REIBUN: (lessonNumber: number) => `/lesson/${lessonNumber}/reibun`,
-    AI_CHAT: (lessonNumber: number) => `/lesson/${lessonNumber}/ai/chat`,
-  },
-};
 
 // Create axios instance with default config
 const api = axios.create({
@@ -194,55 +141,6 @@ api.interceptors.response.use(
   },
 );
 
-// Add mina API after the main api
-const MINA_API_BASE_URL = "/api/v1/mina";
-
-// Create separate axios instance for mina endpoints
-const minaApi = axios.create({
-  baseURL: MINA_API_BASE_URL,
-  headers: {
-    "Content-Type": "application/json",
-  },
-});
-
-// Add tango API after the main api
-const TANGO_API_BASE_URL = "/api/tango";
-
-// Create separate axios instance for tango endpoints
-const tangoApi = axios.create({
-  baseURL: TANGO_API_BASE_URL,
-  headers: {
-    "Content-Type": "application/json",
-  },
-});
-
-// Request interceptor for mina API
-minaApi.interceptors.request.use(
-  (config) => {
-    const token = localStorage.getItem("accessToken");
-    if (token) {
-      config.headers.Authorization = `Bearer ${token}`;
-    }
-    return config;
-  },
-  (error) => {
-    return Promise.reject(error);
-  },
-);
-
-// Request interceptor for tango API
-tangoApi.interceptors.request.use(
-  (config) => {
-    const token = localStorage.getItem("accessToken");
-    if (token) {
-      config.headers.Authorization = `Bearer ${token}`;
-    }
-    return config;
-  },
-  (error) => {
-    return Promise.reject(error);
-  },
-);
 
 export interface LoginData {
   email: string;
@@ -334,20 +232,6 @@ export const userAPI = {
   },
 };
 
-// Vocabulary API functions
-export const vocabularyAPI = {
-  getVocabulary: async (level?: string) => {
-    const params = level ? { level } : {};
-    const response = await api.get(API_ENDPOINTS.VOCABULARY, { params });
-    return response.data;
-  },
-
-  getVocabularyByLesson: async (lessonNumber: number): Promise<any> => {
-    const response = await minaApi.get(`/lessons/${lessonNumber}/vocabulary`);
-    return response.data;
-  },
-};
-
 // Lesson API functions
 export const lessonAPI = {
   getLessons: async (
@@ -361,12 +245,6 @@ export const lessonAPI = {
     if (limit) params.limit = limit;
     if (offset) params.offset = offset;
     if (textbook) params.textbook = textbook;
-
-    // Use mina endpoint for minna_no_nihongo textbook
-    if (textbook === "minna_no_nihongo") {
-      const response = await minaApi.get("/lessons", { params });
-      return response.data;
-    }
 
     const response = await api.get("/lessons", { params });
     return response.data;
@@ -500,19 +378,6 @@ export const lessonAPI = {
   },
 };
 
-// Progress API functions
-export const progressAPI = {
-  getProgress: async () => {
-    const response = await api.get("/progress");
-    return response.data;
-  },
-
-  updateProgress: async (data: any) => {
-    const response = await api.post("/progress", data);
-    return response.data;
-  },
-};
-
 // User Statistics API functions
 export const userStatsAPI = {
   // Get user dashboard statistics
@@ -582,7 +447,7 @@ export const aiAPI = {
       context: data.context,
     };
 
-    const response = await minaApi.post(
+    const response = await api.post(
       `/lessons/${lessonNumber}/ai/chat`,
       requestBody,
     );
@@ -622,7 +487,6 @@ export const healthAPI = {
 };
 
 export default api;
-export { minaApi };
 
 // JLPT Tests API functions
 type BackendJlptTest = {
@@ -849,6 +713,27 @@ export interface TestAttempt {
   updatedAt: string;
 }
 
+// Textbooks/Courses API
+export const textbooksAPI = {
+  // Get all textbooks/courses
+  getAll: async () => {
+    const response = await api.get('/textbooks');
+    return response.data;
+  },
+
+  // Get single textbook by ID (slug)
+  getById: async (id: string) => {
+    const response = await api.get(`/textbooks/${id}`);
+    return response.data;
+  },
+
+  // Get textbook lessons with pagination
+  getLessons: async (slug: string, params?: { page?: number; limit?: number }) => {
+    const response = await api.get(`/textbooks/${slug}/lessons`, { params });
+    return response.data;
+  },
+};
+
 export const testAttemptsAPI = {
   // Create a new test attempt
   createAttempt: async (data: CreateTestAttemptData) => {
@@ -886,6 +771,96 @@ export const testAttemptsAPI = {
   // Delete test attempt
   deleteAttempt: async (id: string) => {
     const response = await api.delete(`/test-attempts/${id}`);
+    return response.data;
+  },
+};
+
+// Minna No Nihongo API
+export const minnaAPI = {
+  // Get Bunkei (Grammar patterns)
+  getBunkei: async (lessonNumber?: number, textbook = 'minna_no_nihongo') => {
+    const params: any = { textbook };
+    if (lessonNumber) params.lessonNumber = lessonNumber;
+    const response = await api.get('/minna/bunkei', { params });
+    return response.data;
+  },
+
+  getBunkeiById: async (id: string) => {
+    const response = await api.get(`/minna/bunkei/${id}`);
+    return response.data;
+  },
+
+  // Get Mondai (Exercises)
+  getMondai: async (lessonNumber?: number, type?: string, textbook = 'minna_no_nihongo') => {
+    const params: any = { textbook };
+    if (lessonNumber) params.lessonNumber = lessonNumber;
+    if (type) params.type = type;
+    const response = await api.get('/minna/mondai', { params });
+    return response.data;
+  },
+
+  getMondaiById: async (id: string) => {
+    const response = await api.get(`/minna/mondai/${id}`);
+    return response.data;
+  },
+
+  // Get Kaiwa (Conversations)
+  getKaiwa: async (lessonNumber?: number, textbook = 'minna_no_nihongo') => {
+    const params: any = { textbook };
+    if (lessonNumber) params.lessonNumber = lessonNumber;
+    const response = await api.get('/minna/kaiwa', { params });
+    return response.data;
+  },
+
+  getKaiwaById: async (id: string) => {
+    const response = await api.get(`/minna/kaiwa/${id}`);
+    return response.data;
+  },
+
+  // Get Tango (Vocabulary)
+  getTango: async (lessonNumber?: number, textbook = 'minna_no_nihongo') => {
+    const params: any = { textbook };
+    if (lessonNumber) params.lessonNumber = lessonNumber;
+    const response = await api.get('/minna/tango', { params });
+    return response.data;
+  },
+
+  getTangoById: async (id: string) => {
+    const response = await api.get(`/minna/tango/${id}`);
+    return response.data;
+  },
+
+  // Get all lesson content
+  getLessonContent: async (lessonNumber: number, textbook = 'minna_no_nihongo') => {
+    const response = await api.get(`/minna/lesson/${lessonNumber}`, {
+      params: { textbook }
+    });
+    return response.data;
+  },
+};
+
+// Favorites API
+export const favoritesAPI = {
+  // Get user's favorites
+  getFavorites: async (userId: string, params?: { textbookId?: string; lessonNumber?: number; page?: number; limit?: number }) => {
+    const response = await api.get('/favorites', { params: { userId, ...params } });
+    return response.data;
+  },
+
+  // Toggle favorite
+  toggleFavorite: async (data: {
+    userId: string;
+    wordId: string;
+    textbookId: string;
+    lessonNumber: number;
+  }) => {
+    const response = await api.post('/favorites', data);
+    return response.data;
+  },
+
+  // Check if word is favorited
+  checkFavorite: async (userId: string, wordId: string) => {
+    const response = await api.get('/favorites/check', { params: { userId, wordId } });
     return response.data;
   },
 };

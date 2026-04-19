@@ -16,14 +16,12 @@ import LessonContent from "./layout/LessonContent.js";
 // Import tab components
 import VocabularyTab from "./tabs/VocabularyTab.js";
 import GrammarTab from "./tabs/GrammarTab.js";
-import DialogTab from "./tabs/DialogTab.js";
 import ExercisesTab from "./tabs/ExercisesTab.js";
 import AITab from "./tabs/AITab.js";
 
 type TabType =
     | "vocabulary"
     | "grammar"
-    | "dialog"
     | "exercises"
     | "ai";
 
@@ -107,7 +105,6 @@ const Lessons: React.FC = () => {
     const tabs = [
         { id: "vocabulary" as TabType, label: "📚 Từ vựng", icon: "📚" },
         { id: "grammar" as TabType, label: "📘 Ngữ pháp", icon: "📘" },
-        { id: "dialog" as TabType, label: "💬 Hội thoại", icon: "💬" },
         { id: "exercises" as TabType, label: "✍ Bài tập", icon: "✍" },
         { id: "ai" as TabType, label: "🤖 Luyện AI", icon: "🤖" },
     ];
@@ -115,7 +112,6 @@ const Lessons: React.FC = () => {
     const tabComponents = {
         vocabulary: <VocabularyTab vocabulary={lessonDetail?.vocabularies || []} />,
         grammar: <GrammarTab grammar={lessonDetail?.grammars || []} />,
-        dialog: <DialogTab dialogs={lessonDetail?.dialogs || []} />,
         exercises: (
             <ExercisesTab
                 exercises={lessonDetail?.exercises || []}

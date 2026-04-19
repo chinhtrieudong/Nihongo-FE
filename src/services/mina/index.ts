@@ -1,2 +1,2 @@
-// Re-export minaApi from the main api.ts file
-export { minaApi } from "../api";
+// Re-export minnaAPI from the main api.ts file
+export { minnaAPI } from "../api";

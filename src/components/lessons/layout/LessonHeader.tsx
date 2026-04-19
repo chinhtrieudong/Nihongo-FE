@@ -106,7 +106,7 @@ const LessonHeader: React.FC<LessonHeaderProps> = ({
                             <div className="flex-1">
                                 <div className="flex items-center gap-4 mb-4">
                                     <Badge
-                                        count={selectedLesson.lesson_number}
+                                        count={selectedLesson.lessonNumber}
                                         style={{ backgroundColor: '#1890ff' }}
                                         className="text-2xl"
                                     >

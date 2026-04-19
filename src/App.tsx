@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
 import { Provider } from "react-redux";
 import { ConfigProvider, theme, App as AntdApp } from "antd";
 import { store } from "./store";
@@ -13,11 +13,10 @@ import RadicalDetail from "./pages/kanji/RadicalDetail";
 import Grammar from "./pages/grammar/Grammar";
 import Pronunciation from "./pages/pronunciation/Pronunciation";
 import Practice from "./pages/practice/Practice";
+import BunkeiDetail from "./pages/practice/BunkeiDetail";
 import KaiwaDetail from "./pages/practice/KaiwaDetail";
 import MondaiDetail from "./pages/practice/MondaiDetail";
-import BunkeiDetail from "./pages/practice/BunkeiDetail";
-import ReibunDetail from "./pages/practice/ReibunDetail";
-import RenshuuDetail from "./pages/practice/RenshuuDetail";
+import VocabularyDetail from "./pages/vocabulary/VocabularyDetail";
 import Tests from "./pages/tests/Tests";
 import TestDetail from "./pages/tests/TestDetail";
 import TestResults from "./pages/tests/TestResults";
@@ -26,7 +25,6 @@ import Register from "./pages/auth/Register";
 import ComponentsDemo from "./pages/demo/ComponentsDemo";
 import TextbookDetail from "./pages/textbook/TextbookDetail";
 import QuickTest from "./pages/textbook/QuickTest";
-import VocabularyDetail from "./pages/vocabulary/VocabularyDetail";
 import { Lessons } from "./components/lessons";
 import { AuthProvider, useAuth } from "./contexts/AuthContext";
 import { AdminRoute, AdminLayout } from "./components/admin";
@@ -65,8 +63,8 @@ const AppContent: React.FC = () => {
               <Route index element={<Home />} />
               <Route path="lessons/:lessonNumber/kanji" element={<KanjiDetail />} />
               <Route path="textbook/:textbookId" element={<TextbookDetail />} />
+              <Route path="textbook/:textbookId/vocabulary/:lessonId" element={<VocabularyDetail />} />
               <Route path="textbook/:textbookId/quick-test" element={<QuickTest />} />
-              <Route path="textbook/:textbookId/vocabulary/:lessonNumber" element={<VocabularyDetail />} />
               <Route path="mina/:lessonId" element={<Lessons />} />
               <Route path="tango/:lessonId" element={<Lessons />} />
               <Route path="jlpt/:level/:lessonId" element={<Lessons />} />
@@ -75,16 +73,15 @@ const AppContent: React.FC = () => {
               <Route path="kanji/:kanji" element={<KanjiDetail />} />
               <Route path="grammar" element={<Grammar />} />
               <Route path="pronunciation" element={<Pronunciation />} />
-              <Route path="practice" element={<Practice />} />
-              <Route path="practice/kaiwa/:lessonNumber" element={<KaiwaDetail />} />
-              <Route path="practice/mondai/:lessonNumber" element={<MondaiDetail />} />
-              <Route path="practice/bunkei/:lessonNumber" element={<BunkeiDetail />} />
-              <Route path="practice/reibun/:lessonNumber" element={<ReibunDetail />} />
-              <Route path="practice/renshuu/:lessonNumber" element={<RenshuuDetail />} />
               <Route path="tests" element={<Tests />} />
               <Route path="test/:testId" element={<TestDetail />} />
               <Route path="test-results/:testId" element={<TestResults />} />
               <Route path="components-demo" element={<ComponentsDemo />} />
+              <Route path="practice" element={<Practice />} />
+              <Route path="practice/bunkei" element={<BunkeiDetail />} />
+              <Route path="practice/kaiwa" element={<KaiwaDetail />} />
+              <Route path="practice/mondai" element={<MondaiDetail />} />
+              <Route path="practice/tango" element={<VocabularyDetail />} />
             </Route>
 
             <Route

@@ -20,7 +20,7 @@ import {
   Clock,
 } from "lucide-react";
 import AudioPlayer from "../../components/AudioPlayer";
-import { minaApi } from "../../services/api";
+import { minnaAPI } from "../../services/api";
 
 const { Title, Text, Paragraph } = Typography;
 const { Panel } = Collapse;
@@ -104,7 +104,7 @@ const KaiwaDetail: React.FC = () => {
         setLoading(true);
         setError(null);
 
-        const response = await minaApi.get<KaiwaResponse>(`/${lessonNumber}/kaiwa`);
+        const response = await minnaAPI.getKaiwa(parseInt(lessonNumber));
         
         if (response.data.success) {
           setKaiwaData(response.data);
@@ -155,6 +155,7 @@ const KaiwaDetail: React.FC = () => {
           type={error ? "error" : "data"}
           title={error ? "Không thể tải dữ liệu" : "Không có dữ liệu"}
           description={error || "Không có dữ liệu kaiwa cho bài học này."}
+          size="default"
           action={{
             label: "Quay lại Practice",
             onClick: () => navigate("/practice"),

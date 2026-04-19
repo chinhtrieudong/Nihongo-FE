@@ -15,7 +15,7 @@ import {
   Scroll,
 } from "lucide-react";
 import AudioPlayer from "../../components/AudioPlayer";
-import { minaApi } from "../../services/api";
+import { minnaAPI } from "../../services/api";
 
 const { Title, Text } = Typography;
 const { Panel } = Collapse;
@@ -60,7 +60,7 @@ const BunkeiDetail: React.FC = () => {
 
       try {
         setLoading(true);
-        const response = await minaApi.get<BunkeiResponse>(`/${lessonNumber}/bunkei`);
+        const response = await minnaAPI.getBunkei(parseInt(lessonNumber));
         
         if (response.data.success) {
           setBunkeiData(response.data);
@@ -96,6 +96,7 @@ const BunkeiDetail: React.FC = () => {
           type={error ? "error" : "data"}
           title={error ? "Không thể tải dữ liệu" : "Không có dữ liệu"}
           description={error || "Không có dữ liệu mẫu câu cho bài học này."}
+          size="default"
           action={{
             label: "Quay lại Practice",
             onClick: () => navigate("/practice"),

@@ -7,7 +7,6 @@ export { default as LessonContent } from "./layout/LessonContent.js";
 // Tab components
 export { default as VocabularyTab } from "./tabs/VocabularyTab.js";
 export { default as GrammarTab } from "./tabs/GrammarTab.js";
-export { default as DialogTab } from "./tabs/DialogTab.js";
 export { default as ExercisesTab } from "./tabs/ExercisesTab.js";
 export { default as AITab } from "./tabs/AITab.js";
 

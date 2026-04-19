@@ -298,6 +298,7 @@ const Grammar: React.FC = () => {
               type="error"
               title="Không thể tải dữ liệu"
               description={error}
+              size="default"
             />
           ) : displayLessons.length > 0 ? (
             <div className="space-y-6">
@@ -401,6 +402,7 @@ const Grammar: React.FC = () => {
                   type="search"
                   title="Không tìm thấy dữ liệu ngữ pháp"
                   description="Vui lòng thử lại với bộ lọc khác hoặc từ khóa tìm kiếm mới."
+                  size="default"
                 />
               </Card>
             )

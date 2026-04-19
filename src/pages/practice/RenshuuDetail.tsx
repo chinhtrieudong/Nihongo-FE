@@ -16,7 +16,7 @@ import {
   Users,
 } from "lucide-react";
 import AudioPlayer from "../../components/AudioPlayer";
-import { minaApi } from "../../services/api";
+import { minnaAPI } from "../../services/api";
 
 const { Title, Text } = Typography;
 
@@ -90,7 +90,8 @@ const RenshuuDetail: React.FC = () => {
 
       try {
         setLoading(true);
-        const response = await minaApi.get<RenshuuResponse>(`/${lessonNumber}/renshuu`);
+        // Note: Renshuu endpoint deprecated, use lesson content
+        const response = await minnaAPI.getLessonContent(parseInt(lessonNumber));
         
         if (response.data.success && response.data.data.length > 0) {
           setRenshuuData(response.data);
@@ -152,6 +153,7 @@ const RenshuuDetail: React.FC = () => {
           type={error ? "error" : "data"}
           title={error ? "Không thể tải dữ liệu" : "Không có dữ liệu"}
           description={error || "Không có dữ liệu bài luyện tập cho bài học này."}
+          size="default"
           action={{
             label: "Quay lại Practice",
             onClick: () => navigate("/practice"),

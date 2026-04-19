@@ -618,6 +618,36 @@ div.ant-tooltip-arrow-content {
   border: 1px solid var(--border) !important;
 }
 
+/* Progress component rail color */
+.ant-progress .ant-progress-outer {
+  background-color: var(--surface-3) !important;
+}
+
+/* CourseCard border top dark mode */
+.dark .group[data-accent-color="blue"] {
+  border-top-color: #60a5fa !important;
+}
+.dark .group[data-accent-color="pink"] {
+  border-top-color: #f472b6 !important;
+}
+.dark .group[data-accent-color="orange"] {
+  border-top-color: #fb923c !important;
+}
+.dark .group[data-accent-color="green"] {
+  border-top-color: #34d399 !important;
+}
+.dark .group[data-accent-color="purple"] {
+  border-top-color: #a78bfa !important;
+}
+
+.ant-progress .ant-progress-inner {
+  background-color: var(--surface-3) !important;
+}
+
+.ant-progress .ant-progress-bg {
+  background: linear-gradient(90deg, var(--primary) 0%, var(--secondary) 100%) !important;
+}
+
 @keyframes shake {
   0%,
   100% {

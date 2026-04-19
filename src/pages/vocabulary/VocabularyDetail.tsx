@@ -476,6 +476,7 @@ const VocabularyDetail: React.FC = () => {
           type={error ? "error" : "data"}
           title={error ? "Không thể tải dữ liệu" : "Chưa có từ vựng"}
           description={error || "Bài học này chưa có từ vựng nào."}
+          size="default"
           action={{
             label: "Quay lại",
             onClick: handleBack,
@@ -602,6 +603,7 @@ const VocabularyDetail: React.FC = () => {
               type="data"
               title="Không có từ cần ôn tập"
               description="Tuyệt vời! Bạn đã hoàn thành tất cả các bài ôn tập."
+              size="default"
             />
           ) : (
             <>

@@ -62,7 +62,7 @@ const VocabularyFlashcard: React.FC<VocabularyFlashcardProps> = ({
   }, [currentCard]);
 
   const getMeaningVi = useCallback(() => {
-    return currentCard?.meaning_vi || currentCard?.meaningVi || currentCard?.meaning || "";
+    return currentCard?.meaningVi || currentCard?.meaning || "";
   }, [currentCard]);
 
   const getHanViet = useCallback(() => {
@@ -70,21 +70,11 @@ const VocabularyFlashcard: React.FC<VocabularyFlashcardProps> = ({
   }, [currentCard]);
 
   const getExampleJp = useCallback(() => {
-    return (
-      currentCard?.example_jp ||
-      currentCard?.exampleSentence ||
-      currentCard?.example?.jp ||
-      ""
-    );
+    return currentCard?.example || currentCard?.exampleSentence || "";
   }, [currentCard]);
 
   const getExampleVi = useCallback(() => {
-    return (
-      currentCard?.example_vi ||
-      currentCard?.exampleSentenceVi ||
-      currentCard?.example?.vn ||
-      ""
-    );
+    return currentCard?.exampleMeaning || currentCard?.exampleSentenceVi || "";
   }, [currentCard]);
 
   const containsJapaneseChars = useCallback((value: string) => {
@@ -377,10 +367,10 @@ const VocabularyFlashcard: React.FC<VocabularyFlashcardProps> = ({
         kanji: currentCard?.kanji,
         hiragana: currentCard?.hiragana,
         katakana: currentCard?.katakana,
-        hanViet: currentCard?.hanviet || currentCard?.han_viet,
-        meaning: currentCard?.meaning || currentCard?.meaningVi || currentCard?.meaning_vi,
-        exampleJp: currentCard?.example_jp || currentCard?.example?.jp,
-        exampleVi: currentCard?.example_vi || currentCard?.example?.vn,
+        hanViet: currentCard?.hanviet,
+        meaning: currentCard?.meaningVi || currentCard?.meaning,
+        example: currentCard?.example,
+        exampleMeaning: currentCard?.exampleMeaning,
         reading: currentCard?.reading,
         word: currentCard?.word,
       });

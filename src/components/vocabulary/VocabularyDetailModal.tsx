@@ -41,7 +41,7 @@ const VocabularyDetailModal: React.FC<VocabularyDetailModalProps> = ({
 
   const handleCopy = useCallback(() => {
     const reading = selectedWord?.hiragana || selectedWord?.katakana || selectedWord?.reading || selectedWord?.word;
-    const meaning = selectedWord?.meaning_vi || selectedWord?.meaningVi || selectedWord?.meaning;
+    const meaning = selectedWord?.meaningVi || selectedWord?.meaning;
     const text = [
       selectedWord?.kanji || selectedWord?.word,
       reading,
@@ -181,7 +181,7 @@ const VocabularyDetailModal: React.FC<VocabularyDetailModalProps> = ({
   }, []);
 
   const normalizedKanjiAnalysis = useMemo(() => {
-    const raw = selectedWord?.kanji_analysis;
+    const raw = selectedWord?.kanjiAnalysis;
     if (!raw) return [];
     if (Array.isArray(raw)) return raw;
     if (typeof raw === "string") {
@@ -196,18 +196,18 @@ const VocabularyDetailModal: React.FC<VocabularyDetailModalProps> = ({
     }
     if (typeof raw === "object") return [raw];
     return [];
-  }, [selectedWord?.kanji_analysis]);
+  }, [selectedWord?.kanjiAnalysis]);
 
-  const displayMeaning = selectedWord?.meaning_vi || selectedWord?.meaningVi || selectedWord?.meaning;
+  const displayMeaning = selectedWord?.meaningVi || selectedWord?.meaning;
   const displayJlpt =
     selectedWord?.jlpt ||
     selectedWord?.jpt ||
     selectedWord?.jlpt_level ||
     selectedWord?.jpt_level;
   const displayExampleJp =
-    selectedWord?.example_jp || selectedWord?.exampleSentence || selectedWord?.example?.jp;
+    selectedWord?.example || selectedWord?.exampleSentence;
   const displayExampleVi =
-    selectedWord?.example_vi || selectedWord?.exampleSentenceVi || selectedWord?.example?.vn;
+    selectedWord?.exampleMeaning || selectedWord?.exampleSentenceVi;
 
   return (
     <>

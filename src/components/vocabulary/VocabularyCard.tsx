@@ -32,7 +32,7 @@ const VocabularyCard: React.FC<VocabularyCardProps> = ({
   const displayKanji = item.kanji || item.word || "";
   const displayReading = item.hiragana || item.katakana || item.reading || item.word || "";
   const displayHanViet = item.hanviet || item.han_viet || "";
-  const displayMeaning = item.meaning_vi || item.meaningVi || item.meaning || "-";
+  const displayMeaning = item.meaningVi || item.meaning || "-";
 
   // Debug log for font preset
   console.log('🔤 VocabularyCard Font Debug:', {

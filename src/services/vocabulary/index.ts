@@ -1,2 +1,2 @@
-// Re-export vocabularyAPI from the main api.ts file
-export { vocabularyAPI } from "../api";
+// Re-export vocabulary data service
+export { default as vocabularyAPI } from "../vocabularyDataService";

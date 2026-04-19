@@ -669,6 +669,7 @@ const TestDetail: React.FC = () => {
                     type="error"
                     title="Không tìm thấy bài thi"
                     description="Không tìm thấy bài thi bạn đang tìm kiếm."
+                    size="default"
                     action={{
                         label: "Quay lại danh sách",
                         onClick: () => navigate("/tests"),
