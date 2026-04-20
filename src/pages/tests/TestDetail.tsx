@@ -40,7 +40,6 @@ import {
 } from "lucide-react";
 import { EmptyState } from "../../components/common";
 import { jlptTestsAPI } from "../../services/api";
-import { jlptTests as localJlptTests } from "../../data/jlptTests";
 
 const { Title, Text, Paragraph } = Typography;
 
@@ -224,30 +223,10 @@ const TestDetail: React.FC = () => {
                         }
                         return;
                     }
-                    // If backend returns a non-success payload, fall back to local JSON
-                    const local = localJlptTests.find((t) => String(t.id) === String(testId) && String(t.level).toUpperCase() === level);
-                    if (local) {
-                        applyTestData(local);
-                        const loaded = await tryLoadLocalQuestions(level, testId, local);
-                        if (!loaded) {
-                            generateMockQuestionsFromTest(local);
-                        }
-                        message.warning("Đang dùng dữ liệu JLPT local (backend chưa có endpoint).");
-                        return;
-                    }
-                    message.error("Không tìm thấy bài thi (backend & local đều không có).");
+                    message.error("Không tìm thấy bài thi.");
                 } catch (apiError) {
-                    // Backend endpoint missing/404 → use local JSON
-                    const local = localJlptTests.find((t) => String(t.id) === String(testId) && String(t.level).toUpperCase() === level);
-                    if (local) {
-                        applyTestData(local);
-                        const loaded = await tryLoadLocalQuestions(level, testId, local);
-                        if (!loaded) {
-                            generateMockQuestionsFromTest(local);
-                        }
-                        message.warning("Đang dùng dữ liệu JLPT local (backend chưa có endpoint).");
-                        return;
-                    }
+                    console.error('Error fetching test:', apiError);
+                    message.error('Không thể tải bài thi');
                     throw apiError;
                 }
             } catch (error) {

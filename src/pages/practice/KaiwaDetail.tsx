@@ -27,24 +27,37 @@ const { Panel } = Collapse;
 
 // Types based on API response
 interface DialogueLine {
-  speaker: string;
+  character: string;
   jpText: string;
   romaji: string;
   viTranslation: string;
-  speaker_role: string;
+  audioUrl: string;
+  _id: string;
+}
+
+interface Character {
+  name: string;
+  nameJp: string;
+  role: string;
+  _id: string;
 }
 
 interface KaiwaItem {
-  id: string;
+  _id: string;
+  lessonId: string;
+  textbook: string;
+  lessonNumber: number;
+  kaiwaNumber: number;
   title: string;
-  title_jp: string;
-  setting: string;
-  characters: string[];
-  dialogue: DialogueLine[];
+  titleJp: string;
+  scenario: string;
+  characters: Character[];
+  lines: DialogueLine[];
   audioUrl: string;
-  total_lines: number;
-  vocabulary_focus: string[];
-  grammar_focus: string[];
+  pageReference: string;
+  createdAt: string;
+  updatedAt: string;
+  __v: number;
 }
 
 interface LessonInfo {
@@ -165,8 +178,9 @@ const KaiwaDetail: React.FC = () => {
     );
   }
 
-  const { lesson } = kaiwaData;
-  const colors = getSpeakerColor(activeKaiwa.characters[0]);
+  const { data: kaiwaItems } = kaiwaData;
+  const lesson = { lessonNumber: Number(lessonNumber), title: `Lesson ${lessonNumber}`, title_jp: `第${lessonNumber}課`, title_vi: `Bài ${lessonNumber}`, level: 'N5', book: 'Minna no Nihongo', description_jp: '', description_vi: '' };
+  const colors = getSpeakerColor(activeKaiwa.characters[0]?.name);
 
   return (
     <div className="min-h-full bg-bg academic-canvas">
@@ -204,7 +218,7 @@ const KaiwaDetail: React.FC = () => {
                 <Tag color="blue" className="text-xs px-2 py-0.5">{lesson.book}</Tag>
                 <Tag className="text-xs px-2 py-0.5 flex items-center gap-1">
                   <Clock className="w-3 h-3" />
-                  {activeKaiwa.total_lines} câu
+                  {activeKaiwa.lines.length} câu
                 </Tag>
               </div>
             </div>
@@ -227,13 +241,13 @@ const KaiwaDetail: React.FC = () => {
             </div>
             <div className="flex flex-wrap gap-2">
               {activeKaiwa.characters.map((char) => {
-                const charColors = getSpeakerColor(char);
+                const charColors = getSpeakerColor(char.name);
                 return (
                   <Tag
-                    key={char}
+                    key={char.name}
                     className={`${charColors.bg} ${charColors.text} ${charColors.border} !border !px-3 !py-1 !text-sm !font-medium`}
                   >
-                    {char}
+                    {char.name} ({char.nameJp})
                   </Tag>
                 );
               })}
@@ -249,8 +263,8 @@ const KaiwaDetail: React.FC = () => {
             </div>
 
             <div className="space-y-3 max-w-2xl mx-auto">
-              {activeKaiwa.dialogue.map((line, index) => {
-                const lineColors = getSpeakerColor(line.speaker);
+              {activeKaiwa.lines.map((line: DialogueLine, index: number) => {
+                const lineColors = getSpeakerColor(line.character);
                 const isSelected = selectedLineIndex === index;
                 const showTranslation = visibleTranslations.has(index);
 
@@ -281,7 +295,7 @@ const KaiwaDetail: React.FC = () => {
                           w-10 h-10 rounded-full flex items-center justify-center text-sm font-bold
                           ${lineColors.bg} ${lineColors.text} border-2 ${lineColors.border}
                         `}>
-                          {line.speaker.charAt(0)}
+                          {line.character.charAt(0)}
                         </div>
                       </div>
 
@@ -314,68 +328,31 @@ const KaiwaDetail: React.FC = () => {
             </div>
           </Card>
 
-          {/* Vocabulary Focus */}
-          <Card className="bg-surface-1 border-border mb-3" styles={{ body: { padding: '12px 16px' } }}>
-            <div className="flex items-center gap-2 mb-4">
-              <BookOpen className="w-5 h-5 text-text-sub" />
-              <Text strong className="text-text-main">Từ vựng cần chú ý</Text>
-            </div>
-            <div className="flex flex-wrap gap-2">
-              {activeKaiwa.vocabulary_focus.map((vocab) => (
-                <Tag
-                  key={vocab}
-                  color="blue"
-                  className="!px-3 !py-1 !text-sm"
-                >
-                  {vocab}
-                </Tag>
-              ))}
-            </div>
-          </Card>
-
-          {/* Grammar Focus */}
-          <Card className="bg-surface-1 border-border mb-3" styles={{ body: { padding: '12px 16px' } }}>
-            <div className="flex items-center gap-2 mb-4">
-              <Volume2 className="w-5 h-5 text-text-sub" />
-              <Text strong className="text-text-main">Ngữ pháp cần chú ý</Text>
-            </div>
-            <List
-              dataSource={activeKaiwa.grammar_focus}
-              renderItem={(grammar: string) => (
-                <List.Item className="!py-2 !border-b !border-border last:!border-b-0">
-                  <Tag color="green" className="!px-3 !py-1 !text-sm">
-                    {grammar}
-                  </Tag>
-                </List.Item>
-              )}
-            />
-          </Card>
-
           {/* Navigation */}
-          {kaiwaData.data.length > 1 && (
+          {kaiwaItems.length > 1 && (
             <div className="flex justify-between items-center">
               <Button
-                disabled={kaiwaData.data.indexOf(activeKaiwa) === 0}
+                disabled={kaiwaItems.indexOf(activeKaiwa) === 0}
                 onClick={() => {
-                  const currentIndex = kaiwaData.data.indexOf(activeKaiwa);
+                  const currentIndex = kaiwaItems.indexOf(activeKaiwa);
                   if (currentIndex > 0) {
-                    setActiveKaiwa(kaiwaData.data[currentIndex - 1]);
+                    setActiveKaiwa(kaiwaItems[currentIndex - 1]);
                   }
                 }}
               >
                 Kaiwa trước
               </Button>
               <Text className="text-text-sub">
-                {kaiwaData.data.indexOf(activeKaiwa) + 1} / {kaiwaData.data.length}
+                {kaiwaItems.indexOf(activeKaiwa) + 1} / {kaiwaItems.length}
               </Text>
               <Button
                 disabled={
-                  kaiwaData.data.indexOf(activeKaiwa) === kaiwaData.data.length - 1
+                  kaiwaItems.indexOf(activeKaiwa) === kaiwaItems.length - 1
                 }
                 onClick={() => {
-                  const currentIndex = kaiwaData.data.indexOf(activeKaiwa);
-                  if (currentIndex < kaiwaData.data.length - 1) {
-                    setActiveKaiwa(kaiwaData.data[currentIndex + 1]);
+                  const currentIndex = kaiwaItems.indexOf(activeKaiwa);
+                  if (currentIndex < kaiwaItems.length - 1) {
+                    setActiveKaiwa(kaiwaItems[currentIndex + 1]);
                   }
                 }}
               >

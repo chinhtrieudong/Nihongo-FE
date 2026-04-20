@@ -5,7 +5,6 @@ import {
   AIRoleplayResponse,
   WeakPointsResponse,
 } from "../types/lesson";
-import { jlptTests as localJlptTests } from "../data/jlptTests";
 
 const API_BASE_URL =
   import.meta.env.VITE_API_URL || "/api";
@@ -575,98 +574,55 @@ const jlptBasePath = hasV1InBaseUrl ? "/jlpt-tests" : "/v1/jlpt-tests";
 export const jlptTestsAPI = {
   // Get all JLPT tests
   getAllTests: async () => {
-    try {
-      // Backend is under /api/v1/jlpt-tests while API_BASE_URL defaults to /api
-      const response = await api.get(jlptBasePath);
-      const payload = response.data;
-      const rawTests: BackendJlptTest[] = Array.isArray(payload?.data) ? payload.data : [];
-      return {
-        ...payload,
-        data: rawTests.map(normalizeJlptTest),
-        source: "backend",
-      };
-    } catch (error) {
-      // Fallback to local JSON when backend endpoint is missing
-      return {
-        success: true,
-        data: localJlptTests,
-        source: "local",
-      };
-    }
+    // Backend is under /api/v1/jlpt-tests while API_BASE_URL defaults to /api
+    const response = await api.get(jlptBasePath);
+    const payload = response.data;
+    const rawTests: BackendJlptTest[] = Array.isArray(payload?.data) ? payload.data : [];
+    return {
+      ...payload,
+      data: rawTests.map(normalizeJlptTest),
+      source: "backend",
+    };
   },
 
   // Get JLPT tests by level
   getTestsByLevel: async (level: string) => {
-    try {
-      // Not all backends expose /:level; use list endpoint and filter.
-      const response = await api.get(jlptBasePath);
-      const payload = response.data;
-      const rawTests: BackendJlptTest[] = Array.isArray(payload?.data) ? payload.data : [];
-      const upper = String(level || "").toUpperCase();
-      return {
-        ...payload,
-        data: rawTests.map(normalizeJlptTest).filter((t) => t.level === upper),
-        source: "backend",
-      };
-    } catch (error) {
-      const upper = String(level || "").toUpperCase();
-      const filtered = localJlptTests.filter(
-        (t) => String(t.level).toUpperCase() === upper,
-      );
-      return {
-        success: true,
-        data: filtered,
-        source: "local",
-      };
-    }
+    // Not all backends expose /:level; use list endpoint and filter.
+    const response = await api.get(jlptBasePath);
+    const payload = response.data;
+    const rawTests: BackendJlptTest[] = Array.isArray(payload?.data) ? payload.data : [];
+    const upper = String(level || "").toUpperCase();
+    return {
+      ...payload,
+      data: rawTests.map(normalizeJlptTest).filter((t) => t.level === upper),
+      source: "backend",
+    };
   },
 
   // Get specific JLPT test
   getTest: async (level: string, testId: string) => {
-    try {
-      // Backend currently exposes list endpoint; avoid hitting a non-existent detail endpoint (404 noise).
-      const response = await api.get(jlptBasePath);
-      const payload = response.data;
-      const rawTests: BackendJlptTest[] = Array.isArray(payload?.data) ? payload.data : [];
-      const normalized = rawTests.map(normalizeJlptTest);
-      const upper = String(level || "").toUpperCase();
-      const found =
-        normalized.find((t) => String(t.id) === String(testId) && t.level === upper) ||
-        // If caller passes old/empty ids, pick the first active test of that level
-        normalized.find((t) => t.level === upper);
-      if (!found) {
-        return {
-          success: false,
-          message: "Test not found (backend & local).",
-          data: null,
-          source: "backend",
-        };
-      }
+    // Backend currently exposes list endpoint; avoid hitting a non-existent detail endpoint (404 noise).
+    const response = await api.get(jlptBasePath);
+    const payload = response.data;
+    const rawTests: BackendJlptTest[] = Array.isArray(payload?.data) ? payload.data : [];
+    const normalized = rawTests.map(normalizeJlptTest);
+    const upper = String(level || "").toUpperCase();
+    const found = normalized.find(
+      (t) => String(t.id) === String(testId) && String(t.level).toUpperCase() === upper,
+    );
+    if (!found) {
       return {
-        success: true,
-        data: found,
+        success: false,
+        message: "Test not found.",
+        data: null,
         source: "backend",
       };
-    } catch (error) {
-      const upper = String(level || "").toUpperCase();
-      const found = localJlptTests.find(
-        (t) => String(t.id) === String(testId) && String(t.level).toUpperCase() === upper,
-      );
-      if (!found) {
-        // Preserve a consistent shape for callers
-        return {
-          success: false,
-          message: "Test not found (backend & local).",
-          data: null,
-          source: "local",
-        };
-      }
-      return {
-        success: true,
-        data: found,
-        source: "local",
-      };
     }
+    return {
+      success: true,
+      data: found,
+      source: "backend",
+    };
   },
 };
 
@@ -781,12 +737,12 @@ export const minnaAPI = {
   getBunkei: async (lessonNumber?: number, textbook = 'minna_no_nihongo') => {
     const params: any = { textbook };
     if (lessonNumber) params.lessonNumber = lessonNumber;
-    const response = await api.get('/minna/bunkei', { params });
+    const response = await api.get('/v1/minna/bunkei', { params });
     return response.data;
   },
 
   getBunkeiById: async (id: string) => {
-    const response = await api.get(`/minna/bunkei/${id}`);
+    const response = await api.get(`/v1/minna/bunkei/${id}`);
     return response.data;
   },
 
@@ -795,12 +751,12 @@ export const minnaAPI = {
     const params: any = { textbook };
     if (lessonNumber) params.lessonNumber = lessonNumber;
     if (type) params.type = type;
-    const response = await api.get('/minna/mondai', { params });
+    const response = await api.get('/v1/minna/mondai', { params });
     return response.data;
   },
 
   getMondaiById: async (id: string) => {
-    const response = await api.get(`/minna/mondai/${id}`);
+    const response = await api.get(`/v1/minna/mondai/${id}`);
     return response.data;
   },
 
@@ -808,12 +764,12 @@ export const minnaAPI = {
   getKaiwa: async (lessonNumber?: number, textbook = 'minna_no_nihongo') => {
     const params: any = { textbook };
     if (lessonNumber) params.lessonNumber = lessonNumber;
-    const response = await api.get('/minna/kaiwa', { params });
+    const response = await api.get('/v1/minna/kaiwa', { params });
     return response.data;
   },
 
   getKaiwaById: async (id: string) => {
-    const response = await api.get(`/minna/kaiwa/${id}`);
+    const response = await api.get(`/v1/minna/kaiwa/${id}`);
     return response.data;
   },
 
@@ -821,18 +777,18 @@ export const minnaAPI = {
   getTango: async (lessonNumber?: number, textbook = 'minna_no_nihongo') => {
     const params: any = { textbook };
     if (lessonNumber) params.lessonNumber = lessonNumber;
-    const response = await api.get('/minna/tango', { params });
+    const response = await api.get('/v1/minna/tango', { params });
     return response.data;
   },
 
   getTangoById: async (id: string) => {
-    const response = await api.get(`/minna/tango/${id}`);
+    const response = await api.get(`/v1/minna/tango/${id}`);
     return response.data;
   },
 
   // Get all lesson content
   getLessonContent: async (lessonNumber: number, textbook = 'minna_no_nihongo') => {
-    const response = await api.get(`/minna/lesson/${lessonNumber}`, {
+    const response = await api.get(`/v1/minna/lesson/${lessonNumber}`, {
       params: { textbook }
     });
     return response.data;

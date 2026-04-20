@@ -1,209 +1,76 @@
 /**
  * Vocabulary Data Service
- * Handles loading and querying normalized core vocabulary data
+ * Handles loading and querying vocabulary data from backend API
  */
 
 import type {
-  CoreWord,
-  WordSource,
   VocabularyItem,
   VocabularyFilter,
   TextbookType,
   JLPTLevel,
   LessonInfo,
 } from '../types/vocabulary';
-import { legacyToType } from '../types/vocabulary';
-
-// Cache for loaded data
-let wordsCache: CoreWord[] | null = null;
-let sourcesCache: WordSource[] | null = null;
-let textbookMetaCache: Record<string, any> = {};
-
-const loadTextbookMeta = async (textbookId: string): Promise<any | null> => {
-  if (textbookMetaCache[textbookId]) return textbookMetaCache[textbookId];
-  try {
-    const response = await fetch(`/data/textbook/textbook-${textbookId}.json`);
-    if (!response.ok) return null;
-    const data = await response.json();
-    textbookMetaCache[textbookId] = data;
-    return data;
-  } catch {
-    return null;
-  }
-};
-
-const loadTopicFile = async (
-  textbookId: string,
-  chapterNum: number,
-  topicNum: number
-): Promise<any | null> => {
-  try {
-    const url = `/data/${textbookId}/topics/${textbookId}-topic-${chapterNum}-${topicNum}.json`;
-    const response = await fetch(url);
-    if (!response.ok) return null;
-    return await response.json();
-  } catch {
-    return null;
-  }
-};
-
-const mapTopicWordsToVocabularyItems = (args: {
-  textbook: TextbookType;
-  level: JLPTLevel;
-  textbookId: string;
-  lessonNumber: number;
-  topicNameVi: string;
-  topicWords: Array<{
-    word: string;
-    reading: string;
-    meaning: string;
-    type?: string;
-    example?: { jp?: string; vn?: string };
-  }>;
-  hanVietByWordOrReading?: (word: string, reading: string) => string;
-}): VocabularyItem[] => {
-  const { textbook, level, textbookId, lessonNumber, topicNameVi, topicWords, hanVietByWordOrReading } = args;
-  return topicWords.map((w, idx) => ({
-    id: `${textbookId}-${lessonNumber}-${idx}-${w.word}`,
-    wordId: "",
-    sourceId: `${textbookId}-${lessonNumber}-${idx}`,
-    // In Tango topic JSON, "word" is the kanji/main written form (or JP form when no kanji).
-    kanji: w.word,
-    hiragana: w.reading || w.word,
-    hanViet: hanVietByWordOrReading ? (hanVietByWordOrReading(w.word, w.reading) || "") : "",
-    meaning: w.meaning,
-    type: legacyToType(w.type || ""),
-    example: w.example?.jp || "",
-    exampleMeaning: w.example?.vn || "",
-    textbook,
-    level,
-    lesson: lessonNumber,
-    topic: topicNameVi,
-  }));
-};
+import { minnaAPI } from './api';
 
 /**
- * Load core words data
+ * Convert backend Tango item to VocabularyItem
  */
-const loadWords = async (): Promise<CoreWord[]> => {
-  if (wordsCache) return wordsCache;
-
-  try {
-    const response = await fetch('/data/core/words.json');
-    if (!response.ok) {
-      throw new Error(`Failed to load words.json: ${response.status}`);
-    }
-    wordsCache = await response.json();
-    return wordsCache || [];
-  } catch (error) {
-    console.error('Error loading words:', error);
-    return [];
-  }
-};
-
-/**
- * Load word sources data
- */
-const loadSources = async (): Promise<WordSource[]> => {
-  if (sourcesCache) return sourcesCache;
-
-  try {
-    const response = await fetch('/data/core/word_sources.json');
-    if (!response.ok) {
-      throw new Error(`Failed to load word_sources.json: ${response.status}`);
-    }
-    sourcesCache = await response.json();
-    return sourcesCache || [];
-  } catch (error) {
-    console.error('Error loading word sources:', error);
-    return [];
-  }
-};
-
-/**
- * Clear cache (useful for testing or memory management)
- */
-export const clearCache = (): void => {
-  wordsCache = null;
-  sourcesCache = null;
-};
-
-/**
- * Build a map of wordId -> CoreWord for fast lookup
- */
-const buildWordMap = (words: CoreWord[]): Map<string, CoreWord> => {
-  const map = new Map<string, CoreWord>();
-  for (const word of words) {
-    map.set(word.id, word);
-  }
-  return map;
-};
-
-/**
- * Convert WordSource + CoreWord to VocabularyItem
- */
-const toVocabularyItem = (source: WordSource, word: CoreWord): VocabularyItem => ({
-  id: `${source.textbook}-${source.level}-${source.lesson}-${source.wordId}`,
-  wordId: word.id,
-  sourceId: source.id,
-  kanji: word.word,
-  hiragana: word.reading,
-  hanViet: word.hanViet,
-  meaning: word.meaning,
-  type: word.type,
-  example: source.example,
-  exampleMeaning: source.exampleMeaning,
-  textbook: source.textbook,
-  level: source.level,
-  lesson: source.lesson,
-  topic: source.topic,
+const toVocabularyItem = (item: any): VocabularyItem => ({
+  id: item._id,
+  wordId: item._id,
+  sourceId: item._id,
+  kanji: item.kanji || item.word,
+  hiragana: item.hiragana || item.reading,
+  hanViet: item.hanViet || '',
+  meaning: item.meaning || item.meaningVi || '',
+  type: item.type || item.partOfSpeech || 'unknown',
+  example: item.example || '',
+  exampleMeaning: item.exampleMeaning || item.exampleVi || '',
+  textbook: item.textbook || 'minna_no_nihongo',
+  level: item.level || 'N5',
+  lesson: item.lessonNumber || 1,
+  topic: item.topic || '',
 });
 
 /**
- * Get vocabulary with optional filtering
+ * Get vocabulary with optional filtering using backend API
  */
 export const getVocabulary = async (filter?: VocabularyFilter): Promise<VocabularyItem[]> => {
-  const [words, sources] = await Promise.all([loadWords(), loadSources()]);
-  const wordMap = buildWordMap(words);
-
-  // Filter sources
-  let filteredSources = sources;
-
-  if (filter) {
-    filteredSources = sources.filter((source) => {
-      if (filter.textbook && source.textbook !== filter.textbook) return false;
-      if (filter.level && source.level !== filter.level) return false;
-      if (filter.lesson !== undefined && source.lesson !== filter.lesson) return false;
-      if (filter.topic && !source.topic.toLowerCase().includes(filter.topic.toLowerCase())) return false;
-
-      // Get word for type/search filtering
-      const word = wordMap.get(source.wordId);
-      if (!word) return false;
-
-      if (filter.type && word.type !== filter.type) return false;
-
-      if (filter.search) {
-        const searchLower = filter.search.toLowerCase();
-        const matchesWord = word.word.toLowerCase().includes(searchLower);
-        const matchesReading = word.reading.toLowerCase().includes(searchLower);
-        const matchesMeaning = word.meaning.toLowerCase().includes(searchLower);
-        if (!matchesWord && !matchesReading && !matchesMeaning) return false;
+  try {
+    // Use minnaAPI.getTango to fetch vocabulary from backend
+    const lessonNumber = filter?.lesson;
+    const textbook = filter?.textbook || 'minna_no_nihongo';
+    
+    const response = await minnaAPI.getTango(lessonNumber, textbook);
+    
+    if (response.success && response.data) {
+      const items = response.data.map(toVocabularyItem);
+      
+      // Apply additional filters if needed
+      if (filter) {
+        return items.filter((item: VocabularyItem) => {
+          if (filter.level && item.level !== filter.level) return false;
+          if (filter.topic && !item.topic.toLowerCase().includes(filter.topic.toLowerCase())) return false;
+          if (filter.type && item.type !== filter.type) return false;
+          if (filter.search) {
+            const searchLower = filter.search.toLowerCase();
+            const matchesKanji = item.kanji.toLowerCase().includes(searchLower);
+            const matchesHiragana = item.hiragana.toLowerCase().includes(searchLower);
+            const matchesMeaning = item.meaning.toLowerCase().includes(searchLower);
+            if (!matchesKanji && !matchesHiragana && !matchesMeaning) return false;
+          }
+          return true;
+        });
       }
-
-      return true;
-    });
-  }
-
-  // Map to VocabularyItem
-  const items: VocabularyItem[] = [];
-  for (const source of filteredSources) {
-    const word = wordMap.get(source.wordId);
-    if (word) {
-      items.push(toVocabularyItem(source, word));
+      
+      return items;
     }
+    
+    return [];
+  } catch (error) {
+    console.error('Error fetching vocabulary from backend:', error);
+    return [];
   }
-
-  return items;
 };
 
 /**
@@ -233,66 +100,12 @@ export const getLessonVocabulary = async (
     level = parts[1].toUpperCase() as JLPTLevel;
   }
 
-  // Validate
-  if (!['minna', 'tango', 'speed-master', 'speed_master'].includes(textbook)) {
-    console.error('Unknown textbook:', textbook);
-    return [];
-  }
+  // Convert to backend textbook format
+  const backendTextbook = textbook === 'minna' ? 'minna_no_nihongo' : textbook;
 
-  if (!['N1', 'N2', 'N3', 'N4', 'N5'].includes(level)) {
-    console.error('Invalid level:', level);
-    return [];
-  }
-
-  // Chapter-based textbooks: lessonNumber maps to (chapter, topicIndex)
-  if (textbook === 'tango' || textbook === 'speed-master') {
-    const chapterNum = Math.ceil(lessonNumber / 5);
-    const topicIndex = (lessonNumber - 1) % 5;
-    const topicNum = topicIndex + 1;
-
-    // Try to narrow down by topic name from textbook metadata
-    const meta = await loadTextbookMeta(textbookId);
-    const topicNameVi =
-      meta?.chapters?.find((c: any) => c.number === chapterNum)?.topics?.[topicIndex]?.nameVi;
-
-    // Prefer topic JSON (authoritative for Tango/Speed Master pages)
-    const topicJson = await loadTopicFile(textbookId, chapterNum, topicNum);
-    if (topicJson?.words && Array.isArray(topicJson.words)) {
-      // Best-effort Han-Viet lookup from core words data
-      const coreWords = await loadWords();
-      const byWord = new Map<string, CoreWord>();
-      const byReading = new Map<string, CoreWord>();
-      for (const cw of coreWords) {
-        if (cw.word) byWord.set(cw.word, cw);
-        if (cw.reading) byReading.set(cw.reading, cw);
-      }
-
-      return mapTopicWordsToVocabularyItems({
-        textbook,
-        level,
-        textbookId,
-        lessonNumber,
-        topicNameVi: topicJson.topicNameVi || topicNameVi || `Bài ${lessonNumber}`,
-        topicWords: topicJson.words,
-        hanVietByWordOrReading: (word: string, reading: string) => {
-          const cw = byWord.get(word) || byReading.get(reading) || byReading.get(word);
-          return cw?.hanViet || "";
-        },
-      });
-    }
-
-    // Fallback: derive from normalized core sources if available
-    return getVocabulary({
-      textbook,
-      level,
-      lesson: chapterNum,
-      ...(topicNameVi ? { topic: topicNameVi } : {}),
-    });
-  }
-
-  // For other textbooks, lessonNumber maps directly
+  // Use backend API to fetch vocabulary
   return getVocabulary({
-    textbook,
+    textbook: backendTextbook as any,
     level,
     lesson: lessonNumber,
   });
@@ -311,40 +124,19 @@ export const getLessons = async (
   const textbook = parts[0] as TextbookType;
   const level = parts[1].toUpperCase() as JLPTLevel;
 
-  const sources = await loadSources();
-
-  // Group by lesson
-  const lessonMap = new Map<number, { topic: string; count: number }>();
-
-  for (const source of sources) {
-    if (source.textbook === textbook && source.level === level) {
-      const existing = lessonMap.get(source.lesson);
-      if (existing) {
-        existing.count++;
-        // Use first topic if available
-        if (!existing.topic && source.topic) {
-          existing.topic = source.topic;
-        }
-      } else {
-        lessonMap.set(source.lesson, {
-          topic: source.topic,
-          count: 1,
-        });
-      }
-    }
-  }
-
-  // Convert to array
+  // For now, return a simple list based on typical lesson counts
+  // This could be enhanced to fetch from backend if there's an endpoint
+  const lessonCount = level === 'N5' ? 50 : level === 'N4' ? 50 : 40;
+  
   const lessons: LessonInfo[] = [];
-  const sortedEntries = Array.from(lessonMap.entries()).sort((a, b) => a[0] - b[0]);
-  for (const [lessonNum, info] of sortedEntries) {
+  for (let i = 1; i <= lessonCount; i++) {
     lessons.push({
-      lessonNumber: lessonNum,
-      lessonTitle: info.topic || `Bài ${lessonNum}`,
+      lessonNumber: i,
+      lessonTitle: `Bài ${i}`,
       textbookId,
       level,
-      topic: info.topic,
-      vocabCount: info.count,
+      topic: '',
+      vocabCount: 0, // Would need to fetch from backend
     });
   }
 
@@ -358,16 +150,25 @@ export const getTopics = async (
   textbook: TextbookType,
   level: JLPTLevel
 ): Promise<string[]> => {
-  const sources = await loadSources();
-  const topics = new Set<string>();
-
-  for (const source of sources) {
-    if (source.textbook === textbook && source.level === level && source.topic) {
-      topics.add(source.topic);
+  try {
+    const backendTextbook = textbook === 'minna' ? 'minna_no_nihongo' : textbook;
+    const response = await minnaAPI.getTango(undefined, backendTextbook);
+    
+    if (response.success && response.data) {
+      const topics = new Set<string>();
+      response.data.forEach((item: any) => {
+        if (item.topic) {
+          topics.add(item.topic);
+        }
+      });
+      return Array.from(topics).sort();
     }
+    
+    return [];
+  } catch (error) {
+    console.error('Error fetching topics from backend:', error);
+    return [];
   }
-
-  return Array.from(topics).sort();
 };
 
 /**
@@ -381,52 +182,79 @@ export const searchVocabulary = async (query: string): Promise<VocabularyItem[]>
  * Get a single word by ID
  */
 export const getWordById = async (wordId: string): Promise<VocabularyItem | null> => {
-  const [words, sources] = await Promise.all([loadWords(), loadSources()]);
-  const word = words.find((w) => w.id === wordId);
-
-  if (!word) return null;
-
-  // Find first source for this word
-  const source = sources.find((s) => s.wordId === wordId);
-  if (!source) return null;
-
-  return toVocabularyItem(source, word);
+  try {
+    const response = await minnaAPI.getTangoById(wordId);
+    
+    if (response.success && response.data) {
+      return toVocabularyItem(response.data);
+    }
+    
+    return null;
+  } catch (error) {
+    console.error('Error fetching word by ID from backend:', error);
+    return null;
+  }
 };
 
 /**
  * Get all sources for a word (where it appears in different textbooks)
  */
 export const getWordSources = async (wordId: string): Promise<VocabularyItem[]> => {
-  const [words, sources] = await Promise.all([loadWords(), loadSources()]);
-  const word = words.find((w) => w.id === wordId);
-
-  if (!word) return [];
-
-  const wordSources = sources.filter((s) => s.wordId === wordId);
-  return wordSources.map((source) => toVocabularyItem(source, word));
+  // For now, just return the word itself
+  // This would need a backend endpoint to fetch all sources
+  const word = await getWordById(wordId);
+  return word ? [word] : [];
 };
 
 /**
  * Get statistics about the vocabulary data
  */
 export const getVocabularyStats = async () => {
-  const [words, sources] = await Promise.all([loadWords(), loadSources()]);
+  try {
+    const response = await minnaAPI.getTango(undefined, 'minna_no_nihongo');
+    
+    if (response.success && response.data) {
+      const stats = {
+        totalUniqueWords: response.data.length,
+        totalMappings: response.data.length,
+        duplicates: 0,
+        byTextbook: {} as Record<string, number>,
+        byLevel: {} as Record<string, number>,
+      };
 
-  const stats = {
-    totalUniqueWords: words.length,
-    totalMappings: sources.length,
-    duplicates: sources.length - words.length,
-    byTextbook: {} as Record<string, number>,
-    byLevel: {} as Record<string, number>,
-  };
+      response.data.forEach((item: any) => {
+        const bookKey = `${item.textbook}-${item.level}`;
+        stats.byTextbook[bookKey] = (stats.byTextbook[bookKey] || 0) + 1;
+        stats.byLevel[item.level] = (stats.byLevel[item.level] || 0) + 1;
+      });
 
-  for (const source of sources) {
-    const bookKey = `${source.textbook}-${source.level}`;
-    stats.byTextbook[bookKey] = (stats.byTextbook[bookKey] || 0) + 1;
-    stats.byLevel[source.level] = (stats.byLevel[source.level] || 0) + 1;
+      return stats;
+    }
+    
+    return {
+      totalUniqueWords: 0,
+      totalMappings: 0,
+      duplicates: 0,
+      byTextbook: {},
+      byLevel: {},
+    };
+  } catch (error) {
+    console.error('Error fetching vocabulary stats from backend:', error);
+    return {
+      totalUniqueWords: 0,
+      totalMappings: 0,
+      duplicates: 0,
+      byTextbook: {},
+      byLevel: {},
+    };
   }
+};
 
-  return stats;
+/**
+ * Clear cache (no-op since we're using backend API)
+ */
+export const clearCache = (): void => {
+  // No cache to clear when using backend API
 };
 
 // Default export as vocabularyAPI object
@@ -439,6 +267,7 @@ const vocabularyAPI = {
   getWordById,
   getWordSources,
   getVocabularyStats,
+  clearCache,
 };
 
 export default vocabularyAPI;
