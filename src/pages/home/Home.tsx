@@ -106,12 +106,16 @@ const Home: React.FC = () => {
   if (error) {
     return (
       <div className="min-h-full bg-bg p-8">
-        <div className="text-center">
-          <p className="text-red-500">Lỗi khi tải dữ liệu: {error}</p>
-          <Button onClick={() => window.location.reload()} className="mt-4">
-            Thử lại
-          </Button>
-        </div>
+        <EmptyState
+          type="error"
+          title="Không thể tải dữ liệu"
+          description={error}
+          size="default"
+          action={{
+            label: "Thử lại",
+            onClick: () => window.location.reload(),
+          }}
+        />
       </div>
     );
   }
@@ -152,7 +156,7 @@ const Home: React.FC = () => {
             type="data"
             title="Chưa có giáo trình"
             description={`Không tìm thấy giáo trình nào cho cấp độ ${activeLevel === "all" ? "này" : activeLevel}. Vui lòng thử lại sau hoặc chọn cấp độ khác.`}
-            size="large"
+            size="default"
             action={{
               label: "Tải lại",
               onClick: () => window.location.reload(),

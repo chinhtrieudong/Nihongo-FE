@@ -3,6 +3,7 @@ import { Card, Typography, Spin, Button, List, Tag, Space } from "antd";
 import { useNavigate, useParams } from "react-router-dom";
 import { ArrowLeft, Volume2, BookOpen } from "lucide-react";
 import { minnaAPI } from "../../services/api";
+import { EmptyState } from "../../components/common";
 
 const { Title, Text, Paragraph } = Typography;
 
@@ -95,43 +96,52 @@ const TangoDetail: React.FC = () => {
         ))}
       </Space>
 
-      <List
-        grid={{ gutter: 16, xs: 1, sm: 2, md: 3 }}
-        dataSource={tango}
-        renderItem={(item) => (
-          <List.Item>
-            <Card className="w-full">
-              <div className="text-center">
-                <Text strong className="text-2xl block mb-2">
-                  {item.kanji || item.kana}
-                </Text>
-                {item.kanji && (
-                  <Text type="secondary" className="text-lg block mb-1">
-                    {item.kana}
+      {tango.length === 0 ? (
+        <EmptyState
+          type="data"
+          title="Chưa có từ vựng"
+          description="Bài học này chưa có từ vựng nào."
+          size="default"
+        />
+      ) : (
+        <List
+          grid={{ gutter: 16, xs: 1, sm: 2, md: 3 }}
+          dataSource={tango}
+          renderItem={(item) => (
+            <List.Item>
+              <Card className="w-full">
+                <div className="text-center">
+                  <Text strong className="text-2xl block mb-2">
+                    {item.kanji || item.kana}
                   </Text>
-                )}
-                <Tag color="blue" className="mb-2">
-                  {item.romaji}
-                </Tag>
-                {item.hanviet && (
-                  <Text type="secondary" className="block mb-2">
-                    {item.hanviet}
-                  </Text>
-                )}
-                <Paragraph className="text-gray-700 mt-2">
-                  {item.meaningVi}
-                </Paragraph>
-                {item.exampleJp && (
-                  <div className="mt-2 text-sm text-gray-500">
-                    <p className="italic">{item.exampleJp}</p>
-                    <p>{item.exampleVi}</p>
-                  </div>
-                )}
-              </div>
-            </Card>
-          </List.Item>
-        )}
-      />
+                  {item.kanji && (
+                    <Text type="secondary" className="text-lg block mb-1">
+                      {item.kana}
+                    </Text>
+                  )}
+                  <Tag color="blue" className="mb-2">
+                    {item.romaji}
+                  </Tag>
+                  {item.hanviet && (
+                    <Text type="secondary" className="block mb-2">
+                      {item.hanviet}
+                    </Text>
+                  )}
+                  <Paragraph className="text-gray-700 mt-2">
+                    {item.meaningVi}
+                  </Paragraph>
+                  {item.exampleJp && (
+                    <div className="mt-2 text-sm text-gray-500">
+                      <p className="italic">{item.exampleJp}</p>
+                      <p>{item.exampleVi}</p>
+                    </div>
+                  )}
+                </div>
+              </Card>
+            </List.Item>
+          )}
+        />
+      )}
     </div>
   );
 };

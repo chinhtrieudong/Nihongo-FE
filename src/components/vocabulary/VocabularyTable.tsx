@@ -879,6 +879,7 @@ const VocabularyTable = React.forwardRef<
               {filteredData.length === 0 && (
                 <EmptyState
                   type="search"
+                  title="Không tìm thấy từ vựng"
                   description="Không tìm thấy từ vựng nào phù hợp"
                   size="small"
                 />
@@ -943,8 +944,10 @@ const VocabularyTable = React.forwardRef<
                 ))}
                 {filteredData.length === 0 && (
                   <EmptyState
+                    type="search"
+                    title="Không tìm thấy từ vựng"
                     description="Không tìm thấy từ vựng nào"
-                    className="py-8"
+                    size="small"
                   />
                 )}
               </div>

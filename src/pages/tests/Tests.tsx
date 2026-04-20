@@ -303,7 +303,7 @@ const Tests: React.FC = () => {
                         type="search"
                         title="Không có bài thi"
                         description="Không có bài thi nào phù hợp với bộ lọc hiện tại. Hãy thử thay đổi bộ lọc!"
-                        size="small"
+                        size="default"
                       />
                     )}
                   </>
@@ -337,7 +337,7 @@ const Tests: React.FC = () => {
                         type="data"
                         title="Chưa có bài thi hoàn thành"
                         description="Bạn chưa hoàn thành bài thi nào. Hãy bắt đầu làm bài thi ngay!"
-                        size="small"
+                        size="default"
                       />
                     )}
                   </>

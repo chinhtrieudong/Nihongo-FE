@@ -39,7 +39,7 @@ const KanjiList: React.FC<KanjiListProps> = ({
                 type="search"
                 title="Không tìm thấy Hán tự"
                 description="Không có Hán tự nào phù hợp với bộ lọc hiện tại."
-                size="small"
+                size="default"
             />
         );
     }
