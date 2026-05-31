@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
-import { lessonAPI } from '@services/api';
+import { lessonAPI, kanjiAPI } from '@services/api';
 import { KanjiItem } from '@kanji-types';
 import KanjiList from '@components/kanji/KanjiList';
 import { message, Tag } from 'antd';
 import type { SelectProps } from 'antd';
 import { KanjiPageIcon } from '@components/icons';
 import { SearchFilter } from '@components/common';
+import { kanjiData as localKanjiData, getKanjiByLevel } from '../../data/kanjiData';
 
 const normalizeJlptLevel = (value?: string) => {
     if (!value) return '';
@@ -104,24 +105,52 @@ const KanjiPage: React.FC = () => {
                 setLoading(true);
             }
 
+            let rawItems: any[] = [];
             let response;
+
             if (isRadicalMode) {
-                response = await lessonAPI.getRadicals(1, 214);
+                response = await kanjiAPI.getRadicals(1, 214);
+                rawItems = Array.isArray(response?.data)
+                    ? response.data
+                    : Array.isArray(response?.data?.data)
+                        ? response.data.data
+                        : (response?.data?.items || []);
             } else {
                 const requestLevel =
                     selectedLevels.length === 1 ? selectedLevels[0].toLowerCase() : undefined;
-                response = await lessonAPI.getAllKanji({
-                    level: requestLevel,
-                    page: nextPage,
-                    limit: PAGE_SIZE,
-                });
-            }
+                
+                try {
+                    response = await kanjiAPI.getAllKanji({
+                        level: requestLevel,
+                        page: nextPage,
+                        limit: PAGE_SIZE,
+                    });
 
-            const rawItems = Array.isArray(response?.data)
-                ? response.data
-                : Array.isArray(response?.data?.data)
-                    ? response.data.data
-                    : (response?.data?.items || []);
+                    rawItems = Array.isArray(response?.data)
+                        ? response.data
+                        : Array.isArray(response?.data?.data)
+                            ? response.data.data
+                            : (response?.data?.items || []);
+                } catch (apiError) {
+                    console.log('API error, using local kanji data as fallback:', apiError);
+                    // Use local data as fallback
+                    if (requestLevel) {
+                        rawItems = getKanjiByLevel(requestLevel.toUpperCase());
+                    } else {
+                        rawItems = localKanjiData;
+                    }
+                }
+
+                // If API returned empty data, use local fallback
+                if (rawItems.length === 0) {
+                    console.log('API returned empty data, using local kanji data');
+                    if (requestLevel) {
+                        rawItems = getKanjiByLevel(requestLevel.toUpperCase());
+                    } else {
+                        rawItems = localKanjiData;
+                    }
+                }
+            }
 
             const mappedItems = isRadicalMode
                 ? rawItems.map(mapRadicalToKanjiItem)
@@ -135,7 +164,7 @@ const KanjiPage: React.FC = () => {
                 const merged = [...kanjiList, ...mappedItems];
                 const map = new Map<string, KanjiItem>();
                 merged.forEach((item) => {
-                    const key = item._id || item.kanji;
+                    const key = item.id || item.kanji;
                     if (key) map.set(key, item);
                 });
                 nextList = Array.from(map.values());

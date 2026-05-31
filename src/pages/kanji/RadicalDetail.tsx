@@ -3,7 +3,7 @@ import { useLocation, useNavigate, useParams } from "react-router-dom";
 import { ArrowLeft, ChevronLeft, ChevronRight } from "lucide-react";
 import { Spin, Button } from "antd";
 import { EmptyState } from "../../components/common";
-import { lessonAPI } from "../../services/api";
+import { kanjiAPI } from "../../services/api";
 import { useAppSelector } from "../../store/hooks";
 import { getFontPreset } from "../../constants/fonts";
 
@@ -73,7 +73,7 @@ const RadicalDetail: React.FC = () => {
   useEffect(() => {
     const loadAllRadicals = async () => {
       try {
-        const response = await lessonAPI.getRadicals();
+        const response = await kanjiAPI.getRadicals();
         // Response format: { success: true, data: [...], count: ... }
         const radicals = response?.data?.data || response?.data?.items || response?.data || [];
         const symbols = radicals.map((r: any) => r.symbol).filter(Boolean);
@@ -93,8 +93,8 @@ const RadicalDetail: React.FC = () => {
       setLoading(true);
       try {
         const [radicalResponse, kanjiResponse] = await Promise.all([
-          lessonAPI.getRadicalDetail(symbol),
-          lessonAPI.getKanjiByRadical(symbol, 1, 40),
+          kanjiAPI.getRadicalDetail(symbol),
+          kanjiAPI.getKanjiByRadical(symbol, 1, 40),
         ]);
 
         const rawRadical = radicalResponse?.data?.data || radicalResponse?.data || null;
@@ -153,7 +153,7 @@ const RadicalDetail: React.FC = () => {
 
         const chars = mergedItems.slice(0, 5).map((item) => item.character);
         const detailResponses = await Promise.all(
-          chars.map((char) => lessonAPI.getKanji(char).catch(() => null)),
+          chars.map((char) => kanjiAPI.getKanji(char).catch(() => null)),
         );
 
         const endpointWords: DemoWord[] = detailResponses

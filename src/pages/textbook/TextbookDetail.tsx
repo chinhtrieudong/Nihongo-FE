@@ -2,6 +2,8 @@ import React, { useState, useEffect, useMemo } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { Card, Button, Tag, Typography, Badge, Progress, Spin, Collapse } from "antd";
 import { EmptyState } from "../../components/common";
+import { useAppSelector } from "../../store/hooks";
+import { useProgress } from "../../hooks/useProgress";
 import { ArrowLeft, BookOpen, ChevronRight, PlayCircle, FileQuestion, CheckCircle2, Clock, BookText, Circle } from "lucide-react";
 
 const { Title, Text } = Typography;
@@ -168,22 +170,29 @@ const colorMap: Record<string, { bg: string; border: string; text: string; bgLig
   purple: { bg: "bg-violet-500", border: "border-violet-500", text: "text-violet-600", bgLight: "bg-violet-100", hoverBorder: "hover:border-violet-500", colorValue: "#8b5cf6" },
 };
 
-// Fetch textbook data from JSON file
+// Fetch textbook data from backend API
 const fetchTextbookData = async (textbookId: string): Promise<{ 
   lessons?: Array<{ number: number; topic: string; vocab: number }>;
   chapters?: Array<{ number: number; title: string; titleVi: string; vocab: number; topics: Array<{name: string; nameVi: string}> }>;
 } | null> => {
   try {
-    // Try root data folder first (where most textbook JSON files are located)
-    const url = `/data/textbook/textbook-${textbookId}.json`;
+    // Use backend API instead of static JSON
+    const url = `/api/v1/textbooks/${textbookId}/lessons`;
     const response = await fetch(url);
     
     if (!response.ok) {
       throw new Error(`Failed to fetch ${url}: ${response.status}`);
     }
     
-    const data = await response.json();
-    return data;
+    const result = await response.json();
+    
+    if (result.success && result.data) {
+      return {
+        lessons: result.data
+      };
+    }
+    
+    return null;
   } catch (error) {
     console.error("[fetchTextbookData] Error:", error);
     return null;
@@ -231,8 +240,21 @@ const groupLessons = (lessons: LessonInfo[], groupSize: number = 5) => {
 const TextbookDetail: React.FC = () => {
   const { textbookId } = useParams<{ textbookId: string }>();
   const navigate = useNavigate();
-  const [completedLessons] = useState<number[]>([]);
-  const [inProgressLessons] = useState<number[]>([]);
+  const { currentUser } = useAppSelector((state) => state.user);
+  const { progress: userProgress } = useProgress({
+    userId: currentUser?.id || "",
+    textbookId: textbookId,
+  });
+
+  const completedLessons = useMemo(() => 
+    userProgress.filter(p => p.status === 'completed' || p.status === 'review').map(p => p.lessonNumber),
+    [userProgress]
+  );
+  
+  const inProgressLessons = useMemo(() => 
+    userProgress.filter(p => p.status === 'in_progress').map(p => p.lessonNumber),
+    [userProgress]
+  );
   const [textbookData, setTextbookData] = useState<{ 
     lessons?: Array<{ number: number; topic: string; vocab: number }>;
     chapters?: Array<{ number: number; title: string; titleVi: string; vocab: number; topics: Array<{name: string; nameVi: string}> }>;
@@ -408,10 +430,8 @@ const TextbookDetail: React.FC = () => {
           <Progress
             percent={progress.percentage}
             strokeColor={colorMap[textbook.accentColor].colorValue}
-            // Antd v6: prefer railColor/size, but keep legacy props so it renders correctly in all themes.
             railColor="#e5e7eb"
-            trailColor="#e5e7eb"
-            strokeWidth={12}
+            size={12}
             showInfo={false}
           />
         </Card>

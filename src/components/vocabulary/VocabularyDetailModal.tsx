@@ -12,8 +12,6 @@ import {
 import { Volume2 } from "lucide-react";
 import type { VocabularyItem as VocabularyItemType } from "../../types/lesson";
 import { speakText } from "../../utils/vocabularyUtils";
-import { useAppSelector } from "../../store/hooks";
-import { getFontPreset } from "../../constants/fonts";
 
 const { Title, Text } = Typography;
 
@@ -21,6 +19,7 @@ interface VocabularyDetailModalProps {
   selectedWord: VocabularyItemType | null;
   showModal: boolean;
   setShowModal: (show: boolean) => void;
+  kanjiFontFamily?: string;
   // Voice settings for TTS
   femaleVoiceName?: string;
 }
@@ -29,11 +28,10 @@ const VocabularyDetailModal: React.FC<VocabularyDetailModalProps> = ({
   selectedWord,
   showModal,
   setShowModal,
+  kanjiFontFamily,
   femaleVoiceName,
 }) => {
   const { message } = AntdApp.useApp();
-  const { fontPreset } = useAppSelector((state) => state.ui);
-  const selectedPreset = getFontPreset(fontPreset);
   const handlePlayAudio = useCallback((text: string, e: React.MouseEvent) => {
     e.stopPropagation();
     speakText(text, 'ja-JP');

@@ -8,9 +8,15 @@ import { useParams, useNavigate } from "react-router-dom";
 import { Button, Typography, Spin, Tabs, Statistic, Row, Col, Space, Dropdown, MenuProps } from "antd";
 import { EmptyState, LessonNavigation } from "../../components/common";
 import { ArrowLeft, Volume2, BookOpen, Layers, Star, CheckCircle, XCircle, RotateCcw, Target, Download, Clock } from "lucide-react";
-import VocabularyFlashcard from "../../components/vocabulary/VocabularyFlashcard";
+import { VocabularyFlashcard } from "../../components/vocabulary/VocabularyFlashcard";
 import { useResponsive } from "../../hooks/useResponsive";
 import { useVocabulary, useLessons } from "../../hooks/useVocabulary";
+import { useAppSelector } from "../../store/hooks";
+import { useSRSManager } from "../../hooks/useSRSManager";
+import { useQuizManager } from "../../hooks/useQuizManager";
+import { useFlashcardSettings } from "../../hooks/useFlashcardSettings";
+import FlashcardSettingsModal from "../../components/vocabulary/FlashcardSettingsModal";
+import { useFlashcardSession } from "../../hooks/useFlashcardSession";
 import type { VocabularyItem } from "../../types/vocabulary";
 import { toLegacyVocabularyItem, speakText } from "../../utils/vocabularyUtils";
 import type { VocabularyItem as LegacyVocabularyItem } from "../../types/lesson";
@@ -145,15 +151,32 @@ const VocabularyDetail: React.FC = () => {
 
   // Flashcard states
   const [showFlashcard, setShowFlashcard] = useState(false);
-  const [currentCardIndex, setCurrentCardIndex] = useState(0);
-  const [isFlipped, setIsFlipped] = useState(false);
-  const [isStudyComplete, setIsStudyComplete] = useState(false);
-  const [shuffledCards, setShuffledCards] = useState<VocabularyItem[]>([]);
   const [flashcardBaseCards, setFlashcardBaseCards] = useState<VocabularyItem[]>([]);
+  const [shuffledCards, setShuffledCards] = useState<VocabularyItem[]>([]);
   const lessonKey = `${textbookId || ""}::${lessonNum}`;
   const [flashcardLessonKey, setFlashcardLessonKey] = useState<string>("");
+  // Session status type is defined in useFlashcardSession, reuse here for consistency
   type SessionStatus = "unanswered" | "known" | "unknown";
-  const [cardStatus, setCardStatus] = useState<Record<string, SessionStatus>>({});
+
+
+
+  const { settings, updateSettings, isSettingsModalOpen, openSettings, closeSettings } = useFlashcardSettings();
+
+  // Flashcard session hook
+  const {
+    currentCardIndex,
+    isFlipped,
+    cardStatus,
+    isStudyComplete,
+    nextCard,
+    prevCard,
+    flipCard,
+    markKnown,
+    markUnknown,
+    resetSession,
+    setIsFlipped,
+    setCurrentCardIndex,
+  } = useFlashcardSession(vocabularyItems);
 
   // Favorites state
   const [favorites, setFavorites] = useState<Set<string>>(() => {
@@ -178,123 +201,26 @@ const VocabularyDetail: React.FC = () => {
     });
   }, []);
 
-  // SRS (Spaced Repetition System) state
-  const [srsData, setSrsData] = useState<Record<string, {
-    interval: number;      // days until next review
-    easeFactor: number;     // ease factor (starts at 2.5)
-    nextReview: number;    // timestamp
-    reviewCount: number;    // number of reviews
-    correctCount: number;   // number of correct answers
-  }>>(() => {
-    const saved = localStorage.getItem('vocabulary-srs');
-    return saved ? JSON.parse(saved) : {};
-  });
-
-  // Save SRS data to localStorage
-  useEffect(() => {
-    localStorage.setItem('vocabulary-srs', JSON.stringify(srsData));
-  }, [srsData]);
-
-  // Simple SRS algorithm (simplified SM-2)
-  const updateSRS = useCallback((wordId: string, isCorrect: boolean) => {
-    setSrsData(prev => {
-      const now = Date.now();
-      const existing = prev[wordId] || {
-        interval: 1,
-        easeFactor: 2.5,
-        nextReview: now,
-        reviewCount: 0,
-        correctCount: 0,
-      };
-
-      let newInterval = existing.interval;
-      let newEaseFactor = existing.easeFactor;
-
-      if (isCorrect) {
-        // Correct answer: increase interval
-        newEaseFactor = Math.max(1.3, existing.easeFactor + 0.1);
-        newInterval = Math.round(existing.interval * newEaseFactor);
-      } else {
-        // Wrong answer: reset interval
-        newEaseFactor = Math.max(1.3, existing.easeFactor - 0.2);
-        newInterval = 1;
-      }
-
-      return {
-        ...prev,
-        [wordId]: {
-          interval: newInterval,
-          easeFactor: newEaseFactor,
-          nextReview: now + (newInterval * 24 * 60 * 60 * 1000), // convert days to ms
-          reviewCount: existing.reviewCount + 1,
-          correctCount: existing.correctCount + (isCorrect ? 1 : 0),
-        },
-      };
-    });
-  }, []);
-
-  // Get words due for review
-  const getDueWords = useCallback(() => {
-    const now = Date.now();
-    return vocabularyItems.filter(item => {
-      const data = srsData[item.id];
-      return !data || data.nextReview <= now;
-    });
-  }, [vocabularyItems, srsData]);
-
-  const dueWords = getDueWords();
-
-  // Quiz mode state
-  const [showQuiz, setShowQuiz] = useState(false);
-  const [quizQuestionIndex, setQuizQuestionIndex] = useState(0);
-  const [quizQuestions, setQuizQuestions] = useState<VocabularyItem[]>([]);
-  const [quizScore, setQuizScore] = useState(0);
-  const [quizMode, setQuizMode] = useState<'jp-to-vi' | 'vi-to-jp'>('jp-to-vi');
-  const [selectedAnswer, setSelectedAnswer] = useState<string | null>(null);
-  const [showAnswerResult, setShowAnswerResult] = useState(false);
-  const [isAnswerCorrect, setIsAnswerCorrect] = useState(false);
-
-  const startQuiz = useCallback((mode: 'jp-to-vi' | 'vi-to-jp') => {
-    setQuizMode(mode);
-    setQuizQuestions([...vocabularyItems].sort(() => Math.random() - 0.5));
-    setQuizQuestionIndex(0);
-    setQuizScore(0);
-    setSelectedAnswer(null);
-    setShowAnswerResult(false);
-    setIsAnswerCorrect(false);
-    setShowQuiz(true);
-  }, [vocabularyItems]);
-
-  const currentQuizQuestion = quizQuestions[quizQuestionIndex];
-  const quizProgress = quizQuestions.length > 0 ? ((quizQuestionIndex + 1) / quizQuestions.length) * 100 : 0;
-
-  const handleQuizAnswer = useCallback((answer: string, isCorrect: boolean) => {
-    setSelectedAnswer(answer);
-    setIsAnswerCorrect(isCorrect);
-    setShowAnswerResult(true);
-    if (isCorrect) {
-      setQuizScore(prev => prev + 1);
-    }
-    // Update SRS for the current quiz question
-    if (currentQuizQuestion) {
-      updateSRS(currentQuizQuestion.id, isCorrect);
-    }
-  }, [currentQuizQuestion, updateSRS]);
-
-  const nextQuizQuestion = useCallback(() => {
-    if (quizQuestionIndex < quizQuestions.length - 1) {
-      setQuizQuestionIndex(prev => prev + 1);
-      setSelectedAnswer(null);
-      setShowAnswerResult(false);
-      setIsAnswerCorrect(false);
-    } else {
-      setShowQuiz(false);
-    }
-  }, [quizQuestionIndex, quizQuestions.length]);
-
-  const endQuiz = useCallback(() => {
-    setShowQuiz(false);
-  }, []);
+  const { currentUser } = useAppSelector((state) => state.user);
+  const { srsData, updateSRS, getDueWords } = useSRSManager(currentUser?.id, textbookId, lessonNum);
+  const dueWords = getDueWords(vocabularyItems);
+  
+  const {
+    showQuiz,
+    quizQuestionIndex,
+    quizQuestions,
+    quizScore,
+    quizMode,
+    selectedAnswer,
+    showAnswerResult,
+    isAnswerCorrect,
+    startQuiz,
+    handleQuizAnswer,
+    nextQuizQuestion,
+    endQuiz,
+    currentQuizQuestion,
+    quizProgress,
+  } = useQuizManager(vocabularyItems, updateSRS);
 
   // Reset flashcard state when navigating between lessons/textbooks
   useEffect(() => {
@@ -302,14 +228,15 @@ const VocabularyDetail: React.FC = () => {
     setFlashcardBaseCards([]);
     setShuffledCards([]);
     setFlashcardLessonKey("");
-    setCardStatus({});
+    // Reset hook session state
+    resetSession();
     setCurrentCardIndex(0);
     setIsFlipped(false);
-    setIsStudyComplete(false);
-  }, [textbookId, lessonNum]);
+  }, [textbookId, lessonNum, resetSession, setCurrentCardIndex, setIsFlipped]);
 
   // Convert to legacy format for flashcard component
   const legacyItems = useMemo(() => toLegacyItems(vocabularyItems), [vocabularyItems]);
+  // Compute cards to study as legacy items
   const cardsToStudy = useMemo(() => {
     const inScope = flashcardLessonKey === "" || flashcardLessonKey === lessonKey;
     const base = inScope && flashcardBaseCards.length > 0 ? flashcardBaseCards : vocabularyItems;
@@ -317,6 +244,7 @@ const VocabularyDetail: React.FC = () => {
     return toLegacyItems(active);
   }, [flashcardBaseCards, shuffledCards, vocabularyItems, flashcardLessonKey, lessonKey]);
 
+  // Current card derived from legacy cards
   const currentCard = cardsToStudy[currentCardIndex];
 
   const sessionKnownCount = useMemo(() => {
@@ -347,22 +275,20 @@ const VocabularyDetail: React.FC = () => {
     return source.filter((i) => ids.has(i.id));
   }, [cardStatus, flashcardBaseCards, vocabularyItems]);
 
-  const flipCard = useCallback(() => {
+  // Renamed flip handler to avoid name clash with hook's flipCard
+  const toggleFlipCard = useCallback(() => {
     setIsFlipped((prev) => !prev);
   }, []);
 
   const handleMemoryEvaluation = useCallback((status: "unknown" | "known") => {
     if (!currentCard) return;
-    setCardStatus((prev) => ({ ...prev, [currentCard.id]: status }));
-    // Update SRS for the current card
     updateSRS(currentCard.id, status === "known");
-    if (currentCardIndex < cardsToStudy.length - 1) {
-      setCurrentCardIndex((prev) => prev + 1);
-      setIsFlipped(false);
+    if (status === "known") {
+      markKnown();
     } else {
-      setIsStudyComplete(true);
+      markUnknown();
     }
-  }, [currentCard, currentCardIndex, cardsToStudy.length, updateSRS]);
+  }, [currentCard, updateSRS, markKnown, markUnknown]);
 
   const shuffleCards = useCallback(() => {
     // Always shuffle within the current lesson scope
@@ -374,21 +300,20 @@ const VocabularyDetail: React.FC = () => {
     setIsFlipped(false);
   }, [flashcardBaseCards, vocabularyItems, lessonKey]);
 
+  // Reset study session, hook manages isStudyComplete internally
   const resetStudySession = useCallback((mode: "all" | "unremembered" = "all") => {
     setFlashcardLessonKey(lessonKey);
     const base = flashcardBaseCards.length > 0 ? flashcardBaseCards : vocabularyItems;
     const cardsToUse = mode === "unremembered"
       ? base.filter((card: VocabularyItem) => cardStatus[card.id] === "unknown")
       : base;
-    const resetStatus: Record<string, SessionStatus> = {};
-    cardsToUse.forEach((c: VocabularyItem) => (resetStatus[c.id] = "unanswered"));
-    setCardStatus((prev) => ({ ...prev, ...resetStatus }));
+    // Reset session via hook and update local UI state
+    resetSession();
     // Keep the natural order by default; user can manually shuffle.
     setShuffledCards([...cardsToUse]);
     setCurrentCardIndex(0);
     setIsFlipped(false);
-    setIsStudyComplete(false);
-  }, [flashcardBaseCards, vocabularyItems, cardStatus, lessonKey]);
+  }, [flashcardBaseCards, vocabularyItems, cardStatus, lessonKey, resetSession, setCurrentCardIndex, setIsFlipped]);
 
   const startFlashcard = useCallback(() => {
     const items = vocabularyItems;
@@ -407,39 +332,27 @@ const VocabularyDetail: React.FC = () => {
       setShuffledCards([...items]);
     }
 
-    const initialStatus: Record<string, SessionStatus> = {};
-    items.forEach((item: VocabularyItem) => (initialStatus[item.id] = "unanswered"));
-    setCardStatus(initialStatus);
-    setCurrentCardIndex(0);
-    setIsFlipped(false);
-    setIsStudyComplete(false);
+    // Initialize hook session with current cards
+    resetSession();
     setShowFlashcard(true);
-  }, [vocabularyItems, shuffledCards, lessonKey]);
+  }, [vocabularyItems, shuffledCards, lessonKey, resetSession]);
 
   const closeFlashcard = useCallback(() => {
     setShowFlashcard(false);
-    setCurrentCardIndex(0);
-    setIsFlipped(false);
-    setIsStudyComplete(false);
-  }, []);
+    resetSession();
+  }, [resetSession]);
 
   const handleBack = () => {
     navigate(`/textbook/${textbookId}`);
   };
 
   const handlePrevCard = useCallback(() => {
-    if (currentCardIndex > 0) {
-      setCurrentCardIndex((prev) => prev - 1);
-      setIsFlipped(false);
-    }
-  }, [currentCardIndex]);
+    prevCard();
+  }, [prevCard]);
 
   const handleNextCard = useCallback(() => {
-    if (currentCardIndex < cardsToStudy.length - 1) {
-      setCurrentCardIndex((prev) => prev + 1);
-      setIsFlipped(false);
-    }
-  }, [currentCardIndex, cardsToStudy.length]);
+    nextCard();
+  }, [nextCard]);
 
   const handlePrevLesson = () => {
     if (!lessonNumber) return;
@@ -1019,7 +932,7 @@ const VocabularyDetail: React.FC = () => {
             isFlipped={isFlipped}
             isFullscreen={false}
             screens={screens}
-            onFlipCard={flipCard}
+            onFlipCard={toggleFlipCard}
             onMemoryEvaluation={handleMemoryEvaluation}
             onSetIsFullscreen={() => {}}
             onBackToTable={closeFlashcard}
@@ -1027,8 +940,19 @@ const VocabularyDetail: React.FC = () => {
             onShuffleCards={shuffleCards}
             onPrevCard={handlePrevCard}
             onNextCard={handleNextCard}
+            settings={settings}
+            onOpenSettings={openSettings}
           />
         )}
+
+        <FlashcardSettingsModal
+          isOpen={isSettingsModalOpen}
+          onClose={closeSettings}
+          settings={settings}
+          onSettingsChange={updateSettings}
+          onResetCards={() => resetStudySession("all")}
+          onShuffleCards={shuffleCards}
+        />
 
         {/* Completion Modal */}
         {showFlashcard && isStudyComplete && (

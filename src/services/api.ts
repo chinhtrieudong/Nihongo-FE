@@ -23,13 +23,6 @@ export const API_ENDPOINTS = {
   // Users
   USERS: {
     PROFILE: "/users/profile",
-    STATS: {
-      DASHBOARD: "/users/stats/dashboard",
-      STREAK: "/users/stats/streak",
-      WEEKLY: "/users/stats/weekly",
-      STUDY_TIME: "/users/stats/study-time",
-      AVERAGE_SCORE: "/users/stats/average-score",
-    },
   },
 
   // Lessons
@@ -43,6 +36,8 @@ export const API_ENDPOINTS = {
     KANJI: (lessonId: string) => `/lessons/${lessonId}/kanji`,
     AI_ROLEPLAY: (lessonId: string) => `/lessons/${lessonId}/ai/roleplay`,
     WEAK_POINTS: (lessonId: string) => `/lessons/${lessonId}/weak-points`,
+    AI_CHAT: (lessonId: string) => `/lessons/${lessonId}/ai/chat`,
+    EXERCISES_SUBMIT: (lessonId: string) => `/lessons/${lessonId}/exercises/submit`,
   },
 
   // Kanji
@@ -53,6 +48,7 @@ export const API_ENDPOINTS = {
     BY_LEVEL: (level: string) => `/kanji/${level.toLowerCase()}`,
     RADICALS: {
       LIST: "/kanji/radicals",
+      ALL: "/kanji/radicals/all",
       DETAIL: (symbol: string) =>
         `/kanji/radicals/${encodeURIComponent(symbol)}`,
       KANJI_BY_RADICAL: (symbol: string) =>
@@ -72,11 +68,42 @@ export const API_ENDPOINTS = {
   // Health Check
   HEALTH: "/health",
 
-  // Test Attempts
-  TEST_ATTEMPTS: {
-    BASE: "/test-attempts",
-    STATS: "/test-attempts/stats/summary",
-    BY_ID: (id: string) => `/test-attempts/${id}`,
+
+  // Textbooks
+  TEXTBOOKS: {
+    LIST: "/textbooks",
+    BY_ID: (id: string) => `/textbooks/${id}`,
+    LESSONS: (slug: string) => `/textbooks/${slug}/lessons`,
+  },
+
+  // Favorites
+  FAVORITES: {
+    LIST: "/favorites",
+    CHECK: "/favorites/check",
+  },
+
+  // Pronunciation
+  PRONUNCIATION: {
+    EXERCISES: "/pronunciation/exercises",
+    EXERCISE_DETAIL: (id: string) => `/pronunciation/exercises/${id}`,
+    EXERCISE_AUDIO: (id: string) => `/pronunciation/exercises/${id}/audio`,
+    PRACTICE: "/pronunciation/practice",
+    PRACTICE_DELETE: (id: string) => `/pronunciation/practice/${id}`,
+    HISTORY: "/pronunciation/history",
+    STATS: "/pronunciation/stats",
+    ANALYZE: "/pronunciation/analyze",
+    CATEGORIES: "/pronunciation/categories",
+    SPEECH_TO_TEXT: "/pronunciation/speech-to-text",
+  },
+
+  // Grammar
+  GRAMMAR: {
+    LIST: "/grammar",
+    BY_TEXTBOOK_LESSON: (textbook: string, lesson: number) => `/grammar?textbook=${textbook}&lesson=${lesson}`,
+    BY_LEVEL: (level: string) => `/grammar?level=${level}`,
+    SEARCH: "/grammar/search",
+    RANDOM: "/grammar/random",
+    BY_ID: (id: string) => `/grammar/${id}`,
   },
 } as const;
 
@@ -193,13 +220,10 @@ export const authAPI = {
   },
 
   getCurrentUser: async () => {
-    // Try to get user info from a simple endpoint that doesn't require authentication
-    // This is a temporary solution for development
     try {
       const response = await api.get(API_ENDPOINTS.AUTH.ME);
       return response.data;
     } catch (error) {
-      // If /auth/me doesn't exist, create a mock user from token
       const token = localStorage.getItem("accessToken");
       if (token) {
         const decoded = JSON.parse(atob(token.split(".")[1]));
@@ -225,8 +249,26 @@ export const userAPI = {
     return response.data;
   },
 
-  updateProfile: async (data: any) => {
+  updateProfile: async (data: Partial<{ username: string; email: string; avatar: string }>) => {
     const response = await api.put(API_ENDPOINTS.USERS.PROFILE, data);
+    return response.data;
+  },
+
+  changePassword: async (data: { currentPassword: string; newPassword: string }) => {
+    const response = await api.put('/v1/users/password', data);
+    return response.data;
+  },
+};
+
+// User Stats API functions
+export const userStatsAPI = {
+  getStats: async (userId: string) => {
+    const response = await api.get(`/v1/users/${userId}/stats`);
+    return response.data;
+  },
+
+  getStreak: async (userId: string) => {
+    const response = await api.get(`/v1/users/${userId}/streak`);
     return response.data;
   },
 };
@@ -245,38 +287,37 @@ export const lessonAPI = {
     if (offset) params.offset = offset;
     if (textbook) params.textbook = textbook;
 
-    const response = await api.get("/lessons", { params });
+    const response = await api.get(API_ENDPOINTS.LESSONS.LIST, { params });
     return response.data;
   },
 
   getLessonDetail: async (id: string): Promise<any> => {
-    const response = await api.get(`/lessons/${id}`);
+    const response = await api.get(API_ENDPOINTS.LESSONS.DETAIL(id));
     return response.data;
   },
 
   getLessonByNumber: async (lessonNumber: number): Promise<any> => {
-    const response = await api.get(`/lessons/number/${lessonNumber}`);
+    const response = await api.get(API_ENDPOINTS.LESSONS.BY_NUMBER(lessonNumber));
     return response.data;
   },
 
   completeLesson: async (lessonId: string) => {
-    const response = await api.post(`/lessons/${lessonId}/complete`);
+    const response = await api.post(API_ENDPOINTS.LESSONS.COMPLETE(lessonId));
     return response.data;
   },
 
   getRelatedLessons: async (lessonId: string) => {
-    const response = await api.get(`/lessons/${lessonId}/related`);
+    const response = await api.get(API_ENDPOINTS.LESSONS.RELATED(lessonId));
     return response.data;
   },
 
   searchLessons: async (query: string) => {
     const response = await api.get(
-      `/lessons/search?q=${encodeURIComponent(query)}`,
+      `${API_ENDPOINTS.LESSONS.SEARCH}?q=${encodeURIComponent(query)}`,
     );
     return response.data;
   },
 
-  // AI Practice endpoints
   aiRoleplay: async (
     lessonId: string,
     data: {
@@ -287,25 +328,35 @@ export const lessonAPI = {
       };
     },
   ): Promise<AIRoleplayResponse> => {
-    const response = await api.post(`/lessons/${lessonId}/ai/roleplay`, data);
+    const response = await api.post(API_ENDPOINTS.LESSONS.AI_ROLEPLAY(lessonId), data);
     return response.data;
   },
 
   getWeakPoints: async (lessonId: string): Promise<WeakPointsResponse> => {
-    const response = await api.get(`/lessons/${lessonId}/weak-points`);
-    return response.data;
-  },
-
-  // Kanji endpoints
-  getKanji: async (kanji: string) => {
-    const response = await api.get(
-      `/kanji/character/${encodeURIComponent(kanji)}`,
-    );
+    const response = await api.get(API_ENDPOINTS.LESSONS.WEAK_POINTS(lessonId));
     return response.data;
   },
 
   getLessonKanji: async (lessonId: string) => {
-    const response = await api.get(`/lessons/${lessonId}/kanji`);
+    const response = await api.get(API_ENDPOINTS.LESSONS.KANJI(lessonId));
+    return response.data;
+  },
+
+  submitExercises: async (
+    lessonId: string,
+    answers: Array<{ exerciseId: string; answer: string }>,
+  ) => {
+    const response = await api.post(API_ENDPOINTS.LESSONS.EXERCISES_SUBMIT(lessonId), {
+      answers,
+    });
+    return response.data;
+  },
+};
+
+// Kanji API functions
+export const kanjiAPI = {
+  getKanji: async (kanji: string) => {
+    const response = await api.get(API_ENDPOINTS.KANJI.CHARACTER(kanji));
     return response.data;
   },
 
@@ -337,84 +388,29 @@ export const lessonAPI = {
       params.append("limit", String(filters.limit));
     }
 
-    // Use level path only when a specific level is selected; otherwise fetch all levels from /kanji
     const hasLevel = Boolean(filters.level && filters.level !== "all");
-    const levelPath = hasLevel ? `/${String(filters.level).toLowerCase()}` : "";
+    const levelPath = hasLevel ? API_ENDPOINTS.KANJI.BY_LEVEL(filters.level!) : API_ENDPOINTS.KANJI.LIST;
     const queryString = params.toString();
     const response = await api.get(
-      queryString ? `/kanji${levelPath}?${queryString}` : `/kanji${levelPath}`,
+      queryString ? `${levelPath}?${queryString}` : levelPath,
     );
     return response.data;
   },
 
   getKanjiByRadical: async (radicalSymbol: string, page = 1, limit = 20) => {
-    const encoded = encodeURIComponent(radicalSymbol);
     const response = await api.get(
-      `/kanji/radicals/${encoded}/kanji?page=${page}&limit=${limit}`,
+      `${API_ENDPOINTS.KANJI.RADICALS.KANJI_BY_RADICAL(radicalSymbol)}?page=${page}&limit=${limit}`,
     );
     return response.data;
   },
 
   getRadicals: async (_page = 1, _limit = 214) => {
-    const response = await api.get(`/kanji/radicals/all`);
+    const response = await api.get(API_ENDPOINTS.KANJI.RADICALS.ALL);
     return response.data;
   },
 
   getRadicalDetail: async (symbol: string) => {
-    const encoded = encodeURIComponent(symbol);
-    const response = await api.get(`/kanji/radicals/${encoded}`);
-    return response.data;
-  },
-
-  submitExercises: async (
-    lessonId: string,
-    answers: Array<{ exerciseId: string; answer: string }>,
-  ) => {
-    const response = await api.post(`/lessons/${lessonId}/exercises/submit`, {
-      answers,
-    });
-    return response.data;
-  },
-};
-
-// User Statistics API functions
-export const userStatsAPI = {
-  // Get user dashboard statistics
-  getDashboardStats: async () => {
-    const response = await api.get(`/users/stats/dashboard`);
-    return response.data;
-  },
-
-  // Get learning streak
-  getLearningStreak: async () => {
-    const response = await api.get(`/users/stats/streak`);
-    return response.data;
-  },
-
-  // Get weekly statistics
-  getWeeklyStats: async () => {
-    const response = await api.get(`/users/stats/weekly`);
-    return response.data;
-  },
-
-  // Get total study time
-  getTotalStudyTime: async () => {
-    const response = await api.get(`/users/stats/study-time`);
-    return response.data;
-  },
-
-  // Get average score
-  getAverageScore: async () => {
-    const response = await api.get(`/users/stats/average-score`);
-    return response.data;
-  },
-
-  // Update dashboard statistics
-  updateDashboardStats: async (data: {
-    learningStreak?: number;
-    totalStudyTime?: number;
-  }) => {
-    const response = await api.put(`/users/stats/dashboard`, data);
+    const response = await api.get(API_ENDPOINTS.KANJI.RADICALS.DETAIL(symbol));
     return response.data;
   },
 };
@@ -431,14 +427,11 @@ export const aiAPI = {
       difficulty: "easy" | "medium" | "hard";
     };
   }) => {
-    // Use Minna AI chat endpoint for lesson-specific chat
-    // Extract the latest user message and lesson number from the data
     const latestUserMessage = data.messages
       .filter((msg) => msg.role === "user")
       .pop();
     if (!latestUserMessage) throw new Error("No user message found");
 
-    // Try to extract lesson number from lessonId (assuming it's in format like "lesson-1" or just the number)
     const lessonNumber = data.lessonId.replace("lesson-", "") || "1";
 
     const requestBody = {
@@ -447,11 +440,10 @@ export const aiAPI = {
     };
 
     const response = await api.post(
-      `/lessons/${lessonNumber}/ai/chat`,
+      API_ENDPOINTS.LESSONS.AI_CHAT(lessonNumber),
       requestBody,
     );
 
-    // Transform the response to match the expected ChatMessage format
     const apiResponse = response.data;
     if (apiResponse.success && apiResponse.data) {
       return {
@@ -475,6 +467,29 @@ export const aiAPI = {
     const response = await api.post(`${aiBaseUrl}/ai/pronunciation`, audioData);
     return response.data;
   },
+};
+
+// Progress API functions
+export const progressAPI = {
+  getProgress: async (userId: string, params?: { textbookId?: string; status?: string }) => {
+    const response = await api.get(API_ENDPOINTS.PROGRESS, { params: { userId, ...params } });
+    return response.data;
+  },
+  
+  updateLessonProgress: async (data: any) => {
+    const response = await api.post(`${API_ENDPOINTS.PROGRESS}/lesson`, data);
+    return response.data;
+  },
+
+  getDueReviews: async (userId: string, limit?: number) => {
+    const response = await api.get(`${API_ENDPOINTS.PROGRESS}/due`, { params: { userId, limit } });
+    return response.data;
+  },
+
+  submitReview: async (data: any) => {
+    const response = await api.post(`${API_ENDPOINTS.PROGRESS}/review`, data);
+    return response.data;
+  }
 };
 
 // Health check
@@ -566,16 +581,37 @@ const normalizeJlptTest = (raw: BackendJlptTest) => {
   };
 };
 
-// API_BASE_URL can be either ".../api" or ".../api/v1" depending on VITE_API_URL.
-// Build JLPT path to avoid "/v1/v1/..." double prefix.
-const hasV1InBaseUrl = /\/v1\/?$/.test(API_BASE_URL) || API_BASE_URL.includes("/api/v1");
-const jlptBasePath = hasV1InBaseUrl ? "/jlpt-tests" : "/v1/jlpt-tests";
+// Helper to build API paths avoiding double /v1 prefix
+const buildPath = (path: string) => {
+  const hasV1InBaseUrl = /\/v1\/?$/.test(API_BASE_URL) || API_BASE_URL.includes("/api/v1");
+  if (hasV1InBaseUrl) {
+    return path.startsWith("/v1/") ? path.replace("/v1", "") : path;
+  }
+  return path.startsWith("/v1/") ? path : `/v1${path}`;
+};
+
+const jlptBasePath = buildPath("/jlpt-tests");
+const minnaBasePath = buildPath("/minna");
+
+const MINNA_ENDPOINTS = {
+  BUNKEI: `${minnaBasePath}/bunkei`,
+  BUNKEI_BY_ID: (id: string) => `${minnaBasePath}/bunkei/${id}`,
+  MONDAI: `${minnaBasePath}/mondai`,
+  MONDAI_BY_ID: (id: string) => `${minnaBasePath}/mondai/${id}`,
+  KAIWA: `${minnaBasePath}/kaiwa`,
+  KAIWA_BY_ID: (id: string) => `${minnaBasePath}/kaiwa/${id}`,
+  TANGO: `${minnaBasePath}/tango`,
+  TANGO_BY_ID: (id: string) => `${minnaBasePath}/tango/${id}`,
+  LESSON: (lessonNumber: number) => `${minnaBasePath}/lesson/${lessonNumber}`,
+} as const;
+
+const JLPT_ENDPOINTS = {
+  LIST: jlptBasePath,
+} as const;
 
 export const jlptTestsAPI = {
-  // Get all JLPT tests
   getAllTests: async () => {
-    // Backend is under /api/v1/jlpt-tests while API_BASE_URL defaults to /api
-    const response = await api.get(jlptBasePath);
+    const response = await api.get(JLPT_ENDPOINTS.LIST);
     const payload = response.data;
     const rawTests: BackendJlptTest[] = Array.isArray(payload?.data) ? payload.data : [];
     return {
@@ -585,10 +621,8 @@ export const jlptTestsAPI = {
     };
   },
 
-  // Get JLPT tests by level
   getTestsByLevel: async (level: string) => {
-    // Not all backends expose /:level; use list endpoint and filter.
-    const response = await api.get(jlptBasePath);
+    const response = await api.get(JLPT_ENDPOINTS.LIST);
     const payload = response.data;
     const rawTests: BackendJlptTest[] = Array.isArray(payload?.data) ? payload.data : [];
     const upper = String(level || "").toUpperCase();
@@ -599,10 +633,8 @@ export const jlptTestsAPI = {
     };
   },
 
-  // Get specific JLPT test
   getTest: async (level: string, testId: string) => {
-    // Backend currently exposes list endpoint; avoid hitting a non-existent detail endpoint (404 noise).
-    const response = await api.get(jlptBasePath);
+    const response = await api.get(JLPT_ENDPOINTS.LIST);
     const payload = response.data;
     const rawTests: BackendJlptTest[] = Array.isArray(payload?.data) ? payload.data : [];
     const normalized = rawTests.map(normalizeJlptTest);
@@ -627,168 +659,114 @@ export const jlptTestsAPI = {
 };
 
 // Test Attempts API
-export interface CreateTestAttemptData {
-  testId: string;
-  testLevel: string;
-  testTitle: string;
-  duration: number;
-  totalQuestions: number;
-  sections?: Array<{
-    sectionId: string;
-    name: string;
-    questions: number;
-  }>;
-}
-
-export interface UpdateTestAttemptData {
-  status?: "in_progress" | "completed" | "abandoned";
-  endTime?: string;
-  correctAnswers?: number;
-  score?: number;
-  timeSpent?: number;
-  sections?: any[];
-  answers?: Record<string, Record<string, string | number>>;
-}
-
-export interface TestAttempt {
-  _id: string;
-  userId: string;
-  testId: string;
-  testLevel: string;
-  testTitle: string;
-  status: "in_progress" | "completed" | "abandoned";
-  startTime: string;
-  endTime?: string;
-  duration: number;
-  totalQuestions: number;
-  correctAnswers: number;
-  score: number;
-  sections: any[];
-  timeSpent: number;
-  createdAt: string;
-  updatedAt: string;
-}
-
-// Textbooks/Courses API
-export const textbooksAPI = {
-  // Get all textbooks/courses
-  getAll: async () => {
-    const response = await api.get('/textbooks');
-    return response.data;
-  },
-
-  // Get single textbook by ID (slug)
-  getById: async (id: string) => {
-    const response = await api.get(`/textbooks/${id}`);
-    return response.data;
-  },
-
-  // Get textbook lessons with pagination
-  getLessons: async (slug: string, params?: { page?: number; limit?: number }) => {
-    const response = await api.get(`/textbooks/${slug}/lessons`, { params });
-    return response.data;
-  },
-};
-
 export const testAttemptsAPI = {
-  // Create a new test attempt
-  createAttempt: async (data: CreateTestAttemptData) => {
-    const response = await api.post("/test-attempts", data);
-    return response.data;
-  },
-
-  // Get all user's test attempts
   getUserAttempts: async (status?: string, limit?: number) => {
     const params: any = {};
     if (status) params.status = status;
     if (limit) params.limit = limit;
-    const response = await api.get("/test-attempts", { params });
+    const response = await api.get('/api/v1/test-attempts/user', { params });
     return response.data;
   },
 
-  // Get test attempt statistics
   getStats: async () => {
-    const response = await api.get("/test-attempts/stats/summary");
+    const response = await api.get('/api/v1/test-attempts/stats');
     return response.data;
   },
 
-  // Get specific test attempt
-  getAttempt: async (id: string) => {
-    const response = await api.get(`/test-attempts/${id}`);
+  createAttempt: async (attemptData: any) => {
+    const response = await api.post('/api/v1/test-attempts', attemptData);
     return response.data;
   },
 
-  // Update test attempt
-  updateAttempt: async (id: string, data: UpdateTestAttemptData) => {
-    const response = await api.put(`/test-attempts/${id}`, data);
+  updateAttempt: async (attemptId: string, updateData: any) => {
+    const response = await api.put(`/api/v1/test-attempts/${attemptId}`, updateData);
     return response.data;
   },
 
-  // Delete test attempt
-  deleteAttempt: async (id: string) => {
-    const response = await api.delete(`/test-attempts/${id}`);
+  getAttemptById: async (attemptId: string) => {
+    const response = await api.get(`/api/v1/test-attempts/${attemptId}`);
+    return response.data;
+  }
+};
+
+// Textbooks/Courses API
+export const textbooksAPI = {
+  getAll: async () => {
+    const response = await api.get(API_ENDPOINTS.TEXTBOOKS.LIST);
+    return response.data;
+  },
+
+  getById: async (id: string) => {
+    const response = await api.get(API_ENDPOINTS.TEXTBOOKS.BY_ID(id));
+    return response.data;
+  },
+
+  getLessons: async (slug: string, params?: { page?: number; limit?: number }) => {
+    const response = await api.get(API_ENDPOINTS.TEXTBOOKS.LESSONS(slug), { params });
     return response.data;
   },
 };
 
 // Minna No Nihongo API
 export const minnaAPI = {
-  // Get Bunkei (Grammar patterns)
   getBunkei: async (lessonNumber?: number, textbook = 'minna_no_nihongo') => {
     const params: any = { textbook };
     if (lessonNumber) params.lessonNumber = lessonNumber;
-    const response = await api.get('/v1/minna/bunkei', { params });
+    const response = await api.get(MINNA_ENDPOINTS.BUNKEI, { params });
     return response.data;
   },
 
   getBunkeiById: async (id: string) => {
-    const response = await api.get(`/v1/minna/bunkei/${id}`);
+    const response = await api.get(MINNA_ENDPOINTS.BUNKEI_BY_ID(id));
     return response.data;
   },
 
-  // Get Mondai (Exercises)
   getMondai: async (lessonNumber?: number, type?: string, textbook = 'minna_no_nihongo') => {
     const params: any = { textbook };
     if (lessonNumber) params.lessonNumber = lessonNumber;
     if (type) params.type = type;
-    const response = await api.get('/v1/minna/mondai', { params });
+    const response = await api.get(MINNA_ENDPOINTS.MONDAI, { params });
     return response.data;
   },
 
   getMondaiById: async (id: string) => {
-    const response = await api.get(`/v1/minna/mondai/${id}`);
+    const response = await api.get(MINNA_ENDPOINTS.MONDAI_BY_ID(id));
     return response.data;
   },
 
-  // Get Kaiwa (Conversations)
   getKaiwa: async (lessonNumber?: number, textbook = 'minna_no_nihongo') => {
     const params: any = { textbook };
     if (lessonNumber) params.lessonNumber = lessonNumber;
-    const response = await api.get('/v1/minna/kaiwa', { params });
+    const response = await api.get(MINNA_ENDPOINTS.KAIWA, { params });
     return response.data;
   },
 
   getKaiwaById: async (id: string) => {
-    const response = await api.get(`/v1/minna/kaiwa/${id}`);
+    const response = await api.get(MINNA_ENDPOINTS.KAIWA_BY_ID(id));
     return response.data;
   },
 
-  // Get Tango (Vocabulary)
   getTango: async (lessonNumber?: number, textbook = 'minna_no_nihongo') => {
+    // Use minnaJsonRoutes vocabulary endpoint which reads from JSON files
+    // Note: minnaJsonRoutes is mounted at /api/v1/mina, not /minna
+    if (lessonNumber) {
+      const minaBasePath = buildPath("/mina");
+      const response = await api.get(`${minaBasePath}/${lessonNumber}/vocabulary`);
+      return response.data;
+    }
+    // Fallback to original endpoint if no lesson number
     const params: any = { textbook };
-    if (lessonNumber) params.lessonNumber = lessonNumber;
-    const response = await api.get('/v1/minna/tango', { params });
+    const response = await api.get(MINNA_ENDPOINTS.TANGO, { params });
     return response.data;
   },
 
   getTangoById: async (id: string) => {
-    const response = await api.get(`/v1/minna/tango/${id}`);
+    const response = await api.get(MINNA_ENDPOINTS.TANGO_BY_ID(id));
     return response.data;
   },
 
-  // Get all lesson content
   getLessonContent: async (lessonNumber: number, textbook = 'minna_no_nihongo') => {
-    const response = await api.get(`/v1/minna/lesson/${lessonNumber}`, {
+    const response = await api.get(MINNA_ENDPOINTS.LESSON(lessonNumber), {
       params: { textbook }
     });
     return response.data;
@@ -797,26 +775,23 @@ export const minnaAPI = {
 
 // Favorites API
 export const favoritesAPI = {
-  // Get user's favorites
   getFavorites: async (userId: string, params?: { textbookId?: string; lessonNumber?: number; page?: number; limit?: number }) => {
-    const response = await api.get('/favorites', { params: { userId, ...params } });
+    const response = await api.get(API_ENDPOINTS.FAVORITES.LIST, { params: { userId, ...params } });
     return response.data;
   },
 
-  // Toggle favorite
   toggleFavorite: async (data: {
     userId: string;
     wordId: string;
     textbookId: string;
     lessonNumber: number;
   }) => {
-    const response = await api.post('/favorites', data);
+    const response = await api.post(API_ENDPOINTS.FAVORITES.LIST, data);
     return response.data;
   },
 
-  // Check if word is favorited
   checkFavorite: async (userId: string, wordId: string) => {
-    const response = await api.get('/favorites/check', { params: { userId, wordId } });
+    const response = await api.get(API_ENDPOINTS.FAVORITES.CHECK, { params: { userId, wordId } });
     return response.data;
   },
 };

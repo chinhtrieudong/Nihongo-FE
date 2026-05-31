@@ -6,14 +6,13 @@ import {
 import { Volume2 } from 'lucide-react';
 import type { VocabularyItem as VocabularyItemType } from '../../types/lesson';
 import { speakText } from '../../utils/vocabularyUtils';
-import { useAppSelector } from '../../store/hooks';
-import { getFontPreset } from '../../constants/fonts';
 
 interface VocabularyCardProps {
   index: number;
   item: VocabularyItemType;
   showHanViet: boolean;
   onWordClick: (word: VocabularyItemType) => void;
+  kanjiFontFamily?: string;
 
   // Voice settings for TTS
   femaleVoiceName?: string;
@@ -24,23 +23,13 @@ const VocabularyCard: React.FC<VocabularyCardProps> = ({
   index,
   showHanViet,
   onWordClick,
+  kanjiFontFamily,
   femaleVoiceName
 }) => {
-  const { fontPreset } = useAppSelector((state) => state.ui);
-  const selectedPreset = getFontPreset(fontPreset);
-
   const displayKanji = item.kanji || item.word || "";
   const displayReading = item.hiragana || item.katakana || item.reading || item.word || "";
   const displayHanViet = item.hanviet || item.han_viet || "";
   const displayMeaning = item.meaningVi || item.meaning || "-";
-
-  // Debug log for font preset
-  console.log('🔤 VocabularyCard Font Debug:', {
-    fontPreset,
-    selectedPresetKey: selectedPreset.key,
-    kanjiFontFamily: selectedPreset.kanjiFontFamily,
-    fontFamily: selectedPreset.fontFamily
-  });
 
   const handlePlayAudio = useCallback((text: string, e: React.MouseEvent) => {
     e.stopPropagation();

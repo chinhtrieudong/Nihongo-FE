@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { Collapse, Typography, Tag } from 'antd';
 import { ChevronRight, Book, Lightbulb, MessageSquare, ArrowLeftRight, Languages, CheckCircle, Clock, MinusCircle, Flame, Star } from 'lucide-react';
+import ReactMarkdown from 'react-markdown';
+import remarkGfm from 'remark-gfm';
 
 const { Title, Text, Paragraph } = Typography;
 
@@ -130,7 +132,7 @@ const GrammarSectionAccordion: React.FC<GrammarSectionAccordionProps> = ({ secti
                 <div className="flex items-start justify-between gap-3 min-w-0">
                   <div className="flex items-center flex-1 min-w-0 gap-3">
                     <Book className="w-4 h-4 text-blue-600 dark:text-blue-400 flex-shrink-0" />
-                    <Title level={5} className="mb-0 text-secondary-900 dark:text-secondary-100 text-sm break-words whitespace-normal" style={{ marginBottom: 0 }}>
+                    <Title level={5} className="mb-0 text-secondary-900 dark:text-secondary-100 text-sm break-words whitespace-normal font-japanese" style={{ marginBottom: 0, fontFamily: 'Noto Sans JP, sans-serif' }}>
                       {section.title}
                     </Title>
                   </div>
@@ -158,13 +160,13 @@ const GrammarSectionAccordion: React.FC<GrammarSectionAccordionProps> = ({ secti
                     {section.subtitle && (
                       <div className="flex items-start gap-2 min-w-0">
                         <Languages className="w-4 h-4 text-orange-500 dark:text-orange-400 flex-shrink-0" />
-                        <Text className="flex-1 min-w-0 text-gray-600 dark:text-secondary-400 text-sm break-words whitespace-normal">
+                        <Text className="flex-1 min-w-0 text-gray-600 dark:text-secondary-400 text-sm break-words whitespace-normal font-japanese" style={{ fontFamily: 'Noto Sans JP, sans-serif' }}>
                           {section.subtitle}
                         </Text>
                       </div>
                     )}
                     {section.preview && (
-                      <Text className="block text-secondary-500 dark:text-secondary-400 mt-1 text-sm break-words whitespace-normal">
+                      <Text className="block text-secondary-500 dark:text-secondary-400 mt-1 text-sm break-words whitespace-normal font-japanese" style={{ fontFamily: 'Noto Sans JP, sans-serif' }}>
                         Ví dụ: {section.preview}
                       </Text>
                     )}
@@ -194,12 +196,21 @@ const GrammarSectionAccordion: React.FC<GrammarSectionAccordionProps> = ({ secti
                     <Title level={5} className="text-secondary-900 dark:text-secondary-100" style={{ marginBottom: 0 }}>Mô tả</Title>
                   </div>
                   <div className="bg-white dark:bg-secondary-925 p-3 sm:p-4 rounded-lg border border-secondary-200 dark:border-secondary-700">
-                    <Paragraph
-                      className="text-secondary-700 dark:text-secondary-300 break-words"
-                      style={{ marginBottom: 0 }}
+                    <ReactMarkdown 
+                      remarkPlugins={[remarkGfm]}
+                      components={{
+                        p: ({children}: any) => <p className="mb-2 last:mb-0 text-secondary-700 dark:text-secondary-300 break-words font-japanese" style={{ fontFamily: 'Noto Sans JP, sans-serif', lineHeight: '1.6' }}>{children}</p>,
+                        ul: ({children}: any) => <ul className="list-disc pl-4 mb-2 font-japanese" style={{ fontFamily: 'Noto Sans JP, sans-serif' }}>{children}</ul>,
+                        ol: ({children}: any) => <ol className="list-decimal pl-4 mb-2 font-japanese" style={{ fontFamily: 'Noto Sans JP, sans-serif' }}>{children}</ol>,
+                        li: ({children}: any) => <li className="mb-1 font-japanese" style={{ fontFamily: 'Noto Sans JP, sans-serif' }}>{children}</li>,
+                        code: ({inline, children}: any) => 
+                          inline ? 
+                            <code className="px-1 py-0.5 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 rounded text-sm font-japanese" style={{ fontFamily: 'Noto Sans JP, sans-serif' }}>{children}</code> :
+                            <code className="block p-2 bg-gray-100 dark:bg-gray-800 rounded text-sm overflow-x-auto font-japanese" style={{ fontFamily: 'Noto Sans JP, sans-serif' }}>{children}</code>
+                      }}
                     >
                       {section.subtitle}
-                    </Paragraph>
+                    </ReactMarkdown>
                   </div>
                 </div>
               )}
@@ -213,13 +224,22 @@ const GrammarSectionAccordion: React.FC<GrammarSectionAccordionProps> = ({ secti
                   </div>
                   <div className="bg-white dark:bg-secondary-925 p-3 sm:p-4 rounded-lg border border-secondary-200 dark:border-secondary-700">
                     {section.meaning.map((item, index) => (
-                      <Paragraph
+                      <ReactMarkdown
                         key={index}
-                        className="text-secondary-700 dark:text-secondary-300 break-words"
-                        style={{ marginBottom: 0 }}
+                        remarkPlugins={[remarkGfm]}
+                        components={{
+                          p: ({children}: any) => <p className="mb-2 last:mb-0 text-secondary-700 dark:text-secondary-300 break-words">{children}</p>,
+                          ul: ({children}: any) => <ul className="list-disc pl-4 mb-2">{children}</ul>,
+                          ol: ({children}: any) => <ol className="list-decimal pl-4 mb-2">{children}</ol>,
+                          li: ({children}: any) => <li className="mb-1">{children}</li>,
+                          code: ({inline, children}: any) => 
+                            inline ? 
+                              <code className="px-1 py-0.5 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 rounded text-sm">{children}</code> :
+                              <code className="block p-2 bg-gray-100 dark:bg-gray-800 rounded text-sm overflow-x-auto">{children}</code>
+                        }}
                       >
                         {item}
-                      </Paragraph>
+                      </ReactMarkdown>
                     ))}
                   </div>
                 </div>
@@ -234,13 +254,17 @@ const GrammarSectionAccordion: React.FC<GrammarSectionAccordionProps> = ({ secti
                   </div>
                   <div className="bg-white dark:bg-secondary-925 p-3 sm:p-4 rounded-lg border border-secondary-200 dark:border-secondary-700">
                     {section.structure.map((item, index) => (
-                      <Paragraph
+                      <ReactMarkdown
                         key={`${section.id}-structure-${index}`}
-                        className="text-base sm:text-lg font-semibold text-blue-700 dark:text-blue-400 break-words"
-                        style={{ marginBottom: 0 }}
+                        remarkPlugins={[remarkGfm]}
+                        components={{
+                          p: ({children}: any) => <p className="text-base sm:text-lg font-semibold text-blue-700 dark:text-blue-400 break-words mb-2 last:mb-0 font-japanese" style={{ fontFamily: 'Noto Sans JP, sans-serif', lineHeight: '1.6' }}>{children}</p>,
+                          code: ({inline, children}: any) => 
+                            <code className="text-base sm:text-lg font-semibold text-blue-700 dark:text-blue-400 font-japanese" style={{ fontFamily: 'Noto Sans JP, sans-serif' }}>{children}</code>
+                        }}
                       >
                         {item}
-                      </Paragraph>
+                      </ReactMarkdown>
                     ))}
                   </div>
                 </div>
@@ -255,14 +279,38 @@ const GrammarSectionAccordion: React.FC<GrammarSectionAccordionProps> = ({ secti
                   </div>
                   <div className="bg-white dark:bg-secondary-925 p-3 sm:p-4 rounded-lg border border-secondary-200 dark:border-secondary-700 space-y-2">
                     {section.formation && (
-                      <Paragraph className="text-secondary-700 dark:text-secondary-300 break-words font-semibold" style={{ marginBottom: 0 }}>
+                      <ReactMarkdown 
+                        remarkPlugins={[remarkGfm]}
+                        components={{
+                          p: ({children}: any) => <p className="mb-2 last:mb-0 text-secondary-700 dark:text-secondary-300 break-words font-semibold font-japanese" style={{ fontFamily: 'Noto Sans JP, sans-serif', lineHeight: '1.6' }}>{children}</p>,
+                          ul: ({children}: any) => <ul className="list-disc pl-4 mb-2 font-japanese" style={{ fontFamily: 'Noto Sans JP, sans-serif' }}>{children}</ul>,
+                          ol: ({children}: any) => <ol className="list-decimal pl-4 mb-2 font-japanese" style={{ fontFamily: 'Noto Sans JP, sans-serif' }}>{children}</ol>,
+                          li: ({children}: any) => <li className="mb-1 font-japanese" style={{ fontFamily: 'Noto Sans JP, sans-serif' }}>{children}</li>,
+                          code: ({inline, children}: any) => 
+                            inline ? 
+                              <code className="px-1 py-0.5 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 rounded text-sm font-japanese" style={{ fontFamily: 'Noto Sans JP, sans-serif' }}>{children}</code> :
+                              <code className="block p-2 bg-gray-100 dark:bg-gray-800 rounded text-sm overflow-x-auto font-japanese" style={{ fontFamily: 'Noto Sans JP, sans-serif' }}>{children}</code>
+                        }}
+                      >
                         {section.formation}
-                      </Paragraph>
+                      </ReactMarkdown>
                     )}
                     {section.usage && (
-                      <Paragraph className="text-secondary-700 dark:text-secondary-300 break-words" style={{ marginBottom: 0 }}>
+                      <ReactMarkdown 
+                        remarkPlugins={[remarkGfm]}
+                        components={{
+                          p: ({children}: any) => <p className="mb-2 last:mb-0 text-secondary-700 dark:text-secondary-300 break-words font-japanese" style={{ fontFamily: 'Noto Sans JP, sans-serif', lineHeight: '1.6' }}>{children}</p>,
+                          ul: ({children}: any) => <ul className="list-disc pl-4 mb-2 font-japanese" style={{ fontFamily: 'Noto Sans JP, sans-serif' }}>{children}</ul>,
+                          ol: ({children}: any) => <ol className="list-decimal pl-4 mb-2 font-japanese" style={{ fontFamily: 'Noto Sans JP, sans-serif' }}>{children}</ol>,
+                          li: ({children}: any) => <li className="mb-1 font-japanese" style={{ fontFamily: 'Noto Sans JP, sans-serif' }}>{children}</li>,
+                          code: ({inline, children}: any) => 
+                            inline ? 
+                              <code className="px-1 py-0.5 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 rounded text-sm font-japanese" style={{ fontFamily: 'Noto Sans JP, sans-serif' }}>{children}</code> :
+                              <code className="block p-2 bg-gray-100 dark:bg-gray-800 rounded text-sm overflow-x-auto font-japanese" style={{ fontFamily: 'Noto Sans JP, sans-serif' }}>{children}</code>
+                        }}
+                      >
                         {section.usage}
-                      </Paragraph>
+                      </ReactMarkdown>
                     )}
                   </div>
                 </div>
@@ -279,10 +327,10 @@ const GrammarSectionAccordion: React.FC<GrammarSectionAccordionProps> = ({ secti
                     {section.examples.map((example, index) => (
                       <div key={index} className="mb-3 last:mb-0">
                         <div className="inline-flex items-center gap-2">
-                          <span className="text-secondary-900 dark:text-secondary-100 font-medium">
+                          <span className="text-secondary-900 dark:text-secondary-100 font-medium font-japanese" style={{ fontFamily: 'Noto Sans JP, sans-serif', lineHeight: '1.6' }}>
                             {example.japanese}
                           </span>
-                          <span className="text-secondary-900 dark:text-secondary-100 font-medium text-sm">
+                          <span className="text-secondary-900 dark:text-secondary-100 font-medium text-sm font-japanese" style={{ fontFamily: 'Noto Sans JP, sans-serif', lineHeight: '1.6' }}>
                             ({example.vietnamese})
                           </span>
                         </div>
@@ -301,13 +349,22 @@ const GrammarSectionAccordion: React.FC<GrammarSectionAccordionProps> = ({ secti
                   </div>
                   <div className="bg-white dark:bg-secondary-925 p-3 sm:p-4 rounded-lg border border-secondary-200 dark:border-secondary-700">
                     {section.comparison.map((item, index) => (
-                      <Paragraph
+                      <ReactMarkdown
                         key={index}
-                        className="text-secondary-700 dark:text-secondary-300 break-words"
-                        style={{ marginBottom: 0 }}
+                        remarkPlugins={[remarkGfm]}
+                        components={{
+                          p: ({children}: any) => <p className="mb-2 last:mb-0 text-secondary-700 dark:text-secondary-300 break-words font-japanese" style={{ fontFamily: 'Noto Sans JP, sans-serif', lineHeight: '1.6' }}>{children}</p>,
+                          ul: ({children}: any) => <ul className="list-disc pl-4 mb-2 font-japanese" style={{ fontFamily: 'Noto Sans JP, sans-serif' }}>{children}</ul>,
+                          ol: ({children}: any) => <ol className="list-decimal pl-4 mb-2 font-japanese" style={{ fontFamily: 'Noto Sans JP, sans-serif' }}>{children}</ol>,
+                          li: ({children}: any) => <li className="mb-1 font-japanese" style={{ fontFamily: 'Noto Sans JP, sans-serif' }}>{children}</li>,
+                          code: ({inline, children}: any) => 
+                            inline ? 
+                              <code className="px-1 py-0.5 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 rounded text-sm font-japanese" style={{ fontFamily: 'Noto Sans JP, sans-serif' }}>{children}</code> :
+                              <code className="block p-2 bg-gray-100 dark:bg-gray-800 rounded text-sm overflow-x-auto font-japanese" style={{ fontFamily: 'Noto Sans JP, sans-serif' }}>{children}</code>
+                        }}
                       >
                         {item}
-                      </Paragraph>
+                      </ReactMarkdown>
                     ))}
                   </div>
                 </div>

@@ -19,17 +19,17 @@ const toVocabularyItem = (item: any): VocabularyItem => ({
   id: item._id,
   wordId: item._id,
   sourceId: item._id,
-  kanji: item.kanji || item.word,
-  hiragana: item.hiragana || item.reading,
-  hanViet: item.hanViet || '',
+  kanji: item.kanji || item.word || '',
+  hiragana: item.hiragana || item.reading || '',
+  hanViet: item.hanViet || item.han_viet || '',
   meaning: item.meaning || item.meaningVi || '',
   type: item.type || item.partOfSpeech || 'unknown',
-  example: item.example || '',
-  exampleMeaning: item.exampleMeaning || item.exampleVi || '',
+  example: typeof item.example === 'object' ? item.example?.jp || '' : item.example || '',
+  exampleMeaning: typeof item.example === 'object' ? item.example?.vn || '' : item.exampleMeaning || item.exampleVi || '',
   textbook: item.textbook || 'minna_no_nihongo',
   level: item.level || 'N5',
   lesson: item.lessonNumber || 1,
-  topic: item.topic || '',
+  topic: item.topic || item.topicName || '',
 });
 
 /**
@@ -37,20 +37,23 @@ const toVocabularyItem = (item: any): VocabularyItem => ({
  */
 export const getVocabulary = async (filter?: VocabularyFilter): Promise<VocabularyItem[]> => {
   try {
-    // Use minnaAPI.getTango to fetch vocabulary from backend
-    const lessonNumber = filter?.lesson;
-    const textbook = filter?.textbook || 'minna_no_nihongo';
-    
-    const response = await minnaAPI.getTango(lessonNumber, textbook);
-    
-    if (response.success && response.data) {
-      const items = response.data.map(toVocabularyItem);
-      
-      // Apply additional filters if needed
+    // Build query parameters
+    const params = new URLSearchParams();
+    if (filter?.textbook) params.append('textbook', filter.textbook);
+    if (filter?.level) params.append('level', filter.level);
+    if (filter?.lesson) params.append('lesson', filter.lesson.toString());
+    if (filter?.topic) params.append('topic', filter.topic);
+
+    // Call backend API
+    const response = await fetch(`/api/v1/vocabulary?${params.toString()}`);
+    const result = await response.json();
+
+    if (result.success && result.data) {
+      const items = result.data.map(toVocabularyItem);
+
+      // Apply additional filters if needed (search, type)
       if (filter) {
         return items.filter((item: VocabularyItem) => {
-          if (filter.level && item.level !== filter.level) return false;
-          if (filter.topic && !item.topic.toLowerCase().includes(filter.topic.toLowerCase())) return false;
           if (filter.type && item.type !== filter.type) return false;
           if (filter.search) {
             const searchLower = filter.search.toLowerCase();
@@ -62,10 +65,10 @@ export const getVocabulary = async (filter?: VocabularyFilter): Promise<Vocabula
           return true;
         });
       }
-      
+
       return items;
     }
-    
+
     return [];
   } catch (error) {
     console.error('Error fetching vocabulary from backend:', error);
@@ -74,73 +77,62 @@ export const getVocabulary = async (filter?: VocabularyFilter): Promise<Vocabula
 };
 
 /**
- * Get vocabulary for a specific textbook lesson
+ * Get vocabulary for a specific textbook lesson using backend API
  * Compatible with legacy textbookId format (e.g., "minna-n5", "tango-n1")
  */
 export const getLessonVocabulary = async (
   textbookId: string,
   lessonNumber: number
 ): Promise<VocabularyItem[]> => {
-  // Parse textbookId to extract textbook type and level
-  const parts = textbookId.split('-');
-  if (parts.length < 2) {
-    console.error('Invalid textbookId format:', textbookId);
+  try {
+    const response = await fetch(`/api/v1/vocabulary/textbook/${textbookId}/lesson/${lessonNumber}`);
+    const result = await response.json();
+
+    if (result.success && result.data) {
+      return result.data.map(toVocabularyItem);
+    }
+    return [];
+  } catch (error) {
+    console.error('Error fetching lesson vocabulary from backend:', error);
     return [];
   }
-
-  let textbook: TextbookType;
-  let level: JLPTLevel;
-
-  // Handle kebab-case textbook names like "speed-master-n1"
-  if (parts[0] === 'speed' && parts[1] === 'master') {
-    textbook = 'speed-master';
-    level = (parts[2] || '').toUpperCase() as JLPTLevel;
-  } else {
-    textbook = parts[0] as TextbookType;
-    level = parts[1].toUpperCase() as JLPTLevel;
-  }
-
-  // Convert to backend textbook format
-  const backendTextbook = textbook === 'minna' ? 'minna_no_nihongo' : textbook;
-
-  // Use backend API to fetch vocabulary
-  return getVocabulary({
-    textbook: backendTextbook as any,
-    level,
-    lesson: lessonNumber,
-  });
 };
 
 /**
- * Get lesson info for a textbook
+ * Get lesson info for a textbook using backend API
  */
 export const getLessons = async (
   textbookId: string
 ): Promise<LessonInfo[]> => {
-  // Parse textbookId
-  const parts = textbookId.split('-');
-  if (parts.length < 2) return [];
+  try {
+    // Parse textbookId to get slug for backend
+    const parts = textbookId.split('-');
+    if (parts.length < 2) return [];
 
-  const textbook = parts[0] as TextbookType;
-  const level = parts[1].toUpperCase() as JLPTLevel;
+    // Convert to backend slug format (e.g., "minna-n5")
+    const slug = textbookId;
 
-  // For now, return a simple list based on typical lesson counts
-  // This could be enhanced to fetch from backend if there's an endpoint
-  const lessonCount = level === 'N5' ? 50 : level === 'N4' ? 50 : 40;
-  
-  const lessons: LessonInfo[] = [];
-  for (let i = 1; i <= lessonCount; i++) {
-    lessons.push({
-      lessonNumber: i,
-      lessonTitle: `Bài ${i}`,
-      textbookId,
-      level,
-      topic: '',
-      vocabCount: 0, // Would need to fetch from backend
-    });
+    // Call backend API to get lessons
+    const response = await fetch(`/api/v1/textbooks/${slug}/lessons`);
+    const result = await response.json();
+
+    if (result.success && result.data) {
+      // Transform backend response to LessonInfo format
+      return result.data.map((lesson: any) => ({
+        lessonNumber: lesson.number || lesson.lessonNumber,
+        lessonTitle: lesson.topic || lesson.title || `Bài ${lesson.lessonNumber}`,
+        textbookId,
+        level: parts[1].toUpperCase() as JLPTLevel,
+        topic: lesson.topic || '',
+        vocabCount: lesson.vocab || lesson.vocabularyCount || 0,
+      }));
+    }
+
+    return [];
+  } catch (error) {
+    console.error('Error fetching lessons from backend:', error);
+    return [];
   }
-
-  return lessons;
 };
 
 /**
@@ -151,20 +143,16 @@ export const getTopics = async (
   level: JLPTLevel
 ): Promise<string[]> => {
   try {
-    const backendTextbook = textbook === 'minna' ? 'minna_no_nihongo' : textbook;
-    const response = await minnaAPI.getTango(undefined, backendTextbook);
+    const textbookId = `${textbook}-${level.toLowerCase()}`;
+    const lessons = await getLessons(textbookId);
     
-    if (response.success && response.data) {
-      const topics = new Set<string>();
-      response.data.forEach((item: any) => {
-        if (item.topic) {
-          topics.add(item.topic);
-        }
-      });
-      return Array.from(topics).sort();
-    }
-    
-    return [];
+    const topics = new Set<string>();
+    lessons.forEach(lesson => {
+      if (lesson.topic) {
+        topics.add(lesson.topic);
+      }
+    });
+    return Array.from(topics).sort();
   } catch (error) {
     console.error('Error fetching topics from backend:', error);
     return [];
@@ -175,7 +163,17 @@ export const getTopics = async (
  * Search vocabulary across all textbooks
  */
 export const searchVocabulary = async (query: string): Promise<VocabularyItem[]> => {
-  return getVocabulary({ search: query });
+  try {
+    const response = await fetch(`/api/v1/vocabulary/search?q=${encodeURIComponent(query)}`);
+    const result = await response.json();
+    if (result.success && result.data) {
+      return result.data.map(toVocabularyItem);
+    }
+    return [];
+  } catch (error) {
+    console.error('Error searching vocabulary:', error);
+    return [];
+  }
 };
 
 /**
@@ -183,10 +181,11 @@ export const searchVocabulary = async (query: string): Promise<VocabularyItem[]>
  */
 export const getWordById = async (wordId: string): Promise<VocabularyItem | null> => {
   try {
-    const response = await minnaAPI.getTangoById(wordId);
+    const response = await fetch(`/api/v1/vocabulary/${wordId}`);
+    const result = await response.json();
     
-    if (response.success && response.data) {
-      return toVocabularyItem(response.data);
+    if (result.success && result.data) {
+      return toVocabularyItem(result.data);
     }
     
     return null;
@@ -211,24 +210,17 @@ export const getWordSources = async (wordId: string): Promise<VocabularyItem[]> 
  */
 export const getVocabularyStats = async () => {
   try {
-    const response = await minnaAPI.getTango(undefined, 'minna_no_nihongo');
+    const response = await fetch('/api/v1/vocabulary?limit=1');
+    const result = await response.json();
     
-    if (response.success && response.data) {
-      const stats = {
-        totalUniqueWords: response.data.length,
-        totalMappings: response.data.length,
+    if (result.success && result.pagination) {
+      return {
+        totalUniqueWords: result.pagination.totalItems,
+        totalMappings: result.pagination.totalItems,
         duplicates: 0,
-        byTextbook: {} as Record<string, number>,
-        byLevel: {} as Record<string, number>,
+        byTextbook: {},
+        byLevel: {},
       };
-
-      response.data.forEach((item: any) => {
-        const bookKey = `${item.textbook}-${item.level}`;
-        stats.byTextbook[bookKey] = (stats.byTextbook[bookKey] || 0) + 1;
-        stats.byLevel[item.level] = (stats.byLevel[item.level] || 0) + 1;
-      });
-
-      return stats;
     }
     
     return {

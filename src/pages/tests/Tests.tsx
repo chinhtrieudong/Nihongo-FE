@@ -9,14 +9,14 @@ import {
   Flame,
   Target
 } from "lucide-react";
-import { jlptTestsAPI, testAttemptsAPI, TestAttempt as ApiTestAttempt } from "@services/api";
+import { jlptTestsAPI, testAttemptsAPI } from "@services/api";
 import TestCard from "@components/tests/TestCard";
 import TestStatistics from "@components/tests/TestStatistics";
 import StartTestModal from "@components/tests/StartTestModal";
 import TestFilters from "@components/tests/TestFilters";
 import RecentActivity from "@components/tests/RecentActivity";
 import { useAppSelector } from "@store/hooks";
-import type { Test, TestSection, TestAttempt } from "../../types/tests";
+import type { Test, TestSection } from "../../types/tests";
 import { getLevelColor, getDifficultyColor, getLevelFromDifficulty } from "../../types/tests";
 
 const { Text } = Typography;
@@ -52,11 +52,11 @@ const Tests: React.FC = () => {
 
         if (testsResponse.success) {
           // Get completed test IDs from user attempts
-          const completedAttempts: ApiTestAttempt[] = attemptsResponse.data || [];
+          const completedAttempts: any[] = attemptsResponse.data || [];
           const completedTestMap = new Map(
             completedAttempts
-              .filter((attempt: ApiTestAttempt) => attempt.status === "completed")
-              .map((attempt: ApiTestAttempt) => [
+              .filter((attempt: any) => attempt.status === "completed")
+              .map((attempt: any) => [
                 attempt.testId,
                 { score: attempt.score, date: attempt.endTime || attempt.createdAt }
               ])

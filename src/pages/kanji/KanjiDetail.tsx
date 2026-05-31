@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
-import { lessonAPI } from "../../services/api";
+import { lessonAPI, kanjiAPI } from "../../services/api";
 import { Volume2, ArrowLeft } from "lucide-react";
 import { Card, Button, Row, Col } from "antd";
 import { EmptyState, LessonNavigation } from "../../components/common";
@@ -75,11 +75,11 @@ const KanjiDetail: React.FC<KanjiDetailProps> = ({
         let response;
 
         if (kanji) {
-          response = await lessonAPI.getKanji(kanji);
+          response = await kanjiAPI.getKanji(kanji);
         } else if (lessonId) {
           response = await lessonAPI.getLessonKanji(lessonId);
         } else {
-          response = await lessonAPI.getAllKanji({});
+          response = await kanjiAPI.getAllKanji({});
         }
 
         if (response.success) {
@@ -168,7 +168,6 @@ const KanjiDetail: React.FC<KanjiDetailProps> = ({
             return;
           }
 
-          // Get Unicode code point for the character (supports surrogate pairs)
           const codePoint = primaryChar.codePointAt(0);
           if (typeof codePoint !== "number") {
             setSvgContent("not-found");
@@ -176,33 +175,28 @@ const KanjiDetail: React.FC<KanjiDetailProps> = ({
           }
 
           const codePointHex = codePoint.toString(16).padStart(5, "0");
-
-          // Fetch from KanjiVG (free SVG kanji resource)
           const response = await fetch(
             `https://raw.githubusercontent.com/KanjiVG/kanjivg/master/kanji/${codePointHex}.svg`,
           );
 
           if (!response.ok) {
-            // Fallback: display character in large text if SVG not found
             setSvgContent("not-found");
             return;
           }
 
           const svg = await response.text();
-          // Clean SVG content by removing HTML entities and extracting only the SVG element
           const cleanedSvg = svg
-            .replace(/<!\[CDATA\[[\s\S]*?\]\]>/g, '') // Remove CDATA sections
-            .replace(/<!--[\s\S]*?-->/g, '') // Remove comments
-            .replace(/<\?xml.*?\?>/g, '') // Remove XML declarations
-            .replace(/<!DOCTYPE.*?>/g, '') // Remove DOCTYPE declarations
-            .replace(/&gt;/g, '>') // Decode HTML entities
+            .replace(/<!\[CDATA\[[\s\S]*?\]\]>/g, '')
+            .replace(/<!--[\s\S]*?-->/g, '')
+            .replace(/<\?xml.*?\?>/g, '')
+            .replace(/<!DOCTYPE.*?>/g, '')
+            .replace(/&gt;/g, '>')
             .replace(/&lt;/g, '<')
             .replace(/&amp;/g, '&')
             .replace(/&quot;/g, '"')
             .replace(/&#x27;/g, "'")
             .trim();
 
-          // Extract SVG content between <svg> tags
           const svgMatch = cleanedSvg.match(/<svg[^>]*>[\s\S]*<\/svg>/)
           const finalSvg = svgMatch ? svgMatch[0] : cleanedSvg;
 
@@ -221,20 +215,23 @@ const KanjiDetail: React.FC<KanjiDetailProps> = ({
 
     if (loading) {
       return (
-        <div className="bg-surface-1 rounded-lg border border-border flex items-center justify-center w-full h-64">
-          <p className="text-secondary-600 dark:text-secondary-400">Đang tải nét viết...</p>
+        <div className="bg-gradient-to-br from-slate-50 to-slate-100 dark:from-slate-800 dark:to-slate-900 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700 flex items-center justify-center h-80">
+          <div className="text-center">
+            <div className="animate-spin rounded-full h-10 w-10 border-3 border-blue-500 border-t-transparent mx-auto mb-3"></div>
+            <p className="text-slate-600 dark:text-slate-400 text-sm">Đang tải nét viết...</p>
+          </div>
         </div>
       )
     }
 
     if (svgContent === "error" || svgContent === "not-found") {
       return (
-        <div className="bg-surface-1 rounded-lg border border-border flex items-center justify-center w-full h-64">
+        <div className="bg-gradient-to-br from-slate-50 to-slate-100 dark:from-slate-800 dark:to-slate-900 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700 flex items-center justify-center h-80">
           <div className="text-center">
-            <p className="text-[15rem] font-bold text-secondary-900 dark:text-secondary-100 mb-2 kanji-text">
+            <p className="text-[12rem] font-bold text-slate-800 dark:text-slate-200 leading-none kanji-text mb-2">
               {primaryChar || "?"}
             </p>
-            <p className="text-xs text-secondary-500 dark:text-secondary-400">
+            <p className="text-sm text-slate-500 dark:text-slate-400">
               {error || "Không có dữ liệu nét viết"}
             </p>
           </div>
@@ -243,13 +240,13 @@ const KanjiDetail: React.FC<KanjiDetailProps> = ({
     }
 
     return (
-      <div className="bg-surface-1 rounded-lg border border-border overflow-hidden">
+      <div className="bg-gradient-to-br from-slate-50 to-slate-100 dark:from-slate-800 dark:to-slate-900 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700 overflow-hidden">
         <div
           dangerouslySetInnerHTML={{ __html: svgContent }}
-          className="w-full h-64 flex items-center justify-center"
+          className="w-full h-80 flex items-center justify-center p-4"
           style={{
             background: 'white',
-            transform: 'scale(1.8)',
+            transform: 'scale(1.5)',
             transformOrigin: 'center',
           }}
         />
@@ -257,15 +254,26 @@ const KanjiDetail: React.FC<KanjiDetailProps> = ({
     )
   };
 
+  const getJLPTColor = (level: string) => {
+    const colors: Record<string, string> = {
+      'N5': 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200',
+      'N4': 'bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200',
+      'N3': 'bg-purple-100 text-purple-800 dark:bg-purple-900 dark:text-purple-200',
+      'N2': 'bg-orange-100 text-orange-800 dark:bg-orange-900 dark:text-orange-200',
+      'N1': 'bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-200',
+    };
+    return colors[level] || 'bg-slate-100 text-slate-800 dark:bg-slate-700 dark:text-slate-200';
+  };
+
   return (
-    <div className="min-h-full bg-bg academic-canvas p-6">
+    <div className="min-h-full bg-gradient-to-br from-slate-50 to-slate-100 dark:from-slate-900 dark:to-slate-800 p-4 md:p-8">
       {/* Header */}
-      <div className="mb-6">
-        <div className="flex items-center justify-between mb-4">
+      <div className="max-w-7xl mx-auto mb-6">
+        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-6">
           <Button
             icon={<ArrowLeft className="w-4 h-4" />}
             onClick={handleBack}
-            className="rounded-xl"
+            className="rounded-xl bg-white dark:bg-slate-800 border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-700 shadow-sm"
           >
             {backLabel}
           </Button>
@@ -283,109 +291,109 @@ const KanjiDetail: React.FC<KanjiDetailProps> = ({
         </div>
       </div>
 
-      {/* Main Content - 3 Column Layout */}
-      <Row gutter={[24, 24]} className="mb-6">
-        {/* Left Column - Kanji Display */}
-        <Col xs={24} md={6}>
-          <Card title="Thứ tự nét viết" className="bg-surface-1 border border-border">
-            <KanjiStrokeOrder kanji={kanjiData.kanji ?? (kanjiData as any).character} />
-          </Card>
-        </Col>
+      {/* Main Content - 2 Column Layout */}
+      <div className="max-w-7xl mx-auto">
+        <Row gutter={[24, 24]}>
+          {/* Left Column - Stroke Order */}
+          <Col xs={24} lg={10}>
+            <div className="mb-6">
+              <h2 className="text-lg font-semibold text-slate-700 dark:text-slate-300 mb-3">Thứ tự nét viết</h2>
+              <KanjiStrokeOrder kanji={kanjiData.kanji ?? (kanjiData as any).character} />
+            </div>
+          </Col>
 
-        {/* Middle Column - Basic Info */}
-        <Col xs={24} md={9}>
-          <Card
-            title={
-              <span>
-                {(kanjiData as any).character || kanjiData.kanji}
-                <span className="text-secondary-400 dark:text-secondary-600 mx-1">|</span>
-                {kanjiData.hanviet}
-              </span>
-            }
-            className="bg-surface-1 border border-border"
-          >
-            <div className="space-y-4">
-              <div className="flex items-baseline gap-2">
-                <h3 className="font-medium text-secondary-700 dark:text-secondary-300">Ý nghĩa:</h3>
-                <p className="text-lg font-semibold text-blue-600 dark:text-blue-400">
+          {/* Right Column - Info & Vocabulary */}
+          <Col xs={24} lg={14}>
+            {/* Kanji Header Card */}
+            <Card className="mb-6 bg-white dark:bg-slate-800 border-slate-200 dark:border-slate-700 shadow-sm">
+              <div className="text-center mb-6">
+                <h1 className="text-6xl md:text-7xl font-bold text-slate-800 dark:text-slate-100 kanji-text mb-2">
+                  {(kanjiData as any).character || kanjiData.kanji}
+                </h1>
+                <p className="text-2xl text-slate-600 dark:text-slate-400 jp-text">{kanjiData.hanviet}</p>
+              </div>
+              
+              <div className="flex flex-wrap justify-center gap-3 mb-6">
+                <span className={`px-4 py-2 rounded-full text-sm font-semibold ${getJLPTColor(kanjiData.level)}`}>
+                  {kanjiData.level}
+                </span>
+                <span className="px-4 py-2 rounded-full text-sm font-semibold bg-slate-100 text-slate-700 dark:bg-slate-700 dark:text-slate-300">
+                  {kanjiData.strokeCount} nét
+                </span>
+              </div>
+
+              <div className="text-center">
+                <p className="text-xl text-blue-600 dark:text-blue-400 font-semibold">
                   {kanjiData.meaningVi}
                 </p>
               </div>
-              <div className="flex items-baseline gap-2">
-                <h3 className="font-medium text-secondary-700 dark:text-secondary-300">Trình độ JLPT:</h3>
-                <p className="text-lg font-semibold text-blue-600 dark:text-blue-400">
-                  {kanjiData.level}
-                </p>
-              </div>
-              <div className="flex items-baseline gap-2">
-                <h3 className="font-medium text-secondary-700 dark:text-secondary-300">Âm On:</h3>
-                <p className="text-lg font-semibold text-blue-600 dark:text-blue-400 jp-text">
-                  {kanjiData.onyomi.join(", ")}
-                </p>
-              </div>
-              <div className="flex items-baseline gap-2">
-                <h3 className="font-medium text-secondary-700 dark:text-secondary-300">Âm Kun:</h3>
-                <p className="text-lg font-semibold text-blue-600 dark:text-blue-400 jp-text">
-                  {kanjiData.kunyomi.join(", ")}
-                </p>
-              </div>
-              <div className="flex items-baseline gap-2">
-                <h3 className="font-medium text-secondary-700 dark:text-secondary-300">Số nét:</h3>
-                <p className="text-lg font-semibold text-blue-600 dark:text-blue-400">
-                  {kanjiData.strokeCount}
-                </p>
-              </div>
-              <div className="flex items-start gap-2">
-                <h3 className="font-medium text-secondary-700 dark:text-secondary-300 whitespace-nowrap">Cách nhớ:</h3>
-                <div className="flex-1 flex flex-col text-left">
-                  <div className="font-semibold text-blue-600 dark:text-blue-400 leading-relaxed whitespace-pre-line">
-                    {(kanjiData.memoryTip || '').replace(/\. /g, '.\n').replace(/: /g, ':\n')}
+            </Card>
+
+            {/* Details Card */}
+            <Card className="mb-6 bg-white dark:bg-slate-800 border-slate-200 dark:border-slate-700 shadow-sm">
+              <div className="space-y-5">
+                <div className="p-4 bg-slate-50 dark:bg-slate-700/50 rounded-xl">
+                  <h3 className="text-sm font-semibold text-slate-500 dark:text-slate-400 mb-2">Âm On</h3>
+                  <p className="text-lg font-medium text-slate-800 dark:text-slate-200 jp-text">
+                    {kanjiData.onyomi.join(", ")}
+                  </p>
+                </div>
+                <div className="p-4 bg-slate-50 dark:bg-slate-700/50 rounded-xl">
+                  <h3 className="text-sm font-semibold text-slate-500 dark:text-slate-400 mb-2">Âm Kun</h3>
+                  <p className="text-lg font-medium text-slate-800 dark:text-slate-200 jp-text">
+                    {kanjiData.kunyomi.join(", ")}
+                  </p>
+                </div>
+                {kanjiData.memoryTip && (
+                  <div className="p-4 bg-amber-50 dark:bg-amber-900/20 rounded-xl border border-amber-200 dark:border-amber-800">
+                    <h3 className="text-sm font-semibold text-amber-600 dark:text-amber-400 mb-2">Cách nhớ</h3>
+                    <p className="text-base text-slate-700 dark:text-slate-300 leading-relaxed whitespace-pre-line">
+                      {kanjiData.memoryTip}
+                    </p>
                   </div>
-                </div>
+                )}
               </div>
-            </div>
-          </Card>
-        </Col>
+            </Card>
 
-        {/* Right Column - Vocabulary */}
-        <Col xs={24} md={9}>
-          <Card title="Từ vựng liên quan" className="h-full bg-surface-1 border border-border">
-            <div className="space-y-3">
-              {(kanjiData.relatedVocabulary || []).slice(0, 5).map((word, index) => (
-                <div
-                  key={index}
-                  className="flex items-center gap-2 p-3 border border-border rounded-lg hover:bg-surface-2 dark:hover:bg-secondary-800 transition-colors"
-                >
-                  <span className="text-xl font-bold text-blue-600 dark:text-blue-400 kanji-text">
-                    {word.word}
-                  </span>
-                  {word.word !== word.kana && (
-                    <>
-                      <span className="text-base text-blue-600 dark:text-blue-400 jp-text">
-                        ({word.kana})
+            {/* Vocabulary Card */}
+            <Card className="bg-white dark:bg-slate-800 border-slate-200 dark:border-slate-700 shadow-sm">
+              <h2 className="text-lg font-semibold text-slate-700 dark:text-slate-300 mb-4">Từ vựng liên quan</h2>
+              <div className="space-y-3">
+                {(kanjiData.relatedVocabulary || []).slice(0, 8).map((word, index) => (
+                  <div
+                    key={index}
+                    className="flex flex-col sm:flex-row sm:items-center gap-2 p-4 bg-slate-50 dark:bg-slate-700/50 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-700 transition-colors"
+                  >
+                    <div className="flex items-center gap-3 flex-1">
+                      <span className="text-2xl font-bold text-blue-600 dark:text-blue-400 kanji-text">
+                        {word.word}
                       </span>
-                      <span className="text-secondary-300 dark:text-secondary-600 text-xs">|</span>
-                    </>
-                  )}
-                  <span className="text-sm font-medium text-secondary-800 dark:text-secondary-200">
-                    {word.hanviet}
-                  </span>
-                  <span className="text-secondary-300 dark:text-secondary-600 text-xs">|</span>
-                  <span className="text-base font-medium text-secondary-800 dark:text-secondary-200">
-                    {word.meaningVi ? word.meaningVi.charAt(0).toUpperCase() + word.meaningVi.slice(1) : ''}
-                  </span>
-                </div>
-              ))}
+                      {word.word !== word.kana && (
+                        <span className="text-base text-slate-600 dark:text-slate-400 jp-text">
+                          {word.kana}
+                        </span>
+                      )}
+                    </div>
+                    <div className="flex items-center gap-2 text-sm">
+                      <span className="text-slate-500 dark:text-slate-400">{word.hanviet}</span>
+                      <span className="text-slate-300 dark:text-slate-600">•</span>
+                      <span className="text-slate-700 dark:text-slate-300 font-medium">
+                        {word.meaningVi ? word.meaningVi.charAt(0).toUpperCase() + word.meaningVi.slice(1) : ''}
+                      </span>
+                    </div>
+                  </div>
+                ))}
 
-              {(!kanjiData.relatedVocabulary || kanjiData.relatedVocabulary.length === 0) && (
-                <div className="text-center py-6 text-secondary-500 dark:text-secondary-400">
-                  Chưa có từ vựng liên quan
-                </div>
-              )}
-            </div>
-          </Card>
-        </Col>
-      </Row>
+                {(!kanjiData.relatedVocabulary || kanjiData.relatedVocabulary.length === 0) && (
+                  <div className="text-center py-8 text-slate-500 dark:text-slate-400">
+                    Chưa có từ vựng liên quan
+                  </div>
+                )}
+              </div>
+            </Card>
+          </Col>
+        </Row>
+      </div>
     </div>
   );
 };

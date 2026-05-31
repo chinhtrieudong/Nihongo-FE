@@ -63,15 +63,7 @@ export interface VocabularyItem {
   level: JLPTLevel;
   lesson: number;
   topic: string;
-  // Legacy snake_case properties for backward compatibility
-  meaning_vi?: string;
-  example_jp?: string;
-  example_vi?: string;
-  kanji_analysis?: any;
-  jlpt?: string;
-  jpt?: string;
-  jlpt_level?: string;
-  jpt_level?: string;
+  // Removed legacy properties to enforce normalized data structure
 }
 
 // Legacy type mapping for backward compatibility

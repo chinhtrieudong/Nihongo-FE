@@ -16,6 +16,8 @@ import type { SelectProps } from 'antd';
 import { FlaskConical, Book, CheckCircle } from 'lucide-react';
 import { EmptyState, SearchFilter } from "../../components/common";
 import { grammarAPI } from "../../services/grammarApi";
+import ReactMarkdown from 'react-markdown';
+import remarkGfm from 'remark-gfm';
 
 const { Title, Text, Paragraph } = Typography;
 
@@ -331,14 +333,14 @@ const Grammar: React.FC = () => {
                     items={lesson.grammars.map((grammar) => ({
                       key: grammar.id,
                       label: (
-                        <div className="flex items-center justify-between">
-                          <div className="flex items-center gap-2">
-                            <Text strong>{grammar.pattern}</Text>
-                            <Tag color={getCategoryColor(grammar.category)} className="text-xs">
+                        <div className="flex items-center justify-between w-full">
+                          <div className="flex items-center gap-2 flex-1 min-w-0">
+                            <Text strong className="text-base whitespace-nowrap overflow-hidden text-ellipsis font-japanese" style={{ fontFamily: 'Noto Sans JP, sans-serif' }}>{grammar.pattern}</Text>
+                            <Tag color={getCategoryColor(grammar.category)} className="text-xs flex-shrink-0 ml-2">
                               {categories.find(c => c.value === grammar.category)?.label || grammar.category}
                             </Tag>
                           </div>
-                          <Text type="secondary" className="text-base">
+                          <Text type="secondary" className="text-base ml-3 flex-shrink-0" style={{ minWidth: 'fit-content' }}>
                             {grammar.meaning}
                           </Text>
                         </div>
@@ -347,15 +349,38 @@ const Grammar: React.FC = () => {
                         <div className="space-y-4">
                           <div>
                             <Text strong className="text-base">Giải thích:</Text>
-                            <Paragraph className="mt-1 text-gray-700 dark:text-gray-300">
-                              {grammar.explanation}
-                            </Paragraph>
+                            <div className="mt-2 p-3 bg-gray-50 dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-600">
+                              <ReactMarkdown 
+                                remarkPlugins={[remarkGfm]}
+                                components={{
+                                  p: ({children}: any) => <p className="mb-2 last:mb-0 font-japanese" style={{ fontFamily: 'Noto Sans JP, sans-serif', lineHeight: '1.6' }}>{children}</p>,
+                                  ul: ({children}: any) => <ul className="list-disc pl-4 mb-2 font-japanese" style={{ fontFamily: 'Noto Sans JP, sans-serif' }}>{children}</ul>,
+                                  ol: ({children}: any) => <ol className="list-decimal pl-4 mb-2 font-japanese" style={{ fontFamily: 'Noto Sans JP, sans-serif' }}>{children}</ol>,
+                                  li: ({children}: any) => <li className="mb-1 font-japanese" style={{ fontFamily: 'Noto Sans JP, sans-serif' }}>{children}</li>,
+                                  code: ({inline, children}: any) => 
+                                    inline ? 
+                                      <code className="px-1 py-0.5 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 rounded text-sm font-japanese" style={{ fontFamily: 'Noto Sans JP, sans-serif' }}>{children}</code> :
+                                      <code className="block p-2 bg-gray-100 dark:bg-gray-800 rounded text-sm overflow-x-auto font-japanese" style={{ fontFamily: 'Noto Sans JP, sans-serif' }}>{children}</code>
+                                }}
+                              >
+                                {grammar.explanation}
+                              </ReactMarkdown>
+                            </div>
                           </div>
 
                           <div>
                             <Text strong className="text-base">Cấu trúc:</Text>
-                            <div className="mt-1 p-3 bg-gray-100 dark:bg-gray-800 rounded-lg">
-                              <code className="text-lg font-mono">{grammar.structure}</code>
+                            <div className="mt-2 p-3 bg-gray-100 dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-600">
+                              <ReactMarkdown 
+                                remarkPlugins={[remarkGfm]}
+                                components={{
+                                  p: ({children}: any) => <p className="text-lg font-mono font-semibold text-blue-700 dark:text-blue-400 mb-2 last:mb-0 font-japanese" style={{ fontFamily: 'Noto Sans JP, monospace', lineHeight: '1.6' }}>{children}</p>,
+                                  code: ({inline, children}: any) => 
+                                    <code className="text-lg font-mono font-semibold text-blue-700 dark:text-blue-400 font-japanese" style={{ fontFamily: 'Noto Sans JP, monospace' }}>{children}</code>
+                                }}
+                              >
+                                {grammar.structure}
+                              </ReactMarkdown>
                             </div>
                           </div>
 
@@ -366,12 +391,12 @@ const Grammar: React.FC = () => {
                                 <div key={index} className="py-2">
                                   <div className="w-full">
                                     <div className="flex items-center gap-2 mb-1">
-                                      <CheckCircle className="w-4 h-4 text-green-500" />
-                                      <Text strong className="text-blue-600 dark:text-blue-400">
+                                      <CheckCircle className="w-4 h-4 text-green-500 flex-shrink-0" />
+                                      <Text strong className="text-blue-600 dark:text-blue-400 font-japanese" style={{ fontFamily: 'Noto Sans JP, sans-serif', lineHeight: '1.6' }}>
                                         {example.japanese}
                                       </Text>
                                     </div>
-                                    <Text className="text-gray-600 dark:text-gray-400 ml-6">
+                                    <Text className="text-gray-600 dark:text-gray-400 ml-6 font-japanese" style={{ fontFamily: 'Noto Sans JP, sans-serif', lineHeight: '1.6' }}>
                                       {example.vietnamese}
                                     </Text>
                                   </div>

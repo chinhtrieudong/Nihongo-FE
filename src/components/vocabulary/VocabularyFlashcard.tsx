@@ -9,6 +9,7 @@ import {
 import { Volume2, X, Check, Settings, Shuffle, RotateCcw } from "lucide-react";
 import type { VocabularyItem as VocabularyItemType } from "../../types/lesson";
 import { speakText } from "../../utils/vocabularyUtils";
+import type { FlashcardSettings } from "../../hooks/useFlashcardSettings";
 
 const { Text } = Typography;
 
@@ -29,9 +30,11 @@ interface VocabularyFlashcardProps {
   onNextCard?: () => void;
   // Voice settings for TTS
   femaleVoiceName?: string;
+  settings: FlashcardSettings;
+  onOpenSettings: () => void;
 }
 
-const VocabularyFlashcard: React.FC<VocabularyFlashcardProps> = ({
+export const VocabularyFlashcard: React.FC<VocabularyFlashcardProps> = ({
   currentCard,
   currentCardIndex,
   cardsToStudy,
@@ -47,15 +50,16 @@ const VocabularyFlashcard: React.FC<VocabularyFlashcardProps> = ({
   onPrevCard,
   onNextCard,
   femaleVoiceName,
+  settings,
+  onOpenSettings,
 }) => {
-  const [settingsVisible, setSettingsVisible] = useState(false);
-  const [frontFace, setFrontFace] = useState<"japanese" | "vietnamese">(
-    "japanese",
-  );
-  const [autoSpeak, setAutoSpeak] = useState(false);
-  const [showKanji] = useState(true);
-  const [showJapaneseExample, setShowJapaneseExample] = useState(false);
-  const [showVietnameseExample, setShowVietnameseExample] = useState(false);
+  const {
+    frontFace,
+    autoSpeak,
+    showKanji,
+    showJapaneseExample,
+    showVietnameseExample,
+  } = settings;
 
   const getReading = useCallback(() => {
     return currentCard?.hiragana || currentCard?.katakana || currentCard?.reading || currentCard?.word || "";
@@ -70,11 +74,11 @@ const VocabularyFlashcard: React.FC<VocabularyFlashcardProps> = ({
   }, [currentCard]);
 
   const getExampleJp = useCallback(() => {
-    return currentCard?.example || currentCard?.exampleSentence || "";
+    return currentCard?.example?.jp ?? "";
   }, [currentCard]);
 
   const getExampleVi = useCallback(() => {
-    return currentCard?.exampleMeaning || currentCard?.exampleSentenceVi || "";
+    return currentCard?.example?.vn ?? "";
   }, [currentCard]);
 
   const containsJapaneseChars = useCallback((value: string) => {
@@ -117,18 +121,6 @@ const VocabularyFlashcard: React.FC<VocabularyFlashcardProps> = ({
     return result;
   }, []);
 
-  const warmUpTTS = useCallback(() => {
-    if (!("speechSynthesis" in window)) return;
-    try {
-      const utterance = new SpeechSynthesisUtterance(" ");
-      utterance.volume = 0;
-      window.speechSynthesis.speak(utterance);
-      window.speechSynthesis.cancel();
-    } catch {
-      // ignore warm-up errors
-    }
-  }, []);
-
   const handlePlayAudio = useCallback(
     (e: React.MouseEvent) => {
       e.stopPropagation();
@@ -137,8 +129,6 @@ const VocabularyFlashcard: React.FC<VocabularyFlashcardProps> = ({
     },
     [getReading, femaleVoiceName],
   );
-
-  // Note: keep sidebar open while viewing flashcards
 
   const getJapaneseText = useCallback(() => {
     return getReading();
@@ -180,8 +170,6 @@ const VocabularyFlashcard: React.FC<VocabularyFlashcardProps> = ({
   // Keyboard event handler - handle all flashcard shortcuts
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
-      if (settingsVisible) return; // Don't handle keys when settings modal is open
-      
       switch (e.key) {
         case ' ':
         case 'Space':
@@ -190,12 +178,10 @@ const VocabularyFlashcard: React.FC<VocabularyFlashcardProps> = ({
           break;
         case 'ArrowLeft':
           e.preventDefault();
-          console.log('[Flashcard] ArrowLeft - marking UNKNOWN');
           onMemoryEvaluation('unknown');
           break;
         case 'ArrowRight':
           e.preventDefault();
-          console.log('[Flashcard] ArrowRight - marking KNOWN');
           onMemoryEvaluation('known');
           break;
       }
@@ -203,7 +189,7 @@ const VocabularyFlashcard: React.FC<VocabularyFlashcardProps> = ({
     
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [onFlipCard, onMemoryEvaluation, settingsVisible]);
+  }, [onFlipCard, onMemoryEvaluation]);
 
   // Prevent body scroll while fullscreen flashcard is open
   useEffect(() => {
@@ -360,25 +346,6 @@ const VocabularyFlashcard: React.FC<VocabularyFlashcardProps> = ({
   const frontContent = React.useMemo(() => getFrontContent(), [currentCard, frontFace, isFlipped, showJapaneseExample, showVietnameseExample]);
   const backContent = React.useMemo(() => getBackContent(), [currentCard, frontFace, isFlipped, showJapaneseExample, showVietnameseExample]);
 
-  // Log only when card changes (not on every render)
-  React.useEffect(() => {
-    if (currentCard) {
-      console.log("[Flashcard Debug] currentCard:", {
-        kanji: currentCard?.kanji,
-        hiragana: currentCard?.hiragana,
-        katakana: currentCard?.katakana,
-        hanViet: currentCard?.hanviet,
-        meaning: currentCard?.meaningVi || currentCard?.meaning,
-        example: currentCard?.example,
-        exampleMeaning: currentCard?.exampleMeaning,
-        reading: currentCard?.reading,
-        word: currentCard?.word,
-      });
-      console.log("[Flashcard Debug] frontContent:", frontContent);
-      console.log("[Flashcard Debug] backContent:", backContent);
-    }
-  }, [currentCard?.id, frontFace]);
-
   if (!currentCard) return null;
 
   const visibleFaceLabel = (() => {
@@ -392,11 +359,7 @@ const VocabularyFlashcard: React.FC<VocabularyFlashcardProps> = ({
   return (
     <div
       className="fixed inset-0 z-[1100] flex items-center justify-center bg-black/55 backdrop-blur-sm p-4"
-      onClick={() => {
-        if (!settingsVisible) {
-          onBackToTable?.();
-        }
-      }}
+      onClick={onBackToTable}
     >
       <div
         className="w-full max-w-[700px] sm:max-w-[720px] md:max-w-[760px] bg-white dark:bg-slate-700 rounded-xl shadow-2xl flex flex-col overflow-hidden border border-gray-200 dark:border-slate-600"
@@ -609,7 +572,7 @@ const VocabularyFlashcard: React.FC<VocabularyFlashcardProps> = ({
                 size="large"
                 className="text-gray-600 dark:text-neutral-200 hover:text-gray-900 dark:hover:text-white font-semibold hover:bg-gray-200 dark:hover:bg-white/10"
                 icon={<Settings className="w-4 h-4" />}
-                onClick={() => setSettingsVisible(true)}
+                onClick={onOpenSettings}
               />
             </div>
             <div className="flex items-center justify-center gap-6 flex-1">
@@ -711,139 +674,10 @@ const VocabularyFlashcard: React.FC<VocabularyFlashcardProps> = ({
             </div>
           </div>
         </div>
-      </div>
-
-      {/* Settings Modal */}
-      <Modal
-        title={<span className="text-gray-900 dark:text-white">Cài đặt Flashcard</span>}
-        open={settingsVisible}
-        onCancel={() => setSettingsVisible(false)}
-        footer={null}
-        width={480}
-        className="flashcard-settings-modal"
-        rootClassName="fix-modal-bg"
-        styles={{
-          mask: {
-            backgroundColor: "rgba(15, 23, 42, 0.35)",
-            backdropFilter: "blur(6px)",
-          },
-          body: {
-            background: "transparent",
-            padding: 0,
-            maxHeight: "none",
-            overflowY: "visible",
-          },
-          header: {
-            background: "transparent",
-            borderBottom: "1px solid rgba(148, 163, 184, 0.2)",
-          },
-        }}
-      >
-        <div className="rounded-xl border border-gray-200 dark:border-slate-700 bg-white dark:bg-slate-900 p-6 space-y-5 text-gray-900 dark:text-white shadow-2xl">
-          {/* Front Face Setting */}
-          <div className="rounded-xl border border-gray-200 dark:border-slate-700 bg-gray-50 dark:bg-slate-800/80 p-4">
-            <div className="flex items-center justify-between gap-3">
-              <div>
-                <Text
-                  className="font-semibold text-gray-900 dark:text-white"
-                >
-                  Mặt trước
-                </Text>
-                <div className="text-xs text-gray-500 dark:text-white/80">
-                  Chọn nội dung hiển thị khi mở thẻ
-                </div>
-              </div>
-              <Select
-                value={frontFace}
-                onChange={setFrontFace}
-                style={{ width: 140 }}
-                className="flashcard-settings-select-trigger bg-white dark:bg-slate-900"
-                getPopupContainer={(trigger) =>
-                  trigger.parentElement || document.body
-                }
-                classNames={{ popup: { root: "flashcard-settings-dropdown" } }}
-                styles={{ popup: { root: { backgroundColor: "#111827" } } }}
-                options={[
-                  { label: "Tiếng Nhật", value: "japanese" },
-                  { label: "Tiếng Việt", value: "vietnamese" },
-                ]}
-              />
-            </div>
-          </div>
-
-          {/* Example Visibility */}
-          <div className="rounded-xl border border-gray-200 dark:border-slate-700 bg-gray-50 dark:bg-slate-800/80 p-4">
-            <div className="flex items-center justify-between gap-4">
-              <div>
-                <Text
-                  className="font-semibold text-gray-900 dark:text-white"
-                >
-                  Hiển thị ví dụ
-                </Text>
-                <div className="text-sm text-gray-500 dark:text-white/80">
-                  Áp dụng cho cả mặt tiếng Nhật và tiếng Việt
-                </div>
-              </div>
-              <Switch
-                checked={showJapaneseExample && showVietnameseExample}
-                onChange={(checked) => {
-                  setShowJapaneseExample(checked);
-                  setShowVietnameseExample(checked);
-                }}
-              />
-            </div>
-          </div>
-
-          {/* Auto Speak Setting */}
-          <div className="rounded-xl border border-gray-200 dark:border-slate-700 bg-gray-50 dark:bg-slate-800/80 p-4">
-            <div className="flex items-center justify-between gap-4">
-              <div>
-                <Text
-                  className="font-semibold text-gray-900 dark:text-white"
-                >
-                  Chuyển văn bản thành lời nói
-                </Text>
-                <div className="text-sm text-gray-500 dark:text-white/80">
-                  Tự động phát âm khi lật sang mặt tiếng Nhật
-                </div>
-              </div>
-              <Switch checked={autoSpeak} onChange={setAutoSpeak} />
-            </div>
-          </div>
-
-          {/* Action Buttons */}
-          <div className="rounded-xl border border-gray-200 dark:border-slate-700 bg-gray-50 dark:bg-slate-800/60 p-4 space-y-3">
-            <Button
-              type="default"
-              block
-              danger
-              icon={<RotateCcw className="w-4 h-4" />}
-              onClick={() => {
-                if (onResetCards) {
-                  onResetCards();
-                  setSettingsVisible(false);
-                }
-              }}
-            >
-              Khởi động lại thẻ ghi nhớ
-            </Button>
-            <Button
-              type="default"
-              block
-              icon={<Shuffle className="w-4 h-4" />}
-              onClick={() => {
-                if (onShuffleCards) {
-                  onShuffleCards();
-                  setSettingsVisible(false);
-                }
-              }}
-            >
-              Trộn thẻ
-            </Button>
-          </div>
-        </div>
-      </Modal>
     </div>
+</div>
+    
+    
   );
 };
 

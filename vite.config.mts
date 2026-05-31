@@ -38,22 +38,7 @@ export default defineConfig({
           "ui-vendor": ["antd", "@ant-design/icons"],
           "state-vendor": ["@reduxjs/toolkit", "react-redux"],
 
-          // Feature chunks
-          "kanji-chunk": [
-            "./src/pages/kanji/KanjiDetail",
-            "./src/pages/kanji/RadicalDetail",
-          ],
-          "pronunciation-chunk": ["./src/pages/Pronunciation"],
-          "conversation-chunk": [
-            "./src/pages/Conversation",
-            "./src/pages/ConversationLesson",
-          ],
-          "tests-chunk": [
-            "./src/pages/Tests",
-            "./src/pages/TestDetail",
-            "./src/pages/TestResults",
-          ],
-          "admin-chunk": ["./src/components/admin/AdminLayout"],
+
 
           // Utils and libraries
           "utils-chunk": [

@@ -1,9 +1,5 @@
 import type { VocabularyItem } from "../types/lesson";
 import type { VocabularyItem as NewVocabularyItem } from "../types/vocabulary";
-import {
-  speakWithVoicevox,
-  stopVoicevox,
-} from "../services/voicevoxService";
 
 /**
  * Convert new normalized vocabulary item to legacy format
@@ -15,10 +11,8 @@ export const toLegacyVocabularyItem = (item: NewVocabularyItem): VocabularyItem 
   hiragana: item.hiragana,
   hanviet: item.hanViet,
   meaningVi: item.meaning,
-  meaning_vi: item.meaning,
   exampleSentence: item.example,
-  example_jp: item.example,
-  example_vi: item.exampleMeaning,  // Map exampleMeaning to example_vi
+  exampleSentenceVi: item.exampleMeaning,
   // Optional fields with defaults
   romaji: '',
   katakana: '',
@@ -148,17 +142,39 @@ export const speakText = (
   lang: string = "ja-JP",
   voiceName?: string,
 ) => {
-  // Use Voicevox for speech synthesis instead of Web Speech API
-  speakWithVoicevox(text);
+  if (!text || !text.trim()) return;
+  
+  const synth = window.speechSynthesis;
+  const utterance = new SpeechSynthesisUtterance(text);
+  utterance.lang = lang;
+  
+  // Get voices
+  const voices = synth.getVoices();
+  
+  // Try to find Japanese voice
+  if (voiceName) {
+    const voice = voices.find(
+      (v) =>
+        v.name.toLowerCase().includes(voiceName.toLowerCase()) &&
+        v.lang.startsWith("ja"),
+    );
+    if (voice) utterance.voice = voice;
+  } else {
+    // Use best available Japanese voice
+    const japaneseVoice = voices.find((v) => v.lang.startsWith("ja"));
+    if (japaneseVoice) utterance.voice = japaneseVoice;
+  }
+  
+  synth.speak(utterance);
 };
 
-// Warm-up function (no longer needed with Voicevox)
+// Warm-up function
 export const warmUpNaturalVoice = () => {
-  console.log("✅ Voicevox ready (no warm-up needed)");
+  console.log("✅ Speech synthesis ready");
 };
 
 // Cancel current speech
 export const cancelSpeech = () => {
-  stopVoicevox();
+  window.speechSynthesis.cancel();
   console.log("🛑 Speech cancelled");
 };

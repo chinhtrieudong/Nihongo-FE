@@ -23,6 +23,7 @@ import TestResults from "./pages/tests/TestResults";
 import Login from "./pages/auth/Login";
 import Register from "./pages/auth/Register";
 import ComponentsDemo from "./pages/demo/ComponentsDemo";
+import ApiTest from "./pages/ApiTest";
 import TextbookDetail from "./pages/textbook/TextbookDetail";
 import QuickTest from "./pages/textbook/QuickTest";
 import { Lessons } from "./components/lessons";
@@ -57,6 +58,7 @@ const AppContent: React.FC = () => {
             {/* Public routes */}
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
+            <Route path="/api-test" element={<ApiTest />} />
 
             {/* Public routes */}
             <Route path="/" element={<Layout />}>

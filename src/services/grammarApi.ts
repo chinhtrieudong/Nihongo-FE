@@ -1,4 +1,5 @@
 import axios from "axios";
+import { API_ENDPOINTS } from "./api";
 
 const API_BASE_URL = import.meta.env.VITE_API_URL || "/api/v1";
 
@@ -118,19 +119,25 @@ export interface SearchParams {
 export const grammarAPI = {
   // Get all grammar with optional filters
   getAllGrammar: async (params?: SearchParams): Promise<GrammarResponse> => {
-    const response = await grammarApi.get("/grammar", { params });
+    const response = await grammarApi.get(API_ENDPOINTS.GRAMMAR.LIST, { params });
+    return response.data;
+  },
+
+  // Get grammar by textbook and lesson
+  getGrammarByTextbookLesson: async (textbook: string, lesson: number): Promise<GrammarResponse> => {
+    const response = await grammarApi.get(API_ENDPOINTS.GRAMMAR.BY_TEXTBOOK_LESSON(textbook, lesson));
     return response.data;
   },
 
   // Get grammar by level
   getGrammarByLevel: async (level: string, params?: Omit<SearchParams, 'level'>): Promise<GrammarResponse> => {
-    const response = await grammarApi.get(`/grammar/level/${level}`, { params });
+    const response = await grammarApi.get(API_ENDPOINTS.GRAMMAR.BY_LEVEL(level), { params });
     return response.data;
   },
 
   // Search grammar
   searchGrammar: async (params: SearchParams): Promise<GrammarResponse> => {
-    const response = await grammarApi.get("/grammar/search", { params });
+    const response = await grammarApi.get(API_ENDPOINTS.GRAMMAR.SEARCH, { params });
     return response.data;
   },
 
@@ -138,13 +145,13 @@ export const grammarAPI = {
   getRandomGrammar: async (level?: string, count: number = 5): Promise<GrammarResponse> => {
     const params: any = { count };
     if (level) params.level = level;
-    const response = await grammarApi.get("/grammar/random", { params });
+    const response = await grammarApi.get(API_ENDPOINTS.GRAMMAR.RANDOM, { params });
     return response.data;
   },
 
   // Get grammar by ID
   getGrammarById: async (id: string): Promise<GrammarResponse> => {
-    const response = await grammarApi.get(`/grammar/${id}`);
+    const response = await grammarApi.get(API_ENDPOINTS.GRAMMAR.BY_ID(id));
     return response.data;
   },
 };

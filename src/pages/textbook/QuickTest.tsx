@@ -4,6 +4,8 @@ import { Button, Card, Divider, Progress, Radio, Select, Space, Spin, Typography
 import { ArrowLeft, RefreshCcw, Play, CheckCircle2, XCircle } from "lucide-react";
 import { EmptyState } from "../../components/common";
 import { getLessonVocabulary, getVocabulary } from "../../services/vocabularyDataService";
+import { testAttemptsAPI } from "../../services/api";
+import { useAppSelector } from "../../store/hooks";
 import type { JLPTLevel, TextbookType, VocabularyItem } from "../../types/vocabulary";
 
 const { Title, Text } = Typography;
@@ -81,6 +83,8 @@ const QuickTest: React.FC = () => {
   const [scopeMode, setScopeMode] = useState<ScopeMode>("all");
   const [lessonOptions, setLessonOptions] = useState<LessonOption[]>([]);
   const [selectedLesson, setSelectedLesson] = useState<number>(1);
+  const [startTime, setStartTime] = useState<number>(0);
+  const { currentUser } = useAppSelector((state) => state.user);
 
   const parsed = useMemo(() => (textbookId ? parseTextbookId(textbookId) : null), [textbookId]);
 
@@ -244,11 +248,45 @@ const QuickTest: React.FC = () => {
     setAnswers({});
     setIndex(0);
     setShowResult(false);
+    setStartTime(Date.now());
     setStarted(true);
   };
 
-  const submit = () => {
+  const submit = async () => {
     setShowResult(true);
+    
+    if (currentUser?.id) {
+      const timeSpent = Math.round((Date.now() - startTime) / 1000);
+      const score = total > 0 ? Math.round((correctCount / total) * 100) : 0;
+      
+      try {
+        await testAttemptsAPI.createAttempt({
+          userId: currentUser.id,
+          testId: `quick-test-${textbookId}-${scopeMode}`,
+          testLevel: parsed?.level || "N5",
+          testTitle: `Quick Test: ${textbookId?.toUpperCase()} (${scopeMode === "all" ? "Toàn bộ" : "Bài " + selectedLesson})`,
+          status: "completed",
+          startTime: new Date(startTime).toISOString(),
+          endTime: new Date().toISOString(),
+          duration: Math.ceil(timeSpent / 60) || 1,
+          totalQuestions: total,
+          correctAnswers: correctCount,
+          score,
+          timeSpent,
+          sections: [{
+            sectionId: "quick-test",
+            name: "Từ vựng",
+            questions: total,
+            correctAnswers: correctCount,
+            timeSpent,
+            answers
+          }]
+        });
+        message.success("Đã lưu kết quả bài kiểm tra!");
+      } catch (e) {
+        console.error("Lỗi khi lưu kết quả bài kiểm tra:", e);
+      }
+    }
   };
 
   const restart = () => {

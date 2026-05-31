@@ -1,4 +1,4 @@
-import api from "./api";
+import api, { API_ENDPOINTS } from "./api";
 
 // Interfaces matching API documentation
 export interface Exercise {
@@ -95,13 +95,13 @@ export const pronunciationAPI = {
     params.append("page", page.toString());
     params.append("limit", limit.toString());
 
-    const response = await api.get(`/pronunciation/exercises?${params}`);
+    const response = await api.get(`${API_ENDPOINTS.PRONUNCIATION.EXERCISES}?${params}`);
     return response.data.data;
   },
 
   // Get exercise detail
   getExerciseDetail: async (exerciseId: string): Promise<Exercise> => {
-    const response = await api.get(`/pronunciation/exercises/${exerciseId}`);
+    const response = await api.get(API_ENDPOINTS.PRONUNCIATION.EXERCISE_DETAIL(exerciseId));
     return response.data.data;
   },
 
@@ -113,7 +113,7 @@ export const pronunciationAPI = {
     audioUrl: string;
   }> => {
     const response = await api.get(
-      `/pronunciation/exercises/${exerciseId}/audio`,
+      API_ENDPOINTS.PRONUNCIATION.EXERCISE_AUDIO(exerciseId),
     );
     return response.data.data;
   },
@@ -159,7 +159,7 @@ export const pronunciationAPI = {
     formData.append("audioData", audioBlob, "recording.wav");
     formData.append("duration", duration.toString());
 
-    const response = await api.post("/pronunciation/practice", formData, {
+    const response = await api.post(API_ENDPOINTS.PRONUNCIATION.PRACTICE, formData, {
       headers: {
         "Content-Type": "multipart/form-data",
       },
@@ -193,13 +193,13 @@ export const pronunciationAPI = {
     if (startDate) params.append("startDate", startDate);
     if (endDate) params.append("endDate", endDate);
 
-    const response = await api.get(`/pronunciation/history?${params}`);
+    const response = await api.get(`${API_ENDPOINTS.PRONUNCIATION.HISTORY}?${params}`);
     return response.data.data;
   },
 
   // Get user stats
   getStats: async (period: string = "all"): Promise<Stats> => {
-    const response = await api.get(`/pronunciation/stats?period=${period}`);
+    const response = await api.get(`${API_ENDPOINTS.PRONUNCIATION.STATS}?period=${period}`);
     return response.data.data;
   },
 
@@ -222,7 +222,7 @@ export const pronunciationAPI = {
     };
     audioUrl: string | null;
   }> => {
-    const response = await api.post("/pronunciation/analyze", {
+    const response = await api.post(API_ENDPOINTS.PRONUNCIATION.ANALYZE, {
       exerciseId,
       expectedText,
     });
@@ -231,13 +231,13 @@ export const pronunciationAPI = {
 
   // Get categories
   getCategories: async (): Promise<Category[]> => {
-    const response = await api.get("/pronunciation/categories");
+    const response = await api.get(API_ENDPOINTS.PRONUNCIATION.CATEGORIES);
     return response.data.data;
   },
 
   // Delete practice record
   deletePractice: async (practiceId: string): Promise<{ message: string }> => {
-    const response = await api.delete(`/pronunciation/practice/${practiceId}`);
+    const response = await api.delete(API_ENDPOINTS.PRONUNCIATION.PRACTICE_DELETE(practiceId));
     return response.data;
   },
 
@@ -249,7 +249,7 @@ export const pronunciationAPI = {
     text: string;
     language: string;
   }> => {
-    const response = await api.post("/pronunciation/speech-to-text", {
+    const response = await api.post(API_ENDPOINTS.PRONUNCIATION.SPEECH_TO_TEXT, {
       audioData,
       language,
     });
