@@ -643,7 +643,7 @@ const TestDetail: React.FC = () => {
 
     if (!test) {
         return (
-            <div className="min-h-full bg-bg p-8">
+            <div className="min-h-full bg-gradient-to-br from-slate-50 to-slate-100 dark:from-slate-900 dark:to-slate-800 p-8">
                 <EmptyState
                     type="error"
                     title="Không tìm thấy bài thi"

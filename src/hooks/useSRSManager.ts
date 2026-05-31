@@ -49,24 +49,29 @@ export const useSRSManager = (userId: string | undefined, textbookId: string | u
   // Attempt to flush offline queue
   useEffect(() => {
     if (!userId) return;
-    const queue = JSON.parse(localStorage.getItem('srs-sync-queue') || '[]');
-    if (queue.length === 0) return;
 
-    // Simple flush: try to send the first item
-    // A robust app would have a dedicated sync worker/context.
     const flushQueue = async () => {
-      const pending = queue.shift();
-      if (pending) {
+      const queue = JSON.parse(localStorage.getItem('srs-sync-queue') || '[]');
+      if (queue.length === 0) return;
+
+      // Flush all pending items
+      const successfullySynced: any[] = [];
+      const failedItems: any[] = [];
+
+      for (const item of queue) {
         try {
-          await submitReviewAPI(pending);
-          localStorage.setItem('srs-sync-queue', JSON.stringify(queue));
+          await submitReviewAPI(item);
+          successfullySynced.push(item);
         } catch (e) {
-          // Keep in queue if it fails
-          console.warn("Offline sync failed, keeping in queue");
+          // Keep failed items in queue
+          failedItems.push(item);
         }
       }
+
+      // Update queue with only failed items
+      localStorage.setItem('srs-sync-queue', JSON.stringify(failedItems));
     };
-    
+
     // Attempt flush when coming online or on mount
     if (navigator.onLine) {
       flushQueue();

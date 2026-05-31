@@ -223,7 +223,7 @@ const RadicalDetail: React.FC = () => {
 
   if (!radical) {
     return (
-      <div className="min-h-full bg-bg p-8">
+      <div className="min-h-full bg-gradient-to-br from-slate-50 to-slate-100 dark:from-slate-900 dark:to-slate-800 p-8">
         <EmptyState
           type="error"
           title="Không tìm thấy bộ thủ"
@@ -257,7 +257,7 @@ const RadicalDetail: React.FC = () => {
     : [];
 
   return (
-    <div className="min-h-full bg-bg academic-canvas px-3 sm:px-4 md:px-6 py-4 sm:py-6">
+    <div className="min-h-full bg-gradient-to-br from-slate-50 to-slate-100 dark:from-slate-900 dark:to-slate-800 p-4 md:p-8">
       {/* Header Navigation */}
       <div className="mb-4 flex items-center justify-between">
         <div className="flex items-center gap-2">

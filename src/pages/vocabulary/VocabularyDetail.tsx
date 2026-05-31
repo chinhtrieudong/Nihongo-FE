@@ -18,7 +18,7 @@ import { useFlashcardSettings } from "../../hooks/useFlashcardSettings";
 import FlashcardSettingsModal from "../../components/vocabulary/FlashcardSettingsModal";
 import { useFlashcardSession } from "../../hooks/useFlashcardSession";
 import type { VocabularyItem } from "../../types/vocabulary";
-import { toLegacyVocabularyItem, speakText } from "../../utils/vocabularyUtils";
+import { toLegacyVocabularyItem, speakText, getBestFemaleNaturalVoice } from "../../utils/vocabularyUtils";
 import type { VocabularyItem as LegacyVocabularyItem } from "../../types/lesson";
 
 const { Title, Text } = Typography;
@@ -222,6 +222,14 @@ const VocabularyDetail: React.FC = () => {
     quizProgress,
   } = useQuizManager(vocabularyItems, updateSRS);
 
+  const [isQuizLoading, setIsQuizLoading] = useState(false);
+
+  // Get best voice for TTS
+  const femaleVoiceName = useMemo(() => {
+    const voice = getBestFemaleNaturalVoice();
+    return voice?.name;
+  }, []);
+
   // Reset flashcard state when navigating between lessons/textbooks
   useEffect(() => {
     setShowFlashcard(false);
@@ -373,7 +381,7 @@ const VocabularyDetail: React.FC = () => {
 
   if (loading) {
     return (
-      <div className="min-h-full bg-bg flex items-center justify-center">
+      <div className="min-h-full bg-gradient-to-br from-slate-50 to-slate-100 dark:from-slate-900 dark:to-slate-800 flex items-center justify-center">
         <div className="text-center">
           <Spin size="large" />
           <p className="mt-4 text-text-sub">Đang tải từ vựng...</p>
@@ -384,7 +392,7 @@ const VocabularyDetail: React.FC = () => {
 
   if (error || vocabularyItems.length === 0) {
     return (
-      <div className="min-h-full bg-bg p-8">
+      <div className="min-h-full bg-gradient-to-br from-slate-50 to-slate-100 dark:from-slate-900 dark:to-slate-800 p-8">
         <EmptyState
           type={error ? "error" : "data"}
           title={error ? "Không thể tải dữ liệu" : "Chưa có từ vựng"}
@@ -413,7 +421,7 @@ const VocabularyDetail: React.FC = () => {
           {vocabularyItems.map((item) => (
             <div
               key={item.id}
-              className="bg-surface-1 rounded-xl border border-border p-4 hover:shadow-lg hover:border-blue-400/30 transition-all duration-300 group"
+              className="bg-white dark:bg-slate-800 rounded-xl border border-border p-4 hover:shadow-lg hover:border-blue-400/30 transition-all duration-300 group"
             >
               {/* Main Word Section */}
               <div className="flex items-start gap-3">
@@ -459,7 +467,7 @@ const VocabularyDetail: React.FC = () => {
                     <Star className={`w-4 h-4 ${favorites.has(item.id) ? "fill-current" : ""}`} />
                   </button>
                   <button
-                    onClick={() => speakText(item.hiragana)}
+                    onClick={() => speakText(item.hiragana, 'ja-JP', femaleVoiceName)}
                     className="p-2 rounded-lg text-text-sub hover:text-blue-500 hover:bg-blue-500/10 transition-colors"
                   >
                     <Volume2 className="w-4 h-4" />
@@ -485,7 +493,7 @@ const VocabularyDetail: React.FC = () => {
                       type="text"
                       size="small"
                       icon={<Volume2 className="w-3.5 h-3.5" />}
-                      onClick={() => speakText(item.example)}
+                      onClick={() => speakText(item.example, 'ja-JP', femaleVoiceName)}
                       className="text-text-sub hover:text-blue-500 flex-shrink-0"
                     />
                   </div>
@@ -541,7 +549,7 @@ const VocabularyDetail: React.FC = () => {
                   return (
                     <div
                       key={item.id}
-                      className="bg-surface-1 rounded-xl border border-border p-4"
+                      className="bg-white dark:bg-slate-800 rounded-xl border border-border p-4"
                     >
                       <div className="flex items-start gap-4">
                         {/* Kanji */}
@@ -594,7 +602,7 @@ const VocabularyDetail: React.FC = () => {
                             <Star className={`w-4 h-4 ${favorites.has(item.id) ? "fill-current" : ""}`} />
                           </button>
                           <button
-                            onClick={() => speakText(item.hiragana)}
+                            onClick={() => speakText(item.hiragana, 'ja-JP', femaleVoiceName)}
                             className="p-2 rounded-lg text-text-sub hover:text-blue-500 hover:bg-blue-500/10 transition-colors"
                           >
                             <Volume2 className="w-4 h-4" />
@@ -626,24 +634,36 @@ const VocabularyDetail: React.FC = () => {
                 <h3 className="text-xl font-semibold text-text-main mb-2">Chọn chế độ quiz</h3>
                 <p className="text-text-sub">Kiểm tra kiến thức từ vựng của bạn</p>
               </div>
-              <div className="flex justify-center gap-4">
-                <Button
-                  type="primary"
-                  size="large"
-                  onClick={() => startQuiz('jp-to-vi')}
-                  className="h-12 px-8 rounded-xl"
-                >
-                  Tiếng Nhật → Tiếng Việt
-                </Button>
-                <Button
-                  type="default"
-                  size="large"
-                  onClick={() => startQuiz('vi-to-jp')}
-                  className="h-12 px-8 rounded-xl"
-                >
-                  Tiếng Việt → Tiếng Nhật
-                </Button>
-              </div>
+              {isQuizLoading ? (
+                <Spin size="large" />
+              ) : (
+                <div className="flex justify-center gap-4">
+                  <Button
+                    type="primary"
+                    size="large"
+                    onClick={() => {
+                      setIsQuizLoading(true);
+                      startQuiz('jp-to-vi');
+                      setIsQuizLoading(false);
+                    }}
+                    className="h-12 px-8 rounded-xl"
+                  >
+                    Tiếng Nhật → Tiếng Việt
+                  </Button>
+                  <Button
+                    type="default"
+                    size="large"
+                    onClick={() => {
+                      setIsQuizLoading(true);
+                      startQuiz('vi-to-jp');
+                      setIsQuizLoading(false);
+                    }}
+                    className="h-12 px-8 rounded-xl"
+                  >
+                    Tiếng Việt → Tiếng Nhật
+                  </Button>
+                </div>
+              )}
             </div>
           ) : (
             <div className="max-w-2xl mx-auto">
@@ -667,7 +687,7 @@ const VocabularyDetail: React.FC = () => {
 
               {/* Quiz Question */}
               {currentQuizQuestion && (
-                <div className="bg-surface-1 rounded-xl border border-border p-6 mb-6">
+                <div className="bg-white dark:bg-slate-800 rounded-xl border border-border p-6 mb-6">
                   <div className="text-center mb-6">
                     {quizMode === 'jp-to-vi' ? (
                       <>
@@ -763,7 +783,7 @@ const VocabularyDetail: React.FC = () => {
 
               {/* Quiz Complete */}
               {quizQuestionIndex >= quizQuestions.length - 1 && showAnswerResult && (
-                <div className="mt-6 bg-surface-1 rounded-xl border border-border p-6 text-center">
+                <div className="mt-6 bg-white dark:bg-slate-800 rounded-xl border border-border p-6 text-center">
                   <h3 className="text-2xl font-bold text-text-main mb-2">Hoàn thành!</h3>
                   <div className="text-4xl font-bold text-blue-500 mb-4">
                     {quizScore} / {quizQuestions.length}
@@ -789,15 +809,17 @@ const VocabularyDetail: React.FC = () => {
   ];
 
   return (
-    <div className="min-h-full bg-bg academic-canvas">
-      <div className="max-w-4xl mx-auto px-4 py-6">
-        {/* Header with Navigation */}
-        <div className="flex items-center justify-between mb-6">
+    <div className="min-h-full bg-gradient-to-br from-slate-50 to-slate-100 dark:from-slate-900 dark:to-slate-800">
+      <div className="max-w-7xl mx-auto p-4 md:p-8">
+        {/* Header with Navigation - Mobile Optimized */}
+        <div className="flex items-center justify-between mb-6 gap-4">
           <Button
             onClick={handleBack}
-            icon={<ArrowLeft className="w-4 h-4" />}
+            icon={<ArrowLeft className="w-5 h-5" />}
+            size={screens.xs ? "large" : "middle"}
+            className="flex-shrink-0"
           >
-            Quay lại
+            {screens.xs ? "" : "Quay lại"}
           </Button>
 
           <LessonNavigation
@@ -814,7 +836,7 @@ const VocabularyDetail: React.FC = () => {
           <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-blue-500 to-blue-600 flex items-center justify-center shadow-lg shadow-blue-500/20">
             <span className="text-2xl font-bold text-white">{lessonNum}</span>
           </div>
-          <div>
+          <div className="flex-1">
             {currentLesson?.topic ? (
               <>
                 <h1 className="text-2xl font-bold text-text-main">
@@ -858,12 +880,41 @@ const VocabularyDetail: React.FC = () => {
             <Button
               type="default"
               icon={<Download className="w-4 h-4" />}
-              className="ml-auto"
             >
               Export
             </Button>
           </Dropdown>
         </div>
+
+        {/* Study Statistics */}
+        <Row gutter={[16, 16]} className="mb-6">
+          <Col xs={12} sm={6}>
+            <div className="bg-white dark:bg-slate-800 rounded-xl p-4 border border-border">
+              <div className="text-text-sub text-sm mb-1">Tổng số từ</div>
+              <div className="text-2xl font-bold text-text-main">{vocabularyItems.length}</div>
+            </div>
+          </Col>
+          <Col xs={12} sm={6}>
+            <div className="bg-white dark:bg-slate-800 rounded-xl p-4 border border-border">
+              <div className="text-text-sub text-sm mb-1">Cần ôn tập</div>
+              <div className="text-2xl font-bold text-orange-500">{dueWords.length}</div>
+            </div>
+          </Col>
+          <Col xs={12} sm={6}>
+            <div className="bg-white dark:bg-slate-800 rounded-xl p-4 border border-border">
+              <div className="text-text-sub text-sm mb-1">Đã học</div>
+              <div className="text-2xl font-bold text-green-500">
+                {Object.keys(srsData).filter(id => vocabularyItems.some(item => item.id === id)).length}
+              </div>
+            </div>
+          </Col>
+          <Col xs={12} sm={6}>
+            <div className="bg-white dark:bg-slate-800 rounded-xl p-4 border border-border">
+              <div className="text-text-sub text-sm mb-1">Yêu thích</div>
+              <div className="text-2xl font-bold text-yellow-500">{favorites.size}</div>
+            </div>
+          </Col>
+        </Row>
 
         {/* Tabs */}
         <style>{`
@@ -964,7 +1015,7 @@ const VocabularyDetail: React.FC = () => {
               className="w-full max-w-xl"
               onClick={(e) => e.stopPropagation()}
             >
-              <div className="rounded-2xl border border-border bg-surface-1 p-6 sm:p-8 text-text-main min-h-[300px] flex flex-col justify-between relative overflow-hidden shadow-xl">
+              <div className="rounded-2xl border border-border bg-white dark:bg-slate-800 p-6 sm:p-8 text-text-main min-h-[300px] flex flex-col justify-between relative overflow-hidden shadow-xl">
                 <div className="pointer-events-none absolute -top-24 -right-24 h-64 w-64 rounded-full bg-blue-500/15 blur-3xl" />
                 <div className="pointer-events-none absolute -bottom-24 -left-24 h-64 w-64 rounded-full bg-emerald-500/15 blur-3xl" />
                 <button
@@ -1099,8 +1150,8 @@ const VocabularyDetail: React.FC = () => {
                               </div>
                               <button
                                 type="button"
-                                onClick={() => speakText(it.hiragana)}
-                                className="p-2 rounded-lg text-text-sub hover:text-text-main hover:bg-surface-1 transition-colors flex-shrink-0"
+                                onClick={() => speakText(it.hiragana, 'ja-JP', femaleVoiceName)}
+                                className="p-2 rounded-lg text-text-sub hover:text-text-main hover:bg-white dark:hover:bg-slate-700 transition-colors flex-shrink-0"
                                 aria-label="Phát âm"
                               >
                                 <Volume2 className="w-4 h-4" />

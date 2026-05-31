@@ -440,13 +440,9 @@ const VocabularyTable = React.forwardRef<
 
     // Removed duplicate currentCard declaration
 
-    // Keyboard shortcuts - log whenever effect runs
+    // Keyboard shortcuts
     useEffect(() => {
-      console.log("[Keyboard] Effect RUNNING - viewMode:", viewMode, "isStudyComplete:", isStudyComplete);
-      
       const handleKeyDown = (e: KeyboardEvent) => {
-        console.log("[Keyboard] Key pressed:", e.key, "in viewMode:", viewMode);
-        
         switch (e.key) {
           case " ":
             e.preventDefault();
@@ -455,13 +451,11 @@ const VocabularyTable = React.forwardRef<
 
           case "ArrowLeft":
             e.preventDefault();
-            console.log("[Keyboard] ArrowLeft - marking UNKNOWN");
             handleMemoryEvaluation("unknown");
             break;
 
           case "ArrowRight":
             e.preventDefault();
-            console.log("[Keyboard] ArrowRight - marking KNOWN");
             handleMemoryEvaluation("known");
             break;
 
@@ -472,20 +466,15 @@ const VocabularyTable = React.forwardRef<
         }
       };
 
-      // ✅ Chỉ kích hoạt phím tắt khi chưa hoàn thành
+      // Chỉ kích hoạt phím tắt khi chưa hoàn thành
       const shouldAttach = viewMode === "flashcard" && !isStudyComplete;
-      console.log("[Keyboard] Should attach?", shouldAttach);
-      
+
       if (shouldAttach) {
-        console.log("[Keyboard] ✅ ATTACHING event listener");
         window.addEventListener("keydown", handleKeyDown, true); // capture phase
 
         return () => {
-          console.log("[Keyboard] ❌ DETACHING event listener");
           window.removeEventListener("keydown", handleKeyDown, true);
         };
-      } else {
-        console.log("[Keyboard] ⏭️ NOT attaching - condition not met");
       }
     }, [
       viewMode,

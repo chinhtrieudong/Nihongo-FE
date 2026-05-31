@@ -167,6 +167,58 @@ export const VocabularyFlashcard: React.FC<VocabularyFlashcardProps> = ({
     }
   }, [autoSpeak, frontFace, isFlipped, getJapaneseText, speakJapaneseNow]);
 
+  // Touch event state for swipe gestures
+  const [touchStart, setTouchStart] = useState<{ x: number; y: number } | null>(null);
+  const [touchEnd, setTouchEnd] = useState<{ x: number; y: number } | null>(null);
+
+  const minSwipeDistance = 50;
+
+  const onTouchStart = useCallback((e: React.TouchEvent) => {
+    setTouchEnd(null);
+    setTouchStart({
+      x: e.targetTouches[0].clientX,
+      y: e.targetTouches[0].clientY,
+    });
+  }, []);
+
+  const onTouchMove = useCallback((e: React.TouchEvent) => {
+    setTouchEnd({
+      x: e.targetTouches[0].clientX,
+      y: e.targetTouches[0].clientY,
+    });
+  }, []);
+
+  const onTouchEnd = useCallback(() => {
+    if (!touchStart || !touchEnd) return;
+
+    const deltaX = touchStart.x - touchEnd.x;
+    const deltaY = touchStart.y - touchEnd.y;
+
+    // Check if it's a horizontal swipe (left/right)
+    if (Math.abs(deltaX) > Math.abs(deltaY)) {
+      if (Math.abs(deltaX) > minSwipeDistance) {
+        if (deltaX > 0) {
+          // Swipe left - mark as unknown
+          onMemoryEvaluation('unknown');
+        } else {
+          // Swipe right - mark as known
+          onMemoryEvaluation('known');
+        }
+      }
+    } else {
+      // Vertical swipe (up/down)
+      if (Math.abs(deltaY) > minSwipeDistance) {
+        if (deltaY > 0) {
+          // Swipe up - next card
+          if (onNextCard) onNextCard();
+        }
+      }
+    }
+
+    setTouchStart(null);
+    setTouchEnd(null);
+  }, [touchStart, touchEnd, onMemoryEvaluation, onNextCard, minSwipeDistance]);
+
   // Keyboard event handler - handle all flashcard shortcuts
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
@@ -186,7 +238,7 @@ export const VocabularyFlashcard: React.FC<VocabularyFlashcardProps> = ({
           break;
       }
     };
-    
+
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, [onFlipCard, onMemoryEvaluation]);
@@ -370,6 +422,9 @@ export const VocabularyFlashcard: React.FC<VocabularyFlashcardProps> = ({
         <div className="flex-1 flex items-center justify-center">
           <div
             onClick={onFlipCard}
+            onTouchStart={onTouchStart}
+            onTouchMove={onTouchMove}
+            onTouchEnd={onTouchEnd}
             className="
               relative
               w-full

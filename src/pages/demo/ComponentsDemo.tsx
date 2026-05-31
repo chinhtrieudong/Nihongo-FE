@@ -19,8 +19,8 @@ const ComponentsDemo: React.FC = () => {
     const [searchValue, setSearchValue] = useState("");
 
     return (
-        <div className="min-h-full bg-bg academic-canvas">
-            <div className="max-w-6xl mx-auto px-4 py-8">
+        <div className="min-h-full bg-gradient-to-br from-slate-50 to-slate-100 dark:from-slate-900 dark:to-slate-800">
+            <div className="max-w-7xl mx-auto p-4 md:p-8">
                 {/* Header */}
                 <div className="text-center mb-8">
                     <Title level={1} className="text-gray-900 dark:text-secondary-100 mb-3">

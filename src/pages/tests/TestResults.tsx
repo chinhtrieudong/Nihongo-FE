@@ -172,7 +172,7 @@ const TestResults: React.FC = () => {
 
   if (loading) {
     return (
-      <div className="min-h-full bg-bg flex items-center justify-center">
+      <div className="min-h-full bg-gradient-to-br from-slate-50 to-slate-100 dark:from-slate-900 dark:to-slate-800 flex items-center justify-center">
         <Spin size="large" />
         <p className="mt-4 text-text-sub">Đang tải kết quả...</p>
       </div>
@@ -181,7 +181,7 @@ const TestResults: React.FC = () => {
 
   if (error || !test || !attempt) {
     return (
-      <div className="min-h-full bg-bg p-8">
+      <div className="min-h-full bg-gradient-to-br from-slate-50 to-slate-100 dark:from-slate-900 dark:to-slate-800 p-8">
         <EmptyState
           type="error"
           title="Không tìm thấy kết quả"

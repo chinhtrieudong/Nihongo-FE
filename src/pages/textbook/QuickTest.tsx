@@ -299,7 +299,7 @@ const QuickTest: React.FC = () => {
 
   if (loading) {
     return (
-      <div className="min-h-full bg-bg flex items-center justify-center p-8">
+      <div className="min-h-full bg-gradient-to-br from-slate-50 to-slate-100 dark:from-slate-900 dark:to-slate-800 flex items-center justify-center p-8">
         <div className="text-center">
           <Spin size="large" />
           <div className="mt-3 text-text-sub">Đang chuẩn bị bài kiểm tra…</div>
@@ -310,7 +310,7 @@ const QuickTest: React.FC = () => {
 
   if (!textbookId || !parsed) {
     return (
-      <div className="min-h-full bg-bg p-8">
+      <div className="min-h-full bg-gradient-to-br from-slate-50 to-slate-100 dark:from-slate-900 dark:to-slate-800 p-8">
         <EmptyState
           type="error"
           title="Không tìm thấy giáo trình"
@@ -326,8 +326,8 @@ const QuickTest: React.FC = () => {
   }
 
   return (
-    <div className="min-h-full bg-bg academic-canvas">
-      <div className="max-w-3xl mx-auto px-4 py-6">
+    <div className="min-h-full bg-gradient-to-br from-slate-50 to-slate-100 dark:from-slate-900 dark:to-slate-800">
+      <div className="max-w-7xl mx-auto p-4 md:p-8">
         <div className="flex items-center justify-between mb-6">
           <Button icon={<ArrowLeft className="w-4 h-4" />} onClick={() => navigate(`/textbook/${textbookId}`)}>
             Quay lại
@@ -339,7 +339,7 @@ const QuickTest: React.FC = () => {
           </Space>
         </div>
 
-        <Card className="bg-surface-1 border-border shadow-sm">
+        <Card className="bg-white dark:bg-slate-800 border-border shadow-sm">
           <div className="flex items-start justify-between gap-4">
             <div>
               <Title level={3} className="!mb-1 !text-text-main">
@@ -434,7 +434,7 @@ const QuickTest: React.FC = () => {
                         key={c}
                         className={[
                           "rounded-xl border p-3 cursor-pointer transition-colors",
-                          "bg-surface-2 border-border hover:border-blue-400/40",
+                          "bg-white dark:bg-slate-700 border-border hover:border-blue-400/40",
                           picked ? "ring-2 ring-blue-500/20" : "",
                           correct ? "border-emerald-500/60 bg-emerald-500/10" : "",
                           wrongPicked ? "border-red-500/60 bg-red-500/10" : "",

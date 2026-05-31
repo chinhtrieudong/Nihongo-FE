@@ -9,7 +9,7 @@ import {
   Tag,
   App as AntdApp,
 } from "antd";
-import { Volume2 } from "lucide-react";
+import { Volume2, Lightbulb } from "lucide-react";
 import type { VocabularyItem as VocabularyItemType } from "../../types/lesson";
 import { speakText } from "../../utils/vocabularyUtils";
 
@@ -34,8 +34,8 @@ const VocabularyDetailModal: React.FC<VocabularyDetailModalProps> = ({
   const { message } = AntdApp.useApp();
   const handlePlayAudio = useCallback((text: string, e: React.MouseEvent) => {
     e.stopPropagation();
-    speakText(text, 'ja-JP');
-  }, []);
+    speakText(text, 'ja-JP', femaleVoiceName);
+  }, [femaleVoiceName]);
 
   const handleCopy = useCallback(() => {
     const reading = selectedWord?.hiragana || selectedWord?.katakana || selectedWord?.reading || selectedWord?.word;
@@ -203,9 +203,9 @@ const VocabularyDetailModal: React.FC<VocabularyDetailModalProps> = ({
     selectedWord?.jlpt_level ||
     selectedWord?.jpt_level;
   const displayExampleJp =
-    selectedWord?.example || selectedWord?.exampleSentence;
+    selectedWord?.exampleSentence || (typeof selectedWord?.example === 'string' ? selectedWord.example : selectedWord?.example?.jp);
   const displayExampleVi =
-    selectedWord?.exampleMeaning || selectedWord?.exampleSentenceVi;
+    selectedWord?.exampleSentenceVi || (typeof selectedWord?.example === 'object' && selectedWord?.example?.vn ? selectedWord.example.vn : undefined);
 
   return (
     <>
@@ -427,9 +427,12 @@ const VocabularyDetailModal: React.FC<VocabularyDetailModalProps> = ({
                     : " (Không có bản dịch...)"}
                 </Text>
               ) : (
-                <Text className="text-sm text-secondary-600 dark:text-secondary-400">
-                  Chưa có ví dụ cho từ này.
-                </Text>
+                <div className="flex items-center gap-2 text-sm text-secondary-500 dark:text-secondary-400">
+                  <Lightbulb className="w-4 h-4" />
+                  <Text className="text-sm text-secondary-500 dark:text-secondary-400">
+                    Chưa có ví dụ cho từ này.
+                  </Text>
+                </div>
               )}
             </div>
           </div>

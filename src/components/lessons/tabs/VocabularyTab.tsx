@@ -13,6 +13,7 @@ import {
     Search,
     Menu,
 } from "lucide-react";
+import EmptyState from "../../common/EmptyState";
 
 const { Title } = Typography;
 
@@ -31,16 +32,12 @@ const VocabularyTab: React.FC<VocabularyTabProps> = ({ vocabulary }) => {
 
     if (vocabulary.length === 0) {
         return (
-            <div className="text-center py-12">
-                <div className="inline-flex flex-col items-center">
-                    <div className="w-20 h-20 bg-secondary-100 dark:bg-secondary-800 rounded-full flex items-center justify-center mb-4">
-                        <Book className="w-8 h-8 text-secondary-400" />
-                    </div>
-                    <p className="text-secondary-700 dark:text-secondary-400 text-lg">
-                        Chưa có từ vựng cho bài học này.
-                    </p>
-                </div>
-            </div>
+            <EmptyState
+                type="data"
+                title="Chưa có từ vựng"
+                description="Bài học này chưa có từ vựng nào."
+                size="default"
+            />
         );
     }
 

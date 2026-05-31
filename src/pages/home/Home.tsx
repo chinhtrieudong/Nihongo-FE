@@ -97,7 +97,7 @@ const Home: React.FC = () => {
 
   if (loading) {
     return (
-      <div className="min-h-full bg-bg flex items-center justify-center">
+      <div className="min-h-full bg-gradient-to-br from-slate-50 to-slate-100 dark:from-slate-900 dark:to-slate-800 flex items-center justify-center">
         <Spin size="large" description="Đang tải..." />
       </div>
     );
@@ -105,7 +105,7 @@ const Home: React.FC = () => {
 
   if (error) {
     return (
-      <div className="min-h-full bg-bg p-8">
+      <div className="min-h-full bg-gradient-to-br from-slate-50 to-slate-100 dark:from-slate-900 dark:to-slate-800 p-8">
         <EmptyState
           type="error"
           title="Không thể tải dữ liệu"
@@ -121,8 +121,8 @@ const Home: React.FC = () => {
   }
 
   return (
-    <div className="min-h-full bg-bg academic-canvas">
-      <div className="max-w-6xl mx-auto px-4 py-8">
+    <div className="min-h-full bg-gradient-to-br from-slate-50 to-slate-100 dark:from-slate-900 dark:to-slate-800">
+      <div className="max-w-7xl mx-auto p-4 md:p-8">
         <div className="text-center mb-8">
           <h1 className="text-3xl md:text-4xl font-bold text-text-main mb-2">
             Từ vựng theo giáo trình

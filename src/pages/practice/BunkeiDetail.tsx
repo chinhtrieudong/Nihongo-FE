@@ -97,7 +97,7 @@ const BunkeiDetail: React.FC = () => {
 
   if (loading) {
     return (
-      <div className="min-h-full bg-bg flex items-center justify-center">
+      <div className="min-h-full bg-gradient-to-br from-slate-50 to-slate-100 dark:from-slate-900 dark:to-slate-800 flex items-center justify-center">
         <div className="text-center">
           <Spin size="large" />
           <p className="mt-4 text-text-sub">Đang tải mẫu câu...</p>
@@ -108,7 +108,7 @@ const BunkeiDetail: React.FC = () => {
 
   if (error || !bunkeiData) {
     return (
-      <div className="min-h-full bg-bg p-8">
+      <div className="min-h-full bg-gradient-to-br from-slate-50 to-slate-100 dark:from-slate-900 dark:to-slate-800 p-8">
         <EmptyState
           type={error ? "error" : "data"}
           title={error ? "Không thể tải dữ liệu" : "Không có dữ liệu"}
@@ -127,8 +127,8 @@ const BunkeiDetail: React.FC = () => {
   const lesson = { lessonNumber: Number(lessonNumber), title: `Lesson ${lessonNumber}`, title_jp: `第${lessonNumber}課`, level: 'N5', book: 'Minna no Nihongo' };
 
   return (
-    <div className="min-h-full bg-bg academic-canvas">
-      <div className="max-w-4xl mx-auto px-4 py-4">
+    <div className="min-h-full bg-gradient-to-br from-slate-50 to-slate-100 dark:from-slate-900 dark:to-slate-800">
+      <div className="max-w-7xl mx-auto p-4 md:p-8">
         {/* Header */}
         <div className="flex items-center justify-between mb-2">
           <Button

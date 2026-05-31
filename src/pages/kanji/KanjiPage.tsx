@@ -341,8 +341,8 @@ const KanjiPage: React.FC = () => {
     }, [selectedLevels, strokeFilters, searchTerm, setSearchParams]);
 
     return (
-        <div className="min-h-full bg-bg academic-canvas">
-            <div className="max-w-6xl mx-auto px-4 py-8">
+        <div className="min-h-full bg-gradient-to-br from-slate-50 to-slate-100 dark:from-slate-900 dark:to-slate-800">
+            <div className="max-w-7xl mx-auto p-4 md:p-8">
                 {/* Header Section */}
                 <div className="mb-6">
                     <h1 className="text-3xl md:text-4xl font-bold text-text-main mb-3">
