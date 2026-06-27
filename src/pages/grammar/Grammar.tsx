@@ -333,16 +333,15 @@ const Grammar: React.FC = () => {
                     items={lesson.grammars.map((grammar) => ({
                       key: grammar.id,
                       label: (
-                        <div className="flex items-center justify-between w-full">
-                          <div className="flex items-center gap-2 flex-1 min-w-0">
-                            <Text strong className="text-base whitespace-nowrap overflow-hidden text-ellipsis font-japanese" style={{ fontFamily: 'Noto Sans JP, sans-serif' }}>{grammar.pattern}</Text>
-                            <Tag color={getCategoryColor(grammar.category)} className="text-xs flex-shrink-0 ml-2">
+                        <div className="flex items-center justify-between w-full gap-2 pr-4">
+                          <div className="flex items-start md:items-center gap-2 flex-1">
+                            <Text strong className="text-lg text-blue-700 dark:text-blue-400 whitespace-normal break-words">
+                              {grammar.pattern}
+                            </Text>
+                            <Tag color={getCategoryColor(grammar.category)} className="text-xs flex-shrink-0 mt-1 md:mt-0">
                               {categories.find(c => c.value === grammar.category)?.label || grammar.category}
                             </Tag>
                           </div>
-                          <Text type="secondary" className="text-base ml-3 flex-shrink-0" style={{ minWidth: 'fit-content' }}>
-                            {grammar.meaning}
-                          </Text>
                         </div>
                       ),
                       children: (
