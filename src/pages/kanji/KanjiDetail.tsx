@@ -246,7 +246,7 @@ const KanjiDetail: React.FC<KanjiDetailProps> = ({
           className="w-full h-80 flex items-center justify-center p-4"
           style={{
             background: 'white',
-            transform: 'scale(1.8)',
+            transform: 'scale(2.2)',
             transformOrigin: 'center',
           }}
         />
