@@ -157,6 +157,156 @@
           "exampleVi": "Gió heo mùa đông đang thổi."
         }
       ]
+    },
+    {
+      "id": "6",
+      "kanji": "金",
+      "hanviet": "KIM",
+      "level": "N5",
+      "onyomi": ["キン", "コン"],
+      "kunyomi": ["かね", "かな"],
+      "meaningVi": "Vàng, tiền",
+      "strokeCount": 8,
+      "radicals": ["金"],
+      "memoryTip": "Vàng có giá trị cao",
+      "relatedVocabulary": [
+        {
+          "word": "金曜日",
+          "kana": "きんようび",
+          "hanviet": "KIM DIỆU NHẬT",
+          "meaningVi": "Thứ sáu",
+          "exampleJp": "金曜日は映画を見ます。",
+          "exampleVi": "Thứ Sáu tôi xem phim."
+        },
+        {
+          "word": "お金",
+          "kana": "おかね",
+          "hanviet": "KHOẺ KIM",
+          "meaningVi": "Tiền (lịch sự)",
+          "exampleJp": "お金がありません。",
+          "exampleVi": "Tôi không có tiền."
+        }
+      ]
+    },
+    {
+      "id": "7",
+      "kanji": "土",
+      "hanviet": "THỔ",
+      "level": "N5",
+      "onyomi": ["ド", "ト"],
+      "kunyomi": ["つち"],
+      "meaningVi": "Đất",
+      "strokeCount": 3,
+      "radicals": ["土"],
+      "memoryTip": "Đất trồng cây",
+      "relatedVocabulary": [
+        {
+          "word": "土曜日",
+          "kana": "どようび",
+          "hanviet": "THỔ DIỆU NHẬT",
+          "meaningVi": "Thứ bảy",
+          "exampleJp": "土曜日は休みです。",
+          "exampleVi": "Thứ Bảy là ngày nghỉ."
+        },
+        {
+          "word": "土地",
+          "kana": "とち",
+          "hanviet": "THỔ ĐỊA",
+          "meaningVi": "Đất đai",
+          "exampleJp": "この土地は高いです。",
+          "exampleVi": "Mảnh đất này đắt tiền."
+        }
+      ]
+    },
+    {
+      "id": "8",
+      "kanji": "山",
+      "hanviet": "SƠN",
+      "level": "N5",
+      "onyomi": ["サン", "ザン"],
+      "kunyomi": ["やま"],
+      "meaningVi": "Núi",
+      "strokeCount": 3,
+      "radicals": ["山"],
+      "memoryTip": "Núi cao vút",
+      "relatedVocabulary": [
+        {
+          "word": "山登り",
+          "kana": "やまのぼり",
+          "hanviet": "SƠN ĐĂNG",
+          "meaningVi": "Leo núi",
+          "exampleJp": "山登りが好きです。",
+          "exampleVi": "Tôi thích leo núi."
+        },
+        {
+          "word": "富士山",
+          "kana": "ふじさん",
+          "hanviet": "Phú Tị Sơn",
+          "meaningVi": "Núi Phú Sĩ",
+          "exampleJp": "富士山は日本で一番高い山です。",
+          "exampleVi": "Núi Phú Sĩ là ngọn núi cao nhất Nhật Bản."
+        }
+      ]
+    },
+    {
+      "id": "9",
+      "kanji": "川",
+      "hanviet": "XUYÊN",
+      "level": "N5",
+      "onyomi": ["セン"],
+      "kunyomi": ["かわ"],
+      "meaningVi": "Sông",
+      "strokeCount": 3,
+      "radicals": ["川"],
+      "memoryTip": "Nước chảy như sông",
+      "relatedVocabulary": [
+        {
+          "word": "川辺",
+          "kana": "かわべ",
+          "hanviet": "XUYÊN BIÊN",
+          "meaningVi": "Bờ sông",
+          "exampleJp": "川辺で遊びました。",
+          "exampleVi": "Tôi đã chơi ở bờ sông."
+        },
+        {
+          "word": "小川",
+          "kana": "おがわ",
+          "hanviet": "TIỂU XUYÊN",
+          "meaningVi": "Dòng suối nhỏ",
+          "exampleJp": "小川の水がきれいです。",
+          "exampleVi": "Nước dòng suối rất trong."
+        }
+      ]
+    },
+    {
+      "id": "10",
+      "kanji": "人",
+      "hanviet": "NHÂN",
+      "level": "N5",
+      "onyomi": ["ジン", "ニン"],
+      "kunyomi": ["ひと"],
+      "meaningVi": "Người",
+      "strokeCount": 2,
+      "radicals": ["人"],
+      "memoryTip": "Hai chân người đi",
+      "relatedVocabulary": [
+        {
+          "word": "一人",
+          "kana": "ひとり",
+          "hanviet": "NHẤT NHÂN",
+          "meaningVi": "Một người",
+          "exampleJp": "一人で行きます。",
+          "exampleVi": "Tôi đi một mình."
+        },
+        {
+          "word": "日本人",
+          "kana": "にほんじん",
+          "hanviet": "NHẬT BẢN NHÂN",
+          "meaningVi": "Người Nhật Bản",
+          "exampleJp": "私は日本人です。",
+          "exampleVi": "Tôi là người Nhật Bản."
+        }
+      ]
     }
   ]
 }
