@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
-import { Volume2, ArrowLeft, Play, RotateCcw } from "lucide-react";
+import { Volume2, ArrowLeft } from "lucide-react";
 import { Card, Button, Row, Col } from "antd";
 import { EmptyState, LessonNavigation } from "../../components/common";
 import { KanjiItem, KanjiDetailResponse } from "../../types/kanji";
@@ -155,7 +155,6 @@ const KanjiDetail: React.FC<KanjiDetailProps> = ({
     const [svgContent, setSvgContent] = useState<string>("");
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState<string | null>(null);
-    const [isAnimating, setIsAnimating] = useState(false);
     const primaryChar = resolveKanjiChar(kanji);
 
     const fetchKanjiSVG = async () => {
@@ -210,16 +209,6 @@ const KanjiDetail: React.FC<KanjiDetailProps> = ({
       }
     };
 
-    const replayAnimation = () => {
-      setIsAnimating(true);
-      // Reset SVG animation by re-fetching
-      setSvgContent("");
-      setTimeout(() => {
-        fetchKanjiSVG();
-        setTimeout(() => setIsAnimating(false), 100);
-      }, 50);
-    };
-
     useEffect(() => {
       fetchKanjiSVG();
     }, [primaryChar]);
@@ -261,15 +250,6 @@ const KanjiDetail: React.FC<KanjiDetailProps> = ({
             transformOrigin: 'center',
           }}
         />
-        <div className="absolute bottom-4 right-4 flex gap-2">
-          <button
-            onClick={replayAnimation}
-            className="p-2 bg-white dark:bg-slate-700 rounded-lg shadow-md hover:shadow-lg transition-shadow border border-slate-200 dark:border-slate-600"
-            title="Phát lại animation"
-          >
-            <RotateCcw className="w-5 h-5 text-slate-700 dark:text-slate-300" />
-          </button>
-        </div>
       </div>
     )
   };
