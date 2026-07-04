@@ -122,7 +122,7 @@ const Lessons: React.FC = () => {
     };
 
     return (
-        <div className="min-h-full bg-gradient-to-br from-secondary-50 to-primary-50 dark:from-secondary-950 dark:to-primary-950">
+        <div className="min-h-full bg-gradient-to-br from-slate-50 to-slate-100 dark:from-slate-900 dark:to-slate-800">
             {selectedLesson && lessonDetail ? (
                 <>
                     <LessonHeader

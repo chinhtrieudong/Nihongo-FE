@@ -127,6 +127,7 @@ const Sidebar: React.FC = () => {
       key: "/pronunciation",
       icon: <Volume2 className="w-5 h-5" />,
       label: "Phát âm",
+      comingSoon: true,
     },
     {
       key: "/practice",
@@ -167,6 +168,23 @@ const Sidebar: React.FC = () => {
                   location.pathname === "/lessons" ||
                   location.pathname.startsWith("/mina/"));
               const isActive = isHome || location.pathname === item.key;
+              const isComingSoon = (item as any).comingSoon === true;
+
+              if (isComingSoon) {
+                return (
+                  <Tooltip key={item.key} title="Đang triển khai" placement="right">
+                    <div
+                      className="relative w-full rounded-2xl px-2 py-3 flex flex-col items-center justify-center gap-1 text-xs font-medium cursor-not-allowed opacity-40 select-none"
+                    >
+                      <span className="text-xl leading-none text-text-sub">{item.icon}</span>
+                      <span className="text-center leading-tight">{item.label}</span>
+                      <span className="absolute -top-0.5 -right-0.5 text-[9px] font-bold bg-amber-400 text-white rounded-full px-1 py-px leading-tight">
+                        Soon
+                      </span>
+                    </div>
+                  </Tooltip>
+                );
+              }
 
               return (
                 <Tooltip key={item.key} title={item.label} placement="right">
@@ -185,9 +203,7 @@ const Sidebar: React.FC = () => {
                     <span
                       className={[
                         "text-xl leading-none",
-                        isActive
-                          ? "text-primary"
-                          : "text-text-sub",
+                        isActive ? "text-primary" : "text-text-sub",
                       ].join(" ")}
                     >
                       {item.icon}

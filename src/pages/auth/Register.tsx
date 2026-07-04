@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../store/hooks";
-import { loginStart, loginSuccess, loginFailure } from "../../store/slices/userSlice";
+import { loginStart, loginFailure } from "../../store/slices/userSlice";
 import { authAPI } from "../../services/api";
 import { useTheme } from "../../hooks/useTheme";
 import { Switch, Checkbox, Divider } from "antd";
@@ -10,7 +10,7 @@ import { Button, Input, TextArea, Password, SearchInput, Card, CardHeader, CardB
 import { Sun, Moon, Mail, Lock, Eye, EyeOff, User, Globe, Share2 } from "lucide-react";
 
 interface RegisterFormData {
-  username: string;
+  fullName: string;
   email: string;
   password: string;
   confirmPassword: string;
@@ -23,7 +23,7 @@ const Register: React.FC = () => {
   const { darkMode } = useAppSelector((state) => state.ui);
   const { toggleTheme } = useTheme();
   const [formData, setFormData] = useState<RegisterFormData>({
-    username: "",
+    fullName: "",
     email: "",
     password: "",
     confirmPassword: "",
@@ -57,18 +57,13 @@ const Register: React.FC = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    if (!formData.username || !formData.email || !formData.password || !formData.confirmPassword) {
+    if (!formData.fullName || !formData.email || !formData.password || !formData.confirmPassword) {
       setError("Vui lòng điền đầy đủ thông tin");
       return;
     }
 
     if (formData.password !== formData.confirmPassword) {
       setError("Mật khẩu xác nhận không khớp");
-      return;
-    }
-
-    if (!formData.agreeToTerms) {
-      setError("Vui lòng đồng ý với điều khoản sử dụng");
       return;
     }
 
@@ -83,33 +78,24 @@ const Register: React.FC = () => {
       return;
     }
 
+    if (!formData.agreeToTerms) {
+      setError("Vui lòng đồng ý với điều khoản sử dụng");
+      return;
+    }
+
     setIsLoading(true);
     setError("");
     dispatch(loginStart());
 
     try {
       const response = await authAPI.register({
-        username: formData.username,
+        fullName: formData.fullName,
         email: formData.email,
         password: formData.password,
       });
 
-      // Store tokens in localStorage
-      localStorage.setItem("accessToken", response.data.tokens.accessToken);
-      localStorage.setItem("refreshToken", response.data.tokens.refreshToken);
-
-      // Update Redux store with proper typing
-      dispatch(
-        loginSuccess({
-          ...response.data.user,
-          currentLevel: "N5", // Default level for new users
-          totalXp: 0,
-          streakDays: 0,
-        })
-      );
-
-      // Redirect to dashboard
-      navigate("/");
+      // Registration successful - redirect to login page
+      navigate("/login");
     } catch (error: any) {
       const errorMessage = error.response?.data?.error || "Đăng ký thất bại";
       setError(errorMessage);
@@ -230,7 +216,7 @@ const Register: React.FC = () => {
                   </p>
                 </div>
 
-                <form onSubmit={handleSubmit} className="space-y-4">
+                <form onSubmit={handleSubmit} className="space-y-4" noValidate>
                   {error && (
                     <div
                       className="bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 text-red-700 dark:text-red-400 px-4 py-3 rounded-xl text-sm"
@@ -244,29 +230,30 @@ const Register: React.FC = () => {
                   )}
 
                   <div>
-                    <label className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">
-                      Tên đăng nhập
+                    <label htmlFor="fullName" className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">
+                      Họ và tên
                     </label>
                     <div className="relative">
                       <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                         <User className="w-4 h-4 text-gray-400" />
                       </div>
                       <input
+                        id="fullName"
                         type="text"
-                        name="username"
-                        value={formData.username}
+                        name="fullName"
+                        value={formData.fullName}
                         onChange={handleInputChange}
                         className="w-full pl-10 pr-4 py-3 border border-gray-300 dark:border-gray-600 rounded-xl bg-white dark:bg-gray-700 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all duration-200"
-                        placeholder="nguyenvana"
+                        placeholder="Nguyễn Văn A"
                         required
                         disabled={isLoading}
-                        aria-label="Username"
+                        aria-label="Full name"
                       />
                     </div>
                   </div>
 
                   <div>
-                    <label className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">
+                    <label htmlFor="email" className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">
                       Email
                     </label>
                     <div className="relative">
@@ -274,6 +261,7 @@ const Register: React.FC = () => {
                         <Mail className="w-4 h-4 text-gray-400" />
                       </div>
                       <input
+                        id="email"
                         type="email"
                         name="email"
                         value={formData.email}
@@ -288,7 +276,7 @@ const Register: React.FC = () => {
                   </div>
 
                   <div>
-                    <label className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">
+                    <label htmlFor="password" className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">
                       Mật khẩu
                     </label>
                     <div className="relative">
@@ -296,6 +284,7 @@ const Register: React.FC = () => {
                         <Lock className="w-4 h-4 text-gray-400" />
                       </div>
                       <input
+                        id="password"
                         type={showPassword ? "text" : "password"}
                         name="password"
                         value={formData.password}
@@ -319,7 +308,7 @@ const Register: React.FC = () => {
                   </div>
 
                   <div>
-                    <label className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">
+                    <label htmlFor="confirmPassword" className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">
                       Xác nhận mật khẩu
                     </label>
                     <div className="relative">
@@ -327,6 +316,7 @@ const Register: React.FC = () => {
                         <Lock className="w-4 h-4 text-gray-400" />
                       </div>
                       <input
+                        id="confirmPassword"
                         type={showConfirmPassword ? "text" : "password"}
                         name="confirmPassword"
                         value={formData.confirmPassword}

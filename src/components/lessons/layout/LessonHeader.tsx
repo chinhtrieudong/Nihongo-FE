@@ -172,7 +172,7 @@ const LessonHeader: React.FC<LessonHeaderProps> = ({
                 placement="bottom"
                 onClose={() => setMobileMenuVisible(false)}
                 open={mobileMenuVisible}
-                height="70vh"
+                size="70vh"
             >
                 <div className="space-y-6">
                     {/* Lesson Info */}

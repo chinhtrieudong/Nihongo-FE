@@ -2,6 +2,7 @@ import React from "react";
 import { Layout } from "antd";
 import AdminMobileHeader from "./AdminMobileHeader";
 import AdminMobileDrawer from "./AdminMobileDrawer";
+import { APP_HEADER_HEIGHT_PX } from "../../constants/layout";
 
 const { Content } = Layout;
 
@@ -11,27 +12,23 @@ interface AdminMobileLayoutProps {
 
 const AdminMobileLayout: React.FC<AdminMobileLayoutProps> = ({ children }) => {
   return (
-    <Layout className="mobile-layout app-surface">
+    <Layout 
+      className="mobile-layout min-h-screen bg-bg"
+      style={{ fontFamily: 'var(--app-font-family)' }}
+    >
       <AdminMobileHeader />
 
-      <Content className="mobile-main-content academic-canvas app-surface">
-        <div>{children}</div>
+      <Content 
+        className="mobile-main-content bg-surface-1 text-text-main w-full ml-0"
+        style={{ 
+          paddingTop: APP_HEADER_HEIGHT_PX,
+          minHeight: `calc(100vh - ${APP_HEADER_HEIGHT_PX}px)`
+        }}
+      >
+        <div className="h-full">{children}</div>
       </Content>
 
       <AdminMobileDrawer />
-
-      <style>{`
-        .mobile-layout {
-          min-height: 100vh;
-        }
-
-        .mobile-main-content {
-          width: 100%;
-          margin-left: 0;
-          padding-top: 56px;
-          min-height: calc(100vh - 56px);
-        }
-      `}</style>
     </Layout>
   );
 };

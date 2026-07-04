@@ -261,19 +261,18 @@ const Tests: React.FC = () => {
 
         {/* Filter Tabs */}
         <Card className="overflow-hidden bg-surface-1 border-border mb-8">
+          {/* Filter bar — above tabs on all sizes */}
+          <div className="px-4 pt-3 pb-0">
+            <TestFilters
+              selectedLevel={selectedLevel}
+              onLevelChange={setSelectedLevel}
+              availableCount={availableTests.length}
+              completedCount={completedTests.length}
+            />
+          </div>
           <Tabs
             activeKey={activeTab}
             onChange={setActiveTab}
-            tabBarExtraContent={{
-              right: (
-                <TestFilters
-                  selectedLevel={selectedLevel}
-                  onLevelChange={setSelectedLevel}
-                  availableCount={availableTests.length}
-                  completedCount={completedTests.length}
-                />
-              )
-            }}
             items={[
               {
                 key: "available",

@@ -11,11 +11,14 @@ import KanjiPage from "./pages/kanji/KanjiPage";
 import KanjiDetail from "./pages/kanji/KanjiDetail";
 import RadicalDetail from "./pages/kanji/RadicalDetail";
 import Grammar from "./pages/grammar/Grammar";
-import Pronunciation from "./pages/pronunciation/Pronunciation";
+import Pronunciation from "./pages/pronunciation/ComingSoon";
 import Practice from "./pages/practice/Practice";
 import BunkeiDetail from "./pages/practice/BunkeiDetail";
 import KaiwaDetail from "./pages/practice/KaiwaDetail";
 import MondaiDetail from "./pages/practice/MondaiDetail";
+import ReibunDetail from "./pages/practice/ReibunDetail";
+import RenshuuDetail from "./pages/practice/RenshuuDetail";
+import TangoDetail from "./pages/practice/TangoDetail";
 import VocabularyDetail from "./pages/vocabulary/VocabularyDetail";
 import Tests from "./pages/tests/Tests";
 import TestDetail from "./pages/tests/TestDetail";
@@ -65,7 +68,7 @@ const AppContent: React.FC = () => {
               <Route index element={<Home />} />
               <Route path="lessons/:lessonNumber/kanji" element={<KanjiDetail />} />
               <Route path="textbook/:textbookId" element={<TextbookDetail />} />
-              <Route path="textbook/:textbookId/vocabulary/:lessonId" element={<VocabularyDetail />} />
+              <Route path="textbook/:textbookId/vocabulary/:lessonNumber" element={<VocabularyDetail />} />
               <Route path="textbook/:textbookId/quick-test" element={<QuickTest />} />
               <Route path="mina/:lessonId" element={<Lessons />} />
               <Route path="tango/:lessonId" element={<Lessons />} />
@@ -80,10 +83,13 @@ const AppContent: React.FC = () => {
               <Route path="test-results/:testId" element={<TestResults />} />
               <Route path="components-demo" element={<ComponentsDemo />} />
               <Route path="practice" element={<Practice />} />
-              <Route path="practice/bunkei" element={<BunkeiDetail />} />
-              <Route path="practice/kaiwa" element={<KaiwaDetail />} />
-              <Route path="practice/mondai" element={<MondaiDetail />} />
-              <Route path="practice/tango" element={<VocabularyDetail />} />
+              <Route path="practice/bunkei/:lessonNumber" element={<BunkeiDetail />} />
+              <Route path="practice/kaiwa/:lessonNumber" element={<KaiwaDetail />} />
+              <Route path="practice/mondai/:lessonNumber" element={<MondaiDetail />} />
+              <Route path="practice/reibun/:lessonNumber" element={<ReibunDetail />} />
+              <Route path="practice/renshuu/:lessonNumber" element={<RenshuuDetail />} />
+              <Route path="practice/tango/:lessonId" element={<TangoDetail />} />
+
             </Route>
 
             <Route

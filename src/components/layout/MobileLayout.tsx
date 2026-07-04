@@ -2,6 +2,8 @@ import React from "react";
 import { Layout } from "antd";
 import MobileHeader from "./MobileHeader";
 import MobileDrawer from "./MobileDrawer";
+import { APP_HEADER_HEIGHT_PX } from "../../constants/layout";
+import { useAppSelector } from "../../store/hooks";
 
 const { Content } = Layout;
 
@@ -10,33 +12,31 @@ interface MobileLayoutProps {
 }
 
 const MobileLayout: React.FC<MobileLayoutProps> = ({ children }) => {
+  const { fontPreset } = useAppSelector(state => state.ui);
+  
   return (
-    <Layout className="mobile-layout app-surface">
+    <Layout 
+      className="mobile-layout min-h-screen bg-bg"
+      style={{ fontFamily: 'var(--app-font-family)' }}
+    >
       {/* Fixed Header */}
       <MobileHeader />
 
       {/* Main Content */}
-      <Content className="mobile-main-content academic-canvas bg-surface-1">
-        <div className="">
+      <Content 
+        className="mobile-main-content bg-surface-1 text-text-main w-full ml-0"
+        style={{ 
+          paddingTop: APP_HEADER_HEIGHT_PX,
+          minHeight: `calc(100vh - ${APP_HEADER_HEIGHT_PX}px)`
+        }}
+      >
+        <div className="h-full">
           {children}
         </div>
       </Content>
 
       {/* Drawer (hidden by default) */}
       <MobileDrawer />
-
-      <style>{`
-        .mobile-layout {
-          min-height: 100vh;
-        }
-
-        .mobile-main-content {
-          width: 100%;
-          margin-left: 0;  /* ✅ QUAN TRỌNG: Không bị đẩy ngang */
-          padding-top: 56px;  /* Header height */
-          min-height: calc(100vh - 56px);
-        }
-      `}</style>
     </Layout>
   );
 };

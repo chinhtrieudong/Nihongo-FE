@@ -132,7 +132,7 @@ const Practice: React.FC = () => {
                     size="small"
                     type={selectedLesson === i ? "primary" : "default"}
                     onClick={() => setSelectedLesson(i)}
-                    className="w-12 h-10 text-sm font-medium"
+                    className="w-full h-10 text-sm font-medium"
                 >
                     {i}
                 </Button>
@@ -146,10 +146,10 @@ const Practice: React.FC = () => {
             <div className="max-w-7xl mx-auto p-4 md:p-8">
                 {/* Header Section */}
                 <div className="mb-8">
-                    <h1 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-secondary-100 mb-3">
+                    <h1 className="text-3xl md:text-4xl font-bold text-text-main mb-3">
                         Luyện tập
                     </h1>
-                    <p className="text-gray-600 dark:text-secondary-400 text-lg">
+                    <p className="text-text-sub text-lg">
                         Chọn chủ đề để luyện tập và cải thiện kỹ năng tiếng Nhật của bạn
                     </p>
                 </div>
@@ -249,7 +249,7 @@ const Practice: React.FC = () => {
                             Bắt đầu học bài {selectedLesson}
                         </Button>,
                     ]}
-                    width={600}
+                    width="min(600px, 92vw)"
                 >
                     <div className="py-4">
                         <p className="text-text-sub mb-4">
@@ -269,7 +269,7 @@ const Practice: React.FC = () => {
                         </div>
 
                         {/* Lesson grid */}
-                        <div className="grid grid-cols-10 gap-2 max-h-64 overflow-y-auto p-2 bg-secondary-50 dark:bg-secondary-800 rounded-lg">
+                        <div className="grid grid-cols-5 sm:grid-cols-8 md:grid-cols-10 gap-2 max-h-64 overflow-y-auto p-2 bg-secondary-50 dark:bg-secondary-800 rounded-lg">
                             {generateLessonButtons()}
                         </div>
 

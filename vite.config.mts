@@ -1,10 +1,15 @@
-import { defineConfig } from "vite";
+import { defineConfig } from "vitest/config";
 import react from "@vitejs/plugin-react";
 import path from "path";
 
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [react()],
+  test: {
+    globals: true,
+    environment: 'jsdom',
+    setupFiles: './src/test/setup.ts',
+  },
   resolve: {
     alias: {
       "@components": path.resolve(__dirname, "./src/components"),
@@ -31,22 +36,24 @@ export default defineConfig({
   build: {
     rollupOptions: {
       output: {
-        manualChunks: {
-          // Vendor chunks
-          "react-vendor": ["react", "react-dom"],
-          "router-vendor": ["react-router-dom"],
-          "ui-vendor": ["antd", "@ant-design/icons"],
-          "state-vendor": ["@reduxjs/toolkit", "react-redux"],
-
-
-
-          // Utils and libraries
-          "utils-chunk": [
-            "axios",
-            "framer-motion",
-            "wanakana",
-            "kanjivg-js",
-          ],
+        manualChunks: (id) => {
+          if (id.includes('node_modules')) {
+            if (id.includes('react') || id.includes('react-dom')) {
+              return 'react-vendor';
+            }
+            if (id.includes('react-router')) {
+              return 'router-vendor';
+            }
+            if (id.includes('antd') || id.includes('@ant-design')) {
+              return 'ui-vendor';
+            }
+            if (id.includes('@reduxjs') || id.includes('react-redux')) {
+              return 'state-vendor';
+            }
+            if (id.includes('axios') || id.includes('framer-motion') || id.includes('wanakana') || id.includes('kanjivg')) {
+              return 'utils-chunk';
+            }
+          }
         },
       },
     },

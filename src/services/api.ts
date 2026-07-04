@@ -174,7 +174,7 @@ export interface LoginData {
 }
 
 export interface RegisterData {
-  username: string;
+  fullName: string;
   email: string;
   password: string;
 }

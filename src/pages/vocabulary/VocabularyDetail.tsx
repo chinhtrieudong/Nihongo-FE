@@ -427,29 +427,29 @@ const VocabularyDetail: React.FC = () => {
               <div className="flex items-start gap-3">
                 {/* Left Content: Kanji + HanViet */}
                 <div
-                  className={`flex-[0.3] text-center flex flex-col items-center h-16 ${
+                  className={`w-16 min-w-[4rem] text-center flex flex-col items-center ${
                     item.hanViet ? "justify-start" : "justify-center"
                   }`}
                 >
-                  <Text className="text-2xl font-bold text-text-main block kanji-text">
+                  <Text className="text-xl sm:text-2xl font-bold text-text-main block kanji-text leading-tight">
                     {item.kanji || item.hiragana}
                   </Text>
                   {item.hanViet && (
-                    <Text className="text-sm font-medium text-amber-600 uppercase tracking-wide block mt-1">
+                    <Text className="text-xs font-medium text-amber-600 uppercase tracking-wide block mt-0.5 line-clamp-1">
                       {item.hanViet}
                     </Text>
                   )}
                 </div>
 
                 {/* Vertical Divider */}
-                <div className="w-px h-16" style={{ borderLeft: '1px solid rgba(148, 163, 184, 0.25)' }} />
+                <div className="w-px self-stretch" style={{ borderLeft: '1px solid rgba(148, 163, 184, 0.25)' }} />
 
                 {/* Right Content: Hiragana + Meaning */}
-                <div className="flex-[0.7]">
-                  <Text className="text-lg text-blue-500 font-medium block jp-text">
+                <div className="flex-1 min-w-0">
+                  <Text className="text-base sm:text-lg text-blue-500 font-medium block jp-text">
                     {item.hiragana}
                   </Text>
-                  <Text className="text-lg text-text-main block mt-1">
+                  <Text className="text-base sm:text-lg text-text-main block mt-0.5">
                     {item.meaning}
                   </Text>
                 </div>
@@ -551,41 +551,39 @@ const VocabularyDetail: React.FC = () => {
                       key={item.id}
                       className="bg-white dark:bg-slate-800 rounded-xl border border-border p-4"
                     >
-                      <div className="flex items-start gap-4">
+                      <div className="flex items-start gap-3">
                         {/* Kanji */}
-                        <div className="flex-[0.3] text-center">
-                          <div className="text-2xl font-bold text-text-main kanji-text">
+                        <div className="w-16 min-w-[4rem] text-center flex flex-col items-center">
+                          <div className="text-xl sm:text-2xl font-bold text-text-main kanji-text leading-tight">
                             {item.kanji || item.hiragana}
                           </div>
                           {item.kanji && item.hiragana !== item.kanji && (
-                            <div className="text-sm text-blue-500 jp-text mt-1">
+                            <div className="text-sm text-blue-500 jp-text mt-0.5">
                               {item.hiragana}
                             </div>
                           )}
                         </div>
 
                         {/* Content */}
-                        <div className="flex-[0.7]">
-                          <Text className="text-lg text-blue-500 font-medium block jp-text">
+                        <div className="flex-1 min-w-0">
+                          <Text className="text-base sm:text-lg text-blue-500 font-medium block jp-text">
                             {item.hiragana}
                           </Text>
-                          <Text className="text-lg text-text-main block mt-1">
+                          <Text className="text-base sm:text-lg text-text-main block mt-0.5">
                             {item.meaning}
                           </Text>
                           {item.hanViet && (
-                            <Text className="text-sm text-purple-500 block mt-1">
-                              Hán Việt: {item.hanViet}
+                            <Text className="text-xs text-purple-500 block mt-0.5">
+                              {item.hanViet}
                             </Text>
                           )}
-                        </div>
-
-                        {/* Stats */}
-                        <div className="flex-shrink-0 text-right">
-                          <div className="text-xs text-text-sub">
-                            Độ chính xác: <span className="font-semibold">{accuracy}%</span>
-                          </div>
-                          <div className="text-xs text-text-sub mt-1">
-                            Ôn tập: <span className="font-semibold">{srsItem?.reviewCount || 0}</span> lần
+                          <div className="flex gap-3 mt-1">
+                            <div className="text-xs text-text-sub">
+                              Chính xác: <span className="font-semibold">{accuracy}%</span>
+                            </div>
+                            <div className="text-xs text-text-sub">
+                              Ôn: <span className="font-semibold">{srsItem?.reviewCount || 0}</span> lần
+                            </div>
                           </div>
                         </div>
 

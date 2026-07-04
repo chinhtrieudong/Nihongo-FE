@@ -1,11 +1,6 @@
 import React from "react";
 import { Drawer, Button } from "antd";
-import {
-  X,
-  Check,
-  Database,
-  Home,
-} from "lucide-react";
+import { X, Check, Database, Home } from "lucide-react";
 import { useNavigate, useLocation } from "react-router-dom";
 import { useAppSelector, useAppDispatch } from "../../store/hooks";
 import { closeDrawer } from "../../store/slices/uiSlice";
@@ -38,182 +33,56 @@ const AdminMobileDrawer: React.FC = () => {
       onClose={handleClose}
       size="default"
       closable={false}
-      maskClosable
+      maskClosable={true}
       styles={{
-        body: { padding: 0 },
-        header: { display: "none" },
+        body: { padding: 0, background: 'var(--surface-2)', fontFamily: 'var(--app-font-family)' },
+        header: { display: 'none' },
+        mask: { backdropFilter: 'blur(4px)' }
       }}
       className="mobile-drawer"
     >
-      <div className="mobile-drawer-header">
-        <div className="drawer-logo">
-          <img src="/Logo.svg" alt="Nihon Nao" className="logo-icon" />
-          <div className="logo-text">
-            <h3>Admin</h3>
-            <p>Quản lý dữ liệu</p>
+      <div className="flex flex-col h-full bg-surface-2">
+        <div className="flex items-center justify-between p-4 border-b border-border">
+          <div className="flex items-center gap-3">
+            <img src="/Logo.svg" alt="Nihon Nào!" className="w-10 h-10 select-none" draggable={false} />
+            <div>
+              <h3 className="m-0 text-lg font-semibold text-text-main leading-tight">Admin</h3>
+              <p className="m-0 text-xs text-text-sub">Quản lý dữ liệu</p>
+            </div>
           </div>
+          <Button
+            type="text"
+            icon={<X className="w-5 h-5 text-text-sub" />}
+            onClick={handleClose}
+            className="flex items-center justify-center"
+          />
         </div>
-        <Button
-          type="text"
-          icon={<X className="w-4 h-4" />}
-          onClick={handleClose}
-          className="drawer-close-btn"
-        />
+
+        <div className="flex-1 overflow-y-auto py-4 px-3 flex flex-col gap-1">
+          {menuItems.map((item) => {
+            const isAdminRoot =
+              item.key === "/admin" && location.pathname.startsWith("/admin");
+            const isActive = isAdminRoot || location.pathname === item.key;
+
+            return (
+              <button
+                key={item.key}
+                onClick={() => handleMenuClick(item.key)}
+                className={[
+                  "w-full flex items-center gap-4 px-4 py-3 rounded-xl transition-all duration-200 border-none text-left",
+                  isActive
+                    ? "bg-primary/10 text-primary font-medium"
+                    : "bg-transparent text-text-main hover:bg-hover-bg"
+                ].join(" ")}
+              >
+                <span className={isActive ? "text-primary" : "text-text-sub"}>{item.icon}</span>
+                <span className="flex-1 text-base">{item.label}</span>
+                {isActive && <Check className="w-4 h-4 text-primary" />}
+              </button>
+            );
+          })}
+        </div>
       </div>
-
-      <div className="mobile-drawer-menu">
-        {menuItems.map((item) => {
-          const isAdminRoot =
-            item.key === "/admin" && location.pathname.startsWith("/admin");
-          const isActive = isAdminRoot || location.pathname === item.key;
-
-          return (
-            <button
-              key={item.key}
-              className={`drawer-menu-item ${isActive ? "active" : ""}`}
-              onClick={() => handleMenuClick(item.key)}
-            >
-              <span className="menu-icon">{item.icon}</span>
-              <span className="menu-label">{item.label}</span>
-              {isActive && <Check className="w-4 h-4 menu-check" />}
-            </button>
-          );
-        })}
-      </div>
-
-      <style>{`
-        .mobile-drawer .ant-drawer-body {
-          padding: 0;
-        }
-
-        .mobile-drawer-header {
-          display: flex;
-          align-items: center;
-          justify-content: space-between;
-          padding: 20px 16px;
-          border-bottom: 1px solid #e5e7eb;
-          background: #f9fafb;
-        }
-
-        .dark .mobile-drawer-header {
-          border-bottom-color: #374151;
-          background: #1f2937;
-        }
-
-        .drawer-logo {
-          display: flex;
-          align-items: center;
-          gap: 12px;
-        }
-
-        .logo-icon {
-          width: 40px;
-          height: 40px;
-        }
-
-        .logo-text h3 {
-          margin: 0;
-          font-size: 18px;
-          font-weight: 600;
-          color: #111827;
-        }
-
-        .dark .logo-text h3 {
-          color: #f9fafb;
-        }
-
-        .logo-text p {
-          margin: 0;
-          font-size: 12px;
-          color: #6b7280;
-        }
-
-        .dark .logo-text p {
-          color: #9ca3af;
-        }
-
-        .mobile-drawer-menu {
-          padding: 0;
-        }
-
-        .drawer-menu-item {
-          display: flex;
-          align-items: center;
-          gap: 16px;
-          width: 100%;
-          padding: 16px 20px;
-          border: none;
-          background: none;
-          text-align: left;
-          font-size: 16px;
-          cursor: pointer;
-          transition: all 0.2s ease;
-          position: relative;
-        }
-
-        .drawer-menu-item:hover {
-          background: #f3f4f6;
-        }
-
-        .dark .drawer-menu-item:hover {
-          background: #374151;
-        }
-
-        .drawer-menu-item.active {
-          background: #eff6ff;
-          color: #2563eb;
-        }
-
-        .dark .drawer-menu-item.active {
-          background: #1e3a8a;
-          color: #60a5fa;
-        }
-
-        .menu-icon {
-          font-size: 18px;
-          width: 24px;
-          text-align: center;
-          color: #6b7280;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-        }
-
-        .dark .menu-icon {
-          color: #9ca3af;
-        }
-
-        .drawer-menu-item.active .menu-icon {
-          color: #2563eb;
-        }
-
-        .dark .drawer-menu-item.active .menu-icon {
-          color: #60a5fa;
-        }
-
-        .menu-label {
-          flex: 1;
-          font-weight: 500;
-          color: #111827;
-        }
-
-        .dark .menu-label {
-          color: #f9fafb;
-        }
-
-        .menu-check {
-          color: #2563eb;
-          font-size: 14px;
-        }
-
-        .dark .menu-check {
-          color: #60a5fa;
-        }
-
-        .dark .ant-drawer-body {
-          background: #111827;
-        }
-      `}</style>
     </Drawer>
   );
 };

@@ -727,11 +727,11 @@ const Pronunciation: React.FC = () => {
 
         {/* Filters */}
         <Card className="mb-4 bg-surface-1 border-border" styles={{ body: { padding: '12px 16px' } }}>
-          <div className="flex flex-wrap items-center gap-3">
+          <div className="flex flex-wrap items-center gap-2">
             <Select
               value={selectedLevel}
               onChange={setSelectedLevel}
-              className="w-24"
+              className="flex-1 min-w-[80px] max-w-[120px]"
               popupMatchSelectWidth={false}
             >
               {levels.map(level => (
@@ -743,7 +743,7 @@ const Pronunciation: React.FC = () => {
             <Select
               value={selectedCategory}
               onChange={setSelectedCategory}
-              className="w-40"
+              className="flex-[2] min-w-[120px]"
               placeholder="Danh mục"
               popupMatchSelectWidth={false}
             >
@@ -753,14 +753,14 @@ const Pronunciation: React.FC = () => {
                 </Option>
               ))}
             </Select>
-            <div className="ml-auto flex items-center gap-2">
+            <div className="ml-auto flex items-center gap-2 flex-shrink-0">
               <Button
                 icon={<ArrowLeft className="w-4 h-4" />}
                 onClick={handlePreviousExercise}
                 disabled={exercises.length <= 1}
                 size="small"
               />
-              <Text className="text-sm text-text-sub">
+              <Text className="text-sm text-text-sub whitespace-nowrap">
                 {currentExercise ? `${exercises.findIndex(ex => ex._id === currentExercise._id) + 1}/${exercises.length}` : "0/0"}
               </Text>
               <Button
