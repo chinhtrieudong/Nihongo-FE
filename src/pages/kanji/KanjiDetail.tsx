@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
-import { Volume2, ArrowLeft } from "lucide-react";
+import { Volume2, ArrowLeft, Play, RotateCcw } from "lucide-react";
 import { Card, Button, Row, Col } from "antd";
 import { EmptyState, LessonNavigation } from "../../components/common";
 import { KanjiItem, KanjiDetailResponse } from "../../types/kanji";
@@ -157,59 +157,59 @@ const KanjiDetail: React.FC<KanjiDetailProps> = ({
     const [error, setError] = useState<string | null>(null);
     const primaryChar = resolveKanjiChar(kanji);
 
-    useEffect(() => {
-      const fetchKanjiSVG = async () => {
-        try {
-          setLoading(true);
-          setError(null);
+    const fetchKanjiSVG = async () => {
+      try {
+        setLoading(true);
+        setError(null);
 
-          if (!primaryChar) {
-            setSvgContent("not-found");
-            return;
-          }
-
-          const codePoint = primaryChar.codePointAt(0);
-          if (typeof codePoint !== "number") {
-            setSvgContent("not-found");
-            return;
-          }
-
-          const codePointHex = codePoint.toString(16).padStart(5, "0");
-          const response = await fetch(
-            `https://raw.githubusercontent.com/KanjiVG/kanjivg/master/kanji/${codePointHex}.svg`,
-          );
-
-          if (!response.ok) {
-            setSvgContent("not-found");
-            return;
-          }
-
-          const svg = await response.text();
-          const cleanedSvg = svg
-            .replace(/<!\[CDATA\[[\s\S]*?\]\]>/g, '')
-            .replace(/<!--[\s\S]*?-->/g, '')
-            .replace(/<\?xml.*?\?>/g, '')
-            .replace(/<!DOCTYPE.*?>/g, '')
-            .replace(/>/g, '>')
-            .replace(/</g, '<')
-            .replace(/&/g, '&')
-            .replace(/"/g, '"')
-            .replace(/&#x27;/g, "'")
-            .trim();
-
-          const svgMatch = cleanedSvg.match(/<svg[^>]*>[\s\S]*<\/svg>/)
-          const finalSvg = svgMatch ? svgMatch[0] : cleanedSvg;
-
-          setSvgContent(finalSvg);
-        } catch (error) {
-          console.log("[v0] SVG fetch error:", error);
-          setSvgContent("error");
-          setError("Không thể tải dữ liệu nét viết");
-        } finally {
-          setLoading(false);
+        if (!primaryChar) {
+          setSvgContent("not-found");
+          return;
         }
-      }
 
+        const codePoint = primaryChar.codePointAt(0);
+        if (typeof codePoint !== "number") {
+          setSvgContent("not-found");
+          return;
+        }
+
+        const codePointHex = codePoint.toString(16).padStart(5, "0");
+        const response = await fetch(
+          `https://raw.githubusercontent.com/KanjiVG/kanjivg/master/kanji/${codePointHex}.svg`,
+        );
+
+        if (!response.ok) {
+          setSvgContent("not-found");
+          return;
+        }
+
+        const svg = await response.text();
+        const cleanedSvg = svg
+          .replace(/<!\[CDATA\[[\s\S]*?\]\]>/g, '')
+          .replace(/<!--[\s\S]*?-->/g, '')
+          .replace(/<\?xml.*?\?>/g, '')
+          .replace(/<!DOCTYPE.*?>/g, '')
+          .replace(/>/g, '>')
+          .replace(/</g, '<')
+          .replace(/&/g, '&')
+          .replace(/"/g, '"')
+          .replace(/&#x27;/g, "'")
+          .trim();
+
+        const svgMatch = cleanedSvg.match(/<svg[^>]*>[\s\S]*<\/svg>/)
+        const finalSvg = svgMatch ? svgMatch[0] : cleanedSvg;
+
+        setSvgContent(finalSvg);
+      } catch (error) {
+        console.log("[v0] SVG fetch error:", error);
+        setSvgContent("error");
+        setError("Không thể tải dữ liệu nét viết");
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    useEffect(() => {
       fetchKanjiSVG();
     }, [primaryChar]);
 
@@ -228,7 +228,7 @@ const KanjiDetail: React.FC<KanjiDetailProps> = ({
       return (
         <div className="bg-gradient-to-br from-slate-50 to-slate-100 dark:from-slate-800 dark:to-slate-900 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700 flex items-center justify-center h-80">
           <div className="text-center">
-            <p className="text-[12rem] font-bold text-slate-800 dark:text-slate-200 leading-none kanji-text mb-2">
+            <p className="text-[16rem] font-bold text-slate-800 dark:text-slate-200 leading-none kanji-text mb-4">
               {primaryChar || "?"}
             </p>
             <p className="text-sm text-slate-500 dark:text-slate-400">
@@ -239,6 +239,18 @@ const KanjiDetail: React.FC<KanjiDetailProps> = ({
       )
     }
 
+    const [isAnimating, setIsAnimating] = useState(false);
+
+    const replayAnimation = () => {
+      setIsAnimating(true);
+      // Reset SVG animation by re-fetching
+      setSvgContent("");
+      setTimeout(() => {
+        fetchKanjiSVG();
+        setTimeout(() => setIsAnimating(false), 100);
+      }, 50);
+    };
+
     return (
       <div className="bg-gradient-to-br from-slate-50 to-slate-100 dark:from-slate-800 dark:to-slate-900 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700 overflow-hidden">
         <div
@@ -246,10 +258,19 @@ const KanjiDetail: React.FC<KanjiDetailProps> = ({
           className="w-full h-80 flex items-center justify-center p-4"
           style={{
             background: 'white',
-            transform: 'scale(1.5)',
+            transform: 'scale(1.8)',
             transformOrigin: 'center',
           }}
         />
+        <div className="absolute bottom-4 right-4 flex gap-2">
+          <button
+            onClick={replayAnimation}
+            className="p-2 bg-white dark:bg-slate-700 rounded-lg shadow-md hover:shadow-lg transition-shadow border border-slate-200 dark:border-slate-600"
+            title="Phát lại animation"
+          >
+            <RotateCcw className="w-5 h-5 text-slate-700 dark:text-slate-300" />
+          </button>
+        </div>
       </div>
     )
   };
@@ -298,7 +319,9 @@ const KanjiDetail: React.FC<KanjiDetailProps> = ({
           <Col xs={24} lg={10}>
             <div className="mb-6">
               <h2 className="text-lg font-semibold text-slate-700 dark:text-slate-300 mb-3">Thứ tự nét viết</h2>
-              <KanjiStrokeOrder kanji={kanjiData.kanji ?? (kanjiData as any).character} />
+              <div className="relative">
+                <KanjiStrokeOrder kanji={kanjiData.kanji ?? (kanjiData as any).character} />
+              </div>
             </div>
 
             {/* Kanji Info Card - Below Stroke Order */}
