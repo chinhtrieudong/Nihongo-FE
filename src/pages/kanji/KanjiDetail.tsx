@@ -304,7 +304,7 @@ const KanjiDetail: React.FC<KanjiDetailProps> = ({
             </div>
 
             {/* Kanji Info Card - Below Stroke Order */}
-            <Card className="bg-white dark:bg-slate-800 border-slate-200 dark:border-slate-700 shadow-sm">
+            <Card className="bg-white dark:bg-slate-800 border-slate-200 dark:border-slate-700 shadow-md hover:shadow-lg transition-shadow">
               <div className="text-center mb-4">
                 <p className="text-2xl text-slate-600 dark:text-slate-400 jp-text mb-3">{(kanjiData.hanviet || '').toUpperCase()}</p>
                 
@@ -330,7 +330,7 @@ const KanjiDetail: React.FC<KanjiDetailProps> = ({
           <Col xs={24} lg={14}>
 
             {/* Details Card */}
-            <Card className="mb-6 bg-white dark:bg-slate-800 border-slate-200 dark:border-slate-700 shadow-sm">
+            <Card className="mb-6 bg-white dark:bg-slate-800 border-slate-200 dark:border-slate-700 shadow-md hover:shadow-lg transition-shadow">
               <div className="space-y-5">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div className="p-4 bg-slate-50 dark:bg-slate-700/50 rounded-xl">
@@ -358,13 +358,13 @@ const KanjiDetail: React.FC<KanjiDetailProps> = ({
             </Card>
 
             {/* Vocabulary Card */}
-            <Card className="bg-white dark:bg-slate-800 border-slate-200 dark:border-slate-700 shadow-sm">
+            <Card className="bg-white dark:bg-slate-800 border-slate-200 dark:border-slate-700 shadow-md hover:shadow-lg transition-shadow">
               <h2 className="text-lg font-semibold text-slate-700 dark:text-slate-300 mb-4">Từ vựng liên quan</h2>
               <div className="space-y-3">
                 {(kanjiData.relatedVocabulary || []).slice(0, 8).map((word, index) => (
                   <div
                     key={index}
-                    className="flex flex-col sm:flex-row sm:items-center gap-4 p-4 bg-slate-50 dark:bg-slate-700/50 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-700 transition-colors"
+                    className="flex flex-col sm:flex-row sm:items-center gap-4 p-4 bg-slate-50 dark:bg-slate-700/50 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-700 transition-all hover:shadow-md"
                   >
                     {/* Kanji with furigana */}
                     <div className="flex flex-col items-center justify-center min-w-[70px] flex-shrink-0">
