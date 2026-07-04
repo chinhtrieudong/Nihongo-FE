@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
-import { lessonAPI, kanjiAPI } from "../../services/api";
 import { Volume2, ArrowLeft } from "lucide-react";
 import { Card, Button, Row, Col } from "antd";
 import { EmptyState, LessonNavigation } from "../../components/common";
 import { KanjiItem, KanjiDetailResponse } from "../../types/kanji";
 import { useAppSelector } from "../../store/hooks";
 import { getFontPreset } from "../../constants/fonts";
+import fakeKanjiData from "../../data/fakeKanjiData.json";
 
 interface KanjiDetailProps {
   lessonId?: string;
@@ -72,18 +72,18 @@ const KanjiDetail: React.FC<KanjiDetailProps> = ({
     const fetchKanjiData = async () => {
       try {
         setLoading(true);
-        let response;
-
+        
+        // Use fake data temporarily
         if (kanji) {
-          response = await kanjiAPI.getKanji(kanji);
-        } else if (lessonId) {
-          response = await lessonAPI.getLessonKanji(lessonId);
+          const found = fakeKanjiData.kanjiList.find(k => k.kanji === kanji);
+          if (found) {
+            setKanjiData(found as KanjiItem);
+          }
         } else {
-          response = await kanjiAPI.getAllKanji({});
-        }
-
-        if (response.success) {
-          setKanjiData(response.data);
+          // Default to first kanji if no specific kanji selected
+          if (fakeKanjiData.kanjiList.length > 0) {
+            setKanjiData(fakeKanjiData.kanjiList[0] as KanjiItem);
+          }
         }
       } catch (error) {
         console.error("Failed to fetch kanji data:", error);
@@ -190,10 +190,10 @@ const KanjiDetail: React.FC<KanjiDetailProps> = ({
             .replace(/<!--[\s\S]*?-->/g, '')
             .replace(/<\?xml.*?\?>/g, '')
             .replace(/<!DOCTYPE.*?>/g, '')
-            .replace(/&gt;/g, '>')
-            .replace(/&lt;/g, '<')
-            .replace(/&amp;/g, '&')
-            .replace(/&quot;/g, '"')
+            .replace(/>/g, '>')
+            .replace(/</g, '<')
+            .replace(/&/g, '&')
+            .replace(/"/g, '"')
             .replace(/&#x27;/g, "'")
             .trim();
 
@@ -300,34 +300,32 @@ const KanjiDetail: React.FC<KanjiDetailProps> = ({
               <h2 className="text-lg font-semibold text-slate-700 dark:text-slate-300 mb-3">Thứ tự nét viết</h2>
               <KanjiStrokeOrder kanji={kanjiData.kanji ?? (kanjiData as any).character} />
             </div>
-          </Col>
 
-          {/* Right Column - Info & Vocabulary */}
-          <Col xs={24} lg={14}>
-            {/* Kanji Header Card */}
-            <Card className="mb-6 bg-white dark:bg-slate-800 border-slate-200 dark:border-slate-700 shadow-sm">
-              <div className="text-center mb-6">
-                <h1 className="text-6xl md:text-7xl font-bold text-slate-800 dark:text-slate-100 kanji-text mb-2">
-                  {(kanjiData as any).character || kanjiData.kanji}
-                </h1>
-                <p className="text-2xl text-slate-600 dark:text-slate-400 jp-text">{kanjiData.hanviet}</p>
-              </div>
-              
-              <div className="flex flex-wrap justify-center gap-3 mb-6">
-                <span className={`px-4 py-2 rounded-full text-sm font-semibold ${getJLPTColor(kanjiData.level)}`}>
-                  {kanjiData.level}
-                </span>
-                <span className="px-4 py-2 rounded-full text-sm font-semibold bg-slate-100 text-slate-700 dark:bg-slate-700 dark:text-slate-300">
-                  {kanjiData.strokeCount} nét
-                </span>
-              </div>
+            {/* Kanji Info Card - Below Stroke Order */}
+            <Card className="bg-white dark:bg-slate-800 border-slate-200 dark:border-slate-700 shadow-sm">
+              <div className="text-center mb-4">
+                <p className="text-2xl text-slate-600 dark:text-slate-400 jp-text mb-3">{(kanjiData.hanviet || '').toUpperCase()}</p>
+                
+                <div className="flex flex-wrap justify-center gap-3 mb-4">
+                  <span className={`px-4 py-2 rounded-full text-sm font-semibold ${getJLPTColor(kanjiData.level)}`}>
+                    {kanjiData.level}
+                  </span>
+                  <span className="px-4 py-2 rounded-full text-sm font-semibold bg-slate-100 text-slate-700 dark:bg-slate-700 dark:text-slate-300">
+                    {kanjiData.strokeCount} nét
+                  </span>
+                </div>
 
-              <div className="text-center">
-                <p className="text-xl text-blue-600 dark:text-blue-400 font-semibold">
-                  {kanjiData.meaningVi}
-                </p>
+                <div className="text-center">
+                  <p className="text-xl text-blue-600 dark:text-blue-400 font-semibold">
+                    {kanjiData.meaningVi}
+                  </p>
+                </div>
               </div>
             </Card>
+          </Col>
+
+          {/* Right Column - Details & Vocabulary */}
+          <Col xs={24} lg={14}>
 
             {/* Details Card */}
             <Card className="mb-6 bg-white dark:bg-slate-800 border-slate-200 dark:border-slate-700 shadow-sm">
@@ -362,24 +360,40 @@ const KanjiDetail: React.FC<KanjiDetailProps> = ({
                 {(kanjiData.relatedVocabulary || []).slice(0, 8).map((word, index) => (
                   <div
                     key={index}
-                    className="flex flex-col sm:flex-row sm:items-center gap-2 p-4 bg-slate-50 dark:bg-slate-700/50 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-700 transition-colors"
+                    className="flex flex-col sm:flex-row sm:items-center gap-4 p-4 bg-slate-50 dark:bg-slate-700/50 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-700 transition-colors"
                   >
-                    <div className="flex items-center gap-3 flex-1">
-                      <span className="text-2xl font-bold text-blue-600 dark:text-blue-400 kanji-text">
+                    {/* Kanji with furigana */}
+                    <div className="flex flex-col items-center justify-center min-w-[70px] flex-shrink-0">
+                      <span className="text-xs text-slate-500 dark:text-slate-400 jp-text leading-tight mb-1">
+                        {word.kana}
+                      </span>
+                      <span className="text-3xl font-bold text-blue-600 dark:text-blue-400 kanji-text leading-none">
                         {word.word}
                       </span>
-                      {word.word !== word.kana && (
-                        <span className="text-base text-slate-600 dark:text-slate-400 jp-text">
-                          {word.kana}
-                        </span>
-                      )}
                     </div>
-                    <div className="flex items-center gap-2 text-sm">
-                      <span className="text-slate-500 dark:text-slate-400">{word.hanviet}</span>
-                      <span className="text-slate-300 dark:text-slate-600">•</span>
-                      <span className="text-slate-700 dark:text-slate-300 font-medium">
-                        {word.meaningVi ? word.meaningVi.charAt(0).toUpperCase() + word.meaningVi.slice(1) : ''}
-                      </span>
+
+                    {/* Divider */}
+                    <div className="hidden sm:block w-px h-12 bg-slate-300 dark:bg-slate-600"></div>
+
+                    {/* Right side - 2 rows */}
+                    <div className="flex-1 flex flex-col gap-2">
+                      {/* Top row: Hán Việt and Meaning */}
+                      <div className="flex items-center gap-3">
+                        <span className="text-sm font-semibold text-slate-600 dark:text-slate-400">{(word.hanviet || '').toUpperCase()}</span>
+                        <span className="text-slate-400 dark:text-slate-500">|</span>
+                        <span className="text-base font-semibold text-slate-800 dark:text-slate-200">
+                          {word.meaningVi ? word.meaningVi.charAt(0).toUpperCase() + word.meaningVi.slice(1) : ''}
+                        </span>
+                      </div>
+
+                      {/* Bottom row: Examples (separated) */}
+                      {(word.exampleJp || word.exampleVi) && (
+                        <div className="flex items-center gap-2 text-xs text-slate-500 dark:text-slate-400 italic pt-1 border-t border-slate-200 dark:border-slate-600">
+                          {word.exampleJp && <span className="jp-text">{word.exampleJp}</span>}
+                          {word.exampleJp && word.exampleVi && <span className="text-slate-400">|</span>}
+                          {word.exampleVi && <span>{word.exampleVi}</span>}
+                        </div>
+                      )}
                     </div>
                   </div>
                 ))}

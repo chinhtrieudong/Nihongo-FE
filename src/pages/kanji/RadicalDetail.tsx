@@ -3,9 +3,9 @@ import { useLocation, useNavigate, useParams } from "react-router-dom";
 import { ArrowLeft, ChevronLeft, ChevronRight } from "lucide-react";
 import { Spin, Button } from "antd";
 import { EmptyState } from "../../components/common";
-import { kanjiAPI } from "../../services/api";
 import { useAppSelector } from "../../store/hooks";
 import { getFontPreset } from "../../constants/fonts";
+import fakeKanjiData from "../../data/fakeKanjiData.json";
 
 type RadicalDetailData = {
   symbol: string;
@@ -71,20 +71,11 @@ const RadicalDetail: React.FC = () => {
 
   // Load all radicals for navigation
   useEffect(() => {
-    const loadAllRadicals = async () => {
-      try {
-        const response = await kanjiAPI.getRadicals();
-        // Response format: { success: true, data: [...], count: ... }
-        const radicals = response?.data?.data || response?.data?.items || response?.data || [];
-        const symbols = radicals.map((r: any) => r.symbol).filter(Boolean);
-        setAllRadicals(symbols);
-        const idx = symbols.indexOf(symbol || "");
-        setCurrentIndex(idx);
-      } catch (error) {
-        console.error("Failed to load radicals list:", error);
-      }
-    };
-    loadAllRadicals();
+    // Use fake data temporarily
+    const symbols = fakeKanjiData.kanjiList.map(k => k.kanji).filter(Boolean);
+    setAllRadicals(symbols);
+    const idx = symbols.indexOf(symbol || "");
+    setCurrentIndex(idx);
   }, [symbol]);
 
   useEffect(() => {
@@ -92,87 +83,55 @@ const RadicalDetail: React.FC = () => {
       if (!symbol) return;
       setLoading(true);
       try {
-        const [radicalResponse, kanjiResponse] = await Promise.all([
-          kanjiAPI.getRadicalDetail(symbol),
-          kanjiAPI.getKanjiByRadical(symbol, 1, 40),
-        ]);
+        // Use fake data temporarily
+        const foundKanji = fakeKanjiData.kanjiList.find(k => k.kanji === symbol);
+        
+        if (foundKanji) {
+          // Create radical data from kanji
+          const radicalData: RadicalDetailData = {
+            symbol: foundKanji.kanji,
+            hanviet: foundKanji.hanviet,
+            meaningVi: foundKanji.meaningVi,
+            stroke_count: foundKanji.strokeCount,
+            jlpt: foundKanji.level,
+            example_kanji: foundKanji.relatedVocabulary?.map((v, idx) => ({
+              kanji: v.word,
+              hanviet: v.hanviet,
+              meaning_vi: v.meaningVi,
+            })) || [],
+          };
+          
+          setRadical({
+            ...radicalData,
+            meaningVi: radicalData.meaningVi,
+            variants: [],
+            example_kanji: radicalData.example_kanji || [],
+          });
 
-        const rawRadical = radicalResponse?.data?.data || radicalResponse?.data || null;
-        const exampleItems: KanjiSummary[] = Array.isArray(rawRadical?.example_kanji)
-          ? rawRadical.example_kanji
-            .map((item: any, index: number) => ({
-              _id: `${item.kanji || "kanji"}-${index}`,
-              character: item.kanji || "",
-              hanviet: item.hanviet || "",
-              meaning_vi: item.meaning_vi || "",
-            }))
-            .filter((item: KanjiSummary) => Boolean(item.character))
-          : [];
+          // Set items from related vocabulary
+          const items: KanjiSummary[] = foundKanji.relatedVocabulary?.map((v, idx) => ({
+            _id: `${v.word}-${idx}`,
+            character: v.word,
+            hanviet: v.hanviet,
+            meaning_vi: v.meaningVi,
+          })) || [];
+          
+          setItems(items);
 
-        const rawKanjiItems = Array.isArray(kanjiResponse?.data?.data?.items)
-          ? kanjiResponse.data.data.items
-          : Array.isArray(kanjiResponse?.data?.items)
-            ? kanjiResponse.data.items
-            : Array.isArray(kanjiResponse?.data)
-              ? kanjiResponse.data
-              : [];
-
-        const kanjiItems: KanjiSummary[] = rawKanjiItems
-          .map((item: any, index: number) => ({
-            _id:
-              item._id ||
-              item.id ||
-              `${item.character || item.kanji || "kanji"}-${index}`,
-            character: item.character || item.kanji || "",
-            hanviet: item.hanviet || item.han_viet || "",
-            meaning_vi: item.meaning_vi || item.meaningVi || "",
-            stroke_count: item.stroke_count ?? item.strokes,
-            jlpt_level: normalizeJlptLevel(
-              item.jlpt_level || item.jlpt || item.level,
-            ),
-          }))
-          .filter((item: KanjiSummary) => Boolean(item.character));
-
-        setRadical(
-          rawRadical
-            ? {
-              ...rawRadical,
-              meaningVi: rawRadical.meaningVi || rawRadical.meaning_vi,
-              variants: Array.isArray(rawRadical.variants)
-                ? rawRadical.variants
-                : [],
-              example_kanji: Array.isArray(rawRadical.example_kanji)
-                ? rawRadical.example_kanji
-                : [],
-            }
-            : null,
-        );
-
-        const mergedItems = kanjiItems.length > 0 ? kanjiItems : exampleItems;
-        setItems(mergedItems);
-
-        const chars = mergedItems.slice(0, 5).map((item) => item.character);
-        const detailResponses = await Promise.all(
-          chars.map((char) => kanjiAPI.getKanji(char).catch(() => null)),
-        );
-
-        const endpointWords: DemoWord[] = detailResponses
-          .flatMap((res: any) => res?.data?.vocabulary_examples || [])
-          .map((word: any) => ({
-            word: word.word || "",
-            reading: word.hiragana || "",
-            meaning: word.meaning_vi || "",
-          }))
-          .filter((word: DemoWord) => Boolean(word.word))
-          .filter(
-            (word: DemoWord, index: number, arr: DemoWord[]) =>
-              arr.findIndex(
-                (w) => w.word === word.word && w.reading === word.reading,
-              ) === index,
-          )
-          .slice(0, 9);
-
-        setVocabularyWords(endpointWords);
+          // Set vocabulary words
+          const vocabWords: DemoWord[] = foundKanji.relatedVocabulary?.map(v => ({
+            word: v.word,
+            reading: v.kana,
+            meaning: v.meaningVi,
+          })) || [];
+          
+          setVocabularyWords(vocabWords);
+        } else {
+          // If symbol not found in fake data, show empty state
+          setRadical(null);
+          setItems([]);
+          setVocabularyWords([]);
+        }
       } catch (error) {
         console.error("Failed to load radical detail:", error);
         setRadical(null);

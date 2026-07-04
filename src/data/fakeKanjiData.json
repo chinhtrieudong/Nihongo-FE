@@ -1,0 +1,162 @@
+{
+  "kanjiList": [
+    {
+      "id": "1",
+      "kanji": "日",
+      "hanviet": "NHẬT",
+      "level": "N5",
+      "onyomi": ["ニチ", "ジツ"],
+      "kunyomi": ["ひ", "び"],
+      "meaningVi": "Mặt trời, ngày",
+      "strokeCount": 4,
+      "radicals": ["日"],
+      "memoryTip": "Hình chữ nhật biểu thị mặt trời mọc",
+      "relatedVocabulary": [
+        {
+          "word": "日本",
+          "kana": "にほん",
+          "hanviet": "NHẬT BẢN",
+          "meaningVi": "Nhật Bản",
+          "exampleJp": "私は日本に行きました。",
+          "exampleVi": "Tôi đã đến Nhật Bản."
+        },
+        {
+          "word": "日曜日",
+          "kana": "にちようび",
+          "hanviet": "NHẬT DIỆU NHẬT",
+          "meaningVi": "Chủ nhật",
+          "exampleJp": "日曜日は休みです。",
+          "exampleVi": "Chủ nhật là ngày nghỉ."
+        },
+        {
+          "word": "毎日",
+          "kana": "まいにち",
+          "hanviet": "MỖI NHẬT",
+          "meaningVi": "Hàng ngày",
+          "exampleJp": "私は毎日日本語を勉強します。",
+          "exampleVi": "Tôi học tiếng Nhật mỗi ngày."
+        }
+      ]
+    },
+    {
+      "id": "2",
+      "kanji": "月",
+      "hanviet": "NGUYỆT",
+      "level": "N5",
+      "onyomi": ["ゲツ", "ガツ"],
+      "kunyomi": ["つき"],
+      "meaningVi": "Mặt trăng, tháng",
+      "strokeCount": 4,
+      "radicals": ["月"],
+      "memoryTip": "Hình trăng khuyết trong đêm",
+      "relatedVocabulary": [
+        {
+          "word": "月曜日",
+          "kana": "げつようび",
+          "hanviet": "NGUYỆT DIỆU NHẬT",
+          "meaningVi": "Thứ hai",
+          "exampleJp": "月曜日は忙しいです。",
+          "exampleVi": "Thứ Hai tôi bận rộn."
+        },
+        {
+          "word": "今月",
+          "kana": "こんげつ",
+          "hanviet": "Kim nguyệt",
+          "meaningVi": "Tháng này",
+          "exampleJp": "今月は三万円を貯めました。",
+          "exampleVi": "Tháng này tôi đã tiết kiệm được 30 nghìn yên."
+        }
+      ]
+    },
+    {
+      "id": "3",
+      "kanji": "火",
+      "hanviet": "HỎA",
+      "level": "N5",
+      "onyomi": ["カ"],
+      "kunyomi": ["ひ", "ほ"],
+      "meaningVi": "Lửa",
+      "strokeCount": 4,
+      "radicals": ["火"],
+      "memoryTip": "Người đứng cạnh đống lửa",
+      "relatedVocabulary": [
+        {
+          "word": "火曜日",
+          "kana": "かようび",
+          "hanviet": "HỎA DIỆU NHẬT",
+          "meaningVi": "Thứ ba",
+          "exampleJp": "火曜日は会議があります。",
+          "exampleVi": "Thứ Ba có cuộc họp."
+        },
+        {
+          "word": "火事",
+          "kana": "かじ",
+          "hanviet": "HỎA SỰ",
+          "meaningVi": "Cháy, hỏa hoạn",
+          "exampleJp": "隣の家で火事がありました。",
+          "exampleVi": "Đã xảy ra hỏa hoạn ở nhà bên cạnh."
+        }
+      ]
+    },
+    {
+      "id": "4",
+      "kanji": "水",
+      "hanviet": "THỦY",
+      "level": "N5",
+      "onyomi": ["スイ"],
+      "kunyomi": ["みず"],
+      "meaningVi": "Nước",
+      "strokeCount": 4,
+      "radicals": ["水"],
+      "memoryTip": "Dòng nước chảy giữa hai bờ",
+      "relatedVocabulary": [
+        {
+          "word": "水曜日",
+          "kana": "すいようび",
+          "hanviet": "THỦY DIỆU NHẬT",
+          "meaningVi": "Thứ tư",
+          "exampleJp": "水曜日は日本語のクラスがあります。",
+          "exampleVi": "Thứ Tư có lớp tiếng Nhật."
+        },
+        {
+          "word": "お水",
+          "kana": "おみず",
+          "hanviet": "KHOẺ THỦY",
+          "meaningVi": "Nước (lịch sự)",
+          "exampleJp": "お水をください。",
+          "exampleVi": "Làm ơn cho tôi nước."
+        }
+      ]
+    },
+    {
+      "id": "5",
+      "kanji": "木",
+      "hanviet": "MỘC",
+      "level": "N5",
+      "onyomi": ["モク", "ボク"],
+      "kunyomi": ["き", "こ"],
+      "meaningVi": "Cây, gỗ",
+      "strokeCount": 4,
+      "radicals": ["木"],
+      "memoryTip": "Cây có gốc và cành",
+      "relatedVocabulary": [
+        {
+          "word": "木曜日",
+          "kana": "もくようび",
+          "hanviet": "MỘC DIỆU NHẬT",
+          "meaningVi": "Thứ năm",
+          "exampleJp": "木曜日はパーティーです。",
+          "exampleVi": "Thứ Năm có bữa tiệc."
+        },
+        {
+          "word": "木枯らし",
+          "kana": "こがらし",
+          "hanviet": "MỘC KHÔ KHÔNG",
+          "meaningVi": "Gió heo mùa đông",
+          "exampleJp": "木枯らしが吹いています。",
+          "exampleVi": "Gió heo mùa đông đang thổi."
+        }
+      ]
+    }
+  ]
+}

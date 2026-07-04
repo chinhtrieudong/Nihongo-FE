@@ -1,13 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
-import { lessonAPI, kanjiAPI } from '@services/api';
 import { KanjiItem } from '@kanji-types';
 import KanjiList from '@components/kanji/KanjiList';
-import { message, Tag } from 'antd';
+import { Tag } from 'antd';
 import type { SelectProps } from 'antd';
 import { KanjiPageIcon } from '@components/icons';
 import { SearchFilter } from '@components/common';
-import { kanjiData as localKanjiData, getKanjiByLevel } from '../../data/kanjiData';
+import fakeKanjiData from '../../data/fakeKanjiData.json';
 
 const normalizeJlptLevel = (value?: string) => {
     if (!value) return '';
@@ -105,59 +104,9 @@ const KanjiPage: React.FC = () => {
                 setLoading(true);
             }
 
-            let rawItems: any[] = [];
-            let response;
-
-            if (isRadicalMode) {
-                response = await kanjiAPI.getRadicals(1, 214);
-                rawItems = Array.isArray(response?.data)
-                    ? response.data
-                    : Array.isArray(response?.data?.data)
-                        ? response.data.data
-                        : (response?.data?.items || []);
-            } else {
-                const requestLevel =
-                    selectedLevels.length === 1 ? selectedLevels[0].toLowerCase() : undefined;
-                
-                try {
-                    response = await kanjiAPI.getAllKanji({
-                        level: requestLevel,
-                        page: nextPage,
-                        limit: PAGE_SIZE,
-                    });
-
-                    rawItems = Array.isArray(response?.data)
-                        ? response.data
-                        : Array.isArray(response?.data?.data)
-                            ? response.data.data
-                            : (response?.data?.items || []);
-                } catch (apiError) {
-                    console.log('API error, using local kanji data as fallback:', apiError);
-                    // Use local data as fallback
-                    if (requestLevel) {
-                        rawItems = getKanjiByLevel(requestLevel.toUpperCase());
-                    } else {
-                        rawItems = localKanjiData;
-                    }
-                }
-
-                // If API returned empty data, use local fallback
-                if (rawItems.length === 0) {
-                    console.log('API returned empty data, using local kanji data');
-                    if (requestLevel) {
-                        rawItems = getKanjiByLevel(requestLevel.toUpperCase());
-                    } else {
-                        rawItems = localKanjiData;
-                    }
-                }
-            }
-
-            const mappedItems = isRadicalMode
-                ? rawItems.map(mapRadicalToKanjiItem)
-                : rawItems.map(mapKanjiListItemToKanjiItem).filter((kanji: KanjiItem) =>
-                    !(kanji.jlpt === 'N5' && kanji.stroke_count === 2) &&
-                    !isRadicalItem(kanji),
-                );
+            // Use fake data temporarily
+            const rawItems = fakeKanjiData.kanjiList;
+            const mappedItems = rawItems.map(mapKanjiListItemToKanjiItem);
 
             let nextList = mappedItems;
             if (append) {
@@ -173,37 +122,9 @@ const KanjiPage: React.FC = () => {
             setKanjiList(nextList);
             setFilteredKanji(nextList);
             setPage(nextPage);
-
-            if (isRadicalMode) {
-                setHasMore(false);
-                return;
-            }
-
-            const pagination =
-                response?.pagination ||
-                response?.data?.pagination ||
-                response?.meta?.pagination ||
-                response?.meta;
-
-            let nextHasMore = rawItems.length >= PAGE_SIZE;
-            if (typeof pagination?.hasNextPage === 'boolean') {
-                nextHasMore = pagination.hasNextPage;
-            } else if (
-                typeof pagination?.page === 'number' &&
-                typeof pagination?.totalPages === 'number'
-            ) {
-                nextHasMore = pagination.page < pagination.totalPages;
-            }
-
-            // For append mode, if we got fewer items than requested, no more items available
-            if (append && rawItems.length < PAGE_SIZE) {
-                nextHasMore = false;
-            }
-
-            setHasMore(nextHasMore);
+            setHasMore(false); // No more data in fake data
         } catch (error) {
             console.error('Lỗi khi tải dữ liệu Hán tự:', error);
-            message.error('Có lỗi xảy ra khi tải dữ liệu Hán tự');
             setKanjiList([]);
             setFilteredKanji([]);
             setHasMore(false);
