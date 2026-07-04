@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
-import { Volume2, ArrowLeft, PenTool, BookOpen, Lightbulb, BookMarked } from "lucide-react";
+import { Volume2, ArrowLeft, PenTool, BookOpen, Lightbulb } from "lucide-react";
 import { Card, Button, Row, Col } from "antd";
 import { EmptyState, LessonNavigation } from "../../components/common";
 import { KanjiItem, KanjiDetailResponse } from "../../types/kanji";
@@ -368,10 +368,7 @@ const KanjiDetail: React.FC<KanjiDetailProps> = ({
 
             {/* Vocabulary Card */}
             <Card className="bg-white dark:bg-slate-800 border-slate-200 dark:border-slate-700 shadow-md hover:shadow-lg transition-shadow">
-              <div className="flex items-center gap-2 mb-4">
-                <BookMarked className="w-5 h-5 text-slate-700 dark:text-slate-300" />
-                <h2 className="text-lg font-semibold text-slate-700 dark:text-slate-300">Từ vựng liên quan</h2>
-              </div>
+              <h2 className="text-lg font-semibold text-slate-700 dark:text-slate-300 mb-4">Từ vựng liên quan</h2>
               <div className="space-y-3">
                 {(kanjiData.relatedVocabulary || []).slice(0, 8).map((word, index) => (
                   <div
