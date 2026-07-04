@@ -332,17 +332,19 @@ const KanjiDetail: React.FC<KanjiDetailProps> = ({
             {/* Details Card */}
             <Card className="mb-6 bg-white dark:bg-slate-800 border-slate-200 dark:border-slate-700 shadow-sm">
               <div className="space-y-5">
-                <div className="p-4 bg-slate-50 dark:bg-slate-700/50 rounded-xl">
-                  <h3 className="text-sm font-semibold text-slate-500 dark:text-slate-400 mb-2">Âm On</h3>
-                  <p className="text-lg font-medium text-slate-800 dark:text-slate-200 jp-text">
-                    {kanjiData.onyomi.join(", ")}
-                  </p>
-                </div>
-                <div className="p-4 bg-slate-50 dark:bg-slate-700/50 rounded-xl">
-                  <h3 className="text-sm font-semibold text-slate-500 dark:text-slate-400 mb-2">Âm Kun</h3>
-                  <p className="text-lg font-medium text-slate-800 dark:text-slate-200 jp-text">
-                    {kanjiData.kunyomi.join(", ")}
-                  </p>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div className="p-4 bg-slate-50 dark:bg-slate-700/50 rounded-xl">
+                    <h3 className="text-sm font-semibold text-slate-500 dark:text-slate-400 mb-2">Âm On</h3>
+                    <p className="text-lg font-medium text-slate-800 dark:text-slate-200 jp-text">
+                      {kanjiData.onyomi.join(", ")}
+                    </p>
+                  </div>
+                  <div className="p-4 bg-slate-50 dark:bg-slate-700/50 rounded-xl">
+                    <h3 className="text-sm font-semibold text-slate-500 dark:text-slate-400 mb-2">Âm Kun</h3>
+                    <p className="text-lg font-medium text-slate-800 dark:text-slate-200 jp-text">
+                      {kanjiData.kunyomi.join(", ")}
+                    </p>
+                  </div>
                 </div>
                 {kanjiData.memoryTip && (
                   <div className="p-4 bg-amber-50 dark:bg-amber-900/20 rounded-xl border border-amber-200 dark:border-amber-800">
