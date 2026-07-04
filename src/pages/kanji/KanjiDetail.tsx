@@ -155,6 +155,7 @@ const KanjiDetail: React.FC<KanjiDetailProps> = ({
     const [svgContent, setSvgContent] = useState<string>("");
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState<string | null>(null);
+    const [isAnimating, setIsAnimating] = useState(false);
     const primaryChar = resolveKanjiChar(kanji);
 
     const fetchKanjiSVG = async () => {
@@ -209,6 +210,16 @@ const KanjiDetail: React.FC<KanjiDetailProps> = ({
       }
     };
 
+    const replayAnimation = () => {
+      setIsAnimating(true);
+      // Reset SVG animation by re-fetching
+      setSvgContent("");
+      setTimeout(() => {
+        fetchKanjiSVG();
+        setTimeout(() => setIsAnimating(false), 100);
+      }, 50);
+    };
+
     useEffect(() => {
       fetchKanjiSVG();
     }, [primaryChar]);
@@ -238,18 +249,6 @@ const KanjiDetail: React.FC<KanjiDetailProps> = ({
         </div>
       )
     }
-
-    const [isAnimating, setIsAnimating] = useState(false);
-
-    const replayAnimation = () => {
-      setIsAnimating(true);
-      // Reset SVG animation by re-fetching
-      setSvgContent("");
-      setTimeout(() => {
-        fetchKanjiSVG();
-        setTimeout(() => setIsAnimating(false), 100);
-      }, 50);
-    };
 
     return (
       <div className="bg-gradient-to-br from-slate-50 to-slate-100 dark:from-slate-800 dark:to-slate-900 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700 overflow-hidden">
