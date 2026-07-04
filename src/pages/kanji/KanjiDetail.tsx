@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
-import { Volume2, ArrowLeft, BookOpen } from "lucide-react";
+import { Volume2, ArrowLeft, PenTool, BookOpen, Lightbulb, BookMarked } from "lucide-react";
 import { Card, Button, Row, Col } from "antd";
 import { EmptyState, LessonNavigation } from "../../components/common";
 import { KanjiItem, KanjiDetailResponse } from "../../types/kanji";
@@ -297,10 +297,7 @@ const KanjiDetail: React.FC<KanjiDetailProps> = ({
           {/* Left Column - Stroke Order */}
           <Col xs={24} lg={10}>
             <div className="mb-6">
-              <div className="flex items-center gap-2 mb-3">
-                <BookOpen className="w-5 h-5 text-slate-700 dark:text-slate-300" />
-                <h2 className="text-lg font-semibold text-slate-700 dark:text-slate-300">Thứ tự nét viết</h2>
-              </div>
+              <h2 className="text-lg font-semibold text-slate-700 dark:text-slate-300 mb-3">Thứ tự nét viết</h2>
               <div className="relative">
                 <KanjiStrokeOrder kanji={kanjiData.kanji ?? (kanjiData as any).character} />
               </div>
@@ -337,13 +334,19 @@ const KanjiDetail: React.FC<KanjiDetailProps> = ({
               <div className="space-y-5">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div className="p-4 bg-slate-50 dark:bg-slate-700/50 rounded-xl">
-                    <h3 className="text-sm font-semibold text-slate-500 dark:text-slate-400 mb-2">Âm On</h3>
+                    <div className="flex items-center gap-2 mb-2">
+                      <Volume2 className="w-4 h-4 text-slate-500 dark:text-slate-400" />
+                      <h3 className="text-sm font-semibold text-slate-500 dark:text-slate-400">Âm On</h3>
+                    </div>
                     <p className="text-lg font-medium text-slate-800 dark:text-slate-200 jp-text">
                       {kanjiData.onyomi.join(", ")}
                     </p>
                   </div>
                   <div className="p-4 bg-slate-50 dark:bg-slate-700/50 rounded-xl">
-                    <h3 className="text-sm font-semibold text-slate-500 dark:text-slate-400 mb-2">Âm Kun</h3>
+                    <div className="flex items-center gap-2 mb-2">
+                      <Volume2 className="w-4 h-4 text-slate-500 dark:text-slate-400" />
+                      <h3 className="text-sm font-semibold text-slate-500 dark:text-slate-400">Âm Kun</h3>
+                    </div>
                     <p className="text-lg font-medium text-slate-800 dark:text-slate-200 jp-text">
                       {kanjiData.kunyomi.join(", ")}
                     </p>
@@ -351,7 +354,10 @@ const KanjiDetail: React.FC<KanjiDetailProps> = ({
                 </div>
                 {kanjiData.memoryTip && (
                   <div className="p-4 bg-amber-50 dark:bg-amber-900/20 rounded-xl border border-amber-200 dark:border-amber-800">
-                    <h3 className="text-sm font-semibold text-amber-600 dark:text-amber-400 mb-2">Cách nhớ</h3>
+                    <div className="flex items-center gap-2 mb-2">
+                      <Lightbulb className="w-4 h-4 text-amber-600 dark:text-amber-400" />
+                      <h3 className="text-sm font-semibold text-amber-600 dark:text-amber-400">Cách nhớ</h3>
+                    </div>
                     <p className="text-base text-slate-700 dark:text-slate-300 leading-relaxed whitespace-pre-line">
                       {kanjiData.memoryTip}
                     </p>
@@ -362,7 +368,10 @@ const KanjiDetail: React.FC<KanjiDetailProps> = ({
 
             {/* Vocabulary Card */}
             <Card className="bg-white dark:bg-slate-800 border-slate-200 dark:border-slate-700 shadow-md hover:shadow-lg transition-shadow">
-              <h2 className="text-lg font-semibold text-slate-700 dark:text-slate-300 mb-4">Từ vựng liên quan</h2>
+              <div className="flex items-center gap-2 mb-4">
+                <BookMarked className="w-5 h-5 text-slate-700 dark:text-slate-300" />
+                <h2 className="text-lg font-semibold text-slate-700 dark:text-slate-300">Từ vựng liên quan</h2>
+              </div>
               <div className="space-y-3">
                 {(kanjiData.relatedVocabulary || []).slice(0, 8).map((word, index) => (
                   <div
