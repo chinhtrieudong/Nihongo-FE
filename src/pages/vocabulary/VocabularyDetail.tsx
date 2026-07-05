@@ -1022,208 +1022,160 @@ const VocabularyDetail: React.FC = () => {
           onShuffleCards={shuffleCards}
         />
 
-        {/* Completion Modal */}
+        {/* Flashcard Result - Web style */}
         {showFlashcard && isStudyComplete && (
-          <div
-            className="fixed inset-0 z-[1100] flex items-center justify-center bg-black/55 backdrop-blur-sm p-4"
-            onClick={closeFlashcard}
-          >
-            <div
-              className="w-full max-w-xl"
-              onClick={(e) => e.stopPropagation()}
-            >
-              <div className="rounded-2xl border border-border bg-white dark:bg-slate-800 p-6 sm:p-8 text-text-main min-h-[300px] flex flex-col justify-between relative overflow-hidden shadow-xl">
-                <div className="pointer-events-none absolute -top-24 -right-24 h-64 w-64 rounded-full bg-blue-500/15 blur-3xl" />
-                <div className="pointer-events-none absolute -bottom-24 -left-24 h-64 w-64 rounded-full bg-emerald-500/15 blur-3xl" />
-                <button
-                  type="button"
-                  aria-label="Đóng"
-                  onClick={closeFlashcard}
-                  className="absolute top-3 right-3 h-9 w-9 rounded-full text-text-sub hover:text-text-main hover:bg-surface-2 transition-colors flex items-center justify-center"
-                >
-                  ✕
-                </button>
-                <div className="text-center">
-                  <Title level={2} className="!mb-1 !text-text-main">
-                    Hoàn thành
-                  </Title>
-                  <div className="text-sm text-text-sub mb-4">
-                    Bạn đã hoàn thành phiên học hôm nay
-                  </div>
+          <div className="max-w-2xl mx-auto mt-8">
+            <div className="bg-white dark:bg-slate-800 rounded-xl border border-border p-8">
+              {/* Header */}
+              <div className="text-center mb-8">
+                <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-green-100 dark:bg-green-900/30 text-green-600 dark:text-green-400 mb-4">
+                  <CheckCircle className="w-8 h-8" />
+                </div>
+                <h2 className="text-2xl font-bold text-text-main">Hoàn thành!</h2>
+                <p className="text-text-sub mt-1">Bạn đã học hết {totalCount} thẻ flashcard</p>
+              </div>
 
-                  <Row gutter={16} className="mb-2">
-                    <Col span={8}>
-                      <div className="rounded-xl border border-border bg-surface-2 px-3 py-2">
-                        <div className="text-xs uppercase tracking-wide text-text-sub mb-1">
-                          Tổng
-                        </div>
-                        <Statistic
-                          value={totalCount}
-                          styles={{ content: { color: "var(--primary)" } }}
-                          className="text-text-main"
-                        />
-                      </div>
-                    </Col>
+              {/* Stats Grid */}
+              <div className="grid grid-cols-3 gap-4 mb-6">
+                <div className="text-center p-4 rounded-xl bg-surface-2 border border-border">
+                  <div className="text-3xl font-bold text-blue-500">{totalCount}</div>
+                  <div className="text-sm text-text-sub mt-1">Tổng số</div>
+                </div>
+                <div className="text-center p-4 rounded-xl bg-surface-2 border border-border">
+                  <div className="text-3xl font-bold text-green-500">{knownCount}</div>
+                  <div className="text-sm text-text-sub mt-1">Đã nhớ ✓</div>
+                </div>
+                <div className="text-center p-4 rounded-xl bg-surface-2 border border-border">
+                  <div className="text-3xl font-bold text-red-500">{unknownCount}</div>
+                  <div className="text-sm text-text-sub mt-1">Chưa nhớ ✗</div>
+                </div>
+              </div>
 
-                    <Col span={8}>
-                      <div className="rounded-xl border border-border bg-surface-2 px-3 py-2">
-                        <div className="text-xs uppercase tracking-wide text-text-sub mb-1">
-                          Đã nhớ
-                        </div>
-                        <Statistic
-                          value={knownCount}
-                          styles={{ content: { color: "var(--success)" } }}
-                          prefix={
-                            <CheckCircle className="w-4 h-4" style={{ color: "var(--success)" }} />
-                          }
-                          className="text-text-main"
-                        />
-                      </div>
-                    </Col>
+              {/* Accuracy Bar */}
+              <div className="mb-6">
+                <div className="flex items-center justify-between mb-2">
+                  <span className="text-sm font-medium text-text-main">Độ nhớ</span>
+                  <span
+                    className="text-sm font-bold"
+                    style={{
+                      color:
+                        accuracyPercent >= 80
+                          ? "#22c55e"
+                          : accuracyPercent >= 50
+                            ? "#3b82f6"
+                            : "#ef4444",
+                    }}
+                  >
+                    {accuracyPercent}%
+                  </span>
+                </div>
+                <div className="h-3 bg-surface-2 rounded-full overflow-hidden">
+                  <div
+                    className="h-full rounded-full transition-all duration-500"
+                    style={{
+                      width: `${accuracyPercent}%`,
+                      background: `linear-gradient(90deg, ${
+                        accuracyPercent >= 80
+                          ? "#22c55e"
+                          : accuracyPercent >= 50
+                            ? "#3b82f6"
+                            : "#ef4444"
+                      }, ${
+                        accuracyPercent >= 80
+                          ? "#4ade80"
+                          : accuracyPercent >= 50
+                            ? "#60a5fa"
+                            : "#f87171"
+                      })`,
+                    }}
+                  />
+                </div>
+              </div>
 
-                    <Col span={8}>
-                      <div className="rounded-xl border border-border bg-surface-2 px-3 py-2">
-                        <div className="text-xs uppercase tracking-wide text-text-sub mb-1">
-                          Chưa nhớ
-                        </div>
-                        <Statistic
-                          value={unknownCount}
-                          styles={{ content: { color: "var(--error)" } }}
-                          prefix={
-                            <XCircle className="w-4 h-4" style={{ color: "var(--error)" }} />
-                          }
-                          className="text-text-main"
-                        />
-                      </div>
-                    </Col>
-                  </Row>
+              {/* Unknown Words List */}
+              {unknownItems.length > 0 && (
+                <div className="mb-6">
+                  <h3 className="text-base font-semibold text-text-main mb-3">
+                    Từ chưa nhớ ({unknownItems.length})
+                  </h3>
+                  <div className="max-h-60 overflow-y-auto space-y-2">
+                    {unknownItems.map((it) => {
+                      const hasKanji = it.kanji && it.kanji.trim();
+                      const hasHira = it.hiragana && it.hiragana.trim();
+                      const isSame = hasKanji && hasHira && it.kanji === it.hiragana;
+                      const hanViet = it.hanViet;
 
-                  <div className="mt-4">
-                    <div className="inline-flex items-center gap-2 rounded-full border border-border bg-surface-2 px-4 py-2 text-sm text-text-main">
-                      <span className="font-semibold">Độ nhớ</span>
-                      <span className="text-text-sub">•</span>
-                      <span
-                        className="font-bold"
-                        style={{
-                          color:
-                            accuracyPercent >= 80
-                              ? "var(--success)"
-                              : accuracyPercent >= 50
-                                ? "var(--primary)"
-                                : "var(--error)",
-                        }}
-                      >
-                        {accuracyPercent}%
-                      </span>
-                    </div>
-                  </div>
-
-                  {unknownItems.length > 0 && (
-                    <div className="mt-2 text-left">
-                      <div className="text-xs uppercase tracking-wide text-text-sub mb-2">
-                        Từ chưa nhớ ({unknownItems.length})
-                      </div>
-                      <div className="max-h-44 overflow-auto rounded-xl border border-border bg-surface-2">
-                        {unknownItems.slice(0, 12).map((it) => {
-                          const hasKanji = it.kanji && it.kanji.trim();
-                          const hasHira = it.hiragana && it.hiragana.trim();
-                          const isSame = hasKanji && hasHira && it.kanji === it.hiragana;
-                          const hanViet = it.hanViet;
-                          
-                          return (
-                            <div
-                              key={it.id}
-                              className="flex items-center justify-between gap-3 px-4 py-3 border-b border-border last:border-b-0"
-                            >
-                              <div className="min-w-0 flex-1">
-                                {/* Row 1: Kanji + Hiragana (dedupe if same) */}
-                                <div className="flex items-center gap-2">
-                                  {hasKanji && (
-                                    <span className="text-base font-semibold text-text-main kanji-text truncate">
-                                      {it.kanji}
-                                    </span>
-                                  )}
-                                  {hasHira && !isSame && (
-                                    <span className="text-sm text-text-sub jp-text truncate">
-                                      {it.hiragana}
-                                    </span>
-                                  )}
-                                </div>
-                                
-                                {/* Row 2: HanViet + Meaning */}
-                                <div className="text-sm truncate">
-                                  {hanViet && (
-                                    <span className="text-amber-500/80 font-medium">
-                                      {hanViet}
-                                    </span>
-                                  )}
-                                  {hanViet && it.meaning && (
-                                    <span className="text-text-sub mx-1">·</span>
-                                  )}
-                                  <span className="text-text-main/80">
-                                    {it.meaning}
-                                  </span>
-                                </div>
-                              </div>
-                              <button
-                                type="button"
-                                onClick={() => speakText(it.hiragana, 'ja-JP', femaleVoiceName)}
-                                className="p-2 rounded-lg text-text-sub hover:text-text-main hover:bg-white dark:hover:bg-slate-700 transition-colors flex-shrink-0"
-                                aria-label="Phát âm"
-                              >
-                                <Volume2 className="w-4 h-4" />
-                              </button>
+                      return (
+                        <div
+                          key={it.id}
+                          className="flex items-center gap-3 p-3 rounded-lg bg-red-50 dark:bg-red-900/10 border border-red-100 dark:border-red-900/30"
+                        >
+                          <div className="flex-1 min-w-0">
+                            <div className="flex items-center gap-2">
+                              {hasKanji && (
+                                <span className="text-base font-semibold text-text-main kanji-text">
+                                  {it.kanji}
+                                </span>
+                              )}
+                              {hasHira && !isSame && (
+                                <span className="text-sm text-text-sub jp-text">
+                                  {it.hiragana}
+                                </span>
+                              )}
                             </div>
-                          );
-                        })}
-                        {unknownItems.length > 12 && (
-                          <div className="px-4 py-2 text-xs text-text-sub">
-                            Và {unknownItems.length - 12} từ nữa…
+                            <div className="text-sm text-text-sub mt-0.5">
+                              {hanViet && (
+                                <span className="text-amber-600 font-medium">{hanViet}</span>
+                              )}
+                              {hanViet && it.meaning && <span className="mx-1">·</span>}
+                              {it.meaning}
+                            </div>
                           </div>
-                        )}
-                      </div>
-                    </div>
-                  )}
+                          <button
+                            type="button"
+                            onClick={() => speakText(it.hiragana, 'ja-JP', femaleVoiceName)}
+                            className="p-2 rounded-lg text-text-sub hover:text-blue-500 hover:bg-blue-50 dark:hover:bg-blue-900/20 transition-colors flex-shrink-0"
+                          >
+                            <Volume2 className="w-4 h-4" />
+                          </button>
+                        </div>
+                      );
+                    })}
+                  </div>
                 </div>
+              )}
 
-                <div className="flex items-center justify-center pt-0 mt-4">
-                  <Space size="middle">
-                    {unknownCount > 0 ? (
-                      <>
-                        {/* Primary: Review unknown */}
-                        <Button
-                          type="primary"
-                          size="large"
-                          className="h-11 min-w-[160px] rounded-xl bg-amber-500 hover:bg-amber-600 border-amber-500 font-medium shadow-lg shadow-amber-500/25 inline-flex items-center gap-1.5"
-                          onClick={() => resetStudySession("unremembered")}
-                        >
-                          <Target className="w-4 h-4" />
-                          <span>Ôn lại {unknownCount} từ</span>
-                        </Button>
-                        {/* Secondary: Study all */}
-                        <Button
-                          size="large"
-                          className="h-11 min-w-[160px] rounded-xl bg-transparent text-text-main border border-border hover:border-white/30 hover:bg-surface-2 transition-all inline-flex items-center gap-1.5"
-                          onClick={() => resetStudySession("all")}
-                        >
-                          <RotateCcw className="w-4 h-4" />
-                          <span>Học lại toàn bộ</span>
-                        </Button>
-                      </>
-                    ) : (
-                      /* Primary: Study all when perfect */
-                      <Button
-                        type="primary"
-                        size="large"
-                        className="h-11 min-w-[200px] rounded-xl bg-emerald-500 hover:bg-emerald-600 border-emerald-500 font-medium shadow-lg shadow-emerald-500/25 inline-flex items-center gap-1.5"
-                        onClick={() => resetStudySession("all")}
-                      >
-                        <RotateCcw className="w-4 h-4" />
-                        <span>Học lại toàn bộ</span>
-                      </Button>
-                    )}
-                  </Space>
-                </div>
+              {/* Action Buttons */}
+              <div className="flex items-center justify-center gap-4">
+                <Button
+                  type="default"
+                  size="large"
+                  className="h-11 px-6 rounded-xl border-border"
+                  onClick={closeFlashcard}
+                >
+                  Đóng
+                </Button>
+                {unknownCount > 0 ? (
+                  <Button
+                    type="primary"
+                    size="large"
+                    className="h-11 px-6 rounded-xl bg-amber-500 hover:bg-amber-600 border-amber-500 shadow-lg shadow-amber-500/25"
+                    onClick={() => resetStudySession("unremembered")}
+                    icon={<Target className="w-4 h-4" />}
+                  >
+                    Ôn lại {unknownCount} từ
+                  </Button>
+                ) : (
+                  <Button
+                    type="primary"
+                    size="large"
+                    className="h-11 px-6 rounded-xl bg-emerald-500 hover:bg-emerald-600 border-emerald-500 shadow-lg shadow-emerald-500/25"
+                    onClick={() => resetStudySession("all")}
+                    icon={<RotateCcw className="w-4 h-4" />}
+                  >
+                    Học lại toàn bộ
+                  </Button>
+                )}
               </div>
             </div>
           </div>
