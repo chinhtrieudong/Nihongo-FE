@@ -549,9 +549,11 @@ const TextbookDetail: React.FC = () => {
                       </div>
                       
                       {/* Topic */}
-                      <Text className="text-text-main text-base font-medium truncate">
-                        {lesson.topic}
-                      </Text>
+                      <div className="flex-1 min-w-0">
+                        <Text className="text-text-main text-base font-medium block truncate">
+                          {lesson.topic}
+                        </Text>
+                      </div>
                     </div>
                     
                     {/* Right side: Vocab count + Arrow */}
