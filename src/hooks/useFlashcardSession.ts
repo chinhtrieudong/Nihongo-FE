@@ -10,7 +10,7 @@ export const useFlashcardSession = (items: VocabularyItem[]) => {
   const isStudyComplete = items.length > 0 && currentCardIndex >= items.length;
 
   const nextCard = useCallback(() => {
-    if (currentCardIndex < items.length - 1) {
+    if (currentCardIndex < items.length) {
       setCurrentCardIndex((prev) => prev + 1);
       setIsFlipped(false);
     }
