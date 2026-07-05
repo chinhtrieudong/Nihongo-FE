@@ -446,10 +446,10 @@ const VocabularyDetail: React.FC = () => {
 
                 {/* Right Content: Hiragana + Meaning */}
                 <div className="flex-1 min-w-0">
-                  <Text className="text-base sm:text-lg text-blue-500 font-medium block jp-text">
+                  <Text className="text-base sm:text-lg text-blue-500 font-medium block jp-text truncate">
                     {item.hiragana}
                   </Text>
-                  <Text className="text-base sm:text-lg text-text-main block mt-0.5">
+                  <Text className="text-base sm:text-lg text-text-main block mt-0.5 truncate">
                     {item.meaning}
                   </Text>
                 </div>
