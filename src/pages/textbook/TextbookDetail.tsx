@@ -5,6 +5,7 @@ import { EmptyState } from "../../components/common";
 import { useAppSelector } from "../../store/hooks";
 import { useProgress } from "../../hooks/useProgress";
 import { ArrowLeft, BookOpen, ChevronRight, PlayCircle, FileQuestion, CheckCircle2, Clock, BookText, Circle } from "lucide-react";
+import fakeTextbooksData from "../../data/fakeTextbooksData.json";
 
 const { Title, Text } = Typography;
 
@@ -170,33 +171,21 @@ const colorMap: Record<string, { bg: string; border: string; text: string; bgLig
   purple: { bg: "bg-violet-500", border: "border-violet-500", text: "text-violet-600", bgLight: "bg-violet-100", hoverBorder: "hover:border-violet-500", colorValue: "#8b5cf6" },
 };
 
-// Fetch textbook data from backend API
-const fetchTextbookData = async (textbookId: string): Promise<{ 
-  lessons?: Array<{ number: number; topic: string; vocab: number }>;
-  chapters?: Array<{ number: number; title: string; titleVi: string; vocab: number; topics: Array<{name: string; nameVi: string}> }>;
-} | null> => {
-  try {
-    // Use backend API instead of static JSON
-    const url = `/api/v1/textbooks/${textbookId}/lessons`;
-    const response = await fetch(url);
-    
-    if (!response.ok) {
-      throw new Error(`Failed to fetch ${url}: ${response.status}`);
-    }
-    
-    const result = await response.json();
-    
-    if (result.success && result.data) {
-      return {
-        lessons: result.data
-      };
-    }
-    
-    return null;
-  } catch (error) {
-    console.error("[fetchTextbookData] Error:", error);
-    return null;
-  }
+// Get textbook data from fake data
+const getTextbookData = (textbookId: string) => {
+  const textbook = fakeTextbooksData.textbooks.find(t => t.slug === textbookId);
+  if (!textbook) return null;
+
+  const lessons = textbook.lessons?.map(l => ({
+    number: l.lessonNumber,
+    topic: l.titleVi || l.title,
+    vocab: l.vocabularyCount || 40
+  }));
+
+  return {
+    lessons,
+    chapters: textbook.chapters
+  };
 };
 
 const getLevelColor = (level: string) => {
@@ -263,16 +252,16 @@ const TextbookDetail: React.FC = () => {
 
   const textbook = textbookId ? textbooksData[textbookId] : null;
 
-  // Fetch textbook data from JSON
+  // Load textbook data from fake data
   useEffect(() => {
-    const fetchData = async () => {
+    const loadData = () => {
       if (!textbookId) return;
       setLoading(true);
-      const data = await fetchTextbookData(textbookId);
+      const data = getTextbookData(textbookId);
       setTextbookData(data);
       setLoading(false);
     };
-    fetchData();
+    loadData();
   }, [textbookId]);
 
   // Calculate progress

@@ -3,7 +3,7 @@ import { Button, Spin, Tag } from "antd";
 import { useNavigate } from "react-router-dom";
 import { CourseCard } from "../../components/course";
 import { EmptyState } from "../../components/common";
-import { useTextbooks } from "../../hooks/useTextbooks";
+import fakeTextbooksData from "../../data/fakeTextbooksData.json";
 
 interface TextbookSection {
   id: string;
@@ -38,13 +38,12 @@ const Home: React.FC = () => {
   const navigate = useNavigate();
   const [activeLevel, setActiveLevel] = useState<"all" | "N5" | "N4" | "N3" | "N2" | "N1">("all");
 
-  // Fetch textbooks from API
-  const { textbooks, loading, error } = useTextbooks({
-    level: activeLevel === "all" ? undefined : activeLevel,
-    limit: 100,
-  });
+  // Use fake data instead of API
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+  const textbooks = fakeTextbooksData.textbooks;
 
-  // Transform API data to component format
+  // Transform data to component format
   const sections: TextbookSection[] = useMemo(() => {
     return textbooks.map(book => {
       // Derive textbook type from slug
@@ -56,7 +55,7 @@ const Home: React.FC = () => {
         id: book.slug,
         label: book.name,
         description: book.description,
-        level: book.level,
+        level: book.level as "N5" | "N4" | "N3" | "N2" | "N1",
         lessons: book.lessons?.map((l: any, idx: number) => `Bài ${idx + 1}`) || [],
         textbook: textbookType,
       };

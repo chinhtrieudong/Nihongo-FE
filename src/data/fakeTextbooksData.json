@@ -1,0 +1,671 @@
+{
+  "textbooks": [
+    {
+      "slug": "minna-n5",
+      "name": "Minna no Nihongo N5",
+      "description": "Giáo trình Minna no Nihongo cấp độ N5 - 25 bài học căn bản",
+      "level": "N5",
+      "type": "minna",
+      "totalLessons": 25,
+      "lessons": [
+        { "lessonNumber": 1, "title": "Bài 1", "titleVi": "Giới thiệu", "vocabularyCount": 40, "grammarCount": 3 },
+        { "lessonNumber": 2, "title": "Bài 2", "titleVi": "Đây là bút chì", "vocabularyCount": 42, "grammarCount": 3 },
+        { "lessonNumber": 3, "title": "Bài 3", "titleVi": "Đây là sách", "vocabularyCount": 38, "grammarCount": 4 },
+        { "lessonNumber": 4, "title": "Bài 4", "titleVi": "Phòng làm việc", "vocabularyCount": 45, "grammarCount": 3 },
+        { "lessonNumber": 5, "title": "Bài 5", "titleVi": "Thời gian", "vocabularyCount": 41, "grammarCount": 4 },
+        { "lessonNumber": 6, "title": "Bài 6", "titleVi": "Địa điểm", "vocabularyCount": 43, "grammarCount": 3 },
+        { "lessonNumber": 7, "title": "Bài 7", "titleVi": "Hoạt động", "vocabularyCount": 39, "grammarCount": 4 },
+        { "lessonNumber": 8, "title": "Bài 8", "titleVi": "Sở thích", "vocabularyCount": 44, "grammarCount": 3 },
+        { "lessonNumber": 9, "title": "Bài 9", "titleVi": "Kế hoạch", "vocabularyCount": 40, "grammarCount": 4 },
+        { "lessonNumber": 10, "title": "Bài 10", "titleVi": "Mua sắm", "vocabularyCount": 46, "grammarCount": 3 },
+        { "lessonNumber": 11, "title": "Bài 11", "titleVi": "Ẩm thực", "vocabularyCount": 42, "grammarCount": 4 },
+        { "lessonNumber": 12, "title": "Bài 12", "titleVi": "Du lịch", "vocabularyCount": 41, "grammarCount": 3 },
+        { "lessonNumber": 13, "title": "Bài 13", "titleVi": "Sức khỏe", "vocabularyCount": 38, "grammarCount": 4 },
+        { "lessonNumber": 14, "title": "Bài 14", "titleVi": "Giao tiếp", "vocabularyCount": 45, "grammarCount": 3 },
+        { "lessonNumber": 15, "title": "Bài 15", "titleVi": "Công việc", "vocabularyCount": 43, "grammarCount": 4 },
+        { "lessonNumber": 16, "title": "Bài 16", "titleVi": "Giải trí", "vocabularyCount": 40, "grammarCount": 3 },
+        { "lessonNumber": 17, "title": "Bài 17", "titleVi": "Gia đình", "vocabularyCount": 44, "grammarCount": 4 },
+        { "lessonNumber": 18, "title": "Bài 18", "titleVi": "Bạn bè", "vocabularyCount": 39, "grammarCount": 3 },
+        { "lessonNumber": 19, "title": "Bài 19", "titleVi": "Tương lai", "vocabularyCount": 42, "grammarCount": 4 },
+        { "lessonNumber": 20, "title": "Bài 20", "titleVi": "Kỷ niệm", "vocabularyCount": 41, "grammarCount": 3 },
+        { "lessonNumber": 21, "title": "Bài 21", "titleVi": "Mong muốn", "vocabularyCount": 40, "grammarCount": 4 },
+        { "lessonNumber": 22, "title": "Bài 22", "titleVi": "Trải nghiệm", "vocabularyCount": 45, "grammarCount": 3 },
+        { "lessonNumber": 23, "title": "Bài 23", "titleVi": "So sánh", "vocabularyCount": 38, "grammarCount": 4 },
+        { "lessonNumber": 24, "title": "Bài 24", "titleVi": "Tổng kết", "vocabularyCount": 43, "grammarCount": 3 },
+        { "lessonNumber": 25, "title": "Bài 25", "titleVi": "Ôn tập", "vocabularyCount": 50, "grammarCount": 5 }
+      ]
+    },
+    {
+      "slug": "minna-n4",
+      "name": "Minna no Nihongo N4",
+      "description": "Giáo trình Minna no Nihongo cấp độ N4 - 50 bài học nâng cao",
+      "level": "N4",
+      "type": "minna",
+      "totalLessons": 50,
+      "lessons": [
+        { "lessonNumber": 1, "title": "Bài 1", "titleVi": "Tiếp tục", "vocabularyCount": 45, "grammarCount": 4 },
+        { "lessonNumber": 2, "title": "Bài 2", "titleVi": "Mở rộng", "vocabularyCount": 48, "grammarCount": 4 },
+        { "lessonNumber": 3, "title": "Bài 3", "titleVi": "Phát triển", "vocabularyCount": 46, "grammarCount": 5 }
+      ]
+    },
+    {
+      "slug": "tango-n5",
+      "name": "Tango N5",
+      "description": "Từ vựng theo giáo trình Tango cấp độ N5",
+      "level": "N5",
+      "type": "tango",
+      "totalLessons": 50,
+      "chapters": [
+        {
+          "number": 1,
+          "title": "Chương 1",
+          "titleVi": "Từ vựng cơ bản",
+          "vocab": 200,
+          "topics": [
+            { "name": "Danh từ", "nameVi": "Các danh từ thông dụng" },
+            { "name": "Động từ", "nameVi": "Động từ hàng ngày" },
+            { "name": "Tính từ", "nameVi": "Tính từ cơ bản" },
+            { "name": "Trạng từ", "nameVi": "Trạng từ phổ biến" },
+            { "name": "Số đếm", "nameVi": "Đếm đồ vật" }
+          ]
+        },
+        {
+          "number": 2,
+          "title": "Chương 2",
+          "titleVi": "Từ vựng xã hội",
+          "vocab": 200,
+          "topics": [
+            { "name": "Gia đình", "nameVi": "Các thành viên gia đình" },
+            { "name": "Bạn bè", "nameVi": "Mối quan hệ bạn bè" },
+            { "name": "Công việc", "nameVi": "Nghề nghiệp" },
+            { "name": "Trường học", "nameVi": "Học tập" },
+            { "name": "Bệnh viện", "nameVi": "Sức khỏe" }
+          ]
+        },
+        {
+          "number": 3,
+          "title": "Chương 3",
+          "titleVi": "Từ vựng hàng ngày",
+          "vocab": 200,
+          "topics": [
+            { "name": "Mua sắm", "nameVi": "Đi chợ và mua sắm" },
+            { "name": "Ẩm thực", "nameVi": "Đồ ăn và thức uống" },
+            { "name": "Du lịch", "nameVi": "Đi lại và du lịch" },
+            { "name": "Giải trí", "nameVi": "Hoạt động giải trí" },
+            { "name": "Thời tiết", "nameVi": "Thời tiết và mùa" }
+          ]
+        },
+        {
+          "number": 4,
+          "title": "Chương 4",
+          "titleVi": "Từ vựng nâng cao",
+          "vocab": 200,
+          "topics": [
+            { "name": "Cảm xúc", "nameVi": "Cảm xúc và tình cảm" },
+            { "name": "Hành động", "nameVi": "Hành động thường ngày" },
+            { "name": "Trạng thái", "nameVi": "Trạng thái và tình huống" },
+            { "name": "Mô tả", "nameVi": "Mô tả đồ vật" },
+            { "name": "Kết nối", "nameVi": "Từ nối và liên từ" }
+          ]
+        },
+        {
+          "number": 5,
+          "title": "Chương 5",
+          "titleVi": "Tổng hợp",
+          "vocab": 200,
+          "topics": [
+            { "name": "Ôn tập 1", "nameVi": "Ôn tập chương 1-2" },
+            { "name": "Ôn tập 2", "nameVi": "Ôn tập chương 3-4" },
+            { "name": "Thực hành", "nameVi": "Bài tập thực hành" },
+            { "name": "Kiểm tra", "nameVi": "Kiểm tra tổng kết" },
+            { "name": "Nâng cao", "nameVi": "Từ vựng nâng cao" }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "tango-n4",
+      "name": "Tango N4",
+      "description": "Từ vựng theo giáo trình Tango cấp độ N4",
+      "level": "N4",
+      "type": "tango",
+      "totalLessons": 30,
+      "chapters": [
+        {
+          "number": 1,
+          "title": "Chương 1",
+          "titleVi": "Từ vựng trung cấp",
+          "vocab": 150,
+          "topics": [
+            { "name": "Giao tiếp", "nameVi": "Giao tiếp xã hội" },
+            { "name": "Công việc", "nameVi": "Môi trường công sở" },
+            { "name": "Học tập", "nameVi": "Học tập và nghiên cứu" },
+            { "name": "Sức khỏe", "nameVi": "Bảo vệ sức khỏe" },
+            { "name": "Tài chính", "nameVi": "Quản lý tài chính" }
+          ]
+        },
+        {
+          "number": 2,
+          "title": "Chương 2",
+          "titleVi": "Từ vựng nâng cao",
+          "vocab": 150,
+          "topics": [
+            { "name": "Văn hóa", "nameVi": "Văn hóa Nhật Bản" },
+            { "name": "Lịch sử", "nameVi": "Lịch sử và địa lý" },
+            { "name": "Công nghệ", "nameVi": "Công nghệ thông tin" },
+            { "name": "Môi trường", "nameVi": "Bảo vệ môi trường" },
+            { "name": "Xã hội", "nameVi": "Vấn đề xã hội" }
+          ]
+        },
+        {
+          "number": 3,
+          "title": "Chương 3",
+          "titleVi": "Tổng hợp N4",
+          "vocab": 150,
+          "topics": [
+            { "name": "Kinh doanh", "nameVi": "Thương mại và kinh doanh" },
+            { "name": "Du lịch", "nameVi": "Du lịch quốc tế" },
+            { "name": "Nghệ thuật", "nameVi": "Nghệ thuật và văn học" },
+            { "name": "Khoa học", "nameVi": "Khoa học tự nhiên" },
+            { "name": "Thể thao", "nameVi": "Thể thao và giải trí" }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "tango-n3",
+      "name": "Tango N3",
+      "description": "Từ vựng theo giáo trình Tango cấp độ N3",
+      "level": "N3",
+      "type": "tango",
+      "totalLessons": 50,
+      "chapters": [
+        {
+          "number": 1,
+          "title": "Chương 1",
+          "titleVi": "Từ vựng trung cấp cao",
+          "vocab": 200,
+          "topics": [
+            { "name": "Kinh tế", "nameVi": "Kinh tế và thị trường" },
+            { "name": "Chính trị", "nameVi": "Chính trị và xã hội" },
+            { "name": "Văn học", "nameVi": "Văn học cổ điển" },
+            { "name": "Triết học", "nameVi": "Triết học và tư tưởng" },
+            { "name": "Nghệ thuật", "nameVi": "Nghệ thuật hiện đại" }
+          ]
+        },
+        {
+          "number": 2,
+          "title": "Chương 2",
+          "titleVi": "Từ vựng chuyên ngành",
+          "vocab": 200,
+          "topics": [
+            { "name": "Y học", "nameVi": "Y học và dược phẩm" },
+            { "name": "Kỹ thuật", "nameVi": "Kỹ thuật và công nghệ" },
+            { "name": "Luật pháp", "nameVi": "Hệ thống pháp luật" },
+            { "name": "Giáo dục", "nameVi": "Giáo dục hiện đại" },
+            { "name": "Truyền thông", "nameVi": "Truyền thông đại chúng" }
+          ]
+        },
+        {
+          "number": 3,
+          "title": "Chương 3",
+          "titleVi": "Từ vựng nâng cao",
+          "vocab": 200,
+          "topics": [
+            { "name": "Quan hệ quốc tế", "nameVi": "Ngoại giao và hợp tác" },
+            { "name": "Môi trường", "nameVi": "Biến đổi khí hậu" },
+            { "name": "Nhân quyền", "nameVi": "Nhân quyền và tự do" },
+            { "name": "Văn hóa", "nameVi": "Giao lưu văn hóa" },
+            { "name": "Khoa học", "nameVi": "Nghiên cứu khoa học" }
+          ]
+        },
+        {
+          "number": 4,
+          "title": "Chương 4",
+          "titleVi": "Tổng hợp N3",
+          "vocab": 200,
+          "topics": [
+            { "name": "Kinh doanh", "nameVi": "Quản trị doanh nghiệp" },
+            { "name": "Tài chính", "nameVi": "Thị trường tài chính" },
+            { "name": "Công nghệ", "nameVi": "Cách mạng công nghệ" },
+            { "name": "Xã hội", "nameVi": "Vấn đề xã hội hiện đại" },
+            { "name": "Văn hóa", "nameVi": "Văn hóa đương đại" }
+          ]
+        },
+        {
+          "number": 5,
+          "title": "Chương 5",
+          "titleVi": "Kiểm tra tổng kết",
+          "vocab": 200,
+          "topics": [
+            { "name": "Ôn tập 1", "nameVi": "Ôn tập chương 1-2" },
+            { "name": "Ôn tập 2", "nameVi": "Ôn tập chương 3-4" },
+            { "name": "Thực hành", "nameVi": "Bài tập thực hành" },
+            { "name": "Kiểm tra", "nameVi": "Kiểm tra tổng kết" },
+            { "name": "Nâng cao", "nameVi": "Từ vựng nâng cao" }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "tango-n2",
+      "name": "Tango N2",
+      "description": "Từ vựng theo giáo trình Tango cấp độ N2",
+      "level": "N2",
+      "type": "tango",
+      "totalLessons": 50,
+      "chapters": [
+        {
+          "number": 1,
+          "title": "Chương 1",
+          "titleVi": "Từ vựng nâng cao",
+          "vocab": 200,
+          "topics": [
+            { "name": "Kinh tế học", "nameVi": "Lý thuyết kinh tế" },
+            { "name": "Xã hội học", "nameVi": "Nghiên cứu xã hội" },
+            { "name": "Văn học so sánh", "nameVi": "Văn học thế giới" },
+            { "name": "Triết học phương Đông", "nameVi": "Triết học châu Á" },
+            { "name": "Nghệ thuật đương đại", "nameVi": "Nghệ thuật hiện đại" }
+          ]
+        },
+        {
+          "number": 2,
+          "title": "Chương 2",
+          "titleVi": "Từ vựng chuyên sâu",
+          "vocab": 200,
+          "topics": [
+            { "name": "Công nghệ cao", "nameVi": "Công nghệ tiên tiến" },
+            { "name": "Y học hiện đại", "nameVi": "Y học và điều trị" },
+            { "name": "Luật quốc tế", "nameVi": "Luật pháp quốc tế" },
+            { "name": "Giáo dục đại học", "nameVi": "Hệ thống giáo dục" },
+            { "name": "Truyền thông số", "nameVi": "Truyền thông kỹ thuật số" }
+          ]
+        },
+        {
+          "number": 3,
+          "title": "Chương 3",
+          "titleVi": "Từ vựng chuyên ngành",
+          "vocab": 200,
+          "topics": [
+            { "name": "Nghiên cứu khoa học", "nameVi": "Phương pháp nghiên cứu" },
+            { "name": "Quản lý dự án", "nameVi": "Quản lý và lãnh đạo" },
+            { "name": "Chiến lược kinh doanh", "nameVi": "Chiến lược doanh nghiệp" },
+            { "name": "Phát triển bền vững", "nameVi": "Phát triển xanh" },
+            { "name": "Đổi mới sáng tạo", "nameVi": "Sáng tạo và ứng dụng" }
+          ]
+        },
+        {
+          "number": 4,
+          "title": "Chương 4",
+          "titleVi": "Tổng hợp N2",
+          "vocab": 200,
+          "topics": [
+            { "name": "Quan hệ quốc tế", "nameVi": "Ngoại giao và hợp tác" },
+            { "name": "Văn hóa toàn cầu", "nameVi": "Giao lưu văn hóa" },
+            { "name": "Khoa học không gian", "nameVi": "Khám phá vũ trụ" },
+            { "name": "Công nghệ sinh học", "nameVi": "Ứng dụng sinh học" },
+            { "name": "Trí tuệ nhân tạo", "nameVi": "AI và tự động hóa" }
+          ]
+        },
+        {
+          "number": 5,
+          "title": "Chương 5",
+          "titleVi": "Kiểm tra tổng kết",
+          "vocab": 200,
+          "topics": [
+            { "name": "Ôn tập 1", "nameVi": "Ôn tập chương 1-2" },
+            { "name": "Ôn tập 2", "nameVi": "Ôn tập chương 3-4" },
+            { "name": "Thực hành", "nameVi": "Bài tập thực hành" },
+            { "name": "Kiểm tra", "nameVi": "Kiểm tra tổng kết" },
+            { "name": "Nâng cao", "nameVi": "Từ vựng nâng cao" }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "tango-n1",
+      "name": "Tango N1",
+      "description": "Từ vựng theo giáo trình Tango cấp độ N1",
+      "level": "N1",
+      "type": "tango",
+      "totalLessons": 50,
+      "chapters": [
+        {
+          "number": 1,
+          "title": "Chương 1",
+          "titleVi": "Từ vựng chuyên sâu",
+          "vocab": 200,
+          "topics": [
+            { "name": "Triết học cổ điển", "nameVi": "Triết học phương Tây" },
+            { "name": "Văn học so sánh", "nameVi": "Văn học thế giới" },
+            { "name": "Kinh tế học cao cấp", "nameVi": "Lý thuyết kinh tế" },
+            { "name": "Xã hội học", "nameVi": "Nghiên cứu xã hội" },
+            { "name": "Nhân học", "nameVi": "Nghiên cứu văn hóa" }
+          ]
+        },
+        {
+          "number": 2,
+          "title": "Chương 2",
+          "titleVi": "Từ vựng học thuật",
+          "vocab": 200,
+          "topics": [
+            { "name": "Công nghệ tiên tiến", "nameVi": "Công nghệ cao" },
+            { "name": "Y học hiện đại", "nameVi": "Y học và điều trị" },
+            { "name": "Luật pháp quốc tế", "nameVi": "Luật quốc tế" },
+            { "name": "Giáo dục đại học", "nameVi": "Hệ thống giáo dục" },
+            { "name": "Truyền thông số", "nameVi": "Truyền thông kỹ thuật số" }
+          ]
+        },
+        {
+          "number": 3,
+          "title": "Chương 3",
+          "titleVi": "Từ vựng chuyên ngành",
+          "vocab": 200,
+          "topics": [
+            { "name": "Nghiên cứu khoa học", "nameVi": "Phương pháp nghiên cứu" },
+            { "name": "Quản lý chiến lược", "nameVi": "Quản trị doanh nghiệp" },
+            { "name": "Phát triển bền vững", "nameVi": "Phát triển xanh" },
+            { "name": "Đổi mới sáng tạo", "nameVi": "Sáng tạo và ứng dụng" },
+            { "name": "Công nghệ sinh học", "nameVi": "Ứng dụng sinh học" }
+          ]
+        },
+        {
+          "number": 4,
+          "title": "Chương 4",
+          "titleVi": "Tổng hợp N1",
+          "vocab": 200,
+          "topics": [
+            { "name": "Quan hệ quốc tế", "nameVi": "Ngoại giao và hợp tác" },
+            { "name": "Văn hóa toàn cầu", "nameVi": "Giao lưu văn hóa" },
+            { "name": "Khoa học không gian", "nameVi": "Khám phá vũ trụ" },
+            { "name": "Trí tuệ nhân tạo", "nameVi": "AI và tự động hóa" },
+            { "name": "Công nghệ lượng tử", "nameVi": "Công nghệ tương lai" }
+          ]
+        },
+        {
+          "number": 5,
+          "title": "Chương 5",
+          "titleVi": "Kiểm tra tổng kết",
+          "vocab": 200,
+          "topics": [
+            { "name": "Ôn tập 1", "nameVi": "Ôn tập chương 1-2" },
+            { "name": "Ôn tập 2", "nameVi": "Ôn tập chương 3-4" },
+            { "name": "Thực hành", "nameVi": "Bài tập thực hành" },
+            { "name": "Kiểm tra", "nameVi": "Kiểm tra tổng kết" },
+            { "name": "Nâng cao", "nameVi": "Từ vựng nâng cao" }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "speed-master-n3",
+      "name": "Speed Master N3",
+      "description": "Luyện từ vựng N3 nhanh và hiệu quả - 1,200 từ",
+      "level": "N3",
+      "type": "speed-master",
+      "totalLessons": 50,
+      "chapters": [
+        {
+          "number": 1,
+          "title": "Chương 1",
+          "titleVi": "Từ vựng cơ bản N3",
+          "vocab": 240,
+          "topics": [
+            { "name": "Động từ", "nameVi": "Động từ thông dụng" },
+            { "name": "Tính từ", "nameVi": "Tính từ mô tả" },
+            { "name": "Danh từ", "nameVi": "Danh từ trừu tượng" },
+            { "name": "Trạng từ", "nameVi": "Trạng từ diễn tả" },
+            { "name": "Liên từ", "nameVi": "Từ nối logic" }
+          ]
+        },
+        {
+          "number": 2,
+          "title": "Chương 2",
+          "titleVi": "Từ vựng xã hội",
+          "vocab": 240,
+          "topics": [
+            { "name": "Công việc", "nameVi": "Môi trường làm việc" },
+            { "name": "Học tập", "nameVi": "Học tập và nghiên cứu" },
+            { "name": "Giao tiếp", "nameVi": "Kỹ năng giao tiếp" },
+            { "name": "Sức khỏe", "nameVi": "Chăm sóc sức khỏe" },
+            { "name": "Tài chính", "nameVi": "Quản lý tài chính" }
+          ]
+        },
+        {
+          "number": 3,
+          "title": "Chương 3",
+          "titleVi": "Từ vựng hàng ngày",
+          "vocab": 240,
+          "topics": [
+            { "name": "Mua sắm", "nameVi": "Mua sắm thông minh" },
+            { "name": "Ẩm thực", "nameVi": "Ẩm thực Nhật Bản" },
+            { "name": "Du lịch", "nameVi": "Khám phá Nhật Bản" },
+            { "name": "Giải trí", "nameVi": "Hoạt động giải trí" },
+            { "name": "Thể thao", "nameVi": "Thể thao và fitness" }
+          ]
+        },
+        {
+          "number": 4,
+          "title": "Chương 4",
+          "titleVi": "Từ vựng nâng cao",
+          "vocab": 240,
+          "topics": [
+            { "name": "Cảm xúc", "nameVi": "Cảm xúc phức tạp" },
+            { "name": "Hành vi", "nameVi": "Hành vi xã hội" },
+            { "name": "Trạng thái", "nameVi": "Trạng thái tâm lý" },
+            { "name": "Mô tả", "nameVi": "Mô tả chi tiết" },
+            { "name": "Biểu hiện", "nameVi": "Biểu hiện cảm xúc" }
+          ]
+        },
+        {
+          "number": 5,
+          "title": "Chương 5",
+          "titleVi": "Tổng hợp N3",
+          "vocab": 240,
+          "topics": [
+            { "name": "Ôn tập 1", "nameVi": "Ôn tập chương 1-2" },
+            { "name": "Ôn tập 2", "nameVi": "Ôn tập chương 3-4" },
+            { "name": "Thực hành", "nameVi": "Bài tập thực hành" },
+            { "name": "Kiểm tra", "nameVi": "Kiểm tra tổng kết" },
+            { "name": "Nâng cao", "nameVi": "Từ vựng nâng cao" }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "speed-master-n2",
+      "name": "Speed Master N2",
+      "description": "Luyện từ vựng N2 nâng cao - 1,500 từ",
+      "level": "N2",
+      "type": "speed-master",
+      "totalLessons": 50,
+      "chapters": [
+        {
+          "number": 1,
+          "title": "Chương 1",
+          "titleVi": "Từ vựng nâng cao N2",
+          "vocab": 300,
+          "topics": [
+            { "name": "Kinh tế", "nameVi": "Kinh tế học vi mô" },
+            { "name": "Xã hội", "nameVi": "Xã hội học đương đại" },
+            { "name": "Văn học", "nameVi": "Văn học so sánh" },
+            { "name": "Triết học", "nameVi": "Triết học phương Đông" },
+            { "name": "Nghệ thuật", "nameVi": "Nghệ thuật hiện đại" }
+          ]
+        },
+        {
+          "number": 2,
+          "title": "Chương 2",
+          "titleVi": "Từ vựng chuyên ngành",
+          "vocab": 300,
+          "topics": [
+            { "name": "Công nghệ", "nameVi": "Công nghệ cao" },
+            { "name": "Y học", "nameVi": "Y học hiện đại" },
+            { "name": "Luật pháp", "nameVi": "Luật quốc tế" },
+            { "name": "Giáo dục", "nameVi": "Giáo dục đại học" },
+            { "name": "Truyền thông", "nameVi": "Truyền thông số" }
+          ]
+        },
+        {
+          "number": 3,
+          "title": "Chương 3",
+          "titleVi": "Từ vựng học thuật",
+          "vocab": 300,
+          "topics": [
+            { "name": "Nghiên cứu", "nameVi": "Phương pháp nghiên cứu" },
+            { "name": "Quản lý", "nameVi": "Quản trị doanh nghiệp" },
+            { "name": "Chiến lược", "nameVi": "Chiến lược kinh doanh" },
+            { "name": "Phát triển", "nameVi": "Phát triển bền vững" },
+            { "name": "Đổi mới", "nameVi": "Đổi mới sáng tạo" }
+          ]
+        },
+        {
+          "number": 4,
+          "title": "Chương 4",
+          "titleVi": "Tổng hợp N2",
+          "vocab": 300,
+          "topics": [
+            { "name": "Quốc tế", "nameVi": "Quan hệ quốc tế" },
+            { "name": "Văn hóa", "nameVi": "Văn hóa toàn cầu" },
+            { "name": "Khoa học", "nameVi": "Khoa học không gian" },
+            { "name": "Công nghệ", "nameVi": "Công nghệ sinh học" },
+            { "name": "AI", "nameVi": "Trí tuệ nhân tạo" }
+          ]
+        },
+        {
+          "number": 5,
+          "title": "Chương 5",
+          "titleVi": "Kiểm tra tổng kết",
+          "vocab": 300,
+          "topics": [
+            { "name": "Ôn tập 1", "nameVi": "Ôn tập chương 1-2" },
+            { "name": "Ôn tập 2", "nameVi": "Ôn tập chương 3-4" },
+            { "name": "Thực hành", "nameVi": "Bài tập thực hành" },
+            { "name": "Kiểm tra", "nameVi": "Kiểm tra tổng kết" },
+            { "name": "Nâng cao", "nameVi": "Từ vựng nâng cao" }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "speed-master-n1",
+      "name": "Speed Master N1",
+      "description": "Luyện từ vựng N1 chuyên sâu - 2,000+ từ",
+      "level": "N1",
+      "type": "speed-master",
+      "totalLessons": 50,
+      "chapters": [
+        {
+          "number": 1,
+          "title": "Chương 1",
+          "titleVi": "Từ vựng chuyên sâu N1",
+          "vocab": 400,
+          "topics": [
+            { "name": "Triết học", "nameVi": "Triết học cổ điển" },
+            { "name": "Văn học", "nameVi": "Văn học so sánh" },
+            { "name": "Kinh tế", "nameVi": "Kinh tế học cao cấp" },
+            { "name": "Xã hội", "nameVi": "Xã hội học đương đại" },
+            { "name": "Nhân học", "nameVi": "Nghiên cứu văn hóa" }
+          ]
+        },
+        {
+          "number": 2,
+          "title": "Chương 2",
+          "titleVi": "Từ vựng học thuật",
+          "vocab": 400,
+          "topics": [
+            { "name": "Công nghệ", "nameVi": "Công nghệ tiên tiến" },
+            { "name": "Y học", "nameVi": "Y học hiện đại" },
+            { "name": "Luật pháp", "nameVi": "Luật quốc tế" },
+            { "name": "Giáo dục", "nameVi": "Giáo dục đại học" },
+            { "name": "Truyền thông", "nameVi": "Truyền thông số" }
+          ]
+        },
+        {
+          "number": 3,
+          "title": "Chương 3",
+          "titleVi": "Từ vựng chuyên ngành",
+          "vocab": 400,
+          "topics": [
+            { "name": "Nghiên cứu", "nameVi": "Phương pháp nghiên cứu" },
+            { "name": "Quản lý", "nameVi": "Quản trị chiến lược" },
+            { "name": "Phát triển", "nameVi": "Phát triển bền vững" },
+            { "name": "Đổi mới", "nameVi": "Đổi mới sáng tạo" },
+            { "name": "Công nghệ", "nameVi": "Công nghệ sinh học" }
+          ]
+        },
+        {
+          "number": 4,
+          "title": "Chương 4",
+          "titleVi": "Tổng hợp N1",
+          "vocab": 400,
+          "topics": [
+            { "name": "Quốc tế", "nameVi": "Quan hệ quốc tế" },
+            { "name": "Văn hóa", "nameVi": "Văn hóa toàn cầu" },
+            { "name": "Khoa học", "nameVi": "Khoa học không gian" },
+            { "name": "Công nghệ", "nameVi": "Trí tuệ nhân tạo" },
+            { "name": "Tương lai", "nameVi": "Công nghệ tương lai" }
+          ]
+        },
+        {
+          "number": 5,
+          "title": "Chương 5",
+          "titleVi": "Kiểm tra tổng kết",
+          "vocab": 400,
+          "topics": [
+            { "name": "Ôn tập 1", "nameVi": "Ôn tập chương 1-2" },
+            { "name": "Ôn tập 2", "nameVi": "Ôn tập chương 3-4" },
+            { "name": "Thực hành", "nameVi": "Bài tập thực hành" },
+            { "name": "Kiểm tra", "nameVi": "Kiểm tra tổng kết" },
+            { "name": "Nâng cao", "nameVi": "Từ vựng nâng cao" }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "jlpt-n3",
+      "name": "JLPT N3 Vocabulary",
+      "description": "Luyện từ vựng & kanji N3 theo JLPT",
+      "level": "N3",
+      "type": "jlpt-n3",
+      "totalLessons": 20,
+      "lessons": [
+        { "lessonNumber": 1, "title": "Bài 1", "titleVi": "Từ vựng cơ bản N3", "vocabularyCount": 60, "grammarCount": 5 },
+        { "lessonNumber": 2, "title": "Bài 2", "titleVi": "Ngữ pháp N3", "vocabularyCount": 58, "grammarCount": 5 },
+        { "lessonNumber": 3, "title": "Bài 3", "titleVi": "Kanji N3", "vocabularyCount": 62, "grammarCount": 4 },
+        { "lessonNumber": 4, "title": "Bài 4", "titleVi": "Ngữ cảnh sử dụng", "vocabularyCount": 55, "grammarCount": 5 },
+        { "lessonNumber": 5, "title": "Bài 5", "titleVi": "Từ vựng nâng cao", "vocabularyCount": 65, "grammarCount": 4 }
+      ]
+    },
+    {
+      "slug": "jlpt-n2",
+      "name": "JLPT N2 Vocabulary",
+      "description": "Bộ từ vựng JLPT N2 cho người trung cấp",
+      "level": "N2",
+      "type": "jlpt-n2",
+      "totalLessons": 20,
+      "lessons": [
+        { "lessonNumber": 1, "title": "Bài 1", "titleVi": "Từ vựng cơ bản N2", "vocabularyCount": 70, "grammarCount": 5 },
+        { "lessonNumber": 2, "title": "Bài 2", "titleVi": "Ngữ pháp N2", "vocabularyCount": 68, "grammarCount": 5 },
+        { "lessonNumber": 3, "title": "Bài 3", "titleVi": "Kanji N2", "vocabularyCount": 72, "grammarCount": 4 },
+        { "lessonNumber": 4, "title": "Bài 4", "titleVi": "Ngữ cảnh sử dụng", "vocabularyCount": 65, "grammarCount": 5 },
+        { "lessonNumber": 5, "title": "Bài 5", "titleVi": "Từ vựng nâng cao", "vocabularyCount": 75, "grammarCount": 4 }
+      ]
+    },
+    {
+      "slug": "jlpt-n1",
+      "name": "JLPT N1 Vocabulary",
+      "description": "Nâng cao với từ vựng và kanji N1",
+      "level": "N1",
+      "type": "jlpt-n1",
+      "totalLessons": 20,
+      "lessons": [
+        { "lessonNumber": 1, "title": "Bài 1", "titleVi": "Từ vựng cơ bản N1", "vocabularyCount": 80, "grammarCount": 5 },
+        { "lessonNumber": 2, "title": "Bài 2", "titleVi": "Ngữ pháp N1", "vocabularyCount": 78, "grammarCount": 5 },
+        { "lessonNumber": 3, "title": "Bài 3", "titleVi": "Kanji N1", "vocabularyCount": 82, "grammarCount": 4 },
+        { "lessonNumber": 4, "title": "Bài 4", "titleVi": "Ngữ cảnh sử dụng", "vocabularyCount": 75, "grammarCount": 5 },
+        { "lessonNumber": 5, "title": "Bài 5", "titleVi": "Từ vựng nâng cao", "vocabularyCount": 85, "grammarCount": 4 }
+      ]
+    }
+  ]
+}
