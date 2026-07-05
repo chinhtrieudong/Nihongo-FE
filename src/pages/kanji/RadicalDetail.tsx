@@ -360,7 +360,7 @@ const RadicalDetail: React.FC = () => {
                 {radical.onyomi && radical.onyomi.length > 0 && (
                   <div className="p-3 bg-slate-50 dark:bg-slate-700/50 rounded-xl">
                     <div className="text-xs font-semibold text-slate-500 dark:text-slate-400 mb-1">
-                      Âm On (音読み)
+                      Âm On
                     </div>
                     <div className="text-sm font-medium text-slate-800 dark:text-slate-200 jp-text">
                       {radical.onyomi.join(", ")}
@@ -370,7 +370,7 @@ const RadicalDetail: React.FC = () => {
                 {radical.kunyomi && radical.kunyomi.length > 0 && (
                   <div className="p-3 bg-slate-50 dark:bg-slate-700/50 rounded-xl">
                     <div className="text-xs font-semibold text-slate-500 dark:text-slate-400 mb-1">
-                      Âm Kun (訓読み)
+                      Âm Kun
                     </div>
                     <div className="text-sm font-medium text-slate-800 dark:text-slate-200 jp-text">
                       {radical.kunyomi.join(", ")}
