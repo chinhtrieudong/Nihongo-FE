@@ -669,9 +669,6 @@ const VocabularyDetail: React.FC = () => {
                   <Text className="text-text-sub">
                     Câu {quizQuestionIndex + 1} / {quizQuestions.length}
                   </Text>
-                  <Text className="text-text-sub">
-                    Điểm: {quizScore}
-                  </Text>
                 </div>
                 <div className="h-2 bg-surface-2 rounded-full overflow-hidden">
                   <div
@@ -756,49 +753,82 @@ const VocabularyDetail: React.FC = () => {
                       })()}
                     </div>
                   ) : (
-                    <div className="text-center">
-                      <div className="text-2xl font-bold mb-4 text-text-main">
-                        Hoàn thành!
+                    <div className="space-y-4">
+                      {/* Review all questions */}
+                      <div className="text-center mb-6">
+                        <div className="text-2xl font-bold mb-2 text-text-main">
+                          Hoàn thành!
+                        </div>
+                        <div className="text-4xl font-bold text-blue-500 mb-2">
+                          {quizScore} / {quizQuestions.length}
+                        </div>
+                        <Text className="text-text-sub">
+                          {Math.round((quizScore / quizQuestions.length) * 100)}% chính xác
+                        </Text>
                       </div>
-                      <div className="text-4xl font-bold text-blue-500 mb-4">
-                        {quizScore} / {quizQuestions.length}
+
+                      {/* List all questions for review */}
+                      <div className="max-h-[500px] overflow-y-auto space-y-3">
+                        {quizQuestions.map((q, idx) => {
+                          const userAnswer = selectedAnswer;
+                          const isCorrect = userAnswer === (quizMode === 'jp-to-vi' ? q.meaning : (q.kanji || q.hiragana));
+                          
+                          return (
+                            <div
+                              key={q.id || idx}
+                              className={`p-4 rounded-lg border ${
+                                isCorrect
+                                  ? 'bg-green-50 dark:bg-green-900/20 border-green-200 dark:border-green-700'
+                                  : 'bg-red-50 dark:bg-red-900/20 border-red-200 dark:border-red-700'
+                              }`}
+                            >
+                              <div className="flex items-start gap-3">
+                                <div className={`text-lg font-bold ${isCorrect ? 'text-green-600' : 'text-red-600'}`}>
+                                  {idx + 1}.
+                                </div>
+                                <div className="flex-1">
+                                  <div className="text-lg font-semibold text-text-main mb-1">
+                                    {quizMode === 'jp-to-vi' ? q.kanji || q.hiragana : q.meaning}
+                                  </div>
+                                  {quizMode === 'jp-to-vi' ? (
+                                    <div className="text-sm text-text-sub">
+                                      Đáp án đúng: <span className="font-semibold text-green-600">{q.meaning}</span>
+                                    </div>
+                                  ) : (
+                                    <div className="text-sm text-text-sub">
+                                      Đáp án đúng: <span className="font-semibold text-green-600">{q.kanji} ({q.hiragana})</span>
+                                    </div>
+                                  )}
+                                  {!isCorrect && (
+                                    <div className="text-sm text-red-600 mt-1">
+                                      Đáp án của bạn: {userAnswer || 'Không trả lời'}
+                                    </div>
+                                  )}
+                                </div>
+                                <div className={`text-2xl ${isCorrect ? 'text-green-500' : 'text-red-500'}`}>
+                                  {isCorrect ? '✓' : '✗'}
+                                </div>
+                              </div>
+                            </div>
+                          );
+                        })}
                       </div>
-                      <Text className="text-text-sub mb-4">
-                        {Math.round((quizScore / quizQuestions.length) * 100)}% chính xác
-                      </Text>
-                      <Button
-                        type="primary"
-                        size="large"
-                        onClick={endQuiz}
-                        className="h-12 px-8 rounded-xl"
-                      >
-                        Đóng
-                      </Button>
+
+                      <div className="text-center pt-4">
+                        <Button
+                          type="primary"
+                          size="large"
+                          onClick={endQuiz}
+                          className="h-12 px-8 rounded-xl"
+                        >
+                          Đóng
+                        </Button>
+                      </div>
                     </div>
                   )}
                 </div>
               )}
 
-              {/* Quiz Complete */}
-              {quizQuestionIndex >= quizQuestions.length - 1 && showAnswerResult && (
-                <div className="mt-6 bg-white dark:bg-slate-800 rounded-xl border border-border p-6 text-center">
-                  <h3 className="text-2xl font-bold text-text-main mb-2">Hoàn thành!</h3>
-                  <div className="text-4xl font-bold text-blue-500 mb-4">
-                    {quizScore} / {quizQuestions.length}
-                  </div>
-                  <Text className="text-text-sub mb-4">
-                    {Math.round((quizScore / quizQuestions.length) * 100)}% chính xác
-                  </Text>
-                  <Button
-                    type="primary"
-                    size="large"
-                    onClick={endQuiz}
-                    className="h-12 px-8 rounded-xl"
-                  >
-                    Đóng
-                  </Button>
-                </div>
-              )}
             </div>
           )}
         </div>
