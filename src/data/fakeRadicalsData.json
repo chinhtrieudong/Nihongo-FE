@@ -6,7 +6,15 @@
       "nameVi": "Một",
       "meaning": "One",
       "strokeCount": 1,
-      "jlpt": "N5"
+      "jlpt": "N5",
+      "description": "Bộ thủ NHẤT - One",
+      "examples": [
+        "一"
+      ],
+      "related_kanji": [
+        "一"
+      ],
+      "memory_tip": "Nhớ bộ thủ NHẤT (One)"
     },
     {
       "symbol": "丨",
@@ -14,7 +22,15 @@
       "nameVi": "Xương sống",
       "meaning": "Line",
       "strokeCount": 1,
-      "jlpt": "N5"
+      "jlpt": "N5",
+      "description": "Bộ thủ CỐT - Line",
+      "examples": [
+        "丨"
+      ],
+      "related_kanji": [
+        "丨"
+      ],
+      "memory_tip": "Nhớ bộ thủ CỐT (Line)"
     },
     {
       "symbol": "丶",
@@ -22,7 +38,15 @@
       "nameVi": "Chấm",
       "meaning": "Dot",
       "strokeCount": 1,
-      "jlpt": "N5"
+      "jlpt": "N5",
+      "description": "Bộ thủ CHỦ - Dot",
+      "examples": [
+        "丶"
+      ],
+      "related_kanji": [
+        "丶"
+      ],
+      "memory_tip": "Nhớ bộ thủ CHỦ (Dot)"
     },
     {
       "symbol": "丿",
@@ -30,7 +54,15 @@
       "nameVi": "Nét trái",
       "meaning": "Slash",
       "strokeCount": 1,
-      "jlpt": "N5"
+      "jlpt": "N5",
+      "description": "Bộ thủ BIỆN - Slash",
+      "examples": [
+        "丿"
+      ],
+      "related_kanji": [
+        "丿"
+      ],
+      "memory_tip": "Nhớ bộ thủ BIỆN (Slash)"
     },
     {
       "symbol": "乙",
@@ -38,7 +70,15 @@
       "nameVi": "Hai",
       "meaning": "Second",
       "strokeCount": 1,
-      "jlpt": "N5"
+      "jlpt": "N5",
+      "description": "Bộ thủ ẤT - Second",
+      "examples": [
+        "乙"
+      ],
+      "related_kanji": [
+        "乙"
+      ],
+      "memory_tip": "Nhớ bộ thủ ẤT (Second)"
     },
     {
       "symbol": "亅",
@@ -46,7 +86,15 @@
       "nameVi": "Móc",
       "meaning": "Hook",
       "strokeCount": 1,
-      "jlpt": "N5"
+      "jlpt": "N5",
+      "description": "Bộ thủ QUYẾT - Hook",
+      "examples": [
+        "亅"
+      ],
+      "related_kanji": [
+        "亅"
+      ],
+      "memory_tip": "Nhớ bộ thủ QUYẾT (Hook)"
     },
     {
       "symbol": "二",
@@ -54,7 +102,15 @@
       "nameVi": "Hai",
       "meaning": "Two",
       "strokeCount": 2,
-      "jlpt": "N5"
+      "jlpt": "N5",
+      "description": "Bộ thủ NHỊ - Two",
+      "examples": [
+        "二"
+      ],
+      "related_kanji": [
+        "二"
+      ],
+      "memory_tip": "Nhớ bộ thủ NHỊ (Two)"
     },
     {
       "symbol": "亠",
@@ -62,7 +118,15 @@
       "nameVi": "Nắp",
       "meaning": "Lid",
       "strokeCount": 2,
-      "jlpt": "N5"
+      "jlpt": "N5",
+      "description": "Bộ thủ ĐÀU - Lid",
+      "examples": [
+        "亠"
+      ],
+      "related_kanji": [
+        "亠"
+      ],
+      "memory_tip": "Nhớ bộ thủ ĐÀU (Lid)"
     },
     {
       "symbol": "人",
@@ -70,7 +134,15 @@
       "nameVi": "Người",
       "meaning": "Person",
       "strokeCount": 2,
-      "jlpt": "N5"
+      "jlpt": "N5",
+      "description": "Bộ thủ NHÂN - Person",
+      "examples": [
+        "人"
+      ],
+      "related_kanji": [
+        "人"
+      ],
+      "memory_tip": "Nhớ bộ thủ NHÂN (Person)"
     },
     {
       "symbol": "儿",
@@ -78,7 +150,15 @@
       "nameVi": "Chân người",
       "meaning": "Legs",
       "strokeCount": 2,
-      "jlpt": "N5"
+      "jlpt": "N5",
+      "description": "Bộ thủ NHI - Legs",
+      "examples": [
+        "儿"
+      ],
+      "related_kanji": [
+        "儿"
+      ],
+      "memory_tip": "Nhớ bộ thủ NHI (Legs)"
     },
     {
       "symbol": "入",
@@ -86,7 +166,15 @@
       "nameVi": "Vào",
       "meaning": "Enter",
       "strokeCount": 2,
-      "jlpt": "N5"
+      "jlpt": "N5",
+      "description": "Bộ thủ NHẬP - Enter",
+      "examples": [
+        "入"
+      ],
+      "related_kanji": [
+        "入"
+      ],
+      "memory_tip": "Nhớ bộ thủ NHẬP (Enter)"
     },
     {
       "symbol": "八",
@@ -94,7 +182,15 @@
       "nameVi": "Tám",
       "meaning": "Eight",
       "strokeCount": 2,
-      "jlpt": "N5"
+      "jlpt": "N5",
+      "description": "Bộ thủ BÁT - Eight",
+      "examples": [
+        "八"
+      ],
+      "related_kanji": [
+        "八"
+      ],
+      "memory_tip": "Nhớ bộ thủ BÁT (Eight)"
     },
     {
       "symbol": "冂",
@@ -102,7 +198,15 @@
       "nameVi": "Cánh",
       "meaning": "Wide",
       "strokeCount": 2,
-      "jlpt": "N5"
+      "jlpt": "N5",
+      "description": "Bộ thủ CÁNH - Wide",
+      "examples": [
+        "冂"
+      ],
+      "related_kanji": [
+        "冂"
+      ],
+      "memory_tip": "Nhớ bộ thủ CÁNH (Wide)"
     },
     {
       "symbol": "冖",
@@ -110,7 +214,15 @@
       "nameVi": "Che",
       "meaning": "Cover",
       "strokeCount": 2,
-      "jlpt": "N5"
+      "jlpt": "N5",
+      "description": "Bộ thủ MỘC - Cover",
+      "examples": [
+        "冖"
+      ],
+      "related_kanji": [
+        "冖"
+      ],
+      "memory_tip": "Nhớ bộ thủ MỘC (Cover)"
     },
     {
       "symbol": "冫",
@@ -118,7 +230,15 @@
       "nameVi": "Băng",
       "meaning": "Ice",
       "strokeCount": 2,
-      "jlpt": "N5"
+      "jlpt": "N5",
+      "description": "Bộ thủ BĂNG - Ice",
+      "examples": [
+        "冫"
+      ],
+      "related_kanji": [
+        "冫"
+      ],
+      "memory_tip": "Nhớ bộ thủ BĂNG (Ice)"
     },
     {
       "symbol": "几",
@@ -126,7 +246,15 @@
       "nameVi": "Bàn",
       "meaning": "Table",
       "strokeCount": 2,
-      "jlpt": "N5"
+      "jlpt": "N5",
+      "description": "Bộ thủ CƠ - Table",
+      "examples": [
+        "几"
+      ],
+      "related_kanji": [
+        "几"
+      ],
+      "memory_tip": "Nhớ bộ thủ CƠ (Table)"
     },
     {
       "symbol": "凵",
@@ -134,7 +262,15 @@
       "nameVi": "Hộp",
       "meaning": "Box",
       "strokeCount": 2,
-      "jlpt": "N5"
+      "jlpt": "N5",
+      "description": "Bộ thủ KHỐM - Box",
+      "examples": [
+        "凵"
+      ],
+      "related_kanji": [
+        "凵"
+      ],
+      "memory_tip": "Nhớ bộ thủ KHỐM (Box)"
     },
     {
       "symbol": "刀",
@@ -142,7 +278,15 @@
       "nameVi": "Dao",
       "meaning": "Knife",
       "strokeCount": 2,
-      "jlpt": "N5"
+      "jlpt": "N5",
+      "description": "Bộ thủ ĐAO - Knife",
+      "examples": [
+        "刀"
+      ],
+      "related_kanji": [
+        "刀"
+      ],
+      "memory_tip": "Nhớ bộ thủ ĐAO (Knife)"
     },
     {
       "symbol": "力",
@@ -150,7 +294,15 @@
       "nameVi": "Sức",
       "meaning": "Power",
       "strokeCount": 2,
-      "jlpt": "N5"
+      "jlpt": "N5",
+      "description": "Bộ thủ LỰC - Power",
+      "examples": [
+        "力"
+      ],
+      "related_kanji": [
+        "力"
+      ],
+      "memory_tip": "Nhớ bộ thủ LỰC (Power)"
     },
     {
       "symbol": "勹",
@@ -158,7 +310,15 @@
       "nameVi": "Bao",
       "meaning": "Wrap",
       "strokeCount": 2,
-      "jlpt": "N5"
+      "jlpt": "N5",
+      "description": "Bộ thủ BAO - Wrap",
+      "examples": [
+        "勹"
+      ],
+      "related_kanji": [
+        "勹"
+      ],
+      "memory_tip": "Nhớ bộ thủ BAO (Wrap)"
     },
     {
       "symbol": "匕",
@@ -166,7 +326,15 @@
       "nameVi": "Muỗng",
       "meaning": "Spoon",
       "strokeCount": 2,
-      "jlpt": "N5"
+      "jlpt": "N5",
+      "description": "Bộ thủ CHỈ - Spoon",
+      "examples": [
+        "匕"
+      ],
+      "related_kanji": [
+        "匕"
+      ],
+      "memory_tip": "Nhớ bộ thủ CHỈ (Spoon)"
     },
     {
       "symbol": "匚",
@@ -174,7 +342,15 @@
       "nameVi": "Phương",
       "meaning": "Box",
       "strokeCount": 2,
-      "jlpt": "N5"
+      "jlpt": "N5",
+      "description": "Bộ thủ PHƯƠNG - Box",
+      "examples": [
+        "匚"
+      ],
+      "related_kanji": [
+        "匚"
+      ],
+      "memory_tip": "Nhớ bộ thủ PHƯƠNG (Box)"
     },
     {
       "symbol": "匸",
@@ -182,7 +358,15 @@
       "nameVi": "Hệ",
       "meaning": "System",
       "strokeCount": 2,
-      "jlpt": "N5"
+      "jlpt": "N5",
+      "description": "Bộ thủ HỆ - System",
+      "examples": [
+        "匸"
+      ],
+      "related_kanji": [
+        "匸"
+      ],
+      "memory_tip": "Nhớ bộ thủ HỆ (System)"
     },
     {
       "symbol": "十",
@@ -190,7 +374,15 @@
       "nameVi": "Mười",
       "meaning": "Ten",
       "strokeCount": 2,
-      "jlpt": "N5"
+      "jlpt": "N5",
+      "description": "Bộ thủ THẬP - Ten",
+      "examples": [
+        "十"
+      ],
+      "related_kanji": [
+        "十"
+      ],
+      "memory_tip": "Nhớ bộ thủ THẬP (Ten)"
     },
     {
       "symbol": "卜",
@@ -198,7 +390,15 @@
       "nameVi": "Bắc",
       "meaning": "Divination",
       "strokeCount": 2,
-      "jlpt": "N5"
+      "jlpt": "N5",
+      "description": "Bộ thủ BẮC - Divination",
+      "examples": [
+        "卜"
+      ],
+      "related_kanji": [
+        "卜"
+      ],
+      "memory_tip": "Nhớ bộ thủ BẮC (Divination)"
     },
     {
       "symbol": "卩",
@@ -206,7 +406,15 @@
       "nameVi": "Tiết",
       "meaning": "Kneel",
       "strokeCount": 2,
-      "jlpt": "N5"
+      "jlpt": "N5",
+      "description": "Bộ thủ TIẾT - Kneel",
+      "examples": [
+        "卩"
+      ],
+      "related_kanji": [
+        "卩"
+      ],
+      "memory_tip": "Nhớ bộ thủ TIẾT (Kneel)"
     },
     {
       "symbol": "厂",
@@ -214,7 +422,15 @@
       "nameVi": "Hàn",
       "meaning": "Cliff",
       "strokeCount": 2,
-      "jlpt": "N5"
+      "jlpt": "N5",
+      "description": "Bộ thủ HÀN - Cliff",
+      "examples": [
+        "厂"
+      ],
+      "related_kanji": [
+        "厂"
+      ],
+      "memory_tip": "Nhớ bộ thủ HÀN (Cliff)"
     },
     {
       "symbol": "厶",
@@ -222,7 +438,15 @@
       "nameVi": "Tư",
       "meaning": "Private",
       "strokeCount": 2,
-      "jlpt": "N5"
+      "jlpt": "N5",
+      "description": "Bộ thủ TƯ - Private",
+      "examples": [
+        "厶"
+      ],
+      "related_kanji": [
+        "厶"
+      ],
+      "memory_tip": "Nhớ bộ thủ TƯ (Private)"
     },
     {
       "symbol": "又",
@@ -230,7 +454,15 @@
       "nameVi": "Lại",
       "meaning": "Again",
       "strokeCount": 2,
-      "jlpt": "N5"
+      "jlpt": "N5",
+      "description": "Bộ thủ HỰU - Again",
+      "examples": [
+        "又"
+      ],
+      "related_kanji": [
+        "又"
+      ],
+      "memory_tip": "Nhớ bộ thủ HỰU (Again)"
     },
     {
       "symbol": "口",
@@ -238,7 +470,15 @@
       "nameVi": "Miệng",
       "meaning": "Mouth",
       "strokeCount": 3,
-      "jlpt": "N5"
+      "jlpt": "N5",
+      "description": "Bộ thủ KHẨU - Mouth",
+      "examples": [
+        "口"
+      ],
+      "related_kanji": [
+        "口"
+      ],
+      "memory_tip": "Nhớ bộ thủ KHẨU (Mouth)"
     },
     {
       "symbol": "囗",
@@ -246,7 +486,15 @@
       "nameVi": "Vi",
       "meaning": "Enclosure",
       "strokeCount": 3,
-      "jlpt": "N5"
+      "jlpt": "N5",
+      "description": "Bộ thủ VI - Enclosure",
+      "examples": [
+        "囗"
+      ],
+      "related_kanji": [
+        "囗"
+      ],
+      "memory_tip": "Nhớ bộ thủ VI (Enclosure)"
     },
     {
       "symbol": "土",
@@ -254,7 +502,15 @@
       "nameVi": "Đất",
       "meaning": "Earth",
       "strokeCount": 3,
-      "jlpt": "N5"
+      "jlpt": "N5",
+      "description": "Bộ thủ THỔ - Earth",
+      "examples": [
+        "土"
+      ],
+      "related_kanji": [
+        "土"
+      ],
+      "memory_tip": "Nhớ bộ thủ THỔ (Earth)"
     },
     {
       "symbol": "士",
@@ -262,7 +518,15 @@
       "nameVi": "Sĩ",
       "meaning": "Scholar",
       "strokeCount": 3,
-      "jlpt": "N5"
+      "jlpt": "N5",
+      "description": "Bộ thủ SĨ - Scholar",
+      "examples": [
+        "士"
+      ],
+      "related_kanji": [
+        "士"
+      ],
+      "memory_tip": "Nhớ bộ thủ SĨ (Scholar)"
     },
     {
       "symbol": "夂",
@@ -270,7 +534,15 @@
       "nameVi": "Trú",
       "meaning": "Winter",
       "strokeCount": 3,
-      "jlpt": "N5"
+      "jlpt": "N5",
+      "description": "Bộ thủ TRÚ - Winter",
+      "examples": [
+        "夂"
+      ],
+      "related_kanji": [
+        "夂"
+      ],
+      "memory_tip": "Nhớ bộ thủ TRÚ (Winter)"
     },
     {
       "symbol": "夊",
@@ -278,7 +550,15 @@
       "nameVi": "Tư",
       "meaning": "Go",
       "strokeCount": 3,
-      "jlpt": "N5"
+      "jlpt": "N5",
+      "description": "Bộ thủ TƯ - Go",
+      "examples": [
+        "夊"
+      ],
+      "related_kanji": [
+        "夊"
+      ],
+      "memory_tip": "Nhớ bộ thủ TƯ (Go)"
     },
     {
       "symbol": "夕",
@@ -286,7 +566,15 @@
       "nameVi": "Tịch",
       "meaning": "Evening",
       "strokeCount": 3,
-      "jlpt": "N5"
+      "jlpt": "N5",
+      "description": "Bộ thủ TỊCH - Evening",
+      "examples": [
+        "夕"
+      ],
+      "related_kanji": [
+        "夕"
+      ],
+      "memory_tip": "Nhớ bộ thủ TỊCH (Evening)"
     },
     {
       "symbol": "大",
@@ -294,7 +582,15 @@
       "nameVi": "Lớn",
       "meaning": "Big",
       "strokeCount": 3,
-      "jlpt": "N5"
+      "jlpt": "N5",
+      "description": "Bộ thủ ĐẠI - Big",
+      "examples": [
+        "大"
+      ],
+      "related_kanji": [
+        "大"
+      ],
+      "memory_tip": "Nhớ bộ thủ ĐẠI (Big)"
     },
     {
       "symbol": "女",
@@ -302,7 +598,15 @@
       "nameVi": "Nữ",
       "meaning": "Woman",
       "strokeCount": 3,
-      "jlpt": "N5"
+      "jlpt": "N5",
+      "description": "Bộ thủ NỮ - Woman",
+      "examples": [
+        "女"
+      ],
+      "related_kanji": [
+        "女"
+      ],
+      "memory_tip": "Nhớ bộ thủ NỮ (Woman)"
     },
     {
       "symbol": "子",
@@ -310,7 +614,15 @@
       "nameVi": "Tử",
       "meaning": "Child",
       "strokeCount": 3,
-      "jlpt": "N5"
+      "jlpt": "N5",
+      "description": "Bộ thủ TỬ - Child",
+      "examples": [
+        "子"
+      ],
+      "related_kanji": [
+        "子"
+      ],
+      "memory_tip": "Nhớ bộ thủ TỬ (Child)"
     },
     {
       "symbol": "宀",
@@ -318,7 +630,15 @@
       "nameVi": "Miên",
       "meaning": "Roof",
       "strokeCount": 3,
-      "jlpt": "N5"
+      "jlpt": "N5",
+      "description": "Bộ thủ MIÊN - Roof",
+      "examples": [
+        "宀"
+      ],
+      "related_kanji": [
+        "宀"
+      ],
+      "memory_tip": "Nhớ bộ thủ MIÊN (Roof)"
     },
     {
       "symbol": "寸",
@@ -326,7 +646,15 @@
       "nameVi": "Thốn",
       "meaning": "Inch",
       "strokeCount": 3,
-      "jlpt": "N5"
+      "jlpt": "N5",
+      "description": "Bộ thủ THỐN - Inch",
+      "examples": [
+        "寸"
+      ],
+      "related_kanji": [
+        "寸"
+      ],
+      "memory_tip": "Nhớ bộ thủ THỐN (Inch)"
     },
     {
       "symbol": "小",
@@ -334,7 +662,15 @@
       "nameVi": "Nhỏ",
       "meaning": "Small",
       "strokeCount": 3,
-      "jlpt": "N5"
+      "jlpt": "N5",
+      "description": "Bộ thủ TIỂU - Small",
+      "examples": [
+        "小"
+      ],
+      "related_kanji": [
+        "小"
+      ],
+      "memory_tip": "Nhớ bộ thủ TIỂU (Small)"
     },
     {
       "symbol": "尢",
@@ -342,7 +678,15 @@
       "nameVi": "U",
       "meaning": "Lame",
       "strokeCount": 3,
-      "jlpt": "N5"
+      "jlpt": "N5",
+      "description": "Bộ thủ U - Lame",
+      "examples": [
+        "尢"
+      ],
+      "related_kanji": [
+        "尢"
+      ],
+      "memory_tip": "Nhớ bộ thủ U (Lame)"
     },
     {
       "symbol": "尸",
@@ -350,7 +694,15 @@
       "nameVi": "Thi",
       "meaning": "Corpse",
       "strokeCount": 3,
-      "jlpt": "N5"
+      "jlpt": "N5",
+      "description": "Bộ thủ THI - Corpse",
+      "examples": [
+        "尸"
+      ],
+      "related_kanji": [
+        "尸"
+      ],
+      "memory_tip": "Nhớ bộ thủ THI (Corpse)"
     },
     {
       "symbol": "屮",
@@ -358,7 +710,15 @@
       "nameVi": "Soạt",
       "meaning": "Sprout",
       "strokeCount": 3,
-      "jlpt": "N5"
+      "jlpt": "N5",
+      "description": "Bộ thủ SOẠT - Sprout",
+      "examples": [
+        "屮"
+      ],
+      "related_kanji": [
+        "屮"
+      ],
+      "memory_tip": "Nhớ bộ thủ SOẠT (Sprout)"
     },
     {
       "symbol": "山",
@@ -366,7 +726,15 @@
       "nameVi": "Núi",
       "meaning": "Mountain",
       "strokeCount": 3,
-      "jlpt": "N5"
+      "jlpt": "N5",
+      "description": "Bộ thủ SƠN - Mountain",
+      "examples": [
+        "山"
+      ],
+      "related_kanji": [
+        "山"
+      ],
+      "memory_tip": "Nhớ bộ thủ SƠN (Mountain)"
     },
     {
       "symbol": "巛",
@@ -374,7 +742,15 @@
       "nameVi": "Xuyên",
       "meaning": "River",
       "strokeCount": 3,
-      "jlpt": "N5"
+      "jlpt": "N5",
+      "description": "Bộ thủ XUYÊN - River",
+      "examples": [
+        "巛"
+      ],
+      "related_kanji": [
+        "巛"
+      ],
+      "memory_tip": "Nhớ bộ thủ XUYÊN (River)"
     },
     {
       "symbol": "工",
@@ -382,7 +758,15 @@
       "nameVi": "Công",
       "meaning": "Work",
       "strokeCount": 3,
-      "jlpt": "N5"
+      "jlpt": "N5",
+      "description": "Bộ thủ CÔNG - Work",
+      "examples": [
+        "工"
+      ],
+      "related_kanji": [
+        "工"
+      ],
+      "memory_tip": "Nhớ bộ thủ CÔNG (Work)"
     },
     {
       "symbol": "己",
@@ -390,7 +774,15 @@
       "nameVi": "Kỉ",
       "meaning": "Self",
       "strokeCount": 3,
-      "jlpt": "N5"
+      "jlpt": "N5",
+      "description": "Bộ thủ KỈ - Self",
+      "examples": [
+        "己"
+      ],
+      "related_kanji": [
+        "己"
+      ],
+      "memory_tip": "Nhớ bộ thủ KỈ (Self)"
     },
     {
       "symbol": "巾",
@@ -398,7 +790,15 @@
       "nameVi": "Cân",
       "meaning": "Cloth",
       "strokeCount": 3,
-      "jlpt": "N5"
+      "jlpt": "N5",
+      "description": "Bộ thủ CÂN - Cloth",
+      "examples": [
+        "巾"
+      ],
+      "related_kanji": [
+        "巾"
+      ],
+      "memory_tip": "Nhớ bộ thủ CÂN (Cloth)"
     },
     {
       "symbol": "干",
@@ -406,7 +806,15 @@
       "nameVi": "Can",
       "meaning": "Dry",
       "strokeCount": 3,
-      "jlpt": "N5"
+      "jlpt": "N5",
+      "description": "Bộ thủ CAN - Dry",
+      "examples": [
+        "干"
+      ],
+      "related_kanji": [
+        "干"
+      ],
+      "memory_tip": "Nhớ bộ thủ CAN (Dry)"
     },
     {
       "symbol": "幺",
@@ -414,7 +822,15 @@
       "nameVi": "Yêu",
       "meaning": "Tiny",
       "strokeCount": 3,
-      "jlpt": "N5"
+      "jlpt": "N5",
+      "description": "Bộ thủ YÊU - Tiny",
+      "examples": [
+        "幺"
+      ],
+      "related_kanji": [
+        "幺"
+      ],
+      "memory_tip": "Nhớ bộ thủ YÊU (Tiny)"
     },
     {
       "symbol": "广",
@@ -422,7 +838,15 @@
       "nameVi": "Quảng",
       "meaning": "Wide",
       "strokeCount": 3,
-      "jlpt": "N5"
+      "jlpt": "N5",
+      "description": "Bộ thủ QUẢNG - Wide",
+      "examples": [
+        "广"
+      ],
+      "related_kanji": [
+        "广"
+      ],
+      "memory_tip": "Nhớ bộ thủ QUẢNG (Wide)"
     },
     {
       "symbol": "廴",
@@ -430,7 +854,15 @@
       "nameVi": "Dẫn",
       "meaning": "Long",
       "strokeCount": 3,
-      "jlpt": "N5"
+      "jlpt": "N5",
+      "description": "Bộ thủ DẪN - Long",
+      "examples": [
+        "廴"
+      ],
+      "related_kanji": [
+        "廴"
+      ],
+      "memory_tip": "Nhớ bộ thủ DẪN (Long)"
     },
     {
       "symbol": "廾",
@@ -438,7 +870,15 @@
       "nameVi": "Cổng",
       "meaning": "Hands",
       "strokeCount": 3,
-      "jlpt": "N5"
+      "jlpt": "N5",
+      "description": "Bộ thủ CỔNG - Hands",
+      "examples": [
+        "廾"
+      ],
+      "related_kanji": [
+        "廾"
+      ],
+      "memory_tip": "Nhớ bộ thủ CỔNG (Hands)"
     },
     {
       "symbol": "弋",
@@ -446,7 +886,15 @@
       "nameVi": "Dực",
       "meaning": "Shoot",
       "strokeCount": 3,
-      "jlpt": "N5"
+      "jlpt": "N5",
+      "description": "Bộ thủ DỰC - Shoot",
+      "examples": [
+        "弋"
+      ],
+      "related_kanji": [
+        "弋"
+      ],
+      "memory_tip": "Nhớ bộ thủ DỰC (Shoot)"
     },
     {
       "symbol": "弓",
@@ -454,7 +902,15 @@
       "nameVi": "Cung",
       "meaning": "Bow",
       "strokeCount": 3,
-      "jlpt": "N5"
+      "jlpt": "N5",
+      "description": "Bộ thủ CUNG - Bow",
+      "examples": [
+        "弓"
+      ],
+      "related_kanji": [
+        "弓"
+      ],
+      "memory_tip": "Nhớ bộ thủ CUNG (Bow)"
     },
     {
       "symbol": "彐",
@@ -462,7 +918,15 @@
       "nameVi": "Kệ",
       "meaning": "Snout",
       "strokeCount": 3,
-      "jlpt": "N5"
+      "jlpt": "N5",
+      "description": "Bộ thủ KỆ - Snout",
+      "examples": [
+        "彐"
+      ],
+      "related_kanji": [
+        "彐"
+      ],
+      "memory_tip": "Nhớ bộ thủ KỆ (Snout)"
     },
     {
       "symbol": "彡",
@@ -470,7 +934,15 @@
       "nameVi": "Sam",
       "meaning": "Bristle",
       "strokeCount": 3,
-      "jlpt": "N5"
+      "jlpt": "N5",
+      "description": "Bộ thủ SAM - Bristle",
+      "examples": [
+        "彡"
+      ],
+      "related_kanji": [
+        "彡"
+      ],
+      "memory_tip": "Nhớ bộ thủ SAM (Bristle)"
     },
     {
       "symbol": "彳",
@@ -478,7 +950,15 @@
       "nameVi": "Xích",
       "meaning": "Step",
       "strokeCount": 3,
-      "jlpt": "N5"
+      "jlpt": "N5",
+      "description": "Bộ thủ XÍCH - Step",
+      "examples": [
+        "彳"
+      ],
+      "related_kanji": [
+        "彳"
+      ],
+      "memory_tip": "Nhớ bộ thủ XÍCH (Step)"
     },
     {
       "symbol": "心",
@@ -486,7 +966,15 @@
       "nameVi": "Tâm",
       "meaning": "Heart",
       "strokeCount": 4,
-      "jlpt": "N5"
+      "jlpt": "N5",
+      "description": "Bộ thủ TÂM - Heart",
+      "examples": [
+        "心"
+      ],
+      "related_kanji": [
+        "心"
+      ],
+      "memory_tip": "Nhớ bộ thủ TÂM (Heart)"
     },
     {
       "symbol": "戈",
@@ -494,7 +982,15 @@
       "nameVi": "Qua",
       "meaning": "Spear",
       "strokeCount": 4,
-      "jlpt": "N5"
+      "jlpt": "N5",
+      "description": "Bộ thủ QUA - Spear",
+      "examples": [
+        "戈"
+      ],
+      "related_kanji": [
+        "戈"
+      ],
+      "memory_tip": "Nhớ bộ thủ QUA (Spear)"
     },
     {
       "symbol": "戸",
@@ -502,7 +998,15 @@
       "nameVi": "Hộ",
       "meaning": "Door",
       "strokeCount": 4,
-      "jlpt": "N5"
+      "jlpt": "N5",
+      "description": "Bộ thủ HỘ - Door",
+      "examples": [
+        "戸"
+      ],
+      "related_kanji": [
+        "戸"
+      ],
+      "memory_tip": "Nhớ bộ thủ HỘ (Door)"
     },
     {
       "symbol": "手",
@@ -510,7 +1014,15 @@
       "nameVi": "Thủ",
       "meaning": "Hand",
       "strokeCount": 4,
-      "jlpt": "N5"
+      "jlpt": "N5",
+      "description": "Bộ thủ THỦ - Hand",
+      "examples": [
+        "手"
+      ],
+      "related_kanji": [
+        "手"
+      ],
+      "memory_tip": "Nhớ bộ thủ THỦ (Hand)"
     },
     {
       "symbol": "支",
@@ -518,7 +1030,15 @@
       "nameVi": "Chi",
       "meaning": "Branch",
       "strokeCount": 4,
-      "jlpt": "N5"
+      "jlpt": "N5",
+      "description": "Bộ thủ CHI - Branch",
+      "examples": [
+        "支"
+      ],
+      "related_kanji": [
+        "支"
+      ],
+      "memory_tip": "Nhớ bộ thủ CHI (Branch)"
     },
     {
       "symbol": "攴",
@@ -526,7 +1046,15 @@
       "nameVi": "Phốc",
       "meaning": "Strike",
       "strokeCount": 4,
-      "jlpt": "N5"
+      "jlpt": "N5",
+      "description": "Bộ thủ PHỐC - Strike",
+      "examples": [
+        "攴"
+      ],
+      "related_kanji": [
+        "攴"
+      ],
+      "memory_tip": "Nhớ bộ thủ PHỐC (Strike)"
     },
     {
       "symbol": "文",
@@ -534,7 +1062,15 @@
       "nameVi": "Văn",
       "meaning": "Text",
       "strokeCount": 4,
-      "jlpt": "N5"
+      "jlpt": "N5",
+      "description": "Bộ thủ VĂN - Text",
+      "examples": [
+        "文"
+      ],
+      "related_kanji": [
+        "文"
+      ],
+      "memory_tip": "Nhớ bộ thủ VĂN (Text)"
     },
     {
       "symbol": "斗",
@@ -542,7 +1078,15 @@
       "nameVi": "Đẩu",
       "meaning": "Ladle",
       "strokeCount": 4,
-      "jlpt": "N5"
+      "jlpt": "N5",
+      "description": "Bộ thủ ĐẨU - Ladle",
+      "examples": [
+        "斗"
+      ],
+      "related_kanji": [
+        "斗"
+      ],
+      "memory_tip": "Nhớ bộ thủ ĐẨU (Ladle)"
     },
     {
       "symbol": "斤",
@@ -550,7 +1094,15 @@
       "nameVi": "Cân",
       "meaning": "Axe",
       "strokeCount": 4,
-      "jlpt": "N5"
+      "jlpt": "N5",
+      "description": "Bộ thủ CÂN - Axe",
+      "examples": [
+        "斤"
+      ],
+      "related_kanji": [
+        "斤"
+      ],
+      "memory_tip": "Nhớ bộ thủ CÂN (Axe)"
     },
     {
       "symbol": "方",
@@ -558,7 +1110,15 @@
       "nameVi": "Phương",
       "meaning": "Direction",
       "strokeCount": 4,
-      "jlpt": "N5"
+      "jlpt": "N5",
+      "description": "Bộ thủ PHƯƠNG - Direction",
+      "examples": [
+        "方"
+      ],
+      "related_kanji": [
+        "方"
+      ],
+      "memory_tip": "Nhớ bộ thủ PHƯƠNG (Direction)"
     },
     {
       "symbol": "无",
@@ -566,7 +1126,15 @@
       "nameVi": "Vô",
       "meaning": "None",
       "strokeCount": 4,
-      "jlpt": "N5"
+      "jlpt": "N5",
+      "description": "Bộ thủ VÔ - None",
+      "examples": [
+        "无"
+      ],
+      "related_kanji": [
+        "无"
+      ],
+      "memory_tip": "Nhớ bộ thủ VÔ (None)"
     },
     {
       "symbol": "日",
@@ -574,7 +1142,15 @@
       "nameVi": "Nhật",
       "meaning": "Sun",
       "strokeCount": 4,
-      "jlpt": "N5"
+      "jlpt": "N5",
+      "description": "Bộ thủ NHẬT - Sun",
+      "examples": [
+        "日"
+      ],
+      "related_kanji": [
+        "日"
+      ],
+      "memory_tip": "Nhớ bộ thủ NHẬT (Sun)"
     },
     {
       "symbol": "月",
@@ -582,7 +1158,15 @@
       "nameVi": "Nguyệt",
       "meaning": "Moon",
       "strokeCount": 4,
-      "jlpt": "N5"
+      "jlpt": "N5",
+      "description": "Bộ thủ NGUYỆT - Moon",
+      "examples": [
+        "月"
+      ],
+      "related_kanji": [
+        "月"
+      ],
+      "memory_tip": "Nhớ bộ thủ NGUYỆT (Moon)"
     },
     {
       "symbol": "木",
@@ -590,7 +1174,15 @@
       "nameVi": "Mộc",
       "meaning": "Tree",
       "strokeCount": 4,
-      "jlpt": "N5"
+      "jlpt": "N5",
+      "description": "Bộ thủ MỘC - Tree",
+      "examples": [
+        "木"
+      ],
+      "related_kanji": [
+        "木"
+      ],
+      "memory_tip": "Nhớ bộ thủ MỘC (Tree)"
     },
     {
       "symbol": "欠",
@@ -598,7 +1190,15 @@
       "nameVi": "Khiếu",
       "meaning": "Lack",
       "strokeCount": 4,
-      "jlpt": "N5"
+      "jlpt": "N5",
+      "description": "Bộ thủ KHIẾU - Lack",
+      "examples": [
+        "欠"
+      ],
+      "related_kanji": [
+        "欠"
+      ],
+      "memory_tip": "Nhớ bộ thủ KHIẾU (Lack)"
     },
     {
       "symbol": "止",
@@ -606,7 +1206,15 @@
       "nameVi": "Chỉ",
       "meaning": "Stop",
       "strokeCount": 4,
-      "jlpt": "N5"
+      "jlpt": "N5",
+      "description": "Bộ thủ CHỈ - Stop",
+      "examples": [
+        "止"
+      ],
+      "related_kanji": [
+        "止"
+      ],
+      "memory_tip": "Nhớ bộ thủ CHỈ (Stop)"
     },
     {
       "symbol": "歹",
@@ -614,7 +1222,15 @@
       "nameVi": "Ngãi",
       "meaning": "Death",
       "strokeCount": 4,
-      "jlpt": "N5"
+      "jlpt": "N5",
+      "description": "Bộ thủ NGÃI - Death",
+      "examples": [
+        "歹"
+      ],
+      "related_kanji": [
+        "歹"
+      ],
+      "memory_tip": "Nhớ bộ thủ NGÃI (Death)"
     },
     {
       "symbol": "殳",
@@ -622,7 +1238,15 @@
       "nameVi": "Thù",
       "meaning": "Weapon",
       "strokeCount": 4,
-      "jlpt": "N5"
+      "jlpt": "N5",
+      "description": "Bộ thủ THÙ - Weapon",
+      "examples": [
+        "殳"
+      ],
+      "related_kanji": [
+        "殳"
+      ],
+      "memory_tip": "Nhớ bộ thủ THÙ (Weapon)"
     },
     {
       "symbol": "毋",
@@ -630,7 +1254,15 @@
       "nameVi": "Vô",
       "meaning": "Do not",
       "strokeCount": 4,
-      "jlpt": "N5"
+      "jlpt": "N5",
+      "description": "Bộ thủ VÔ - Do not",
+      "examples": [
+        "毋"
+      ],
+      "related_kanji": [
+        "毋"
+      ],
+      "memory_tip": "Nhớ bộ thủ VÔ (Do not)"
     },
     {
       "symbol": "比",
@@ -638,7 +1270,15 @@
       "nameVi": "Tỷ",
       "meaning": "Compare",
       "strokeCount": 4,
-      "jlpt": "N5"
+      "jlpt": "N5",
+      "description": "Bộ thủ TỶ - Compare",
+      "examples": [
+        "比"
+      ],
+      "related_kanji": [
+        "比"
+      ],
+      "memory_tip": "Nhớ bộ thủ TỶ (Compare)"
     },
     {
       "symbol": "毛",
@@ -646,7 +1286,15 @@
       "nameVi": "Mao",
       "meaning": "Fur",
       "strokeCount": 4,
-      "jlpt": "N5"
+      "jlpt": "N5",
+      "description": "Bộ thủ MAO - Fur",
+      "examples": [
+        "毛"
+      ],
+      "related_kanji": [
+        "毛"
+      ],
+      "memory_tip": "Nhớ bộ thủ MAO (Fur)"
     },
     {
       "symbol": "氏",
@@ -654,7 +1302,15 @@
       "nameVi": "Thị",
       "meaning": "Clan",
       "strokeCount": 4,
-      "jlpt": "N5"
+      "jlpt": "N5",
+      "description": "Bộ thủ THỊ - Clan",
+      "examples": [
+        "氏"
+      ],
+      "related_kanji": [
+        "氏"
+      ],
+      "memory_tip": "Nhớ bộ thủ THỊ (Clan)"
     },
     {
       "symbol": "气",
@@ -662,7 +1318,15 @@
       "nameVi": "Khí",
       "meaning": "Steam",
       "strokeCount": 4,
-      "jlpt": "N5"
+      "jlpt": "N5",
+      "description": "Bộ thủ KHÍ - Steam",
+      "examples": [
+        "气"
+      ],
+      "related_kanji": [
+        "气"
+      ],
+      "memory_tip": "Nhớ bộ thủ KHÍ (Steam)"
     },
     {
       "symbol": "水",
@@ -670,7 +1334,15 @@
       "nameVi": "Thủy",
       "meaning": "Water",
       "strokeCount": 4,
-      "jlpt": "N5"
+      "jlpt": "N5",
+      "description": "Bộ thủ THỦY - Water",
+      "examples": [
+        "水"
+      ],
+      "related_kanji": [
+        "水"
+      ],
+      "memory_tip": "Nhớ bộ thủ THỦY (Water)"
     },
     {
       "symbol": "火",
@@ -678,7 +1350,15 @@
       "nameVi": "Hỏa",
       "meaning": "Fire",
       "strokeCount": 4,
-      "jlpt": "N5"
+      "jlpt": "N5",
+      "description": "Bộ thủ HỎA - Fire",
+      "examples": [
+        "火"
+      ],
+      "related_kanji": [
+        "火"
+      ],
+      "memory_tip": "Nhớ bộ thủ HỎA (Fire)"
     },
     {
       "symbol": "爪",
@@ -686,7 +1366,15 @@
       "nameVi": "Trảo",
       "meaning": "Claw",
       "strokeCount": 4,
-      "jlpt": "N5"
+      "jlpt": "N5",
+      "description": "Bộ thủ TRẢO - Claw",
+      "examples": [
+        "爪"
+      ],
+      "related_kanji": [
+        "爪"
+      ],
+      "memory_tip": "Nhớ bộ thủ TRẢO (Claw)"
     },
     {
       "symbol": "父",
@@ -694,7 +1382,15 @@
       "nameVi": "Phụ",
       "meaning": "Father",
       "strokeCount": 4,
-      "jlpt": "N5"
+      "jlpt": "N5",
+      "description": "Bộ thủ PHỤ - Father",
+      "examples": [
+        "父"
+      ],
+      "related_kanji": [
+        "父"
+      ],
+      "memory_tip": "Nhớ bộ thủ PHỤ (Father)"
     },
     {
       "symbol": "爻",
@@ -702,7 +1398,15 @@
       "nameVi": "Hào",
       "meaning": "Lines",
       "strokeCount": 4,
-      "jlpt": "N5"
+      "jlpt": "N5",
+      "description": "Bộ thủ HÀO - Lines",
+      "examples": [
+        "爻"
+      ],
+      "related_kanji": [
+        "爻"
+      ],
+      "memory_tip": "Nhớ bộ thủ HÀO (Lines)"
     },
     {
       "symbol": "爿",
@@ -710,7 +1414,15 @@
       "nameVi": "Bàng",
       "meaning": "Bed",
       "strokeCount": 4,
-      "jlpt": "N5"
+      "jlpt": "N5",
+      "description": "Bộ thủ BÀNG - Bed",
+      "examples": [
+        "爿"
+      ],
+      "related_kanji": [
+        "爿"
+      ],
+      "memory_tip": "Nhớ bộ thủ BÀNG (Bed)"
     },
     {
       "symbol": "片",
@@ -718,7 +1430,15 @@
       "nameVi": "Phiến",
       "meaning": "Slice",
       "strokeCount": 4,
-      "jlpt": "N5"
+      "jlpt": "N5",
+      "description": "Bộ thủ PHIẾN - Slice",
+      "examples": [
+        "片"
+      ],
+      "related_kanji": [
+        "片"
+      ],
+      "memory_tip": "Nhớ bộ thủ PHIẾN (Slice)"
     },
     {
       "symbol": "牙",
@@ -726,7 +1446,15 @@
       "nameVi": "Nha",
       "meaning": "Fang",
       "strokeCount": 4,
-      "jlpt": "N5"
+      "jlpt": "N5",
+      "description": "Bộ thủ NHA - Fang",
+      "examples": [
+        "牙"
+      ],
+      "related_kanji": [
+        "牙"
+      ],
+      "memory_tip": "Nhớ bộ thủ NHA (Fang)"
     },
     {
       "symbol": "牛",
@@ -734,7 +1462,15 @@
       "nameVi": "Ngưu",
       "meaning": "Cow",
       "strokeCount": 4,
-      "jlpt": "N5"
+      "jlpt": "N5",
+      "description": "Bộ thủ NGƯU - Cow",
+      "examples": [
+        "牛"
+      ],
+      "related_kanji": [
+        "牛"
+      ],
+      "memory_tip": "Nhớ bộ thủ NGƯU (Cow)"
     },
     {
       "symbol": "犬",
@@ -742,7 +1478,15 @@
       "nameVi": "Khản",
       "meaning": "Dog",
       "strokeCount": 4,
-      "jlpt": "N5"
+      "jlpt": "N5",
+      "description": "Bộ thủ KHẢN - Dog",
+      "examples": [
+        "犬"
+      ],
+      "related_kanji": [
+        "犬"
+      ],
+      "memory_tip": "Nhớ bộ thủ KHẢN (Dog)"
     },
     {
       "symbol": "王",
@@ -750,7 +1494,15 @@
       "nameVi": "Vương",
       "meaning": "King",
       "strokeCount": 4,
-      "jlpt": "N5"
+      "jlpt": "N5",
+      "description": "Bộ thủ VƯƠNG - King",
+      "examples": [
+        "王"
+      ],
+      "related_kanji": [
+        "王"
+      ],
+      "memory_tip": "Nhớ bộ thủ VƯƠNG (King)"
     },
     {
       "symbol": "元",
@@ -758,7 +1510,15 @@
       "nameVi": "Nguyên",
       "meaning": "Origin",
       "strokeCount": 4,
-      "jlpt": "N5"
+      "jlpt": "N5",
+      "description": "Bộ thủ NGUYÊN - Origin",
+      "examples": [
+        "元"
+      ],
+      "related_kanji": [
+        "元"
+      ],
+      "memory_tip": "Nhớ bộ thủ NGUYÊN (Origin)"
     },
     {
       "symbol": "天",
@@ -766,7 +1526,15 @@
       "nameVi": "Thiên",
       "meaning": "Heaven",
       "strokeCount": 4,
-      "jlpt": "N5"
+      "jlpt": "N5",
+      "description": "Bộ thủ THIÊN - Heaven",
+      "examples": [
+        "天"
+      ],
+      "related_kanji": [
+        "天"
+      ],
+      "memory_tip": "Nhớ bộ thủ THIÊN (Heaven)"
     },
     {
       "symbol": "夫",
@@ -774,7 +1542,15 @@
       "nameVi": "Phu",
       "meaning": "Husband",
       "strokeCount": 4,
-      "jlpt": "N5"
+      "jlpt": "N5",
+      "description": "Bộ thủ PHU - Husband",
+      "examples": [
+        "夫"
+      ],
+      "related_kanji": [
+        "夫"
+      ],
+      "memory_tip": "Nhớ bộ thủ PHU (Husband)"
     },
     {
       "symbol": "太",
@@ -782,7 +1558,15 @@
       "nameVi": "Thái",
       "meaning": "Fat",
       "strokeCount": 4,
-      "jlpt": "N5"
+      "jlpt": "N5",
+      "description": "Bộ thủ THÁI - Fat",
+      "examples": [
+        "太"
+      ],
+      "related_kanji": [
+        "太"
+      ],
+      "memory_tip": "Nhớ bộ thủ THÁI (Fat)"
     },
     {
       "symbol": "夭",
@@ -790,7 +1574,15 @@
       "nameVi": "Yêu",
       "meaning": "Die young",
       "strokeCount": 4,
-      "jlpt": "N5"
+      "jlpt": "N5",
+      "description": "Bộ thủ YÊU - Die young",
+      "examples": [
+        "夭"
+      ],
+      "related_kanji": [
+        "夭"
+      ],
+      "memory_tip": "Nhớ bộ thủ YÊU (Die young)"
     },
     {
       "symbol": "木",
@@ -798,7 +1590,15 @@
       "nameVi": "Mộc",
       "meaning": "Tree",
       "strokeCount": 4,
-      "jlpt": "N5"
+      "jlpt": "N5",
+      "description": "Bộ thủ MỘC - Tree",
+      "examples": [
+        "木"
+      ],
+      "related_kanji": [
+        "木"
+      ],
+      "memory_tip": "Nhớ bộ thủ MỘC (Tree)"
     },
     {
       "symbol": "支",
@@ -806,7 +1606,15 @@
       "nameVi": "Chi",
       "meaning": "Branch",
       "strokeCount": 4,
-      "jlpt": "N5"
+      "jlpt": "N5",
+      "description": "Bộ thủ CHI - Branch",
+      "examples": [
+        "支"
+      ],
+      "related_kanji": [
+        "支"
+      ],
+      "memory_tip": "Nhớ bộ thủ CHI (Branch)"
     },
     {
       "symbol": "攴",
@@ -814,7 +1622,15 @@
       "nameVi": "Phốc",
       "meaning": "Strike",
       "strokeCount": 4,
-      "jlpt": "N5"
+      "jlpt": "N5",
+      "description": "Bộ thủ PHỐC - Strike",
+      "examples": [
+        "攴"
+      ],
+      "related_kanji": [
+        "攴"
+      ],
+      "memory_tip": "Nhớ bộ thủ PHỐC (Strike)"
     },
     {
       "symbol": "文",
@@ -822,7 +1638,15 @@
       "nameVi": "Văn",
       "meaning": "Text",
       "strokeCount": 4,
-      "jlpt": "N5"
+      "jlpt": "N5",
+      "description": "Bộ thủ VĂN - Text",
+      "examples": [
+        "文"
+      ],
+      "related_kanji": [
+        "文"
+      ],
+      "memory_tip": "Nhớ bộ thủ VĂN (Text)"
     },
     {
       "symbol": "斗",
@@ -830,7 +1654,15 @@
       "nameVi": "Đẩu",
       "meaning": "Ladle",
       "strokeCount": 4,
-      "jlpt": "N5"
+      "jlpt": "N5",
+      "description": "Bộ thủ ĐẨU - Ladle",
+      "examples": [
+        "斗"
+      ],
+      "related_kanji": [
+        "斗"
+      ],
+      "memory_tip": "Nhớ bộ thủ ĐẨU (Ladle)"
     },
     {
       "symbol": "斤",
@@ -838,7 +1670,15 @@
       "nameVi": "Cân",
       "meaning": "Axe",
       "strokeCount": 4,
-      "jlpt": "N5"
+      "jlpt": "N5",
+      "description": "Bộ thủ CÂN - Axe",
+      "examples": [
+        "斤"
+      ],
+      "related_kanji": [
+        "斤"
+      ],
+      "memory_tip": "Nhớ bộ thủ CÂN (Axe)"
     },
     {
       "symbol": "方",
@@ -846,7 +1686,15 @@
       "nameVi": "Phương",
       "meaning": "Direction",
       "strokeCount": 4,
-      "jlpt": "N5"
+      "jlpt": "N5",
+      "description": "Bộ thủ PHƯƠNG - Direction",
+      "examples": [
+        "方"
+      ],
+      "related_kanji": [
+        "方"
+      ],
+      "memory_tip": "Nhớ bộ thủ PHƯƠNG (Direction)"
     },
     {
       "symbol": "无",
@@ -854,7 +1702,15 @@
       "nameVi": "Vô",
       "meaning": "None",
       "strokeCount": 4,
-      "jlpt": "N5"
+      "jlpt": "N5",
+      "description": "Bộ thủ VÔ - None",
+      "examples": [
+        "无"
+      ],
+      "related_kanji": [
+        "无"
+      ],
+      "memory_tip": "Nhớ bộ thủ VÔ (None)"
     },
     {
       "symbol": "日",
@@ -862,7 +1718,15 @@
       "nameVi": "Nhật",
       "meaning": "Sun",
       "strokeCount": 4,
-      "jlpt": "N5"
+      "jlpt": "N5",
+      "description": "Bộ thủ NHẬT - Sun",
+      "examples": [
+        "日"
+      ],
+      "related_kanji": [
+        "日"
+      ],
+      "memory_tip": "Nhớ bộ thủ NHẬT (Sun)"
     },
     {
       "symbol": "月",
@@ -870,7 +1734,15 @@
       "nameVi": "Nguyệt",
       "meaning": "Moon",
       "strokeCount": 4,
-      "jlpt": "N5"
+      "jlpt": "N5",
+      "description": "Bộ thủ NGUYỆT - Moon",
+      "examples": [
+        "月"
+      ],
+      "related_kanji": [
+        "月"
+      ],
+      "memory_tip": "Nhớ bộ thủ NGUYỆT (Moon)"
     },
     {
       "symbol": "木",
@@ -878,7 +1750,15 @@
       "nameVi": "Mộc",
       "meaning": "Tree",
       "strokeCount": 4,
-      "jlpt": "N5"
+      "jlpt": "N5",
+      "description": "Bộ thủ MỘC - Tree",
+      "examples": [
+        "木"
+      ],
+      "related_kanji": [
+        "木"
+      ],
+      "memory_tip": "Nhớ bộ thủ MỘC (Tree)"
     },
     {
       "symbol": "欠",
@@ -886,7 +1766,15 @@
       "nameVi": "Khiếu",
       "meaning": "Lack",
       "strokeCount": 4,
-      "jlpt": "N5"
+      "jlpt": "N5",
+      "description": "Bộ thủ KHIẾU - Lack",
+      "examples": [
+        "欠"
+      ],
+      "related_kanji": [
+        "欠"
+      ],
+      "memory_tip": "Nhớ bộ thủ KHIẾU (Lack)"
     },
     {
       "symbol": "止",
@@ -894,7 +1782,15 @@
       "nameVi": "Chỉ",
       "meaning": "Stop",
       "strokeCount": 4,
-      "jlpt": "N5"
+      "jlpt": "N5",
+      "description": "Bộ thủ CHỈ - Stop",
+      "examples": [
+        "止"
+      ],
+      "related_kanji": [
+        "止"
+      ],
+      "memory_tip": "Nhớ bộ thủ CHỈ (Stop)"
     },
     {
       "symbol": "歹",
@@ -902,7 +1798,15 @@
       "nameVi": "Ngãi",
       "meaning": "Death",
       "strokeCount": 4,
-      "jlpt": "N5"
+      "jlpt": "N5",
+      "description": "Bộ thủ NGÃI - Death",
+      "examples": [
+        "歹"
+      ],
+      "related_kanji": [
+        "歹"
+      ],
+      "memory_tip": "Nhớ bộ thủ NGÃI (Death)"
     },
     {
       "symbol": "殳",
@@ -910,7 +1814,15 @@
       "nameVi": "Thù",
       "meaning": "Weapon",
       "strokeCount": 4,
-      "jlpt": "N5"
+      "jlpt": "N5",
+      "description": "Bộ thủ THÙ - Weapon",
+      "examples": [
+        "殳"
+      ],
+      "related_kanji": [
+        "殳"
+      ],
+      "memory_tip": "Nhớ bộ thủ THÙ (Weapon)"
     },
     {
       "symbol": "毋",
@@ -918,7 +1830,15 @@
       "nameVi": "Vô",
       "meaning": "Do not",
       "strokeCount": 4,
-      "jlpt": "N5"
+      "jlpt": "N5",
+      "description": "Bộ thủ VÔ - Do not",
+      "examples": [
+        "毋"
+      ],
+      "related_kanji": [
+        "毋"
+      ],
+      "memory_tip": "Nhớ bộ thủ VÔ (Do not)"
     },
     {
       "symbol": "比",
@@ -926,7 +1846,15 @@
       "nameVi": "Tỷ",
       "meaning": "Compare",
       "strokeCount": 4,
-      "jlpt": "N5"
+      "jlpt": "N5",
+      "description": "Bộ thủ TỶ - Compare",
+      "examples": [
+        "比"
+      ],
+      "related_kanji": [
+        "比"
+      ],
+      "memory_tip": "Nhớ bộ thủ TỶ (Compare)"
     },
     {
       "symbol": "毛",
@@ -934,7 +1862,15 @@
       "nameVi": "Mao",
       "meaning": "Fur",
       "strokeCount": 4,
-      "jlpt": "N5"
+      "jlpt": "N5",
+      "description": "Bộ thủ MAO - Fur",
+      "examples": [
+        "毛"
+      ],
+      "related_kanji": [
+        "毛"
+      ],
+      "memory_tip": "Nhớ bộ thủ MAO (Fur)"
     },
     {
       "symbol": "氏",
@@ -942,7 +1878,15 @@
       "nameVi": "Thị",
       "meaning": "Clan",
       "strokeCount": 4,
-      "jlpt": "N5"
+      "jlpt": "N5",
+      "description": "Bộ thủ THỊ - Clan",
+      "examples": [
+        "氏"
+      ],
+      "related_kanji": [
+        "氏"
+      ],
+      "memory_tip": "Nhớ bộ thủ THỊ (Clan)"
     },
     {
       "symbol": "气",
@@ -950,7 +1894,15 @@
       "nameVi": "Khí",
       "meaning": "Steam",
       "strokeCount": 4,
-      "jlpt": "N5"
+      "jlpt": "N5",
+      "description": "Bộ thủ KHÍ - Steam",
+      "examples": [
+        "气"
+      ],
+      "related_kanji": [
+        "气"
+      ],
+      "memory_tip": "Nhớ bộ thủ KHÍ (Steam)"
     },
     {
       "symbol": "水",
@@ -958,7 +1910,15 @@
       "nameVi": "Thủy",
       "meaning": "Water",
       "strokeCount": 4,
-      "jlpt": "N5"
+      "jlpt": "N5",
+      "description": "Bộ thủ THỦY - Water",
+      "examples": [
+        "水"
+      ],
+      "related_kanji": [
+        "水"
+      ],
+      "memory_tip": "Nhớ bộ thủ THỦY (Water)"
     },
     {
       "symbol": "火",
@@ -966,7 +1926,15 @@
       "nameVi": "Hỏa",
       "meaning": "Fire",
       "strokeCount": 4,
-      "jlpt": "N5"
+      "jlpt": "N5",
+      "description": "Bộ thủ HỎA - Fire",
+      "examples": [
+        "火"
+      ],
+      "related_kanji": [
+        "火"
+      ],
+      "memory_tip": "Nhớ bộ thủ HỎA (Fire)"
     },
     {
       "symbol": "爪",
@@ -974,7 +1942,15 @@
       "nameVi": "Trảo",
       "meaning": "Claw",
       "strokeCount": 4,
-      "jlpt": "N5"
+      "jlpt": "N5",
+      "description": "Bộ thủ TRẢO - Claw",
+      "examples": [
+        "爪"
+      ],
+      "related_kanji": [
+        "爪"
+      ],
+      "memory_tip": "Nhớ bộ thủ TRẢO (Claw)"
     },
     {
       "symbol": "父",
@@ -982,7 +1958,15 @@
       "nameVi": "Phụ",
       "meaning": "Father",
       "strokeCount": 4,
-      "jlpt": "N5"
+      "jlpt": "N5",
+      "description": "Bộ thủ PHỤ - Father",
+      "examples": [
+        "父"
+      ],
+      "related_kanji": [
+        "父"
+      ],
+      "memory_tip": "Nhớ bộ thủ PHỤ (Father)"
     },
     {
       "symbol": "爻",
@@ -990,7 +1974,15 @@
       "nameVi": "Hào",
       "meaning": "Lines",
       "strokeCount": 4,
-      "jlpt": "N5"
+      "jlpt": "N5",
+      "description": "Bộ thủ HÀO - Lines",
+      "examples": [
+        "爻"
+      ],
+      "related_kanji": [
+        "爻"
+      ],
+      "memory_tip": "Nhớ bộ thủ HÀO (Lines)"
     },
     {
       "symbol": "爿",
@@ -998,7 +1990,15 @@
       "nameVi": "Bàng",
       "meaning": "Bed",
       "strokeCount": 4,
-      "jlpt": "N5"
+      "jlpt": "N5",
+      "description": "Bộ thủ BÀNG - Bed",
+      "examples": [
+        "爿"
+      ],
+      "related_kanji": [
+        "爿"
+      ],
+      "memory_tip": "Nhớ bộ thủ BÀNG (Bed)"
     },
     {
       "symbol": "片",
@@ -1006,7 +2006,15 @@
       "nameVi": "Phiến",
       "meaning": "Slice",
       "strokeCount": 4,
-      "jlpt": "N5"
+      "jlpt": "N5",
+      "description": "Bộ thủ PHIẾN - Slice",
+      "examples": [
+        "片"
+      ],
+      "related_kanji": [
+        "片"
+      ],
+      "memory_tip": "Nhớ bộ thủ PHIẾN (Slice)"
     },
     {
       "symbol": "牙",
@@ -1014,7 +2022,15 @@
       "nameVi": "Nha",
       "meaning": "Fang",
       "strokeCount": 4,
-      "jlpt": "N5"
+      "jlpt": "N5",
+      "description": "Bộ thủ NHA - Fang",
+      "examples": [
+        "牙"
+      ],
+      "related_kanji": [
+        "牙"
+      ],
+      "memory_tip": "Nhớ bộ thủ NHA (Fang)"
     },
     {
       "symbol": "牛",
@@ -1022,7 +2038,15 @@
       "nameVi": "Ngưu",
       "meaning": "Cow",
       "strokeCount": 4,
-      "jlpt": "N5"
+      "jlpt": "N5",
+      "description": "Bộ thủ NGƯU - Cow",
+      "examples": [
+        "牛"
+      ],
+      "related_kanji": [
+        "牛"
+      ],
+      "memory_tip": "Nhớ bộ thủ NGƯU (Cow)"
     },
     {
       "symbol": "犬",
@@ -1030,7 +2054,15 @@
       "nameVi": "Khản",
       "meaning": "Dog",
       "strokeCount": 4,
-      "jlpt": "N5"
+      "jlpt": "N5",
+      "description": "Bộ thủ KHẢN - Dog",
+      "examples": [
+        "犬"
+      ],
+      "related_kanji": [
+        "犬"
+      ],
+      "memory_tip": "Nhớ bộ thủ KHẢN (Dog)"
     },
     {
       "symbol": "王",
@@ -1038,7 +2070,15 @@
       "nameVi": "Vương",
       "meaning": "King",
       "strokeCount": 4,
-      "jlpt": "N5"
+      "jlpt": "N5",
+      "description": "Bộ thủ VƯƠNG - King",
+      "examples": [
+        "王"
+      ],
+      "related_kanji": [
+        "王"
+      ],
+      "memory_tip": "Nhớ bộ thủ VƯƠNG (King)"
     },
     {
       "symbol": "元",
@@ -1046,7 +2086,15 @@
       "nameVi": "Nguyên",
       "meaning": "Origin",
       "strokeCount": 4,
-      "jlpt": "N5"
+      "jlpt": "N5",
+      "description": "Bộ thủ NGUYÊN - Origin",
+      "examples": [
+        "元"
+      ],
+      "related_kanji": [
+        "元"
+      ],
+      "memory_tip": "Nhớ bộ thủ NGUYÊN (Origin)"
     },
     {
       "symbol": "天",
@@ -1054,7 +2102,15 @@
       "nameVi": "Thiên",
       "meaning": "Heaven",
       "strokeCount": 4,
-      "jlpt": "N5"
+      "jlpt": "N5",
+      "description": "Bộ thủ THIÊN - Heaven",
+      "examples": [
+        "天"
+      ],
+      "related_kanji": [
+        "天"
+      ],
+      "memory_tip": "Nhớ bộ thủ THIÊN (Heaven)"
     },
     {
       "symbol": "夫",
@@ -1062,7 +2118,15 @@
       "nameVi": "Phu",
       "meaning": "Husband",
       "strokeCount": 4,
-      "jlpt": "N5"
+      "jlpt": "N5",
+      "description": "Bộ thủ PHU - Husband",
+      "examples": [
+        "夫"
+      ],
+      "related_kanji": [
+        "夫"
+      ],
+      "memory_tip": "Nhớ bộ thủ PHU (Husband)"
     },
     {
       "symbol": "太",
@@ -1070,7 +2134,15 @@
       "nameVi": "Thái",
       "meaning": "Fat",
       "strokeCount": 4,
-      "jlpt": "N5"
+      "jlpt": "N5",
+      "description": "Bộ thủ THÁI - Fat",
+      "examples": [
+        "太"
+      ],
+      "related_kanji": [
+        "太"
+      ],
+      "memory_tip": "Nhớ bộ thủ THÁI (Fat)"
     },
     {
       "symbol": "夭",
@@ -1078,7 +2150,15 @@
       "nameVi": "Yêu",
       "meaning": "Die young",
       "strokeCount": 4,
-      "jlpt": "N5"
+      "jlpt": "N5",
+      "description": "Bộ thủ YÊU - Die young",
+      "examples": [
+        "夭"
+      ],
+      "related_kanji": [
+        "夭"
+      ],
+      "memory_tip": "Nhớ bộ thủ YÊU (Die young)"
     },
     {
       "symbol": "木",
@@ -1086,7 +2166,15 @@
       "nameVi": "Mộc",
       "meaning": "Tree",
       "strokeCount": 4,
-      "jlpt": "N5"
+      "jlpt": "N5",
+      "description": "Bộ thủ MỘC - Tree",
+      "examples": [
+        "木"
+      ],
+      "related_kanji": [
+        "木"
+      ],
+      "memory_tip": "Nhớ bộ thủ MỘC (Tree)"
     },
     {
       "symbol": "支",
@@ -1094,7 +2182,15 @@
       "nameVi": "Chi",
       "meaning": "Branch",
       "strokeCount": 4,
-      "jlpt": "N5"
+      "jlpt": "N5",
+      "description": "Bộ thủ CHI - Branch",
+      "examples": [
+        "支"
+      ],
+      "related_kanji": [
+        "支"
+      ],
+      "memory_tip": "Nhớ bộ thủ CHI (Branch)"
     },
     {
       "symbol": "攴",
@@ -1102,7 +2198,15 @@
       "nameVi": "Phốc",
       "meaning": "Strike",
       "strokeCount": 4,
-      "jlpt": "N5"
+      "jlpt": "N5",
+      "description": "Bộ thủ PHỐC - Strike",
+      "examples": [
+        "攴"
+      ],
+      "related_kanji": [
+        "攴"
+      ],
+      "memory_tip": "Nhớ bộ thủ PHỐC (Strike)"
     },
     {
       "symbol": "文",
@@ -1110,7 +2214,15 @@
       "nameVi": "Văn",
       "meaning": "Text",
       "strokeCount": 4,
-      "jlpt": "N5"
+      "jlpt": "N5",
+      "description": "Bộ thủ VĂN - Text",
+      "examples": [
+        "文"
+      ],
+      "related_kanji": [
+        "文"
+      ],
+      "memory_tip": "Nhớ bộ thủ VĂN (Text)"
     },
     {
       "symbol": "斗",
@@ -1118,7 +2230,15 @@
       "nameVi": "Đẩu",
       "meaning": "Ladle",
       "strokeCount": 4,
-      "jlpt": "N5"
+      "jlpt": "N5",
+      "description": "Bộ thủ ĐẨU - Ladle",
+      "examples": [
+        "斗"
+      ],
+      "related_kanji": [
+        "斗"
+      ],
+      "memory_tip": "Nhớ bộ thủ ĐẨU (Ladle)"
     },
     {
       "symbol": "斤",
@@ -1126,7 +2246,15 @@
       "nameVi": "Cân",
       "meaning": "Axe",
       "strokeCount": 4,
-      "jlpt": "N5"
+      "jlpt": "N5",
+      "description": "Bộ thủ CÂN - Axe",
+      "examples": [
+        "斤"
+      ],
+      "related_kanji": [
+        "斤"
+      ],
+      "memory_tip": "Nhớ bộ thủ CÂN (Axe)"
     },
     {
       "symbol": "方",
@@ -1134,7 +2262,15 @@
       "nameVi": "Phương",
       "meaning": "Direction",
       "strokeCount": 4,
-      "jlpt": "N5"
+      "jlpt": "N5",
+      "description": "Bộ thủ PHƯƠNG - Direction",
+      "examples": [
+        "方"
+      ],
+      "related_kanji": [
+        "方"
+      ],
+      "memory_tip": "Nhớ bộ thủ PHƯƠNG (Direction)"
     },
     {
       "symbol": "无",
@@ -1142,7 +2278,15 @@
       "nameVi": "Vô",
       "meaning": "None",
       "strokeCount": 4,
-      "jlpt": "N5"
+      "jlpt": "N5",
+      "description": "Bộ thủ VÔ - None",
+      "examples": [
+        "无"
+      ],
+      "related_kanji": [
+        "无"
+      ],
+      "memory_tip": "Nhớ bộ thủ VÔ (None)"
     },
     {
       "symbol": "日",
@@ -1150,7 +2294,15 @@
       "nameVi": "Nhật",
       "meaning": "Sun",
       "strokeCount": 4,
-      "jlpt": "N5"
+      "jlpt": "N5",
+      "description": "Bộ thủ NHẬT - Sun",
+      "examples": [
+        "日"
+      ],
+      "related_kanji": [
+        "日"
+      ],
+      "memory_tip": "Nhớ bộ thủ NHẬT (Sun)"
     },
     {
       "symbol": "月",
@@ -1158,7 +2310,15 @@
       "nameVi": "Nguyệt",
       "meaning": "Moon",
       "strokeCount": 4,
-      "jlpt": "N5"
+      "jlpt": "N5",
+      "description": "Bộ thủ NGUYỆT - Moon",
+      "examples": [
+        "月"
+      ],
+      "related_kanji": [
+        "月"
+      ],
+      "memory_tip": "Nhớ bộ thủ NGUYỆT (Moon)"
     },
     {
       "symbol": "木",
@@ -1166,7 +2326,15 @@
       "nameVi": "Mộc",
       "meaning": "Tree",
       "strokeCount": 4,
-      "jlpt": "N5"
+      "jlpt": "N5",
+      "description": "Bộ thủ MỘC - Tree",
+      "examples": [
+        "木"
+      ],
+      "related_kanji": [
+        "木"
+      ],
+      "memory_tip": "Nhớ bộ thủ MỘC (Tree)"
     },
     {
       "symbol": "欠",
@@ -1174,7 +2342,15 @@
       "nameVi": "Khiếu",
       "meaning": "Lack",
       "strokeCount": 4,
-      "jlpt": "N5"
+      "jlpt": "N5",
+      "description": "Bộ thủ KHIẾU - Lack",
+      "examples": [
+        "欠"
+      ],
+      "related_kanji": [
+        "欠"
+      ],
+      "memory_tip": "Nhớ bộ thủ KHIẾU (Lack)"
     },
     {
       "symbol": "止",
@@ -1182,7 +2358,15 @@
       "nameVi": "Chỉ",
       "meaning": "Stop",
       "strokeCount": 4,
-      "jlpt": "N5"
+      "jlpt": "N5",
+      "description": "Bộ thủ CHỈ - Stop",
+      "examples": [
+        "止"
+      ],
+      "related_kanji": [
+        "止"
+      ],
+      "memory_tip": "Nhớ bộ thủ CHỈ (Stop)"
     },
     {
       "symbol": "歹",
@@ -1190,7 +2374,15 @@
       "nameVi": "Ngãi",
       "meaning": "Death",
       "strokeCount": 4,
-      "jlpt": "N5"
+      "jlpt": "N5",
+      "description": "Bộ thủ NGÃI - Death",
+      "examples": [
+        "歹"
+      ],
+      "related_kanji": [
+        "歹"
+      ],
+      "memory_tip": "Nhớ bộ thủ NGÃI (Death)"
     },
     {
       "symbol": "殳",
@@ -1198,7 +2390,15 @@
       "nameVi": "Thù",
       "meaning": "Weapon",
       "strokeCount": 4,
-      "jlpt": "N5"
+      "jlpt": "N5",
+      "description": "Bộ thủ THÙ - Weapon",
+      "examples": [
+        "殳"
+      ],
+      "related_kanji": [
+        "殳"
+      ],
+      "memory_tip": "Nhớ bộ thủ THÙ (Weapon)"
     },
     {
       "symbol": "毋",
@@ -1206,7 +2406,15 @@
       "nameVi": "Vô",
       "meaning": "Do not",
       "strokeCount": 4,
-      "jlpt": "N5"
+      "jlpt": "N5",
+      "description": "Bộ thủ VÔ - Do not",
+      "examples": [
+        "毋"
+      ],
+      "related_kanji": [
+        "毋"
+      ],
+      "memory_tip": "Nhớ bộ thủ VÔ (Do not)"
     },
     {
       "symbol": "比",
@@ -1214,7 +2422,15 @@
       "nameVi": "Tỷ",
       "meaning": "Compare",
       "strokeCount": 4,
-      "jlpt": "N5"
+      "jlpt": "N5",
+      "description": "Bộ thủ TỶ - Compare",
+      "examples": [
+        "比"
+      ],
+      "related_kanji": [
+        "比"
+      ],
+      "memory_tip": "Nhớ bộ thủ TỶ (Compare)"
     },
     {
       "symbol": "毛",
@@ -1222,7 +2438,15 @@
       "nameVi": "Mao",
       "meaning": "Fur",
       "strokeCount": 4,
-      "jlpt": "N5"
+      "jlpt": "N5",
+      "description": "Bộ thủ MAO - Fur",
+      "examples": [
+        "毛"
+      ],
+      "related_kanji": [
+        "毛"
+      ],
+      "memory_tip": "Nhớ bộ thủ MAO (Fur)"
     },
     {
       "symbol": "氏",
@@ -1230,7 +2454,15 @@
       "nameVi": "Thị",
       "meaning": "Clan",
       "strokeCount": 4,
-      "jlpt": "N5"
+      "jlpt": "N5",
+      "description": "Bộ thủ THỊ - Clan",
+      "examples": [
+        "氏"
+      ],
+      "related_kanji": [
+        "氏"
+      ],
+      "memory_tip": "Nhớ bộ thủ THỊ (Clan)"
     },
     {
       "symbol": "气",
@@ -1238,7 +2470,15 @@
       "nameVi": "Khí",
       "meaning": "Steam",
       "strokeCount": 4,
-      "jlpt": "N5"
+      "jlpt": "N5",
+      "description": "Bộ thủ KHÍ - Steam",
+      "examples": [
+        "气"
+      ],
+      "related_kanji": [
+        "气"
+      ],
+      "memory_tip": "Nhớ bộ thủ KHÍ (Steam)"
     },
     {
       "symbol": "水",
@@ -1246,7 +2486,15 @@
       "nameVi": "Thủy",
       "meaning": "Water",
       "strokeCount": 4,
-      "jlpt": "N5"
+      "jlpt": "N5",
+      "description": "Bộ thủ THỦY - Water",
+      "examples": [
+        "水"
+      ],
+      "related_kanji": [
+        "水"
+      ],
+      "memory_tip": "Nhớ bộ thủ THỦY (Water)"
     },
     {
       "symbol": "火",
@@ -1254,7 +2502,15 @@
       "nameVi": "Hỏa",
       "meaning": "Fire",
       "strokeCount": 4,
-      "jlpt": "N5"
+      "jlpt": "N5",
+      "description": "Bộ thủ HỎA - Fire",
+      "examples": [
+        "火"
+      ],
+      "related_kanji": [
+        "火"
+      ],
+      "memory_tip": "Nhớ bộ thủ HỎA (Fire)"
     },
     {
       "symbol": "爪",
@@ -1262,7 +2518,15 @@
       "nameVi": "Trảo",
       "meaning": "Claw",
       "strokeCount": 4,
-      "jlpt": "N5"
+      "jlpt": "N5",
+      "description": "Bộ thủ TRẢO - Claw",
+      "examples": [
+        "爪"
+      ],
+      "related_kanji": [
+        "爪"
+      ],
+      "memory_tip": "Nhớ bộ thủ TRẢO (Claw)"
     },
     {
       "symbol": "父",
@@ -1270,7 +2534,15 @@
       "nameVi": "Phụ",
       "meaning": "Father",
       "strokeCount": 4,
-      "jlpt": "N5"
+      "jlpt": "N5",
+      "description": "Bộ thủ PHỤ - Father",
+      "examples": [
+        "父"
+      ],
+      "related_kanji": [
+        "父"
+      ],
+      "memory_tip": "Nhớ bộ thủ PHỤ (Father)"
     },
     {
       "symbol": "爻",
@@ -1278,7 +2550,15 @@
       "nameVi": "Hào",
       "meaning": "Lines",
       "strokeCount": 4,
-      "jlpt": "N5"
+      "jlpt": "N5",
+      "description": "Bộ thủ HÀO - Lines",
+      "examples": [
+        "爻"
+      ],
+      "related_kanji": [
+        "爻"
+      ],
+      "memory_tip": "Nhớ bộ thủ HÀO (Lines)"
     },
     {
       "symbol": "爿",
@@ -1286,7 +2566,15 @@
       "nameVi": "Bàng",
       "meaning": "Bed",
       "strokeCount": 4,
-      "jlpt": "N5"
+      "jlpt": "N5",
+      "description": "Bộ thủ BÀNG - Bed",
+      "examples": [
+        "爿"
+      ],
+      "related_kanji": [
+        "爿"
+      ],
+      "memory_tip": "Nhớ bộ thủ BÀNG (Bed)"
     },
     {
       "symbol": "片",
@@ -1294,7 +2582,15 @@
       "nameVi": "Phiến",
       "meaning": "Slice",
       "strokeCount": 4,
-      "jlpt": "N5"
+      "jlpt": "N5",
+      "description": "Bộ thủ PHIẾN - Slice",
+      "examples": [
+        "片"
+      ],
+      "related_kanji": [
+        "片"
+      ],
+      "memory_tip": "Nhớ bộ thủ PHIẾN (Slice)"
     },
     {
       "symbol": "牙",
@@ -1302,7 +2598,15 @@
       "nameVi": "Nha",
       "meaning": "Fang",
       "strokeCount": 4,
-      "jlpt": "N5"
+      "jlpt": "N5",
+      "description": "Bộ thủ NHA - Fang",
+      "examples": [
+        "牙"
+      ],
+      "related_kanji": [
+        "牙"
+      ],
+      "memory_tip": "Nhớ bộ thủ NHA (Fang)"
     },
     {
       "symbol": "牛",
@@ -1310,7 +2614,15 @@
       "nameVi": "Ngưu",
       "meaning": "Cow",
       "strokeCount": 4,
-      "jlpt": "N5"
+      "jlpt": "N5",
+      "description": "Bộ thủ NGƯU - Cow",
+      "examples": [
+        "牛"
+      ],
+      "related_kanji": [
+        "牛"
+      ],
+      "memory_tip": "Nhớ bộ thủ NGƯU (Cow)"
     },
     {
       "symbol": "犬",
@@ -1318,7 +2630,15 @@
       "nameVi": "Khản",
       "meaning": "Dog",
       "strokeCount": 4,
-      "jlpt": "N5"
+      "jlpt": "N5",
+      "description": "Bộ thủ KHẢN - Dog",
+      "examples": [
+        "犬"
+      ],
+      "related_kanji": [
+        "犬"
+      ],
+      "memory_tip": "Nhớ bộ thủ KHẢN (Dog)"
     },
     {
       "symbol": "王",
@@ -1326,7 +2646,15 @@
       "nameVi": "Vương",
       "meaning": "King",
       "strokeCount": 4,
-      "jlpt": "N5"
+      "jlpt": "N5",
+      "description": "Bộ thủ VƯƠNG - King",
+      "examples": [
+        "王"
+      ],
+      "related_kanji": [
+        "王"
+      ],
+      "memory_tip": "Nhớ bộ thủ VƯƠNG (King)"
     },
     {
       "symbol": "元",
@@ -1334,7 +2662,15 @@
       "nameVi": "Nguyên",
       "meaning": "Origin",
       "strokeCount": 4,
-      "jlpt": "N5"
+      "jlpt": "N5",
+      "description": "Bộ thủ NGUYÊN - Origin",
+      "examples": [
+        "元"
+      ],
+      "related_kanji": [
+        "元"
+      ],
+      "memory_tip": "Nhớ bộ thủ NGUYÊN (Origin)"
     },
     {
       "symbol": "天",
@@ -1342,7 +2678,15 @@
       "nameVi": "Thiên",
       "meaning": "Heaven",
       "strokeCount": 4,
-      "jlpt": "N5"
+      "jlpt": "N5",
+      "description": "Bộ thủ THIÊN - Heaven",
+      "examples": [
+        "天"
+      ],
+      "related_kanji": [
+        "天"
+      ],
+      "memory_tip": "Nhớ bộ thủ THIÊN (Heaven)"
     },
     {
       "symbol": "夫",
@@ -1350,7 +2694,15 @@
       "nameVi": "Phu",
       "meaning": "Husband",
       "strokeCount": 4,
-      "jlpt": "N5"
+      "jlpt": "N5",
+      "description": "Bộ thủ PHU - Husband",
+      "examples": [
+        "夫"
+      ],
+      "related_kanji": [
+        "夫"
+      ],
+      "memory_tip": "Nhớ bộ thủ PHU (Husband)"
     },
     {
       "symbol": "太",
@@ -1358,7 +2710,15 @@
       "nameVi": "Thái",
       "meaning": "Fat",
       "strokeCount": 4,
-      "jlpt": "N5"
+      "jlpt": "N5",
+      "description": "Bộ thủ THÁI - Fat",
+      "examples": [
+        "太"
+      ],
+      "related_kanji": [
+        "太"
+      ],
+      "memory_tip": "Nhớ bộ thủ THÁI (Fat)"
     },
     {
       "symbol": "夭",
@@ -1366,7 +2726,15 @@
       "nameVi": "Yêu",
       "meaning": "Die young",
       "strokeCount": 4,
-      "jlpt": "N5"
+      "jlpt": "N5",
+      "description": "Bộ thủ YÊU - Die young",
+      "examples": [
+        "夭"
+      ],
+      "related_kanji": [
+        "夭"
+      ],
+      "memory_tip": "Nhớ bộ thủ YÊU (Die young)"
     }
   ]
 }

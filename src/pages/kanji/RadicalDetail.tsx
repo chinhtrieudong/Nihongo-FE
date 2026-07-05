@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
-import { ArrowLeft, ChevronLeft, ChevronRight } from "lucide-react";
+import { ArrowLeft, ChevronLeft, ChevronRight, Lightbulb } from "lucide-react";
 import { Spin, Button } from "antd";
 import { EmptyState } from "../../components/common";
 import { useAppSelector } from "../../store/hooks";
@@ -29,6 +29,8 @@ type RadicalDetailData = {
     hanviet?: string;
     meaning_vi?: string;
   }>;
+  description?: string;
+  memory_tip?: string;
 };
 
 type KanjiSummary = {
@@ -317,10 +319,10 @@ const RadicalDetail: React.FC = () => {
       </div>
 
       {/* Main Radical Info Card */}
-      <div className="mb-6 rounded-2xl border border-border bg-surface-1 p-5 sm:p-6">
+      <div className="mb-6 rounded-2xl border border-border bg-surface-1 p-5 sm:p-6 shadow-md hover:shadow-lg transition-shadow">
         <div className="grid grid-cols-1 lg:grid-cols-[180px_minmax(0,1fr)] gap-5 sm:gap-6">
           {/* Radical Symbol Display with Stroke Order */}
-          <div className="rounded-2xl border border-border bg-surface-1 p-5 flex flex-col items-center justify-center text-center">
+          <div className="rounded-2xl border border-border bg-surface-1 p-5 flex flex-col items-center justify-center text-center shadow-md">
             {loadingStrokeOrder ? (
               <div className="flex items-center justify-center h-32">
                 <Spin size="small" />
@@ -350,11 +352,11 @@ const RadicalDetail: React.FC = () => {
             <h1 className="text-2xl sm:text-3xl font-bold leading-tight text-text-main dark:text-secondary-100">
               Bộ thủ <span className="kanji-text text-teal-700 dark:text-teal-400">{displaySymbol}</span>
             </h1>
-            <p className="mt-2 text-sm sm:text-base text-text-secondary dark:text-secondary-400">
-              {displayHanviet ? `${displayHanviet} • ${displayNameVi || ""}` : (displayNameVi || "Không rõ tên")}{" "}
-              {displayMeaningVi || "Không có nghĩa"}
-              {displayMeaningEn ? ` (${displayMeaningEn})` : ""}
-            </p>
+            {radical.description && (
+              <p className="mt-2 text-sm sm:text-base text-text-secondary dark:text-secondary-400">
+                {radical.description}
+              </p>
+            )}
 
             {/* Stats Grid */}
             <div className="mt-4 grid grid-cols-2 sm:grid-cols-4 gap-3">
@@ -392,6 +394,19 @@ const RadicalDetail: React.FC = () => {
               </div>
             </div>
 
+            {/* Memory Tip */}
+            {radical.memory_tip && (
+              <div className="mt-4 p-4 bg-amber-50 dark:bg-amber-900/20 rounded-xl border border-amber-200 dark:border-amber-800">
+                <div className="flex items-center gap-2 mb-2">
+                  <Lightbulb className="w-4 h-4 text-amber-600 dark:text-amber-400" />
+                  <span className="text-sm font-semibold text-amber-600 dark:text-amber-400">Cách nhớ</span>
+                </div>
+                <p className="text-sm text-slate-700 dark:text-slate-300">
+                  {radical.memory_tip}
+                </p>
+              </div>
+            )}
+
             {/* Variants */}
             {Array.isArray(radical.variants) && radical.variants.length > 0 ? (
               <div className="mt-4 flex flex-wrap items-center gap-2">
@@ -411,7 +426,7 @@ const RadicalDetail: React.FC = () => {
       </div>
 
       {/* Kanji by Radical Section */}
-      <div className="rounded-2xl border border-border bg-surface-1 p-5 sm:p-6">
+      <div className="rounded-2xl border border-border bg-surface-1 p-5 sm:p-6 shadow-md hover:shadow-lg transition-shadow">
         <div className="mb-4 flex items-center justify-between gap-3">
           <h2 className="text-lg font-bold text-text-main dark:text-secondary-100">Kanji theo bộ thủ</h2>
           <div className="rounded-full border border-teal-200 dark:border-teal-600 bg-teal-50 dark:bg-teal-900/40 px-3 py-1.5 text-xs font-semibold text-teal-700 dark:text-teal-300">
