@@ -1,15 +1,872 @@
 {
   "kanjiList": [
     {
+      "id": "11",
+      "kanji": "一",
+      "hanviet": "NHẤT",
+      "level": "N5",
+      "onyomi": [
+        "イチ",
+        "イツ"
+      ],
+      "kunyomi": [
+        "ひと"
+      ],
+      "meaningVi": "Một",
+      "strokeCount": 1,
+      "radicals": [
+        "一"
+      ],
+      "memoryTip": "Một nét ngang đơn giản",
+      "relatedVocabulary": [
+        {
+          "word": "一人",
+          "kana": "ひとり",
+          "hanviet": "NHẤT NHÂN",
+          "meaningVi": "Một người",
+          "exampleJp": "一人で行きます。",
+          "exampleVi": "Tôi đi một mình."
+        },
+        {
+          "word": "一日",
+          "kana": "ついたち",
+          "hanviet": "NHẤT NHẬT",
+          "meaningVi": "Một ngày",
+          "exampleJp": "一日中働きました。",
+          "exampleVi": "Tôi đã làm việc cả ngày."
+        }
+      ]
+    },
+    {
+      "id": "17",
+      "kanji": "七",
+      "hanviet": "THẤT",
+      "level": "N5",
+      "onyomi": [
+        "シチ"
+      ],
+      "kunyomi": [
+        "なな",
+        "なな"
+      ],
+      "meaningVi": "Bảy",
+      "strokeCount": 2,
+      "radicals": [
+        "一"
+      ],
+      "memoryTip": "Bảy nét",
+      "relatedVocabulary": [
+        {
+          "word": "七人",
+          "kana": "しちにん",
+          "hanviet": "THẤT NHÂN",
+          "meaningVi": "Bảy người",
+          "exampleJp": "七人でゲームをしました。",
+          "exampleVi": "Bảy người chơi trò chơi."
+        },
+        {
+          "word": "七日",
+          "kana": "なのか",
+          "hanviet": "THẤT NHẬT",
+          "meaningVi": "Bảy ngày",
+          "exampleJp": "七日間かかりました。",
+          "exampleVi": "Mất bảy ngày."
+        }
+      ]
+    },
+    {
+      "id": "19",
+      "kanji": "九",
+      "hanviet": "CỬU",
+      "level": "N5",
+      "onyomi": [
+        "キュウ",
+        "ク"
+      ],
+      "kunyomi": [
+        "ここの"
+      ],
+      "meaningVi": "Chín",
+      "strokeCount": 2,
+      "radicals": [
+        "乙"
+      ],
+      "memoryTip": "Chín ngón tay",
+      "relatedVocabulary": [
+        {
+          "word": "九人",
+          "kana": "くにん",
+          "hanviet": "CỬU NHÂN",
+          "meaningVi": "Chín người",
+          "exampleJp": "九人でクラスです。",
+          "exampleVi": "Lớp có chín người."
+        },
+        {
+          "word": "九日",
+          "kana": "ここのか",
+          "hanviet": "CỬU NHẬT",
+          "meaningVi": "Chín ngày",
+          "exampleJp": "九日間旅行しました。",
+          "exampleVi": "Tôi đã đi du lịch chín ngày."
+        }
+      ]
+    },
+    {
+      "id": "12",
+      "kanji": "二",
+      "hanviet": "NHỊ",
+      "level": "N5",
+      "onyomi": [
+        "ニ"
+      ],
+      "kunyomi": [
+        "ふた"
+      ],
+      "meaningVi": "Hai",
+      "strokeCount": 2,
+      "radicals": [
+        "二"
+      ],
+      "memoryTip": "Hai nét ngang",
+      "relatedVocabulary": [
+        {
+          "word": "二人",
+          "kana": "ふたり",
+          "hanviet": "NHỊ NHÂN",
+          "meaningVi": "Hai người",
+          "exampleJp": "二人で行きました。",
+          "exampleVi": "Chúng tôi đã đi cùng nhau."
+        },
+        {
+          "word": "二日",
+          "kana": "ふつか",
+          "hanviet": "NHỊ NHẬT",
+          "meaningVi": "Hai ngày",
+          "exampleJp": "二日間滞在しました。",
+          "exampleVi": "Tôi đã ở lại hai ngày."
+        }
+      ]
+    },
+    {
+      "id": "10",
+      "kanji": "人",
+      "hanviet": "NHÂN",
+      "level": "N5",
+      "onyomi": [
+        "ジン",
+        "ニン"
+      ],
+      "kunyomi": [
+        "ひと"
+      ],
+      "meaningVi": "Người",
+      "strokeCount": 2,
+      "radicals": [
+        "人"
+      ],
+      "memoryTip": "Hai chân người đi",
+      "relatedVocabulary": [
+        {
+          "word": "一人",
+          "kana": "ひとり",
+          "hanviet": "NHẤT NHÂN",
+          "meaningVi": "Một người",
+          "exampleJp": "一人で行きます。",
+          "exampleVi": "Tôi đi một mình."
+        },
+        {
+          "word": "日本人",
+          "kana": "にほんじん",
+          "hanviet": "NHẬT BẢN NHÂN",
+          "meaningVi": "Người Nhật Bản",
+          "exampleJp": "私は日本人です。",
+          "exampleVi": "Tôi là người Nhật Bản."
+        }
+      ]
+    },
+    {
+      "id": "68",
+      "kanji": "入",
+      "hanviet": "NHẬP",
+      "level": "N5",
+      "onyomi": [
+        "ニュウ"
+      ],
+      "kunyomi": [
+        "はい",
+        "い"
+      ],
+      "meaningVi": "Vào, nhập",
+      "strokeCount": 2,
+      "radicals": [
+        "入"
+      ],
+      "memoryTip": "Vào trong",
+      "relatedVocabulary": [
+        {
+          "word": "入る",
+          "kana": "はいる",
+          "hanviet": "NHẬP",
+          "meaningVi": "Vào",
+          "exampleJp": "部屋に入ります。",
+          "exampleVi": "Tôi vào phòng."
+        },
+        {
+          "word": "入学",
+          "kana": "にゅうがく",
+          "hanviet": "NHẬP HỌC",
+          "meaningVi": "Nhập học",
+          "exampleJp": "四月に入学します。",
+          "exampleVi": "Tôi nhập học vào tháng Tư."
+        }
+      ]
+    },
+    {
+      "id": "18",
+      "kanji": "八",
+      "hanviet": "BÁT",
+      "level": "N5",
+      "onyomi": [
+        "ハチ"
+      ],
+      "kunyomi": [
+        "や",
+        "はち"
+      ],
+      "meaningVi": "Tám",
+      "strokeCount": 2,
+      "radicals": [
+        "八"
+      ],
+      "memoryTip": "Tám chữ",
+      "relatedVocabulary": [
+        {
+          "word": "八人",
+          "kana": "はちにん",
+          "hanviet": "BÁT NHÂN",
+          "meaningVi": "Tám người",
+          "exampleJp": "八人でバーベキューをしました。",
+          "exampleVi": "Tám người đã tổ chức tiệc nướng."
+        },
+        {
+          "word": "八日",
+          "kana": "ようか",
+          "hanviet": "BÁT NHẬT",
+          "meaningVi": "Tám ngày",
+          "exampleJp": "八日間勉強しました。",
+          "exampleVi": "Tôi đã học tám ngày."
+        }
+      ]
+    },
+    {
+      "id": "20",
+      "kanji": "十",
+      "hanviet": "THẬP",
+      "level": "N5",
+      "onyomi": [
+        "ジュウ"
+      ],
+      "kunyomi": [
+        "とお"
+      ],
+      "meaningVi": "Mười",
+      "strokeCount": 2,
+      "radicals": [
+        "十"
+      ],
+      "memoryTip": "Mười nét",
+      "relatedVocabulary": [
+        {
+          "word": "十日",
+          "kana": "とおか",
+          "hanviet": "THẬP NHẬT",
+          "meaningVi": "Mười ngày",
+          "exampleJp": "十日間待ちました。",
+          "exampleVi": "Tôi đã đợi mười ngày."
+        },
+        {
+          "word": "二十",
+          "kana": "はたち",
+          "hanviet": "NHỊ THẬP",
+          "meaningVi": "Hai mươi",
+          "exampleJp": "二十歳になりました。",
+          "exampleVi": "Tôi đã tròn 20 tuổi."
+        }
+      ]
+    },
+    {
+      "id": "23",
+      "kanji": "万",
+      "hanviet": "VẠN",
+      "level": "N5",
+      "onyomi": [
+        "マン",
+        "バン"
+      ],
+      "kunyomi": [
+        "よろず"
+      ],
+      "meaningVi": "Mười nghìn",
+      "strokeCount": 3,
+      "radicals": [
+        "一"
+      ],
+      "memoryTip": "Mười nghìn đồng",
+      "relatedVocabulary": [
+        {
+          "word": "一万円",
+          "kana": "いちまんえん",
+          "hanviet": "NHẤT VẠN NGUYÊN",
+          "meaningVi": "Một vạn yên",
+          "exampleJp": "一万円持っています。",
+          "exampleVi": "Tôi có một vạn yên."
+        },
+        {
+          "word": "万万",
+          "kana": "ばんばん",
+          "hanviet": "BÁN VẠN",
+          "meaningVi": "Vô số",
+          "exampleJp": "万万歳！",
+          "exampleVi": "Muôn năm!"
+        }
+      ]
+    },
+    {
+      "id": "13",
+      "kanji": "三",
+      "hanviet": "TAM",
+      "level": "N5",
+      "onyomi": [
+        "サン"
+      ],
+      "kunyomi": [
+        "み"
+      ],
+      "meaningVi": "Ba",
+      "strokeCount": 3,
+      "radicals": [
+        "三"
+      ],
+      "memoryTip": "Ba nét ngang",
+      "relatedVocabulary": [
+        {
+          "word": "三人",
+          "kana": "さんにん",
+          "hanviet": "TAM NHÂN",
+          "meaningVi": "Ba người",
+          "exampleJp": "三人で写真を撮りました。",
+          "exampleVi": "Ba người chúng tôi đã chụp ảnh."
+        },
+        {
+          "word": "三日",
+          "kana": "みっか",
+          "hanviet": "TAM NHẬT",
+          "meaningVi": "Ba ngày",
+          "exampleJp": "三日後に行きます。",
+          "exampleVi": "Tôi sẽ đi sau ba ngày."
+        }
+      ]
+    },
+    {
+      "id": "29",
+      "kanji": "上",
+      "hanviet": "THƯỢNG",
+      "level": "N5",
+      "onyomi": [
+        "ジョウ",
+        "ショウ"
+      ],
+      "kunyomi": [
+        "うえ",
+        "あ",
+        "のぼ"
+      ],
+      "meaningVi": "Trên, lên",
+      "strokeCount": 3,
+      "radicals": [
+        "一"
+      ],
+      "memoryTip": "Đi lên trên",
+      "relatedVocabulary": [
+        {
+          "word": "上手",
+          "kana": "じょうず",
+          "hanviet": "THƯỢNG THỦ",
+          "meaningVi": "Giỏi, khéo",
+          "exampleJp": "彼は日本語が上手です。",
+          "exampleVi": "Anh ấy giỏi tiếng Nhật."
+        },
+        {
+          "word": "上がる",
+          "kana": "あがる",
+          "hanviet": "THƯỢNG",
+          "meaningVi": "Đi lên, tăng",
+          "exampleJp": "電車に上がります。",
+          "exampleVi": "Tôi lên tàu điện."
+        }
+      ]
+    },
+    {
+      "id": "30",
+      "kanji": "下",
+      "hanviet": "HẠ",
+      "level": "N5",
+      "onyomi": [
+        "カ",
+        "ゲ"
+      ],
+      "kunyomi": [
+        "した",
+        "さ",
+        "お",
+        "くだ"
+      ],
+      "meaningVi": "Dưới, xuống",
+      "strokeCount": 3,
+      "radicals": [
+        "一"
+      ],
+      "memoryTip": "Đi xuống dưới",
+      "relatedVocabulary": [
+        {
+          "word": "下手",
+          "kana": "へた",
+          "hanviet": "HẠ THỦ",
+          "meaningVi": "Kém, vụng",
+          "exampleJp": "私は下手です。",
+          "exampleVi": "Tôi kém."
+        },
+        {
+          "word": "下がる",
+          "kana": "さがる",
+          "hanviet": "HẠ",
+          "meaningVi": "Giảm, xuống",
+          "exampleJp": "温度が下がりました。",
+          "exampleVi": "Nhiệt độ đã giảm."
+        }
+      ]
+    },
+    {
+      "id": "22",
+      "kanji": "千",
+      "hanviet": "THIÊN",
+      "level": "N5",
+      "onyomi": [
+        "セン"
+      ],
+      "kunyomi": [
+        "ち"
+      ],
+      "meaningVi": "Nghìn",
+      "strokeCount": 3,
+      "radicals": [
+        "十"
+      ],
+      "memoryTip": "Một nghìn đồng",
+      "relatedVocabulary": [
+        {
+          "word": "千円",
+          "kana": "せんえん",
+          "hanviet": "THIÊN NGUYÊN",
+          "meaningVi": "Một nghìn yên",
+          "exampleJp": "千円を貸してください。",
+          "exampleVi": "Hãy cho tôi mượn một nghìn yên."
+        },
+        {
+          "word": "三千",
+          "kana": "さんぜん",
+          "hanviet": "TAM THIÊN",
+          "meaningVi": "Ba nghìn",
+          "exampleJp": "三千円のバッグを買いました。",
+          "exampleVi": "Tôi đã mua túi ba nghìn yên."
+        }
+      ]
+    },
+    {
+      "id": "7",
+      "kanji": "土",
+      "hanviet": "THỔ",
+      "level": "N5",
+      "onyomi": [
+        "ド",
+        "ト"
+      ],
+      "kunyomi": [
+        "つち"
+      ],
+      "meaningVi": "Đất",
+      "strokeCount": 3,
+      "radicals": [
+        "土"
+      ],
+      "memoryTip": "Đất trồng cây",
+      "relatedVocabulary": [
+        {
+          "word": "土曜日",
+          "kana": "どようび",
+          "hanviet": "THỔ DIỆU NHẬT",
+          "meaningVi": "Thứ bảy",
+          "exampleJp": "土曜日は休みです。",
+          "exampleVi": "Thứ Bảy là ngày nghỉ."
+        },
+        {
+          "word": "土地",
+          "kana": "とち",
+          "hanviet": "THỔ ĐỊA",
+          "meaningVi": "Đất đai",
+          "exampleJp": "この土地は高いです。",
+          "exampleVi": "Mảnh đất này đắt tiền."
+        }
+      ]
+    },
+    {
+      "id": "32",
+      "kanji": "大",
+      "hanviet": "ĐẠI",
+      "level": "N5",
+      "onyomi": [
+        "ダイ",
+        "タイ"
+      ],
+      "kunyomi": [
+        "おお",
+        "おお"
+      ],
+      "meaningVi": "Lớn",
+      "strokeCount": 3,
+      "radicals": [
+        "大"
+      ],
+      "memoryTip": "Hai chân dang rộng",
+      "relatedVocabulary": [
+        {
+          "word": "大学",
+          "kana": "だいがく",
+          "hanviet": "ĐẠI HỌC",
+          "meaningVi": "Đại học",
+          "exampleJp": "大学で勉強しています。",
+          "exampleVi": "Tôi đang học ở đại học."
+        },
+        {
+          "word": "大きい",
+          "kana": "おおきい",
+          "hanviet": "ĐẠI",
+          "meaningVi": "To, lớn",
+          "exampleJp": "この家は大きいです。",
+          "exampleVi": "Ngôi nhà này to."
+        }
+      ]
+    },
+    {
+      "id": "33",
+      "kanji": "小",
+      "hanviet": "TIỂU",
+      "level": "N5",
+      "onyomi": [
+        "ショウ"
+      ],
+      "kunyomi": [
+        "ちい",
+        "こ",
+        "お"
+      ],
+      "meaningVi": "Nhỏ",
+      "strokeCount": 3,
+      "radicals": [
+        "小"
+      ],
+      "memoryTip": "Nhỏ xíu",
+      "relatedVocabulary": [
+        {
+          "word": "小学校",
+          "kana": "しょうがっこう",
+          "hanviet": "TIỂU HỌC HIỆU",
+          "meaningVi": "Tiểu học",
+          "exampleJp": "小学校に行きます。",
+          "exampleVi": "Tôi đi đến tiểu học."
+        },
+        {
+          "word": "小さい",
+          "kana": "ちいさい",
+          "hanviet": "TIỂU",
+          "meaningVi": "Nhỏ",
+          "exampleJp": "この部屋は小さいです。",
+          "exampleVi": "Căn phòng này nhỏ."
+        }
+      ]
+    },
+    {
+      "id": "8",
+      "kanji": "山",
+      "hanviet": "SƠN",
+      "level": "N5",
+      "onyomi": [
+        "サン",
+        "ザン"
+      ],
+      "kunyomi": [
+        "やま"
+      ],
+      "meaningVi": "Núi",
+      "strokeCount": 3,
+      "radicals": [
+        "山"
+      ],
+      "memoryTip": "Núi cao vút",
+      "relatedVocabulary": [
+        {
+          "word": "山登り",
+          "kana": "やまのぼり",
+          "hanviet": "SƠN ĐĂNG",
+          "meaningVi": "Leo núi",
+          "exampleJp": "山登りが好きです。",
+          "exampleVi": "Tôi thích leo núi."
+        },
+        {
+          "word": "富士山",
+          "kana": "ふじさん",
+          "hanviet": "Phú Tị Sơn",
+          "meaningVi": "Núi Phú Sĩ",
+          "exampleJp": "富士山は日本で一番高い山です。",
+          "exampleVi": "Núi Phú Sĩ là ngọn núi cao nhất Nhật Bản."
+        }
+      ]
+    },
+    {
+      "id": "9",
+      "kanji": "川",
+      "hanviet": "XUYÊN",
+      "level": "N5",
+      "onyomi": [
+        "セン"
+      ],
+      "kunyomi": [
+        "かわ"
+      ],
+      "meaningVi": "Sông",
+      "strokeCount": 3,
+      "radicals": [
+        "川"
+      ],
+      "memoryTip": "Nước chảy như sông",
+      "relatedVocabulary": [
+        {
+          "word": "川辺",
+          "kana": "かわべ",
+          "hanviet": "XUYÊN BIÊN",
+          "meaningVi": "Bờ sông",
+          "exampleJp": "川辺で遊びました。",
+          "exampleVi": "Tôi đã chơi ở bờ sông."
+        },
+        {
+          "word": "小川",
+          "kana": "おがわ",
+          "hanviet": "TIỂU XUYÊN",
+          "meaningVi": "Dòng suối nhỏ",
+          "exampleJp": "小川の水がきれいです。",
+          "exampleVi": "Nước dòng suối rất trong."
+        }
+      ]
+    },
+    {
+      "id": "31",
+      "kanji": "中",
+      "hanviet": "TRUNG",
+      "level": "N5",
+      "onyomi": [
+        "チュウ"
+      ],
+      "kunyomi": [
+        "なか"
+      ],
+      "meaningVi": "Giữa, trong",
+      "strokeCount": 4,
+      "radicals": [
+        "丨"
+      ],
+      "memoryTip": "Ở giữa",
+      "relatedVocabulary": [
+        {
+          "word": "中国",
+          "kana": "ちゅうごく",
+          "hanviet": "TRUNG QUỐC",
+          "meaningVi": "Trung Quốc",
+          "exampleJp": "中国に行きました。",
+          "exampleVi": "Tôi đã đến Trung Quốc."
+        },
+        {
+          "word": "途中",
+          "kana": "とちゅう",
+          "hanviet": "ĐỒ TRUNG",
+          "meaningVi": "Trên đường",
+          "exampleJp": "途中で会いました。",
+          "exampleVi": "Tôi đã gặp trên đường."
+        }
+      ]
+    },
+    {
+      "id": "15",
+      "kanji": "五",
+      "hanviet": "NGŨ",
+      "level": "N5",
+      "onyomi": [
+        "ゴ"
+      ],
+      "kunyomi": [
+        "いつ"
+      ],
+      "meaningVi": "Năm",
+      "strokeCount": 4,
+      "radicals": [
+        "二"
+      ],
+      "memoryTip": "Năm ngón tay",
+      "relatedVocabulary": [
+        {
+          "word": "五人",
+          "kana": "ごにん",
+          "hanviet": "NGŨ NHÂN",
+          "meaningVi": "Năm người",
+          "exampleJp": "五人でサッカーをしました。",
+          "exampleVi": "Năm người chơi bóng đá."
+        },
+        {
+          "word": "五円",
+          "kana": "ごえん",
+          "hanviet": "NGŨ NGUYÊN",
+          "meaningVi": "Năm yên",
+          "exampleJp": "五円玉を拾いました。",
+          "exampleVi": "Tôi đã nhặt được đồng năm yên."
+        }
+      ]
+    },
+    {
+      "id": "40",
+      "kanji": "今",
+      "hanviet": "KIM",
+      "level": "N5",
+      "onyomi": [
+        "コン",
+        "キン"
+      ],
+      "kunyomi": [
+        "いま"
+      ],
+      "meaningVi": "Bây giờ",
+      "strokeCount": 4,
+      "radicals": [
+        "人"
+      ],
+      "memoryTip": "Hiện tại",
+      "relatedVocabulary": [
+        {
+          "word": "今",
+          "kana": "いま",
+          "hanviet": "KIM",
+          "meaningVi": "Bây giờ",
+          "exampleJp": "今何時ですか。",
+          "exampleVi": "Bây giờ là mấy giờ?"
+        },
+        {
+          "word": "今日",
+          "kana": "きょう",
+          "hanviet": "KIM NHẬT",
+          "meaningVi": "Hôm nay",
+          "exampleJp": "今日は天気がいいです。",
+          "exampleVi": "Hôm nay thời tiết đẹp."
+        }
+      ]
+    },
+    {
+      "id": "16",
+      "kanji": "六",
+      "hanviet": "LỤC",
+      "level": "N5",
+      "onyomi": [
+        "ロク"
+      ],
+      "kunyomi": [
+        "む"
+      ],
+      "meaningVi": "Sáu",
+      "strokeCount": 4,
+      "radicals": [
+        "八"
+      ],
+      "memoryTip": "Sáu chấm",
+      "relatedVocabulary": [
+        {
+          "word": "六人",
+          "kana": "ろくにん",
+          "hanviet": "LỤC NHÂN",
+          "meaningVi": "Sáu người",
+          "exampleJp": "六人で食事をしました。",
+          "exampleVi": "Sáu người đã ăn uống."
+        },
+        {
+          "word": "六日",
+          "kana": "むいか",
+          "hanviet": "LỤC NHẬT",
+          "meaningVi": "Sáu ngày",
+          "exampleJp": "六日間滞在します。",
+          "exampleVi": "Tôi sẽ ở lại sáu ngày."
+        }
+      ]
+    },
+    {
+      "id": "24",
+      "kanji": "円",
+      "hanviet": "NGUYÊN",
+      "level": "N5",
+      "onyomi": [
+        "エン"
+      ],
+      "kunyomi": [
+        "まる"
+      ],
+      "meaningVi": "Đồng yên, tròn",
+      "strokeCount": 4,
+      "radicals": [
+        "囗"
+      ],
+      "memoryTip": "Đồng tiền tròn",
+      "relatedVocabulary": [
+        {
+          "word": "円高",
+          "kana": "えんだか",
+          "hanviet": "NGUYÊN CAO",
+          "meaningVi": "Yên tăng giá",
+          "exampleJp": "円高になりました。",
+          "exampleVi": "Yên đã tăng giá."
+        },
+        {
+          "word": "円安",
+          "kana": "えんやす",
+          "hanviet": "NGUYÊN AN",
+          "meaningVi": "Yên giảm giá",
+          "exampleJp": "円安が続いています。",
+          "exampleVi": "Yên tiếp tục giảm giá."
+        }
+      ]
+    },
+    {
       "id": "1",
       "kanji": "日",
       "hanviet": "NHẬT",
       "level": "N5",
-      "onyomi": ["ニチ", "ジツ"],
-      "kunyomi": ["ひ", "び"],
+      "onyomi": [
+        "ニチ",
+        "ジツ"
+      ],
+      "kunyomi": [
+        "ひ",
+        "び"
+      ],
       "meaningVi": "Mặt trời, ngày",
       "strokeCount": 4,
-      "radicals": ["日"],
+      "radicals": [
+        "日"
+      ],
       "memoryTip": "Hình chữ nhật biểu thị mặt trời mọc",
       "relatedVocabulary": [
         {
@@ -43,11 +900,18 @@
       "kanji": "月",
       "hanviet": "NGUYỆT",
       "level": "N5",
-      "onyomi": ["ゲツ", "ガツ"],
-      "kunyomi": ["つき"],
+      "onyomi": [
+        "ゲツ",
+        "ガツ"
+      ],
+      "kunyomi": [
+        "つき"
+      ],
       "meaningVi": "Mặt trăng, tháng",
       "strokeCount": 4,
-      "radicals": ["月"],
+      "radicals": [
+        "月"
+      ],
       "memoryTip": "Hình trăng khuyết trong đêm",
       "relatedVocabulary": [
         {
@@ -69,75 +933,23 @@
       ]
     },
     {
-      "id": "3",
-      "kanji": "火",
-      "hanviet": "HỎA",
-      "level": "N5",
-      "onyomi": ["カ"],
-      "kunyomi": ["ひ", "ほ"],
-      "meaningVi": "Lửa",
-      "strokeCount": 4,
-      "radicals": ["火"],
-      "memoryTip": "Người đứng cạnh đống lửa",
-      "relatedVocabulary": [
-        {
-          "word": "火曜日",
-          "kana": "かようび",
-          "hanviet": "HỎA DIỆU NHẬT",
-          "meaningVi": "Thứ ba",
-          "exampleJp": "火曜日は会議があります。",
-          "exampleVi": "Thứ Ba có cuộc họp."
-        },
-        {
-          "word": "火事",
-          "kana": "かじ",
-          "hanviet": "HỎA SỰ",
-          "meaningVi": "Cháy, hỏa hoạn",
-          "exampleJp": "隣の家で火事がありました。",
-          "exampleVi": "Đã xảy ra hỏa hoạn ở nhà bên cạnh."
-        }
-      ]
-    },
-    {
-      "id": "4",
-      "kanji": "水",
-      "hanviet": "THỦY",
-      "level": "N5",
-      "onyomi": ["スイ"],
-      "kunyomi": ["みず"],
-      "meaningVi": "Nước",
-      "strokeCount": 4,
-      "radicals": ["水"],
-      "memoryTip": "Dòng nước chảy giữa hai bờ",
-      "relatedVocabulary": [
-        {
-          "word": "水曜日",
-          "kana": "すいようび",
-          "hanviet": "THỦY DIỆU NHẬT",
-          "meaningVi": "Thứ tư",
-          "exampleJp": "水曜日は日本語のクラスがあります。",
-          "exampleVi": "Thứ Tư có lớp tiếng Nhật."
-        },
-        {
-          "word": "お水",
-          "kana": "おみず",
-          "hanviet": "KHOẺ THỦY",
-          "meaningVi": "Nước (lịch sự)",
-          "exampleJp": "お水をください。",
-          "exampleVi": "Làm ơn cho tôi nước."
-        }
-      ]
-    },
-    {
       "id": "5",
       "kanji": "木",
       "hanviet": "MỘC",
       "level": "N5",
-      "onyomi": ["モク", "ボク"],
-      "kunyomi": ["き", "こ"],
+      "onyomi": [
+        "モク",
+        "ボク"
+      ],
+      "kunyomi": [
+        "き",
+        "こ"
+      ],
       "meaningVi": "Cây, gỗ",
       "strokeCount": 4,
-      "radicals": ["木"],
+      "radicals": [
+        "木"
+      ],
       "memoryTip": "Cây có gốc và cành",
       "relatedVocabulary": [
         {
@@ -159,242 +971,222 @@
       ]
     },
     {
-      "id": "6",
-      "kanji": "金",
-      "hanviet": "KIM",
+      "id": "65",
+      "kanji": "止",
+      "hanviet": "CHỈ",
       "level": "N5",
-      "onyomi": ["キン", "コン"],
-      "kunyomi": ["かね", "かな"],
-      "meaningVi": "Vàng, tiền",
-      "strokeCount": 8,
-      "radicals": ["金"],
-      "memoryTip": "Vàng có giá trị cao",
+      "onyomi": [
+        "シ"
+      ],
+      "kunyomi": [
+        "と",
+        "や"
+      ],
+      "meaningVi": "Dừng, chỉ",
+      "strokeCount": 4,
+      "radicals": [
+        "止"
+      ],
+      "memoryTip": "Dừng lại",
       "relatedVocabulary": [
         {
-          "word": "金曜日",
-          "kana": "きんようび",
-          "hanviet": "KIM DIỆU NHẬT",
-          "meaningVi": "Thứ sáu",
-          "exampleJp": "金曜日は映画を見ます。",
-          "exampleVi": "Thứ Sáu tôi xem phim."
+          "word": "止まる",
+          "kana": "とまる",
+          "hanviet": "CHỈ",
+          "meaningVi": "Dừng lại",
+          "exampleJp": "電車が止まりました。",
+          "exampleVi": "Tàu điện đã dừng lại."
         },
         {
-          "word": "お金",
-          "kana": "おかね",
-          "hanviet": "KHOẺ KIM",
-          "meaningVi": "Tiền (lịch sự)",
-          "exampleJp": "お金がありません。",
-          "exampleVi": "Tôi không có tiền."
+          "word": "停止",
+          "kana": "ていし",
+          "hanviet": "ĐÌNH CHỈ",
+          "meaningVi": "Dừng, tạm dừng",
+          "exampleJp": "工事は停止しました。",
+          "exampleVi": "Công trình đã tạm dừng."
         }
       ]
     },
     {
-      "id": "7",
-      "kanji": "土",
-      "hanviet": "THỔ",
+      "id": "4",
+      "kanji": "水",
+      "hanviet": "THỦY",
       "level": "N5",
-      "onyomi": ["ド", "ト"],
-      "kunyomi": ["つち"],
-      "meaningVi": "Đất",
-      "strokeCount": 3,
-      "radicals": ["土"],
-      "memoryTip": "Đất trồng cây",
+      "onyomi": [
+        "スイ"
+      ],
+      "kunyomi": [
+        "みず"
+      ],
+      "meaningVi": "Nước",
+      "strokeCount": 4,
+      "radicals": [
+        "水"
+      ],
+      "memoryTip": "Dòng nước chảy giữa hai bờ",
       "relatedVocabulary": [
         {
-          "word": "土曜日",
-          "kana": "どようび",
-          "hanviet": "THỔ DIỆU NHẬT",
-          "meaningVi": "Thứ bảy",
-          "exampleJp": "土曜日は休みです。",
-          "exampleVi": "Thứ Bảy là ngày nghỉ."
+          "word": "水曜日",
+          "kana": "すいようび",
+          "hanviet": "THỦY DIỆU NHẬT",
+          "meaningVi": "Thứ tư",
+          "exampleJp": "水曜日は日本語のクラスがあります。",
+          "exampleVi": "Thứ Tư có lớp tiếng Nhật."
         },
         {
-          "word": "土地",
-          "kana": "とち",
-          "hanviet": "THỔ ĐỊA",
-          "meaningVi": "Đất đai",
-          "exampleJp": "この土地は高いです。",
-          "exampleVi": "Mảnh đất này đắt tiền."
+          "word": "お水",
+          "kana": "おみず",
+          "hanviet": "KHOẺ THỦY",
+          "meaningVi": "Nước (lịch sự)",
+          "exampleJp": "お水をください。",
+          "exampleVi": "Làm ơn cho tôi nước."
         }
       ]
     },
     {
-      "id": "8",
-      "kanji": "山",
-      "hanviet": "SƠN",
+      "id": "3",
+      "kanji": "火",
+      "hanviet": "HỎA",
       "level": "N5",
-      "onyomi": ["サン", "ザン"],
-      "kunyomi": ["やま"],
-      "meaningVi": "Núi",
-      "strokeCount": 3,
-      "radicals": ["山"],
-      "memoryTip": "Núi cao vút",
+      "onyomi": [
+        "カ"
+      ],
+      "kunyomi": [
+        "ひ",
+        "ほ"
+      ],
+      "meaningVi": "Lửa",
+      "strokeCount": 4,
+      "radicals": [
+        "火"
+      ],
+      "memoryTip": "Người đứng cạnh đống lửa",
       "relatedVocabulary": [
         {
-          "word": "山登り",
-          "kana": "やまのぼり",
-          "hanviet": "SƠN ĐĂNG",
-          "meaningVi": "Leo núi",
-          "exampleJp": "山登りが好きです。",
-          "exampleVi": "Tôi thích leo núi."
+          "word": "火曜日",
+          "kana": "かようび",
+          "hanviet": "HỎA DIỆU NHẬT",
+          "meaningVi": "Thứ ba",
+          "exampleJp": "火曜日は会議があります。",
+          "exampleVi": "Thứ Ba có cuộc họp."
         },
         {
-          "word": "富士山",
-          "kana": "ふじさん",
-          "hanviet": "Phú Tị Sơn",
-          "meaningVi": "Núi Phú Sĩ",
-          "exampleJp": "富士山は日本で一番高い山です。",
-          "exampleVi": "Núi Phú Sĩ là ngọn núi cao nhất Nhật Bản."
+          "word": "火事",
+          "kana": "かじ",
+          "hanviet": "HỎA SỰ",
+          "meaningVi": "Cháy, hỏa hoạn",
+          "exampleJp": "隣の家で火事がありました。",
+          "exampleVi": "Đã xảy ra hỏa hoạn ở nhà bên cạnh."
         }
       ]
     },
     {
-      "id": "9",
-      "kanji": "川",
-      "hanviet": "XUYÊN",
+      "id": "35",
+      "kanji": "長",
+      "hanviet": "TRƯỜNG",
       "level": "N5",
-      "onyomi": ["セン"],
-      "kunyomi": ["かわ"],
-      "meaningVi": "Sông",
-      "strokeCount": 3,
-      "radicals": ["川"],
-      "memoryTip": "Nước chảy như sông",
+      "onyomi": [
+        "チョウ"
+      ],
+      "kunyomi": [
+        "なが"
+      ],
+      "meaningVi": "Dài, lãnh đạo",
+      "strokeCount": 4,
+      "radicals": [
+        "長"
+      ],
+      "memoryTip": "Dài thường",
       "relatedVocabulary": [
         {
-          "word": "川辺",
-          "kana": "かわべ",
-          "hanviet": "XUYÊN BIÊN",
-          "meaningVi": "Bờ sông",
-          "exampleJp": "川辺で遊びました。",
-          "exampleVi": "Tôi đã chơi ở bờ sông."
+          "word": "長い",
+          "kana": "ながい",
+          "hanviet": "TRƯỜNG",
+          "meaningVi": "Dài",
+          "exampleJp": "この髪は長いです。",
+          "exampleVi": "Mái tóc này dài."
         },
         {
-          "word": "小川",
-          "kana": "おがわ",
-          "hanviet": "TIỂU XUYÊN",
-          "meaningVi": "Dòng suối nhỏ",
-          "exampleJp": "小川の水がきれいです。",
-          "exampleVi": "Nước dòng suối rất trong."
+          "word": "校長",
+          "kana": "こうちょう",
+          "hanviet": "HIỆU TRƯỜNG",
+          "meaningVi": "Hiệu trưởng",
+          "exampleJp": "校長先生が来ました。",
+          "exampleVi": "Hiệu trưởng đã đến."
         }
       ]
     },
     {
-      "id": "10",
-      "kanji": "人",
-      "hanviet": "NHÂN",
+      "id": "69",
+      "kanji": "出",
+      "hanviet": "XUẤT",
       "level": "N5",
-      "onyomi": ["ジン", "ニン"],
-      "kunyomi": ["ひと"],
-      "meaningVi": "Người",
-      "strokeCount": 2,
-      "radicals": ["人"],
-      "memoryTip": "Hai chân người đi",
+      "onyomi": [
+        "シュツ",
+        "スイ"
+      ],
+      "kunyomi": [
+        "で",
+        "だ"
+      ],
+      "meaningVi": "Ra, xuất",
+      "strokeCount": 5,
+      "radicals": [
+        "凵"
+      ],
+      "memoryTip": "Ra ngoài",
       "relatedVocabulary": [
         {
-          "word": "一人",
-          "kana": "ひとり",
-          "hanviet": "NHẤT NHÂN",
-          "meaningVi": "Một người",
-          "exampleJp": "一人で行きます。",
-          "exampleVi": "Tôi đi một mình."
+          "word": "出る",
+          "kana": "でる",
+          "hanviet": "XUẤT",
+          "meaningVi": "Ra",
+          "exampleJp": "家を出ます。",
+          "exampleVi": "Tôi ra khỏi nhà."
         },
         {
-          "word": "日本人",
-          "kana": "にほんじん",
-          "hanviet": "NHẬT BẢN NHÂN",
-          "meaningVi": "Người Nhật Bản",
-          "exampleJp": "私は日本人です。",
-          "exampleVi": "Tôi là người Nhật Bản."
+          "word": "出発",
+          "kana": "しゅっぱつ",
+          "hanviet": "XUẤT PHÁT",
+          "meaningVi": "Khởi hành",
+          "exampleJp": "八時に出発します。",
+          "exampleVi": "Chúng tôi khởi hành lúc 8 giờ."
         }
       ]
     },
     {
-      "id": "11",
-      "kanji": "一",
-      "hanviet": "NHẤT",
+      "id": "43",
+      "kanji": "半",
+      "hanviet": "BÁN",
       "level": "N5",
-      "onyomi": ["イチ", "イツ"],
-      "kunyomi": ["ひと"],
-      "meaningVi": "Một",
-      "strokeCount": 1,
-      "radicals": ["一"],
-      "memoryTip": "Một nét ngang đơn giản",
+      "onyomi": [
+        "ハン"
+      ],
+      "kunyomi": [
+        "なか"
+      ],
+      "meaningVi": "Nửa",
+      "strokeCount": 5,
+      "radicals": [
+        "干"
+      ],
+      "memoryTip": "Nửa phần",
       "relatedVocabulary": [
         {
-          "word": "一人",
-          "kana": "ひとり",
-          "hanviet": "NHẤT NHÂN",
-          "meaningVi": "Một người",
-          "exampleJp": "一人で行きます。",
-          "exampleVi": "Tôi đi một mình."
+          "word": "半分",
+          "kana": "はんぶん",
+          "hanviet": "BÁN PHÂN",
+          "meaningVi": "Một nửa",
+          "exampleJp": "半分食べました。",
+          "exampleVi": "Tôi đã ăn một nửa."
         },
         {
-          "word": "一日",
-          "kana": "ついたち",
-          "hanviet": "NHẤT NHẬT",
-          "meaningVi": "Một ngày",
-          "exampleJp": "一日中働きました。",
-          "exampleVi": "Tôi đã làm việc cả ngày."
-        }
-      ]
-    },
-    {
-      "id": "12",
-      "kanji": "二",
-      "hanviet": "NHỊ",
-      "level": "N5",
-      "onyomi": ["ニ"],
-      "kunyomi": ["ふた"],
-      "meaningVi": "Hai",
-      "strokeCount": 2,
-      "radicals": ["二"],
-      "memoryTip": "Hai nét ngang",
-      "relatedVocabulary": [
-        {
-          "word": "二人",
-          "kana": "ふたり",
-          "hanviet": "NHỊ NHÂN",
-          "meaningVi": "Hai người",
-          "exampleJp": "二人で行きました。",
-          "exampleVi": "Chúng tôi đã đi cùng nhau."
-        },
-        {
-          "word": "二日",
-          "kana": "ふつか",
-          "hanviet": "NHỊ NHẬT",
-          "meaningVi": "Hai ngày",
-          "exampleJp": "二日間滞在しました。",
-          "exampleVi": "Tôi đã ở lại hai ngày."
-        }
-      ]
-    },
-    {
-      "id": "13",
-      "kanji": "三",
-      "hanviet": "TAM",
-      "level": "N5",
-      "onyomi": ["サン"],
-      "kunyomi": ["み"],
-      "meaningVi": "Ba",
-      "strokeCount": 3,
-      "radicals": ["三"],
-      "memoryTip": "Ba nét ngang",
-      "relatedVocabulary": [
-        {
-          "word": "三人",
-          "kana": "さんにん",
-          "hanviet": "TAM NHÂN",
-          "meaningVi": "Ba người",
-          "exampleJp": "三人で写真を撮りました。",
-          "exampleVi": "Ba người chúng tôi đã chụp ảnh."
-        },
-        {
-          "word": "三日",
-          "kana": "みっか",
-          "hanviet": "TAM NHẬT",
-          "meaningVi": "Ba ngày",
-          "exampleJp": "三日後に行きます。",
-          "exampleVi": "Tôi sẽ đi sau ba ngày."
+          "word": "半日",
+          "kana": "はんにち",
+          "hanviet": "BÁN NHẬT",
+          "meaningVi": "Nửa ngày",
+          "exampleJp": "半日働きました。",
+          "exampleVi": "Tôi đã làm việc nửa ngày."
         }
       ]
     },
@@ -403,11 +1195,18 @@
       "kanji": "四",
       "hanviet": "TỨ",
       "level": "N5",
-      "onyomi": ["シ"],
-      "kunyomi": ["よ", "よん"],
+      "onyomi": [
+        "シ"
+      ],
+      "kunyomi": [
+        "よ",
+        "よん"
+      ],
       "meaningVi": "Bốn",
       "strokeCount": 5,
-      "radicals": ["口"],
+      "radicals": [
+        "口"
+      ],
       "memoryTip": "Bốn bên chia đều",
       "relatedVocabulary": [
         {
@@ -429,302 +1228,42 @@
       ]
     },
     {
-      "id": "15",
-      "kanji": "五",
-      "hanviet": "NGŨ",
+      "id": "27",
+      "kanji": "生",
+      "hanviet": "SINH",
       "level": "N5",
-      "onyomi": ["ゴ"],
-      "kunyomi": ["いつ"],
-      "meaningVi": "Năm",
-      "strokeCount": 4,
-      "radicals": ["二"],
-      "memoryTip": "Năm ngón tay",
+      "onyomi": [
+        "セイ",
+        "ショウ"
+      ],
+      "kunyomi": [
+        "い",
+        "なま",
+        "う",
+        "は"
+      ],
+      "meaningVi": "Sinh, sống",
+      "strokeCount": 5,
+      "radicals": [
+        "生"
+      ],
+      "memoryTip": "Sự sống mới mọc",
       "relatedVocabulary": [
         {
-          "word": "五人",
-          "kana": "ごにん",
-          "hanviet": "NGŨ NHÂN",
-          "meaningVi": "Năm người",
-          "exampleJp": "五人でサッカーをしました。",
-          "exampleVi": "Năm người chơi bóng đá."
+          "word": "生活",
+          "kana": "せいかつ",
+          "hanviet": "SINH HOẠT",
+          "meaningVi": "Cuộc sống",
+          "exampleJp": "生活習慣を改善しました。",
+          "exampleVi": "Tôi đã cải thiện thói quen sống."
         },
         {
-          "word": "五円",
-          "kana": "ごえん",
-          "hanviet": "NGŨ NGUYÊN",
-          "meaningVi": "Năm yên",
-          "exampleJp": "五円玉を拾いました。",
-          "exampleVi": "Tôi đã nhặt được đồng năm yên."
-        }
-      ]
-    },
-    {
-      "id": "16",
-      "kanji": "六",
-      "hanviet": "LỤC",
-      "level": "N5",
-      "onyomi": ["ロク"],
-      "kunyomi": ["む"],
-      "meaningVi": "Sáu",
-      "strokeCount": 4,
-      "radicals": ["八"],
-      "memoryTip": "Sáu chấm",
-      "relatedVocabulary": [
-        {
-          "word": "六人",
-          "kana": "ろくにん",
-          "hanviet": "LỤC NHÂN",
-          "meaningVi": "Sáu người",
-          "exampleJp": "六人で食事をしました。",
-          "exampleVi": "Sáu người đã ăn uống."
-        },
-        {
-          "word": "六日",
-          "kana": "むいか",
-          "hanviet": "LỤC NHẬT",
-          "meaningVi": "Sáu ngày",
-          "exampleJp": "六日間滞在します。",
-          "exampleVi": "Tôi sẽ ở lại sáu ngày."
-        }
-      ]
-    },
-    {
-      "id": "17",
-      "kanji": "七",
-      "hanviet": "THẤT",
-      "level": "N5",
-      "onyomi": ["シチ"],
-      "kunyomi": ["なな", "なな"],
-      "meaningVi": "Bảy",
-      "strokeCount": 2,
-      "radicals": ["一"],
-      "memoryTip": "Bảy nét",
-      "relatedVocabulary": [
-        {
-          "word": "七人",
-          "kana": "しちにん",
-          "hanviet": "THẤT NHÂN",
-          "meaningVi": "Bảy người",
-          "exampleJp": "七人でゲームをしました。",
-          "exampleVi": "Bảy người chơi trò chơi."
-        },
-        {
-          "word": "七日",
-          "kana": "なのか",
-          "hanviet": "THẤT NHẬT",
-          "meaningVi": "Bảy ngày",
-          "exampleJp": "七日間かかりました。",
-          "exampleVi": "Mất bảy ngày."
-        }
-      ]
-    },
-    {
-      "id": "18",
-      "kanji": "八",
-      "hanviet": "BÁT",
-      "level": "N5",
-      "onyomi": ["ハチ"],
-      "kunyomi": ["や", "はち"],
-      "meaningVi": "Tám",
-      "strokeCount": 2,
-      "radicals": ["八"],
-      "memoryTip": "Tám chữ",
-      "relatedVocabulary": [
-        {
-          "word": "八人",
-          "kana": "はちにん",
-          "hanviet": "BÁT NHÂN",
-          "meaningVi": "Tám người",
-          "exampleJp": "八人でバーベキューをしました。",
-          "exampleVi": "Tám người đã tổ chức tiệc nướng."
-        },
-        {
-          "word": "八日",
-          "kana": "ようか",
-          "hanviet": "BÁT NHẬT",
-          "meaningVi": "Tám ngày",
-          "exampleJp": "八日間勉強しました。",
-          "exampleVi": "Tôi đã học tám ngày."
-        }
-      ]
-    },
-    {
-      "id": "19",
-      "kanji": "九",
-      "hanviet": "CỬU",
-      "level": "N5",
-      "onyomi": ["キュウ", "ク"],
-      "kunyomi": ["ここの"],
-      "meaningVi": "Chín",
-      "strokeCount": 2,
-      "radicals": ["乙"],
-      "memoryTip": "Chín ngón tay",
-      "relatedVocabulary": [
-        {
-          "word": "九人",
-          "kana": "くにん",
-          "hanviet": "CỬU NHÂN",
-          "meaningVi": "Chín người",
-          "exampleJp": "九人でクラスです。",
-          "exampleVi": "Lớp có chín người."
-        },
-        {
-          "word": "九日",
-          "kana": "ここのか",
-          "hanviet": "CỬU NHẬT",
-          "meaningVi": "Chín ngày",
-          "exampleJp": "九日間旅行しました。",
-          "exampleVi": "Tôi đã đi du lịch chín ngày."
-        }
-      ]
-    },
-    {
-      "id": "20",
-      "kanji": "十",
-      "hanviet": "THẬP",
-      "level": "N5",
-      "onyomi": ["ジュウ"],
-      "kunyomi": ["とお"],
-      "meaningVi": "Mười",
-      "strokeCount": 2,
-      "radicals": ["十"],
-      "memoryTip": "Mười nét",
-      "relatedVocabulary": [
-        {
-          "word": "十日",
-          "kana": "とおか",
-          "hanviet": "THẬP NHẬT",
-          "meaningVi": "Mười ngày",
-          "exampleJp": "十日間待ちました。",
-          "exampleVi": "Tôi đã đợi mười ngày."
-        },
-        {
-          "word": "二十",
-          "kana": "はたち",
-          "hanviet": "NHỊ THẬP",
-          "meaningVi": "Hai mươi",
-          "exampleJp": "二十歳になりました。",
-          "exampleVi": "Tôi đã tròn 20 tuổi."
-        }
-      ]
-    },
-    {
-      "id": "21",
-      "kanji": "百",
-      "hanviet": "BÁCH",
-      "level": "N5",
-      "onyomi": ["ヒャク"],
-      "kunyomi": ["もも"],
-      "meaningVi": "Trăm",
-      "strokeCount": 6,
-      "radicals": ["白"],
-      "memoryTip": "Một trăm đồng",
-      "relatedVocabulary": [
-        {
-          "word": "百円",
-          "kana": "ひゃくえん",
-          "hanviet": "BÁCH NGUYÊN",
-          "meaningVi": "Một trăm yên",
-          "exampleJp": "百円を払いました。",
-          "exampleVi": "Tôi đã trả một trăm yên."
-        },
-        {
-          "word": "三百",
-          "kana": "さんびゃく",
-          "hanviet": "TAM BÁCH",
-          "meaningVi": "Ba trăm",
-          "exampleJp": "三百ページの本を読みました。",
-          "exampleVi": "Tôi đã đọc cuốn sách 300 trang."
-        }
-      ]
-    },
-    {
-      "id": "22",
-      "kanji": "千",
-      "hanviet": "THIÊN",
-      "level": "N5",
-      "onyomi": ["セン"],
-      "kunyomi": ["ち"],
-      "meaningVi": "Nghìn",
-      "strokeCount": 3,
-      "radicals": ["十"],
-      "memoryTip": "Một nghìn đồng",
-      "relatedVocabulary": [
-        {
-          "word": "千円",
-          "kana": "せんえん",
-          "hanviet": "THIÊN NGUYÊN",
-          "meaningVi": "Một nghìn yên",
-          "exampleJp": "千円を貸してください。",
-          "exampleVi": "Hãy cho tôi mượn một nghìn yên."
-        },
-        {
-          "word": "三千",
-          "kana": "さんぜん",
-          "hanviet": "TAM THIÊN",
-          "meaningVi": "Ba nghìn",
-          "exampleJp": "三千円のバッグを買いました。",
-          "exampleVi": "Tôi đã mua túi ba nghìn yên."
-        }
-      ]
-    },
-    {
-      "id": "23",
-      "kanji": "万",
-      "hanviet": "VẠN",
-      "level": "N5",
-      "onyomi": ["マン", "バン"],
-      "kunyomi": ["よろず"],
-      "meaningVi": "Mười nghìn",
-      "strokeCount": 3,
-      "radicals": ["一"],
-      "memoryTip": "Mười nghìn đồng",
-      "relatedVocabulary": [
-        {
-          "word": "一万円",
-          "kana": "いちまんえん",
-          "hanviet": "NHẤT VẠN NGUYÊN",
-          "meaningVi": "Một vạn yên",
-          "exampleJp": "一万円持っています。",
-          "exampleVi": "Tôi có một vạn yên."
-        },
-        {
-          "word": "万万",
-          "kana": "ばんばん",
-          "hanviet": "BÁN VẠN",
-          "meaningVi": "Vô số",
-          "exampleJp": "万万歳！",
-          "exampleVi": "Muôn năm!"
-        }
-      ]
-    },
-    {
-      "id": "24",
-      "kanji": "円",
-      "hanviet": "NGUYÊN",
-      "level": "N5",
-      "onyomi": ["エン"],
-      "kunyomi": ["まる"],
-      "meaningVi": "Đồng yên, tròn",
-      "strokeCount": 4,
-      "radicals": ["囗"],
-      "memoryTip": "Đồng tiền tròn",
-      "relatedVocabulary": [
-        {
-          "word": "円高",
-          "kana": "えんだか",
-          "hanviet": "NGUYÊN CAO",
-          "meaningVi": "Yên tăng giá",
-          "exampleJp": "円高になりました。",
-          "exampleVi": "Yên đã tăng giá."
-        },
-        {
-          "word": "円安",
-          "kana": "えんやす",
-          "hanviet": "NGUYÊN AN",
-          "meaningVi": "Yên giảm giá",
-          "exampleJp": "円安が続いています。",
-          "exampleVi": "Yên tiếp tục giảm giá."
+          "word": "先生",
+          "kana": "せんせい",
+          "hanviet": "TIÊN SINH",
+          "meaningVi": "Giáo viên",
+          "exampleJp": "先生は親切です。",
+          "exampleVi": "Giáo viên rất tốt bụng."
         }
       ]
     },
@@ -733,11 +1272,17 @@
       "kanji": "田",
       "hanviet": "ĐIỀN",
       "level": "N5",
-      "onyomi": ["デン"],
-      "kunyomi": ["た"],
+      "onyomi": [
+        "デン"
+      ],
+      "kunyomi": [
+        "た"
+      ],
       "meaningVi": "Ruộng",
       "strokeCount": 5,
-      "radicals": ["田"],
+      "radicals": [
+        "田"
+      ],
       "memoryTip": "Ruộng bậc thang",
       "relatedVocabulary": [
         {
@@ -763,11 +1308,18 @@
       "kanji": "石",
       "hanviet": "THẠCH",
       "level": "N5",
-      "onyomi": ["セキ", "シャク"],
-      "kunyomi": ["いし"],
+      "onyomi": [
+        "セキ",
+        "シャク"
+      ],
+      "kunyomi": [
+        "いし"
+      ],
       "meaningVi": "Đá",
       "strokeCount": 5,
-      "radicals": ["石"],
+      "radicals": [
+        "石"
+      ],
       "memoryTip": "Hòn đá cứng",
       "relatedVocabulary": [
         {
@@ -789,332 +1341,75 @@
       ]
     },
     {
-      "id": "27",
-      "kanji": "生",
-      "hanviet": "SINH",
+      "id": "61",
+      "kanji": "立",
+      "hanviet": "LẬP",
       "level": "N5",
-      "onyomi": ["セイ", "ショウ"],
-      "kunyomi": ["い", "なま", "う", "は"],
-      "meaningVi": "Sinh, sống",
+      "onyomi": [
+        "リツ",
+        "リュウ"
+      ],
+      "kunyomi": [
+        "た"
+      ],
+      "meaningVi": "Đứng, lập",
       "strokeCount": 5,
-      "radicals": ["生"],
-      "memoryTip": "Sự sống mới mọc",
+      "radicals": [
+        "立"
+      ],
+      "memoryTip": "Đứng dậy",
       "relatedVocabulary": [
         {
-          "word": "生活",
-          "kana": "せいかつ",
-          "hanviet": "SINH HOẠT",
-          "meaningVi": "Cuộc sống",
-          "exampleJp": "生活習慣を改善しました。",
-          "exampleVi": "Tôi đã cải thiện thói quen sống."
+          "word": "立つ",
+          "kana": "たつ",
+          "hanviet": "LẬP",
+          "meaningVi": "Đứng",
+          "exampleJp": "立ってください。",
+          "exampleVi": "Hãy đứng lên."
         },
         {
-          "word": "先生",
-          "kana": "せんせい",
-          "hanviet": "TIÊN SINH",
-          "meaningVi": "Giáo viên",
-          "exampleJp": "先生は親切です。",
-          "exampleVi": "Giáo viên rất tốt bụng."
+          "word": "立派",
+          "kana": "りっぱ",
+          "hanviet": "LẬP PHÁI",
+          "meaningVi": "Xuất sắc",
+          "exampleJp": "立派な人です。",
+          "exampleVi": "Anh ấy là người xuất sắc."
         }
       ]
     },
     {
-      "id": "28",
-      "kanji": "年",
-      "hanviet": "NIÊN",
+      "id": "74",
+      "kanji": "会",
+      "hanviet": "HỘI",
       "level": "N5",
-      "onyomi": ["ネン"],
-      "kunyomi": ["とし"],
-      "meaningVi": "Năm",
+      "onyomi": [
+        "カイ"
+      ],
+      "kunyomi": [
+        "あ"
+      ],
+      "meaningVi": "Gặp gỡ, hội",
       "strokeCount": 6,
-      "radicals": ["干"],
-      "memoryTip": "Một năm trôi qua",
+      "radicals": [
+        "人"
+      ],
+      "memoryTip": "Gặp nhau",
       "relatedVocabulary": [
         {
-          "word": "今年",
-          "kana": "ことし",
-          "hanviet": "KIM NIÊN",
-          "meaningVi": "Năm nay",
-          "exampleJp": "今年は暖かいです。",
-          "exampleVi": "Năm nay ấm áp."
+          "word": "会う",
+          "kana": "あう",
+          "hanviet": "HỘI",
+          "meaningVi": "Gặp",
+          "exampleJp": "友達に会いました。",
+          "exampleVi": "Tôi đã gặp bạn."
         },
         {
-          "word": "去年",
-          "kana": "きょねん",
-          "hanviet": "KHỨ NIÊN",
-          "meaningVi": "Năm ngoái",
-          "exampleJp": "去年日本に行きました。",
-          "exampleVi": "Năm ngoái tôi đã đến Nhật Bản."
-        }
-      ]
-    },
-    {
-      "id": "29",
-      "kanji": "上",
-      "hanviet": "THƯỢNG",
-      "level": "N5",
-      "onyomi": ["ジョウ", "ショウ"],
-      "kunyomi": ["うえ", "あ", "のぼ"],
-      "meaningVi": "Trên, lên",
-      "strokeCount": 3,
-      "radicals": ["一"],
-      "memoryTip": "Đi lên trên",
-      "relatedVocabulary": [
-        {
-          "word": "上手",
-          "kana": "じょうず",
-          "hanviet": "THƯỢNG THỦ",
-          "meaningVi": "Giỏi, khéo",
-          "exampleJp": "彼は日本語が上手です。",
-          "exampleVi": "Anh ấy giỏi tiếng Nhật."
-        },
-        {
-          "word": "上がる",
-          "kana": "あがる",
-          "hanviet": "THƯỢNG",
-          "meaningVi": "Đi lên, tăng",
-          "exampleJp": "電車に上がります。",
-          "exampleVi": "Tôi lên tàu điện."
-        }
-      ]
-    },
-    {
-      "id": "30",
-      "kanji": "下",
-      "hanviet": "HẠ",
-      "level": "N5",
-      "onyomi": ["カ", "ゲ"],
-      "kunyomi": ["した", "さ", "お", "くだ"],
-      "meaningVi": "Dưới, xuống",
-      "strokeCount": 3,
-      "radicals": ["一"],
-      "memoryTip": "Đi xuống dưới",
-      "relatedVocabulary": [
-        {
-          "word": "下手",
-          "kana": "へた",
-          "hanviet": "HẠ THỦ",
-          "meaningVi": "Kém, vụng",
-          "exampleJp": "私は下手です。",
-          "exampleVi": "Tôi kém."
-        },
-        {
-          "word": "下がる",
-          "kana": "さがる",
-          "hanviet": "HẠ",
-          "meaningVi": "Giảm, xuống",
-          "exampleJp": "温度が下がりました。",
-          "exampleVi": "Nhiệt độ đã giảm."
-        }
-      ]
-    },
-    {
-      "id": "31",
-      "kanji": "中",
-      "hanviet": "TRUNG",
-      "level": "N5",
-      "onyomi": ["チュウ"],
-      "kunyomi": ["なか"],
-      "meaningVi": "Giữa, trong",
-      "strokeCount": 4,
-      "radicals": ["丨"],
-      "memoryTip": "Ở giữa",
-      "relatedVocabulary": [
-        {
-          "word": "中国",
-          "kana": "ちゅうごく",
-          "hanviet": "TRUNG QUỐC",
-          "meaningVi": "Trung Quốc",
-          "exampleJp": "中国に行きました。",
-          "exampleVi": "Tôi đã đến Trung Quốc."
-        },
-        {
-          "word": "途中",
-          "kana": "とちゅう",
-          "hanviet": "ĐỒ TRUNG",
-          "meaningVi": "Trên đường",
-          "exampleJp": "途中で会いました。",
-          "exampleVi": "Tôi đã gặp trên đường."
-        }
-      ]
-    },
-    {
-      "id": "32",
-      "kanji": "大",
-      "hanviet": "ĐẠI",
-      "level": "N5",
-      "onyomi": ["ダイ", "タイ"],
-      "kunyomi": ["おお", "おお"],
-      "meaningVi": "Lớn",
-      "strokeCount": 3,
-      "radicals": ["大"],
-      "memoryTip": "Hai chân dang rộng",
-      "relatedVocabulary": [
-        {
-          "word": "大学",
-          "kana": "だいがく",
-          "hanviet": "ĐẠI HỌC",
-          "meaningVi": "Đại học",
-          "exampleJp": "大学で勉強しています。",
-          "exampleVi": "Tôi đang học ở đại học."
-        },
-        {
-          "word": "大きい",
-          "kana": "おおきい",
-          "hanviet": "ĐẠI",
-          "meaningVi": "To, lớn",
-          "exampleJp": "この家は大きいです。",
-          "exampleVi": "Ngôi nhà này to."
-        }
-      ]
-    },
-    {
-      "id": "33",
-      "kanji": "小",
-      "hanviet": "TIỂU",
-      "level": "N5",
-      "onyomi": ["ショウ"],
-      "kunyomi": ["ちい", "こ", "お"],
-      "meaningVi": "Nhỏ",
-      "strokeCount": 3,
-      "radicals": ["小"],
-      "memoryTip": "Nhỏ xíu",
-      "relatedVocabulary": [
-        {
-          "word": "小学校",
-          "kana": "しょうがっこう",
-          "hanviet": "TIỂU HỌC HIỆU",
-          "meaningVi": "Tiểu học",
-          "exampleJp": "小学校に行きます。",
-          "exampleVi": "Tôi đi đến tiểu học."
-        },
-        {
-          "word": "小さい",
-          "kana": "ちいさい",
-          "hanviet": "TIỂU",
-          "meaningVi": "Nhỏ",
-          "exampleJp": "この部屋は小さいです。",
-          "exampleVi": "Căn phòng này nhỏ."
-        }
-      ]
-    },
-    {
-      "id": "34",
-      "kanji": "高",
-      "hanviet": "CAO",
-      "level": "N5",
-      "onyomi": ["コウ"],
-      "kunyomi": ["たか"],
-      "meaningVi": "Cao",
-      "strokeCount": 10,
-      "radicals": ["高"],
-      "memoryTip": "Cao vút",
-      "relatedVocabulary": [
-        {
-          "word": "高い",
-          "kana": "たかい",
-          "hanviet": "CAO",
-          "meaningVi": "Đắt, cao",
-          "exampleJp": "この店は高いです。",
-          "exampleVi": "Cửa hàng này đắt."
-        },
-        {
-          "word": "高校",
-          "kana": "こうこう",
-          "hanviet": "CAO HIỆU",
-          "meaningVi": "Trung học phổ thông",
-          "exampleJp": "高校を卒業しました。",
-          "exampleVi": "Tôi đã tốt nghiệp trung học phổ thông."
-        }
-      ]
-    },
-    {
-      "id": "35",
-      "kanji": "長",
-      "hanviet": "TRƯỜNG",
-      "level": "N5",
-      "onyomi": ["チョウ"],
-      "kunyomi": ["なが"],
-      "meaningVi": "Dài, lãnh đạo",
-      "strokeCount": 4,
-      "radicals": ["長"],
-      "memoryTip": "Dài thường",
-      "relatedVocabulary": [
-        {
-          "word": "長い",
-          "kana": "ながい",
-          "hanviet": "TRƯỜNG",
-          "meaningVi": "Dài",
-          "exampleJp": "この髪は長いです。",
-          "exampleVi": "Mái tóc này dài."
-        },
-        {
-          "word": "校長",
-          "kana": "こうちょう",
-          "hanviet": "HIỆU TRƯỜNG",
-          "meaningVi": "Hiệu trưởng",
-          "exampleJp": "校長先生が来ました。",
-          "exampleVi": "Hiệu trưởng đã đến."
-        }
-      ]
-    },
-    {
-      "id": "36",
-      "kanji": "学",
-      "hanviet": "HỌC",
-      "level": "N5",
-      "onyomi": ["ガク"],
-      "kunyomi": ["まな"],
-      "meaningVi": "Học",
-      "strokeCount": 8,
-      "radicals": ["子"],
-      "memoryTip": "Học tập là vốn quý",
-      "relatedVocabulary": [
-        {
-          "word": "学生",
-          "kana": "がくせい",
-          "hanviet": "HỌC SINH",
-          "meaningVi": "Sinh viên",
-          "exampleJp": "学生です。",
-          "exampleVi": "Tôi là sinh viên."
-        },
-        {
-          "word": "学校",
-          "kana": "がっこう",
-          "hanviet": "HỌC HIỆU",
-          "meaningVi": "Trường học",
-          "exampleJp": "学校に行きます。",
-          "exampleVi": "Tôi đi đến trường."
-        }
-      ]
-    },
-    {
-      "id": "37",
-      "kanji": "校",
-      "hanviet": "HIỆU",
-      "level": "N5",
-      "onyomi": ["コウ"],
-      "kunyomi": [],
-      "meaningVi": "Trường",
-      "strokeCount": 10,
-      "radicals": ["木"],
-      "memoryTip": "Trường học",
-      "relatedVocabulary": [
-        {
-          "word": "学校",
-          "kana": "がっこう",
-          "hanviet": "HỌC HIỆU",
-          "meaningVi": "Trường học",
-          "exampleJp": "学校は近いです。",
-          "exampleVi": "Trường học gần."
-        },
-        {
-          "word": "高校",
-          "kana": "こうこう",
-          "hanviet": "CAO HIỆU",
-          "meaningVi": "Trung học",
-          "exampleJp": "高校生です。",
-          "exampleVi": "Tôi là học sinh trung học."
+          "word": "会議",
+          "kana": "かいぎ",
+          "hanviet": "HỘI NGHỊ",
+          "meaningVi": "Cuộc họp",
+          "exampleJp": "会議があります。",
+          "exampleVi": "Có cuộc họp."
         }
       ]
     },
@@ -1123,11 +1418,17 @@
       "kanji": "先",
       "hanviet": "TIÊN",
       "level": "N5",
-      "onyomi": ["セン"],
-      "kunyomi": ["さき"],
+      "onyomi": [
+        "セン"
+      ],
+      "kunyomi": [
+        "さき"
+      ],
       "meaningVi": "Trước, trước tiên",
       "strokeCount": 6,
-      "radicals": ["儿"],
+      "radicals": [
+        "儿"
+      ],
       "memoryTip": "Đi trước",
       "relatedVocabulary": [
         {
@@ -1149,225 +1450,22 @@
       ]
     },
     {
-      "id": "39",
-      "kanji": "私",
-      "hanviet": "TƯ",
-      "level": "N5",
-      "onyomi": ["シ"],
-      "kunyomi": ["わたし", "わたくし"],
-      "meaningVi": "Tôi (cá nhân)",
-      "strokeCount": 7,
-      "radicals": ["禾"],
-      "memoryTip": "Tôi là một người",
-      "relatedVocabulary": [
-        {
-          "word": "私",
-          "kana": "わたし",
-          "hanviet": "TƯ",
-          "meaningVi": "Tôi",
-          "exampleJp": "私は学生です。",
-          "exampleVi": "Tôi là sinh viên."
-        },
-        {
-          "word": "私の",
-          "kana": "わたしの",
-          "hanviet": "TƯ ĐÍCH",
-          "meaningVi": "Của tôi",
-          "exampleJp": "これは私の本です。",
-          "exampleVi": "Đây là sách của tôi."
-        }
-      ]
-    },
-    {
-      "id": "40",
-      "kanji": "今",
-      "hanviet": "KIM",
-      "level": "N5",
-      "onyomi": ["コン", "キン"],
-      "kunyomi": ["いま"],
-      "meaningVi": "Bây giờ",
-      "strokeCount": 4,
-      "radicals": ["人"],
-      "memoryTip": "Hiện tại",
-      "relatedVocabulary": [
-        {
-          "word": "今",
-          "kana": "いま",
-          "hanviet": "KIM",
-          "meaningVi": "Bây giờ",
-          "exampleJp": "今何時ですか。",
-          "exampleVi": "Bây giờ là mấy giờ?"
-        },
-        {
-          "word": "今日",
-          "kana": "きょう",
-          "hanviet": "KIM NHẬT",
-          "meaningVi": "Hôm nay",
-          "exampleJp": "今日は天気がいいです。",
-          "exampleVi": "Hôm nay thời tiết đẹp."
-        }
-      ]
-    },
-    {
-      "id": "41",
-      "kanji": "時",
-      "hanviet": "THỜI",
-      "level": "N5",
-      "onyomi": ["ジ"],
-      "kunyomi": ["とき"],
-      "meaningVi": "Thời gian, giờ",
-      "strokeCount": 10,
-      "radicals": ["日"],
-      "memoryTip": "Thời gian trôi",
-      "relatedVocabulary": [
-        {
-          "word": "時間",
-          "kana": "じかん",
-          "hanviet": "THỜI GIAN",
-          "meaningVi": "Thời gian",
-          "exampleJp": "時間があります。",
-          "exampleVi": "Tôi có thời gian."
-        },
-        {
-          "word": "時計",
-          "kana": "とけい",
-          "hanviet": "THỜI KẾ",
-          "meaningVi": "Đồng hồ",
-          "exampleJp": "時計を見ました。",
-          "exampleVi": "Tôi đã xem đồng hồ."
-        }
-      ]
-    },
-    {
-      "id": "42",
-      "kanji": "間",
-      "hanviet": "GIÀN",
-      "level": "N5",
-      "onyomi": ["カン", "ケン"],
-      "kunyomi": ["あいだ", "ま"],
-      "meaningVi": "Khoảng cách, giữa",
-      "strokeCount": 12,
-      "radicals": ["門"],
-      "memoryTip": "Khoảng thời gian",
-      "relatedVocabulary": [
-        {
-          "word": "時間",
-          "kana": "じかん",
-          "hanviet": "THỜI GIAN",
-          "meaningVi": "Thời gian",
-          "exampleJp": "時間がかかります。",
-          "exampleVi": "Mất thời gian."
-        },
-        {
-          "word": "人間",
-          "kana": "にんげん",
-          "hanviet": "NHÂN GIÀN",
-          "meaningVi": "Con người",
-          "exampleJp": "人間は優しいです。",
-          "exampleVi": "Con người tốt bụng."
-        }
-      ]
-    },
-    {
-      "id": "43",
-      "kanji": "半",
-      "hanviet": "BÁN",
-      "level": "N5",
-      "onyomi": ["ハン"],
-      "kunyomi": ["なか"],
-      "meaningVi": "Nửa",
-      "strokeCount": 5,
-      "radicals": ["干"],
-      "memoryTip": "Nửa phần",
-      "relatedVocabulary": [
-        {
-          "word": "半分",
-          "kana": "はんぶん",
-          "hanviet": "BÁN PHÂN",
-          "meaningVi": "Một nửa",
-          "exampleJp": "半分食べました。",
-          "exampleVi": "Tôi đã ăn một nửa."
-        },
-        {
-          "word": "半日",
-          "kana": "はんにち",
-          "hanviet": "BÁN NHẬT",
-          "meaningVi": "Nửa ngày",
-          "exampleJp": "半日働きました。",
-          "exampleVi": "Tôi đã làm việc nửa ngày."
-        }
-      ]
-    },
-    {
-      "id": "44",
-      "kanji": "毎",
-      "hanviet": "MỖI",
-      "level": "N5",
-      "onyomi": ["マイ"],
-      "kunyomi": [],
-      "meaningVi": "Mỗi",
-      "strokeCount": 6,
-      "radicals": ["母"],
-      "memoryTip": "Mỗi ngày",
-      "relatedVocabulary": [
-        {
-          "word": "毎日",
-          "kana": "まいにち",
-          "hanviet": "MỖI NHẬT",
-          "meaningVi": "Hàng ngày",
-          "exampleJp": "毎日運動します。",
-          "exampleVi": "Tôi tập thể dục mỗi ngày."
-        },
-        {
-          "word": "毎週",
-          "kana": "まいしゅう",
-          "hanviet": "MỖI CHU",
-          "meaningVi": "Hàng tuần",
-          "exampleJp": "毎週映画を見ます。",
-          "exampleVi": "Tôi xem phim hàng tuần."
-        }
-      ]
-    },
-    {
-      "id": "45",
-      "kanji": "何",
-      "hanviet": "HÀ",
-      "level": "N5",
-      "onyomi": ["カ"],
-      "kunyomi": ["なに", "なん"],
-      "meaningVi": "Cái gì, bao nhiêu",
-      "strokeCount": 7,
-      "radicals": ["亻"],
-      "memoryTip": "Hỏi cái gì",
-      "relatedVocabulary": [
-        {
-          "word": "何時",
-          "kana": "なんじ",
-          "hanviet": "HÀ THỜI",
-          "meaningVi": "Mấy giờ",
-          "exampleJp": "何時ですか。",
-          "exampleVi": "Bây giờ là mấy giờ?"
-        },
-        {
-          "word": "何歳",
-          "kana": "なんさい",
-          "hanviet": "HÀ TUỂ",
-          "meaningVi": "Bao nhiêu tuổi",
-          "exampleJp": "何歳ですか。",
-          "exampleVi": "Bạn bao nhiêu tuổi?"
-        }
-      ]
-    },
-    {
       "id": "46",
       "kanji": "名",
       "hanviet": "DANH",
       "level": "N5",
-      "onyomi": ["メイ", "ミョウ"],
-      "kunyomi": ["な"],
+      "onyomi": [
+        "メイ",
+        "ミョウ"
+      ],
+      "kunyomi": [
+        "な"
+      ],
       "meaningVi": "Tên",
       "strokeCount": 6,
-      "radicals": ["口"],
+      "radicals": [
+        "口"
+      ],
       "memoryTip": "Tên gọi",
       "relatedVocabulary": [
         {
@@ -1389,15 +1487,750 @@
       ]
     },
     {
+      "id": "78",
+      "kanji": "好",
+      "hanviet": "HẢO",
+      "level": "N5",
+      "onyomi": [
+        "コウ"
+      ],
+      "kunyomi": [
+        "す",
+        "この"
+      ],
+      "meaningVi": "Thích, tốt",
+      "strokeCount": 6,
+      "radicals": [
+        "女"
+      ],
+      "memoryTip": "Thích thú",
+      "relatedVocabulary": [
+        {
+          "word": "好き",
+          "kana": "すき",
+          "hanviet": "HẢO",
+          "meaningVi": "Thích",
+          "exampleJp": "寿司が好きです。",
+          "exampleVi": "Tôi thích sushi."
+        },
+        {
+          "word": "嫌い",
+          "kana": "きらい",
+          "hanviet": "HIỀN",
+          "meaningVi": "Ghét",
+          "exampleJp": "納豆が嫌いです。",
+          "exampleVi": "Tôi ghét natto."
+        }
+      ]
+    },
+    {
+      "id": "28",
+      "kanji": "年",
+      "hanviet": "NIÊN",
+      "level": "N5",
+      "onyomi": [
+        "ネン"
+      ],
+      "kunyomi": [
+        "とし"
+      ],
+      "meaningVi": "Năm",
+      "strokeCount": 6,
+      "radicals": [
+        "干"
+      ],
+      "memoryTip": "Một năm trôi qua",
+      "relatedVocabulary": [
+        {
+          "word": "今年",
+          "kana": "ことし",
+          "hanviet": "KIM NIÊN",
+          "meaningVi": "Năm nay",
+          "exampleJp": "今年は暖かいです。",
+          "exampleVi": "Năm nay ấm áp."
+        },
+        {
+          "word": "去年",
+          "kana": "きょねん",
+          "hanviet": "KHỨ NIÊN",
+          "meaningVi": "Năm ngoái",
+          "exampleJp": "去年日本に行きました。",
+          "exampleVi": "Năm ngoái tôi đã đến Nhật Bản."
+        }
+      ]
+    },
+    {
+      "id": "44",
+      "kanji": "毎",
+      "hanviet": "MỖI",
+      "level": "N5",
+      "onyomi": [
+        "マイ"
+      ],
+      "kunyomi": [],
+      "meaningVi": "Mỗi",
+      "strokeCount": 6,
+      "radicals": [
+        "母"
+      ],
+      "memoryTip": "Mỗi ngày",
+      "relatedVocabulary": [
+        {
+          "word": "毎日",
+          "kana": "まいにち",
+          "hanviet": "MỖI NHẬT",
+          "meaningVi": "Hàng ngày",
+          "exampleJp": "毎日運動します。",
+          "exampleVi": "Tôi tập thể dục mỗi ngày."
+        },
+        {
+          "word": "毎週",
+          "kana": "まいしゅう",
+          "hanviet": "MỖI CHU",
+          "meaningVi": "Hàng tuần",
+          "exampleJp": "毎週映画を見ます。",
+          "exampleVi": "Tôi xem phim hàng tuần."
+        }
+      ]
+    },
+    {
+      "id": "21",
+      "kanji": "百",
+      "hanviet": "BÁCH",
+      "level": "N5",
+      "onyomi": [
+        "ヒャク"
+      ],
+      "kunyomi": [
+        "もも"
+      ],
+      "meaningVi": "Trăm",
+      "strokeCount": 6,
+      "radicals": [
+        "白"
+      ],
+      "memoryTip": "Một trăm đồng",
+      "relatedVocabulary": [
+        {
+          "word": "百円",
+          "kana": "ひゃくえん",
+          "hanviet": "BÁCH NGUYÊN",
+          "meaningVi": "Một trăm yên",
+          "exampleJp": "百円を払いました。",
+          "exampleVi": "Tôi đã trả một trăm yên."
+        },
+        {
+          "word": "三百",
+          "kana": "さんびゃく",
+          "hanviet": "TAM BÁCH",
+          "meaningVi": "Ba trăm",
+          "exampleJp": "三百ページの本を読みました。",
+          "exampleVi": "Tôi đã đọc cuốn sách 300 trang."
+        }
+      ]
+    },
+    {
+      "id": "51",
+      "kanji": "行",
+      "hanviet": "HÀNH",
+      "level": "N5",
+      "onyomi": [
+        "コウ",
+        "ギョウ"
+      ],
+      "kunyomi": [
+        "い",
+        "ゆ"
+      ],
+      "meaningVi": "Đi, hành",
+      "strokeCount": 6,
+      "radicals": [
+        "行"
+      ],
+      "memoryTip": "Đi đến nơi",
+      "relatedVocabulary": [
+        {
+          "word": "行く",
+          "kana": "いく",
+          "hanviet": "HÀNH",
+          "meaningVi": "Đi",
+          "exampleJp": "学校に行きます。",
+          "exampleVi": "Tôi đi đến trường."
+        },
+        {
+          "word": "銀行",
+          "kana": "ぎんこう",
+          "hanviet": "NGÂN HÀNH",
+          "meaningVi": "Ngân hàng",
+          "exampleJp": "銀行でお金を下ろしました。",
+          "exampleVi": "Tôi đã rút tiền ở ngân hàng."
+        }
+      ]
+    },
+    {
+      "id": "45",
+      "kanji": "何",
+      "hanviet": "HÀ",
+      "level": "N5",
+      "onyomi": [
+        "カ"
+      ],
+      "kunyomi": [
+        "なに",
+        "なん"
+      ],
+      "meaningVi": "Cái gì, bao nhiêu",
+      "strokeCount": 7,
+      "radicals": [
+        "亻"
+      ],
+      "memoryTip": "Hỏi cái gì",
+      "relatedVocabulary": [
+        {
+          "word": "何時",
+          "kana": "なんじ",
+          "hanviet": "HÀ THỜI",
+          "meaningVi": "Mấy giờ",
+          "exampleJp": "何時ですか。",
+          "exampleVi": "Bây giờ là mấy giờ?"
+        },
+        {
+          "word": "何歳",
+          "kana": "なんさい",
+          "hanviet": "HÀ TUỂ",
+          "meaningVi": "Bao nhiêu tuổi",
+          "exampleJp": "何歳ですか。",
+          "exampleVi": "Bạn bao nhiêu tuổi?"
+        }
+      ]
+    },
+    {
+      "id": "73",
+      "kanji": "作",
+      "hanviet": "TÁC",
+      "level": "N5",
+      "onyomi": [
+        "サク",
+        "サ"
+      ],
+      "kunyomi": [
+        "つく"
+      ],
+      "meaningVi": "Làm, tác phẩm",
+      "strokeCount": 7,
+      "radicals": [
+        "亻"
+      ],
+      "memoryTip": "Làm ra",
+      "relatedVocabulary": [
+        {
+          "word": "作る",
+          "kana": "つくる",
+          "hanviet": "TÁC",
+          "meaningVi": "Làm",
+          "exampleJp": "料理を作ります。",
+          "exampleVi": "Tôi nấu ăn."
+        },
+        {
+          "word": "作品",
+          "kana": "さくひん",
+          "hanviet": "TÁC PHẨM",
+          "meaningVi": "Tác phẩm",
+          "exampleJp": "この作品は有名です。",
+          "exampleVi": "Tác phẩm này nổi tiếng."
+        }
+      ]
+    },
+    {
+      "id": "62",
+      "kanji": "坐",
+      "hanviet": "TỌA",
+      "level": "N5",
+      "onyomi": [
+        "ザ"
+      ],
+      "kunyomi": [
+        "すわ"
+      ],
+      "meaningVi": "Ngồi",
+      "strokeCount": 7,
+      "radicals": [
+        "土"
+      ],
+      "memoryTip": "Ngồi xuống",
+      "relatedVocabulary": [
+        {
+          "word": "座る",
+          "kana": "すわる",
+          "hanviet": "TỌA",
+          "meaningVi": "Ngồi",
+          "exampleJp": "椅子に座ります。",
+          "exampleVi": "Tôi ngồi xuống ghế."
+        },
+        {
+          "word": "座席",
+          "kana": "ざせき",
+          "hanviet": "TỌA TỊCH",
+          "meaningVi": "Chỗ ngồi",
+          "exampleJp": "座席を予約しました。",
+          "exampleVi": "Tôi đã đặt chỗ ngồi."
+        }
+      ]
+    },
+    {
+      "id": "57",
+      "kanji": "売",
+      "hanviet": "MẠI",
+      "level": "N5",
+      "onyomi": [
+        "バイ"
+      ],
+      "kunyomi": [
+        "う"
+      ],
+      "meaningVi": "Bán",
+      "strokeCount": 7,
+      "radicals": [
+        "士"
+      ],
+      "memoryTip": "Bán hàng",
+      "relatedVocabulary": [
+        {
+          "word": "売る",
+          "kana": "うる",
+          "hanviet": "MẠI",
+          "meaningVi": "Bán",
+          "exampleJp": "車を売りました。",
+          "exampleVi": "Tôi đã bán xe."
+        },
+        {
+          "word": "売り場",
+          "kana": "うりば",
+          "hanviet": "MẠI TRƯỜNG",
+          "meaningVi": "Quầy bán hàng",
+          "exampleJp": "売り場は二階です。",
+          "exampleVi": "Quầy bán hàng ở tầng hai."
+        }
+      ]
+    },
+    {
+      "id": "52",
+      "kanji": "来",
+      "hanviet": "LAI",
+      "level": "N5",
+      "onyomi": [
+        "ライ"
+      ],
+      "kunyomi": [
+        "く"
+      ],
+      "meaningVi": "Đến, lai",
+      "strokeCount": 7,
+      "radicals": [
+        "木"
+      ],
+      "memoryTip": "Đến nơi",
+      "relatedVocabulary": [
+        {
+          "word": "来る",
+          "kana": "くる",
+          "hanviet": "LAI",
+          "meaningVi": "Đến",
+          "exampleJp": "友達が来ました。",
+          "exampleVi": "Bạn đã đến."
+        },
+        {
+          "word": "来年",
+          "kana": "らいねん",
+          "hanviet": "LAI NIÊN",
+          "meaningVi": "Năm sau",
+          "exampleJp": "来年日本に行きます。",
+          "exampleVi": "Năm sau tôi sẽ đến Nhật Bản."
+        }
+      ]
+    },
+    {
+      "id": "39",
+      "kanji": "私",
+      "hanviet": "TƯ",
+      "level": "N5",
+      "onyomi": [
+        "シ"
+      ],
+      "kunyomi": [
+        "わたし",
+        "わたくし"
+      ],
+      "meaningVi": "Tôi (cá nhân)",
+      "strokeCount": 7,
+      "radicals": [
+        "禾"
+      ],
+      "memoryTip": "Tôi là một người",
+      "relatedVocabulary": [
+        {
+          "word": "私",
+          "kana": "わたし",
+          "hanviet": "TƯ",
+          "meaningVi": "Tôi",
+          "exampleJp": "私は学生です。",
+          "exampleVi": "Tôi là sinh viên."
+        },
+        {
+          "word": "私の",
+          "kana": "わたしの",
+          "hanviet": "TƯ ĐÍCH",
+          "meaningVi": "Của tôi",
+          "exampleJp": "これは私の本です。",
+          "exampleVi": "Đây là sách của tôi."
+        }
+      ]
+    },
+    {
+      "id": "80",
+      "kanji": "良",
+      "hanviet": "LƯƠNG",
+      "level": "N5",
+      "onyomi": [
+        "リョウ"
+      ],
+      "kunyomi": [
+        "よ",
+        "い"
+      ],
+      "meaningVi": "Tốt, lương",
+      "strokeCount": 7,
+      "radicals": [
+        "艮"
+      ],
+      "memoryTip": "Tốt lành",
+      "relatedVocabulary": [
+        {
+          "word": "良い",
+          "kana": "よい",
+          "hanviet": "LƯƠNG",
+          "meaningVi": "Tốt",
+          "exampleJp": "良い天気です。",
+          "exampleVi": "Thời tiết tốt."
+        },
+        {
+          "word": "良好",
+          "kana": "りょうこう",
+          "hanviet": "LƯƠNG HẢO",
+          "meaningVi": "Tốt đẹp",
+          "exampleJp": "状態は良好です。",
+          "exampleVi": "Tình trạng tốt đẹp."
+        }
+      ]
+    },
+    {
+      "id": "49",
+      "kanji": "見",
+      "hanviet": "KIẾN",
+      "level": "N5",
+      "onyomi": [
+        "ケン"
+      ],
+      "kunyomi": [
+        "み"
+      ],
+      "meaningVi": "Nhìn, thấy",
+      "strokeCount": 7,
+      "radicals": [
+        "見"
+      ],
+      "memoryTip": "Mắt nhìn thấy",
+      "relatedVocabulary": [
+        {
+          "word": "見る",
+          "kana": "みる",
+          "hanviet": "KIẾN",
+          "meaningVi": "Xem, nhìn",
+          "exampleJp": "映画を見ます。",
+          "exampleVi": "Tôi xem phim."
+        },
+        {
+          "word": "意見",
+          "kana": "いけん",
+          "hanviet": "Ý KIẾN",
+          "meaningVi": "Ý kiến",
+          "exampleJp": "意見を聞きました。",
+          "exampleVi": "Tôi đã nghe ý kiến."
+        }
+      ]
+    },
+    {
+      "id": "64",
+      "kanji": "走",
+      "hanviet": "TẨU",
+      "level": "N5",
+      "onyomi": [
+        "ソウ"
+      ],
+      "kunyomi": [
+        "はし"
+      ],
+      "meaningVi": "Chạy",
+      "strokeCount": 7,
+      "radicals": [
+        "走"
+      ],
+      "memoryTip": "Chạy nhanh",
+      "relatedVocabulary": [
+        {
+          "word": "走る",
+          "kana": "はしる",
+          "hanviet": "TẨU",
+          "meaningVi": "Chạy",
+          "exampleJp": "学校に走りました。",
+          "exampleVi": "Tôi đã chạy đến trường."
+        },
+        {
+          "word": "走行",
+          "kana": "そうこう",
+          "hanviet": "TẨU HÀNH",
+          "meaningVi": "Lái xe, chạy",
+          "exampleJp": "走行距離が長いです。",
+          "exampleVi": "Quãng đường lái xe dài."
+        }
+      ]
+    },
+    {
+      "id": "72",
+      "kanji": "使",
+      "hanviet": "SỬ",
+      "level": "N5",
+      "onyomi": [
+        "シ"
+      ],
+      "kunyomi": [
+        "つか"
+      ],
+      "meaningVi": "Dùng, sử dụng",
+      "strokeCount": 8,
+      "radicals": [
+        "亻"
+      ],
+      "memoryTip": "Sử dụng",
+      "relatedVocabulary": [
+        {
+          "word": "使う",
+          "kana": "つかう",
+          "hanviet": "SỬ",
+          "meaningVi": "Dùng",
+          "exampleJp": "パソコンを使います。",
+          "exampleVi": "Tôi dùng máy tính."
+        },
+        {
+          "word": "使用",
+          "kana": "しよう",
+          "hanviet": "SỬ DỤNG",
+          "meaningVi": "Sử dụng",
+          "exampleJp": "この部屋は使用中です。",
+          "exampleVi": "Phòng này đang sử dụng."
+        }
+      ]
+    },
+    {
+      "id": "71",
+      "kanji": "取",
+      "hanviet": "THỦ",
+      "level": "N5",
+      "onyomi": [
+        "シュ"
+      ],
+      "kunyomi": [
+        "と"
+      ],
+      "meaningVi": "Lấy, thủ",
+      "strokeCount": 8,
+      "radicals": [
+        "耳"
+      ],
+      "memoryTip": "Lấy đồ",
+      "relatedVocabulary": [
+        {
+          "word": "取る",
+          "kana": "とる",
+          "hanviet": "THỦ",
+          "meaningVi": "Lấy",
+          "exampleJp": "写真を撮りました。",
+          "exampleVi": "Tôi đã chụp ảnh."
+        },
+        {
+          "word": "取得",
+          "kana": "しゅとく",
+          "hanviet": "THỦ ĐẮC",
+          "meaningVi": "Đạt được",
+          "exampleJp": "資格を取得しました。",
+          "exampleVi": "Tôi đã đạt được chứng chỉ."
+        }
+      ]
+    },
+    {
+      "id": "36",
+      "kanji": "学",
+      "hanviet": "HỌC",
+      "level": "N5",
+      "onyomi": [
+        "ガク"
+      ],
+      "kunyomi": [
+        "まな"
+      ],
+      "meaningVi": "Học",
+      "strokeCount": 8,
+      "radicals": [
+        "子"
+      ],
+      "memoryTip": "Học tập là vốn quý",
+      "relatedVocabulary": [
+        {
+          "word": "学生",
+          "kana": "がくせい",
+          "hanviet": "HỌC SINH",
+          "meaningVi": "Sinh viên",
+          "exampleJp": "学生です。",
+          "exampleVi": "Tôi là sinh viên."
+        },
+        {
+          "word": "学校",
+          "kana": "がっこう",
+          "hanviet": "HỌC HIỆU",
+          "meaningVi": "Trường học",
+          "exampleJp": "学校に行きます。",
+          "exampleVi": "Tôi đi đến trường."
+        }
+      ]
+    },
+    {
+      "id": "63",
+      "kanji": "歩",
+      "hanviet": "BỘ",
+      "level": "N5",
+      "onyomi": [
+        "ホ",
+        "ブ"
+      ],
+      "kunyomi": [
+        "ある",
+        "あゆ"
+      ],
+      "meaningVi": "Đi bộ",
+      "strokeCount": 8,
+      "radicals": [
+        "止"
+      ],
+      "memoryTip": "Đi bộ",
+      "relatedVocabulary": [
+        {
+          "word": "歩く",
+          "kana": "あるく",
+          "hanviet": "BỘ",
+          "meaningVi": "Đi bộ",
+          "exampleJp": "公園を歩きます。",
+          "exampleVi": "Tôi đi bộ trong công viên."
+        },
+        {
+          "word": "散歩",
+          "kana": "さんぽ",
+          "hanviet": "TẢN BỘ",
+          "meaningVi": "Dạo chơi",
+          "exampleJp": "散歩に行きました。",
+          "exampleVi": "Tôi đã đi dạo."
+        }
+      ]
+    },
+    {
+      "id": "75",
+      "kanji": "知",
+      "hanviet": "TRI",
+      "level": "N5",
+      "onyomi": [
+        "チ"
+      ],
+      "kunyomi": [
+        "し"
+      ],
+      "meaningVi": "Biết, tri thức",
+      "strokeCount": 8,
+      "radicals": [
+        "矢"
+      ],
+      "memoryTip": "Biết rõ",
+      "relatedVocabulary": [
+        {
+          "word": "知る",
+          "kana": "しる",
+          "hanviet": "TRI",
+          "meaningVi": "Biết",
+          "exampleJp": "この事を知っていますか。",
+          "exampleVi": "Bạn có biết việc này không?"
+        },
+        {
+          "word": "知識",
+          "kana": "ちしき",
+          "hanviet": "TRI THỨC",
+          "meaningVi": "Kiến thức",
+          "exampleJp": "知識が豊富です。",
+          "exampleVi": "Kiến thức phong phú."
+        }
+      ]
+    },
+    {
+      "id": "6",
+      "kanji": "金",
+      "hanviet": "KIM",
+      "level": "N5",
+      "onyomi": [
+        "キン",
+        "コン"
+      ],
+      "kunyomi": [
+        "かね",
+        "かな"
+      ],
+      "meaningVi": "Vàng, tiền",
+      "strokeCount": 8,
+      "radicals": [
+        "金"
+      ],
+      "memoryTip": "Vàng có giá trị cao",
+      "relatedVocabulary": [
+        {
+          "word": "金曜日",
+          "kana": "きんようび",
+          "hanviet": "KIM DIỆU NHẬT",
+          "meaningVi": "Thứ sáu",
+          "exampleJp": "金曜日は映画を見ます。",
+          "exampleVi": "Thứ Sáu tôi xem phim."
+        },
+        {
+          "word": "お金",
+          "kana": "おかね",
+          "hanviet": "KHOẺ KIM",
+          "meaningVi": "Tiền (lịch sự)",
+          "exampleJp": "お金がありません。",
+          "exampleVi": "Tôi không có tiền."
+        }
+      ]
+    },
+    {
       "id": "47",
       "kanji": "前",
       "hanviet": "TIỀN",
       "level": "N5",
-      "onyomi": ["ゼン"],
-      "kunyomi": ["まえ"],
+      "onyomi": [
+        "ゼン"
+      ],
+      "kunyomi": [
+        "まえ"
+      ],
       "meaningVi": "Trước, phía trước",
       "strokeCount": 9,
-      "radicals": ["刀"],
+      "radicals": [
+        "刀"
+      ],
       "memoryTip": "Phía trước",
       "relatedVocabulary": [
         {
@@ -1423,11 +2256,20 @@
       "kanji": "後",
       "hanviet": "HẬU",
       "level": "N5",
-      "onyomi": ["ゴ", "コウ"],
-      "kunyomi": ["うし", "あと", "おく"],
+      "onyomi": [
+        "ゴ",
+        "コウ"
+      ],
+      "kunyomi": [
+        "うし",
+        "あと",
+        "おく"
+      ],
       "meaningVi": "Sau, phía sau",
       "strokeCount": 9,
-      "radicals": ["彳"],
+      "radicals": [
+        "彳"
+      ],
       "memoryTip": "Phía sau",
       "relatedVocabulary": [
         {
@@ -1449,825 +2291,21 @@
       ]
     },
     {
-      "id": "49",
-      "kanji": "見",
-      "hanviet": "KIẾN",
-      "level": "N5",
-      "onyomi": ["ケン"],
-      "kunyomi": ["み"],
-      "meaningVi": "Nhìn, thấy",
-      "strokeCount": 7,
-      "radicals": ["見"],
-      "memoryTip": "Mắt nhìn thấy",
-      "relatedVocabulary": [
-        {
-          "word": "見る",
-          "kana": "みる",
-          "hanviet": "KIẾN",
-          "meaningVi": "Xem, nhìn",
-          "exampleJp": "映画を見ます。",
-          "exampleVi": "Tôi xem phim."
-        },
-        {
-          "word": "意見",
-          "kana": "いけん",
-          "hanviet": "Ý KIẾN",
-          "meaningVi": "Ý kiến",
-          "exampleJp": "意見を聞きました。",
-          "exampleVi": "Tôi đã nghe ý kiến."
-        }
-      ]
-    },
-    {
-      "id": "50",
-      "kanji": "聞",
-      "hanviet": "VĂN",
-      "level": "N5",
-      "onyomi": ["ブン", "モン"],
-      "kunyomi": ["き"],
-      "meaningVi": "Nghe",
-      "strokeCount": 14,
-      "radicals": ["耳"],
-      "memoryTip": "Tai nghe thấy",
-      "relatedVocabulary": [
-        {
-          "word": "聞く",
-          "kana": "きく",
-          "hanviet": "VĂN",
-          "meaningVi": "Nghe",
-          "exampleJp": "音楽を聞きます。",
-          "exampleVi": "Tôi nghe nhạc."
-        },
-        {
-          "word": "新聞",
-          "kana": "しんぶん",
-          "hanviet": "TÂN VĂN",
-          "meaningVi": "Báo",
-          "exampleJp": "新聞を読みました。",
-          "exampleVi": "Tôi đã đọc báo."
-        }
-      ]
-    },
-    {
-      "id": "51",
-      "kanji": "行",
-      "hanviet": "HÀNH",
-      "level": "N5",
-      "onyomi": ["コウ", "ギョウ"],
-      "kunyomi": ["い", "ゆ"],
-      "meaningVi": "Đi, hành",
-      "strokeCount": 6,
-      "radicals": ["行"],
-      "memoryTip": "Đi đến nơi",
-      "relatedVocabulary": [
-        {
-          "word": "行く",
-          "kana": "いく",
-          "hanviet": "HÀNH",
-          "meaningVi": "Đi",
-          "exampleJp": "学校に行きます。",
-          "exampleVi": "Tôi đi đến trường."
-        },
-        {
-          "word": "銀行",
-          "kana": "ぎんこう",
-          "hanviet": "NGÂN HÀNH",
-          "meaningVi": "Ngân hàng",
-          "exampleJp": "銀行でお金を下ろしました。",
-          "exampleVi": "Tôi đã rút tiền ở ngân hàng."
-        }
-      ]
-    },
-    {
-      "id": "52",
-      "kanji": "来",
-      "hanviet": "LAI",
-      "level": "N5",
-      "onyomi": ["ライ"],
-      "kunyomi": ["く"],
-      "meaningVi": "Đến, lai",
-      "strokeCount": 7,
-      "radicals": ["木"],
-      "memoryTip": "Đến nơi",
-      "relatedVocabulary": [
-        {
-          "word": "来る",
-          "kana": "くる",
-          "hanviet": "LAI",
-          "meaningVi": "Đến",
-          "exampleJp": "友達が来ました。",
-          "exampleVi": "Bạn đã đến."
-        },
-        {
-          "word": "来年",
-          "kana": "らいねん",
-          "hanviet": "LAI NIÊN",
-          "meaningVi": "Năm sau",
-          "exampleJp": "来年日本に行きます。",
-          "exampleVi": "Năm sau tôi sẽ đến Nhật Bản."
-        }
-      ]
-    },
-    {
-      "id": "53",
-      "kanji": "帰",
-      "hanviet": "QUY",
-      "level": "N5",
-      "onyomi": ["キ"],
-      "kunyomi": ["かえ"],
-      "meaningVi": "Về, trở về",
-      "strokeCount": 10,
-      "radicals": ["辶"],
-      "memoryTip": "Về nhà",
-      "relatedVocabulary": [
-        {
-          "word": "帰る",
-          "kana": "かえる",
-          "hanviet": "QUY",
-          "meaningVi": "Về nhà",
-          "exampleJp": "家に帰ります。",
-          "exampleVi": "Tôi về nhà."
-        },
-        {
-          "word": "帰国",
-          "kana": "きこく",
-          "hanviet": "QUY QUỐC",
-          "meaningVi": "Về nước",
-          "exampleJp": "来月帰国します。",
-          "exampleVi": "Tháng sau tôi về nước."
-        }
-      ]
-    },
-    {
-      "id": "54",
-      "kanji": "食",
-      "hanviet": "THỰC",
-      "level": "N5",
-      "onyomi": ["ショク", "ジキ"],
-      "kunyomi": ["た"],
-      "meaningVi": "Ăn, thực phẩm",
-      "strokeCount": 9,
-      "radicals": ["食"],
-      "memoryTip": "Ăn uống",
-      "relatedVocabulary": [
-        {
-          "word": "食べる",
-          "kana": "たべる",
-          "hanviet": "THỰC",
-          "meaningVi": "Ăn",
-          "exampleJp": "ご飯を食べます。",
-          "exampleVi": "Tôi ăn cơm."
-        },
-        {
-          "word": "食堂",
-          "kana": "しょくどう",
-          "hanviet": "THỰC ĐƯỜNG",
-          "meaningVi": "Căng tin",
-          "exampleJp": "食堂で昼ご飯を食べました。",
-          "exampleVi": "Tôi đã ăn trưa ở căng tin."
-        }
-      ]
-    },
-    {
-      "id": "55",
-      "kanji": "飲",
-      "hanviet": "ẨM",
-      "level": "N5",
-      "onyomi": ["イン"],
-      "kunyomi": ["の"],
-      "meaningVi": "Uống",
-      "strokeCount": 12,
-      "radicals": ["飠"],
-      "memoryTip": "Uống nước",
-      "relatedVocabulary": [
-        {
-          "word": "飲む",
-          "kana": "のむ",
-          "hanviet": "ẨM",
-          "meaningVi": "Uống",
-          "exampleJp": "水を飲みます。",
-          "exampleVi": "Tôi uống nước."
-        },
-        {
-          "word": "飲み物",
-          "kana": "のみもの",
-          "hanviet": "ẨM VẬT",
-          "meaningVi": "Đồ uống",
-          "exampleJp": "冷たい飲み物が欲しいです。",
-          "exampleVi": "Tôi muốn đồ uống lạnh."
-        }
-      ]
-    },
-    {
-      "id": "56",
-      "kanji": "買",
-      "hanviet": "MÃI",
-      "level": "N5",
-      "onyomi": ["バイ"],
-      "kunyomi": ["か"],
-      "meaningVi": "Mua",
-      "strokeCount": 12,
-      "radicals": ["貝"],
-      "memoryTip": "Mua bán",
-      "relatedVocabulary": [
-        {
-          "word": "買う",
-          "kana": "かう",
-          "hanviet": "MÃI",
-          "meaningVi": "Mua",
-          "exampleJp": "本を買いました。",
-          "exampleVi": "Tôi đã mua sách."
-        },
-        {
-          "word": "買い物",
-          "kana": "かいもの",
-          "hanviet": "MÃI VẬT",
-          "meaningVi": "Mua sắm",
-          "exampleJp": "買い物に行きます。",
-          "exampleVi": "Tôi đi mua sắm."
-        }
-      ]
-    },
-    {
-      "id": "57",
-      "kanji": "売",
-      "hanviet": "MẠI",
-      "level": "N5",
-      "onyomi": ["バイ"],
-      "kunyomi": ["う"],
-      "meaningVi": "Bán",
-      "strokeCount": 7,
-      "radicals": ["士"],
-      "memoryTip": "Bán hàng",
-      "relatedVocabulary": [
-        {
-          "word": "売る",
-          "kana": "うる",
-          "hanviet": "MẠI",
-          "meaningVi": "Bán",
-          "exampleJp": "車を売りました。",
-          "exampleVi": "Tôi đã bán xe."
-        },
-        {
-          "word": "売り場",
-          "kana": "うりば",
-          "hanviet": "MẠI TRƯỜNG",
-          "meaningVi": "Quầy bán hàng",
-          "exampleJp": "売り場は二階です。",
-          "exampleVi": "Quầy bán hàng ở tầng hai."
-        }
-      ]
-    },
-    {
-      "id": "58",
-      "kanji": "読",
-      "hanviet": "ĐỘC",
-      "level": "N5",
-      "onyomi": ["ドク", "トク", "トウ"],
-      "kunyomi": ["よ"],
-      "meaningVi": "Đọc",
-      "strokeCount": 14,
-      "radicals": ["言"],
-      "memoryTip": "Đọc sách",
-      "relatedVocabulary": [
-        {
-          "word": "読む",
-          "kana": "よむ",
-          "hanviet": "ĐỘC",
-          "meaningVi": "Đọc",
-          "exampleJp": "本を読みます。",
-          "exampleVi": "Tôi đọc sách."
-        },
-        {
-          "word": "読書",
-          "kana": "どくしょ",
-          "hanviet": "ĐỘC THƯ",
-          "meaningVi": "Đọc sách",
-          "exampleJp": "読書が好きです。",
-          "exampleVi": "Tôi thích đọc sách."
-        }
-      ]
-    },
-    {
-      "id": "59",
-      "kanji": "書",
-      "hanviet": "THƯ",
-      "level": "N5",
-      "onyomi": ["ショ"],
-      "kunyomi": ["か"],
-      "meaningVi": "Viết, thư",
-      "strokeCount": 10,
-      "radicals": ["曰"],
-      "memoryTip": "Viết chữ",
-      "relatedVocabulary": [
-        {
-          "word": "書く",
-          "kana": "かく",
-          "hanviet": "THƯ",
-          "meaningVi": "Viết",
-          "exampleJp": "手紙を書きます。",
-          "exampleVi": "Tôi viết thư."
-        },
-        {
-          "word": "図書館",
-          "kana": "としょかん",
-          "hanviet": "ĐỒ THƯ QUÁN",
-          "meaningVi": "Thư viện",
-          "exampleJp": "図書館で勉強します。",
-          "exampleVi": "Tôi học ở thư viện."
-        }
-      ]
-    },
-    {
-      "id": "60",
-      "kanji": "話",
-      "hanviet": "THOẠI",
-      "level": "N5",
-      "onyomi": ["ワ"],
-      "kunyomi": ["はな", "はなし"],
-      "meaningVi": "Nói chuyện",
-      "strokeCount": 13,
-      "radicals": ["言"],
-      "memoryTip": "Nói chuyện",
-      "relatedVocabulary": [
-        {
-          "word": "話す",
-          "kana": "はなす",
-          "hanviet": "THOẠI",
-          "meaningVi": "Nói",
-          "exampleJp": "日本語を話します。",
-          "exampleVi": "Tôi nói tiếng Nhật."
-        },
-        {
-          "word": "電話",
-          "kana": "でんわ",
-          "hanviet": "ĐIỆN THOẠI",
-          "meaningVi": "Điện thoại",
-          "exampleJp": "電話をかけました。",
-          "exampleVi": "Tôi đã gọi điện thoại."
-        }
-      ]
-    },
-    {
-      "id": "61",
-      "kanji": "立",
-      "hanviet": "LẬP",
-      "level": "N5",
-      "onyomi": ["リツ", "リュウ"],
-      "kunyomi": ["た"],
-      "meaningVi": "Đứng, lập",
-      "strokeCount": 5,
-      "radicals": ["立"],
-      "memoryTip": "Đứng dậy",
-      "relatedVocabulary": [
-        {
-          "word": "立つ",
-          "kana": "たつ",
-          "hanviet": "LẬP",
-          "meaningVi": "Đứng",
-          "exampleJp": "立ってください。",
-          "exampleVi": "Hãy đứng lên."
-        },
-        {
-          "word": "立派",
-          "kana": "りっぱ",
-          "hanviet": "LẬP PHÁI",
-          "meaningVi": "Xuất sắc",
-          "exampleJp": "立派な人です。",
-          "exampleVi": "Anh ấy là người xuất sắc."
-        }
-      ]
-    },
-    {
-      "id": "62",
-      "kanji": "坐",
-      "hanviet": "TỌA",
-      "level": "N5",
-      "onyomi": ["ザ"],
-      "kunyomi": ["すわ"],
-      "meaningVi": "Ngồi",
-      "strokeCount": 7,
-      "radicals": ["土"],
-      "memoryTip": "Ngồi xuống",
-      "relatedVocabulary": [
-        {
-          "word": "座る",
-          "kana": "すわる",
-          "hanviet": "TỌA",
-          "meaningVi": "Ngồi",
-          "exampleJp": "椅子に座ります。",
-          "exampleVi": "Tôi ngồi xuống ghế."
-        },
-        {
-          "word": "座席",
-          "kana": "ざせき",
-          "hanviet": "TỌA TỊCH",
-          "meaningVi": "Chỗ ngồi",
-          "exampleJp": "座席を予約しました。",
-          "exampleVi": "Tôi đã đặt chỗ ngồi."
-        }
-      ]
-    },
-    {
-      "id": "63",
-      "kanji": "歩",
-      "hanviet": "BỘ",
-      "level": "N5",
-      "onyomi": ["ホ", "ブ"],
-      "kunyomi": ["ある", "あゆ"],
-      "meaningVi": "Đi bộ",
-      "strokeCount": 8,
-      "radicals": ["止"],
-      "memoryTip": "Đi bộ",
-      "relatedVocabulary": [
-        {
-          "word": "歩く",
-          "kana": "あるく",
-          "hanviet": "BỘ",
-          "meaningVi": "Đi bộ",
-          "exampleJp": "公園を歩きます。",
-          "exampleVi": "Tôi đi bộ trong công viên."
-        },
-        {
-          "word": "散歩",
-          "kana": "さんぽ",
-          "hanviet": "TẢN BỘ",
-          "meaningVi": "Dạo chơi",
-          "exampleJp": "散歩に行きました。",
-          "exampleVi": "Tôi đã đi dạo."
-        }
-      ]
-    },
-    {
-      "id": "64",
-      "kanji": "走",
-      "hanviet": "TẨU",
-      "level": "N5",
-      "onyomi": ["ソウ"],
-      "kunyomi": ["はし"],
-      "meaningVi": "Chạy",
-      "strokeCount": 7,
-      "radicals": ["走"],
-      "memoryTip": "Chạy nhanh",
-      "relatedVocabulary": [
-        {
-          "word": "走る",
-          "kana": "はしる",
-          "hanviet": "TẨU",
-          "meaningVi": "Chạy",
-          "exampleJp": "学校に走りました。",
-          "exampleVi": "Tôi đã chạy đến trường."
-        },
-        {
-          "word": "走行",
-          "kana": "そうこう",
-          "hanviet": "TẨU HÀNH",
-          "meaningVi": "Lái xe, chạy",
-          "exampleJp": "走行距離が長いです。",
-          "exampleVi": "Quãng đường lái xe dài."
-        }
-      ]
-    },
-    {
-      "id": "65",
-      "kanji": "止",
-      "hanviet": "CHỈ",
-      "level": "N5",
-      "onyomi": ["シ"],
-      "kunyomi": ["と", "や"],
-      "meaningVi": "Dừng, chỉ",
-      "strokeCount": 4,
-      "radicals": ["止"],
-      "memoryTip": "Dừng lại",
-      "relatedVocabulary": [
-        {
-          "word": "止まる",
-          "kana": "とまる",
-          "hanviet": "CHỈ",
-          "meaningVi": "Dừng lại",
-          "exampleJp": "電車が止まりました。",
-          "exampleVi": "Tàu điện đã dừng lại."
-        },
-        {
-          "word": "停止",
-          "kana": "ていし",
-          "hanviet": "ĐÌNH CHỈ",
-          "meaningVi": "Dừng, tạm dừng",
-          "exampleJp": "工事は停止しました。",
-          "exampleVi": "Công trình đã tạm dừng."
-        }
-      ]
-    },
-    {
-      "id": "66",
-      "kanji": "開",
-      "hanviet": "KHAI",
-      "level": "N5",
-      "onyomi": ["カイ"],
-      "kunyomi": ["あ", "ひら"],
-      "meaningVi": "Mở, khai",
-      "strokeCount": 12,
-      "radicals": ["門"],
-      "memoryTip": "Mở cửa",
-      "relatedVocabulary": [
-        {
-          "word": "開ける",
-          "kana": "あける",
-          "hanviet": "KHAI",
-          "meaningVi": "Mở",
-          "exampleJp": "ドアを開けます。",
-          "exampleVi": "Tôi mở cửa."
-        },
-        {
-          "word": "開店",
-          "kana": "かいてん",
-          "hanviet": "KHAI ĐIỂM",
-          "meaningVi": "Khai trương",
-          "exampleJp": "明日開店します。",
-          "exampleVi": "Ngày mai khai trương."
-        }
-      ]
-    },
-    {
-      "id": "67",
-      "kanji": "閉",
-      "hanviet": "BẾ",
-      "level": "N5",
-      "onyomi": ["ヘイ"],
-      "kunyomi": ["と", "し"],
-      "meaningVi": "Đóng, bế",
-      "strokeCount": 11,
-      "radicals": ["門"],
-      "memoryTip": "Đóng cửa",
-      "relatedVocabulary": [
-        {
-          "word": "閉める",
-          "kana": "しめる",
-          "hanviet": "BẾ",
-          "meaningVi": "Đóng",
-          "exampleJp": "窓を閉めます。",
-          "exampleVi": "Tôi đóng cửa sổ."
-        },
-        {
-          "word": "閉店",
-          "kana": "へいてん",
-          "hanviet": "BẾ ĐIỂM",
-          "meaningVi": "Đóng cửa",
-          "exampleJp": "店は九時に閉店します。",
-          "exampleVi": "Cửa hàng đóng cửa lúc 9 giờ."
-        }
-      ]
-    },
-    {
-      "id": "68",
-      "kanji": "入",
-      "hanviet": "NHẬP",
-      "level": "N5",
-      "onyomi": ["ニュウ"],
-      "kunyomi": ["はい", "い"],
-      "meaningVi": "Vào, nhập",
-      "strokeCount": 2,
-      "radicals": ["入"],
-      "memoryTip": "Vào trong",
-      "relatedVocabulary": [
-        {
-          "word": "入る",
-          "kana": "はいる",
-          "hanviet": "NHẬP",
-          "meaningVi": "Vào",
-          "exampleJp": "部屋に入ります。",
-          "exampleVi": "Tôi vào phòng."
-        },
-        {
-          "word": "入学",
-          "kana": "にゅうがく",
-          "hanviet": "NHẬP HỌC",
-          "meaningVi": "Nhập học",
-          "exampleJp": "四月に入学します。",
-          "exampleVi": "Tôi nhập học vào tháng Tư."
-        }
-      ]
-    },
-    {
-      "id": "69",
-      "kanji": "出",
-      "hanviet": "XUẤT",
-      "level": "N5",
-      "onyomi": ["シュツ", "スイ"],
-      "kunyomi": ["で", "だ"],
-      "meaningVi": "Ra, xuất",
-      "strokeCount": 5,
-      "radicals": ["凵"],
-      "memoryTip": "Ra ngoài",
-      "relatedVocabulary": [
-        {
-          "word": "出る",
-          "kana": "でる",
-          "hanviet": "XUẤT",
-          "meaningVi": "Ra",
-          "exampleJp": "家を出ます。",
-          "exampleVi": "Tôi ra khỏi nhà."
-        },
-        {
-          "word": "出発",
-          "kana": "しゅっぱつ",
-          "hanviet": "XUẤT PHÁT",
-          "meaningVi": "Khởi hành",
-          "exampleJp": "八時に出発します。",
-          "exampleVi": "Chúng tôi khởi hành lúc 8 giờ."
-        }
-      ]
-    },
-    {
-      "id": "70",
-      "kanji": "持",
-      "hanviet": "TRÌ",
-      "level": "N5",
-      "onyomi": ["ジ"],
-      "kunyomi": ["も"],
-      "meaningVi": "Cầm, giữ",
-      "strokeCount": 9,
-      "radicals": ["扌"],
-      "memoryTip": "Cầm trong tay",
-      "relatedVocabulary": [
-        {
-          "word": "持つ",
-          "kana": "もつ",
-          "hanviet": "TRÌ",
-          "meaningVi": "Cầm, giữ",
-          "exampleJp": "傘を持ちました。",
-          "exampleVi": "Tôi đã cầm ô."
-        },
-        {
-          "word": "持参",
-          "kana": "じさん",
-          "hanviet": "TRÌ THAM",
-          "meaningVi": "Mang theo",
-          "exampleJp": "お弁当を持参しました。",
-          "exampleVi": "Tôi đã mang theo cơm hộp."
-        }
-      ]
-    },
-    {
-      "id": "71",
-      "kanji": "取",
-      "hanviet": "THỦ",
-      "level": "N5",
-      "onyomi": ["シュ"],
-      "kunyomi": ["と"],
-      "meaningVi": "Lấy, thủ",
-      "strokeCount": 8,
-      "radicals": ["耳"],
-      "memoryTip": "Lấy đồ",
-      "relatedVocabulary": [
-        {
-          "word": "取る",
-          "kana": "とる",
-          "hanviet": "THỦ",
-          "meaningVi": "Lấy",
-          "exampleJp": "写真を撮りました。",
-          "exampleVi": "Tôi đã chụp ảnh."
-        },
-        {
-          "word": "取得",
-          "kana": "しゅとく",
-          "hanviet": "THỦ ĐẮC",
-          "meaningVi": "Đạt được",
-          "exampleJp": "資格を取得しました。",
-          "exampleVi": "Tôi đã đạt được chứng chỉ."
-        }
-      ]
-    },
-    {
-      "id": "72",
-      "kanji": "使",
-      "hanviet": "SỬ",
-      "level": "N5",
-      "onyomi": ["シ"],
-      "kunyomi": ["つか"],
-      "meaningVi": "Dùng, sử dụng",
-      "strokeCount": 8,
-      "radicals": ["亻"],
-      "memoryTip": "Sử dụng",
-      "relatedVocabulary": [
-        {
-          "word": "使う",
-          "kana": "つかう",
-          "hanviet": "SỬ",
-          "meaningVi": "Dùng",
-          "exampleJp": "パソコンを使います。",
-          "exampleVi": "Tôi dùng máy tính."
-        },
-        {
-          "word": "使用",
-          "kana": "しよう",
-          "hanviet": "SỬ DỤNG",
-          "meaningVi": "Sử dụng",
-          "exampleJp": "この部屋は使用中です。",
-          "exampleVi": "Phòng này đang sử dụng."
-        }
-      ]
-    },
-    {
-      "id": "73",
-      "kanji": "作",
-      "hanviet": "TÁC",
-      "level": "N5",
-      "onyomi": ["サク", "サ"],
-      "kunyomi": ["つく"],
-      "meaningVi": "Làm, tác phẩm",
-      "strokeCount": 7,
-      "radicals": ["亻"],
-      "memoryTip": "Làm ra",
-      "relatedVocabulary": [
-        {
-          "word": "作る",
-          "kana": "つくる",
-          "hanviet": "TÁC",
-          "meaningVi": "Làm",
-          "exampleJp": "料理を作ります。",
-          "exampleVi": "Tôi nấu ăn."
-        },
-        {
-          "word": "作品",
-          "kana": "さくひん",
-          "hanviet": "TÁC PHẨM",
-          "meaningVi": "Tác phẩm",
-          "exampleJp": "この作品は有名です。",
-          "exampleVi": "Tác phẩm này nổi tiếng."
-        }
-      ]
-    },
-    {
-      "id": "74",
-      "kanji": "会",
-      "hanviet": "HỘI",
-      "level": "N5",
-      "onyomi": ["カイ"],
-      "kunyomi": ["あ"],
-      "meaningVi": "Gặp gỡ, hội",
-      "strokeCount": 6,
-      "radicals": ["人"],
-      "memoryTip": "Gặp nhau",
-      "relatedVocabulary": [
-        {
-          "word": "会う",
-          "kana": "あう",
-          "hanviet": "HỘI",
-          "meaningVi": "Gặp",
-          "exampleJp": "友達に会いました。",
-          "exampleVi": "Tôi đã gặp bạn."
-        },
-        {
-          "word": "会議",
-          "kana": "かいぎ",
-          "hanviet": "HỘI NGHỊ",
-          "meaningVi": "Cuộc họp",
-          "exampleJp": "会議があります。",
-          "exampleVi": "Có cuộc họp."
-        }
-      ]
-    },
-    {
-      "id": "75",
-      "kanji": "知",
-      "hanviet": "TRI",
-      "level": "N5",
-      "onyomi": ["チ"],
-      "kunyomi": ["し"],
-      "meaningVi": "Biết, tri thức",
-      "strokeCount": 8,
-      "radicals": ["矢"],
-      "memoryTip": "Biết rõ",
-      "relatedVocabulary": [
-        {
-          "word": "知る",
-          "kana": "しる",
-          "hanviet": "TRI",
-          "meaningVi": "Biết",
-          "exampleJp": "この事を知っていますか。",
-          "exampleVi": "Bạn có biết việc này không?"
-        },
-        {
-          "word": "知識",
-          "kana": "ちしき",
-          "hanviet": "TRI THỨC",
-          "meaningVi": "Kiến thức",
-          "exampleJp": "知識が豊富です。",
-          "exampleVi": "Kiến thức phong phú."
-        }
-      ]
-    },
-    {
       "id": "76",
       "kanji": "思",
       "hanviet": "TƯ",
       "level": "N5",
-      "onyomi": ["シ"],
-      "kunyomi": ["おも"],
+      "onyomi": [
+        "シ"
+      ],
+      "kunyomi": [
+        "おも"
+      ],
       "meaningVi": "Nghĩ, suy tư",
       "strokeCount": 9,
-      "radicals": ["心"],
+      "radicals": [
+        "心"
+      ],
       "memoryTip": "Suy nghĩ",
       "relatedVocabulary": [
         {
@@ -2289,62 +2327,38 @@
       ]
     },
     {
-      "id": "77",
-      "kanji": "感",
-      "hanviet": "CẢM",
+      "id": "70",
+      "kanji": "持",
+      "hanviet": "TRÌ",
       "level": "N5",
-      "onyomi": ["カン"],
-      "kunyomi": [],
-      "meaningVi": "Cảm giác",
-      "strokeCount": 13,
-      "radicals": ["心"],
-      "memoryTip": "Cảm nhận",
+      "onyomi": [
+        "ジ"
+      ],
+      "kunyomi": [
+        "も"
+      ],
+      "meaningVi": "Cầm, giữ",
+      "strokeCount": 9,
+      "radicals": [
+        "扌"
+      ],
+      "memoryTip": "Cầm trong tay",
       "relatedVocabulary": [
         {
-          "word": "感じ",
-          "kana": "かんじ",
-          "hanviet": "CẢM",
-          "meaningVi": "Cảm giác",
-          "exampleJp": "良い感じです。",
-          "exampleVi": "Cảm giác tốt."
+          "word": "持つ",
+          "kana": "もつ",
+          "hanviet": "TRÌ",
+          "meaningVi": "Cầm, giữ",
+          "exampleJp": "傘を持ちました。",
+          "exampleVi": "Tôi đã cầm ô."
         },
         {
-          "word": "感動",
-          "kana": "かんどう",
-          "hanviet": "CẢM ĐỘNG",
-          "meaningVi": "Cảm động",
-          "exampleJp": "感動しました。",
-          "exampleVi": "Tôi đã cảm động."
-        }
-      ]
-    },
-    {
-      "id": "78",
-      "kanji": "好",
-      "hanviet": "HẢO",
-      "level": "N5",
-      "onyomi": ["コウ"],
-      "kunyomi": ["す", "この"],
-      "meaningVi": "Thích, tốt",
-      "strokeCount": 6,
-      "radicals": ["女"],
-      "memoryTip": "Thích thú",
-      "relatedVocabulary": [
-        {
-          "word": "好き",
-          "kana": "すき",
-          "hanviet": "HẢO",
-          "meaningVi": "Thích",
-          "exampleJp": "寿司が好きです。",
-          "exampleVi": "Tôi thích sushi."
-        },
-        {
-          "word": "嫌い",
-          "kana": "きらい",
-          "hanviet": "HIỀN",
-          "meaningVi": "Ghét",
-          "exampleJp": "納豆が嫌いです。",
-          "exampleVi": "Tôi ghét natto."
+          "word": "持参",
+          "kana": "じさん",
+          "hanviet": "TRÌ THAM",
+          "meaningVi": "Mang theo",
+          "exampleJp": "お弁当を持参しました。",
+          "exampleVi": "Tôi đã mang theo cơm hộp."
         }
       ]
     },
@@ -2353,11 +2367,17 @@
       "kanji": "要",
       "hanviet": "YẾU",
       "level": "N5",
-      "onyomi": ["ヨウ"],
-      "kunyomi": ["い"],
+      "onyomi": [
+        "ヨウ"
+      ],
+      "kunyomi": [
+        "い"
+      ],
       "meaningVi": "Cần, yếu cầu",
       "strokeCount": 9,
-      "radicals": ["覀"],
+      "radicals": [
+        "覀"
+      ],
       "memoryTip": "Cần thiết",
       "relatedVocabulary": [
         {
@@ -2379,32 +2399,547 @@
       ]
     },
     {
-      "id": "80",
-      "kanji": "良",
-      "hanviet": "LƯƠNG",
+      "id": "54",
+      "kanji": "食",
+      "hanviet": "THỰC",
       "level": "N5",
-      "onyomi": ["リョウ"],
-      "kunyomi": ["よ", "い"],
-      "meaningVi": "Tốt, lương",
-      "strokeCount": 7,
-      "radicals": ["艮"],
-      "memoryTip": "Tốt lành",
+      "onyomi": [
+        "ショク",
+        "ジキ"
+      ],
+      "kunyomi": [
+        "た"
+      ],
+      "meaningVi": "Ăn, thực phẩm",
+      "strokeCount": 9,
+      "radicals": [
+        "食"
+      ],
+      "memoryTip": "Ăn uống",
       "relatedVocabulary": [
         {
-          "word": "良い",
-          "kana": "よい",
-          "hanviet": "LƯƠNG",
-          "meaningVi": "Tốt",
-          "exampleJp": "良い天気です。",
-          "exampleVi": "Thời tiết tốt."
+          "word": "食べる",
+          "kana": "たべる",
+          "hanviet": "THỰC",
+          "meaningVi": "Ăn",
+          "exampleJp": "ご飯を食べます。",
+          "exampleVi": "Tôi ăn cơm."
         },
         {
-          "word": "良好",
-          "kana": "りょうこう",
-          "hanviet": "LƯƠNG HẢO",
-          "meaningVi": "Tốt đẹp",
-          "exampleJp": "状態は良好です。",
-          "exampleVi": "Tình trạng tốt đẹp."
+          "word": "食堂",
+          "kana": "しょくどう",
+          "hanviet": "THỰC ĐƯỜNG",
+          "meaningVi": "Căng tin",
+          "exampleJp": "食堂で昼ご飯を食べました。",
+          "exampleVi": "Tôi đã ăn trưa ở căng tin."
+        }
+      ]
+    },
+    {
+      "id": "53",
+      "kanji": "帰",
+      "hanviet": "QUY",
+      "level": "N5",
+      "onyomi": [
+        "キ"
+      ],
+      "kunyomi": [
+        "かえ"
+      ],
+      "meaningVi": "Về, trở về",
+      "strokeCount": 10,
+      "radicals": [
+        "辶"
+      ],
+      "memoryTip": "Về nhà",
+      "relatedVocabulary": [
+        {
+          "word": "帰る",
+          "kana": "かえる",
+          "hanviet": "QUY",
+          "meaningVi": "Về nhà",
+          "exampleJp": "家に帰ります。",
+          "exampleVi": "Tôi về nhà."
+        },
+        {
+          "word": "帰国",
+          "kana": "きこく",
+          "hanviet": "QUY QUỐC",
+          "meaningVi": "Về nước",
+          "exampleJp": "来月帰国します。",
+          "exampleVi": "Tháng sau tôi về nước."
+        }
+      ]
+    },
+    {
+      "id": "41",
+      "kanji": "時",
+      "hanviet": "THỜI",
+      "level": "N5",
+      "onyomi": [
+        "ジ"
+      ],
+      "kunyomi": [
+        "とき"
+      ],
+      "meaningVi": "Thời gian, giờ",
+      "strokeCount": 10,
+      "radicals": [
+        "日"
+      ],
+      "memoryTip": "Thời gian trôi",
+      "relatedVocabulary": [
+        {
+          "word": "時間",
+          "kana": "じかん",
+          "hanviet": "THỜI GIAN",
+          "meaningVi": "Thời gian",
+          "exampleJp": "時間があります。",
+          "exampleVi": "Tôi có thời gian."
+        },
+        {
+          "word": "時計",
+          "kana": "とけい",
+          "hanviet": "THỜI KẾ",
+          "meaningVi": "Đồng hồ",
+          "exampleJp": "時計を見ました。",
+          "exampleVi": "Tôi đã xem đồng hồ."
+        }
+      ]
+    },
+    {
+      "id": "59",
+      "kanji": "書",
+      "hanviet": "THƯ",
+      "level": "N5",
+      "onyomi": [
+        "ショ"
+      ],
+      "kunyomi": [
+        "か"
+      ],
+      "meaningVi": "Viết, thư",
+      "strokeCount": 10,
+      "radicals": [
+        "曰"
+      ],
+      "memoryTip": "Viết chữ",
+      "relatedVocabulary": [
+        {
+          "word": "書く",
+          "kana": "かく",
+          "hanviet": "THƯ",
+          "meaningVi": "Viết",
+          "exampleJp": "手紙を書きます。",
+          "exampleVi": "Tôi viết thư."
+        },
+        {
+          "word": "図書館",
+          "kana": "としょかん",
+          "hanviet": "ĐỒ THƯ QUÁN",
+          "meaningVi": "Thư viện",
+          "exampleJp": "図書館で勉強します。",
+          "exampleVi": "Tôi học ở thư viện."
+        }
+      ]
+    },
+    {
+      "id": "37",
+      "kanji": "校",
+      "hanviet": "HIỆU",
+      "level": "N5",
+      "onyomi": [
+        "コウ"
+      ],
+      "kunyomi": [],
+      "meaningVi": "Trường",
+      "strokeCount": 10,
+      "radicals": [
+        "木"
+      ],
+      "memoryTip": "Trường học",
+      "relatedVocabulary": [
+        {
+          "word": "学校",
+          "kana": "がっこう",
+          "hanviet": "HỌC HIỆU",
+          "meaningVi": "Trường học",
+          "exampleJp": "学校は近いです。",
+          "exampleVi": "Trường học gần."
+        },
+        {
+          "word": "高校",
+          "kana": "こうこう",
+          "hanviet": "CAO HIỆU",
+          "meaningVi": "Trung học",
+          "exampleJp": "高校生です。",
+          "exampleVi": "Tôi là học sinh trung học."
+        }
+      ]
+    },
+    {
+      "id": "34",
+      "kanji": "高",
+      "hanviet": "CAO",
+      "level": "N5",
+      "onyomi": [
+        "コウ"
+      ],
+      "kunyomi": [
+        "たか"
+      ],
+      "meaningVi": "Cao",
+      "strokeCount": 10,
+      "radicals": [
+        "高"
+      ],
+      "memoryTip": "Cao vút",
+      "relatedVocabulary": [
+        {
+          "word": "高い",
+          "kana": "たかい",
+          "hanviet": "CAO",
+          "meaningVi": "Đắt, cao",
+          "exampleJp": "この店は高いです。",
+          "exampleVi": "Cửa hàng này đắt."
+        },
+        {
+          "word": "高校",
+          "kana": "こうこう",
+          "hanviet": "CAO HIỆU",
+          "meaningVi": "Trung học phổ thông",
+          "exampleJp": "高校を卒業しました。",
+          "exampleVi": "Tôi đã tốt nghiệp trung học phổ thông."
+        }
+      ]
+    },
+    {
+      "id": "67",
+      "kanji": "閉",
+      "hanviet": "BẾ",
+      "level": "N5",
+      "onyomi": [
+        "ヘイ"
+      ],
+      "kunyomi": [
+        "と",
+        "し"
+      ],
+      "meaningVi": "Đóng, bế",
+      "strokeCount": 11,
+      "radicals": [
+        "門"
+      ],
+      "memoryTip": "Đóng cửa",
+      "relatedVocabulary": [
+        {
+          "word": "閉める",
+          "kana": "しめる",
+          "hanviet": "BẾ",
+          "meaningVi": "Đóng",
+          "exampleJp": "窓を閉めます。",
+          "exampleVi": "Tôi đóng cửa sổ."
+        },
+        {
+          "word": "閉店",
+          "kana": "へいてん",
+          "hanviet": "BẾ ĐIỂM",
+          "meaningVi": "Đóng cửa",
+          "exampleJp": "店は九時に閉店します。",
+          "exampleVi": "Cửa hàng đóng cửa lúc 9 giờ."
+        }
+      ]
+    },
+    {
+      "id": "56",
+      "kanji": "買",
+      "hanviet": "MÃI",
+      "level": "N5",
+      "onyomi": [
+        "バイ"
+      ],
+      "kunyomi": [
+        "か"
+      ],
+      "meaningVi": "Mua",
+      "strokeCount": 12,
+      "radicals": [
+        "貝"
+      ],
+      "memoryTip": "Mua bán",
+      "relatedVocabulary": [
+        {
+          "word": "買う",
+          "kana": "かう",
+          "hanviet": "MÃI",
+          "meaningVi": "Mua",
+          "exampleJp": "本を買いました。",
+          "exampleVi": "Tôi đã mua sách."
+        },
+        {
+          "word": "買い物",
+          "kana": "かいもの",
+          "hanviet": "MÃI VẬT",
+          "meaningVi": "Mua sắm",
+          "exampleJp": "買い物に行きます。",
+          "exampleVi": "Tôi đi mua sắm."
+        }
+      ]
+    },
+    {
+      "id": "66",
+      "kanji": "開",
+      "hanviet": "KHAI",
+      "level": "N5",
+      "onyomi": [
+        "カイ"
+      ],
+      "kunyomi": [
+        "あ",
+        "ひら"
+      ],
+      "meaningVi": "Mở, khai",
+      "strokeCount": 12,
+      "radicals": [
+        "門"
+      ],
+      "memoryTip": "Mở cửa",
+      "relatedVocabulary": [
+        {
+          "word": "開ける",
+          "kana": "あける",
+          "hanviet": "KHAI",
+          "meaningVi": "Mở",
+          "exampleJp": "ドアを開けます。",
+          "exampleVi": "Tôi mở cửa."
+        },
+        {
+          "word": "開店",
+          "kana": "かいてん",
+          "hanviet": "KHAI ĐIỂM",
+          "meaningVi": "Khai trương",
+          "exampleJp": "明日開店します。",
+          "exampleVi": "Ngày mai khai trương."
+        }
+      ]
+    },
+    {
+      "id": "42",
+      "kanji": "間",
+      "hanviet": "GIÀN",
+      "level": "N5",
+      "onyomi": [
+        "カン",
+        "ケン"
+      ],
+      "kunyomi": [
+        "あいだ",
+        "ま"
+      ],
+      "meaningVi": "Khoảng cách, giữa",
+      "strokeCount": 12,
+      "radicals": [
+        "門"
+      ],
+      "memoryTip": "Khoảng thời gian",
+      "relatedVocabulary": [
+        {
+          "word": "時間",
+          "kana": "じかん",
+          "hanviet": "THỜI GIAN",
+          "meaningVi": "Thời gian",
+          "exampleJp": "時間がかかります。",
+          "exampleVi": "Mất thời gian."
+        },
+        {
+          "word": "人間",
+          "kana": "にんげん",
+          "hanviet": "NHÂN GIÀN",
+          "meaningVi": "Con người",
+          "exampleJp": "人間は優しいです。",
+          "exampleVi": "Con người tốt bụng."
+        }
+      ]
+    },
+    {
+      "id": "55",
+      "kanji": "飲",
+      "hanviet": "ẨM",
+      "level": "N5",
+      "onyomi": [
+        "イン"
+      ],
+      "kunyomi": [
+        "の"
+      ],
+      "meaningVi": "Uống",
+      "strokeCount": 12,
+      "radicals": [
+        "飠"
+      ],
+      "memoryTip": "Uống nước",
+      "relatedVocabulary": [
+        {
+          "word": "飲む",
+          "kana": "のむ",
+          "hanviet": "ẨM",
+          "meaningVi": "Uống",
+          "exampleJp": "水を飲みます。",
+          "exampleVi": "Tôi uống nước."
+        },
+        {
+          "word": "飲み物",
+          "kana": "のみもの",
+          "hanviet": "ẨM VẬT",
+          "meaningVi": "Đồ uống",
+          "exampleJp": "冷たい飲み物が欲しいです。",
+          "exampleVi": "Tôi muốn đồ uống lạnh."
+        }
+      ]
+    },
+    {
+      "id": "77",
+      "kanji": "感",
+      "hanviet": "CẢM",
+      "level": "N5",
+      "onyomi": [
+        "カン"
+      ],
+      "kunyomi": [],
+      "meaningVi": "Cảm giác",
+      "strokeCount": 13,
+      "radicals": [
+        "心"
+      ],
+      "memoryTip": "Cảm nhận",
+      "relatedVocabulary": [
+        {
+          "word": "感じ",
+          "kana": "かんじ",
+          "hanviet": "CẢM",
+          "meaningVi": "Cảm giác",
+          "exampleJp": "良い感じです。",
+          "exampleVi": "Cảm giác tốt."
+        },
+        {
+          "word": "感動",
+          "kana": "かんどう",
+          "hanviet": "CẢM ĐỘNG",
+          "meaningVi": "Cảm động",
+          "exampleJp": "感動しました。",
+          "exampleVi": "Tôi đã cảm động."
+        }
+      ]
+    },
+    {
+      "id": "60",
+      "kanji": "話",
+      "hanviet": "THOẠI",
+      "level": "N5",
+      "onyomi": [
+        "ワ"
+      ],
+      "kunyomi": [
+        "はな",
+        "はなし"
+      ],
+      "meaningVi": "Nói chuyện",
+      "strokeCount": 13,
+      "radicals": [
+        "言"
+      ],
+      "memoryTip": "Nói chuyện",
+      "relatedVocabulary": [
+        {
+          "word": "話す",
+          "kana": "はなす",
+          "hanviet": "THOẠI",
+          "meaningVi": "Nói",
+          "exampleJp": "日本語を話します。",
+          "exampleVi": "Tôi nói tiếng Nhật."
+        },
+        {
+          "word": "電話",
+          "kana": "でんわ",
+          "hanviet": "ĐIỆN THOẠI",
+          "meaningVi": "Điện thoại",
+          "exampleJp": "電話をかけました。",
+          "exampleVi": "Tôi đã gọi điện thoại."
+        }
+      ]
+    },
+    {
+      "id": "50",
+      "kanji": "聞",
+      "hanviet": "VĂN",
+      "level": "N5",
+      "onyomi": [
+        "ブン",
+        "モン"
+      ],
+      "kunyomi": [
+        "き"
+      ],
+      "meaningVi": "Nghe",
+      "strokeCount": 14,
+      "radicals": [
+        "耳"
+      ],
+      "memoryTip": "Tai nghe thấy",
+      "relatedVocabulary": [
+        {
+          "word": "聞く",
+          "kana": "きく",
+          "hanviet": "VĂN",
+          "meaningVi": "Nghe",
+          "exampleJp": "音楽を聞きます。",
+          "exampleVi": "Tôi nghe nhạc."
+        },
+        {
+          "word": "新聞",
+          "kana": "しんぶん",
+          "hanviet": "TÂN VĂN",
+          "meaningVi": "Báo",
+          "exampleJp": "新聞を読みました。",
+          "exampleVi": "Tôi đã đọc báo."
+        }
+      ]
+    },
+    {
+      "id": "58",
+      "kanji": "読",
+      "hanviet": "ĐỘC",
+      "level": "N5",
+      "onyomi": [
+        "ドク",
+        "トク",
+        "トウ"
+      ],
+      "kunyomi": [
+        "よ"
+      ],
+      "meaningVi": "Đọc",
+      "strokeCount": 14,
+      "radicals": [
+        "言"
+      ],
+      "memoryTip": "Đọc sách",
+      "relatedVocabulary": [
+        {
+          "word": "読む",
+          "kana": "よむ",
+          "hanviet": "ĐỘC",
+          "meaningVi": "Đọc",
+          "exampleJp": "本を読みます。",
+          "exampleVi": "Tôi đọc sách."
+        },
+        {
+          "word": "読書",
+          "kana": "どくしょ",
+          "hanviet": "ĐỘC THƯ",
+          "meaningVi": "Đọc sách",
+          "exampleJp": "読書が好きです。",
+          "exampleVi": "Tôi thích đọc sách."
         }
       ]
     }
