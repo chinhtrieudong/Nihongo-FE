@@ -333,20 +333,13 @@ const RadicalDetail: React.FC = () => {
             <div className="flex items-start justify-between gap-3 mb-3">
               <div>
                 <h1 className="text-2xl sm:text-3xl font-bold leading-tight text-text-main dark:text-secondary-100">
-                  Bộ thủ <span className="kanji-text text-teal-700 dark:text-teal-400">{displaySymbol}</span>
+                  Bộ <span className="kanji-text text-teal-700 dark:text-teal-400">{displayHanviet || displaySymbol}</span>
                 </h1>
-                <div className="mt-2 flex flex-wrap items-center gap-2">
-                  {displayHanviet && (
-                    <span className="text-base font-semibold text-teal-700 dark:text-teal-400">
-                      {displayHanviet}
-                    </span>
-                  )}
-                  {displayNameVi && (
-                    <span className="text-sm text-text-secondary dark:text-secondary-400">
-                      • {displayNameVi}
-                    </span>
-                  )}
-                </div>
+                {displayNameVi && (
+                  <p className="mt-1 text-sm text-text-secondary dark:text-secondary-400">
+                    {displayNameVi}
+                  </p>
+                )}
               </div>
               {jlptLabel && (
                 <Tag color={jlptLabel === 'N5' ? 'green' : jlptLabel === 'N4' ? 'blue' : 'default'} className="mt-1">
@@ -355,7 +348,7 @@ const RadicalDetail: React.FC = () => {
               )}
             </div>
 
-            {radical.description && (
+            {radical.description && radical.description !== `Bộ thủ ${displayHanviet} - ${radical.meaning}` && (
               <p className="text-sm sm:text-base text-text-secondary dark:text-secondary-400 mb-4">
                 {radical.description}
               </p>
