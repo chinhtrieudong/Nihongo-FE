@@ -303,9 +303,6 @@ const RadicalDetail: React.FC = () => {
                 {displaySymbol}
               </div>
             )}
-            <div className="mt-2 text-sm font-semibold text-teal-700 dark:text-teal-400">
-              {displayHanviet || displayNameVi || "Bộ thủ"}
-            </div>
           </div>
 
           {/* Radical Details */}
