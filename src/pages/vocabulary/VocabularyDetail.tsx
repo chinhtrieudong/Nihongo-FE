@@ -427,11 +427,9 @@ const VocabularyDetail: React.FC = () => {
               <div className="flex items-start gap-3">
                 {/* Left Content: Kanji + HanViet */}
                 <div
-                  className={`w-16 min-w-[4rem] text-center flex flex-col items-center ${
-                    item.hanViet ? "justify-start" : "justify-center"
-                  }`}
+                  className="w-auto min-w-[5rem] text-center flex flex-col items-center justify-center"
                 >
-                  <Text className="text-xl sm:text-2xl font-bold text-text-main block kanji-text leading-tight">
+                  <Text className="text-xl sm:text-2xl font-bold text-text-main block kanji-text leading-tight whitespace-nowrap">
                     {item.kanji || item.hiragana}
                   </Text>
                   {item.hanViet && (
