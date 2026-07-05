@@ -7,6 +7,13 @@ import { useAppSelector } from "../../store/hooks";
 import { getFontPreset } from "../../constants/fonts";
 import fakeKanjiData from "../../data/fakeKanjiData.json";
 
+const resolveKanjiChar = (value?: string) => {
+  if (!value) return "";
+  const trimmed = value.trim();
+  if (!trimmed) return "";
+  return Array.from(trimmed)[0] || "";
+};
+
 type RadicalDetailData = {
   symbol: string;
   hanviet?: string;
@@ -67,6 +74,8 @@ const RadicalDetail: React.FC = () => {
   const [vocabularyWords, setVocabularyWords] = useState<DemoWord[]>([]);
   const [allRadicals, setAllRadicals] = useState<string[]>([]);
   const [currentIndex, setCurrentIndex] = useState<number>(-1);
+  const [strokeOrderSvg, setStrokeOrderSvg] = useState<string>("");
+  const [loadingStrokeOrder, setLoadingStrokeOrder] = useState(true);
   const listFromPath = (location.state as { from?: string } | null)?.from;
 
   // Load all radicals for navigation
@@ -76,6 +85,61 @@ const RadicalDetail: React.FC = () => {
     setAllRadicals(symbols);
     const idx = symbols.indexOf(symbol || "");
     setCurrentIndex(idx);
+  }, [symbol]);
+
+  // Load stroke order SVG for radical
+  useEffect(() => {
+    const fetchStrokeOrder = async () => {
+      if (!symbol) return;
+      setLoadingStrokeOrder(true);
+      try {
+        const primaryChar = resolveKanjiChar(symbol);
+        if (!primaryChar) {
+          setStrokeOrderSvg("");
+          return;
+        }
+
+        const codePoint = primaryChar.codePointAt(0);
+        if (typeof codePoint !== "number") {
+          setStrokeOrderSvg("");
+          return;
+        }
+
+        const codePointHex = codePoint.toString(16).padStart(5, "0");
+        const response = await fetch(
+          `https://raw.githubusercontent.com/KanjiVG/kanjivg/master/kanji/${codePointHex}.svg`,
+        );
+
+        if (!response.ok) {
+          setStrokeOrderSvg("");
+          return;
+        }
+
+        const svg = await response.text();
+        const cleanedSvg = svg
+          .replace(/<!\[CDATA\[[\s\S]*?\]\]>/g, "")
+          .replace(/<!--[\s\S]*?-->/g, "")
+          .replace(/<\?xml.*?\?>/g, "")
+          .replace(/<!DOCTYPE.*?>/g, "")
+          .replace(/>/g, ">")
+          .replace(/</g, "<")
+          .replace(/&/g, "&")
+          .replace(/"/g, '"')
+          .replace(/&#x27;/g, "'")
+          .trim();
+
+        const svgMatch = cleanedSvg.match(/<svg[^>]*>[\s\S]*<\/svg>/);
+        const finalSvg = svgMatch ? svgMatch[0] : cleanedSvg;
+        setStrokeOrderSvg(finalSvg);
+      } catch (error) {
+        console.log("[v0] SVG fetch error:", error);
+        setStrokeOrderSvg("");
+      } finally {
+        setLoadingStrokeOrder(false);
+      }
+    };
+
+    fetchStrokeOrder();
   }, [symbol]);
 
   useEffect(() => {
@@ -255,11 +319,27 @@ const RadicalDetail: React.FC = () => {
       {/* Main Radical Info Card */}
       <div className="mb-6 rounded-2xl border border-border bg-surface-1 p-5 sm:p-6">
         <div className="grid grid-cols-1 lg:grid-cols-[180px_minmax(0,1fr)] gap-5 sm:gap-6">
-          {/* Radical Symbol Display */}
+          {/* Radical Symbol Display with Stroke Order */}
           <div className="rounded-2xl border border-border bg-surface-1 p-5 flex flex-col items-center justify-center text-center">
-            <div className="text-[72px] sm:text-[88px] leading-none kanji-text text-teal-900 dark:text-teal-300">
-              {displaySymbol}
-            </div>
+            {loadingStrokeOrder ? (
+              <div className="flex items-center justify-center h-32">
+                <Spin size="small" />
+              </div>
+            ) : strokeOrderSvg ? (
+              <div
+                dangerouslySetInnerHTML={{ __html: strokeOrderSvg }}
+                className="w-full h-40 flex items-center justify-center"
+                style={{
+                  background: "white",
+                  transform: "scale(1.5)",
+                  transformOrigin: "center",
+                }}
+              />
+            ) : (
+              <div className="text-[72px] sm:text-[88px] leading-none kanji-text text-teal-900 dark:text-teal-300">
+                {displaySymbol}
+              </div>
+            )}
             <div className="mt-2 text-sm font-semibold text-teal-700 dark:text-teal-400">
               {displayHanviet || displayNameVi || "Bộ thủ"}
             </div>
