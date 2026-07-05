@@ -549,14 +549,14 @@ const VocabularyDetail: React.FC = () => {
                       className="bg-white dark:bg-slate-800 rounded-xl border border-border p-4"
                     >
                       <div className="flex items-start gap-3">
-                        {/* Kanji */}
+                        {/* Kanji + Hán Việt */}
                         <div className="w-auto min-w-[5rem] text-center flex flex-col items-center justify-center">
                           <div className="text-xl sm:text-2xl font-bold text-text-main kanji-text leading-tight whitespace-nowrap">
                             {item.kanji || item.hiragana}
                           </div>
-                          {item.kanji && item.hiragana !== item.kanji && (
-                            <div className="text-sm text-blue-500 jp-text mt-0.5">
-                              {item.hiragana}
+                          {item.hanViet && (
+                            <div className="text-xs font-medium text-amber-600 uppercase tracking-wide mt-0.5">
+                              {item.hanViet}
                             </div>
                           )}
                         </div>
@@ -569,11 +569,6 @@ const VocabularyDetail: React.FC = () => {
                           <Text className="text-base sm:text-lg text-text-main block mt-0.5">
                             {item.meaning}
                           </Text>
-                          {item.hanViet && (
-                            <Text className="text-xs text-purple-500 block mt-0.5">
-                              {item.hanViet}
-                            </Text>
-                          )}
                           <div className="flex gap-3 mt-1">
                             <div className="text-xs text-text-sub">
                               Chính xác: <span className="font-semibold">{accuracy}%</span>
