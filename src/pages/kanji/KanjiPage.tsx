@@ -7,6 +7,7 @@ import type { SelectProps } from 'antd';
 import { KanjiPageIcon } from '@components/icons';
 import { SearchFilter } from '@components/common';
 import fakeKanjiData from '../../data/fakeKanjiData.json';
+import fakeRadicalsData from '../../data/fakeRadicalsData.json';
 
 const normalizeJlptLevel = (value?: string) => {
     if (!value) return '';
@@ -104,9 +105,18 @@ const KanjiPage: React.FC = () => {
                 setLoading(true);
             }
 
-            // Use fake data temporarily
-            const rawItems = fakeKanjiData.kanjiList;
-            const mappedItems = rawItems.map(mapKanjiListItemToKanjiItem);
+            let rawItems: any[] = [];
+            let mappedItems: KanjiItem[] = [];
+
+            if (isRadicalMode) {
+                // Load radicals data
+                rawItems = fakeRadicalsData.radicalsList;
+                mappedItems = rawItems.map(mapRadicalToKanjiItem);
+            } else {
+                // Load kanji data
+                rawItems = fakeKanjiData.kanjiList;
+                mappedItems = rawItems.map(mapKanjiListItemToKanjiItem);
+            }
 
             let nextList = mappedItems;
             if (append) {
@@ -124,7 +134,7 @@ const KanjiPage: React.FC = () => {
             setPage(nextPage);
             setHasMore(false); // No more data in fake data
         } catch (error) {
-            console.error('Lỗi khi tải dữ liệu Hán tự:', error);
+            console.error('Lỗi khi tải dữ liệu:', error);
             setKanjiList([]);
             setFilteredKanji([]);
             setHasMore(false);
@@ -165,10 +175,21 @@ const KanjiPage: React.FC = () => {
         };
 
         const filtered = kanjiList.filter((kanji) => {
-            if (!isRadicalMode && isRadicalItem(kanji)) {
+            // In radical mode, show all radicals (they don't have onyomi/kunyomi)
+            if (isRadicalMode) {
+                const searchMatch =
+                    keyword === '' ||
+                    (kanji.kanji || '').includes(keyword) ||
+                    (kanji.hanviet || '').toLowerCase().includes(keyword) ||
+                    (kanji.meaningVi || '').toLowerCase().includes(keyword);
+                return searchMatch;
+            }
+
+            // In kanji mode, filter out radicals and apply level filter
+            if (isRadicalItem(kanji)) {
                 return false;
             }
-            if (!isRadicalMode && !isLevelMatch(kanji.level)) {
+            if (!isLevelMatch(kanji.level)) {
                 return false;
             }
 
@@ -180,7 +201,7 @@ const KanjiPage: React.FC = () => {
                 (kanji.onyomi && kanji.onyomi.some((o) => o.includes(keyword))) ||
                 (kanji.kunyomi && kanji.kunyomi.some((k) => k.includes(keyword)));
 
-            const strokeMatch = isRadicalMode ? true : isStrokeMatch(kanji.stroke_count || 0);
+            const strokeMatch = isStrokeMatch(kanji.stroke_count || 0);
             return searchMatch && strokeMatch;
         });
 
