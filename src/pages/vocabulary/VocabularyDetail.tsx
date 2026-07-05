@@ -529,12 +529,12 @@ const VocabularyDetail: React.FC = () => {
                 <h3 className="text-xl font-semibold text-text-main mb-2 inline-flex items-center gap-2">
                   {dueWords.length} từ cần ôn tập
                   <span className="group relative inline-flex items-center">
-                    <span className="inline-flex items-center justify-center w-5 h-5 rounded-full bg-amber-100 dark:bg-amber-900/30 text-amber-600 dark:text-amber-400 text-xs font-bold cursor-help">
+                    <span className="inline-flex items-center justify-center w-6 h-6 rounded-full bg-amber-100 dark:bg-amber-900/30 text-amber-600 dark:text-amber-400 text-sm font-bold cursor-help ring-2 ring-amber-300 dark:ring-amber-700">
                       !
                     </span>
-                    <span className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-3 py-2 bg-slate-800 dark:bg-slate-200 text-white dark:text-slate-800 text-xs rounded-lg shadow-lg opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none whitespace-nowrap z-10">
+                    <span className="absolute top-full left-1/2 -translate-x-1/2 mt-2 px-4 py-2.5 bg-slate-800 dark:bg-slate-200 text-white dark:text-slate-800 text-sm rounded-lg shadow-xl opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none whitespace-nowrap z-50">
                       Dùng Flashcard hoặc Quiz để ôn tập các từ này
-                      <span className="absolute top-full left-1/2 -translate-x-1/2 border-4 border-transparent border-t-slate-800 dark:border-t-slate-200" />
+                      <span className="absolute bottom-full left-1/2 -translate-x-1/2 border-4 border-transparent border-b-slate-800 dark:border-b-slate-200" />
                     </span>
                   </span>
                 </h3>
