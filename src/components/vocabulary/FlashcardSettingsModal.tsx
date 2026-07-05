@@ -29,6 +29,7 @@ const FlashcardSettingsModal: React.FC<FlashcardSettingsModalProps> = ({
       onCancel={onClose}
       footer={null}
       width={400}
+      zIndex={1200}
     >
       <div className="space-y-6 py-4">
         <div className="flex justify-between items-center">
