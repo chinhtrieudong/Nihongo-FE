@@ -168,7 +168,7 @@ const KanjiPage: React.FC = () => {
             if (!isRadicalMode && isRadicalItem(kanji)) {
                 return false;
             }
-            if (!isRadicalMode && !isLevelMatch(kanji.jlpt)) {
+            if (!isRadicalMode && !isLevelMatch(kanji.level)) {
                 return false;
             }
 
@@ -189,8 +189,8 @@ const KanjiPage: React.FC = () => {
             const sorted = filtered
                 .map((item, index) => ({ item, index }))
                 .sort((a, b) => {
-                    const rankA = levelOrder.indexOf(a.item.jlpt ?? '');
-                    const rankB = levelOrder.indexOf(b.item.jlpt ?? '');
+                    const rankA = levelOrder.indexOf(a.item.level ?? '');
+                    const rankB = levelOrder.indexOf(b.item.level ?? '');
                     const safeRankA = rankA === -1 ? levelOrder.length : rankA;
                     const safeRankB = rankB === -1 ? levelOrder.length : rankB;
                     if (safeRankA !== safeRankB) return safeRankA - safeRankB;
