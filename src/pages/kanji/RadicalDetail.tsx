@@ -291,7 +291,7 @@ const RadicalDetail: React.FC = () => {
             ) : strokeOrderSvg ? (
               <div
                 dangerouslySetInnerHTML={{ __html: strokeOrderSvg }}
-                className="w-full h-32 flex items-center justify-center border"
+                className="w-full h-32 flex items-center justify-center"
                 style={{
                   background: "white",
                   transform: "scale(1.2)",
