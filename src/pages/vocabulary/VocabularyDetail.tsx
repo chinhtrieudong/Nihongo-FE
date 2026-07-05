@@ -733,6 +733,13 @@ const VocabularyDetail: React.FC = () => {
                                 ? option === currentQuizQuestion.meaning
                                 : typeof option === 'object' && option.word === (currentQuizQuestion.kanji || currentQuizQuestion.hiragana);
                               handleQuizAnswer(quizMode === 'jp-to-vi' ? option as string : (option as any).word, isCorrect);
+                              // Auto advance to next question without showing result
+                              if (quizQuestionIndex < quizQuestions.length - 1) {
+                                setTimeout(() => nextQuizQuestion(), 300);
+                              } else {
+                                // Last question, show results
+                                setTimeout(() => endQuiz(), 300);
+                              }
                             }}
                             className="w-full p-4 text-left rounded-lg border border-border hover:border-blue-400 hover:bg-surface-2 transition-all"
                           >
@@ -750,27 +757,22 @@ const VocabularyDetail: React.FC = () => {
                     </div>
                   ) : (
                     <div className="text-center">
-                      <div className={`text-2xl font-bold mb-4 ${isAnswerCorrect ? 'text-green-500' : 'text-red-500'}`}>
-                        {isAnswerCorrect ? '✓ Chính xác!' : '✗ Sai rồi!'}
+                      <div className="text-2xl font-bold mb-4 text-text-main">
+                        Hoàn thành!
                       </div>
-                      {!isAnswerCorrect && (
-                        <div className="mb-4">
-                          <Text className="text-text-sub">Đáp án đúng: </Text>
-                          <Text className="text-text-main font-semibold">
-                            {quizMode === 'jp-to-vi'
-                              ? currentQuizQuestion.meaning
-                              : `${currentQuizQuestion.kanji || currentQuizQuestion.hiragana} (${currentQuizQuestion.hiragana})`
-                            }
-                          </Text>
-                        </div>
-                      )}
+                      <div className="text-4xl font-bold text-blue-500 mb-4">
+                        {quizScore} / {quizQuestions.length}
+                      </div>
+                      <Text className="text-text-sub mb-4">
+                        {Math.round((quizScore / quizQuestions.length) * 100)}% chính xác
+                      </Text>
                       <Button
                         type="primary"
                         size="large"
-                        onClick={nextQuizQuestion}
+                        onClick={endQuiz}
                         className="h-12 px-8 rounded-xl"
                       >
-                        {quizQuestionIndex < quizQuestions.length - 1 ? 'Câu tiếp theo' : 'Kết thúc'}
+                        Đóng
                       </Button>
                     </div>
                   )}
