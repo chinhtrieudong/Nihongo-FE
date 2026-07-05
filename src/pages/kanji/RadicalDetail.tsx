@@ -377,18 +377,18 @@ const RadicalDetail: React.FC = () => {
               </div>
               <div className="rounded-xl border border-teal-200 dark:border-teal-600 bg-white/70 dark:bg-[#252d3d]/70 px-4 py-3">
                 <div className="text-[11px] uppercase tracking-wide text-teal-600 dark:text-teal-400 font-medium">
-                  Mã bộ thủ
+                  Thứ tự
                 </div>
-                <div className="text-xl font-bold text-text-main dark:text-secondary-100 kanji-text">
-                  {displaySymbol}
+                <div className="text-xl font-bold text-text-main dark:text-secondary-100">
+                  {currentIndex + 1}
                 </div>
               </div>
               <div className="rounded-xl border border-teal-200 dark:border-teal-600 bg-white/70 dark:bg-[#252d3d]/70 px-4 py-3">
                 <div className="text-[11px] uppercase tracking-wide text-teal-600 dark:text-teal-400 font-medium">
-                  Tần suất
+                  Tổng số
                 </div>
                 <div className="text-xl font-bold text-text-main dark:text-secondary-100">
-                  {radical.kanji_count ?? relatedKanji.length}
+                  {allRadicals.length}
                 </div>
               </div>
             </div>
