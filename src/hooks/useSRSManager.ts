@@ -105,7 +105,9 @@ export const useSRSManager = (userId: string | undefined, textbookId: string | u
         [wordId]: {
           interval: newInterval,
           easeFactor: newEaseFactor,
-          nextReview: now + (newInterval * 24 * 60 * 60 * 1000), // convert days to ms
+          // Wrong answers: review immediately (nextReview = now)
+          // Correct answers: review after interval days
+          nextReview: isCorrect ? now + (newInterval * 24 * 60 * 60 * 1000) : now,
           reviewCount: existing.reviewCount + 1,
           correctCount: existing.correctCount + (isCorrect ? 1 : 0),
         },
