@@ -1,24 +1,28 @@
 import { useState, useCallback } from 'react';
 import type { VocabularyItem } from '../types/vocabulary';
 
+export interface QuizAnswer {
+  question: VocabularyItem;
+  userAnswer: string;
+  isCorrect: boolean;
+}
+
 export const useQuizManager = (vocabularyItems: VocabularyItem[], onAnswer?: (wordId: string, isCorrect: boolean) => void) => {
   const [showQuiz, setShowQuiz] = useState(false);
   const [quizQuestionIndex, setQuizQuestionIndex] = useState(0);
   const [quizQuestions, setQuizQuestions] = useState<VocabularyItem[]>([]);
   const [quizScore, setQuizScore] = useState(0);
   const [quizMode, setQuizMode] = useState<'jp-to-vi' | 'vi-to-jp'>('jp-to-vi');
-  const [selectedAnswer, setSelectedAnswer] = useState<string | null>(null);
-  const [showAnswerResult, setShowAnswerResult] = useState(false);
-  const [isAnswerCorrect, setIsAnswerCorrect] = useState(false);
+  const [quizAnswers, setQuizAnswers] = useState<QuizAnswer[]>([]);
+  const [isQuizComplete, setIsQuizComplete] = useState(false);
 
   const startQuiz = useCallback((mode: 'jp-to-vi' | 'vi-to-jp') => {
     setQuizMode(mode);
     setQuizQuestions([...vocabularyItems].sort(() => Math.random() - 0.5));
     setQuizQuestionIndex(0);
     setQuizScore(0);
-    setSelectedAnswer(null);
-    setShowAnswerResult(false);
-    setIsAnswerCorrect(false);
+    setQuizAnswers([]);
+    setIsQuizComplete(false);
     setShowQuiz(true);
   }, [vocabularyItems]);
 
@@ -26,9 +30,15 @@ export const useQuizManager = (vocabularyItems: VocabularyItem[], onAnswer?: (wo
   const quizProgress = quizQuestions.length > 0 ? ((quizQuestionIndex + 1) / quizQuestions.length) * 100 : 0;
 
   const handleQuizAnswer = useCallback((answer: string, isCorrect: boolean) => {
-    setSelectedAnswer(answer);
-    setIsAnswerCorrect(isCorrect);
-    setShowAnswerResult(true);
+    // Track the answer for final review
+    if (currentQuizQuestion) {
+      setQuizAnswers(prev => [...prev, {
+        question: currentQuizQuestion,
+        userAnswer: answer,
+        isCorrect,
+      }]);
+    }
+    
     if (isCorrect) {
       setQuizScore(prev => prev + 1);
     }
@@ -42,16 +52,15 @@ export const useQuizManager = (vocabularyItems: VocabularyItem[], onAnswer?: (wo
   const nextQuizQuestion = useCallback(() => {
     if (quizQuestionIndex < quizQuestions.length - 1) {
       setQuizQuestionIndex(prev => prev + 1);
-      setSelectedAnswer(null);
-      setShowAnswerResult(false);
-      setIsAnswerCorrect(false);
     } else {
-      setShowQuiz(false);
+      // Last question - show results
+      setIsQuizComplete(true);
     }
   }, [quizQuestionIndex, quizQuestions.length]);
 
   const endQuiz = useCallback(() => {
     setShowQuiz(false);
+    setIsQuizComplete(false);
   }, []);
 
   return {
@@ -60,9 +69,8 @@ export const useQuizManager = (vocabularyItems: VocabularyItem[], onAnswer?: (wo
     quizQuestions,
     quizScore,
     quizMode,
-    selectedAnswer,
-    showAnswerResult,
-    isAnswerCorrect,
+    quizAnswers,
+    isQuizComplete,
     startQuiz,
     handleQuizAnswer,
     nextQuizQuestion,

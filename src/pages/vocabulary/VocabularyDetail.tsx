@@ -211,9 +211,8 @@ const VocabularyDetail: React.FC = () => {
     quizQuestions,
     quizScore,
     quizMode,
-    selectedAnswer,
-    showAnswerResult,
-    isAnswerCorrect,
+    quizAnswers,
+    isQuizComplete,
     startQuiz,
     handleQuizAnswer,
     nextQuizQuestion,
@@ -701,7 +700,7 @@ const VocabularyDetail: React.FC = () => {
                   </div>
 
                   {/* Answer Options */}
-                  {!showAnswerResult ? (
+                  {!isQuizComplete ? (
                     <div className="grid gap-3">
                       {(() => {
                         const options = quizMode === 'jp-to-vi'
@@ -730,13 +729,8 @@ const VocabularyDetail: React.FC = () => {
                                 ? option === currentQuizQuestion.meaning
                                 : typeof option === 'object' && option.word === (currentQuizQuestion.kanji || currentQuizQuestion.hiragana);
                               handleQuizAnswer(quizMode === 'jp-to-vi' ? option as string : (option as any).word, isCorrect);
-                              // Auto advance to next question without showing result
-                              if (quizQuestionIndex < quizQuestions.length - 1) {
-                                setTimeout(() => nextQuizQuestion(), 300);
-                              } else {
-                                // Last question, show results
-                                setTimeout(() => endQuiz(), 300);
-                              }
+                              // Auto advance immediately without showing result
+                              nextQuizQuestion();
                             }}
                             className="w-full p-4 text-left rounded-lg border border-border hover:border-blue-400 hover:bg-surface-2 transition-all"
                           >
@@ -769,49 +763,44 @@ const VocabularyDetail: React.FC = () => {
 
                       {/* List all questions for review */}
                       <div className="max-h-[500px] overflow-y-auto space-y-3">
-                        {quizQuestions.map((q, idx) => {
-                          const userAnswer = selectedAnswer;
-                          const isCorrect = userAnswer === (quizMode === 'jp-to-vi' ? q.meaning : (q.kanji || q.hiragana));
-                          
-                          return (
-                            <div
-                              key={q.id || idx}
-                              className={`p-4 rounded-lg border ${
-                                isCorrect
-                                  ? 'bg-green-50 dark:bg-green-900/20 border-green-200 dark:border-green-700'
-                                  : 'bg-red-50 dark:bg-red-900/20 border-red-200 dark:border-red-700'
-                              }`}
-                            >
-                              <div className="flex items-start gap-3">
-                                <div className={`text-lg font-bold ${isCorrect ? 'text-green-600' : 'text-red-600'}`}>
-                                  {idx + 1}.
+                        {quizAnswers.map((answer, idx) => (
+                          <div
+                            key={answer.question.id || idx}
+                            className={`p-4 rounded-lg border ${
+                              answer.isCorrect
+                                ? 'bg-green-50 dark:bg-green-900/20 border-green-200 dark:border-green-700'
+                                : 'bg-red-50 dark:bg-red-900/20 border-red-200 dark:border-red-700'
+                            }`}
+                          >
+                            <div className="flex items-start gap-3">
+                              <div className={`text-lg font-bold ${answer.isCorrect ? 'text-green-600' : 'text-red-600'}`}>
+                                {idx + 1}.
+                              </div>
+                              <div className="flex-1">
+                                <div className="text-lg font-semibold text-text-main mb-1">
+                                  {quizMode === 'jp-to-vi' ? answer.question.kanji || answer.question.hiragana : answer.question.meaning}
                                 </div>
-                                <div className="flex-1">
-                                  <div className="text-lg font-semibold text-text-main mb-1">
-                                    {quizMode === 'jp-to-vi' ? q.kanji || q.hiragana : q.meaning}
+                                {quizMode === 'jp-to-vi' ? (
+                                  <div className="text-sm text-text-sub">
+                                    Đáp án đúng: <span className="font-semibold text-green-600">{answer.question.meaning}</span>
                                   </div>
-                                  {quizMode === 'jp-to-vi' ? (
-                                    <div className="text-sm text-text-sub">
-                                      Đáp án đúng: <span className="font-semibold text-green-600">{q.meaning}</span>
-                                    </div>
-                                  ) : (
-                                    <div className="text-sm text-text-sub">
-                                      Đáp án đúng: <span className="font-semibold text-green-600">{q.kanji} ({q.hiragana})</span>
-                                    </div>
-                                  )}
-                                  {!isCorrect && (
-                                    <div className="text-sm text-red-600 mt-1">
-                                      Đáp án của bạn: {userAnswer || 'Không trả lời'}
-                                    </div>
-                                  )}
-                                </div>
-                                <div className={`text-2xl ${isCorrect ? 'text-green-500' : 'text-red-500'}`}>
-                                  {isCorrect ? '✓' : '✗'}
-                                </div>
+                                ) : (
+                                  <div className="text-sm text-text-sub">
+                                    Đáp án đúng: <span className="font-semibold text-green-600">{answer.question.kanji} ({answer.question.hiragana})</span>
+                                  </div>
+                                )}
+                                {!answer.isCorrect && (
+                                  <div className="text-sm text-red-600 mt-1">
+                                    Đáp án của bạn: {answer.userAnswer || 'Không trả lời'}
+                                  </div>
+                                )}
+                              </div>
+                              <div className={`text-2xl ${answer.isCorrect ? 'text-green-500' : 'text-red-500'}`}>
+                                {answer.isCorrect ? '✓' : '✗'}
                               </div>
                             </div>
-                          );
-                        })}
+                          </div>
+                        ))}
                       </div>
 
                       <div className="text-center pt-4">
