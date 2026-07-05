@@ -661,7 +661,7 @@ export const VocabularyFlashcard: React.FC<VocabularyFlashcardProps> = ({
               {/* Progress Counter */}
               <div className="min-w-[4.5rem] text-center">
                 <span className="inline-flex items-center rounded-full px-3 py-1 text-base font-semibold text-gray-800 dark:text-neutral-100">
-                  {currentCardIndex + 1}
+                  {currentCardIndex}
                   <span className="mx-1 text-gray-400 dark:text-neutral-400">/</span>
                   <span className="text-gray-600 dark:text-neutral-300">
                     {cardsToStudy.length}
@@ -722,7 +722,7 @@ export const VocabularyFlashcard: React.FC<VocabularyFlashcardProps> = ({
               <div
                 className="h-full bg-blue-500 transition-all duration-300 ease-out"
                 style={{
-                  width: `${((currentCardIndex + 1) / cardsToStudy.length) * 100}%`,
+                  width: `${(currentCardIndex / cardsToStudy.length) * 100}%`,
                   background: "linear-gradient(90deg, #3b82f6, #60a5fa)",
                 }}
               />
