@@ -1022,10 +1022,17 @@ const VocabularyDetail: React.FC = () => {
           onShuffleCards={shuffleCards}
         />
 
-        {/* Flashcard Result - Web style */}
+        {/* Flashcard Result - Overlay */}
         {showFlashcard && isStudyComplete && (
-          <div className="max-w-2xl mx-auto mt-8">
-            <div className="bg-white dark:bg-slate-800 rounded-xl border border-border p-8">
+          <div
+            className="fixed inset-0 z-[1100] flex items-center justify-center bg-black/55 backdrop-blur-sm p-4"
+            onClick={closeFlashcard}
+          >
+            <div
+              className="w-full max-w-xl"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <div className="bg-white dark:bg-slate-800 rounded-xl border border-border p-8 shadow-xl">
               {/* Header */}
               <div className="text-center mb-8">
                 <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-green-100 dark:bg-green-900/30 text-green-600 dark:text-green-400 mb-4">
@@ -1177,6 +1184,7 @@ const VocabularyDetail: React.FC = () => {
                   </Button>
                 )}
               </div>
+            </div>
             </div>
           </div>
         )}
