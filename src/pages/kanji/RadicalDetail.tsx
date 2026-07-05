@@ -220,21 +220,24 @@ const RadicalDetail: React.FC = () => {
     navigate("/kanji?stroke=radical214");
   };
 
-  const navigateToPrev = () => {
-    if (currentIndex > 0) {
-      const prevSymbol = allRadicals[currentIndex - 1];
-      navigate(`/kanji/radicals/${encodeURIComponent(prevSymbol)}`, {
+  const navigateToIndex = (index: number) => {
+    if (index >= 0 && index < allRadicals.length) {
+      const targetSymbol = allRadicals[index];
+      navigate(`/kanji/radicals/${encodeURIComponent(targetSymbol)}`, {
         state: location.state,
       });
     }
   };
 
+  const navigateToPrev = () => {
+    if (currentIndex > 0) {
+      navigateToIndex(currentIndex - 1);
+    }
+  };
+
   const navigateToNext = () => {
     if (currentIndex < allRadicals.length - 1) {
-      const nextSymbol = allRadicals[currentIndex + 1];
-      navigate(`/kanji/radicals/${encodeURIComponent(nextSymbol)}`, {
-        state: location.state,
-      });
+      navigateToIndex(currentIndex + 1);
     }
   };
 
@@ -283,6 +286,26 @@ const RadicalDetail: React.FC = () => {
 
   return (
     <div className="min-h-full bg-gradient-to-br from-slate-50 to-slate-100 dark:from-slate-900 dark:to-slate-800 p-4 md:p-8">
+      {/* Search Bar for Quick Navigation */}
+      <div className="mb-4">
+        <input
+          type="text"
+          placeholder="Tìm kiếm bộ thủ theo ký tự..."
+          className="w-full px-4 py-2 rounded-xl border border-border bg-surface-1 text-text-main placeholder:text-text-sub focus:outline-none focus:ring-2 focus:ring-teal-500"
+          onKeyDown={(e) => {
+            if (e.key === 'Enter') {
+              const searchValue = (e.target as HTMLInputElement).value.trim();
+              if (searchValue) {
+                const foundIndex = allRadicals.findIndex(r => r === searchValue);
+                if (foundIndex >= 0) {
+                  navigateToIndex(foundIndex);
+                }
+              }
+            }
+          }}
+        />
+      </div>
+
       {/* Header Navigation */}
       <div className="mb-4 flex items-center justify-between">
         <div className="flex items-center gap-2">
@@ -352,6 +375,18 @@ const RadicalDetail: React.FC = () => {
             <h1 className="text-2xl sm:text-3xl font-bold leading-tight text-text-main dark:text-secondary-100">
               Bộ thủ <span className="kanji-text text-teal-700 dark:text-teal-400">{displaySymbol}</span>
             </h1>
+            <div className="mt-2 flex flex-wrap items-center gap-2">
+              {displayHanviet && (
+                <span className="text-base font-semibold text-teal-700 dark:text-teal-400">
+                  {displayHanviet}
+                </span>
+              )}
+              {displayNameVi && (
+                <span className="text-sm text-text-secondary dark:text-secondary-400">
+                  • {displayNameVi}
+                </span>
+              )}
+            </div>
             {radical.description && (
               <p className="mt-2 text-sm sm:text-base text-text-secondary dark:text-secondary-400">
                 {radical.description}
