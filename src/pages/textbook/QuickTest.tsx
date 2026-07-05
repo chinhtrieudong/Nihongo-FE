@@ -3,10 +3,10 @@ import { useNavigate, useParams } from "react-router-dom";
 import { Button, Card, Divider, Progress, Radio, Select, Space, Spin, Typography, message } from "antd";
 import { ArrowLeft, RefreshCcw, Play, CheckCircle2, XCircle } from "lucide-react";
 import { EmptyState } from "../../components/common";
-import { getLessonVocabulary, getVocabulary } from "../../services/vocabularyDataService";
 import { testAttemptsAPI } from "../../services/api";
 import { useAppSelector } from "../../store/hooks";
 import type { JLPTLevel, TextbookType, VocabularyItem } from "../../types/vocabulary";
+import fakeTextbooksData from "../../data/fakeTextbooksData.json";
 
 const { Title, Text } = Typography;
 
@@ -89,35 +89,50 @@ const QuickTest: React.FC = () => {
   const parsed = useMemo(() => (textbookId ? parseTextbookId(textbookId) : null), [textbookId]);
 
   useEffect(() => {
-    const run = async () => {
+    const run = () => {
       if (!textbookId || !parsed) {
         setLoading(false);
         return;
       }
       setLoading(true);
       try {
-        const data = await getVocabulary({ textbook: parsed.textbook, level: parsed.level });
-        setAllItems(data);
-        setActiveItems(data);
+        // Generate fake vocabulary items for testing
+        const fakeVocabulary: VocabularyItem[] = [];
+        const vocabCount = 100; // Generate 100 fake vocabulary items
+        
+        for (let i = 1; i <= vocabCount; i++) {
+          const lessonNum = Math.ceil(i / 10);
+          fakeVocabulary.push({
+            id: `vocab-${i}`,
+            wordId: `word-${i}`,
+            hiragana: `かな${i}`,
+            kanji: `漢字${i}`,
+            meaning: `Nghĩa tiếng Việt ${i}`,
+            lesson: lessonNum,
+            topic: `Chủ đề ${lessonNum}`,
+            textbook: parsed.textbook,
+            level: parsed.level,
+            sourceId: `source-${i}`,
+            hanViet: `Hán Việt ${i}`,
+            type: "noun",
+            example: `Ví dụ ${i}`,
+          });
+        }
+        
+        setAllItems(fakeVocabulary);
+        setActiveItems(fakeVocabulary);
 
         // Build lesson/topic options
         if (isTopicBasedTextbookId(textbookId)) {
           // Tango/Speed-master: use textbook metadata to show proper topic titles
-          let meta: any | null = null;
-          try {
-            const res = await fetch(`/data/textbook-${textbookId}.json`);
-            if (res.ok) meta = await res.json();
-          } catch {
-            meta = null;
-          }
-
-          const chapters: any[] = Array.isArray(meta?.chapters) ? meta!.chapters : [];
+          const textbook = fakeTextbooksData.textbooks.find(t => t.slug === textbookId);
+          const chapters = textbook?.chapters || [];
           const opts: LessonOption[] = [];
 
           if (chapters.length > 0) {
             for (const ch of chapters) {
               const chNum = ch.number;
-              const topics: any[] = Array.isArray(ch.topics) ? ch.topics : [];
+              const topics = ch.topics || [];
               for (let i = 0; i < topics.length; i++) {
                 const lesson = (chNum - 1) * 5 + (i + 1);
                 const topicTitle = topics[i]?.nameVi || topics[i]?.name || `Topic ${i + 1}`;
@@ -128,64 +143,26 @@ const QuickTest: React.FC = () => {
               }
             }
           } else {
-            // Fallback: build from vocabulary data - group by lesson and get topic names
-            const lessonData = new Map<number, { chapter: number; topic: string }>();
-            
-            data.forEach((item) => {
-              if (item.lesson) {
-                const chapterNum = Math.ceil(item.lesson / 5);
-                const topicNum = ((item.lesson - 1) % 5) + 1;
-                // Use topic field or meaning as topic name
-                const topicName = item.topic || item.meaning || `Topic ${topicNum}`;
-                
-                if (!lessonData.has(item.lesson)) {
-                  lessonData.set(item.lesson, { chapter: chapterNum, topic: topicName });
-                }
-              }
-            });
-            
-            // Sort lessons and build options
-            const sortedLessons = Array.from(lessonData.keys()).sort((a, b) => a - b);
-            for (const lesson of sortedLessons) {
-              const info = lessonData.get(lesson)!;
+            // Fallback: use default 50 lessons
+            for (let i = 1; i <= 50; i++) {
+              const chapterNum = Math.ceil(i / 5);
               opts.push({
-                value: lesson,
-                label: `${info.topic} — Bài ${lesson} (Chương ${info.chapter})`,
+                value: i,
+                label: `Topic ${i} — Bài ${i} (Chương ${chapterNum})`,
               });
-            }
-            
-            // If no lesson data found, use default 50 lessons
-            if (opts.length === 0) {
-              for (let i = 1; i <= 50; i++) {
-                const chapterNum = Math.ceil(i / 5);
-                const topicNum = ((i - 1) % 5) + 1;
-                opts.push({
-                  value: i,
-                  label: `Topic ${topicNum} — Bài ${i} (Chương ${chapterNum})`,
-                });
-              }
             }
           }
 
           setLessonOptions(opts);
         } else {
-          // Minna: infer available lessons from data (lesson field) with titles
-          const lessonData = new Map<number, string>();
-          
-          data.forEach((item) => {
-            if (item.lesson && !lessonData.has(item.lesson)) {
-              // Use topic or first word's meaning as lesson title
-              const title = item.topic || item.meaning || "";
-              lessonData.set(item.lesson, title);
-            }
-          });
-          
-          const lessons = Array.from(lessonData.keys()).sort((a, b) => a - b);
+          // Minna: build lesson options from textbook data
+          const textbook = fakeTextbooksData.textbooks.find(t => t.slug === textbookId);
+          const lessons = textbook?.lessons || [];
           const opts = lessons.map((l) => {
-            const title = lessonData.get(l);
+            const title = l.titleVi || l.title;
             return {
-              value: l,
-              label: title ? `${title} — Bài ${l}` : `Bài ${l}`,
+              value: l.lessonNumber,
+              label: title ? `${title} — Bài ${l.lessonNumber}` : `Bài ${l.lessonNumber}`,
             };
           });
           setLessonOptions(opts);
@@ -211,21 +188,15 @@ const QuickTest: React.FC = () => {
   }, [scopeMode, selectedLesson, textbookId]);
 
   useEffect(() => {
-    const run = async () => {
+    const run = () => {
       if (!textbookId || !parsed) return;
       if (scopeMode === "all") {
         setActiveItems(allItems);
         return;
       }
-      // Scope to lesson/topic
-      try {
-        const data = await getLessonVocabulary(textbookId, selectedLesson);
-        setActiveItems(data);
-      } catch (e) {
-        console.error(e);
-        message.error("Không thể tải từ vựng theo bài để tạo bài kiểm tra");
-        setActiveItems([]);
-      }
+      // Scope to lesson/topic - filter from allItems
+      const filtered = allItems.filter(item => item.lesson === selectedLesson);
+      setActiveItems(filtered);
     };
     run();
   }, [scopeMode, selectedLesson, textbookId, parsed, allItems]);
