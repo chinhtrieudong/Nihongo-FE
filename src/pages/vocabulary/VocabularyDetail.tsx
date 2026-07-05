@@ -517,22 +517,12 @@ const VocabularyDetail: React.FC = () => {
       children: (
         <div className="py-6">
           {dueWords.length === 0 ? (
-            <div className="py-6">
-              <div className="text-center mb-4">
-                <h3 className="text-xl font-semibold text-text-main mb-2 inline-flex items-center gap-2">
-                  Không có từ cần ôn tập
-                  <span
-                    className="inline-flex items-center justify-center w-5 h-5 rounded-full bg-amber-100 dark:bg-amber-900/30 text-amber-600 dark:text-amber-400 text-xs font-bold cursor-help ring-2 ring-amber-300 dark:ring-amber-700"
-                    title="Dùng Flashcard hoặc Quiz để ôn tập các từ này"
-                  >
-                    !
-                  </span>
-                </h3>
-                <Text className="text-text-sub">
-                  Tuyệt vời! Bạn đã hoàn thành tất cả các bài ôn tập.
-                </Text>
-              </div>
-            </div>
+            <EmptyState
+              type="data"
+              title="Không có từ cần ôn tập"
+              description="Tuyệt vời! Bạn đã hoàn thành tất cả các bài ôn tập."
+              size="default"
+            />
           ) : (
             <>
               <div className="mb-6 text-center">
