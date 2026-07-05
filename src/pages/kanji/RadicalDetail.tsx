@@ -244,26 +244,6 @@ const RadicalDetail: React.FC = () => {
 
   return (
     <div className="min-h-full bg-gradient-to-br from-slate-50 to-slate-100 dark:from-slate-900 dark:to-slate-800 p-4 md:p-8">
-      {/* Search Bar for Quick Navigation */}
-      <div className="mb-4">
-        <input
-          type="text"
-          placeholder="Tìm kiếm bộ thủ theo ký tự..."
-          className="w-full px-4 py-2 rounded-xl border border-border bg-surface-1 text-text-main placeholder:text-text-sub focus:outline-none focus:ring-2 focus:ring-teal-500"
-          onKeyDown={(e) => {
-            if (e.key === 'Enter') {
-              const searchValue = (e.target as HTMLInputElement).value.trim();
-              if (searchValue) {
-                const foundIndex = allRadicals.findIndex(r => r === searchValue);
-                if (foundIndex >= 0) {
-                  navigateToIndex(foundIndex);
-                }
-              }
-            }
-          }}
-        />
-      </div>
-
       {/* Header Navigation */}
       <div className="mb-4 flex items-center justify-between">
         <div className="flex items-center gap-2">
@@ -303,7 +283,7 @@ const RadicalDetail: React.FC = () => {
       <div className="mb-6 rounded-2xl border border-border bg-surface-1 p-5 sm:p-6 shadow-md hover:shadow-lg transition-shadow">
         <div className="grid grid-cols-1 lg:grid-cols-[200px_minmax(0,1fr)] gap-5 sm:gap-6">
           {/* Radical Symbol Display with Stroke Order */}
-          <div className="rounded-2xl border border-border bg-surface-1 p-5 flex flex-col items-center justify-center text-center shadow-md">
+          <div className="rounded-2xl border border-border bg-surface-1 p-5 flex flex-col items-center justify-center text-center">
             {loadingStrokeOrder ? (
               <div className="flex items-center justify-center h-32">
                 <Spin size="small" />
