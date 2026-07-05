@@ -1,0 +1,1372 @@
+{
+  "radicalsList": [
+    {
+      "symbol": "一",
+      "hanviet": "NHẤT",
+      "nameVi": "Một",
+      "meaning": "One",
+      "strokeCount": 1,
+      "jlpt": "N5"
+    },
+    {
+      "symbol": "丨",
+      "hanviet": "CỐT",
+      "nameVi": "Xương sống",
+      "meaning": "Line",
+      "strokeCount": 1,
+      "jlpt": "N5"
+    },
+    {
+      "symbol": "丶",
+      "hanviet": "CHỦ",
+      "nameVi": "Chấm",
+      "meaning": "Dot",
+      "strokeCount": 1,
+      "jlpt": "N5"
+    },
+    {
+      "symbol": "丿",
+      "hanviet": "BIỆN",
+      "nameVi": "Nét trái",
+      "meaning": "Slash",
+      "strokeCount": 1,
+      "jlpt": "N5"
+    },
+    {
+      "symbol": "乙",
+      "hanviet": "ẤT",
+      "nameVi": "Hai",
+      "meaning": "Second",
+      "strokeCount": 1,
+      "jlpt": "N5"
+    },
+    {
+      "symbol": "亅",
+      "hanviet": "QUYẾT",
+      "nameVi": "Móc",
+      "meaning": "Hook",
+      "strokeCount": 1,
+      "jlpt": "N5"
+    },
+    {
+      "symbol": "二",
+      "hanviet": "NHỊ",
+      "nameVi": "Hai",
+      "meaning": "Two",
+      "strokeCount": 2,
+      "jlpt": "N5"
+    },
+    {
+      "symbol": "亠",
+      "hanviet": "ĐÀU",
+      "nameVi": "Nắp",
+      "meaning": "Lid",
+      "strokeCount": 2,
+      "jlpt": "N5"
+    },
+    {
+      "symbol": "人",
+      "hanviet": "NHÂN",
+      "nameVi": "Người",
+      "meaning": "Person",
+      "strokeCount": 2,
+      "jlpt": "N5"
+    },
+    {
+      "symbol": "儿",
+      "hanviet": "NHI",
+      "nameVi": "Chân người",
+      "meaning": "Legs",
+      "strokeCount": 2,
+      "jlpt": "N5"
+    },
+    {
+      "symbol": "入",
+      "hanviet": "NHẬP",
+      "nameVi": "Vào",
+      "meaning": "Enter",
+      "strokeCount": 2,
+      "jlpt": "N5"
+    },
+    {
+      "symbol": "八",
+      "hanviet": "BÁT",
+      "nameVi": "Tám",
+      "meaning": "Eight",
+      "strokeCount": 2,
+      "jlpt": "N5"
+    },
+    {
+      "symbol": "冂",
+      "hanviet": "CÁNH",
+      "nameVi": "Cánh",
+      "meaning": "Wide",
+      "strokeCount": 2,
+      "jlpt": "N5"
+    },
+    {
+      "symbol": "冖",
+      "hanviet": "MỘC",
+      "nameVi": "Che",
+      "meaning": "Cover",
+      "strokeCount": 2,
+      "jlpt": "N5"
+    },
+    {
+      "symbol": "冫",
+      "hanviet": "BĂNG",
+      "nameVi": "Băng",
+      "meaning": "Ice",
+      "strokeCount": 2,
+      "jlpt": "N5"
+    },
+    {
+      "symbol": "几",
+      "hanviet": "CƠ",
+      "nameVi": "Bàn",
+      "meaning": "Table",
+      "strokeCount": 2,
+      "jlpt": "N5"
+    },
+    {
+      "symbol": "凵",
+      "hanviet": "KHỐM",
+      "nameVi": "Hộp",
+      "meaning": "Box",
+      "strokeCount": 2,
+      "jlpt": "N5"
+    },
+    {
+      "symbol": "刀",
+      "hanviet": "ĐAO",
+      "nameVi": "Dao",
+      "meaning": "Knife",
+      "strokeCount": 2,
+      "jlpt": "N5"
+    },
+    {
+      "symbol": "力",
+      "hanviet": "LỰC",
+      "nameVi": "Sức",
+      "meaning": "Power",
+      "strokeCount": 2,
+      "jlpt": "N5"
+    },
+    {
+      "symbol": "勹",
+      "hanviet": "BAO",
+      "nameVi": "Bao",
+      "meaning": "Wrap",
+      "strokeCount": 2,
+      "jlpt": "N5"
+    },
+    {
+      "symbol": "匕",
+      "hanviet": "CHỈ",
+      "nameVi": "Muỗng",
+      "meaning": "Spoon",
+      "strokeCount": 2,
+      "jlpt": "N5"
+    },
+    {
+      "symbol": "匚",
+      "hanviet": "PHƯƠNG",
+      "nameVi": "Phương",
+      "meaning": "Box",
+      "strokeCount": 2,
+      "jlpt": "N5"
+    },
+    {
+      "symbol": "匸",
+      "hanviet": "HỆ",
+      "nameVi": "Hệ",
+      "meaning": "System",
+      "strokeCount": 2,
+      "jlpt": "N5"
+    },
+    {
+      "symbol": "十",
+      "hanviet": "THẬP",
+      "nameVi": "Mười",
+      "meaning": "Ten",
+      "strokeCount": 2,
+      "jlpt": "N5"
+    },
+    {
+      "symbol": "卜",
+      "hanviet": "BẮC",
+      "nameVi": "Bắc",
+      "meaning": "Divination",
+      "strokeCount": 2,
+      "jlpt": "N5"
+    },
+    {
+      "symbol": "卩",
+      "hanviet": "TIẾT",
+      "nameVi": "Tiết",
+      "meaning": "Kneel",
+      "strokeCount": 2,
+      "jlpt": "N5"
+    },
+    {
+      "symbol": "厂",
+      "hanviet": "HÀN",
+      "nameVi": "Hàn",
+      "meaning": "Cliff",
+      "strokeCount": 2,
+      "jlpt": "N5"
+    },
+    {
+      "symbol": "厶",
+      "hanviet": "TƯ",
+      "nameVi": "Tư",
+      "meaning": "Private",
+      "strokeCount": 2,
+      "jlpt": "N5"
+    },
+    {
+      "symbol": "又",
+      "hanviet": "HỰU",
+      "nameVi": "Lại",
+      "meaning": "Again",
+      "strokeCount": 2,
+      "jlpt": "N5"
+    },
+    {
+      "symbol": "口",
+      "hanviet": "KHẨU",
+      "nameVi": "Miệng",
+      "meaning": "Mouth",
+      "strokeCount": 3,
+      "jlpt": "N5"
+    },
+    {
+      "symbol": "囗",
+      "hanviet": "VI",
+      "nameVi": "Vi",
+      "meaning": "Enclosure",
+      "strokeCount": 3,
+      "jlpt": "N5"
+    },
+    {
+      "symbol": "土",
+      "hanviet": "THỔ",
+      "nameVi": "Đất",
+      "meaning": "Earth",
+      "strokeCount": 3,
+      "jlpt": "N5"
+    },
+    {
+      "symbol": "士",
+      "hanviet": "SĨ",
+      "nameVi": "Sĩ",
+      "meaning": "Scholar",
+      "strokeCount": 3,
+      "jlpt": "N5"
+    },
+    {
+      "symbol": "夂",
+      "hanviet": "TRÚ",
+      "nameVi": "Trú",
+      "meaning": "Winter",
+      "strokeCount": 3,
+      "jlpt": "N5"
+    },
+    {
+      "symbol": "夊",
+      "hanviet": "TƯ",
+      "nameVi": "Tư",
+      "meaning": "Go",
+      "strokeCount": 3,
+      "jlpt": "N5"
+    },
+    {
+      "symbol": "夕",
+      "hanviet": "TỊCH",
+      "nameVi": "Tịch",
+      "meaning": "Evening",
+      "strokeCount": 3,
+      "jlpt": "N5"
+    },
+    {
+      "symbol": "大",
+      "hanviet": "ĐẠI",
+      "nameVi": "Lớn",
+      "meaning": "Big",
+      "strokeCount": 3,
+      "jlpt": "N5"
+    },
+    {
+      "symbol": "女",
+      "hanviet": "NỮ",
+      "nameVi": "Nữ",
+      "meaning": "Woman",
+      "strokeCount": 3,
+      "jlpt": "N5"
+    },
+    {
+      "symbol": "子",
+      "hanviet": "TỬ",
+      "nameVi": "Tử",
+      "meaning": "Child",
+      "strokeCount": 3,
+      "jlpt": "N5"
+    },
+    {
+      "symbol": "宀",
+      "hanviet": "MIÊN",
+      "nameVi": "Miên",
+      "meaning": "Roof",
+      "strokeCount": 3,
+      "jlpt": "N5"
+    },
+    {
+      "symbol": "寸",
+      "hanviet": "THỐN",
+      "nameVi": "Thốn",
+      "meaning": "Inch",
+      "strokeCount": 3,
+      "jlpt": "N5"
+    },
+    {
+      "symbol": "小",
+      "hanviet": "TIỂU",
+      "nameVi": "Nhỏ",
+      "meaning": "Small",
+      "strokeCount": 3,
+      "jlpt": "N5"
+    },
+    {
+      "symbol": "尢",
+      "hanviet": "U",
+      "nameVi": "U",
+      "meaning": "Lame",
+      "strokeCount": 3,
+      "jlpt": "N5"
+    },
+    {
+      "symbol": "尸",
+      "hanviet": "THI",
+      "nameVi": "Thi",
+      "meaning": "Corpse",
+      "strokeCount": 3,
+      "jlpt": "N5"
+    },
+    {
+      "symbol": "屮",
+      "hanviet": "SOẠT",
+      "nameVi": "Soạt",
+      "meaning": "Sprout",
+      "strokeCount": 3,
+      "jlpt": "N5"
+    },
+    {
+      "symbol": "山",
+      "hanviet": "SƠN",
+      "nameVi": "Núi",
+      "meaning": "Mountain",
+      "strokeCount": 3,
+      "jlpt": "N5"
+    },
+    {
+      "symbol": "巛",
+      "hanviet": "XUYÊN",
+      "nameVi": "Xuyên",
+      "meaning": "River",
+      "strokeCount": 3,
+      "jlpt": "N5"
+    },
+    {
+      "symbol": "工",
+      "hanviet": "CÔNG",
+      "nameVi": "Công",
+      "meaning": "Work",
+      "strokeCount": 3,
+      "jlpt": "N5"
+    },
+    {
+      "symbol": "己",
+      "hanviet": "KỈ",
+      "nameVi": "Kỉ",
+      "meaning": "Self",
+      "strokeCount": 3,
+      "jlpt": "N5"
+    },
+    {
+      "symbol": "巾",
+      "hanviet": "CÂN",
+      "nameVi": "Cân",
+      "meaning": "Cloth",
+      "strokeCount": 3,
+      "jlpt": "N5"
+    },
+    {
+      "symbol": "干",
+      "hanviet": "CAN",
+      "nameVi": "Can",
+      "meaning": "Dry",
+      "strokeCount": 3,
+      "jlpt": "N5"
+    },
+    {
+      "symbol": "幺",
+      "hanviet": "YÊU",
+      "nameVi": "Yêu",
+      "meaning": "Tiny",
+      "strokeCount": 3,
+      "jlpt": "N5"
+    },
+    {
+      "symbol": "广",
+      "hanviet": "QUẢNG",
+      "nameVi": "Quảng",
+      "meaning": "Wide",
+      "strokeCount": 3,
+      "jlpt": "N5"
+    },
+    {
+      "symbol": "廴",
+      "hanviet": "DẪN",
+      "nameVi": "Dẫn",
+      "meaning": "Long",
+      "strokeCount": 3,
+      "jlpt": "N5"
+    },
+    {
+      "symbol": "廾",
+      "hanviet": "CỔNG",
+      "nameVi": "Cổng",
+      "meaning": "Hands",
+      "strokeCount": 3,
+      "jlpt": "N5"
+    },
+    {
+      "symbol": "弋",
+      "hanviet": "DỰC",
+      "nameVi": "Dực",
+      "meaning": "Shoot",
+      "strokeCount": 3,
+      "jlpt": "N5"
+    },
+    {
+      "symbol": "弓",
+      "hanviet": "CUNG",
+      "nameVi": "Cung",
+      "meaning": "Bow",
+      "strokeCount": 3,
+      "jlpt": "N5"
+    },
+    {
+      "symbol": "彐",
+      "hanviet": "KỆ",
+      "nameVi": "Kệ",
+      "meaning": "Snout",
+      "strokeCount": 3,
+      "jlpt": "N5"
+    },
+    {
+      "symbol": "彡",
+      "hanviet": "SAM",
+      "nameVi": "Sam",
+      "meaning": "Bristle",
+      "strokeCount": 3,
+      "jlpt": "N5"
+    },
+    {
+      "symbol": "彳",
+      "hanviet": "XÍCH",
+      "nameVi": "Xích",
+      "meaning": "Step",
+      "strokeCount": 3,
+      "jlpt": "N5"
+    },
+    {
+      "symbol": "心",
+      "hanviet": "TÂM",
+      "nameVi": "Tâm",
+      "meaning": "Heart",
+      "strokeCount": 4,
+      "jlpt": "N5"
+    },
+    {
+      "symbol": "戈",
+      "hanviet": "QUA",
+      "nameVi": "Qua",
+      "meaning": "Spear",
+      "strokeCount": 4,
+      "jlpt": "N5"
+    },
+    {
+      "symbol": "戸",
+      "hanviet": "HỘ",
+      "nameVi": "Hộ",
+      "meaning": "Door",
+      "strokeCount": 4,
+      "jlpt": "N5"
+    },
+    {
+      "symbol": "手",
+      "hanviet": "THỦ",
+      "nameVi": "Thủ",
+      "meaning": "Hand",
+      "strokeCount": 4,
+      "jlpt": "N5"
+    },
+    {
+      "symbol": "支",
+      "hanviet": "CHI",
+      "nameVi": "Chi",
+      "meaning": "Branch",
+      "strokeCount": 4,
+      "jlpt": "N5"
+    },
+    {
+      "symbol": "攴",
+      "hanviet": "PHỐC",
+      "nameVi": "Phốc",
+      "meaning": "Strike",
+      "strokeCount": 4,
+      "jlpt": "N5"
+    },
+    {
+      "symbol": "文",
+      "hanviet": "VĂN",
+      "nameVi": "Văn",
+      "meaning": "Text",
+      "strokeCount": 4,
+      "jlpt": "N5"
+    },
+    {
+      "symbol": "斗",
+      "hanviet": "ĐẨU",
+      "nameVi": "Đẩu",
+      "meaning": "Ladle",
+      "strokeCount": 4,
+      "jlpt": "N5"
+    },
+    {
+      "symbol": "斤",
+      "hanviet": "CÂN",
+      "nameVi": "Cân",
+      "meaning": "Axe",
+      "strokeCount": 4,
+      "jlpt": "N5"
+    },
+    {
+      "symbol": "方",
+      "hanviet": "PHƯƠNG",
+      "nameVi": "Phương",
+      "meaning": "Direction",
+      "strokeCount": 4,
+      "jlpt": "N5"
+    },
+    {
+      "symbol": "无",
+      "hanviet": "VÔ",
+      "nameVi": "Vô",
+      "meaning": "None",
+      "strokeCount": 4,
+      "jlpt": "N5"
+    },
+    {
+      "symbol": "日",
+      "hanviet": "NHẬT",
+      "nameVi": "Nhật",
+      "meaning": "Sun",
+      "strokeCount": 4,
+      "jlpt": "N5"
+    },
+    {
+      "symbol": "月",
+      "hanviet": "NGUYỆT",
+      "nameVi": "Nguyệt",
+      "meaning": "Moon",
+      "strokeCount": 4,
+      "jlpt": "N5"
+    },
+    {
+      "symbol": "木",
+      "hanviet": "MỘC",
+      "nameVi": "Mộc",
+      "meaning": "Tree",
+      "strokeCount": 4,
+      "jlpt": "N5"
+    },
+    {
+      "symbol": "欠",
+      "hanviet": "KHIẾU",
+      "nameVi": "Khiếu",
+      "meaning": "Lack",
+      "strokeCount": 4,
+      "jlpt": "N5"
+    },
+    {
+      "symbol": "止",
+      "hanviet": "CHỈ",
+      "nameVi": "Chỉ",
+      "meaning": "Stop",
+      "strokeCount": 4,
+      "jlpt": "N5"
+    },
+    {
+      "symbol": "歹",
+      "hanviet": "NGÃI",
+      "nameVi": "Ngãi",
+      "meaning": "Death",
+      "strokeCount": 4,
+      "jlpt": "N5"
+    },
+    {
+      "symbol": "殳",
+      "hanviet": "THÙ",
+      "nameVi": "Thù",
+      "meaning": "Weapon",
+      "strokeCount": 4,
+      "jlpt": "N5"
+    },
+    {
+      "symbol": "毋",
+      "hanviet": "VÔ",
+      "nameVi": "Vô",
+      "meaning": "Do not",
+      "strokeCount": 4,
+      "jlpt": "N5"
+    },
+    {
+      "symbol": "比",
+      "hanviet": "TỶ",
+      "nameVi": "Tỷ",
+      "meaning": "Compare",
+      "strokeCount": 4,
+      "jlpt": "N5"
+    },
+    {
+      "symbol": "毛",
+      "hanviet": "MAO",
+      "nameVi": "Mao",
+      "meaning": "Fur",
+      "strokeCount": 4,
+      "jlpt": "N5"
+    },
+    {
+      "symbol": "氏",
+      "hanviet": "THỊ",
+      "nameVi": "Thị",
+      "meaning": "Clan",
+      "strokeCount": 4,
+      "jlpt": "N5"
+    },
+    {
+      "symbol": "气",
+      "hanviet": "KHÍ",
+      "nameVi": "Khí",
+      "meaning": "Steam",
+      "strokeCount": 4,
+      "jlpt": "N5"
+    },
+    {
+      "symbol": "水",
+      "hanviet": "THỦY",
+      "nameVi": "Thủy",
+      "meaning": "Water",
+      "strokeCount": 4,
+      "jlpt": "N5"
+    },
+    {
+      "symbol": "火",
+      "hanviet": "HỎA",
+      "nameVi": "Hỏa",
+      "meaning": "Fire",
+      "strokeCount": 4,
+      "jlpt": "N5"
+    },
+    {
+      "symbol": "爪",
+      "hanviet": "TRẢO",
+      "nameVi": "Trảo",
+      "meaning": "Claw",
+      "strokeCount": 4,
+      "jlpt": "N5"
+    },
+    {
+      "symbol": "父",
+      "hanviet": "PHỤ",
+      "nameVi": "Phụ",
+      "meaning": "Father",
+      "strokeCount": 4,
+      "jlpt": "N5"
+    },
+    {
+      "symbol": "爻",
+      "hanviet": "HÀO",
+      "nameVi": "Hào",
+      "meaning": "Lines",
+      "strokeCount": 4,
+      "jlpt": "N5"
+    },
+    {
+      "symbol": "爿",
+      "hanviet": "BÀNG",
+      "nameVi": "Bàng",
+      "meaning": "Bed",
+      "strokeCount": 4,
+      "jlpt": "N5"
+    },
+    {
+      "symbol": "片",
+      "hanviet": "PHIẾN",
+      "nameVi": "Phiến",
+      "meaning": "Slice",
+      "strokeCount": 4,
+      "jlpt": "N5"
+    },
+    {
+      "symbol": "牙",
+      "hanviet": "NHA",
+      "nameVi": "Nha",
+      "meaning": "Fang",
+      "strokeCount": 4,
+      "jlpt": "N5"
+    },
+    {
+      "symbol": "牛",
+      "hanviet": "NGƯU",
+      "nameVi": "Ngưu",
+      "meaning": "Cow",
+      "strokeCount": 4,
+      "jlpt": "N5"
+    },
+    {
+      "symbol": "犬",
+      "hanviet": "KHẢN",
+      "nameVi": "Khản",
+      "meaning": "Dog",
+      "strokeCount": 4,
+      "jlpt": "N5"
+    },
+    {
+      "symbol": "王",
+      "hanviet": "VƯƠNG",
+      "nameVi": "Vương",
+      "meaning": "King",
+      "strokeCount": 4,
+      "jlpt": "N5"
+    },
+    {
+      "symbol": "元",
+      "hanviet": "NGUYÊN",
+      "nameVi": "Nguyên",
+      "meaning": "Origin",
+      "strokeCount": 4,
+      "jlpt": "N5"
+    },
+    {
+      "symbol": "天",
+      "hanviet": "THIÊN",
+      "nameVi": "Thiên",
+      "meaning": "Heaven",
+      "strokeCount": 4,
+      "jlpt": "N5"
+    },
+    {
+      "symbol": "夫",
+      "hanviet": "PHU",
+      "nameVi": "Phu",
+      "meaning": "Husband",
+      "strokeCount": 4,
+      "jlpt": "N5"
+    },
+    {
+      "symbol": "太",
+      "hanviet": "THÁI",
+      "nameVi": "Thái",
+      "meaning": "Fat",
+      "strokeCount": 4,
+      "jlpt": "N5"
+    },
+    {
+      "symbol": "夭",
+      "hanviet": "YÊU",
+      "nameVi": "Yêu",
+      "meaning": "Die young",
+      "strokeCount": 4,
+      "jlpt": "N5"
+    },
+    {
+      "symbol": "木",
+      "hanviet": "MỘC",
+      "nameVi": "Mộc",
+      "meaning": "Tree",
+      "strokeCount": 4,
+      "jlpt": "N5"
+    },
+    {
+      "symbol": "支",
+      "hanviet": "CHI",
+      "nameVi": "Chi",
+      "meaning": "Branch",
+      "strokeCount": 4,
+      "jlpt": "N5"
+    },
+    {
+      "symbol": "攴",
+      "hanviet": "PHỐC",
+      "nameVi": "Phốc",
+      "meaning": "Strike",
+      "strokeCount": 4,
+      "jlpt": "N5"
+    },
+    {
+      "symbol": "文",
+      "hanviet": "VĂN",
+      "nameVi": "Văn",
+      "meaning": "Text",
+      "strokeCount": 4,
+      "jlpt": "N5"
+    },
+    {
+      "symbol": "斗",
+      "hanviet": "ĐẨU",
+      "nameVi": "Đẩu",
+      "meaning": "Ladle",
+      "strokeCount": 4,
+      "jlpt": "N5"
+    },
+    {
+      "symbol": "斤",
+      "hanviet": "CÂN",
+      "nameVi": "Cân",
+      "meaning": "Axe",
+      "strokeCount": 4,
+      "jlpt": "N5"
+    },
+    {
+      "symbol": "方",
+      "hanviet": "PHƯƠNG",
+      "nameVi": "Phương",
+      "meaning": "Direction",
+      "strokeCount": 4,
+      "jlpt": "N5"
+    },
+    {
+      "symbol": "无",
+      "hanviet": "VÔ",
+      "nameVi": "Vô",
+      "meaning": "None",
+      "strokeCount": 4,
+      "jlpt": "N5"
+    },
+    {
+      "symbol": "日",
+      "hanviet": "NHẬT",
+      "nameVi": "Nhật",
+      "meaning": "Sun",
+      "strokeCount": 4,
+      "jlpt": "N5"
+    },
+    {
+      "symbol": "月",
+      "hanviet": "NGUYỆT",
+      "nameVi": "Nguyệt",
+      "meaning": "Moon",
+      "strokeCount": 4,
+      "jlpt": "N5"
+    },
+    {
+      "symbol": "木",
+      "hanviet": "MỘC",
+      "nameVi": "Mộc",
+      "meaning": "Tree",
+      "strokeCount": 4,
+      "jlpt": "N5"
+    },
+    {
+      "symbol": "欠",
+      "hanviet": "KHIẾU",
+      "nameVi": "Khiếu",
+      "meaning": "Lack",
+      "strokeCount": 4,
+      "jlpt": "N5"
+    },
+    {
+      "symbol": "止",
+      "hanviet": "CHỈ",
+      "nameVi": "Chỉ",
+      "meaning": "Stop",
+      "strokeCount": 4,
+      "jlpt": "N5"
+    },
+    {
+      "symbol": "歹",
+      "hanviet": "NGÃI",
+      "nameVi": "Ngãi",
+      "meaning": "Death",
+      "strokeCount": 4,
+      "jlpt": "N5"
+    },
+    {
+      "symbol": "殳",
+      "hanviet": "THÙ",
+      "nameVi": "Thù",
+      "meaning": "Weapon",
+      "strokeCount": 4,
+      "jlpt": "N5"
+    },
+    {
+      "symbol": "毋",
+      "hanviet": "VÔ",
+      "nameVi": "Vô",
+      "meaning": "Do not",
+      "strokeCount": 4,
+      "jlpt": "N5"
+    },
+    {
+      "symbol": "比",
+      "hanviet": "TỶ",
+      "nameVi": "Tỷ",
+      "meaning": "Compare",
+      "strokeCount": 4,
+      "jlpt": "N5"
+    },
+    {
+      "symbol": "毛",
+      "hanviet": "MAO",
+      "nameVi": "Mao",
+      "meaning": "Fur",
+      "strokeCount": 4,
+      "jlpt": "N5"
+    },
+    {
+      "symbol": "氏",
+      "hanviet": "THỊ",
+      "nameVi": "Thị",
+      "meaning": "Clan",
+      "strokeCount": 4,
+      "jlpt": "N5"
+    },
+    {
+      "symbol": "气",
+      "hanviet": "KHÍ",
+      "nameVi": "Khí",
+      "meaning": "Steam",
+      "strokeCount": 4,
+      "jlpt": "N5"
+    },
+    {
+      "symbol": "水",
+      "hanviet": "THỦY",
+      "nameVi": "Thủy",
+      "meaning": "Water",
+      "strokeCount": 4,
+      "jlpt": "N5"
+    },
+    {
+      "symbol": "火",
+      "hanviet": "HỎA",
+      "nameVi": "Hỏa",
+      "meaning": "Fire",
+      "strokeCount": 4,
+      "jlpt": "N5"
+    },
+    {
+      "symbol": "爪",
+      "hanviet": "TRẢO",
+      "nameVi": "Trảo",
+      "meaning": "Claw",
+      "strokeCount": 4,
+      "jlpt": "N5"
+    },
+    {
+      "symbol": "父",
+      "hanviet": "PHỤ",
+      "nameVi": "Phụ",
+      "meaning": "Father",
+      "strokeCount": 4,
+      "jlpt": "N5"
+    },
+    {
+      "symbol": "爻",
+      "hanviet": "HÀO",
+      "nameVi": "Hào",
+      "meaning": "Lines",
+      "strokeCount": 4,
+      "jlpt": "N5"
+    },
+    {
+      "symbol": "爿",
+      "hanviet": "BÀNG",
+      "nameVi": "Bàng",
+      "meaning": "Bed",
+      "strokeCount": 4,
+      "jlpt": "N5"
+    },
+    {
+      "symbol": "片",
+      "hanviet": "PHIẾN",
+      "nameVi": "Phiến",
+      "meaning": "Slice",
+      "strokeCount": 4,
+      "jlpt": "N5"
+    },
+    {
+      "symbol": "牙",
+      "hanviet": "NHA",
+      "nameVi": "Nha",
+      "meaning": "Fang",
+      "strokeCount": 4,
+      "jlpt": "N5"
+    },
+    {
+      "symbol": "牛",
+      "hanviet": "NGƯU",
+      "nameVi": "Ngưu",
+      "meaning": "Cow",
+      "strokeCount": 4,
+      "jlpt": "N5"
+    },
+    {
+      "symbol": "犬",
+      "hanviet": "KHẢN",
+      "nameVi": "Khản",
+      "meaning": "Dog",
+      "strokeCount": 4,
+      "jlpt": "N5"
+    },
+    {
+      "symbol": "王",
+      "hanviet": "VƯƠNG",
+      "nameVi": "Vương",
+      "meaning": "King",
+      "strokeCount": 4,
+      "jlpt": "N5"
+    },
+    {
+      "symbol": "元",
+      "hanviet": "NGUYÊN",
+      "nameVi": "Nguyên",
+      "meaning": "Origin",
+      "strokeCount": 4,
+      "jlpt": "N5"
+    },
+    {
+      "symbol": "天",
+      "hanviet": "THIÊN",
+      "nameVi": "Thiên",
+      "meaning": "Heaven",
+      "strokeCount": 4,
+      "jlpt": "N5"
+    },
+    {
+      "symbol": "夫",
+      "hanviet": "PHU",
+      "nameVi": "Phu",
+      "meaning": "Husband",
+      "strokeCount": 4,
+      "jlpt": "N5"
+    },
+    {
+      "symbol": "太",
+      "hanviet": "THÁI",
+      "nameVi": "Thái",
+      "meaning": "Fat",
+      "strokeCount": 4,
+      "jlpt": "N5"
+    },
+    {
+      "symbol": "夭",
+      "hanviet": "YÊU",
+      "nameVi": "Yêu",
+      "meaning": "Die young",
+      "strokeCount": 4,
+      "jlpt": "N5"
+    },
+    {
+      "symbol": "木",
+      "hanviet": "MỘC",
+      "nameVi": "Mộc",
+      "meaning": "Tree",
+      "strokeCount": 4,
+      "jlpt": "N5"
+    },
+    {
+      "symbol": "支",
+      "hanviet": "CHI",
+      "nameVi": "Chi",
+      "meaning": "Branch",
+      "strokeCount": 4,
+      "jlpt": "N5"
+    },
+    {
+      "symbol": "攴",
+      "hanviet": "PHỐC",
+      "nameVi": "Phốc",
+      "meaning": "Strike",
+      "strokeCount": 4,
+      "jlpt": "N5"
+    },
+    {
+      "symbol": "文",
+      "hanviet": "VĂN",
+      "nameVi": "Văn",
+      "meaning": "Text",
+      "strokeCount": 4,
+      "jlpt": "N5"
+    },
+    {
+      "symbol": "斗",
+      "hanviet": "ĐẨU",
+      "nameVi": "Đẩu",
+      "meaning": "Ladle",
+      "strokeCount": 4,
+      "jlpt": "N5"
+    },
+    {
+      "symbol": "斤",
+      "hanviet": "CÂN",
+      "nameVi": "Cân",
+      "meaning": "Axe",
+      "strokeCount": 4,
+      "jlpt": "N5"
+    },
+    {
+      "symbol": "方",
+      "hanviet": "PHƯƠNG",
+      "nameVi": "Phương",
+      "meaning": "Direction",
+      "strokeCount": 4,
+      "jlpt": "N5"
+    },
+    {
+      "symbol": "无",
+      "hanviet": "VÔ",
+      "nameVi": "Vô",
+      "meaning": "None",
+      "strokeCount": 4,
+      "jlpt": "N5"
+    },
+    {
+      "symbol": "日",
+      "hanviet": "NHẬT",
+      "nameVi": "Nhật",
+      "meaning": "Sun",
+      "strokeCount": 4,
+      "jlpt": "N5"
+    },
+    {
+      "symbol": "月",
+      "hanviet": "NGUYỆT",
+      "nameVi": "Nguyệt",
+      "meaning": "Moon",
+      "strokeCount": 4,
+      "jlpt": "N5"
+    },
+    {
+      "symbol": "木",
+      "hanviet": "MỘC",
+      "nameVi": "Mộc",
+      "meaning": "Tree",
+      "strokeCount": 4,
+      "jlpt": "N5"
+    },
+    {
+      "symbol": "欠",
+      "hanviet": "KHIẾU",
+      "nameVi": "Khiếu",
+      "meaning": "Lack",
+      "strokeCount": 4,
+      "jlpt": "N5"
+    },
+    {
+      "symbol": "止",
+      "hanviet": "CHỈ",
+      "nameVi": "Chỉ",
+      "meaning": "Stop",
+      "strokeCount": 4,
+      "jlpt": "N5"
+    },
+    {
+      "symbol": "歹",
+      "hanviet": "NGÃI",
+      "nameVi": "Ngãi",
+      "meaning": "Death",
+      "strokeCount": 4,
+      "jlpt": "N5"
+    },
+    {
+      "symbol": "殳",
+      "hanviet": "THÙ",
+      "nameVi": "Thù",
+      "meaning": "Weapon",
+      "strokeCount": 4,
+      "jlpt": "N5"
+    },
+    {
+      "symbol": "毋",
+      "hanviet": "VÔ",
+      "nameVi": "Vô",
+      "meaning": "Do not",
+      "strokeCount": 4,
+      "jlpt": "N5"
+    },
+    {
+      "symbol": "比",
+      "hanviet": "TỶ",
+      "nameVi": "Tỷ",
+      "meaning": "Compare",
+      "strokeCount": 4,
+      "jlpt": "N5"
+    },
+    {
+      "symbol": "毛",
+      "hanviet": "MAO",
+      "nameVi": "Mao",
+      "meaning": "Fur",
+      "strokeCount": 4,
+      "jlpt": "N5"
+    },
+    {
+      "symbol": "氏",
+      "hanviet": "THỊ",
+      "nameVi": "Thị",
+      "meaning": "Clan",
+      "strokeCount": 4,
+      "jlpt": "N5"
+    },
+    {
+      "symbol": "气",
+      "hanviet": "KHÍ",
+      "nameVi": "Khí",
+      "meaning": "Steam",
+      "strokeCount": 4,
+      "jlpt": "N5"
+    },
+    {
+      "symbol": "水",
+      "hanviet": "THỦY",
+      "nameVi": "Thủy",
+      "meaning": "Water",
+      "strokeCount": 4,
+      "jlpt": "N5"
+    },
+    {
+      "symbol": "火",
+      "hanviet": "HỎA",
+      "nameVi": "Hỏa",
+      "meaning": "Fire",
+      "strokeCount": 4,
+      "jlpt": "N5"
+    },
+    {
+      "symbol": "爪",
+      "hanviet": "TRẢO",
+      "nameVi": "Trảo",
+      "meaning": "Claw",
+      "strokeCount": 4,
+      "jlpt": "N5"
+    },
+    {
+      "symbol": "父",
+      "hanviet": "PHỤ",
+      "nameVi": "Phụ",
+      "meaning": "Father",
+      "strokeCount": 4,
+      "jlpt": "N5"
+    },
+    {
+      "symbol": "爻",
+      "hanviet": "HÀO",
+      "nameVi": "Hào",
+      "meaning": "Lines",
+      "strokeCount": 4,
+      "jlpt": "N5"
+    },
+    {
+      "symbol": "爿",
+      "hanviet": "BÀNG",
+      "nameVi": "Bàng",
+      "meaning": "Bed",
+      "strokeCount": 4,
+      "jlpt": "N5"
+    },
+    {
+      "symbol": "片",
+      "hanviet": "PHIẾN",
+      "nameVi": "Phiến",
+      "meaning": "Slice",
+      "strokeCount": 4,
+      "jlpt": "N5"
+    },
+    {
+      "symbol": "牙",
+      "hanviet": "NHA",
+      "nameVi": "Nha",
+      "meaning": "Fang",
+      "strokeCount": 4,
+      "jlpt": "N5"
+    },
+    {
+      "symbol": "牛",
+      "hanviet": "NGƯU",
+      "nameVi": "Ngưu",
+      "meaning": "Cow",
+      "strokeCount": 4,
+      "jlpt": "N5"
+    },
+    {
+      "symbol": "犬",
+      "hanviet": "KHẢN",
+      "nameVi": "Khản",
+      "meaning": "Dog",
+      "strokeCount": 4,
+      "jlpt": "N5"
+    },
+    {
+      "symbol": "王",
+      "hanviet": "VƯƠNG",
+      "nameVi": "Vương",
+      "meaning": "King",
+      "strokeCount": 4,
+      "jlpt": "N5"
+    },
+    {
+      "symbol": "元",
+      "hanviet": "NGUYÊN",
+      "nameVi": "Nguyên",
+      "meaning": "Origin",
+      "strokeCount": 4,
+      "jlpt": "N5"
+    },
+    {
+      "symbol": "天",
+      "hanviet": "THIÊN",
+      "nameVi": "Thiên",
+      "meaning": "Heaven",
+      "strokeCount": 4,
+      "jlpt": "N5"
+    },
+    {
+      "symbol": "夫",
+      "hanviet": "PHU",
+      "nameVi": "Phu",
+      "meaning": "Husband",
+      "strokeCount": 4,
+      "jlpt": "N5"
+    },
+    {
+      "symbol": "太",
+      "hanviet": "THÁI",
+      "nameVi": "Thái",
+      "meaning": "Fat",
+      "strokeCount": 4,
+      "jlpt": "N5"
+    },
+    {
+      "symbol": "夭",
+      "hanviet": "YÊU",
+      "nameVi": "Yêu",
+      "meaning": "Die young",
+      "strokeCount": 4,
+      "jlpt": "N5"
+    }
+  ]
+}
