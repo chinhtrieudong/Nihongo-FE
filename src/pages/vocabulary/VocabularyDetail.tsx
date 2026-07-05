@@ -551,8 +551,8 @@ const VocabularyDetail: React.FC = () => {
                     >
                       <div className="flex items-start gap-3">
                         {/* Kanji */}
-                        <div className="w-16 min-w-[4rem] text-center flex flex-col items-center">
-                          <div className="text-xl sm:text-2xl font-bold text-text-main kanji-text leading-tight">
+                        <div className="w-auto min-w-[5rem] text-center flex flex-col items-center justify-center">
+                          <div className="text-xl sm:text-2xl font-bold text-text-main kanji-text leading-tight whitespace-nowrap">
                             {item.kanji || item.hiragana}
                           </div>
                           {item.kanji && item.hiragana !== item.kanji && (
