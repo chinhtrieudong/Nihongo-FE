@@ -1,0 +1,66 @@
+{
+  "lessonNumber": 9,
+  "title": "Động từ thể て - Cách chia và ứng dụng cơ bản",
+  "title_jp": "動詞のて形 - 基本的な使い方",
+  "level": "N5",
+  "description": "Cách chia động từ thể て và các cách dùng cơ bản: yêu cầu, nối tiếp.",
+  "grammars": [
+    {
+      "id": "m9_01",
+      "title": "Chia động từ thể て",
+      "pattern": "〜て",
+      "meaning": "thể て (liên kết hành động)",
+      "explanation": "**Cách chia thể て của động từ theo 3 nhóm:**\n\n**Nhóm 1 (Godan):**\n- う、つ、る → って (会う→会って)\n- む、ぶ、ぬ → んで (読む→読んで)\n- く → いて (書く→書いて) \n- ぐ → いで (泳ぐ→泳いで)\n- す → して (話す→話して)\n\n**Nhóm 2 (Ichidan):** bỏ る + て (食べる→食べて)\n\n**Nhóm 3:** する→して, 来る→来て",
+      "structure": "**[Động từ thể て]**",
+      "examples": [
+        {
+          "japanese": "毎日学校に行って、勉強します。",
+          "vietnamese": "Mỗi ngày đến trường rồi học."
+        },
+        {
+          "japanese": "スーパーに行って、買い物をします。",
+          "vietnamese": "Đi siêu thị, tôi mua sắm."
+        }
+      ],
+      "category": "verb_forms"
+    },
+    {
+      "id": "m9_02",
+      "title": "Xin phép - 〜てもいいですか",
+      "pattern": "〜てもいいですか",
+      "meaning": "có thể ~ được không?",
+      "explanation": "**Dùng để xin phép làm gì đó một cách lịch sự.**\n\nĐộng từ thể て + もいいですか.\n\nTrả lời: はい、いいですよ。/ いいえ、だめです。",
+      "structure": "**[Động từ thể て] もいいですか**",
+      "examples": [
+        {
+          "japanese": "ここに座ってもいいですか。",
+          "vietnamese": "Tôi có thể ngồi ở đây không?"
+        },
+        {
+          "japanese": "写真を撮ってもいいですか。",
+          "vietnamese": "Tôi có thể chụp ảnh không?"
+        }
+      ],
+      "category": "verb_forms"
+    },
+    {
+      "id": "m9_03",
+      "title": "Cấm chỉ - 〜てはいけません",
+      "pattern": "〜てはいけません",
+      "meaning": "không được làm ~",
+      "explanation": "**Dùng để diễn tả điều cấm, không được phép làm.**\n\nThường dùng trong nội quy, quy định.\nTrong văn nói thường dùng 〜てはだめです.",
+      "structure": "**[Động từ thể て] はいけません**",
+      "examples": [
+        {
+          "japanese": "ここでタバコを吸ってはいけません。",
+          "vietnamese": "Không được hút thuốc ở đây."
+        },
+        {
+          "japanese": "授業中にスマホを使ってはいけません。",
+          "vietnamese": "Không được dùng điện thoại trong giờ học."
+        }
+      ],
+      "category": "verb_forms"
+    }
+  ]
+}

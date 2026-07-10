@@ -1,0 +1,74 @@
+{
+  "lessonNumber": 10,
+  "title": "Thể て - Diễn tả trạng thái và yêu cầu",
+  "title_jp": "て形 - 状態と依頼",
+  "level": "N5",
+  "description": "Diễn tả trạng thái đang diễn ra (〜ています), kết quả của hành động, và cách yêu cầu (〜てください).",
+  "grammars": [
+    {
+      "id": "m10_01",
+      "title": "Diễn tả hành động đang diễn ra",
+      "pattern": "〜ています",
+      "meaning": "đang làm ~ (tiếp diễn)",
+      "explanation": "**ています dùng để diễn tả hành động đang diễn ra tại thời điểm nói.**\n\nTương tự thì hiện tại tiếp diễn trong tiếng Anh (be ~ing).",
+      "structure": "**[Động từ thể て] います**",
+      "examples": [
+        {
+          "japanese": "今勉強しています。",
+          "vietnamese": "Bây giờ tôi đang học."
+        },
+        {
+          "japanese": "雨が降っています。",
+          "vietnamese": "Trời đang mưa."
+        },
+        {
+          "japanese": "電話で話しています。",
+          "vietnamese": "Tôi đang nói chuyện điện thoại."
+        }
+      ],
+      "category": "verb_forms"
+    },
+    {
+      "id": "m10_02",
+      "title": "Diễn tả trạng thái kết quả",
+      "pattern": "〜ています (trạng thái)",
+      "meaning": "đã ~ rồi (trạng thái kết quả)",
+      "explanation": "**Một số động từ dùng ています để diễn tả trạng thái kết quả của hành động đã hoàn thành.**\n\nVí dụ: 結婚しています (đã kết hôn), 知っています (đã biết).",
+      "structure": "**[Động từ thể て] います**",
+      "examples": [
+        {
+          "japanese": "結婚しています。",
+          "vietnamese": "Tôi đã kết hôn."
+        },
+        {
+          "japanese": "京都に住んでいます。",
+          "vietnamese": "Tôi đang sống ở Kyoto."
+        }
+      ],
+      "category": "verb_forms"
+    },
+    {
+      "id": "m10_03",
+      "title": "Yêu cầu lịch sự - 〜てください",
+      "pattern": "〜てください",
+      "meaning": "hãy làm ~ / vui lòng làm ~",
+      "explanation": "**Dùng để yêu cầu ai đó làm gì một cách lịch sự.**\n\nĐộng từ thể て + ください.\n\nCó thể dùng 〜ないでください cho yêu cầu phủ định (xin đừng làm).",
+      "structure": "**[Động từ thể て] ください**\n**[Động từ thể ないで] ください (phủ định)**",
+      "examples": [
+        {
+          "japanese": "名前を書いてください。",
+          "vietnamese": "Hãy viết tên vào."
+        },
+        {
+          "japanese": "ここで待ってください。",
+          "vietnamese": "Vui lòng đợi ở đây."
+        },
+        {
+          "japanese": "タバコを吸わないでください。",
+          "vietnamese": "Xin đừng hút thuốc."
+        }
+      ],
+      "category": "verb_forms"
+    }
+  ]
+}

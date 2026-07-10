@@ -1,0 +1,74 @@
+{
+  "lessonNumber": 25,
+  "title": "Cách nói ý định và kế hoạch - つもり・予定",
+  "title_jp": "意志と計画 - つもり・予定",
+  "level": "N5",
+  "description": "Cách diễn tả ý định, kế hoạch và dự định trong tương lai.",
+  "grammars": [
+    {
+      "id": "m25_01",
+      "title": "Dự định làm - 〜つもりです",
+      "pattern": "〜つもりです",
+      "meaning": "dự định làm ~",
+      "explanation": "**Diễn tả ý định hoặc dự định của người nói.**\n\nDùng với thể từ điển của động từ.\nDạng phủ định: thể ない + つもりです (dự định không làm).\n\nKhông dùng cho ngôi thứ 3.",
+      "structure": "**[Động từ thể từ điển] つもりです**\n**[Động từ thể ない] つもりです (dự định không làm)**",
+      "examples": [
+        {
+          "japanese": "日本に行くつもりです。",
+          "vietnamese": "Tôi dự định đi Nhật."
+        },
+        {
+          "japanese": "タバコをやめるつもりです。",
+          "vietnamese": "Tôi dự định bỏ thuốc lá."
+        },
+        {
+          "japanese": "結婚しないつもりです。",
+          "vietnamese": "Tôi dự định không kết hôn."
+        }
+      ],
+      "category": "expressions"
+    },
+    {
+      "id": "m25_02",
+      "title": "Kế hoạch - 〜予定です",
+      "pattern": "〜予定です",
+      "meaning": "có kế hoạch làm ~",
+      "explanation": "**予定 (よてい) là danh từ \"kế hoạch, dự định\".**\n\nKhác với つもり (ý định chủ quan), 予定 thường dùng cho kế hoạch cụ thể đã được sắp xếp.\n\nDùng với thể từ điển + 予定です hoặc danh từ + の予定です.",
+      "structure": "**[Động từ thể từ điển] 予定です**\n**[Danh từ] の予定です**",
+      "examples": [
+        {
+          "japanese": "来月日本へ行く予定です。",
+          "vietnamese": "Tôi có kế hoạch đi Nhật vào tháng sau."
+        },
+        {
+          "japanese": "試験は来週の予定です。",
+          "vietnamese": "Kỳ thi dự kiến vào tuần sau."
+        }
+      ],
+      "category": "expressions"
+    },
+    {
+      "id": "m25_03",
+      "title": "Động từ ý chí - 〜ましょう",
+      "pattern": "〜ましょう",
+      "meaning": "hãy cùng ~ nào / tôi sẽ ~",
+      "explanation": "**ましょう có 3 cách dùng chính:**\n\n1. Rủ rê: Hãy cùng làm ~ (Ví dụ: 行きましょう)\n2. Tự nguyện: Để tôi làm ~ (Ví dụ: 手伝いましょう)\n3. Câu hỏi đề nghị: Chúng ta ~ nhé? (Ví dụ: 食べましょうか)\n\nDạng phủ định: 〜ましょうか (hỏi ý kiến).",
+      "structure": "**[Thân động từ] + ましょう**",
+      "examples": [
+        {
+          "japanese": "一緒に行きましょう。",
+          "vietnamese": "Cùng đi nào."
+        },
+        {
+          "japanese": "そろそろ帰りましょう。",
+          "vietnamese": "Chúng ta về thôi nhỉ."
+        },
+        {
+          "japanese": "手伝いましょうか。",
+          "vietnamese": "Để tôi giúp nhé?"
+        }
+      ],
+      "category": "verb_forms"
+    }
+  ]
+}

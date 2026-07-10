@@ -2,7 +2,6 @@ import React, { useState, useMemo } from 'react';
 import {
   Card,
   Typography,
-  Space,
   Tag,
   Row,
   Col,
@@ -12,45 +11,11 @@ import {
 import type { SelectProps } from 'antd';
 import { Book, CheckCircle } from 'lucide-react';
 import { EmptyState, SearchFilter } from "../../components/common";
-import fakeGrammarData from "../../data/fakeGrammarData.json";
+import { lessons, categories, levels } from "../../data/grammar";
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 
 const { Text, Paragraph } = Typography;
-
-interface GrammarExample {
-  japanese: string;
-  vietnamese: string;
-}
-
-interface GrammarItem {
-  id: string;
-  title: string;
-  pattern: string;
-  meaning: string;
-  explanation: string;
-  structure: string;
-  examples: GrammarExample[];
-  notes?: string;
-  category: string;
-}
-
-interface Lesson {
-  lessonNumber: number;
-  title: string;
-  title_jp: string;
-  level: string;
-  description: string;
-  grammars: GrammarItem[];
-}
-
-interface GrammarData {
-  lessons: Lesson[];
-  categories: { value: string; label: string }[];
-  levels: string[];
-}
-
-const grammarData = fakeGrammarData as GrammarData;
 
 const Grammar: React.FC = () => {
   const [selectedLevel, setSelectedLevel] = useState<string[]>(['N5']);
@@ -60,42 +25,42 @@ const Grammar: React.FC = () => {
 
   // Filter lessons based on level, category, and search query
   const filteredLessons = useMemo(() => {
-    let lessons = grammarData.lessons;
+    let result = lessons;
 
     // Filter by level
     if (selectedLevel.length > 0) {
-      lessons = lessons.filter(lesson => selectedLevel.includes(lesson.level));
+      result = result.filter((lesson: any) => selectedLevel.includes(lesson.level));
     }
 
     // Filter by category
     if (selectedCategory.length > 0) {
-      lessons = lessons
-        .map(lesson => ({
+      result = result
+        .map((lesson: any) => ({
           ...lesson,
-          grammars: lesson.grammars.filter(grammar =>
-            selectedCategory.includes(grammar.category)
+          grammars: lesson.grammars.filter((g: any) =>
+            selectedCategory.includes(g.category)
           ),
         }))
-        .filter(lesson => lesson.grammars.length > 0);
+        .filter((lesson: any) => lesson.grammars.length > 0);
     }
 
     // Filter by search query
     if (searchQuery.trim()) {
       const q = searchQuery.toLowerCase().trim();
-      lessons = lessons
-        .map(lesson => ({
+      result = result
+        .map((lesson: any) => ({
           ...lesson,
-          grammars: lesson.grammars.filter(grammar =>
-            grammar.pattern.toLowerCase().includes(q) ||
-            grammar.meaning.toLowerCase().includes(q) ||
-            grammar.explanation.toLowerCase().includes(q) ||
-            grammar.title.toLowerCase().includes(q)
+          grammars: lesson.grammars.filter((g: any) =>
+            g.pattern.toLowerCase().includes(q) ||
+            g.meaning.toLowerCase().includes(q) ||
+            g.explanation.toLowerCase().includes(q) ||
+            g.title.toLowerCase().includes(q)
           ),
         }))
-        .filter(lesson => lesson.grammars.length > 0);
+        .filter((lesson: any) => lesson.grammars.length > 0);
     }
 
-    return lessons;
+    return result;
   }, [selectedLevel, selectedCategory, searchQuery]);
 
   const handleSearch = (value: string) => {
@@ -109,9 +74,6 @@ const Grammar: React.FC = () => {
   const handleCategoryChange = (categories: string[]) => {
     setSelectedCategory(categories || []);
   };
-
-  const categories = grammarData.categories || [];
-  const levels = grammarData.levels || ['N5', 'N4', 'N3', 'N2', 'N1'];
 
   const getLevelColor = (level: string) => {
     const colors: { [key: string]: string } = {
@@ -184,14 +146,13 @@ const Grammar: React.FC = () => {
 
   // Filter lessons by selected lesson number
   const displayLessons = selectedLesson
-    ? filteredLessons.filter(lesson => lesson.lessonNumber === selectedLesson)
+    ? filteredLessons.filter((lesson: any) => lesson.lessonNumber === selectedLesson)
     : filteredLessons;
 
-  const totalGrammars = displayLessons.reduce((sum, lesson) => sum + lesson.grammars.length, 0);
+  const totalGrammars = (displayLessons as any[]).reduce((sum, lesson) => sum + lesson.grammars.length, 0);
 
   return (
     <div className="grammar-page min-h-full bg-gradient-to-br from-slate-50 to-slate-100 dark:from-slate-900 dark:to-slate-800" style={{ fontSize: '18px' }}>
-      {/* Desktop Layout */}
       <div className="max-w-7xl mx-auto p-4 md:p-8">
         {/* Header Section */}
         <div className="mb-6">
@@ -217,7 +178,7 @@ const Grammar: React.FC = () => {
               onChange: (val) => setSelectedLesson(val && val !== '' ? Number(val) : null),
               options: [
                 { value: '', label: 'Tất cả các bài' },
-                ...(grammarData?.lessons || []).map((lesson) => ({
+                ...(lessons || []).map((lesson: any) => ({
                   value: String(lesson.lessonNumber),
                   label: `Bài ${lesson.lessonNumber}: ${lesson.title}`,
                 })),
@@ -230,7 +191,7 @@ const Grammar: React.FC = () => {
               mode: 'multiple',
               tagRender: renderLevelTag,
               onChange: handleLevelChange,
-              options: levels.map((level) => ({
+              options: levels.map((level: string) => ({
                 value: level,
                 label: <Tag color={getLevelColor(level)} className="m-0">{level}</Tag>,
               })),
@@ -242,7 +203,7 @@ const Grammar: React.FC = () => {
               mode: 'multiple',
               tagRender: renderCategoryTag,
               onChange: handleCategoryChange,
-              options: categories.map((cat) => ({
+              options: categories.map((cat: any) => ({
                 value: cat.value,
                 label: <Tag color={getCategoryColor(cat.value)} className="m-0">{cat.label}</Tag>,
               })),
@@ -281,7 +242,7 @@ const Grammar: React.FC = () => {
 
         {displayLessons.length > 0 ? (
           <div className="space-y-6">
-            {displayLessons.map((lesson) => (
+            {(displayLessons as any[]).map((lesson: any) => (
               <Card
                 key={lesson.lessonNumber}
                 title={
@@ -307,7 +268,7 @@ const Grammar: React.FC = () => {
                 </div>
 
                 <Collapse
-                  items={lesson.grammars.map((grammar) => ({
+                  items={lesson.grammars.map((grammar: any) => ({
                     key: grammar.id,
                     label: (
                       <div className="flex items-center justify-between w-full gap-2 pr-4">
@@ -316,7 +277,7 @@ const Grammar: React.FC = () => {
                             {grammar.pattern}
                           </Text>
                           <Tag color={getCategoryColor(grammar.category)} className="text-xs flex-shrink-0 mt-1 md:mt-0">
-                            {categories.find(c => c.value === grammar.category)?.label || grammar.category}
+                            {categories.find((c: any) => c.value === grammar.category)?.label || grammar.category}
                           </Tag>
                         </div>
                       </div>
@@ -363,7 +324,7 @@ const Grammar: React.FC = () => {
                         <div>
                           <Text strong className="text-base">Ví dụ:</Text>
                           <div className="mt-2">
-                            {grammar.examples.map((example, index) => (
+                            {grammar.examples.map((example: any, index: number) => (
                               <div key={index} className="py-2">
                                 <div className="w-full">
                                   <div className="flex items-center gap-2 mb-1">

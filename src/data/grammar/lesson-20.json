@@ -1,0 +1,32 @@
+{
+  "lessonNumber": 20,
+  "title": "Cách nói thử và trải nghiệm - 〜てみる",
+  "title_jp": "試行と経験 - 〜てみる",
+  "level": "N5",
+  "description": "Cách diễn tả việc thử làm một hành động và các mẫu câu mở rộng.",
+  "grammars": [
+    {
+      "id": "m20_01",
+      "title": "Thử làm - 〜てみる",
+      "pattern": "〜てみます",
+      "meaning": "thử làm ~",
+      "explanation": "**Dùng để diễn tả hành động thử làm một việc gì đó.**\n\nĐộng từ thể て + みる.\nみる (見る) ở đây mang nghĩa \"xem thử\".\n\nQuá khứ: 〜てみました (đã thử làm).",
+      "structure": "**[Động từ thể て] + みます**",
+      "examples": [
+        {
+          "japanese": "この料理を食べてみてください。",
+          "vietnamese": "Hãy thử ăn món này đi."
+        },
+        {
+          "japanese": "着物を着てみました。",
+          "vietnamese": "Tôi đã thử mặc kimono."
+        },
+        {
+          "japanese": "日本語で話してみます。",
+          "vietnamese": "Tôi sẽ thử nói bằng tiếng Nhật."
+        }
+      ],
+      "category": "verb_forms"
+    }
+  ]
+}

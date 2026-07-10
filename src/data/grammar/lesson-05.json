@@ -1,0 +1,78 @@
+{
+  "lessonNumber": 5,
+  "title": "Động từ chỉ sự tồn tại - あります・います",
+  "title_jp": "存在動詞 - あります・います",
+  "level": "N5",
+  "description": "Hai động từ chỉ sự tồn tại: あります (đồ vật) và います (người/động vật).",
+  "grammars": [
+    {
+      "id": "m5_01",
+      "title": "あります - Tồn tại của đồ vật",
+      "pattern": "〜があります",
+      "meaning": "có (đồ vật, cây cối, sự kiện)",
+      "explanation": "**あります dùng cho đồ vật, cây cối, sự kiện không có sự sống.**\n\nChủ ngữ được đánh dấu bằng が.\nĐịa điểm được đánh dấu bằng に.",
+      "structure": "**[Địa điểm] に [Đồ vật] があります**",
+      "examples": [
+        {
+          "japanese": "机の上に本があります。",
+          "vietnamese": "Trên bàn có quyển sách."
+        },
+        {
+          "japanese": "部屋にテレビがあります。",
+          "vietnamese": "Trong phòng có ti vi."
+        },
+        {
+          "japanese": "京都に有名なお寺があります。",
+          "vietnamese": "Ở Kyoto có ngôi chùa nổi tiếng."
+        }
+      ],
+      "category": "existence_verbs"
+    },
+    {
+      "id": "m5_02",
+      "title": "います - Tồn tại của người/vật có sự sống",
+      "pattern": "〜がいます",
+      "meaning": "có (người, động vật)",
+      "explanation": "**います dùng cho người, động vật và những thứ có sự sống.**\n\nCấu trúc tương tự あります.",
+      "structure": "**[Địa điểm] に [Người/Động vật] がいます**",
+      "examples": [
+        {
+          "japanese": "庭に猫がいます。",
+          "vietnamese": "Trong vườn có con mèo."
+        },
+        {
+          "japanese": "学校に先生がいます。",
+          "vietnamese": "Ở trường có giáo viên."
+        },
+        {
+          "japanese": "あそこに田中さんがいます。",
+          "vietnamese": "Ở kia có anh Tanaka."
+        }
+      ],
+      "category": "existence_verbs"
+    },
+    {
+      "id": "m5_03",
+      "title": "Vị trí với 上・下・前・後ろ・中・隣",
+      "pattern": "〜の [Vị trí] に",
+      "meaning": "ở trên/dưới/trước/sau/trong/bên cạnh ~",
+      "explanation": "**Các danh từ chỉ vị trí kết hợp với の:**\n- 上 (うえ): trên\n- 下 (した): dưới\n- 前 (まえ): trước\n- 後ろ (うしろ): sau\n- 中 (なか): trong\n- 隣 (となり): bên cạnh",
+      "structure": "**[Danh từ] の [Vị trí] に [Đồ vật] が あります / います**",
+      "examples": [
+        {
+          "japanese": "机の上に本があります。",
+          "vietnamese": "Trên bàn có quyển sách."
+        },
+        {
+          "japanese": "学校の前に公園があります。",
+          "vietnamese": "Trước trường học có công viên."
+        },
+        {
+          "japanese": "猫は椅子の下にいます。",
+          "vietnamese": "Con mèo ở dưới ghế."
+        }
+      ],
+      "category": "location_words"
+    }
+  ]
+}

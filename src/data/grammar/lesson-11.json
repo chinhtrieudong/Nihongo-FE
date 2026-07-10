@@ -1,0 +1,51 @@
+{
+  "lessonNumber": 11,
+  "title": "Danh từ cách 1 - Thể た và quá khứ kinh nghiệm",
+  "title_jp": "名詞化と経験",
+  "level": "N5",
+  "description": "Cách sử dụng thể た, diễn tả kinh nghiệm và sự thay đổi trạng thái.",
+  "grammars": [
+    {
+      "id": "m11_01",
+      "title": "Kinh nghiệm từng làm - 〜たことがあります",
+      "pattern": "〜たことがあります",
+      "meaning": "đã từng làm ~",
+      "explanation": "**Dùng thể た của động từ + ことがあります để diễn tả kinh nghiệm.**\n\nPhủ định: 〜たことがありません (chưa từng làm).\n\nHỏi: 〜たことがありますか.",
+      "structure": "**[Động từ thể た] ことがあります**",
+      "examples": [
+        {
+          "japanese": "富士山に登ったことがあります。",
+          "vietnamese": "Tôi đã từng leo núi Phú Sĩ."
+        },
+        {
+          "japanese": "すしを食べたことがあります。",
+          "vietnamese": "Tôi đã từng ăn sushi."
+        },
+        {
+          "japanese": "日本へ行ったことがありません。",
+          "vietnamese": "Tôi chưa từng đi Nhật."
+        }
+      ],
+      "category": "expressions"
+    },
+    {
+      "id": "m11_02",
+      "title": "Liệt kê với 〜たり〜たり",
+      "pattern": "〜たり〜たりします",
+      "meaning": "làm những việc như ~, ~",
+      "explanation": "**Dùng để liệt kê các hành động tiêu biểu.**\n\nĐộng từ thể た + り, lặp lại.\nKhông chỉ các hành động cụ thể mà chỉ những ví dụ tiêu biểu.",
+      "structure": "**[Động từ thể た] り、[Động từ thể た] りします**",
+      "examples": [
+        {
+          "japanese": "日曜日は本を読んだり、映画を見たりします。",
+          "vietnamese": "Chủ nhật tôi đọc sách, xem phim v.v."
+        },
+        {
+          "japanese": "休みの日は散歩したり、買い物に行ったりします。",
+          "vietnamese": "Ngày nghỉ tôi đi dạo, đi mua sắm v.v."
+        }
+      ],
+      "category": "verb_forms"
+    }
+  ]
+}

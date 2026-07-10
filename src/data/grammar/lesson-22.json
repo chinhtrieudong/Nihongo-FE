@@ -1,0 +1,66 @@
+{
+  "lessonNumber": 22,
+  "title": "Cách nối tính từ và danh từ",
+  "title_jp": "形容詞と名詞の接続",
+  "level": "N5",
+  "description": "Cách nối nhiều tính từ và nhiều danh từ trong cùng một câu.",
+  "grammars": [
+    {
+      "id": "m22_01",
+      "title": "Nối tính từ い - 〜くて",
+      "pattern": "〜くて、〜",
+      "meaning": "vừa ~ lại vừa ~ (tính từ い)",
+      "explanation": "**Bỏ い của tính từ đuôi い và thêm くて để nối nhiều tính từ.**\n\nCó thể nối 2 hoặc nhiều tính từ với nhau.",
+      "structure": "**[Tính từ い (bỏ い) + くて]、[Tính từ い / Mệnh đề]**",
+      "examples": [
+        {
+          "japanese": "この本は安くて面白いです。",
+          "vietnamese": "Quyển sách này vừa rẻ vừa thú vị."
+        },
+        {
+          "japanese": "京都は静かで美しいです。",
+          "vietnamese": "Kyoto vừa yên tĩnh vừa đẹp."
+        }
+      ],
+      "category": "adjectives"
+    },
+    {
+      "id": "m22_02",
+      "title": "Nối tính từ な - 〜で",
+      "pattern": "〜で、〜",
+      "meaning": "vừa ~ lại vừa ~ (tính từ な)",
+      "explanation": "**Thêm で vào sau tính từ đuôi な (bỏ な) để nối nhiều tính từ.**",
+      "structure": "**[Tính từ な (bỏ な) + で]、[Tính từ / Mệnh đề]**",
+      "examples": [
+        {
+          "japanese": "この町は賑やかで便利です。",
+          "vietnamese": "Thị trấn này vừa nhộn nhịp vừa tiện lợi."
+        },
+        {
+          "japanese": "彼女はきれいで親切です。",
+          "vietnamese": "Cô ấy vừa xinh đẹp vừa tốt bụng."
+        }
+      ],
+      "category": "adjectives"
+    },
+    {
+      "id": "m22_03",
+      "title": "Nối danh từ - 〜と〜",
+      "pattern": "〜と〜",
+      "meaning": "và (nối danh từ)",
+      "explanation": "**Dùng と để nối nhiều danh từ với nhau.**\n\nKhác với や, と liệt kê tất cả các danh từ (không bỏ sót).",
+      "structure": "**[Danh từ 1] と [Danh từ 2]**",
+      "examples": [
+        {
+          "japanese": "机の上に本と鉛筆があります。",
+          "vietnamese": "Trên bàn có sách và bút chì."
+        },
+        {
+          "japanese": "コーヒーとケーキをください。",
+          "vietnamese": "Làm ơn cho tôi cà phê và bánh."
+        }
+      ],
+      "category": "conjunctions"
+    }
+  ]
+}

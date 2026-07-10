@@ -1,0 +1,51 @@
+{
+  "lessonNumber": 17,
+  "title": "Trạng từ và tần suất",
+  "title_jp": "副詞と頻度",
+  "level": "N5",
+  "description": "Các trạng từ chỉ tần suất và mức độ: いつも, よく, ときどき, あまり, ぜんぜん.",
+  "grammars": [
+    {
+      "id": "m17_01",
+      "title": "Trạng từ tần suất",
+      "pattern": "いつも / よく / ときどき / あまり / ぜんぜん",
+      "meaning": "luôn luôn / thường hay / thỉnh thoảng / không thường / hoàn toàn không",
+      "explanation": "**Các trạng từ chỉ tần suất đặt trước động từ:**\n\n- **いつも**: 100% (luôn luôn)\n- **よく**: thường hay\n- **ときどき**: thỉnh thoảng\n- **あまり〜ない**: không thường (dùng với phủ định)\n- **ぜんぜん〜ない**: hoàn toàn không (dùng với phủ định)",
+      "structure": "**[Trạng từ] [Động từ]**",
+      "examples": [
+        {
+          "japanese": "いつも7時に起きます。",
+          "vietnamese": "Tôi luôn thức dậy lúc 7 giờ."
+        },
+        {
+          "japanese": "よく映画を見ます。",
+          "vietnamese": "Tôi thường xem phim."
+        },
+        {
+          "japanese": "あまりコーヒーを飲みません。",
+          "vietnamese": "Tôi không thường uống cà phê."
+        }
+      ],
+      "category": "time"
+    },
+    {
+      "id": "m17_02",
+      "title": "Trạng từ chỉ mức độ",
+      "pattern": "とても / すごく / ちょっと / あまり",
+      "meaning": "rất / cực kỳ / một chút / không ~ lắm",
+      "explanation": "**Các trạng từ chỉ mức độ đặt trước tính từ:**\n- **とても**: rất\n- **すごく**: cực kỳ\n- **ちょっと**: một chút\n- **あまり〜ない**: không ~ lắm",
+      "structure": "**[Trạng từ] [Tính từ] です**",
+      "examples": [
+        {
+          "japanese": "この本はとても面白いです。",
+          "vietnamese": "Quyển sách này rất thú vị."
+        },
+        {
+          "japanese": "この料理はあまり辛くないです。",
+          "vietnamese": "Món này không cay lắm."
+        }
+      ],
+      "category": "adjectives"
+    }
+  ]
+}

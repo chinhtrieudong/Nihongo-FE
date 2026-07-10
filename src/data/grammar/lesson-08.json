@@ -1,0 +1,68 @@
+{
+  "lessonNumber": 8,
+  "title": "Cách nói thời gian và ngày tháng",
+  "title_jp": "時間と日付の言い方",
+  "level": "N5",
+  "description": "Cách nói giờ, ngày, tháng, tuần và các từ chỉ thời gian trong tiếng Nhật.",
+  "grammars": [
+    {
+      "id": "m8_01",
+      "title": "Cách nói giờ - 時・分",
+      "pattern": "〜時〜分です",
+      "meaning": "bây giờ là ~ giờ ~ phút",
+      "explanation": "**Cách nói giờ trong tiếng Nhật.**\nSố đếm + 時 (giờ) + 分 (phút).\n\nChú ý cách đọc đặc biệt: 4時 (よじ), 7時 (しちじ), 9時 (くじ).",
+      "structure": "**[Số] 時 [Số] 分です**",
+      "examples": [
+        {
+          "japanese": "今は3時です。",
+          "vietnamese": "Bây giờ là 3 giờ."
+        },
+        {
+          "japanese": "7時30分に起きます。",
+          "vietnamese": "Tôi thức dậy lúc 7 giờ 30."
+        }
+      ],
+      "notes": "Cách đọc đặc biệt: 4時 (よじ), 7時 (しちじ), 9時 (くじ). 1分 (いっぷん), 3分 (さんぷん), 4分 (よんぷん), 6分 (ろっぷん).",
+      "category": "time_telling"
+    },
+    {
+      "id": "m8_02",
+      "title": "Ngày trong tháng",
+      "pattern": "〜日",
+      "meaning": "ngày ~",
+      "explanation": "**Cách đọc ngày trong tháng có một số ngoại lệ.**\n\nNgày 1-10 có cách đọc đặc biệt, từ 11 trở đi đọc theo số đếm + 日.",
+      "structure": "**[Số] 日**",
+      "examples": [
+        {
+          "japanese": "今日は4月1日です。",
+          "vietnamese": "Hôm nay là ngày 1 tháng 4."
+        },
+        {
+          "japanese": "3月15日に日本に行きます。",
+          "vietnamese": "Ngày 15 tháng 3 tôi đi Nhật."
+        }
+      ],
+      "notes": "Ngày 1: ついたち, 2: ふつか, 3: みっか, 4: よっか, 5: いつか, 6: むいか, 7: なのか, 8: ようか, 9: ここのか, 10: とおか.",
+      "category": "dates"
+    },
+    {
+      "id": "m8_03",
+      "title": "Từ chỉ thời gian: 今週・来週・先週",
+      "pattern": "今週 / 来週 / 先週",
+      "meaning": "tuần này / tuần sau / tuần trước",
+      "explanation": "**Các từ chỉ thời gian tương đối không dùng に.**\n- 今日 (きょう): hôm nay\n- 明日 (あした): ngày mai\n- 昨日 (きのう): hôm qua\n- 今週 (こんしゅう): tuần này\n- 来週 (らいしゅう): tuần sau\n- 先週 (せんしゅう): tuần trước\n- 毎日 (まいにち): mỗi ngày",
+      "structure": "**[Từ chỉ thời gian] [Động từ]** (không dùng に)",
+      "examples": [
+        {
+          "japanese": "明日学校へ行きます。",
+          "vietnamese": "Ngày mai tôi đi học."
+        },
+        {
+          "japanese": "毎日勉強します。",
+          "vietnamese": "Mỗi ngày tôi học."
+        }
+      ],
+      "category": "time"
+    }
+  ]
+}

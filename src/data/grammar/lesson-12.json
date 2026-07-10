@@ -1,0 +1,66 @@
+{
+  "lessonNumber": 12,
+  "title": "So sánh và hơn nhất",
+  "title_jp": "比較と最上級",
+  "level": "N5",
+  "description": "Cách so sánh hai đối tượng và so sánh hơn nhất trong tiếng Nhật.",
+  "grammars": [
+    {
+      "id": "m12_01",
+      "title": "So sánh hơn - 〜より〜のほうが",
+      "pattern": "〜より〜のほうが〜です",
+      "meaning": "~ hơn ~",
+      "explanation": "**Cấu trúc so sánh hơn của tính từ.**\n\nより đánh dấu đối tượng được so sánh.\nのほうが đánh dấu đối tượng vượt trội.",
+      "structure": "**[A] より [B] のほうが [Tính từ] です**\n→ B hơn A",
+      "examples": [
+        {
+          "japanese": "東京より大阪のほうが安いです。",
+          "vietnamese": "Osaka rẻ hơn Tokyo."
+        },
+        {
+          "japanese": "日本語より英語のほうが難しいです。",
+          "vietnamese": "Tiếng Anh khó hơn tiếng Nhật."
+        }
+      ],
+      "category": "comparison"
+    },
+    {
+      "id": "m12_02",
+      "title": "So sánh bằng - 〜と同じです",
+      "pattern": "〜と同じです",
+      "meaning": "giống với ~",
+      "explanation": "**Cấu trúc so sánh bằng, diễn tả hai đối tượng giống nhau.**",
+      "structure": "**[A] は [B] と同じです**",
+      "examples": [
+        {
+          "japanese": "私のカバンはあなたのと同じです。",
+          "vietnamese": "Cặp của tôi giống với cặp của bạn."
+        },
+        {
+          "japanese": "これはそれと同じですか。",
+          "vietnamese": "Cái này có giống cái đó không?"
+        }
+      ],
+      "category": "comparison"
+    },
+    {
+      "id": "m12_03",
+      "title": "So sánh hơn nhất - 〜で一番〜",
+      "pattern": "〜で一番〜",
+      "meaning": "nhất (trong nhóm)",
+      "explanation": "**Cấu trúc so sánh hơn nhất.**\n\n一番 (いちばん) có nghĩa là \"nhất\".\nDùng で để chỉ phạm vi của nhóm so sánh.",
+      "structure": "**[Phạm vi] で 一番 [Tính từ] です**",
+      "examples": [
+        {
+          "japanese": "日本で一番高い山は富士山です。",
+          "vietnamese": "Ngọn núi cao nhất Nhật Bản là núi Phú Sĩ."
+        },
+        {
+          "japanese": "クラスで一番背が高い人は誰ですか。",
+          "vietnamese": "Người cao nhất trong lớp là ai?"
+        }
+      ],
+      "category": "comparison"
+    }
+  ]
+}

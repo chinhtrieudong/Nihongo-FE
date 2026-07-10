@@ -1,0 +1,66 @@
+{
+  "lessonNumber": 19,
+  "title": "Cách nói đưa và nhận - あげる・くれる・もらう",
+  "title_jp": "授受表現 - あげる・くれる・もらう",
+  "level": "N5",
+  "description": "Ba động từ đưa và nhận trong tiếng Nhật: あげる (cho), くれる (cho tôi), もらう (nhận).",
+  "grammars": [
+    {
+      "id": "m19_01",
+      "title": "あげる - Cho (người khác)",
+      "pattern": "〜に〜をあげる",
+      "meaning": "cho ai đó cái gì",
+      "explanation": "**あげる dùng khi người nói cho ai đó (hoặc người trong nhóm mình cho người ngoài) vật gì.**\n\nHành động cho đi từ trong ra ngoài.",
+      "structure": "**[Người cho] は [Người nhận] に [Vật] をあげます**",
+      "examples": [
+        {
+          "japanese": "友達にプレゼントをあげます。",
+          "vietnamese": "Tôi tặng quà cho bạn."
+        },
+        {
+          "japanese": "先生に花をあげました。",
+          "vietnamese": "Tôi đã tặng hoa cho thầy."
+        }
+      ],
+      "category": "expressions"
+    },
+    {
+      "id": "m19_02",
+      "title": "くれる - Cho tôi",
+      "pattern": "〜が〜をくれる",
+      "meaning": "ai đó cho tôi cái gì",
+      "explanation": "**くれる dùng khi người khác cho người nói (hoặc người trong nhóm mình) vật gì.**\n\nHành động cho đi từ ngoài vào trong.",
+      "structure": "**[Người cho] は [Người nhận (tôi)] に [Vật] をくれます**",
+      "examples": [
+        {
+          "japanese": "母は本をくれました。",
+          "vietnamese": "Mẹ đã cho tôi quyển sách."
+        },
+        {
+          "japanese": "友達がチョコレートをくれました。",
+          "vietnamese": "Bạn đã cho tôi sô-cô-la."
+        }
+      ],
+      "category": "expressions"
+    },
+    {
+      "id": "m19_03",
+      "title": "もらう - Nhận",
+      "pattern": "〜に〜をもらう",
+      "meaning": "nhận từ ai đó cái gì",
+      "explanation": "**もらう dùng khi người nói nhận vật gì từ người khác.**\n\nNhấn mạnh hành động nhận của người nói.",
+      "structure": "**[Người nhận] は [Người cho] に [Vật] をもらいます**",
+      "examples": [
+        {
+          "japanese": "先生に本をもらいました。",
+          "vietnamese": "Tôi đã nhận sách từ thầy giáo."
+        },
+        {
+          "japanese": "友達にペンをもらいました。",
+          "vietnamese": "Tôi đã nhận bút từ bạn."
+        }
+      ],
+      "category": "expressions"
+    }
+  ]
+}

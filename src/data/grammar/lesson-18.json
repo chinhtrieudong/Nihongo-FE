@@ -1,0 +1,32 @@
+{
+  "lessonNumber": 18,
+  "title": "Danh từ hóa và cách nói 〜の",
+  "title_jp": "名詞化と「の」",
+  "level": "N5",
+  "description": "Cách dùng の để thay thế danh từ và danh từ hóa mệnh đề.",
+  "grammars": [
+    {
+      "id": "m18_01",
+      "title": "の thay thế danh từ",
+      "pattern": "〜のは / のが / のを",
+      "meaning": "việc ~ (danh từ hóa)",
+      "explanation": "**の có thể thay thế danh từ đã được nhắc đến trước đó, tránh lặp từ.**\n\nCũng có thể danh từ hóa một mệnh đề, biến động từ thành danh từ.",
+      "structure": "**[Tính từ] + の (thay thế danh từ)**\n**[Động từ thể thường] + の (danh từ hóa)**",
+      "examples": [
+        {
+          "japanese": "これは私のです。",
+          "vietnamese": "Cái này là của tôi."
+        },
+        {
+          "japanese": "本を読むのが好きです。",
+          "vietnamese": "Tôi thích việc đọc sách."
+        },
+        {
+          "japanese": "料理をすることが好きです。",
+          "vietnamese": "Tôi thích việc nấu ăn."
+        }
+      ],
+      "category": "expressions"
+    }
+  ]
+}

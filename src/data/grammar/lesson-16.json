@@ -1,0 +1,85 @@
+{
+  "lessonNumber": 16,
+  "title": "Từ nối và liệt kê",
+  "title_jp": "接続詞と列挙",
+  "level": "N5",
+  "description": "Các từ nối cơ bản: そして (và), それから (sau đó), でも (nhưng), だから (vì vậy), または (hoặc).",
+  "grammars": [
+    {
+      "id": "m16_01",
+      "title": "Từ nối そして - Và",
+      "pattern": "〜。そして、〜。",
+      "meaning": "và / và rồi",
+      "explanation": "**そして dùng để nối hai câu hoặc hai sự việc có liên quan với nhau.**\n\nThường dùng khi liệt kê thêm thông tin hoặc hành động nối tiếp.",
+      "structure": "**[Câu 1]。そして、[Câu 2]。**",
+      "examples": [
+        {
+          "japanese": "図書館へ行きます。そして、本を借ります。",
+          "vietnamese": "Tôi đến thư viện. Và tôi mượn sách."
+        },
+        {
+          "japanese": "母は優しいです。そして、料理が上手です。",
+          "vietnamese": "Mẹ tôi hiền lành. Và nấu ăn ngon."
+        }
+      ],
+      "category": "conjunctions"
+    },
+    {
+      "id": "m16_02",
+      "title": "Từ nối それから - Sau đó",
+      "pattern": "〜。それから、〜。",
+      "meaning": "sau đó",
+      "explanation": "**それから dùng để diễn tả hành động xảy ra tiếp theo sau hành động trước.**\n\nNhấn mạnh thứ tự thời gian.",
+      "structure": "**[Câu 1]。それから、[Câu 2]。**",
+      "examples": [
+        {
+          "japanese": "勉強します。それから、テレビを見ます。",
+          "vietnamese": "Tôi học. Sau đó, tôi xem TV."
+        },
+        {
+          "japanese": "スーパーへ行きます。それから、家へ帰ります。",
+          "vietnamese": "Tôi đi siêu thị. Sau đó, tôi về nhà."
+        }
+      ],
+      "category": "conjunctions"
+    },
+    {
+      "id": "m16_03",
+      "title": "Từ nối でも - Nhưng",
+      "pattern": "〜。でも、〜。",
+      "meaning": "nhưng",
+      "explanation": "**でも dùng để diễn tả sự đối lập hoặc tương phản giữa hai mệnh đề.**\n\nTương tự \"but\" trong tiếng Anh.",
+      "structure": "**[Câu 1]。でも、[Câu 2]。**",
+      "examples": [
+        {
+          "japanese": "日本語は難しいです。でも、面白いです。",
+          "vietnamese": "Tiếng Nhật khó. Nhưng thú vị."
+        },
+        {
+          "japanese": "昨日は雨でした。でも、出かけました。",
+          "vietnamese": "Hôm qua trời mưa. Nhưng tôi đã ra ngoài."
+        }
+      ],
+      "category": "conjunctions"
+    },
+    {
+      "id": "m16_04",
+      "title": "Từ nối だから - Vì vậy",
+      "pattern": "〜。だから、〜。",
+      "meaning": "vì vậy / cho nên",
+      "explanation": "**だから dùng để diễn tả kết quả hoặc lý do.**\n\nMệnh đề trước là nguyên nhân, mệnh đề sau là kết quả.",
+      "structure": "**[Nguyên nhân]。だから、[Kết quả]。**",
+      "examples": [
+        {
+          "japanese": "明日はテストです。だから、勉強します。",
+          "vietnamese": "Ngày mai có bài kiểm tra. Vì vậy, tôi sẽ học."
+        },
+        {
+          "japanese": "安いです。だから、買います。",
+          "vietnamese": "Nó rẻ. Vì vậy, tôi sẽ mua."
+        }
+      ],
+      "category": "conjunctions"
+    }
+  ]
+}

@@ -1,0 +1,93 @@
+{
+  "lessonNumber": 2,
+  "title": "Câu hỏi dùng 誰・何・どこ・いつ",
+  "title_jp": "疑問詞の質問",
+  "level": "N5",
+  "description": "Các từ để hỏi cơ bản: これ・それ・あれ, この・その・あの, ここ・そこ・あそこ.",
+  "grammars": [
+    {
+      "id": "m2_01",
+      "title": "Đây/Đó/Kia - これ・それ・あれ",
+      "pattern": "これ / それ / あれ",
+      "meaning": "đây / đó / kia",
+      "explanation": "**Ba đại từ chỉ vật:**\n- **これ**: vật gần người nói (đây)\n- **それ**: vật gần người nghe (đó)\n- **あれ**: vật xa cả hai người (kia)",
+      "structure": "**これ / それ / あれ は [Danh từ] です**",
+      "examples": [
+        {
+          "japanese": "これは本です。",
+          "vietnamese": "Đây là quyển sách."
+        },
+        {
+          "japanese": "それは鉛筆ですか。",
+          "vietnamese": "Đó có phải là bút chì không?"
+        },
+        {
+          "japanese": "あれは車です。",
+          "vietnamese": "Kia là xe hơi."
+        }
+      ],
+      "category": "demonstratives"
+    },
+    {
+      "id": "m2_02",
+      "title": "Danh từ này/đó/kia - この・その・あの",
+      "pattern": "この / その / あの + [Danh từ]",
+      "meaning": "danh từ này / đó / kia",
+      "explanation": "**Ba từ chỉ định bổ nghĩa danh từ:**\n- **この**: danh từ gần người nói\n- **その**: danh từ gần người nghe\n- **あの**: danh từ xa cả hai",
+      "structure": "**この / その / あの [Danh từ] は [Mô tả] です**",
+      "examples": [
+        {
+          "japanese": "この本は私の本です。",
+          "vietnamese": "Quyển sách này là sách của tôi."
+        },
+        {
+          "japanese": "その鉛筆は誰のですか。",
+          "vietnamese": "Cây bút chì đó của ai vậy?"
+        }
+      ],
+      "category": "demonstratives"
+    },
+    {
+      "id": "m2_03",
+      "title": "Ở đây/đó/kia - ここ・そこ・あそこ",
+      "pattern": "ここ / そこ / あそこ",
+      "meaning": "ở đây / ở đó / ở kia",
+      "explanation": "**Ba đại từ chỉ địa điểm:**\n- **ここ**: nơi gần người nói (ở đây)\n- **そこ**: nơi gần người nghe (ở đó)\n- **あそこ**: nơi xa cả hai (ở kia)",
+      "structure": "**[Địa điểm] は ここ / そこ / あそこ です**",
+      "examples": [
+        {
+          "japanese": "トイレはあそこです。",
+          "vietnamese": "Nhà vệ sinh ở kia."
+        },
+        {
+          "japanese": "ここは学校です。",
+          "vietnamese": "Ở đây là trường học."
+        }
+      ],
+      "category": "location_words"
+    },
+    {
+      "id": "m2_04",
+      "title": "Ai / Cái gì / Ở đâu - 誰・何・どこ",
+      "pattern": "誰 / 何 / どこ",
+      "meaning": "ai / cái gì / ở đâu",
+      "explanation": "**Các từ để hỏi cơ bản:**\n- **誰 (だれ)**: hỏi người (ai)\n- **何 (なん/なに)**: hỏi vật (cái gì)\n- **どこ**: hỏi địa điểm (ở đâu)\n\nTrong câu thường dùng trợ từ が với các từ để hỏi này.",
+      "structure": "**[Chủ đề] は 誰 / 何 / どこ ですか**",
+      "examples": [
+        {
+          "japanese": "あの人は誰ですか。",
+          "vietnamese": "Người kia là ai?"
+        },
+        {
+          "japanese": "これは何ですか。",
+          "vietnamese": "Đây là cái gì?"
+        },
+        {
+          "japanese": "トイレはどこですか。",
+          "vietnamese": "Nhà vệ sinh ở đâu?"
+        }
+      ],
+      "category": "questions"
+    }
+  ]
+}

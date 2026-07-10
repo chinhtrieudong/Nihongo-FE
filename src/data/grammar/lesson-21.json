@@ -1,0 +1,51 @@
+{
+  "lessonNumber": 21,
+  "title": "Cách nói 〜と思う và dẫn lời",
+  "title_jp": "引用と意見 - 〜と思う",
+  "level": "N5",
+  "description": "Cách diễn tả suy nghĩ (〜と思う) và dẫn lời nói.",
+  "grammars": [
+    {
+      "id": "m21_01",
+      "title": "Tôi nghĩ rằng - 〜と思います",
+      "pattern": "〜と思います",
+      "meaning": "tôi nghĩ rằng ~",
+      "explanation": "**Dùng để diễn tả suy nghĩ, ý kiến của người nói.**\n\nと là trợ từ trích dẫn.\n思います là động từ \"nghĩ\".\n\nKhi chủ ngữ là ngôi thứ 3, dùng と思っています.",
+      "structure": "**[Câu thể thường] と思います**",
+      "examples": [
+        {
+          "japanese": "明日は晴れると思います。",
+          "vietnamese": "Tôi nghĩ ngày mai trời sẽ nắng."
+        },
+        {
+          "japanese": "日本語は難しいと思います。",
+          "vietnamese": "Tôi nghĩ tiếng Nhật khó."
+        },
+        {
+          "japanese": "彼は来ないと思います。",
+          "vietnamese": "Tôi nghĩ anh ấy sẽ không đến."
+        }
+      ],
+      "category": "expressions"
+    },
+    {
+      "id": "m21_02",
+      "title": "Dẫn lời nói - 〜と言いました",
+      "pattern": "〜と言いました",
+      "meaning": "đã nói rằng ~",
+      "explanation": "**Dùng để dẫn lại lời nói của ai đó.**\n\nと là trợ từ trích dẫn lời nói/suy nghĩ.\n言いました là \"đã nói\".",
+      "structure": "**[Người nói] は [Nội dung] と言いました**",
+      "examples": [
+        {
+          "japanese": "田中さんは明日来ると言いました。",
+          "vietnamese": "Anh Tanaka nói ngày mai sẽ đến."
+        },
+        {
+          "japanese": "先生は試験は簡単だと言いました。",
+          "vietnamese": "Thầy giáo nói bài thi dễ."
+        }
+      ],
+      "category": "expressions"
+    }
+  ]
+}

@@ -1,0 +1,89 @@
+{
+  "lessonNumber": 3,
+  "title": "Động từ - Thể ます",
+  "title_jp": "動詞 - ます形",
+  "level": "N5",
+  "description": "Cách chia động từ thể ます (lịch sự) và các dạng phủ định, quá khứ.",
+  "grammars": [
+    {
+      "id": "m3_01",
+      "title": "Thể ます - Khẳng định hiện tại/tương lai",
+      "pattern": "〜ます",
+      "meaning": "làm ~ (thể lịch sự, hiện tại/tương lai)",
+      "explanation": "**ます là đuôi động từ thể lịch sự.**\n\nDùng trong giao tiếp hàng ngày với người không thân thiết hoặc trong môi trường trang trọng.\n\nĐộng từ có 3 nhóm (nhóm 1: godan, nhóm 2: ichidan, nhóm 3: bất quy tắc).",
+      "structure": "**[Động từ thể từ điển] → [Thân động từ] + ます**\nNhóm 1: 書く → 書きます\nNhóm 2: 食べる → 食べます\nNhóm 3: する → します, 来る → 来ます",
+      "examples": [
+        {
+          "japanese": "毎日勉強します。",
+          "vietnamese": "Mỗi ngày tôi đều học."
+        },
+        {
+          "japanese": "明日学校に行きます。",
+          "vietnamese": "Ngày mai tôi đi học."
+        },
+        {
+          "japanese": "ご飯を食べます。",
+          "vietnamese": "Tôi ăn cơm."
+        }
+      ],
+      "category": "verb_forms"
+    },
+    {
+      "id": "m3_02",
+      "title": "Thể ました - Quá khứ",
+      "pattern": "〜ました",
+      "meaning": "đã làm ~ (quá khứ lịch sự)",
+      "explanation": "**ました là dạng quá khứ của ます.**\n\nDùng để diễn tả hành động đã xảy ra và kết thúc trong quá khứ.",
+      "structure": "**[Thân động từ] + ました**",
+      "examples": [
+        {
+          "japanese": "昨日勉強しました。",
+          "vietnamese": "Hôm qua tôi đã học."
+        },
+        {
+          "japanese": "先週映画を見ました。",
+          "vietnamese": "Tuần trước tôi đã xem phim."
+        }
+      ],
+      "category": "verb_forms"
+    },
+    {
+      "id": "m3_03",
+      "title": "Thể ません - Phủ định hiện tại",
+      "pattern": "〜ません",
+      "meaning": "không làm ~ (phủ định lịch sự)",
+      "explanation": "**ません là dạng phủ định của ます.**\n\nDùng để diễn tả hành động không xảy ra hoặc sẽ không xảy ra.",
+      "structure": "**[Thân động từ] + ません**",
+      "examples": [
+        {
+          "japanese": "今日は勉強しません。",
+          "vietnamese": "Hôm nay tôi không học."
+        },
+        {
+          "japanese": "タバコを吸いません。",
+          "vietnamese": "Tôi không hút thuốc."
+        }
+      ],
+      "category": "negative_form"
+    },
+    {
+      "id": "m3_04",
+      "title": "Thể ませんでした - Phủ định quá khứ",
+      "pattern": "〜ませんでした",
+      "meaning": "đã không làm ~",
+      "explanation": "**ませんでした là dạng phủ định quá khứ của ます.**\n\nDùng để diễn tả hành động đã không xảy ra trong quá khứ.",
+      "structure": "**[Thân động từ] + ませんでした**",
+      "examples": [
+        {
+          "japanese": "昨日勉強しませんでした。",
+          "vietnamese": "Hôm qua tôi đã không học."
+        },
+        {
+          "japanese": "朝ご飯を食べませんでした。",
+          "vietnamese": "Tôi đã không ăn sáng."
+        }
+      ],
+      "category": "negative_form"
+    }
+  ]
+}

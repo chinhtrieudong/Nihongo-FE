@@ -1,0 +1,32 @@
+{
+  "lessonNumber": 24,
+  "title": "Cách nói 〜んです / 〜のです",
+  "title_jp": "説明の表現 - 〜んです",
+  "level": "N5",
+  "description": "Cách dùng 〜んです để giải thích, nhấn mạnh lý do hoặc tình huống.",
+  "grammars": [
+    {
+      "id": "m24_01",
+      "title": "Giải thích với 〜んです",
+      "pattern": "〜んです",
+      "meaning": "là vì... / thực ra là... (giải thích)",
+      "explanation": "**〜んです (〜のです trong văn viết) dùng để:**\n\n1. Giải thích lý do hoặc nguyên nhân\n2. Nhấn mạnh thông tin\n3. Mở đầu câu chuyện\n\nTrong câu hỏi, 〜んですか hỏi về lý do một cách lịch sự hơn.",
+      "structure": "**[Câu thể thường] + んです**\n**[Câu thể thường] + んですか (câu hỏi)**\n\nLưu ý với な-adj và noun: thêm な vào trước んです (〜なんです).",
+      "examples": [
+        {
+          "japanese": "頭が痛いんです。",
+          "vietnamese": "Thực ra tôi bị đau đầu."
+        },
+        {
+          "japanese": "どうして遅刻したんですか。",
+          "vietnamese": "Tại sao bạn đến trễ vậy?"
+        },
+        {
+          "japanese": "約束があるんです。",
+          "vietnamese": "Vì tôi có hẹn."
+        }
+      ],
+      "category": "expressions"
+    }
+  ]
+}

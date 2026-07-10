@@ -1,0 +1,51 @@
+{
+  "lessonNumber": 23,
+  "title": "Cách nói 〜のとき và thời điểm",
+  "title_jp": "時を表す表現 - 〜とき",
+  "level": "N5",
+  "description": "Cách diễn tả thời điểm thực hiện hành động (〜とき).",
+  "grammars": [
+    {
+      "id": "m23_01",
+      "title": "Khi làm gì - 〜とき",
+      "pattern": "〜とき、〜",
+      "meaning": "khi ~, thì ~",
+      "explanation": "**Dùng để diễn tả thời điểm hoặc tình huống xảy ra hành động.**\n\nNếu hành động trong とき chưa xảy ra: dùng thể từ điển.\nNếu đã xảy ra: dùng thể た.",
+      "structure": "**[Động từ/Tính từ thể thường] とき、[Mệnh đề chính]**\n**[Danh từ] の とき、[Mệnh đề chính]**",
+      "examples": [
+        {
+          "japanese": "子供のとき、日本に住んでいました。",
+          "vietnamese": "Khi còn nhỏ, tôi đã sống ở Nhật."
+        },
+        {
+          "japanese": "駅に着いたとき、電話します。",
+          "vietnamese": "Khi đến ga, tôi sẽ gọi điện."
+        },
+        {
+          "japanese": "暇なとき、本を読みます。",
+          "vietnamese": "Khi rảnh, tôi đọc sách."
+        }
+      ],
+      "category": "time"
+    },
+    {
+      "id": "m23_02",
+      "title": "Trước khi / Sau khi",
+      "pattern": "〜前に / 〜後で",
+      "meaning": "trước khi / sau khi",
+      "explanation": "**前に và 後で dùng để diễn tả thứ tự hành động.**\n- **前に**: trước khi (dùng thể từ điển)\n- **後で**: sau khi (dùng thể た)",
+      "structure": "**[Động từ thể từ điển] 前に、[Hành động]**\n**[Động từ thể た] 後で、[Hành động]**",
+      "examples": [
+        {
+          "japanese": "食べる前に、手を洗います。",
+          "vietnamese": "Trước khi ăn, tôi rửa tay."
+        },
+        {
+          "japanese": "勉強した後で、テレビを見ます。",
+          "vietnamese": "Sau khi học xong, tôi xem TV."
+        }
+      ],
+      "category": "time"
+    }
+  ]
+}

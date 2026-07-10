@@ -1,0 +1,90 @@
+{
+  "lessonNumber": 4,
+  "title": "Trợ từ を・で・に・へ",
+  "title_jp": "助詞 を・で・に・へ",
+  "level": "N5",
+  "description": "Các trợ từ quan trọng: を (tân ngữ), で (nơi hành động), に (thời gian/địa điểm), へ (hướng).",
+  "grammars": [
+    {
+      "id": "m4_01",
+      "title": "Trợ từ を - Tân ngữ",
+      "pattern": "〜を〜ます",
+      "meaning": "làm gì đó với đối tượng",
+      "explanation": "**を là trợ từ đánh dấu tân ngữ trực tiếp của động từ.**\n\nDùng khi hành động tác động trực tiếp lên một đối tượng nào đó.",
+      "structure": "**[Tân ngữ] を [Động từ]**",
+      "examples": [
+        {
+          "japanese": "ご飯を食べます。",
+          "vietnamese": "Tôi ăn cơm."
+        },
+        {
+          "japanese": "日本語を勉強します。",
+          "vietnamese": "Tôi học tiếng Nhật."
+        },
+        {
+          "japanese": "映画を見ます。",
+          "vietnamese": "Tôi xem phim."
+        }
+      ],
+      "category": "basic_sentence_structure"
+    },
+    {
+      "id": "m4_02",
+      "title": "Trợ từ で - Nơi hành động",
+      "pattern": "〜で〜ます",
+      "meaning": "tại (nơi diễn ra hành động)",
+      "explanation": "**で là trợ từ chỉ nơi diễn ra hành động.**\n\nKhác với に (điểm đến/tồn tại), で chỉ nơi hành động xảy ra.",
+      "structure": "**[Nơi chốn] で [Động từ hành động]**",
+      "examples": [
+        {
+          "japanese": "図書館で勉強します。",
+          "vietnamese": "Tôi học ở thư viện."
+        },
+        {
+          "japanese": "レストランで食べます。",
+          "vietnamese": "Tôi ăn ở nhà hàng."
+        }
+      ],
+      "category": "location_sentences"
+    },
+    {
+      "id": "m4_03",
+      "title": "Trợ từ に - Thời gian cụ thể",
+      "pattern": "〜に [Thời gian]",
+      "meaning": "vào lúc (thời gian cụ thể)",
+      "explanation": "**に là trợ từ chỉ thời điểm cụ thể.**\n\nDùng với thời gian có chứa số (giờ, ngày, tháng).\nKhông dùng với thời gian tương đối như 今日, 明日, 毎日.",
+      "structure": "**[Thời gian cụ thể] に [Động từ]**",
+      "examples": [
+        {
+          "japanese": "7時に起きます。",
+          "vietnamese": "Tôi thức dậy lúc 7 giờ."
+        },
+        {
+          "japanese": "4月に日本に行きます。",
+          "vietnamese": "Tháng 4 tôi đi Nhật."
+        }
+      ],
+      "notes": "Không dùng に với 今日, 明日, 毎日, 今週, 来年...",
+      "category": "time"
+    },
+    {
+      "id": "m4_04",
+      "title": "Trợ từ へ - Hướng di chuyển",
+      "pattern": "〜へ行きます / 来ます",
+      "meaning": "đi/đến ~ (hướng di chuyển)",
+      "explanation": "**へ chỉ hướng di chuyển.**\n\nĐọc là \"e\", dùng với động từ chỉ sự di chuyển như 行きます、来ます、帰ります.\n\nCó thể thay thế bằng に trong nhiều trường hợp.",
+      "structure": "**[Địa điểm] へ [Động từ di chuyển]**",
+      "examples": [
+        {
+          "japanese": "日本へ行きます。",
+          "vietnamese": "Tôi đi Nhật Bản."
+        },
+        {
+          "japanese": "家へ帰ります。",
+          "vietnamese": "Tôi về nhà."
+        }
+      ],
+      "category": "direction_words"
+    }
+  ]
+}

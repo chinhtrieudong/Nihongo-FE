@@ -1,0 +1,93 @@
+{
+  "lessonNumber": 7,
+  "title": "Trợ từ と・から・まで・で (phương tiện)",
+  "title_jp": "助詞 と・から・まで・で",
+  "level": "N5",
+  "description": "Trợ từ: と (cùng với), から (từ), まで (đến), で (phương tiện/công cụ).",
+  "grammars": [
+    {
+      "id": "m7_01",
+      "title": "Trợ từ と - Cùng với ai đó",
+      "pattern": "〜と〜ます",
+      "meaning": "làm gì với ai đó",
+      "explanation": "**と là trợ từ chỉ sự cùng nhau thực hiện hành động.**\n\nNối hai danh từ chỉ người hoặc vật cùng tham gia hành động.",
+      "structure": "**[Người] と [Động từ]**",
+      "examples": [
+        {
+          "japanese": "友達と映画を見ます。",
+          "vietnamese": "Tôi xem phim với bạn."
+        },
+        {
+          "japanese": "家族と住んでいます。",
+          "vietnamese": "Tôi sống với gia đình."
+        },
+        {
+          "japanese": "誰と日本へ行きますか。",
+          "vietnamese": "Bạn đi Nhật với ai?"
+        }
+      ],
+      "category": "conjunctions"
+    },
+    {
+      "id": "m7_02",
+      "title": "Trợ từ から - Điểm bắt đầu",
+      "pattern": "〜から〜",
+      "meaning": "từ (nơi bắt đầu/thời gian bắt đầu)",
+      "explanation": "**から chỉ điểm bắt đầu về không gian hoặc thời gian.**\n\nTương tự \"from\" trong tiếng Anh.",
+      "structure": "**[Điểm bắt đầu] から [Điểm kết thúc] まで**",
+      "examples": [
+        {
+          "japanese": "9時から5時まで働きます。",
+          "vietnamese": "Tôi làm việc từ 9 giờ đến 5 giờ."
+        },
+        {
+          "japanese": "日本から来ました。",
+          "vietnamese": "Tôi đến từ Nhật Bản."
+        }
+      ],
+      "category": "time"
+    },
+    {
+      "id": "m7_03",
+      "title": "Trợ từ まで - Điểm kết thúc",
+      "pattern": "〜まで〜",
+      "meaning": "đến (điểm kết thúc)",
+      "explanation": "**まで chỉ điểm kết thúc về không gian hoặc thời gian.**\n\nTương tự \"until/to\" trong tiếng Anh.",
+      "structure": "**[Điểm bắt đầu] から [Điểm kết thúc] まで**",
+      "examples": [
+        {
+          "japanese": "駅まで歩きます。",
+          "vietnamese": "Tôi đi bộ đến ga."
+        },
+        {
+          "japanese": "12時まで勉強します。",
+          "vietnamese": "Tôi học đến 12 giờ."
+        }
+      ],
+      "category": "time"
+    },
+    {
+      "id": "m7_04",
+      "title": "Trợ từ で - Phương tiện/công cụ",
+      "pattern": "〜で〜ます",
+      "meaning": "bằng (phương tiện/công cụ)",
+      "explanation": "**で còn có nghĩa là phương tiện hoặc công cụ.**\n\nDùng để chỉ phương tiện giao thông, ngôn ngữ, hoặc công cụ thực hiện hành động.",
+      "structure": "**[Phương tiện/Công cụ] で [Động từ]**",
+      "examples": [
+        {
+          "japanese": "バスで学校へ行きます。",
+          "vietnamese": "Tôi đi học bằng xe buýt."
+        },
+        {
+          "japanese": "日本語で話します。",
+          "vietnamese": "Tôi nói bằng tiếng Nhật."
+        },
+        {
+          "japanese": "鉛筆で書きます。",
+          "vietnamese": "Tôi viết bằng bút chì."
+        }
+      ],
+      "category": "basic_sentence_structure"
+    }
+  ]
+}
