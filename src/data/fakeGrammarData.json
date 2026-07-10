@@ -1,0 +1,791 @@
+{
+  "lessons": [
+    {
+      "lessonNumber": 1,
+      "title": "Giới thiệu cơ bản",
+      "title_jp": "基本紹介",
+      "level": "N5",
+      "description": "Các mẫu ngữ pháp cơ bản nhất trong tiếng Nhật, giúp bạn xây dựng câu đơn giản.",
+      "grammars": [
+        {
+          "id": "n5_001",
+          "title": "Cấu trúc A là B",
+          "pattern": "〜は〜です",
+          "meaning": "A là B",
+          "explanation": "**Cấu trúc câu cơ bản nhất trong tiếng Nhật.**\n\n- **は** là trợ từ đánh dấu chủ đề của câu.\n- **です** là trợ động từ thể lịch sự, có nghĩa \"thì/là\".\n\nDùng để giới thiệu hoặc miêu tả một người/vật.",
+          "structure": "**[Chủ đề] は [Danh từ] です**",
+          "examples": [
+            { "japanese": "私は学生です。", "vietnamese": "Tôi là học sinh." },
+            { "japanese": "これは本です。", "vietnamese": "Đây là quyển sách." },
+            { "japanese": "田中さんは先生です。", "vietnamese": "Anh Tanaka là giáo viên." }
+          ],
+          "notes": "Không dùng は sau chủ ngữ trong câu hỏi đơn giản.",
+          "category": "basic_sentence_structure"
+        },
+        {
+          "id": "n5_002",
+          "title": "Câu hỏi nghi vấn",
+          "pattern": "〜は〜ですか",
+          "meaning": "A có phải là B không?",
+          "explanation": "**Thêm か vào cuối câu để tạo câu hỏi.**\n\n- か là trợ từ nghi vấn đặt cuối câu.\n- Không cần thay đổi trật tự từ trong câu.",
+          "structure": "**[Chủ đề] は [Danh từ] ですか**",
+          "examples": [
+            { "japanese": "あなたは学生ですか。", "vietnamese": "Bạn có phải là học sinh không?" },
+            { "japanese": "これは本ですか。", "vietnamese": "Đây có phải là quyển sách không?" }
+          ],
+          "notes": "Trong văn nói thân mật có thể bỏ です và chỉ dùng か.",
+          "category": "questions"
+        },
+        {
+          "id": "n5_003",
+          "title": "Trợ từ sở hữu の",
+          "pattern": "〜の〜",
+          "meaning": "của (sở hữu)",
+          "explanation": "**の là trợ từ sở hữu, nối hai danh từ.**\n\nDanh từ đứng trước の bổ nghĩa cho danh từ đứng sau, chỉ sự sở hữu hoặc liên quan.",
+          "structure": "**[Danh từ 1] の [Danh từ 2]**",
+          "examples": [
+            { "japanese": "私の本です。", "vietnamese": "Quyển sách của tôi." },
+            { "japanese": "学校の先生です。", "vietnamese": "Giáo viên của trường." }
+          ],
+          "notes": "Có thể dùng の để thay thế danh từ đã được nhắc đến trước đó.",
+          "category": "possessive"
+        },
+        {
+          "id": "n5_004",
+          "title": "Trợ từ chỉ đối tượng を",
+          "pattern": "〜を〜ます",
+          "meaning": "làm gì đó (với đối tượng)",
+          "explanation": "**を là trợ từ đánh dấu tân ngữ trực tiếp của động từ.**\n\nDùng khi hành động tác động trực tiếp lên một đối tượng nào đó.",
+          "structure": "**[Tân ngữ] を [Động từ thể ます]**",
+          "examples": [
+            { "japanese": "ご飯を食べます。", "vietnamese": "Tôi ăn cơm." },
+            { "japanese": "日本語を勉強します。", "vietnamese": "Tôi học tiếng Nhật." }
+          ],
+          "category": "basic_sentence_structure"
+        },
+        {
+          "id": "n5_005",
+          "title": "Trợ từ chỉ thời gian/địa điểm に",
+          "pattern": "〜に〜ます",
+          "meaning": "vào/tại (thời gian/địa điểm)",
+          "explanation": "**に là trợ từ chỉ thời điểm hoặc địa điểm tồn tại.**\n\nDùng với thời gian cụ thể (giờ, ngày, tháng) hoặc địa điểm với động từ chỉ sự tồn tại (います/あります).",
+          "structure": "**[Thời gian/Địa điểm] に [Động từ]**",
+          "examples": [
+            { "japanese": "7時に起きます。", "vietnamese": "Tôi thức dậy lúc 7 giờ." },
+            { "japanese": "学校にいます。", "vietnamese": "Tôi ở trường." }
+          ],
+          "notes": "Không dùng に với thời gian tương đối như 今日, 明日, 毎日.",
+          "category": "time"
+        },
+        {
+          "id": "n5_006",
+          "title": "Trợ từ chỉ nơi hành động で",
+          "pattern": "〜で〜ます",
+          "meaning": "tại (nơi diễn ra hành động)",
+          "explanation": "**で là trợ từ chỉ nơi diễn ra hành động.**\n\nKhác với に (điểm đến/tồn tại), で chỉ nơi hành động xảy ra.",
+          "structure": "**[Nơi chốn] で [Động từ hành động]**",
+          "examples": [
+            { "japanese": "図書館で勉強します。", "vietnamese": "Tôi học ở thư viện." },
+            { "japanese": "レストランで食べます。", "vietnamese": "Tôi ăn ở nhà hàng." }
+          ],
+          "category": "basic_sentence_structure"
+        }
+      ]
+    },
+    {
+      "lessonNumber": 2,
+      "title": "Tính từ và miêu tả",
+      "title_jp": "形容詞と説明",
+      "level": "N5",
+      "description": "Cách sử dụng tính từ để miêu tả người, vật và sự việc.",
+      "grammars": [
+        {
+          "id": "n5_007",
+          "title": "Tính từ đuôi い",
+          "pattern": "〜いです",
+          "meaning": "tính từ đuôi い (thì/là)",
+          "explanation": "**Tính từ đuôi い (い-adj) kết thúc bằng い.**\n\nCó thể đứng trước danh từ để bổ nghĩa hoặc đứng cuối câu với です.",
+          "structure": "**[Tính từ い] + です**\n**[Tính từ い] + [Danh từ]**",
+          "examples": [
+            { "japanese": "この本は面白いです。", "vietnamese": "Quyển sách này thú vị." },
+            { "japanese": "高いビルです。", "vietnamese": "Tòa nhà cao." }
+          ],
+          "notes": "Khi bổ nghĩa cho danh từ, không cần thêm な.",
+          "category": "adjectives"
+        },
+        {
+          "id": "n5_008",
+          "title": "Tính từ đuôi な",
+          "pattern": "〜な〜です",
+          "meaning": "tính từ đuôi な (thì/là)",
+          "explanation": "**Tính từ đuôi な (な-adj) cần thêm な khi bổ nghĩa danh từ.**\n\nKhi đứng cuối câu, dùng です trực tiếp (không cần な).",
+          "structure": "**[Tính từ な] + な + [Danh từ]**\n**[Tính từ な] + です**",
+          "examples": [
+            { "japanese": "静かな部屋です。", "vietnamese": "Căn phòng yên tĩnh." },
+            { "japanese": "この町は賑やかです。", "vietnamese": "Thị trấn này nhộn nhịp." }
+          ],
+          "category": "adjectives"
+        },
+        {
+          "id": "n5_009",
+          "title": "Phủ định của tính từ",
+          "pattern": "〜くない / 〜ではありません",
+          "meaning": "không (phủ định tính từ)",
+          "explanation": "**Phủ định của tính từ:**\n\n- **い-adj**: Bỏ い thêm くない\n- **な-adj**: Thêm ではありません hoặc じゃないです",
+          "structure": "**[い-adj] → bỏ い + くないです**\n**[な-adj] + ではありません**",
+          "examples": [
+            { "japanese": "この本は高くないです。", "vietnamese": "Quyển sách này không đắt." },
+            { "japanese": "ここは静かではありません。", "vietnamese": "Ở đây không yên tĩnh." }
+          ],
+          "category": "negative_form"
+        }
+      ]
+    },
+    {
+      "lessonNumber": 3,
+      "title": "Động từ và thời",
+      "title_jp": "動詞と時制",
+      "level": "N5",
+      "description": "Cách chia động từ ở các thì khác nhau.",
+      "grammars": [
+        {
+          "id": "n5_010",
+          "title": "Thể ます (hiện tại/tương lai)",
+          "pattern": "〜ます",
+          "meaning": "làm (thể lịch sự, hiện tại/tương lai)",
+          "explanation": "**ます là đuôi động từ thể lịch sự.**\n\nDùng trong giao tiếp hàng ngày với người không thân thiết hoặc trong môi trường trang trọng.",
+          "structure": "**[Động từ thể từ điển] → [Thân động từ] + ます**",
+          "examples": [
+            { "japanese": "毎日勉強します。", "vietnamese": "Mỗi ngày tôi đều học." },
+            { "japanese": "明日学校に行きます。", "vietnamese": "Ngày mai tôi đi học." }
+          ],
+          "category": "basic_sentence_structure"
+        },
+        {
+          "id": "n5_011",
+          "title": "Thể ました (quá khứ)",
+          "pattern": "〜ました",
+          "meaning": "đã làm (quá khứ lịch sự)",
+          "explanation": "**ました là dạng quá khứ của ます.**\n\nDùng để diễn tả hành động đã xảy ra và kết thúc trong quá khứ.",
+          "structure": "**[Thân động từ] + ました**",
+          "examples": [
+            { "japanese": "昨日勉強しました。", "vietnamese": "Hôm qua tôi đã học." },
+            { "japanese": "先週映画を見ました。", "vietnamese": "Tuần trước tôi đã xem phim." }
+          ],
+          "category": "basic_sentence_structure"
+        },
+        {
+          "id": "n5_012",
+          "title": "Thể ません (phủ định)",
+          "pattern": "〜ません",
+          "meaning": "không làm (phủ định lịch sự)",
+          "explanation": "**ません là dạng phủ định của ます.**\n\nDùng để diễn tả hành động không xảy ra hoặc sẽ không xảy ra.",
+          "structure": "**[Thân động từ] + ません**",
+          "examples": [
+            { "japanese": "今日は勉強しません。", "vietnamese": "Hôm nay tôi không học." },
+            { "japanese": "タバコを吸いません。", "vietnamese": "Tôi không hút thuốc." }
+          ],
+          "category": "negative_form"
+        }
+      ]
+    },
+    {
+      "lessonNumber": 4,
+      "title": "Trợ từ cơ bản",
+      "title_jp": "基本助詞",
+      "level": "N5",
+      "description": "Các trợ từ quan trọng trong tiếng Nhật.",
+      "grammars": [
+        {
+          "id": "n5_013",
+          "title": "Trợ từ へ (hướng)",
+          "pattern": "〜へ行きます",
+          "meaning": "đi về hướng nào đó",
+          "explanation": "**へ chỉ hướng di chuyển.**\n\nĐọc là \"e\", dùng với động từ chỉ sự di chuyển như 行きます.",
+          "structure": "**[Địa điểm] へ [Động từ di chuyển]**",
+          "examples": [
+            { "japanese": "日本へ行きます。", "vietnamese": "Tôi đi Nhật Bản." },
+            { "japanese": "駅へ向かいます。", "vietnamese": "Tôi đi về phía ga." }
+          ],
+          "category": "direction_words"
+        },
+        {
+          "id": "n5_014",
+          "title": "Trợ từ と (cùng với)",
+          "pattern": "〜と〜",
+          "meaning": "với/cùng với",
+          "explanation": "**と là trợ từ chỉ sự cùng nhau thực hiện hành động.**\n\nNối hai danh từ chỉ người hoặc vật cùng tham gia hành động.",
+          "structure": "**[Người/Vật] と [Động từ]**",
+          "examples": [
+            { "japanese": "友達と映画を見ます。", "vietnamese": "Tôi xem phim với bạn." },
+            { "japanese": "家族と住んでいます。", "vietnamese": "Tôi sống với gia đình." }
+          ],
+          "category": "conjunctions"
+        },
+        {
+          "id": "n5_015",
+          "title": "Trợ từ から (từ)",
+          "pattern": "〜から〜",
+          "meaning": "từ (nơi bắt đầu/thời gian bắt đầu)",
+          "explanation": "**から chỉ điểm bắt đầu về không gian hoặc thời gian.**\n\nTương tự \"from\" trong tiếng Anh.",
+          "structure": "**[Điểm bắt đầu] から [Điểm kết thúc] まで**",
+          "examples": [
+            { "japanese": "9時から5時まで働きます。", "vietnamese": "Tôi làm việc từ 9 giờ đến 5 giờ." },
+            { "japanese": "日本から来ました。", "vietnamese": "Tôi đến từ Nhật Bản." }
+          ],
+          "category": "time"
+        }
+      ]
+    },
+    {
+      "lessonNumber": 5,
+      "title": "Động từ chỉ sự tồn tại",
+      "title_jp": "存在動詞",
+      "level": "N5",
+      "description": "Cách diễn tả sự tồn tại của người, động vật và đồ vật.",
+      "grammars": [
+        {
+          "id": "n5_016",
+          "title": "あります (tồn tại đồ vật)",
+          "pattern": "〜があります",
+          "meaning": "có (đồ vật, cây cối)",
+          "explanation": "**あります dùng cho đồ vật, cây cối, sự kiện không có sự sống.**\n\nChủ ngữ thường được đánh dấu bằng が.",
+          "structure": "**[Địa điểm] に [Đồ vật] があります**",
+          "examples": [
+            { "japanese": "机の上に本があります。", "vietnamese": "Trên bàn có quyển sách." },
+            { "japanese": "部屋にテレビがあります。", "vietnamese": "Trong phòng có ti vi." }
+          ],
+          "category": "existence_verbs"
+        },
+        {
+          "id": "n5_017",
+          "title": "います (tồn tại người/vật có sự sống)",
+          "pattern": "〜がいます",
+          "meaning": "có (người, động vật)",
+          "explanation": "**います dùng cho người, động vật và những thứ có sự sống.**",
+          "structure": "**[Địa điểm] に [Người/Động vật] がいます**",
+          "examples": [
+            { "japanese": "庭に猫がいます。", "vietnamese": "Trong vườn có con mèo." },
+            { "japanese": "学校に先生がいます。", "vietnamese": "Ở trường có giáo viên." }
+          ],
+          "category": "existence_verbs"
+        }
+      ]
+    },
+    {
+      "lessonNumber": 6,
+      "title": "Cách nói thời gian và ngày tháng",
+      "title_jp": "時間と日付の言い方",
+      "level": "N5",
+      "description": "Cách diễn đạt thời gian, ngày tháng trong tiếng Nhật.",
+      "grammars": [
+        {
+          "id": "n5_018",
+          "title": "Cách nói giờ",
+          "pattern": "〜時〜分です",
+          "meaning": "bây giờ là ~ giờ ~ phút",
+          "explanation": "**Cách nói giờ trong tiếng Nhật.**\n\nSố đếm + 時 (giờ) + 分 (phút).",
+          "structure": "**[Số] 時 [Số] 分です**",
+          "examples": [
+            { "japanese": "今は3時です。", "vietnamese": "Bây giờ là 3 giờ." },
+            { "japanese": "7時30分に起きます。", "vietnamese": "Tôi thức dậy lúc 7 giờ 30." }
+          ],
+          "notes": "Chú ý cách đọc đặc biệt: 4時 (よじ), 7時 (しちじ), 9時 (くじ).",
+          "category": "time_telling"
+        },
+        {
+          "id": "n5_019",
+          "title": "Ngày trong tháng",
+          "pattern": "〜日",
+          "meaning": "ngày ~",
+          "explanation": "**Cách đọc ngày trong tháng có một số ngoại lệ.**\n\nNgày 1-10 có cách đọc đặc biệt, từ 11 trở đi đọc theo số đếm + 日.",
+          "structure": "**[Số] 日**",
+          "examples": [
+            { "japanese": "今日は4月1日です。", "vietnamese": "Hôm nay là ngày 1 tháng 4." },
+            { "japanese": "3月15日に日本に行きます。", "vietnamese": "Ngày 15 tháng 3 tôi đi Nhật." }
+          ],
+          "notes": "Ngày 1: ついたち, 2: ふつか, 3: みっか, 4: よっか, 5: いつか, 6: むいか, 7: なのか, 8: ようか, 9: ここのか, 10: とおか.",
+          "category": "dates"
+        }
+      ]
+    },
+    {
+      "lessonNumber": 7,
+      "title": "Thể て và các ứng dụng",
+      "title_jp": "て形とその応用",
+      "level": "N4",
+      "description": "Thể て của động từ và các cấu trúc ngữ pháp quan trọng sử dụng thể て.",
+      "grammars": [
+        {
+          "id": "n4_001",
+          "title": "Thể て (liệt kê, nối tiếp)",
+          "pattern": "〜て、〜",
+          "meaning": "làm ~ (rồi) làm ~",
+          "explanation": "**Thể て dùng để nối các hành động liên tiếp theo thứ tự thời gian.**\n\nCó thể nối nhiều hành động trong cùng một câu.",
+          "structure": "**[Động từ thể て] + [Động từ]**",
+          "examples": [
+            { "japanese": "朝起きて、歯を磨きます。", "vietnamese": "Sáng dậy, tôi đánh răng." },
+            { "japanese": "スーパーに行って、買い物をします。", "vietnamese": "Đi siêu thị, tôi mua sắm." }
+          ],
+          "category": "verb_forms"
+        },
+        {
+          "id": "n4_002",
+          "title": "Xin phép bằng thể て",
+          "pattern": "〜てもいいですか",
+          "meaning": "có thể ~ được không? (xin phép)",
+          "explanation": "**Dùng để xin phép làm gì đó một cách lịch sự.**",
+          "structure": "**[Động từ thể て] もいいですか**",
+          "examples": [
+            { "japanese": "ここに座ってもいいですか。", "vietnamese": "Tôi có thể ngồi ở đây không?" },
+            { "japanese": "写真を撮ってもいいですか。", "vietnamese": "Tôi có thể chụp ảnh không?" }
+          ],
+          "category": "verb_forms"
+        },
+        {
+          "id": "n4_003",
+          "title": "Cấm chỉ bằng thể て",
+          "pattern": "〜てはいけません",
+          "meaning": "không được làm ~",
+          "explanation": "**Dùng để diễn tả điều cấm, không được phép làm.**\n\nThường dùng trong nội quy, quy định.",
+          "structure": "**[Động từ thể て] はいけません**",
+          "examples": [
+            { "japanese": "ここでタバコを吸ってはいけません。", "vietnamese": "Không được hút thuốc ở đây." },
+            { "japanese": "授業中にスマホを使ってはいけません。", "vietnamese": "Không được dùng điện thoại trong giờ học." }
+          ],
+          "category": "verb_forms"
+        },
+        {
+          "id": "n4_004",
+          "title": "Diễn tả trạng thái",
+          "pattern": "〜ています",
+          "meaning": "đang làm ~ (tiếp diễn)/đã ~ rồi (trạng thái)",
+          "explanation": "**ています có hai nghĩa chính:**\n\n1. Hành động đang diễn ra (hiện tại tiếp diễn)\n2. Trạng thái kết quả của hành động đã hoàn thành",
+          "structure": "**[Động từ thể て] います**",
+          "examples": [
+            { "japanese": "今勉強しています。", "vietnamese": "Bây giờ tôi đang học." },
+            { "japanese": "結婚しています。", "vietnamese": "Tôi đã kết hôn." }
+          ],
+          "category": "verb_forms"
+        }
+      ]
+    },
+    {
+      "lessonNumber": 8,
+      "title": "Khả năng và kinh nghiệm",
+      "title_jp": "能力と経験",
+      "level": "N4",
+      "description": "Cách diễn tả khả năng, kinh nghiệm và sự cho phép.",
+      "grammars": [
+        {
+          "id": "n4_005",
+          "title": "Diễn tả khả năng",
+          "pattern": "〜ことができます",
+          "meaning": "có thể làm ~",
+          "explanation": "**Dùng thể từ điển của động từ + ことができます để diễn tả khả năng.**\n\nTương tự \"can\" trong tiếng Anh.",
+          "structure": "**[Động từ thể từ điển] ことができます**",
+          "examples": [
+            { "japanese": "日本語を話すことができます。", "vietnamese": "Tôi có thể nói tiếng Nhật." },
+            { "japanese": "料理を作ることができます。", "vietnamese": "Tôi có thể nấu ăn." }
+          ],
+          "notes": "Trong văn nói thường dùng thể khả năng của động từ (〜えます/〜れます) thay cho ことができます.",
+          "category": "verb_forms"
+        },
+        {
+          "id": "n4_006",
+          "title": "Kinh nghiệm từng làm",
+          "pattern": "〜たことがあります",
+          "meaning": "đã từng làm ~",
+          "explanation": "**Dùng thể た của động từ + ことがあります để diễn tả kinh nghiệm từng trải qua.**",
+          "structure": "**[Động từ thể た] ことがあります**",
+          "examples": [
+            { "japanese": "富士山に登ったことがあります。", "vietnamese": "Tôi đã từng leo núi Phú Sĩ." },
+            { "japanese": "すしを食べたことがあります。", "vietnamese": "Tôi đã từng ăn sushi." }
+          ],
+          "notes": "Dạng phủ định: 〜たことがありません (chưa từng làm).",
+          "category": "expressions"
+        },
+        {
+          "id": "n4_007",
+          "title": "Sau khi làm gì",
+          "pattern": "〜てから",
+          "meaning": "sau khi làm ~",
+          "explanation": "**Diễn tả hành động xảy ra sau khi hành động khác kết thúc.**\n\nNhấn mạnh thứ tự thời gian giữa hai hành động.",
+          "structure": "**[Động từ thể て] から、[Hành động tiếp theo]**",
+          "examples": [
+            { "japanese": "勉強してから、寝ます。", "vietnamese": "Sau khi học xong, tôi đi ngủ." },
+            { "japanese": "ご飯を食べてから、出かけます。", "vietnamese": "Sau khi ăn cơm, tôi ra ngoài." }
+          ],
+          "category": "conjunctions"
+        }
+      ]
+    },
+    {
+      "lessonNumber": 9,
+      "title": "Nghĩa vụ và dự định",
+      "title_jp": "義務と予定",
+      "level": "N4",
+      "description": "Cách diễn tả nghĩa vụ, dự định và sự thay đổi.",
+      "grammars": [
+        {
+          "id": "n4_008",
+          "title": "Nghĩa vụ phải làm",
+          "pattern": "〜なければなりません",
+          "meaning": "phải làm ~",
+          "explanation": "**Diễn tả nghĩa vụ hoặc điều bắt buộc phải làm.**\n\nDùng thể ない bỏ ない thêm なければなりません.",
+          "structure": "**[Động từ thể ない (bỏ ない)] + ければなりません**",
+          "examples": [
+            { "japanese": "宿題をしなければなりません。", "vietnamese": "Tôi phải làm bài tập về nhà." },
+            { "japanese": "薬を飲まなければなりません。", "vietnamese": "Tôi phải uống thuốc." }
+          ],
+          "notes": "Trong văn nói thường rút gọn thành なきゃならない hoặc なくちゃいけない.",
+          "category": "expressions"
+        },
+        {
+          "id": "n4_009",
+          "title": "Không cần phải làm",
+          "pattern": "〜なくてもいいです",
+          "meaning": "không cần phải làm ~",
+          "explanation": "**Diễn tả điều không cần thiết phải làm.**\n\nDạng phủ định của 〜てもいいです.",
+          "structure": "**[Động từ thể ない (bỏ ない)] + くてもいいです**",
+          "examples": [
+            { "japanese": "明日来なくてもいいです。", "vietnamese": "Ngày mai không cần đến cũng được." },
+            { "japanese": "全部食べなくてもいいです。", "vietnamese": "Không cần ăn hết cũng được." }
+          ],
+          "category": "expressions"
+        },
+        {
+          "id": "n4_010",
+          "title": "Dự định làm gì",
+          "pattern": "〜つもりです",
+          "meaning": "dự định làm ~",
+          "explanation": "**Diễn tả ý định hoặc dự định của người nói.**\n\nDùng với thể từ điển của động từ.",
+          "structure": "**[Động từ thể từ điển] つもりです**\n**[Động từ thể ない] つもりです (dự định không làm)**",
+          "examples": [
+            { "japanese": "日本に行くつもりです。", "vietnamese": "Tôi dự định đi Nhật." },
+            { "japanese": "タバコをやめるつもりです。", "vietnamese": "Tôi dự định bỏ thuốc lá." }
+          ],
+          "category": "expressions"
+        }
+      ]
+    },
+    {
+      "lessonNumber": 10,
+      "title": "Giả định và điều kiện",
+      "title_jp": "仮定と条件",
+      "level": "N3",
+      "description": "Các mẫu câu điều kiện và giả định trong tiếng Nhật.",
+      "grammars": [
+        {
+          "id": "n3_001",
+          "title": "Câu điều kiện たら",
+          "pattern": "〜たら、〜",
+          "meaning": "nếu ~ thì ~",
+          "explanation": "**たら là dạng điều kiện phổ biến nhất.**\n\nDùng được với tất cả các loại từ (động từ, tính từ, danh từ).",
+          "structure": "**[Thể た của động từ/tính từ] + ら**\n**[Danh từ + だった] + ら**",
+          "examples": [
+            { "japanese": "雨が降ったら、出かけません。", "vietnamese": "Nếu trời mưa thì tôi không ra ngoài." },
+            { "japanese": "安かったら、買います。", "vietnamese": "Nếu rẻ thì tôi sẽ mua." }
+          ],
+          "category": "conditionals"
+        },
+        {
+          "id": "n3_002",
+          "title": "Câu điều kiện ば",
+          "pattern": "〜ば、〜",
+          "meaning": "nếu ~ thì ~",
+          "explanation": "**ば là dạng điều kiện trang trọng hơn たら.**\n\nDùng cho các sự việc có tính tất yếu hoặc quy luật.",
+          "structure": "**[Động từ thể ば] + [Kết quả]**\n**[Tính từ thể ば] + [Kết quả]**",
+          "examples": [
+            { "japanese": "春になれば、花が咲きます。", "vietnamese": "Nếu đến mùa xuân thì hoa sẽ nở." },
+            { "japanese": "勉強すれば、上手になります。", "vietnamese": "Nếu học thì sẽ giỏi lên." }
+          ],
+          "category": "conditionals"
+        },
+        {
+          "id": "n3_003",
+          "title": "Càng... càng...",
+          "pattern": "〜ば〜ほど",
+          "meaning": "càng ~ càng ~",
+          "explanation": "**Diễn tả mối quan hệ tỷ lệ thuận giữa hai sự việc.**\n\nCàng làm điều A thì kết quả B càng tăng.",
+          "structure": "**[Động từ thể ば] + [cùng động từ thể từ điển] + ほど**",
+          "examples": [
+            { "japanese": "勉強すればするほど、上手になります。", "vietnamese": "Càng học càng giỏi." },
+            { "japanese": "考えれば考えるほど、分からなくなります。", "vietnamese": "Càng nghĩ càng không hiểu." }
+          ],
+          "category": "conditionals"
+        }
+      ]
+    },
+    {
+      "lessonNumber": 11,
+      "title": "Suy đoán và phỏng đoán",
+      "title_jp": "推量と推測",
+      "level": "N3",
+      "description": "Cách diễn tả sự suy đoán, phỏng đoán và tin đồn.",
+      "grammars": [
+        {
+          "id": "n3_004",
+          "title": "Có vẻ như (trực quan)",
+          "pattern": "〜そうです",
+          "meaning": "có vẻ như ~",
+          "explanation": "**Dựa vào quan sát trực quan để đưa ra nhận xét.**\n\nKhác với 〜そうです (nghe nói) - dùng そうです khi nhìn thấy và cảm nhận.",
+          "structure": "**[Động từ thể ます (bỏ ます)] + そうです**\n**[Tính từ い (bỏ い)] + そうです**\n**[Tính từ な] + そうです**",
+          "examples": [
+            { "japanese": "雨が降りそうです。", "vietnamese": "Có vẻ như trời sắp mưa." },
+            { "japanese": "この料理はおいしそうです。", "vietnamese": "Món này trông có vẻ ngon." }
+          ],
+          "category": "expressions"
+        },
+        {
+          "id": "n3_005",
+          "title": "Nghe nói rằng",
+          "pattern": "〜そうだ",
+          "meaning": "nghe nói rằng ~",
+          "explanation": "**Dùng để truyền đạt lại thông tin nghe được từ người khác.**\n\nKhông cần chia thì, dùng thể thường của động từ/tính từ.",
+          "structure": "**[Câu thể thường] そうです**",
+          "examples": [
+            { "japanese": "天気予報によると、明日は雨が降るそうです。", "vietnamese": "Theo dự báo thời tiết, ngày mai trời sẽ mưa." },
+            { "japanese": "彼は日本に行ったそうです。", "vietnamese": "Nghe nói anh ấy đã đi Nhật." }
+          ],
+          "category": "expressions"
+        },
+        {
+          "id": "n3_006",
+          "title": "Có lẽ / Có thể",
+          "pattern": "〜かもしれません",
+          "meaning": "có lẽ ~ / có thể ~",
+          "explanation": "**Diễn tả khả năng xảy ra, mức độ chắc chắn thấp (khoảng 50%).**\n\nDùng với thể thường của động từ/tính từ.",
+          "structure": "**[Câu thể thường] かもしれません**",
+          "examples": [
+            { "japanese": "雨が降るかもしれません。", "vietnamese": "Trời có thể sẽ mưa." },
+            { "japanese": "彼は忙しいかもしれません。", "vietnamese": "Anh ấy có lẽ đang bận." }
+          ],
+          "category": "expressions"
+        }
+      ]
+    },
+    {
+      "lessonNumber": 12,
+      "title": "Sự thay đổi và phát triển",
+      "title_jp": "変化と発展",
+      "level": "N3",
+      "description": "Cách diễn tả sự thay đổi, trở nên như thế nào.",
+      "grammars": [
+        {
+          "id": "n3_007",
+          "title": "Trở nên (tự nhiên thay đổi)",
+          "pattern": "〜ようになります",
+          "meaning": "trở nên ~ / trở thành ~",
+          "explanation": "**Diễn tả sự thay đổi hoặc phát triển một cách tự nhiên.**\n\nThường đi với thể khả năng của động từ.",
+          "structure": "**[Động từ thể khả năng (từ điển)] ようになります**\n**[Tính từ い (bỏ い)] くなります**\n**[Tính từ な] になります**",
+          "examples": [
+            { "japanese": "日本語が話せるようになりました。", "vietnamese": "Tôi đã trở nên có thể nói tiếng Nhật." },
+            { "japanese": "一人で生活できるようになりました。", "vietnamese": "Tôi đã có thể sống một mình." }
+          ],
+          "category": "verb_forms"
+        },
+        {
+          "id": "n3_008",
+          "title": "Cố gắng / Tạo thói quen",
+          "pattern": "〜ようにします",
+          "meaning": "cố gắng làm ~ / tạo thói quen ~",
+          "explanation": "**Diễn tả sự nỗ lực hoặc ý định tạo thói quen.**\n\nDùng với thể từ điển của động từ.",
+          "structure": "**[Động từ thể từ điển] ようにします**\n**[Động từ thể ない] ようにします (cố gắng không làm)**",
+          "examples": [
+            { "japanese": "毎日運動するようにします。", "vietnamese": "Tôi sẽ cố gắng tập thể dục mỗi ngày." },
+            { "japanese": "早く寝るようにします。", "vietnamese": "Tôi sẽ cố gắng ngủ sớm." }
+          ],
+          "category": "expressions"
+        },
+        {
+          "id": "n3_009",
+          "title": "Đối với mục đích",
+          "pattern": "〜ために、〜",
+          "meaning": "để làm ~ / vì mục đích ~",
+          "explanation": "**Diễn tả mục đích của hành động.**\n\nDùng với thể từ điển của động từ.",
+          "structure": "**[Động từ thể từ điển] ために、[Hành động]**\n**[Danh từ] のために、[Hành động]**",
+          "examples": [
+            { "japanese": "日本語を勉強するために、学校に行きます。", "vietnamese": "Để học tiếng Nhật, tôi đi học." },
+            { "japanese": "健康のために、運動します。", "vietnamese": "Vì sức khỏe, tôi tập thể dục." }
+          ],
+          "category": "expressions"
+        }
+      ]
+    },
+    {
+      "lessonNumber": 13,
+      "title": "Thụ động và sai khiến",
+      "title_jp": "受身と使役",
+      "level": "N3",
+      "description": "Các dạng thể thụ động và sai khiến trong tiếng Nhật.",
+      "grammars": [
+        {
+          "id": "n3_010",
+          "title": "Thể thụ động (受け身)",
+          "pattern": "〜られる",
+          "meaning": "bị / được (thể thụ động)",
+          "explanation": "**Thể thụ động diễn tả hành động được thực hiện bởi người khác.**\n\nĐộng từ nhóm 1: 〜れる, nhóm 2: 〜られる, nhóm 3: される/こられる.",
+          "structure": "**[Động từ thể thụ động]**\n**[Chủ thể] は [Người tác động] に [Động từ thể thụ động]**",
+          "examples": [
+            { "japanese": "先生に褒められました。", "vietnamese": "Tôi được thầy khen." },
+            { "japanese": "犬に噛まれました。", "vietnamese": "Tôi bị chó cắn." }
+          ],
+          "category": "verb_forms"
+        },
+        {
+          "id": "n3_011",
+          "title": "Thể sai khiến (使役)",
+          "pattern": "〜させる",
+          "meaning": "bắt / để cho làm ~ (thể sai khiến)",
+          "explanation": "**Thể sai khiến diễn tả việc để ai đó làm gì hoặc bắt ai đó làm gì.**\n\nĐộng từ nhóm 1: 〜せる, nhóm 2: 〜させる, nhóm 3: させる.",
+          "structure": "**[Người sai khiến] は [Người thực hiện] に [Động từ thể sai khiến]**",
+          "examples": [
+            { "japanese": "母は私に部屋を掃除させます。", "vietnamese": "Mẹ bắt tôi dọn phòng." },
+            { "japanese": "先生は学生に本を読ませます。", "vietnamese": "Thầy cho học sinh đọc sách." }
+          ],
+          "category": "verb_forms"
+        }
+      ]
+    },
+    {
+      "lessonNumber": 14,
+      "title": "Quan hệ và phạm vi",
+      "title_jp": "関係と範囲",
+      "level": "N2",
+      "description": "Các cấu trúc ngữ pháp N2 diễn tả quan hệ, phạm vi và căn cứ.",
+      "grammars": [
+        {
+          "id": "n2_001",
+          "title": "Dựa trên cơ sở",
+          "pattern": "〜を踏まえて",
+          "meaning": "dựa trên / căn cứ vào",
+          "explanation": "**Diễn tả việc đưa ra quyết định dựa trên một cơ sở thông tin nào đó.**\n\nThường dùng trong văn viết trang trọng.",
+          "structure": "**[Danh từ] を踏まえて、[Quyết định/Kết luận]**",
+          "examples": [
+            { "japanese": "調査結果を踏まえて、方針を決めます。", "vietnamese": "Dựa trên kết quả điều tra, chúng tôi sẽ quyết định phương hướng." },
+            { "japanese": "現状を踏まえて、計画を変更します。", "vietnamese": "Căn cứ vào tình hình hiện tại, chúng tôi sẽ thay đổi kế hoạch." }
+          ],
+          "category": "expressions"
+        },
+        {
+          "id": "n2_002",
+          "title": "Trong suốt / khắp",
+          "pattern": "〜にわたって",
+          "meaning": "trong suốt / khắp (phạm vi)",
+          "explanation": "**Diễn tả phạm vi hoặc khoảng thời gian/không gian rộng.**\n\nNhấn mạnh tính toàn thể của phạm vi được đề cập.",
+          "structure": "**[Danh từ chỉ thời gian/không gian] にわたって**",
+          "examples": [
+            { "japanese": "会議は3時間にわたって行われました。", "vietnamese": "Cuộc họp đã diễn ra trong suốt 3 tiếng." },
+            { "japanese": "全国にわたって影響がありました。", "vietnamese": "Đã có ảnh hưởng trên khắp cả nước." }
+          ],
+          "category": "time"
+        },
+        {
+          "id": "n2_003",
+          "title": "Cùng với / kéo theo",
+          "pattern": "〜に伴い",
+          "meaning": "cùng với / kéo theo",
+          "explanation": "**Diễn tả sự việc xảy ra đồng thời hoặc là hệ quả tất yếu của sự việc khác.**\n\nVăn phong trang trọng.",
+          "structure": "**[Danh từ/Động từ thể từ điển] に伴い、[Sự việc xảy ra]**",
+          "examples": [
+            { "japanese": "経済成長に伴い、生活水準が向上した。", "vietnamese": "Cùng với tăng trưởng kinh tế, mức sống đã được cải thiện." },
+            { "japanese": "技術進歩に伴い、新しい問題が出てきた。", "vietnamese": "Kéo theo tiến bộ công nghệ, những vấn đề mới đã xuất hiện." }
+          ],
+          "category": "conjunctions"
+        },
+        {
+          "id": "n2_004",
+          "title": "Xoay quanh vấn đề",
+          "pattern": "〜をめぐって",
+          "meaning": "xoay quanh / về vấn đề",
+          "explanation": "**Diễn tả chủ đề của cuộc thảo luận, tranh luận hoặc xung đột.**\n\nThường đi với các động từ như 議論する, 争う, 対立する.",
+          "structure": "**[Danh từ] をめぐって [Hành động]**",
+          "examples": [
+            { "japanese": "環境問題をめぐって議論が続いています。", "vietnamese": "Các cuộc thảo luận vẫn tiếp tục xoay quanh vấn đề môi trường." },
+            { "japanese": "計画をめぐって意見が分かれました。", "vietnamese": "Ý kiến đã chia rẽ xoay quanh kế hoạch." }
+          ],
+          "category": "expressions"
+        }
+      ]
+    },
+    {
+      "lessonNumber": 15,
+      "title": "Nhấn mạnh và cảm xúc",
+      "title_jp": "強調と感情",
+      "level": "N1",
+      "description": "Các cấu trúc ngữ pháp N1 diễn tả sự nhấn mạnh, cảm xúc và sắc thái tinh tế.",
+      "grammars": [
+        {
+          "id": "n1_001",
+          "title": "Trong bối cảnh",
+          "pattern": "〜を背景に",
+          "meaning": "trong bối cảnh / dưới nền tảng",
+          "explanation": "**Diễn tả một sự việc xảy ra trong bối cảnh hoặc hoàn cảnh nhất định.**\n\nThường dùng trong văn viết học thuật hoặc báo chí.",
+          "structure": "**[Danh từ] を背景に、[Sự kiện]**",
+          "examples": [
+            { "japanese": "経済危機を背景に、政策が変更された。", "vietnamese": "Trong bối cảnh khủng hoảng kinh tế, chính sách đã được thay đổi." },
+            { "japanese": "グローバル化を背景に、競争が激化している。", "vietnamese": "Trong bối cảnh toàn cầu hóa, cạnh tranh đang ngày càng gay gắt." }
+          ],
+          "category": "expressions"
+        },
+        {
+          "id": "n1_002",
+          "title": "Hơn cả / hơn bao giờ hết",
+          "pattern": "〜にもまして",
+          "meaning": "hơn cả / hơn bao giờ hết",
+          "explanation": "**Nhấn mạnh mức độ vượt trội so với thông thường hoặc so với trước đây.**",
+          "structure": "**[Danh từ] にもまして**",
+          "examples": [
+            { "japanese": "彼は以前にもまして頑張っています。", "vietnamese": "Anh ấy đang cố gắng hơn bao giờ hết." },
+            { "japanese": "今年は例年にもまして暑いです。", "vietnamese": "Năm nay nóng hơn mọi năm." }
+          ],
+          "category": "expressions"
+        },
+        {
+          "id": "n1_003",
+          "title": "Kết hợp với",
+          "pattern": "〜と相まって",
+          "meaning": "kết hợp với / cùng với",
+          "explanation": "**Diễn tả nhiều yếu tố kết hợp với nhau tạo nên kết quả.**\n\nThường dùng cho các yếu tố tích cực.",
+          "structure": "**[Danh từ] と相まって、[Kết quả]**",
+          "examples": [
+            { "japanese": "努力と運と相まって、成功した。", "vietnamese": "Nỗ lực kết hợp với may mắn đã mang lại thành công." },
+            { "japanese": "好条件と好タイミングと相まって、最高の結果が出た。", "vietnamese": "Điều kiện thuận lợi kết hợp với thời điểm tốt đã mang lại kết quả tốt nhất." }
+          ],
+          "category": "conjunctions"
+        },
+        {
+          "id": "n1_004",
+          "title": "Không thể không",
+          "pattern": "〜を禁じ得ない",
+          "meaning": "không thể không / không kìm được",
+          "explanation": "**Diễn tả cảm xúc tự nhiên bộc phát, không thể kìm nén được.**\n\nThường đi với các danh từ chỉ cảm xúc như 感動, 笑い, 涙.",
+          "structure": "**[Danh từ chỉ cảm xúc] を禁じ得ない**",
+          "examples": [
+            { "japanese": "彼の話に感動を禁じ得なかった。", "vietnamese": "Tôi không thể không cảm động trước câu chuyện của anh ấy." },
+            { "japanese": "その光景に笑いを禁じ得なかった。", "vietnamese": "Tôi không thể nhịn được cười trước cảnh tượng đó." }
+          ],
+          "category": "expressions"
+        }
+      ]
+    }
+  ],
+  "categories": [
+    { "value": "basic_sentence_structure", "label": "Cấu trúc câu cơ bản" },
+    { "value": "questions", "label": "Câu hỏi" },
+    { "value": "possessive", "label": "Sở hữu" },
+    { "value": "adjectives", "label": "Tính từ" },
+    { "value": "negative_form", "label": "Thể phủ định" },
+    { "value": "verb_forms", "label": "Động từ" },
+    { "value": "conjunctions", "label": "Liên từ" },
+    { "value": "time", "label": "Thời gian" },
+    { "value": "time_telling", "label": "Cách nói giờ" },
+    { "value": "dates", "label": "Ngày tháng" },
+    { "value": "existence_verbs", "label": "Động từ tồn tại" },
+    { "value": "direction_words", "label": "Từ chỉ hướng" },
+    { "value": "conditionals", "label": "Câu điều kiện" },
+    { "value": "expressions", "label": "Biểu hiện ngữ pháp" }
+  ],
+  "levels": ["N5", "N4", "N3", "N2", "N1"]
+}

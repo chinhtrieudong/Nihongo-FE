@@ -1,25 +1,22 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useMemo } from 'react';
 import {
   Card,
   Typography,
   Space,
   Tag,
-  Spin,
   Row,
   Col,
   Statistic,
-  Divider,
   Collapse,
-  Select
 } from 'antd';
 import type { SelectProps } from 'antd';
-import { FlaskConical, Book, CheckCircle } from 'lucide-react';
+import { Book, CheckCircle } from 'lucide-react';
 import { EmptyState, SearchFilter } from "../../components/common";
-import { grammarAPI } from "../../services/grammarApi";
+import fakeGrammarData from "../../data/fakeGrammarData.json";
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 
-const { Title, Text, Paragraph } = Typography;
+const { Text, Paragraph } = Typography;
 
 interface GrammarExample {
   japanese: string;
@@ -53,64 +50,52 @@ interface GrammarData {
   levels: string[];
 }
 
+const grammarData = fakeGrammarData as GrammarData;
+
 const Grammar: React.FC = () => {
   const [selectedLevel, setSelectedLevel] = useState<string[]>(['N5']);
   const [selectedCategory, setSelectedCategory] = useState<string[]>([]);
   const [selectedLesson, setSelectedLesson] = useState<number | null>(null);
   const [searchQuery, setSearchQuery] = useState<string>('');
-  const [grammarData, setGrammarData] = useState<GrammarData | null>(null);
-  const [filteredLessons, setFilteredLessons] = useState<Lesson[]>([]);
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState<string | null>(null);
 
-  // Load grammar data from API
-  useEffect(() => {
-    const loadGrammarData = async () => {
-      setLoading(true);
-      setError(null);
+  // Filter lessons based on level, category, and search query
+  const filteredLessons = useMemo(() => {
+    let lessons = grammarData.lessons;
 
-      try {
-        const levelParam = selectedLevel.length ? selectedLevel.join(',') : undefined;
-        const categoryParam = selectedCategory.length ? selectedCategory.join(',') : undefined;
+    // Filter by level
+    if (selectedLevel.length > 0) {
+      lessons = lessons.filter(lesson => selectedLevel.includes(lesson.level));
+    }
 
-        let response;
+    // Filter by category
+    if (selectedCategory.length > 0) {
+      lessons = lessons
+        .map(lesson => ({
+          ...lesson,
+          grammars: lesson.grammars.filter(grammar =>
+            selectedCategory.includes(grammar.category)
+          ),
+        }))
+        .filter(lesson => lesson.grammars.length > 0);
+    }
 
-        if (searchQuery.trim()) {
-          // Search mode
-          response = await grammarAPI.searchGrammar({
-            q: searchQuery,
-            level: levelParam,
-            category: categoryParam,
-            page: 1,
-            limit: 50
-          });
-        } else {
-          // Normal mode - get all with optional multi-level/category filter
-          response = await grammarAPI.getAllGrammar({
-            level: levelParam,
-            category: categoryParam,
-            page: 1,
-            limit: 50
-          });
-        }
+    // Filter by search query
+    if (searchQuery.trim()) {
+      const q = searchQuery.toLowerCase().trim();
+      lessons = lessons
+        .map(lesson => ({
+          ...lesson,
+          grammars: lesson.grammars.filter(grammar =>
+            grammar.pattern.toLowerCase().includes(q) ||
+            grammar.meaning.toLowerCase().includes(q) ||
+            grammar.explanation.toLowerCase().includes(q) ||
+            grammar.title.toLowerCase().includes(q)
+          ),
+        }))
+        .filter(lesson => lesson.grammars.length > 0);
+    }
 
-        if (response.success && response.data) {
-          setGrammarData({
-            lessons: response.data.lessons,
-            categories: response.data.categories,
-            levels: response.data.levels
-          });
-          setFilteredLessons(response.data.lessons);
-        }
-      } catch (err) {
-        console.error('Error loading grammar data:', err);
-        setError('Không thể tải dữ liệu ngữ pháp. Vui lòng thử lại.');
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    loadGrammarData();
+    return lessons;
   }, [selectedLevel, selectedCategory, searchQuery]);
 
   const handleSearch = (value: string) => {
@@ -125,8 +110,8 @@ const Grammar: React.FC = () => {
     setSelectedCategory(categories || []);
   };
 
-  const categories = grammarData?.categories || [];
-  const levels = grammarData?.levels || ['N5', 'N4', 'N3', 'N2', 'N1'];
+  const categories = grammarData.categories || [];
+  const levels = grammarData.levels || ['N5', 'N4', 'N3', 'N2', 'N1'];
 
   const getLevelColor = (level: string) => {
     const colors: { [key: string]: string } = {
@@ -294,144 +279,133 @@ const Grammar: React.FC = () => {
           </Card>
         )}
 
-        <Spin spinning={loading} size="large">
-          {error ? (
-            <EmptyState
-              type="error"
-              title="Không thể tải dữ liệu"
-              description={error}
-              size="default"
-            />
-          ) : displayLessons.length > 0 ? (
-            <div className="space-y-6">
-              {displayLessons.map((lesson) => (
-                <Card
-                  key={lesson.lessonNumber}
-                  title={
-                    <div className="flex items-center justify-between">
-                      <div className="flex items-center gap-3">
-                        <Book className="w-4 h-4 text-blue-500" />
-                        <span>
-                          Bài {lesson.lessonNumber}: {lesson.title}
-                        </span>
-                        <Tag color={getLevelColor(lesson.level)}>{lesson.level}</Tag>
-                      </div>
-                      <Text type="secondary" className="text-base">
-                        {lesson.grammars.length} ngữ pháp
-                      </Text>
+        {displayLessons.length > 0 ? (
+          <div className="space-y-6">
+            {displayLessons.map((lesson) => (
+              <Card
+                key={lesson.lessonNumber}
+                title={
+                  <div className="flex items-center justify-between">
+                    <div className="flex items-center gap-3">
+                      <Book className="w-4 h-4 text-blue-500" />
+                      <span>
+                        Bài {lesson.lessonNumber}: {lesson.title}
+                      </span>
+                      <Tag color={getLevelColor(lesson.level)}>{lesson.level}</Tag>
                     </div>
-                  }
-                  className="grammar-content-card bg-surface-1 border border-border"
-                >
-                  <div className="mb-4">
-                    <Text className="text-base text-gray-600 dark:text-gray-400">
-                      {lesson.description}
+                    <Text type="secondary" className="text-base">
+                      {lesson.grammars.length} ngữ pháp
                     </Text>
                   </div>
+                }
+                className="grammar-content-card bg-surface-1 border border-border"
+              >
+                <div className="mb-4">
+                  <Text className="text-base text-gray-600 dark:text-gray-400">
+                    {lesson.description}
+                  </Text>
+                </div>
 
-                  <Collapse
-                    items={lesson.grammars.map((grammar) => ({
-                      key: grammar.id,
-                      label: (
-                        <div className="flex items-center justify-between w-full gap-2 pr-4">
-                          <div className="flex items-start md:items-center gap-2 flex-1">
-                            <Text strong className="text-lg text-blue-700 dark:text-blue-400 whitespace-normal break-words">
-                              {grammar.pattern}
-                            </Text>
-                            <Tag color={getCategoryColor(grammar.category)} className="text-xs flex-shrink-0 mt-1 md:mt-0">
-                              {categories.find(c => c.value === grammar.category)?.label || grammar.category}
-                            </Tag>
+                <Collapse
+                  items={lesson.grammars.map((grammar) => ({
+                    key: grammar.id,
+                    label: (
+                      <div className="flex items-center justify-between w-full gap-2 pr-4">
+                        <div className="flex items-start md:items-center gap-2 flex-1">
+                          <Text strong className="text-lg text-blue-700 dark:text-blue-400 whitespace-normal break-words">
+                            {grammar.pattern}
+                          </Text>
+                          <Tag color={getCategoryColor(grammar.category)} className="text-xs flex-shrink-0 mt-1 md:mt-0">
+                            {categories.find(c => c.value === grammar.category)?.label || grammar.category}
+                          </Tag>
+                        </div>
+                      </div>
+                    ),
+                    children: (
+                      <div className="space-y-4">
+                        <div>
+                          <Text strong className="text-base">Giải thích:</Text>
+                          <div className="mt-2 p-3 bg-gray-50 dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-600">
+                            <ReactMarkdown 
+                              remarkPlugins={[remarkGfm]}
+                              components={{
+                                p: ({children}: any) => <p className="mb-2 last:mb-0 font-japanese" style={{ fontFamily: 'Noto Sans JP, sans-serif', lineHeight: '1.6' }}>{children}</p>,
+                                ul: ({children}: any) => <ul className="list-disc pl-4 mb-2 font-japanese" style={{ fontFamily: 'Noto Sans JP, sans-serif' }}>{children}</ul>,
+                                ol: ({children}: any) => <ol className="list-decimal pl-4 mb-2 font-japanese" style={{ fontFamily: 'Noto Sans JP, sans-serif' }}>{children}</ol>,
+                                li: ({children}: any) => <li className="mb-1 font-japanese" style={{ fontFamily: 'Noto Sans JP, sans-serif' }}>{children}</li>,
+                                code: ({inline, children}: any) => 
+                                  inline ? 
+                                    <code className="px-1 py-0.5 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 rounded text-sm font-japanese" style={{ fontFamily: 'Noto Sans JP, sans-serif' }}>{children}</code> :
+                                    <code className="block p-2 bg-gray-100 dark:bg-gray-800 rounded text-sm overflow-x-auto font-japanese" style={{ fontFamily: 'Noto Sans JP, sans-serif' }}>{children}</code>
+                              }}
+                            >
+                              {grammar.explanation}
+                            </ReactMarkdown>
                           </div>
                         </div>
-                      ),
-                      children: (
-                        <div className="space-y-4">
-                          <div>
-                            <Text strong className="text-base">Giải thích:</Text>
-                            <div className="mt-2 p-3 bg-gray-50 dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-600">
-                              <ReactMarkdown 
-                                remarkPlugins={[remarkGfm]}
-                                components={{
-                                  p: ({children}: any) => <p className="mb-2 last:mb-0 font-japanese" style={{ fontFamily: 'Noto Sans JP, sans-serif', lineHeight: '1.6' }}>{children}</p>,
-                                  ul: ({children}: any) => <ul className="list-disc pl-4 mb-2 font-japanese" style={{ fontFamily: 'Noto Sans JP, sans-serif' }}>{children}</ul>,
-                                  ol: ({children}: any) => <ol className="list-decimal pl-4 mb-2 font-japanese" style={{ fontFamily: 'Noto Sans JP, sans-serif' }}>{children}</ol>,
-                                  li: ({children}: any) => <li className="mb-1 font-japanese" style={{ fontFamily: 'Noto Sans JP, sans-serif' }}>{children}</li>,
-                                  code: ({inline, children}: any) => 
-                                    inline ? 
-                                      <code className="px-1 py-0.5 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 rounded text-sm font-japanese" style={{ fontFamily: 'Noto Sans JP, sans-serif' }}>{children}</code> :
-                                      <code className="block p-2 bg-gray-100 dark:bg-gray-800 rounded text-sm overflow-x-auto font-japanese" style={{ fontFamily: 'Noto Sans JP, sans-serif' }}>{children}</code>
-                                }}
-                              >
-                                {grammar.explanation}
-                              </ReactMarkdown>
-                            </div>
-                          </div>
 
-                          <div>
-                            <Text strong className="text-base">Cấu trúc:</Text>
-                            <div className="mt-2 p-3 bg-gray-100 dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-600">
-                              <ReactMarkdown 
-                                remarkPlugins={[remarkGfm]}
-                                components={{
-                                  p: ({children}: any) => <p className="text-lg font-mono font-semibold text-blue-700 dark:text-blue-400 mb-2 last:mb-0 font-japanese" style={{ fontFamily: 'Noto Sans JP, monospace', lineHeight: '1.6' }}>{children}</p>,
-                                  code: ({inline, children}: any) => 
-                                    <code className="text-lg font-mono font-semibold text-blue-700 dark:text-blue-400 font-japanese" style={{ fontFamily: 'Noto Sans JP, monospace' }}>{children}</code>
-                                }}
-                              >
-                                {grammar.structure}
-                              </ReactMarkdown>
-                            </div>
+                        <div>
+                          <Text strong className="text-base">Cấu trúc:</Text>
+                          <div className="mt-2 p-3 bg-gray-100 dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-600">
+                            <ReactMarkdown 
+                              remarkPlugins={[remarkGfm]}
+                              components={{
+                                p: ({children}: any) => <p className="text-lg font-mono font-semibold text-blue-700 dark:text-blue-400 mb-2 last:mb-0 font-japanese" style={{ fontFamily: 'Noto Sans JP, monospace', lineHeight: '1.6' }}>{children}</p>,
+                                code: ({inline, children}: any) => 
+                                  <code className="text-lg font-mono font-semibold text-blue-700 dark:text-blue-400 font-japanese" style={{ fontFamily: 'Noto Sans JP, monospace' }}>{children}</code>
+                              }}
+                            >
+                              {grammar.structure}
+                            </ReactMarkdown>
                           </div>
+                        </div>
 
-                          <div>
-                            <Text strong className="text-base">Ví dụ:</Text>
-                            <div className="mt-2">
-                              {grammar.examples.map((example, index) => (
-                                <div key={index} className="py-2">
-                                  <div className="w-full">
-                                    <div className="flex items-center gap-2 mb-1">
-                                      <CheckCircle className="w-4 h-4 text-green-500 flex-shrink-0" />
-                                      <Text strong className="text-blue-600 dark:text-blue-400 font-japanese" style={{ fontFamily: 'Noto Sans JP, sans-serif', lineHeight: '1.6' }}>
-                                        {example.japanese}
-                                      </Text>
-                                    </div>
-                                    <Text className="text-gray-600 dark:text-gray-400 ml-6 font-japanese" style={{ fontFamily: 'Noto Sans JP, sans-serif', lineHeight: '1.6' }}>
-                                      {example.vietnamese}
+                        <div>
+                          <Text strong className="text-base">Ví dụ:</Text>
+                          <div className="mt-2">
+                            {grammar.examples.map((example, index) => (
+                              <div key={index} className="py-2">
+                                <div className="w-full">
+                                  <div className="flex items-center gap-2 mb-1">
+                                    <CheckCircle className="w-4 h-4 text-green-500 flex-shrink-0" />
+                                    <Text strong className="text-blue-600 dark:text-blue-400 font-japanese" style={{ fontFamily: 'Noto Sans JP, sans-serif', lineHeight: '1.6' }}>
+                                      {example.japanese}
                                     </Text>
                                   </div>
+                                  <Text className="text-gray-600 dark:text-gray-400 ml-6 font-japanese" style={{ fontFamily: 'Noto Sans JP, sans-serif', lineHeight: '1.6' }}>
+                                    {example.vietnamese}
+                                  </Text>
                                 </div>
-                              ))}
-                            </div>
+                              </div>
+                            ))}
                           </div>
-
-                          {grammar.notes && (
-                            <div>
-                              <Text strong className="text-base">Ghi chú:</Text>
-                              <Paragraph className="mt-1 text-orange-600 dark:text-orange-400 italic">
-                                {grammar.notes}
-                              </Paragraph>
-                            </div>
-                          )}
                         </div>
-                      )
-                    }))}
-                  />
-                </Card>
-              ))}
-            </div>
-          ) : (
-            !loading && (
-              <Card className="bg-surface-1 border border-border" variant="borderless">
-                <EmptyState
-                  type="search"
-                  title="Không tìm thấy dữ liệu ngữ pháp"
-                  description="Vui lòng thử lại với bộ lọc khác hoặc từ khóa tìm kiếm mới."
-                  size="default"
+
+                        {grammar.notes && (
+                          <div>
+                            <Text strong className="text-base">Ghi chú:</Text>
+                            <Paragraph className="mt-1 text-orange-600 dark:text-orange-400 italic">
+                              {grammar.notes}
+                            </Paragraph>
+                          </div>
+                        )}
+                      </div>
+                    )
+                  }))}
                 />
               </Card>
-            )
-          )}
-        </Spin>
+            ))}
+          </div>
+        ) : (
+          <Card className="bg-surface-1 border border-border" variant="borderless">
+            <EmptyState
+              type="search"
+              title="Không tìm thấy dữ liệu ngữ pháp"
+              description="Vui lòng thử lại với bộ lọc khác hoặc từ khóa tìm kiếm mới."
+              size="default"
+            />
+          </Card>
+        )}
       </div>
     </div>
   );
