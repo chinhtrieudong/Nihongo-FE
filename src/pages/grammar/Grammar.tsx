@@ -195,10 +195,10 @@ const Grammar: React.FC = () => {
                   <div className="flex items-center justify-between">
                     <div className="flex items-center gap-3">
                       <Book className="w-5 h-5 text-blue-500" />
-                      <span className="text-xl font-bold">
+                      <span>
                         Bài {lesson.lessonNumber}: {lesson.title}
                       </span>
-                      <Tag color={getLevelColor(lesson.level)} className="text-base px-2 py-0.5">{lesson.level}</Tag>
+                      <Tag color={getLevelColor(lesson.level)}>{lesson.level}</Tag>
                     </div>
                     <Text type="secondary" className="text-base">{lesson.grammars.length} ngữ pháp</Text>
                   </div>
@@ -206,7 +206,7 @@ const Grammar: React.FC = () => {
                 className="grammar-content-card bg-surface-1 border border-border"
               >
                 <div className="mb-4">
-                  <Text className="text-lg text-gray-600 dark:text-gray-400">{lesson.description}</Text>
+                  <Text className="text-base text-gray-600 dark:text-gray-400">{lesson.description}</Text>
                 </div>
 
                 <Collapse
@@ -216,12 +216,11 @@ const Grammar: React.FC = () => {
                     label: (
                       <div className="flex items-center justify-between w-full gap-2 pr-4">
                         <div className="flex items-start md:items-center gap-2 flex-1">
-                          <Text strong className="text-2xl text-blue-700 dark:text-blue-400 whitespace-normal break-words font-japanese" 
-                            style={{ fontFamily: "'Noto Sans JP', 'Hiragino Kaku Gothic ProN', sans-serif", fontSize: '1.5rem' }}>
+                          <Text strong className="text-base text-blue-700 dark:text-blue-400 whitespace-normal break-words font-japanese">
                             {grammar.pattern}
                           </Text>
                           <Tag color={getCategoryColor(grammar.category)} 
-                            className="text-sm flex-shrink-0 mt-1 md:mt-0 px-2 py-0.5">
+                            className="text-xs flex-shrink-0 mt-1 md:mt-0">
                             {categories.find((c: any) => c.value === grammar.category)?.label || grammar.category}
                           </Tag>
                         </div>
@@ -231,10 +230,9 @@ const Grammar: React.FC = () => {
                       <div className="space-y-5">
                         {/* Explanation */}
                         <div>
-                          <Text strong className="text-xl">Giải thích:</Text>
-                          <div className="mt-2 p-4 bg-gray-50 dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-600">
-                            <p className="text-xl font-japanese" 
-                              style={{ fontFamily: "'Noto Sans JP', sans-serif", lineHeight: '1.8', fontSize: '1.15rem' }}>
+                          <Text strong className="text-base">Giải thích:</Text>
+                          <div className="mt-2 p-3 bg-gray-50 dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-600">
+                            <p className="font-japanese" style={{ fontFamily: "'Noto Sans JP', sans-serif", lineHeight: '1.6', fontSize: '15px' }}>
                               {grammar.explanation}
                             </p>
                           </div>
@@ -242,10 +240,10 @@ const Grammar: React.FC = () => {
 
                         {/* Structure */}
                         <div>
-                          <Text strong className="text-xl">Cấu trúc:</Text>
-                          <div className="mt-2 p-4 bg-gray-100 dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-600">
-                            <p className="text-xl font-mono font-semibold text-blue-700 dark:text-blue-400"
-                              style={{ fontFamily: "'Noto Sans JP', monospace", lineHeight: '1.8', fontSize: '1.3rem' }}>
+                          <Text strong className="text-base">Cấu trúc:</Text>
+                          <div className="mt-2 p-3 bg-gray-100 dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-600">
+                            <p className="font-mono font-semibold text-blue-700 dark:text-blue-400"
+                              style={{ fontFamily: "'Noto Sans JP', monospace", lineHeight: '1.6', fontSize: '15px' }}>
                               {grammar.structure}
                             </p>
                           </div>
@@ -253,20 +251,20 @@ const Grammar: React.FC = () => {
 
                         {/* Examples */}
                         <div>
-                          <Text strong className="text-xl">Ví dụ:</Text>
+                          <Text strong className="text-base">Ví dụ:</Text>
                           <div className="mt-2">
                             {grammar.examples.map((example: any, index: number) => (
-                              <div key={index} className="py-3 border-b border-gray-100 dark:border-gray-700 last:border-0">
+                              <div key={index} className="py-2 border-b border-gray-100 dark:border-gray-700 last:border-0">
                                 <div className="flex items-start gap-2 mb-1">
-                                  <CheckCircle className="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" />
+                                  <CheckCircle className="w-4 h-4 text-green-500 flex-shrink-0 mt-1" />
                                   <FuriganaText 
                                     text={example.japanese}
-                                    className="text-2xl text-blue-600 dark:text-blue-400 font-japanese"
-                                    style={{ fontFamily: "'Noto Sans JP', 'Hiragino Kaku Gothic ProN', sans-serif", lineHeight: '1.8' }}
+                                    className="text-blue-600 dark:text-blue-400 font-japanese"
+                                    style={{ fontFamily: "'Noto Sans JP', 'Hiragino Kaku Gothic ProN', sans-serif", lineHeight: '1.6', fontSize: '16px' }}
                                   />
                                 </div>
-                                <Text className="text-xl text-gray-600 dark:text-gray-400 ml-8 font-japanese"
-                                  style={{ fontFamily: "'Noto Sans JP', sans-serif", lineHeight: '1.6' }}>
+                                <Text className="text-gray-600 dark:text-gray-400 ml-8 font-japanese"
+                                  style={{ fontFamily: "'Noto Sans JP', sans-serif", lineHeight: '1.6', fontSize: '15px' }}>
                                   {example.vietnamese}
                                 </Text>
                               </div>
@@ -277,8 +275,8 @@ const Grammar: React.FC = () => {
                         {/* Notes */}
                         {grammar.notes && (
                           <div>
-                            <Text strong className="text-xl">Ghi chú:</Text>
-                            <Paragraph className="mt-1 text-orange-600 dark:text-orange-400 italic text-lg">
+                            <Text strong className="text-base">Ghi chú:</Text>
+                            <Paragraph className="mt-1 text-orange-600 dark:text-orange-400 italic">
                               {grammar.notes}
                             </Paragraph>
                           </div>
@@ -304,7 +302,7 @@ const Grammar: React.FC = () => {
           ruby-align: center;
         }
         .furigana-rt {
-          font-size: 0.55em;
+          font-size: 0.5em;
           color: #666;
         }
         .dark .furigana-rt {
