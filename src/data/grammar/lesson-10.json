@@ -14,11 +14,11 @@
       "structure": "**[Địa điểm]に[Đồ vật]があります**",
       "examples": [
         {
-          "japanese": "机の上に本があります。",
+          "japanese": "{机|つくえ}の上に{本|ほん}があります。",
           "vietnamese": "Trên bàn có sách."
         },
         {
-          "japanese": "部屋にテレビがあります。",
+          "japanese": "{部屋|へや}にテレビがあります。",
           "vietnamese": "Phòng có TV."
         }
       ],
@@ -33,11 +33,11 @@
       "structure": "**[Địa điểm]に[Người/ĐV]がいます**",
       "examples": [
         {
-          "japanese": "庭に猫がいます。",
+          "japanese": "{庭|にわ}に{猫|ねこ}がいます。",
           "vietnamese": "Trong vườn có mèo."
         },
         {
-          "japanese": "学校に先生がいます。",
+          "japanese": "{学校|がっこう}に{{{先生|せんせい}|せんせい}|せんせい}がいます。",
           "vietnamese": "Trường có giáo viên."
         }
       ],
@@ -52,11 +52,11 @@
       "structure": "**[Nơi]の[Vị trí]に[Đồ]があります**",
       "examples": [
         {
-          "japanese": "机の上に本があります。",
+          "japanese": "{机|つくえ}の上に{本|ほん}があります。",
           "vietnamese": "Trên bàn có sách."
         },
         {
-          "japanese": "猫は椅子の下にいます。",
+          "japanese": "{猫|ねこ}は{椅子|いす}の下にいます。",
           "vietnamese": "Mèo ở dưới ghế."
         }
       ],
@@ -71,11 +71,11 @@
       "structure": "**[Danh từ1]や[Danh từ2](など)**",
       "examples": [
         {
-          "japanese": "本や鉛筆があります。",
+          "japanese": "{本|ほん}や{鉛筆|えんぴつ}があります。",
           "vietnamese": "Có sách, bút v.v."
         },
         {
-          "japanese": "京都や大阪へ行きました。",
+          "japanese": "{{京都|きょうと}|きょうと}や{大阪|おおさか}へ行きました。",
           "vietnamese": "Đã đi Kyoto, Osaka v.v."
         }
       ],

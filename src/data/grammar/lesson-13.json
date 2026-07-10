@@ -14,11 +14,11 @@
       "structure": "**[ThânĐT]+たいです**",
       "examples": [
         {
-          "japanese": "日本へ行きたいです。",
+          "japanese": "日{本|ほん}へ行きたいです。",
           "vietnamese": "Muốn đi Nhật."
         },
         {
-          "japanese": "すしを食べたいです。",
+          "japanese": "すしを{食|た}べたいです。",
           "vietnamese": "Muốn ăn sushi."
         }
       ],
@@ -33,7 +33,7 @@
       "structure": "**[Địa điểm]へ行きたいです**",
       "examples": [
         {
-          "japanese": "日本へ行きたいです。",
+          "japanese": "日{本|ほん}へ行きたいです。",
           "vietnamese": "Muốn đi Nhật."
         },
         {
@@ -56,7 +56,7 @@
           "vietnamese": "Cùng ăn không?"
         },
         {
-          "japanese": "映画を見ませんか。",
+          "japanese": "{映画|えいが}を見ませんか。",
           "vietnamese": "Xem phim không?"
         }
       ],

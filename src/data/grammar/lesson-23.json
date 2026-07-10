@@ -14,11 +14,11 @@
       "structure": "**[Thể thường]とき、[Mệnh đề]**",
       "examples": [
         {
-          "japanese": "子供のとき、日本に住んでいました。",
+          "japanese": "{子供|こども}のとき、日{本|ほん}に住んでいました。",
           "vietnamese": "Khi nhỏ, sống ở Nhật."
         },
         {
-          "japanese": "駅に着いたとき、電話します。",
+          "japanese": "{駅|えき}に着いたとき、電{話|はな}します。",
           "vietnamese": "Khi đến ga, sẽ gọi."
         }
       ],
@@ -52,11 +52,11 @@
       "structure": "**[ThânĐT]ながら[ĐT chính]**",
       "examples": [
         {
-          "japanese": "音楽を聞きながら勉強します。",
+          "japanese": "{{音楽|おんがく}|おんがく}を聞きながら{勉強|べんきょう}します。",
           "vietnamese": "Vừa nghe nhạc vừa học."
         },
         {
-          "japanese": "テレビを見ながら食べます。",
+          "japanese": "テレビを見ながら{食|た}べます。",
           "vietnamese": "Vừa xem TV vừa ăn."
         }
       ],

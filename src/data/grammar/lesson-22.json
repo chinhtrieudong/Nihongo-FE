@@ -14,11 +14,11 @@
       "structure": "**[ĐT từ điển]前に、[Hành động]**",
       "examples": [
         {
-          "japanese": "食べる前に、手を洗います。",
+          "japanese": "{食|た}べる前に、手を{洗|あら}います。",
           "vietnamese": "Trước khi ăn, rửa tay."
         },
         {
-          "japanese": "寝る前に、歯を磨きます。",
+          "japanese": "寝る前に、歯を{磨|みが}きます。",
           "vietnamese": "Trước ngủ, đánh răng."
         }
       ],
@@ -33,11 +33,11 @@
       "structure": "**[ĐT thể て]から、[Hành động]**",
       "examples": [
         {
-          "japanese": "勉強してから、寝ます。",
+          "japanese": "{勉強|べんきょう}してから、{寝|ね}ます。",
           "vietnamese": "Học xong rồi ngủ."
         },
         {
-          "japanese": "食べてから、出かけます。",
+          "japanese": "{食|た}べてから、出かけます。",
           "vietnamese": "Ăn xong rồi ra ngoài."
         }
       ],

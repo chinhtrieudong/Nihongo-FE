@@ -14,11 +14,11 @@
       "structure": "**これ/それ/あれ は [Danh từ] です**",
       "examples": [
         {
-          "japanese": "これは本です。",
+          "japanese": "これは{本|ほん}です。",
           "vietnamese": "Đây là sách."
         },
         {
-          "japanese": "それは鉛筆ですか。",
+          "japanese": "それは{鉛筆|えんぴつ}ですか。",
           "vietnamese": "Đó là bút chì không?"
         }
       ],
@@ -33,11 +33,11 @@
       "structure": "**この/その/あの [Danh từ] は〜です**",
       "examples": [
         {
-          "japanese": "この本は私のです。",
+          "japanese": "この{本|ほん}は{私|わたし}のです。",
           "vietnamese": "Sách này là của tôi."
         },
         {
-          "japanese": "その鉛筆は誰のですか。",
+          "japanese": "その{鉛筆|えんぴつ}は誰のですか。",
           "vietnamese": "Bút chì đó của ai?"
         }
       ],
@@ -56,7 +56,7 @@
           "vietnamese": "Anh Tanaka? Vâng."
         },
         {
-          "japanese": "先生ですか。→いいえ、そうじゃありません。",
+          "japanese": "{{{先生|せんせい}|せんせい}|せんせい}ですか。→いいえ、そうじゃありません。",
           "vietnamese": "Giáo viên? Không."
         }
       ],
@@ -71,11 +71,11 @@
       "structure": "**[Danh từ1] の [Danh từ2]**",
       "examples": [
         {
-          "japanese": "私の本です。",
+          "japanese": "{私|わたし}の{本|ほん}です。",
           "vietnamese": "Sách của tôi."
         },
         {
-          "japanese": "これは私の本です。",
+          "japanese": "これは{私|わたし}の{本|ほん}です。",
           "vietnamese": "Đây là sách của tôi."
         }
       ],

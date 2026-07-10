@@ -14,11 +14,11 @@
       "structure": "**[Danh từ1] は [Danh từ2] です**",
       "examples": [
         {
-          "japanese": "私は学生です。",
+          "japanese": "{私|わたし}は{学生|がくせい}です。",
           "vietnamese": "Tôi là học sinh."
         },
         {
-          "japanese": "これは本です。",
+          "japanese": "これは{本|ほん}です。",
           "vietnamese": "Đây là sách."
         }
       ],
@@ -33,11 +33,11 @@
       "structure": "**[Danh từ1] は [Danh từ2] じゃありません**",
       "examples": [
         {
-          "japanese": "私は学生じゃありません。",
+          "japanese": "{私|わたし}は{学生|がくせい}じゃありません。",
           "vietnamese": "Tôi không phải học sinh."
         },
         {
-          "japanese": "これは本じゃありません。",
+          "japanese": "これは{本|ほん}じゃありません。",
           "vietnamese": "Đây không phải sách."
         }
       ],
@@ -52,11 +52,11 @@
       "structure": "**[Danh từ1] は [Danh từ2] ですか**",
       "examples": [
         {
-          "japanese": "あなたは学生ですか。",
+          "japanese": "あなたは{学生|がくせい}ですか。",
           "vietnamese": "Bạn là học sinh không?"
         },
         {
-          "japanese": "これは本ですか。",
+          "japanese": "これは{本|ほん}ですか。",
           "vietnamese": "Đây là sách không?"
         }
       ],
@@ -71,11 +71,11 @@
       "structure": "**[Danh từ] も [Danh từ] です**",
       "examples": [
         {
-          "japanese": "私も学生です。",
+          "japanese": "{私|わたし}も{学生|がくせい}です。",
           "vietnamese": "Tôi cũng là học sinh."
         },
         {
-          "japanese": "これも本です。",
+          "japanese": "これも{本|ほん}です。",
           "vietnamese": "Đây cũng là sách."
         }
       ],

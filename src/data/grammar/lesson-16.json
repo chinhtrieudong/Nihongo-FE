@@ -14,7 +14,7 @@
       "structure": "**[ĐT thể て]います**",
       "examples": [
         {
-          "japanese": "今勉強しています。",
+          "japanese": "今{勉強|べんきょう}しています。",
           "vietnamese": "Đang học."
         },
         {
@@ -33,11 +33,11 @@
       "structure": "**[ĐT thể て]います**",
       "examples": [
         {
-          "japanese": "銀行で働いています。",
+          "japanese": "{銀行|ぎんこう}で働いています。",
           "vietnamese": "Làm ở ngân hàng."
         },
         {
-          "japanese": "京都に住んでいます。",
+          "japanese": "{{京都|きょうと}|きょうと}に住んでいます。",
           "vietnamese": "Sống ở Kyoto."
         }
       ],
@@ -52,7 +52,7 @@
       "structure": "**[ĐT thể て]も**",
       "examples": [
         {
-          "japanese": "雨が降っても行きます。",
+          "japanese": "雨が降っても{行|い}きます。",
           "vietnamese": "Dù mưa cũng đi."
         },
         {

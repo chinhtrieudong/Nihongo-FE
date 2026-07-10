@@ -14,11 +14,11 @@
       "structure": "**[い]→かった / [な]+でした**",
       "examples": [
         {
-          "japanese": "昨日は寒かったです。",
+          "japanese": "{昨日|きのう}は寒かったです。",
           "vietnamese": "Hôm qua lạnh."
         },
         {
-          "japanese": "京都は賑やかでした。",
+          "japanese": "{{京都|きょうと}|きょうと}は{賑|にぎ}やかでした。",
           "vietnamese": "Kyoto nhộn nhịp."
         }
       ],
@@ -33,11 +33,11 @@
       "structure": "**[A]は[B]より[Tính từ]です**",
       "examples": [
         {
-          "japanese": "東京は大阪より大きい。",
+          "japanese": "{東京|とうきょう}は{大阪|おおさか}より{大|おお}きい。",
           "vietnamese": "Tokyo lớn hơn Osaka."
         },
         {
-          "japanese": "日本語は英語より難しい。",
+          "japanese": "日{本|ほん}語は{英語|えいご}より{難|むずか}しい。",
           "vietnamese": "Nhật khó hơn Anh."
         }
       ],
@@ -52,11 +52,11 @@
       "structure": "**[B]のほうが[A]より[Tính từ]です**",
       "examples": [
         {
-          "japanese": "大阪のほうが安いです。",
+          "japanese": "{大阪|おおさか}のほうが{安|やす}いです。",
           "vietnamese": "Osaka rẻ hơn."
         },
         {
-          "japanese": "電車のほうが速いです。",
+          "japanese": "電{車|くるま}のほうが{速|はや}いです。",
           "vietnamese": "Tàu nhanh hơn."
         }
       ],
@@ -71,7 +71,7 @@
       "structure": "**[Phạm vi]でいちばん[Tính từ]です**",
       "examples": [
         {
-          "japanese": "日本でいちばん高い山は富士山。",
+          "japanese": "日{本|ほん}でいちばん{高|たか}い山は{富士山|ふじさん}。",
           "vietnamese": "Núi cao nhất NB là Phú Sĩ."
         }
       ],

@@ -14,11 +14,11 @@
       "structure": "**[Động từ thể từ điển]**",
       "examples": [
         {
-          "japanese": "毎日学校へ行く。",
+          "japanese": "{{毎日|まいにち}|まいにち}{学校|がっこう}へ{行|い}く。",
           "vietnamese": "Mỗi ngày đi học."
         },
         {
-          "japanese": "朝ご飯を食べる。",
+          "japanese": "朝ご飯を{食|た}べる。",
           "vietnamese": "Ăn sáng."
         }
       ],
@@ -33,7 +33,7 @@
       "structure": "**[ĐT từ điển]ことができます**",
       "examples": [
         {
-          "japanese": "日本語を話すことができます。",
+          "japanese": "日{本|ほん}語を話すことができます。",
           "vietnamese": "Có thể nói tiếng Nhật."
         },
         {
@@ -52,11 +52,11 @@
       "structure": "**趣味は[ĐT từ điển]ことです**",
       "examples": [
         {
-          "japanese": "趣味は本を読むことです。",
+          "japanese": "{趣味|しゅみ}は{本|ほん}を読むことです。",
           "vietnamese": "Thích đọc sách."
         },
         {
-          "japanese": "趣味は料理を作ることです。",
+          "japanese": "{趣味|しゅみ}は{{料理|りょうり}|りょうり}を作ることです。",
           "vietnamese": "Thích nấu ăn."
         }
       ],

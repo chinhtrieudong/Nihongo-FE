@@ -18,7 +18,7 @@
           "vietnamese": "WC ở kia."
         },
         {
-          "japanese": "ここは学校です。",
+          "japanese": "ここは{学校|がっこう}です。",
           "vietnamese": "Đây là trường."
         }
       ],
@@ -33,11 +33,11 @@
       "structure": "**[Địa điểm] は こちら/そちら/あちら です**",
       "examples": [
         {
-          "japanese": "事務所はこちらです。",
+          "japanese": "{事務所|じむしょ}はこちらです。",
           "vietnamese": "Văn phòng ở phía này."
         },
         {
-          "japanese": "出口はあちらです。",
+          "japanese": "{出口|でぐち}はあちらです。",
           "vietnamese": "Lối ra phía kia."
         }
       ],
@@ -52,11 +52,11 @@
       "structure": "**[Địa điểm] はどこですか**",
       "examples": [
         {
-          "japanese": "学校はどこですか。",
+          "japanese": "{学校|がっこう}はどこですか。",
           "vietnamese": "Trường ở đâu?"
         },
         {
-          "japanese": "図書館はあそこです。",
+          "japanese": "{図書館|としょかん}はあそこです。",
           "vietnamese": "Thư viện ở kia."
         }
       ],

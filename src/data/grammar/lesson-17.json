@@ -33,11 +33,11 @@
       "structure": "**[ないthân]+ければなりません**",
       "examples": [
         {
-          "japanese": "宿題をしなければなりません。",
+          "japanese": "{宿題|しゅくだい}をしなければなりません。",
           "vietnamese": "Phải làm bài tập."
         },
         {
-          "japanese": "薬を飲まなければなりません。",
+          "japanese": "{薬|くすり}を飲まなければなりません。",
           "vietnamese": "Phải uống thuốc."
         }
       ],
@@ -52,7 +52,7 @@
       "structure": "**[ないthân]+くてもいいです**",
       "examples": [
         {
-          "japanese": "明日来なくてもいいです。",
+          "japanese": "{明日|あした}来なくてもいいです。",
           "vietnamese": "Mai ko cần đến."
         },
         {

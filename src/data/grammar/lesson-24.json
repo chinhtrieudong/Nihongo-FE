@@ -14,11 +14,11 @@
       "structure": "**[Người]は[Người(tôi)]に[Vật]をくれます**",
       "examples": [
         {
-          "japanese": "母は本をくれました。",
+          "japanese": "母は{本|ほん}をくれました。",
           "vietnamese": "Mẹ cho tôi sách."
         },
         {
-          "japanese": "友達がチョコをくれました。",
+          "japanese": "{友達|ともだち}がチョコをくれました。",
           "vietnamese": "Bạn cho tôi socola."
         }
       ],
@@ -33,11 +33,11 @@
       "structure": "**[Người]は[ĐT thể て]くれます**",
       "examples": [
         {
-          "japanese": "友達が日本語を教えてくれます。",
+          "japanese": "{友達|ともだち}が日{本|ほん}語を教えてくれます。",
           "vietnamese": "Bạn dạy Nhật cho tôi."
         },
         {
-          "japanese": "先生が本を貸してくれました。",
+          "japanese": "{{{先生|せんせい}|せんせい}|せんせい}が{本|ほん}を貸してくれました。",
           "vietnamese": "Thầy cho mượn sách."
         }
       ],
@@ -56,7 +56,7 @@
           "vietnamese": "Nhờ bác sĩ khám."
         },
         {
-          "japanese": "友達に翻訳してもらいました。",
+          "japanese": "{友達|ともだち}に翻訳してもらいました。",
           "vietnamese": "Nhờ bạn dịch."
         }
       ],

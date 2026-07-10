@@ -14,11 +14,11 @@
       "structure": "**[Động từ thể て]**",
       "examples": [
         {
-          "japanese": "朝起きて、歯を磨きます。",
+          "japanese": "朝起きて、歯を{磨|みが}きます。",
           "vietnamese": "Dậy, đánh răng."
         },
         {
-          "japanese": "学校に行って、勉強します。",
+          "japanese": "{学校|がっこう}に{行|い}って、{勉強|べんきょう}します。",
           "vietnamese": "Đến trường, học."
         }
       ],

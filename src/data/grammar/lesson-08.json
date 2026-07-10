@@ -14,11 +14,11 @@
       "structure": "**[~い]+です / [~い]+[Danh từ]**",
       "examples": [
         {
-          "japanese": "この本は面白いです。",
+          "japanese": "この{本|ほん}は{面白|おもしろ}いです。",
           "vietnamese": "Sách này thú vị."
         },
         {
-          "japanese": "高いビルです。",
+          "japanese": "{高|たか}いビルです。",
           "vietnamese": "Tòa nhà cao."
         }
       ],
@@ -33,11 +33,11 @@
       "structure": "**[~な]+[Danh từ] / [~]+です**",
       "examples": [
         {
-          "japanese": "静かな部屋です。",
+          "japanese": "{静|しず}かな{部屋|へや}です。",
           "vietnamese": "Phòng yên tĩnh."
         },
         {
-          "japanese": "この町は賑やかです。",
+          "japanese": "この町は{賑|にぎ}やかです。",
           "vietnamese": "Phố này nhộn nhịp."
         }
       ],
@@ -71,7 +71,7 @@
       "structure": "**とても[Tính từ]です**",
       "examples": [
         {
-          "japanese": "とても面白いです。",
+          "japanese": "とても{面白|おもしろ}いです。",
           "vietnamese": "Rất thú vị."
         },
         {

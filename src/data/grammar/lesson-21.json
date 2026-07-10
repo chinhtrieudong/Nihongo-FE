@@ -14,7 +14,7 @@
       "structure": "**[Thể thường]と思っています**",
       "examples": [
         {
-          "japanese": "日本はいい国だと思っています。",
+          "japanese": "日{本|ほん}はいい国だと思っています。",
           "vietnamese": "Tôi nghĩ NB là nước tốt."
         }
       ],
@@ -29,7 +29,7 @@
       "structure": "**[Thể thường]でしょう**",
       "examples": [
         {
-          "japanese": "明日は雨でしょう。",
+          "japanese": "{明日|あした}は雨でしょう。",
           "vietnamese": "Chắc mai mưa."
         },
         {

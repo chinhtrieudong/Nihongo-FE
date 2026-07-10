@@ -14,11 +14,11 @@
       "structure": "**[Đồ]を食べます/飲みます**",
       "examples": [
         {
-          "japanese": "ご飯を食べます。",
+          "japanese": "ご飯を{食|た}べます。",
           "vietnamese": "Tôi ăn cơm."
         },
         {
-          "japanese": "コーヒーを飲みます。",
+          "japanese": "コーヒーを{飲|の}みます。",
           "vietnamese": "Tôi uống cafe."
         }
       ],
@@ -33,11 +33,11 @@
       "structure": "**[Tân ngữ]を[Động từ]**",
       "examples": [
         {
-          "japanese": "映画を見ます。",
+          "japanese": "{映画|えいが}を見ます。",
           "vietnamese": "Xem phim."
         },
         {
-          "japanese": "本を読みます。",
+          "japanese": "{本|ほん}を{読|よ}みます。",
           "vietnamese": "Đọc sách."
         }
       ],
@@ -52,11 +52,11 @@
       "structure": "**いっしょに[Động từ]**",
       "examples": [
         {
-          "japanese": "いっしょに勉強しましょう。",
+          "japanese": "いっしょに{勉強|べんきょう}しましょう。",
           "vietnamese": "Cùng học nào."
         },
         {
-          "japanese": "いっしょに食べます。",
+          "japanese": "いっしょに{食|た}べます。",
           "vietnamese": "Cùng ăn."
         }
       ],
@@ -71,11 +71,11 @@
       "structure": "**[Người]と[Động từ]**",
       "examples": [
         {
-          "japanese": "友達と映画を見ます。",
+          "japanese": "{友達|ともだち}と{映画|えいが}を見ます。",
           "vietnamese": "Xem phim với bạn."
         },
         {
-          "japanese": "誰と行きますか。",
+          "japanese": "誰と{行|い}きますか。",
           "vietnamese": "Đi với ai?"
         }
       ],

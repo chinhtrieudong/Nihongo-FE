@@ -18,7 +18,7 @@
           "vietnamese": "Bây giờ 3 giờ."
         },
         {
-          "japanese": "7時に起きます。",
+          "japanese": "7時に{起|お}きます。",
           "vietnamese": "Dậy lúc 7 giờ."
         }
       ],
@@ -33,11 +33,11 @@
       "structure": "**[Từ TG] [Động từ]**",
       "examples": [
         {
-          "japanese": "明日学校へ行きます。",
+          "japanese": "{明日|あした}{学校|がっこう}へ{行|い}きます。",
           "vietnamese": "Mai tôi đi học."
         },
         {
-          "japanese": "毎日勉強します。",
+          "japanese": "{{毎日|まいにち}|まいにち}{勉強|べんきょう}します。",
           "vietnamese": "Mỗi ngày tôi học."
         }
       ],
@@ -52,7 +52,7 @@
       "structure": "**[Bắt đầu]から[Kết thúc]まで**",
       "examples": [
         {
-          "japanese": "9時から5時まで働きます。",
+          "japanese": "9時から5時まで{働|はたら}きます。",
           "vietnamese": "Làm từ 9h đến 5h."
         }
       ],
@@ -67,11 +67,11 @@
       "structure": "**[Thân động từ]+ます/ません/ました/ませんでした**",
       "examples": [
         {
-          "japanese": "毎日勉強します。",
+          "japanese": "{{毎日|まいにち}|まいにち}{勉強|べんきょう}します。",
           "vietnamese": "Mỗi ngày tôi học."
         },
         {
-          "japanese": "昨日勉強しませんでした。",
+          "japanese": "{昨日|きのう}{勉強|べんきょう}しませんでした。",
           "vietnamese": "Hôm qua tôi ko học."
         }
       ],

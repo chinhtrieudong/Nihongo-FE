@@ -14,11 +14,11 @@
       "structure": "**[Người cho]は[Người nhận]に[Vật]をあげます**",
       "examples": [
         {
-          "japanese": "友達にプレゼントをあげます。",
+          "japanese": "{友達|ともだち}にプレゼントをあげます。",
           "vietnamese": "Tặng quà cho bạn."
         },
         {
-          "japanese": "先生に花をあげました。",
+          "japanese": "{{{先生|せんせい}|せんせい}|せんせい}に花をあげました。",
           "vietnamese": "Đã tặng hoa cho thầy."
         }
       ],
@@ -33,11 +33,11 @@
       "structure": "**[Người nhận]は[Người cho]に[Vật]をもらいます**",
       "examples": [
         {
-          "japanese": "先生に本をもらいました。",
+          "japanese": "{{{先生|せんせい}|せんせい}|せんせい}に{本|ほん}をもらいました。",
           "vietnamese": "Nhận sách từ thầy."
         },
         {
-          "japanese": "友達にペンをもらいました。",
+          "japanese": "{友達|ともだち}にペンをもらいました。",
           "vietnamese": "Nhận bút từ bạn."
         }
       ],
@@ -52,11 +52,11 @@
       "structure": "**[Người]に[Vật]をかします/かります**",
       "examples": [
         {
-          "japanese": "本をかしました。",
+          "japanese": "{本|ほん}をかしました。",
           "vietnamese": "Cho mượn sách."
         },
         {
-          "japanese": "本をかりました。",
+          "japanese": "{本|ほん}をかりました。",
           "vietnamese": "Đã mượn sách."
         }
       ],
@@ -71,7 +71,7 @@
       "structure": "**[Người]に[Nội dung]をおしえます**",
       "examples": [
         {
-          "japanese": "日本語をおしえます。",
+          "japanese": "日{本|ほん}語をおしえます。",
           "vietnamese": "Dạy tiếng Nhật."
         },
         {

@@ -14,11 +14,11 @@
       "structure": "**[Số]人**",
       "examples": [
         {
-          "japanese": "家族は4人です。",
+          "japanese": "{家族|かぞく}は4人です。",
           "vietnamese": "GĐ có 4 người."
         },
         {
-          "japanese": "学生が10人います。",
+          "japanese": "{学生|がくせい}が10人います。",
           "vietnamese": "Có 10 học sinh."
         }
       ],
@@ -33,7 +33,7 @@
       "structure": "**[Số]+[Đơn vị]**",
       "examples": [
         {
-          "japanese": "車が2台あります。",
+          "japanese": "{車|くるま}が2台あります。",
           "vietnamese": "Có 2 xe."
         },
         {
@@ -52,7 +52,7 @@
       "structure": "**どのくらい〜か**",
       "examples": [
         {
-          "japanese": "どのくらい勉強しましたか。",
+          "japanese": "どのくらい{勉強|べんきょう}しましたか。",
           "vietnamese": "Học bao lâu rồi?"
         },
         {

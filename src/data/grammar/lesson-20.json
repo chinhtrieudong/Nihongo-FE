@@ -14,11 +14,11 @@
       "structure": "**[Thể thường của ĐT/TT/Danh từ]**",
       "examples": [
         {
-          "japanese": "毎日学校へ行く。",
+          "japanese": "{{毎日|まいにち}|まいにち}{学校|がっこう}へ{行|い}く。",
           "vietnamese": "Mỗi ngày đi học."
         },
         {
-          "japanese": "この本は面白い。",
+          "japanese": "この{本|ほん}は{面白|おもしろ}い。",
           "vietnamese": "Sách này thú vị."
         }
       ],
@@ -33,11 +33,11 @@
       "structure": "**[Câu thể thường]と思います**",
       "examples": [
         {
-          "japanese": "明日は晴れると思います。",
+          "japanese": "{明日|あした}は晴れると思います。",
           "vietnamese": "Tôi nghĩ mai nắng."
         },
         {
-          "japanese": "日本語は難しいと思います。",
+          "japanese": "日{本|ほん}語は{難|むずか}しいと思います。",
           "vietnamese": "Tôi nghĩ Nhật khó."
         }
       ],
@@ -52,7 +52,7 @@
       "structure": "**[Nội dung]と言います**",
       "examples": [
         {
-          "japanese": "明日来ると言いました。",
+          "japanese": "{明日|あした}{来|く}ると言いました。",
           "vietnamese": "Anh ấy nói mai đến."
         },
         {

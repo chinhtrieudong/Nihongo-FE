@@ -14,11 +14,11 @@
       "structure": "**[Danh từ]がわかります**",
       "examples": [
         {
-          "japanese": "日本語がわかります。",
+          "japanese": "日{本|ほん}語がわかります。",
           "vietnamese": "Tôi biết tiếng Nhật."
         },
         {
-          "japanese": "この問題がわかりません。",
+          "japanese": "この{問題|もんだい}がわかりません。",
           "vietnamese": "Ko hiểu bài này."
         }
       ],
@@ -33,11 +33,11 @@
       "structure": "**[Người]は[Vật]があります/います**",
       "examples": [
         {
-          "japanese": "車があります。",
+          "japanese": "{車|くるま}があります。",
           "vietnamese": "Tôi có xe."
         },
         {
-          "japanese": "子供がいます。",
+          "japanese": "{子供|こども}がいます。",
           "vietnamese": "Tôi có con."
         }
       ],
@@ -52,11 +52,11 @@
       "structure": "**[Chủ thể]は[Đối tượng]が好き/嫌いです**",
       "examples": [
         {
-          "japanese": "音楽が好きです。",
+          "japanese": "{{音楽|おんがく}|おんがく}が{好|す}きです。",
           "vietnamese": "Thích nhạc."
         },
         {
-          "japanese": "納豆が嫌いです。",
+          "japanese": "納豆が{嫌|きら}いです。",
           "vietnamese": "Ghét natto."
         }
       ],
@@ -71,11 +71,11 @@
       "structure": "**[Chủ thể]は[Kỹ năng]が上手/下手です**",
       "examples": [
         {
-          "japanese": "料理が上手です。",
+          "japanese": "{{料理|りょうり}|りょうり}が{上手|じょうず}です。",
           "vietnamese": "Nấu ăn giỏi."
         },
         {
-          "japanese": "スポーツが下手です。",
+          "japanese": "スポーツが{下手|へた}です。",
           "vietnamese": "Thể thao kém."
         }
       ],

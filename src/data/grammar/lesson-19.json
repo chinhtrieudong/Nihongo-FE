@@ -14,11 +14,11 @@
       "structure": "**[Động từ thể た]**",
       "examples": [
         {
-          "japanese": "昨日勉強した。",
+          "japanese": "{昨日|きのう}{勉強|べんきょう}した。",
           "vietnamese": "Hqua đã học."
         },
         {
-          "japanese": "ご飯を食べた。",
+          "japanese": "ご飯を{食|た}べた。",
           "vietnamese": "Đã ăn cơm."
         }
       ],
@@ -33,11 +33,11 @@
       "structure": "**[ĐT thể た]ことがあります**",
       "examples": [
         {
-          "japanese": "富士山に登ったことがあります。",
+          "japanese": "{富士山|ふじさん}に登ったことがあります。",
           "vietnamese": "Đã từng leo Phú Sĩ."
         },
         {
-          "japanese": "すしを食べたことがあります。",
+          "japanese": "すしを{食|た}べたことがあります。",
           "vietnamese": "Đã từng ăn sushi."
         }
       ],
@@ -52,7 +52,7 @@
       "structure": "**[ĐTた]り、[ĐTた]りします**",
       "examples": [
         {
-          "japanese": "本を読んだり、映画を見たりします。",
+          "japanese": "{本|ほん}を読んだり、{映画|えいが}を見たりします。",
           "vietnamese": "Đọc sách, xem phim..."
         },
         {
