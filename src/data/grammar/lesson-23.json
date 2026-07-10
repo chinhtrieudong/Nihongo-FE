@@ -1,17 +1,17 @@
 {
   "lessonNumber": 23,
-  "title": "Cách nói 〜のとき và thời điểm",
-  "title_jp": "時を表す表現 - 〜とき",
   "level": "N5",
-  "description": "Cách diễn tả thời điểm thực hiện hành động (〜とき).",
+  "title": "Khi - Trong lúc",
+  "title_jp": "時・同時動作",
+  "description": "〜とき (khi), 〜と (khi ~ thì), 〜ながら (vừa ~ vừa).",
   "grammars": [
     {
       "id": "m23_01",
-      "title": "Khi làm gì - 〜とき",
+      "title": "Khi - 〜とき",
       "pattern": "〜とき、〜",
       "meaning": "khi ~, thì ~",
-      "explanation": "**Dùng để diễn tả thời điểm hoặc tình huống xảy ra hành động.**\n\nNếu hành động trong とき chưa xảy ra: dùng thể từ điển.\nNếu đã xảy ra: dùng thể た.",
-      "structure": "**[Động từ/Tính từ thể thường] とき、[Mệnh đề chính]**\n**[Danh từ] の とき、[Mệnh đề chính]**",
+      "explanation": "**Dùng để diễn tả thời điểm xảy ra hành động.**\n\nNếu hành động trong とき chưa xảy ra: dùng thể từ điển.\nNếu đã xảy ra: dùng thể た.",
+      "structure": "**[Động từ/Tính từ thể thường] とき、[Mệnh đề chính]**\n**[Danh từ] のとき、[Mệnh đề chính]**",
       "examples": [
         {
           "japanese": "子供のとき、日本に住んでいました。",
@@ -20,32 +20,47 @@
         {
           "japanese": "駅に着いたとき、電話します。",
           "vietnamese": "Khi đến ga, tôi sẽ gọi điện."
-        },
-        {
-          "japanese": "暇なとき、本を読みます。",
-          "vietnamese": "Khi rảnh, tôi đọc sách."
         }
       ],
       "category": "time"
     },
     {
       "id": "m23_02",
-      "title": "Trước khi / Sau khi",
-      "pattern": "〜前に / 〜後で",
-      "meaning": "trước khi / sau khi",
-      "explanation": "**前に và 後で dùng để diễn tả thứ tự hành động.**\n- **前に**: trước khi (dùng thể từ điển)\n- **後で**: sau khi (dùng thể た)",
-      "structure": "**[Động từ thể từ điển] 前に、[Hành động]**\n**[Động từ thể た] 後で、[Hành động]**",
+      "title": "Khi ~ thì - 〜と",
+      "pattern": "〜と、〜",
+      "meaning": "khi ~ thì ~ (kết quả tất yếu)",
+      "explanation": "**と diễn tả kết quả tất yếu hoặc thói quen.**\n\nKhi một hành động xảy ra thì tự động dẫn đến kết quả.\nKhông dùng với ý chí, mong muốn.",
+      "structure": "**[Mệnh đề 1] と、[Mệnh đề 2 (kết quả)]**",
       "examples": [
         {
-          "japanese": "食べる前に、手を洗います。",
-          "vietnamese": "Trước khi ăn, tôi rửa tay."
+          "japanese": "春になると、花が咲きます。",
+          "vietnamese": "Khi mùa xuân đến, hoa nở."
         },
         {
-          "japanese": "勉強した後で、テレビを見ます。",
-          "vietnamese": "Sau khi học xong, tôi xem TV."
+          "japanese": "このボタンを押すと、ドアが開きます。",
+          "vietnamese": "Khi ấn nút này, cửa sẽ mở."
         }
       ],
-      "category": "time"
+      "category": "conjunctions"
+    },
+    {
+      "id": "m23_03",
+      "title": "Vừa ~ vừa - 〜ながら",
+      "pattern": "〜ながら〜ます",
+      "meaning": "vừa ~ vừa ~",
+      "explanation": "**Dùng để diễn tả hai hành động xảy ra đồng thời.**\n\nThân động từ ます + ながら + động từ chính.",
+      "structure": "**[Thân động từ ます] ながら [Động từ chính]**",
+      "examples": [
+        {
+          "japanese": "音楽を聞きながら勉強します。",
+          "vietnamese": "Tôi vừa nghe nhạc vừa học."
+        },
+        {
+          "japanese": "テレビを見ながらご飯を食べます。",
+          "vietnamese": "Tôi vừa xem TV vừa ăn cơm."
+        }
+      ],
+      "category": "conjunctions"
     }
   ]
 }

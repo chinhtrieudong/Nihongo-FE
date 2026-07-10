@@ -1,29 +1,63 @@
 {
   "lessonNumber": 18,
-  "title": "Danh từ hóa và cách nói 〜の",
-  "title_jp": "名詞化と「の」",
   "level": "N5",
-  "description": "Cách dùng の để thay thế danh từ và danh từ hóa mệnh đề.",
+  "title": "Thể từ điển và khả năng",
+  "title_jp": "辞書形と可能",
+  "description": "Động từ thể từ điển, 〜ことができます, 趣味は〜ことです.",
   "grammars": [
     {
       "id": "m18_01",
-      "title": "の thay thế danh từ",
-      "pattern": "〜のは / のが / のを",
-      "meaning": "việc ~ (danh từ hóa)",
-      "explanation": "**の có thể thay thế danh từ đã được nhắc đến trước đó, tránh lặp từ.**\n\nCũng có thể danh từ hóa một mệnh đề, biến động từ thành danh từ.",
-      "structure": "**[Tính từ] + の (thay thế danh từ)**\n**[Động từ thể thường] + の (danh từ hóa)**",
+      "title": "Động từ thể từ điển (辞書形)",
+      "pattern": "〜 (thể từ điển)",
+      "meaning": "làm ~ (thể thường)",
+      "explanation": "**Thể từ điển là dạng nguyên mẫu của động từ.**\n\n**Nhóm 1:** kết thúc bằng う (書く, 読む, 話す)\n**Nhóm 2:** kết thúc bằng る (食べる, 見る)\n**Nhóm 3:** する, 来る (くる)\n\nDùng trong văn nói thân mật.",
+      "structure": "**[Động từ thể từ điển]**",
       "examples": [
         {
-          "japanese": "これは私のです。",
-          "vietnamese": "Cái này là của tôi."
+          "japanese": "毎日学校へ行く。",
+          "vietnamese": "Mỗi ngày tôi đi học. (thân mật)"
         },
         {
-          "japanese": "本を読むのが好きです。",
-          "vietnamese": "Tôi thích việc đọc sách."
+          "japanese": "朝ご飯を食べる。",
+          "vietnamese": "Tôi ăn sáng. (thân mật)"
+        }
+      ],
+      "category": "verb_forms"
+    },
+    {
+      "id": "m18_02",
+      "title": "Khả năng - 〜ことができます",
+      "pattern": "〜ことができます",
+      "meaning": "có thể làm ~",
+      "explanation": "**Dùng thể từ điển + ことができます để diễn tả khả năng.**\n\nPhủ định: 〜ことができません.",
+      "structure": "**[Động từ thể từ điển] ことができます**",
+      "examples": [
+        {
+          "japanese": "日本語を話すことができます。",
+          "vietnamese": "Tôi có thể nói tiếng Nhật."
         },
         {
-          "japanese": "料理をすることが好きです。",
-          "vietnamese": "Tôi thích việc nấu ăn."
+          "japanese": "泳ぐことができません。",
+          "vietnamese": "Tôi không thể bơi."
+        }
+      ],
+      "category": "verb_forms"
+    },
+    {
+      "id": "m18_03",
+      "title": "Sở thích - 趣味は〜ことです",
+      "pattern": "趣味は〜ことです",
+      "meaning": "sở thích là ~",
+      "explanation": "**Dùng こと để danh từ hóa động từ.**\n\nThể từ điển + ことで biến động từ thành danh từ.",
+      "structure": "**趣味は [Động từ thể từ điển] ことです**",
+      "examples": [
+        {
+          "japanese": "趣味は本を読むことです。",
+          "vietnamese": "Sở thích của tôi là đọc sách."
+        },
+        {
+          "japanese": "趣味は切手を集めることです。",
+          "vietnamese": "Sở thích của tôi là sưu tập tem."
         }
       ],
       "category": "expressions"

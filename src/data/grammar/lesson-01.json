@@ -1,9 +1,9 @@
 {
   "lessonNumber": 1,
-  "title": "Câu danh từ - です",
-  "title_jp": "名詞文 - です",
   "level": "N5",
-  "description": "Cấu trúc câu danh từ cơ bản: [A] は [B] です / ではありません / でした / ではありませんでした.",
+  "title": "Câu danh từ cơ bản",
+  "title_jp": "名詞文の基本",
+  "description": "Cấu trúc câu danh từ, khẳng định, phủ định, nghi vấn và trợ từ も.",
   "grammars": [
     {
       "id": "m1_01",
@@ -20,28 +20,24 @@
         {
           "japanese": "これは本です。",
           "vietnamese": "Đây là quyển sách."
-        },
-        {
-          "japanese": "田中さんは先生です。",
-          "vietnamese": "Anh Tanaka là giáo viên."
         }
       ],
       "category": "basic_sentence_structure"
     },
     {
       "id": "m1_02",
-      "title": "Câu phủ định は〜ではありません",
-      "pattern": "〜は〜ではありません",
+      "title": "Câu phủ định は〜じゃありません",
+      "pattern": "〜は〜じゃありません",
       "meaning": "A không phải là B",
-      "explanation": "**Phủ định của câu danh từ.**\n\nDùng **ではありません** thay cho **です** để tạo câu phủ định.\n\nTrong văn nói thân mật có thể dùng じゃないです。",
-      "structure": "**[Danh từ 1] は [Danh từ 2] ではありません**",
+      "explanation": "**Phủ định của câu danh từ.**\n\nDùng **ではありません** hoặc **じゃありません** (thân mật hơn) thay cho **です** để tạo câu phủ định.",
+      "structure": "**[Danh từ 1] は [Danh từ 2] ではありません / じゃありません**",
       "examples": [
         {
           "japanese": "私は学生ではありません。",
           "vietnamese": "Tôi không phải là học sinh."
         },
         {
-          "japanese": "これは本ではありません。",
+          "japanese": "これは本じゃありません。",
           "vietnamese": "Đây không phải là quyển sách."
         }
       ],
@@ -52,7 +48,7 @@
       "title": "Câu nghi vấn は〜ですか",
       "pattern": "〜は〜ですか",
       "meaning": "A có phải là B không?",
-      "explanation": "**Thêm か vào cuối câu để tạo câu hỏi.**\n\n- か là trợ từ nghi vấn đặt cuối câu.\n- Không cần thay đổi trật tự từ trong câu.\n\nTrả lời: はい、〜です。/ いいえ、〜ではありません。",
+      "explanation": "**Thêm か vào cuối câu để tạo câu hỏi.**\n\n- か là trợ từ nghi vấn đặt cuối câu.\n- Trả lời: はい、〜です。/ いいえ、〜ではありません。",
       "structure": "**[Danh từ 1] は [Danh từ 2] ですか**",
       "examples": [
         {
@@ -68,26 +64,22 @@
     },
     {
       "id": "m1_04",
-      "title": "Trợ từ sở hữu の",
-      "pattern": "〜の〜",
-      "meaning": "của (sở hữu)",
-      "explanation": "**の là trợ từ sở hữu, nối hai danh từ.**\n\nDanh từ đứng trước の bổ nghĩa cho danh từ đứng sau, chỉ sự sở hữu hoặc liên quan.\n\nCó thể dùng để thay thế danh từ đã được nhắc đến trước đó.",
-      "structure": "**[Danh từ 1] の [Danh từ 2]**",
+      "title": "Trợ từ も - Cũng vậy",
+      "pattern": "〜も〜",
+      "meaning": "cũng là ~",
+      "explanation": "**も thay thế は, có nghĩa \"cũng\".**\n\nĐặt ngay sau danh từ chủ đề, nghĩa là \"cũng\".",
+      "structure": "**[Danh từ] も [Danh từ] です**",
       "examples": [
         {
-          "japanese": "私の本です。",
-          "vietnamese": "Quyển sách của tôi."
+          "japanese": "私も学生です。",
+          "vietnamese": "Tôi cũng là học sinh."
         },
         {
-          "japanese": "学校の先生です。",
-          "vietnamese": "Giáo viên của trường."
-        },
-        {
-          "japanese": "これは私の本です。",
-          "vietnamese": "Đây là quyển sách của tôi."
+          "japanese": "これも本です。",
+          "vietnamese": "Đây cũng là quyển sách."
         }
       ],
-      "category": "possessive"
+      "category": "basic_sentence_structure"
     }
   ]
 }

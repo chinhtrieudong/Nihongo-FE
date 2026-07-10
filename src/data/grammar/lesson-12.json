@@ -1,62 +1,81 @@
 {
   "lessonNumber": 12,
-  "title": "So sánh và hơn nhất",
-  "title_jp": "比較と最上級",
   "level": "N5",
-  "description": "Cách so sánh hai đối tượng và so sánh hơn nhất trong tiếng Nhật.",
+  "title": "So sánh",
+  "title_jp": "比較",
+  "description": "So sánh hơn với より và のほうが, so sánh nhất với いちばん, quá khứ của tính từ.",
   "grammars": [
     {
       "id": "m12_01",
-      "title": "So sánh hơn - 〜より〜のほうが",
-      "pattern": "〜より〜のほうが〜です",
-      "meaning": "~ hơn ~",
-      "explanation": "**Cấu trúc so sánh hơn của tính từ.**\n\nより đánh dấu đối tượng được so sánh.\nのほうが đánh dấu đối tượng vượt trội.",
-      "structure": "**[A] より [B] のほうが [Tính từ] です**\n→ B hơn A",
+      "title": "Quá khứ của tính từ",
+      "pattern": "〜かったです / 〜でした",
+      "meaning": "đã ~ (tính từ quá khứ)",
+      "explanation": "**Quá khứ của tính từ:**\n- **い-adj**: Bỏ い + かったです\n- **な-adj**: + でした\n\nPhủ định quá khứ: くなかったです / ではありませんでした",
+      "structure": "**[い-adj] → bỏ い + かったです**\n**[な-adj] + でした**",
       "examples": [
         {
-          "japanese": "東京より大阪のほうが安いです。",
-          "vietnamese": "Osaka rẻ hơn Tokyo."
+          "japanese": "昨日は寒かったです。",
+          "vietnamese": "Hôm qua trời đã lạnh."
         },
         {
-          "japanese": "日本語より英語のほうが難しいです。",
-          "vietnamese": "Tiếng Anh khó hơn tiếng Nhật."
+          "japanese": "京都は賑やかでした。",
+          "vietnamese": "Kyoto đã nhộn nhịp."
         }
       ],
-      "category": "comparison"
+      "category": "adjectives"
     },
     {
       "id": "m12_02",
-      "title": "So sánh bằng - 〜と同じです",
-      "pattern": "〜と同じです",
-      "meaning": "giống với ~",
-      "explanation": "**Cấu trúc so sánh bằng, diễn tả hai đối tượng giống nhau.**",
-      "structure": "**[A] は [B] と同じです**",
+      "title": "So sánh hơn - 〜より",
+      "pattern": "〜より〜",
+      "meaning": "hơn ~",
+      "explanation": "**より đánh dấu đối tượng được so sánh, đứng sau đối tượng so sánh.**",
+      "structure": "**[A] は [B] より [Tính từ] です**\n→ A hơn B",
       "examples": [
         {
-          "japanese": "私のカバンはあなたのと同じです。",
-          "vietnamese": "Cặp của tôi giống với cặp của bạn."
+          "japanese": "東京は大阪より大きいです。",
+          "vietnamese": "Tokyo lớn hơn Osaka."
         },
         {
-          "japanese": "これはそれと同じですか。",
-          "vietnamese": "Cái này có giống cái đó không?"
+          "japanese": "日本語は英語より難しいです。",
+          "vietnamese": "Tiếng Nhật khó hơn tiếng Anh."
         }
       ],
       "category": "comparison"
     },
     {
       "id": "m12_03",
-      "title": "So sánh hơn nhất - 〜で一番〜",
-      "pattern": "〜で一番〜",
-      "meaning": "nhất (trong nhóm)",
-      "explanation": "**Cấu trúc so sánh hơn nhất.**\n\n一番 (いちばん) có nghĩa là \"nhất\".\nDùng で để chỉ phạm vi của nhóm so sánh.",
-      "structure": "**[Phạm vi] で 一番 [Tính từ] です**",
+      "title": "So sánh hơn - 〜のほうが",
+      "pattern": "〜のほうが〜",
+      "meaning": "~ hơn",
+      "explanation": "**のほうが đánh dấu đối tượng vượt trội hơn.**\n\nThường kết hợp với より.",
+      "structure": "**[B] のほうが [A] より [Tính từ] です**",
       "examples": [
         {
-          "japanese": "日本で一番高い山は富士山です。",
+          "japanese": "大阪のほうが東京より安いです。",
+          "vietnamese": "Osaka rẻ hơn Tokyo."
+        },
+        {
+          "japanese": "電車のほうがバスより速いです。",
+          "vietnamese": "Tàu điện nhanh hơn xe buýt."
+        }
+      ],
+      "category": "comparison"
+    },
+    {
+      "id": "m12_04",
+      "title": "So sánh nhất - いちばん",
+      "pattern": "〜でいちばん〜",
+      "meaning": "nhất (trong nhóm)",
+      "explanation": "**いちばん (一番) có nghĩa là \"nhất\".**\n\nで chỉ phạm vi của nhóm so sánh.",
+      "structure": "**[Phạm vi] で いちばん [Tính từ] です**",
+      "examples": [
+        {
+          "japanese": "日本でいちばん高い山は富士山です。",
           "vietnamese": "Ngọn núi cao nhất Nhật Bản là núi Phú Sĩ."
         },
         {
-          "japanese": "クラスで一番背が高い人は誰ですか。",
+          "japanese": "クラスでいちばん背が高い人は誰ですか。",
           "vietnamese": "Người cao nhất trong lớp là ai?"
         }
       ],

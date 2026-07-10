@@ -1,66 +1,85 @@
 {
   "lessonNumber": 9,
-  "title": "Động từ thể て - Cách chia và ứng dụng cơ bản",
-  "title_jp": "動詞のて形 - 基本的な使い方",
   "level": "N5",
-  "description": "Cách chia động từ thể て và các cách dùng cơ bản: yêu cầu, nối tiếp.",
+  "title": "Sở thích và năng lực",
+  "title_jp": "趣味と能力",
+  "description": "わかります, あります, います, 好き, 嫌い, 上手, 下手.",
   "grammars": [
     {
       "id": "m9_01",
-      "title": "Chia động từ thể て",
-      "pattern": "〜て",
-      "meaning": "thể て (liên kết hành động)",
-      "explanation": "**Cách chia thể て của động từ theo 3 nhóm:**\n\n**Nhóm 1 (Godan):**\n- う、つ、る → って (会う→会って)\n- む、ぶ、ぬ → んで (読む→読んで)\n- く → いて (書く→書いて) \n- ぐ → いで (泳ぐ→泳いで)\n- す → して (話す→話して)\n\n**Nhóm 2 (Ichidan):** bỏ る + て (食べる→食べて)\n\n**Nhóm 3:** する→して, 来る→来て",
-      "structure": "**[Động từ thể て]**",
+      "title": "わかります - Hiểu/Biết",
+      "pattern": "〜がわかります",
+      "meaning": "hiểu/biết ~",
+      "explanation": "**わかります có nghĩa \"hiểu\" hoặc \"biết\".**\n\nĐối tượng được đánh dấu bằng が, không dùng を.",
+      "structure": "**[Danh từ] がわかります**",
       "examples": [
         {
-          "japanese": "毎日学校に行って、勉強します。",
-          "vietnamese": "Mỗi ngày đến trường rồi học."
+          "japanese": "日本語がわかります。",
+          "vietnamese": "Tôi hiểu tiếng Nhật."
         },
         {
-          "japanese": "スーパーに行って、買い物をします。",
-          "vietnamese": "Đi siêu thị, tôi mua sắm."
+          "japanese": "この問題がわかりません。",
+          "vietnamese": "Tôi không hiểu bài toán này."
         }
       ],
-      "category": "verb_forms"
+      "category": "expressions"
     },
     {
       "id": "m9_02",
-      "title": "Xin phép - 〜てもいいですか",
-      "pattern": "〜てもいいですか",
-      "meaning": "có thể ~ được không?",
-      "explanation": "**Dùng để xin phép làm gì đó một cách lịch sự.**\n\nĐộng từ thể て + もいいですか.\n\nTrả lời: はい、いいですよ。/ いいえ、だめです。",
-      "structure": "**[Động từ thể て] もいいですか**",
+      "title": "あります・います (sở hữu)",
+      "pattern": "〜があります / 〜がいます",
+      "meaning": "có ~ (sở hữu)",
+      "explanation": "**あります/います còn dùng để chỉ sự sở hữu.**\n\n- あります: đồ vật, sự kiện\n- います: người, động vật",
+      "structure": "**[Người] は [Vật] があります**\n**[Người] は [Người/Động vật] がいます**",
       "examples": [
         {
-          "japanese": "ここに座ってもいいですか。",
-          "vietnamese": "Tôi có thể ngồi ở đây không?"
+          "japanese": "私は車があります。",
+          "vietnamese": "Tôi có xe hơi."
         },
         {
-          "japanese": "写真を撮ってもいいですか。",
-          "vietnamese": "Tôi có thể chụp ảnh không?"
+          "japanese": "田中さんは子供がいます。",
+          "vietnamese": "Anh Tanaka có con."
         }
       ],
-      "category": "verb_forms"
+      "category": "existence_verbs"
     },
     {
       "id": "m9_03",
-      "title": "Cấm chỉ - 〜てはいけません",
-      "pattern": "〜てはいけません",
-      "meaning": "không được làm ~",
-      "explanation": "**Dùng để diễn tả điều cấm, không được phép làm.**\n\nThường dùng trong nội quy, quy định.\nTrong văn nói thường dùng 〜てはだめです.",
-      "structure": "**[Động từ thể て] はいけません**",
+      "title": "好き・嫌い - Thích / Không thích",
+      "pattern": "〜が好きです / 〜が嫌いです",
+      "meaning": "thích ~ / không thích ~",
+      "explanation": "**好き (すき) và 嫌い (きらい) là tính từ đuôi な.**\n\nĐối tượng thích/không thích được đánh dấu bằng が.\nPhủ định: 好きじゃないです / 嫌いじゃないです.",
+      "structure": "**[Chủ thể] は [Đối tượng] が好きです / 嫌いです**",
       "examples": [
         {
-          "japanese": "ここでタバコを吸ってはいけません。",
-          "vietnamese": "Không được hút thuốc ở đây."
+          "japanese": "私は音楽が好きです。",
+          "vietnamese": "Tôi thích âm nhạc."
         },
         {
-          "japanese": "授業中にスマホを使ってはいけません。",
-          "vietnamese": "Không được dùng điện thoại trong giờ học."
+          "japanese": "私は納豆が嫌いです。",
+          "vietnamese": "Tôi không thích natto."
         }
       ],
-      "category": "verb_forms"
+      "category": "expressions"
+    },
+    {
+      "id": "m9_04",
+      "title": "上手・下手 - Giỏi / Kém",
+      "pattern": "〜が上手です / 〜が下手です",
+      "meaning": "giỏi ~ / kém ~",
+      "explanation": "**上手 (じょうず) và 下手 (へた) là tính từ đuôi な.**\n\nDùng để đánh giá năng lực.\nĐối tượng được đánh dấu bằng が.",
+      "structure": "**[Chủ thể] は [Kỹ năng] が上手です / 下手です**",
+      "examples": [
+        {
+          "japanese": "私は料理が上手です。",
+          "vietnamese": "Tôi giỏi nấu ăn."
+        },
+        {
+          "japanese": "彼はスポーツが下手です。",
+          "vietnamese": "Anh ấy kém thể thao."
+        }
+      ],
+      "category": "expressions"
     }
   ]
 }

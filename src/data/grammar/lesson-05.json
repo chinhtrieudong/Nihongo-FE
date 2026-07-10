@@ -1,78 +1,89 @@
 {
   "lessonNumber": 5,
-  "title": "Động từ chỉ sự tồn tại - あります・います",
-  "title_jp": "存在動詞 - あります・います",
   "level": "N5",
-  "description": "Hai động từ chỉ sự tồn tại: あります (đồ vật) và います (người/động vật).",
+  "title": "Động từ di chuyển và trợ từ",
+  "title_jp": "移動動詞と助詞",
+  "description": "Động từ di chuyển: 行きます・来ます・帰ります, trợ từ へ, で, を, なんで.",
   "grammars": [
     {
       "id": "m5_01",
-      "title": "あります - Tồn tại của đồ vật",
-      "pattern": "〜があります",
-      "meaning": "có (đồ vật, cây cối, sự kiện)",
-      "explanation": "**あります dùng cho đồ vật, cây cối, sự kiện không có sự sống.**\n\nChủ ngữ được đánh dấu bằng が.\nĐịa điểm được đánh dấu bằng に.",
-      "structure": "**[Địa điểm] に [Đồ vật] があります**",
+      "title": "Động từ di chuyển 行きます・来ます・帰ります",
+      "pattern": "行きます / 来ます / 帰ります",
+      "meaning": "đi / đến / về",
+      "explanation": "**Ba động từ di chuyển cơ bản:**\n- **行きます** (いきます): đi\n- **来ます** (きます): đến\n- **帰ります** (かえります): về\n\nDùng với trợ từ へ hoặc に để chỉ hướng.",
+      "structure": "**[Địa điểm] へ / に 行きます / 来ます / 帰ります**",
       "examples": [
         {
-          "japanese": "机の上に本があります。",
-          "vietnamese": "Trên bàn có quyển sách."
+          "japanese": "日本へ行きます。",
+          "vietnamese": "Tôi đi Nhật Bản."
         },
         {
-          "japanese": "部屋にテレビがあります。",
-          "vietnamese": "Trong phòng có ti vi."
-        },
-        {
-          "japanese": "京都に有名なお寺があります。",
-          "vietnamese": "Ở Kyoto có ngôi chùa nổi tiếng."
+          "japanese": "家へ帰ります。",
+          "vietnamese": "Tôi về nhà."
         }
       ],
-      "category": "existence_verbs"
+      "category": "direction_words"
     },
     {
       "id": "m5_02",
-      "title": "います - Tồn tại của người/vật có sự sống",
-      "pattern": "〜がいます",
-      "meaning": "có (người, động vật)",
-      "explanation": "**います dùng cho người, động vật và những thứ có sự sống.**\n\nCấu trúc tương tự あります.",
-      "structure": "**[Địa điểm] に [Người/Động vật] がいます**",
+      "title": "Trợ từ へ - Hướng di chuyển",
+      "pattern": "〜へ行きます",
+      "meaning": "đi về hướng ~",
+      "explanation": "**へ (đọc là \"e\") chỉ hướng di chuyển.**\n\nDùng với động từ di chuyển như 行きます, 来ます, 帰ります.",
+      "structure": "**[Địa điểm] へ [Động từ di chuyển]**",
       "examples": [
         {
-          "japanese": "庭に猫がいます。",
-          "vietnamese": "Trong vườn có con mèo."
+          "japanese": "学校へ行きます。",
+          "vietnamese": "Tôi đi đến trường."
         },
         {
-          "japanese": "学校に先生がいます。",
-          "vietnamese": "Ở trường có giáo viên."
-        },
-        {
-          "japanese": "あそこに田中さんがいます。",
-          "vietnamese": "Ở kia có anh Tanaka."
+          "japanese": "駅へ向かいます。",
+          "vietnamese": "Tôi đi về phía ga."
         }
       ],
-      "category": "existence_verbs"
+      "category": "direction_words"
     },
     {
       "id": "m5_03",
-      "title": "Vị trí với 上・下・前・後ろ・中・隣",
-      "pattern": "〜の [Vị trí] に",
-      "meaning": "ở trên/dưới/trước/sau/trong/bên cạnh ~",
-      "explanation": "**Các danh từ chỉ vị trí kết hợp với の:**\n- 上 (うえ): trên\n- 下 (した): dưới\n- 前 (まえ): trước\n- 後ろ (うしろ): sau\n- 中 (なか): trong\n- 隣 (となり): bên cạnh",
-      "structure": "**[Danh từ] の [Vị trí] に [Đồ vật] が あります / います**",
+      "title": "Trợ từ で - Phương tiện",
+      "pattern": "〜で行きます",
+      "meaning": "đi bằng ~",
+      "explanation": "**で có nghĩa là \"bằng\", chỉ phương tiện giao thông hoặc công cụ.**",
+      "structure": "**[Phương tiện] で [Động từ]**",
       "examples": [
         {
-          "japanese": "机の上に本があります。",
-          "vietnamese": "Trên bàn có quyển sách."
+          "japanese": "バスで学校へ行きます。",
+          "vietnamese": "Tôi đi học bằng xe buýt."
         },
         {
-          "japanese": "学校の前に公園があります。",
-          "vietnamese": "Trước trường học có công viên."
-        },
-        {
-          "japanese": "猫は椅子の下にいます。",
-          "vietnamese": "Con mèo ở dưới ghế."
+          "japanese": "電車で大阪へ行きます。",
+          "vietnamese": "Tôi đi Osaka bằng tàu điện."
         }
       ],
-      "category": "location_words"
+      "category": "basic_sentence_structure"
+    },
+    {
+      "id": "m5_04",
+      "title": "Trợ từ を - Rời khỏi, Trợ từ なんで",
+      "pattern": "〜を出ます / なんで",
+      "meaning": "rời khỏi ~ / bằng gì",
+      "explanation": "**を còn có nghĩa là \"rời khỏi\" một địa điểm (đi ra từ).**\n**なんで** là \"bằng gì\" - dạng nghi vấn của で.",
+      "structure": "**[Địa điểm] を [Động từ]**\n**なんで [Động từ] か**",
+      "examples": [
+        {
+          "japanese": "8時に家を出ます。",
+          "vietnamese": "Tôi rời nhà lúc 8 giờ."
+        },
+        {
+          "japanese": "大学を卒業します。",
+          "vietnamese": "Tôi tốt nghiệp đại học."
+        },
+        {
+          "japanese": "なんで学校へ行きますか。",
+          "vietnamese": "Bạn đi học bằng gì?"
+        }
+      ],
+      "category": "basic_sentence_structure"
     }
   ]
 }

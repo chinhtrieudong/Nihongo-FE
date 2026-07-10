@@ -1,66 +1,66 @@
 {
   "lessonNumber": 19,
-  "title": "Cách nói đưa và nhận - あげる・くれる・もらう",
-  "title_jp": "授受表現 - あげる・くれる・もらう",
   "level": "N5",
-  "description": "Ba động từ đưa và nhận trong tiếng Nhật: あげる (cho), くれる (cho tôi), もらう (nhận).",
+  "title": "Thể た - Quá khứ và kinh nghiệm",
+  "title_jp": "た形・経験",
+  "description": "Thể た của động từ, 〜たことがあります (kinh nghiệm), 〜たり〜たりします.",
   "grammars": [
     {
       "id": "m19_01",
-      "title": "あげる - Cho (người khác)",
-      "pattern": "〜に〜をあげる",
-      "meaning": "cho ai đó cái gì",
-      "explanation": "**あげる dùng khi người nói cho ai đó (hoặc người trong nhóm mình cho người ngoài) vật gì.**\n\nHành động cho đi từ trong ra ngoài.",
-      "structure": "**[Người cho] は [Người nhận] に [Vật] をあげます**",
+      "title": "Chia động từ thể た",
+      "pattern": "〜た",
+      "meaning": "thể た của động từ",
+      "explanation": "**Cách chia thể た tương tự thể て.**\n\n- って → った (会う→会った)\n- んで → んだ (読む→読んだ)\n- いて → いた (書く→書いた)\n- して → した (話す→話した)\n- 食べる→食べた\n- する→した, 来る→来た (きた)",
+      "structure": "**[Động từ thể た]**",
       "examples": [
         {
-          "japanese": "友達にプレゼントをあげます。",
-          "vietnamese": "Tôi tặng quà cho bạn."
+          "japanese": "昨日勉強した。",
+          "vietnamese": "Hôm qua tôi đã học."
         },
         {
-          "japanese": "先生に花をあげました。",
-          "vietnamese": "Tôi đã tặng hoa cho thầy."
+          "japanese": "ご飯を食べた。",
+          "vietnamese": "Tôi đã ăn cơm."
         }
       ],
-      "category": "expressions"
+      "category": "verb_forms"
     },
     {
       "id": "m19_02",
-      "title": "くれる - Cho tôi",
-      "pattern": "〜が〜をくれる",
-      "meaning": "ai đó cho tôi cái gì",
-      "explanation": "**くれる dùng khi người khác cho người nói (hoặc người trong nhóm mình) vật gì.**\n\nHành động cho đi từ ngoài vào trong.",
-      "structure": "**[Người cho] は [Người nhận (tôi)] に [Vật] をくれます**",
+      "title": "Kinh nghiệm - 〜たことがあります",
+      "pattern": "〜たことがあります",
+      "meaning": "đã từng làm ~",
+      "explanation": "**Dùng thể た + ことがあります để diễn tả kinh nghiệm.**\n\nPhủ định: 〜たことがありません.",
+      "structure": "**[Động từ thể た] ことがあります**",
       "examples": [
         {
-          "japanese": "母は本をくれました。",
-          "vietnamese": "Mẹ đã cho tôi quyển sách."
+          "japanese": "富士山に登ったことがあります。",
+          "vietnamese": "Tôi đã từng leo núi Phú Sĩ."
         },
         {
-          "japanese": "友達がチョコレートをくれました。",
-          "vietnamese": "Bạn đã cho tôi sô-cô-la."
+          "japanese": "すしを食べたことがあります。",
+          "vietnamese": "Tôi đã từng ăn sushi."
         }
       ],
       "category": "expressions"
     },
     {
       "id": "m19_03",
-      "title": "もらう - Nhận",
-      "pattern": "〜に〜をもらう",
-      "meaning": "nhận từ ai đó cái gì",
-      "explanation": "**もらう dùng khi người nói nhận vật gì từ người khác.**\n\nNhấn mạnh hành động nhận của người nói.",
-      "structure": "**[Người nhận] は [Người cho] に [Vật] をもらいます**",
+      "title": "Liệt kê - 〜たり〜たりします",
+      "pattern": "〜たり〜たりします",
+      "meaning": "làm những việc như ~, ~",
+      "explanation": "**Dùng để liệt kê các hành động tiêu biểu.**\n\nĐộng từ thể た + り, lặp lại.",
+      "structure": "**[Động từ thể た] り、[Động từ thể た] りします**",
       "examples": [
         {
-          "japanese": "先生に本をもらいました。",
-          "vietnamese": "Tôi đã nhận sách từ thầy giáo."
+          "japanese": "日曜日は本を読んだり、映画を見たりします。",
+          "vietnamese": "Chủ nhật tôi đọc sách, xem phim v.v."
         },
         {
-          "japanese": "友達にペンをもらいました。",
-          "vietnamese": "Tôi đã nhận bút từ bạn."
+          "japanese": "休みの日は散歩したり、買い物に行ったりします。",
+          "vietnamese": "Ngày nghỉ tôi đi dạo, đi mua sắm v.v."
         }
       ],
-      "category": "expressions"
+      "category": "verb_forms"
     }
   ]
 }

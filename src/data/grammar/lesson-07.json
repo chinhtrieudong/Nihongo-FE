@@ -1,93 +1,85 @@
 {
   "lessonNumber": 7,
-  "title": "Trợ từ と・から・まで・で (phương tiện)",
-  "title_jp": "助詞 と・から・まで・で",
   "level": "N5",
-  "description": "Trợ từ: と (cùng với), から (từ), まで (đến), で (phương tiện/công cụ).",
+  "title": "Cho - Nhận - Mượn - Cho mượn",
+  "title_jp": "あげる・もらう・貸す・借りる・教える",
+  "description": "Động từ cho, nhận, cho mượn, mượn và dạy.",
   "grammars": [
     {
       "id": "m7_01",
-      "title": "Trợ từ と - Cùng với ai đó",
-      "pattern": "〜と〜ます",
-      "meaning": "làm gì với ai đó",
-      "explanation": "**と là trợ từ chỉ sự cùng nhau thực hiện hành động.**\n\nNối hai danh từ chỉ người hoặc vật cùng tham gia hành động.",
-      "structure": "**[Người] と [Động từ]**",
+      "title": "あげます - Cho/Tặng",
+      "pattern": "〜に〜をあげます",
+      "meaning": "cho/tặng ai cái gì",
+      "explanation": "**あげます dùng khi người nói cho ai đó vật gì.**\n\nHành động cho đi từ trong ra ngoài.",
+      "structure": "**[Người cho] は [Người nhận] に [Vật] をあげます**",
       "examples": [
         {
-          "japanese": "友達と映画を見ます。",
-          "vietnamese": "Tôi xem phim với bạn."
+          "japanese": "友達にプレゼントをあげます。",
+          "vietnamese": "Tôi tặng quà cho bạn."
         },
         {
-          "japanese": "家族と住んでいます。",
-          "vietnamese": "Tôi sống với gia đình."
-        },
-        {
-          "japanese": "誰と日本へ行きますか。",
-          "vietnamese": "Bạn đi Nhật với ai?"
+          "japanese": "先生に花をあげました。",
+          "vietnamese": "Tôi đã tặng hoa cho thầy."
         }
       ],
-      "category": "conjunctions"
+      "category": "expressions"
     },
     {
       "id": "m7_02",
-      "title": "Trợ từ から - Điểm bắt đầu",
-      "pattern": "〜から〜",
-      "meaning": "từ (nơi bắt đầu/thời gian bắt đầu)",
-      "explanation": "**から chỉ điểm bắt đầu về không gian hoặc thời gian.**\n\nTương tự \"from\" trong tiếng Anh.",
-      "structure": "**[Điểm bắt đầu] から [Điểm kết thúc] まで**",
+      "title": "もらいます - Nhận",
+      "pattern": "〜に〜をもらいます",
+      "meaning": "nhận từ ai cái gì",
+      "explanation": "**もらいます dùng khi nhận vật gì từ ai đó.**\n\nNhấn mạnh hành động nhận.",
+      "structure": "**[Người nhận] は [Người cho] に [Vật] をもらいます**",
       "examples": [
         {
-          "japanese": "9時から5時まで働きます。",
-          "vietnamese": "Tôi làm việc từ 9 giờ đến 5 giờ."
+          "japanese": "先生に本をもらいました。",
+          "vietnamese": "Tôi đã nhận sách từ thầy giáo."
         },
         {
-          "japanese": "日本から来ました。",
-          "vietnamese": "Tôi đến từ Nhật Bản."
+          "japanese": "友達にペンをもらいました。",
+          "vietnamese": "Tôi đã nhận bút từ bạn."
         }
       ],
-      "category": "time"
+      "category": "expressions"
     },
     {
       "id": "m7_03",
-      "title": "Trợ từ まで - Điểm kết thúc",
-      "pattern": "〜まで〜",
-      "meaning": "đến (điểm kết thúc)",
-      "explanation": "**まで chỉ điểm kết thúc về không gian hoặc thời gian.**\n\nTương tự \"until/to\" trong tiếng Anh.",
-      "structure": "**[Điểm bắt đầu] から [Điểm kết thúc] まで**",
+      "title": "かします・かります - Cho mượn / Mượn",
+      "pattern": "〜をかします / 〜をかります",
+      "meaning": "cho mượn / mượn",
+      "explanation": "**かします**: cho mượn (từ trong ra ngoài)\n**かります**: mượn (từ ngoài vào trong)\n\nDùng với trợ từ に và を.",
+      "structure": "**[Người] に [Vật] をかします (cho mượn)**\n**[Người] に [Vật] をかります (mượn)**",
       "examples": [
         {
-          "japanese": "駅まで歩きます。",
-          "vietnamese": "Tôi đi bộ đến ga."
+          "japanese": "友達に本をかしました。",
+          "vietnamese": "Tôi đã cho bạn mượn sách."
         },
         {
-          "japanese": "12時まで勉強します。",
-          "vietnamese": "Tôi học đến 12 giờ."
+          "japanese": "図書館で本をかりました。",
+          "vietnamese": "Tôi đã mượn sách ở thư viện."
         }
       ],
-      "category": "time"
+      "category": "expressions"
     },
     {
       "id": "m7_04",
-      "title": "Trợ từ で - Phương tiện/công cụ",
-      "pattern": "〜で〜ます",
-      "meaning": "bằng (phương tiện/công cụ)",
-      "explanation": "**で còn có nghĩa là phương tiện hoặc công cụ.**\n\nDùng để chỉ phương tiện giao thông, ngôn ngữ, hoặc công cụ thực hiện hành động.",
-      "structure": "**[Phương tiện/Công cụ] で [Động từ]**",
+      "title": "おしえます - Dạy/Chỉ",
+      "pattern": "〜に〜をおしえます",
+      "meaning": "dạy/chỉ cho ai cái gì",
+      "explanation": "**おしえます có nghĩa là \"dạy\" hoặc \"chỉ cho\".**\n\nDùng với に (người) và を (nội dung).",
+      "structure": "**[Người dạy] は [Người học] に [Nội dung] をおしえます**",
       "examples": [
         {
-          "japanese": "バスで学校へ行きます。",
-          "vietnamese": "Tôi đi học bằng xe buýt."
+          "japanese": "先生は学生に日本語をおしえます。",
+          "vietnamese": "Thầy giáo dạy tiếng Nhật cho học sinh."
         },
         {
-          "japanese": "日本語で話します。",
-          "vietnamese": "Tôi nói bằng tiếng Nhật."
-        },
-        {
-          "japanese": "鉛筆で書きます。",
-          "vietnamese": "Tôi viết bằng bút chì."
+          "japanese": "道をおしえてください。",
+          "vietnamese": "Làm ơn chỉ đường cho tôi."
         }
       ],
-      "category": "basic_sentence_structure"
+      "category": "expressions"
     }
   ]
 }

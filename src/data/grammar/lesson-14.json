@@ -1,66 +1,47 @@
 {
   "lessonNumber": 14,
-  "title": "Thể ない - Phủ định của động từ",
-  "title_jp": "動詞の否定形 - ない形",
   "level": "N5",
-  "description": "Cách chia thể ない (phủ định thường) và các ứng dụng: ないでください, なければなりません, なくてもいいです.",
+  "title": "Thể て - Cách chia",
+  "title_jp": "動詞のて形",
+  "description": "Cách chia động từ thể て và cấu trúc 〜てください.",
   "grammars": [
     {
       "id": "m14_01",
-      "title": "Chia thể ない của động từ",
-      "pattern": "〜ない",
-      "meaning": "không làm ~ (thể thường)",
-      "explanation": "**Cách chia thể ない cho 3 nhóm động từ:**\n\n**Nhóm 1:** あ column + ない\n- 書く→書かない, 読む→読まない, 話す→話さない\n\n**Nhóm 2:** bỏ る + ない\n- 食べる→食べない\n\n**Nhóm 3:**\n- する→しない, 来る→来ない (こない)",
-      "structure": "**[Động từ thể ない]**",
+      "title": "Chia động từ thể て",
+      "pattern": "〜て",
+      "meaning": "thể て của động từ",
+      "explanation": "**Cách chia thể て theo 3 nhóm:**\n\n**Nhóm 1 (Godan):**\n- う、つ、る → って (会う→会って)\n- む、ぶ、ぬ → んで (読む→読んで)\n- く → いて (書く→書いて)\n- ぐ → いで (泳ぐ→泳いで)\n- す → して (話す→話して)\n\n**Nhóm 2 (Ichidan):** bỏ る + て (食べる→食べて)\n\n**Nhóm 3:** する→して, 来る→来て (きて)",
+      "structure": "**[Động từ thể て]**",
       "examples": [
         {
-          "japanese": "今日は学校へ行かない。",
-          "vietnamese": "Hôm nay không đi học."
+          "japanese": "毎日学校に行って、勉強します。",
+          "vietnamese": "Mỗi ngày đến trường rồi học."
         },
         {
-          "japanese": "朝ご飯を食べない。",
-          "vietnamese": "Không ăn sáng."
+          "japanese": "朝起きて、歯を磨きます。",
+          "vietnamese": "Sáng dậy, tôi đánh răng."
         }
       ],
-      "category": "negative_form"
+      "category": "verb_forms"
     },
     {
       "id": "m14_02",
-      "title": "Nghĩa vụ phải làm",
-      "pattern": "〜なければなりません",
-      "meaning": "phải làm ~",
-      "explanation": "**Diễn tả nghĩa vụ hoặc điều bắt buộc phải làm.**\n\nDùng thể ない bỏ ない thêm なければなりません.\nTrong văn nói thường rút gọn thành なきゃいけない hoặc なくちゃ。",
-      "structure": "**[Động từ thể ない (bỏ ない)] + ければなりません**",
+      "title": "Yêu cầu - 〜てください",
+      "pattern": "〜てください",
+      "meaning": "hãy làm ~ / vui lòng làm ~",
+      "explanation": "**Dùng để yêu cầu ai đó làm gì một cách lịch sự.**\n\nĐộng từ thể て + ください.",
+      "structure": "**[Động từ thể て] ください**",
       "examples": [
         {
-          "japanese": "宿題をしなければなりません。",
-          "vietnamese": "Tôi phải làm bài tập về nhà."
+          "japanese": "名前を書いてください。",
+          "vietnamese": "Hãy viết tên vào."
         },
         {
-          "japanese": "薬を飲まなければなりません。",
-          "vietnamese": "Tôi phải uống thuốc."
+          "japanese": "ここで待ってください。",
+          "vietnamese": "Vui lòng đợi ở đây."
         }
       ],
-      "category": "expressions"
-    },
-    {
-      "id": "m14_03",
-      "title": "Không cần phải làm",
-      "pattern": "〜なくてもいいです",
-      "meaning": "không cần phải làm ~",
-      "explanation": "**Diễn tả điều không cần thiết phải làm.**\n\nDạng phủ định của 〜てもいいです.\nThể ない bỏ ない thêm くてもいいです.",
-      "structure": "**[Động từ thể ない (bỏ ない)] + くてもいいです**",
-      "examples": [
-        {
-          "japanese": "明日来なくてもいいです。",
-          "vietnamese": "Ngày mai không cần đến cũng được."
-        },
-        {
-          "japanese": "全部食べなくてもいいです。",
-          "vietnamese": "Không cần ăn hết cũng được."
-        }
-      ],
-      "category": "expressions"
+      "category": "verb_forms"
     }
   ]
 }

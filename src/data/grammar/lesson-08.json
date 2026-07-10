@@ -1,68 +1,85 @@
 {
   "lessonNumber": 8,
-  "title": "Cách nói thời gian và ngày tháng",
-  "title_jp": "時間と日付の言い方",
   "level": "N5",
-  "description": "Cách nói giờ, ngày, tháng, tuần và các từ chỉ thời gian trong tiếng Nhật.",
+  "title": "Tính từ い và な",
+  "title_jp": "形容詞",
+  "description": "Tính từ đuôi い, tính từ đuôi な, phủ định あまり〜ません, とても.",
   "grammars": [
     {
       "id": "m8_01",
-      "title": "Cách nói giờ - 時・分",
-      "pattern": "〜時〜分です",
-      "meaning": "bây giờ là ~ giờ ~ phút",
-      "explanation": "**Cách nói giờ trong tiếng Nhật.**\nSố đếm + 時 (giờ) + 分 (phút).\n\nChú ý cách đọc đặc biệt: 4時 (よじ), 7時 (しちじ), 9時 (くじ).",
-      "structure": "**[Số] 時 [Số] 分です**",
+      "title": "Tính từ đuôi い",
+      "pattern": "〜いです",
+      "meaning": "tính từ đuôi い",
+      "explanation": "**Tính từ đuôi い (い-adj) kết thúc bằng い.**\n\nCó thể đứng trước danh từ để bổ nghĩa (không cần thêm な) hoặc đứng cuối câu với です.",
+      "structure": "**[Tính từ い] + です** (cuối câu)\n**[Tính từ い] + [Danh từ]** (bổ nghĩa)",
       "examples": [
         {
-          "japanese": "今は3時です。",
-          "vietnamese": "Bây giờ là 3 giờ."
+          "japanese": "この本は面白いです。",
+          "vietnamese": "Quyển sách này thú vị."
         },
         {
-          "japanese": "7時30分に起きます。",
-          "vietnamese": "Tôi thức dậy lúc 7 giờ 30."
+          "japanese": "高いビルです。",
+          "vietnamese": "Tòa nhà cao."
         }
       ],
-      "notes": "Cách đọc đặc biệt: 4時 (よじ), 7時 (しちじ), 9時 (くじ). 1分 (いっぷん), 3分 (さんぷん), 4分 (よんぷん), 6分 (ろっぷん).",
-      "category": "time_telling"
+      "category": "adjectives"
     },
     {
       "id": "m8_02",
-      "title": "Ngày trong tháng",
-      "pattern": "〜日",
-      "meaning": "ngày ~",
-      "explanation": "**Cách đọc ngày trong tháng có một số ngoại lệ.**\n\nNgày 1-10 có cách đọc đặc biệt, từ 11 trở đi đọc theo số đếm + 日.",
-      "structure": "**[Số] 日**",
+      "title": "Tính từ đuôi な",
+      "pattern": "〜な + [Danh từ] / 〜です",
+      "meaning": "tính từ đuôi な",
+      "explanation": "**Tính từ đuôi な (な-adj) cần thêm な khi bổ nghĩa danh từ.**\n\nKhi đứng cuối câu, dùng です trực tiếp.",
+      "structure": "**[Tính từ な] + な + [Danh từ]** (bổ nghĩa)\n**[Tính từ な] + です** (cuối câu)",
       "examples": [
         {
-          "japanese": "今日は4月1日です。",
-          "vietnamese": "Hôm nay là ngày 1 tháng 4."
+          "japanese": "静かな部屋です。",
+          "vietnamese": "Căn phòng yên tĩnh."
         },
         {
-          "japanese": "3月15日に日本に行きます。",
-          "vietnamese": "Ngày 15 tháng 3 tôi đi Nhật."
+          "japanese": "この町は賑やかです。",
+          "vietnamese": "Thị trấn này nhộn nhịp."
         }
       ],
-      "notes": "Ngày 1: ついたち, 2: ふつか, 3: みっか, 4: よっか, 5: いつか, 6: むいか, 7: なのか, 8: ようか, 9: ここのか, 10: とおか.",
-      "category": "dates"
+      "category": "adjectives"
     },
     {
       "id": "m8_03",
-      "title": "Từ chỉ thời gian: 今週・来週・先週",
-      "pattern": "今週 / 来週 / 先週",
-      "meaning": "tuần này / tuần sau / tuần trước",
-      "explanation": "**Các từ chỉ thời gian tương đối không dùng に.**\n- 今日 (きょう): hôm nay\n- 明日 (あした): ngày mai\n- 昨日 (きのう): hôm qua\n- 今週 (こんしゅう): tuần này\n- 来週 (らいしゅう): tuần sau\n- 先週 (せんしゅう): tuần trước\n- 毎日 (まいにち): mỗi ngày",
-      "structure": "**[Từ chỉ thời gian] [Động từ]** (không dùng に)",
+      "title": "あまり〜ません - Không... lắm",
+      "pattern": "あまり〜ません",
+      "meaning": "không ~ lắm",
+      "explanation": "**あまり + phủ định có nghĩa là \"không ~ lắm\".**\n\nDùng với tính từ hoặc động từ ở dạng phủ định.",
+      "structure": "**あまり [Tính từ/Động từ phủ định]**",
       "examples": [
         {
-          "japanese": "明日学校へ行きます。",
-          "vietnamese": "Ngày mai tôi đi học."
+          "japanese": "この本はあまり高くないです。",
+          "vietnamese": "Quyển sách này không đắt lắm."
         },
         {
-          "japanese": "毎日勉強します。",
-          "vietnamese": "Mỗi ngày tôi học."
+          "japanese": "あまりコーヒーを飲みません。",
+          "vietnamese": "Tôi không uống cà phê lắm."
         }
       ],
-      "category": "time"
+      "category": "negative_form"
+    },
+    {
+      "id": "m8_04",
+      "title": "とても - Rất",
+      "pattern": "とても〜",
+      "meaning": "rất ~",
+      "explanation": "**とても có nghĩa là \"rất\".**\n\nĐặt trước tính từ hoặc trạng từ để nhấn mạnh.",
+      "structure": "**とても [Tính từ] です**",
+      "examples": [
+        {
+          "japanese": "この本はとても面白いです。",
+          "vietnamese": "Quyển sách này rất thú vị."
+        },
+        {
+          "japanese": "京都はとてもきれいです。",
+          "vietnamese": "Kyoto rất đẹp."
+        }
+      ],
+      "category": "adjectives"
     }
   ]
 }

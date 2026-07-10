@@ -1,29 +1,63 @@
 {
   "lessonNumber": 24,
-  "title": "Cách nói 〜んです / 〜のです",
-  "title_jp": "説明の表現 - 〜んです",
   "level": "N5",
-  "description": "Cách dùng 〜んです để giải thích, nhấn mạnh lý do hoặc tình huống.",
+  "title": "Đưa và nhận bằng thể て",
+  "title_jp": "授受のて形",
+  "description": "〜くれます, 〜てくれます, 〜てもらいます.",
   "grammars": [
     {
       "id": "m24_01",
-      "title": "Giải thích với 〜んです",
-      "pattern": "〜んです",
-      "meaning": "là vì... / thực ra là... (giải thích)",
-      "explanation": "**〜んです (〜のです trong văn viết) dùng để:**\n\n1. Giải thích lý do hoặc nguyên nhân\n2. Nhấn mạnh thông tin\n3. Mở đầu câu chuyện\n\nTrong câu hỏi, 〜んですか hỏi về lý do một cách lịch sự hơn.",
-      "structure": "**[Câu thể thường] + んです**\n**[Câu thể thường] + んですか (câu hỏi)**\n\nLưu ý với な-adj và noun: thêm な vào trước んです (〜なんです).",
+      "title": "くれる - Cho tôi",
+      "pattern": "〜が〜をくれます",
+      "meaning": "ai đó cho tôi cái gì",
+      "explanation": "**くれる dùng khi người khác cho người nói vật gì.**\n\nHành động từ ngoài vào trong.",
+      "structure": "**[Người cho] は [Người nhận (tôi)] に [Vật] をくれます**",
       "examples": [
         {
-          "japanese": "頭が痛いんです。",
-          "vietnamese": "Thực ra tôi bị đau đầu."
+          "japanese": "母は本をくれました。",
+          "vietnamese": "Mẹ đã cho tôi quyển sách."
         },
         {
-          "japanese": "どうして遅刻したんですか。",
-          "vietnamese": "Tại sao bạn đến trễ vậy?"
+          "japanese": "友達がチョコレートをくれました。",
+          "vietnamese": "Bạn đã cho tôi sô-cô-la."
+        }
+      ],
+      "category": "expressions"
+    },
+    {
+      "id": "m24_02",
+      "title": "Làm cho tôi - 〜てくれます",
+      "pattern": "〜てくれます",
+      "meaning": "làm ~ cho tôi",
+      "explanation": "**Dùng khi ai đó làm hành động gì đó cho người nói (mang ơn).**\n\nĐộng từ thể て + くれます.",
+      "structure": "**[Người] は [Người nói] に [Động từ thể て] くれます**",
+      "examples": [
+        {
+          "japanese": "友達が日本語を教えてくれます。",
+          "vietnamese": "Bạn dạy tiếng Nhật cho tôi."
         },
         {
-          "japanese": "約束があるんです。",
-          "vietnamese": "Vì tôi có hẹn."
+          "japanese": "先生が本を貸してくれました。",
+          "vietnamese": "Thầy giáo đã cho tôi mượn sách."
+        }
+      ],
+      "category": "expressions"
+    },
+    {
+      "id": "m24_03",
+      "title": "Nhờ vả - 〜てもらいます",
+      "pattern": "〜てもらいます",
+      "meaning": "nhờ ai đó làm ~ cho",
+      "explanation": "**Dùng khi nhờ ai đó làm gì cho mình.**\n\nĐộng từ thể て + もらいます.",
+      "structure": "**[Người yêu cầu] は [Người thực hiện] に [Động từ thể て] もらいます**",
+      "examples": [
+        {
+          "japanese": "医者に診てもらいます。",
+          "vietnamese": "Tôi nhờ bác sĩ khám."
+        },
+        {
+          "japanese": "友達に翻訳してもらいました。",
+          "vietnamese": "Tôi đã nhờ bạn dịch giúp."
         }
       ],
       "category": "expressions"

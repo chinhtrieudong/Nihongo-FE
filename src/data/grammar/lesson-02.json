@@ -1,9 +1,9 @@
 {
   "lessonNumber": 2,
-  "title": "Câu hỏi dùng 誰・何・どこ・いつ",
-  "title_jp": "疑問詞の質問",
   "level": "N5",
-  "description": "Các từ để hỏi cơ bản: これ・それ・あれ, この・その・あの, ここ・そこ・あそこ.",
+  "title": "Chỉ định từ và sở hữu",
+  "title_jp": "こそあど言葉と所有",
+  "description": "Các đại từ chỉ định これ・それ・あれ, この・その・あの và trợ từ の.",
   "grammars": [
     {
       "id": "m2_01",
@@ -49,45 +49,41 @@
     },
     {
       "id": "m2_03",
-      "title": "Ở đây/đó/kia - ここ・そこ・あそこ",
-      "pattern": "ここ / そこ / あそこ",
-      "meaning": "ở đây / ở đó / ở kia",
-      "explanation": "**Ba đại từ chỉ địa điểm:**\n- **ここ**: nơi gần người nói (ở đây)\n- **そこ**: nơi gần người nghe (ở đó)\n- **あそこ**: nơi xa cả hai (ở kia)",
-      "structure": "**[Địa điểm] は ここ / そこ / あそこ です**",
+      "title": "そうです / そうじゃありません",
+      "pattern": "そうです / そうじゃありません",
+      "meaning": "đúng vậy / không phải vậy",
+      "explanation": "**Dùng そうです để trả lời \"đúng vậy\" và そうじゃありません để nói \"không phải vậy\".**\n\nLà cách trả lời ngắn gọn cho câu hỏi danh từ.",
+      "structure": "**そうです** (đúng vậy)\n**そうじゃありません** (không phải vậy)",
       "examples": [
         {
-          "japanese": "トイレはあそこです。",
-          "vietnamese": "Nhà vệ sinh ở kia."
+          "japanese": "- 田中さんですか。 はい、そうです。",
+          "vietnamese": "- Có phải anh Tanaka không? Vâng, đúng ạ."
         },
         {
-          "japanese": "ここは学校です。",
-          "vietnamese": "Ở đây là trường học."
-        }
-      ],
-      "category": "location_words"
-    },
-    {
-      "id": "m2_04",
-      "title": "Ai / Cái gì / Ở đâu - 誰・何・どこ",
-      "pattern": "誰 / 何 / どこ",
-      "meaning": "ai / cái gì / ở đâu",
-      "explanation": "**Các từ để hỏi cơ bản:**\n- **誰 (だれ)**: hỏi người (ai)\n- **何 (なん/なに)**: hỏi vật (cái gì)\n- **どこ**: hỏi địa điểm (ở đâu)\n\nTrong câu thường dùng trợ từ が với các từ để hỏi này.",
-      "structure": "**[Chủ đề] は 誰 / 何 / どこ ですか**",
-      "examples": [
-        {
-          "japanese": "あの人は誰ですか。",
-          "vietnamese": "Người kia là ai?"
-        },
-        {
-          "japanese": "これは何ですか。",
-          "vietnamese": "Đây là cái gì?"
-        },
-        {
-          "japanese": "トイレはどこですか。",
-          "vietnamese": "Nhà vệ sinh ở đâu?"
+          "japanese": "- 先生ですか。 いいえ、そうじゃありません。",
+          "vietnamese": "- Có phải giáo viên không? Không, không phải."
         }
       ],
       "category": "questions"
+    },
+    {
+      "id": "m2_04",
+      "title": "Trợ từ sở hữu の",
+      "pattern": "〜の〜",
+      "meaning": "của (sở hữu)",
+      "explanation": "**の là trợ từ sở hữu, nối hai danh từ.**\n\nDanh từ đứng trước の bổ nghĩa cho danh từ đứng sau.",
+      "structure": "**[Danh từ 1] の [Danh từ 2]**",
+      "examples": [
+        {
+          "japanese": "私の本です。",
+          "vietnamese": "Quyển sách của tôi."
+        },
+        {
+          "japanese": "これは私の本です。",
+          "vietnamese": "Đây là quyển sách của tôi."
+        }
+      ],
+      "category": "possessive"
     }
   ]
 }

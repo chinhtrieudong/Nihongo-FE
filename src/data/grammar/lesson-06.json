@@ -1,97 +1,85 @@
 {
   "lessonNumber": 6,
-  "title": "Tính từ い và な",
-  "title_jp": "形容詞 - い形容詞・な形容詞",
   "level": "N5",
-  "description": "Hai loại tính từ: tính từ đuôi い và tính từ đuôi な, cách chia thì khẳng định/phủ định.",
+  "title": "Ăn uống và trợ từ",
+  "title_jp": "飲食と助詞",
+  "description": "Động từ ăn uống, trợ từ を (tân ngữ), で, いっしょに, と.",
   "grammars": [
     {
       "id": "m6_01",
-      "title": "Tính từ đuôi い - Khẳng định",
-      "pattern": "〜いです",
-      "meaning": "tính từ đuôi い",
-      "explanation": "**Tính từ đuôi い (い-adj) kết thúc bằng い.**\n\nCó thể đứng trước danh từ để bổ nghĩa (không cần thêm な) hoặc đứng cuối câu với です.",
-      "structure": "**[Tính từ い] + です** (cuối câu)\n**[Tính từ い] + [Danh từ]** (bổ nghĩa)",
+      "title": "Động từ ăn uống",
+      "pattern": "食べます / 飲みます",
+      "meaning": "ăn / uống",
+      "explanation": "**Động từ ăn uống cơ bản:**\n- **食べます** (たべます): ăn\n- **飲みます** (のみます): uống\n\nDùng với trợ từ を để chỉ đối tượng.",
+      "structure": "**[Đồ ăn/Thức uống] を 食べます / 飲みます**",
       "examples": [
         {
-          "japanese": "この本は面白いです。",
-          "vietnamese": "Quyển sách này thú vị."
+          "japanese": "ご飯を食べます。",
+          "vietnamese": "Tôi ăn cơm."
         },
         {
-          "japanese": "高いビルです。",
-          "vietnamese": "Tòa nhà cao."
-        },
-        {
-          "japanese": "新しい車を買いました。",
-          "vietnamese": "Tôi đã mua xe mới."
+          "japanese": "コーヒーを飲みます。",
+          "vietnamese": "Tôi uống cà phê."
         }
       ],
-      "category": "adjectives"
+      "category": "verb_forms"
     },
     {
       "id": "m6_02",
-      "title": "Tính từ đuôi な - Khẳng định",
-      "pattern": "〜な + [Danh từ] / 〜です",
-      "meaning": "tính từ đuôi な",
-      "explanation": "**Tính từ đuôi な (な-adj) cần thêm な khi bổ nghĩa danh từ.**\n\nKhi đứng cuối câu, dùng です trực tiếp (không cần な).",
-      "structure": "**[Tính từ な] + な + [Danh từ]** (bổ nghĩa)\n**[Tính từ な] + です** (cuối câu)",
+      "title": "Trợ từ を - Tân ngữ",
+      "pattern": "〜を〜ます",
+      "meaning": "làm gì đó với đối tượng",
+      "explanation": "**を là trợ từ đánh dấu tân ngữ trực tiếp của động từ.**\n\nDùng khi hành động tác động trực tiếp lên một đối tượng.",
+      "structure": "**[Tân ngữ] を [Động từ]**",
       "examples": [
         {
-          "japanese": "静かな部屋です。",
-          "vietnamese": "Căn phòng yên tĩnh."
+          "japanese": "映画を見ます。",
+          "vietnamese": "Tôi xem phim."
         },
         {
-          "japanese": "この町は賑やかです。",
-          "vietnamese": "Thị trấn này nhộn nhịp."
-        },
-        {
-          "japanese": "有名な歌手です。",
-          "vietnamese": "Là ca sĩ nổi tiếng."
+          "japanese": "本を読みます。",
+          "vietnamese": "Tôi đọc sách."
         }
       ],
-      "category": "adjectives"
+      "category": "basic_sentence_structure"
     },
     {
       "id": "m6_03",
-      "title": "Phủ định của tính từ",
-      "pattern": "〜くない / 〜ではありません",
-      "meaning": "không (phủ định tính từ)",
-      "explanation": "**Phủ định của tính từ:**\n- **い-adj**: Bỏ い thêm くないです\n- **な-adj**: Thêm ではありません hoặc じゃないです",
-      "structure": "**[い-adj] → bỏ い + くないです**\n**[な-adj] + ではありません**",
+      "title": "いっしょに - Cùng nhau",
+      "pattern": "いっしょに〜ます",
+      "meaning": "cùng làm ~",
+      "explanation": "**いっしょに (一緒に) có nghĩa là \"cùng nhau\".**\n\nĐặt trước động từ để diễn tả hành động cùng làm với ai đó.",
+      "structure": "**いっしょに [Động từ]**",
       "examples": [
         {
-          "japanese": "この本は高くないです。",
-          "vietnamese": "Quyển sách này không đắt."
+          "japanese": "いっしょに勉強しましょう。",
+          "vietnamese": "Cùng học nào."
         },
         {
-          "japanese": "ここは静かではありません。",
-          "vietnamese": "Ở đây không yên tĩnh."
+          "japanese": "いっしょにご飯を食べます。",
+          "vietnamese": "Tôi ăn cơm cùng nhau."
         }
       ],
-      "category": "negative_form"
+      "category": "conjunctions"
     },
     {
       "id": "m6_04",
-      "title": "Quá khứ của tính từ",
-      "pattern": "〜かったです / 〜でした",
-      "meaning": "đã (tính từ quá khứ)",
-      "explanation": "**Quá khứ của tính từ:**\n- **い-adj**: Bỏ い thêm かったです\n- **な-adj**: Thêm でした",
-      "structure": "**[い-adj] → bỏ い + かったです**\n**[な-adj] + でした**",
+      "title": "Trợ từ と - Với ai đó",
+      "pattern": "〜と〜ます",
+      "meaning": "làm gì với ai đó",
+      "explanation": "**と là trợ từ chỉ sự cùng nhau thực hiện hành động.**\n\nNối danh từ chỉ người.",
+      "structure": "**[Người] と [Động từ]**",
       "examples": [
         {
-          "japanese": "昨日は寒かったです。",
-          "vietnamese": "Hôm qua trời đã lạnh."
+          "japanese": "友達と映画を見ます。",
+          "vietnamese": "Tôi xem phim với bạn."
         },
         {
-          "japanese": "あの店は安かったです。",
-          "vietnamese": "Cửa hàng đó đã rẻ."
-        },
-        {
-          "japanese": "京都は賑やかでした。",
-          "vietnamese": "Kyoto đã nhộn nhịp."
+          "japanese": "誰と日本へ行きますか。",
+          "vietnamese": "Bạn đi Nhật với ai?"
         }
       ],
-      "category": "adjectives"
+      "category": "conjunctions"
     }
   ]
 }

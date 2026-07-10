@@ -1,32 +1,66 @@
 {
   "lessonNumber": 20,
-  "title": "Cách nói thử và trải nghiệm - 〜てみる",
-  "title_jp": "試行と経験 - 〜てみる",
   "level": "N5",
-  "description": "Cách diễn tả việc thử làm một hành động và các mẫu câu mở rộng.",
+  "title": "Thể thường và trích dẫn",
+  "title_jp": "普通形と引用",
+  "description": "Thể thường (普通形) của động từ/tính từ/danh từ, 〜と思います, 〜と言います.",
   "grammars": [
     {
       "id": "m20_01",
-      "title": "Thử làm - 〜てみる",
-      "pattern": "〜てみます",
-      "meaning": "thử làm ~",
-      "explanation": "**Dùng để diễn tả hành động thử làm một việc gì đó.**\n\nĐộng từ thể て + みる.\nみる (見る) ở đây mang nghĩa \"xem thử\".\n\nQuá khứ: 〜てみました (đã thử làm).",
-      "structure": "**[Động từ thể て] + みます**",
+      "title": "Thể thường (普通形)",
+      "pattern": "普通形",
+      "meaning": "thể thường (thân mật)",
+      "explanation": "**Thể thường dùng trong văn nói thân mật hoặc trước と.**\n\n**Động từ:**\n- Hiện tại: 食べる、行く\n- Phủ định: 食べない、行かない\n- Quá khứ: 食べた、行った\n\n**Tính từ い:**\n- Hiện tại: 高い、安い\n- Phủ định: 高くない\n- Quá khứ: 高かった\n\n**Tính từ な/Danh từ:**\n- Hiện tại: 静かだ、学生だ\n- Phủ định: 静かじゃない、学生じゃない\n- Quá khứ: 静かだった、学生だった",
+      "structure": "**[Thể thường của động từ/tính từ/danh từ]**",
       "examples": [
         {
-          "japanese": "この料理を食べてみてください。",
-          "vietnamese": "Hãy thử ăn món này đi."
+          "japanese": "毎日学校へ行く。",
+          "vietnamese": "Mỗi ngày tôi đi học."
         },
         {
-          "japanese": "着物を着てみました。",
-          "vietnamese": "Tôi đã thử mặc kimono."
-        },
-        {
-          "japanese": "日本語で話してみます。",
-          "vietnamese": "Tôi sẽ thử nói bằng tiếng Nhật."
+          "japanese": "この本は面白い。",
+          "vietnamese": "Quyển sách này thú vị."
         }
       ],
       "category": "verb_forms"
+    },
+    {
+      "id": "m20_02",
+      "title": "Tôi nghĩ - 〜と思います",
+      "pattern": "〜と思います",
+      "meaning": "tôi nghĩ rằng ~",
+      "explanation": "**Dùng để diễn tả suy nghĩ, ý kiến.**\n\nDùng thể thường trước と.",
+      "structure": "**[Câu thể thường] と思います**",
+      "examples": [
+        {
+          "japanese": "明日は晴れると思います。",
+          "vietnamese": "Tôi nghĩ ngày mai trời sẽ nắng."
+        },
+        {
+          "japanese": "日本語は難しいと思います。",
+          "vietnamese": "Tôi nghĩ tiếng Nhật khó."
+        }
+      ],
+      "category": "expressions"
+    },
+    {
+      "id": "m20_03",
+      "title": "Dẫn lời - 〜と言います",
+      "pattern": "〜と言います",
+      "meaning": "nói rằng ~",
+      "explanation": "**Dùng để dẫn lại lời nói.**\n\nと là trợ từ trích dẫn.",
+      "structure": "**[Nội dung] と言います**",
+      "examples": [
+        {
+          "japanese": "田中さんは明日来ると言いました。",
+          "vietnamese": "Anh Tanaka nói ngày mai sẽ đến."
+        },
+        {
+          "japanese": "彼は行きたいと言っています。",
+          "vietnamese": "Anh ấy nói muốn đi."
+        }
+      ],
+      "category": "expressions"
     }
   ]
 }

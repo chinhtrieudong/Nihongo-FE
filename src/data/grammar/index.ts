@@ -1,4 +1,4 @@
-// Grammar lessons for Minna no Nihongo N5
+// Auto-generated grammar index
 import lesson01 from './lesson-01.json';
 import lesson02 from './lesson-02.json';
 import lesson03 from './lesson-03.json';
@@ -54,23 +54,78 @@ export const lessons = [
 ];
 
 export const categories = [
-  { value: 'basic_sentence_structure', label: 'Cấu trúc câu cơ bản' },
-  { value: 'questions', label: 'Câu hỏi' },
-  { value: 'possessive', label: 'Sở hữu' },
-  { value: 'demonstratives', label: 'Chỉ định từ' },
-  { value: 'adjectives', label: 'Tính từ' },
-  { value: 'negative_form', label: 'Thể phủ định' },
-  { value: 'verb_forms', label: 'Động từ' },
-  { value: 'conjunctions', label: 'Liên từ' },
-  { value: 'time', label: 'Thời gian' },
-  { value: 'time_telling', label: 'Cách nói giờ' },
-  { value: 'dates', label: 'Ngày tháng' },
-  { value: 'existence_verbs', label: 'Động từ tồn tại' },
-  { value: 'location_words', label: 'Từ chỉ địa điểm' },
-  { value: 'location_sentences', label: 'Câu chỉ địa điểm' },
-  { value: 'direction_words', label: 'Từ chỉ hướng' },
-  { value: 'comparison', label: 'So sánh' },
-  { value: 'expressions', label: 'Biểu hiện ngữ pháp' },
+  {
+    "value": "basic_sentence_structure",
+    "label": "Cấu trúc câu cơ bản"
+  },
+  {
+    "value": "questions",
+    "label": "Câu hỏi"
+  },
+  {
+    "value": "possessive",
+    "label": "Sở hữu"
+  },
+  {
+    "value": "demonstratives",
+    "label": "Chỉ định từ"
+  },
+  {
+    "value": "adjectives",
+    "label": "Tính từ"
+  },
+  {
+    "value": "negative_form",
+    "label": "Thể phủ định"
+  },
+  {
+    "value": "verb_forms",
+    "label": "Động từ"
+  },
+  {
+    "value": "conjunctions",
+    "label": "Liên từ"
+  },
+  {
+    "value": "time",
+    "label": "Thời gian"
+  },
+  {
+    "value": "time_telling",
+    "label": "Cách nói giờ"
+  },
+  {
+    "value": "dates",
+    "label": "Ngày tháng"
+  },
+  {
+    "value": "existence_verbs",
+    "label": "Động từ tồn tại"
+  },
+  {
+    "value": "location_words",
+    "label": "Từ chỉ địa điểm"
+  },
+  {
+    "value": "location_sentences",
+    "label": "Câu chỉ địa điểm"
+  },
+  {
+    "value": "direction_words",
+    "label": "Từ chỉ hướng"
+  },
+  {
+    "value": "comparison",
+    "label": "So sánh"
+  },
+  {
+    "value": "expressions",
+    "label": "Biểu hiện ngữ pháp"
+  },
+  {
+    "value": "conditionals",
+    "label": "Câu điều kiện"
+  }
 ];
 
 export const levels = ['N5'];
