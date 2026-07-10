@@ -1,36 +1,36 @@
 {
   "lessonNumber": 3,
   "level": "N5",
-  "title": "Địa điểm và danh từ",
-  "title_jp": "場所と名詞",
-  "description": "Các đại từ chỉ địa điểm: ここ・そこ・あそこ・こちら・そちら・あちら.",
+  "title": "Địa điểm",
+  "title_jp": "場所",
+  "description": "ここ・そこ・あそこ, こちら・そちら・あちら",
   "grammars": [
     {
       "id": "m3_01",
-      "title": "Ở đây/đó/kia - ここ・そこ・あそこ",
-      "pattern": "ここ / そこ / あそこ",
-      "meaning": "ở đây / ở đó / ở kia",
-      "explanation": "**Ba đại từ chỉ địa điểm:**\n- **ここ**: nơi gần người nói (ở đây)\n- **そこ**: nơi gần người nghe (ở đó)\n- **あそこ**: nơi xa cả hai (ở kia)",
-      "structure": "**[Địa điểm] は ここ / そこ / あそこ です**",
+      "title": "ここ・そこ・あそこ",
+      "pattern": "ここ/そこ/あそこ",
+      "meaning": "ở đây/đó/kia",
+      "explanation": "Chỉ địa điểm: ここ (gần tôi), そこ (gần bạn), あそこ (xa).",
+      "structure": "**[Địa điểm] は ここ/そこ/あそこ です**",
       "examples": [
         {
           "japanese": "トイレはあそこです。",
-          "vietnamese": "Nhà vệ sinh ở kia."
+          "vietnamese": "WC ở kia."
         },
         {
           "japanese": "ここは学校です。",
-          "vietnamese": "Ở đây là trường học."
+          "vietnamese": "Đây là trường."
         }
       ],
       "category": "location_words"
     },
     {
       "id": "m3_02",
-      "title": "Hướng này/đó/kia - こちら・そちら・あちら",
-      "pattern": "こちら / そちら / あちら",
-      "meaning": "phía này / phía đó / phía kia (lịch sự)",
-      "explanation": "**Ba đại từ chỉ hướng - lịch sự hơn ここ・そこ・あそこ:**\n- **こちら**: phía này (lịch sự)\n- **そちら**: phía đó (lịch sự)\n- **あちら**: phía kia (lịch sự)\n\nDùng trong giao tiếp trang trọng.",
-      "structure": "**[Địa điểm] は こちら / そちら / あちら です**",
+      "title": "こちら・そちら・あちら",
+      "pattern": "こちら/そちら/あちら",
+      "meaning": "phía này/đó/kia (lịch sự)",
+      "explanation": "Lịch sự hơn ここ・そこ・あそこ.",
+      "structure": "**[Địa điểm] は こちら/そちら/あちら です**",
       "examples": [
         {
           "japanese": "事務所はこちらです。",
@@ -38,29 +38,29 @@
         },
         {
           "japanese": "出口はあちらです。",
-          "vietnamese": "Lối ra ở phía kia."
+          "vietnamese": "Lối ra phía kia."
         }
       ],
       "category": "location_words"
     },
     {
       "id": "m3_03",
-      "title": "Danh từ chỉ nơi chốn",
-      "pattern": "〜は〜です",
-      "meaning": "[Địa điểm] là ~",
-      "explanation": "**Dùng cấu trúc danh từ cơ bản để giới thiệu địa điểm.**\n\nCách hỏi: 〜はどこですか (~ ở đâu?).",
-      "structure": "**[Địa điểm] は [Nơi chốn] です**\n**[Địa điểm] は どこですか**",
+      "title": "Hỏi địa điểm",
+      "pattern": "〜はどこですか",
+      "meaning": "~ ở đâu?",
+      "explanation": "Dùng どこ để hỏi địa điểm.",
+      "structure": "**[Địa điểm] はどこですか**",
       "examples": [
         {
           "japanese": "学校はどこですか。",
-          "vietnamese": "Trường học ở đâu?"
+          "vietnamese": "Trường ở đâu?"
         },
         {
           "japanese": "図書館はあそこです。",
           "vietnamese": "Thư viện ở kia."
         }
       ],
-      "category": "location_words"
+      "category": "questions"
     }
   ]
 }

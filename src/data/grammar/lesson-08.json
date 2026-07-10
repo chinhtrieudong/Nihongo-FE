@@ -1,21 +1,21 @@
 {
   "lessonNumber": 8,
   "level": "N5",
-  "title": "Tính từ い và な",
+  "title": "Tính từ",
   "title_jp": "形容詞",
-  "description": "Tính từ đuôi い, tính từ đuôi な, phủ định あまり〜ません, とても.",
+  "description": "い形容詞, な形容詞, あまり〜ません, とても",
   "grammars": [
     {
       "id": "m8_01",
-      "title": "Tính từ đuôi い",
+      "title": "Tính từ い",
       "pattern": "〜いです",
-      "meaning": "tính từ đuôi い",
-      "explanation": "**Tính từ đuôi い (い-adj) kết thúc bằng い.**\n\nCó thể đứng trước danh từ để bổ nghĩa (không cần thêm な) hoặc đứng cuối câu với です.",
-      "structure": "**[Tính từ い] + です** (cuối câu)\n**[Tính từ い] + [Danh từ]** (bổ nghĩa)",
+      "meaning": "tính từ い",
+      "explanation": "Kết thúc bằng い. Bổ nghĩa danh từ không cần な.",
+      "structure": "**[~い]+です / [~い]+[Danh từ]**",
       "examples": [
         {
           "japanese": "この本は面白いです。",
-          "vietnamese": "Quyển sách này thú vị."
+          "vietnamese": "Sách này thú vị."
         },
         {
           "japanese": "高いビルです。",
@@ -26,57 +26,57 @@
     },
     {
       "id": "m8_02",
-      "title": "Tính từ đuôi な",
-      "pattern": "〜な + [Danh từ] / 〜です",
-      "meaning": "tính từ đuôi な",
-      "explanation": "**Tính từ đuôi な (な-adj) cần thêm な khi bổ nghĩa danh từ.**\n\nKhi đứng cuối câu, dùng です trực tiếp.",
-      "structure": "**[Tính từ な] + な + [Danh từ]** (bổ nghĩa)\n**[Tính từ な] + です** (cuối câu)",
+      "title": "Tính từ な",
+      "pattern": "〜な+[Danh từ]/〜です",
+      "meaning": "tính từ な",
+      "explanation": "Thêm な khi bổ nghĩa danh từ. Cuối câu dùng です.",
+      "structure": "**[~な]+[Danh từ] / [~]+です**",
       "examples": [
         {
           "japanese": "静かな部屋です。",
-          "vietnamese": "Căn phòng yên tĩnh."
+          "vietnamese": "Phòng yên tĩnh."
         },
         {
           "japanese": "この町は賑やかです。",
-          "vietnamese": "Thị trấn này nhộn nhịp."
+          "vietnamese": "Phố này nhộn nhịp."
         }
       ],
       "category": "adjectives"
     },
     {
       "id": "m8_03",
-      "title": "あまり〜ません - Không... lắm",
+      "title": "あまり〜ません",
       "pattern": "あまり〜ません",
       "meaning": "không ~ lắm",
-      "explanation": "**あまり + phủ định có nghĩa là \"không ~ lắm\".**\n\nDùng với tính từ hoặc động từ ở dạng phủ định.",
-      "structure": "**あまり [Tính từ/Động từ phủ định]**",
+      "explanation": "あまり + phủ định = \"không ~ lắm\".",
+      "structure": "**あまり[Tính từ/ĐT phủ định]**",
       "examples": [
         {
-          "japanese": "この本はあまり高くないです。",
-          "vietnamese": "Quyển sách này không đắt lắm."
+          "japanese": "あまり高くないです。",
+          "vietnamese": "Không đắt lắm."
         },
         {
-          "japanese": "あまりコーヒーを飲みません。",
-          "vietnamese": "Tôi không uống cà phê lắm."
+          "japanese": "あまり飲みません。",
+          "vietnamese": "Không uống lắm."
         }
       ],
       "category": "negative_form"
     },
     {
       "id": "m8_04",
-      "title": "とても - Rất",
+      "title": "とても",
       "pattern": "とても〜",
       "meaning": "rất ~",
-      "explanation": "**とても có nghĩa là \"rất\".**\n\nĐặt trước tính từ hoặc trạng từ để nhấn mạnh.",
-      "structure": "**とても [Tính từ] です**",
+      "explanation": "Đặt trước tính từ để nhấn mạnh.",
+      "structure": "**とても[Tính từ]です**",
       "examples": [
         {
-          "japanese": "この本はとても面白いです。",
-          "vietnamese": "Quyển sách này rất thú vị."
+          "japanese": "とても面白いです。",
+          "vietnamese": "Rất thú vị."
         },
         {
-          "japanese": "京都はとてもきれいです。",
-          "vietnamese": "Kyoto rất đẹp."
+          "japanese": "とてもきれいです。",
+          "vietnamese": "Rất đẹp."
         }
       ],
       "category": "adjectives"

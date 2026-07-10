@@ -1,82 +1,82 @@
 {
   "lessonNumber": 9,
   "level": "N5",
-  "title": "Sở thích và năng lực",
+  "title": "Sở thích & năng lực",
   "title_jp": "趣味と能力",
-  "description": "わかります, あります, います, 好き, 嫌い, 上手, 下手.",
+  "description": "わかる, ある・いる, 好き・嫌い, 上手・下手",
   "grammars": [
     {
       "id": "m9_01",
-      "title": "わかります - Hiểu/Biết",
+      "title": "わかります",
       "pattern": "〜がわかります",
       "meaning": "hiểu/biết ~",
-      "explanation": "**わかります có nghĩa \"hiểu\" hoặc \"biết\".**\n\nĐối tượng được đánh dấu bằng が, không dùng を.",
-      "structure": "**[Danh từ] がわかります**",
+      "explanation": "Dùng が, không dùng を.",
+      "structure": "**[Danh từ]がわかります**",
       "examples": [
         {
           "japanese": "日本語がわかります。",
-          "vietnamese": "Tôi hiểu tiếng Nhật."
+          "vietnamese": "Tôi biết tiếng Nhật."
         },
         {
           "japanese": "この問題がわかりません。",
-          "vietnamese": "Tôi không hiểu bài toán này."
+          "vietnamese": "Ko hiểu bài này."
         }
       ],
       "category": "expressions"
     },
     {
       "id": "m9_02",
-      "title": "あります・います (sở hữu)",
-      "pattern": "〜があります / 〜がいます",
-      "meaning": "có ~ (sở hữu)",
-      "explanation": "**あります/います còn dùng để chỉ sự sở hữu.**\n\n- あります: đồ vật, sự kiện\n- います: người, động vật",
-      "structure": "**[Người] は [Vật] があります**\n**[Người] は [Người/Động vật] がいます**",
+      "title": "あります・います(sở hữu)",
+      "pattern": "〜があります/います",
+      "meaning": "có ~",
+      "explanation": "あります(đồ), います(người).",
+      "structure": "**[Người]は[Vật]があります/います**",
       "examples": [
         {
-          "japanese": "私は車があります。",
-          "vietnamese": "Tôi có xe hơi."
+          "japanese": "車があります。",
+          "vietnamese": "Tôi có xe."
         },
         {
-          "japanese": "田中さんは子供がいます。",
-          "vietnamese": "Anh Tanaka có con."
+          "japanese": "子供がいます。",
+          "vietnamese": "Tôi có con."
         }
       ],
       "category": "existence_verbs"
     },
     {
       "id": "m9_03",
-      "title": "好き・嫌い - Thích / Không thích",
-      "pattern": "〜が好きです / 〜が嫌いです",
-      "meaning": "thích ~ / không thích ~",
-      "explanation": "**好き (すき) và 嫌い (きらい) là tính từ đuôi な.**\n\nĐối tượng thích/không thích được đánh dấu bằng が.\nPhủ định: 好きじゃないです / 嫌いじゃないです.",
-      "structure": "**[Chủ thể] は [Đối tượng] が好きです / 嫌いです**",
+      "title": "好き・嫌い",
+      "pattern": "〜が好き/嫌いです",
+      "meaning": "thích/ko thích ~",
+      "explanation": "Tính từ な. Dùng が.",
+      "structure": "**[Chủ thể]は[Đối tượng]が好き/嫌いです**",
       "examples": [
         {
-          "japanese": "私は音楽が好きです。",
-          "vietnamese": "Tôi thích âm nhạc."
+          "japanese": "音楽が好きです。",
+          "vietnamese": "Thích nhạc."
         },
         {
-          "japanese": "私は納豆が嫌いです。",
-          "vietnamese": "Tôi không thích natto."
+          "japanese": "納豆が嫌いです。",
+          "vietnamese": "Ghét natto."
         }
       ],
       "category": "expressions"
     },
     {
       "id": "m9_04",
-      "title": "上手・下手 - Giỏi / Kém",
-      "pattern": "〜が上手です / 〜が下手です",
-      "meaning": "giỏi ~ / kém ~",
-      "explanation": "**上手 (じょうず) và 下手 (へた) là tính từ đuôi な.**\n\nDùng để đánh giá năng lực.\nĐối tượng được đánh dấu bằng が.",
-      "structure": "**[Chủ thể] は [Kỹ năng] が上手です / 下手です**",
+      "title": "上手・下手",
+      "pattern": "〜が上手/下手です",
+      "meaning": "giỏi/kém ~",
+      "explanation": "Tính từ な. Dùng が.",
+      "structure": "**[Chủ thể]は[Kỹ năng]が上手/下手です**",
       "examples": [
         {
-          "japanese": "私は料理が上手です。",
-          "vietnamese": "Tôi giỏi nấu ăn."
+          "japanese": "料理が上手です。",
+          "vietnamese": "Nấu ăn giỏi."
         },
         {
-          "japanese": "彼はスポーツが下手です。",
-          "vietnamese": "Anh ấy kém thể thao."
+          "japanese": "スポーツが下手です。",
+          "vietnamese": "Thể thao kém."
         }
       ],
       "category": "expressions"

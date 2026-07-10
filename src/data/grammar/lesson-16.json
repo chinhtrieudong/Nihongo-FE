@@ -1,21 +1,21 @@
 {
   "lessonNumber": 16,
   "level": "N5",
-  "title": "Thể ています - Đang làm và trạng thái",
+  "title": "〜ています",
   "title_jp": "〜ています",
-  "description": "Diễn tả hành động đang diễn ra và trạng thái với 〜ています, 〜ても.",
+  "description": "Đang làm, nghề nghiệp/trạng thái, 〜ても",
   "grammars": [
     {
       "id": "m16_01",
-      "title": "Đang làm - 〜ています",
+      "title": "Đang làm",
       "pattern": "〜ています",
-      "meaning": "đang làm ~ (tiếp diễn)",
-      "explanation": "**Dùng để diễn tả hành động đang diễn ra tại thời điểm nói.**\n\nĐộng từ thể て + います.",
-      "structure": "**[Động từ thể て] います**",
+      "meaning": "đang ~",
+      "explanation": "Diễn tả hành động đang diễn ra.",
+      "structure": "**[ĐT thể て]います**",
       "examples": [
         {
           "japanese": "今勉強しています。",
-          "vietnamese": "Bây giờ tôi đang học."
+          "vietnamese": "Đang học."
         },
         {
           "japanese": "雨が降っています。",
@@ -26,38 +26,38 @@
     },
     {
       "id": "m16_02",
-      "title": "Nghề nghiệp/Trạng thái - 〜ています",
-      "pattern": "〜ています (nghề nghiệp/trạng thái)",
-      "meaning": "đang làm nghề ~ / đang ở trạng thái ~",
-      "explanation": "**Một số động từ dùng ています để diễn tả nghề nghiệp hoặc trạng thái.**\n\nVí dụ: 働いています (đang làm việc), 住んでいます (đang sống).",
-      "structure": "**[Động từ thể て] います**",
+      "title": "Nghề/trạng thái",
+      "pattern": "〜ています",
+      "meaning": "đang là ~",
+      "explanation": "Dùng cho nghề nghiệp, nơi ở.",
+      "structure": "**[ĐT thể て]います**",
       "examples": [
         {
           "japanese": "銀行で働いています。",
-          "vietnamese": "Tôi đang làm việc ở ngân hàng."
+          "vietnamese": "Làm ở ngân hàng."
         },
         {
           "japanese": "京都に住んでいます。",
-          "vietnamese": "Tôi đang sống ở Kyoto."
+          "vietnamese": "Sống ở Kyoto."
         }
       ],
       "category": "verb_forms"
     },
     {
       "id": "m16_03",
-      "title": "〜ても - Dù có làm gì",
+      "title": "〜ても",
       "pattern": "〜ても",
-      "meaning": "dù ~ đi nữa",
-      "explanation": "**〜ても có nghĩa là \"dù có làm ~ đi nữa\".**\n\nThể て + も.",
-      "structure": "**[Động từ thể て] も**",
+      "meaning": "dù ~",
+      "explanation": "Dù có làm gì đi nữa.",
+      "structure": "**[ĐT thể て]も**",
       "examples": [
         {
           "japanese": "雨が降っても行きます。",
-          "vietnamese": "Dù có mưa tôi cũng đi."
+          "vietnamese": "Dù mưa cũng đi."
         },
         {
           "japanese": "高くても買います。",
-          "vietnamese": "Dù đắt tôi cũng mua."
+          "vietnamese": "Dù đắt cũng mua."
         }
       ],
       "category": "verb_forms"

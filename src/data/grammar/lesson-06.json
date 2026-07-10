@@ -1,17 +1,17 @@
 {
   "lessonNumber": 6,
   "level": "N5",
-  "title": "Ăn uống và trợ từ",
+  "title": "Ăn uống & trợ từ",
   "title_jp": "飲食と助詞",
-  "description": "Động từ ăn uống, trợ từ を (tân ngữ), で, いっしょに, と.",
+  "description": "食べる・飲む, を, いっしょに, と",
   "grammars": [
     {
       "id": "m6_01",
-      "title": "Động từ ăn uống",
-      "pattern": "食べます / 飲みます",
-      "meaning": "ăn / uống",
-      "explanation": "**Động từ ăn uống cơ bản:**\n- **食べます** (たべます): ăn\n- **飲みます** (のみます): uống\n\nDùng với trợ từ を để chỉ đối tượng.",
-      "structure": "**[Đồ ăn/Thức uống] を 食べます / 飲みます**",
+      "title": "食べます・飲みます",
+      "pattern": "食べます/飲みます",
+      "meaning": "ăn/uống",
+      "explanation": "Động từ ăn uống cơ bản. Dùng を chỉ đối tượng.",
+      "structure": "**[Đồ]を食べます/飲みます**",
       "examples": [
         {
           "japanese": "ご飯を食べます。",
@@ -19,64 +19,64 @@
         },
         {
           "japanese": "コーヒーを飲みます。",
-          "vietnamese": "Tôi uống cà phê."
+          "vietnamese": "Tôi uống cafe."
         }
       ],
       "category": "verb_forms"
     },
     {
       "id": "m6_02",
-      "title": "Trợ từ を - Tân ngữ",
+      "title": "を (tân ngữ)",
       "pattern": "〜を〜ます",
-      "meaning": "làm gì đó với đối tượng",
-      "explanation": "**を là trợ từ đánh dấu tân ngữ trực tiếp của động từ.**\n\nDùng khi hành động tác động trực tiếp lên một đối tượng.",
-      "structure": "**[Tân ngữ] を [Động từ]**",
+      "meaning": "làm gì đó",
+      "explanation": "Đánh dấu tân ngữ trực tiếp của động từ.",
+      "structure": "**[Tân ngữ]を[Động từ]**",
       "examples": [
         {
           "japanese": "映画を見ます。",
-          "vietnamese": "Tôi xem phim."
+          "vietnamese": "Xem phim."
         },
         {
           "japanese": "本を読みます。",
-          "vietnamese": "Tôi đọc sách."
+          "vietnamese": "Đọc sách."
         }
       ],
       "category": "basic_sentence_structure"
     },
     {
       "id": "m6_03",
-      "title": "いっしょに - Cùng nhau",
+      "title": "いっしょに",
       "pattern": "いっしょに〜ます",
       "meaning": "cùng làm ~",
-      "explanation": "**いっしょに (一緒に) có nghĩa là \"cùng nhau\".**\n\nĐặt trước động từ để diễn tả hành động cùng làm với ai đó.",
-      "structure": "**いっしょに [Động từ]**",
+      "explanation": "Đặt trước động từ, nghĩa \"cùng nhau\".",
+      "structure": "**いっしょに[Động từ]**",
       "examples": [
         {
           "japanese": "いっしょに勉強しましょう。",
           "vietnamese": "Cùng học nào."
         },
         {
-          "japanese": "いっしょにご飯を食べます。",
-          "vietnamese": "Tôi ăn cơm cùng nhau."
+          "japanese": "いっしょに食べます。",
+          "vietnamese": "Cùng ăn."
         }
       ],
       "category": "conjunctions"
     },
     {
       "id": "m6_04",
-      "title": "Trợ từ と - Với ai đó",
+      "title": "と (với)",
       "pattern": "〜と〜ます",
-      "meaning": "làm gì với ai đó",
-      "explanation": "**と là trợ từ chỉ sự cùng nhau thực hiện hành động.**\n\nNối danh từ chỉ người.",
-      "structure": "**[Người] と [Động từ]**",
+      "meaning": "với ai",
+      "explanation": "Chỉ người cùng thực hiện hành động.",
+      "structure": "**[Người]と[Động từ]**",
       "examples": [
         {
           "japanese": "友達と映画を見ます。",
-          "vietnamese": "Tôi xem phim với bạn."
+          "vietnamese": "Xem phim với bạn."
         },
         {
-          "japanese": "誰と日本へ行きますか。",
-          "vietnamese": "Bạn đi Nhật với ai?"
+          "japanese": "誰と行きますか。",
+          "vietnamese": "Đi với ai?"
         }
       ],
       "category": "conjunctions"

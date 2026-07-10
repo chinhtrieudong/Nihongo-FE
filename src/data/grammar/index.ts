@@ -1,4 +1,4 @@
-// Auto-generated grammar index
+// Grammar index - Minna N5
 import lesson01 from './lesson-01.json';
 import lesson02 from './lesson-02.json';
 import lesson03 from './lesson-03.json';
@@ -56,7 +56,7 @@ export const lessons = [
 export const categories = [
   {
     "value": "basic_sentence_structure",
-    "label": "Cấu trúc câu cơ bản"
+    "label": "Cấu trúc câu"
   },
   {
     "value": "questions",
@@ -76,7 +76,7 @@ export const categories = [
   },
   {
     "value": "negative_form",
-    "label": "Thể phủ định"
+    "label": "Phủ định"
   },
   {
     "value": "verb_forms",
@@ -95,20 +95,12 @@ export const categories = [
     "label": "Cách nói giờ"
   },
   {
-    "value": "dates",
-    "label": "Ngày tháng"
-  },
-  {
     "value": "existence_verbs",
     "label": "Động từ tồn tại"
   },
   {
     "value": "location_words",
     "label": "Từ chỉ địa điểm"
-  },
-  {
-    "value": "location_sentences",
-    "label": "Câu chỉ địa điểm"
   },
   {
     "value": "direction_words",
@@ -120,11 +112,11 @@ export const categories = [
   },
   {
     "value": "expressions",
-    "label": "Biểu hiện ngữ pháp"
+    "label": "Biểu hiện"
   },
   {
     "value": "conditionals",
-    "label": "Câu điều kiện"
+    "label": "Điều kiện"
   }
 ];
 

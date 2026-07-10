@@ -1,63 +1,59 @@
 {
   "lessonNumber": 25,
   "level": "N5",
-  "title": "Điều kiện và giả định",
-  "title_jp": "条件と仮定",
-  "description": "〜たら (nếu), 〜ても (dù), もし (nếu).",
+  "title": "Điều kiện",
+  "title_jp": "条件",
+  "description": "〜たら, 〜ても, もし",
   "grammars": [
     {
       "id": "m25_01",
-      "title": "Câu điều kiện - 〜たら",
+      "title": "〜たら",
       "pattern": "〜たら、〜",
       "meaning": "nếu ~ thì ~",
-      "explanation": "**たら là dạng điều kiện phổ biến nhất.**\n\nDùng được cho tất cả các loại từ.\nThể た + ら.",
-      "structure": "**[Thể た của động từ/tính từ] + ら**\n**[Danh từ + だった] + ら**",
+      "explanation": "Điều kiện phổ biến nhất. Thể た+ら.",
+      "structure": "**[Thể た]+ら、[Kết quả]**",
       "examples": [
         {
           "japanese": "雨が降ったら、出かけません。",
-          "vietnamese": "Nếu trời mưa thì tôi không ra ngoài."
+          "vietnamese": "Nếu mưa thì ko ra ngoài."
         },
         {
           "japanese": "安かったら、買います。",
-          "vietnamese": "Nếu rẻ thì tôi sẽ mua."
+          "vietnamese": "Nếu rẻ thì mua."
         }
       ],
       "category": "conditionals"
     },
     {
       "id": "m25_02",
-      "title": "Dù - 〜ても",
+      "title": "〜ても",
       "pattern": "〜ても",
-      "meaning": "dù ~ đi nữa",
-      "explanation": "**Dù có ~ thì vẫn...**\n\nThể て + も.",
-      "structure": "**[Động từ thể て] も**",
+      "meaning": "dù ~",
+      "explanation": "Dù có ~ thì vẫn...",
+      "structure": "**[ĐT thể て]も**",
       "examples": [
         {
           "japanese": "雨が降っても行きます。",
-          "vietnamese": "Dù có mưa tôi cũng đi."
+          "vietnamese": "Dù mưa cũng đi."
         },
         {
           "japanese": "高くても買います。",
-          "vietnamese": "Dù đắt tôi cũng mua."
+          "vietnamese": "Dù đắt cũng mua."
         }
       ],
       "category": "conditionals"
     },
     {
       "id": "m25_03",
-      "title": "もし - Nếu (giả định)",
+      "title": "もし",
       "pattern": "もし〜たら",
-      "meaning": "nếu ~ (giả định rõ)",
-      "explanation": "**もし thêm vào trước câu điều kiện để nhấn mạnh tính giả định.**\n\nCó thể dùng với たら, ば, ても.",
-      "structure": "**もし [Câu điều kiện]、[Kết quả]**",
+      "meaning": "nếu (giả định)",
+      "explanation": "Thêm もし để nhấn mạnh giả định.",
+      "structure": "**もし[Câu điều kiện]、[Kết quả]**",
       "examples": [
         {
-          "japanese": "もし時間があったら、いっしょに行きましょう。",
-          "vietnamese": "Nếu có thời gian, chúng ta cùng đi nhé."
-        },
-        {
-          "japanese": "もし安かったら、買います。",
-          "vietnamese": "Nếu rẻ thì tôi sẽ mua."
+          "japanese": "もし時間があったら、行きましょう。",
+          "vietnamese": "Nếu có TG, cùng đi."
         }
       ],
       "category": "conditionals"

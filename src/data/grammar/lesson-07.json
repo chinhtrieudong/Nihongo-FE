@@ -1,82 +1,82 @@
 {
   "lessonNumber": 7,
   "level": "N5",
-  "title": "Cho - Nhận - Mượn - Cho mượn",
-  "title_jp": "あげる・もらう・貸す・借りる・教える",
-  "description": "Động từ cho, nhận, cho mượn, mượn và dạy.",
+  "title": "Cho - Nhận - Mượn",
+  "title_jp": "授受動詞",
+  "description": "あげる・もらう・貸す・借りる・教える",
   "grammars": [
     {
       "id": "m7_01",
-      "title": "あげます - Cho/Tặng",
+      "title": "あげます",
       "pattern": "〜に〜をあげます",
-      "meaning": "cho/tặng ai cái gì",
-      "explanation": "**あげます dùng khi người nói cho ai đó vật gì.**\n\nHành động cho đi từ trong ra ngoài.",
-      "structure": "**[Người cho] は [Người nhận] に [Vật] をあげます**",
+      "meaning": "cho ai cái gì",
+      "explanation": "Người nói cho người khác.",
+      "structure": "**[Người cho]は[Người nhận]に[Vật]をあげます**",
       "examples": [
         {
           "japanese": "友達にプレゼントをあげます。",
-          "vietnamese": "Tôi tặng quà cho bạn."
+          "vietnamese": "Tặng quà cho bạn."
         },
         {
           "japanese": "先生に花をあげました。",
-          "vietnamese": "Tôi đã tặng hoa cho thầy."
+          "vietnamese": "Đã tặng hoa cho thầy."
         }
       ],
       "category": "expressions"
     },
     {
       "id": "m7_02",
-      "title": "もらいます - Nhận",
+      "title": "もらいます",
       "pattern": "〜に〜をもらいます",
-      "meaning": "nhận từ ai cái gì",
-      "explanation": "**もらいます dùng khi nhận vật gì từ ai đó.**\n\nNhấn mạnh hành động nhận.",
-      "structure": "**[Người nhận] は [Người cho] に [Vật] をもらいます**",
+      "meaning": "nhận từ ai",
+      "explanation": "Người nói nhận từ người khác.",
+      "structure": "**[Người nhận]は[Người cho]に[Vật]をもらいます**",
       "examples": [
         {
           "japanese": "先生に本をもらいました。",
-          "vietnamese": "Tôi đã nhận sách từ thầy giáo."
+          "vietnamese": "Nhận sách từ thầy."
         },
         {
           "japanese": "友達にペンをもらいました。",
-          "vietnamese": "Tôi đã nhận bút từ bạn."
+          "vietnamese": "Nhận bút từ bạn."
         }
       ],
       "category": "expressions"
     },
     {
       "id": "m7_03",
-      "title": "かします・かります - Cho mượn / Mượn",
-      "pattern": "〜をかします / 〜をかります",
-      "meaning": "cho mượn / mượn",
-      "explanation": "**かします**: cho mượn (từ trong ra ngoài)\n**かります**: mượn (từ ngoài vào trong)\n\nDùng với trợ từ に và を.",
-      "structure": "**[Người] に [Vật] をかします (cho mượn)**\n**[Người] に [Vật] をかります (mượn)**",
+      "title": "かします・かります",
+      "pattern": "〜をかします/かります",
+      "meaning": "cho mượn/mượn",
+      "explanation": "かします: cho mượn. かります: mượn.",
+      "structure": "**[Người]に[Vật]をかします/かります**",
       "examples": [
         {
-          "japanese": "友達に本をかしました。",
-          "vietnamese": "Tôi đã cho bạn mượn sách."
+          "japanese": "本をかしました。",
+          "vietnamese": "Cho mượn sách."
         },
         {
-          "japanese": "図書館で本をかりました。",
-          "vietnamese": "Tôi đã mượn sách ở thư viện."
+          "japanese": "本をかりました。",
+          "vietnamese": "Đã mượn sách."
         }
       ],
       "category": "expressions"
     },
     {
       "id": "m7_04",
-      "title": "おしえます - Dạy/Chỉ",
+      "title": "おしえます",
       "pattern": "〜に〜をおしえます",
-      "meaning": "dạy/chỉ cho ai cái gì",
-      "explanation": "**おしえます có nghĩa là \"dạy\" hoặc \"chỉ cho\".**\n\nDùng với に (người) và を (nội dung).",
-      "structure": "**[Người dạy] は [Người học] に [Nội dung] をおしえます**",
+      "meaning": "dạy/chỉ cho",
+      "explanation": "Dùng に(người) và を(nội dung).",
+      "structure": "**[Người]に[Nội dung]をおしえます**",
       "examples": [
         {
-          "japanese": "先生は学生に日本語をおしえます。",
-          "vietnamese": "Thầy giáo dạy tiếng Nhật cho học sinh."
+          "japanese": "日本語をおしえます。",
+          "vietnamese": "Dạy tiếng Nhật."
         },
         {
           "japanese": "道をおしえてください。",
-          "vietnamese": "Làm ơn chỉ đường cho tôi."
+          "vietnamese": "Chỉ đường giúp tôi."
         }
       ],
       "category": "expressions"

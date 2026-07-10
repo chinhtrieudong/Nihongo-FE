@@ -2,62 +2,62 @@
   "lessonNumber": 23,
   "level": "N5",
   "title": "Khi - Trong lúc",
-  "title_jp": "時・同時動作",
-  "description": "〜とき (khi), 〜と (khi ~ thì), 〜ながら (vừa ~ vừa).",
+  "title_jp": "時・同時",
+  "description": "〜とき, 〜と, 〜ながら",
   "grammars": [
     {
       "id": "m23_01",
-      "title": "Khi - 〜とき",
+      "title": "〜とき",
       "pattern": "〜とき、〜",
-      "meaning": "khi ~, thì ~",
-      "explanation": "**Dùng để diễn tả thời điểm xảy ra hành động.**\n\nNếu hành động trong とき chưa xảy ra: dùng thể từ điển.\nNếu đã xảy ra: dùng thể た.",
-      "structure": "**[Động từ/Tính từ thể thường] とき、[Mệnh đề chính]**\n**[Danh từ] のとき、[Mệnh đề chính]**",
+      "meaning": "khi ~",
+      "explanation": "ときchưa xảy ra: thể từ điển. ときđã xảy ra: thể た.",
+      "structure": "**[Thể thường]とき、[Mệnh đề]**",
       "examples": [
         {
           "japanese": "子供のとき、日本に住んでいました。",
-          "vietnamese": "Khi còn nhỏ, tôi đã sống ở Nhật."
+          "vietnamese": "Khi nhỏ, sống ở Nhật."
         },
         {
           "japanese": "駅に着いたとき、電話します。",
-          "vietnamese": "Khi đến ga, tôi sẽ gọi điện."
+          "vietnamese": "Khi đến ga, sẽ gọi."
         }
       ],
       "category": "time"
     },
     {
       "id": "m23_02",
-      "title": "Khi ~ thì - 〜と",
+      "title": "〜と",
       "pattern": "〜と、〜",
-      "meaning": "khi ~ thì ~ (kết quả tất yếu)",
-      "explanation": "**と diễn tả kết quả tất yếu hoặc thói quen.**\n\nKhi một hành động xảy ra thì tự động dẫn đến kết quả.\nKhông dùng với ý chí, mong muốn.",
-      "structure": "**[Mệnh đề 1] と、[Mệnh đề 2 (kết quả)]**",
+      "meaning": "khi ~ thì ~",
+      "explanation": "Kết quả tất yếu, không dùng ý chí.",
+      "structure": "**[Mệnh đề1]と、[Mệnh đề2]**",
       "examples": [
         {
           "japanese": "春になると、花が咲きます。",
-          "vietnamese": "Khi mùa xuân đến, hoa nở."
+          "vietnamese": "Xuân đến, hoa nở."
         },
         {
-          "japanese": "このボタンを押すと、ドアが開きます。",
-          "vietnamese": "Khi ấn nút này, cửa sẽ mở."
+          "japanese": "ボタンを押すと、開きます。",
+          "vietnamese": "Ấn nút thì mở."
         }
       ],
       "category": "conjunctions"
     },
     {
       "id": "m23_03",
-      "title": "Vừa ~ vừa - 〜ながら",
+      "title": "〜ながら",
       "pattern": "〜ながら〜ます",
       "meaning": "vừa ~ vừa ~",
-      "explanation": "**Dùng để diễn tả hai hành động xảy ra đồng thời.**\n\nThân động từ ます + ながら + động từ chính.",
-      "structure": "**[Thân động từ ます] ながら [Động từ chính]**",
+      "explanation": "Hai hành động xảy ra đồng thời.",
+      "structure": "**[ThânĐT]ながら[ĐT chính]**",
       "examples": [
         {
           "japanese": "音楽を聞きながら勉強します。",
-          "vietnamese": "Tôi vừa nghe nhạc vừa học."
+          "vietnamese": "Vừa nghe nhạc vừa học."
         },
         {
-          "japanese": "テレビを見ながらご飯を食べます。",
-          "vietnamese": "Tôi vừa xem TV vừa ăn cơm."
+          "japanese": "テレビを見ながら食べます。",
+          "vietnamese": "Vừa xem TV vừa ăn."
         }
       ],
       "category": "conjunctions"

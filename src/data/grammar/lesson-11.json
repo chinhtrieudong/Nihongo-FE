@@ -1,64 +1,63 @@
 {
   "lessonNumber": 11,
   "level": "N5",
-  "title": "Số lượng và đơn vị đếm",
-  "title_jp": "数量詞",
-  "description": "Cách đếm số lượng: 〜人, 〜台, 〜枚 và どのくらい.",
+  "title": "Số lượng",
+  "title_jp": "数量",
+  "description": "〜人, 〜台・〜枚・〜本, どのくらい",
   "grammars": [
     {
       "id": "m11_01",
-      "title": "Đếm người - 〜人",
+      "title": "Đếm người",
       "pattern": "〜人",
       "meaning": "~ người",
-      "explanation": "**Đếm số người:**\n- 1人 (ひとり): 1 người\n- 2人 (ふたり): 2 người\n- 3人 (さんにん): 3 người\n- 4人 (よにん): 4 người\n- Từ 5 trở đi: 5人 (ごにん), 6人 (ろくにん)...",
-      "structure": "**[Số] 人 (にん)**",
+      "explanation": "1人(ひとり),2人(ふたり),3人(さんにん),4人(よにん).",
+      "structure": "**[Số]人**",
       "examples": [
         {
           "japanese": "家族は4人です。",
-          "vietnamese": "Gia đình tôi có 4 người."
+          "vietnamese": "GĐ có 4 người."
         },
         {
-          "japanese": "教室に学生が10人います。",
-          "vietnamese": "Trong lớp có 10 học sinh."
+          "japanese": "学生が10人います。",
+          "vietnamese": "Có 10 học sinh."
         }
       ],
       "category": "expressions"
     },
     {
       "id": "m11_02",
-      "title": "Đếm đồ vật: 〜台・〜枚・〜本…",
-      "pattern": "〜台 / 〜枚 / 〜本",
-      "meaning": "~ cái (máy móc) / ~ tờ / ~ cây (dài)",
-      "explanation": "**Các đơn vị đếm thông dụng:**\n- **〜台 (だい)**: máy móc, xe cộ (車、パソコン)\n- **〜枚 (まい)**: vật mỏng, dẹt (紙、皿、シャツ)\n- **〜本 (ぼん)**: vật dài, hình trụ (鉛筆、傘、ビール)\n- **〜冊 (さつ)**: sách vở\n- **〜杯 (はい)**: cốc, chén\n- **〜匹 (ひき)**: động vật nhỏ\n- **〜階 (かい)**: tầng lầu",
-      "structure": "**[Số] + [Đơn vị đếm]**",
+      "title": "Đơn vị đếm",
+      "pattern": "〜台/枚/本/冊/杯/匹",
+      "meaning": "~ cái/tờ/cây/quyển/chén/con",
+      "explanation": "台(máy), 枚(vật mỏng), 本(vật dài), 冊(sách), 杯(ly), 匹(động vật).",
+      "structure": "**[Số]+[Đơn vị]**",
       "examples": [
         {
           "japanese": "車が2台あります。",
-          "vietnamese": "Có 2 chiếc xe hơi."
+          "vietnamese": "Có 2 xe."
         },
         {
           "japanese": "紙を5枚ください。",
-          "vietnamese": "Làm ơn cho tôi 5 tờ giấy."
+          "vietnamese": "Cho 5 tờ giấy."
         }
       ],
-      "notes": "Chú ý cách đọc thay đổi theo số: 1本 (いっぽん), 3本 (さんぼん), 6本 (ろっぽん).",
       "category": "expressions"
     },
     {
       "id": "m11_03",
-      "title": "どのくらい - Bao nhiêu (hỏi số lượng)",
+      "title": "どのくらい",
       "pattern": "どのくらい",
-      "meaning": "bao nhiêu (hỏi số lượng/thời gian)",
-      "explanation": "**どのくらい dùng để hỏi về số lượng hoặc khoảng thời gian.**\n\nCó thể dùng どのぐらい với nghĩa tương tự.",
-      "structure": "**どのくらい [Động từ] か**",
+      "meaning": "bao nhiêu/lâu",
+      "explanation": "Hỏi số lượng hoặc thời gian.",
+      "structure": "**どのくらい〜か**",
       "examples": [
         {
-          "japanese": "どのくらい日本語を勉強しましたか。",
-          "vietnamese": "Bạn đã học tiếng Nhật bao lâu rồi?"
+          "japanese": "どのくらい勉強しましたか。",
+          "vietnamese": "Học bao lâu rồi?"
         },
         {
-          "japanese": "かばんはどのくらいですか。",
-          "vietnamese": "Cái cặp giá bao nhiêu?"
+          "japanese": "どのくらいですか。",
+          "vietnamese": "Bao nhiêu?"
         }
       ],
       "category": "questions"

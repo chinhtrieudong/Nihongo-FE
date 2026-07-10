@@ -1,44 +1,44 @@
 {
   "lessonNumber": 22,
   "level": "N5",
-  "title": "Trước khi và sau khi",
+  "title": "Trước/Sau",
   "title_jp": "前と後",
-  "description": "〜前に (trước khi), 〜てから (sau khi làm gì).",
+  "description": "〜前に, 〜てから",
   "grammars": [
     {
       "id": "m22_01",
-      "title": "Trước khi - 〜前に",
+      "title": "〜前に",
       "pattern": "〜前に、〜",
-      "meaning": "trước khi ~, ~",
-      "explanation": "**Diễn tả hành động xảy ra trước một hành động khác.**\n\nDùng thể từ điển + 前に.",
-      "structure": "**[Động từ thể từ điển] 前に、[Hành động]**",
+      "meaning": "trước khi ~",
+      "explanation": "Thể từ điển + 前に.",
+      "structure": "**[ĐT từ điển]前に、[Hành động]**",
       "examples": [
         {
           "japanese": "食べる前に、手を洗います。",
-          "vietnamese": "Trước khi ăn, tôi rửa tay."
+          "vietnamese": "Trước khi ăn, rửa tay."
         },
         {
           "japanese": "寝る前に、歯を磨きます。",
-          "vietnamese": "Trước khi ngủ, tôi đánh răng."
+          "vietnamese": "Trước ngủ, đánh răng."
         }
       ],
       "category": "time"
     },
     {
       "id": "m22_02",
-      "title": "Sau khi - 〜てから",
+      "title": "〜てから",
       "pattern": "〜てから、〜",
-      "meaning": "sau khi ~, ~",
-      "explanation": "**Diễn tả hành động xảy ra sau khi hành động khác kết thúc.**\n\nNhấn mạnh thứ tự thời gian.",
-      "structure": "**[Động từ thể て] から、[Hành động tiếp theo]**",
+      "meaning": "sau khi ~",
+      "explanation": "Thể て + から.",
+      "structure": "**[ĐT thể て]から、[Hành động]**",
       "examples": [
         {
           "japanese": "勉強してから、寝ます。",
-          "vietnamese": "Sau khi học xong, tôi đi ngủ."
+          "vietnamese": "Học xong rồi ngủ."
         },
         {
-          "japanese": "ご飯を食べてから、出かけます。",
-          "vietnamese": "Sau khi ăn cơm, tôi ra ngoài."
+          "japanese": "食べてから、出かけます。",
+          "vietnamese": "Ăn xong rồi ra ngoài."
         }
       ],
       "category": "time"

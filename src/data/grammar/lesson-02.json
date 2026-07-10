@@ -1,86 +1,82 @@
 {
   "lessonNumber": 2,
   "level": "N5",
-  "title": "Chỉ định từ và sở hữu",
-  "title_jp": "こそあど言葉と所有",
-  "description": "Các đại từ chỉ định これ・それ・あれ, この・その・あの và trợ từ の.",
+  "title": "Chỉ định từ",
+  "title_jp": "こそあど言葉",
+  "description": "これ・それ・あれ, この・その・あの, そうです／そうじゃありません, の",
   "grammars": [
     {
       "id": "m2_01",
-      "title": "Đây/Đó/Kia - これ・それ・あれ",
-      "pattern": "これ / それ / あれ",
-      "meaning": "đây / đó / kia",
-      "explanation": "**Ba đại từ chỉ vật:**\n- **これ**: vật gần người nói (đây)\n- **それ**: vật gần người nghe (đó)\n- **あれ**: vật xa cả hai người (kia)",
-      "structure": "**これ / それ / あれ は [Danh từ] です**",
+      "title": "これ・それ・あれ",
+      "pattern": "これ/それ/あれ",
+      "meaning": "đây/đó/kia",
+      "explanation": "これ (gần tôi), それ (gần bạn), あれ (xa cả hai).",
+      "structure": "**これ/それ/あれ は [Danh từ] です**",
       "examples": [
         {
           "japanese": "これは本です。",
-          "vietnamese": "Đây là quyển sách."
+          "vietnamese": "Đây là sách."
         },
         {
           "japanese": "それは鉛筆ですか。",
-          "vietnamese": "Đó có phải là bút chì không?"
-        },
-        {
-          "japanese": "あれは車です。",
-          "vietnamese": "Kia là xe hơi."
+          "vietnamese": "Đó là bút chì không?"
         }
       ],
       "category": "demonstratives"
     },
     {
       "id": "m2_02",
-      "title": "Danh từ này/đó/kia - この・その・あの",
-      "pattern": "この / その / あの + [Danh từ]",
-      "meaning": "danh từ này / đó / kia",
-      "explanation": "**Ba từ chỉ định bổ nghĩa danh từ:**\n- **この**: danh từ gần người nói\n- **その**: danh từ gần người nghe\n- **あの**: danh từ xa cả hai",
-      "structure": "**この / その / あの [Danh từ] は [Mô tả] です**",
+      "title": "この・その・あの",
+      "pattern": "この/その/あの+[Danh từ]",
+      "meaning": "N này/đó/kia",
+      "explanation": "Bổ nghĩa cho danh từ đứng sau.",
+      "structure": "**この/その/あの [Danh từ] は〜です**",
       "examples": [
         {
-          "japanese": "この本は私の本です。",
-          "vietnamese": "Quyển sách này là sách của tôi."
+          "japanese": "この本は私のです。",
+          "vietnamese": "Sách này là của tôi."
         },
         {
           "japanese": "その鉛筆は誰のですか。",
-          "vietnamese": "Cây bút chì đó của ai vậy?"
+          "vietnamese": "Bút chì đó của ai?"
         }
       ],
       "category": "demonstratives"
     },
     {
       "id": "m2_03",
-      "title": "そうです / そうじゃありません",
-      "pattern": "そうです / そうじゃありません",
-      "meaning": "đúng vậy / không phải vậy",
-      "explanation": "**Dùng そうです để trả lời \"đúng vậy\" và そうじゃありません để nói \"không phải vậy\".**\n\nLà cách trả lời ngắn gọn cho câu hỏi danh từ.",
-      "structure": "**そうです** (đúng vậy)\n**そうじゃありません** (không phải vậy)",
+      "title": "そうです／そうじゃありません",
+      "pattern": "そうです/そうじゃありません",
+      "meaning": "đúng vậy/không phải",
+      "explanation": "Trả lời ngắn cho câu hỏi danh từ.",
+      "structure": "**そうです** / **そうじゃありません**",
       "examples": [
         {
-          "japanese": "- 田中さんですか。 はい、そうです。",
-          "vietnamese": "- Có phải anh Tanaka không? Vâng, đúng ạ."
+          "japanese": "田中さんですか。→はい、そうです。",
+          "vietnamese": "Anh Tanaka? Vâng."
         },
         {
-          "japanese": "- 先生ですか。 いいえ、そうじゃありません。",
-          "vietnamese": "- Có phải giáo viên không? Không, không phải."
+          "japanese": "先生ですか。→いいえ、そうじゃありません。",
+          "vietnamese": "Giáo viên? Không."
         }
       ],
       "category": "questions"
     },
     {
       "id": "m2_04",
-      "title": "Trợ từ sở hữu の",
+      "title": "の (sở hữu)",
       "pattern": "〜の〜",
-      "meaning": "của (sở hữu)",
-      "explanation": "**の là trợ từ sở hữu, nối hai danh từ.**\n\nDanh từ đứng trước の bổ nghĩa cho danh từ đứng sau.",
-      "structure": "**[Danh từ 1] の [Danh từ 2]**",
+      "meaning": "của",
+      "explanation": "Nối 2 danh từ, chỉ sở hữu.",
+      "structure": "**[Danh từ1] の [Danh từ2]**",
       "examples": [
         {
           "japanese": "私の本です。",
-          "vietnamese": "Quyển sách của tôi."
+          "vietnamese": "Sách của tôi."
         },
         {
           "japanese": "これは私の本です。",
-          "vietnamese": "Đây là quyển sách của tôi."
+          "vietnamese": "Đây là sách của tôi."
         }
       ],
       "category": "possessive"

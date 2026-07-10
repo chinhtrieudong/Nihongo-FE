@@ -1,62 +1,62 @@
 {
   "lessonNumber": 20,
   "level": "N5",
-  "title": "Thể thường và trích dẫn",
-  "title_jp": "普通形と引用",
-  "description": "Thể thường (普通形) của động từ/tính từ/danh từ, 〜と思います, 〜と言います.",
+  "title": "Thể thường",
+  "title_jp": "普通形",
+  "description": "普通形, 〜と思う, 〜と言う",
   "grammars": [
     {
       "id": "m20_01",
-      "title": "Thể thường (普通形)",
+      "title": "Thể thường",
       "pattern": "普通形",
       "meaning": "thể thường (thân mật)",
-      "explanation": "**Thể thường dùng trong văn nói thân mật hoặc trước と.**\n\n**Động từ:**\n- Hiện tại: 食べる、行く\n- Phủ định: 食べない、行かない\n- Quá khứ: 食べた、行った\n\n**Tính từ い:**\n- Hiện tại: 高い、安い\n- Phủ định: 高くない\n- Quá khứ: 高かった\n\n**Tính từ な/Danh từ:**\n- Hiện tại: 静かだ、学生だ\n- Phủ định: 静かじゃない、学生じゃない\n- Quá khứ: 静かだった、学生だった",
-      "structure": "**[Thể thường của động từ/tính từ/danh từ]**",
+      "explanation": "ĐT: 食べる/食べない/食べた. いadj: 高い/高くない/高かった. なadj: 静かだ/じゃない/だった. N: 学生だ/じゃない/だった.",
+      "structure": "**[Thể thường của ĐT/TT/Danh từ]**",
       "examples": [
         {
           "japanese": "毎日学校へ行く。",
-          "vietnamese": "Mỗi ngày tôi đi học."
+          "vietnamese": "Mỗi ngày đi học."
         },
         {
           "japanese": "この本は面白い。",
-          "vietnamese": "Quyển sách này thú vị."
+          "vietnamese": "Sách này thú vị."
         }
       ],
       "category": "verb_forms"
     },
     {
       "id": "m20_02",
-      "title": "Tôi nghĩ - 〜と思います",
+      "title": "〜と思う",
       "pattern": "〜と思います",
-      "meaning": "tôi nghĩ rằng ~",
-      "explanation": "**Dùng để diễn tả suy nghĩ, ý kiến.**\n\nDùng thể thường trước と.",
-      "structure": "**[Câu thể thường] と思います**",
+      "meaning": "tôi nghĩ ~",
+      "explanation": "Dùng thể thường trước と.",
+      "structure": "**[Câu thể thường]と思います**",
       "examples": [
         {
           "japanese": "明日は晴れると思います。",
-          "vietnamese": "Tôi nghĩ ngày mai trời sẽ nắng."
+          "vietnamese": "Tôi nghĩ mai nắng."
         },
         {
           "japanese": "日本語は難しいと思います。",
-          "vietnamese": "Tôi nghĩ tiếng Nhật khó."
+          "vietnamese": "Tôi nghĩ Nhật khó."
         }
       ],
       "category": "expressions"
     },
     {
       "id": "m20_03",
-      "title": "Dẫn lời - 〜と言います",
+      "title": "〜と言う",
       "pattern": "〜と言います",
       "meaning": "nói rằng ~",
-      "explanation": "**Dùng để dẫn lại lời nói.**\n\nと là trợ từ trích dẫn.",
-      "structure": "**[Nội dung] と言います**",
+      "explanation": "Dẫn lời nói.",
+      "structure": "**[Nội dung]と言います**",
       "examples": [
         {
-          "japanese": "田中さんは明日来ると言いました。",
-          "vietnamese": "Anh Tanaka nói ngày mai sẽ đến."
+          "japanese": "明日来ると言いました。",
+          "vietnamese": "Anh ấy nói mai đến."
         },
         {
-          "japanese": "彼は行きたいと言っています。",
+          "japanese": "行きたいと言っています。",
           "vietnamese": "Anh ấy nói muốn đi."
         }
       ],

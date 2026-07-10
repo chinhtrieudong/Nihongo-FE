@@ -1,44 +1,44 @@
 {
   "lessonNumber": 14,
   "level": "N5",
-  "title": "Thể て - Cách chia",
-  "title_jp": "動詞のて形",
-  "description": "Cách chia động từ thể て và cấu trúc 〜てください.",
+  "title": "Thể て",
+  "title_jp": "て形",
+  "description": "Cách chia thể て, 〜てください",
   "grammars": [
     {
       "id": "m14_01",
-      "title": "Chia động từ thể て",
+      "title": "Chia thể て",
       "pattern": "〜て",
-      "meaning": "thể て của động từ",
-      "explanation": "**Cách chia thể て theo 3 nhóm:**\n\n**Nhóm 1 (Godan):**\n- う、つ、る → って (会う→会って)\n- む、ぶ、ぬ → んで (読む→読んで)\n- く → いて (書く→書いて)\n- ぐ → いで (泳ぐ→泳いで)\n- す → して (話す→話して)\n\n**Nhóm 2 (Ichidan):** bỏ る + て (食べる→食べて)\n\n**Nhóm 3:** する→して, 来る→来て (きて)",
+      "meaning": "thể て",
+      "explanation": "Nhóm1: う・つ・る→って, む・ぶ・ぬ→んで, く→いて, ぐ→いで, す→して. Nhóm2: bỏる+て. Nhóm3: する→して, 来る→来て.",
       "structure": "**[Động từ thể て]**",
       "examples": [
         {
-          "japanese": "毎日学校に行って、勉強します。",
-          "vietnamese": "Mỗi ngày đến trường rồi học."
+          "japanese": "朝起きて、歯を磨きます。",
+          "vietnamese": "Dậy, đánh răng."
         },
         {
-          "japanese": "朝起きて、歯を磨きます。",
-          "vietnamese": "Sáng dậy, tôi đánh răng."
+          "japanese": "学校に行って、勉強します。",
+          "vietnamese": "Đến trường, học."
         }
       ],
       "category": "verb_forms"
     },
     {
       "id": "m14_02",
-      "title": "Yêu cầu - 〜てください",
+      "title": "〜てください",
       "pattern": "〜てください",
-      "meaning": "hãy làm ~ / vui lòng làm ~",
-      "explanation": "**Dùng để yêu cầu ai đó làm gì một cách lịch sự.**\n\nĐộng từ thể て + ください.",
-      "structure": "**[Động từ thể て] ください**",
+      "meaning": "hãy/vui lòng ~",
+      "explanation": "Yêu cầu lịch sự.",
+      "structure": "**[ĐT thể て]ください**",
       "examples": [
         {
           "japanese": "名前を書いてください。",
-          "vietnamese": "Hãy viết tên vào."
+          "vietnamese": "Viết tên."
         },
         {
           "japanese": "ここで待ってください。",
-          "vietnamese": "Vui lòng đợi ở đây."
+          "vietnamese": "Đợi ở đây."
         }
       ],
       "category": "verb_forms"

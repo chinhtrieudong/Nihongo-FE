@@ -1,44 +1,44 @@
 {
   "lessonNumber": 15,
   "level": "N5",
-  "title": "Thể て - Xin phép và cấm chỉ",
+  "title": "Xin phép & cấm",
   "title_jp": "許可と禁止",
-  "description": "Xin phép (〜てもいいです) và cấm chỉ (〜てはいけません).",
+  "description": "〜てもいいです, 〜てはいけません",
   "grammars": [
     {
       "id": "m15_01",
-      "title": "Xin phép - 〜てもいいです",
+      "title": "〜てもいいです",
       "pattern": "〜てもいいですか",
-      "meaning": "có thể ~ được không?",
-      "explanation": "**Dùng để xin phép làm gì đó một cách lịch sự.**\n\nĐộng từ thể て + もいいですか.\nTrả lời: はい、いいですよ。/ いいえ、だめです。",
-      "structure": "**[Động từ thể て] もいいですか**",
+      "meaning": "có thể ~ không?",
+      "explanation": "Xin phép lịch sự. Trả lời: はい、いいですよ。",
+      "structure": "**[ĐT thể て]もいいですか**",
       "examples": [
         {
-          "japanese": "ここに座ってもいいですか。",
-          "vietnamese": "Tôi có thể ngồi ở đây không?"
+          "japanese": "座ってもいいですか。",
+          "vietnamese": "Ngồi được ko?"
         },
         {
           "japanese": "写真を撮ってもいいですか。",
-          "vietnamese": "Tôi có thể chụp ảnh không?"
+          "vietnamese": "Chụp ảnh được ko?"
         }
       ],
       "category": "verb_forms"
     },
     {
       "id": "m15_02",
-      "title": "Cấm chỉ - 〜てはいけません",
+      "title": "〜てはいけません",
       "pattern": "〜てはいけません",
-      "meaning": "không được làm ~",
-      "explanation": "**Dùng để diễn tả điều cấm, không được phép làm.**\n\nThường dùng trong nội quy, quy định.",
-      "structure": "**[Động từ thể て] はいけません**",
+      "meaning": "không được ~",
+      "explanation": "Diễn tả điều cấm.",
+      "structure": "**[ĐT thể て]はいけません**",
       "examples": [
         {
-          "japanese": "ここでタバコを吸ってはいけません。",
-          "vietnamese": "Không được hút thuốc ở đây."
+          "japanese": "タバコを吸ってはいけません。",
+          "vietnamese": "Ko được hút thuốc."
         },
         {
-          "japanese": "授業中にスマホを使ってはいけません。",
-          "vietnamese": "Không được dùng điện thoại trong giờ học."
+          "japanese": "スマホを使ってはいけません。",
+          "vietnamese": "Ko được dùng đt."
         }
       ],
       "category": "verb_forms"

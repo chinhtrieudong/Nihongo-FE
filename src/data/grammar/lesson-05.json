@@ -1,21 +1,21 @@
 {
   "lessonNumber": 5,
   "level": "N5",
-  "title": "Động từ di chuyển và trợ từ",
+  "title": "Di chuyển & trợ từ",
   "title_jp": "移動動詞と助詞",
-  "description": "Động từ di chuyển: 行きます・来ます・帰ります, trợ từ へ, で, を, なんで.",
+  "description": "行く・来る・帰る, へ, で, を, なんで",
   "grammars": [
     {
       "id": "m5_01",
-      "title": "Động từ di chuyển 行きます・来ます・帰ります",
-      "pattern": "行きます / 来ます / 帰ります",
-      "meaning": "đi / đến / về",
-      "explanation": "**Ba động từ di chuyển cơ bản:**\n- **行きます** (いきます): đi\n- **来ます** (きます): đến\n- **帰ります** (かえります): về\n\nDùng với trợ từ へ hoặc に để chỉ hướng.",
-      "structure": "**[Địa điểm] へ / に 行きます / 来ます / 帰ります**",
+      "title": "行きます・来ます・帰ります",
+      "pattern": "行きます/来ます/帰ります",
+      "meaning": "đi/đến/về",
+      "explanation": "Ba động từ di chuyển cơ bản.",
+      "structure": "**[Địa điểm]へ[Động từ]**",
       "examples": [
         {
           "japanese": "日本へ行きます。",
-          "vietnamese": "Tôi đi Nhật Bản."
+          "vietnamese": "Tôi đi Nhật."
         },
         {
           "japanese": "家へ帰ります。",
@@ -26,61 +26,57 @@
     },
     {
       "id": "m5_02",
-      "title": "Trợ từ へ - Hướng di chuyển",
+      "title": "へ (hướng)",
       "pattern": "〜へ行きます",
       "meaning": "đi về hướng ~",
-      "explanation": "**へ (đọc là \"e\") chỉ hướng di chuyển.**\n\nDùng với động từ di chuyển như 行きます, 来ます, 帰ります.",
-      "structure": "**[Địa điểm] へ [Động từ di chuyển]**",
+      "explanation": "へ(đọc là \"e\") chỉ hướng di chuyển.",
+      "structure": "**[Địa điểm]へ[Động từ di chuyển]**",
       "examples": [
         {
           "japanese": "学校へ行きます。",
-          "vietnamese": "Tôi đi đến trường."
+          "vietnamese": "Tôi đến trường."
         },
         {
-          "japanese": "駅へ向かいます。",
-          "vietnamese": "Tôi đi về phía ga."
+          "japanese": "駅へ行きます。",
+          "vietnamese": "Tôi ra ga."
         }
       ],
       "category": "direction_words"
     },
     {
       "id": "m5_03",
-      "title": "Trợ từ で - Phương tiện",
+      "title": "で (phương tiện)",
       "pattern": "〜で行きます",
       "meaning": "đi bằng ~",
-      "explanation": "**で có nghĩa là \"bằng\", chỉ phương tiện giao thông hoặc công cụ.**",
-      "structure": "**[Phương tiện] で [Động từ]**",
+      "explanation": "Chỉ phương tiện giao thông.",
+      "structure": "**[PT]で[Động từ]**",
       "examples": [
         {
           "japanese": "バスで学校へ行きます。",
-          "vietnamese": "Tôi đi học bằng xe buýt."
+          "vietnamese": "Đi học bằng bus."
         },
         {
-          "japanese": "電車で大阪へ行きます。",
-          "vietnamese": "Tôi đi Osaka bằng tàu điện."
+          "japanese": "電車で行きます。",
+          "vietnamese": "Đi bằng tàu điện."
         }
       ],
       "category": "basic_sentence_structure"
     },
     {
       "id": "m5_04",
-      "title": "Trợ từ を - Rời khỏi, Trợ từ なんで",
-      "pattern": "〜を出ます / なんで",
-      "meaning": "rời khỏi ~ / bằng gì",
-      "explanation": "**を còn có nghĩa là \"rời khỏi\" một địa điểm (đi ra từ).**\n**なんで** là \"bằng gì\" - dạng nghi vấn của で.",
-      "structure": "**[Địa điểm] を [Động từ]**\n**なんで [Động từ] か**",
+      "title": "を (rời khỏi) & なんで",
+      "pattern": "〜を出ます/なんで",
+      "meaning": "rời ~ / bằng gì",
+      "explanation": "を: rời khỏi nơi nào. なんで: phương tiện gì.",
+      "structure": "**[Địa điểm]を出ます** / **なんで〜か**",
       "examples": [
         {
           "japanese": "8時に家を出ます。",
-          "vietnamese": "Tôi rời nhà lúc 8 giờ."
+          "vietnamese": "8h rời nhà."
         },
         {
-          "japanese": "大学を卒業します。",
-          "vietnamese": "Tôi tốt nghiệp đại học."
-        },
-        {
-          "japanese": "なんで学校へ行きますか。",
-          "vietnamese": "Bạn đi học bằng gì?"
+          "japanese": "なんで行きますか。",
+          "vietnamese": "Đi bằng gì?"
         }
       ],
       "category": "basic_sentence_structure"

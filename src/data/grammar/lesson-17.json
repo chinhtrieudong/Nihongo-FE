@@ -1,63 +1,63 @@
 {
   "lessonNumber": 17,
   "level": "N5",
-  "title": "Thể ない - Phủ định",
-  "title_jp": "動詞の否定形",
-  "description": "Thể ない: 〜ないでください, 〜なければなりません, 〜なくてもいいです.",
+  "title": "Thể ない",
+  "title_jp": "否定形",
+  "description": "〜ないでください, 〜なければなりません, 〜なくてもいいです",
   "grammars": [
     {
       "id": "m17_01",
-      "title": "Yêu cầu phủ định - 〜ないでください",
+      "title": "〜ないでください",
       "pattern": "〜ないでください",
-      "meaning": "xin đừng làm ~",
-      "explanation": "**Dùng để yêu cầu ai đó đừng làm gì.**\n\nĐộng từ thể ない + でください.",
-      "structure": "**[Động từ thể ない] でください**",
+      "meaning": "xin đừng ~",
+      "explanation": "Yêu cầu phủ định lịch sự.",
+      "structure": "**[ĐT thể ない]でください**",
       "examples": [
         {
           "japanese": "タバコを吸わないでください。",
-          "vietnamese": "Xin đừng hút thuốc."
+          "vietnamese": "Đừng hút thuốc."
         },
         {
-          "japanese": "ここで写真を撮らないでください。",
-          "vietnamese": "Xin đừng chụp ảnh ở đây."
+          "japanese": "写真を撮らないでください。",
+          "vietnamese": "Đừng chụp ảnh."
         }
       ],
       "category": "verb_forms"
     },
     {
       "id": "m17_02",
-      "title": "Nghĩa vụ - 〜なければなりません",
+      "title": "〜なければなりません",
       "pattern": "〜なければなりません",
-      "meaning": "phải làm ~",
-      "explanation": "**Diễn tả nghĩa vụ hoặc điều bắt buộc phải làm.**\n\nDùng thể ない bỏ ない thêm ければなりません.\nTrong văn nói: なきゃいけない.",
-      "structure": "**[Động từ thể ない (bỏ ない)] + ければなりません**",
+      "meaning": "phải ~",
+      "explanation": "Diễn tả nghĩa vụ. Văn nói: なきゃ。",
+      "structure": "**[ないthân]+ければなりません**",
       "examples": [
         {
           "japanese": "宿題をしなければなりません。",
-          "vietnamese": "Tôi phải làm bài tập."
+          "vietnamese": "Phải làm bài tập."
         },
         {
           "japanese": "薬を飲まなければなりません。",
-          "vietnamese": "Tôi phải uống thuốc."
+          "vietnamese": "Phải uống thuốc."
         }
       ],
       "category": "expressions"
     },
     {
       "id": "m17_03",
-      "title": "Không cần - 〜なくてもいいです",
+      "title": "〜なくてもいいです",
       "pattern": "〜なくてもいいです",
-      "meaning": "không cần phải làm ~",
-      "explanation": "**Diễn tả điều không cần thiết phải làm.**\n\nDạng phủ định của 〜てもいいです.",
-      "structure": "**[Động từ thể ない (bỏ ない)] + くてもいいです**",
+      "meaning": "ko cần ~",
+      "explanation": "Không cần phải làm.",
+      "structure": "**[ないthân]+くてもいいです**",
       "examples": [
         {
           "japanese": "明日来なくてもいいです。",
-          "vietnamese": "Ngày mai không cần đến cũng được."
+          "vietnamese": "Mai ko cần đến."
         },
         {
           "japanese": "全部食べなくてもいいです。",
-          "vietnamese": "Không cần ăn hết cũng được."
+          "vietnamese": "Ko cần ăn hết."
         }
       ],
       "category": "expressions"

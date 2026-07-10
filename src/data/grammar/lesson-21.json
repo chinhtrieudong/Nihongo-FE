@@ -1,44 +1,40 @@
 {
   "lessonNumber": 21,
   "level": "N5",
-  "title": "Suy nghĩ và phỏng đoán",
+  "title": "Suy nghĩ & đoán",
   "title_jp": "意志と推量",
-  "description": "〜と思っています, 〜でしょう (phỏng đoán).",
+  "description": "〜と思っている, 〜でしょう",
   "grammars": [
     {
       "id": "m21_01",
-      "title": "Nghĩ rằng (liên tục) - 〜と思っています",
+      "title": "〜と思っている",
       "pattern": "〜と思っています",
-      "meaning": "tôi nghĩ rằng ~ (đang nghĩ)",
-      "explanation": "**Dùng khi suy nghĩ đó đang tiếp diễn hoặc là ý kiến đã có từ lâu.**\n\nKhác với と思います (nghĩ nhất thời).",
-      "structure": "**[Câu thể thường] と思っています**",
+      "meaning": "nghĩ rằng (đang nghĩ)",
+      "explanation": "Suy nghĩ tiếp diễn hoặc ý kiến lâu dài.",
+      "structure": "**[Thể thường]と思っています**",
       "examples": [
         {
           "japanese": "日本はいい国だと思っています。",
-          "vietnamese": "Tôi nghĩ Nhật Bản là đất nước tốt."
-        },
-        {
-          "japanese": "彼は正しいと思っています。",
-          "vietnamese": "Tôi nghĩ anh ấy đúng."
+          "vietnamese": "Tôi nghĩ NB là nước tốt."
         }
       ],
       "category": "expressions"
     },
     {
       "id": "m21_02",
-      "title": "Phỏng đoán - 〜でしょう",
+      "title": "〜でしょう",
       "pattern": "〜でしょう",
-      "meaning": "chắc là ~ / có lẽ ~",
-      "explanation": "**Dùng để phỏng đoán, suy đoán (mức độ chắc chắn cao).**\n\nDùng thể thường trước でしょう.\nTrong văn nói thân mật: 〜だろう.",
-      "structure": "**[Câu thể thường] でしょう**",
+      "meaning": "chắc là ~",
+      "explanation": "Phỏng đoán (mức độ chắc chắn cao).",
+      "structure": "**[Thể thường]でしょう**",
       "examples": [
         {
-          "japanese": "明日は雨が降るでしょう。",
-          "vietnamese": "Chắc ngày mai trời sẽ mưa."
+          "japanese": "明日は雨でしょう。",
+          "vietnamese": "Chắc mai mưa."
         },
         {
           "japanese": "彼は来ないでしょう。",
-          "vietnamese": "Chắc anh ấy sẽ không đến."
+          "vietnamese": "Chắc anh ấy ko đến."
         }
       ],
       "category": "expressions"

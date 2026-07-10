@@ -1,82 +1,82 @@
 {
   "lessonNumber": 10,
   "level": "N5",
-  "title": "Vị trí đồ vật - あります・います",
-  "title_jp": "物の位置 - あります・います",
-  "description": "Diễn tả vị trí của đồ vật và người với あります・います, の上・下・中, や.",
+  "title": "Vị trí",
+  "title_jp": "位置",
+  "description": "ある・いる(vị trí), 上・下・中, や",
   "grammars": [
     {
       "id": "m10_01",
-      "title": "あります - Tồn tại đồ vật",
+      "title": "あります(vị trí)",
       "pattern": "〜に〜があります",
       "meaning": "ở ~ có ~",
-      "explanation": "**あります dùng cho đồ vật, cây cối.**\n\nĐịa điểm (に) + Đồ vật (が) + あります.",
-      "structure": "**[Địa điểm] に [Đồ vật] があります**",
+      "explanation": "Đồ vật tồn tại ở đâu.",
+      "structure": "**[Địa điểm]に[Đồ vật]があります**",
       "examples": [
         {
           "japanese": "机の上に本があります。",
-          "vietnamese": "Trên bàn có quyển sách."
+          "vietnamese": "Trên bàn có sách."
         },
         {
           "japanese": "部屋にテレビがあります。",
-          "vietnamese": "Trong phòng có ti vi."
+          "vietnamese": "Phòng có TV."
         }
       ],
       "category": "existence_verbs"
     },
     {
       "id": "m10_02",
-      "title": "います - Tồn tại người/vật sống",
+      "title": "います(vị trí)",
       "pattern": "〜に〜がいます",
-      "meaning": "ở ~ có ~",
-      "explanation": "**います dùng cho người, động vật.**",
-      "structure": "**[Địa điểm] に [Người/Động vật] がいます**",
+      "meaning": "ở ~ có ~ (người/vật)",
+      "explanation": "Người, động vật tồn tại ở đâu.",
+      "structure": "**[Địa điểm]に[Người/ĐV]がいます**",
       "examples": [
         {
           "japanese": "庭に猫がいます。",
-          "vietnamese": "Trong vườn có con mèo."
+          "vietnamese": "Trong vườn có mèo."
         },
         {
           "japanese": "学校に先生がいます。",
-          "vietnamese": "Ở trường có giáo viên."
+          "vietnamese": "Trường có giáo viên."
         }
       ],
       "category": "existence_verbs"
     },
     {
       "id": "m10_03",
-      "title": "Vị trí: 上・下・中・前・後ろ・隣",
-      "pattern": "〜の [Vị trí] に",
-      "meaning": "ở trên/dưới/trong/trước/sau/bên cạnh ~",
-      "explanation": "**Các danh từ chỉ vị trí kết hợp với の:**\n- 上 (うえ): trên\n- 下 (した): dưới\n- 中 (なか): trong\n- 前 (まえ): trước\n- 後ろ (うしろ): sau\n- 隣 (となり): bên cạnh",
-      "structure": "**[Danh từ] の [Vị trí] に [Đồ vật] があります/います**",
+      "title": "上・下・中・前・後ろ・隣",
+      "pattern": "〜の[Vị trí]に",
+      "meaning": "trên/dưới/trong/trước/sau/cạnh",
+      "explanation": "Kết hợp の + vị trí + に.",
+      "structure": "**[Nơi]の[Vị trí]に[Đồ]があります**",
       "examples": [
         {
           "japanese": "机の上に本があります。",
-          "vietnamese": "Trên bàn có quyển sách."
+          "vietnamese": "Trên bàn có sách."
         },
         {
           "japanese": "猫は椅子の下にいます。",
-          "vietnamese": "Con mèo ở dưới ghế."
+          "vietnamese": "Mèo ở dưới ghế."
         }
       ],
       "category": "location_words"
     },
     {
       "id": "m10_04",
-      "title": "Trợ từ や - Liệt kê một phần",
+      "title": "や (liệt kê)",
       "pattern": "〜や〜など",
       "meaning": "~, ~ v.v.",
-      "explanation": "**や dùng để liệt kê một vài đối tượng tiêu biểu (không đầy đủ).**\n\nCó thể thêm など ở cuối.",
-      "structure": "**[Danh từ 1] や [Danh từ 2] (など)**",
+      "explanation": "Liệt kê một phần, không đầy đủ.",
+      "structure": "**[Danh từ1]や[Danh từ2](など)**",
       "examples": [
         {
-          "japanese": "机の上に本や鉛筆があります。",
-          "vietnamese": "Trên bàn có sách, bút chì v.v."
+          "japanese": "本や鉛筆があります。",
+          "vietnamese": "Có sách, bút v.v."
         },
         {
-          "japanese": "日本へ箱根や京都へ行きました。",
-          "vietnamese": "Tôi đã đi Nhật đến Hakone và Kyoto v.v."
+          "japanese": "京都や大阪へ行きました。",
+          "vietnamese": "Đã đi Kyoto, Osaka v.v."
         }
       ],
       "category": "conjunctions"

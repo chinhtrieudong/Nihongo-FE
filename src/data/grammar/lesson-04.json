@@ -1,83 +1,78 @@
 {
   "lessonNumber": 4,
   "level": "N5",
-  "title": "Thời gian và động từ ます形",
-  "title_jp": "時間と動詞のます形",
-  "description": "Cách nói giờ, thời gian và động từ thể ます (khẳng định, phủ định, quá khứ).",
+  "title": "Thời gian & động từ",
+  "title_jp": "時間と動詞",
+  "description": "〜時〜分, 今・今日・明日, 〜から〜まで, ます・ません・ました・ませんでした",
   "grammars": [
     {
       "id": "m4_01",
-      "title": "Cách nói giờ - 〜時〜分",
+      "title": "Cách nói giờ",
       "pattern": "〜時〜分です",
-      "meaning": "bây giờ là ~ giờ ~ phút",
-      "explanation": "**Số đếm + 時 (giờ) + 分 (phút).**\n\nChú ý cách đọc đặc biệt: 4時 (よじ), 7時 (しちじ), 9時 (くじ).",
-      "structure": "**[Số] 時 [Số] 分です**",
+      "meaning": "~ giờ ~ phút",
+      "explanation": "Số+時(じ)+分(ふん). Chú ý: 4時(よじ),7時(しちじ),9時(くじ).",
+      "structure": "**[Số]時[Số]分です**",
       "examples": [
         {
-          "japanese": "今は3時です。",
-          "vietnamese": "Bây giờ là 3 giờ."
+          "japanese": "今3時です。",
+          "vietnamese": "Bây giờ 3 giờ."
         },
         {
-          "japanese": "7時30分に起きます。",
-          "vietnamese": "Tôi thức dậy lúc 7 giờ 30."
+          "japanese": "7時に起きます。",
+          "vietnamese": "Dậy lúc 7 giờ."
         }
       ],
-      "notes": "Cách đọc đặc biệt: 4時 (よじ), 7時 (しちじ), 9時 (くじ). 1分 (いっぷん), 3分 (さんぷん), 4分 (よんぷん), 6分 (ろっぷん).",
       "category": "time_telling"
     },
     {
       "id": "m4_02",
-      "title": "Từ chỉ thời gian: 今・今日・明日…",
-      "pattern": "今 / 今日 / 明日 / 昨日 / 毎日",
-      "meaning": "bây giờ / hôm nay / ngày mai / hôm qua / mỗi ngày",
-      "explanation": "**Các từ chỉ thời gian tương đối không dùng に.**\n- 今 (いま): bây giờ\n- 今日 (きょう): hôm nay\n- 明日 (あした): ngày mai\n- 昨日 (きのう): hôm qua\n- 毎日 (まいにち): mỗi ngày",
-      "structure": "**[Từ chỉ thời gian] [Động từ]** (không dùng に)",
+      "title": "Từ chỉ thời gian",
+      "pattern": "今/今日/明日/昨日/毎日",
+      "meaning": "bây giờ/hôm nay/ngày mai/hôm qua/mỗi ngày",
+      "explanation": "Không dùng に với các từ này.",
+      "structure": "**[Từ TG] [Động từ]**",
       "examples": [
         {
-          "japanese": "今7時です。",
-          "vietnamese": "Bây giờ là 7 giờ."
+          "japanese": "明日学校へ行きます。",
+          "vietnamese": "Mai tôi đi học."
         },
         {
-          "japanese": "明日学校へ行きます。",
-          "vietnamese": "Ngày mai tôi đi học."
+          "japanese": "毎日勉強します。",
+          "vietnamese": "Mỗi ngày tôi học."
         }
       ],
       "category": "time"
     },
     {
       "id": "m4_03",
-      "title": "Trợ từ 〜から〜まで",
+      "title": "〜から〜まで",
       "pattern": "〜から〜まで",
       "meaning": "từ ~ đến ~",
-      "explanation": "**から chỉ điểm bắt đầu, まで chỉ điểm kết thúc.**\n\nDùng cho cả thời gian và không gian.",
-      "structure": "**[Điểm bắt đầu] から [Điểm kết thúc] まで**",
+      "explanation": "から: điểm bắt đầu, まで: điểm kết thúc.",
+      "structure": "**[Bắt đầu]から[Kết thúc]まで**",
       "examples": [
         {
           "japanese": "9時から5時まで働きます。",
-          "vietnamese": "Tôi làm việc từ 9 giờ đến 5 giờ."
-        },
-        {
-          "japanese": "大阪から東京まで新幹線で行きます。",
-          "vietnamese": "Tôi đi từ Osaka đến Tokyo bằng tàu Shinkansen."
+          "vietnamese": "Làm từ 9h đến 5h."
         }
       ],
       "category": "time"
     },
     {
       "id": "m4_04",
-      "title": "Động từ thể ます・ません・ました・ませんでした",
-      "pattern": "〜ます / 〜ません / 〜ました / 〜ませんでした",
-      "meaning": "làm / không làm / đã làm / đã không làm",
-      "explanation": "**Các dạng của động từ thể lịch sự:**\n- **ます**: hiện tại/tương lai khẳng định\n- **ません**: hiện tại/tương lai phủ định\n- **ました**: quá khứ khẳng định\n- **ませんでした**: quá khứ phủ định",
-      "structure": "**[Thân động từ] + ます / ません / ました / ませんでした**",
+      "title": "Thể ます",
+      "pattern": "ます/ません/ました/ませんでした",
+      "meaning": "làm/ko làm/đã làm/đã ko làm",
+      "explanation": "Các dạng lịch sự của động từ.",
+      "structure": "**[Thân động từ]+ます/ません/ました/ませんでした**",
       "examples": [
         {
           "japanese": "毎日勉強します。",
-          "vietnamese": "Mỗi ngày tôi đều học."
+          "vietnamese": "Mỗi ngày tôi học."
         },
         {
           "japanese": "昨日勉強しませんでした。",
-          "vietnamese": "Hôm qua tôi đã không học."
+          "vietnamese": "Hôm qua tôi ko học."
         }
       ],
       "category": "verb_forms"

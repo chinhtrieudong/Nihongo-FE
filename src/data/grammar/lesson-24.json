@@ -1,63 +1,63 @@
 {
   "lessonNumber": 24,
   "level": "N5",
-  "title": "Đưa và nhận bằng thể て",
+  "title": "Đưa nhận thể て",
   "title_jp": "授受のて形",
-  "description": "〜くれます, 〜てくれます, 〜てもらいます.",
+  "description": "〜くれる, 〜てくれる, 〜てもらう",
   "grammars": [
     {
       "id": "m24_01",
-      "title": "くれる - Cho tôi",
+      "title": "くれる",
       "pattern": "〜が〜をくれます",
-      "meaning": "ai đó cho tôi cái gì",
-      "explanation": "**くれる dùng khi người khác cho người nói vật gì.**\n\nHành động từ ngoài vào trong.",
-      "structure": "**[Người cho] は [Người nhận (tôi)] に [Vật] をくれます**",
+      "meaning": "ai đó cho tôi",
+      "explanation": "Người khác cho tôi (từ ngoài vào trong).",
+      "structure": "**[Người]は[Người(tôi)]に[Vật]をくれます**",
       "examples": [
         {
           "japanese": "母は本をくれました。",
-          "vietnamese": "Mẹ đã cho tôi quyển sách."
+          "vietnamese": "Mẹ cho tôi sách."
         },
         {
-          "japanese": "友達がチョコレートをくれました。",
-          "vietnamese": "Bạn đã cho tôi sô-cô-la."
+          "japanese": "友達がチョコをくれました。",
+          "vietnamese": "Bạn cho tôi socola."
         }
       ],
       "category": "expressions"
     },
     {
       "id": "m24_02",
-      "title": "Làm cho tôi - 〜てくれます",
+      "title": "〜てくれる",
       "pattern": "〜てくれます",
       "meaning": "làm ~ cho tôi",
-      "explanation": "**Dùng khi ai đó làm hành động gì đó cho người nói (mang ơn).**\n\nĐộng từ thể て + くれます.",
-      "structure": "**[Người] は [Người nói] に [Động từ thể て] くれます**",
+      "explanation": "Ai đó làm gì cho tôi.",
+      "structure": "**[Người]は[ĐT thể て]くれます**",
       "examples": [
         {
           "japanese": "友達が日本語を教えてくれます。",
-          "vietnamese": "Bạn dạy tiếng Nhật cho tôi."
+          "vietnamese": "Bạn dạy Nhật cho tôi."
         },
         {
           "japanese": "先生が本を貸してくれました。",
-          "vietnamese": "Thầy giáo đã cho tôi mượn sách."
+          "vietnamese": "Thầy cho mượn sách."
         }
       ],
       "category": "expressions"
     },
     {
       "id": "m24_03",
-      "title": "Nhờ vả - 〜てもらいます",
+      "title": "〜てもらう",
       "pattern": "〜てもらいます",
-      "meaning": "nhờ ai đó làm ~ cho",
-      "explanation": "**Dùng khi nhờ ai đó làm gì cho mình.**\n\nĐộng từ thể て + もらいます.",
-      "structure": "**[Người yêu cầu] は [Người thực hiện] に [Động từ thể て] もらいます**",
+      "meaning": "nhờ ai ~",
+      "explanation": "Nhờ ai làm gì cho mình.",
+      "structure": "**[Người]に[ĐT thể て]もらいます**",
       "examples": [
         {
           "japanese": "医者に診てもらいます。",
-          "vietnamese": "Tôi nhờ bác sĩ khám."
+          "vietnamese": "Nhờ bác sĩ khám."
         },
         {
           "japanese": "友達に翻訳してもらいました。",
-          "vietnamese": "Tôi đã nhờ bạn dịch giúp."
+          "vietnamese": "Nhờ bạn dịch."
         }
       ],
       "category": "expressions"
