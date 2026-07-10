@@ -43,8 +43,9 @@ export const useQuizManager = (vocabularyItems: VocabularyItem[], onAnswer?: (wo
       setQuizScore(prev => prev + 1);
     }
     
-    // Trigger external callback (e.g. for SRS)
-    if (onAnswer && currentQuizQuestion) {
+    // Only add wrong answers to SRS for review
+    // Correct answers don't need review
+    if (onAnswer && currentQuizQuestion && !isCorrect) {
       onAnswer(currentQuizQuestion.id, isCorrect);
     }
   }, [currentQuizQuestion, onAnswer]);
