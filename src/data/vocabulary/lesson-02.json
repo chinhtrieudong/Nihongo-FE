@@ -1,0 +1,217 @@
+{
+  "lessonNumber": 2,
+  "level": "N5",
+  "title": "Bài 2",
+  "vocabularies": [
+    {
+      "kanji": "これ",
+      "hiragana": "これ",
+      "romaji": "kore",
+      "meaning": "Cái này",
+      "partOfSpeech": "pronoun"
+    },
+    {
+      "kanji": "それ",
+      "hiragana": "それ",
+      "romaji": "sore",
+      "meaning": "Cái đó",
+      "partOfSpeech": "pronoun"
+    },
+    {
+      "kanji": "あれ",
+      "hiragana": "あれ",
+      "romaji": "are",
+      "meaning": "Cái kia",
+      "partOfSpeech": "pronoun"
+    },
+    {
+      "kanji": "この～",
+      "hiragana": "この～",
+      "romaji": "kono~",
+      "meaning": "... này",
+      "partOfSpeech": "prefix"
+    },
+    {
+      "kanji": "その～",
+      "hiragana": "その～",
+      "romaji": "sono~",
+      "meaning": "... đó",
+      "partOfSpeech": "prefix"
+    },
+    {
+      "kanji": "あの～",
+      "hiragana": "あの～",
+      "romaji": "ano~",
+      "meaning": "... kia",
+      "partOfSpeech": "prefix"
+    },
+    {
+      "kanji": "ほん",
+      "hiragana": "ほん",
+      "romaji": "hon",
+      "meaning": "Sách",
+      "partOfSpeech": "noun"
+    },
+    {
+      "kanji": "じしょ",
+      "hiragana": "じしょ",
+      "romaji": "jisho",
+      "meaning": "Từ điển",
+      "partOfSpeech": "noun"
+    },
+    {
+      "kanji": "ざっし",
+      "hiragana": "ざっし",
+      "romaji": "zasshi",
+      "meaning": "Tạp chí",
+      "partOfSpeech": "noun"
+    },
+    {
+      "kanji": "しんぶん",
+      "hiragana": "しんぶん",
+      "romaji": "shinbun",
+      "meaning": "Báo",
+      "partOfSpeech": "noun"
+    },
+    {
+      "kanji": "ノート",
+      "hiragana": "",
+      "romaji": "note",
+      "meaning": "Vở",
+      "partOfSpeech": "noun"
+    },
+    {
+      "kanji": "てちょう",
+      "hiragana": "てちょう",
+      "romaji": "techo",
+      "meaning": "Sổ tay",
+      "partOfSpeech": "noun"
+    },
+    {
+      "kanji": "めいし",
+      "hiragana": "めいし",
+      "romaji": "meishi",
+      "meaning": "Danh thiếp",
+      "partOfSpeech": "noun"
+    },
+    {
+      "kanji": "カード",
+      "hiragana": "",
+      "romaji": "cardo",
+      "meaning": "Thẻ",
+      "partOfSpeech": "noun"
+    },
+    {
+      "kanji": "テレホンカード",
+      "hiragana": "てれほんかーど",
+      "romaji": "telehon kado",
+      "meaning": "Thẻ điện thoại",
+      "partOfSpeech": "noun"
+    },
+    {
+      "kanji": "えんぴつ",
+      "hiragana": "えんぴつ",
+      "romaji": "enpitsu",
+      "meaning": "Bút chì",
+      "partOfSpeech": "noun"
+    },
+    {
+      "kanji": "ボールペン",
+      "hiragana": "",
+      "romaji": "bo-rupen",
+      "meaning": "Bút bi",
+      "partOfSpeech": "noun"
+    },
+    {
+      "kanji": "シャープペンシル",
+      "hiragana": "",
+      "romaji": "sha-pu pen shiru",
+      "meaning": "Bút chì kim",
+      "partOfSpeech": "noun"
+    },
+    {
+      "kanji": "かぎ",
+      "hiragana": "かぎ",
+      "romaji": "kagi",
+      "meaning": "Chìa khóa",
+      "partOfSpeech": "noun"
+    },
+    {
+      "kanji": "とけい",
+      "hiragana": "とけい",
+      "romaji": "tokei",
+      "meaning": "Đồng hồ",
+      "partOfSpeech": "noun"
+    },
+    {
+      "kanji": "かさ",
+      "hiragana": "かさ",
+      "romaji": "kasa",
+      "meaning": "Ô",
+      "partOfSpeech": "noun"
+    },
+    {
+      "kanji": "かばん",
+      "hiragana": "かばん",
+      "romaji": "kaban",
+      "meaning": "Cặp, túi",
+      "partOfSpeech": "noun"
+    },
+    {
+      "kanji": "CD",
+      "hiragana": "",
+      "romaji": "CD",
+      "meaning": "Đĩa CD",
+      "partOfSpeech": "noun"
+    },
+    {
+      "kanji": "テレビ",
+      "hiragana": "",
+      "romaji": "terebi",
+      "meaning": "Tivi",
+      "partOfSpeech": "noun"
+    },
+    {
+      "kanji": "ラジオ",
+      "hiragana": "",
+      "romaji": "rajio",
+      "meaning": "Radio",
+      "partOfSpeech": "noun"
+    },
+    {
+      "kanji": "カメラ",
+      "hiragana": "",
+      "romaji": "kamera",
+      "meaning": "Máy ảnh",
+      "partOfSpeech": "noun"
+    },
+    {
+      "kanji": "コンピューター",
+      "hiragana": "",
+      "romaji": "konpyu-ta-",
+      "meaning": "Máy tính",
+      "partOfSpeech": "noun"
+    },
+    {
+      "kanji": "くるま",
+      "hiragana": "くるま",
+      "romaji": "kuruma",
+      "meaning": "Ô tô",
+      "partOfSpeech": "noun"
+    },
+    {
+      "kanji": "つくえ",
+      "hiragana": "つくえ",
+      "romaji": "tsukue",
+      "meaning": "Bàn",
+      "partOfSpeech": "noun"
+    },
+    {
+      "kanji": "いす",
+      "hiragana": "いす",
+      "romaji": "isu",
+      "meaning": "Ghế",
+      "partOfSpeech": "noun"
+    }
+  ]
+}

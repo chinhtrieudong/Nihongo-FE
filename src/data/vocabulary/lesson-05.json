@@ -1,0 +1,182 @@
+{
+  "lessonNumber": 5,
+  "level": "N5",
+  "title": "Bài 5",
+  "vocabularies": [
+    {
+      "kanji": "いきます",
+      "hiragana": "いきます",
+      "romaji": "ikimasu",
+      "meaning": "Đi",
+      "partOfSpeech": "verb"
+    },
+    {
+      "kanji": "きます",
+      "hiragana": "きます",
+      "romaji": "kimasu",
+      "meaning": "Đến",
+      "partOfSpeech": "verb"
+    },
+    {
+      "kanji": "かえります",
+      "hiragana": "かえります",
+      "romaji": "kaerimasu",
+      "meaning": "Về",
+      "partOfSpeech": "verb"
+    },
+    {
+      "kanji": "がっこう",
+      "hiragana": "がっこう",
+      "romaji": "gakkou",
+      "meaning": "Trường học",
+      "partOfSpeech": "noun"
+    },
+    {
+      "kanji": "スーパー",
+      "hiragana": "",
+      "romaji": "su-pa-",
+      "meaning": "Siêu thị",
+      "partOfSpeech": "noun"
+    },
+    {
+      "kanji": "えき",
+      "hiragana": "えき",
+      "romaji": "eki",
+      "meaning": "Nhà ga",
+      "partOfSpeech": "noun"
+    },
+    {
+      "kanji": "ひこうき",
+      "hiragana": "ひこうき",
+      "romaji": "hikouki",
+      "meaning": "Máy bay",
+      "partOfSpeech": "noun"
+    },
+    {
+      "kanji": "ふね",
+      "hiragana": "ふね",
+      "romaji": "fune",
+      "meaning": "Tàu thuy",
+      "partOfSpeech": "noun"
+    },
+    {
+      "kanji": "でんしゃ",
+      "hiragana": "でんしゃ",
+      "romaji": "densha",
+      "meaning": "Tàu điện",
+      "partOfSpeech": "noun"
+    },
+    {
+      "kanji": "ちかてつ",
+      "hiragana": "ちかてつ",
+      "romaji": "chikatetsu",
+      "meaning": "Tàu điện ngầm",
+      "partOfSpeech": "noun"
+    },
+    {
+      "kanji": "しんかんせん",
+      "hiragana": "しんかんせん",
+      "romaji": "shinkansen",
+      "meaning": "Tàu Shinkansen",
+      "partOfSpeech": "noun"
+    },
+    {
+      "kanji": "バス",
+      "hiragana": "",
+      "romaji": "basu",
+      "meaning": "Xe buýt",
+      "partOfSpeech": "noun"
+    },
+    {
+      "kanji": "タクシー",
+      "hiragana": "",
+      "romaji": "takushii",
+      "meaning": "Taxi",
+      "partOfSpeech": "noun"
+    },
+    {
+      "kanji": "じてんしゃ",
+      "hiragana": "じてんしゃ",
+      "romaji": "jitensya",
+      "meaning": "Xe đạp",
+      "partOfSpeech": "noun"
+    },
+    {
+      "kanji": "あるいて",
+      "hiragana": "あるいて",
+      "romaji": "aruite",
+      "meaning": "Đi bộ",
+      "partOfSpeech": "verb"
+    },
+    {
+      "kanji": "ひと",
+      "hiragana": "ひと",
+      "romaji": "hito",
+      "meaning": "Người",
+      "partOfSpeech": "noun"
+    },
+    {
+      "kanji": "ともだち",
+      "hiragana": "ともだち",
+      "romaji": "tomodachi",
+      "meaning": "Bạn",
+      "partOfSpeech": "noun"
+    },
+    {
+      "kanji": "かれ",
+      "hiragana": "かれ",
+      "romaji": "kare",
+      "meaning": "Anh ấy",
+      "partOfSpeech": "pronoun"
+    },
+    {
+      "kanji": "かのじょ",
+      "hiragana": "かのじょ",
+      "romaji": "kanojo",
+      "meaning": "Cô ấy",
+      "partOfSpeech": "pronoun"
+    },
+    {
+      "kanji": "かぞく",
+      "hiragana": "かぞく",
+      "romaji": "kazoku",
+      "meaning": "Gia đình",
+      "partOfSpeech": "noun"
+    },
+    {
+      "kanji": "ひとりで",
+      "hiragana": "ひとりで",
+      "romaji": "hitoride",
+      "meaning": "Một mình",
+      "partOfSpeech": "adverb"
+    },
+    {
+      "kanji": "せんしゅう",
+      "hiragana": "せんしゅう",
+      "romaji": "senshuu",
+      "meaning": "Tuần trước",
+      "partOfSpeech": "noun"
+    },
+    {
+      "kanji": "こんしゅう",
+      "hiragana": "こんしゅう",
+      "romaji": "konshuu",
+      "meaning": "Tuần này",
+      "partOfSpeech": "noun"
+    },
+    {
+      "kanji": "らいしゅう",
+      "hiragana": "らいしゅう",
+      "romaji": "raishuu",
+      "meaning": "Tuần sau",
+      "partOfSpeech": "noun"
+    },
+    {
+      "kanji": "なんじょうび",
+      "hiragana": "なんじょうび",
+      "romaji": "nanjyoubi",
+      "meaning": "Thứ mấy",
+      "partOfSpeech": "noun"
+    }
+  ]
+}

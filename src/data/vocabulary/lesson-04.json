@@ -1,0 +1,168 @@
+{
+  "lessonNumber": 4,
+  "level": "N5",
+  "title": "Bài 4",
+  "vocabularies": [
+    {
+      "kanji": "おきます",
+      "hiragana": "おきます",
+      "romaji": "okimasu",
+      "meaning": "Thức dậy",
+      "partOfSpeech": "verb"
+    },
+    {
+      "kanji": "ねます",
+      "hiragana": "ねます",
+      "romaji": "nemasu",
+      "meaning": "Ngủ",
+      "partOfSpeech": "verb"
+    },
+    {
+      "kanji": "はたらきます",
+      "hiragana": "はたらきます",
+      "romaji": "hatarakimasu",
+      "meaning": "Làm việc",
+      "partOfSpeech": "verb"
+    },
+    {
+      "kanji": "やすみます",
+      "hiragana": "やすみます",
+      "romaji": "yasumimasu",
+      "meaning": "Nghỉ",
+      "partOfSpeech": "verb"
+    },
+    {
+      "kanji": "べんきょうします",
+      "hiragana": "べんきょうします",
+      "romaji": "benkyou shimasu",
+      "meaning": "Học",
+      "partOfSpeech": "verb"
+    },
+    {
+      "kanji": "おわります",
+      "hiragana": "おわります",
+      "romaji": "owarimasu",
+      "meaning": "Kết thúc",
+      "partOfSpeech": "verb"
+    },
+    {
+      "kanji": "いま",
+      "hiragana": "いま",
+      "romaji": "ima",
+      "meaning": "Bây giờ",
+      "partOfSpeech": "noun"
+    },
+    {
+      "kanji": "～じ",
+      "hiragana": "～じ",
+      "romaji": "~ji",
+      "meaning": "... giờ",
+      "partOfSpeech": "suffix"
+    },
+    {
+      "kanji": "～ふん・ぷん",
+      "hiragana": "～ふん・ぷん",
+      "romaji": "~fun/pun",
+      "meaning": "... phút",
+      "partOfSpeech": "suffix"
+    },
+    {
+      "kanji": "はん",
+      "hiragana": "はん",
+      "romaji": "han",
+      "meaning": "Rưỡi",
+      "partOfSpeech": "noun"
+    },
+    {
+      "kanji": "なんじ",
+      "hiragana": "なんじ",
+      "romaji": "nanji",
+      "meaning": "Mấy giờ",
+      "partOfSpeech": "noun"
+    },
+    {
+      "kanji": "なんぷん",
+      "hiragana": "なんぷん",
+      "romaji": "nanpun",
+      "meaning": "Mấy phút",
+      "partOfSpeech": "noun"
+    },
+    {
+      "kanji": "あさ",
+      "hiragana": "あさ",
+      "romaji": "asa",
+      "meaning": "Buổi sáng",
+      "partOfSpeech": "noun"
+    },
+    {
+      "kanji": "ひる",
+      "hiragana": "ひる",
+      "romaji": "hiru",
+      "meaning": "Buổi trưa",
+      "partOfSpeech": "noun"
+    },
+    {
+      "kanji": "よる",
+      "hiragana": "よる",
+      "romaji": "yoru",
+      "meaning": "Buổi tối",
+      "partOfSpeech": "noun"
+    },
+    {
+      "kanji": "おととい",
+      "hiragana": "おととい",
+      "romaji": "ototoui",
+      "meaning": "Hôm kia",
+      "partOfSpeech": "noun"
+    },
+    {
+      "kanji": "きのう",
+      "hiragana": "きのう",
+      "romaji": "kinou",
+      "meaning": "Hôm qua",
+      "partOfSpeech": "noun"
+    },
+    {
+      "kanji": "きょう",
+      "hiragana": "きょう",
+      "romaji": "kyou",
+      "meaning": "Hôm nay",
+      "partOfSpeech": "noun"
+    },
+    {
+      "kanji": "あした",
+      "hiragana": "あした",
+      "romaji": "ashita",
+      "meaning": "Ngày mai",
+      "partOfSpeech": "noun"
+    },
+    {
+      "kanji": "あさって",
+      "hiragana": "あさって",
+      "romaji": "asatte",
+      "meaning": "Ngày kia",
+      "partOfSpeech": "noun"
+    },
+    {
+      "kanji": "けさ",
+      "hiragana": "けさ",
+      "romaji": "kesa",
+      "meaning": "Sáng nay",
+      "partOfSpeech": "noun"
+    },
+    {
+      "kanji": "こんばん",
+      "hiragana": "こんばん",
+      "romaji": "konban",
+      "meaning": "Tối nay",
+      "partOfSpeech": "noun"
+    },
+    {
+      "kanji": "やすみ",
+      "hiragana": "やすみ",
+      "romaji": "yasumi",
+      "meaning": "Ngày nghỉ",
+      "partOfSpeech": "noun"
+    }
+  ]
+}

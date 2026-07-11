@@ -1,0 +1,168 @@
+{
+  "lessonNumber": 3,
+  "level": "N5",
+  "title": "Bài 3",
+  "vocabularies": [
+    {
+      "kanji": "ここ",
+      "hiragana": "ここ",
+      "romaji": "koko",
+      "meaning": "Đây",
+      "partOfSpeech": "noun"
+    },
+    {
+      "kanji": "そこ",
+      "hiragana": "そこ",
+      "romaji": "soko",
+      "meaning": "Đó",
+      "partOfSpeech": "noun"
+    },
+    {
+      "kanji": "あそこ",
+      "hiragana": "あそこ",
+      "romaji": "asoko",
+      "meaning": "Kia",
+      "partOfSpeech": "noun"
+    },
+    {
+      "kanji": "どこ",
+      "hiragana": "どこ",
+      "romaji": "doko",
+      "meaning": "Đâu",
+      "partOfSpeech": "noun"
+    },
+    {
+      "kanji": "こちら",
+      "hiragana": "こちら",
+      "romaji": "kochira",
+      "meaning": "Đây (lịch sự)",
+      "partOfSpeech": "noun"
+    },
+    {
+      "kanji": "そちら",
+      "hiragana": "そちら",
+      "romaji": "sochira",
+      "meaning": "Đó (lịch sự)",
+      "partOfSpeech": "noun"
+    },
+    {
+      "kanji": "あちら",
+      "hiragana": "あちら",
+      "romaji": "achira",
+      "meaning": "Kia (lịch sự)",
+      "partOfSpeech": "noun"
+    },
+    {
+      "kanji": "どちら",
+      "hiragana": "どちら",
+      "romaji": "dochira",
+      "meaning": "Đâu (lịch sự)",
+      "partOfSpeech": "noun"
+    },
+    {
+      "kanji": "きょうしつ",
+      "hiragana": "きょうしつ",
+      "romaji": "kyoushitsu",
+      "meaning": "Lớp học",
+      "partOfSpeech": "noun"
+    },
+    {
+      "kanji": "しょくどう",
+      "hiragana": "しょくどう",
+      "romaji": "shoku-dou",
+      "meaning": "Nhà ăn",
+      "partOfSpeech": "noun"
+    },
+    {
+      "kanji": "じむしょ",
+      "hiragana": "じむしょ",
+      "romaji": "jimusho",
+      "meaning": "Văn phòng",
+      "partOfSpeech": "noun"
+    },
+    {
+      "kanji": "うけつけ",
+      "hiragana": "うけつけ",
+      "romaji": "uketsuke",
+      "meaning": "Quầy lễ tân",
+      "partOfSpeech": "noun"
+    },
+    {
+      "kanji": "ロビー",
+      "hiragana": "",
+      "romaji": "robi-",
+      "meaning": "Sảnh",
+      "partOfSpeech": "noun"
+    },
+    {
+      "kanji": "へや",
+      "hiragana": "へや",
+      "romaji": "heya",
+      "meaning": "Phòng",
+      "partOfSpeech": "noun"
+    },
+    {
+      "kanji": "トイレ",
+      "hiragana": "",
+      "romaji": "toire",
+      "meaning": "Nhà vệ sinh",
+      "partOfSpeech": "noun"
+    },
+    {
+      "kanji": "かいだん",
+      "hiragana": "かいだん",
+      "romaji": "kaidan",
+      "meaning": "Cầu thang",
+      "partOfSpeech": "noun"
+    },
+    {
+      "kanji": "エレベーター",
+      "hiragana": "",
+      "romaji": "erebe-ta-",
+      "meaning": "Thang máy",
+      "partOfSpeech": "noun"
+    },
+    {
+      "kanji": "エスカレーター",
+      "hiragana": "",
+      "romaji": "esukare-ta-",
+      "meaning": "Thang cuốn",
+      "partOfSpeech": "noun"
+    },
+    {
+      "kanji": "じどうはんばいき",
+      "hiragana": "じどうはんばいき",
+      "romaji": "jidoohanbai-ki",
+      "meaning": "Máy bán hàng tự động",
+      "partOfSpeech": "noun"
+    },
+    {
+      "kanji": "でんわ",
+      "hiragana": "でんわ",
+      "romaji": "denwa",
+      "meaning": "Điện thoại",
+      "partOfSpeech": "noun"
+    },
+    {
+      "kanji": "くに",
+      "hiragana": "くに",
+      "romaji": "kuni",
+      "meaning": "Quốc gia",
+      "partOfSpeech": "noun"
+    },
+    {
+      "kanji": "かいしゃ",
+      "hiragana": "かいしゃ",
+      "romaji": "kaisha",
+      "meaning": "Công ty",
+      "partOfSpeech": "noun"
+    },
+    {
+      "kanji": "うち",
+      "hiragana": "うち",
+      "romaji": "uchi",
+      "meaning": "Nhà",
+      "partOfSpeech": "noun"
+    }
+  ]
+}

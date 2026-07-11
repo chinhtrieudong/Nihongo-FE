@@ -1,0 +1,196 @@
+{
+  "lessonNumber": 1,
+  "level": "N5",
+  "title": "Bài 1",
+  "vocabularies": [
+    {
+      "kanji": "わたし",
+      "hiragana": "わたし",
+      "romaji": "watashi",
+      "meaning": "Tôi",
+      "partOfSpeech": "noun"
+    },
+    {
+      "kanji": "わたしたち",
+      "hiragana": "わたしたち",
+      "romaji": "watashitachi",
+      "meaning": "Chúng tôi",
+      "partOfSpeech": "noun"
+    },
+    {
+      "kanji": "あなた",
+      "hiragana": "あなた",
+      "romaji": "anata",
+      "meaning": "Bạn",
+      "partOfSpeech": "noun"
+    },
+    {
+      "kanji": "あのひと",
+      "hiragana": "あのひと",
+      "romaji": "ano hito",
+      "meaning": "Người kia",
+      "partOfSpeech": "noun"
+    },
+    {
+      "kanji": "あのかた",
+      "hiragana": "あのかた",
+      "romaji": "ano kata",
+      "meaning": "Quý vị, người kia (lịch sự)",
+      "partOfSpeech": "noun"
+    },
+    {
+      "kanji": "みなさん",
+      "hiragana": "みなさん",
+      "romaji": "minasan",
+      "meaning": "Mọi người",
+      "partOfSpeech": "noun"
+    },
+    {
+      "kanji": "～さん",
+      "hiragana": "",
+      "romaji": "~san",
+      "meaning": "Ông/Bà/Anh/Chị",
+      "partOfSpeech": "suffix"
+    },
+    {
+      "kanji": "～ちゃん",
+      "hiragana": "",
+      "romaji": "~chan",
+      "meaning": "Bé, em",
+      "partOfSpeech": "suffix"
+    },
+    {
+      "kanji": "～くん",
+      "hiragana": "",
+      "romaji": "~kun",
+      "meaning": "Bạn (nam)",
+      "partOfSpeech": "suffix"
+    },
+    {
+      "kanji": "～じん",
+      "hiragana": "",
+      "romaji": "~jin",
+      "meaning": "Người nước...",
+      "partOfSpeech": "suffix"
+    },
+    {
+      "kanji": "せんせい",
+      "hiragana": "せんせい",
+      "romaji": "sensei",
+      "meaning": "Thầy/Cô",
+      "partOfSpeech": "noun"
+    },
+    {
+      "kanji": "きょうし",
+      "hiragana": "きょうし",
+      "romaji": "kyoushi",
+      "meaning": "Giáo viên",
+      "partOfSpeech": "noun"
+    },
+    {
+      "kanji": "がくせい",
+      "hiragana": "がくせい",
+      "romaji": "gakusei",
+      "meaning": "Học sinh, sinh viên",
+      "partOfSpeech": "noun"
+    },
+    {
+      "kanji": "かいしゃいん",
+      "hiragana": "かいしゃいん",
+      "romaji": "kaisha-in",
+      "meaning": "Nhân viên công ty",
+      "partOfSpeech": "noun"
+    },
+    {
+      "kanji": "しゃいん",
+      "hiragana": "しゃいん",
+      "romaji": "sha-in",
+      "meaning": "Nhân viên",
+      "partOfSpeech": "noun"
+    },
+    {
+      "kanji": "ぎんこういん",
+      "hiragana": "ぎんこういん",
+      "romaji": "ginkouin",
+      "meaning": "Nhân viên ngân hàng",
+      "partOfSpeech": "noun"
+    },
+    {
+      "kanji": "いしゃ",
+      "hiragana": "いしゃ",
+      "romaji": "isha",
+      "meaning": "Bác sĩ",
+      "partOfSpeech": "noun"
+    },
+    {
+      "kanji": "けんきゅうしゃ",
+      "hiragana": "けんきゅうしゃ",
+      "romaji": "kenkyuushi",
+      "meaning": "Nhà nghiên cứu",
+      "partOfSpeech": "noun"
+    },
+    {
+      "kanji": "エンジニア",
+      "hiragana": "",
+      "romaji": "enjinia",
+      "meaning": "Kỹ sư",
+      "partOfSpeech": "noun"
+    },
+    {
+      "kanji": "だいがく",
+      "hiragana": "だいがく",
+      "romaji": "daigaku",
+      "meaning": "Đại học",
+      "partOfSpeech": "noun"
+    },
+    {
+      "kanji": "びょういん",
+      "hiragana": "びょういん",
+      "romaji": "byouin",
+      "meaning": "Bệnh viện",
+      "partOfSpeech": "noun"
+    },
+    {
+      "kanji": "でんき",
+      "hiragana": "でんき",
+      "romaji": "denki",
+      "meaning": "Điện, công ty điện lực",
+      "partOfSpeech": "noun"
+    },
+    {
+      "kanji": "だれ",
+      "hiragana": "だれ",
+      "romaji": "dare",
+      "meaning": "Ai",
+      "partOfSpeech": "pronoun"
+    },
+    {
+      "kanji": "どなた",
+      "hiragana": "どなた",
+      "romaji": "donata",
+      "meaning": "Ai (lịch sự)",
+      "partOfSpeech": "pronoun"
+    },
+    {
+      "kanji": "～さい",
+      "hiragana": "",
+      "romaji": "~sai",
+      "meaning": "... tuổi",
+      "partOfSpeech": "suffix"
+    },
+    {
+      "kanji": "なんさい",
+      "hiragana": "なんさい",
+      "romaji": "nansai",
+      "meaning": "Mấy tuổi",
+      "partOfSpeech": "noun"
+    },
+    {
+      "kanji": "おいくつ",
+      "hiragana": "おいくつ",
+      "romaji": "oikutsu",
+      "meaning": "Mấy tuổi (lịch sự)",
+      "partOfSpeech": "noun"
+    }
+  ]
+}
