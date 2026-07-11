@@ -4,164 +4,187 @@
   "title": "Bài 4",
   "vocabularies": [
     {
-      "kanji": "おきます",
+      "kanji": "起きます",
       "hiragana": "おきます",
       "romaji": "okimasu",
       "meaning": "Thức dậy",
+      "hanViet": "KHỞI",
       "partOfSpeech": "verb"
     },
     {
-      "kanji": "ねます",
+      "kanji": "寝ます",
       "hiragana": "ねます",
       "romaji": "nemasu",
       "meaning": "Ngủ",
+      "hanViet": "TẨM",
       "partOfSpeech": "verb"
     },
     {
-      "kanji": "はたらきます",
+      "kanji": "働きます",
       "hiragana": "はたらきます",
       "romaji": "hatarakimasu",
       "meaning": "Làm việc",
+      "hanViet": "ĐỘNG",
       "partOfSpeech": "verb"
     },
     {
-      "kanji": "やすみます",
+      "kanji": "休みます",
       "hiragana": "やすみます",
       "romaji": "yasumimasu",
       "meaning": "Nghỉ",
+      "hanViet": "HƯU",
       "partOfSpeech": "verb"
     },
     {
-      "kanji": "べんきょうします",
+      "kanji": "勉強します",
       "hiragana": "べんきょうします",
       "romaji": "benkyou shimasu",
       "meaning": "Học",
+      "hanViet": "MIỄN CƯỜNG",
       "partOfSpeech": "verb"
     },
     {
-      "kanji": "おわります",
+      "kanji": "終わります",
       "hiragana": "おわります",
       "romaji": "owarimasu",
       "meaning": "Kết thúc",
+      "hanViet": "CHUNG",
       "partOfSpeech": "verb"
     },
     {
-      "kanji": "いま",
+      "kanji": "今",
       "hiragana": "いま",
       "romaji": "ima",
       "meaning": "Bây giờ",
+      "hanViet": "KIM",
       "partOfSpeech": "noun"
     },
     {
-      "kanji": "～じ",
+      "kanji": "～時",
       "hiragana": "～じ",
       "romaji": "~ji",
       "meaning": "... giờ",
+      "hanViet": "THỜI",
       "partOfSpeech": "suffix"
     },
     {
-      "kanji": "～ふん・ぷん",
+      "kanji": "～分",
       "hiragana": "～ふん・ぷん",
       "romaji": "~fun/pun",
       "meaning": "... phút",
+      "hanViet": "PHÂN",
       "partOfSpeech": "suffix"
     },
     {
-      "kanji": "はん",
+      "kanji": "半",
       "hiragana": "はん",
       "romaji": "han",
       "meaning": "Rưỡi",
+      "hanViet": "BÁN",
       "partOfSpeech": "noun"
     },
     {
-      "kanji": "なんじ",
+      "kanji": "何時",
       "hiragana": "なんじ",
       "romaji": "nanji",
       "meaning": "Mấy giờ",
+      "hanViet": "HÀ THỜI",
       "partOfSpeech": "noun"
     },
     {
-      "kanji": "なんぷん",
+      "kanji": "何分",
       "hiragana": "なんぷん",
       "romaji": "nanpun",
       "meaning": "Mấy phút",
+      "hanViet": "HÀ PHÂN",
       "partOfSpeech": "noun"
     },
     {
-      "kanji": "あさ",
+      "kanji": "朝",
       "hiragana": "あさ",
       "romaji": "asa",
       "meaning": "Buổi sáng",
+      "hanViet": "TRIÊU",
       "partOfSpeech": "noun"
     },
     {
-      "kanji": "ひる",
+      "kanji": "昼",
       "hiragana": "ひる",
       "romaji": "hiru",
       "meaning": "Buổi trưa",
+      "hanViet": "TRÚ",
       "partOfSpeech": "noun"
     },
     {
-      "kanji": "よる",
+      "kanji": "夜",
       "hiragana": "よる",
       "romaji": "yoru",
       "meaning": "Buổi tối",
+      "hanViet": "DẠ",
       "partOfSpeech": "noun"
     },
     {
-      "kanji": "おととい",
+      "kanji": "一昨日",
       "hiragana": "おととい",
       "romaji": "ototoui",
       "meaning": "Hôm kia",
+      "hanViet": "NHẤT TẠC NHẬT",
       "partOfSpeech": "noun"
     },
     {
-      "kanji": "きのう",
+      "kanji": "昨日",
       "hiragana": "きのう",
       "romaji": "kinou",
       "meaning": "Hôm qua",
+      "hanViet": "TẠC NHẬT",
       "partOfSpeech": "noun"
     },
     {
-      "kanji": "きょう",
+      "kanji": "今日",
       "hiragana": "きょう",
       "romaji": "kyou",
       "meaning": "Hôm nay",
+      "hanViet": "KIM NHẬT",
       "partOfSpeech": "noun"
     },
     {
-      "kanji": "あした",
+      "kanji": "明日",
       "hiragana": "あした",
       "romaji": "ashita",
       "meaning": "Ngày mai",
+      "hanViet": "MINH NHẬT",
       "partOfSpeech": "noun"
     },
     {
-      "kanji": "あさって",
+      "kanji": "明後日",
       "hiragana": "あさって",
       "romaji": "asatte",
       "meaning": "Ngày kia",
+      "hanViet": "MINH HẬU NHẬT",
       "partOfSpeech": "noun"
     },
     {
-      "kanji": "けさ",
+      "kanji": "今朝",
       "hiragana": "けさ",
       "romaji": "kesa",
       "meaning": "Sáng nay",
+      "hanViet": "KIM TRIÊU",
       "partOfSpeech": "noun"
     },
     {
-      "kanji": "こんばん",
+      "kanji": "今晩",
       "hiragana": "こんばん",
       "romaji": "konban",
       "meaning": "Tối nay",
+      "hanViet": "KIM VÃN",
       "partOfSpeech": "noun"
     },
     {
-      "kanji": "やすみ",
+      "kanji": "休み",
       "hiragana": "やすみ",
       "romaji": "yasumi",
       "meaning": "Ngày nghỉ",
+      "hanViet": "HƯU",
       "partOfSpeech": "noun"
     }
   ]

@@ -8,6 +8,7 @@
       "hiragana": "ここ",
       "romaji": "koko",
       "meaning": "Đây",
+      "hanViet": "",
       "partOfSpeech": "noun"
     },
     {
@@ -15,6 +16,7 @@
       "hiragana": "そこ",
       "romaji": "soko",
       "meaning": "Đó",
+      "hanViet": "",
       "partOfSpeech": "noun"
     },
     {
@@ -22,6 +24,7 @@
       "hiragana": "あそこ",
       "romaji": "asoko",
       "meaning": "Kia",
+      "hanViet": "",
       "partOfSpeech": "noun"
     },
     {
@@ -29,6 +32,7 @@
       "hiragana": "どこ",
       "romaji": "doko",
       "meaning": "Đâu",
+      "hanViet": "",
       "partOfSpeech": "noun"
     },
     {
@@ -36,6 +40,7 @@
       "hiragana": "こちら",
       "romaji": "kochira",
       "meaning": "Đây (lịch sự)",
+      "hanViet": "",
       "partOfSpeech": "noun"
     },
     {
@@ -43,6 +48,7 @@
       "hiragana": "そちら",
       "romaji": "sochira",
       "meaning": "Đó (lịch sự)",
+      "hanViet": "",
       "partOfSpeech": "noun"
     },
     {
@@ -50,6 +56,7 @@
       "hiragana": "あちら",
       "romaji": "achira",
       "meaning": "Kia (lịch sự)",
+      "hanViet": "",
       "partOfSpeech": "noun"
     },
     {
@@ -57,34 +64,39 @@
       "hiragana": "どちら",
       "romaji": "dochira",
       "meaning": "Đâu (lịch sự)",
+      "hanViet": "",
       "partOfSpeech": "noun"
     },
     {
-      "kanji": "きょうしつ",
+      "kanji": "教室",
       "hiragana": "きょうしつ",
       "romaji": "kyoushitsu",
       "meaning": "Lớp học",
+      "hanViet": "GIÁO THẤT",
       "partOfSpeech": "noun"
     },
     {
-      "kanji": "しょくどう",
+      "kanji": "食堂",
       "hiragana": "しょくどう",
       "romaji": "shoku-dou",
       "meaning": "Nhà ăn",
+      "hanViet": "THỰC ĐƯỜNG",
       "partOfSpeech": "noun"
     },
     {
-      "kanji": "じむしょ",
+      "kanji": "事務所",
       "hiragana": "じむしょ",
       "romaji": "jimusho",
       "meaning": "Văn phòng",
+      "hanViet": "SỰ VỤ SỞ",
       "partOfSpeech": "noun"
     },
     {
-      "kanji": "うけつけ",
+      "kanji": "受付",
       "hiragana": "うけつけ",
       "romaji": "uketsuke",
       "meaning": "Quầy lễ tân",
+      "hanViet": "THỤ PHÓ",
       "partOfSpeech": "noun"
     },
     {
@@ -92,13 +104,15 @@
       "hiragana": "",
       "romaji": "robi-",
       "meaning": "Sảnh",
+      "hanViet": "",
       "partOfSpeech": "noun"
     },
     {
-      "kanji": "へや",
+      "kanji": "部屋",
       "hiragana": "へや",
       "romaji": "heya",
       "meaning": "Phòng",
+      "hanViet": "BỘ ỐC",
       "partOfSpeech": "noun"
     },
     {
@@ -106,13 +120,15 @@
       "hiragana": "",
       "romaji": "toire",
       "meaning": "Nhà vệ sinh",
+      "hanViet": "",
       "partOfSpeech": "noun"
     },
     {
-      "kanji": "かいだん",
+      "kanji": "階段",
       "hiragana": "かいだん",
       "romaji": "kaidan",
       "meaning": "Cầu thang",
+      "hanViet": "GIAI ĐOẠN",
       "partOfSpeech": "noun"
     },
     {
@@ -120,6 +136,7 @@
       "hiragana": "",
       "romaji": "erebe-ta-",
       "meaning": "Thang máy",
+      "hanViet": "",
       "partOfSpeech": "noun"
     },
     {
@@ -127,41 +144,47 @@
       "hiragana": "",
       "romaji": "esukare-ta-",
       "meaning": "Thang cuốn",
+      "hanViet": "",
       "partOfSpeech": "noun"
     },
     {
-      "kanji": "じどうはんばいき",
+      "kanji": "自動販売機",
       "hiragana": "じどうはんばいき",
       "romaji": "jidoohanbai-ki",
       "meaning": "Máy bán hàng tự động",
+      "hanViet": "TỰ ĐỘNG PHÁN MẠI CƠ",
       "partOfSpeech": "noun"
     },
     {
-      "kanji": "でんわ",
+      "kanji": "電話",
       "hiragana": "でんわ",
       "romaji": "denwa",
       "meaning": "Điện thoại",
+      "hanViet": "ĐIỆN THOẠI",
       "partOfSpeech": "noun"
     },
     {
-      "kanji": "くに",
+      "kanji": "国",
       "hiragana": "くに",
       "romaji": "kuni",
       "meaning": "Quốc gia",
+      "hanViet": "QUỐC",
       "partOfSpeech": "noun"
     },
     {
-      "kanji": "かいしゃ",
+      "kanji": "会社",
       "hiragana": "かいしゃ",
       "romaji": "kaisha",
       "meaning": "Công ty",
+      "hanViet": "HỘI XÃ",
       "partOfSpeech": "noun"
     },
     {
-      "kanji": "うち",
+      "kanji": "家",
       "hiragana": "うち",
       "romaji": "uchi",
       "meaning": "Nhà",
+      "hanViet": "GIA",
       "partOfSpeech": "noun"
     }
   ]

@@ -104,3 +104,4 @@ jspm_packages/
 
 # Windsurf workspace files
 .windsurf/
+.vercel

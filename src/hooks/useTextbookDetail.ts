@@ -1,5 +1,5 @@
 import { useState, useEffect, useCallback } from 'react';
-import { textbooksAPI } from '../services/api';
+import fakeTextbooksData from '../data/fakeTextbooksData.json';
 
 export interface Lesson {
   lessonNumber: number;
@@ -36,6 +36,48 @@ export interface TextbookDetail {
   isPublished: boolean;
 }
 
+// Get textbook data from local JSON
+const getTextbookFromLocal = (slug: string): TextbookDetail | null => {
+  const textbook = (fakeTextbooksData as any).textbooks.find((t: any) => t.slug === slug);
+  if (!textbook) return null;
+
+  // Transform lessons to match Lesson interface
+  const lessons: Lesson[] = (textbook.lessons || textbook.chapters || []).map((c: any) => ({
+    lessonNumber: c.lessonNumber || c.number,
+    title: c.title,
+    titleVi: c.titleVi || c.title,
+    titleJp: c.titleJp || c.title,
+    description: c.description || '',
+    descriptionVi: c.descriptionVi || '',
+    vocabularyCount: c.vocabularyCount || c.vocab || 0,
+    grammarCount: c.grammarCount || 0,
+    kaiwaCount: c.kaiwaCount || 0,
+    mondaiCount: c.mondaiCount || 0,
+    isActive: c.isActive ?? true,
+    order: c.order || c.lessonNumber || c.number,
+  }));
+
+  return {
+    slug: textbook.slug,
+    name: textbook.name,
+    nameVi: textbook.nameVi || textbook.name,
+    nameJp: textbook.nameJp || textbook.name,
+    level: textbook.level || 'N5',
+    type: textbook.type || 'minna',
+    description: textbook.description,
+    descriptionVi: textbook.descriptionVi || textbook.description,
+    descriptionJp: textbook.descriptionJp || textbook.description,
+    imageUrl: textbook.imageUrl || '',
+    totalLessons: textbook.totalLessons,
+    totalVocabulary: textbook.totalVocabulary || 0,
+    totalGrammar: textbook.totalGrammar || 0,
+    estimatedHours: textbook.estimatedHours || 0,
+    lessons,
+    isActive: textbook.isActive ?? true,
+    isPublished: textbook.isPublished ?? true,
+  };
+};
+
 export function useTextbookDetail(slug: string | undefined) {
   const [textbook, setTextbook] = useState<TextbookDetail | null>(null);
   const [loading, setLoading] = useState(true);
@@ -51,11 +93,13 @@ export function useTextbookDetail(slug: string | undefined) {
     try {
       setLoading(true);
       setError(null);
-      const response = await textbooksAPI.getById(slug);
-      if (response.success) {
-        setTextbook(response.data);
+      
+      // Use local data
+      const data = getTextbookFromLocal(slug);
+      if (data) {
+        setTextbook(data);
       } else {
-        setError('Failed to fetch textbook');
+        setError('Textbook not found');
       }
     } catch (err) {
       setError(err instanceof Error ? err.message : 'Unknown error');
@@ -93,12 +137,22 @@ export function useTextbookLessons(slug: string | undefined, page: number = 1, l
     try {
       setLoading(true);
       setError(null);
-      const response = await textbooksAPI.getLessons(slug, { page, limit });
-      if (response.success) {
-        setLessons(response.data || []);
-        setPagination(response.pagination);
+      
+      // Use local data
+      const textbook = getTextbookFromLocal(slug);
+      if (textbook) {
+        const allLessons = textbook.lessons;
+        const start = (page - 1) * limit;
+        const end = start + limit;
+        setLessons(allLessons.slice(start, end));
+        setPagination({
+          currentPage: page,
+          totalPages: Math.ceil(allLessons.length / limit),
+          totalItems: allLessons.length,
+          itemsPerPage: limit,
+        });
       } else {
-        setError('Failed to fetch lessons');
+        setError('Textbook not found');
       }
     } catch (err) {
       setError(err instanceof Error ? err.message : 'Unknown error');

@@ -432,7 +432,7 @@ const VocabularyDetail: React.FC = () => {
                     {item.kanji || item.hiragana}
                   </Text>
                   {item.hanViet && (
-                    <Text className="text-xs font-medium text-amber-600 uppercase tracking-wide block mt-0.5 line-clamp-1">
+                    <Text className="text-base sm:text-lg font-medium text-amber-600 uppercase tracking-wide block mt-0.5 line-clamp-1">
                       {item.hanViet}
                     </Text>
                   )}
@@ -555,7 +555,7 @@ const VocabularyDetail: React.FC = () => {
                             {item.kanji || item.hiragana}
                           </div>
                           {item.hanViet && (
-                            <div className="text-xs font-medium text-amber-600 uppercase tracking-wide mt-0.5">
+                            <div className="text-base sm:text-lg font-medium text-amber-600 uppercase tracking-wide mt-0.5">
                               {item.hanViet}
                             </div>
                           )}

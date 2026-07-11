@@ -8,6 +8,7 @@
       "hiragana": "これ",
       "romaji": "kore",
       "meaning": "Cái này",
+      "hanViet": "",
       "partOfSpeech": "pronoun"
     },
     {
@@ -15,6 +16,7 @@
       "hiragana": "それ",
       "romaji": "sore",
       "meaning": "Cái đó",
+      "hanViet": "",
       "partOfSpeech": "pronoun"
     },
     {
@@ -22,6 +24,7 @@
       "hiragana": "あれ",
       "romaji": "are",
       "meaning": "Cái kia",
+      "hanViet": "",
       "partOfSpeech": "pronoun"
     },
     {
@@ -29,6 +32,7 @@
       "hiragana": "この～",
       "romaji": "kono~",
       "meaning": "... này",
+      "hanViet": "",
       "partOfSpeech": "prefix"
     },
     {
@@ -36,6 +40,7 @@
       "hiragana": "その～",
       "romaji": "sono~",
       "meaning": "... đó",
+      "hanViet": "",
       "partOfSpeech": "prefix"
     },
     {
@@ -43,34 +48,39 @@
       "hiragana": "あの～",
       "romaji": "ano~",
       "meaning": "... kia",
+      "hanViet": "",
       "partOfSpeech": "prefix"
     },
     {
-      "kanji": "ほん",
+      "kanji": "本",
       "hiragana": "ほん",
       "romaji": "hon",
       "meaning": "Sách",
+      "hanViet": "BẢN",
       "partOfSpeech": "noun"
     },
     {
-      "kanji": "じしょ",
+      "kanji": "辞書",
       "hiragana": "じしょ",
       "romaji": "jisho",
       "meaning": "Từ điển",
+      "hanViet": "TỪ THƯ",
       "partOfSpeech": "noun"
     },
     {
-      "kanji": "ざっし",
+      "kanji": "雑誌",
       "hiragana": "ざっし",
       "romaji": "zasshi",
       "meaning": "Tạp chí",
+      "hanViet": "TẠP CHÍ",
       "partOfSpeech": "noun"
     },
     {
-      "kanji": "しんぶん",
+      "kanji": "新聞",
       "hiragana": "しんぶん",
       "romaji": "shinbun",
       "meaning": "Báo",
+      "hanViet": "TÂN VĂN",
       "partOfSpeech": "noun"
     },
     {
@@ -78,20 +88,23 @@
       "hiragana": "",
       "romaji": "note",
       "meaning": "Vở",
+      "hanViet": "",
       "partOfSpeech": "noun"
     },
     {
-      "kanji": "てちょう",
+      "kanji": "手帳",
       "hiragana": "てちょう",
       "romaji": "techo",
       "meaning": "Sổ tay",
+      "hanViet": "THỦ TRƯỚNG",
       "partOfSpeech": "noun"
     },
     {
-      "kanji": "めいし",
+      "kanji": "名刺",
       "hiragana": "めいし",
       "romaji": "meishi",
       "meaning": "Danh thiếp",
+      "hanViet": "DANH THÍCH",
       "partOfSpeech": "noun"
     },
     {
@@ -99,6 +112,7 @@
       "hiragana": "",
       "romaji": "cardo",
       "meaning": "Thẻ",
+      "hanViet": "",
       "partOfSpeech": "noun"
     },
     {
@@ -106,13 +120,15 @@
       "hiragana": "てれほんかーど",
       "romaji": "telehon kado",
       "meaning": "Thẻ điện thoại",
+      "hanViet": "",
       "partOfSpeech": "noun"
     },
     {
-      "kanji": "えんぴつ",
+      "kanji": "鉛筆",
       "hiragana": "えんぴつ",
       "romaji": "enpitsu",
       "meaning": "Bút chì",
+      "hanViet": "DUYÊN BÚT",
       "partOfSpeech": "noun"
     },
     {
@@ -120,6 +136,7 @@
       "hiragana": "",
       "romaji": "bo-rupen",
       "meaning": "Bút bi",
+      "hanViet": "",
       "partOfSpeech": "noun"
     },
     {
@@ -127,34 +144,39 @@
       "hiragana": "",
       "romaji": "sha-pu pen shiru",
       "meaning": "Bút chì kim",
+      "hanViet": "",
       "partOfSpeech": "noun"
     },
     {
-      "kanji": "かぎ",
+      "kanji": "鍵",
       "hiragana": "かぎ",
       "romaji": "kagi",
       "meaning": "Chìa khóa",
+      "hanViet": "KIỆN",
       "partOfSpeech": "noun"
     },
     {
-      "kanji": "とけい",
+      "kanji": "時計",
       "hiragana": "とけい",
       "romaji": "tokei",
       "meaning": "Đồng hồ",
+      "hanViet": "THỜI KẾ",
       "partOfSpeech": "noun"
     },
     {
-      "kanji": "かさ",
+      "kanji": "傘",
       "hiragana": "かさ",
       "romaji": "kasa",
       "meaning": "Ô",
+      "hanViet": "TẢN",
       "partOfSpeech": "noun"
     },
     {
-      "kanji": "かばん",
+      "kanji": "鞄",
       "hiragana": "かばん",
       "romaji": "kaban",
       "meaning": "Cặp, túi",
+      "hanViet": "BẠC",
       "partOfSpeech": "noun"
     },
     {
@@ -162,6 +184,7 @@
       "hiragana": "",
       "romaji": "CD",
       "meaning": "Đĩa CD",
+      "hanViet": "",
       "partOfSpeech": "noun"
     },
     {
@@ -169,6 +192,7 @@
       "hiragana": "",
       "romaji": "terebi",
       "meaning": "Tivi",
+      "hanViet": "",
       "partOfSpeech": "noun"
     },
     {
@@ -176,6 +200,7 @@
       "hiragana": "",
       "romaji": "rajio",
       "meaning": "Radio",
+      "hanViet": "",
       "partOfSpeech": "noun"
     },
     {
@@ -183,6 +208,7 @@
       "hiragana": "",
       "romaji": "kamera",
       "meaning": "Máy ảnh",
+      "hanViet": "",
       "partOfSpeech": "noun"
     },
     {
@@ -190,27 +216,31 @@
       "hiragana": "",
       "romaji": "konpyu-ta-",
       "meaning": "Máy tính",
+      "hanViet": "",
       "partOfSpeech": "noun"
     },
     {
-      "kanji": "くるま",
+      "kanji": "車",
       "hiragana": "くるま",
       "romaji": "kuruma",
       "meaning": "Ô tô",
+      "hanViet": "XA",
       "partOfSpeech": "noun"
     },
     {
-      "kanji": "つくえ",
+      "kanji": "机",
       "hiragana": "つくえ",
       "romaji": "tsukue",
       "meaning": "Bàn",
+      "hanViet": "KỶ",
       "partOfSpeech": "noun"
     },
     {
-      "kanji": "いす",
+      "kanji": "椅子",
       "hiragana": "いす",
       "romaji": "isu",
       "meaning": "Ghế",
+      "hanViet": "Y TỬ",
       "partOfSpeech": "noun"
     }
   ]

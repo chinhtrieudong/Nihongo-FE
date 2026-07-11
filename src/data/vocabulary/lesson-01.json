@@ -4,17 +4,19 @@
   "title": "Bài 1",
   "vocabularies": [
     {
-      "kanji": "わたし",
+      "kanji": "私",
       "hiragana": "わたし",
       "romaji": "watashi",
       "meaning": "Tôi",
+      "hanViet": "TƯ",
       "partOfSpeech": "noun"
     },
     {
-      "kanji": "わたしたち",
+      "kanji": "私たち",
       "hiragana": "わたしたち",
       "romaji": "watashitachi",
       "meaning": "Chúng tôi",
+      "hanViet": "TƯ",
       "partOfSpeech": "noun"
     },
     {
@@ -22,27 +24,31 @@
       "hiragana": "あなた",
       "romaji": "anata",
       "meaning": "Bạn",
+      "hanViet": "",
       "partOfSpeech": "noun"
     },
     {
-      "kanji": "あのひと",
+      "kanji": "あの人",
       "hiragana": "あのひと",
       "romaji": "ano hito",
       "meaning": "Người kia",
+      "hanViet": "NHÂN",
       "partOfSpeech": "noun"
     },
     {
-      "kanji": "あのかた",
+      "kanji": "あの方",
       "hiragana": "あのかた",
       "romaji": "ano kata",
       "meaning": "Quý vị, người kia (lịch sự)",
+      "hanViet": "PHƯƠNG",
       "partOfSpeech": "noun"
     },
     {
-      "kanji": "みなさん",
+      "kanji": "皆さん",
       "hiragana": "みなさん",
       "romaji": "minasan",
       "meaning": "Mọi người",
+      "hanViet": "GIAI",
       "partOfSpeech": "noun"
     },
     {
@@ -50,6 +56,7 @@
       "hiragana": "",
       "romaji": "~san",
       "meaning": "Ông/Bà/Anh/Chị",
+      "hanViet": "",
       "partOfSpeech": "suffix"
     },
     {
@@ -57,76 +64,87 @@
       "hiragana": "",
       "romaji": "~chan",
       "meaning": "Bé, em",
+      "hanViet": "",
       "partOfSpeech": "suffix"
     },
     {
-      "kanji": "～くん",
+      "kanji": "～君",
       "hiragana": "",
       "romaji": "~kun",
       "meaning": "Bạn (nam)",
+      "hanViet": "QUÂN",
       "partOfSpeech": "suffix"
     },
     {
-      "kanji": "～じん",
+      "kanji": "～人",
       "hiragana": "",
       "romaji": "~jin",
       "meaning": "Người nước...",
+      "hanViet": "NHÂN",
       "partOfSpeech": "suffix"
     },
     {
-      "kanji": "せんせい",
+      "kanji": "先生",
       "hiragana": "せんせい",
       "romaji": "sensei",
       "meaning": "Thầy/Cô",
+      "hanViet": "TIÊN SINH",
       "partOfSpeech": "noun"
     },
     {
-      "kanji": "きょうし",
+      "kanji": "教師",
       "hiragana": "きょうし",
       "romaji": "kyoushi",
       "meaning": "Giáo viên",
+      "hanViet": "GIÁO SƯ",
       "partOfSpeech": "noun"
     },
     {
-      "kanji": "がくせい",
+      "kanji": "学生",
       "hiragana": "がくせい",
       "romaji": "gakusei",
       "meaning": "Học sinh, sinh viên",
+      "hanViet": "HỌC SINH",
       "partOfSpeech": "noun"
     },
     {
-      "kanji": "かいしゃいん",
+      "kanji": "会社員",
       "hiragana": "かいしゃいん",
       "romaji": "kaisha-in",
       "meaning": "Nhân viên công ty",
+      "hanViet": "HỘI XÃ VIÊN",
       "partOfSpeech": "noun"
     },
     {
-      "kanji": "しゃいん",
+      "kanji": "社員",
       "hiragana": "しゃいん",
       "romaji": "sha-in",
       "meaning": "Nhân viên",
+      "hanViet": "XÃ VIÊN",
       "partOfSpeech": "noun"
     },
     {
-      "kanji": "ぎんこういん",
+      "kanji": "銀行員",
       "hiragana": "ぎんこういん",
       "romaji": "ginkouin",
       "meaning": "Nhân viên ngân hàng",
+      "hanViet": "NGÂN HÀNH VIÊN",
       "partOfSpeech": "noun"
     },
     {
-      "kanji": "いしゃ",
+      "kanji": "医者",
       "hiragana": "いしゃ",
       "romaji": "isha",
       "meaning": "Bác sĩ",
+      "hanViet": "Y GIẢ",
       "partOfSpeech": "noun"
     },
     {
-      "kanji": "けんきゅうしゃ",
+      "kanji": "研究者",
       "hiragana": "けんきゅうしゃ",
       "romaji": "kenkyuushi",
       "meaning": "Nhà nghiên cứu",
+      "hanViet": "NGHIÊN CỨU GIẢ",
       "partOfSpeech": "noun"
     },
     {
@@ -134,34 +152,39 @@
       "hiragana": "",
       "romaji": "enjinia",
       "meaning": "Kỹ sư",
+      "hanViet": "",
       "partOfSpeech": "noun"
     },
     {
-      "kanji": "だいがく",
+      "kanji": "大学",
       "hiragana": "だいがく",
       "romaji": "daigaku",
       "meaning": "Đại học",
+      "hanViet": "ĐẠI HỌC",
       "partOfSpeech": "noun"
     },
     {
-      "kanji": "びょういん",
+      "kanji": "病院",
       "hiragana": "びょういん",
       "romaji": "byouin",
       "meaning": "Bệnh viện",
+      "hanViet": "BỆNH VIỆN",
       "partOfSpeech": "noun"
     },
     {
-      "kanji": "でんき",
+      "kanji": "電気",
       "hiragana": "でんき",
       "romaji": "denki",
       "meaning": "Điện, công ty điện lực",
+      "hanViet": "ĐIỆN KHÍ",
       "partOfSpeech": "noun"
     },
     {
-      "kanji": "だれ",
+      "kanji": "誰",
       "hiragana": "だれ",
       "romaji": "dare",
       "meaning": "Ai",
+      "hanViet": "THÙY",
       "partOfSpeech": "pronoun"
     },
     {
@@ -169,20 +192,23 @@
       "hiragana": "どなた",
       "romaji": "donata",
       "meaning": "Ai (lịch sự)",
+      "hanViet": "",
       "partOfSpeech": "pronoun"
     },
     {
-      "kanji": "～さい",
+      "kanji": "～歳",
       "hiragana": "",
       "romaji": "~sai",
       "meaning": "... tuổi",
+      "hanViet": "TUẾ",
       "partOfSpeech": "suffix"
     },
     {
-      "kanji": "なんさい",
+      "kanji": "何歳",
       "hiragana": "なんさい",
       "romaji": "nansai",
       "meaning": "Mấy tuổi",
+      "hanViet": "HÀ TUẾ",
       "partOfSpeech": "noun"
     },
     {
@@ -190,6 +216,7 @@
       "hiragana": "おいくつ",
       "romaji": "oikutsu",
       "meaning": "Mấy tuổi (lịch sự)",
+      "hanViet": "",
       "partOfSpeech": "noun"
     }
   ]

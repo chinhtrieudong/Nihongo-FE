@@ -21,7 +21,7 @@ const toVocabularyItem = (item: any, lessonNum: number): VocabularyItem => ({
   sourceId: `minna-n5-${lessonNum}-${item.romaji}`,
   kanji: item.kanji || '',
   hiragana: item.hiragana || '',
-  hanViet: '',
+  hanViet: item.hanViet || '',
   meaning: item.meaning || '',
   type: item.partOfSpeech || 'noun',
   example: '',

@@ -4,31 +4,35 @@
   "title": "Bài 5",
   "vocabularies": [
     {
-      "kanji": "いきます",
+      "kanji": "行きます",
       "hiragana": "いきます",
       "romaji": "ikimasu",
       "meaning": "Đi",
+      "hanViet": "HÀNH",
       "partOfSpeech": "verb"
     },
     {
-      "kanji": "きます",
+      "kanji": "来ます",
       "hiragana": "きます",
       "romaji": "kimasu",
       "meaning": "Đến",
+      "hanViet": "LAI",
       "partOfSpeech": "verb"
     },
     {
-      "kanji": "かえります",
+      "kanji": "帰ります",
       "hiragana": "かえります",
       "romaji": "kaerimasu",
       "meaning": "Về",
+      "hanViet": "QUY",
       "partOfSpeech": "verb"
     },
     {
-      "kanji": "がっこう",
+      "kanji": "学校",
       "hiragana": "がっこう",
       "romaji": "gakkou",
       "meaning": "Trường học",
+      "hanViet": "HỌC HIỆU",
       "partOfSpeech": "noun"
     },
     {
@@ -36,48 +40,55 @@
       "hiragana": "",
       "romaji": "su-pa-",
       "meaning": "Siêu thị",
+      "hanViet": "",
       "partOfSpeech": "noun"
     },
     {
-      "kanji": "えき",
+      "kanji": "駅",
       "hiragana": "えき",
       "romaji": "eki",
       "meaning": "Nhà ga",
+      "hanViet": "DỊCH",
       "partOfSpeech": "noun"
     },
     {
-      "kanji": "ひこうき",
+      "kanji": "飛行機",
       "hiragana": "ひこうき",
       "romaji": "hikouki",
       "meaning": "Máy bay",
+      "hanViet": "PHI HÀNH CƠ",
       "partOfSpeech": "noun"
     },
     {
-      "kanji": "ふね",
+      "kanji": "船",
       "hiragana": "ふね",
       "romaji": "fune",
       "meaning": "Tàu thuy",
+      "hanViet": "THUYỀN",
       "partOfSpeech": "noun"
     },
     {
-      "kanji": "でんしゃ",
+      "kanji": "電車",
       "hiragana": "でんしゃ",
       "romaji": "densha",
       "meaning": "Tàu điện",
+      "hanViet": "ĐIỆN XA",
       "partOfSpeech": "noun"
     },
     {
-      "kanji": "ちかてつ",
+      "kanji": "地下鉄",
       "hiragana": "ちかてつ",
       "romaji": "chikatetsu",
       "meaning": "Tàu điện ngầm",
+      "hanViet": "ĐỊA HẠ THIẾT",
       "partOfSpeech": "noun"
     },
     {
-      "kanji": "しんかんせん",
+      "kanji": "新幹線",
       "hiragana": "しんかんせん",
       "romaji": "shinkansen",
       "meaning": "Tàu Shinkansen",
+      "hanViet": "TÂN CÁN TUYẾN",
       "partOfSpeech": "noun"
     },
     {
@@ -85,6 +96,7 @@
       "hiragana": "",
       "romaji": "basu",
       "meaning": "Xe buýt",
+      "hanViet": "",
       "partOfSpeech": "noun"
     },
     {
@@ -92,90 +104,103 @@
       "hiragana": "",
       "romaji": "takushii",
       "meaning": "Taxi",
+      "hanViet": "",
       "partOfSpeech": "noun"
     },
     {
-      "kanji": "じてんしゃ",
+      "kanji": "自転車",
       "hiragana": "じてんしゃ",
       "romaji": "jitensya",
       "meaning": "Xe đạp",
+      "hanViet": "TỰ CHUYỂN XA",
       "partOfSpeech": "noun"
     },
     {
-      "kanji": "あるいて",
+      "kanji": "歩いて",
       "hiragana": "あるいて",
       "romaji": "aruite",
       "meaning": "Đi bộ",
+      "hanViet": "BỘ",
       "partOfSpeech": "verb"
     },
     {
-      "kanji": "ひと",
+      "kanji": "人",
       "hiragana": "ひと",
       "romaji": "hito",
       "meaning": "Người",
+      "hanViet": "NHÂN",
       "partOfSpeech": "noun"
     },
     {
-      "kanji": "ともだち",
+      "kanji": "友達",
       "hiragana": "ともだち",
       "romaji": "tomodachi",
       "meaning": "Bạn",
+      "hanViet": "HỮU ĐẠT",
       "partOfSpeech": "noun"
     },
     {
-      "kanji": "かれ",
+      "kanji": "彼",
       "hiragana": "かれ",
       "romaji": "kare",
       "meaning": "Anh ấy",
+      "hanViet": "BỈ",
       "partOfSpeech": "pronoun"
     },
     {
-      "kanji": "かのじょ",
+      "kanji": "彼女",
       "hiragana": "かのじょ",
       "romaji": "kanojo",
       "meaning": "Cô ấy",
+      "hanViet": "BỈ NỮ",
       "partOfSpeech": "pronoun"
     },
     {
-      "kanji": "かぞく",
+      "kanji": "家族",
       "hiragana": "かぞく",
       "romaji": "kazoku",
       "meaning": "Gia đình",
+      "hanViet": "GIA TỘC",
       "partOfSpeech": "noun"
     },
     {
-      "kanji": "ひとりで",
+      "kanji": "一人で",
       "hiragana": "ひとりで",
       "romaji": "hitoride",
       "meaning": "Một mình",
+      "hanViet": "NHẤT NHÂN",
       "partOfSpeech": "adverb"
     },
     {
-      "kanji": "せんしゅう",
+      "kanji": "先週",
       "hiragana": "せんしゅう",
       "romaji": "senshuu",
       "meaning": "Tuần trước",
+      "hanViet": "TIÊN CHU",
       "partOfSpeech": "noun"
     },
     {
-      "kanji": "こんしゅう",
+      "kanji": "今週",
       "hiragana": "こんしゅう",
       "romaji": "konshuu",
       "meaning": "Tuần này",
+      "hanViet": "KIM CHU",
       "partOfSpeech": "noun"
     },
     {
-      "kanji": "らいしゅう",
+      "kanji": "来週",
       "hiragana": "らいしゅう",
       "romaji": "raishuu",
       "meaning": "Tuần sau",
+      "hanViet": "LAI CHU",
       "partOfSpeech": "noun"
     },
     {
-      "kanji": "なんじょうび",
-      "hiragana": "なんじょうび",
-      "romaji": "nanjyoubi",
+      "kanji": "何曜日",
+      "hiragana": "なんようび",
+      "romaji": "nanyoubi",
       "meaning": "Thứ mấy",
+      "hanViet": "HÀ DIỆU NHẬT",
       "partOfSpeech": "noun"
     }
   ]
