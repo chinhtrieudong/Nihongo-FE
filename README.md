@@ -5,8 +5,7 @@ A Japanese learning application built with React and Vite.
 ## Deployment
 
 The application is deployed on Vercel:
-- **Production:** https://frontend-nuukuja7d-lebachinhpt-gmailcoms-projects.vercel.app
-- **Aliased:** https://frontend-ashen-xi-29.vercel.app
+- **Production:** https://frontend-itjw4gi9v-lebachinhpt-gmailcoms-projects.vercel.app
 
 ## Getting Started
 
