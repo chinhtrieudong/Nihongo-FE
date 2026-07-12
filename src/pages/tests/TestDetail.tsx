@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { useParams, useNavigate, useLocation } from "react-router-dom";
 import {
     Card,
@@ -36,10 +36,12 @@ import {
     Maximize,
     Minimize,
     Volume2,
-    Languages
+    Languages,
+    Share2
 } from "lucide-react";
 import { EmptyState } from "../../components/common";
-import { jlptTestsAPI } from "../../services/api";
+import { jlptTestsAPI, normalizeJlptTest } from "../../services/api";
+import AudioPlayer from "../../components/AudioPlayer";
 
 const { Title, Text, Paragraph } = Typography;
 
@@ -126,6 +128,9 @@ const TestDetail: React.FC = () => {
     const [reviewMode, setReviewMode] = useState(false);
     const [isFullscreen, setIsFullscreen] = useState(false);
     const [loading, setLoading] = useState(true);
+    const [showResultsModal, setShowResultsModal] = useState(false);
+    const [audioPlaying, setAudioPlaying] = useState<string | null>(null);
+    const [showReviewModal, setShowReviewModal] = useState(false);
 
     const getSectionIcon = (section: Pick<TestSection, "id" | "name">) => {
         const key = String(section.id || section.name || "").toLowerCase();
@@ -159,9 +164,9 @@ const TestDetail: React.FC = () => {
 
                 const tryLoadLocalQuestions = async (level: string, testId: string, baseTest: any) => {
                     try {
-                        const res = await fetch(`/data/jlpt-tests/${encodeURIComponent(level)}/${encodeURIComponent(testId)}.json`);
-                        if (!res.ok) return false;
-                        const bundle = (await res.json()) as TestQuestionsBundle;
+                        // Try to load from the data directory using import
+                        const module = await import(`../../data/jlpt-tests/${level}/${testId}.json`);
+                        const bundle = module.default || module;
                         const qs = Array.isArray(bundle?.questions) ? bundle.questions : [];
                         if (qs.length === 0) return false;
 
@@ -170,9 +175,72 @@ const TestDetail: React.FC = () => {
                             ...(bundle.test || {}),
                         };
 
+                        // Get all valid section IDs from test metadata
+                        const validSectionIds = new Set((mergedTest.sections || []).map((s: any) => s.id));
+
+                        // Create a mapping from section names to section IDs
+                        const sectionNameToId = new Map<string, string>();
+                        (mergedTest.sections || []).forEach((s: any) => {
+                            sectionNameToId.set(s.name.toLowerCase(), s.id);
+                            sectionNameToId.set(s.id.toLowerCase(), s.id);
+                        });
+
+                        // Direct mapping for common Vietnamese section names to IDs
+                        const directMapping: Record<string, string> = {};
+                        (mergedTest.sections || []).forEach((s: any) => {
+                            const sectionId = s.id ? String(s.id) : '';
+                            if (!sectionId) return;
+                            const nameLower = s.name ? String(s.name).toLowerCase() : '';
+                            if (nameLower.includes('từ vựng') || nameLower.includes('vocabulary')) {
+                                directMapping['từ vựng'] = sectionId;
+                                directMapping['vocabulary'] = sectionId;
+                            } else if (nameLower.includes('ngữ pháp') || nameLower.includes('grammar')) {
+                                directMapping['ngữ pháp'] = sectionId;
+                                directMapping['grammar'] = sectionId;
+                            } else if (nameLower.includes('đọc') || nameLower.includes('reading')) {
+                                directMapping['đọc hiểu'] = sectionId;
+                                directMapping['reading'] = sectionId;
+                            } else if (nameLower.includes('nghe') || nameLower.includes('listen')) {
+                                directMapping['nghe hiểu'] = sectionId;
+                                directMapping['listening'] = sectionId;
+                            }
+                        });
+
+                        // Update questions to use correct section IDs
+                        const updatedQuestions = qs.map((q: Question) => {
+                            const sectionName = q.sectionId.toLowerCase();
+                            
+                            // Try direct mapping first
+                            let matchingSectionId: string | undefined = directMapping[sectionName];
+                            
+                            // If no direct match, try fuzzy matching
+                            if (!matchingSectionId) {
+                                matchingSectionId = sectionNameToId.get(sectionName) || 
+                                                   Array.from(sectionNameToId.values()).find(id => 
+                                                     sectionName.includes(id.toLowerCase()) || 
+                                                     id.toLowerCase().includes(sectionName)
+                                                   );
+                            }
+                            
+                            return {
+                                ...q,
+                                sectionId: matchingSectionId || q.sectionId
+                            };
+                        });
+
+                        // If questions still don't match any section, assign them to the first section
+                        if (updatedQuestions.length > 0 && mergedTest.sections.length > 0) {
+                            const firstSectionId = mergedTest.sections[0].id;
+                            updatedQuestions.forEach((q: Question) => {
+                                if (!validSectionIds.has(q.sectionId)) {
+                                    q.sectionId = firstSectionId;
+                                }
+                            });
+                        }
+
                         // Keep metadata consistent with loaded question count
                         const countsBySection = new Map<string, number>();
-                        qs.forEach((q) => countsBySection.set(q.sectionId, (countsBySection.get(q.sectionId) || 0) + 1));
+                        updatedQuestions.forEach((q: Question) => countsBySection.set(q.sectionId, (countsBySection.get(q.sectionId) || 0) + 1));
                         const patchedSections = (mergedTest.sections || []).map((s: any) => ({
                             ...s,
                             questions: countsBySection.get(s.id) ?? s.questions,
@@ -181,15 +249,16 @@ const TestDetail: React.FC = () => {
                         const patchedTest = {
                             ...mergedTest,
                             sections: patchedSections,
-                            questions: qs.length,
+                            questions: updatedQuestions.length,
                         };
 
                         setTest(patchedTest);
                         setTimeRemaining((patchedTest.duration || 0) * 60);
-                        setQuestions(qs);
-                        message.info("Đang dùng câu hỏi từ JSON local.");
+                        setQuestions(updatedQuestions);
+                        console.log('✓ Loaded questions:', updatedQuestions.length, 'Sections:', patchedSections.map((s: any) => ({ id: s.id, name: s.name, questions: s.questions })));
                         return true;
-                    } catch {
+                    } catch (error) {
+                        console.error('Error loading local questions:', error);
                         return false;
                     }
                 };
@@ -213,6 +282,27 @@ const TestDetail: React.FC = () => {
                     setQuestions(sampleQuestions);
                 };
 
+                // Try to load test data directly from local JSON first (faster, no error message)
+                console.log('Loading test data from local JSON');
+                try {
+                    const localData = await import(`../../data/tests/jlptTests.json`);
+                    const localTests = localData.default.data.map((test: any) => normalizeJlptTest(test));
+                    const localTest = localTests.find(
+                        (t: any) => String(t.id) === String(testId) && String(t.level).toUpperCase() === level
+                    );
+                    if (localTest) {
+                        applyTestData(localTest);
+                        const loaded = await tryLoadLocalQuestions(level, testId, localTest);
+                        if (!loaded) {
+                            generateMockQuestionsFromTest(localTest);
+                        }
+                        return;
+                    }
+                } catch (localError) {
+                    console.error('Error loading local test data:', localError);
+                }
+
+                // If local JSON fails, try API
                 try {
                     const response = await jlptTestsAPI.getTest(level, testId);
                     if (response?.success && response?.data) {
@@ -223,12 +313,12 @@ const TestDetail: React.FC = () => {
                         }
                         return;
                     }
-                    message.error("Không tìm thấy bài thi.");
                 } catch (apiError) {
-                    console.error('Error fetching test:', apiError);
-                    message.error('Không thể tải bài thi');
-                    throw apiError;
+                    console.error('Error fetching test from API:', apiError);
                 }
+
+                // If both fail, show error
+                message.error("Không tìm thấy bài thi.");
             } catch (error) {
                 console.error('Error fetching test:', error);
                 message.error('Không thể tải bài thi');
@@ -237,9 +327,12 @@ const TestDetail: React.FC = () => {
             }
         };
 
-        fetchTestData();
+    fetchTestData();
+  }, [testId, location.search]); // Remove message from dependencies
 
-        if (attempt) {
+  // Load attempt data separately
+  useEffect(() => {
+    if (attempt) {
             const attemptData = localStorage.getItem(attempt);
             if (attemptData) {
                 const parsedAttempt: TestAttempt = JSON.parse(attemptData);
@@ -257,12 +350,14 @@ const TestDetail: React.FC = () => {
 
     // Timer effect
     useEffect(() => {
-        let interval: NodeJS.Timeout;
+        let interval: number;
         if (isTestActive && timeRemaining > 0) {
             interval = setInterval(() => {
                 setTimeRemaining(prev => {
                     if (prev <= 1) {
-                        handleSubmitTest();
+                        // Use functional update to avoid dependency on handleSubmitTest
+                        setShowSubmitModal(true);
+                        setIsTestActive(false);
                         return 0;
                     }
                     return prev - 1;
@@ -380,8 +475,9 @@ const TestDetail: React.FC = () => {
         // Note: Test completion is stored in localStorage only
         // In a real app, this would be sent to the backend
 
-        message.success(`Bài thi đã hoàn thành! Điểm của bạn: ${score}%`);
-        navigate(`/test-results/${test.id}`);
+        // Show results modal
+        setShowResultsModal(true);
+        setIsTestActive(false);
     };
 
     // Enhanced feature handlers
@@ -595,16 +691,14 @@ const TestDetail: React.FC = () => {
                                 />
                             </Tooltip>
                         </div>
-                        <div className="text-center mb-4">
-                            <Button
-                                type="primary"
-                                icon={<Volume2 className="w-4 h-4" />}
-                                size="large"
-                                onClick={() => message.info("Tính năng phát audio sẽ được triển khai sau")}
-                            >
-                                Nghe audio
-                            </Button>
-                        </div>
+                        {question.audioUrl && (
+                            <div className="text-center mb-4">
+                                <AudioPlayer
+                                    src={question.audioUrl}
+                                    title="Nghe audio"
+                                />
+                            </div>
+                        )}
                         <Radio.Group
                             value={answers[question.id]}
                             onChange={(e) => handleAnswerChange(question.id, e.target.value)}
@@ -641,7 +735,7 @@ const TestDetail: React.FC = () => {
         }
     };
 
-    if (!test) {
+    if (!test && !loading) {
         return (
             <div className="min-h-full bg-gradient-to-br from-slate-50 to-slate-100 dark:from-slate-900 dark:to-slate-800 p-8">
                 <EmptyState
@@ -654,6 +748,19 @@ const TestDetail: React.FC = () => {
                         onClick: () => navigate("/tests"),
                     }}
                 />
+            </div>
+        );
+    }
+
+    if (loading || !test) {
+        return (
+            <div className="min-h-screen flex items-center justify-center bg-secondary-50 dark:bg-secondary-900">
+                <div className="text-center">
+                    <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary-600 mx-auto mb-4"></div>
+                    <p className="text-secondary-600 dark:text-secondary-400">
+                        Đang tải bài thi...
+                    </p>
+                </div>
             </div>
         );
     }
@@ -915,13 +1022,13 @@ const TestDetail: React.FC = () => {
             </Card>
 
             {/* Question Content */}
-            {isTestActive && currentQuestion && (
+            {isTestActive && questions.length > 0 && (
                 <Card>
                     <div className="mb-4 flex justify-between items-center">
                         <Space>
                             <Tag color="blue">Câu {currentQuestionIndex + 1}</Tag>
-                            <Tag color="green">{currentSection?.name}</Tag>
-                            {flaggedQuestions.includes(currentQuestion.id) && (
+                            <Tag color="green">{currentSection?.name || 'Hoàn thành'}</Tag>
+                            {currentQuestion && flaggedQuestions.includes(currentQuestion.id) && (
                                 <Tag color="orange" icon={<Flag className="w-4 h-4" />}>Đã đánh dấu</Tag>
                             )}
                         </Space>
@@ -930,7 +1037,11 @@ const TestDetail: React.FC = () => {
                         </Text>
                     </div>
 
-                    {renderQuestion()}
+                    {currentQuestion ? renderQuestion() : (
+                        <div className="text-center py-8">
+                            <Text type="secondary">Không có câu hỏi trong phần này</Text>
+                        </div>
+                    )}
 
                     {/* Navigation */}
                     <Divider />
@@ -954,23 +1065,25 @@ const TestDetail: React.FC = () => {
                         </Col>
                         <Col>
                             <Space>
-                                <Tooltip title={flaggedQuestions.includes(currentQuestion.id) ? "Bỏ đánh dấu" : "Đánh dấu câu hỏi"}>
-                                    <Button
-                                        type={flaggedQuestions.includes(currentQuestion.id) ? "primary" : "default"}
-                                        icon={<Flag className="w-4 h-4" />}
-                                        onClick={() => handleFlagQuestion(currentQuestion.id)}
-                                        className={flaggedQuestions.includes(currentQuestion.id) ? "text-orange-500 border-orange-500" : ""}
-                                    >
-                                        {flaggedQuestions.includes(currentQuestion.id) ? "Đã đánh dấu" : "Đánh dấu"}
-                                    </Button>
-                                </Tooltip>
+                                {currentQuestion && (
+                                    <Tooltip title={flaggedQuestions.includes(currentQuestion.id) ? "Bỏ đánh dấu" : "Đánh dấu câu hỏi"}>
+                                        <Button
+                                            type={flaggedQuestions.includes(currentQuestion.id) ? "primary" : "default"}
+                                            icon={<Flag className="w-4 h-4" />}
+                                            onClick={() => handleFlagQuestion(currentQuestion.id)}
+                                            className={flaggedQuestions.includes(currentQuestion.id) ? "text-orange-500 border-orange-500" : ""}
+                                        >
+                                            {flaggedQuestions.includes(currentQuestion.id) ? "Đã đánh dấu" : "Đánh dấu"}
+                                        </Button>
+                                    </Tooltip>
+                                )}
                                 <Button
                                     type="primary"
                                     icon={<ChevronRight className="w-4 h-4" />}
                                     onClick={handleNextQuestion}
                                 >
                                     {currentSectionIndex === test.sections.length - 1 &&
-                                        currentQuestionIndex === questions.filter(q => q.sectionId === currentSection?.id).length - 1
+                                        currentQuestionIndex === (questions.filter(q => q.sectionId === currentSection?.id).length - 1)
                                         ? 'Hoàn thành' : 'Câu tiếp theo'}
                                 </Button>
                             </Space>
@@ -1007,6 +1120,200 @@ const TestDetail: React.FC = () => {
                     <p>Bạn còn {flaggedQuestions.length} câu hỏi đã đánh dấu cần xem lại.</p>
                 )}
                 <p>Bài thi sẽ không thể thay đổi sau khi nộp.</p>
+            </Modal>
+
+            {/* Results Modal - Shows immediately after submission */}
+            <Modal
+                title="Kết quả bài thi"
+                open={showResultsModal}
+                onOk={() => {
+                    setShowResultsModal(false);
+                    navigate(`/test-results/${test?.id}`);
+                }}
+                onCancel={() => {
+                    setShowResultsModal(false);
+                    navigate(`/test-results/${test?.id}`);
+                }}
+                okText="Xem chi tiết"
+                cancelText="Đóng"
+                width={800}
+            >
+                <div className="space-y-4">
+                    <div className="text-center">
+                        <Title level={2}>
+                            {(() => {
+                                let correctAnswers = 0;
+                                questions.forEach(question => {
+                                    if (answers[question.id] === question.correctAnswer) {
+                                        correctAnswers++;
+                                    }
+                                });
+                                const score = Math.round((correctAnswers / questions.length) * 100);
+                                return `${score}%`;
+                            })()}
+                        </Title>
+                        <Paragraph>
+                            {(() => {
+                                let correctAnswers = 0;
+                                questions.forEach(question => {
+                                    if (answers[question.id] === question.correctAnswer) {
+                                        correctAnswers++;
+                                    }
+                                });
+                                const score = Math.round((correctAnswers / questions.length) * 100);
+                                if (score >= 80) return "Xuất sắc! Bạn đã làm rất tốt.";
+                                if (score >= 60) return "Khá! Cần cố gắng hơn nữa.";
+                                return "Cần cải thiện! Hãy ôn tập lại kiến thức.";
+                            })()}
+                        </Paragraph>
+                    </div>
+
+                    <Divider />
+
+                    <div className="space-y-2">
+                        <div className="flex justify-between">
+                            <Text strong>Tổng số câu:</Text>
+                            <Text>{questions.length}</Text>
+                        </div>
+                        <div className="flex justify-between">
+                            <Text strong>Đã trả lời:</Text>
+                            <Text>{answeredQuestions}</Text>
+                        </div>
+                        <div className="flex justify-between">
+                            <Text strong>Chưa trả lời:</Text>
+                            <Text>{questions.length - answeredQuestions}</Text>
+                        </div>
+                    </div>
+
+                    <div className="flex gap-2 mt-4">
+                        <Button
+                            type="primary"
+                            icon={<Book className="w-4 h-4" />}
+                            onClick={() => {
+                                setShowResultsModal(false);
+                                setShowReviewModal(true);
+                            }}
+                            block
+                        >
+                            Xem lại câu trả lời
+                        </Button>
+                        <Button
+                            icon={<Share2 className="w-4 h-4" />}
+                            onClick={() => {
+                                message.success('Đã sao chép link kết quả!');
+                            }}
+                            block
+                        >
+                            Chia sẻ kết quả
+                        </Button>
+                    </div>
+
+                    <Alert
+                        message="Lưu ý"
+                        description="Kết quả đã được lưu. Bạn có thể xem chi tiết kết quả trên trang kết quả bài thi."
+                        type="info"
+                        showIcon
+                    />
+                </div>
+            </Modal>
+
+            {/* Detailed Answer Review Modal */}
+            <Modal
+                title="Xem lại câu trả lời chi tiết"
+                open={showReviewModal}
+                onCancel={() => setShowReviewModal(false)}
+                footer={[
+                    <Button key="close" onClick={() => setShowReviewModal(false)}>
+                        Đóng
+                    </Button>,
+                    <Button key="retry" type="primary" onClick={() => {
+                        setShowReviewModal(false);
+                        navigate(`/test/${test?.id}?level=${test?.level}`);
+                    }}>
+                        Làm lại bài thi
+                    </Button>
+                ]}
+                width={1000}
+            >
+                <div className="space-y-4 max-h-[600px] overflow-y-auto">
+                    {questions.map((question, index) => {
+                        const userAnswer = answers[question.id];
+                        const isCorrect = userAnswer === question.correctAnswer;
+                        const isAnswered = userAnswer !== undefined;
+
+                        return (
+                            <Card
+                                key={question.id}
+                                className={`border-l-4 ${
+                                    !isAnswered ? 'border-l-gray-400' :
+                                    isCorrect ? 'border-l-green-500' : 'border-l-red-500'
+                                }`}
+                            >
+                                <div className="space-y-3">
+                                    <div className="flex justify-between items-start">
+                                        <Text strong className="text-lg">
+                                            Câu {index + 1}: {question.question}
+                                        </Text>
+                                        {isAnswered && (
+                                            <Tag color={isCorrect ? 'success' : 'error'}>
+                                                {isCorrect ? 'Đúng' : 'Sai'}
+                                            </Tag>
+                                        )}
+                                    </div>
+
+                                    {question.readingText && (
+                                        <div className="p-3 bg-gray-50 dark:bg-gray-800 rounded">
+                                            <Text>{question.readingText}</Text>
+                                        </div>
+                                    )}
+
+                                    {question.options && (
+                                        <div className="space-y-2">
+                                            {question.options.map((option, optIndex) => {
+                                                const isSelected = userAnswer === optIndex;
+                                                const isCorrectAnswer = question.correctAnswer === optIndex;
+
+                                                return (
+                                                    <div
+                                                        key={optIndex}
+                                                        className={`p-3 rounded border-2 ${
+                                                            isCorrectAnswer ? 'border-green-500 bg-green-50 dark:bg-green-900/20' :
+                                                            isSelected ? 'border-red-500 bg-red-50 dark:bg-red-900/20' :
+                                                            'border-gray-200 dark:border-gray-700'
+                                                        }`}
+                                                    >
+                                                        <Radio checked={isSelected} disabled>
+                                                            {option}
+                                                        </Radio>
+                                                        {isCorrectAnswer && (
+                                                            <Tag color="success" className="ml-2">
+                                                                Đáp án đúng
+                                                            </Tag>
+                                                        )}
+                                                        {isSelected && !isCorrectAnswer && (
+                                                            <Tag color="error" className="ml-2">
+                                                                Đáp án của bạn
+                                                            </Tag>
+                                                        )}
+                                                    </div>
+                                                );
+                                            })}
+                                        </div>
+                                    )}
+
+                                    {question.explanation && (
+                                        <Alert
+                                            message="Giải thích"
+                                            description={question.explanation}
+                                            type="info"
+                                            showIcon
+                                        />
+                                    )}
+                                </div>
+                            </Card>
+                        );
+                    })}
+                </div>
             </Modal>
         </div>
     );

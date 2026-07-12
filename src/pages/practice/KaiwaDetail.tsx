@@ -20,64 +20,31 @@ import {
   Clock,
 } from "lucide-react";
 import AudioPlayer from "../../components/AudioPlayer";
-import { minnaAPI } from "../../services/api";
+// import { minnaAPI } from "../../services/api"; // Disabled - using local JSON data
 
 const { Title, Text, Paragraph } = Typography;
 const { Panel } = Collapse;
 
-// Types based on API response
+// Types based on local JSON data
 interface DialogueLine {
-  character: string;
-  jpText: string;
+  speaker: string;
+  japanese: string;
   romaji: string;
-  viTranslation: string;
-  audioUrl: string;
-  _id: string;
-}
-
-interface Character {
-  name: string;
-  nameJp: string;
-  role: string;
-  _id: string;
+  vietnamese: string;
 }
 
 interface KaiwaItem {
-  _id: string;
-  lessonId: string;
-  textbook: string;
-  lessonNumber: number;
-  kaiwaNumber: number;
+  id: number;
   title: string;
-  titleJp: string;
-  scenario: string;
-  characters: Character[];
-  lines: DialogueLine[];
-  audioUrl: string;
-  pageReference: string;
-  createdAt: string;
-  updatedAt: string;
-  __v: number;
+  speakers: string[];
+  dialogue: DialogueLine[];
 }
 
-interface LessonInfo {
+interface KaiwaData {
   lessonNumber: number;
   title: string;
-  title_jp: string;
-  title_vi: string;
-  level: string;
-  book: string;
-  description_jp: string;
-  description_vi: string;
-}
-
-interface KaiwaResponse {
-  success: boolean;
-  data: KaiwaItem[];
-  lesson: LessonInfo;
-  total_items: number;
-  component: string;
-  lesson_number: number;
+  description: string;
+  kaiwa: KaiwaItem[];
 }
 
 // Speaker color mapping
@@ -104,7 +71,7 @@ const KaiwaDetail: React.FC = () => {
   const navigate = useNavigate();
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
-  const [kaiwaData, setKaiwaData] = useState<KaiwaResponse | null>(null);
+  const [kaiwaData, setKaiwaData] = useState<KaiwaData | null>(null);
   const [activeKaiwa, setActiveKaiwa] = useState<KaiwaItem | null>(null);
   const [selectedLineIndex, setSelectedLineIndex] = useState<number | null>(null);
   const [visibleTranslations, setVisibleTranslations] = useState<Set<number>>(new Set());
@@ -116,19 +83,14 @@ const KaiwaDetail: React.FC = () => {
       try {
         setLoading(true);
         setError(null);
-
-        const response = await minnaAPI.getKaiwa(parseInt(lessonNumber));
-        
-        if (response.data.success) {
-          setKaiwaData(response.data);
-          if (response.data.data.length > 0) {
-            setActiveKaiwa(response.data.data[0]);
-          }
-        } else {
-          setError("Không thể tải dữ liệu kaiwa");
+        // Load local JSON data instead of API call
+        const data = await import(`../../data/practice/kaiwa/lesson${lessonNumber}.json`);
+        setKaiwaData(data.default);
+        if (data.default.kaiwa.length > 0) {
+          setActiveKaiwa(data.default.kaiwa[0]);
         }
       } catch (err) {
-        console.error("Error fetching kaiwa data:", err);
+        console.error("Error loading kaiwa data:", err);
         setError("Không thể tải dữ liệu kaiwa. Vui lòng thử lại sau.");
       } finally {
         setLoading(false);
@@ -178,9 +140,9 @@ const KaiwaDetail: React.FC = () => {
     );
   }
 
-  const { data: kaiwaItems } = kaiwaData;
-  const lesson = { lessonNumber: Number(lessonNumber), title: `Lesson ${lessonNumber}`, title_jp: `第${lessonNumber}課`, title_vi: `Bài ${lessonNumber}`, level: 'N5', book: 'Minna no Nihongo', description_jp: '', description_vi: '' };
-  const colors = getSpeakerColor(activeKaiwa.characters[0]?.name);
+  const kaiwaItems = kaiwaData?.kaiwa || [];
+  const lesson = { lessonNumber: Number(lessonNumber), title: kaiwaData?.title || `Lesson ${lessonNumber}`, title_jp: `第${lessonNumber}課`, title_vi: `Bài ${lessonNumber}`, level: 'N5', book: 'Minna no Nihongo', description_jp: '', description_vi: '' };
+  const colors = getSpeakerColor(activeKaiwa.speakers[0] || 'A');
 
   return (
     <div className="min-h-full bg-gradient-to-br from-slate-50 to-slate-100 dark:from-slate-900 dark:to-slate-800">
@@ -218,20 +180,11 @@ const KaiwaDetail: React.FC = () => {
                 <Tag color="blue" className="text-xs px-2 py-0.5">{lesson.book}</Tag>
                 <Tag className="text-xs px-2 py-0.5 flex items-center gap-1">
                   <Clock className="w-3 h-3" />
-                  {activeKaiwa.lines.length} câu
+                  {activeKaiwa.dialogue.length} câu
                 </Tag>
               </div>
             </div>
           </div>
-
-          {/* Audio Player */}
-          {activeKaiwa.audioUrl && (
-            <div className="mb-4">
-              <AudioPlayer
-                src={activeKaiwa.audioUrl}
-              />
-            </div>
-          )}
 
           {/* Characters */}
           <Card className="bg-surface-1 border-border mb-3" styles={{ body: { padding: '12px 16px' } }}>
@@ -240,14 +193,14 @@ const KaiwaDetail: React.FC = () => {
               <Text strong className="text-text-main">Nhân vật</Text>
             </div>
             <div className="flex flex-wrap gap-2">
-              {activeKaiwa.characters.map((char) => {
-                const charColors = getSpeakerColor(char.name);
+              {activeKaiwa.speakers.map((speaker) => {
+                const charColors = getSpeakerColor(speaker);
                 return (
                   <Tag
-                    key={char.name}
+                    key={speaker}
                     className={`${charColors.bg} ${charColors.text} ${charColors.border} !border !px-3 !py-1 !text-sm !font-medium`}
                   >
-                    {char.name} ({char.nameJp})
+                    {speaker}
                   </Tag>
                 );
               })}
@@ -263,8 +216,8 @@ const KaiwaDetail: React.FC = () => {
             </div>
 
             <div className="space-y-3 max-w-2xl mx-auto">
-              {activeKaiwa.lines.map((line: DialogueLine, index: number) => {
-                const lineColors = getSpeakerColor(line.character);
+              {activeKaiwa.dialogue.map((line: DialogueLine, index: number) => {
+                const lineColors = getSpeakerColor(line.speaker);
                 const isSelected = selectedLineIndex === index;
                 const showTranslation = visibleTranslations.has(index);
 
@@ -295,7 +248,7 @@ const KaiwaDetail: React.FC = () => {
                           w-10 h-10 rounded-full flex items-center justify-center text-sm font-bold
                           ${lineColors.bg} ${lineColors.text} border-2 ${lineColors.border}
                         `}>
-                          {line.character.charAt(0)}
+                          {line.speaker.charAt(0)}
                         </div>
                       </div>
 
@@ -305,8 +258,12 @@ const KaiwaDetail: React.FC = () => {
                           text-lg font-medium leading-relaxed mb-2 text-gray-900 dark:text-gray-100
                           ${isSelected ? 'text-blue-900 dark:text-blue-200' : ''}
                         `}>
-                          {line.jpText}
+                          {line.japanese}
                         </p>
+                        {/* Romaji - Hidden */}
+                        {/* <p className="text-sm text-text-sub italic mb-2">
+                          {line.romaji}
+                        </p> */}
 
                         {/* Translation - Toggleable */}
                         <div className={`
@@ -315,7 +272,7 @@ const KaiwaDetail: React.FC = () => {
                         `}>
                           <div className="pt-2 border-t border-primary-200 dark:border-primary-800">
                             <p className="text-base text-text-sub">
-                              {line.viTranslation}
+                              {line.vietnamese}
                             </p>
                           </div>
                         </div>

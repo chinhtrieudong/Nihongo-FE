@@ -17,46 +17,24 @@ import {
   Users,
 } from "lucide-react";
 import AudioPlayer from "../../components/AudioPlayer";
-import { minnaAPI } from "../../services/api";
+// import { minnaAPI } from "../../services/api"; // Disabled - using local JSON data
 
 const { Title, Text } = Typography;
 
-interface ReibunDialogueLine {
-  speaker: string;
-  text: string;
+interface ReibunItem {
+  id: number;
+  japanese: string;
   romaji: string;
-  translation: string;
+  vietnamese: string;
+  grammarPoint: string;
   context: string;
 }
 
-interface ReibunItem {
-  id: string;
-  title: string;
-  description: string;
-  dialogue: ReibunDialogueLine[];
-  total_lines: number;
-  grammar_focus: string[];
-  vocabulary_focus: string[];
-  audioUrl: string;
-  type: string;
-  characters?: string[];
-}
-
-interface LessonInfo {
+interface ReibunData {
   lessonNumber: number;
   title: string;
-  title_jp: string;
-  level: string;
-  book: string;
-}
-
-interface ReibunResponse {
-  success: boolean;
-  data: ReibunItem[];
-  lesson: LessonInfo;
-  total_items: number;
-  component: string;
-  lesson_number: number;
+  description: string;
+  reibun: ReibunItem[];
 }
 
 const ReibunDetail: React.FC = () => {
@@ -64,9 +42,7 @@ const ReibunDetail: React.FC = () => {
   const navigate = useNavigate();
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
-  const [reibunData, setReibunData] = useState<ReibunResponse | null>(null);
-  const [selectedLineIndex, setSelectedLineIndex] = useState<number | null>(null);
-  const [visibleTranslations, setVisibleTranslations] = useState<Set<number>>(new Set());
+  const [reibunData, setReibunData] = useState<ReibunData | null>(null);
 
   useEffect(() => {
     const fetchReibunData = async () => {
@@ -74,16 +50,11 @@ const ReibunDetail: React.FC = () => {
 
       try {
         setLoading(true);
-        // Note: Reibun endpoint deprecated, use lesson content
-        const response = await minnaAPI.getLessonContent(parseInt(lessonNumber));
-        
-        if (response.data.success) {
-          setReibunData(response.data);
-        } else {
-          setError("Không thể tải dữ liệu reibun");
-        }
+        // Load local JSON data instead of API call
+        const data = await import(`../../data/practice/reibun/lesson${lessonNumber}.json`);
+        setReibunData(data.default);
       } catch (err) {
-        console.error("Error fetching reibun:", err);
+        console.error("Error loading reibun data:", err);
         setError("Không thể tải dữ liệu reibun");
       } finally {
         setLoading(false);
@@ -92,18 +63,6 @@ const ReibunDetail: React.FC = () => {
 
     fetchReibunData();
   }, [lessonNumber]);
-
-  const toggleTranslation = (index: number) => {
-    setVisibleTranslations(prev => {
-      const newSet = new Set(prev);
-      if (newSet.has(index)) {
-        newSet.delete(index);
-      } else {
-        newSet.add(index);
-      }
-      return newSet;
-    });
-  };
 
   if (loading) {
     return (
@@ -133,15 +92,8 @@ const ReibunDetail: React.FC = () => {
     );
   }
 
-  const { lesson, data: reibunItems } = reibunData;
-  const activeReibun = reibunItems[0]; // Reibun thường có 1 item chứa toàn bộ dialogue
-
-  // Speaker color mapping
-  const speakerColors: Record<string, { bg: string; text: string; border: string }> = {
-    A: { bg: "bg-purple-100", text: "text-purple-700", border: "border-purple-300" },
-    B: { bg: "bg-orange-100", text: "text-orange-700", border: "border-orange-300" },
-    C: { bg: "bg-green-100", text: "text-green-700", border: "border-green-300" },
-  };
+  const reibunItems = reibunData?.reibun || [];
+  const lesson = { lessonNumber: Number(lessonNumber), title: reibunData?.title || `Lesson ${lessonNumber}`, title_jp: `第${lessonNumber}課`, level: 'N5', book: 'Minna no Nihongo' };
 
   return (
     <div className="min-h-full bg-gradient-to-br from-slate-50 to-slate-100 dark:from-slate-900 dark:to-slate-800">
@@ -178,162 +130,67 @@ const ReibunDetail: React.FC = () => {
               <Tag color="blue" className="text-xs px-2 py-0.5">{lesson.book}</Tag>
               <Tag className="text-xs px-2 py-0.5 flex items-center gap-1">
                 <Languages className="w-3 h-3" />
-                {activeReibun.total_lines} câu
+                {reibunItems.length} câu
               </Tag>
             </div>
           </div>
         </div>
 
-        {/* Reibun Title & Description */}
-        <Card className="bg-surface-1 border-border mb-3" styles={{ body: { padding: '12px 16px' } }}>
-          <Text strong className="text-text-main block">{activeReibun.title}</Text>
-          <Text className="text-text-sub text-sm">{activeReibun.description}</Text>
-        </Card>
-
-        {/* Audio Player */}
-        {activeReibun.audioUrl && (
-          <div className="mb-4">
-            <AudioPlayer src={activeReibun.audioUrl} />
-          </div>
+        {/* Description */}
+        {reibunData?.description && (
+          <Card className="bg-surface-1 border-border mb-3" styles={{ body: { padding: '12px 16px' } }}>
+            <Text className="text-text-sub text-sm">{reibunData.description}</Text>
+          </Card>
         )}
 
-        {/* Characters */}
-        <Card className="bg-surface-1 border-border mb-3" styles={{ body: { padding: '12px 16px' } }}>
-          <div className="flex items-center gap-2 mb-3">
-            <Users className="w-5 h-5 text-text-sub" />
-            <Text strong className="text-text-main">Nhân vật</Text>
-          </div>
-          <div className="flex flex-wrap gap-2">
-            {(activeReibun.characters || Array.from(new Set(activeReibun.dialogue.map(d => d.speaker)))).map((char) => {
-              const speakerColors: Record<string, { bg: string; text: string; border: string }> = {
-                A: { bg: "bg-purple-100", text: "text-purple-700", border: "border-purple-300" },
-                B: { bg: "bg-orange-100", text: "text-orange-700", border: "border-orange-300" },
-                C: { bg: "bg-green-100", text: "text-green-700", border: "border-green-300" },
-              };
-              const colors = speakerColors[char] || { bg: "bg-gray-100", text: "text-gray-700", border: "border-gray-300" };
-              return (
-                <Tag
-                  key={char}
-                  className={`${colors.bg} ${colors.text} ${colors.border} !border !px-3 !py-1 !text-sm !font-medium`}
-                >
-                  {char}
-                </Tag>
-              );
-            })}
-          </div>
-        </Card>
+        {/* Reibun List */}
+        <div className="space-y-3">
+          {reibunItems.map((item: ReibunItem, index: number) => (
+            <Card
+              key={item.id}
+              className="bg-surface-1 border-border"
+              styles={{ body: { padding: '12px 16px' } }}
+            >
+              <div className="flex items-start gap-3">
+                <div className="w-8 h-8 rounded-full bg-purple-100 flex items-center justify-center flex-shrink-0">
+                  <Text strong className="text-purple-600 text-sm">{index + 1}</Text>
+                </div>
+                <div className="flex-1 min-w-0">
+                  {/* Japanese */}
+                  <div className="mb-2">
+                    <Text strong className="text-lg text-text-main block">{item.japanese}</Text>
+                  </div>
 
-        {/* Dialogue - Improved UX */}
-        <Card className="bg-surface-1 border-border mb-3" styles={{ body: { padding: '20px' } }}>
-          <div className="flex items-center gap-2 mb-5">
-            <MessageSquare className="w-5 h-5 text-text-sub" />
-            <Text strong className="text-text-main">Hội thoại ví dụ</Text>
-            <Text type="secondary" className="text-xs ml-auto">💡 Click để xem nghĩa</Text>
-          </div>
+                  {/* Romaji - Hidden */}
+                  {/* <div className="mb-2">
+                    <Text className="text-text-sub block italic">{item.romaji}</Text>
+                  </div> */}
 
-          <div className="space-y-3 max-w-2xl mx-auto">
-            {activeReibun.dialogue.map((line, index) => {
-              const speakerColors: Record<string, { bg: string; text: string; border: string }> = {
-                A: { bg: "bg-purple-100", text: "text-purple-700", border: "border-purple-300" },
-                B: { bg: "bg-orange-100", text: "text-orange-700", border: "border-orange-300" },
-                C: { bg: "bg-green-100", text: "text-green-700", border: "border-green-300" },
-              };
-              const colors = speakerColors[line.speaker] || { bg: "bg-gray-100", text: "text-gray-700", border: "border-gray-300" };
-              const isSelected = selectedLineIndex === index;
-              const showTranslation = visibleTranslations.has(index);
+                  {/* Vietnamese */}
+                  <div className="mb-2">
+                    <Text className="text-text-main block">{item.vietnamese}</Text>
+                  </div>
 
-              return (
-                <div
-                  key={index}
-                  onClick={() => {
-                    setSelectedLineIndex(index);
-                    toggleTranslation(index);
-                  }}
-                  className={`
-                    relative rounded-xl p-4 cursor-pointer transition-all duration-300 border
-                    ${isSelected
-                      ? 'bg-purple-100 dark:bg-purple-900/30 ring-2 ring-purple-400 shadow-md scale-[1.02] border-purple-200 dark:border-purple-700'
-                      : 'bg-white dark:bg-secondary-800 border-gray-200 dark:border-secondary-700 hover:bg-gray-50 dark:hover:bg-secondary-700'
-                    }
-                  `}
-                >
-                  {/* Current indicator */}
-                  {isSelected && (
-                    <div className="absolute -left-2 top-1/2 -translate-y-1/2 w-1.5 h-8 bg-primary-500 rounded-full" />
+                  {/* Grammar Point */}
+                  {item.grammarPoint && (
+                    <div className="mt-2 p-2 bg-purple-50 dark:bg-purple-900/20 rounded border border-purple-100 dark:border-purple-800">
+                      <Text className="text-text-sub text-xs block mb-1">Ngữ pháp</Text>
+                      <Text className="text-sm text-text-main">{item.grammarPoint}</Text>
+                    </div>
                   )}
 
-                  <div className="flex gap-3">
-                    {/* Speaker Avatar */}
-                    <div className="flex-shrink-0">
-                      <div className={`
-                        w-10 h-10 rounded-full flex items-center justify-center text-sm font-bold
-                        ${colors.bg} ${colors.text} border-2 ${colors.border}
-                      `}>
-                        {line.speaker}
-                      </div>
+                  {/* Context */}
+                  {item.context && (
+                    <div className="mt-2 p-2 bg-blue-50 dark:bg-blue-900/20 rounded border border-blue-100 dark:border-blue-800">
+                      <Text className="text-text-sub text-xs block mb-1">Ngữ cảnh</Text>
+                      <Text className="text-sm text-text-main">{item.context}</Text>
                     </div>
-
-                    {/* Content */}
-                    <div className="flex-1 min-w-0">
-                      <p className={`
-                        text-lg font-medium leading-relaxed mb-2 text-gray-900 dark:text-gray-100
-                        ${isSelected ? 'text-purple-900 dark:text-purple-200' : ''}
-                      `}>
-                        {line.text}
-                      </p>
-
-                      {/* Translation - Toggleable */}
-                      <div className={`
-                        overflow-hidden transition-all duration-300
-                        ${showTranslation ? 'max-h-32 opacity-100' : 'max-h-0 opacity-0'}
-                      `}>
-                        <div className="pt-2 border-t border-primary-200 dark:border-primary-800 space-y-1">
-                          <p className="text-base text-text-sub">
-                            {line.translation}
-                          </p>
-                          {line.context && (
-                            <p className="text-sm text-text-sub/80 italic">
-                              {line.context}
-                            </p>
-                          )}
-                        </div>
-                      </div>
-                    </div>
-                  </div>
+                  )}
                 </div>
-              );
-            })}
-          </div>
-        </Card>
-
-        {/* Grammar Focus */}
-        <Card className="bg-surface-1 border-border mb-3" styles={{ body: { padding: '12px 16px' } }}>
-          <div className="flex items-center gap-2 mb-3">
-            <BookOpen className="w-5 h-5 text-text-sub" />
-            <Text strong className="text-text-main">Ngữ pháp cần chú ý</Text>
-          </div>
-          <List
-            dataSource={activeReibun.grammar_focus}
-            renderItem={(grammar) => (
-              <List.Item className="!py-2 !border-b !border-border last:!border-b-0">
-                <Tag color="purple" className="!px-3 !py-1 !text-sm">{grammar}</Tag>
-              </List.Item>
-            )}
-          />
-        </Card>
-
-        {/* Vocabulary Focus */}
-        <Card className="bg-surface-1 border-border mb-3" styles={{ body: { padding: '12px 16px' } }}>
-          <div className="flex items-center gap-2 mb-3">
-            <Languages className="w-5 h-5 text-text-sub" />
-            <Text strong className="text-text-main">Từ vựng cần chú ý</Text>
-          </div>
-          <div className="flex flex-wrap gap-2">
-            {activeReibun.vocabulary_focus.map((vocab) => (
-              <Tag key={vocab} color="blue" className="!px-3 !py-1 !text-sm">{vocab}</Tag>
-            ))}
-          </div>
-        </Card>
+              </div>
+            </Card>
+          ))}
+        </div>
       </div>
     </div>
   );

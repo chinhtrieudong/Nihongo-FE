@@ -23,47 +23,30 @@ import {
   Users,
 } from "lucide-react";
 import AudioPlayer from "../../components/AudioPlayer";
-import { minnaAPI } from "../../services/api";
+// import { minnaAPI } from "../../services/api"; // Disabled - using local JSON data
 
 const { Title, Text } = Typography;
 
 // Main Mondai item
 interface MondaiItem {
-  _id: string;
-  lessonId: string;
-  textbook: string;
-  lessonNumber: number;
-  mondaiNumber: number;
-  type: "multiple-choice" | "fill-blank" | "listening";
+  id: number;
+  type: "fill_blank" | "multiple_choice" | "translation" | "matching";
   question: string;
-  questionJp: string;
-  options: string[];
-  correctAnswer: string;
+  japanese?: string;
+  romaji?: string;
+  vietnamese?: string;
+  answer: string | number;
+  options?: string[];
   explanation: string;
-  explanationJp: string;
-  audioUrl: string;
-  pageReference: string;
-  difficulty: string;
-  createdAt: string;
-  updatedAt: string;
-  __v: number;
+  pairs?: Array<{ japanese: string; vietnamese: string }>;
+  prompts?: Array<{ vietnamese: string; template: string; romaji: string }>;
 }
 
-interface LessonInfo {
+interface MondaiData {
   lessonNumber: number;
   title: string;
-  title_jp: string;
-  level: string;
-  book: string;
-}
-
-interface MondaiResponse {
-  success: boolean;
-  data: MondaiItem[];
-  lesson: LessonInfo;
-  total_items: number;
-  component: string;
-  lesson_number: number;
+  description: string;
+  mondai: MondaiItem[];
 }
 
 const MondaiDetail: React.FC = () => {
@@ -71,9 +54,9 @@ const MondaiDetail: React.FC = () => {
   const navigate = useNavigate();
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
-  const [mondaiData, setMondaiData] = useState<MondaiResponse | null>(null);
+  const [mondaiData, setMondaiData] = useState<MondaiData | null>(null);
   const [activeIndex, setActiveIndex] = useState(0);
-  const [userAnswer, setUserAnswer] = useState<string>('');
+  const [userAnswer, setUserAnswer] = useState<string | number>('');
   const [showResult, setShowResult] = useState(false);
 
   useEffect(() => {
@@ -82,15 +65,11 @@ const MondaiDetail: React.FC = () => {
 
       try {
         setLoading(true);
-        const response = await minnaAPI.getMondai(parseInt(lessonNumber));
-        
-        if (response.data.success) {
-          setMondaiData(response.data);
-        } else {
-          setError("Không thể tải bài tập");
-        }
+        // Load local JSON data instead of API call
+        const data = await import(`../../data/practice/mondai/lesson${lessonNumber}.json`);
+        setMondaiData(data.default);
       } catch (err) {
-        console.error("Error fetching mondai:", err);
+        console.error("Error loading mondai data:", err);
         setError("Không thể tải dữ liệu bài tập");
       } finally {
         setLoading(false);
@@ -109,7 +88,7 @@ const MondaiDetail: React.FC = () => {
     setShowResult(false);
   };
 
-  const isCorrect = userAnswer === mondaiData?.data[activeIndex]?.correctAnswer;
+  const isCorrect = String(userAnswer) === String(mondaiData?.mondai[activeIndex]?.answer);
 
   if (loading) {
     return (
@@ -122,7 +101,7 @@ const MondaiDetail: React.FC = () => {
     );
   }
 
-  if (error || !mondaiData || !mondaiData.data.length) {
+  if (error || !mondaiData || !mondaiData.mondai.length) {
     return (
       <div className="min-h-full bg-gradient-to-br from-slate-50 to-slate-100 dark:from-slate-900 dark:to-slate-800 p-8">
         <EmptyState
@@ -139,8 +118,8 @@ const MondaiDetail: React.FC = () => {
     );
   }
 
-  const { data: mondaiItems } = mondaiData;
-  const lesson = { lessonNumber: Number(lessonNumber), title: `Lesson ${lessonNumber}`, title_jp: `第${lessonNumber}課`, level: 'N5', book: 'Minna no Nihongo' };
+  const mondaiItems = mondaiData?.mondai || [];
+  const lesson = { lessonNumber: Number(lessonNumber), title: mondaiData?.title || `Lesson ${lessonNumber}`, title_jp: `第${lessonNumber}課`, level: 'N5', book: 'Minna no Nihongo' };
   const activeMondai = mondaiItems[activeIndex];
 
   return (
@@ -220,26 +199,20 @@ const MondaiDetail: React.FC = () => {
           {/* Mondai Header */}
           <div className="mb-4">
             <div className="flex items-center gap-2 mb-2">
-              <Tag color={activeMondai.type === "multiple-choice" ? "blue" : activeMondai.type === "listening" ? "green" : "purple"}>
-                {activeMondai.type === "multiple-choice" ? (
+              <Tag color={activeMondai.type === "multiple_choice" ? "blue" : activeMondai.type === "fill_blank" ? "purple" : activeMondai.type === "translation" ? "green" : "orange"}>
+                {activeMondai.type === "multiple_choice" ? (
                   <span className="flex items-center gap-1">Trắc nghiệm</span>
-                ) : activeMondai.type === "listening" ? (
-                  <span className="flex items-center gap-1"><Headphones className="w-3 h-3" /> Nghe</span>
-                ) : (
+                ) : activeMondai.type === "fill_blank" ? (
                   <span className="flex items-center gap-1">Điền vào chỗ trống</span>
+                ) : activeMondai.type === "translation" ? (
+                  <span className="flex items-center gap-1">Dịch</span>
+                ) : (
+                  <span className="flex items-center gap-1">Nối từ</span>
                 )}
               </Tag>
             </div>
-            <Text strong className="text-text-main block text-lg">Bài {activeMondai.mondaiNumber}</Text>
-            <Text className="text-text-sub block">Độ khó: {activeMondai.difficulty}</Text>
+            <Text strong className="text-text-main block text-lg">Bài {activeMondai.id}</Text>
           </div>
-
-          {/* Audio Player */}
-          {activeMondai.audioUrl && (
-            <div className="mb-4">
-              <AudioPlayer src={activeMondai.audioUrl} />
-            </div>
-          )}
 
           {/* Score display */}
           {showResult && (
@@ -251,7 +224,7 @@ const MondaiDetail: React.FC = () => {
                     {isCorrect ? "Chính xác!" : "Chưa chính xác"}
                   </Text>
                   <Text className="text-text-sub block">
-                    Đáp án đúng: {activeMondai.correctAnswer}
+                    Đáp án đúng: {activeMondai.answer}
                   </Text>
                 </div>
               </div>
@@ -261,19 +234,26 @@ const MondaiDetail: React.FC = () => {
           {/* Question */}
           <div className="mb-4">
             <Text strong className="text-text-main block text-base mb-2">{activeMondai.question}</Text>
-            {activeMondai.questionJp && (
-              <Text className="text-text-sub block italic">{activeMondai.questionJp}</Text>
+            {activeMondai.japanese && (
+              <Text className="text-text-main block mb-1">{activeMondai.japanese}</Text>
+            )}
+            {/* Romaji - Hidden */}
+            {/* {activeMondai.romaji && (
+              <Text className="text-text-sub block italic mb-1">{activeMondai.romaji}</Text>
+            )} */}
+            {activeMondai.vietnamese && (
+              <Text className="text-text-sub block">{activeMondai.vietnamese}</Text>
             )}
           </div>
 
-          {/* Options for multiple-choice */}
-          {activeMondai.type === "multiple-choice" && (
+          {/* Options for multiple_choice */}
+          {activeMondai.type === "multiple_choice" && activeMondai.options && (
             <div className="space-y-2">
-              {activeMondai.options.map((option) => (
+              {activeMondai.options.map((option, idx) => (
                 <Radio
                   key={option}
-                  value={option}
-                  checked={userAnswer === option}
+                  value={idx}
+                  checked={userAnswer === idx}
                   onChange={(e) => setUserAnswer(e.target.value)}
                   disabled={showResult}
                   className="block w-full"
@@ -284,12 +264,23 @@ const MondaiDetail: React.FC = () => {
             </div>
           )}
 
-          {/* Input for fill-blank */}
-          {activeMondai.type === "fill-blank" && (
+          {/* Input for fill_blank */}
+          {activeMondai.type === "fill_blank" && (
             <Input
               value={userAnswer}
               onChange={(e) => setUserAnswer(e.target.value)}
               placeholder="Nhập câu trả lời của bạn..."
+              disabled={showResult}
+              className="w-full"
+            />
+          )}
+
+          {/* Input for translation */}
+          {activeMondai.type === "translation" && (
+            <Input
+              value={userAnswer}
+              onChange={(e) => setUserAnswer(e.target.value)}
+              placeholder="Nhập bản dịch tiếng Nhật..."
               disabled={showResult}
               className="w-full"
             />
@@ -300,9 +291,6 @@ const MondaiDetail: React.FC = () => {
             <div className="mt-4 p-3 bg-secondary-50 dark:bg-secondary-800 rounded">
               <Text strong className="text-text-main block mb-1">Giải thích:</Text>
               <Text className="text-text-sub">{activeMondai.explanation}</Text>
-              {activeMondai.explanationJp && (
-                <Text className="text-text-sub block mt-1 italic">{activeMondai.explanationJp}</Text>
-              )}
             </div>
           )}
 

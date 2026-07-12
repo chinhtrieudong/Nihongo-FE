@@ -1,0 +1,199 @@
+{
+  "lessonNumber": 9,
+  "level": "N5",
+  "title": "Bài 9",
+  "vocabularies": [
+    {
+      "kanji": "いちばん",
+      "hiragana": "いちばん",
+      "romaji": "ichiban",
+      "meaning": "Nhất",
+      "hanViet": "NHẤT",
+      "partOfSpeech": "adverb"
+    },
+    {
+      "kanji": "一番",
+      "hiragana": "いちばん",
+      "romaji": "ichiban",
+      "meaning": "Nhất",
+      "hanViet": "NHẤT",
+      "partOfSpeech": "adverb"
+    },
+    {
+      "kanji": "大きい",
+      "hiragana": "おおきい",
+      "romaji": "ookii",
+      "meaning": "Lớn",
+      "hanViet": "ĐẠI",
+      "partOfSpeech": "adjective"
+    },
+    {
+      "kanji": "小さい",
+      "hiragana": "ちいさい",
+      "romaji": "chiisai",
+      "meaning": "Nhỏ",
+      "hanViet": "TIỂU",
+      "partOfSpeech": "adjective"
+    },
+    {
+      "kanji": "多い",
+      "hiragana": "おおい",
+      "romaji": "ooi",
+      "meaning": "Nhiều",
+      "hanViet": "ĐA",
+      "partOfSpeech": "adjective"
+    },
+    {
+      "kanji": "少ない",
+      "hiragana": "すくない",
+      "romaji": "sukunai",
+      "meaning": "Ít",
+      "hanViet": "THIẾU",
+      "partOfSpeech": "adjective"
+    },
+    {
+      "kanji": "新しい",
+      "hiragana": "あたらしい",
+      "romaji": "atarashii",
+      "meaning": "Mới",
+      "hanViet": "TÂN",
+      "partOfSpeech": "adjective"
+    },
+    {
+      "kanji": "古い",
+      "hiragana": "ふるい",
+      "romaji": "furui",
+      "meaning": "Cũ",
+      "hanViet": "CỔ",
+      "partOfSpeech": "adjective"
+    },
+    {
+      "kanji": "いい",
+      "hiragana": "いい",
+      "romaji": "ii",
+      "meaning": "Tốt",
+      "hanViet": "",
+      "partOfSpeech": "adjective"
+    },
+    {
+      "kanji": "悪い",
+      "hiragana": "わるい",
+      "romaji": "warui",
+      "meaning": "Xấu",
+      "hanViet": "ÁCH",
+      "partOfSpeech": "adjective"
+    },
+    {
+      "kanji": "暗い",
+      "hiragana": "くらい",
+      "romaji": "kurai",
+      "meaning": "Tối",
+      "hanViet": "ẨM",
+      "partOfSpeech": "adjective"
+    },
+    {
+      "kanji": "明るい",
+      "hiragana": "あかるい",
+      "romaji": "akarui",
+      "meaning": "Sáng",
+      "hanViet": "MINH",
+      "partOfSpeech": "adjective"
+    },
+    {
+      "kanji": "広い",
+      "hiragana": "ひろい",
+      "romaji": "hiroi",
+      "meaning": "Rộng",
+      "hanViet": "QUỐC",
+      "partOfSpeech": "adjective"
+    },
+    {
+      "kanji": "狭い",
+      "hiragana": "せまい",
+      "romaji": "semai",
+      "meaning": "Hẹp",
+      "hanViet": "HIỀM",
+      "partOfSpeech": "adjective"
+    },
+    {
+      "kanji": "たかい",
+      "hiragana": "たかい",
+      "romaji": "takai",
+      "meaning": "Cao",
+      "hanViet": "THÁNH",
+      "partOfSpeech": "adjective"
+    },
+    {
+      "kanji": "低い",
+      "hiragana": "ひくい",
+      "romaji": "hikui",
+      "meaning": "Thấp",
+      "hanViet": "ĐẬT",
+      "partOfSpeech": "adjective"
+    },
+    {
+      "kanji": "重い",
+      "hiragana": "おもしろい",
+      "romaji": "omoshiroi",
+      "meaning": "Nặng, thú vị",
+      "hanViet": "TRỌNG",
+      "partOfSpeech": "adjective"
+    },
+    {
+      "kanji": "軽い",
+      "hiragana": "かるい",
+      "romaji": "karui",
+      "meaning": "Nhẹ",
+      "hanViet": "KHẢI",
+      "partOfSpeech": "adjective"
+    },
+    {
+      "kanji": "忙しい",
+      "hiragana": "いそがしい",
+      "romaji": "isogashii",
+      "meaning": "Bận",
+      "hanViet": "BANG",
+      "partOfSpeech": "adjective"
+    },
+    {
+      "kanji": "楽しい",
+      "hiragana": "たのしい",
+      "romaji": "tanoshii",
+      "meaning": "Vui",
+      "hanViet": "LAC",
+      "partOfSpeech": "adjective"
+    },
+    {
+      "kanji": "面白い",
+      "hiragana": "おもしろい",
+      "romaji": "omoshiroi",
+      "meaning": "Thú vị",
+      "hanViet": "DIỆN",
+      "partOfSpeech": "adjective"
+    },
+    {
+      "kanji": "つまらない",
+      "hiragana": "つまらない",
+      "romaji": "tsumaranai",
+      "meaning": "Nhàm chán",
+      "hanViet": "TỰ",
+      "partOfSpeech": "adjective"
+    },
+    {
+      "kanji": "ほしい",
+      "hiragana": "ほしい",
+      "romaji": "hoshii",
+      "meaning": "Muốn",
+      "hanViet": "VỊ",
+      "partOfSpeech": "adjective"
+    },
+    {
+      "kanji": "ふるい",
+      "hiragana": "ふるい",
+      "romaji": "furui",
+      "meaning": "Cũ",
+      "hanViet": "CỔ",
+      "partOfSpeech": "adjective"
+    }
+  ]
+}

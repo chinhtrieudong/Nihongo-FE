@@ -1,0 +1,494 @@
+{
+  "success": true,
+  "message": "Tests retrieved successfully",
+  "data": [
+    {
+      "id": "1",
+      "level": "N5",
+      "title": "JLPT N5 - Full Mock Test",
+      "title_vi": "JLPT N5 - Đề thi thử hoàn chỉnh",
+      "description": "Bài thi thử hoàn chỉnh JLPT N5 với đầy đủ các phần",
+      "description_vi": "Bài thi thử toàn diện cho JLPT N5 bao gồm tất cả các kỹ năng",
+      "duration": 120,
+      "questions": 100,
+      "difficulty": "Beginner",
+      "completed": true,
+      "score": 85,
+      "date": "2024-01-15",
+      "is_active": true,
+      "version": 1,
+      "sections": [
+        {
+          "name": "Từ vựng",
+          "name_vi": "Từ vựng",
+          "questions": 25,
+          "time": 30,
+          "description": "Kanji, từ vựng cơ bản"
+        },
+        {
+          "name": "Ngữ pháp",
+          "name_vi": "Ngữ pháp",
+          "questions": 25,
+          "time": 30,
+          "description": "Cấu trúc câu N5"
+        },
+        {
+          "name": "Đọc hiểu",
+          "name_vi": "Đọc hiểu",
+          "questions": 25,
+          "time": 40,
+          "description": "Đọc văn bản ngắn"
+        },
+        {
+          "name": "Nghe hiểu",
+          "name_vi": "Nghe hiểu",
+          "questions": 25,
+          "time": 20,
+          "description": "Nghe hội thoại"
+        }
+      ]
+    },
+    {
+      "id": "2",
+      "level": "N5",
+      "title": "JLPT N5 - Vocabulary Focus",
+      "title_vi": "JLPT N5 - Tập trung từ vựng",
+      "description": "Bài tập chuyên sâu về từ vựng N5",
+      "description_vi": "Luyện tập từ vựng chuyên sâu cho trình độ N5",
+      "duration": 45,
+      "questions": 50,
+      "difficulty": "Beginner",
+      "completed": false,
+      "is_active": true,
+      "version": 1,
+      "sections": [
+        {
+          "name": "Từ vựng",
+          "name_vi": "Từ vựng",
+          "questions": 50,
+          "time": 45,
+          "description": "Từ vựng chuyên sâu"
+        }
+      ]
+    },
+    {
+      "id": "3",
+      "level": "N5",
+      "title": "JLPT N5 - Kanji Practice",
+      "title_vi": "JLPT N5 - Luyện Kanji",
+      "description": "Luyện tập Kanji cơ bản N5",
+      "description_vi": "Bài tập Kanji cơ bản cho người học N5",
+      "duration": 30,
+      "questions": 30,
+      "difficulty": "Beginner",
+      "completed": false,
+      "is_active": true,
+      "version": 1,
+      "sections": [
+        {
+          "name": "Kanji",
+          "name_vi": "Kanji",
+          "questions": 30,
+          "time": 30,
+          "description": "Kanji N5 cơ bản"
+        }
+      ]
+    },
+    {
+      "id": "4",
+      "level": "N4",
+      "title": "JLPT N4 - Full Mock Test",
+      "title_vi": "JLPT N4 - Đề thi thử hoàn chỉnh",
+      "description": "Bài thi thử hoàn chỉnh JLPT N4",
+      "description_vi": "Đề thi thử toàn diện cho trình độ N4",
+      "duration": 125,
+      "questions": 105,
+      "difficulty": "Elementary",
+      "completed": false,
+      "is_active": true,
+      "version": 1,
+      "sections": [
+        {
+          "name": "Từ vựng",
+          "name_vi": "Từ vựng",
+          "questions": 30,
+          "time": 30,
+          "description": "Từ vựng N4"
+        },
+        {
+          "name": "Ngữ pháp",
+          "name_vi": "Ngữ pháp",
+          "questions": 30,
+          "time": 35,
+          "description": "Ngữ pháp N4"
+        },
+        {
+          "name": "Đọc hiểu",
+          "name_vi": "Đọc hiểu",
+          "questions": 30,
+          "time": 45,
+          "description": "Đọc hiểu N4"
+        },
+        {
+          "name": "Nghe hiểu",
+          "name_vi": "Nghe hiểu",
+          "questions": 15,
+          "time": 15,
+          "description": "Nghe hiểu N4"
+        }
+      ]
+    },
+    {
+      "id": "5",
+      "level": "N4",
+      "title": "JLPT N4 - Grammar Intensive",
+      "title_vi": "JLPT N4 - Ngữ pháp chuyên sâu",
+      "description": "Luyện tập ngữ pháp N4 chuyên sâu",
+      "description_vi": "Bài tập ngữ pháp chuyên sâu cho trình độ N4",
+      "duration": 60,
+      "questions": 40,
+      "difficulty": "Elementary",
+      "completed": true,
+      "score": 78,
+      "date": "2024-01-10",
+      "is_active": true,
+      "version": 1,
+      "sections": [
+        {
+          "name": "Ngữ pháp",
+          "name_vi": "Ngữ pháp",
+          "questions": 40,
+          "time": 60,
+          "description": "Ngữ pháp N4 chuyên sâu"
+        }
+      ]
+    },
+    {
+      "id": "6",
+      "level": "N3",
+      "title": "JLPT N3 - Full Mock Test",
+      "title_vi": "JLPT N3 - Đề thi thử hoàn chỉnh",
+      "description": "Bài thi thử hoàn chỉnh JLPT N3",
+      "description_vi": "Đề thi thử toàn diện cho trình độ N3",
+      "duration": 140,
+      "questions": 120,
+      "difficulty": "Intermediate",
+      "completed": false,
+      "is_active": true,
+      "version": 1,
+      "sections": [
+        {
+          "name": "Từ vựng",
+          "name_vi": "Từ vựng",
+          "questions": 35,
+          "time": 35,
+          "description": "Từ vựng N3"
+        },
+        {
+          "name": "Ngữ pháp",
+          "name_vi": "Ngữ pháp",
+          "questions": 35,
+          "time": 40,
+          "description": "Ngữ pháp N3"
+        },
+        {
+          "name": "Đọc hiểu",
+          "name_vi": "Đọc hiểu",
+          "questions": 30,
+          "time": 50,
+          "description": "Đọc hiểu N3"
+        },
+        {
+          "name": "Nghe hiểu",
+          "name_vi": "Nghe hiểu",
+          "questions": 20,
+          "time": 15,
+          "description": "Nghe hiểu N3"
+        }
+      ]
+    },
+    {
+      "id": "7",
+      "level": "N3",
+      "title": "JLPT N3 - Grammar Practice",
+      "title_vi": "JLPT N3 - Luyện ngữ pháp",
+      "description": "Luyện tập ngữ pháp N3 chuyên sâu",
+      "description_vi": "Bài tập ngữ pháp chuyên sâu cho N3",
+      "duration": 60,
+      "questions": 40,
+      "difficulty": "Intermediate",
+      "completed": false,
+      "is_active": true,
+      "version": 1,
+      "sections": [
+        {
+          "name": "Ngữ pháp",
+          "name_vi": "Ngữ pháp",
+          "questions": 40,
+          "time": 60,
+          "description": "Ngữ pháp N3"
+        }
+      ]
+    },
+    {
+      "id": "8",
+      "level": "N3",
+      "title": "JLPT N3 - Reading Comprehension",
+      "title_vi": "JLPT N3 - Đọc hiểu",
+      "description": "Luyện tập đọc hiểu N3",
+      "description_vi": "Bài tập đọc hiểu văn bản N3",
+      "duration": 75,
+      "questions": 25,
+      "difficulty": "Intermediate",
+      "completed": true,
+      "score": 82,
+      "date": "2024-01-08",
+      "is_active": true,
+      "version": 1,
+      "sections": [
+        {
+          "name": "Đọc hiểu",
+          "name_vi": "Đọc hiểu",
+          "questions": 25,
+          "time": 75,
+          "description": "Đọc hiểu văn bản dài N3"
+        }
+      ]
+    },
+    {
+      "id": "9",
+      "level": "N2",
+      "title": "JLPT N2 - Full Mock Test",
+      "title_vi": "JLPT N2 - Đề thi thử hoàn chỉnh",
+      "description": "Bài thi thử hoàn chỉnh JLPT N2",
+      "description_vi": "Đề thi thử toàn diện cho trình độ N2",
+      "duration": 155,
+      "questions": 135,
+      "difficulty": "Advanced",
+      "completed": false,
+      "is_active": true,
+      "version": 1,
+      "sections": [
+        {
+          "name": "Từ vựng",
+          "name_vi": "Từ vựng",
+          "questions": 40,
+          "time": 40,
+          "description": "Từ vựng N2"
+        },
+        {
+          "name": "Ngữ pháp",
+          "name_vi": "Ngữ pháp",
+          "questions": 40,
+          "time": 45,
+          "description": "Ngữ pháp N2"
+        },
+        {
+          "name": "Đọc hiểu",
+          "name_vi": "Đọc hiểu",
+          "questions": 35,
+          "time": 60,
+          "description": "Đọc hiểu N2"
+        },
+        {
+          "name": "Nghe hiểu",
+          "name_vi": "Nghe hiểu",
+          "questions": 20,
+          "time": 10,
+          "description": "Nghe hiểu N2"
+        }
+      ]
+    },
+    {
+      "id": "10",
+      "level": "N2",
+      "title": "JLPT N2 - Quick Test",
+      "title_vi": "JLPT N2 - Kiểm tra nhanh",
+      "description": "Bài kiểm tra nhanh N2",
+      "description_vi": "Bài kiểm tra nhanh cho trình độ N2",
+      "duration": 90,
+      "questions": 60,
+      "difficulty": "Advanced",
+      "completed": false,
+      "is_active": true,
+      "version": 1,
+      "sections": [
+        {
+          "name": "Từ vựng",
+          "name_vi": "Từ vựng",
+          "questions": 20,
+          "time": 25,
+          "description": "Từ vựng N2"
+        },
+        {
+          "name": "Ngữ pháp",
+          "name_vi": "Ngữ pháp",
+          "questions": 20,
+          "time": 30,
+          "description": "Ngữ pháp N2"
+        },
+        {
+          "name": "Đọc hiểu",
+          "name_vi": "Đọc hiểu",
+          "questions": 20,
+          "time": 35,
+          "description": "Đọc hiểu N2"
+        }
+      ]
+    },
+    {
+      "id": "11",
+      "level": "N1",
+      "title": "JLPT N1 - Full Mock Test",
+      "title_vi": "JLPT N1 - Đề thi thử hoàn chỉnh",
+      "description": "Bài thi thử hoàn chỉnh JLPT N1",
+      "description_vi": "Đề thi thử toàn diện cho trình độ N1",
+      "duration": 170,
+      "questions": 145,
+      "difficulty": "Expert",
+      "completed": false,
+      "is_active": true,
+      "version": 1,
+      "sections": [
+        {
+          "name": "Từ vựng",
+          "name_vi": "Từ vựng",
+          "questions": 45,
+          "time": 45,
+          "description": "Từ vựng N1"
+        },
+        {
+          "name": "Ngữ pháp",
+          "name_vi": "Ngữ pháp",
+          "questions": 45,
+          "time": 50,
+          "description": "Ngữ pháp N1"
+        },
+        {
+          "name": "Đọc hiểu",
+          "name_vi": "Đọc hiểu",
+          "questions": 40,
+          "time": 65,
+          "description": "Đọc hiểu N1"
+        },
+        {
+          "name": "Nghe hiểu",
+          "name_vi": "Nghe hiểu",
+          "questions": 15,
+          "time": 10,
+          "description": "Nghe hiểu N1"
+        }
+      ]
+    },
+    {
+      "id": "12",
+      "level": "N1",
+      "title": "JLPT N1 - Vocabulary Advanced",
+      "title_vi": "JLPT N1 - Từ vựng nâng cao",
+      "description": "Luyện tập từ vựng N1 nâng cao",
+      "description_vi": "Bài tập từ vựng chuyên sâu cho N1",
+      "duration": 80,
+      "questions": 50,
+      "difficulty": "Expert",
+      "completed": true,
+      "score": 75,
+      "date": "2024-01-05",
+      "is_active": true,
+      "version": 1,
+      "sections": [
+        {
+          "name": "Từ vựng",
+          "name_vi": "Từ vựng",
+          "questions": 50,
+          "time": 80,
+          "description": "Từ vựng N1 chuyên sâu"
+        }
+      ]
+    },
+    {
+      "id": "13",
+      "level": "N5",
+      "title": "JLPT N5 - Listening Practice",
+      "title_vi": "JLPT N5 - Luyện nghe",
+      "description": "Luyện tập nghe hiểu N5",
+      "description_vi": "Bài tập kỹ năng nghe cho N5",
+      "duration": 40,
+      "questions": 20,
+      "difficulty": "Beginner",
+      "completed": false,
+      "is_active": true,
+      "version": 1,
+      "sections": [
+        {
+          "name": "Nghe hiểu",
+          "name_vi": "Nghe hiểu",
+          "questions": 20,
+          "time": 40,
+          "description": "Nghe hội thoại N5"
+        }
+      ]
+    },
+    {
+      "id": "14",
+      "level": "N4",
+      "title": "JLPT N4 - Mixed Practice",
+      "title_vi": "JLPT N4 - Tổng hợp",
+      "description": "Bài tập tổng hợp N4",
+      "description_vi": "Bài tập đa kỹ năng cho N4",
+      "duration": 90,
+      "questions": 70,
+      "difficulty": "Elementary",
+      "completed": false,
+      "is_active": true,
+      "version": 1,
+      "sections": [
+        {
+          "name": "Từ vựng",
+          "name_vi": "Từ vựng",
+          "questions": 25,
+          "time": 25,
+          "description": "Từ vựng N4"
+        },
+        {
+          "name": "Ngữ pháp",
+          "name_vi": "Ngữ pháp",
+          "questions": 25,
+          "time": 30,
+          "description": "Ngữ pháp N4"
+        },
+        {
+          "name": "Đọc hiểu",
+          "name_vi": "Đọc hiểu",
+          "questions": 20,
+          "time": 35,
+          "description": "Đọc hiểu N4"
+        }
+      ]
+    },
+    {
+      "id": "15",
+      "level": "N3",
+      "title": "JLPT N3 - Listening Focus",
+      "title_vi": "JLPT N3 - Tập trung nghe",
+      "description": "Luyện tập nghe hiểu N3",
+      "description_vi": "Bài tập chuyên sâu kỹ năng nghe N3",
+      "duration": 50,
+      "questions": 25,
+      "difficulty": "Intermediate",
+      "completed": true,
+      "score": 88,
+      "date": "2024-01-12",
+      "is_active": true,
+      "version": 1,
+      "sections": [
+        {
+          "name": "Nghe hiểu",
+          "name_vi": "Nghe hiểu",
+          "questions": 25,
+          "time": 50,
+          "description": "Nghe hiểu N3"
+        }
+      ]
+    }
+  ]
+}

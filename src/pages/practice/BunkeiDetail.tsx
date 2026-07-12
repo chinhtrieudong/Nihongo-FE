@@ -15,53 +15,27 @@ import {
   Scroll,
 } from "lucide-react";
 import AudioPlayer from "../../components/AudioPlayer";
-import { minnaAPI } from "../../services/api";
+// import { minnaAPI } from "../../services/api"; // Disabled - using local JSON data
 
 const { Title, Text } = Typography;
 const { Panel } = Collapse;
 
 interface BunkeiItem {
-  _id: string;
-  lessonId: string;
-  textbook: string;
-  lessonNumber: number;
-  bunkeiNumber: number;
+  id: number;
+  japanese: string;
+  romaji: string;
+  vietnamese: string;
   pattern: string;
-  patternJp: string;
-  structure: string;
-  usageVi: string;
-  explanationVi: string;
-  explanationJp: string;
-  comparison: string;
-  commonMistakes: string;
-  examples: Array<{
-    japanese: string;
-    romaji: string;
-    meaning: string;
-  }>;
-  diagramUrl: string;
-  pageReference: string;
-  createdAt: string;
-  updatedAt: string;
-  __v: number;
+  patternMeaning: string;
+  grammarPoint: string;
+  examples: string[];
 }
 
-interface LessonInfo {
+interface BunkeiData {
   lessonNumber: number;
   title: string;
-  title_jp: string;
-  level: string;
-  book: string;
-}
-
-interface BunkeiResponse {
-  success: boolean;
-  data: BunkeiItem[];
-  lesson: LessonInfo;
-  total_items: number;
-  component: string;
-  lesson_number: number;
-  audioUrl?: string;
+  description: string;
+  bunkei: BunkeiItem[];
 }
 
 const BunkeiDetail: React.FC = () => {
@@ -69,7 +43,7 @@ const BunkeiDetail: React.FC = () => {
   const navigate = useNavigate();
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
-  const [bunkeiData, setBunkeiData] = useState<BunkeiResponse | null>(null);
+  const [bunkeiData, setBunkeiData] = useState<BunkeiData | null>(null);
 
   useEffect(() => {
     const fetchBunkeiData = async () => {
@@ -77,15 +51,11 @@ const BunkeiDetail: React.FC = () => {
 
       try {
         setLoading(true);
-        const response = await minnaAPI.getBunkei(parseInt(lessonNumber));
-        
-        if (response.data.success) {
-          setBunkeiData(response.data);
-        } else {
-          setError("Không thể tải dữ liệu bunkei");
-        }
+        // Load local JSON data instead of API call
+        const data = await import(`../../data/practice/bunkei/lesson${lessonNumber}.json`);
+        setBunkeiData(data.default);
       } catch (err) {
-        console.error("Error fetching bunkei:", err);
+        console.error("Error loading bunkei data:", err);
         setError("Không thể tải dữ liệu bunkei");
       } finally {
         setLoading(false);
@@ -123,8 +93,8 @@ const BunkeiDetail: React.FC = () => {
     );
   }
 
-  const { data: bunkeiItems } = bunkeiData;
-  const lesson = { lessonNumber: Number(lessonNumber), title: `Lesson ${lessonNumber}`, title_jp: `第${lessonNumber}課`, level: 'N5', book: 'Minna no Nihongo' };
+  const bunkeiItems = bunkeiData?.bunkei || [];
+  const lesson = { lessonNumber: Number(lessonNumber), title: bunkeiData?.title || `Lesson ${lessonNumber}`, title_jp: `第${lessonNumber}課`, level: 'N5', book: 'Minna no Nihongo' };
 
   return (
     <div className="min-h-full bg-gradient-to-br from-slate-50 to-slate-100 dark:from-slate-900 dark:to-slate-800">
@@ -170,9 +140,9 @@ const BunkeiDetail: React.FC = () => {
 
         {/* Bunkei List */}
         <div className="space-y-3">
-          {bunkeiItems.map((item, index) => (
+          {bunkeiItems.map((item: BunkeiItem, index: number) => (
             <Card
-              key={item._id}
+              key={item.id}
               className="bg-surface-1 border-border"
               styles={{ body: { padding: '12px 16px' } }}
             >
@@ -181,35 +151,41 @@ const BunkeiDetail: React.FC = () => {
                   <Text strong className="text-primary-600 text-sm">{index + 1}</Text>
                 </div>
                 <div className="flex-1 min-w-0">
-                  {/* Pattern - Japanese */}
+                  {/* Japanese Sentence */}
                   <div className="mb-2">
-                    <Text className="text-text-sub text-xs block mb-1">Mẫu câu (VN)</Text>
-                    <Text strong className="text-lg text-text-main block">{item.pattern}</Text>
+                    <Text className="text-text-sub text-xs block mb-1">Tiếng Nhật</Text>
+                    <Text strong className="text-lg text-text-main block">{item.japanese}</Text>
                   </div>
 
-                  {/* PatternJp - Japanese */}
+                  {/* Romaji - Hidden */}
+                  {/* <div className="mb-2">
+                    <Text className="text-text-sub text-xs block mb-1">Romaji</Text>
+                    <Text className="text-text-main block italic">{item.romaji}</Text>
+                  </div> */}
+
+                  {/* Vietnamese */}
                   <div className="mb-2">
-                    <Text className="text-text-sub text-xs block mb-1">Mẫu câu (JP)</Text>
-                    <Text strong className="text-lg text-text-main block">{item.patternJp}</Text>
+                    <Text className="text-text-sub text-xs block mb-1">Tiếng Việt</Text>
+                    <Text strong className="text-text-main block">{item.vietnamese}</Text>
                   </div>
 
-                  {/* Structure */}
+                  {/* Pattern */}
                   <div className="mb-2 p-2 bg-secondary-50 dark:bg-secondary-800 rounded">
-                    <Text className="text-text-sub text-xs block mb-1">Cấu trúc</Text>
-                    <Text className="text-text-main font-mono italic">{item.structure}</Text>
+                    <Text className="text-text-sub text-xs block mb-1">Mẫu câu</Text>
+                    <Text className="text-text-main font-mono italic">{item.pattern}</Text>
                   </div>
 
-                  {/* Usage */}
+                  {/* Pattern Meaning */}
                   <div className="mb-2 border-t border-border pt-2 mt-2">
-                    <Text className="text-text-sub text-xs block mb-1">Cách dùng</Text>
-                    <Text strong className="text-text-main block text-blue-600 dark:text-blue-400">{item.usageVi}</Text>
+                    <Text className="text-text-sub text-xs block mb-1">Nghĩa mẫu câu</Text>
+                    <Text strong className="text-text-main block text-blue-600 dark:text-blue-400">{item.patternMeaning}</Text>
                   </div>
 
-                  {/* Explanation if available */}
-                  {item.explanationVi && (
+                  {/* Grammar Point */}
+                  {item.grammarPoint && (
                     <div className="mt-2 p-2 bg-blue-50 dark:bg-blue-900/20 rounded border border-blue-100 dark:border-blue-800">
-                      <Text className="text-text-sub text-xs block mb-1">Giải thích (VN)</Text>
-                      <Text className="text-sm text-text-main">{item.explanationVi}</Text>
+                      <Text className="text-text-sub text-xs block mb-1">Ngữ pháp</Text>
+                      <Text className="text-sm text-text-main">{item.grammarPoint}</Text>
                     </div>
                   )}
 
@@ -218,11 +194,9 @@ const BunkeiDetail: React.FC = () => {
                     <div className="mt-2 p-2 bg-green-50 dark:bg-green-900/20 rounded border border-green-100 dark:border-green-800">
                       <Text className="text-text-sub text-xs block mb-1">Ví dụ</Text>
                       <div className="space-y-2">
-                        {item.examples.map((ex, exIdx) => (
+                        {item.examples.map((ex: string, exIdx: number) => (
                           <div key={exIdx} className="text-sm">
-                            <Text strong className="text-text-main block">{ex.japanese}</Text>
-                            <Text className="text-text-sub block italic">{ex.romaji}</Text>
-                            <Text className="text-text-main block">{ex.meaning}</Text>
+                            <Text className="text-text-main block">{ex}</Text>
                           </div>
                         ))}
                       </div>

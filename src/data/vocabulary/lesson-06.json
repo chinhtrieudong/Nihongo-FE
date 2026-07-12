@@ -1,0 +1,423 @@
+{
+  "lessonNumber": 6,
+  "level": "N5",
+  "title": "Bài 6",
+  "vocabularies": [
+    {
+      "kanji": "食べます",
+      "hiragana": "たべます",
+      "romaji": "tabemasu",
+      "meaning": "Ăn",
+      "hanViet": "THỰC",
+      "partOfSpeech": "verb"
+    },
+    {
+      "kanji": "飲みます",
+      "hiragana": "のみます",
+      "romaji": "nomimasu",
+      "meaning": "Uống",
+      "hanViet": "ẨM",
+      "partOfSpeech": "verb"
+    },
+    {
+      "kanji": "吸います",
+      "hiragana": "すいます",
+      "romaji": "suimasu",
+      "meaning": "[thuốc lá] Phút",
+      "hanViet": "HẤP",
+      "partOfSpeech": "verb"
+    },
+    {
+      "kanji": "見ます",
+      "hiragana": "みます",
+      "romaji": "mimasu",
+      "meaning": "Nhìn, xem",
+      "hanViet": "KIẾN",
+      "partOfSpeech": "verb"
+    },
+    {
+      "kanji": "聞きます",
+      "hiragana": "ききます",
+      "romaji": "kikimasu",
+      "meaning": "Nghe",
+      "hanViet": "VĂN",
+      "partOfSpeech": "verb"
+    },
+    {
+      "kanji": "読みます",
+      "hiragana": "よみます",
+      "romaji": "yomimasu",
+      "meaning": "Đọc",
+      "hanViet": "ĐỘC",
+      "partOfSpeech": "verb"
+    },
+    {
+      "kanji": "書きます",
+      "hiragana": "かきます",
+      "romaji": "kakimasu",
+      "meaning": "Viết, vẽ",
+      "hanViet": "THƯ",
+      "partOfSpeech": "verb"
+    },
+    {
+      "kanji": "買います",
+      "hiragana": "かいます",
+      "romaji": "kaimasu",
+      "meaning": "Mua",
+      "hanViet": "MÃI",
+      "partOfSpeech": "verb"
+    },
+    {
+      "kanji": "撮ります",
+      "hiragana": "とります",
+      "romaji": "torimasu",
+      "meaning": "[ảnh] Chụp",
+      "hanViet": "TOÁT",
+      "partOfSpeech": "verb"
+    },
+    {
+      "kanji": "します",
+      "hiragana": "します",
+      "romaji": "shimasu",
+      "meaning": "Làm, chơi",
+      "hanViet": "",
+      "partOfSpeech": "verb"
+    },
+    {
+      "kanji": "会います",
+      "hiragana": "あいます",
+      "romaji": "aimasu",
+      "meaning": "[bạn] Gặp",
+      "hanViet": "HỘI",
+      "partOfSpeech": "verb"
+    },
+    {
+      "kanji": "ご飯",
+      "hiragana": "ごはん",
+      "romaji": "gohan",
+      "meaning": "Cơm, bữa ăn",
+      "hanViet": "",
+      "partOfSpeech": "noun"
+    },
+    {
+      "kanji": "朝ご飯",
+      "hiragana": "あさごはん",
+      "romaji": "asagohan",
+      "meaning": "Cơm sáng",
+      "hanViet": "TRIỀU PHẠN",
+      "partOfSpeech": "noun"
+    },
+    {
+      "kanji": "昼ご飯",
+      "hiragana": "ひるごはん",
+      "romaji": "hirugohan",
+      "meaning": "Cơm trưa",
+      "hanViet": "TRÚ PHẠN",
+      "partOfSpeech": "noun"
+    },
+    {
+      "kanji": "晩ご飯",
+      "hiragana": "ばんごはん",
+      "romaji": "bangohan",
+      "meaning": "Cơm tối",
+      "hanViet": "VÃN PHẠN",
+      "partOfSpeech": "noun"
+    },
+    {
+      "kanji": "パン",
+      "hiragana": "パン",
+      "romaji": "pan",
+      "meaning": "Bánh mì",
+      "hanViet": "",
+      "partOfSpeech": "noun"
+    },
+    {
+      "kanji": "卵",
+      "hiragana": "たまご",
+      "romaji": "tamago",
+      "meaning": "Trứng",
+      "hanViet": "NOÃN",
+      "partOfSpeech": "noun"
+    },
+    {
+      "kanji": "肉",
+      "hiragana": "にく",
+      "romaji": "niku",
+      "meaning": "Thịt",
+      "hanViet": "NHỤC",
+      "partOfSpeech": "noun"
+    },
+    {
+      "kanji": "魚",
+      "hiragana": "さかな",
+      "romaji": "sakana",
+      "meaning": "Cá",
+      "hanViet": "NGƯ",
+      "partOfSpeech": "noun"
+    },
+    {
+      "kanji": "野菜",
+      "hiragana": "やさい",
+      "romaji": "yasai",
+      "meaning": "Rau",
+      "hanViet": "DÃ THÁI",
+      "partOfSpeech": "noun"
+    },
+    {
+      "kanji": "果物",
+      "hiragana": "くだもの",
+      "romaji": "kudamono",
+      "meaning": "Hoa quả, trái cây",
+      "hanViet": "QUẢ VẬT",
+      "partOfSpeech": "noun"
+    },
+    {
+      "kanji": "水",
+      "hiragana": "みず",
+      "romaji": "mizu",
+      "meaning": "Nước",
+      "hanViet": "THỦY",
+      "partOfSpeech": "noun"
+    },
+    {
+      "kanji": "お茶",
+      "hiragana": "おちゃ",
+      "romaji": "ocha",
+      "meaning": "Trà, nước chè",
+      "hanViet": "TRÀ",
+      "partOfSpeech": "noun"
+    },
+    {
+      "kanji": "紅茶",
+      "hiragana": "こうちゃ",
+      "romaji": "koucha",
+      "meaning": "Trà hồng (hồng trà)",
+      "hanViet": "HỒNG TRÀ",
+      "partOfSpeech": "noun"
+    },
+    {
+      "kanji": "牛乳",
+      "hiragana": "ぎゅうにゅう",
+      "romaji": "gyuunyuu",
+      "meaning": "Sữa bò",
+      "hanViet": "NGƯU NHŨ",
+      "partOfSpeech": "noun"
+    },
+    {
+      "kanji": "ジュース",
+      "hiragana": "ジュース",
+      "romaji": "juusu",
+      "meaning": "Nước trái cây",
+      "hanViet": "",
+      "partOfSpeech": "noun"
+    },
+    {
+      "kanji": "ビール",
+      "hiragana": "ビール",
+      "romaji": "biiru",
+      "meaning": "Bia",
+      "hanViet": "",
+      "partOfSpeech": "noun"
+    },
+    {
+      "kanji": "お酒",
+      "hiragana": "おさけ",
+      "romaji": "osake",
+      "meaning": "Rượu, rượu sake",
+      "hanViet": "TỬU",
+      "partOfSpeech": "noun"
+    },
+    {
+      "kanji": "ビデオ",
+      "hiragana": "ビデオ",
+      "romaji": "bideo",
+      "meaning": "Video",
+      "hanViet": "",
+      "partOfSpeech": "noun"
+    },
+    {
+      "kanji": "映画",
+      "hiragana": "えいが",
+      "romaji": "eiga",
+      "meaning": "Phim, điện ảnh",
+      "hanViet": "ÁNH HỌA",
+      "partOfSpeech": "noun"
+    },
+    {
+      "kanji": "CD",
+      "hiragana": "CD",
+      "romaji": "CD",
+      "meaning": "Đĩa CD",
+      "hanViet": "",
+      "partOfSpeech": "noun"
+    },
+    {
+      "kanji": "手紙",
+      "hiragana": "てがみ",
+      "romaji": "tegami",
+      "meaning": "Thư",
+      "hanViet": "THỦ CHỈ",
+      "partOfSpeech": "noun"
+    },
+    {
+      "kanji": "レポート",
+      "hiragana": "レポート",
+      "romaji": "repooto",
+      "meaning": "Báo cáo",
+      "hanViet": "",
+      "partOfSpeech": "noun"
+    },
+    {
+      "kanji": "写真",
+      "hiragana": "しゃしん",
+      "romaji": "shashin",
+      "meaning": "Ảnh",
+      "hanViet": "TẢ CHÂN",
+      "partOfSpeech": "noun"
+    },
+    {
+      "kanji": "店",
+      "hiragana": "みせ",
+      "romaji": "mise",
+      "meaning": "Cửa hàng, tiệm",
+      "hanViet": "ĐIẾM",
+      "partOfSpeech": "noun"
+    },
+    {
+      "kanji": "レストラン",
+      "hiragana": "レストラン",
+      "romaji": "resutoran",
+      "meaning": "Nhà hàng",
+      "hanViet": "",
+      "partOfSpeech": "noun"
+    },
+    {
+      "kanji": "庭",
+      "hiragana": "にわ",
+      "romaji": "niwa",
+      "meaning": "Vườn",
+      "hanViet": "ĐÌNH",
+      "partOfSpeech": "noun"
+    },
+    {
+      "kanji": "宿題",
+      "hiragana": "しゅくだい",
+      "romaji": "shukudai",
+      "meaning": "Bài tập về nhà",
+      "hanViet": "TÚC ĐỀ",
+      "partOfSpeech": "noun"
+    },
+    {
+      "kanji": "テニス",
+      "hiragana": "テニス",
+      "romaji": "tenisu",
+      "meaning": "Tennis",
+      "hanViet": "",
+      "partOfSpeech": "noun"
+    },
+    {
+      "kanji": "サッカー",
+      "hiragana": "サッカー",
+      "romaji": "sakkaa",
+      "meaning": "Bóng đá",
+      "hanViet": "",
+      "partOfSpeech": "noun"
+    },
+    {
+      "kanji": "お花見",
+      "hiragana": "おはなみ",
+      "romaji": "ohanami",
+      "meaning": "Việc ngắm hoa anh đào",
+      "hanViet": "HOA KIẾN",
+      "partOfSpeech": "noun"
+    },
+    {
+      "kanji": "何",
+      "hiragana": "なに",
+      "romaji": "nani",
+      "meaning": "Cái gì",
+      "hanViet": "HÀ",
+      "partOfSpeech": "pronoun"
+    },
+    {
+      "kanji": "一緒に",
+      "hiragana": "いっしょに",
+      "romaji": "isshoni",
+      "meaning": "Cùng nhau",
+      "hanViet": "NHẤT TỬ",
+      "partOfSpeech": "adverb"
+    },
+    {
+      "kanji": "少し",
+      "hiragana": "ちょっと",
+      "romaji": "chotto",
+      "meaning": "Một chút, một lát",
+      "hanViet": "THIỂU",
+      "partOfSpeech": "adverb"
+    },
+    {
+      "kanji": "いつも",
+      "hiragana": "いつも",
+      "romaji": "itsumo",
+      "meaning": "Luôn luôn, lúc nào cũng",
+      "hanViet": "",
+      "partOfSpeech": "adverb"
+    },
+    {
+      "kanji": "時々",
+      "hiragana": "ときどき",
+      "romaji": "tokidoki",
+      "meaning": "Thỉnh thoảng",
+      "hanViet": "THỜI",
+      "partOfSpeech": "adverb"
+    },
+    {
+      "kanji": "それから",
+      "hiragana": "それから",
+      "romaji": "sorekara",
+      "meaning": "Sau đó, tiếp theo",
+      "hanViet": "",
+      "partOfSpeech": "conjunction"
+    },
+    {
+      "kanji": "ええ",
+      "hiragana": "ええ",
+      "romaji": "ee",
+      "meaning": "Vâng, ừ (cách nói thân mật)",
+      "hanViet": "",
+      "partOfSpeech": "interjection"
+    },
+    {
+      "kanji": "いいですね",
+      "hiragana": "いいですね",
+      "romaji": "iidesune",
+      "meaning": "Được đấy nhỉ / Hay quá nhỉ",
+      "hanViet": "",
+      "partOfSpeech": "phrase"
+    },
+    {
+      "kanji": "分かりました",
+      "hiragana": "わかりました",
+      "romaji": "wakarimashita",
+      "meaning": "Tôi hiểu rồi / Vâng ạ",
+      "hanViet": "PHÂN",
+      "partOfSpeech": "phrase"
+    },
+    {
+      "kanji": "何ですか",
+      "hiragana": "なんですか",
+      "romaji": "nandesuka",
+      "meaning": "Có chuyện gì thế?",
+      "hanViet": "HÀ",
+      "partOfSpeech": "phrase"
+    },
+    {
+      "kanji": "じゃ、また",
+      "hiragana": "じゃ、また",
+      "romaji": "ja, mata",
+      "meaning": "Hẹn gặp lại [ngày mai]",
+      "hanViet": "",
+      "partOfSpeech": "phrase"
+    }
+  ]
+}

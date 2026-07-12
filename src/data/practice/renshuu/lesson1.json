@@ -1,0 +1,120 @@
+{
+  "lessonNumber": 1,
+  "title": "Bài 1 - Luyện tập giới thiệu",
+  "description": "Các bài luyện tập về giới thiệu bản thân và chào hỏi",
+  "renshuu": [
+    {
+      "id": 1,
+      "type": "speaking",
+      "title": "Luyện nói: Giới thiệu bản thân",
+      "instruction": "Đọc to các câu sau và luyện tập giới thiệu bản thân:",
+      "sentences": [
+        {
+          "japanese": "はじめまして。わたしは　マイク・ミラーです。",
+          "romaji": "Hajimemashite. Watashi wa Maiku Mirā desu.",
+          "vietnamese": "Rất vui được gặp bạn. Tôi là Mike Miller."
+        },
+        {
+          "japanese": "わたしは　アメリカ人です。",
+          "romaji": "Watashi wa Amerikajin desu.",
+          "vietnamese": "Tôi là người Mỹ."
+        },
+        {
+          "japanese": "わたしは　会社員です。",
+          "romaji": "Watashi wa kaishain desu.",
+          "vietnamese": "Tôi là nhân viên công ty."
+        },
+        {
+          "japanese": "よろしく　お願いします。",
+          "romaji": "Yoroshiku onegaishimasu.",
+          "vietnamese": "Mong được giúp đỡ."
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "type": "listening",
+      "title": "Luyện nghe: Hỏi về nghề nghiệp",
+      "instruction": "Nghe và hiểu các câu hỏi về nghề nghiệp:",
+      "sentences": [
+        {
+          "japanese": "ミラーさんは　学生ですか。",
+          "romaji": "Mirā-san wa gakusei desu ka.",
+          "vietnamese": "Anh Miller có phải là sinh viên không?"
+        },
+        {
+          "japanese": "いいえ、学生ではありません。会社員です。",
+          "romaji": "Iie, gakusei dewa arimasen. Kaishain desu.",
+          "vietnamese": "Không, tôi không phải là sinh viên. Tôi là nhân viên công ty."
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "type": "writing",
+      "title": "Luyện viết: Viết câu giới thiệu",
+      "instruction": "Viết câu giới thiệu bản thân bằng tiếng Nhật:",
+      "prompts": [
+        {
+          "vietnamese": "Tôi là [tên của bạn]",
+          "template": "わたしは　______　です。",
+          "romaji": "Watashi wa ______ desu."
+        },
+        {
+          "vietnamese": "Tôi là người [quốc tịch của bạn]",
+          "template": "わたしは　______　です。",
+          "romaji": "Watashi wa ______ desu."
+        },
+        {
+          "vietnamese": "Tôi là [nghề nghiệp của bạn]",
+          "template": "わたしは　______　です。",
+          "romaji": "Watashi wa ______ desu."
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "type": "conversation",
+      "title": "Luyện hội thoại: Chào hỏi",
+      "instruction": "Thực hành hội thoại chào hỏi với bạn cùng học:",
+      "dialogue": [
+        {
+          "speaker": "A",
+          "japanese": "こんにちは。",
+          "romaji": "Konnichiwa.",
+          "vietnamese": "Xin chào."
+        },
+        {
+          "speaker": "B",
+          "japanese": "こんにちは。",
+          "romaji": "Konnichiwa.",
+          "vietnamese": "Xin chào."
+        },
+        {
+          "speaker": "A",
+          "japanese": "はじめまして。わたしは　田中です。",
+          "romaji": "Hajimemashite. Watashi wa Tanaka desu.",
+          "vietnamese": "Rất vui được gặp bạn. Tôi là Tanaka."
+        },
+        {
+          "speaker": "B",
+          "japanese": "はじめまして。わたしは　キムです。",
+          "romaji": "Hajimemashite. Watashi wa Kimu desu.",
+          "vietnamese": "Rất vui được gặp bạn. Tôi là Kim."
+        },
+        {
+          "speaker": "A",
+          "japanese": "よろしく　お願いします。",
+          "romaji": "Yoroshiku onegaishimasu.",
+          "vietnamese": "Mong được giúp đỡ."
+        },
+        {
+          "speaker": "B",
+          "japanese": "よろしく　お願いします。",
+          "romaji": "Yoroshiku onegaishimasu.",
+          "vietnamese": "Mong được giúp đỡ."
+        }
+      ]
+    }
+  ]
+}

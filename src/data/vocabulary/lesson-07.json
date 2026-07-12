@@ -1,0 +1,159 @@
+{
+  "lessonNumber": 7,
+  "level": "N5",
+  "title": "Bài 7",
+  "vocabularies": [
+    {
+      "kanji": "泳ぎます",
+      "hiragana": "およぎます",
+      "romaji": "oyogimasu",
+      "meaning": "Bơi",
+      "hanViet": "ỒNG",
+      "partOfSpeech": "verb"
+    },
+    {
+      "kanji": "あつめます",
+      "hiragana": "あつめます",
+      "romaji": "atsumemasu",
+      "meaning": "Sưu tập",
+      "hanViet": "TỤ",
+      "partOfSpeech": "verb"
+    },
+    {
+      "kanji": "整理します",
+      "hiragana": "せいりします",
+      "romaji": "seerishimasu",
+      "meaning": "Sắp xếp",
+      "hanViet": "CHUNG LÝ",
+      "partOfSpeech": "verb"
+    },
+    {
+      "kanji": "掃除します",
+      "hiragana": "そうじします",
+      "romaji": "soujishimasu",
+      "meaning": "Dọn dẹp",
+      "hanViet": "SẠO",
+      "partOfSpeech": "verb"
+    },
+    {
+      "kanji": "洗います",
+      "hiragana": "あらいます",
+      "romaji": "araimasu",
+      "meaning": "Rửa",
+      "hanViet": "TẨM",
+      "partOfSpeech": "verb"
+    },
+    {
+      "kanji": "乗ります",
+      "hiragana": "のります",
+      "romaji": "norimasu",
+      "meaning": "Lên, đi",
+      "hanViet": "SƯỢNG",
+      "partOfSpeech": "verb"
+    },
+    {
+      "kanji": "降ります",
+      "hiragana": "おります",
+      "romaji": "orimasu",
+      "meaning": "Xuống",
+      "hanViet": "GIẢNG",
+      "partOfSpeech": "verb"
+    },
+    {
+      "kanji": "届けます",
+      "hiragana": "とどけます",
+      "romaji": "todokemasu",
+      "meaning": "Giao hàng",
+      "hanViet": "ĐỘN",
+      "partOfSpeech": "verb"
+    },
+    {
+      "kanji": "案内します",
+      "hiragana": "あんないします",
+      "romaji": "annai-shimasu",
+      "meaning": "Hướng dẫn",
+      "hanViet": "ÁN NỘI",
+      "partOfSpeech": "verb"
+    },
+    {
+      "kanji": "もう一度",
+      "hiragana": "もういちど",
+      "romaji": "mouichido",
+      "meaning": "Một lần nữa",
+      "hanViet": "TƯỚNG NHẤT ĐỘ",
+      "partOfSpeech": "adverb"
+    },
+    {
+      "kanji": "また",
+      "hiragana": "また",
+      "romaji": "mata",
+      "meaning": "Lại nữa",
+      "hanViet": "",
+      "partOfSpeech": "adverb"
+    },
+    {
+      "kanji": "そうですね",
+      "hiragana": "そうですね",
+      "romaji": "soudesune",
+      "meaning": "Đúng vậy nhỉ",
+      "hanViet": "",
+      "partOfSpeech": "phrase"
+    },
+    {
+      "kanji": "でも",
+      "hiragana": "でも",
+      "romaji": "demo",
+      "meaning": "Nhưng",
+      "hanViet": "",
+      "partOfSpeech": "conjunction"
+    },
+    {
+      "kanji": "でしょう",
+      "hiragana": "でしょう",
+      "romaji": "deshou",
+      "meaning": "Chắc chắn",
+      "hanViet": "THẤT",
+      "partOfSpeech": "phrase"
+    },
+    {
+      "kanji": "かもしれません",
+      "hiragana": "かもしれません",
+      "romaji": "kamoshiremasen",
+      "meaning": "Có thể",
+      "hanViet": "CƠ",
+      "partOfSpeech": "phrase"
+    },
+    {
+      "kanji": "だから",
+      "hiragana": "だから",
+      "romaji": "dakara",
+      "meaning": "Vì vậy",
+      "hanViet": "TƯỚNG",
+      "partOfSpeech": "conjunction"
+    },
+    {
+      "kanji": "だけど",
+      "hiragana": "だけど",
+      "romaji": "dakedo",
+      "meaning": "Nhưng",
+      "hanViet": "CHỈ",
+      "partOfSpeech": "conjunction"
+    },
+    {
+      "kanji": "それでは",
+      "hiragana": "それでは",
+      "romaji": "soredewa",
+      "meaning": "Vậy thì",
+      "hanViet": "",
+      "partOfSpeech": "phrase"
+    },
+    {
+      "kanji": "そうしました",
+      "hiragana": "そうしました",
+      "romaji": "sou shimashita",
+      "meaning": "Làm vậy rồi",
+      "hanViet": "TƯỚNG",
+      "partOfSpeech": "verb"
+    }
+  ]
+}

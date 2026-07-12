@@ -24,6 +24,8 @@ interface PracticeCategory {
     bgColor: string;
     route: string;
     tags: string[];
+    disabled?: boolean;
+    disabledMessage?: string;
 }
 
 const practiceCategories: PracticeCategory[] = [
@@ -86,6 +88,8 @@ const practiceCategories: PracticeCategory[] = [
         bgColor: "rgba(235, 47, 150, 0.1)",
         route: "/mina/1",
         tags: ["AI", "Chat"],
+        disabled: true,
+        disabledMessage: "Sắp ra mắt",
     },
 ];
 
@@ -159,21 +163,23 @@ const Practice: React.FC = () => {
                     {practiceCategories.map((category) => (
                         <Col xs={24} md={12} lg={8} key={category.id}>
                             <Card
-                                hoverable
-                                className="h-full transition-all duration-300 border-border bg-surface-1"
+                                hoverable={!category.disabled}
+                                className={`h-full transition-all duration-300 border-border bg-surface-1 ${
+                                    category.disabled ? 'opacity-60 cursor-not-allowed' : ''
+                                }`}
                                 style={{
                                     borderColor:
-                                        hoveredCard === category.id
+                                        hoveredCard === category.id && !category.disabled
                                             ? category.color
                                             : undefined,
                                     boxShadow:
-                                        hoveredCard === category.id
+                                        hoveredCard === category.id && !category.disabled
                                             ? `0 8px 24px ${category.color}20`
                                             : undefined,
                                 }}
-                                onMouseEnter={() => setHoveredCard(category.id)}
+                                onMouseEnter={() => !category.disabled && setHoveredCard(category.id)}
                                 onMouseLeave={() => setHoveredCard(null)}
-                                onClick={() => handleCardClick(category.id)}
+                                onClick={() => !category.disabled && handleCardClick(category.id)}
                             >
                                 <div className="flex flex-col h-full">
                                     {/* Icon & Title */}
@@ -208,6 +214,15 @@ const Practice: React.FC = () => {
                                     <Paragraph className="!text-text-sub !mb-4 flex-1">
                                         {category.description}
                                     </Paragraph>
+
+                                    {/* Coming Soon Message */}
+                                    {category.disabled && category.disabledMessage && (
+                                        <div className="mb-3">
+                                            <Tag color="orange" className="text-xs">
+                                                {category.disabledMessage}
+                                            </Tag>
+                                        </div>
+                                    )}
 
                                     {/* Tags */}
                                     <div className="flex flex-wrap gap-2 mt-auto">

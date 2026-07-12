@@ -1,0 +1,106 @@
+{
+  "lessonNumber": 1,
+  "title": "Bài 1 - Hội thoại giới thiệu",
+  "description": "Các hội thoại giới thiệu bản thân và chào hỏi",
+  "kaiwa": [
+    {
+      "id": 1,
+      "title": "Giới thiệu bản thân",
+      "speakers": ["A", "B"],
+      "dialogue": [
+        {
+          "speaker": "A",
+          "japanese": "はじめまして。",
+          "romaji": "Hajimemashite.",
+          "vietnamese": "Rất vui được gặp bạn."
+        },
+        {
+          "speaker": "B",
+          "japanese": "はじめまして。",
+          "romaji": "Hajimemashite.",
+          "vietnamese": "Rất vui được gặp bạn."
+        },
+        {
+          "speaker": "A",
+          "japanese": "わたしは　マイク・ミラーです。",
+          "romaji": "Watashi wa Maiku Mirā desu.",
+          "vietnamese": "Tôi là Mike Miller."
+        },
+        {
+          "speaker": "B",
+          "japanese": "わたしは　キム・スミスです。",
+          "romaji": "Watashi wa Kimu Sumisu desu.",
+          "vietnamese": "Tôi là Kim Smith."
+        },
+        {
+          "speaker": "A",
+          "japanese": "よろしく　お願いします。",
+          "romaji": "Yoroshiku onegaishimasu.",
+          "vietnamese": "Mong được giúp đỡ."
+        },
+        {
+          "speaker": "B",
+          "japanese": "よろしく　お願いします。",
+          "romaji": "Yoroshiku onegaishimasu.",
+          "vietnamese": "Mong được giúp đỡ."
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "title": "Hỏi về nghề nghiệp",
+      "speakers": ["A", "B"],
+      "dialogue": [
+        {
+          "speaker": "A",
+          "japanese": "ミラーさんは　学生ですか。",
+          "romaji": "Mirā-san wa gakusei desu ka.",
+          "vietnamese": "Anh Miller có phải là sinh viên không?"
+        },
+        {
+          "speaker": "B",
+          "japanese": "いいえ、学生ではありません。会社員です。",
+          "romaji": "Iie, gakusei dewa arimasen. Kaishain desu.",
+          "vietnamese": "Không, tôi không phải là sinh viên. Tôi là nhân viên công ty."
+        },
+        {
+          "speaker": "A",
+          "japanese": "そうですか。",
+          "romaji": "Sō desu ka.",
+          "vietnamese": "Thế à."
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "title": "Hỏi về quốc tịch",
+      "speakers": ["A", "B"],
+      "dialogue": [
+        {
+          "speaker": "A",
+          "japanese": "キムさんは　韓国人ですか。",
+          "romaji": "Kimu-san wa Kankokujin desu ka.",
+          "vietnamese": "Chị Kim có phải là người Hàn Quốc không?"
+        },
+        {
+          "speaker": "B",
+          "japanese": "はい、韓国人です。",
+          "romaji": "Hai, Kankokujin desu.",
+          "vietnamese": "Vâng, tôi là người Hàn Quốc."
+        },
+        {
+          "speaker": "A",
+          "japanese": "スミスさんは　アメリカ人ですか。",
+          "romaji": "Sumisu-san wa Amerikajin desu ka.",
+          "vietnamese": "Anh Smith có phải là người Mỹ không?"
+        },
+        {
+          "speaker": "B",
+          "japanese": "いいえ、アメリカ人ではありません。イギリス人です。",
+          "romaji": "Iie, Amerikajin dewa arimasen. Igirisujin desu.",
+          "vietnamese": "Không, tôi không phải là người Mỹ. Tôi là người Anh."
+        }
+      ]
+    }
+  ]
+}

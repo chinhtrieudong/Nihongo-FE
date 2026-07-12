@@ -1,0 +1,87 @@
+{
+  "lessonNumber": 2,
+  "title": "Bài 2 - Ví dụ câu về đồ vật",
+  "description": "Các câu ví dụ về chỉ định và hỏi về đồ vật",
+  "reibun": [
+    {
+      "id": 1,
+      "japanese": "これは　本です。",
+      "romaji": "Kore wa hon desu.",
+      "vietnamese": "Đây là sách.",
+      "grammarPoint": "Kore - Chỉ định gần người nói",
+      "context": "Chỉ định đồ vật gần mình"
+    },
+    {
+      "id": 2,
+      "japanese": "それは　ペンです。",
+      "romaji": "Sore wa pen desu.",
+      "vietnamese": "Đó là bút.",
+      "grammarPoint": "Sore - Chỉ định gần người nghe",
+      "context": "Chỉ định đồ vật gần người nghe"
+    },
+    {
+      "id": 3,
+      "japanese": "あれは　テレビです。",
+      "romaji": "Are wa terebi desu.",
+      "vietnamese": "Kia là tivi.",
+      "grammarPoint": "Are - Chỉ định xa cả hai người",
+      "context": "Chỉ định đồ vật xa"
+    },
+    {
+      "id": 4,
+      "japanese": "これは　何ですか。",
+      "romaji": "Kore wa nan desu ka.",
+      "vietnamese": "Đây là cái gì?",
+      "grammarPoint": "Nan - Câu hỏi cái gì",
+      "context": "Hỏi về đồ vật không biết"
+    },
+    {
+      "id": 5,
+      "japanese": "これは　辞書です。",
+      "romaji": "Kore wa jisho desu.",
+      "vietnamese": "Đây là từ điển.",
+      "grammarPoint": "Từ vựng: 辞書 (jisho)",
+      "context": "Đặt tên đồ vật"
+    },
+    {
+      "id": 6,
+      "japanese": "その時計は　田中さんの時計です。",
+      "romaji": "Sono tokei wa Tanaka-san no tokei desu.",
+      "vietnamese": "Cái đồng hồ đó là đồng hồ của anh Tanaka.",
+      "grammarPoint": "Sono + no - Chỉ định sở hữu",
+      "context": "Chỉ định chủ sở hữu"
+    },
+    {
+      "id": 7,
+      "japanese": "このノートは　わたしのノートです。",
+      "romaji": "Kono nōto wa watashi no nōto desu.",
+      "vietnamese": "Quyển vở này là vở của tôi.",
+      "grammarPoint": "Kono + no - Chỉ định gần + sở hữu",
+      "context": "Nói về đồ vật của mình"
+    },
+    {
+      "id": 8,
+      "japanese": "あの鞄は　だれの鞄ですか。",
+      "romaji": "Ano kaban wa dare no kaban desu ka.",
+      "vietnamese": "Cái túi kia là túi của ai?",
+      "grammarPoint": "Dare - Câu hỏi ai",
+      "context": "Hỏi về chủ sở hữu"
+    },
+    {
+      "id": 9,
+      "japanese": "これは　日本語の本です。",
+      "romaji": "Kore wa Nihongo no hon desu.",
+      "vietnamese": "Đây là sách tiếng Nhật.",
+      "grammarPoint": "No - Chỉ định loại/ngôn ngữ",
+      "context": "Chỉ định loại sách"
+    },
+    {
+      "id": 10,
+      "japanese": "これを　ください。",
+      "romaji": "Kore o kudasai.",
+      "vietnamese": "Cho tôi cái này.",
+      "grammarPoint": "O + kudasai - Yêu cầu",
+      "context": "Yêu cầu đồ vật"
+    }
+  ]
+}

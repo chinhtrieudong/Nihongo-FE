@@ -1,0 +1,159 @@
+{
+  "lessonNumber": 8,
+  "level": "N5",
+  "title": "Bài 8",
+  "vocabularies": [
+    {
+      "kanji": "あります",
+      "hiragana": "あります",
+      "romaji": "arimasu",
+      "meaning": "Có (đối tượng vật)",
+      "hanViet": "NHƯ",
+      "partOfSpeech": "verb"
+    },
+    {
+      "kanji": "います",
+      "hiragana": "います",
+      "romaji": "imasu",
+      "meaning": "Có (đối tượng người, động vật)",
+      "hanViet": "NHƯ",
+      "partOfSpeech": "verb"
+    },
+    {
+      "kanji": "ある",
+      "hiragana": "ある",
+      "romaji": "aru",
+      "meaning": "Có (đối tượng vật)",
+      "hanViet": "NHƯ",
+      "partOfSpeech": "verb"
+    },
+    {
+      "kanji": "いる",
+      "hiragana": "いる",
+      "romaji": "iru",
+      "meaning": "Có (đối tượng người, động vật)",
+      "hanViet": "NHƯ",
+      "partOfSpeech": "verb"
+    },
+    {
+      "kanji": "ありますか",
+      "hiragana": "ありますか",
+      "romaji": "arimasuka",
+      "meaning": "Có không?",
+      "hanViet": "NHƯ",
+      "partOfSpeech": "verb"
+    },
+    {
+      "kanji": "いますか",
+      "hiragana": "いますか",
+      "romaji": "imasuka",
+      "meaning": "Có không?",
+      "hanViet": "NHƯ",
+      "partOfSpeech": "verb"
+    },
+    {
+      "kanji": "どこに",
+      "hiragana": "どこに",
+      "romaji": "dokoni",
+      "meaning": "Ở đâu",
+      "hanViet": "ĐỊA",
+      "partOfSpeech": "adverb"
+    },
+    {
+      "kanji": "どこにありますか",
+      "hiragana": "どこにありますか",
+      "romaji": "dokoni arimasuka",
+      "meaning": "Ở đâu?",
+      "hanViet": "ĐỊA",
+      "partOfSpeech": "phrase"
+    },
+    {
+      "kanji": "どこにいますか",
+      "hiragana": "どこにいますか",
+      "romaji": "dokoni imasuka",
+      "meaning": "Ở đâu?",
+      "hanViet": "ĐỊA",
+      "partOfSpeech": "phrase"
+    },
+    {
+      "kanji": "近く",
+      "hiragana": "ちかく",
+      "romaji": "chikaku",
+      "meaning": "Gần",
+      "hanViet": "CẠNH",
+      "partOfSpeech": "noun"
+    },
+    {
+      "kanji": "前",
+      "hiragana": "まえ",
+      "romaji": "mae",
+      "meaning": "Trước",
+      "hanViet": "TIỀN",
+      "partOfSpeech": "noun"
+    },
+    {
+      "kanji": "後ろ",
+      "hiragana": "うしろ",
+      "romaji": "ushiro",
+      "meaning": "Sau",
+      "hanViet": "HẬU",
+      "partOfSpeech": "noun"
+    },
+    {
+      "kanji": "右",
+      "hiragana": "みぎ",
+      "romaji": "migi",
+      "meaning": "Phải",
+      "hanViet": "HỮU",
+      "partOfSpeech": "noun"
+    },
+    {
+      "kanji": "左",
+      "hiragana": "ひだり",
+      "romaji": "hidari",
+      "meaning": "Trái",
+      "hanViet": "TẢI",
+      "partOfSpeech": "noun"
+    },
+    {
+      "kanji": "間",
+      "hiragana": "あいだ",
+      "romaji": "aida",
+      "meaning": "Giữa",
+      "hanViet": "GIAN",
+      "partOfSpeech": "noun"
+    },
+    {
+      "kanji": "中",
+      "hiragana": "なか",
+      "romaji": "naka",
+      "meaning": "Trong",
+      "hanViet": "TRUNG",
+      "partOfSpeech": "noun"
+    },
+    {
+      "kanji": "下",
+      "hiragana": "した",
+      "romaji": "shita",
+      "meaning": "Dưới",
+      "hanViet": "HẠ",
+      "partOfSpeech": "noun"
+    },
+    {
+      "kanji": "上",
+      "hiragana": "うえ",
+      "romaji": "ue",
+      "meaning": "Trên",
+      "hanViet": "THƯỢNG",
+      "partOfSpeech": "noun"
+    },
+    {
+      "kanji": "近くにあります",
+      "hiragana": "ちかくにあります",
+      "romaji": "chikaku ni arimasu",
+      "meaning": "Gần đây",
+      "hanViet": "CẠNH",
+      "partOfSpeech": "phrase"
+    }
+  ]
+}

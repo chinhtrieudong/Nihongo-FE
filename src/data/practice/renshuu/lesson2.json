@@ -1,0 +1,118 @@
+{
+  "lessonNumber": 2,
+  "title": "Bài 2 - Luyện tập về đồ vật",
+  "description": "Các bài luyện tập về chỉ định và hỏi về đồ vật",
+  "renshuu": [
+    {
+      "id": 1,
+      "type": "speaking",
+      "title": "Luyện nói: Chỉ định đồ vật",
+      "instruction": "Đọc to và chỉ định các đồ vật xung quanh:",
+      "sentences": [
+        {
+          "japanese": "これは　本です。",
+          "romaji": "Kore wa hon desu.",
+          "vietnamese": "Đây là sách."
+        },
+        {
+          "japanese": "それは　ペンです。",
+          "romaji": "Sore wa pen desu.",
+          "vietnamese": "Đó là bút."
+        },
+        {
+          "japanese": "あれは　テレビです。",
+          "romaji": "Are wa terebi desu.",
+          "vietnamese": "Kia là tivi."
+        },
+        {
+          "japanese": "これは　辞書です。",
+          "romaji": "Kore wa jisho desu.",
+          "vietnamese": "Đây là từ điển."
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "type": "listening",
+      "title": "Luyện nghe: Hỏi về đồ vật",
+      "instruction": "Nghe và hiểu các câu hỏi về đồ vật:",
+      "sentences": [
+        {
+          "japanese": "これは　何ですか。",
+          "romaji": "Kore wa nan desu ka.",
+          "vietnamese": "Đây là cái gì?"
+        },
+        {
+          "japanese": "それは　時計です。",
+          "romaji": "Sore wa tokei desu.",
+          "vietnamese": "Đó là đồng hồ."
+        },
+        {
+          "japanese": "その鞄は　だれの鞄ですか。",
+          "romaji": "Sono kaban wa dare no kaban desu ka.",
+          "vietnamese": "Cái túi đó là túi của ai?"
+        },
+        {
+          "japanese": "これは　わたしの鞄です。",
+          "romaji": "Kore wa watashi no kaban desu.",
+          "vietnamese": "Đây là túi của tôi."
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "type": "writing",
+      "title": "Luyện viết: Viết câu chỉ định",
+      "instruction": "Viết câu chỉ định đồ vật bằng tiếng Nhật:",
+      "prompts": [
+        {
+          "vietnamese": "Đây là [đồ vật]",
+          "template": "これは　______　です。",
+          "romaji": "Kore wa ______ desu."
+        },
+        {
+          "vietnamese": "Đó là [đồ vật]",
+          "template": "それは　______　です。",
+          "romaji": "Sore wa ______ desu."
+        },
+        {
+          "vietnamese": "Kia là [đồ vật]",
+          "template": "あれは　______　です。",
+          "romaji": "Are wa ______ desu."
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "type": "conversation",
+      "title": "Luyện hội thoại: Hỏi về đồ vật",
+      "instruction": "Thực hành hội thoại hỏi về đồ vật:",
+      "dialogue": [
+        {
+          "speaker": "A",
+          "japanese": "これは　何ですか。",
+          "romaji": "Kore wa nan desu ka.",
+          "vietnamese": "Đây là cái gì?"
+        },
+        {
+          "speaker": "B",
+          "japanese": "それは　辞書です。",
+          "romaji": "Sore wa jisho desu.",
+          "vietnamese": "Đó là từ điển."
+        },
+        {
+          "speaker": "A",
+          "japanese": "その辞書は　あなたの辞書ですか。",
+          "romaji": "Sono jisho wa anata no jisho desu ka.",
+          "vietnamese": "Quyển từ điển đó là từ điển của bạn không?"
+        },
+        {
+          "speaker": "B",
+          "japanese": "いいえ、わたしの辞書ではありません。田中さんの辞書です。",
+          "romaji": "Iie, watashi no jisho dewa arimasen. Tanaka-san no jisho desu.",
+          "vietnamese": "Không, không phải là từ điển của tôi. Đó là từ điển của anh Tanaka."
+        }
+      ]
+    }
+  ]
+}

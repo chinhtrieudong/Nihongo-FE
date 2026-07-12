@@ -13,6 +13,18 @@ const AuthContext = createContext<AuthContextType>({
 export const useAuth = () => useContext(AuthContext);
 
 export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+  // TEMPORARY: In development mode, skip auth loading entirely
+  const isDevelopment = import.meta.env.DEV || import.meta.env.MODE === 'development';
+  
+  if (isDevelopment) {
+    // Return immediately without any auth checks in development
+    return (
+      <AuthContext.Provider value={{ isInitialized: true, isLoading: false }}>
+        {children}
+      </AuthContext.Provider>
+    );
+  }
+
   const [isInitialized, setIsInitialized] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
 

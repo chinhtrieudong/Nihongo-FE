@@ -1,0 +1,77 @@
+{
+  "lessonNumber": 1,
+  "title": "Bài 1 - Mẫu câu cơ bản",
+  "description": "Các mẫu câu giới thiệu bản thân và chào hỏi cơ bản",
+  "bunkei": [
+    {
+      "id": 1,
+      "japanese": "わたしは　マイク・ミラーです。",
+      "romaji": "Watashi wa Maiku Mirā desu.",
+      "vietnamese": "Tôi là Mike Miller.",
+      "pattern": "わたしは　[名前]です。",
+      "patternMeaning": "Tôi là [tên].",
+      "grammarPoint": "A は B です (A wa B desu) - Câu khẳng định",
+      "examples": [
+        "わたしは　田中です。",
+        "わたしは　キムです。",
+        "わたしは　スミスです。"
+      ]
+    },
+    {
+      "id": 2,
+      "japanese": "ミラーさんは　アメリカ人です。",
+      "romaji": "Mirā-san wa Amerikajin desu.",
+      "vietnamese": "Anh Miller là người Mỹ.",
+      "pattern": "[名前]さんは　[国籍]です。",
+      "patternMeaning": "[Tên] là người [quốc tịch].",
+      "grammarPoint": "Chỉ định quốc tịch",
+      "examples": [
+        "田中さんは　日本人です。",
+        "キムさんは　韓国人です。",
+        "スミスさんは　イギリス人です。"
+      ]
+    },
+    {
+      "id": 3,
+      "japanese": "ミラーさんは　学生です。",
+      "romaji": "Mirā-san wa gakusei desu.",
+      "vietnamese": "Anh Miller là sinh viên.",
+      "pattern": "[名前]さんは　[職業]です。",
+      "patternMeaning": "[Tên] là [nghề nghiệp].",
+      "grammarPoint": "Chỉ định nghề nghiệp",
+      "examples": [
+        "田中さんは　会社員です。",
+        "キムさんは　先生です。",
+        "スミスさんは　医者です。"
+      ]
+    },
+    {
+      "id": 4,
+      "japanese": "ミラーさんは　会社員ではありません。",
+      "romaji": "Mirā-san wa kaishain dewa arimasen.",
+      "vietnamese": "Anh Miller không phải là nhân viên công ty.",
+      "pattern": "[名前]さんは　[職業]ではありません。",
+      "patternMeaning": "[Tên] không phải là [nghề nghiệp].",
+      "grammarPoint": "Câu phủ định (dewa arimasen)",
+      "examples": [
+        "田中さんは　学生ではありません。",
+        "キムさんは　会社員ではありません。",
+        "スミスさんは　先生ではありません。"
+      ]
+    },
+    {
+      "id": 5,
+      "japanese": "ミラーさんは　学生ですか。",
+      "romaji": "Mirā-san wa gakusei desu ka.",
+      "vietnamese": "Anh Miller có phải là sinh viên không?",
+      "pattern": "[名前]さんは　[職業]ですか。",
+      "patternMeaning": "[Tên] có phải là [nghề nghiệp] không?",
+      "grammarPoint": "Câu hỏi (desu ka)",
+      "examples": [
+        "田中さんは　会社員ですか。",
+        "キムさんは　先生ですか。",
+        "スミスさんは　学生ですか。"
+      ]
+    }
+  ]
+}

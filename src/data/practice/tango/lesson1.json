@@ -1,0 +1,162 @@
+{
+  "lessonNumber": 1,
+  "title": "Bài 1 - Từ vựng giới thiệu",
+  "description": "Các từ vựng về giới thiệu bản thân và chào hỏi",
+  "tango": [
+    {
+      "id": 1,
+      "japanese": "わたし",
+      "kana": "わたし",
+      "kanji": "私",
+      "romaji": "watashi",
+      "vietnamese": "tôi",
+      "partOfSpeech": "đại từ",
+      "example": "わたしは　学生です。",
+      "exampleRomaji": "Watashi wa gakusei desu.",
+      "exampleVietnamese": "Tôi là sinh viên."
+    },
+    {
+      "id": 2,
+      "japanese": "あなた",
+      "kana": "あなた",
+      "kanji": "貴方",
+      "romaji": "anata",
+      "vietnamese": "bạn",
+      "partOfSpeech": "đại từ",
+      "example": "あなたは　学生ですか。",
+      "exampleRomaji": "Anata wa gakusei desu ka.",
+      "exampleVietnamese": "Bạn có phải là sinh viên không?"
+    },
+    {
+      "japanese": "～さん",
+      "kana": "さん",
+      "kanji": "さん",
+      "romaji": "~san",
+      "vietnamese": "anh/chị (kính ngữ)",
+      "partOfSpeech": "hậu tố",
+      "example": "田中さんは　会社員です。",
+      "exampleRomaji": "Tanaka-san wa kaishain desu.",
+      "exampleVietnamese": "Anh Tanaka là nhân viên công ty."
+    },
+    {
+      "id": 3,
+      "japanese": "学生",
+      "kana": "がくせい",
+      "kanji": "学生",
+      "romaji": "gakusei",
+      "vietnamese": "sinh viên",
+      "partOfSpeech": "danh từ",
+      "example": "わたしは　学生です。",
+      "exampleRomaji": "Watashi wa gakusei desu.",
+      "exampleVietnamese": "Tôi là sinh viên."
+    },
+    {
+      "id": 4,
+      "japanese": "会社員",
+      "kana": "かいしゃいん",
+      "kanji": "会社員",
+      "romaji": "kaishain",
+      "vietnamese": "nhân viên công ty",
+      "partOfSpeech": "danh từ",
+      "example": "わたしは　会社員です。",
+      "exampleRomaji": "Watashi wa kaishain desu.",
+      "exampleVietnamese": "Tôi là nhân viên công ty."
+    },
+    {
+      "id": 5,
+      "japanese": "先生",
+      "kana": "せんせい",
+      "kanji": "先生",
+      "romaji": "sensei",
+      "vietnamese": "giáo viên",
+      "partOfSpeech": "danh từ",
+      "example": "田中さんは　先生です。",
+      "exampleRomaji": "Tanaka-san wa sensei desu.",
+      "exampleVietnamese": "Anh Tanaka là giáo viên."
+    },
+    {
+      "id": 6,
+      "japanese": "医者",
+      "kana": "いしゃ",
+      "kanji": "医者",
+      "romaji": "isha",
+      "vietnamese": "bác sĩ",
+      "partOfSpeech": "danh từ",
+      "example": "キムさんは　医者です。",
+      "exampleRomaji": "Kimu-san wa isha desu.",
+      "exampleVietnamese": "Chị Kim là bác sĩ."
+    },
+    {
+      "id": 7,
+      "japanese": "日本人",
+      "kana": "にほんじん",
+      "kanji": "日本人",
+      "romaji": "Nihonjin",
+      "vietnamese": "người Nhật",
+      "partOfSpeech": "danh từ",
+      "example": "わたしは　日本人です。",
+      "exampleRomaji": "Watashi wa Nihonjin desu.",
+      "exampleVietnamese": "Tôi là người Nhật."
+    },
+    {
+      "id": 8,
+      "japanese": "アメリカ人",
+      "kana": "アメリカじん",
+      "kanji": "アメリカ人",
+      "romaji": "Amerikajin",
+      "vietnamese": "người Mỹ",
+      "partOfSpeech": "danh từ",
+      "example": "ミラーさんは　アメリカ人です。",
+      "exampleRomaji": "Mirā-san wa Amerikajin desu.",
+      "exampleVietnamese": "Anh Miller là người Mỹ."
+    },
+    {
+      "id": 9,
+      "japanese": "韓国人",
+      "kana": "かんこくじん",
+      "kanji": "韓国人",
+      "romaji": "Kankokujin",
+      "vietnamese": "người Hàn Quốc",
+      "partOfSpeech": "danh từ",
+      "example": "キムさんは　韓国人です。",
+      "exampleRomaji": "Kimu-san wa Kankokujin desu.",
+      "exampleVietnamese": "Chị Kim là người Hàn Quốc."
+    },
+    {
+      "id": 10,
+      "japanese": "はじめまして",
+      "kana": "はじめまして",
+      "kanji": "始めまして",
+      "romaji": "hajimemashite",
+      "vietnamese": "rất vui được gặp bạn",
+      "partOfSpeech": "câu chào",
+      "example": "はじめまして。わたしは　田中です。",
+      "exampleRomaji": "Hajimemashite. Watashi wa Tanaka desu.",
+      "exampleVietnamese": "Rất vui được gặp bạn. Tôi là Tanaka."
+    },
+    {
+      "id": 11,
+      "japanese": "よろしく　お願いします",
+      "kana": "よろしく　おねがいします",
+      "kanji": "よろしく　お願いします",
+      "romaji": "yoroshiku onegaishimasu",
+      "vietnamese": "mong được giúp đỡ",
+      "partOfSpeech": "câu lịch sự",
+      "example": "よろしく　お願いします。",
+      "exampleRomaji": "Yoroshiku onegaishimasu.",
+      "exampleVietnamese": "Mong được giúp đỡ."
+    },
+    {
+      "id": 12,
+      "japanese": "こんにちは",
+      "kana": "こんにちは",
+      "kanji": "今日は",
+      "romaji": "konnichiwa",
+      "vietnamese": "xin chào",
+      "partOfSpeech": "câu chào",
+      "example": "こんにちは。",
+      "exampleRomaji": "Konnichiwa.",
+      "exampleVietnamese": "Xin chào."
+    }
+  ]
+}

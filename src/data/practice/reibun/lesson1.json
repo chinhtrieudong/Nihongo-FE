@@ -1,0 +1,87 @@
+{
+  "lessonNumber": 1,
+  "title": "Bài 1 - Ví dụ câu giới thiệu",
+  "description": "Các câu ví dụ về giới thiệu bản thân và chào hỏi",
+  "reibun": [
+    {
+      "id": 1,
+      "japanese": "わたしは　田中です。",
+      "romaji": "Watashi wa Tanaka desu.",
+      "vietnamese": "Tôi là Tanaka.",
+      "grammarPoint": "A は B です - Câu khẳng định",
+      "context": "Giới thiệu tên của mình"
+    },
+    {
+      "id": 2,
+      "japanese": "わたしは　日本人です。",
+      "romaji": "Watashi wa Nihonjin desu.",
+      "vietnamese": "Tôi là người Nhật.",
+      "grammarPoint": "Chỉ định quốc tịch",
+      "context": "Giới thiệu quốc tịch"
+    },
+    {
+      "id": 3,
+      "japanese": "わたしは　学生です。",
+      "romaji": "Watashi wa gakusei desu.",
+      "vietnamese": "Tôi là sinh viên.",
+      "grammarPoint": "Chỉ định nghề nghiệp",
+      "context": "Giới thiệu nghề nghiệp"
+    },
+    {
+      "id": 4,
+      "japanese": "田中さんは　会社員です。",
+      "romaji": "Tanaka-san wa kaishain desu.",
+      "vietnamese": "Anh Tanaka là nhân viên công ty.",
+      "grammarPoint": "Sử dụng san - kính ngữ",
+      "context": "Giới thiệu người khác"
+    },
+    {
+      "id": 5,
+      "japanese": "キムさんは　韓国人ではありません。",
+      "romaji": "Kimu-san wa Kankokujin dewa arimasen.",
+      "vietnamese": "Chị Kim không phải là người Hàn Quốc.",
+      "grammarPoint": "Câu phủ định dewa arimasen",
+      "context": "Phủ định thông tin"
+    },
+    {
+      "id": 6,
+      "japanese": "スミスさんは　先生ですか。",
+      "romaji": "Sumisu-san wa sensei desu ka.",
+      "vietnamese": "Anh Smith có phải là giáo viên không?",
+      "grammarPoint": "Câu hỏi desu ka",
+      "context": "Hỏi về nghề nghiệp"
+    },
+    {
+      "id": 7,
+      "japanese": "はじめまして。よろしく　お願いします。",
+      "romaji": "Hajimemashite. Yoroshiku onegaishimasu.",
+      "vietnamese": "Rất vui được gặp bạn. Mong được giúp đỡ.",
+      "grammarPoint": "Lời chào formal",
+      "context": "Lời chào khi mới gặp"
+    },
+    {
+      "id": 8,
+      "japanese": "こんにちは。",
+      "romaji": "Konnichiwa.",
+      "vietnamese": "Xin chào.",
+      "grammarPoint": "Lời chào thông dụng",
+      "context": "Chào vào ban ngày"
+    },
+    {
+      "id": 9,
+      "japanese": "さようなら。",
+      "romaji": "Sayōnara.",
+      "vietnamese": "Tạm biệt.",
+      "grammarPoint": "Lời tạm biệt",
+      "context": "Tạm biệt khi chia tay"
+    },
+    {
+      "id": 10,
+      "japanese": "ありがとうございます。",
+      "romaji": "Arigatō gozaimasu.",
+      "vietnamese": "Cảm ơn rất nhiều.",
+      "grammarPoint": "Lời cảm ơn formal",
+      "context": "Biểu thị lòng biết ơn"
+    }
+  ]
+}

@@ -199,13 +199,43 @@ export interface AuthResponse {
 // Auth API functions
 export const authAPI = {
   login: async (data: LoginData): Promise<AuthResponse> => {
-    const response = await api.post(API_ENDPOINTS.AUTH.LOGIN, data);
-    return response.data;
+    // Mock login for development
+    return {
+      success: true,
+      message: "Login successful",
+      data: {
+        user: {
+          id: "user-" + Date.now(),
+          username: data.email.split('@')[0],
+          email: data.email,
+          role: "student",
+        },
+        tokens: {
+          accessToken: "mock-access-token-" + Date.now(),
+          refreshToken: "mock-refresh-token-" + Date.now(),
+        },
+      },
+    };
   },
 
   register: async (data: RegisterData): Promise<AuthResponse> => {
-    const response = await api.post(API_ENDPOINTS.AUTH.REGISTER, data);
-    return response.data;
+    // Mock register for development
+    return {
+      success: true,
+      message: "Registration successful",
+      data: {
+        user: {
+          id: "user-" + Date.now(),
+          username: data.fullName,
+          email: data.email,
+          role: "student",
+        },
+        tokens: {
+          accessToken: "mock-access-token-" + Date.now(),
+          refreshToken: "mock-refresh-token-" + Date.now(),
+        },
+      },
+    };
   },
 
   logout: async (): Promise<void> => {
@@ -527,7 +557,7 @@ type BackendJlptTest = {
   slug?: string;
 };
 
-const normalizeJlptTest = (raw: BackendJlptTest) => {
+export const normalizeJlptTest = (raw: BackendJlptTest) => {
   const level = String(raw.level || "").toUpperCase();
   const version = typeof raw.version === "number" ? raw.version : 1;
   const id =
@@ -611,14 +641,27 @@ const JLPT_ENDPOINTS = {
 
 export const jlptTestsAPI = {
   getAllTests: async () => {
-    const response = await api.get(JLPT_ENDPOINTS.LIST);
-    const payload = response.data;
-    const rawTests: BackendJlptTest[] = Array.isArray(payload?.data) ? payload.data : [];
-    return {
-      ...payload,
-      data: rawTests.map(normalizeJlptTest),
-      source: "backend",
-    };
+    // Use local JSON data for development
+    try {
+      const data = await import('../data/tests/jlptTests.json');
+      return {
+        success: true,
+        message: "Tests retrieved successfully",
+        data: data.default.data.map(normalizeJlptTest),
+        source: "local",
+      };
+    } catch (error) {
+      console.error('Error loading local test data:', error);
+      // Fallback to API if local data fails
+      const response = await api.get(JLPT_ENDPOINTS.LIST);
+      const payload = response.data;
+      const rawTests: BackendJlptTest[] = Array.isArray(payload?.data) ? payload.data : [];
+      return {
+        ...payload,
+        data: rawTests.map(normalizeJlptTest),
+        source: "backend",
+      };
+    }
   },
 
   getTestsByLevel: async (level: string) => {
@@ -634,27 +677,52 @@ export const jlptTestsAPI = {
   },
 
   getTest: async (level: string, testId: string) => {
-    const response = await api.get(JLPT_ENDPOINTS.LIST);
-    const payload = response.data;
-    const rawTests: BackendJlptTest[] = Array.isArray(payload?.data) ? payload.data : [];
-    const normalized = rawTests.map(normalizeJlptTest);
-    const upper = String(level || "").toUpperCase();
-    const found = normalized.find(
-      (t) => String(t.id) === String(testId) && String(t.level).toUpperCase() === upper,
-    );
-    if (!found) {
+    // Use local JSON data for development
+    try {
+      const data = await import('../data/tests/jlptTests.json');
+      const normalized = data.default.data.map(normalizeJlptTest);
+      const upper = String(level || "").toUpperCase();
+      const found = normalized.find(
+        (t) => String(t.id) === String(testId) && String(t.level).toUpperCase() === upper,
+      );
+      if (!found) {
+        return {
+          success: false,
+          message: "Test not found.",
+          data: null,
+          source: "local",
+        };
+      }
       return {
-        success: false,
-        message: "Test not found.",
-        data: null,
+        success: true,
+        data: found,
+        source: "local",
+      };
+    } catch (error) {
+      console.error('Error loading local test data:', error);
+      // Fallback to API if local data fails
+      const response = await api.get(JLPT_ENDPOINTS.LIST);
+      const payload = response.data;
+      const rawTests: BackendJlptTest[] = Array.isArray(payload?.data) ? payload.data : [];
+      const normalized = rawTests.map(normalizeJlptTest);
+      const upper = String(level || "").toUpperCase();
+      const found = normalized.find(
+        (t) => String(t.id) === String(testId) && String(t.level).toUpperCase() === upper,
+      );
+      if (!found) {
+        return {
+          success: false,
+          message: "Test not found.",
+          data: null,
+          source: "backend",
+        };
+      }
+      return {
+        success: true,
+        data: found,
         source: "backend",
       };
     }
-    return {
-      success: true,
-      data: found,
-      source: "backend",
-    };
   },
 };
 

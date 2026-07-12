@@ -2,28 +2,29 @@ import React, { useState, useEffect } from "react";
 import { Card, Typography, Spin, Button, List, Tag, Space } from "antd";
 import { useNavigate, useParams } from "react-router-dom";
 import { ArrowLeft, Volume2, BookOpen } from "lucide-react";
-import { minnaAPI } from "../../services/api";
+// import { minnaAPI } from "../../services/api"; // Disabled - using local JSON data
 import { EmptyState } from "../../components/common";
 
 const { Title, Text, Paragraph } = Typography;
 
 interface TangoItem {
-  _id: string;
-  kanji: string;
+  id: number;
+  japanese: string;
   kana: string;
+  kanji: string;
   romaji: string;
-  hanviet: string;
-  meaningVi: string;
-  exampleJp?: string;
-  exampleVi?: string;
-  lessonNumber: number;
+  vietnamese: string;
+  partOfSpeech: string;
+  example: string;
+  exampleRomaji: string;
+  exampleVietnamese: string;
 }
 
 const TangoDetail: React.FC = () => {
   const navigate = useNavigate();
   const { lessonId } = useParams<{ lessonId?: string }>();
   const [loading, setLoading] = useState(true);
-  const [tango, setTango] = useState<TangoItem[]>([]);
+  const [tangoData, setTangoData] = useState<any>(null);
   const [selectedLesson, setSelectedLesson] = useState<number | null>(null);
 
   // Set selected lesson from URL param
@@ -34,24 +35,24 @@ const TangoDetail: React.FC = () => {
   }, [lessonId]);
 
   useEffect(() => {
-    fetchTango();
+    const fetchTangoData = async () => {
+      if (!selectedLesson) return;
+      try {
+        setLoading(true);
+        // Load local JSON data instead of API call
+        const data = await import(`../../data/practice/tango/lesson${selectedLesson}.json`);
+        setTangoData(data.default);
+      } catch (error) {
+        console.error("Error loading tango data:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchTangoData();
   }, [selectedLesson]);
 
-  const fetchTango = async () => {
-    try {
-      setLoading(true);
-      const response = await minnaAPI.getTango(selectedLesson || undefined);
-      if (response.success) {
-        setTango(response.data);
-      }
-    } catch (error) {
-      console.error("Error fetching tango:", error);
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  const lessons = Array.from(new Set(tango.map(item => item.lessonNumber))).sort((a, b) => a - b);
+  const tango = tangoData?.tango || [];
 
   if (loading) {
     return (
@@ -73,27 +74,24 @@ const TangoDetail: React.FC = () => {
 
       <Title level={2} className="flex items-center gap-2 mb-6">
         <BookOpen className="w-8 h-8 text-blue-500" />
-        Từ vựng Minna (Tango)
+        Từ vựng - Bài {selectedLesson || '...'}
       </Title>
 
       <Space className="mb-4 flex-wrap">
         <Tag 
-          color={selectedLesson === null ? "blue" : undefined}
+          color={selectedLesson === 1 ? "blue" : undefined}
           style={{ cursor: "pointer" }}
-          onClick={() => setSelectedLesson(null)}
+          onClick={() => setSelectedLesson(1)}
         >
-          Tất cả
+          Bài 1
         </Tag>
-        {lessons.map(lesson => (
-          <Tag
-            key={lesson}
-            color={selectedLesson === lesson ? "blue" : undefined}
-            style={{ cursor: "pointer" }}
-            onClick={() => setSelectedLesson(lesson)}
-          >
-            Bài {lesson}
-          </Tag>
-        ))}
+        <Tag
+          color={selectedLesson === 2 ? "blue" : undefined}
+          style={{ cursor: "pointer" }}
+          onClick={() => setSelectedLesson(2)}
+        >
+          Bài 2
+        </Tag>
       </Space>
 
       {tango.length === 0 ? (
@@ -107,33 +105,34 @@ const TangoDetail: React.FC = () => {
         <List
           grid={{ gutter: 16, xs: 1, sm: 2, md: 3 }}
           dataSource={tango}
-          renderItem={(item) => (
+          renderItem={(item: TangoItem) => (
             <List.Item>
               <Card className="w-full">
                 <div className="text-center">
                   <Text strong className="text-2xl block mb-2">
-                    {item.kanji || item.kana}
+                    {item.kanji || item.japanese}
                   </Text>
                   {item.kanji && (
                     <Text type="secondary" className="text-lg block mb-1">
                       {item.kana}
                     </Text>
                   )}
-                  <Tag color="blue" className="mb-2">
+                  {/* Romaji - Hidden */}
+                  {/* <Tag color="blue" className="mb-2">
                     {item.romaji}
-                  </Tag>
-                  {item.hanviet && (
-                    <Text type="secondary" className="block mb-2">
-                      {item.hanviet}
-                    </Text>
-                  )}
+                  </Tag> */}
+                  <Text type="secondary" className="block mb-2 text-xs">
+                    {item.partOfSpeech}
+                  </Text>
                   <Paragraph className="text-gray-700 mt-2">
-                    {item.meaningVi}
+                    {item.vietnamese}
                   </Paragraph>
-                  {item.exampleJp && (
+                  {item.example && (
                     <div className="mt-2 text-sm text-gray-500">
-                      <p className="italic">{item.exampleJp}</p>
-                      <p>{item.exampleVi}</p>
+                      <p className="italic">{item.example}</p>
+                      {/* Example Romaji - Hidden */}
+                      {/* <p className="text-xs">{item.exampleRomaji}</p> */}
+                      <p>{item.exampleVietnamese}</p>
                     </div>
                   )}
                 </div>

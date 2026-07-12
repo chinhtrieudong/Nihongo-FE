@@ -1,0 +1,77 @@
+{
+  "lessonNumber": 2,
+  "title": "Bài 2 - Đồ vật và chỉ định",
+  "description": "Các mẫu câu chỉ định đồ vật và hỏi về đồ vật",
+  "bunkei": [
+    {
+      "id": 1,
+      "japanese": "これは　本です。",
+      "romaji": "Kore wa hon desu.",
+      "vietnamese": "Đây là sách.",
+      "pattern": "これは　[物]です。",
+      "patternMeaning": "Đây là [đồ vật].",
+      "grammarPoint": "Kore/Sore/Are - Chỉ định gần/xa",
+      "examples": [
+        "これは　ペンです。",
+        "これは　ノートです。",
+        "これは　かばんです。"
+      ]
+    },
+    {
+      "id": 2,
+      "japanese": "それは　辞書です。",
+      "romaji": "Sore wa jisho desu.",
+      "vietnamese": "Đó là từ điển.",
+      "pattern": "それは　[物]です。",
+      "patternMeaning": "Đó là [đồ vật].",
+      "grammarPoint": "Sore - Chỉ định đồ vật gần người nghe",
+      "examples": [
+        "それは　時計です。",
+        "それは　傘です。",
+        "それは　鞄です。"
+      ]
+    },
+    {
+      "id": 3,
+      "japanese": "あれは　テレビです。",
+      "romaji": "Are wa terebi desu.",
+      "vietnamese": "Kia là tivi.",
+      "pattern": "あれは　[物]です。",
+      "patternMeaning": "Kia là [đồ vật].",
+      "grammarPoint": "Are - Chỉ định đồ vật xa cả hai người",
+      "examples": [
+        "あれは　車です。",
+        "あれは　家です。",
+        "あれは　山です。"
+      ]
+    },
+    {
+      "id": 4,
+      "japanese": "これは　何ですか。",
+      "romaji": "Kore wa nan desu ka.",
+      "vietnamese": "Đây là cái gì?",
+      "pattern": "これは　何ですか。",
+      "patternMeaning": "Đây là cái gì?",
+      "grammarPoint": "Nan - Câu hỏi cái gì",
+      "examples": [
+        "それは　何ですか。",
+        "あれは　何ですか。",
+        "これは　何ですか。"
+      ]
+    },
+    {
+      "id": 5,
+      "japanese": "この本は　わたしの本です。",
+      "romaji": "Kono hon wa watashi no hon desu.",
+      "vietnamese": "Quyển sách này là sách của tôi.",
+      "pattern": "この[物]は　[人]の[物]です。",
+      "patternMeaning": "[Đồ vật] này là của [người].",
+      "grammarPoint": "Kono/Sono/Ano + no - Sở hữu",
+      "examples": [
+        "このペンは　田中さんのペンです。",
+        "その鞄は　わたしの鞄です。",
+        "あの時計は　キムさんの時計です。"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,225 @@
+{
+  "test": {
+    "passing_score": 70
+  },
+  "questions": [
+    {
+      "id": "q_0_0",
+      "type": "multiple-choice",
+      "question": "「頑張る」の読み方として正しいのはどれですか。",
+      "options": ["がんばる", "はんばる", "かんばる", "たんばる"],
+      "correctAnswer": 0,
+      "explanation": "「頑張る」は「がんばる」と読みます。",
+      "sectionId": "vocabulary",
+      "level": "N4",
+      "difficulty": "Elementary"
+    },
+    {
+      "id": "q_0_1",
+      "type": "multiple-choice",
+      "question": "「便利」の反対語はどれですか。",
+      "options": ["不便", "便利", "簡単", "難しい"],
+      "correctAnswer": 0,
+      "explanation": "「便利」（べんり）の反対語は「不便」（ふべん）です。",
+      "sectionId": "vocabulary",
+      "level": "N4",
+      "difficulty": "Elementary"
+    },
+    {
+      "id": "q_0_2",
+      "type": "multiple-choice",
+      "question": "「説明」の読み方として正しいのはどれですか。",
+      "options": ["せつめい", "せつな", "せつめ", "せつみ"],
+      "correctAnswer": 0,
+      "explanation": "「説明」は「せつめい」と読みます。",
+      "sectionId": "vocabulary",
+      "level": "N4",
+      "difficulty": "Elementary"
+    },
+    {
+      "id": "q_0_3",
+      "type": "multiple-choice",
+      "question": "「経験」の意味は何ですか。",
+      "options": ["経験", "実験", "経営", "経済"],
+      "correctAnswer": 0,
+      "explanation": "「経験」は「けいけん」と読み、experience の意味です。",
+      "sectionId": "vocabulary",
+      "level": "N4",
+      "difficulty": "Elementary"
+    },
+    {
+      "id": "q_0_4",
+      "type": "multiple-choice",
+      "question": "「重要」の読み方として正しいのはどれですか。",
+      "options": ["じゅうよう", "ちゅうよう", "じょうよう", "しゅうよう"],
+      "correctAnswer": 0,
+      "explanation": "「重要」は「じゅうよう」と読みます。",
+      "sectionId": "vocabulary",
+      "level": "N4",
+      "difficulty": "Elementary"
+    },
+    {
+      "id": "q_1_0",
+      "type": "multiple-choice",
+      "question": "次の文の空欄に最も適切な言葉を入れなさい。「雨が＿＿＿、窓を閉めました。」",
+      "options": ["降るので", "降ったので", "降りますので", "降るから"],
+      "correctAnswer": 1,
+      "explanation": "過去の事実から理由を表すので、「降ったので」が正しいです。",
+      "sectionId": "grammar",
+      "level": "N4",
+      "difficulty": "Elementary"
+    },
+    {
+      "id": "q_1_1",
+      "type": "multiple-choice",
+      "question": "「〜ば」の使い方として正しいのはどれですか。",
+      "options": ["雨が降れば、試合は中止です", "雨が降るば、試合は中止です", "雨が降ればば、試合は中止です", "雨が降るれば、試合は中止です"],
+      "correctAnswer": 0,
+      "explanation": "「〜ば」は条件を表す表現です。「雨が降れば」が正しいです。",
+      "sectionId": "grammar",
+      "level": "N4",
+      "difficulty": "Elementary"
+    },
+    {
+      "id": "q_1_2",
+      "type": "multiple-choice",
+      "question": "「〜たら」の使い方として正しいのはどれですか。",
+      "options": ["雨が降ったら、試合は中止です", "雨が降るたら、試合は中止です", "雨が降ったらば、試合は中止です", "雨が降るたらば、試合は中止です"],
+      "correctAnswer": 0,
+      "explanation": "「〜たら」は条件を表す表現です。「雨が降ったら」が正しいです。",
+      "sectionId": "grammar",
+      "level": "N4",
+      "difficulty": "Elementary"
+    },
+    {
+      "id": "q_1_3",
+      "type": "multiple-choice",
+      "question": "「〜のに」の使い方として正しいのはどれですか。",
+      "options": ["頑張ったのに、失敗しました", "頑張るのに、失敗しました", "頑張るのに、失敗します", "頑張ったのに、失敗します"],
+      "correctAnswer": 0,
+      "explanation": "「〜のに」は逆接を表します。「頑張ったのに」が正しいです。",
+      "sectionId": "grammar",
+      "level": "N4",
+      "difficulty": "Elementary"
+    },
+    {
+      "id": "q_1_4",
+      "type": "multiple-choice",
+      "question": "「〜ので」の使い方として正しいのはどれですか。",
+      "options": ["雨が降るので、試合は中止です", "雨が降るので、試合は中止です", "雨が降るので、試合は中止です", "雨が降るので、試合は中止です"],
+      "correctAnswer": 0,
+      "explanation": "「〜ので」は丁寧な理由を表します。「雨が降るので」が正しいです。",
+      "sectionId": "grammar",
+      "level": "N4",
+      "difficulty": "Elementary"
+    },
+    {
+      "id": "q_2_0",
+      "type": "reading",
+      "question": "次の文章を読んで、質問に答えなさい。\n\n私は去年、日本に留学しました。最初は日本語が全然できませんでしたが、毎日勉強して、今はだいぶ上手になりました。",
+      "readingText": "私は去年、日本に留学しました。最初は日本語が全然できませんでしたが、毎日勉強して、今はだいぶ上手になりました。",
+      "options": ["去年", "一昨年", "今年", "来年"],
+      "correctAnswer": 0,
+      "explanation": "文章に「去年」と書いてあります。",
+      "sectionId": "reading",
+      "level": "N4",
+      "difficulty": "Elementary"
+    },
+    {
+      "id": "q_2_1",
+      "type": "reading",
+      "question": "次の文章を読んで、質問に答えなさい。\n\n私は去年、日本に留学しました。最初は日本語が全然できませんでしたが、毎日勉強して、今はだいぶ上手になりました。",
+      "readingText": "私は去年、日本に留学しました。最初は日本語が全然できませんでしたが、毎日勉強して、今はだいぶ上手になりました。",
+      "options": ["全然できなかった", "最初からできた", "今もできない", "勉強しなかった"],
+      "correctAnswer": 0,
+      "explanation": "文章に「最初は日本語が全然できませんでした」と書いてあります。",
+      "sectionId": "reading",
+      "level": "N4",
+      "difficulty": "Elementary"
+    },
+    {
+      "id": "q_2_2",
+      "type": "reading",
+      "question": "次の文章を読んで、質問に答えなさい。\n\n私は去年、日本に留学しました。最初は日本語が全然できませんでしたが、毎日勉強して、今はだいぶ上手になりました。",
+      "readingText": "私は去年、日本に留学しました。最初は日本語が全然できませんでしたが、毎日勉強して、今はだいぶ上手になりました。",
+      "options": ["全然勉強しなかった", "毎日勉強した", "時々勉強した", "勉強するのをやめた"],
+      "correctAnswer": 1,
+      "explanation": "文章に「毎日勉強して」と書いてあります。",
+      "sectionId": "reading",
+      "level": "N4",
+      "difficulty": "Elementary"
+    },
+    {
+      "id": "q_2_3",
+      "type": "reading",
+      "question": "次の文章を読んで、質問に答えなさい。\n\n私は去年、日本に留学しました。最初は日本語が全然できませんでしたが、毎日勉強して、今はだいぶ上手になりました。",
+      "readingText": "私は去年、日本に留学しました。最初は日本語が全然できませんでしたが、毎日勉強して、今はだいぶ上手になりました。",
+      "options": ["日本語", "英語", "中国語", "韓国語"],
+      "correctAnswer": 0,
+      "explanation": "文章に「日本語が全然できませんでした」と書いてあります。",
+      "sectionId": "reading",
+      "level": "N4",
+      "difficulty": "Elementary"
+    },
+    {
+      "id": "q_3_0",
+      "type": "listening",
+      "question": "この会話を聞いて、男性は何をしますか。",
+      "options": ["出張に行く", "会議に出席する", "休みを取る", "残業する"],
+      "correctAnswer": 1,
+      "explanation": "会話で男性は「会議に出席します」と言っています。",
+      "sectionId": "listening",
+      "level": "N4",
+      "difficulty": "Elementary",
+      "audioUrl": "/audio/n4/4/q_3_0.mp3"
+    },
+    {
+      "id": "q_3_1",
+      "type": "listening",
+      "question": "この会話を聞いて、女性はどこに住んでいますか。",
+      "options": ["東京", "大阪", "京都", "横浜"],
+      "correctAnswer": 2,
+      "explanation": "会話で女性は「京都に住んでいます」と言っています。",
+      "sectionId": "listening",
+      "level": "N4",
+      "difficulty": "Elementary",
+      "audioUrl": "/audio/n4/4/q_3_1.mp3"
+    },
+    {
+      "id": "q_3_2",
+      "type": "listening",
+      "question": "この会話を聞いて、二人は何をしますか。",
+      "options": ["映画を見る", "食事をする", "買い物をする", "散歩する"],
+      "correctAnswer": 1,
+      "explanation": "会話で二人は「食事をします」と言っています。",
+      "sectionId": "listening",
+      "level": "N4",
+      "difficulty": "Elementary",
+      "audioUrl": "/audio/n4/4/q_3_2.mp3"
+    },
+    {
+      "id": "q_3_3",
+      "type": "listening",
+      "question": "この会話を聞いて、天気はどうですか。",
+      "options": ["晴れ", "雨", "曇り", "雪"],
+      "correctAnswer": 2,
+      "explanation": "会話で「今日は曇りです」と言っています。",
+      "sectionId": "listening",
+      "level": "N4",
+      "difficulty": "Elementary",
+      "audioUrl": "/audio/n4/4/q_3_3.mp3"
+    },
+    {
+      "id": "q_3_4",
+      "type": "listening",
+      "question": "この会話を聞いて、時間は何時ですか。",
+      "options": ["3時", "4時", "5時", "6時"],
+      "correctAnswer": 3,
+      "explanation": "会話で「6時です」と言っています。",
+      "sectionId": "listening",
+      "level": "N4",
+      "difficulty": "Elementary",
+      "audioUrl": "/audio/n4/4/q_3_4.mp3"
+    }
+  ]
+}

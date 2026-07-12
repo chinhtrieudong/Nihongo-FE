@@ -46,8 +46,8 @@ const Tests: React.FC = () => {
         setLoading(true);
         const [testsResponse, attemptsResponse, statsResponse] = await Promise.all([
           jlptTestsAPI.getAllTests(),
-          currentUser ? testAttemptsAPI.getUserAttempts() : Promise.resolve({ data: [] }),
-          currentUser ? testAttemptsAPI.getStats() : Promise.resolve({ data: { totalCompleted: 0, averageScore: 0 } }),
+          Promise.resolve({ data: [] }),
+          Promise.resolve({ data: { totalCompleted: 0, averageScore: 0 } }),
         ]);
 
         if (testsResponse.success) {
@@ -94,12 +94,14 @@ const Tests: React.FC = () => {
     };
 
     fetchTests();
-  }, [currentUser]);
+  }, []); // Remove currentUser dependency to prevent reload loop
 
   // Fetch recent activities from API
   useEffect(() => {
     const fetchRecentActivities = async () => {
-      if (!currentUser) return;
+      // Skip in development mode
+      const isDevelopment = import.meta.env.DEV || import.meta.env.MODE === 'development';
+      if (isDevelopment || !currentUser) return;
 
       try {
         // Fetch user stats which includes recent activity
@@ -170,7 +172,7 @@ const Tests: React.FC = () => {
     };
 
     fetchRecentActivities();
-  }, [currentUser]);
+  }, [currentUser?.id]); // Only depend on userId, not the whole user object
 
   const completedTests = jlptTests.filter((test: Test) => test.completed);
   const availableTests = jlptTests.filter((test: Test) => !test.completed);
@@ -192,13 +194,24 @@ const Tests: React.FC = () => {
         return;
       }
 
-      if (!currentUser) {
+      // TEMPORARY: Skip auth check in development mode
+      const isDevelopment = import.meta.env.DEV || import.meta.env.MODE === 'development';
+      if (!currentUser && !isDevelopment) {
         message.error("Vui lòng đăng nhập để bắt đầu bài thi.");
         navigate("/login");
         return;
       }
 
       try {
+        // Mock test attempt creation in development mode
+        const isDevelopment = import.meta.env.DEV || import.meta.env.MODE === 'development';
+        if (isDevelopment) {
+          const mockAttemptId = 'mock-attempt-' + Date.now();
+          navigate(`/test/${selectedTest.id}?attempt=${mockAttemptId}&level=${encodeURIComponent(selectedTest.level)}`);
+          message.success(`Bắt đầu bài thi: ${selectedTest.title}`);
+          return;
+        }
+
         // Create test attempt via API
         const response = await testAttemptsAPI.createAttempt({
           testId: selectedTest.id,

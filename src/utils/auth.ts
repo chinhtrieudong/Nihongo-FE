@@ -2,20 +2,21 @@ import { store } from '../store';
 import { loginSuccess, loginStart, loginFailure } from '../store/slices/userSlice';
 // Check for existing tokens on app initialization
 export const initializeAuth = async () => {
-  
-  // Check if user is already authenticated in Redux
-  const currentState = store.getState();
-  if (currentState.user.isAuthenticated && currentState.user.currentUser) {
-    return true;
-  }
-  
-  const accessToken = localStorage.getItem('accessToken');
-  const refreshToken = localStorage.getItem('refreshToken');
-  
-  // Set loading state
-  store.dispatch(loginStart());
-  
-  if (accessToken && refreshToken) {
+  try {
+    // Check if user is already authenticated in Redux
+    const currentState = store.getState();
+    if (currentState.user.isAuthenticated && currentState.user.currentUser) {
+      return true;
+    }
+    
+    const accessToken = localStorage.getItem('accessToken');
+    const refreshToken = localStorage.getItem('refreshToken');
+    
+    // If no tokens exist, just return false without dispatching anything
+    if (!accessToken || !refreshToken) {
+      return false;
+    }
+    
     // For now, just decode JWT locally to avoid server dependency issues
     try {
       const decodedToken = decodeJWT(accessToken);
@@ -35,20 +36,17 @@ export const initializeAuth = async () => {
         
         store.dispatch(loginSuccess(userData));
         return true;
-      } else {
-        console.error('❌ No valid user ID found in token');
       }
     } catch (decodeError) {
       console.error('❌ JWT decode failed:', decodeError);
     }
     
-    // If all attempts fail, clear tokens and dispatch failure
+    // If decode fails, clear tokens
     localStorage.removeItem('accessToken');
     localStorage.removeItem('refreshToken');
-    store.dispatch(loginFailure('Session expired. Please login again.'));
     return false;
-  } else {
-    store.dispatch(loginFailure(''));
+  } catch (error) {
+    console.error('Auth initialization error:', error);
     return false;
   }
 };

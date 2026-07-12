@@ -1,0 +1,100 @@
+{
+  "lessonNumber": 2,
+  "title": "Bài 2 - Hội thoại về đồ vật",
+  "description": "Các hội thoại hỏi và trả lời về đồ vật",
+  "kaiwa": [
+    {
+      "id": 1,
+      "title": "Hỏi về đồ vật",
+      "speakers": ["A", "B"],
+      "dialogue": [
+        {
+          "speaker": "A",
+          "japanese": "これは　何ですか。",
+          "romaji": "Kore wa nan desu ka.",
+          "vietnamese": "Đây là cái gì?"
+        },
+        {
+          "speaker": "B",
+          "japanese": "それは　辞書です。",
+          "romaji": "Sore wa jisho desu.",
+          "vietnamese": "Đó là từ điển."
+        },
+        {
+          "speaker": "A",
+          "japanese": "これは　何ですか。",
+          "romaji": "Kore wa nan desu ka.",
+          "vietnamese": "Đây là cái gì?"
+        },
+        {
+          "speaker": "B",
+          "japanese": "あれは　テレビです。",
+          "romaji": "Are wa terebi desu.",
+          "vietnamese": "Kia là tivi."
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "title": "Hỏi về chủ sở hữu",
+      "speakers": ["A", "B"],
+      "dialogue": [
+        {
+          "speaker": "A",
+          "japanese": "この本は　あなたの本ですか。",
+          "romaji": "Kono hon wa anata no hon desu ka.",
+          "vietnamese": "Quyển sách này là sách của bạn không?"
+        },
+        {
+          "speaker": "B",
+          "japanese": "いいえ、わたしの本ではありません。田中さんの本です。",
+          "romaji": "Iie, watashi no hon dewa arimasen. Tanaka-san no hon desu.",
+          "vietnamese": "Không, không phải là sách của tôi. Đó là sách của anh Tanaka."
+        },
+        {
+          "speaker": "A",
+          "japanese": "その鞄は　だれの鞄ですか。",
+          "romaji": "Sono kaban wa dare no kaban desu ka.",
+          "vietnamese": "Cái túi đó là túi của ai?"
+        },
+        {
+          "speaker": "B",
+          "japanese": "これは　わたしの鞄です。",
+          "romaji": "Kore wa watashi no kaban desu.",
+          "vietnamese": "Đây là túi của tôi."
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "title": "Giới thiệu đồ vật",
+      "speakers": ["A", "B"],
+      "dialogue": [
+        {
+          "speaker": "A",
+          "japanese": "これを　ください。",
+          "romaji": "Kore o kudasai.",
+          "vietnamese": "Cho tôi cái này."
+        },
+        {
+          "speaker": "B",
+          "japanese": "はい、どうぞ。",
+          "romaji": "Hai, dōzo.",
+          "vietnamese": "Vâng, mời."
+        },
+        {
+          "speaker": "A",
+          "japanese": "それは　何ですか。",
+          "romaji": "Sore wa nan desu ka.",
+          "vietnamese": "Đó là cái gì?"
+        },
+        {
+          "speaker": "B",
+          "japanese": "これは　日本語の本です。",
+          "romaji": "Kore wa Nihongo no hon desu.",
+          "vietnamese": "Đây là sách tiếng Nhật."
+        }
+      ]
+    }
+  ]
+}

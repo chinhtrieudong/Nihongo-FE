@@ -1,0 +1,86 @@
+{
+  "lessonNumber": 2,
+  "title": "Bài 2 - Bài tập về đồ vật",
+  "description": "Các bài tập về chỉ định đồ vật và hỏi về đồ vật",
+  "mondai": [
+    {
+      "id": 1,
+      "type": "fill_blank",
+      "question": "Điền vào chỗ trống:",
+      "japanese": "これ　は　本　______。",
+      "romaji": "Kore wa hon ______.",
+      "vietnamese": "Đây là sách.",
+      "answer": "です",
+      "options": ["です", "ます", "でした", "ではありません"],
+      "explanation": "Câu khẳng định: これは　[物]です (Kore wa [mono] desu)"
+    },
+    {
+      "id": 2,
+      "type": "multiple_choice",
+      "question": "Chọn câu đúng nghĩa: 'Đó là từ điển'",
+      "options": [
+        "これは　辞書です。",
+        "それは　辞書です。",
+        "あれは　辞書です。",
+        "どれは　辞書です。"
+      ],
+      "answer": 1,
+      "explanation": "Sore chỉ đồ vật gần người nghe: それは　辞書です。"
+    },
+    {
+      "id": 3,
+      "type": "translation",
+      "question": "Dịch câu sau sang tiếng Nhật:",
+      "vietnamese": "Kia là tivi.",
+      "answer": "あれは　テレビです。",
+      "romaji": "Are wa terebi desu.",
+      "explanation": "Are chỉ đồ vật xa cả hai người: あれは　[物]です。"
+    },
+    {
+      "id": 4,
+      "type": "fill_blank",
+      "question": "Điền vào chỗ trống:",
+      "japanese": "これは　何　______。",
+      "romaji": "Kore wa nan ______.",
+      "vietnamese": "Đây là cái gì?",
+      "answer": "ですか",
+      "options": ["です", "ですか", "ではありません", "でした"],
+      "explanation": "Câu hỏi cái gì: これは　何ですか (Kore wa nan desu ka)"
+    },
+    {
+      "id": 5,
+      "type": "matching",
+      "question": "Nối từ chỉ định với nghĩa tiếng Việt tương ứng:",
+      "pairs": [
+        {
+          "japanese": "これ",
+          "vietnamese": "Đây (gần người nói)"
+        },
+        {
+          "japanese": "それ",
+          "vietnamese": "Đó (gần người nghe)"
+        },
+        {
+          "japanese": "あれ",
+          "vietnamese": "Kia (xa cả hai người)"
+        },
+        {
+          "japanese": "どれ",
+          "vietnamese": "Cái nào (câu hỏi)"
+        }
+      ],
+      "explanation": "Các từ chỉ định Kore/Sore/Are/Dore"
+    },
+    {
+      "id": 6,
+      "type": "fill_blank",
+      "question": "Điền vào chỗ trống:",
+      "japanese": "この本　は　わたし　______　本　です。",
+      "romaji": "Kono hon wa watashi ______ hon desu.",
+      "vietnamese": "Quyển sách này là sách của tôi.",
+      "answer": "の",
+      "options": ["の", "は", "が", "を"],
+      "explanation": "Chỉ sở hữu: [Người]の[物] (no)"
+    }
+  ]
+}

@@ -1,0 +1,127 @@
+{
+  "lessonNumber": 10,
+  "level": "N5",
+  "title": "Bài 10",
+  "vocabularies": [
+    {
+      "kanji": "てんき",
+      "hiragana": "てんき",
+      "romaji": "tenki",
+      "meaning": "Thời tiết",
+      "hanViet": "THIÊN KHÍ",
+      "partOfSpeech": "noun"
+    },
+    {
+      "kanji": "天気",
+      "hiragana": "てんき",
+      "romaji": "tenki",
+      "meaning": "Thời tiết",
+      "hanViet": "THIÊN KHÍ",
+      "partOfSpeech": "noun"
+    },
+    {
+      "kanji": "晴れ",
+      "hiragana": "はれ",
+      "romaji": "hare",
+      "meaning": "Trời nắng",
+      "hanViet": "TƯƠNG",
+      "partOfSpeech": "noun"
+    },
+    {
+      "kanji": "雨",
+      "hiragana": "あめ",
+      "romaji": "ame",
+      "meaning": "Mưa",
+      "hanViet": "VŨ",
+      "partOfSpeech": "noun"
+    },
+    {
+      "kanji": "雪",
+      "hiragana": "ゆき",
+      "romaji": "yuki",
+      "meaning": "Tuyết",
+      "hanViet": "TUYẾT",
+      "partOfSpeech": "noun"
+    },
+    {
+      "kanji": "曇り",
+      "hiragana": "くもり",
+      "romaji": "kumori",
+      "meaning": "Trời mây",
+      "hanViet": "ĐỘNG",
+      "partOfSpeech": "noun"
+    },
+    {
+      "kanji": "暑い",
+      "hiragana": "あつい",
+      "romaji": "atsui",
+      "meaning": "Nóng",
+      "hanViet": "NHIỄM",
+      "partOfSpeech": "adjective"
+    },
+    {
+      "kanji": "寒い",
+      "hiragana": "さむい",
+      "romaji": "samui",
+      "meaning": "Lạnh",
+      "hanViet": "HAN",
+      "partOfSpeech": "adjective"
+    },
+    {
+      "kanji": "涼しい",
+      "hiragana": "すずしい",
+      "romaji": "suzushii",
+      "meaning": "Mát",
+      "hanViet": "LƯƠNG",
+      "partOfSpeech": "adjective"
+    },
+    {
+      "kanji": "あたたかい",
+      "hiragana": "あたたかい",
+      "romaji": "atataka",
+      "meaning": "Ấm",
+      "hanViet": "NHIỆT",
+      "partOfSpeech": "adjective"
+    },
+    {
+      "kanji": "すき",
+      "hiragana": "すき",
+      "romaji": "suki",
+      "meaning": "Thích",
+      "hanViet": "THÍCH",
+      "partOfSpeech": "adjective"
+    },
+    {
+      "kanji": "きらい",
+      "hiragana": "きらい",
+      "romaji": "kirai",
+      "meaning": "Ghét",
+      "hanViet": "SỠ",
+      "partOfSpeech": "adjective"
+    },
+    {
+      "kanji": "ぐあん",
+      "hiragana": "ぐあん",
+      "romaji": "gu-an",
+      "meaning": "Bất ngờ",
+      "hanViet": "NGỘ",
+      "partOfSpeech": "noun"
+    },
+    {
+      "kanji": "ふつか",
+      "hiragana": "ふつか",
+      "romaji": "futsuka",
+      "meaning": "Ngày làm việc",
+      "hanViet": "PHẤT",
+      "partOfSpeech": "noun"
+    },
+    {
+      "kanji": "かぶとか",
+      "hiragana": "かぶとか",
+      "romaji": "kabutaka",
+      "meaning": "Ngày nghỉ",
+      "hanViet": "BÁT",
+      "partOfSpeech": "noun"
+    }
+  ]
+}

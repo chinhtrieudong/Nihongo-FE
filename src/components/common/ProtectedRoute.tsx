@@ -10,6 +10,12 @@ const ProtectedRoute: React.FC<ProtectedRouteProps> = ({ children }) => {
   const { isAuthenticated, isLoading } = useAppSelector((state) => state.user);
   const location = useLocation();
 
+  // TEMPORARY: Bypass authentication in development mode
+  const isDevelopment = import.meta.env.DEV || import.meta.env.MODE === 'development';
+  if (isDevelopment) {
+    return <>{children}</>;
+  }
+
   // Show loading spinner while checking authentication
   if (isLoading) {
     return (

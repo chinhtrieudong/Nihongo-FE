@@ -1,0 +1,76 @@
+{
+  "lessonNumber": 1,
+  "title": "Bài 1 - Bài tập cơ bản",
+  "description": "Các bài tập về mẫu câu giới thiệu và chào hỏi",
+  "mondai": [
+    {
+      "id": 1,
+      "type": "fill_blank",
+      "question": "Điền vào chỗ trống:",
+      "japanese": "わたし　は　マイク・ミラー　______。",
+      "romaji": "Watashi wa Maiku Mirā ______.",
+      "vietnamese": "Tôi là Mike Miller.",
+      "answer": "です",
+      "options": ["です", "ます", "でした", "ではありません"],
+      "explanation": "Câu khẳng định: A は B です (A wa B desu)"
+    },
+    {
+      "id": 2,
+      "type": "multiple_choice",
+      "question": "Chọn câu đúng:",
+      "japanese": "Anh Miller là người Mỹ.",
+      "options": [
+        "ミラーさんは　アメリカ人です。",
+        "ミラーさんは　アメリカ人ではありません。",
+        "ミラーさんは　アメリカ人ですか。",
+        "ミラーさんは　アメリカ人でした。"
+      ],
+      "answer": 0,
+      "explanation": "Câu khẳng định quốc tịch: [Tên]さんは　[国籍]です。"
+    },
+    {
+      "id": 3,
+      "type": "translation",
+      "question": "Dịch câu sau sang tiếng Nhật:",
+      "vietnamese": "Anh Tanaka không phải là sinh viên.",
+      "answer": "田中さんは　学生ではありません。",
+      "romaji": "Tanaka-san wa gakusei dewa arimasen.",
+      "explanation": "Câu phủ định: [Tên]さんは　[đối tượng]ではありません。"
+    },
+    {
+      "id": 4,
+      "type": "fill_blank",
+      "question": "Điền vào chỗ trống:",
+      "japanese": "ミラーさんは　学生　______。",
+      "romaji": "Mirā-san wa gakusei ______.",
+      "vietnamese": "Anh Miller có phải là sinh viên không?",
+      "answer": "ですか",
+      "options": ["です", "ですか", "ではありません", "でした"],
+      "explanation": "Câu hỏi: [Đối tượng]ですか (desu ka)"
+    },
+    {
+      "id": 5,
+      "type": "matching",
+      "question": "Nối từ với nghĩa tiếng Việt tương ứng:",
+      "pairs": [
+        {
+          "japanese": "学生",
+          "vietnamese": "Sinh viên"
+        },
+        {
+          "japanese": "会社員",
+          "vietnamese": "Nhân viên công ty"
+        },
+        {
+          "japanese": "先生",
+          "vietnamese": "Giáo viên"
+        },
+        {
+          "japanese": "医者",
+          "vietnamese": "Bác sĩ"
+        }
+      ],
+      "explanation": "Các từ chỉ nghề nghiệp cơ bản"
+    }
+  ]
+}
