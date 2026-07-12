@@ -36,16 +36,42 @@ export function useProgress(options: UseProgressOptions) {
   const [error, setError] = useState<string | null>(null);
 
   const fetchProgress = useCallback(async () => {
-    if (!userId) return;
+    // In development mode, use mock data if no userId or API fails
+    const isDevelopment = import.meta.env.DEV || import.meta.env.MODE === 'development';
+    
+    if (!userId && !isDevelopment) return;
 
     try {
       setLoading(true);
       setError(null);
-      const response = await progressAPI.getProgress(userId, { textbookId, status });
-      setProgress(response.data?.data || []);
+      
+      if (userId) {
+        const response = await progressAPI.getProgress(userId, { textbookId, status });
+        setProgress(response.data?.data || []);
+      } else if (isDevelopment) {
+        // Use mock data in development when no userId
+        const mockData = await import('../data/fakeProgressData.json');
+        const filteredProgress = mockData.progress.filter(
+          (p: any) => p.textbookId === textbookId || !textbookId
+        ) as LessonProgress[];
+        setProgress(filteredProgress);
+      }
     } catch (err: any) {
-      setError(err.message || 'Failed to fetch progress');
-      console.error('Error fetching progress:', err);
+      // Fallback to local mock data when API fails
+      if (isDevelopment) {
+        try {
+          const mockData = await import('../data/fakeProgressData.json');
+          const filteredProgress = mockData.progress.filter(
+            (p: any) => p.textbookId === textbookId || !textbookId
+          ) as LessonProgress[];
+          setProgress(filteredProgress);
+        } catch (mockErr) {
+          console.error('Error loading mock progress data:', mockErr);
+        }
+      } else {
+        setError(err.message || 'Failed to fetch progress');
+        console.error('Error fetching progress:', err);
+      }
     } finally {
       setLoading(false);
     }

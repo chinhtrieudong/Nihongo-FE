@@ -1,0 +1,72 @@
+{
+  "progress": [
+    {
+      "_id": "progress-1",
+      "userId": "user-1",
+      "textbookId": "minna-n5",
+      "lessonNumber": 1,
+      "status": "completed",
+      "progressPercent": 100,
+      "vocabularyStats": { "total": 40, "studied": 40, "mastered": 35 },
+      "grammarStats": { "total": 3, "studied": 3, "mastered": 3 },
+      "dialogStats": { "total": 2, "studied": 2, "mastered": 2 },
+      "startedAt": "2024-01-01T00:00:00Z",
+      "completedAt": "2024-01-05T00:00:00Z",
+      "lastAccessedAt": "2024-01-05T00:00:00Z"
+    },
+    {
+      "_id": "progress-2",
+      "userId": "user-1",
+      "textbookId": "minna-n5",
+      "lessonNumber": 2,
+      "status": "completed",
+      "progressPercent": 100,
+      "vocabularyStats": { "total": 42, "studied": 42, "mastered": 38 },
+      "grammarStats": { "total": 3, "studied": 3, "mastered": 3 },
+      "dialogStats": { "total": 2, "studied": 2, "mastered": 2 },
+      "startedAt": "2024-01-06T00:00:00Z",
+      "completedAt": "2024-01-10T00:00:00Z",
+      "lastAccessedAt": "2024-01-10T00:00:00Z"
+    },
+    {
+      "_id": "progress-3",
+      "userId": "user-1",
+      "textbookId": "minna-n5",
+      "lessonNumber": 3,
+      "status": "in_progress",
+      "progressPercent": 60,
+      "vocabularyStats": { "total": 38, "studied": 23, "mastered": 15 },
+      "grammarStats": { "total": 4, "studied": 2, "mastered": 1 },
+      "dialogStats": { "total": 2, "studied": 1, "mastered": 0 },
+      "startedAt": "2024-01-11T00:00:00Z",
+      "lastAccessedAt": "2024-01-12T00:00:00Z"
+    },
+    {
+      "_id": "progress-4",
+      "userId": "user-1",
+      "textbookId": "tango-n5",
+      "lessonNumber": 1,
+      "status": "completed",
+      "progressPercent": 100,
+      "vocabularyStats": { "total": 40, "studied": 40, "mastered": 35 },
+      "grammarStats": { "total": 0, "studied": 0, "mastered": 0 },
+      "dialogStats": { "total": 0, "studied": 0, "mastered": 0 },
+      "startedAt": "2024-01-01T00:00:00Z",
+      "completedAt": "2024-01-03T00:00:00Z",
+      "lastAccessedAt": "2024-01-03T00:00:00Z"
+    },
+    {
+      "_id": "progress-5",
+      "userId": "user-1",
+      "textbookId": "tango-n5",
+      "lessonNumber": 2,
+      "status": "in_progress",
+      "progressPercent": 45,
+      "vocabularyStats": { "total": 40, "studied": 18, "mastered": 12 },
+      "grammarStats": { "total": 0, "studied": 0, "mastered": 0 },
+      "dialogStats": { "total": 0, "studied": 0, "mastered": 0 },
+      "startedAt": "2024-01-04T00:00:00Z",
+      "lastAccessedAt": "2024-01-05T00:00:00Z"
+    }
+  ]
+}
