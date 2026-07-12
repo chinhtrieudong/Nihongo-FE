@@ -1,6 +1,16 @@
-# Getting Started with Create React App
+# Nihongo Learning App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A Japanese learning application built with React and Vite.
+
+## Deployment
+
+The application is deployed on Vercel:
+- **Production:** https://frontend-nuukuja7d-lebachinhpt-gmailcoms-projects.vercel.app
+- **Aliased:** https://frontend-ashen-xi-29.vercel.app
+
+## Getting Started
+
+This project was bootstrapped with [Vite](https://vitejs.dev/).
 
 ## Available Scripts
 
